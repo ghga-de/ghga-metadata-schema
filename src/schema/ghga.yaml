@@ -1,0 +1,354 @@
+id: https://w3id.org/my_core
+name: GHGA-Schema
+description: >-
+  The GHGA Core Schema is similar to the EGA Schema.
+
+imports:
+- biolinkml:types
+
+prefixes:
+  biolinkml: https://w3id.org/biolink/biolinkml/
+  GHGA: https://w3id.org/GHGA/
+
+default_prefix: GHGA
+
+
+classes:
+
+  named thing:
+    description: >-
+      A databased entity, concept or class. This is a generic class that is the root of all the other classes.
+    slots:
+      - id
+
+  study:
+    is_a: named thing
+    description: >-
+      Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis
+      of a subject to learn more about the phenomenon being studied.
+    slots:
+      - descriptive title
+      - study type
+      - short name
+      - abstract
+      - pubmed id
+      - custom tags
+    slot_usage:
+      descriptive title:
+        required: true
+      study type:
+        required: true
+      abstract:
+        required: true
+      custom tags:
+        multivalued: true
+
+  sample:
+    is_a: named thing
+    description: >-
+      A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation,
+      demonstration, or trial use. This could be either an individual, or sets of individuals from a population,
+      or a portion of a substance like an isolate or tissue.
+    aliases: ['biosample']
+    exact_mappings:
+      - SIO:001050
+      - biolink:MaterialSample
+    slots:
+      - title
+      - alias
+      - description
+      - subject id
+      - biosample id
+      - case or control
+      - gender
+      - organism part
+      - cell line
+      - geographical region
+      - phenotype or disease
+      - files
+    slot_usage:
+      title:
+        description: >-
+          Brief description of a sample.
+      alias:
+        required: true
+      subject id:
+        required: true
+      gender:
+        required: true
+      phenotype or disease:
+        required: true
+      files:
+        description: >-
+          One or more files that are linked to this Sample.
+        required: true
+
+  experiment:
+    is_a: named thing
+    description: >-
+      An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate
+      data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+    exact_mappings:
+      - SIO:000994
+      - NCIT:C42790
+    slots:
+      - related study
+      - design name
+      - instrument model
+      - library name
+      - library layout
+      - library source
+      - library selection
+      - library strategy
+      - library construction protocol
+    slot_usage:
+      related study:
+        required: true
+      design name:
+        required: true
+      instrument model:
+        required: true
+      library layout:
+        required: true
+      library source:
+        required: true
+      library selection:
+        required: true
+      library strategy:
+        required: true
+
+  data access committee:
+    is_a: named thing
+    description: >-
+      A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria
+      for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
+    slots:
+      - title
+      - name
+      - email
+      - telephone
+      - organization
+      - main contact
+    slot_usage:
+      title:
+        required: true
+      name:
+        required: true
+      telephone:
+        required: true
+      organization:
+        required: true
+      main contact:
+        required: true
+
+  data access policy:
+    is_a: named thing # TODO: data access policy subclass of information content entity
+    description: >-
+      A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or
+      more datasets belonging to one or more studies.
+    slots:
+      - data access committees
+      - short description
+      - policy
+      - policy url
+    slot_usage:
+      data access committees:
+        required: true
+      short description:
+        required: true
+      policy:
+        required: true
+
+  dataset:
+    is_a: named thing
+    description: >-
+      A dataset is a collection of files that represents data generated from a particular sample.
+    exact_mappings:
+      - SIO:000089
+    slots:
+      - data access policies
+      - dataset title
+      - dataset description
+      - dataset type
+      - files
+    slot_usage:
+      data access policies:
+        required: true
+      dataset title:
+        required: true
+      dataset description:
+        required: true
+      dataset type:
+        required: true
+      files:
+        description: >-
+          One or more files that collectively make this dataset.
+        required: true
+
+
+slots:
+
+  id:
+    description: >-
+      An identifier that uniquely represents an entity.
+    identifier: true
+    required: true
+
+  descriptive title:
+    description: >-
+      A descriptive title for the study.
+
+  study type:
+    description: >-
+      The study type. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
+
+  short name:
+    description: >-
+      A short name for the study.
+
+  abstract:
+    description: >-
+      The study abstract that describes the goals. Can also hold abstract from a publication related to the study.
+
+  pubmed id:
+    description: >-
+      The PubMed ID related to a study.
+
+  custom tags:
+    description: >-
+      Key/value pairs corresponding to the study.
+
+  title:
+    description: >-
+      Brief description of an entity.
+
+  alias:
+    description: >-
+      Name which is matching the uploaded sample(s).
+
+  description:
+    description: >-
+      Description of experiment.
+
+  subject id:
+    description: >-
+      The subject ID of the patient from experiment.
+      Note that this ID should be non-identifiable.
+
+  biosample id:
+    description: >-
+      Specific sample ID from a submission to EBI BioSamples.
+
+  case or control:
+    description: Is the sample case or control.
+
+  gender:
+    description: Gender of the subject.
+
+  organism part:
+    description: >-
+      From where the sample was collected: Liver, Blood, Stool, etc.
+
+  cell line:
+    description: >-
+      Which cell line was used.
+
+  geographical region:
+    description: >-
+      Ethinicity.
+
+  phenotype or disease:
+    description: >-
+      Disease or phenotype that the subject is associated with.
+
+  files:
+    description: One or more files that are linked to an entity.
+    multivalued: true
+
+  related study:
+    description: >-
+      The study to which the experiment belongs to.
+
+  design name:
+    description: >-
+      The name of the experiment.
+
+  instrument model:
+    description: >-
+      The instrument on which the data was generated.
+
+  library name:
+    description: >-
+      The library name.
+
+  library layout:
+    description: >-
+      The layout of the library. Whether it is single-end, paired-end.
+
+  library source:
+    description: >-
+      The source of the library. For example, Metagenome, Transcriptome, etc.
+
+  library selection:
+    description: >-
+      Library selection process. For example, random, cDNA, etc.
+
+  library strategy:
+    description: >-
+      Library strategy. For example, ChIP-Seq, RNA-Seq, DNA-Seq, etc.
+
+  library construction protocol:
+    description: >-
+      Description of how the library was constructed.
+
+  name:
+    description: >-
+      The name of the point of contact for the DAC.
+
+  telephone:
+    description: >-
+      The telephone number of the point of contact for the DAC.
+
+  organization:
+    description: >-
+      The organization of the point of contact for the DAC.
+
+  email:
+    description: >-
+      Email of the contact.
+
+  main contact:
+    description: >-
+      Is the contact the main contact for the DAC
+
+  data access committees:
+    description: >-
+      One or more DACs associated with this Data Access Policy.
+
+  short description:
+    description: >-
+      A short description for the Data Access Policy.
+
+  policy:
+    description: >-
+      The complete text for the Data Access Policy.
+
+  policy url:
+    description: >-
+      Alternative to pasting the Data Access Policy text.
+
+  data access policies:
+    description: >-
+      One or more DAPs associated with this dataset.
+
+  dataset title:
+    description: >-
+      A descriptive title for this dataset.
+
+  dataset description:
+    description: >-
+      A through description of this dataset.
+
+  dataset type:
+    description: >-
+      The type of dataset. For example, Whole Genome Sequencing, Whole Exome Sequencing, etc.
