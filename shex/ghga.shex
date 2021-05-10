@@ -1,0 +1,134 @@
+BASE <https://w3id.org/GHGA/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX metatype: <https://w3id.org/biolink/biolinkml/meta/types/>
+
+
+metatype:String xsd:string
+
+metatype:Integer xsd:integer
+
+metatype:Boolean xsd:boolean
+
+metatype:Float xsd:float
+
+metatype:Double xsd:double
+
+metatype:Decimal xsd:decimal
+
+metatype:Time xsd:dateTime
+
+metatype:Date xsd:date
+
+metatype:Datetime xsd:dateTime
+
+metatype:Uriorcurie IRI
+
+metatype:Uri IRI
+
+metatype:Ncname xsd:string
+
+metatype:Objectidentifier IRI
+
+metatype:Nodeidentifier NONLITERAL
+
+<DataAccessCommittee> CLOSED {
+    (  $<DataAccessCommittee_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <title> @metatype:String ;
+          <name> @metatype:String ;
+          <email> @metatype:String ? ;
+          <telephone> @metatype:String ;
+          <organization> @metatype:String ;
+          <main_contact> @metatype:String
+       ) ;
+       rdf:type [ <DataAccessCommittee> ]
+    )
+}
+
+<DataAccessPolicy> CLOSED {
+    (  $<DataAccessPolicy_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <data_access_committees> @metatype:String ;
+          <short_description> @metatype:String ;
+          <policy> @metatype:String ;
+          <policy_url> @metatype:String ?
+       ) ;
+       rdf:type [ <DataAccessPolicy> ]
+    )
+}
+
+<Dataset> CLOSED {
+    (  $<Dataset_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <data_access_policies> @metatype:String ;
+          <dataset_title> @metatype:String ;
+          <dataset_description> @metatype:String ;
+          <dataset_type> @metatype:String ;
+          <files> @metatype:String +
+       ) ;
+       rdf:type [ <Dataset> ]
+    )
+}
+
+<Experiment> CLOSED {
+    (  $<Experiment_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <related_study> @metatype:String ;
+          <design_name> @metatype:String ;
+          <instrument_model> @metatype:String ;
+          <library_name> @metatype:String ? ;
+          <library_layout> @metatype:String ;
+          <library_source> @metatype:String ;
+          <library_selection> @metatype:String ;
+          <library_strategy> @metatype:String ;
+          <library_construction_protocol> @metatype:String ?
+       ) ;
+       rdf:type [ <Experiment> ]
+    )
+}
+
+<NamedThing>  (
+    CLOSED {
+       (  $<NamedThing_tes> rdf:type . * ;
+          rdf:type [ <NamedThing> ]
+       )
+    } OR @<DataAccessCommittee> OR @<DataAccessPolicy> OR @<Dataset> OR @<Experiment> OR @<Sample> OR @<Study>
+)
+
+<Sample> CLOSED {
+    (  $<Sample_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <title> @metatype:String ? ;
+          <alias> @metatype:String ;
+          <description> @metatype:String ? ;
+          <subject_id> @metatype:String ;
+          <biosample_id> @metatype:String ? ;
+          <case_or_control> @metatype:String ? ;
+          <gender> @metatype:String ;
+          <organism_part> @metatype:String ? ;
+          <cell_line> @metatype:String ? ;
+          <geographical_region> @metatype:String ? ;
+          <phenotype_or_disease> @metatype:String ;
+          <files> @metatype:String +
+       ) ;
+       rdf:type [ <Sample> ]
+    )
+}
+
+<Study> CLOSED {
+    (  $<Study_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <descriptive_title> @metatype:String ;
+          <study_type> @metatype:String ;
+          <short_name> @metatype:String ? ;
+          <abstract> @metatype:String ;
+          <pubmed_id> @metatype:String ? ;
+          <custom_tags> @metatype:String *
+       ) ;
+       rdf:type [ <Study> ]
+    )
+}
+
+
+

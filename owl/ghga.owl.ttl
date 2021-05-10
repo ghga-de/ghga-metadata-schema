@@ -1,0 +1,844 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix meta: <https://w3id.org/biolink/biolinkml/meta/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+meta:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" ;
+    skos:definition "the name and description of a subset" .
+
+meta:data_access_committee_main_contact a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access committee_main contact" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/main_contact> .
+
+meta:data_access_committee_name a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access committee_name" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/name> .
+
+meta:data_access_committee_organization a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access committee_organization" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/organization> .
+
+meta:data_access_committee_telephone a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access committee_telephone" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/telephone> .
+
+meta:data_access_committee_title a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access committee_title" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/title> .
+
+meta:data_access_policy_data_access_committees a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access policy_data access committees" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/data_access_committees> .
+
+meta:data_access_policy_policy a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access policy_policy" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/policy> .
+
+meta:data_access_policy_short_description a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access policy_short description" ;
+    rdfs:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/short_description> .
+
+meta:dataset_data_access_policies a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset_data access policies" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/data_access_policies> .
+
+meta:dataset_dataset_description a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset_dataset description" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/dataset_description> .
+
+meta:dataset_dataset_title a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset_dataset title" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/dataset_title> .
+
+meta:dataset_dataset_type a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset_dataset type" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/dataset_type> .
+
+meta:dataset_files a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset_files" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/files> ;
+    skos:definition "One or more files that collectively make this dataset." .
+
+meta:experiment_design_name a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_design name" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/design_name> .
+
+meta:experiment_instrument_model a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_instrument model" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/instrument_model> .
+
+meta:experiment_library_layout a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_library layout" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/library_layout> .
+
+meta:experiment_library_selection a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_library selection" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/library_selection> .
+
+meta:experiment_library_source a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_library source" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/library_source> .
+
+meta:experiment_library_strategy a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_library strategy" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/library_strategy> .
+
+meta:experiment_related_study a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "experiment_related study" ;
+    rdfs:domain <https://w3id.org/GHGA/Experiment> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/related_study> .
+
+meta:sample_alias a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "sample_alias" ;
+    rdfs:domain <https://w3id.org/GHGA/Sample> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/alias> .
+
+meta:sample_files a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "sample_files" ;
+    rdfs:domain <https://w3id.org/GHGA/Sample> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/files> ;
+    skos:definition "One or more files that are linked to this Sample." .
+
+meta:sample_gender a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "sample_gender" ;
+    rdfs:domain <https://w3id.org/GHGA/Sample> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/gender> .
+
+meta:sample_phenotype_or_disease a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "sample_phenotype or disease" ;
+    rdfs:domain <https://w3id.org/GHGA/Sample> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/phenotype_or_disease> .
+
+meta:sample_subject_id a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "sample_subject id" ;
+    rdfs:domain <https://w3id.org/GHGA/Sample> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/subject_id> .
+
+meta:sample_title a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "sample_title" ;
+    rdfs:domain <https://w3id.org/GHGA/Sample> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/title> ;
+    skos:definition "Brief description of a sample." .
+
+meta:study_abstract a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "study_abstract" ;
+    rdfs:domain <https://w3id.org/GHGA/Study> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/abstract> .
+
+meta:study_custom_tags a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "study_custom tags" ;
+    rdfs:domain <https://w3id.org/GHGA/Study> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/custom_tags> .
+
+meta:study_descriptive_title a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "study_descriptive title" ;
+    rdfs:domain <https://w3id.org/GHGA/Study> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/descriptive_title> .
+
+meta:study_study_type a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "study_study type" ;
+    rdfs:domain <https://w3id.org/GHGA/Study> ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/study_type> .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Boolean> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "boolean" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A binary (true or false) value" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Date> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "date" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:date ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "a date (year, month and day) in an idealized calendar" ;
+    skos:editorialNote "URI is dateTime because OWL reasoners don't work with straight date or time" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Datetime> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "datetime" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "The combination of a date and time" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Decimal> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "decimal" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A real number with arbitrary precision that conforms to the xsd:decimal specification" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Double> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "double" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A real number that conforms to the xsd:double specification" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Float> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "float" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:float ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A real number that conforms to the xsd:float specification" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Integer> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "integer" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "An integer" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Ncname> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "ncname" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "Prefix part of CURIE" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Nodeidentifier> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "nodeidentifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange <http://www.w3.org/ns/shex#nonLiteral> ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A URI, CURIE or BNODE that represents a node in a model." .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Objectidentifier> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "objectidentifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange <http://www.w3.org/ns/shex#iri> ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A URI or CURIE that represents an object in the model." ;
+    skos:note "Used for inheritence and type checking" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Time> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "time" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A time object represents a (local) time of day, independent of any particular day" ;
+    skos:editorialNote "URI is dateTime because OWL reasoners don't work with straight date or time" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Uri> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "uri" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "a complete URI" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "uriorcurie" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "a URI or a CURIE" .
+
+<https://w3id.org/my_core> a owl:Ontology ;
+    rdfs:label "GHGA-Schema" ;
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    skos:definition "The GHGA Core Schema is similar to the EGA Schema." ;
+    meta:generation_date "2021-05-10 09:45" ;
+    meta:metamodel_version "1.7.0" ;
+    meta:source_file "ghga.yaml" ;
+    meta:source_file_date "Mon May 10 09:43:15 2021" ;
+    meta:source_file_size 8599 .
+
+<https://w3id.org/GHGA/biosample_id> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "biosample id" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Specific sample ID from a submission to EBI BioSamples." .
+
+<https://w3id.org/GHGA/case_or_control> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "case or control" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Is the sample case or control." .
+
+<https://w3id.org/GHGA/cell_line> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "cell line" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Which cell line was used." .
+
+<https://w3id.org/GHGA/description> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Description of experiment." .
+
+<https://w3id.org/GHGA/email> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "email" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Email of the contact." .
+
+<https://w3id.org/GHGA/geographical_region> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "geographical region" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Ethinicity." .
+
+<https://w3id.org/GHGA/id> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "An identifier that uniquely represents an entity." .
+
+<https://w3id.org/GHGA/library_construction_protocol> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "library construction protocol" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Description of how the library was constructed." .
+
+<https://w3id.org/GHGA/library_name> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "library name" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The library name." .
+
+<https://w3id.org/GHGA/organism_part> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "organism part" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "From where the sample was collected: Liver, Blood, Stool, etc." .
+
+<https://w3id.org/GHGA/policy_url> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "policy url" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Alternative to pasting the Data Access Policy text." .
+
+<https://w3id.org/GHGA/pubmed_id> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "pubmed id" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The PubMed ID related to a study." .
+
+<https://w3id.org/GHGA/short_name> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "short name" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "A short name for the study." .
+
+<https://w3id.org/GHGA/abstract> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "abstract" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The study abstract that describes the goals. Can also hold abstract from a publication related to the study." .
+
+<https://w3id.org/GHGA/alias> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "alias" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Name which is matching the uploaded sample(s)." .
+
+<https://w3id.org/GHGA/custom_tags> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "custom tags" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Key/value pairs corresponding to the study." .
+
+<https://w3id.org/GHGA/data_access_committees> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access committees" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "One or more DACs associated with this Data Access Policy." .
+
+<https://w3id.org/GHGA/data_access_policies> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "data access policies" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "One or more DAPs associated with this dataset." .
+
+<https://w3id.org/GHGA/dataset_description> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset description" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "A through description of this dataset." .
+
+<https://w3id.org/GHGA/dataset_title> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset title" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "A descriptive title for this dataset." .
+
+<https://w3id.org/GHGA/dataset_type> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "dataset type" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The type of dataset. For example, Whole Genome Sequencing, Whole Exome Sequencing, etc." .
+
+<https://w3id.org/GHGA/descriptive_title> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "descriptive title" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "A descriptive title for the study." .
+
+<https://w3id.org/GHGA/design_name> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "design name" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The name of the experiment." .
+
+<https://w3id.org/GHGA/gender> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "gender" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Gender of the subject." .
+
+<https://w3id.org/GHGA/instrument_model> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "instrument model" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The instrument on which the data was generated." .
+
+<https://w3id.org/GHGA/library_layout> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "library layout" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The layout of the library. Whether it is single-end, paired-end." .
+
+<https://w3id.org/GHGA/library_selection> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "library selection" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Library selection process. For example, random, cDNA, etc." .
+
+<https://w3id.org/GHGA/library_source> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "library source" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The source of the library. For example, Metagenome, Transcriptome, etc." .
+
+<https://w3id.org/GHGA/library_strategy> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "library strategy" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Library strategy. For example, ChIP-Seq, RNA-Seq, DNA-Seq, etc." .
+
+<https://w3id.org/GHGA/main_contact> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "main contact" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Is the contact the main contact for the DAC" .
+
+<https://w3id.org/GHGA/name> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The name of the point of contact for the DAC." .
+
+<https://w3id.org/GHGA/organization> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "organization" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The organization of the point of contact for the DAC." .
+
+<https://w3id.org/GHGA/phenotype_or_disease> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "phenotype or disease" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Disease or phenotype that the subject is associated with." .
+
+<https://w3id.org/GHGA/policy> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "policy" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The complete text for the Data Access Policy." .
+
+<https://w3id.org/GHGA/related_study> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "related study" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The study to which the experiment belongs to." .
+
+<https://w3id.org/GHGA/short_description> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "short description" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "A short description for the Data Access Policy." .
+
+<https://w3id.org/GHGA/study_type> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "study type" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The study type. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\"." .
+
+<https://w3id.org/GHGA/subject_id> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "subject id" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The subject ID of the patient from experiment. Note that this ID should be non-identifiable." .
+
+<https://w3id.org/GHGA/telephone> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "telephone" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "The telephone number of the point of contact for the DAC." .
+
+<https://w3id.org/GHGA/DataAccessPolicy> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "data access policy" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/data_access_committees> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/policy> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/short_description> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/policy_url> ],
+        <https://w3id.org/GHGA/NamedThing> ;
+    skos:definition "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies." .
+
+<https://w3id.org/GHGA/Study> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "study" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/short_name> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/abstract> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/pubmed_id> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/descriptive_title> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/custom_tags> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/study_type> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/NamedThing> ;
+    skos:definition "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied." .
+
+<https://w3id.org/GHGA/title> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "title" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "Brief description of an entity." .
+
+<https://w3id.org/GHGA/DataAccessCommittee> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "data access committee" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/email> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/title> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/telephone> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/name> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/main_contact> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/organization> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/NamedThing> ;
+    skos:definition "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns." .
+
+<https://w3id.org/GHGA/Dataset> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "dataset" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ] [ a owl:Restriction ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ;
+                        owl:someValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/String> ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/dataset_description> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/dataset_type> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/data_access_policies> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/dataset_title> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/NamedThing> ;
+    skos:definition "A dataset is a collection of files that represents data generated from a particular sample." .
+
+<https://w3id.org/GHGA/NamedThing> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "named thing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/id> ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A databased entity, concept or class. This is a generic class that is the root of all the other classes." .
+
+<https://w3id.org/GHGA/Sample> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "sample" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/alias> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/gender> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/organism_part> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/case_or_control> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/cell_line> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/geographical_region> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/subject_id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/phenotype_or_disease> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/biosample_id> ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ] [ a owl:Restriction ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ;
+                        owl:someValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/String> ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/title> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/description> ],
+        <https://w3id.org/GHGA/NamedThing> ;
+    skos:altLabel "biosample" ;
+    skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a portion of a substance like an isolate or tissue." .
+
+<https://w3id.org/GHGA/files> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "files" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    skos:definition "One or more files that are linked to an entity." .
+
+<https://w3id.org/GHGA/Experiment> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "experiment" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/instrument_model> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/library_selection> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/related_study> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/library_layout> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/library_name> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/library_strategy> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/design_name> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/library_construction_protocol> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/GHGA/library_source> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/NamedThing> ;
+    skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." .
+
+meta:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" ;
+    skos:definition "the definition of a class or interface" .
+
+meta:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" ;
+    skos:definition "A data type definition." .
+
+meta:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+meta:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" ;
+    skos:definition "the definition of a property or a slot" .
+
+<https://w3id.org/biolink/biolinkml/meta/types/String> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "string" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty meta:topValue ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "A character string" .
+
+
+

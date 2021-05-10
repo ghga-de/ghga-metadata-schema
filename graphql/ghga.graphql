@@ -1,0 +1,78 @@
+type DataAccessCommittee
+  {
+    id: String!
+    title: String!
+    name: String!
+    email: String
+    telephone: String!
+    organization: String!
+    mainContact: String!
+  }
+
+type DataAccessPolicy
+  {
+    id: String!
+    dataAccessCommittees: String!
+    shortDescription: String!
+    policy: String!
+    policyUrl: String
+  }
+
+type Dataset
+  {
+    id: String!
+    dataAccessPolicies: String!
+    datasetTitle: String!
+    datasetDescription: String!
+    datasetType: String!
+    files: [String]!
+  }
+
+type Experiment
+  {
+    id: String!
+    relatedStudy: String!
+    designName: String!
+    instrumentModel: String!
+    libraryName: String
+    libraryLayout: String!
+    librarySource: String!
+    librarySelection: String!
+    libraryStrategy: String!
+    libraryConstructionProtocol: String
+  }
+
+type NamedThing
+  {
+    id: String!
+  }
+
+type Sample
+  {
+    id: String!
+    title: String
+    alias: String!
+    description: String
+    subjectId: String!
+    biosampleId: String
+    caseOrControl: String
+    gender: String!
+    organismPart: String
+    cellLine: String
+    geographicalRegion: String
+    phenotypeOrDisease: String!
+    files: [String]!
+  }
+
+type Study
+  {
+    id: String!
+    descriptiveTitle: String!
+    studyType: String!
+    shortName: String
+    abstract: String!
+    pubmedId: String
+    customTags: [String]
+  }
+
+

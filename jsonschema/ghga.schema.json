@@ -1,0 +1,293 @@
+{
+   "$id": "https://w3id.org/my_core",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "definitions": {
+      "DataAccessCommittee": {
+         "additionalProperties": false,
+         "description": "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.",
+         "properties": {
+            "email": {
+               "description": "Email of the contact.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "main_contact": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "organization": {
+               "type": "string"
+            },
+            "telephone": {
+               "type": "string"
+            },
+            "title": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "name",
+            "telephone",
+            "organization",
+            "main_contact"
+         ],
+         "title": "DataAccessCommittee",
+         "type": "object"
+      },
+      "DataAccessPolicy": {
+         "additionalProperties": false,
+         "description": "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies.",
+         "properties": {
+            "data_access_committees": {
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "policy": {
+               "type": "string"
+            },
+            "policy_url": {
+               "description": "Alternative to pasting the Data Access Policy text.",
+               "type": "string"
+            },
+            "short_description": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "data_access_committees",
+            "short_description",
+            "policy"
+         ],
+         "title": "DataAccessPolicy",
+         "type": "object"
+      },
+      "Dataset": {
+         "additionalProperties": false,
+         "description": "A dataset is a collection of files that represents data generated from a particular sample.",
+         "properties": {
+            "data_access_policies": {
+               "type": "string"
+            },
+            "dataset_description": {
+               "type": "string"
+            },
+            "dataset_title": {
+               "type": "string"
+            },
+            "dataset_type": {
+               "type": "string"
+            },
+            "files": {
+               "description": "One or more files that collectively make this dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "data_access_policies",
+            "dataset_title",
+            "dataset_description",
+            "dataset_type",
+            "files"
+         ],
+         "title": "Dataset",
+         "type": "object"
+      },
+      "Experiment": {
+         "additionalProperties": false,
+         "description": "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
+         "properties": {
+            "design_name": {
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "instrument_model": {
+               "type": "string"
+            },
+            "library_construction_protocol": {
+               "description": "Description of how the library was constructed.",
+               "type": "string"
+            },
+            "library_layout": {
+               "type": "string"
+            },
+            "library_name": {
+               "description": "The library name.",
+               "type": "string"
+            },
+            "library_selection": {
+               "type": "string"
+            },
+            "library_source": {
+               "type": "string"
+            },
+            "library_strategy": {
+               "type": "string"
+            },
+            "related_study": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "related_study",
+            "design_name",
+            "instrument_model",
+            "library_layout",
+            "library_source",
+            "library_selection",
+            "library_strategy"
+         ],
+         "title": "Experiment",
+         "type": "object"
+      },
+      "NamedThing": {
+         "additionalProperties": false,
+         "description": "A databased entity, concept or class. This is a generic class that is the root of all the other classes.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "NamedThing",
+         "type": "object"
+      },
+      "Sample": {
+         "additionalProperties": false,
+         "description": "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a portion of a substance like an isolate or tissue.",
+         "properties": {
+            "alias": {
+               "type": "string"
+            },
+            "biosample_id": {
+               "description": "Specific sample ID from a submission to EBI BioSamples.",
+               "type": "string"
+            },
+            "case_or_control": {
+               "description": "Is the sample case or control.",
+               "type": "string"
+            },
+            "cell_line": {
+               "description": "Which cell line was used.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of experiment.",
+               "type": "string"
+            },
+            "files": {
+               "description": "One or more files that are linked to this Sample.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "gender": {
+               "type": "string"
+            },
+            "geographical_region": {
+               "description": "Ethinicity.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "organism_part": {
+               "description": "From where the sample was collected: Liver, Blood, Stool, etc.",
+               "type": "string"
+            },
+            "phenotype_or_disease": {
+               "type": "string"
+            },
+            "subject_id": {
+               "type": "string"
+            },
+            "title": {
+               "description": "Brief description of a sample.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "alias",
+            "subject_id",
+            "gender",
+            "phenotype_or_disease",
+            "files"
+         ],
+         "title": "Sample",
+         "type": "object"
+      },
+      "Study": {
+         "additionalProperties": false,
+         "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
+         "properties": {
+            "abstract": {
+               "type": "string"
+            },
+            "custom_tags": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "descriptive_title": {
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "pubmed_id": {
+               "description": "The PubMed ID related to a study.",
+               "type": "string"
+            },
+            "short_name": {
+               "description": "A short name for the study.",
+               "type": "string"
+            },
+            "study_type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "descriptive_title",
+            "study_type",
+            "abstract"
+         ],
+         "title": "Study",
+         "type": "object"
+      }
+   },
+   "properties": {},
+   "title": "GHGA-Schema",
+   "type": "object"
+}
+
