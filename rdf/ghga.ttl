@@ -1,0 +1,1115 @@
+@prefix : <https://w3id.org/biolink/biolinkml/meta/types/> .
+@prefix biolinkml: <https://w3id.org/biolink/biolinkml/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix meta: <https://w3id.org/biolink/biolinkml/meta/> .
+@prefix metatype: <https://w3id.org/biolink/biolinkml/meta/types/> .
+@prefix shex: <http://www.w3.org/ns/shex#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/GHGA/GHGA-Schema> a metatype:SchemaDefinition ;
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    skos:definition "The GHGA Core Schema is similar to the EGA Schema." ;
+    meta:classes <https://w3id.org/GHGA/DataAccessCommittee>,
+        <https://w3id.org/GHGA/DataAccessPolicy>,
+        <https://w3id.org/GHGA/Dataset>,
+        <https://w3id.org/GHGA/Experiment>,
+        <https://w3id.org/GHGA/NamedThing>,
+        <https://w3id.org/GHGA/Sample>,
+        <https://w3id.org/GHGA/Study> ;
+    meta:default_range <https://w3id.org/GHGA/string> ;
+    meta:generation_date "2021-05-10 10:16"^^xsd:dateTime ;
+    meta:id <https://w3id.org/my_core> ;
+    meta:imports biolinkml:types ;
+    meta:prefixes [ meta:prefix_reference <https://w3id.org/GHGA/> ;
+            metatype:prefix_prefix "GHGA" ],
+        [ meta:prefix_reference biolinkml: ;
+            metatype:prefix_prefix "biolinkml" ] ;
+    meta:slots <https://w3id.org/GHGA/abstract>,
+        <https://w3id.org/GHGA/alias>,
+        <https://w3id.org/GHGA/biosample_id>,
+        <https://w3id.org/GHGA/case_or_control>,
+        <https://w3id.org/GHGA/cell_line>,
+        <https://w3id.org/GHGA/custom_tags>,
+        <https://w3id.org/GHGA/data_access_committee_main_contact>,
+        <https://w3id.org/GHGA/data_access_committee_name>,
+        <https://w3id.org/GHGA/data_access_committee_organization>,
+        <https://w3id.org/GHGA/data_access_committee_telephone>,
+        <https://w3id.org/GHGA/data_access_committee_title>,
+        <https://w3id.org/GHGA/data_access_committees>,
+        <https://w3id.org/GHGA/data_access_policies>,
+        <https://w3id.org/GHGA/data_access_policy_data_access_committees>,
+        <https://w3id.org/GHGA/data_access_policy_policy>,
+        <https://w3id.org/GHGA/data_access_policy_short_description>,
+        <https://w3id.org/GHGA/dataset_data_access_policies>,
+        <https://w3id.org/GHGA/dataset_dataset_description>,
+        <https://w3id.org/GHGA/dataset_dataset_title>,
+        <https://w3id.org/GHGA/dataset_dataset_type>,
+        <https://w3id.org/GHGA/dataset_description>,
+        <https://w3id.org/GHGA/dataset_files>,
+        <https://w3id.org/GHGA/dataset_title>,
+        <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/description>,
+        <https://w3id.org/GHGA/descriptive_title>,
+        <https://w3id.org/GHGA/design_name>,
+        <https://w3id.org/GHGA/email>,
+        <https://w3id.org/GHGA/experiment_design_name>,
+        <https://w3id.org/GHGA/experiment_instrument_model>,
+        <https://w3id.org/GHGA/experiment_library_layout>,
+        <https://w3id.org/GHGA/experiment_library_selection>,
+        <https://w3id.org/GHGA/experiment_library_source>,
+        <https://w3id.org/GHGA/experiment_library_strategy>,
+        <https://w3id.org/GHGA/experiment_related_study>,
+        <https://w3id.org/GHGA/files>,
+        <https://w3id.org/GHGA/gender>,
+        <https://w3id.org/GHGA/geographical_region>,
+        <https://w3id.org/GHGA/id>,
+        <https://w3id.org/GHGA/instrument_model>,
+        <https://w3id.org/GHGA/library_construction_protocol>,
+        <https://w3id.org/GHGA/library_layout>,
+        <https://w3id.org/GHGA/library_name>,
+        <https://w3id.org/GHGA/library_selection>,
+        <https://w3id.org/GHGA/library_source>,
+        <https://w3id.org/GHGA/library_strategy>,
+        <https://w3id.org/GHGA/main_contact>,
+        <https://w3id.org/GHGA/name>,
+        <https://w3id.org/GHGA/organism_part>,
+        <https://w3id.org/GHGA/organization>,
+        <https://w3id.org/GHGA/phenotype_or_disease>,
+        <https://w3id.org/GHGA/policy>,
+        <https://w3id.org/GHGA/policy_url>,
+        <https://w3id.org/GHGA/pubmed_id>,
+        <https://w3id.org/GHGA/related_study>,
+        <https://w3id.org/GHGA/sample_alias>,
+        <https://w3id.org/GHGA/sample_files>,
+        <https://w3id.org/GHGA/sample_gender>,
+        <https://w3id.org/GHGA/sample_phenotype_or_disease>,
+        <https://w3id.org/GHGA/sample_subject_id>,
+        <https://w3id.org/GHGA/sample_title>,
+        <https://w3id.org/GHGA/short_description>,
+        <https://w3id.org/GHGA/short_name>,
+        <https://w3id.org/GHGA/study_abstract>,
+        <https://w3id.org/GHGA/study_custom_tags>,
+        <https://w3id.org/GHGA/study_descriptive_title>,
+        <https://w3id.org/GHGA/study_study_type>,
+        <https://w3id.org/GHGA/study_type>,
+        <https://w3id.org/GHGA/subject_id>,
+        <https://w3id.org/GHGA/telephone>,
+        <https://w3id.org/GHGA/title> ;
+    meta:source_file_date "Mon May 10 09:43:15 2021"^^xsd:dateTime ;
+    meta:source_file_size 8599 ;
+    meta:types <https://w3id.org/GHGA/boolean>,
+        <https://w3id.org/GHGA/date>,
+        <https://w3id.org/GHGA/datetime>,
+        <https://w3id.org/GHGA/decimal>,
+        <https://w3id.org/GHGA/double>,
+        <https://w3id.org/GHGA/float>,
+        <https://w3id.org/GHGA/integer>,
+        <https://w3id.org/GHGA/ncname>,
+        <https://w3id.org/GHGA/nodeidentifier>,
+        <https://w3id.org/GHGA/objectidentifier>,
+        <https://w3id.org/GHGA/string>,
+        <https://w3id.org/GHGA/time>,
+        <https://w3id.org/GHGA/uri>,
+        <https://w3id.org/GHGA/uriorcurie> ;
+    metatype:default_prefix "GHGA" ;
+    metatype:metamodel_version "1.7.0" ;
+    metatype:source_file "ghga.yaml" .
+
+<https://w3id.org/GHGA/boolean> a metatype:TypeDefinition ;
+    skos:definition "A binary (true or false) value" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Boolean ;
+    metatype:base "Bool" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "bool" ;
+    meta:uri xsd:boolean .
+
+<https://w3id.org/GHGA/date> a metatype:TypeDefinition ;
+    skos:definition "a date (year, month and day) in an idealized calendar" ;
+    skos:editorialNote "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Date ;
+    metatype:base "XSDDate" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri xsd:date .
+
+<https://w3id.org/GHGA/datetime> a metatype:TypeDefinition ;
+    skos:definition "The combination of a date and time" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Datetime ;
+    metatype:base "XSDDateTime" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri xsd:dateTime .
+
+<https://w3id.org/GHGA/decimal> a metatype:TypeDefinition ;
+    skos:definition "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Decimal ;
+    metatype:base "Decimal" ;
+    metatype:imported_from "biolinkml:types" ;
+    meta:uri xsd:decimal .
+
+<https://w3id.org/GHGA/double> a metatype:TypeDefinition ;
+    skos:definition "A real number that conforms to the xsd:double specification" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Double ;
+    metatype:base "float" ;
+    metatype:imported_from "biolinkml:types" ;
+    meta:uri xsd:double .
+
+<https://w3id.org/GHGA/float> a metatype:TypeDefinition ;
+    skos:definition "A real number that conforms to the xsd:float specification" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Float ;
+    metatype:base "float" ;
+    metatype:imported_from "biolinkml:types" ;
+    meta:uri xsd:float .
+
+<https://w3id.org/GHGA/integer> a metatype:TypeDefinition ;
+    skos:definition "An integer" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Integer ;
+    metatype:base "int" ;
+    metatype:imported_from "biolinkml:types" ;
+    meta:uri xsd:integer .
+
+<https://w3id.org/GHGA/ncname> a metatype:TypeDefinition ;
+    skos:definition "Prefix part of CURIE" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Ncname ;
+    metatype:base "NCName" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri xsd:string .
+
+<https://w3id.org/GHGA/nodeidentifier> a metatype:TypeDefinition ;
+    skos:definition "A URI, CURIE or BNODE that represents a node in a model." ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Nodeidentifier ;
+    metatype:base "NodeIdentifier" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri shex:nonLiteral .
+
+<https://w3id.org/GHGA/objectidentifier> a metatype:TypeDefinition ;
+    skos:definition "A URI or CURIE that represents an object in the model." ;
+    skos:inScheme biolinkml:types ;
+    skos:note "Used for inheritence and type checking" ;
+    meta:definition_uri metatype:Objectidentifier ;
+    metatype:base "ElementIdentifier" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri shex:iri .
+
+<https://w3id.org/GHGA/time> a metatype:TypeDefinition ;
+    skos:definition "A time object represents a (local) time of day, independent of any particular day" ;
+    skos:editorialNote "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Time ;
+    metatype:base "XSDTime" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri xsd:dateTime .
+
+<https://w3id.org/GHGA/uri> a metatype:TypeDefinition ;
+    skos:definition "a complete URI" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Uri ;
+    metatype:base "URI" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri xsd:anyURI .
+
+<https://w3id.org/GHGA/uriorcurie> a metatype:TypeDefinition ;
+    skos:definition "a URI or a CURIE" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:Uriorcurie ;
+    metatype:base "URIorCURIE" ;
+    metatype:imported_from "biolinkml:types" ;
+    metatype:repr "str" ;
+    meta:uri xsd:anyURI .
+
+<https://w3id.org/GHGA/data_access_committee_main_contact> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:is_a <https://w3id.org/GHGA/main_contact> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/main_contact> ;
+    metatype:alias "main_contact" ;
+    metatype:usage_slot_name "main_contact" .
+
+<https://w3id.org/GHGA/data_access_committee_name> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:is_a <https://w3id.org/GHGA/name> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/name> ;
+    metatype:alias "name" ;
+    metatype:usage_slot_name "name" .
+
+<https://w3id.org/GHGA/data_access_committee_organization> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:is_a <https://w3id.org/GHGA/organization> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/organization> ;
+    metatype:alias "organization" ;
+    metatype:usage_slot_name "organization" .
+
+<https://w3id.org/GHGA/data_access_committee_telephone> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:is_a <https://w3id.org/GHGA/telephone> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/telephone> ;
+    metatype:alias "telephone" ;
+    metatype:usage_slot_name "telephone" .
+
+<https://w3id.org/GHGA/data_access_committee_title> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:is_a <https://w3id.org/GHGA/title> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/title> ;
+    metatype:alias "title" ;
+    metatype:usage_slot_name "title" .
+
+<https://w3id.org/GHGA/data_access_policy_data_access_committees> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:is_a <https://w3id.org/GHGA/data_access_committees> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/data_access_committees> ;
+    metatype:alias "data_access_committees" ;
+    metatype:usage_slot_name "data_access_committees" .
+
+<https://w3id.org/GHGA/data_access_policy_policy> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:is_a <https://w3id.org/GHGA/policy> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/policy> ;
+    metatype:alias "policy" ;
+    metatype:usage_slot_name "policy" .
+
+<https://w3id.org/GHGA/data_access_policy_short_description> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:is_a <https://w3id.org/GHGA/short_description> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/short_description> ;
+    metatype:alias "short_description" ;
+    metatype:usage_slot_name "short_description" .
+
+<https://w3id.org/GHGA/dataset_data_access_policies> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Dataset> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:is_a <https://w3id.org/GHGA/data_access_policies> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/data_access_policies> ;
+    metatype:alias "data_access_policies" ;
+    metatype:usage_slot_name "data_access_policies" .
+
+<https://w3id.org/GHGA/dataset_dataset_description> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Dataset> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:is_a <https://w3id.org/GHGA/dataset_description> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/dataset_description> ;
+    metatype:alias "dataset_description" ;
+    metatype:usage_slot_name "dataset_description" .
+
+<https://w3id.org/GHGA/dataset_dataset_title> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Dataset> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:is_a <https://w3id.org/GHGA/dataset_title> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/dataset_title> ;
+    metatype:alias "dataset_title" ;
+    metatype:usage_slot_name "dataset_title" .
+
+<https://w3id.org/GHGA/dataset_dataset_type> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Dataset> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:is_a <https://w3id.org/GHGA/dataset_type> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/dataset_type> ;
+    metatype:alias "dataset_type" ;
+    metatype:usage_slot_name "dataset_type" .
+
+<https://w3id.org/GHGA/dataset_files> a metatype:SlotDefinition ;
+    skos:definition "One or more files that collectively make this dataset." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Dataset> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:is_a <https://w3id.org/GHGA/files> ;
+    meta:is_usage_slot true ;
+    meta:multivalued true ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/files> ;
+    metatype:alias "files" ;
+    metatype:usage_slot_name "files" .
+
+<https://w3id.org/GHGA/experiment_design_name> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/design_name> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/design_name> ;
+    metatype:alias "design_name" ;
+    metatype:usage_slot_name "design_name" .
+
+<https://w3id.org/GHGA/experiment_instrument_model> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/instrument_model> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/instrument_model> ;
+    metatype:alias "instrument_model" ;
+    metatype:usage_slot_name "instrument_model" .
+
+<https://w3id.org/GHGA/experiment_library_layout> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/library_layout> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/library_layout> ;
+    metatype:alias "library_layout" ;
+    metatype:usage_slot_name "library_layout" .
+
+<https://w3id.org/GHGA/experiment_library_selection> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/library_selection> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/library_selection> ;
+    metatype:alias "library_selection" ;
+    metatype:usage_slot_name "library_selection" .
+
+<https://w3id.org/GHGA/experiment_library_source> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/library_source> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/library_source> ;
+    metatype:alias "library_source" ;
+    metatype:usage_slot_name "library_source" .
+
+<https://w3id.org/GHGA/experiment_library_strategy> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/library_strategy> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/library_strategy> ;
+    metatype:alias "library_strategy" ;
+    metatype:usage_slot_name "library_strategy" .
+
+<https://w3id.org/GHGA/experiment_related_study> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Experiment> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/related_study> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/related_study> ;
+    metatype:alias "related_study" ;
+    metatype:usage_slot_name "related_study" .
+
+<https://w3id.org/GHGA/sample_alias> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Sample> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/alias> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/alias> ;
+    metatype:alias "alias" ;
+    metatype:usage_slot_name "alias" .
+
+<https://w3id.org/GHGA/sample_files> a metatype:SlotDefinition ;
+    skos:definition "One or more files that are linked to this Sample." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Sample> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/files> ;
+    meta:is_usage_slot true ;
+    meta:multivalued true ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/files> ;
+    metatype:alias "files" ;
+    metatype:usage_slot_name "files" .
+
+<https://w3id.org/GHGA/sample_gender> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Sample> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/gender> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/gender> ;
+    metatype:alias "gender" ;
+    metatype:usage_slot_name "gender" .
+
+<https://w3id.org/GHGA/sample_phenotype_or_disease> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Sample> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/phenotype_or_disease> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/phenotype_or_disease> ;
+    metatype:alias "phenotype_or_disease" ;
+    metatype:usage_slot_name "phenotype_or_disease" .
+
+<https://w3id.org/GHGA/sample_subject_id> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Sample> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/subject_id> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/subject_id> ;
+    metatype:alias "subject_id" ;
+    metatype:usage_slot_name "subject_id" .
+
+<https://w3id.org/GHGA/sample_title> a metatype:SlotDefinition ;
+    skos:definition "Brief description of a sample." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Sample> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/title> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/title> ;
+    metatype:alias "title" ;
+    metatype:usage_slot_name "title" .
+
+<https://w3id.org/GHGA/study_abstract> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Study> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:is_a <https://w3id.org/GHGA/abstract> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/abstract> ;
+    metatype:alias "abstract" ;
+    metatype:usage_slot_name "abstract" .
+
+<https://w3id.org/GHGA/study_custom_tags> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Study> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:is_a <https://w3id.org/GHGA/custom_tags> ;
+    meta:is_usage_slot true ;
+    meta:multivalued true ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/custom_tags> ;
+    metatype:alias "custom_tags" ;
+    metatype:usage_slot_name "custom_tags" .
+
+<https://w3id.org/GHGA/study_descriptive_title> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Study> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:is_a <https://w3id.org/GHGA/descriptive_title> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/descriptive_title> ;
+    metatype:alias "descriptive_title" ;
+    metatype:usage_slot_name "descriptive_title" .
+
+<https://w3id.org/GHGA/study_study_type> a metatype:SlotDefinition ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:domain <https://w3id.org/GHGA/Study> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:is_a <https://w3id.org/GHGA/study_type> ;
+    meta:is_usage_slot true ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/study_type> ;
+    metatype:alias "study_type" ;
+    metatype:usage_slot_name "study_type" .
+
+<https://w3id.org/GHGA/biosample_id> a metatype:SlotDefinition ;
+    skos:definition "Specific sample ID from a submission to EBI BioSamples." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/biosample_id> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/biosample_id> .
+
+<https://w3id.org/GHGA/case_or_control> a metatype:SlotDefinition ;
+    skos:definition "Is the sample case or control." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/case_or_control> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/case_or_control> .
+
+<https://w3id.org/GHGA/cell_line> a metatype:SlotDefinition ;
+    skos:definition "Which cell line was used." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/cell_line> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/cell_line> .
+
+<https://w3id.org/GHGA/description> a metatype:SlotDefinition ;
+    skos:definition "Description of experiment." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/description> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/description> .
+
+<https://w3id.org/GHGA/email> a metatype:SlotDefinition ;
+    skos:definition "Email of the contact." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/email> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/email> .
+
+<https://w3id.org/GHGA/geographical_region> a metatype:SlotDefinition ;
+    skos:definition "Ethinicity." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/geographical_region> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/geographical_region> .
+
+<https://w3id.org/GHGA/library_construction_protocol> a metatype:SlotDefinition ;
+    skos:definition "Description of how the library was constructed." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/library_construction_protocol> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/library_construction_protocol> .
+
+<https://w3id.org/GHGA/library_name> a metatype:SlotDefinition ;
+    skos:definition "The library name." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/library_name> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/library_name> .
+
+<https://w3id.org/GHGA/organism_part> a metatype:SlotDefinition ;
+    skos:definition "From where the sample was collected: Liver, Blood, Stool, etc." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/organism_part> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/organism_part> .
+
+<https://w3id.org/GHGA/policy_url> a metatype:SlotDefinition ;
+    skos:definition "Alternative to pasting the Data Access Policy text." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/policy_url> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/policy_url> .
+
+<https://w3id.org/GHGA/pubmed_id> a metatype:SlotDefinition ;
+    skos:definition "The PubMed ID related to a study." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/pubmed_id> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/pubmed_id> .
+
+<https://w3id.org/GHGA/short_name> a metatype:SlotDefinition ;
+    skos:definition "A short name for the study." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/short_name> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/short_name> .
+
+<https://w3id.org/GHGA/abstract> a metatype:SlotDefinition ;
+    skos:definition "The study abstract that describes the goals. Can also hold abstract from a publication related to the study." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/abstract> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/abstract> .
+
+<https://w3id.org/GHGA/alias> a metatype:SlotDefinition ;
+    skos:definition "Name which is matching the uploaded sample(s)." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/alias> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/alias> .
+
+<https://w3id.org/GHGA/custom_tags> a metatype:SlotDefinition ;
+    skos:definition "Key/value pairs corresponding to the study." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/custom_tags> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/custom_tags> .
+
+<https://w3id.org/GHGA/data_access_committees> a metatype:SlotDefinition ;
+    skos:definition "One or more DACs associated with this Data Access Policy." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/data_access_committees> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/data_access_committees> .
+
+<https://w3id.org/GHGA/data_access_policies> a metatype:SlotDefinition ;
+    skos:definition "One or more DAPs associated with this dataset." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/data_access_policies> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/data_access_policies> .
+
+<https://w3id.org/GHGA/dataset_description> a metatype:SlotDefinition ;
+    skos:definition "A through description of this dataset." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/dataset_description> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/dataset_description> .
+
+<https://w3id.org/GHGA/dataset_title> a metatype:SlotDefinition ;
+    skos:definition "A descriptive title for this dataset." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/dataset_title> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/dataset_title> .
+
+<https://w3id.org/GHGA/dataset_type> a metatype:SlotDefinition ;
+    skos:definition "The type of dataset. For example, Whole Genome Sequencing, Whole Exome Sequencing, etc." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/dataset_type> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset> ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/dataset_type> .
+
+<https://w3id.org/GHGA/descriptive_title> a metatype:SlotDefinition ;
+    skos:definition "A descriptive title for the study." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/descriptive_title> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/descriptive_title> .
+
+<https://w3id.org/GHGA/design_name> a metatype:SlotDefinition ;
+    skos:definition "The name of the experiment." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/design_name> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/design_name> .
+
+<https://w3id.org/GHGA/gender> a metatype:SlotDefinition ;
+    skos:definition "Gender of the subject." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/gender> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/gender> .
+
+<https://w3id.org/GHGA/instrument_model> a metatype:SlotDefinition ;
+    skos:definition "The instrument on which the data was generated." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/instrument_model> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/instrument_model> .
+
+<https://w3id.org/GHGA/library_layout> a metatype:SlotDefinition ;
+    skos:definition "The layout of the library. Whether it is single-end, paired-end." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/library_layout> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/library_layout> .
+
+<https://w3id.org/GHGA/library_selection> a metatype:SlotDefinition ;
+    skos:definition "Library selection process. For example, random, cDNA, etc." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/library_selection> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/library_selection> .
+
+<https://w3id.org/GHGA/library_source> a metatype:SlotDefinition ;
+    skos:definition "The source of the library. For example, Metagenome, Transcriptome, etc." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/library_source> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/library_source> .
+
+<https://w3id.org/GHGA/library_strategy> a metatype:SlotDefinition ;
+    skos:definition "Library strategy. For example, ChIP-Seq, RNA-Seq, DNA-Seq, etc." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/library_strategy> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/library_strategy> .
+
+<https://w3id.org/GHGA/main_contact> a metatype:SlotDefinition ;
+    skos:definition "Is the contact the main contact for the DAC" ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/main_contact> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/main_contact> .
+
+<https://w3id.org/GHGA/name> a metatype:SlotDefinition ;
+    skos:definition "The name of the point of contact for the DAC." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/name> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/name> .
+
+<https://w3id.org/GHGA/organization> a metatype:SlotDefinition ;
+    skos:definition "The organization of the point of contact for the DAC." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/organization> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/organization> .
+
+<https://w3id.org/GHGA/phenotype_or_disease> a metatype:SlotDefinition ;
+    skos:definition "Disease or phenotype that the subject is associated with." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/phenotype_or_disease> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/phenotype_or_disease> .
+
+<https://w3id.org/GHGA/policy> a metatype:SlotDefinition ;
+    skos:definition "The complete text for the Data Access Policy." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/policy> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/policy> .
+
+<https://w3id.org/GHGA/related_study> a metatype:SlotDefinition ;
+    skos:definition "The study to which the experiment belongs to." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/related_study> ;
+    meta:domain_of <https://w3id.org/GHGA/Experiment> ;
+    meta:owner <https://w3id.org/GHGA/Experiment> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/related_study> .
+
+<https://w3id.org/GHGA/short_description> a metatype:SlotDefinition ;
+    skos:definition "A short description for the Data Access Policy." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/short_description> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/short_description> .
+
+<https://w3id.org/GHGA/study_type> a metatype:SlotDefinition ;
+    skos:definition "The study type. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\"." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/study_type> ;
+    meta:domain_of <https://w3id.org/GHGA/Study> ;
+    meta:owner <https://w3id.org/GHGA/Study> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/study_type> .
+
+<https://w3id.org/GHGA/subject_id> a metatype:SlotDefinition ;
+    skos:definition "The subject ID of the patient from experiment. Note that this ID should be non-identifiable." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/subject_id> ;
+    meta:domain_of <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/Sample> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/subject_id> .
+
+<https://w3id.org/GHGA/telephone> a metatype:SlotDefinition ;
+    skos:definition "The telephone number of the point of contact for the DAC." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/telephone> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/telephone> .
+
+<https://w3id.org/GHGA/files> a metatype:SlotDefinition ;
+    skos:definition "One or more files that are linked to an entity." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/files> ;
+    meta:domain_of <https://w3id.org/GHGA/Dataset>,
+        <https://w3id.org/GHGA/Sample> ;
+    meta:multivalued true ;
+    meta:owner <https://w3id.org/GHGA/Dataset> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/files> .
+
+<https://w3id.org/GHGA/title> a metatype:SlotDefinition ;
+    skos:definition "Brief description of an entity." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/title> ;
+    meta:domain_of <https://w3id.org/GHGA/DataAccessCommittee>,
+        <https://w3id.org/GHGA/Sample> ;
+    meta:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:slot_uri <https://w3id.org/GHGA/title> .
+
+<https://w3id.org/GHGA/id> a metatype:SlotDefinition ;
+    skos:definition "An identifier that uniquely represents an entity." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:definition_uri <https://w3id.org/GHGA/id> ;
+    meta:domain_of <https://w3id.org/GHGA/NamedThing> ;
+    meta:identifier true ;
+    meta:owner <https://w3id.org/GHGA/NamedThing> ;
+    meta:range <https://w3id.org/GHGA/string> ;
+    meta:required true ;
+    meta:slot_uri <https://w3id.org/GHGA/id> .
+
+<https://w3id.org/GHGA/NamedThing> a metatype:ClassDefinition ;
+    skos:definition "A databased entity, concept or class. This is a generic class that is the root of all the other classes." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/NamedThing> ;
+    meta:definition_uri <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/id> .
+
+<https://w3id.org/GHGA/DataAccessPolicy> a metatype:ClassDefinition ;
+    skos:definition "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:definition_uri <https://w3id.org/GHGA/DataAccessPolicy> ;
+    meta:is_a <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/data_access_policy_data_access_committees>,
+        <https://w3id.org/GHGA/data_access_policy_policy>,
+        <https://w3id.org/GHGA/data_access_policy_short_description>,
+        <https://w3id.org/GHGA/id>,
+        <https://w3id.org/GHGA/policy_url> .
+
+<https://w3id.org/GHGA/Study> a metatype:ClassDefinition ;
+    skos:definition "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/Study> ;
+    meta:definition_uri <https://w3id.org/GHGA/Study> ;
+    meta:is_a <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/id>,
+        <https://w3id.org/GHGA/pubmed_id>,
+        <https://w3id.org/GHGA/short_name>,
+        <https://w3id.org/GHGA/study_abstract>,
+        <https://w3id.org/GHGA/study_custom_tags>,
+        <https://w3id.org/GHGA/study_descriptive_title>,
+        <https://w3id.org/GHGA/study_study_type> .
+
+<https://w3id.org/GHGA/Dataset> a metatype:ClassDefinition ;
+    skos:definition "A dataset is a collection of files that represents data generated from a particular sample." ;
+    skos:exactMatch <https://w3id.org/GHGA/SIO:000089> ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/Dataset> ;
+    meta:definition_uri <https://w3id.org/GHGA/Dataset> ;
+    meta:is_a <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/dataset_data_access_policies>,
+        <https://w3id.org/GHGA/dataset_dataset_description>,
+        <https://w3id.org/GHGA/dataset_dataset_title>,
+        <https://w3id.org/GHGA/dataset_dataset_type>,
+        <https://w3id.org/GHGA/dataset_files>,
+        <https://w3id.org/GHGA/id> .
+
+<https://w3id.org/GHGA/DataAccessCommittee> a metatype:ClassDefinition ;
+    skos:definition "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns." ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:definition_uri <https://w3id.org/GHGA/DataAccessCommittee> ;
+    meta:is_a <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/data_access_committee_main_contact>,
+        <https://w3id.org/GHGA/data_access_committee_name>,
+        <https://w3id.org/GHGA/data_access_committee_organization>,
+        <https://w3id.org/GHGA/data_access_committee_telephone>,
+        <https://w3id.org/GHGA/data_access_committee_title>,
+        <https://w3id.org/GHGA/email>,
+        <https://w3id.org/GHGA/id> .
+
+<https://w3id.org/GHGA/Experiment> a metatype:ClassDefinition ;
+    skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." ;
+    skos:exactMatch <https://w3id.org/GHGA/SIO:000994>,
+        <ncit:C42790> ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/Experiment> ;
+    meta:definition_uri <https://w3id.org/GHGA/Experiment> ;
+    meta:is_a <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/experiment_design_name>,
+        <https://w3id.org/GHGA/experiment_instrument_model>,
+        <https://w3id.org/GHGA/experiment_library_layout>,
+        <https://w3id.org/GHGA/experiment_library_selection>,
+        <https://w3id.org/GHGA/experiment_library_source>,
+        <https://w3id.org/GHGA/experiment_library_strategy>,
+        <https://w3id.org/GHGA/experiment_related_study>,
+        <https://w3id.org/GHGA/id>,
+        <https://w3id.org/GHGA/library_construction_protocol>,
+        <https://w3id.org/GHGA/library_name> .
+
+<https://w3id.org/GHGA/Sample> a metatype:ClassDefinition ;
+    skos:altLabel "biosample" ;
+    skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a portion of a substance like an isolate or tissue." ;
+    skos:exactMatch <biolink:MaterialSample>,
+        <https://w3id.org/GHGA/SIO:001050> ;
+    skos:inScheme <https://w3id.org/my_core> ;
+    meta:class_uri <https://w3id.org/GHGA/Sample> ;
+    meta:definition_uri <https://w3id.org/GHGA/Sample> ;
+    meta:is_a <https://w3id.org/GHGA/NamedThing> ;
+    meta:slots <https://w3id.org/GHGA/biosample_id>,
+        <https://w3id.org/GHGA/case_or_control>,
+        <https://w3id.org/GHGA/cell_line>,
+        <https://w3id.org/GHGA/description>,
+        <https://w3id.org/GHGA/geographical_region>,
+        <https://w3id.org/GHGA/id>,
+        <https://w3id.org/GHGA/organism_part>,
+        <https://w3id.org/GHGA/sample_alias>,
+        <https://w3id.org/GHGA/sample_files>,
+        <https://w3id.org/GHGA/sample_gender>,
+        <https://w3id.org/GHGA/sample_phenotype_or_disease>,
+        <https://w3id.org/GHGA/sample_subject_id>,
+        <https://w3id.org/GHGA/sample_title> .
+
+<https://w3id.org/GHGA/string> a metatype:TypeDefinition ;
+    skos:definition "A character string" ;
+    skos:inScheme biolinkml:types ;
+    meta:definition_uri metatype:String ;
+    metatype:base "str" ;
+    metatype:imported_from "biolinkml:types" ;
+    meta:uri xsd:string .
+
+
+
