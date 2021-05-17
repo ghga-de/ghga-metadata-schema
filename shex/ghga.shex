@@ -32,59 +32,195 @@ metatype:Objectidentifier IRI
 
 metatype:Nodeidentifier NONLITERAL
 
+<Activity>  (
+    CLOSED {
+       (  $<Activity_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <Activity> ]
+       )
+    } OR @<ResearchActivity>
+)
+
+<AnatomicalEntity> CLOSED {
+    (  $<AnatomicalEntity_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ?
+       ) ;
+       rdf:type [ <AnatomicalEntity> ]
+    )
+}
+
+<Attribute> CLOSED {
+    (  $<Attribute_tes> (  <key> @metatype:String ;
+          <key_type> @metatype:String ? ;
+          <value> @metatype:String ;
+          <value_type> @metatype:String ?
+       ) ;
+       rdf:type [ <Attribute> ] ?
+    )
+}
+
+<BiologicalEntity>  (
+    CLOSED {
+       (  $<BiologicalEntity_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <BiologicalEntity> ]
+       )
+    } OR @<AnatomicalEntity> OR @<CellLine> OR @<DiseaseOrPhenotypicFeature> OR @<Sample>
+)
+
+<CellLine> CLOSED {
+    (  $<CellLine_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ?
+       ) ;
+       rdf:type [ <CellLine> ]
+    )
+}
+
+<Committee>  (
+    CLOSED {
+       (  $<Committee_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <Committee> ]
+       )
+    } OR @<DataAccessCommittee>
+)
+
 <DataAccessCommittee> CLOSED {
-    (  $<DataAccessCommittee_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
+    (  $<DataAccessCommittee_tes> (  &<Committee_tes> ;
+          rdf:type [ <Committee> ] ? ;
           <title> @metatype:String ;
-          <name> @metatype:String ;
-          <email> @metatype:String ? ;
-          <telephone> @metatype:String ;
-          <organization> @metatype:String ;
-          <main_contact> @metatype:String
+          <description> @metatype:String ? ;
+          <main_contact> @<Member> ? ;
+          <has_members> @<Member> *
        ) ;
        rdf:type [ <DataAccessCommittee> ]
     )
 }
 
 <DataAccessPolicy> CLOSED {
-    (  $<DataAccessPolicy_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <data_access_committees> @metatype:String ;
-          <short_description> @metatype:String ;
-          <policy> @metatype:String ;
-          <policy_url> @metatype:String ?
+    (  $<DataAccessPolicy_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <description> @metatype:String ;
+          <policy_text> @metatype:String ;
+          <policy_url> @metatype:String ? ;
+          <has_data_access_committee> @<DataAccessCommittee>
        ) ;
        rdf:type [ <DataAccessPolicy> ]
     )
 }
 
-<Dataset> CLOSED {
-    (  $<Dataset_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <data_access_policies> @metatype:String ;
-          <dataset_title> @metatype:String ;
-          <dataset_description> @metatype:String ;
-          <dataset_type> @metatype:String ;
-          <files> @metatype:String +
+<Dataset>  (
+    CLOSED {
+       (  $<Dataset_tes> (  &<InformationContentEntity_tes> ;
+             rdf:type [ <InformationContentEntity> ] ? ;
+             <title> @metatype:String ;
+             <description> @metatype:String ;
+             <type> @metatype:String ;
+             <files> @<File> + ;
+             <has_data_access_policy> @<DataAccessPolicy>
+          ) ;
+          rdf:type [ <Dataset> ]
+       )
+    } OR @<ProcessedDataset> OR @<SyntheticDataset>
+)
+
+<DiseaseOrPhenotypicFeature> CLOSED {
+    (  $<DiseaseOrPhenotypicFeature_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ?
        ) ;
-       rdf:type [ <Dataset> ]
+       rdf:type [ <DiseaseOrPhenotypicFeature> ]
     )
 }
 
 <Experiment> CLOSED {
-    (  $<Experiment_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <related_study> @metatype:String ;
-          <design_name> @metatype:String ;
+    (  $<Experiment_tes> (  &<ResearchActivity_tes> ;
+          rdf:type [ <ResearchActivity> ] ? ;
+          <name> @metatype:String ;
+          <description> @metatype:String ? ;
+          <has_study> @<Study> ;
           <instrument_model> @metatype:String ;
-          <library_name> @metatype:String ? ;
-          <library_layout> @metatype:String ;
-          <library_source> @metatype:String ;
-          <library_selection> @metatype:String ;
-          <library_strategy> @metatype:String ;
-          <library_construction_protocol> @metatype:String ?
+          <has_library> @<Library> ;
+          <has_sample> @<Sample> ;
+          <has_protocol> @<Protocol> ?
        ) ;
        rdf:type [ <Experiment> ]
+    )
+}
+
+<File> CLOSED {
+    (  $<File_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <name> @metatype:String ? ;
+          <format> @metatype:String ? ;
+          <type> @metatype:String ? ;
+          <size> @metatype:String ? ;
+          <md5sum> @metatype:String ? ;
+          <index> @metatype:String ? ;
+          <category> @metatype:String ?
+       ) ;
+       rdf:type [ <File> ]
+    )
+}
+
+<Individual> CLOSED {
+    (  $<Individual_tes> (  &<Person_tes> ;
+          rdf:type [ <Person> ] ? ;
+          <name> @metatype:String ? ;
+          <gender> @metatype:String ;
+          <age> @metatype:Integer ?
+       ) ;
+       rdf:type [ <Individual> ]
+    )
+}
+
+<InformationContentEntity>  (
+    CLOSED {
+       (  $<InformationContentEntity_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <InformationContentEntity> ]
+       )
+    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication>
+)
+
+<Library> CLOSED {
+    (  $<Library_tes> (  &<MaterialEntity_tes> ;
+          rdf:type [ <MaterialEntity> ] ? ;
+          <name> @metatype:String ? ;
+          <layout> @metatype:String ;
+          <source> @metatype:String ;
+          <selection> @metatype:String ;
+          <strategy> @metatype:String ;
+          <construction_protocol> @metatype:String ?
+       ) ;
+       rdf:type [ <Library> ]
+    )
+}
+
+<MaterialEntity>  (
+    CLOSED {
+       (  $<MaterialEntity_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <MaterialEntity> ]
+       )
+    } OR @<Library>
+)
+
+<Member> CLOSED {
+    (  $<Member_tes> (  &<Person_tes> ;
+          rdf:type [ <Person> ] ? ;
+          <name> @metatype:String ;
+          <title> @metatype:String ? ;
+          <email> @metatype:String ? ;
+          <telephone> @metatype:String ;
+          <organization> @metatype:String ;
+          <main_contact> @<Member>
+       ) ;
+       rdf:type [ <Member> ]
     )
 }
 
@@ -93,40 +229,91 @@ metatype:Nodeidentifier NONLITERAL
        (  $<NamedThing_tes> rdf:type . * ;
           rdf:type [ <NamedThing> ]
        )
-    } OR @<DataAccessCommittee> OR @<DataAccessPolicy> OR @<Dataset> OR @<Experiment> OR @<Sample> OR @<Study>
+    } OR @<Activity> OR @<BiologicalEntity> OR @<Committee> OR @<InformationContentEntity> OR @<MaterialEntity> OR @<Person>
+)
+
+<Person>  (
+    CLOSED {
+       (  $<Person_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <Person> ]
+       )
+    } OR @<Individual> OR @<Member>
+)
+
+<ProcessedDataset> CLOSED {
+    (  $<ProcessedDataset_tes> (  &<Dataset_tes> ;
+          rdf:type [ <Dataset> ] ?
+       ) ;
+       rdf:type [ <ProcessedDataset> ]
+    )
+}
+
+<Protocol> CLOSED {
+    (  $<Protocol_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ?
+       ) ;
+       rdf:type [ <Protocol> ]
+    )
+}
+
+<Publication> CLOSED {
+    (  $<Publication_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <title> @metatype:String ?
+       ) ;
+       rdf:type [ <Publication> ]
+    )
+}
+
+<ResearchActivity>  (
+    CLOSED {
+       (  $<ResearchActivity_tes> (  &<Activity_tes> ;
+             rdf:type [ <Activity> ] ?
+          ) ;
+          rdf:type [ <ResearchActivity> ]
+       )
+    } OR @<Experiment> OR @<Study>
 )
 
 <Sample> CLOSED {
-    (  $<Sample_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <title> @metatype:String ? ;
-          <alias> @metatype:String ;
+    (  $<Sample_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ? ;
+          <name> @metatype:String ? ;
+          <type> @metatype:String ? ;
           <description> @metatype:String ? ;
-          <subject_id> @metatype:String ;
-          <biosample_id> @metatype:String ? ;
-          <case_or_control> @metatype:String ? ;
-          <gender> @metatype:String ;
-          <organism_part> @metatype:String ? ;
-          <cell_line> @metatype:String ? ;
+          <subject> @<Individual> ;
+          <biosample_accession> @metatype:String ? ;
+          <has_anatomical_site> @<AnatomicalEntity> ? ;
+          <has_cell_line> @<CellLine> ? ;
           <geographical_region> @metatype:String ? ;
-          <phenotype_or_disease> @metatype:String ;
-          <files> @metatype:String +
+          <has_disease_of_phenotypic_feature> @<DiseaseOrPhenotypicFeature> ;
+          <files> @<File> +
        ) ;
        rdf:type [ <Sample> ]
     )
 }
 
 <Study> CLOSED {
-    (  $<Study_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <descriptive_title> @metatype:String ;
-          <study_type> @metatype:String ;
-          <short_name> @metatype:String ? ;
+    (  $<Study_tes> (  &<ResearchActivity_tes> ;
+          rdf:type [ <ResearchActivity> ] ? ;
+          <title> @metatype:String ;
+          <type> @metatype:String ;
+          <name> @metatype:String ? ;
           <abstract> @metatype:String ;
-          <pubmed_id> @metatype:String ? ;
-          <custom_tags> @metatype:String *
+          <publications> @<Publication> * ;
+          <attributes> @<Attribute> *
        ) ;
        rdf:type [ <Study> ]
+    )
+}
+
+<SyntheticDataset> CLOSED {
+    (  $<SyntheticDataset_tes> (  &<Dataset_tes> ;
+          rdf:type [ <Dataset> ] ?
+       ) ;
+       rdf:type [ <SyntheticDataset> ]
     )
 }
 

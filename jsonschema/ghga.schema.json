@@ -1,13 +1,424 @@
 {
-   "$id": "https://w3id.org/my_core",
+   "$id": "https://w3id.org/GHGA-Schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "definitions": {
+      "Activity": {
+         "additionalProperties": false,
+         "description": "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Activity",
+         "type": "object"
+      },
+      "AnatomicalEntity": {
+         "additionalProperties": false,
+         "description": "An anatomical entity is an object that is a structural part (material or immaterial) of a biological entity.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "AnatomicalEntity",
+         "type": "object"
+      },
+      "Attribute": {
+         "additionalProperties": false,
+         "description": "A key/value pair that further characterizes an entity.",
+         "properties": {
+            "key": {
+               "type": "string"
+            },
+            "key_type": {
+               "description": "The semantic type for the key of an attribute.",
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            },
+            "value_type": {
+               "description": "The semantic type for the value of an attribute.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "key",
+            "value"
+         ],
+         "title": "Attribute",
+         "type": "object"
+      },
+      "BiologicalEntity": {
+         "additionalProperties": false,
+         "description": "A biological entity is a heterogeneous substance that contains genomic material or is the product of a biological process.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "BiologicalEntity",
+         "type": "object"
+      },
+      "CellLine": {
+         "additionalProperties": false,
+         "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "CellLine",
+         "type": "object"
+      },
+      "Committee": {
+         "additionalProperties": false,
+         "description": "A group of people organized for a specific purpose.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Committee",
+         "type": "object"
+      },
       "DataAccessCommittee": {
          "additionalProperties": false,
          "description": "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.",
          "properties": {
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_members": {
+               "description": "All the members that are part of this data access committee.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "main_contact": {
+               "description": "The main contact for the data access committee.",
+               "type": "string"
+            },
+            "title": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "title"
+         ],
+         "title": "DataAccessCommittee",
+         "type": "object"
+      },
+      "DataAccessPolicy": {
+         "additionalProperties": false,
+         "description": "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies.",
+         "properties": {
+            "description": {
+               "description": "A short description for the Data Access Policy.",
+               "type": "string"
+            },
+            "has_data_access_committee": {
+               "description": "The Data Access Committee linked to this policy.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "policy_text": {
+               "type": "string"
+            },
+            "policy_url": {
+               "description": "The URL for the policy, if available.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "description",
+            "policy_text",
+            "has_data_access_committee"
+         ],
+         "title": "DataAccessPolicy",
+         "type": "object"
+      },
+      "Dataset": {
+         "additionalProperties": false,
+         "description": "A dataset is a collection of files that represents data generated from a particular sample.",
+         "properties": {
+            "description": {
+               "type": "string"
+            },
+            "files": {
+               "description": "One or more files that collectively make this dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to this dataset.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "title": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "description",
+            "type",
+            "files",
+            "has_data_access_policy"
+         ],
+         "title": "Dataset",
+         "type": "object"
+      },
+      "DiseaseOrPhenotypicFeature": {
+         "additionalProperties": false,
+         "description": "A disease or phenotypic feature.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "DiseaseOrPhenotypicFeature",
+         "type": "object"
+      },
+      "Experiment": {
+         "additionalProperties": false,
+         "description": "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
+         "properties": {
+            "description": {
+               "description": "A description for the experiment.",
+               "type": "string"
+            },
+            "has_library": {
+               "description": "The library associated with this experiment.",
+               "type": "string"
+            },
+            "has_protocol": {
+               "description": "The protocol associated with this experiment.",
+               "type": "string"
+            },
+            "has_sample": {
+               "description": "The sample associated with this experiment.",
+               "type": "string"
+            },
+            "has_study": {
+               "description": "The study associated with this experiment.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "instrument_model": {
+               "description": "The instrument model.",
+               "type": "string"
+            },
+            "name": {
+               "description": "Name for the experiment.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name",
+            "has_study",
+            "instrument_model",
+            "has_library",
+            "has_sample"
+         ],
+         "title": "Experiment",
+         "type": "object"
+      },
+      "File": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "category": {
+               "description": "The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.",
+               "type": "string"
+            },
+            "format": {
+               "description": "The format of the file: BAM, SAM, CRAM, BAI, etc.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "index": {
+               "description": "The index for this file. Commonly for BAM/VCF files.",
+               "type": "string"
+            },
+            "md5sum": {
+               "description": "The MD5 Checksum for the file.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "size": {
+               "description": "The file size in bytes.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The file type: Aligned Reads, Unaligned Reads, etc.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "File",
+         "type": "object"
+      },
+      "Individual": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "age": {
+               "description": "Age of an individual.",
+               "type": "integer"
+            },
+            "gender": {
+               "description": "Gender of an individual.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "gender"
+         ],
+         "title": "Individual",
+         "type": "object"
+      },
+      "InformationContentEntity": {
+         "additionalProperties": false,
+         "description": "A generically dependent continuant that is about some thing.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "InformationContentEntity",
+         "type": "object"
+      },
+      "Library": {
+         "additionalProperties": false,
+         "description": "A library that is used in an experiment protocol to generate the input for an instrument.",
+         "properties": {
+            "construction_protocol": {
+               "description": "Description of how the library was constructed.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "layout": {
+               "type": "string"
+            },
+            "name": {
+               "description": "Name for the library.",
+               "type": "string"
+            },
+            "selection": {
+               "type": "string"
+            },
+            "source": {
+               "type": "string"
+            },
+            "strategy": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "layout",
+            "source",
+            "selection",
+            "strategy"
+         ],
+         "title": "Library",
+         "type": "object"
+      },
+      "MaterialEntity": {
+         "additionalProperties": false,
+         "description": "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "MaterialEntity",
+         "type": "object"
+      },
+      "Member": {
+         "additionalProperties": false,
+         "description": "Member of an organization or a committee.",
+         "properties": {
             "email": {
-               "description": "Email of the contact.",
+               "description": "Email of a person.",
                "type": "string"
             },
             "id": {
@@ -27,139 +438,18 @@
                "type": "string"
             },
             "title": {
+               "description": "The title that describes an entity.",
                "type": "string"
             }
          },
          "required": [
             "id",
-            "title",
             "name",
             "telephone",
             "organization",
             "main_contact"
          ],
-         "title": "DataAccessCommittee",
-         "type": "object"
-      },
-      "DataAccessPolicy": {
-         "additionalProperties": false,
-         "description": "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies.",
-         "properties": {
-            "data_access_committees": {
-               "type": "string"
-            },
-            "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "policy": {
-               "type": "string"
-            },
-            "policy_url": {
-               "description": "Alternative to pasting the Data Access Policy text.",
-               "type": "string"
-            },
-            "short_description": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "id",
-            "data_access_committees",
-            "short_description",
-            "policy"
-         ],
-         "title": "DataAccessPolicy",
-         "type": "object"
-      },
-      "Dataset": {
-         "additionalProperties": false,
-         "description": "A dataset is a collection of files that represents data generated from a particular sample.",
-         "properties": {
-            "data_access_policies": {
-               "type": "string"
-            },
-            "dataset_description": {
-               "type": "string"
-            },
-            "dataset_title": {
-               "type": "string"
-            },
-            "dataset_type": {
-               "type": "string"
-            },
-            "files": {
-               "description": "One or more files that collectively make this dataset.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "id",
-            "data_access_policies",
-            "dataset_title",
-            "dataset_description",
-            "dataset_type",
-            "files"
-         ],
-         "title": "Dataset",
-         "type": "object"
-      },
-      "Experiment": {
-         "additionalProperties": false,
-         "description": "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
-         "properties": {
-            "design_name": {
-               "type": "string"
-            },
-            "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "instrument_model": {
-               "type": "string"
-            },
-            "library_construction_protocol": {
-               "description": "Description of how the library was constructed.",
-               "type": "string"
-            },
-            "library_layout": {
-               "type": "string"
-            },
-            "library_name": {
-               "description": "The library name.",
-               "type": "string"
-            },
-            "library_selection": {
-               "type": "string"
-            },
-            "library_source": {
-               "type": "string"
-            },
-            "library_strategy": {
-               "type": "string"
-            },
-            "related_study": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "id",
-            "related_study",
-            "design_name",
-            "instrument_model",
-            "library_layout",
-            "library_source",
-            "library_selection",
-            "library_strategy"
-         ],
-         "title": "Experiment",
+         "title": "Member",
          "type": "object"
       },
       "NamedThing": {
@@ -177,27 +467,120 @@
          "title": "NamedThing",
          "type": "object"
       },
+      "Person": {
+         "additionalProperties": false,
+         "description": "A member of the species Homo sapiens.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Person",
+         "type": "object"
+      },
+      "ProcessedDataset": {
+         "additionalProperties": false,
+         "description": "A dataset that is generated by processing an existing dataset.",
+         "properties": {
+            "description": {
+               "type": "string"
+            },
+            "files": {
+               "description": "One or more files that collectively make this dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to this dataset.",
+               "type": "string"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "title": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "description",
+            "type",
+            "files",
+            "has_data_access_policy"
+         ],
+         "title": "ProcessedDataset",
+         "type": "object"
+      },
+      "Protocol": {
+         "additionalProperties": false,
+         "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Protocol",
+         "type": "object"
+      },
+      "Publication": {
+         "additionalProperties": false,
+         "description": "Represents a publication.",
+         "properties": {
+            "id": {
+               "description": "A PMID or DOI for the publication.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Publication",
+         "type": "object"
+      },
+      "ResearchActivity": {
+         "additionalProperties": false,
+         "description": "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.",
+         "properties": {
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "ResearchActivity",
+         "type": "object"
+      },
       "Sample": {
          "additionalProperties": false,
          "description": "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a portion of a substance like an isolate or tissue.",
          "properties": {
-            "alias": {
-               "type": "string"
-            },
-            "biosample_id": {
-               "description": "Specific sample ID from a submission to EBI BioSamples.",
-               "type": "string"
-            },
-            "case_or_control": {
-               "description": "Is the sample case or control.",
-               "type": "string"
-            },
-            "cell_line": {
-               "description": "Which cell line was used.",
+            "biosample_accession": {
+               "description": "BioSample accession. For example, if the Sample is from EBI BioSamples.",
                "type": "string"
             },
             "description": {
-               "description": "Description of experiment.",
+               "description": "Brief description of a sample.",
                "type": "string"
             },
             "files": {
@@ -207,38 +590,42 @@
                },
                "type": "array"
             },
-            "gender": {
+            "geographical_region": {
+               "description": "A geographical region associated with the sample.",
                "type": "string"
             },
-            "geographical_region": {
-               "description": "Ethinicity.",
+            "has_anatomical_site": {
+               "description": "Anatomical site from which the sample was retrieved.",
+               "type": "string"
+            },
+            "has_cell_line": {
+               "description": "Type of cell line that was used.",
+               "type": "string"
+            },
+            "has_disease_of_phenotypic_feature": {
+               "description": "The phenotype or disease associated with the individual from which the sample was taken.",
                "type": "string"
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
-            "organism_part": {
-               "description": "From where the sample was collected: Liver, Blood, Stool, etc.",
+            "name": {
+               "description": "Name of the sample.",
                "type": "string"
             },
-            "phenotype_or_disease": {
+            "subject": {
                "type": "string"
             },
-            "subject_id": {
-               "type": "string"
-            },
-            "title": {
-               "description": "Brief description of a sample.",
+            "type": {
+               "description": "Type of sample: 'Case' or 'Control'.",
                "type": "string"
             }
          },
          "required": [
             "id",
-            "alias",
-            "subject_id",
-            "gender",
-            "phenotype_or_disease",
+            "subject",
+            "has_disease_of_phenotypic_feature",
             "files"
          ],
          "title": "Sample",
@@ -249,40 +636,87 @@
          "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
          "properties": {
             "abstract": {
+               "description": "The study abstract that describes the goals. Can also hold abstract from a publication related to the study.",
                "type": "string"
             },
-            "custom_tags": {
+            "attributes": {
+               "description": "Custom key/value pairs that further characterizes the study.",
+               "items": {
+                  "$ref": "#/definitions/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "A short name for the study.",
+               "type": "string"
+            },
+            "publications": {
+               "description": "The publication(s) associated with this study.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
-            "descriptive_title": {
+            "title": {
+               "description": "A descriptive title for the study.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The study type. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\".",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "type",
+            "abstract"
+         ],
+         "title": "Study",
+         "type": "object"
+      },
+      "SyntheticDataset": {
+         "additionalProperties": false,
+         "description": "A dataset that is built by combining one or more datasets.",
+         "properties": {
+            "description": {
+               "type": "string"
+            },
+            "files": {
+               "description": "One or more files that collectively make this dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to this dataset.",
                "type": "string"
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
-            "pubmed_id": {
-               "description": "The PubMed ID related to a study.",
+            "title": {
                "type": "string"
             },
-            "short_name": {
-               "description": "A short name for the study.",
-               "type": "string"
-            },
-            "study_type": {
+            "type": {
                "type": "string"
             }
          },
          "required": [
             "id",
-            "descriptive_title",
-            "study_type",
-            "abstract"
+            "title",
+            "description",
+            "type",
+            "files",
+            "has_data_access_policy"
          ],
-         "title": "Study",
+         "title": "SyntheticDataset",
          "type": "object"
       }
    },
