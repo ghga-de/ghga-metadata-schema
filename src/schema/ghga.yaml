@@ -1,7 +1,7 @@
-id: https://w3id.org/my_core
+id: https://w3id.org/GHGA-Schema
 name: GHGA-Schema
 description: >-
-  The GHGA Core Schema is similar to the EGA Schema.
+  The metadata model for the German Human Genome-Phenome Archive (GHGA).
 
 imports:
 - biolinkml:types
@@ -17,121 +17,375 @@ classes:
 
   named thing:
     description: >-
-      A databased entity, concept or class. This is a generic class that is the root of all the other classes.
+      A databased entity, concept or class. This is a generic class that is the root
+      of all the other classes.
     slots:
       - id
 
-  study:
-    is_a: named thing
+  attribute:
     description: >-
-      Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis
-      of a subject to learn more about the phenomenon being studied.
+      A key/value pair that further characterizes an entity.
     slots:
-      - descriptive title
-      - study type
-      - short name
-      - abstract
-      - pubmed id
-      - custom tags
+      - key
+      - key type
+      - value
+      - value type
     slot_usage:
-      descriptive title:
+      key:
         required: true
-      study type:
+      value:
         required: true
+
+  study:
+    is_a: research activity
+    description: >-
+      Studies are experimental investigations of a particular phenomenon. It involves a
+      detailed examination and analysis of a subject to learn more about the phenomenon
+      being studied.
+    slots:
+      - id
+      - title
+      - type
+      - name
+      - abstract
+      - publications
+      - attributes
+    slot_usage:
+      title:
+        description: >-
+          A descriptive title for the study.
+        required: true
+      type:
+        description: >-
+          The study type. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
+        required: true
+      name:
+        description: >-
+          A short name for the study.
       abstract:
+        description: >-
+          The study abstract that describes the goals. Can also hold abstract
+          from a publication related to the study.
         required: true
-      custom tags:
+      publications:
+        description: >-
+          The publication(s) associated with this study.
         multivalued: true
+        range: publication
+      attributes:
+        description: >-
+          Custom key/value pairs that further characterizes the study.
+        multivalued: true
+        range: attribute
+
+  experiment:
+    is_a: research activity
+    description: >-
+      An experiment is an investigation that consists of a coordinated set of
+      actions and observations designed to generate data with the goal of verifying,
+      falsifying, or establishing the validity of a hypothesis.
+    exact_mappings:
+      - SIO:000994
+      - NCIT:C42790
+    slots:
+      - id
+      - name
+      - description
+      - has study
+      - instrument model
+      - has library
+      - has sample
+      - has protocol
+    slot_usage:
+      name:
+        description: >-
+          Name for the experiment.
+        required: true
+      description:
+        description: >-
+          A description for the experiment.
+      has study:
+        description: >-
+          The study associated with this experiment.
+        required: true
+        range: study
+      instrument model:
+        description: >-
+          The instrument model.
+        # TODO: need to model this properly
+        required: true
+      has library:
+        description: >-
+          The library associated with this experiment.
+        required: true
+        range: library
+      has sample:
+        description: >-
+          The sample associated with this experiment.
+        required: true
+        range: sample
+      has protocol:
+        description: >-
+          The protocol associated with this experiment.
+        range: protocol
+
+  library:
+    is_a: material entity
+    description: >-
+      A library that is used in an experiment protocol to generate the input
+      for an instrument.
+    slots:
+      - id
+      - name
+      - layout
+      - source
+      - selection
+      - strategy
+      - construction protocol
+    slot_usage:
+      name:
+        description: >-
+          Name for the library.
+      layout:
+        required: true
+      source:
+        required: true
+      selection:
+        required: true
+      strategy:
+        required: true
 
   sample:
-    is_a: named thing
+    is_a: biological entity
     description: >-
-      A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation,
-      demonstration, or trial use. This could be either an individual, or sets of individuals from a population,
-      or a portion of a substance like an isolate or tissue.
+      A sample is a limited quantity of something to be used for testing, analysis,
+      inspection, investigation, demonstration, or trial use. This could be either
+      an individual, or sets of individuals from a population, or a portion of a
+      substance like an isolate or tissue.
     aliases: ['biosample']
     exact_mappings:
       - SIO:001050
       - biolink:MaterialSample
     slots:
-      - title
-      - alias
+      - id
+      - name
+      - type
       - description
-      - subject id
-      - biosample id
-      - case or control
-      - gender
-      - organism part
-      - cell line
+      - subject
+      - biosample accession # TODO: model as xref
+      - has anatomical site
+      - has cell line
       - geographical region
-      - phenotype or disease
+      - has disease of phenotypic feature
       - files
     slot_usage:
-      title:
+      name:
+        description: >-
+          Name of the sample.
+      type:
+        description: >-
+          Type of sample: 'Case' or 'Control'.
+        # TODO: Enumerate values for this slot via SampleType
+      description:
         description: >-
           Brief description of a sample.
-      alias:
+      subject:
         required: true
-      subject id:
+        range: individual
+      biosample accession:
+        description: >-
+          BioSample accession. For example, if the Sample is from EBI BioSamples.
+      has anatomical site:
+        description:
+          Anatomical site from which the sample was retrieved.
+        range: anatomical entity
+      has cell line:
+        description:
+          Type of cell line that was used.
+        range: cell line
+      geographical region:
+        description:
+          A geographical region associated with the sample.
+      has disease of phenotypic feature:
+        description: >-
+          The phenotype or disease associated with the individual from which
+          the sample was taken.
         required: true
-      gender:
-        required: true
-      phenotype or disease:
-        required: true
+        range: disease or phenotypic feature
       files:
         description: >-
           One or more files that are linked to this Sample.
+        multivalued: true
+        range: file
         required: true
 
-  experiment:
-    is_a: named thing
+  protocol:
+    is_a: information content entity
+    aliases: ['library protocol']
     description: >-
-      An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate
-      data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+      A plan specification which has sufficient level of detail and quantitative information
+      to communicate it between investigation agents, so that different investigation agents
+      will reliably be able to independently reproduce the process.
     exact_mappings:
-      - SIO:000994
-      - NCIT:C42790
+      - OBI:0000272
+      - NCIT:C41111
+
+  individual:
+      is_a: person
+      aliases: ['subject', 'patient']
+      slots:
+        - id
+        - name
+        - gender
+        - age
+      slot_usage:
+        gender:
+          description: Gender of an individual.
+          required: true
+          # TODO: Enumerate values for this slot via GenderType
+        age:
+          description: Age of an individual.
+
+  file:
+    is_a: information content entity
+    aliases: ['file object']
     slots:
-      - related study
-      - design name
-      - instrument model
-      - library name
-      - library layout
-      - library source
-      - library selection
-      - library strategy
-      - library construction protocol
+      - id
+      - name
+      - format
+      - type
+      - size
+      - md5sum
+      - index
+      - category
     slot_usage:
-      related study:
+      format:
+        description: >-
+          The format of the file: BAM, SAM, CRAM, BAI, etc.
+      type:
+        description: >-
+          The file type: Aligned Reads, Unaligned Reads, etc.
+      size:
+        description: >-
+          The file size in bytes.
+      md5sum:
+        description: >-
+          The MD5 Checksum for the file.
+      index:
+        description: >-
+          The index for this file. Commonly for BAM/VCF files.
+      category:
+        description: >-
+          The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
+
+
+  dataset:
+    is_a: information content entity
+    description: >-
+      A dataset is a collection of files that represents data generated from a particular sample.
+    exact_mappings:
+      - SIO:000089
+    slots:
+      - id
+      - title
+      - description
+      - type
+      - files
+      - has data access policy
+    slot_usage:
+      title:
         required: true
-      design name:
+      description:
         required: true
-      instrument model:
+      type:
         required: true
-      library layout:
+      files:
+        description: >-
+          One or more files that collectively make this dataset.
         required: true
-      library source:
+      has data access policy:
+        description: >-
+          The Data Access Policy that applies to this dataset.
         required: true
-      library selection:
+        range: data access policy
+
+  synthetic dataset:
+    is_a: dataset
+    description: >-
+      A dataset that is built by combining one or more datasets.
+    # Note: This is experimental
+
+  processed dataset:
+    is_a: dataset
+    description: >-
+      A dataset that is generated by processing an existing dataset.
+
+  data access policy:
+    is_a: information content entity
+    description: >-
+      A data access policy specifies under which circumstances, legal or otherwise,
+      a user can have access to one or more datasets belonging to one or more studies.
+    slots:
+      - id
+      - description
+      - policy text
+      - policy url
+      - has data access committee
+    slot_usage:
+      description:
+        description: >-
+          A short description for the Data Access Policy.
         required: true
-      library strategy:
+      policy text:
         required: true
+      policy url:
+        description: The URL for the policy, if available.
+      has data access committee:
+        description: The Data Access Committee linked to this policy.
+        required: true
+        range: data access committee
 
   data access committee:
-    is_a: named thing
+    is_a: committee
     description: >-
       A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria
       for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
     slots:
+      - id
       - title
-      - name
-      - email
-      - telephone
-      - organization
+      - description
       - main contact
+      - has members
     slot_usage:
       title:
         required: true
+      main contact:
+        description: >-
+          The main contact for the data access committee.
+        range: member
+      has members:
+        description: >-
+          All the members that are part of this data access committee.
+        multivalued: true
+        range: member
+
+  committee:
+    is_a: named thing
+    description: >-
+      A group of people organized for a specific purpose.
+
+  member:
+    is_a: person
+    description: >-
+      Member of an organization or a committee.
+    slots:
+      - id
+      - name
+      - title
+      - email
+      - telephone
+      - organization
+    slot_usage:
       name:
         required: true
       telephone:
@@ -141,49 +395,92 @@ classes:
       main contact:
         required: true
 
-  data access policy:
-    is_a: named thing # TODO: data access policy subclass of information content entity
+  publication:
+    is_a: information content entity
     description: >-
-      A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or
-      more datasets belonging to one or more studies.
+      Represents a publication.
     slots:
-      - data access committees
-      - short description
-      - policy
-      - policy url
+      - id
+      - title
     slot_usage:
-      data access committees:
-        required: true
-      short description:
-        required: true
-      policy:
-        required: true
+      id:
+        description: >-
+          A PMID or DOI for the publication.
 
-  dataset:
+  research activity:
+    is_a: activity
+    description: >-
+      A planned process executed in the performance of scientific research wherein
+      systematic investigations are performed to establish facts and reach new conclusions
+      about phenomena in the world.
+    exact_mappings:
+      - SEPIO:0000004
+      - NCIT:C15429
+
+  activity:
     is_a: named thing
     description: >-
-      A dataset is a collection of files that represents data generated from a particular sample.
+      An activity is something that occurs over a period of time and acts upon or with entities;
+      it may include consuming, processing, transforming, modifying, relocating, using, or
+      generating entities.
     exact_mappings:
-      - SIO:000089
-    slots:
-      - data access policies
-      - dataset title
-      - dataset description
-      - dataset type
-      - files
-    slot_usage:
-      data access policies:
-        required: true
-      dataset title:
-        required: true
-      dataset description:
-        required: true
-      dataset type:
-        required: true
-      files:
-        description: >-
-          One or more files that collectively make this dataset.
-        required: true
+      - prov:Activity
+      - http://purl.obolibrary.org/obo/NCIT_C43431
+
+  anatomical entity:
+    is_a: biological entity
+    description: >-
+      An anatomical entity is an object that is a structural part (material or immaterial)
+      of a biological entity.
+    exact_mappings:
+      - UBERON:0001062
+
+  cell line:
+    is_a: biological entity
+    description: >-
+      A cultured cell population that represents a genetically stable and homogenous population
+      of cultured cells that shares a common propagation history
+    exact_mappings:
+      - CLO:0000031
+      - EFO:0000322
+      - SIO:010054
+
+  biological entity:
+    is_a: named thing
+    description: >-
+      A biological entity is a heterogeneous substance that contains genomic material or
+      is the product of a biological process.
+
+  information content entity:
+    is_a: named thing
+    description: >-
+      A generically dependent continuant that is about some thing.
+    exact_mappings:
+      - IAO:0000030
+
+  disease or phenotypic feature:
+    is_a: biological entity
+    description: >-
+      A disease or phenotypic feature.
+    exact_mappings:
+      - biolink:DiseaseOrPhenotypicFeature
+
+  material entity:
+    is_a: named thing
+    description: >-
+      A material entity is a physical entity that is spatially extended, exists as a
+      whole at any point in time and has mass.
+    exact_mappings:
+      - SIO:000004
+
+  person:
+    is_a: named thing
+    description: >-
+      A member of the species Homo sapiens.
+    exact_mappings:
+      - NCIT:C25190
+      - SIO:000498
+      - prov:Person
 
 
 slots:
@@ -194,142 +491,153 @@ slots:
     identifier: true
     required: true
 
-  descriptive title:
+  name:
     description: >-
-      A descriptive title for the study.
+      The name for an entity.
 
-  study type:
+  type:
     description: >-
-      The study type. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
-
-  short name:
-    description: >-
-      A short name for the study.
-
-  abstract:
-    description: >-
-      The study abstract that describes the goals. Can also hold abstract from a publication related to the study.
-
-  pubmed id:
-    description: >-
-      The PubMed ID related to a study.
-
-  custom tags:
-    description: >-
-      Key/value pairs corresponding to the study.
+      The type of an entity.
+    # Note: Not to be confused with rdf:type
 
   title:
     description: >-
-      Brief description of an entity.
+      The title that describes an entity.
 
-  alias:
+  abstract:
     description: >-
-      Name which is matching the uploaded sample(s).
+      The abstract - a short blurb - associated with an entity.
+
+  publications:
+    description: >-
+      The publications related to an entity.
+    multivalued: true
+    range: publication
+
+  attributes:
+    description: >-
+      Key/value pairs corresponding to an entity.
+    multivalued: true
+    range: attribute
 
   description:
     description: >-
-      Description of experiment.
-
-  subject id:
-    description: >-
-      The subject ID of the patient from experiment.
-      Note that this ID should be non-identifiable.
-
-  biosample id:
-    description: >-
-      Specific sample ID from a submission to EBI BioSamples.
-
-  case or control:
-    description: Is the sample case or control.
-
-  gender:
-    description: Gender of the subject.
-
-  organism part:
-    description: >-
-      From where the sample was collected: Liver, Blood, Stool, etc.
-
-  cell line:
-    description: >-
-      Which cell line was used.
-
-  geographical region:
-    description: >-
-      Ethinicity.
-
-  phenotype or disease:
-    description: >-
-      Disease or phenotype that the subject is associated with.
-
-  files:
-    description: One or more files that are linked to an entity.
-    multivalued: true
-
-  related study:
-    description: >-
-      The study to which the experiment belongs to.
-
-  design name:
-    description: >-
-      The name of the experiment.
+      Description of an entity.
 
   instrument model:
     description: >-
       The instrument on which the data was generated.
 
-  library name:
+  has study:
     description: >-
-      The library name.
+      The study associated with an entity.
+    range: study
 
-  library layout:
+  has library:
+    description: >-
+      The library associated with an entity.
+    range: library
+
+  has sample:
+    description: >-
+      The sample associated with an entity.
+    range: sample
+
+  has protocol:
+    description: >-
+      The protocol associated with an entity.
+    range: protocol
+
+  layout:
     description: >-
       The layout of the library. Whether it is single-end, paired-end.
 
-  library source:
+  source:
     description: >-
       The source of the library. For example, Metagenome, Transcriptome, etc.
 
-  library selection:
+  selection:
     description: >-
       Library selection process. For example, random, cDNA, etc.
 
-  library strategy:
+  strategy:
     description: >-
       Library strategy. For example, ChIP-Seq, RNA-Seq, DNA-Seq, etc.
 
-  library construction protocol:
+  construction protocol:
     description: >-
       Description of how the library was constructed.
 
-  name:
+  subject:
     description: >-
-      The name of the point of contact for the DAC.
+      The subject/individual associated with an entity.
+    range: individual
 
-  telephone:
+  biosample accession:
     description: >-
-      The telephone number of the point of contact for the DAC.
+      BioSample accession. For example, if the Sample is from EBI BioSamples.
 
-  organization:
+  has anatomical site:
     description: >-
-      The organization of the point of contact for the DAC.
+      Anatomical site associated with an entity.
+    range: anatomical entity
 
-  email:
+  has cell line:
     description: >-
-      Email of the contact.
+      Cell line associated with an entity.
+    range: cell line
 
-  main contact:
+  geographical region:
     description: >-
-      Is the contact the main contact for the DAC
+      The geographical region linked to an entity.
 
-  data access committees:
+  has disease of phenotypic feature:
     description: >-
-      One or more DACs associated with this Data Access Policy.
+      Disease or phenotype that the entity is associated with.
+    range: disease or phenotypic feature
 
-  short description:
+  files:
+    description: One or more files that are linked to an entity.
+    multivalued: true
+    range: file
+
+  gender:
     description: >-
-      A short description for the Data Access Policy.
+      The assemblage of properties that distinguish people on the basis
+      of the societal role s expected for the two sexes. [NCI]
+    # TODO: Enumerate values for this slot via GenderType
 
-  policy:
+  age:
+    description: >-
+      The age of a person.
+    range: integer
+
+  format:
+    description: >-
+      The format of a file.
+
+  size:
+    description: >-
+      The size of a file in bytes.
+
+  md5sum:
+    description: >-
+      The MD5 Checksum for a file.
+
+  index:
+    description: >-
+      The index file corresponding to the file.
+
+  category:
+    description: >-
+      The file category.
+
+  has data access policy:
+    description: >-
+      Data Access Policy associated with an entity.
+    range: data access policy
+
+  policy text:
     description: >-
       The complete text for the Data Access Policy.
 
@@ -337,18 +645,45 @@ slots:
     description: >-
       Alternative to pasting the Data Access Policy text.
 
-  data access policies:
+  has data access committee:
     description: >-
-      One or more DAPs associated with this dataset.
+      Data Access Committee associated with an entity.
+    range: data access committee
 
-  dataset title:
+  main contact:
     description: >-
-      A descriptive title for this dataset.
+      The person who is the main contact for a committee.
+    range: member
 
-  dataset description:
+  has members:
     description: >-
-      A through description of this dataset.
+      The members associated with a committee.
+    multivalued: true
 
-  dataset type:
+  telephone:
     description: >-
-      The type of dataset. For example, Whole Genome Sequencing, Whole Exome Sequencing, etc.
+      The telephone number associated with a person.
+
+  organization:
+    description: >-
+      The organization associated with a person.
+
+  email:
+    description: >-
+      Email of a person.
+
+  key:
+    description: >-
+      The key of an attribute.
+
+  key type:
+    description: >-
+      The semantic type for the key of an attribute.
+
+  value:
+    description: >-
+      The value of an attribute
+
+  value type:
+    description:
+      The semantic type for the value of an attribute.
