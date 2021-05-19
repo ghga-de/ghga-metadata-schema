@@ -14,5 +14,7 @@ Using the YAML and the LinkML framework, we autogenerate downstream artifacts li
 - [TSV/CSV reports](csv/)*
 
 
+## GHGA Metadata Schema Overview
 
+![GHGA Metadata Schema](ghga-overview.png "GHGA Metadata Schema")
 
