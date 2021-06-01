@@ -1,5 +1,14 @@
-site_name: "{{schema.description}}"
-theme: readthedocs
+site_name: "GHGA Metadata Model"
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: teal
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
 nav:
   - Home: home.md
   - Index: index.md
