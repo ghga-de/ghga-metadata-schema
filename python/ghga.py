@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-05-17 19:59
+# Generation date: 2021-06-01 19:05
 # Schema: GHGA-Schema
 #
 # id: https://w3id.org/GHGA-Schema
@@ -11,20 +11,17 @@ import sys
 import re
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from biolinkml.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
 
-from biolinkml.utils.slot import Slot
-from biolinkml.utils.metamodelcore import empty_list, empty_dict, bnode
-from biolinkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-if sys.version_info < (3, 7, 6):
-    from biolinkml.utils.dataclass_extensions_375 import dataclasses_init_fn_with_kwargs
-else:
-    from biolinkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from biolinkml.utils.formatutils import camelcase, underscore, sfx
-from biolinkml.utils.enumerations import EnumDefinitionImpl
+from linkml.utils.slot import Slot
+from linkml.utils.metamodelcore import empty_list, empty_dict, bnode
+from linkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
+from linkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml.utils.formatutils import camelcase, underscore, sfx
+from linkml.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
-from biolinkml.utils.curienamespace import CurieNamespace
-from includes.types import Integer, String
+from linkml.utils.curienamespace import CurieNamespace
+from linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
 
@@ -33,7 +30,9 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 GHGA = CurieNamespace('GHGA', 'https://w3id.org/GHGA/')
-BIOLINKML = CurieNamespace('biolinkml', 'https://w3id.org/biolink/biolinkml/')
+SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
+BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
+LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 DEFAULT_ = GHGA
 
 
@@ -646,7 +645,7 @@ class File(InformationContentEntity):
     type: Optional[str] = None
     size: Optional[str] = None
     md5sum: Optional[str] = None
-    index: Optional[str] = None
+    file_index: Optional[str] = None
     category: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -670,8 +669,8 @@ class File(InformationContentEntity):
         if self.md5sum is not None and not isinstance(self.md5sum, str):
             self.md5sum = str(self.md5sum)
 
-        if self.index is not None and not isinstance(self.index, str):
-            self.index = str(self.index)
+        if self.file_index is not None and not isinstance(self.file_index, str):
+            self.file_index = str(self.file_index)
 
         if self.category is not None and not isinstance(self.category, str):
             self.category = str(self.category)
@@ -1175,8 +1174,8 @@ slots.size = Slot(uri=GHGA.size, name="size", curie=GHGA.curie('size'),
 slots.md5sum = Slot(uri=GHGA.md5sum, name="md5sum", curie=GHGA.curie('md5sum'),
                    model_uri=GHGA.md5sum, domain=None, range=Optional[str])
 
-slots.index = Slot(uri=GHGA.index, name="index", curie=GHGA.curie('index'),
-                   model_uri=GHGA.index, domain=None, range=Optional[str])
+slots.file_index = Slot(uri=GHGA.file_index, name="file_index", curie=GHGA.curie('file_index'),
+                   model_uri=GHGA.file_index, domain=None, range=Optional[str])
 
 slots.category = Slot(uri=GHGA.category, name="category", curie=GHGA.curie('category'),
                    model_uri=GHGA.category, domain=None, range=Optional[str])
@@ -1328,8 +1327,8 @@ slots.file_size = Slot(uri=GHGA.size, name="file_size", curie=GHGA.curie('size')
 slots.file_md5sum = Slot(uri=GHGA.md5sum, name="file_md5sum", curie=GHGA.curie('md5sum'),
                    model_uri=GHGA.file_md5sum, domain=File, range=Optional[str])
 
-slots.file_index = Slot(uri=GHGA.index, name="file_index", curie=GHGA.curie('index'),
-                   model_uri=GHGA.file_index, domain=File, range=Optional[str])
+slots.file_file_index = Slot(uri=GHGA.file_index, name="file_file_index", curie=GHGA.curie('file_index'),
+                   model_uri=GHGA.file_file_index, domain=File, range=Optional[str])
 
 slots.file_category = Slot(uri=GHGA.category, name="file_category", curie=GHGA.curie('category'),
                    model_uri=GHGA.file_category, domain=File, range=Optional[str])

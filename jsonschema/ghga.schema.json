@@ -281,16 +281,16 @@
                "description": "The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.",
                "type": "string"
             },
+            "file_index": {
+               "description": "The index for this file. Commonly for BAM/VCF files.",
+               "type": "string"
+            },
             "format": {
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc.",
                "type": "string"
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "index": {
-               "description": "The index for this file. Commonly for BAM/VCF files.",
                "type": "string"
             },
             "md5sum": {

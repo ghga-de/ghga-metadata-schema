@@ -1,36 +1,36 @@
 BASE <https://w3id.org/GHGA/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX metatype: <https://w3id.org/biolink/biolinkml/meta/types/>
+PREFIX linkml: <https://w3id.org/linkml/>
 
 
-metatype:String xsd:string
+linkml:String xsd:string
 
-metatype:Integer xsd:integer
+linkml:Integer xsd:integer
 
-metatype:Boolean xsd:boolean
+linkml:Boolean xsd:boolean
 
-metatype:Float xsd:float
+linkml:Float xsd:float
 
-metatype:Double xsd:double
+linkml:Double xsd:double
 
-metatype:Decimal xsd:decimal
+linkml:Decimal xsd:decimal
 
-metatype:Time xsd:dateTime
+linkml:Time xsd:dateTime
 
-metatype:Date xsd:date
+linkml:Date xsd:date
 
-metatype:Datetime xsd:dateTime
+linkml:Datetime xsd:dateTime
 
-metatype:Uriorcurie IRI
+linkml:Uriorcurie IRI
 
-metatype:Uri IRI
+linkml:Uri IRI
 
-metatype:Ncname xsd:string
+linkml:Ncname xsd:string
 
-metatype:Objectidentifier IRI
+linkml:Objectidentifier IRI
 
-metatype:Nodeidentifier NONLITERAL
+linkml:Nodeidentifier NONLITERAL
 
 <Activity>  (
     CLOSED {
@@ -51,10 +51,10 @@ metatype:Nodeidentifier NONLITERAL
 }
 
 <Attribute> CLOSED {
-    (  $<Attribute_tes> (  <key> @metatype:String ;
-          <key_type> @metatype:String ? ;
-          <value> @metatype:String ;
-          <value_type> @metatype:String ?
+    (  $<Attribute_tes> (  <key> @linkml:String ;
+          <key_type> @linkml:String ? ;
+          <value> @linkml:String ;
+          <value_type> @linkml:String ?
        ) ;
        rdf:type [ <Attribute> ] ?
     )
@@ -91,8 +91,8 @@ metatype:Nodeidentifier NONLITERAL
 <DataAccessCommittee> CLOSED {
     (  $<DataAccessCommittee_tes> (  &<Committee_tes> ;
           rdf:type [ <Committee> ] ? ;
-          <title> @metatype:String ;
-          <description> @metatype:String ? ;
+          <title> @linkml:String ;
+          <description> @linkml:String ? ;
           <main_contact> @<Member> ? ;
           <has_members> @<Member> *
        ) ;
@@ -103,9 +103,9 @@ metatype:Nodeidentifier NONLITERAL
 <DataAccessPolicy> CLOSED {
     (  $<DataAccessPolicy_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
-          <description> @metatype:String ;
-          <policy_text> @metatype:String ;
-          <policy_url> @metatype:String ? ;
+          <description> @linkml:String ;
+          <policy_text> @linkml:String ;
+          <policy_url> @linkml:String ? ;
           <has_data_access_committee> @<DataAccessCommittee>
        ) ;
        rdf:type [ <DataAccessPolicy> ]
@@ -116,9 +116,9 @@ metatype:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<Dataset_tes> (  &<InformationContentEntity_tes> ;
              rdf:type [ <InformationContentEntity> ] ? ;
-             <title> @metatype:String ;
-             <description> @metatype:String ;
-             <type> @metatype:String ;
+             <title> @linkml:String ;
+             <description> @linkml:String ;
+             <type> @linkml:String ;
              <files> @<File> + ;
              <has_data_access_policy> @<DataAccessPolicy>
           ) ;
@@ -138,10 +138,10 @@ metatype:Nodeidentifier NONLITERAL
 <Experiment> CLOSED {
     (  $<Experiment_tes> (  &<ResearchActivity_tes> ;
           rdf:type [ <ResearchActivity> ] ? ;
-          <name> @metatype:String ;
-          <description> @metatype:String ? ;
+          <name> @linkml:String ;
+          <description> @linkml:String ? ;
           <has_study> @<Study> ;
-          <instrument_model> @metatype:String ;
+          <instrument_model> @linkml:String ;
           <has_library> @<Library> ;
           <has_sample> @<Sample> ;
           <has_protocol> @<Protocol> ?
@@ -153,13 +153,13 @@ metatype:Nodeidentifier NONLITERAL
 <File> CLOSED {
     (  $<File_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
-          <name> @metatype:String ? ;
-          <format> @metatype:String ? ;
-          <type> @metatype:String ? ;
-          <size> @metatype:String ? ;
-          <md5sum> @metatype:String ? ;
-          <index> @metatype:String ? ;
-          <category> @metatype:String ?
+          <name> @linkml:String ? ;
+          <format> @linkml:String ? ;
+          <type> @linkml:String ? ;
+          <size> @linkml:String ? ;
+          <md5sum> @linkml:String ? ;
+          <file_index> @linkml:String ? ;
+          <category> @linkml:String ?
        ) ;
        rdf:type [ <File> ]
     )
@@ -168,9 +168,9 @@ metatype:Nodeidentifier NONLITERAL
 <Individual> CLOSED {
     (  $<Individual_tes> (  &<Person_tes> ;
           rdf:type [ <Person> ] ? ;
-          <name> @metatype:String ? ;
-          <gender> @metatype:String ;
-          <age> @metatype:Integer ?
+          <name> @linkml:String ? ;
+          <gender> @linkml:String ;
+          <age> @linkml:Integer ?
        ) ;
        rdf:type [ <Individual> ]
     )
@@ -189,12 +189,12 @@ metatype:Nodeidentifier NONLITERAL
 <Library> CLOSED {
     (  $<Library_tes> (  &<MaterialEntity_tes> ;
           rdf:type [ <MaterialEntity> ] ? ;
-          <name> @metatype:String ? ;
-          <layout> @metatype:String ;
-          <source> @metatype:String ;
-          <selection> @metatype:String ;
-          <strategy> @metatype:String ;
-          <construction_protocol> @metatype:String ?
+          <name> @linkml:String ? ;
+          <layout> @linkml:String ;
+          <source> @linkml:String ;
+          <selection> @linkml:String ;
+          <strategy> @linkml:String ;
+          <construction_protocol> @linkml:String ?
        ) ;
        rdf:type [ <Library> ]
     )
@@ -213,11 +213,11 @@ metatype:Nodeidentifier NONLITERAL
 <Member> CLOSED {
     (  $<Member_tes> (  &<Person_tes> ;
           rdf:type [ <Person> ] ? ;
-          <name> @metatype:String ;
-          <title> @metatype:String ? ;
-          <email> @metatype:String ? ;
-          <telephone> @metatype:String ;
-          <organization> @metatype:String ;
+          <name> @linkml:String ;
+          <title> @linkml:String ? ;
+          <email> @linkml:String ? ;
+          <telephone> @linkml:String ;
+          <organization> @linkml:String ;
           <main_contact> @<Member>
        ) ;
        rdf:type [ <Member> ]
@@ -261,7 +261,7 @@ metatype:Nodeidentifier NONLITERAL
 <Publication> CLOSED {
     (  $<Publication_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
-          <title> @metatype:String ?
+          <title> @linkml:String ?
        ) ;
        rdf:type [ <Publication> ]
     )
@@ -280,14 +280,14 @@ metatype:Nodeidentifier NONLITERAL
 <Sample> CLOSED {
     (  $<Sample_tes> (  &<BiologicalEntity_tes> ;
           rdf:type [ <BiologicalEntity> ] ? ;
-          <name> @metatype:String ? ;
-          <type> @metatype:String ? ;
-          <description> @metatype:String ? ;
+          <name> @linkml:String ? ;
+          <type> @linkml:String ? ;
+          <description> @linkml:String ? ;
           <subject> @<Individual> ;
-          <biosample_accession> @metatype:String ? ;
+          <biosample_accession> @linkml:String ? ;
           <has_anatomical_site> @<AnatomicalEntity> ? ;
           <has_cell_line> @<CellLine> ? ;
-          <geographical_region> @metatype:String ? ;
+          <geographical_region> @linkml:String ? ;
           <has_disease_of_phenotypic_feature> @<DiseaseOrPhenotypicFeature> ;
           <files> @<File> +
        ) ;
@@ -298,10 +298,10 @@ metatype:Nodeidentifier NONLITERAL
 <Study> CLOSED {
     (  $<Study_tes> (  &<ResearchActivity_tes> ;
           rdf:type [ <ResearchActivity> ] ? ;
-          <title> @metatype:String ;
-          <type> @metatype:String ;
-          <name> @metatype:String ? ;
-          <abstract> @metatype:String ;
+          <title> @linkml:String ;
+          <type> @linkml:String ;
+          <name> @linkml:String ? ;
+          <abstract> @linkml:String ;
           <publications> @<Publication> * ;
           <attributes> @<Attribute> *
        ) ;
