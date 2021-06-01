@@ -4,14 +4,20 @@ description: >-
   The metadata model for the German Human Genome-Phenome Archive (GHGA).
 
 imports:
-- biolinkml:types
+- linkml:types
 
 prefixes:
-  biolinkml: https://w3id.org/biolink/biolinkml/
+  linkml: https://w3id.org/linkml/
   GHGA: https://w3id.org/GHGA/
+  SIO: http://semanticscience.org/resource/SIO_
+  biolink: https://w3id.org/biolink/vocab/
 
 default_prefix: GHGA
 
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
 
 classes:
 
@@ -256,7 +262,7 @@ classes:
       - type
       - size
       - md5sum
-      - index
+      - file_index
       - category
     slot_usage:
       format:
@@ -271,7 +277,7 @@ classes:
       md5sum:
         description: >-
           The MD5 Checksum for the file.
-      index:
+      file_index:
         description: >-
           The index for this file. Commonly for BAM/VCF files.
       category:
@@ -624,7 +630,7 @@ slots:
     description: >-
       The MD5 Checksum for a file.
 
-  index:
+  file_index:
     description: >-
       The index file corresponding to the file.
 
