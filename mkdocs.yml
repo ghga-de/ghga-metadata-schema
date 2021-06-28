@@ -1,4 +1,4 @@
-site_name: "GHGA Metadata Model"
+site_name: "GHGA Metadata Schema"
 theme:
   name: material
   palette:
