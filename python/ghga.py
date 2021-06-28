@@ -1,9 +1,9 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-01 19:05
-# Schema: GHGA-Schema
+# Generation date: 2021-06-28 09:44
+# Schema: GHGA-Metadata-Schema
 #
-# id: https://w3id.org/GHGA-Schema
-# description: The metadata model for the German Human Genome-Phenome Archive (GHGA).
+# id: https://w3id.org/GHGA-Metadata-Schema
+# description: The metadata schema for the German Human Genome-Phenome Archive (GHGA).
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses

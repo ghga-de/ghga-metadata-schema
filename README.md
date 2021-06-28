@@ -1,6 +1,6 @@
-# GHGA Metadata Model
+# GHGA Metadata Schema
 
-This repository aims to serve as the source of truth for the metadata model used by
+This repository aims to serve as the source of truth for the metadata schema used by
 the [German Human Genome-Phenome Archive](https://ghga.dkfz.de/).
 
 The schema is modeled using [LinkML](https://github.com/linkml/linkml/) and exists
