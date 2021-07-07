@@ -11,6 +11,7 @@ prefixes:
   GHGA: https://w3id.org/GHGA/
   SIO: http://semanticscience.org/resource/SIO_
   biolink: https://w3id.org/biolink/vocab/
+  efo: http://www.ebi.ac.uk/efo/
 
 default_prefix: GHGA
 
@@ -191,7 +192,7 @@ classes:
       type:
         description: >-
           Type of sample: 'Case' or 'Control'.
-        # TODO: Enumerate values for this slot via SampleType
+        range: case_control_enum
       description:
         description: >-
           Brief description of a sample.
@@ -205,6 +206,8 @@ classes:
         description:
           Anatomical site from which the sample was retrieved.
         range: anatomical entity
+        exact_mappings:
+          - efo:EFO_0000635
       has cell line:
         description:
           Type of cell line that was used.
@@ -218,6 +221,8 @@ classes:
           the sample was taken.
         required: true
         range: disease or phenotypic feature
+        exact_mappings: 
+          - efo:EFO_0000651
       files:
         description: >-
           One or more files that are linked to this Sample.
@@ -248,7 +253,7 @@ classes:
         gender:
           description: Gender of an individual.
           required: true
-          # TODO: Enumerate values for this slot via GenderType
+          range: gender_enum
         age:
           description: Age of an individual.
 
@@ -298,6 +303,8 @@ classes:
       - type
       - files
       - has data access policy
+      - has study
+      - has experiment
     slot_usage:
       title:
         required: true
@@ -314,6 +321,16 @@ classes:
           The Data Access Policy that applies to this dataset.
         required: true
         range: data access policy
+      has study:
+        description: >-
+          One or more studies that collectively are part of the dataset
+        required: true
+        range: study
+      has experiment:
+        description: >-
+          One or more experiments that collectively are part of the dataset
+        required: true
+        range: experiment
 
   synthetic dataset:
     is_a: dataset
@@ -554,6 +571,11 @@ slots:
       The protocol associated with an entity.
     range: protocol
 
+  has experiment:
+    description: >-
+      The experiment associated with an entitiy.
+    range: experiment
+
   layout:
     description: >-
       The layout of the library. Whether it is single-end, paired-end.
@@ -611,7 +633,7 @@ slots:
     description: >-
       The assemblage of properties that distinguish people on the basis
       of the societal role s expected for the two sexes. [NCI]
-    # TODO: Enumerate values for this slot via GenderType
+    range: gender_enum
 
   age:
     description: >-
@@ -693,3 +715,22 @@ slots:
   value type:
     description:
       The semantic type for the value of an attribute.
+
+enums:
+  gender_enum:
+    description: gender
+    permissible_values:
+      "XX":
+        description: female
+      "XY":
+        description: male
+      "?":
+        description: unspecified
+
+  case_control_enum:
+    description: Is sample case or control?
+    permissible_values:
+      "control":
+        description: Control sample
+      "case":
+        description: Case sample
