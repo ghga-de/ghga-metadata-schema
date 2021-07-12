@@ -1,7 +1,5 @@
 Pipfile
 target/
 site/
-venv/
-docs/*md
-docs/types/
-*/my_schema.*
+env/
+artifacts/markdown/
