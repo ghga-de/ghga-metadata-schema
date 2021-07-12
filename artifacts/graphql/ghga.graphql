@@ -1,0 +1,203 @@
+type Activity
+  {
+    id: String!
+  }
+
+type AnatomicalEntity
+  {
+    id: String!
+  }
+
+type Attribute
+  {
+    key: String!
+    keyType: String
+    value: String!
+    valueType: String
+  }
+
+type BiologicalEntity
+  {
+    id: String!
+  }
+
+type CellLine
+  {
+    id: String!
+  }
+
+type Committee
+  {
+    id: String!
+  }
+
+type DataAccessCommittee
+  {
+    id: String!
+    title: String!
+    description: String
+    mainContact: Member
+    hasMembers: [Member]
+  }
+
+type DataAccessPolicy
+  {
+    id: String!
+    description: String!
+    policyText: String!
+    policyUrl: String
+    hasDataAccessCommittee: DataAccessCommittee!
+  }
+
+type Dataset
+  {
+    id: String!
+    title: String!
+    description: String!
+    type: String!
+    files: [File]!
+    hasDataAccessPolicy: DataAccessPolicy!
+  }
+
+type DiseaseOrPhenotypicFeature
+  {
+    id: String!
+  }
+
+type Experiment
+  {
+    id: String!
+    name: String!
+    description: String
+    hasStudy: Study!
+    instrumentModel: String!
+    hasLibrary: Library!
+    hasSample: Sample!
+    hasProtocol: Protocol
+  }
+
+type File
+  {
+    id: String!
+    name: String
+    format: String
+    type: String
+    size: String
+    md5sum: String
+    fileIndex: String
+    category: String
+  }
+
+type Individual
+  {
+    id: String!
+    name: String
+    gender: String!
+    age: Integer
+  }
+
+type InformationContentEntity
+  {
+    id: String!
+  }
+
+type Library
+  {
+    id: String!
+    name: String
+    layout: String!
+    source: String!
+    selection: String!
+    strategy: String!
+    constructionProtocol: String
+  }
+
+type MaterialEntity
+  {
+    id: String!
+  }
+
+type Member
+  {
+    id: String!
+    name: String!
+    title: String
+    email: String
+    telephone: String!
+    organization: String!
+    mainContact: Member!
+  }
+
+type NamedThing
+  {
+    id: String!
+  }
+
+type Person
+  {
+    id: String!
+  }
+
+type ProcessedDataset
+  {
+    id: String!
+    title: String!
+    description: String!
+    type: String!
+    files: [File]!
+    hasDataAccessPolicy: DataAccessPolicy!
+  }
+
+type Protocol
+  {
+    id: String!
+  }
+
+type Publication
+  {
+    id: String!
+    title: String
+  }
+
+type ResearchActivity
+  {
+    id: String!
+  }
+
+type Sample
+  {
+    id: String!
+    name: String
+    type: String
+    description: String
+    subject: Individual!
+    biosampleAccession: String
+    hasAnatomicalSite: AnatomicalEntity
+    hasCellLine: CellLine
+    geographicalRegion: String
+    hasDiseaseOfPhenotypicFeature: DiseaseOrPhenotypicFeature!
+    files: [File]!
+  }
+
+type Study
+  {
+    id: String!
+    title: String!
+    type: String!
+    name: String
+    abstract: String!
+    publications: [Publication]
+    attributes: [Attribute]
+  }
+
+type SyntheticDataset
+  {
+    id: String!
+    title: String!
+    description: String!
+    type: String!
+    files: [File]!
+    hasDataAccessPolicy: DataAccessPolicy!
+  }
+
+
