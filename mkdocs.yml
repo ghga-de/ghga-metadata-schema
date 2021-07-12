@@ -4,12 +4,33 @@ theme:
   palette:
     scheme: default
     primary: teal
+
+  font:
+    text: Tilium Web
+    code: Courier Prime
   features:
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
     - navigation.top
+    - navigation.indexes
+    - navigation.expand
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github-square
 nav:
-  - Home: home.md
-  - Index: index.md
-  - Credits: credits.md
+  - Home: index.md
+  - Documentation: docs/index.md
+  - Contributing: contributing.md
+  - LinkML Quickstart Guide: linkml-quickstart.md
+  - Referencing Ontologies: referencing-ontologies.md
+  - Style Guide: style-guide.md
+  - Testing: testing.md
+  - Versioning: versioning.md
+  - Release Process: release-process.md
+markdown_extensions:
+  - attr_list
+  - toc:
+      permalink: true
+
+repo_url: https://github.com/ghga-de/ghga-metadata-schema
+repo_name: ghga-de/ghga-metadata-schema
