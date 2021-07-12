@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-28 09:44
+# Generation date: 2021-07-07 11:49
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -9,19 +9,20 @@
 import dataclasses
 import sys
 import re
+from jsonasobj2 import JsonObj
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
 
-from linkml.utils.slot import Slot
-from linkml.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml.utils.formatutils import camelcase, underscore, sfx
-from linkml.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
+from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
+from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
-from linkml.utils.curienamespace import CurieNamespace
-from linkml_model.types import Integer, String
+from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
 
@@ -154,8 +155,8 @@ class NamedThing(YAMLRoot):
     id: Union[str, NamedThingId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, NamedThingId):
             self.id = NamedThingId(self.id)
 
@@ -180,13 +181,13 @@ class Attribute(YAMLRoot):
     value_type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.key is None:
-            raise ValueError("key must be supplied")
+        if self._is_empty(self.key):
+            self.MissingRequiredField("key")
         if not isinstance(self.key, str):
             self.key = str(self.key)
 
-        if self.value is None:
-            raise ValueError("value must be supplied")
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
         if not isinstance(self.value, str):
             self.value = str(self.value)
 
@@ -214,8 +215,8 @@ class Committee(NamedThing):
     id: Union[str, CommitteeId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, CommitteeId):
             self.id = CommitteeId(self.id)
 
@@ -242,13 +243,13 @@ class DataAccessCommittee(Committee):
     has_members: Optional[Union[Union[str, MemberId], List[Union[str, MemberId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, DataAccessCommitteeId):
             self.id = DataAccessCommitteeId(self.id)
 
-        if self.title is None:
-            raise ValueError("title must be supplied")
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
         if not isinstance(self.title, str):
             self.title = str(self.title)
 
@@ -258,10 +259,8 @@ class DataAccessCommittee(Committee):
         if self.main_contact is not None and not isinstance(self.main_contact, MemberId):
             self.main_contact = MemberId(self.main_contact)
 
-        if self.has_members is None:
-            self.has_members = []
         if not isinstance(self.has_members, list):
-            self.has_members = [self.has_members]
+            self.has_members = [self.has_members] if self.has_members is not None else []
         self.has_members = [v if isinstance(v, MemberId) else MemberId(v) for v in self.has_members]
 
         super().__post_init__(**kwargs)
@@ -283,8 +282,8 @@ class Activity(NamedThing):
     id: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ActivityId):
             self.id = ActivityId(self.id)
 
@@ -307,8 +306,8 @@ class ResearchActivity(Activity):
     id: Union[str, ResearchActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ResearchActivityId):
             self.id = ResearchActivityId(self.id)
 
@@ -337,40 +336,34 @@ class Study(ResearchActivity):
     attributes: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
 
-        if self.title is None:
-            raise ValueError("title must be supplied")
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
         if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self.type is None:
-            raise ValueError("type must be supplied")
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
         if not isinstance(self.type, str):
             self.type = str(self.type)
 
-        if self.abstract is None:
-            raise ValueError("abstract must be supplied")
+        if self._is_empty(self.abstract):
+            self.MissingRequiredField("abstract")
         if not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.publications is None:
-            self.publications = []
         if not isinstance(self.publications, list):
-            self.publications = [self.publications]
+            self.publications = [self.publications] if self.publications is not None else []
         self.publications = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.publications]
 
-        if self.attributes is None:
-            self.attributes = []
-        if not isinstance(self.attributes, list):
-            self.attributes = [self.attributes]
-        self._normalize_inlined_slot(slot_name="attributes", slot_type=Attribute, key_name="key", inlined_as_list=True, keyed=False)
+        self._normalize_inlined_as_dict(slot_name="attributes", slot_type=Attribute, key_name="key", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -398,33 +391,33 @@ class Experiment(ResearchActivity):
     has_protocol: Optional[Union[str, ProtocolId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ExperimentId):
             self.id = ExperimentId(self.id)
 
-        if self.name is None:
-            raise ValueError("name must be supplied")
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.has_study is None:
-            raise ValueError("has_study must be supplied")
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
         if not isinstance(self.has_study, StudyId):
             self.has_study = StudyId(self.has_study)
 
-        if self.instrument_model is None:
-            raise ValueError("instrument_model must be supplied")
+        if self._is_empty(self.instrument_model):
+            self.MissingRequiredField("instrument_model")
         if not isinstance(self.instrument_model, str):
             self.instrument_model = str(self.instrument_model)
 
-        if self.has_library is None:
-            raise ValueError("has_library must be supplied")
+        if self._is_empty(self.has_library):
+            self.MissingRequiredField("has_library")
         if not isinstance(self.has_library, LibraryId):
             self.has_library = LibraryId(self.has_library)
 
-        if self.has_sample is None:
-            raise ValueError("has_sample must be supplied")
+        if self._is_empty(self.has_sample):
+            self.MissingRequiredField("has_sample")
         if not isinstance(self.has_sample, SampleId):
             self.has_sample = SampleId(self.has_sample)
 
@@ -453,8 +446,8 @@ class BiologicalEntity(NamedThing):
     id: Union[str, BiologicalEntityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, BiologicalEntityId):
             self.id = BiologicalEntityId(self.id)
 
@@ -488,27 +481,25 @@ class Sample(BiologicalEntity):
     geographical_region: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, SampleId):
             self.id = SampleId(self.id)
 
-        if self.subject is None:
-            raise ValueError("subject must be supplied")
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
         if not isinstance(self.subject, IndividualId):
             self.subject = IndividualId(self.subject)
 
-        if self.has_disease_of_phenotypic_feature is None:
-            raise ValueError("has_disease_of_phenotypic_feature must be supplied")
+        if self._is_empty(self.has_disease_of_phenotypic_feature):
+            self.MissingRequiredField("has_disease_of_phenotypic_feature")
         if not isinstance(self.has_disease_of_phenotypic_feature, DiseaseOrPhenotypicFeatureId):
             self.has_disease_of_phenotypic_feature = DiseaseOrPhenotypicFeatureId(self.has_disease_of_phenotypic_feature)
 
-        if self.files is None:
-            raise ValueError("files must be supplied")
-        elif not isinstance(self.files, list):
-            self.files = [self.files]
-        elif len(self.files) == 0:
-            raise ValueError(f"files must be a non-empty list")
+        if self._is_empty(self.files):
+            self.MissingRequiredField("files")
+        if not isinstance(self.files, list):
+            self.files = [self.files] if self.files is not None else []
         self.files = [v if isinstance(v, FileId) else FileId(v) for v in self.files]
 
         if self.name is not None and not isinstance(self.name, str):
@@ -550,8 +541,8 @@ class AnatomicalEntity(BiologicalEntity):
     id: Union[str, AnatomicalEntityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, AnatomicalEntityId):
             self.id = AnatomicalEntityId(self.id)
 
@@ -574,8 +565,8 @@ class CellLine(BiologicalEntity):
     id: Union[str, CellLineId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, CellLineId):
             self.id = CellLineId(self.id)
 
@@ -597,8 +588,8 @@ class InformationContentEntity(NamedThing):
     id: Union[str, InformationContentEntityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, InformationContentEntityId):
             self.id = InformationContentEntityId(self.id)
 
@@ -622,8 +613,8 @@ class Protocol(InformationContentEntity):
     id: Union[str, ProtocolId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ProtocolId):
             self.id = ProtocolId(self.id)
 
@@ -649,8 +640,8 @@ class File(InformationContentEntity):
     category: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, FileId):
             self.id = FileId(self.id)
 
@@ -698,36 +689,34 @@ class Dataset(InformationContentEntity):
     has_data_access_policy: Union[str, DataAccessPolicyId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, DatasetId):
             self.id = DatasetId(self.id)
 
-        if self.title is None:
-            raise ValueError("title must be supplied")
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
         if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self.description is None:
-            raise ValueError("description must be supplied")
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.type is None:
-            raise ValueError("type must be supplied")
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
         if not isinstance(self.type, str):
             self.type = str(self.type)
 
-        if self.files is None:
-            raise ValueError("files must be supplied")
-        elif not isinstance(self.files, list):
-            self.files = [self.files]
-        elif len(self.files) == 0:
-            raise ValueError(f"files must be a non-empty list")
+        if self._is_empty(self.files):
+            self.MissingRequiredField("files")
+        if not isinstance(self.files, list):
+            self.files = [self.files] if self.files is not None else []
         self.files = [v if isinstance(v, FileId) else FileId(v) for v in self.files]
 
-        if self.has_data_access_policy is None:
-            raise ValueError("has_data_access_policy must be supplied")
+        if self._is_empty(self.has_data_access_policy):
+            self.MissingRequiredField("has_data_access_policy")
         if not isinstance(self.has_data_access_policy, DataAccessPolicyId):
             self.has_data_access_policy = DataAccessPolicyId(self.has_data_access_policy)
 
@@ -754,8 +743,8 @@ class SyntheticDataset(Dataset):
     has_data_access_policy: Union[str, DataAccessPolicyId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, SyntheticDatasetId):
             self.id = SyntheticDatasetId(self.id)
 
@@ -782,8 +771,8 @@ class ProcessedDataset(Dataset):
     has_data_access_policy: Union[str, DataAccessPolicyId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ProcessedDatasetId):
             self.id = ProcessedDatasetId(self.id)
 
@@ -810,23 +799,23 @@ class DataAccessPolicy(InformationContentEntity):
     policy_url: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, DataAccessPolicyId):
             self.id = DataAccessPolicyId(self.id)
 
-        if self.description is None:
-            raise ValueError("description must be supplied")
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.policy_text is None:
-            raise ValueError("policy_text must be supplied")
+        if self._is_empty(self.policy_text):
+            self.MissingRequiredField("policy_text")
         if not isinstance(self.policy_text, str):
             self.policy_text = str(self.policy_text)
 
-        if self.has_data_access_committee is None:
-            raise ValueError("has_data_access_committee must be supplied")
+        if self._is_empty(self.has_data_access_committee):
+            self.MissingRequiredField("has_data_access_committee")
         if not isinstance(self.has_data_access_committee, DataAccessCommitteeId):
             self.has_data_access_committee = DataAccessCommitteeId(self.has_data_access_committee)
 
@@ -852,8 +841,8 @@ class Publication(InformationContentEntity):
     title: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, PublicationId):
             self.id = PublicationId(self.id)
 
@@ -878,8 +867,8 @@ class DiseaseOrPhenotypicFeature(BiologicalEntity):
     id: Union[str, DiseaseOrPhenotypicFeatureId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, DiseaseOrPhenotypicFeatureId):
             self.id = DiseaseOrPhenotypicFeatureId(self.id)
 
@@ -902,8 +891,8 @@ class MaterialEntity(NamedThing):
     id: Union[str, MaterialEntityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MaterialEntityId):
             self.id = MaterialEntityId(self.id)
 
@@ -931,28 +920,28 @@ class Library(MaterialEntity):
     construction_protocol: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, LibraryId):
             self.id = LibraryId(self.id)
 
-        if self.layout is None:
-            raise ValueError("layout must be supplied")
+        if self._is_empty(self.layout):
+            self.MissingRequiredField("layout")
         if not isinstance(self.layout, str):
             self.layout = str(self.layout)
 
-        if self.source is None:
-            raise ValueError("source must be supplied")
+        if self._is_empty(self.source):
+            self.MissingRequiredField("source")
         if not isinstance(self.source, str):
             self.source = str(self.source)
 
-        if self.selection is None:
-            raise ValueError("selection must be supplied")
+        if self._is_empty(self.selection):
+            self.MissingRequiredField("selection")
         if not isinstance(self.selection, str):
             self.selection = str(self.selection)
 
-        if self.strategy is None:
-            raise ValueError("strategy must be supplied")
+        if self._is_empty(self.strategy):
+            self.MissingRequiredField("strategy")
         if not isinstance(self.strategy, str):
             self.strategy = str(self.strategy)
 
@@ -980,8 +969,8 @@ class Person(NamedThing):
     id: Union[str, PersonId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, PersonId):
             self.id = PersonId(self.id)
 
@@ -1003,13 +992,13 @@ class Individual(Person):
     age: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, IndividualId):
             self.id = IndividualId(self.id)
 
-        if self.gender is None:
-            raise ValueError("gender must be supplied")
+        if self._is_empty(self.gender):
+            self.MissingRequiredField("gender")
         if not isinstance(self.gender, str):
             self.gender = str(self.gender)
 
@@ -1043,28 +1032,28 @@ class Member(Person):
     email: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MemberId):
             self.id = MemberId(self.id)
 
-        if self.name is None:
-            raise ValueError("name must be supplied")
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.telephone is None:
-            raise ValueError("telephone must be supplied")
+        if self._is_empty(self.telephone):
+            self.MissingRequiredField("telephone")
         if not isinstance(self.telephone, str):
             self.telephone = str(self.telephone)
 
-        if self.organization is None:
-            raise ValueError("organization must be supplied")
+        if self._is_empty(self.organization):
+            self.MissingRequiredField("organization")
         if not isinstance(self.organization, str):
             self.organization = str(self.organization)
 
-        if self.main_contact is None:
-            raise ValueError("main_contact must be supplied")
+        if self._is_empty(self.main_contact):
+            self.MissingRequiredField("main_contact")
         if not isinstance(self.main_contact, MemberId):
             self.main_contact = MemberId(self.main_contact)
 
