@@ -5,105 +5,126 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = ghga
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = graphql jsonschema docs shex owl csv graphql python rdf
+TGTS = graphql jsonschema markdown shex owl csv graphql python rdf sql
 
-#GEN_OPTS = --no-mergeimports
+# Optional arguments to supply to the generators
+#For example, GEN_OPTS = --no-mergeimports
 GEN_OPTS = 
 
+# Make all targets
 all: gen stage
+
+# Generate target names based on TGTS
 gen: $(patsubst %,gen-%,$(TGTS))
+
+# Clean up
 clean:
 	rm -rf target/
-	rm -rf docs/
+	rm -rf docs/docs/
 
-t:
-	echo $(SCHEMA_NAMES)
-
+# List all available artifact-specific targets
 echo:
-	echo $(patsubst %,gen-%,$(TGTS))
+	@ echo $(patsubst %,gen-%,$(TGTS))
 
-test: all
-
+# Install dependencies
 install:
 	. environment.sh
 	pip install -r requirements.txt
 
+# Create target folders
 tdir-%:
 	mkdir -p target/$*
+
+# Create docs folder
 docs:
 	mkdir $@
 
+# Stage artifacts
 stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
-	cp -pr target/$* .
+	cp -pr target/$* artifacts/
 
+# Build and deploy docs locally with mkdocs
+docserve:
+	mkdocs serve
 
-###  -- MARKDOWN DOCS --
-# Generate documentation ready for mkdocs
-# TODO: modularize imports
-gen-docs: target/docs/index.md copy-src-docs
-.PHONY: gen-docs
-copy-src-docs:
-	cp $(SRC_DIR)/docs/*md target/docs/
-target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	gen-markdown $(GEN_OPTS) --dir target/docs $<
-stage-docs: gen-docs
-	cp -pr target/docs .
+# Deploy documentation to gh-pages branch
+gh-deploy:
+	mkdocs gh-deploy
 
-###  -- MARKDOWN DOCS --
-# TODO: modularize imports
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Markdown docs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+gen-markdown: target/markdown/index.md
+.PHONY: gen-markdown
+target/markdown/%.md: $(SCHEMA_SRC) tdir-markdown
+	gen-markdown $(GEN_OPTS) --dir target/markdown $<
+stage-markdown: gen-markdown
+	cp -pr target/markdown docs/docs
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Python dataclasses
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
 
-###  -- MARKDOWN DOCS --
-# TODO: modularize imports. For now imports are merged.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# GraphQL
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 	gen-graphql $(GEN_OPTS) $< > $@
 
-###  -- JSON schema --
-# TODO: modularize imports. For now imports are merged.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# JSONSchema
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	gen-json-schema $(GEN_OPTS) -t transaction $< > $@
 
-###  -- Shex --
-# one file per module
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ShEx
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
 	gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
-###  -- CSV --
-# one file per module
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# CSV
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
 target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
 	gen-csv $(GEN_OPTS) $< > $@
 
-###  -- OWL --
-# TODO: modularize imports. For now imports are merged.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# OWL
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
 	gen-owl $(GEN_OPTS) $< > $@
 
-###  -- RDF (direct mapping) --
-# TODO: modularize imports. For now imports are merged.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# RDF
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 	gen-rdf $(GEN_OPTS) $< > $@
 
-###  -- LinkML --
-# linkml (copy)
-# one file per module
-gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
-target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
-	cp $< > $@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# SQL DDL
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# test docs locally.
-docserve:
-	mkdocs serve
-
-gh-deploy:
-	mkdocs gh-deploy
+gen-sql: target/sql/$(SCHEMA_NAME).sql
+target/sql/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sql
+	gen-sqlddl $(GEN_OPTS) --sqla-file  target/sql/$(SCHEMA_NAME)_models.py --dialect postgresql+psycopg2 $< > $@
