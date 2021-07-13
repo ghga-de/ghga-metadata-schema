@@ -1,12 +1,14 @@
 @prefix : <https://w3id.org/linkml/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
+@prefix pav: <http://purl.org/pav/> .
 @prefix shex: <http://www.w3.org/ns/shex#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/GHGA/GHGA-Metadata-Schema> a linkml:SchemaDefinition ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    pav:version "0.0.1" ;
     skos:definition "The metadata schema for the German Human Genome-Phenome Archive (GHGA)." ;
     linkml:classes <https://w3id.org/GHGA/Activity>,
         <https://w3id.org/GHGA/AnatomicalEntity>,
@@ -39,18 +41,18 @@
         "semweb_context" ;
     linkml:default_prefix "GHGA" ;
     linkml:default_range <https://w3id.org/GHGA/string> ;
-    linkml:generation_date "2021-07-07 11:49"^^xsd:dateTime ;
+    linkml:generation_date "2021-07-13 10:40"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
     linkml:prefixes [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "SIO" ;
-            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
         [ linkml:prefix_prefix "GHGA" ;
             linkml:prefix_reference <https://w3id.org/GHGA/> ],
         [ linkml:prefix_prefix "biolink" ;
-            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ] ;
+            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
+        [ linkml:prefix_prefix "SIO" ;
+            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/age>,
         <https://w3id.org/GHGA/attribute_key>,
@@ -152,8 +154,8 @@
         <https://w3id.org/GHGA/value>,
         <https://w3id.org/GHGA/value_type> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "Mon Jun 28 09:43:40 2021"^^xsd:dateTime ;
-    linkml:source_file_size 17537 ;
+    linkml:source_file_date "Tue Jul 13 10:40:25 2021"^^xsd:dateTime ;
+    linkml:source_file_size 17552 ;
     linkml:types <https://w3id.org/GHGA/boolean>,
         <https://w3id.org/GHGA/date>,
         <https://w3id.org/GHGA/datetime>,
