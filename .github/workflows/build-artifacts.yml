@@ -46,29 +46,3 @@ jobs:
             git commit -m 'Autogenerate artifacts' artifacts
             git push
           fi
-
-  build-documentation:
-    needs: build-schema
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-      
-      - name: Generate documentation
-        run: |
-          make stage-markdown
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          make gh-deploy
