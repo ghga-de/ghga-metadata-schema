@@ -49,7 +49,7 @@ docserve:
 	mkdocs serve
 
 # Deploy documentation to gh-pages branch
-gh-deploy:
+gh-deploy: stage-markdown
 	mkdocs gh-deploy
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
