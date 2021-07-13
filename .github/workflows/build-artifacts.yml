@@ -46,6 +46,4 @@ jobs:
             git config --local user.name "GitHub Action"
             git commit -m 'Autogenerate artifacts' artifacts
             git push
-            make stage-markdown
-            make gh-deploy
           fi
