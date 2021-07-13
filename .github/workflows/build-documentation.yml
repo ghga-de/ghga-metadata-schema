@@ -4,7 +4,11 @@ name: Build Documentation
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  workflow_run:
+    workflows: ["Build and update artifacts"]
+    branches: [main]
+    types: 
+      - completed
   push:
     branches: [ main ]
     paths:
@@ -39,7 +43,6 @@ jobs:
       
       - name: Build docs and push to gh-pages
         run: |
-          make stage-markdown
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           make gh-deploy
