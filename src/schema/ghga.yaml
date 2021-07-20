@@ -12,6 +12,7 @@ prefixes:
   GHGA: https://w3id.org/GHGA/
   SIO: http://semanticscience.org/resource/SIO_
   biolink: https://w3id.org/biolink/vocab/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
 
 default_prefix: GHGA
 
