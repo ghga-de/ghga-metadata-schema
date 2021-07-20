@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-07-13 12:12
+# Generation date: 2021-07-20 09:41
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -9,7 +9,7 @@
 import dataclasses
 import sys
 import re
-from jsonasobj2 import JsonObj
+from jsonasobj2 import JsonObj, as_dict
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
 from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
@@ -30,6 +30,7 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/EFO_')
 GHGA = CurieNamespace('GHGA', 'https://w3id.org/GHGA/')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
@@ -687,6 +688,9 @@ class Dataset(InformationContentEntity):
     type: str = None
     files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     has_data_access_policy: Union[str, DataAccessPolicyId] = None
+    has_study: Union[str, StudyId] = None
+    has_experiment: Union[str, ExperimentId] = None
+    has_file: Union[str, FileId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -720,6 +724,21 @@ class Dataset(InformationContentEntity):
         if not isinstance(self.has_data_access_policy, DataAccessPolicyId):
             self.has_data_access_policy = DataAccessPolicyId(self.has_data_access_policy)
 
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, StudyId):
+            self.has_study = StudyId(self.has_study)
+
+        if self._is_empty(self.has_experiment):
+            self.MissingRequiredField("has_experiment")
+        if not isinstance(self.has_experiment, ExperimentId):
+            self.has_experiment = ExperimentId(self.has_experiment)
+
+        if self._is_empty(self.has_file):
+            self.MissingRequiredField("has_file")
+        if not isinstance(self.has_file, FileId):
+            self.has_file = FileId(self.has_file)
+
         super().__post_init__(**kwargs)
 
 
@@ -741,6 +760,9 @@ class SyntheticDataset(Dataset):
     type: str = None
     files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     has_data_access_policy: Union[str, DataAccessPolicyId] = None
+    has_study: Union[str, StudyId] = None
+    has_experiment: Union[str, ExperimentId] = None
+    has_file: Union[str, FileId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -769,6 +791,9 @@ class ProcessedDataset(Dataset):
     type: str = None
     files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     has_data_access_policy: Union[str, DataAccessPolicyId] = None
+    has_study: Union[str, StudyId] = None
+    has_experiment: Union[str, ExperimentId] = None
+    has_file: Union[str, FileId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -988,6 +1013,7 @@ class Individual(Person):
 
     id: Union[str, IndividualId] = None
     gender: str = None
+    sex: str = None
     name: Optional[str] = None
     age: Optional[int] = None
 
@@ -1001,6 +1027,11 @@ class Individual(Person):
             self.MissingRequiredField("gender")
         if not isinstance(self.gender, str):
             self.gender = str(self.gender)
+
+        if self._is_empty(self.sex):
+            self.MissingRequiredField("sex")
+        if not isinstance(self.sex, str):
+            self.sex = str(self.sex)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
@@ -1112,6 +1143,12 @@ slots.has_sample = Slot(uri=GHGA.has_sample, name="has sample", curie=GHGA.curie
 slots.has_protocol = Slot(uri=GHGA.has_protocol, name="has protocol", curie=GHGA.curie('has_protocol'),
                    model_uri=GHGA.has_protocol, domain=None, range=Optional[Union[str, ProtocolId]])
 
+slots.has_experiment = Slot(uri=GHGA.has_experiment, name="has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.has_experiment, domain=None, range=Optional[Union[str, ExperimentId]])
+
+slots.has_file = Slot(uri=GHGA.has_file, name="has file", curie=GHGA.curie('has_file'),
+                   model_uri=GHGA.has_file, domain=None, range=Optional[Union[str, FileId]])
+
 slots.layout = Slot(uri=GHGA.layout, name="layout", curie=GHGA.curie('layout'),
                    model_uri=GHGA.layout, domain=None, range=Optional[str])
 
@@ -1150,6 +1187,9 @@ slots.files = Slot(uri=GHGA.files, name="files", curie=GHGA.curie('files'),
 
 slots.gender = Slot(uri=GHGA.gender, name="gender", curie=GHGA.curie('gender'),
                    model_uri=GHGA.gender, domain=None, range=Optional[str])
+
+slots.sex = Slot(uri=GHGA.sex, name="sex", curie=GHGA.curie('sex'),
+                   model_uri=GHGA.sex, domain=None, range=Optional[str])
 
 slots.age = Slot(uri=GHGA.age, name="age", curie=GHGA.curie('age'),
                    model_uri=GHGA.age, domain=None, range=Optional[int])
@@ -1301,6 +1341,9 @@ slots.sample_files = Slot(uri=GHGA.files, name="sample_files", curie=GHGA.curie(
 slots.individual_gender = Slot(uri=GHGA.gender, name="individual_gender", curie=GHGA.curie('gender'),
                    model_uri=GHGA.individual_gender, domain=Individual, range=str)
 
+slots.individual_sex = Slot(uri=GHGA.sex, name="individual_sex", curie=GHGA.curie('sex'),
+                   model_uri=GHGA.individual_sex, domain=Individual, range=str)
+
 slots.individual_age = Slot(uri=GHGA.age, name="individual_age", curie=GHGA.curie('age'),
                    model_uri=GHGA.individual_age, domain=Individual, range=Optional[int])
 
@@ -1336,6 +1379,15 @@ slots.dataset_files = Slot(uri=GHGA.files, name="dataset_files", curie=GHGA.curi
 
 slots.dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
                    model_uri=GHGA.dataset_has_data_access_policy, domain=Dataset, range=Union[str, DataAccessPolicyId])
+
+slots.dataset_has_study = Slot(uri=GHGA.has_study, name="dataset_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.dataset_has_study, domain=Dataset, range=Union[str, StudyId])
+
+slots.dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="dataset_has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.dataset_has_experiment, domain=Dataset, range=Union[str, ExperimentId])
+
+slots.dataset_has_file = Slot(uri=GHGA.has_file, name="dataset_has file", curie=GHGA.curie('has_file'),
+                   model_uri=GHGA.dataset_has_file, domain=Dataset, range=Union[str, FileId])
 
 slots.data_access_policy_description = Slot(uri=GHGA.description, name="data access policy_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.data_access_policy_description, domain=DataAccessPolicy, range=str)
