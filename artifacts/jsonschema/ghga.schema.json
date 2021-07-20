@@ -1,6 +1,7 @@
 {
    "$id": "https://w3id.org/GHGA-Metadata-Schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": true,
    "definitions": {
       "Activity": {
          "additionalProperties": false,
@@ -188,6 +189,18 @@
                "description": "The Data Access Policy that applies to this dataset.",
                "type": "string"
             },
+            "has_experiment": {
+               "description": "One or more experiments that collectively are part of the dataset",
+               "type": "string"
+            },
+            "has_file": {
+               "description": "One or more files that collectively are part of the dataset",
+               "type": "string"
+            },
+            "has_study": {
+               "description": "One or more studies that collectively are part of the dataset",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
@@ -205,7 +218,10 @@
             "description",
             "type",
             "files",
-            "has_data_access_policy"
+            "has_data_access_policy",
+            "has_study",
+            "has_experiment",
+            "has_file"
          ],
          "title": "Dataset",
          "type": "object"
@@ -335,11 +351,16 @@
             "name": {
                "description": "The name for an entity.",
                "type": "string"
+            },
+            "sex": {
+               "description": "Biological Sex of an individual",
+               "type": "string"
             }
          },
          "required": [
             "id",
-            "gender"
+            "gender",
+            "sex"
          ],
          "title": "Individual",
          "type": "object"
@@ -500,6 +521,18 @@
                "description": "The Data Access Policy that applies to this dataset.",
                "type": "string"
             },
+            "has_experiment": {
+               "description": "One or more experiments that collectively are part of the dataset",
+               "type": "string"
+            },
+            "has_file": {
+               "description": "One or more files that collectively are part of the dataset",
+               "type": "string"
+            },
+            "has_study": {
+               "description": "One or more studies that collectively are part of the dataset",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
@@ -517,7 +550,10 @@
             "description",
             "type",
             "files",
-            "has_data_access_policy"
+            "has_data_access_policy",
+            "has_study",
+            "has_experiment",
+            "has_file"
          ],
          "title": "ProcessedDataset",
          "type": "object"
@@ -697,6 +733,18 @@
                "description": "The Data Access Policy that applies to this dataset.",
                "type": "string"
             },
+            "has_experiment": {
+               "description": "One or more experiments that collectively are part of the dataset",
+               "type": "string"
+            },
+            "has_file": {
+               "description": "One or more files that collectively are part of the dataset",
+               "type": "string"
+            },
+            "has_study": {
+               "description": "One or more studies that collectively are part of the dataset",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
@@ -714,7 +762,10 @@
             "description",
             "type",
             "files",
-            "has_data_access_policy"
+            "has_data_access_policy",
+            "has_study",
+            "has_experiment",
+            "has_file"
          ],
          "title": "SyntheticDataset",
          "type": "object"

@@ -57,6 +57,9 @@ type Dataset
     type: String!
     files: [File]!
     hasDataAccessPolicy: DataAccessPolicy!
+    hasStudy: Study!
+    hasExperiment: Experiment!
+    hasFile: File!
   }
 
 type DiseaseOrPhenotypicFeature
@@ -93,6 +96,7 @@ type Individual
     id: String!
     name: String
     gender: String!
+    sex: String!
     age: Integer
   }
 
@@ -146,6 +150,9 @@ type ProcessedDataset
     type: String!
     files: [File]!
     hasDataAccessPolicy: DataAccessPolicy!
+    hasStudy: Study!
+    hasExperiment: Experiment!
+    hasFile: File!
   }
 
 type Protocol
@@ -198,6 +205,9 @@ type SyntheticDataset
     type: String!
     files: [File]!
     hasDataAccessPolicy: DataAccessPolicy!
+    hasStudy: Study!
+    hasExperiment: Experiment!
+    hasFile: File!
   }
 
 

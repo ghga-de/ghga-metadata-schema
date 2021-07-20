@@ -120,7 +120,10 @@ linkml:Nodeidentifier NONLITERAL
              <description> @linkml:String ;
              <type> @linkml:String ;
              <files> @<File> + ;
-             <has_data_access_policy> @<DataAccessPolicy>
+             <has_data_access_policy> @<DataAccessPolicy> ;
+             <has_study> @<Study> ;
+             <has_experiment> @<Experiment> ;
+             <has_file> @<File>
           ) ;
           rdf:type [ <Dataset> ]
        )
@@ -170,6 +173,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Person> ] ? ;
           <name> @linkml:String ? ;
           <gender> @linkml:String ;
+          <sex> @linkml:String ;
           <age> @linkml:Integer ?
        ) ;
        rdf:type [ <Individual> ]

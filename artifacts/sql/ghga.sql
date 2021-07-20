@@ -46,6 +46,7 @@ CREATE TABLE individual (
 	id TEXT NOT NULL, 
 	name TEXT, 
 	gender TEXT NOT NULL, 
+	sex TEXT NOT NULL, 
 	age INTEGER, 
 	PRIMARY KEY (id)
 );
@@ -192,8 +193,14 @@ CREATE TABLE dataset (
 	type TEXT NOT NULL, 
 	files TEXT NOT NULL, 
 	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_experiment) REFERENCES experiment (id), 
+	FOREIGN KEY(has_file) REFERENCES file (id)
 );
 
 CREATE TABLE processed_dataset (
@@ -203,8 +210,14 @@ CREATE TABLE processed_dataset (
 	type TEXT NOT NULL, 
 	files TEXT NOT NULL, 
 	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_experiment) REFERENCES experiment (id), 
+	FOREIGN KEY(has_file) REFERENCES file (id)
 );
 
 CREATE TABLE synthetic_dataset (
@@ -214,7 +227,13 @@ CREATE TABLE synthetic_dataset (
 	type TEXT NOT NULL, 
 	files TEXT NOT NULL, 
 	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_experiment) REFERENCES experiment (id), 
+	FOREIGN KEY(has_file) REFERENCES file (id)
 );
 

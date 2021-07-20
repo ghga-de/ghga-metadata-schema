@@ -11,11 +11,11 @@
     rdfs:label "GHGA-Metadata-Schema" ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     skos:definition "The metadata schema for the German Human Genome-Phenome Archive (GHGA)." ;
-    linkml:generation_date "2021-07-13 14:31" ;
+    linkml:generation_date "2021-07-20 09:41" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "Tue Jul 13 14:30:44 2021" ;
-    linkml:source_file_size 17552 .
+    linkml:source_file_date "Tue Jul 20 09:41:05 2021" ;
+    linkml:source_file_size 19181 .
 
 <https://w3id.org/GHGA/ProcessedDataset> a owl:Class,
         linkml:ClassDefinition ;
@@ -235,6 +235,30 @@ linkml:dataset_has_data_access_policy a owl:ObjectProperty,
     rdfs:subPropertyOf <https://w3id.org/GHGA/has_data_access_policy> ;
     skos:definition "The Data Access Policy that applies to this dataset." .
 
+linkml:dataset_has_experiment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataset_has experiment" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/GHGA/Experiment> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/has_experiment> ;
+    skos:definition "One or more experiments that collectively are part of the dataset" .
+
+linkml:dataset_has_file a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataset_has file" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/GHGA/File> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/has_file> ;
+    skos:definition "One or more files that collectively are part of the dataset" .
+
+linkml:dataset_has_study a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataset_has study" ;
+    rdfs:domain <https://w3id.org/GHGA/Dataset> ;
+    rdfs:range <https://w3id.org/GHGA/Study> ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/has_study> ;
+    skos:definition "One or more studies that collectively are part of the dataset" .
+
 linkml:dataset_title a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "dataset_title" ;
@@ -368,6 +392,14 @@ linkml:individual_gender a owl:ObjectProperty,
     rdfs:range linkml:String ;
     rdfs:subPropertyOf <https://w3id.org/GHGA/gender> ;
     skos:definition "Gender of an individual." .
+
+linkml:individual_sex a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "individual_sex" ;
+    rdfs:domain <https://w3id.org/GHGA/Individual> ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf <https://w3id.org/GHGA/sex> ;
+    skos:definition "Biological Sex of an individual" .
 
 linkml:library_layout a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -714,6 +746,18 @@ linkml:study_type a owl:ObjectProperty,
     rdfs:range <https://w3id.org/GHGA/DiseaseOrPhenotypicFeature> ;
     skos:definition "Disease or phenotype that the entity is associated with." .
 
+<https://w3id.org/GHGA/has_experiment> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has experiment" ;
+    rdfs:range <https://w3id.org/GHGA/Experiment> ;
+    skos:definition "The experiment associated with an entitiy." .
+
+<https://w3id.org/GHGA/has_file> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has file" ;
+    rdfs:range <https://w3id.org/GHGA/File> ;
+    skos:definition "The file associated with an entitiy." .
+
 <https://w3id.org/GHGA/has_library> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has library" ;
@@ -737,12 +781,6 @@ linkml:study_type a owl:ObjectProperty,
     rdfs:label "has sample" ;
     rdfs:range <https://w3id.org/GHGA/Sample> ;
     skos:definition "The sample associated with an entity." .
-
-<https://w3id.org/GHGA/has_study> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has study" ;
-    rdfs:range <https://w3id.org/GHGA/Study> ;
-    skos:definition "The study associated with an entity." .
 
 <https://w3id.org/GHGA/instrument_model> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -798,6 +836,12 @@ linkml:study_type a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:definition "Library selection process. For example, random, cDNA, etc." .
 
+<https://w3id.org/GHGA/sex> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sex" ;
+    rdfs:range linkml:String ;
+    skos:definition "The assemblage of physical properties or qualities  by which male is distinguished from female.[NCI]" .
+
 <https://w3id.org/GHGA/size> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "size" ;
@@ -846,9 +890,9 @@ linkml:study_type a owl:ObjectProperty,
     rdfs:label "cell line" ;
     rdfs:subClassOf <https://w3id.org/GHGA/BiologicalEntity> ;
     skos:definition "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history" ;
-    skos:exactMatch <http://identifiers.org/efo/0000322>,
-        <http://purl.obolibrary.org/obo/CLO_0000031>,
-        <http://semanticscience.org/resource/SIO_010054> .
+    skos:exactMatch <http://purl.obolibrary.org/obo/CLO_0000031>,
+        <http://semanticscience.org/resource/SIO_010054>,
+        <http://www.ebi.ac.uk/efo/EFO_0000322> .
 
 <https://w3id.org/GHGA/DiseaseOrPhenotypicFeature> a owl:Class,
         linkml:ClassDefinition ;
@@ -891,15 +935,21 @@ linkml:Integer a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "publication" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/title> ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/id> ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/title> ],
         <https://w3id.org/GHGA/InformationContentEntity> ;
     skos:definition "Represents a publication." .
+
+<https://w3id.org/GHGA/has_study> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has study" ;
+    rdfs:range <https://w3id.org/GHGA/Study> ;
+    skos:definition "The study associated with an entity." .
 
 <https://w3id.org/GHGA/main_contact> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -915,37 +965,18 @@ linkml:Integer a owl:Class,
             owl:onProperty <https://w3id.org/GHGA/value> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/key> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/value_type> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/key_type> ] ;
+            owl:onProperty <https://w3id.org/GHGA/key_type> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/key> ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "A key/value pair that further characterizes an entity." .
-
-<https://w3id.org/GHGA/Individual> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "individual" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/name> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty <https://w3id.org/GHGA/age> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/gender> ;
-            owl:qualifiedCardinality 1 ],
-        <https://w3id.org/GHGA/Person> ;
-    skos:altLabel "patient",
-        "subject" .
 
 <https://w3id.org/GHGA/InformationContentEntity> a owl:Class,
         linkml:ClassDefinition ;
@@ -958,12 +989,12 @@ linkml:Integer a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "data access committee" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/GHGA/Member> ;
-            owl:onProperty <https://w3id.org/GHGA/has_members> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/GHGA/Member> ;
+            owl:onProperty <https://w3id.org/GHGA/has_members> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/GHGA/Member> ;
@@ -974,6 +1005,29 @@ linkml:Integer a owl:Class,
             owl:qualifiedCardinality 1 ],
         <https://w3id.org/GHGA/Committee> ;
     skos:definition "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns." .
+
+<https://w3id.org/GHGA/Individual> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "individual" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/gender> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/name> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://w3id.org/GHGA/age> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/sex> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/Person> ;
+    skos:altLabel "patient",
+        "subject" .
 
 <https://w3id.org/GHGA/NamedThing> a owl:Class,
         linkml:ClassDefinition ;
@@ -1012,83 +1066,10 @@ linkml:Integer a owl:Class,
         <https://w3id.org/GHGA/InformationContentEntity> ;
     skos:definition "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies." .
 
-<https://w3id.org/GHGA/Dataset> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "dataset" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/type> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/GHGA/DataAccessPolicy> ;
-            owl:onProperty <https://w3id.org/GHGA/has_data_access_policy> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom <https://w3id.org/GHGA/File> ;
-                        owl:onProperty <https://w3id.org/GHGA/files> ] [ a owl:Restriction ;
-                        owl:onProperty <https://w3id.org/GHGA/files> ;
-                        owl:someValuesFrom <https://w3id.org/GHGA/File> ] ) ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/title> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/description> ;
-            owl:qualifiedCardinality 1 ],
-        <https://w3id.org/GHGA/InformationContentEntity> ;
-    skos:definition "A dataset is a collection of files that represents data generated from a particular sample." ;
-    skos:exactMatch <http://semanticscience.org/resource/SIO_000089> .
-
-<https://w3id.org/GHGA/Experiment> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "experiment" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/name> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/GHGA/Study> ;
-            owl:onProperty <https://w3id.org/GHGA/has_study> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/GHGA/Library> ;
-            owl:onProperty <https://w3id.org/GHGA/has_library> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/GHGA/Protocol> ;
-            owl:onProperty <https://w3id.org/GHGA/has_protocol> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/instrument_model> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/GHGA/Sample> ;
-            owl:onProperty <https://w3id.org/GHGA/has_sample> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/description> ],
-        <https://w3id.org/GHGA/ResearchActivity> ;
-    skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." ;
-    skos:exactMatch <http://purl.obolibrary.org/obo/NCIT_C42790>,
-        <http://semanticscience.org/resource/SIO_000994> .
-
 <https://w3id.org/GHGA/Library> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "library" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/selection> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/name> ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/source> ;
             owl:qualifiedCardinality 1 ],
@@ -1098,8 +1079,16 @@ linkml:Integer a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/selection> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/strategy> ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/name> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1119,6 +1108,119 @@ linkml:Integer a owl:Class,
     rdfs:range linkml:String ;
     skos:definition "The type of an entity." .
 
+<https://w3id.org/GHGA/description> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:definition "Description of an entity." .
+
+<https://w3id.org/GHGA/Dataset> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/Study> ;
+            owl:onProperty <https://w3id.org/GHGA/has_study> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/title> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/Experiment> ;
+            owl:onProperty <https://w3id.org/GHGA/has_experiment> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/type> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/description> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/DataAccessPolicy> ;
+            owl:onProperty <https://w3id.org/GHGA/has_data_access_policy> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/File> ;
+            owl:onProperty <https://w3id.org/GHGA/has_file> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://w3id.org/GHGA/File> ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ] [ a owl:Restriction ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ;
+                        owl:someValuesFrom <https://w3id.org/GHGA/File> ] ) ],
+        <https://w3id.org/GHGA/InformationContentEntity> ;
+    skos:definition "A dataset is a collection of files that represents data generated from a particular sample." ;
+    skos:exactMatch <http://semanticscience.org/resource/SIO_000089> .
+
+<https://w3id.org/GHGA/Experiment> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "experiment" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/description> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/GHGA/Protocol> ;
+            owl:onProperty <https://w3id.org/GHGA/has_protocol> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/instrument_model> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/Study> ;
+            owl:onProperty <https://w3id.org/GHGA/has_study> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/Sample> ;
+            owl:onProperty <https://w3id.org/GHGA/has_sample> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/Library> ;
+            owl:onProperty <https://w3id.org/GHGA/has_library> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/name> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/ResearchActivity> ;
+    skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/NCIT_C42790>,
+        <http://semanticscience.org/resource/SIO_000994> .
+
+<https://w3id.org/GHGA/Member> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "member" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/title> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/email> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/organization> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/GHGA/Member> ;
+            owl:onProperty <https://w3id.org/GHGA/main_contact> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/name> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/telephone> ;
+            owl:qualifiedCardinality 1 ],
+        <https://w3id.org/GHGA/Person> ;
+    skos:definition "Member of an organization or a committee." .
+
 <https://w3id.org/GHGA/Study> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "study" ;
@@ -1127,8 +1229,8 @@ linkml:Integer a owl:Class,
             owl:onProperty <https://w3id.org/GHGA/abstract> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/GHGA/Attribute> ;
-            owl:onProperty <https://w3id.org/GHGA/attributes> ],
+            owl:allValuesFrom <https://w3id.org/GHGA/Publication> ;
+            owl:onProperty <https://w3id.org/GHGA/publications> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1138,50 +1240,14 @@ linkml:Integer a owl:Class,
             owl:onProperty <https://w3id.org/GHGA/title> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/GHGA/Attribute> ;
+            owl:onProperty <https://w3id.org/GHGA/attributes> ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/type> ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/GHGA/Publication> ;
-            owl:onProperty <https://w3id.org/GHGA/publications> ],
         <https://w3id.org/GHGA/ResearchActivity> ;
     skos:definition "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied." .
-
-<https://w3id.org/GHGA/description> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "description" ;
-    rdfs:range linkml:String ;
-    skos:definition "Description of an entity." .
-
-<https://w3id.org/GHGA/Member> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "member" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/GHGA/Member> ;
-            owl:onProperty <https://w3id.org/GHGA/main_contact> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/organization> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/telephone> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/email> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/name> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/title> ],
-        <https://w3id.org/GHGA/Person> ;
-    skos:definition "Member of an organization or a committee." .
 
 <https://w3id.org/GHGA/name> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -1189,65 +1255,17 @@ linkml:Integer a owl:Class,
     rdfs:range linkml:String ;
     skos:definition "The name for an entity." .
 
-<https://w3id.org/GHGA/File> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "file" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/name> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/md5sum> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/size> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/type> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/format> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/file_index> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/category> ],
-        <https://w3id.org/GHGA/InformationContentEntity> ;
-    skos:altLabel "file object" .
-
 <https://w3id.org/GHGA/Sample> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/type> ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom <https://w3id.org/GHGA/File> ;
-                        owl:onProperty <https://w3id.org/GHGA/files> ] [ a owl:Restriction ;
-                        owl:onProperty <https://w3id.org/GHGA/files> ;
-                        owl:someValuesFrom <https://w3id.org/GHGA/File> ] ) ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/biosample_accession> ],
+            owl:onClass <https://w3id.org/GHGA/Individual> ;
+            owl:onProperty <https://w3id.org/GHGA/subject> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://w3id.org/GHGA/name> ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/GHGA/Individual> ;
-            owl:onProperty <https://w3id.org/GHGA/subject> ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass <https://w3id.org/GHGA/DiseaseOrPhenotypicFeature> ;
             owl:onProperty <https://w3id.org/GHGA/has_disease_of_phenotypic_feature> ;
@@ -1255,7 +1273,7 @@ linkml:Integer a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/geographical_region> ],
+            owl:onProperty <https://w3id.org/GHGA/description> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/GHGA/AnatomicalEntity> ;
@@ -1267,7 +1285,21 @@ linkml:Integer a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <https://w3id.org/GHGA/description> ],
+            owl:onProperty <https://w3id.org/GHGA/type> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/biosample_accession> ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://w3id.org/GHGA/File> ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ] [ a owl:Restriction ;
+                        owl:onProperty <https://w3id.org/GHGA/files> ;
+                        owl:someValuesFrom <https://w3id.org/GHGA/File> ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/geographical_region> ],
         <https://w3id.org/GHGA/BiologicalEntity> ;
     skos:altLabel "biosample" ;
     skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a portion of a substance like an isolate or tissue." ;
@@ -1280,6 +1312,40 @@ linkml:TypeDefinition a owl:Class ;
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
+
+<https://w3id.org/GHGA/File> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "file" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/format> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/md5sum> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/file_index> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/name> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/type> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/size> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://w3id.org/GHGA/category> ],
+        <https://w3id.org/GHGA/InformationContentEntity> ;
+    skos:altLabel "file object" .
 
 linkml:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" ;
