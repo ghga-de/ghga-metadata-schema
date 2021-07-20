@@ -207,8 +207,9 @@ classes:
         description:
           Anatomical site from which the sample was retrieved.
         range: anatomical entity
-        exact_mappings:
+        broad_mappings:
           - EFO:0000635
+
       has cell line:
         description:
           Type of cell line that was used.
@@ -222,7 +223,7 @@ classes:
           the sample was taken.
         required: true
         range: disease or phenotypic feature
-        exact_mappings: 
+        narrow_mappings: 
           - EFO:0000651
       files:
         description: >-
