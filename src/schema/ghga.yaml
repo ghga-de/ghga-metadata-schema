@@ -273,7 +273,7 @@ classes:
       - format
       - type
       - size
-      - md5sum
+      - checksum
       - file_index
       - category
     slot_usage:
@@ -286,9 +286,9 @@ classes:
       size:
         description: >-
           The file size in bytes.
-      md5sum:
+      checksum:
         description: >-
-          The MD5 Checksum for the file.
+          The checksum for the file.
       file_index:
         description: >-
           The index for this file. Commonly for BAM/VCF files.
@@ -671,9 +671,9 @@ slots:
     description: >-
       The size of a file in bytes.
 
-  md5sum:
+  checksum:
     description: >-
-      The MD5 Checksum for a file.
+      The checksum for a file.
 
   file_index:
     description: >-
