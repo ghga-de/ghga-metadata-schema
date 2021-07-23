@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-07-20 09:45
+# Generation date: 2021-07-23 07:55
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -636,7 +636,7 @@ class File(InformationContentEntity):
     format: Optional[str] = None
     type: Optional[str] = None
     size: Optional[str] = None
-    md5sum: Optional[str] = None
+    checksum: Optional[str] = None
     file_index: Optional[str] = None
     category: Optional[str] = None
 
@@ -658,8 +658,8 @@ class File(InformationContentEntity):
         if self.size is not None and not isinstance(self.size, str):
             self.size = str(self.size)
 
-        if self.md5sum is not None and not isinstance(self.md5sum, str):
-            self.md5sum = str(self.md5sum)
+        if self.checksum is not None and not isinstance(self.checksum, str):
+            self.checksum = str(self.checksum)
 
         if self.file_index is not None and not isinstance(self.file_index, str):
             self.file_index = str(self.file_index)
@@ -1200,8 +1200,8 @@ slots.format = Slot(uri=GHGA.format, name="format", curie=GHGA.curie('format'),
 slots.size = Slot(uri=GHGA.size, name="size", curie=GHGA.curie('size'),
                    model_uri=GHGA.size, domain=None, range=Optional[str])
 
-slots.md5sum = Slot(uri=GHGA.md5sum, name="md5sum", curie=GHGA.curie('md5sum'),
-                   model_uri=GHGA.md5sum, domain=None, range=Optional[str])
+slots.checksum = Slot(uri=GHGA.checksum, name="checksum", curie=GHGA.curie('checksum'),
+                   model_uri=GHGA.checksum, domain=None, range=Optional[str])
 
 slots.file_index = Slot(uri=GHGA.file_index, name="file_index", curie=GHGA.curie('file_index'),
                    model_uri=GHGA.file_index, domain=None, range=Optional[str])
@@ -1356,8 +1356,8 @@ slots.file_type = Slot(uri=GHGA.type, name="file_type", curie=GHGA.curie('type')
 slots.file_size = Slot(uri=GHGA.size, name="file_size", curie=GHGA.curie('size'),
                    model_uri=GHGA.file_size, domain=File, range=Optional[str])
 
-slots.file_md5sum = Slot(uri=GHGA.md5sum, name="file_md5sum", curie=GHGA.curie('md5sum'),
-                   model_uri=GHGA.file_md5sum, domain=File, range=Optional[str])
+slots.file_checksum = Slot(uri=GHGA.checksum, name="file_checksum", curie=GHGA.curie('checksum'),
+                   model_uri=GHGA.file_checksum, domain=File, range=Optional[str])
 
 slots.file_file_index = Slot(uri=GHGA.file_index, name="file_file_index", curie=GHGA.curie('file_index'),
                    model_uri=GHGA.file_file_index, domain=File, range=Optional[str])

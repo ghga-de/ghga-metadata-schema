@@ -36,7 +36,7 @@ CREATE TABLE file (
 	format TEXT, 
 	type TEXT, 
 	size TEXT, 
-	md5sum TEXT, 
+	checksum TEXT, 
 	file_index TEXT, 
 	category TEXT, 
 	PRIMARY KEY (id)

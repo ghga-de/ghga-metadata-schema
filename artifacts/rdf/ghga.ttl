@@ -41,20 +41,20 @@
         "semweb_context" ;
     linkml:default_prefix "GHGA" ;
     linkml:default_range <https://w3id.org/GHGA/string> ;
-    linkml:generation_date "2021-07-20 09:45"^^xsd:dateTime ;
+    linkml:generation_date "2021-07-23 07:55"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "biolink" ;
-            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
-        [ linkml:prefix_prefix "EFO" ;
+    linkml:prefixes [ linkml:prefix_prefix "EFO" ;
             linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
-        [ linkml:prefix_prefix "SIO" ;
-            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
+        [ linkml:prefix_prefix "GHGA" ;
+            linkml:prefix_reference <https://w3id.org/GHGA/> ],
+        [ linkml:prefix_prefix "biolink" ;
+            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
         [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "GHGA" ;
-            linkml:prefix_reference <https://w3id.org/GHGA/> ] ;
+        [ linkml:prefix_prefix "SIO" ;
+            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/age>,
         <https://w3id.org/GHGA/attribute_key>,
@@ -62,6 +62,7 @@
         <https://w3id.org/GHGA/attributes>,
         <https://w3id.org/GHGA/biosample_accession>,
         <https://w3id.org/GHGA/category>,
+        <https://w3id.org/GHGA/checksum>,
         <https://w3id.org/GHGA/construction_protocol>,
         <https://w3id.org/GHGA/data_access_committee_has_members>,
         <https://w3id.org/GHGA/data_access_committee_main_contact>,
@@ -88,10 +89,10 @@
         <https://w3id.org/GHGA/experiment_instrument_model>,
         <https://w3id.org/GHGA/experiment_name>,
         <https://w3id.org/GHGA/file_category>,
+        <https://w3id.org/GHGA/file_checksum>,
         <https://w3id.org/GHGA/file_file_index>,
         <https://w3id.org/GHGA/file_format>,
         <https://w3id.org/GHGA/file_index>,
-        <https://w3id.org/GHGA/file_md5sum>,
         <https://w3id.org/GHGA/file_size>,
         <https://w3id.org/GHGA/file_type>,
         <https://w3id.org/GHGA/files>,
@@ -124,7 +125,6 @@
         <https://w3id.org/GHGA/library_source>,
         <https://w3id.org/GHGA/library_strategy>,
         <https://w3id.org/GHGA/main_contact>,
-        <https://w3id.org/GHGA/md5sum>,
         <https://w3id.org/GHGA/member_main_contact>,
         <https://w3id.org/GHGA/member_name>,
         <https://w3id.org/GHGA/member_organization>,
@@ -163,8 +163,8 @@
         <https://w3id.org/GHGA/value>,
         <https://w3id.org/GHGA/value_type> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "Tue Jul 20 09:44:58 2021"^^xsd:dateTime ;
-    linkml:source_file_size 19181 ;
+    linkml:source_file_date "Fri Jul 23 07:55:18 2021"^^xsd:dateTime ;
+    linkml:source_file_size 19179 ;
     linkml:types <https://w3id.org/GHGA/boolean>,
         <https://w3id.org/GHGA/date>,
         <https://w3id.org/GHGA/datetime>,
@@ -517,6 +517,19 @@
     linkml:slot_uri <https://w3id.org/GHGA/category> ;
     linkml:usage_slot_name "category" .
 
+<https://w3id.org/GHGA/file_checksum> a linkml:SlotDefinition ;
+    skos:definition "The checksum for the file." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:alias "checksum" ;
+    linkml:domain <https://w3id.org/GHGA/File> ;
+    linkml:domain_of <https://w3id.org/GHGA/File> ;
+    linkml:is_a <https://w3id.org/GHGA/checksum> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/File> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/checksum> ;
+    linkml:usage_slot_name "checksum" .
+
 <https://w3id.org/GHGA/file_file_index> a linkml:SlotDefinition ;
     skos:definition "The index for this file. Commonly for BAM/VCF files." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -542,19 +555,6 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/format> ;
     linkml:usage_slot_name "format" .
-
-<https://w3id.org/GHGA/file_md5sum> a linkml:SlotDefinition ;
-    skos:definition "The MD5 Checksum for the file." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:alias "md5sum" ;
-    linkml:domain <https://w3id.org/GHGA/File> ;
-    linkml:domain_of <https://w3id.org/GHGA/File> ;
-    linkml:is_a <https://w3id.org/GHGA/md5sum> ;
-    linkml:is_usage_slot true ;
-    linkml:owner <https://w3id.org/GHGA/File> ;
-    linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:slot_uri <https://w3id.org/GHGA/md5sum> ;
-    linkml:usage_slot_name "md5sum" .
 
 <https://w3id.org/GHGA/file_size> a linkml:SlotDefinition ;
     skos:definition "The file size in bytes." ;
@@ -1306,6 +1306,15 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/category> .
 
+<https://w3id.org/GHGA/checksum> a linkml:SlotDefinition ;
+    skos:definition "The checksum for a file." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/checksum> ;
+    linkml:domain_of <https://w3id.org/GHGA/File> ;
+    linkml:owner <https://w3id.org/GHGA/File> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/checksum> .
+
 <https://w3id.org/GHGA/file_index> a linkml:SlotDefinition ;
     skos:definition "The index file corresponding to the file." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -1468,15 +1477,6 @@
     linkml:owner <https://w3id.org/GHGA/Library> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/layout> .
-
-<https://w3id.org/GHGA/md5sum> a linkml:SlotDefinition ;
-    skos:definition "The MD5 Checksum for a file." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/md5sum> ;
-    linkml:domain_of <https://w3id.org/GHGA/File> ;
-    linkml:owner <https://w3id.org/GHGA/File> ;
-    linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:slot_uri <https://w3id.org/GHGA/md5sum> .
 
 <https://w3id.org/GHGA/organization> a linkml:SlotDefinition ;
     skos:definition "The organization associated with a person." ;
@@ -1851,9 +1851,9 @@
     linkml:is_a <https://w3id.org/GHGA/InformationContentEntity> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/file_category>,
+        <https://w3id.org/GHGA/file_checksum>,
         <https://w3id.org/GHGA/file_file_index>,
         <https://w3id.org/GHGA/file_format>,
-        <https://w3id.org/GHGA/file_md5sum>,
         <https://w3id.org/GHGA/file_size>,
         <https://w3id.org/GHGA/file_type>,
         <https://w3id.org/GHGA/id>,

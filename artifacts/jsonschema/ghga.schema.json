@@ -297,6 +297,10 @@
                "description": "The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.",
                "type": "string"
             },
+            "checksum": {
+               "description": "The checksum for the file.",
+               "type": "string"
+            },
             "file_index": {
                "description": "The index for this file. Commonly for BAM/VCF files.",
                "type": "string"
@@ -307,10 +311,6 @@
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "md5sum": {
-               "description": "The MD5 Checksum for the file.",
                "type": "string"
             },
             "name": {

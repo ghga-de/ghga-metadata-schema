@@ -86,7 +86,7 @@ tbl_file = Table('file', metadata,
     Column('format', Text),
     Column('type', Text),
     Column('size', Text),
-    Column('md5sum', Text),
+    Column('checksum', Text),
     Column('file_index', Text),
     Column('category', Text),
 )
@@ -231,13 +231,13 @@ mapper_registry.map_imperatively(Sample, tbl_sample, properties={
 mapper_registry.map_imperatively(Study, tbl_study, properties={
 
     'publications': 
-        relationship(publication, 
+        relationship(Publication, 
                       foreign_keys=tbl_publication.columns["study_id"],
                       backref='Study'),
 
 
     'attributes': 
-        relationship(attribute, 
+        relationship(Attribute, 
                       foreign_keys=tbl_attribute.columns["study_id"],
                       backref='Study'),
 

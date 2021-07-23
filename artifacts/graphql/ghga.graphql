@@ -86,7 +86,7 @@ type File
     format: String
     type: String
     size: String
-    md5sum: String
+    checksum: String
     fileIndex: String
     category: String
   }

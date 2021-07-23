@@ -160,7 +160,7 @@ linkml:Nodeidentifier NONLITERAL
           <format> @linkml:String ? ;
           <type> @linkml:String ? ;
           <size> @linkml:String ? ;
-          <md5sum> @linkml:String ? ;
+          <checksum> @linkml:String ? ;
           <file_index> @linkml:String ? ;
           <category> @linkml:String ?
        ) ;
