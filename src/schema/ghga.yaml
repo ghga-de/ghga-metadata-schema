@@ -29,6 +29,9 @@ classes:
       of all the other classes.
     slots:
       - id
+      - xref
+      - creation date
+      - update date
 
   attribute:
     description: >-
@@ -548,6 +551,19 @@ slots:
       The publications related to an entity.
     multivalued: true
     range: publication
+
+  xref:
+    description: >-
+      Alternate identifiers for an entity.
+    multivalued: true
+
+  creation date:
+    description: >-
+      Timestamp when the entity was created in ISO 8601 format.
+
+  update date:
+    description: >-
+      Timestamp when the entity was updated in ISO 8601 format.
 
   attributes:
     description: >-
