@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-07-23 07:55
+# Generation date: 2021-08-24 11:05
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -30,11 +30,18 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+CLO = CurieNamespace('CLO', 'http://purl.obolibrary.org/obo/CLO_')
 EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/EFO_')
 GHGA = CurieNamespace('GHGA', 'https://w3id.org/GHGA/')
+IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
+NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
+OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
+SEPIO = CurieNamespace('SEPIO', 'http://purl.obolibrary.org/obo/SEPIO_')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
+UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 DEFAULT_ = GHGA
 
 
@@ -154,12 +161,25 @@ class NamedThing(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.NamedThing
 
     id: Union[str, NamedThingId] = None
+    xref: Optional[Union[str, List[str]]] = empty_list()
+    creation_date: Optional[str] = None
+    update_date: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, NamedThingId):
             self.id = NamedThingId(self.id)
+
+        if not isinstance(self.xref, list):
+            self.xref = [self.xref] if self.xref is not None else []
+        self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
+
+        if self.creation_date is not None and not isinstance(self.creation_date, str):
+            self.creation_date = str(self.creation_date)
+
+        if self.update_date is not None and not isinstance(self.update_date, str):
+            self.update_date = str(self.update_date)
 
         super().__post_init__(**kwargs)
 
@@ -1121,6 +1141,15 @@ slots.abstract = Slot(uri=GHGA.abstract, name="abstract", curie=GHGA.curie('abst
 
 slots.publications = Slot(uri=GHGA.publications, name="publications", curie=GHGA.curie('publications'),
                    model_uri=GHGA.publications, domain=None, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
+
+slots.xref = Slot(uri=GHGA.xref, name="xref", curie=GHGA.curie('xref'),
+                   model_uri=GHGA.xref, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.creation_date = Slot(uri=GHGA.creation_date, name="creation date", curie=GHGA.curie('creation_date'),
+                   model_uri=GHGA.creation_date, domain=None, range=Optional[str])
+
+slots.update_date = Slot(uri=GHGA.update_date, name="update date", curie=GHGA.curie('update_date'),
+                   model_uri=GHGA.update_date, domain=None, range=Optional[str])
 
 slots.attributes = Slot(uri=GHGA.attributes, name="attributes", curie=GHGA.curie('attributes'),
                    model_uri=GHGA.attributes, domain=None, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])

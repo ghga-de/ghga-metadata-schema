@@ -230,7 +230,10 @@ linkml:Nodeidentifier NONLITERAL
 
 <NamedThing>  (
     CLOSED {
-       (  $<NamedThing_tes> rdf:type . * ;
+       (  $<NamedThing_tes> (  <xref> @linkml:String * ;
+             <creation_date> @linkml:String ? ;
+             <update_date> @linkml:String ?
+          ) ;
           rdf:type [ <NamedThing> ]
        )
     } OR @<Activity> OR @<BiologicalEntity> OR @<Committee> OR @<InformationContentEntity> OR @<MaterialEntity> OR @<Person>

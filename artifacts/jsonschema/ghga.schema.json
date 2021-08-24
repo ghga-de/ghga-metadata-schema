@@ -7,9 +7,24 @@
          "additionalProperties": false,
          "description": "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -22,9 +37,24 @@
          "additionalProperties": false,
          "description": "An anatomical entity is an object that is a structural part (material or immaterial) of a biological entity.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -63,9 +93,24 @@
          "additionalProperties": false,
          "description": "A biological entity is a heterogeneous substance that contains genomic material or is the product of a biological process.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -78,9 +123,24 @@
          "additionalProperties": false,
          "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -93,9 +153,24 @@
          "additionalProperties": false,
          "description": "A group of people organized for a specific purpose.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -108,6 +183,10 @@
          "additionalProperties": false,
          "description": "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
@@ -129,6 +208,17 @@
             },
             "title": {
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -142,6 +232,10 @@
          "additionalProperties": false,
          "description": "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "description": {
                "description": "A short description for the Data Access Policy.",
                "type": "string"
@@ -160,6 +254,17 @@
             "policy_url": {
                "description": "The URL for the policy, if available.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -175,6 +280,10 @@
          "additionalProperties": false,
          "description": "A dataset is a collection of files that represents data generated from a particular sample.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "description": {
                "type": "string"
             },
@@ -210,6 +319,17 @@
             },
             "type": {
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -230,9 +350,24 @@
          "additionalProperties": false,
          "description": "A disease or phenotypic feature.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -245,6 +380,10 @@
          "additionalProperties": false,
          "description": "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "description": {
                "description": "A description for the experiment.",
                "type": "string"
@@ -276,6 +415,17 @@
             "name": {
                "description": "Name for the experiment.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -301,6 +451,10 @@
                "description": "The checksum for the file.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "file_index": {
                "description": "The index for this file. Commonly for BAM/VCF files.",
                "type": "string"
@@ -324,6 +478,17 @@
             "type": {
                "description": "The file type: Aligned Reads, Unaligned Reads, etc.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -340,6 +505,10 @@
                "description": "Age of an individual.",
                "type": "integer"
             },
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "gender": {
                "description": "Gender of an individual.",
                "type": "string"
@@ -355,6 +524,17 @@
             "sex": {
                "description": "Biological Sex of an individual",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -369,9 +549,24 @@
          "additionalProperties": false,
          "description": "A generically dependent continuant that is about some thing.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -386,6 +581,10 @@
          "properties": {
             "construction_protocol": {
                "description": "Description of how the library was constructed.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
                "type": "string"
             },
             "id": {
@@ -407,6 +606,17 @@
             },
             "strategy": {
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -423,9 +633,24 @@
          "additionalProperties": false,
          "description": "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -438,6 +663,10 @@
          "additionalProperties": false,
          "description": "Member of an organization or a committee.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "email": {
                "description": "Email of a person.",
                "type": "string"
@@ -461,6 +690,17 @@
             "title": {
                "description": "The title that describes an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -477,9 +717,24 @@
          "additionalProperties": false,
          "description": "A databased entity, concept or class. This is a generic class that is the root of all the other classes.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -492,9 +747,24 @@
          "additionalProperties": false,
          "description": "A member of the species Homo sapiens.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -507,6 +777,10 @@
          "additionalProperties": false,
          "description": "A dataset that is generated by processing an existing dataset.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "description": {
                "type": "string"
             },
@@ -542,6 +816,17 @@
             },
             "type": {
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -562,9 +847,24 @@
          "additionalProperties": false,
          "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -577,6 +877,10 @@
          "additionalProperties": false,
          "description": "Represents a publication.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "A PMID or DOI for the publication.",
                "type": "string"
@@ -584,6 +888,17 @@
             "title": {
                "description": "The title that describes an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -596,9 +911,24 @@
          "additionalProperties": false,
          "description": "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -613,6 +943,10 @@
          "properties": {
             "biosample_accession": {
                "description": "BioSample accession. For example, if the Sample is from EBI BioSamples.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
                "type": "string"
             },
             "description": {
@@ -656,6 +990,17 @@
             "type": {
                "description": "Type of sample: 'Case' or 'Control'.",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -682,6 +1027,10 @@
                },
                "type": "array"
             },
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
@@ -704,6 +1053,17 @@
             "type": {
                "description": "The study type. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\".",
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -719,6 +1079,10 @@
          "additionalProperties": false,
          "description": "A dataset that is built by combining one or more datasets.",
          "properties": {
+            "creation_date": {
+               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "type": "string"
+            },
             "description": {
                "type": "string"
             },
@@ -754,6 +1118,17 @@
             },
             "type": {
                "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Alternate identifiers for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [

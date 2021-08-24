@@ -1,11 +1,17 @@
 type Activity
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type AnatomicalEntity
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Attribute
@@ -19,20 +25,32 @@ type Attribute
 type BiologicalEntity
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type CellLine
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Committee
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type DataAccessCommittee
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     title: String!
     description: String
@@ -42,6 +60,9 @@ type DataAccessCommittee
 
 type DataAccessPolicy
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     description: String!
     policyText: String!
@@ -51,6 +72,9 @@ type DataAccessPolicy
 
 type Dataset
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     title: String!
     description: String!
@@ -65,10 +89,16 @@ type Dataset
 type DiseaseOrPhenotypicFeature
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Experiment
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     name: String!
     description: String
@@ -81,6 +111,9 @@ type Experiment
 
 type File
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     name: String
     format: String
@@ -93,6 +126,9 @@ type File
 
 type Individual
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     name: String
     gender: String!
@@ -103,10 +139,16 @@ type Individual
 type InformationContentEntity
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Library
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     name: String
     layout: String!
@@ -119,10 +161,16 @@ type Library
 type MaterialEntity
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Member
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     name: String!
     title: String
@@ -135,15 +183,24 @@ type Member
 type NamedThing
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Person
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type ProcessedDataset
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     title: String!
     description: String!
@@ -158,10 +215,16 @@ type ProcessedDataset
 type Protocol
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Publication
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     title: String
   }
@@ -169,10 +232,16 @@ type Publication
 type ResearchActivity
   {
     id: String!
+    xref: [String]
+    creationDate: String
+    updateDate: String
   }
 
 type Sample
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     name: String
     type: String
@@ -188,6 +257,9 @@ type Sample
 
 type Study
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     title: String!
     type: String!
@@ -199,6 +271,9 @@ type Study
 
 type SyntheticDataset
   {
+    xref: [String]
+    creationDate: String
+    updateDate: String
     id: String!
     title: String!
     description: String!
