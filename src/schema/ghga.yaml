@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 0.0.1
+version: 1.0.0a
 
 imports:
 - linkml:types
@@ -13,6 +13,7 @@ prefixes:
   SIO: http://semanticscience.org/resource/SIO_
   biolink: https://w3id.org/biolink/vocab/
   EFO: http://www.ebi.ac.uk/efo/EFO_
+  COB: http://purl.obolibrary.org/obo/COB_
 
 default_prefix: GHGA
 
@@ -24,6 +25,7 @@ default_curi_maps:
 classes:
 
   named thing:
+    aliases: ['named entity', 'entity', 'object']
     description: >-
       A databased entity, concept or class. This is a generic class that is the root
       of all the other classes.
@@ -44,8 +46,82 @@ classes:
       value:
         required: true
 
-  study:
+  planned process:
+    is_a: named thing
+    description: >-
+      A process is an entity that exists in time by occurring or happening, has temporal parts and
+      always involves and depends on some entity during the time it occurs.
+    exact_mappings:
+      - EFO:0004542
+      - OBI:0000011
+      - COB:0000082
+
+  investigation:
+    is_a: planned process
+    description: >-
+      Investigation is the process of carrying out a plan or procedure so as to discover fact
+      or information about the object of study.
+    exact_mappings:
+      - SIO:000747
+      - OBI:0000066
+    close_mappings:
+      - NCIT:C15429
+
+  data transformation:
+    is_a: planned process
+    description: >-
+      A data transformation technique used to analyze and interpret data to gain a better
+      understanding of it.
+    exact_mappings:
+      - OBI:0200000
+
+  research activity:
+    is_a: planned process
+    description: >-
+      A planned process executed in the performance of scientific research wherein
+      systematic investigations are performed to establish facts and reach new conclusions
+      about phenomena in the world.
+    exact_mappings:
+      - SEPIO:0000004
+    close_mappings:
+      - NCIT:C15429
+
+  project:
     is_a: research activity
+    description: >-
+      Any specifically defined piece of work that is undertaken or attempted to meet
+      a single requirement.
+    close_mappings:
+      - NCIT:C47885
+    slots:
+      - id
+      - title
+      - description
+      - has publication
+      - has study
+      - attributes
+    slot_usage:
+      description:
+        description: >-
+          A detailed description about this Project.
+      has publication:
+        description: >-
+          One or more Publication entities associated with this Project.
+        multivalued: true
+        range: publication
+      has study:
+        description: >-
+          One or more Study entities associated with this Project.
+        multivalued: true
+        range: experiment
+      attributes:
+        description: >-
+          Custom key/value pairs that further characterizes this Project.
+        multivalued: true
+        range: attribute
+
+  study:
+    is_a: investigation
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
       detailed examination and analysis of a subject to learn more about the phenomenon
@@ -53,124 +129,253 @@ classes:
     slots:
       - id
       - title
+      - description
       - type
-      - name
       - abstract
-      - publications
+      - has publication
+      - has experiment
+      - has analysis
       - attributes
     slot_usage:
       title:
         description: >-
-          A descriptive title for the study.
+          A descriptive title for the Study.
         required: true
+      description:
+        description: >-
+          A detailed description about this Study.
       type:
         description: >-
-          The study type. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
+          The type of Study. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
         required: true
-      name:
-        description: >-
-          A short name for the study.
       abstract:
         description: >-
-          The study abstract that describes the goals. Can also hold abstract
-          from a publication related to the study.
+          The Study abstract that describes the goals. Can also hold abstract
+          from a publication related to the Study.
         required: true
-      publications:
+      has publication:
         description: >-
-          The publication(s) associated with this study.
+          One or more Publication entities associated with this Study.
         multivalued: true
         range: publication
+      has experiment:
+        description: >-
+          One or more Experiment entities associated with this Study.
+        multivalued: true
+        range: experiment
+      has analysis:
+        description: >-
+          One or more Analysis entities associated with this Study.
+        multivalued: true
+        range: analysis
       attributes:
         description: >-
-          Custom key/value pairs that further characterizes the study.
+          Custom key/value pairs that further characterizes the Study.
         multivalued: true
         range: attribute
 
   experiment:
-    is_a: research activity
+    is_a: investigation
     description: >-
       An experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
       falsifying, or establishing the validity of a hypothesis.
     exact_mappings:
       - SIO:000994
+    close_mappings:
       - NCIT:C42790
     slots:
       - id
       - name
       - description
       - has study
-      - instrument model
-      - has library
       - has sample
-      - has protocol
+      - has technology
+      - has file
+      - has experiment process
     slot_usage:
       name:
         description: >-
-          Name for the experiment.
+          Name for the Experiment.
         required: true
       description:
         description: >-
-          A description for the experiment.
+          A description for the Experiment.
       has study:
         description: >-
-          The study associated with this experiment.
+          The Study entity associated with this Experiment.
         required: true
         range: study
-      instrument model:
-        description: >-
-          The instrument model.
-        # TODO: need to model this properly
-        required: true
-      has library:
-        description: >-
-          The library associated with this experiment.
-        required: true
-        range: library
       has sample:
         description: >-
-          The sample associated with this experiment.
+          The Sample entity associated with this Experiment.
         required: true
         range: sample
-      has protocol:
+      has technology:
         description: >-
-          The protocol associated with this experiment.
-        range: protocol
+          The Technology entity associated with this Experiment.
+        range: technology
+      has file:
+        description: >-
+          One or more Files entities that are generated as output of this Experiment.
+        multivalued: true
+        range: file
+      has experiment process:
+        description: >-
+          One or more Experiment Processes entities associated with this Experiment.
+        multivalued: true
+        range: experiment process
 
-  library:
-    is_a: material entity
+  experiment process:
+    is_a: planned process
     description: >-
-      A library that is used in an experiment protocol to generate the input
-      for an instrument.
+      An Experiment Process is a process that describes how a Sample is transformed
+      to a File via an assay. The Experiment Process also keeps track of the Protocol
+      used and the Agent that is running the experiment.
     slots:
       - id
       - name
-      - layout
-      - source
-      - selection
-      - strategy
-      - construction protocol
+      - has input
+      - has protocol
+      - has agent
+      - has output
     slot_usage:
-      name:
+      has input:
         description: >-
-          Name for the library.
-      layout:
-        required: true
-      source:
-        required: true
-      selection:
-        required: true
-      strategy:
-        required: true
+          The input to the Experiment Process. Usually a Sample entity.
+        range: sample
+      has protocol:
+        description: >-
+          The Protocol entity used by this Experiment Process.
+        range: protocol
+      has agent:
+        description: >-
+          The Agent - a software, institution, or human - that is executing or
+          responsible for executing the Experiment Process.
+        range: agent
+      has output:
+        description: >-
+          The output of this Experiment Process. Usually a File entity.
+        # TODO: what happens when we want to represent multiple samples via ExperimentProcess?
+        range: file
+
+  protocol:
+    is_a: information content entity
+    aliases: ['library protocol', 'experiment protocol']
+    description: >-
+      A plan specification which has sufficient level of detail and quantitative information
+      to communicate it between investigation agents, so that different investigation agents
+      will reliably be able to independently reproduce the process.
+    exact_mappings:
+      - OBI:0000272
+    close_mappings:
+      - NCIT:C41111
+
+  agent:
+    is_a: named thing
+    description: >-
+      An agent is something that bears some form of responsibility for an activity taking place,
+      for the existence of an entity, or for another agent's activity. Agents include a Person,
+      Organization, or Software that performs an activity.
+    slots:
+      - id
+      - name
+      - description
+      - attributes
+    exact_mappings:
+      - prov:Agent
+
+  technology:
+    is_a: information content entity
+    description: >-
+      A Technology is an abstraction that represents the instrument used for an assay. The Technology
+      entity captures instrument-specific attributes that are relevant for an Experiment entity.
+      The Technology entity may be further characterized by its children where each child has fields
+      that are relevant to that particular technology.
+    slots:
+      - id
+      - name
+      - description
+      - attributes
+
+  workflow:
+    is_a: information content entity
+    description: >-
+      A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow
+      entity captures workflow-specific attributes that are relevant for an Analysis entity.
+      The Workflow entity may be further characterized by its children where each child has fields
+      that are relevant to that particular workflow.
+
+  workflow step:
+    is_a: information content entity
+    description: >-
+      A Workflow Step represents each individual step performed in a Workflow.
+      If the Workflow is a single-step workflow then the Workflow has just one Workflow Step entity.
+      If the Workflow is a multi-step workflow then the Workflow has a Workflow Step entity for each step.
+      All Workflow step specific attributes like parameters, and metadata about execution environment
+      are captured by the Workflow Step entity.
+    slots:
+      - id
+      - name
+      - parameters
+      - attributes
+
+  biospecimen:
+    is_a: material entity
+    description: >-
+          A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
+          diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
+          the Biospecimen is derived.
+    exact_mappings:
+      - OBI:0100051
+    slots:
+      - id
+      - name
+      - description
+      - has individual
+      - has anatomical entity
+      - has disease
+      - has phenotypic feature
+    slot_usage:
+      has individual:
+        description: >-
+          The Individual entity from which this Biospecimen was derived.
+        range: individual
+      has anatomical entity:
+        description: >-
+          The Anatomical entity, that represents the site, from which the Biospecimen was retrieved.
+        range: anatomical entity
+        broad_mappings:
+          - EFO:0000635
+      has disease:
+        description: >-
+          The Disease entity that is associated with this Biospecimen at the time of retrieval
+          from the organism. Typically, a concept from Mondo Disease Ontology.
+        range: disease
+      has phenotypic feature:
+        description: >-
+          The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
+          from the organism. Typically, a concept from Human Phenotype Ontology.
+        range: phenotypic feature
+
+  disease or phenotypic feature:
+    is_a: biological quality
+    description: >-
+      Disease or Phenotypic Feature that the entity is associated with. This entity is a union
+      of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
+      are used interchangeably with Phenotype concepts or vice-versa.
+    union_of:
+      - disease
+      - phenotypic feature
+    exact_mappings:
+      - biolink:DiseaseOrPhenotypicFeature
 
   sample:
-    is_a: biological entity
+    is_a: material entity
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
-      inspection, investigation, demonstration, or trial use. This could be either
-      an individual, or sets of individuals from a population, or a portion of a
-      substance like an isolate or tissue.
-    aliases: ['biosample']
+      inspection, investigation, demonstration, or trial use. A sample is prepared from
+      a Biospecimen (isolate or tissue).
     exact_mappings:
       - SIO:001050
       - biolink:MaterialSample
@@ -179,13 +384,9 @@ classes:
       - name
       - type
       - description
-      - subject
-      - biosample accession # TODO: model as xref
-      - has anatomical site
-      - has cell line
-      - geographical region
-      - has disease of phenotypic feature
-      - files
+      - xref
+      - has individual
+      - has biospecimen
     slot_usage:
       name:
         description: >-
@@ -193,76 +394,100 @@ classes:
       type:
         description: >-
           Type of sample: 'Case' or 'Control'.
-#        range: case_control_enum
+        range: case_control_enum
       description:
         description: >-
-          Brief description of a sample.
-      subject:
+          Brief description of the Sample.
+      has individual:
         required: true
         range: individual
-      biosample accession:
+      xref:
         description: >-
-          BioSample accession. For example, if the Sample is from EBI BioSamples.
-      has anatomical site:
-        description:
-          Anatomical site from which the sample was retrieved.
-        range: anatomical entity
-        broad_mappings:
-          - EFO:0000635
-
-      has cell line:
-        description:
-          Type of cell line that was used.
-        range: cell line
-      geographical region:
-        description:
-          A geographical region associated with the sample.
-      has disease of phenotypic feature:
-        description: >-
-          The phenotype or disease associated with the individual from which
-          the sample was taken.
-        required: true
-        range: disease or phenotypic feature
-        narrow_mappings: 
-          - EFO:0000651
-      files:
-        description: >-
-          One or more files that are linked to this Sample.
+          One or more cross-references for this Sample. For example, this Sample
+          may have an EBI BioSamples accession or an EGA Sample accession.
         multivalued: true
-        range: file
-        required: true
+      has biospecimen:
+        description: >-
+          The Biospecimen from which this Sample was prepared from.
 
-  protocol:
-    is_a: information content entity
-    aliases: ['library protocol']
+  person:
+    is_a: named thing
     description: >-
-      A plan specification which has sufficient level of detail and quantitative information
-      to communicate it between investigation agents, so that different investigation agents
-      will reliably be able to independently reproduce the process.
+      A member of the species Homo sapiens.
+    slots:
+        - given name
+        - family name
+        - additional name
     exact_mappings:
-      - OBI:0000272
-      - NCIT:C41111
+      - NCIT:C25190
+      - SIO:000498
+      - prov:Person
 
   individual:
       is_a: person
       aliases: ['subject', 'patient']
+      description: >-
+        An Individual is a Person who is participating in a Study.
       slots:
-        - id
-        - name
         - gender
         - sex
         - age
+        - geographical region
+        - has parent
+        - has children
       slot_usage:
         gender:
-          description: Gender of an individual.
-          required: true
-#          range: gender_enum
+          description: Gender of an Individual.
         sex:
-          description: Biological Sex of an individual
+          description: Biological Sex of an Individual.
           required: true
-#          range: sex_enum
+          range: biological_sex_enum
         age:
-          description: Age of an individual.
+          description: Age of an Individual.
+        geographical region:
+          description: >-
+            The geographical region where the Individual is located.
+        has parent:
+          description: One or more parent for this Individual.
+        has children:
+          description: One or more children for this Individual.
+
+  donor:
+    is_a: individual
+    aliases: ['participant']
+    description: >-
+      A Donor is an Individual that participates in a research Study by donating
+      a Biospecimen. The use of the Biospecimen is restricted to the consent provided
+      by the Donor.
+
+  population:
+    is_a: material entity
+    description: >-
+      A population is a collection of individuals from the same taxonomic class living,
+      counted or sampled at a particular site or in a particular area.
+    slots:
+      - id
+      - name
+
+  family:
+    is_a: population
+    description: >-
+      A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated)
+      from a common ancestor, marriage, or adoption.
+    slots:
+      - has members
+      - proband
+    slot_usage:
+      has members:
+        description: >-
+          One or more Individuals that collectively define this Family.
+        multivalued: true
+        range: individual
+      proband:
+        description: >-
+          The Individual that is reported to have a disorder which results in the
+          Family being brought into a Study.
+        range: individual
 
   file:
     is_a: information content entity
@@ -296,10 +521,79 @@ classes:
         description: >-
           The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
 
+  analysis:
+    is_a: data transformation
+    aliases: ['data analysis']
+    description: >-
+      An Analysis is a data transformation that transforms input data to output data.
+      The workflow used to achieve this transformation and the individual steps are also captured.
+    slots:
+      - has input
+      - has study
+      - has workflow
+      - has analysis process
+      - has output
+    slot_usage:
+      has input:
+        description: >-
+          The input data File entities used in the Analysis.
+        multivalued: true
+        range: file
+      has study:
+        description: >-
+          The Study entity associated with this Analysis.
+        range: study
+      has workflow:
+        description: >-
+          The Workflow entity associated with this Analysis.
+      has analysis process:
+        description: >-
+          One or more Analysis Process entities associated with this Analysis.
+        multivalued: true
+        range: analysis process
+      has output:
+        description: >-
+          The output data File entities generated by this Analysis.
+        multivalued: true
+        range: file
+
+  analysis process:
+    is_a: planned process
+    description: >-
+      An analysis process is a process that describes how one or more Files, from a Study,
+      are transformed to another set of Files via a Workflow. The analysis process also keeps
+      track of the workflow metadata and the Agent that is running the Analysis.
+    slots:
+      - id
+      - has input
+      - has workflow step
+      - has agent
+      - has output
+    slot_usage:
+      has input:
+        description: >-
+          The input data File entities used in the Analysis Process.
+        multivalued: true
+        range: file
+      has workflow step:
+        description: >-
+          Workflow Step entity that performs a set of operations on the input data Files to generate
+          a set of output data Files.
+        range: workflow step
+      has agent:
+        description: >-
+          The Agent - a software, institution, or human - that is executing or
+          responsible for executing the workflow.
+        range: agent
+      has output:
+        description: >-
+          The output data File entities generated by the Analysis Process.
+        range: file
+
   dataset:
     is_a: information content entity
     description: >-
-      A dataset is a collection of files that represents data generated from a particular sample.
+      A Dataset is a collection of Files that is prepared for distribution.
     exact_mappings:
       - SIO:000089
     slots:
@@ -307,11 +601,7 @@ classes:
       - title
       - description
       - type
-      - files
-      - has data access policy
-      - has study
-      - has experiment
-      - has file
+      - has publication
     slot_usage:
       title:
         required: true
@@ -319,66 +609,148 @@ classes:
         required: true
       type:
         required: true
-      files:
+      has publication:
         description: >-
-          One or more files that collectively make this dataset.
-        required: true
+          One or more Publication entities associated with this Dataset.
+        range: publication
+
+  experiment dataset:
+    is_a: dataset
+    description: >-
+      An Experiment Dataset is a collection of Files linked to one or more Experiments
+      from one or more Studies.
+    slots:
+      - has data access policy
+      - has study
+      - has experiment
+      - has file
+    slot_usage:
       has data access policy:
         description: >-
-          The Data Access Policy that applies to this dataset.
+          The Data Access Policy that applies to this Dataset.
         required: true
+        multivalued: true
         range: data access policy
       has study:
         description: >-
-          One or more studies that collectively are part of the dataset
+          One or more Study entities that are referenced by this Dataset.
         required: true
+        multivalued: true
         range: study
       has experiment:
         description: >-
-          One or more experiments that collectively are part of the dataset
+          One or more Experiment entities that are referenced by this Dataset.
         required: true
+        multivalued: true
         range: experiment
       has file:
         description: >-
-          One or more files that collectively are part of the dataset
+          One or more File entities that collectively are part of this Dataset.
         required: true
+        multivalued: true
         range: file
 
-  synthetic dataset:
+  analysis dataset:
     is_a: dataset
     description: >-
-      A dataset that is built by combining one or more datasets.
-    # Note: This is experimental
+      An Analysis Dataset is a collection of Files generated from one or more Analysis
+      performed on data from one or more Studies.
+    slots:
+      - has data access policy
+      - has study
+      - has analysis
+      - has file
+    slot_usage:
+      has data access policy:
+        description: >-
+          The Data Access Policy that applies to this Dataset.
+        required: true
+        multivalued: true
+        range: data access policy
+      has study:
+        description: >-
+          One or more Study entities that are referenced by this Dataset.
+        required: true
+        multivalued: true
+        range: study
+      has experiment:
+        description: >-
+          One or more Analysis entities that are referenced by this Dataset.
+        required: true
+        multivalued: true
+        range: analysis
+      has file:
+        description: >-
+          One or more File entities that collectively are part of this Dataset.
+        required: true
+        multivalued: true
+        range: file
 
-  processed dataset:
+  aggregate dataset:
     is_a: dataset
     description: >-
-      A dataset that is generated by processing an existing dataset.
+      An Aggregate Dataset is a specialized dataset that is built by combining one
+      or more Datasets together.
+    slots:
+      - has dataset
+    slot_usage:
+      has dataset:
+        description: >-
+          One or more Datasets that constitutes this Aggregate Dataset.
+        multivalued: true
+        range: dataset
+
+  data use condition:
+    description: >-
+      Data Use Condition represents the use conditions associated with a Dataset.
+      The use permissions and modifier are captured where the modifier determines
+      the interpretation of use permissions.
+    slots:
+      - permission
+      - modifier
+    slot_usage:
+      - permission:
+          description: >-
+            Data use permission. Preferable descendants of 'DUO:0000001 data use permission'.
+      - modifier:
+          description: >-
+            Modifier for Data use permission. Preferable descendants of 'DUO:0000017 data use modifier'
 
   data access policy:
     is_a: information content entity
     description: >-
-      A data access policy specifies under which circumstances, legal or otherwise,
-      a user can have access to one or more datasets belonging to one or more studies.
+      A Data Access Policy specifies under which circumstances, legal or otherwise,
+      a user can have access to one or more Datasets belonging to one or more Studies.
     slots:
       - id
+      - name
       - description
       - policy text
       - policy url
       - has data access committee
+      - has data use condition
     slot_usage:
       description:
         description: >-
           A short description for the Data Access Policy.
         required: true
       policy text:
+        description: >-
+          The terms of data use and policy verbiage should be captured here.
         required: true
       policy url:
-        description: The URL for the policy, if available.
+        description: >-
+          URL for the policy, if available. This is useful if the terms of the policy is
+          made available online at a resolvable URL.
       has data access committee:
         description: The Data Access Committee linked to this policy.
         required: true
         range: data access committee
+      has data use condition:
+        description: >-
+          Data Use Condition entities that are associated with the Data Access Policy.
+        multivalued: true
+        range: data use condition
 
   data access committee:
     is_a: committee
@@ -387,20 +759,20 @@ classes:
       for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
     slots:
       - id
-      - title
+      - name
       - description
       - main contact
       - has members
     slot_usage:
-      title:
+      name:
         required: true
       main contact:
         description: >-
-          The main contact for the data access committee.
+          The main contact for the Data Access Committee.
         range: member
       has members:
         description: >-
-          All the members that are part of this data access committee.
+          All the members that are part of this Data Access Committee.
         multivalued: true
         range: member
 
@@ -408,97 +780,56 @@ classes:
     is_a: named thing
     description: >-
       A group of people organized for a specific purpose.
+    slots:
+      - id
+      - name
 
   member:
     is_a: person
     description: >-
       Member of an organization or a committee.
     slots:
-      - id
-      - name
-      - title
       - email
       - telephone
       - organization
     slot_usage:
       name:
+        description: >-
+          The name of the Member.
+        required: true
+      email:
+        description: >-
+          The email of the Member.
         required: true
       telephone:
+        description: >-
+          The telephone number of the Member.
         required: true
       organization:
-        required: true
-      main contact:
-        required: true
+        description: >-
+          The organization that the Member is part of.
 
   publication:
     is_a: information content entity
     description: >-
-      Represents a publication.
+      The Publication entity represents a publication. While a publication can be any
+      article that is published, the minimum expectation is that the publication has a
+      valid DOI.
     slots:
       - id
       - title
+      - xref
     slot_usage:
       id:
         description: >-
-          A PMID or DOI for the publication.
-
-  research activity:
-    is_a: activity
-    description: >-
-      A planned process executed in the performance of scientific research wherein
-      systematic investigations are performed to establish facts and reach new conclusions
-      about phenomena in the world.
-    exact_mappings:
-      - SEPIO:0000004
-      - NCIT:C15429
-
-  activity:
-    is_a: named thing
-    description: >-
-      An activity is something that occurs over a period of time and acts upon or with entities;
-      it may include consuming, processing, transforming, modifying, relocating, using, or
-      generating entities.
-    exact_mappings:
-      - prov:Activity
-      - http://purl.obolibrary.org/obo/NCIT_C43431
-
-  anatomical entity:
-    is_a: biological entity
-    description: >-
-      An anatomical entity is an object that is a structural part (material or immaterial)
-      of a biological entity.
-    exact_mappings:
-      - UBERON:0001062
-
-  cell line:
-    is_a: biological entity
-    description: >-
-      A cultured cell population that represents a genetically stable and homogenous population
-      of cultured cells that shares a common propagation history
-    exact_mappings:
-      - CLO:0000031
-      - EFO:0000322
-      - SIO:010054
-
-  biological entity:
-    is_a: named thing
-    description: >-
-      A biological entity is a heterogeneous substance that contains genomic material or
-      is the product of a biological process.
-
-  information content entity:
-    is_a: named thing
-    description: >-
-      A generically dependent continuant that is about some thing.
-    exact_mappings:
-      - IAO:0000030
-
-  disease or phenotypic feature:
-    is_a: biological entity
-    description: >-
-      A disease or phenotypic feature.
-    exact_mappings:
-      - biolink:DiseaseOrPhenotypicFeature
+          A PMID or DOI for the Publication.
+      title:
+        description: >-
+          The title for the Publication.
+      xref:
+        description: >-
+          One or more cross-references for this Publication.
+        # TODO: should xref be for all entities? To ensure capturing aliases and other local identifiers?
 
   material entity:
     is_a: named thing
@@ -508,143 +839,220 @@ classes:
     exact_mappings:
       - SIO:000004
 
-  person:
+  anatomical entity:
+    is_a: material entity
+    description: >-
+      Biological entity that is either an individual member of a biological species or constitutes
+      the structural organization of an individual member of a biological species.
+    exact_mappings:
+      - UBERON:0001062
+
+  cell line:
+    is_a: material entity
+    description: >-
+      A cultured cell population that represents a genetically stable and homogenous population
+      of cultured cells that shares a common propagation history
+    exact_mappings:
+      - CLO:0000031
+      - SIO:010054
+
+  disease:
+    is_a: disease or phenotypic feature
+    description: >-
+      A disease is a disposition to undergo pathological processes that exists in an organism
+      because of one or more disorders in that organism.
+    exact_mappings:
+      - EFO:0000408
+      - MONDO:0000001
+
+  phenotypic feature:
+    is_a: disease or phenotypic feature
+    description: >-
+      The observable form taken by some character (or group of characters) in an individual or
+      an organism, excluding pathology and disease. The detectable outward manifestations of a
+      specific genotype.
+    exact_mappings:
+      - HP:0000118
+      - EFO:0000651
+      - SIO:010056
+    close_mappings:
+      - NCIT:C16977
+
+  biological entity: # Keep or remove?
+    is_a: material entity
+    description: >-
+      A biological entity is a heterogeneous substance that contains genomic material
+      or is the product of a biological process.
+
+  biological quality:
     is_a: named thing
     description: >-
-      A member of the species Homo sapiens.
+      A biological quality is a quality held by a biological entity.
     exact_mappings:
-      - NCIT:C25190
-      - SIO:000498
-      - prov:Person
+      - SIO:000475
 
+  information content entity:
+    is_a: named thing
+    description: >-
+      A generically dependent continuant that is about some thing.
+    exact_mappings:
+      - IAO:0000030
+
+  user:
+    is_a: person
+    description: >-
+      A user in GHGA.
+    slots:
+      - email
+      - role
+    slot_usage:
+      role:
+        description: >-
+          The role of the user
+        range: user_role_enum
 
 slots:
 
   id:
-    description: >-
-      An identifier that uniquely represents an entity.
+    description: An identifier that uniquely represents an entity.
     identifier: true
     required: true
 
+  given name:
+    description: First name.
+
+  family name:
+    description: Last name.
+
+  additional name:
+    description: Additional name(s).
+
   name:
-    description: >-
-      The name for an entity.
+    description: The name for an entity.
 
   type:
-    description: >-
-      The type of an entity.
-    # Note: Not to be confused with rdf:type
+    description: The type of an entity.
+      # Note: Not to be confused with rdf:type
 
   title:
-    description: >-
-      The title that describes an entity.
+    description: The title that describes an entity.
 
   abstract:
-    description: >-
-      The abstract - a short blurb - associated with an entity.
-
-  publications:
-    description: >-
-      The publications related to an entity.
-    multivalued: true
-    range: publication
+    description: The abstract - a short blurb - associated with an entity.
 
   attributes:
-    description: >-
-      Key/value pairs corresponding to an entity.
+    description: Key/value pairs corresponding to an entity.
     multivalued: true
     range: attribute
 
-  description:
-    description: >-
-      Description of an entity.
+  parameters:
+    description: Paramaters associated with a Workflow Step entity.
+    multivalued: true
 
-  instrument model:
-    description: >-
-      The instrument on which the data was generated.
+  description:
+    description: Description of an entity.
 
   has study:
-    description: >-
-      The study associated with an entity.
+    description: The study associated with an entity.
     range: study
 
-  has library:
-    description: >-
-      The library associated with an entity.
-    range: library
+  has publication:
+    description: The Publication associated with an entity.
+    range: publication
 
   has sample:
-    description: >-
-      The sample associated with an entity.
+    description: The sample associated with an entity.
     range: sample
 
   has protocol:
-    description: >-
-      The protocol associated with an entity.
+    description: The protocol associated with an entity.
     range: protocol
 
   has experiment:
-    description: >-
-      The experiment associated with an entitiy.
+    description: The experiment associated with an entity.
     range: experiment
+
+  has analysis:
+    description: The analysis associated with an entity.
+
+  has technology:
+    description: The technology associated with an entity.
+    range: technology
+
+  has experiment process:
+    range: experiment process
+
+  has analysis process:
+    range: analysis process
 
   has file:
     description: >-
-      The file associated with an entitiy.
+      The file associated with an entity.
     range: file
 
-  layout:
-    description: >-
-      The layout of the library. Whether it is single-end, paired-end.
+  has input:
+    range: file
 
-  source:
-    description: >-
-      The source of the library. For example, Metagenome, Transcriptome, etc.
+  has output:
+    range: file
 
-  selection:
-    description: >-
-      Library selection process. For example, random, cDNA, etc.
+  has agent:
+    range: agent
 
-  strategy:
-    description: >-
-      Library strategy. For example, ChIP-Seq, RNA-Seq, DNA-Seq, etc.
+  has workflow:
+    range: workflow
 
-  construction protocol:
-    description: >-
-      Description of how the library was constructed.
+  has workflow step:
+    range: workflow step
 
-  subject:
-    description: >-
-      The subject/individual associated with an entity.
+  has dataset:
+    range: dataset
+
+  has biospecimen:
+    range: biospecimen
+
+  has individual:
+    description: The subject/individual associated with an entity.
     range: individual
 
-  biosample accession:
-    description: >-
-      BioSample accession. For example, if the Sample is from EBI BioSamples.
-
-  has anatomical site:
-    description: >-
-      Anatomical site associated with an entity.
+  has anatomical entity:
+    description: Anatomical site associated with an entity.
     range: anatomical entity
 
-  has cell line:
-    description: >-
-      Cell line associated with an entity.
-    range: cell line
-
   geographical region:
-    description: >-
-      The geographical region linked to an entity.
+    description: The geographical region linked to an entity.
 
-  has disease of phenotypic feature:
-    description: >-
-      Disease or phenotype that the entity is associated with.
-    range: disease or phenotypic feature
+  has disease:
+    description: Disease concept that the entity is associated with.
+    range: disease
 
-  files:
-    description: One or more files that are linked to an entity.
+  has phenotypic feature:
+    description: Phenotypic feature concept that the entity is associated with.
+    range: phenotypic feature
+
+  has parent:
+    description: The parent of an entity.
+
+  has children:
+    description: The children of an entity.
+
+  has data use condition:
+    description: Data Use Condition entities that are associated with an entity.
+
+  role:
+    range: user_role_enum
+
+  xref:
     multivalued: true
-    range: file
+
+  proband:
+    range: individual
+
+  permission:
+    description: Data use permission.
+
+  modifier:
+    description: Modifier for Data user permission.
 
   gender:
     description: >-
@@ -659,109 +1067,97 @@ slots:
 #    range: sex_enum
 
   age:
-    description: >-
-      The age of a person.
+    description: The age of a person.
     range: integer
 
   format:
-    description: >-
-      The format of a file.
+    description: The format of a file.
 
   size:
-    description: >-
-      The size of a file in bytes.
+    description: The size of a file in bytes.
 
   checksum:
-    description: >-
-      The checksum for a file.
+    description: The checksum for a file.
 
   file_index:
-    description: >-
-      The index file corresponding to the file.
+    description: The index file corresponding to the file.
 
   category:
-    description: >-
-      The file category.
+    description: The file category.
 
   has data access policy:
-    description: >-
-      Data Access Policy associated with an entity.
+    description: Data Access Policy associated with an entity.
     range: data access policy
 
   policy text:
-    description: >-
-      The complete text for the Data Access Policy.
+    description: The complete text for the Data Access Policy.
 
   policy url:
-    description: >-
-      Alternative to pasting the Data Access Policy text.
+    description: Alternative to pasting the Data Access Policy text.
 
   has data access committee:
-    description: >-
-      Data Access Committee associated with an entity.
+    description: Data Access Committee associated with an entity.
     range: data access committee
 
   main contact:
-    description: >-
-      The person who is the main contact for a committee.
+    description: The person who is the main contact for a committee.
     range: member
 
   has members:
-    description: >-
-      The members associated with a committee.
+    description: The members associated with a committee.
     multivalued: true
 
   telephone:
-    description: >-
-      The telephone number associated with a person.
+    description: The telephone number associated with a person.
 
   organization:
-    description: >-
-      The organization associated with a person.
+    description: The organization associated with a person.
 
   email:
-    description: >-
-      Email of a person.
+    description: Email of a person.
 
   key:
-    description: >-
-      The key of an attribute.
+    description: The key of an attribute.
 
   key type:
-    description: >-
-      The semantic type for the key of an attribute.
+    description: The semantic type for the key of an attribute.
 
   value:
-    description: >-
-      The value of an attribute
+    description: The value of an attribute
 
   value type:
-    description:
-      The semantic type for the value of an attribute.
+    description: The semantic type for the value of an attribute.
 
-#enums:
-#  sex_enum:
-#    description: sex
-#    permissible_values:
-#      "XX":
-#        description: female
-#      "XY":
-#        description: male
-#      "none":
-#        description: unspecified
-#
-#  gender_enum:
-#    description: gender
-#    permissible_values:
-#      "female":
-#        description: female
-#      "male":
-#        description: male
-#
-#  case_control_enum:
-#    description: Is sample case or control?
-#    permissible_values:
-#      "control":
-#        description: Control sample
-#      "case":
-#        description: Case sample
+enums:
+  case_control_enum:
+    description: >-
+      Enum to capture whether a Sample is to be considered as Case or Control.
+    permissible_values:
+      control:
+        description: The Sample is to be treated as Control
+      case:
+        description: The Sample is to be treated as Case
+
+  biological_sex_enum:
+    description: >-
+      The biological sex of an Individual as determined by their chromosomes.
+    permissible_values:
+      XX:
+        description: Female
+      XY:
+        description: Male
+      none:
+        description: unspecified
+
+  user_role_enum:
+    description: >-
+      Enum to capture the different roles a GHGA User can have.
+    permissible_values:
+      data requester:
+        description: >-
+          Role of a Data Requester where the user requests access
+          to one or more Datasets.
+      data steward:
+        description: >-
+          Role of a Data Steward where the user is responsible for
+          approving request from a user for one or more Datasets.
