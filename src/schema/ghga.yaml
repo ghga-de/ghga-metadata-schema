@@ -435,7 +435,11 @@ classes:
         - gender
         - sex
         - age
+        - year of birth
+        - vital status
         - geographical region
+        - ethnicity
+        - ancestry
         - has parent
         - has children
       slot_usage:
@@ -447,6 +451,15 @@ classes:
           range: biological_sex_enum
         age:
           description: Age of an Individual.
+        year of birth:
+          description: Year of Birth of an Individual.
+        vital status:
+          description: Vital status of an Individual.
+        ethnicity:
+          description: Ethnicity of an Individual.
+        ancestry:
+          description: Ancestry of an Individual.
+          # values from HANCESTRO?
         geographical region:
           description: >-
             The geographical region where the Individual is located.
@@ -1058,9 +1071,6 @@ slots:
   role:
     range: user_role_enum
 
-  xref:
-    multivalued: true
-
   proband:
     range: individual
 
@@ -1085,6 +1095,18 @@ slots:
   age:
     description: The age of a person.
     range: integer
+
+  year of birth:
+    description: Year of Birth of a person.
+
+  vital status:
+    description: Vital status of a person.
+
+  ethnicity:
+    description: Ethnicity of a person.
+
+  ancestry:
+    description: Ancestral group to which a person belongs to.
 
   format:
     description: The format of a file.
