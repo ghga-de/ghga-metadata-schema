@@ -1,15 +1,92 @@
-type Activity
+type Agent
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    name: String
+    description: String
+  }
+
+type AggregateDataset
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    title: String!
+    description: String!
+    hasFile: [File]!
+    hasPublication: [Publication]
+    type: String!
+    hasDataset: [Dataset]
+  }
+
+type Analysis
+  {
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    id: String!
+    title: String
+    description: String
+    hasInput: [File]
+    hasStudy: Study
+    hasWorkflow: Workflow
+    hasAnalysisProcess: [AnalysisProcess]
+    hasOutput: [File]
+  }
+
+type AnalysisDataset
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    title: String!
+    description: String!
+    hasFile: [File]!
+    hasPublication: [Publication]
+    type: String!
+    hasDataAccessPolicy: [DataAccessPolicy]!
+    hasStudy: [Study]!
+    hasAnalysis: String
+    hasExperiment: [Analysis]!
+  }
+
+type AnalysisProcess
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    title: String
+    hasInput: [File]
+    hasWorkflowStep: WorkflowStep
+    hasAgent: Agent
+    hasOutput: File
   }
 
 type AnatomicalEntity
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
   }
@@ -22,168 +99,355 @@ type Attribute
     valueType: String
   }
 
-type BiologicalEntity
+type BiologicalQuality
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+  }
+
+type Biospecimen
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    name: String
+    description: String
+    hasIndividual: Individual
+    hasAnatomicalEntity: AnatomicalEntity
+    hasDisease: Disease
+    hasPhenotypicFeature: PhenotypicFeature
   }
 
 type CellLine
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+  }
+
+type Cohort
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    name: String
+    hasMember: [Individual]
   }
 
 type Committee
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    name: String
   }
 
 type DataAccessCommittee
   {
+    id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
-    title: String!
+    name: String!
     description: String
     mainContact: Member
-    hasMembers: [Member]
+    hasMember: [Member]
   }
 
 type DataAccessPolicy
   {
+    id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
+    name: String
     description: String!
     policyText: String!
     policyUrl: String
     hasDataAccessCommittee: DataAccessCommittee!
+    hasDataUseCondition: [DataUseCondition]
+  }
+
+type DataTransformation
+  {
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    id: String!
+    title: String
+    description: String
+  }
+
+type DataUseCondition
+  {
+    permission: String
+    modifier: String
   }
 
 type Dataset
   {
+    id: String!
+    accession: String
     xref: [String]
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
     title: String!
     description: String!
+    hasFile: [File]!
+    hasPublication: [Publication]
     type: String!
-    files: [File]!
-    hasDataAccessPolicy: DataAccessPolicy!
-    hasStudy: Study!
-    hasExperiment: Experiment!
-    hasFile: File!
+  }
+
+type Disease
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    name: String
+    description: String
   }
 
 type DiseaseOrPhenotypicFeature
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    name: String
+    description: String
+  }
+
+type Donor
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    givenName: String
+    familyName: String
+    additionalName: String
+    gender: String
+    sex: BiologicalSexEnum!
+    age: Integer
+    yearOfBirth: String
+    vitalStatus: String
+    geographicalRegion: String
+    ethnicity: String
+    ancestry: String
+    hasParent: String
+    hasChildren: String
   }
 
 type Experiment
   {
+    id: String!
+    accession: String
     xref: [String]
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
+    title: String
+    type: String
+    hasPublication: Publication
     name: String!
     description: String
     hasStudy: Study!
-    instrumentModel: String!
-    hasLibrary: Library!
     hasSample: Sample!
+    hasTechnology: Technology
+    hasFile: [File]
+    hasExperimentProcess: [ExperimentProcess]
+  }
+
+type ExperimentDataset
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    title: String!
+    description: String!
+    hasFile: [File]!
+    hasPublication: [Publication]
+    type: String!
+    hasDataAccessPolicy: [DataAccessPolicy]!
+    hasStudy: [Study]!
+    hasExperiment: [Experiment]!
+  }
+
+type ExperimentProcess
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    title: String
+    hasInput: Sample
     hasProtocol: Protocol
+    hasAgent: Agent
+    hasOutput: File
+  }
+
+type Family
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    name: String
+    hasMember: [Individual]
+    proband: Individual
   }
 
 type File
   {
+    id: String!
+    accession: String
     xref: [String]
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
     name: String
     format: String
-    type: String
     size: String
     checksum: String
     fileIndex: String
     category: String
+    type: String
   }
 
 type Individual
   {
+    id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
-    name: String
-    gender: String!
-    sex: String!
+    givenName: String
+    familyName: String
+    additionalName: String
+    gender: String
+    sex: BiologicalSexEnum!
     age: Integer
+    yearOfBirth: String
+    vitalStatus: String
+    geographicalRegion: String
+    ethnicity: String
+    ancestry: String
+    hasParent: String
+    hasChildren: String
   }
 
 type InformationContentEntity
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
   }
 
-type Library
+type Investigation
   {
+    id: String!
+    accession: String
     xref: [String]
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
-    name: String
-    layout: String!
-    source: String!
-    selection: String!
-    strategy: String!
-    constructionProtocol: String
+    title: String
+    description: String
+    type: String
+    hasPublication: Publication
   }
 
 type MaterialEntity
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
   }
 
 type Member
   {
+    id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
-    name: String!
-    title: String
-    email: String
+    givenName: String
+    familyName: String
+    additionalName: String
+    email: String!
     telephone: String!
-    organization: String!
-    mainContact: Member!
+    organization: String
   }
 
 type NamedThing
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
   }
@@ -191,98 +455,193 @@ type NamedThing
 type Person
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    givenName: String
+    familyName: String
+    additionalName: String
+  }
+
+type PhenotypicFeature
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    name: String
+    description: String
+  }
+
+type PlannedProcess
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
   }
 
-type ProcessedDataset
+type Population
   {
+    id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    name: String
+  }
+
+type Project
+  {
     id: String!
-    title: String!
-    description: String!
-    type: String!
-    files: [File]!
-    hasDataAccessPolicy: DataAccessPolicy!
-    hasStudy: Study!
-    hasExperiment: Experiment!
-    hasFile: File!
+    accession: String
+    xref: [String]
+    type: String
+    creationDate: String
+    updateDate: String
+    title: String
+    hasStudy: [Experiment]
+    description: String
+    hasPublication: [Publication]
+    hasAttribute: [Attribute]
   }
 
 type Protocol
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
     creationDate: String
     updateDate: String
+    name: String
+    description: String
+    url: String
+    hasAttribute: [Attribute]
   }
 
 type Publication
   {
-    xref: [String]
+    accession: String
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
     title: String
+    id: String!
+    xref: [String]
   }
 
 type ResearchActivity
   {
     id: String!
+    accession: String
     xref: [String]
+    type: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    title: String
+    description: String
+    hasPublication: Publication
   }
 
 type Sample
   {
-    xref: [String]
+    id: String!
+    accession: String
+    hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    id: String!
     name: String
-    type: String
     description: String
-    subject: Individual!
-    biosampleAccession: String
-    hasAnatomicalSite: AnatomicalEntity
-    hasCellLine: CellLine
-    geographicalRegion: String
-    hasDiseaseOfPhenotypicFeature: DiseaseOrPhenotypicFeature!
-    files: [File]!
+    hasIndividual: Individual!
+    hasBiospecimen: Biospecimen
+    type: CaseControlEnum
+    xref: [String]
   }
 
 type Study
   {
+    id: String!
+    accession: String
     xref: [String]
     creationDate: String
     updateDate: String
-    id: String!
-    title: String!
-    type: String!
-    name: String
-    abstract: String!
-    publications: [Publication]
-    attributes: [Attribute]
-  }
-
-type SyntheticDataset
-  {
-    xref: [String]
-    creationDate: String
-    updateDate: String
-    id: String!
+    hasExperiment: [Experiment]
+    hasAnalysis: [Analysis]
     title: String!
     description: String!
     type: String!
-    files: [File]!
-    hasDataAccessPolicy: DataAccessPolicy!
-    hasStudy: Study!
-    hasExperiment: Experiment!
-    hasFile: File!
+    hasPublication: [Publication]
+    hasAttribute: [Attribute]
+  }
+
+type Technology
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+  }
+
+type User
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    givenName: String
+    familyName: String
+    additionalName: String
+    email: String
+    role: UserRoleEnum
+  }
+
+type Workflow
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+  }
+
+type WorkflowParameter
+  {
+    key: String
+    value: String
+  }
+
+type WorkflowStep
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    hasParameter: [WorkflowParameter]
   }
 
 

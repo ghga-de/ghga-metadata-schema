@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-08-24 11:05
+# Generation date: 2021-11-05 09:54
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -31,9 +31,12 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 CLO = CurieNamespace('CLO', 'http://purl.obolibrary.org/obo/CLO_')
+COB = CurieNamespace('COB', 'http://purl.obolibrary.org/obo/COB_')
 EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/EFO_')
 GHGA = CurieNamespace('GHGA', 'https://w3id.org/GHGA/')
+HP = CurieNamespace('HP', 'http://purl.obolibrary.org/obo/HP_')
 IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
+MONDO = CurieNamespace('MONDO', 'http://purl.obolibrary.org/obo/MONDO_')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 SEPIO = CurieNamespace('SEPIO', 'http://purl.obolibrary.org/obo/SEPIO_')
@@ -52,87 +55,39 @@ class NamedThingId(extended_str):
     pass
 
 
-class CommitteeId(NamedThingId):
+class PlannedProcessId(NamedThingId):
     pass
 
 
-class DataAccessCommitteeId(CommitteeId):
+class InvestigationId(PlannedProcessId):
     pass
 
 
-class ActivityId(NamedThingId):
+class DataTransformationId(PlannedProcessId):
     pass
 
 
-class ResearchActivityId(ActivityId):
+class ResearchActivityId(PlannedProcessId):
     pass
 
 
-class StudyId(ResearchActivityId):
+class ProjectId(ResearchActivityId):
     pass
 
 
-class ExperimentId(ResearchActivityId):
+class StudyId(InvestigationId):
     pass
 
 
-class BiologicalEntityId(NamedThingId):
+class ExperimentId(InvestigationId):
     pass
 
 
-class SampleId(BiologicalEntityId):
+class ExperimentProcessId(PlannedProcessId):
     pass
 
 
-class AnatomicalEntityId(BiologicalEntityId):
-    pass
-
-
-class CellLineId(BiologicalEntityId):
-    pass
-
-
-class InformationContentEntityId(NamedThingId):
-    pass
-
-
-class ProtocolId(InformationContentEntityId):
-    pass
-
-
-class FileId(InformationContentEntityId):
-    pass
-
-
-class DatasetId(InformationContentEntityId):
-    pass
-
-
-class SyntheticDatasetId(DatasetId):
-    pass
-
-
-class ProcessedDatasetId(DatasetId):
-    pass
-
-
-class DataAccessPolicyId(InformationContentEntityId):
-    pass
-
-
-class PublicationId(InformationContentEntityId):
-    pass
-
-
-class DiseaseOrPhenotypicFeatureId(BiologicalEntityId):
-    pass
-
-
-class MaterialEntityId(NamedThingId):
-    pass
-
-
-class LibraryId(MaterialEntityId):
+class AgentId(NamedThingId):
     pass
 
 
@@ -144,7 +99,127 @@ class IndividualId(PersonId):
     pass
 
 
+class DonorId(IndividualId):
+    pass
+
+
+class AnalysisId(DataTransformationId):
+    pass
+
+
+class AnalysisProcessId(PlannedProcessId):
+    pass
+
+
+class CommitteeId(NamedThingId):
+    pass
+
+
+class DataAccessCommitteeId(CommitteeId):
+    pass
+
+
 class MemberId(PersonId):
+    pass
+
+
+class MaterialEntityId(NamedThingId):
+    pass
+
+
+class BiospecimenId(MaterialEntityId):
+    pass
+
+
+class SampleId(MaterialEntityId):
+    pass
+
+
+class PopulationId(MaterialEntityId):
+    pass
+
+
+class FamilyId(PopulationId):
+    pass
+
+
+class CohortId(PopulationId):
+    pass
+
+
+class AnatomicalEntityId(MaterialEntityId):
+    pass
+
+
+class CellLineId(MaterialEntityId):
+    pass
+
+
+class BiologicalQualityId(NamedThingId):
+    pass
+
+
+class DiseaseOrPhenotypicFeatureId(BiologicalQualityId):
+    pass
+
+
+class DiseaseId(DiseaseOrPhenotypicFeatureId):
+    pass
+
+
+class PhenotypicFeatureId(DiseaseOrPhenotypicFeatureId):
+    pass
+
+
+class InformationContentEntityId(NamedThingId):
+    pass
+
+
+class ProtocolId(InformationContentEntityId):
+    pass
+
+
+class TechnologyId(InformationContentEntityId):
+    pass
+
+
+class WorkflowId(InformationContentEntityId):
+    pass
+
+
+class WorkflowStepId(InformationContentEntityId):
+    pass
+
+
+class FileId(InformationContentEntityId):
+    pass
+
+
+class DatasetId(InformationContentEntityId):
+    pass
+
+
+class ExperimentDatasetId(DatasetId):
+    pass
+
+
+class AnalysisDatasetId(DatasetId):
+    pass
+
+
+class AggregateDatasetId(DatasetId):
+    pass
+
+
+class DataAccessPolicyId(InformationContentEntityId):
+    pass
+
+
+class PublicationId(InformationContentEntityId):
+    pass
+
+
+class UserId(PersonId):
     pass
 
 
@@ -161,7 +236,10 @@ class NamedThing(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.NamedThing
 
     id: Union[str, NamedThingId] = None
+    accession: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
+    type: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]] = empty_list()
     creation_date: Optional[str] = None
     update_date: Optional[str] = None
 
@@ -171,9 +249,17 @@ class NamedThing(YAMLRoot):
         if not isinstance(self.id, NamedThingId):
             self.id = NamedThingId(self.id)
 
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         if self.creation_date is not None and not isinstance(self.creation_date, str):
             self.creation_date = str(self.creation_date)
@@ -222,6 +308,644 @@ class Attribute(YAMLRoot):
 
 
 @dataclass
+class PlannedProcess(NamedThing):
+    """
+    A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and
+    depends on some entity during the time it occurs.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.PlannedProcess
+    class_class_curie: ClassVar[str] = "GHGA:PlannedProcess"
+    class_name: ClassVar[str] = "planned process"
+    class_model_uri: ClassVar[URIRef] = GHGA.PlannedProcess
+
+    id: Union[str, PlannedProcessId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PlannedProcessId):
+            self.id = PlannedProcessId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Investigation(PlannedProcess):
+    """
+    Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the
+    object of study.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Investigation
+    class_class_curie: ClassVar[str] = "GHGA:Investigation"
+    class_name: ClassVar[str] = "investigation"
+    class_model_uri: ClassVar[URIRef] = GHGA.Investigation
+
+    id: Union[str, InvestigationId] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    type: Optional[str] = None
+    has_publication: Optional[Union[str, PublicationId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, InvestigationId):
+            self.id = InvestigationId(self.id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
+            self.has_publication = PublicationId(self.has_publication)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DataTransformation(PlannedProcess):
+    """
+    A data transformation technique used to analyze and interpret data to gain a better understanding of it.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.DataTransformation
+    class_class_curie: ClassVar[str] = "GHGA:DataTransformation"
+    class_name: ClassVar[str] = "data transformation"
+    class_model_uri: ClassVar[URIRef] = GHGA.DataTransformation
+
+    id: Union[str, DataTransformationId] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DataTransformationId):
+            self.id = DataTransformationId(self.id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ResearchActivity(PlannedProcess):
+    """
+    A planned process executed in the performance of scientific research wherein systematic investigations are
+    performed to establish facts and reach new conclusions about phenomena in the world.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.ResearchActivity
+    class_class_curie: ClassVar[str] = "GHGA:ResearchActivity"
+    class_name: ClassVar[str] = "research activity"
+    class_model_uri: ClassVar[URIRef] = GHGA.ResearchActivity
+
+    id: Union[str, ResearchActivityId] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    has_publication: Optional[Union[str, PublicationId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ResearchActivityId):
+            self.id = ResearchActivityId(self.id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
+            self.has_publication = PublicationId(self.has_publication)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Project(ResearchActivity):
+    """
+    Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Project
+    class_class_curie: ClassVar[str] = "GHGA:Project"
+    class_name: ClassVar[str] = "project"
+    class_model_uri: ClassVar[URIRef] = GHGA.Project
+
+    id: Union[str, ProjectId] = None
+    has_study: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
+    description: Optional[str] = None
+    has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProjectId):
+            self.id = ProjectId(self.id)
+
+        if not isinstance(self.has_study, list):
+            self.has_study = [self.has_study] if self.has_study is not None else []
+        self.has_study = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_study]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if not isinstance(self.has_publication, list):
+            self.has_publication = [self.has_publication] if self.has_publication is not None else []
+        self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Study(Investigation):
+    """
+    Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and
+    analysis of a subject to learn more about the phenomenon being studied.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Study
+    class_class_curie: ClassVar[str] = "GHGA:Study"
+    class_name: ClassVar[str] = "study"
+    class_model_uri: ClassVar[URIRef] = GHGA.Study
+
+    id: Union[str, StudyId] = None
+    title: str = None
+    description: str = None
+    type: str = None
+    has_experiment: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
+    has_analysis: Optional[Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]]] = empty_list()
+    has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, StudyId):
+            self.id = StudyId(self.id)
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if not isinstance(self.has_experiment, list):
+            self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
+        self.has_experiment = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_experiment]
+
+        if not isinstance(self.has_analysis, list):
+            self.has_analysis = [self.has_analysis] if self.has_analysis is not None else []
+        self.has_analysis = [v if isinstance(v, AnalysisId) else AnalysisId(v) for v in self.has_analysis]
+
+        if not isinstance(self.has_publication, list):
+            self.has_publication = [self.has_publication] if self.has_publication is not None else []
+        self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Experiment(Investigation):
+    """
+    An experiment is an investigation that consists of a coordinated set of actions and observations designed to
+    generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Experiment
+    class_class_curie: ClassVar[str] = "GHGA:Experiment"
+    class_name: ClassVar[str] = "experiment"
+    class_model_uri: ClassVar[URIRef] = GHGA.Experiment
+
+    id: Union[str, ExperimentId] = None
+    name: str = None
+    has_study: Union[str, StudyId] = None
+    has_sample: Union[str, SampleId] = None
+    description: Optional[str] = None
+    has_technology: Optional[Union[str, TechnologyId]] = None
+    has_file: Optional[Union[Union[str, FileId], List[Union[str, FileId]]]] = empty_list()
+    has_experiment_process: Optional[Union[Union[str, ExperimentProcessId], List[Union[str, ExperimentProcessId]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ExperimentId):
+            self.id = ExperimentId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, StudyId):
+            self.has_study = StudyId(self.has_study)
+
+        if self._is_empty(self.has_sample):
+            self.MissingRequiredField("has_sample")
+        if not isinstance(self.has_sample, SampleId):
+            self.has_sample = SampleId(self.has_sample)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.has_technology is not None and not isinstance(self.has_technology, TechnologyId):
+            self.has_technology = TechnologyId(self.has_technology)
+
+        if not isinstance(self.has_file, list):
+            self.has_file = [self.has_file] if self.has_file is not None else []
+        self.has_file = [v if isinstance(v, FileId) else FileId(v) for v in self.has_file]
+
+        if not isinstance(self.has_experiment_process, list):
+            self.has_experiment_process = [self.has_experiment_process] if self.has_experiment_process is not None else []
+        self.has_experiment_process = [v if isinstance(v, ExperimentProcessId) else ExperimentProcessId(v) for v in self.has_experiment_process]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ExperimentProcess(PlannedProcess):
+    """
+    An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The
+    Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.ExperimentProcess
+    class_class_curie: ClassVar[str] = "GHGA:ExperimentProcess"
+    class_name: ClassVar[str] = "experiment process"
+    class_model_uri: ClassVar[URIRef] = GHGA.ExperimentProcess
+
+    id: Union[str, ExperimentProcessId] = None
+    title: Optional[str] = None
+    has_input: Optional[Union[str, SampleId]] = None
+    has_protocol: Optional[Union[str, ProtocolId]] = None
+    has_agent: Optional[Union[str, AgentId]] = None
+    has_output: Optional[Union[str, FileId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ExperimentProcessId):
+            self.id = ExperimentProcessId(self.id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.has_input is not None and not isinstance(self.has_input, SampleId):
+            self.has_input = SampleId(self.has_input)
+
+        if self.has_protocol is not None and not isinstance(self.has_protocol, ProtocolId):
+            self.has_protocol = ProtocolId(self.has_protocol)
+
+        if self.has_agent is not None and not isinstance(self.has_agent, AgentId):
+            self.has_agent = AgentId(self.has_agent)
+
+        if self.has_output is not None and not isinstance(self.has_output, FileId):
+            self.has_output = FileId(self.has_output)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Agent(NamedThing):
+    """
+    An agent is something that bears some form of responsibility for an activity taking place, for the existence of an
+    entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an
+    activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Agent
+    class_class_curie: ClassVar[str] = "GHGA:Agent"
+    class_name: ClassVar[str] = "agent"
+    class_model_uri: ClassVar[URIRef] = GHGA.Agent
+
+    id: Union[str, AgentId] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AgentId):
+            self.id = AgentId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class WorkflowParameter(YAMLRoot):
+    """
+    A key/value pair that represents a parameter used in a Workflow Step.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.WorkflowParameter
+    class_class_curie: ClassVar[str] = "GHGA:WorkflowParameter"
+    class_name: ClassVar[str] = "workflow parameter"
+    class_model_uri: ClassVar[URIRef] = GHGA.WorkflowParameter
+
+    key: Optional[str] = None
+    value: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.key is not None and not isinstance(self.key, str):
+            self.key = str(self.key)
+
+        if self.value is not None and not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Person(NamedThing):
+    """
+    A member of the species Homo sapiens.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Person
+    class_class_curie: ClassVar[str] = "GHGA:Person"
+    class_name: ClassVar[str] = "person"
+    class_model_uri: ClassVar[URIRef] = GHGA.Person
+
+    id: Union[str, PersonId] = None
+    given_name: Optional[str] = None
+    family_name: Optional[str] = None
+    additional_name: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PersonId):
+            self.id = PersonId(self.id)
+
+        if self.given_name is not None and not isinstance(self.given_name, str):
+            self.given_name = str(self.given_name)
+
+        if self.family_name is not None and not isinstance(self.family_name, str):
+            self.family_name = str(self.family_name)
+
+        if self.additional_name is not None and not isinstance(self.additional_name, str):
+            self.additional_name = str(self.additional_name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Individual(Person):
+    """
+    An Individual is a Person who is participating in a Study.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Individual
+    class_class_curie: ClassVar[str] = "GHGA:Individual"
+    class_name: ClassVar[str] = "individual"
+    class_model_uri: ClassVar[URIRef] = GHGA.Individual
+
+    id: Union[str, IndividualId] = None
+    sex: Union[str, "BiologicalSexEnum"] = None
+    gender: Optional[str] = None
+    age: Optional[int] = None
+    year_of_birth: Optional[str] = None
+    vital_status: Optional[str] = None
+    geographical_region: Optional[str] = None
+    ethnicity: Optional[str] = None
+    ancestry: Optional[str] = None
+    has_parent: Optional[str] = None
+    has_children: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IndividualId):
+            self.id = IndividualId(self.id)
+
+        if self._is_empty(self.sex):
+            self.MissingRequiredField("sex")
+        if not isinstance(self.sex, BiologicalSexEnum):
+            self.sex = BiologicalSexEnum(self.sex)
+
+        if self.gender is not None and not isinstance(self.gender, str):
+            self.gender = str(self.gender)
+
+        if self.age is not None and not isinstance(self.age, int):
+            self.age = int(self.age)
+
+        if self.year_of_birth is not None and not isinstance(self.year_of_birth, str):
+            self.year_of_birth = str(self.year_of_birth)
+
+        if self.vital_status is not None and not isinstance(self.vital_status, str):
+            self.vital_status = str(self.vital_status)
+
+        if self.geographical_region is not None and not isinstance(self.geographical_region, str):
+            self.geographical_region = str(self.geographical_region)
+
+        if self.ethnicity is not None and not isinstance(self.ethnicity, str):
+            self.ethnicity = str(self.ethnicity)
+
+        if self.ancestry is not None and not isinstance(self.ancestry, str):
+            self.ancestry = str(self.ancestry)
+
+        if self.has_parent is not None and not isinstance(self.has_parent, str):
+            self.has_parent = str(self.has_parent)
+
+        if self.has_children is not None and not isinstance(self.has_children, str):
+            self.has_children = str(self.has_children)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Donor(Individual):
+    """
+    A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the
+    Biospecimen is restricted to the consent provided by the Donor.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Donor
+    class_class_curie: ClassVar[str] = "GHGA:Donor"
+    class_name: ClassVar[str] = "donor"
+    class_model_uri: ClassVar[URIRef] = GHGA.Donor
+
+    id: Union[str, DonorId] = None
+    sex: Union[str, "BiologicalSexEnum"] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DonorId):
+            self.id = DonorId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Analysis(DataTransformation):
+    """
+    An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this
+    transformation and the individual steps are also captured.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Analysis
+    class_class_curie: ClassVar[str] = "GHGA:Analysis"
+    class_name: ClassVar[str] = "analysis"
+    class_model_uri: ClassVar[URIRef] = GHGA.Analysis
+
+    id: Union[str, AnalysisId] = None
+    has_input: Optional[Union[Union[str, FileId], List[Union[str, FileId]]]] = empty_list()
+    has_study: Optional[Union[str, StudyId]] = None
+    has_workflow: Optional[Union[str, WorkflowId]] = None
+    has_analysis_process: Optional[Union[Union[str, AnalysisProcessId], List[Union[str, AnalysisProcessId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, FileId], List[Union[str, FileId]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AnalysisId):
+            self.id = AnalysisId(self.id)
+
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, FileId) else FileId(v) for v in self.has_input]
+
+        if self.has_study is not None and not isinstance(self.has_study, StudyId):
+            self.has_study = StudyId(self.has_study)
+
+        if self.has_workflow is not None and not isinstance(self.has_workflow, WorkflowId):
+            self.has_workflow = WorkflowId(self.has_workflow)
+
+        if not isinstance(self.has_analysis_process, list):
+            self.has_analysis_process = [self.has_analysis_process] if self.has_analysis_process is not None else []
+        self.has_analysis_process = [v if isinstance(v, AnalysisProcessId) else AnalysisProcessId(v) for v in self.has_analysis_process]
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, FileId) else FileId(v) for v in self.has_output]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalysisProcess(PlannedProcess):
+    """
+    An analysis process is a process that describes how one or more Files, from a Study, are transformed to another
+    set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is
+    running the Analysis.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.AnalysisProcess
+    class_class_curie: ClassVar[str] = "GHGA:AnalysisProcess"
+    class_name: ClassVar[str] = "analysis process"
+    class_model_uri: ClassVar[URIRef] = GHGA.AnalysisProcess
+
+    id: Union[str, AnalysisProcessId] = None
+    title: Optional[str] = None
+    has_input: Optional[Union[Union[str, FileId], List[Union[str, FileId]]]] = empty_list()
+    has_workflow_step: Optional[Union[str, WorkflowStepId]] = None
+    has_agent: Optional[Union[str, AgentId]] = None
+    has_output: Optional[Union[str, FileId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AnalysisProcessId):
+            self.id = AnalysisProcessId(self.id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, FileId) else FileId(v) for v in self.has_input]
+
+        if self.has_workflow_step is not None and not isinstance(self.has_workflow_step, WorkflowStepId):
+            self.has_workflow_step = WorkflowStepId(self.has_workflow_step)
+
+        if self.has_agent is not None and not isinstance(self.has_agent, AgentId):
+            self.has_agent = AgentId(self.has_agent)
+
+        if self.has_output is not None and not isinstance(self.has_output, FileId):
+            self.has_output = FileId(self.has_output)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DataUseCondition(YAMLRoot):
+    """
+    Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or
+    more terms that collectively defines the data use condition. The modifier determines the interpretation of the use
+    permission(s).
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.DataUseCondition
+    class_class_curie: ClassVar[str] = "GHGA:DataUseCondition"
+    class_name: ClassVar[str] = "data use condition"
+    class_model_uri: ClassVar[URIRef] = GHGA.DataUseCondition
+
+    permission: Optional[str] = None
+    modifier: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.permission is not None and not isinstance(self.permission, str):
+            self.permission = str(self.permission)
+
+        if self.modifier is not None and not isinstance(self.modifier, str):
+            self.modifier = str(self.modifier)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class Committee(NamedThing):
     """
     A group of people organized for a specific purpose.
@@ -234,12 +958,16 @@ class Committee(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.Committee
 
     id: Union[str, CommitteeId] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, CommitteeId):
             self.id = CommitteeId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -258,10 +986,10 @@ class DataAccessCommittee(Committee):
     class_model_uri: ClassVar[URIRef] = GHGA.DataAccessCommittee
 
     id: Union[str, DataAccessCommitteeId] = None
-    title: str = None
+    name: str = None
     description: Optional[str] = None
     main_contact: Optional[Union[str, MemberId]] = None
-    has_members: Optional[Union[Union[str, MemberId], List[Union[str, MemberId]]]] = empty_list()
+    has_member: Optional[Union[Union[str, MemberId], List[Union[str, MemberId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -269,10 +997,10 @@ class DataAccessCommittee(Committee):
         if not isinstance(self.id, DataAccessCommitteeId):
             self.id = DataAccessCommitteeId(self.id)
 
-        if self._is_empty(self.title):
-            self.MissingRequiredField("title")
-        if not isinstance(self.title, str):
-            self.title = str(self.title)
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -280,207 +1008,130 @@ class DataAccessCommittee(Committee):
         if self.main_contact is not None and not isinstance(self.main_contact, MemberId):
             self.main_contact = MemberId(self.main_contact)
 
-        if not isinstance(self.has_members, list):
-            self.has_members = [self.has_members] if self.has_members is not None else []
-        self.has_members = [v if isinstance(v, MemberId) else MemberId(v) for v in self.has_members]
+        if not isinstance(self.has_member, list):
+            self.has_member = [self.has_member] if self.has_member is not None else []
+        self.has_member = [v if isinstance(v, MemberId) else MemberId(v) for v in self.has_member]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Activity(NamedThing):
+class Member(Person):
     """
-    An activity is something that occurs over a period of time and acts upon or with entities; it may include
-    consuming, processing, transforming, modifying, relocating, using, or generating entities.
+    Member of an Organization or a Committee.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.Activity
-    class_class_curie: ClassVar[str] = "GHGA:Activity"
-    class_name: ClassVar[str] = "activity"
-    class_model_uri: ClassVar[URIRef] = GHGA.Activity
+    class_class_uri: ClassVar[URIRef] = GHGA.Member
+    class_class_curie: ClassVar[str] = "GHGA:Member"
+    class_name: ClassVar[str] = "member"
+    class_model_uri: ClassVar[URIRef] = GHGA.Member
 
-    id: Union[str, ActivityId] = None
+    id: Union[str, MemberId] = None
+    email: str = None
+    telephone: str = None
+    organization: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, ActivityId):
-            self.id = ActivityId(self.id)
+        if not isinstance(self.id, MemberId):
+            self.id = MemberId(self.id)
+
+        if self._is_empty(self.email):
+            self.MissingRequiredField("email")
+        if not isinstance(self.email, str):
+            self.email = str(self.email)
+
+        if self._is_empty(self.telephone):
+            self.MissingRequiredField("telephone")
+        if not isinstance(self.telephone, str):
+            self.telephone = str(self.telephone)
+
+        if self.organization is not None and not isinstance(self.organization, str):
+            self.organization = str(self.organization)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class ResearchActivity(Activity):
+class MaterialEntity(NamedThing):
     """
-    A planned process executed in the performance of scientific research wherein systematic investigations are
-    performed to establish facts and reach new conclusions about phenomena in the world.
+    A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has
+    mass.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.ResearchActivity
-    class_class_curie: ClassVar[str] = "GHGA:ResearchActivity"
-    class_name: ClassVar[str] = "research activity"
-    class_model_uri: ClassVar[URIRef] = GHGA.ResearchActivity
+    class_class_uri: ClassVar[URIRef] = GHGA.MaterialEntity
+    class_class_curie: ClassVar[str] = "GHGA:MaterialEntity"
+    class_name: ClassVar[str] = "material entity"
+    class_model_uri: ClassVar[URIRef] = GHGA.MaterialEntity
 
-    id: Union[str, ResearchActivityId] = None
+    id: Union[str, MaterialEntityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, ResearchActivityId):
-            self.id = ResearchActivityId(self.id)
+        if not isinstance(self.id, MaterialEntityId):
+            self.id = MaterialEntityId(self.id)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Study(ResearchActivity):
+class Biospecimen(MaterialEntity):
     """
-    Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and
-    analysis of a subject to learn more about the phenomenon being studied.
+    A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics,
+    treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is
+    derived.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.Study
-    class_class_curie: ClassVar[str] = "GHGA:Study"
-    class_name: ClassVar[str] = "study"
-    class_model_uri: ClassVar[URIRef] = GHGA.Study
+    class_class_uri: ClassVar[URIRef] = GHGA.Biospecimen
+    class_class_curie: ClassVar[str] = "GHGA:Biospecimen"
+    class_name: ClassVar[str] = "biospecimen"
+    class_model_uri: ClassVar[URIRef] = GHGA.Biospecimen
 
-    id: Union[str, StudyId] = None
-    title: str = None
-    type: str = None
-    abstract: str = None
+    id: Union[str, BiospecimenId] = None
     name: Optional[str] = None
-    publications: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
-    attributes: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+    description: Optional[str] = None
+    has_individual: Optional[Union[str, IndividualId]] = None
+    has_anatomical_entity: Optional[Union[str, AnatomicalEntityId]] = None
+    has_disease: Optional[Union[str, DiseaseId]] = None
+    has_phenotypic_feature: Optional[Union[str, PhenotypicFeatureId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, StudyId):
-            self.id = StudyId(self.id)
-
-        if self._is_empty(self.title):
-            self.MissingRequiredField("title")
-        if not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if self._is_empty(self.abstract):
-            self.MissingRequiredField("abstract")
-        if not isinstance(self.abstract, str):
-            self.abstract = str(self.abstract)
+        if not isinstance(self.id, BiospecimenId):
+            self.id = BiospecimenId(self.id)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if not isinstance(self.publications, list):
-            self.publications = [self.publications] if self.publications is not None else []
-        self.publications = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.publications]
-
-        self._normalize_inlined_as_dict(slot_name="attributes", slot_type=Attribute, key_name="key", keyed=False)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Experiment(ResearchActivity):
-    """
-    An experiment is an investigation that consists of a coordinated set of actions and observations designed to
-    generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.Experiment
-    class_class_curie: ClassVar[str] = "GHGA:Experiment"
-    class_name: ClassVar[str] = "experiment"
-    class_model_uri: ClassVar[URIRef] = GHGA.Experiment
-
-    id: Union[str, ExperimentId] = None
-    name: str = None
-    has_study: Union[str, StudyId] = None
-    instrument_model: str = None
-    has_library: Union[str, LibraryId] = None
-    has_sample: Union[str, SampleId] = None
-    description: Optional[str] = None
-    has_protocol: Optional[Union[str, ProtocolId]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ExperimentId):
-            self.id = ExperimentId(self.id)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self._is_empty(self.has_study):
-            self.MissingRequiredField("has_study")
-        if not isinstance(self.has_study, StudyId):
-            self.has_study = StudyId(self.has_study)
-
-        if self._is_empty(self.instrument_model):
-            self.MissingRequiredField("instrument_model")
-        if not isinstance(self.instrument_model, str):
-            self.instrument_model = str(self.instrument_model)
-
-        if self._is_empty(self.has_library):
-            self.MissingRequiredField("has_library")
-        if not isinstance(self.has_library, LibraryId):
-            self.has_library = LibraryId(self.has_library)
-
-        if self._is_empty(self.has_sample):
-            self.MissingRequiredField("has_sample")
-        if not isinstance(self.has_sample, SampleId):
-            self.has_sample = SampleId(self.has_sample)
-
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.has_protocol is not None and not isinstance(self.has_protocol, ProtocolId):
-            self.has_protocol = ProtocolId(self.has_protocol)
+        if self.has_individual is not None and not isinstance(self.has_individual, IndividualId):
+            self.has_individual = IndividualId(self.has_individual)
+
+        if self.has_anatomical_entity is not None and not isinstance(self.has_anatomical_entity, AnatomicalEntityId):
+            self.has_anatomical_entity = AnatomicalEntityId(self.has_anatomical_entity)
+
+        if self.has_disease is not None and not isinstance(self.has_disease, DiseaseId):
+            self.has_disease = DiseaseId(self.has_disease)
+
+        if self.has_phenotypic_feature is not None and not isinstance(self.has_phenotypic_feature, PhenotypicFeatureId):
+            self.has_phenotypic_feature = PhenotypicFeatureId(self.has_phenotypic_feature)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class BiologicalEntity(NamedThing):
-    """
-    A biological entity is a heterogeneous substance that contains genomic material or is the product of a biological
-    process.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.BiologicalEntity
-    class_class_curie: ClassVar[str] = "GHGA:BiologicalEntity"
-    class_name: ClassVar[str] = "biological entity"
-    class_model_uri: ClassVar[URIRef] = GHGA.BiologicalEntity
-
-    id: Union[str, BiologicalEntityId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, BiologicalEntityId):
-            self.id = BiologicalEntityId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Sample(BiologicalEntity):
+class Sample(MaterialEntity):
     """
     A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation,
-    demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a
-    portion of a substance like an isolate or tissue.
+    demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -490,16 +1141,12 @@ class Sample(BiologicalEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Sample
 
     id: Union[str, SampleId] = None
-    subject: Union[str, IndividualId] = None
-    has_disease_of_phenotypic_feature: Union[str, DiseaseOrPhenotypicFeatureId] = None
-    files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
+    has_individual: Union[str, IndividualId] = None
     name: Optional[str] = None
-    type: Optional[str] = None
     description: Optional[str] = None
-    biosample_accession: Optional[str] = None
-    has_anatomical_site: Optional[Union[str, AnatomicalEntityId]] = None
-    has_cell_line: Optional[Union[str, CellLineId]] = None
-    geographical_region: Optional[str] = None
+    has_biospecimen: Optional[Union[str, BiospecimenId]] = None
+    type: Optional[Union[str, "CaseControlEnum"]] = None
+    xref: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -507,50 +1154,125 @@ class Sample(BiologicalEntity):
         if not isinstance(self.id, SampleId):
             self.id = SampleId(self.id)
 
-        if self._is_empty(self.subject):
-            self.MissingRequiredField("subject")
-        if not isinstance(self.subject, IndividualId):
-            self.subject = IndividualId(self.subject)
-
-        if self._is_empty(self.has_disease_of_phenotypic_feature):
-            self.MissingRequiredField("has_disease_of_phenotypic_feature")
-        if not isinstance(self.has_disease_of_phenotypic_feature, DiseaseOrPhenotypicFeatureId):
-            self.has_disease_of_phenotypic_feature = DiseaseOrPhenotypicFeatureId(self.has_disease_of_phenotypic_feature)
-
-        if self._is_empty(self.files):
-            self.MissingRequiredField("files")
-        if not isinstance(self.files, list):
-            self.files = [self.files] if self.files is not None else []
-        self.files = [v if isinstance(v, FileId) else FileId(v) for v in self.files]
+        if self._is_empty(self.has_individual):
+            self.MissingRequiredField("has_individual")
+        if not isinstance(self.has_individual, IndividualId):
+            self.has_individual = IndividualId(self.has_individual)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.biosample_accession is not None and not isinstance(self.biosample_accession, str):
-            self.biosample_accession = str(self.biosample_accession)
+        if self.has_biospecimen is not None and not isinstance(self.has_biospecimen, BiospecimenId):
+            self.has_biospecimen = BiospecimenId(self.has_biospecimen)
 
-        if self.has_anatomical_site is not None and not isinstance(self.has_anatomical_site, AnatomicalEntityId):
-            self.has_anatomical_site = AnatomicalEntityId(self.has_anatomical_site)
+        if self.type is not None and not isinstance(self.type, CaseControlEnum):
+            self.type = CaseControlEnum(self.type)
 
-        if self.has_cell_line is not None and not isinstance(self.has_cell_line, CellLineId):
-            self.has_cell_line = CellLineId(self.has_cell_line)
-
-        if self.geographical_region is not None and not isinstance(self.geographical_region, str):
-            self.geographical_region = str(self.geographical_region)
+        if not isinstance(self.xref, list):
+            self.xref = [self.xref] if self.xref is not None else []
+        self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class AnatomicalEntity(BiologicalEntity):
+class Population(MaterialEntity):
     """
-    An anatomical entity is an object that is a structural part (material or immaterial) of a biological entity.
+    A population is a collection of individuals from the same taxonomic class living, counted or sampled at a
+    particular site or in a particular area.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Population
+    class_class_curie: ClassVar[str] = "GHGA:Population"
+    class_name: ClassVar[str] = "population"
+    class_model_uri: ClassVar[URIRef] = GHGA.Population
+
+    id: Union[str, PopulationId] = None
+    name: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PopulationId):
+            self.id = PopulationId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Family(Population):
+    """
+    A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common
+    ancestor, marriage, or adoption.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Family
+    class_class_curie: ClassVar[str] = "GHGA:Family"
+    class_name: ClassVar[str] = "family"
+    class_model_uri: ClassVar[URIRef] = GHGA.Family
+
+    id: Union[str, FamilyId] = None
+    has_member: Optional[Union[Union[str, IndividualId], List[Union[str, IndividualId]]]] = empty_list()
+    proband: Optional[Union[str, IndividualId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FamilyId):
+            self.id = FamilyId(self.id)
+
+        if not isinstance(self.has_member, list):
+            self.has_member = [self.has_member] if self.has_member is not None else []
+        self.has_member = [v if isinstance(v, IndividualId) else IndividualId(v) for v in self.has_member]
+
+        if self.proband is not None and not isinstance(self.proband, IndividualId):
+            self.proband = IndividualId(self.proband)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Cohort(Population):
+    """
+    A cohort is a collection of individuals that share a common characteristic/observation and have been grouped
+    together for a research study/investigation.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Cohort
+    class_class_curie: ClassVar[str] = "GHGA:Cohort"
+    class_name: ClassVar[str] = "cohort"
+    class_model_uri: ClassVar[URIRef] = GHGA.Cohort
+
+    id: Union[str, CohortId] = None
+    has_member: Optional[Union[Union[str, IndividualId], List[Union[str, IndividualId]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CohortId):
+            self.id = CohortId(self.id)
+
+        if not isinstance(self.has_member, list):
+            self.has_member = [self.has_member] if self.has_member is not None else []
+        self.has_member = [v if isinstance(v, IndividualId) else IndividualId(v) for v in self.has_member]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnatomicalEntity(MaterialEntity):
+    """
+    Biological entity that is either an individual member of a biological species or constitutes the structural
+    organization of an individual member of a biological species.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -571,10 +1293,10 @@ class AnatomicalEntity(BiologicalEntity):
 
 
 @dataclass
-class CellLine(BiologicalEntity):
+class CellLine(MaterialEntity):
     """
     A cultured cell population that represents a genetically stable and homogenous population of cultured cells that
-    shares a common propagation history
+    shares a common propagation history.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -590,6 +1312,110 @@ class CellLine(BiologicalEntity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, CellLineId):
             self.id = CellLineId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BiologicalQuality(NamedThing):
+    """
+    A biological quality is a quality held by a biological entity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.BiologicalQuality
+    class_class_curie: ClassVar[str] = "GHGA:BiologicalQuality"
+    class_name: ClassVar[str] = "biological quality"
+    class_model_uri: ClassVar[URIRef] = GHGA.BiologicalQuality
+
+    id: Union[str, BiologicalQualityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BiologicalQualityId):
+            self.id = BiologicalQualityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DiseaseOrPhenotypicFeature(BiologicalQuality):
+    """
+    Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic
+    Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype
+    concepts or vice-versa.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.DiseaseOrPhenotypicFeature
+    class_class_curie: ClassVar[str] = "GHGA:DiseaseOrPhenotypicFeature"
+    class_name: ClassVar[str] = "disease or phenotypic feature"
+    class_model_uri: ClassVar[URIRef] = GHGA.DiseaseOrPhenotypicFeature
+
+    id: Union[str, DiseaseOrPhenotypicFeatureId] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DiseaseOrPhenotypicFeatureId):
+            self.id = DiseaseOrPhenotypicFeatureId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Disease(DiseaseOrPhenotypicFeature):
+    """
+    A disease is a disposition to undergo pathological processes that exists in an organism because of one or more
+    disorders in that organism.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Disease
+    class_class_curie: ClassVar[str] = "GHGA:Disease"
+    class_name: ClassVar[str] = "disease"
+    class_model_uri: ClassVar[URIRef] = GHGA.Disease
+
+    id: Union[str, DiseaseId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DiseaseId):
+            self.id = DiseaseId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class PhenotypicFeature(DiseaseOrPhenotypicFeature):
+    """
+    The observable form taken by some character (or group of characters) in an individual or an organism, excluding
+    pathology and disease. The detectable outward manifestations of a specific genotype.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.PhenotypicFeature
+    class_class_curie: ClassVar[str] = "GHGA:PhenotypicFeature"
+    class_name: ClassVar[str] = "phenotypic feature"
+    class_model_uri: ClassVar[URIRef] = GHGA.PhenotypicFeature
+
+    id: Union[str, PhenotypicFeatureId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PhenotypicFeatureId):
+            self.id = PhenotypicFeatureId(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -632,12 +1458,110 @@ class Protocol(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Protocol
 
     id: Union[str, ProtocolId] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
+    url: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProtocolId):
             self.id = ProtocolId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.url is not None and not isinstance(self.url, str):
+            self.url = str(self.url)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Technology(InformationContentEntity):
+    """
+    A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures
+    instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further
+    characterized by its children where each child has fields that are relevant to that particular technology.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Technology
+    class_class_curie: ClassVar[str] = "GHGA:Technology"
+    class_name: ClassVar[str] = "technology"
+    class_model_uri: ClassVar[URIRef] = GHGA.Technology
+
+    id: Union[str, TechnologyId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TechnologyId):
+            self.id = TechnologyId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Workflow(InformationContentEntity):
+    """
+    A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity
+    captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further
+    characterized by its children where each child has fields that are relevant to that particular workflow.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Workflow
+    class_class_curie: ClassVar[str] = "GHGA:Workflow"
+    class_name: ClassVar[str] = "workflow"
+    class_model_uri: ClassVar[URIRef] = GHGA.Workflow
+
+    id: Union[str, WorkflowId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, WorkflowId):
+            self.id = WorkflowId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class WorkflowStep(InformationContentEntity):
+    """
+    A Workflow Step represents each individual step performed in a Workflow. If the Workflow is a single-step workflow
+    then the Workflow has just one Workflow Step entity. If the Workflow is a multi-step workflow then the Workflow
+    has a Workflow Step entity for each step. All Workflow step specific attributes like parameters, and metadata
+    about execution environment are captured by the Workflow Step entity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.WorkflowStep
+    class_class_curie: ClassVar[str] = "GHGA:WorkflowStep"
+    class_name: ClassVar[str] = "workflow step"
+    class_model_uri: ClassVar[URIRef] = GHGA.WorkflowStep
+
+    id: Union[str, WorkflowStepId] = None
+    has_parameter: Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, WorkflowStepId):
+            self.id = WorkflowStepId(self.id)
+
+        if not isinstance(self.has_parameter, list):
+            self.has_parameter = [self.has_parameter] if self.has_parameter is not None else []
+        self.has_parameter = [v if isinstance(v, WorkflowParameter) else WorkflowParameter(**as_dict(v)) for v in self.has_parameter]
 
         super().__post_init__(**kwargs)
 
@@ -654,11 +1578,11 @@ class File(InformationContentEntity):
     id: Union[str, FileId] = None
     name: Optional[str] = None
     format: Optional[str] = None
-    type: Optional[str] = None
     size: Optional[str] = None
     checksum: Optional[str] = None
     file_index: Optional[str] = None
     category: Optional[str] = None
+    type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -672,9 +1596,6 @@ class File(InformationContentEntity):
         if self.format is not None and not isinstance(self.format, str):
             self.format = str(self.format)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
         if self.size is not None and not isinstance(self.size, str):
             self.size = str(self.size)
 
@@ -687,13 +1608,16 @@ class File(InformationContentEntity):
         if self.category is not None and not isinstance(self.category, str):
             self.category = str(self.category)
 
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
 class Dataset(InformationContentEntity):
     """
-    A dataset is a collection of files that represents data generated from a particular sample.
+    A Dataset is a collection of Files that is prepared for distribution.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -705,12 +1629,9 @@ class Dataset(InformationContentEntity):
     id: Union[str, DatasetId] = None
     title: str = None
     description: str = None
+    has_file: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     type: str = None
-    files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
-    has_data_access_policy: Union[str, DataAccessPolicyId] = None
-    has_study: Union[str, StudyId] = None
-    has_experiment: Union[str, ExperimentId] = None
-    has_file: Union[str, FileId] = None
+    has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -728,98 +1649,153 @@ class Dataset(InformationContentEntity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.has_file):
+            self.MissingRequiredField("has_file")
+        if not isinstance(self.has_file, list):
+            self.has_file = [self.has_file] if self.has_file is not None else []
+        self.has_file = [v if isinstance(v, FileId) else FileId(v) for v in self.has_file]
+
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         if not isinstance(self.type, str):
             self.type = str(self.type)
 
-        if self._is_empty(self.files):
-            self.MissingRequiredField("files")
-        if not isinstance(self.files, list):
-            self.files = [self.files] if self.files is not None else []
-        self.files = [v if isinstance(v, FileId) else FileId(v) for v in self.files]
+        if not isinstance(self.has_publication, list):
+            self.has_publication = [self.has_publication] if self.has_publication is not None else []
+        self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ExperimentDataset(Dataset):
+    """
+    An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.ExperimentDataset
+    class_class_curie: ClassVar[str] = "GHGA:ExperimentDataset"
+    class_name: ClassVar[str] = "experiment dataset"
+    class_model_uri: ClassVar[URIRef] = GHGA.ExperimentDataset
+
+    id: Union[str, ExperimentDatasetId] = None
+    title: str = None
+    description: str = None
+    has_file: Union[Union[str, FileId], List[Union[str, FileId]]] = None
+    type: str = None
+    has_data_access_policy: Union[Union[str, DataAccessPolicyId], List[Union[str, DataAccessPolicyId]]] = None
+    has_study: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
+    has_experiment: Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ExperimentDatasetId):
+            self.id = ExperimentDatasetId(self.id)
 
         if self._is_empty(self.has_data_access_policy):
             self.MissingRequiredField("has_data_access_policy")
-        if not isinstance(self.has_data_access_policy, DataAccessPolicyId):
-            self.has_data_access_policy = DataAccessPolicyId(self.has_data_access_policy)
+        if not isinstance(self.has_data_access_policy, list):
+            self.has_data_access_policy = [self.has_data_access_policy] if self.has_data_access_policy is not None else []
+        self.has_data_access_policy = [v if isinstance(v, DataAccessPolicyId) else DataAccessPolicyId(v) for v in self.has_data_access_policy]
 
         if self._is_empty(self.has_study):
             self.MissingRequiredField("has_study")
-        if not isinstance(self.has_study, StudyId):
-            self.has_study = StudyId(self.has_study)
+        if not isinstance(self.has_study, list):
+            self.has_study = [self.has_study] if self.has_study is not None else []
+        self.has_study = [v if isinstance(v, StudyId) else StudyId(v) for v in self.has_study]
 
         if self._is_empty(self.has_experiment):
             self.MissingRequiredField("has_experiment")
-        if not isinstance(self.has_experiment, ExperimentId):
-            self.has_experiment = ExperimentId(self.has_experiment)
-
-        if self._is_empty(self.has_file):
-            self.MissingRequiredField("has_file")
-        if not isinstance(self.has_file, FileId):
-            self.has_file = FileId(self.has_file)
+        if not isinstance(self.has_experiment, list):
+            self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
+        self.has_experiment = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_experiment]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class SyntheticDataset(Dataset):
+class AnalysisDataset(Dataset):
     """
-    A dataset that is built by combining one or more datasets.
+    An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or
+    more Studies.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.SyntheticDataset
-    class_class_curie: ClassVar[str] = "GHGA:SyntheticDataset"
-    class_name: ClassVar[str] = "synthetic dataset"
-    class_model_uri: ClassVar[URIRef] = GHGA.SyntheticDataset
+    class_class_uri: ClassVar[URIRef] = GHGA.AnalysisDataset
+    class_class_curie: ClassVar[str] = "GHGA:AnalysisDataset"
+    class_name: ClassVar[str] = "analysis dataset"
+    class_model_uri: ClassVar[URIRef] = GHGA.AnalysisDataset
 
-    id: Union[str, SyntheticDatasetId] = None
+    id: Union[str, AnalysisDatasetId] = None
     title: str = None
     description: str = None
+    has_file: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     type: str = None
-    files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
-    has_data_access_policy: Union[str, DataAccessPolicyId] = None
-    has_study: Union[str, StudyId] = None
-    has_experiment: Union[str, ExperimentId] = None
-    has_file: Union[str, FileId] = None
+    has_data_access_policy: Union[Union[str, DataAccessPolicyId], List[Union[str, DataAccessPolicyId]]] = None
+    has_study: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
+    has_experiment: Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]] = None
+    has_analysis: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, SyntheticDatasetId):
-            self.id = SyntheticDatasetId(self.id)
+        if not isinstance(self.id, AnalysisDatasetId):
+            self.id = AnalysisDatasetId(self.id)
+
+        if self._is_empty(self.has_data_access_policy):
+            self.MissingRequiredField("has_data_access_policy")
+        if not isinstance(self.has_data_access_policy, list):
+            self.has_data_access_policy = [self.has_data_access_policy] if self.has_data_access_policy is not None else []
+        self.has_data_access_policy = [v if isinstance(v, DataAccessPolicyId) else DataAccessPolicyId(v) for v in self.has_data_access_policy]
+
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, list):
+            self.has_study = [self.has_study] if self.has_study is not None else []
+        self.has_study = [v if isinstance(v, StudyId) else StudyId(v) for v in self.has_study]
+
+        if self._is_empty(self.has_experiment):
+            self.MissingRequiredField("has_experiment")
+        if not isinstance(self.has_experiment, list):
+            self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
+        self.has_experiment = [v if isinstance(v, AnalysisId) else AnalysisId(v) for v in self.has_experiment]
+
+        if self.has_analysis is not None and not isinstance(self.has_analysis, str):
+            self.has_analysis = str(self.has_analysis)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class ProcessedDataset(Dataset):
+class AggregateDataset(Dataset):
     """
-    A dataset that is generated by processing an existing dataset.
+    An Aggregate Dataset is a specialized dataset that is built by combining one or more Datasets together.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.ProcessedDataset
-    class_class_curie: ClassVar[str] = "GHGA:ProcessedDataset"
-    class_name: ClassVar[str] = "processed dataset"
-    class_model_uri: ClassVar[URIRef] = GHGA.ProcessedDataset
+    class_class_uri: ClassVar[URIRef] = GHGA.AggregateDataset
+    class_class_curie: ClassVar[str] = "GHGA:AggregateDataset"
+    class_name: ClassVar[str] = "aggregate dataset"
+    class_model_uri: ClassVar[URIRef] = GHGA.AggregateDataset
 
-    id: Union[str, ProcessedDatasetId] = None
+    id: Union[str, AggregateDatasetId] = None
     title: str = None
     description: str = None
+    has_file: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     type: str = None
-    files: Union[Union[str, FileId], List[Union[str, FileId]]] = None
-    has_data_access_policy: Union[str, DataAccessPolicyId] = None
-    has_study: Union[str, StudyId] = None
-    has_experiment: Union[str, ExperimentId] = None
-    has_file: Union[str, FileId] = None
+    has_dataset: Optional[Union[Union[str, DatasetId], List[Union[str, DatasetId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, ProcessedDatasetId):
-            self.id = ProcessedDatasetId(self.id)
+        if not isinstance(self.id, AggregateDatasetId):
+            self.id = AggregateDatasetId(self.id)
+
+        if not isinstance(self.has_dataset, list):
+            self.has_dataset = [self.has_dataset] if self.has_dataset is not None else []
+        self.has_dataset = [v if isinstance(v, DatasetId) else DatasetId(v) for v in self.has_dataset]
 
         super().__post_init__(**kwargs)
 
@@ -827,8 +1803,8 @@ class ProcessedDataset(Dataset):
 @dataclass
 class DataAccessPolicy(InformationContentEntity):
     """
-    A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or
-    more datasets belonging to one or more studies.
+    A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or
+    more Datasets belonging to one or more Studies.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -841,7 +1817,9 @@ class DataAccessPolicy(InformationContentEntity):
     description: str = None
     policy_text: str = None
     has_data_access_committee: Union[str, DataAccessCommitteeId] = None
+    name: Optional[str] = None
     policy_url: Optional[str] = None
+    has_data_use_condition: Optional[Union[Union[dict, DataUseCondition], List[Union[dict, DataUseCondition]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -864,8 +1842,15 @@ class DataAccessPolicy(InformationContentEntity):
         if not isinstance(self.has_data_access_committee, DataAccessCommitteeId):
             self.has_data_access_committee = DataAccessCommitteeId(self.has_data_access_committee)
 
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
         if self.policy_url is not None and not isinstance(self.policy_url, str):
             self.policy_url = str(self.policy_url)
+
+        if not isinstance(self.has_data_use_condition, list):
+            self.has_data_use_condition = [self.has_data_use_condition] if self.has_data_use_condition is not None else []
+        self.has_data_use_condition = [v if isinstance(v, DataUseCondition) else DataUseCondition(**as_dict(v)) for v in self.has_data_use_condition]
 
         super().__post_init__(**kwargs)
 
@@ -873,7 +1858,8 @@ class DataAccessPolicy(InformationContentEntity):
 @dataclass
 class Publication(InformationContentEntity):
     """
-    Represents a publication.
+    The Publication entity represents a publication. While a publication can be any article that is published, the
+    minimum expectation is that the publication has a valid DOI.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -884,6 +1870,7 @@ class Publication(InformationContentEntity):
 
     id: Union[str, PublicationId] = None
     title: Optional[str] = None
+    xref: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -894,231 +1881,92 @@ class Publication(InformationContentEntity):
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
 
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class DiseaseOrPhenotypicFeature(BiologicalEntity):
-    """
-    A disease or phenotypic feature.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.DiseaseOrPhenotypicFeature
-    class_class_curie: ClassVar[str] = "GHGA:DiseaseOrPhenotypicFeature"
-    class_name: ClassVar[str] = "disease or phenotypic feature"
-    class_model_uri: ClassVar[URIRef] = GHGA.DiseaseOrPhenotypicFeature
-
-    id: Union[str, DiseaseOrPhenotypicFeatureId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DiseaseOrPhenotypicFeatureId):
-            self.id = DiseaseOrPhenotypicFeatureId(self.id)
+        if not isinstance(self.xref, list):
+            self.xref = [self.xref] if self.xref is not None else []
+        self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class MaterialEntity(NamedThing):
+class User(Person):
     """
-    A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has
-    mass.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.MaterialEntity
-    class_class_curie: ClassVar[str] = "GHGA:MaterialEntity"
-    class_name: ClassVar[str] = "material entity"
-    class_model_uri: ClassVar[URIRef] = GHGA.MaterialEntity
-
-    id: Union[str, MaterialEntityId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MaterialEntityId):
-            self.id = MaterialEntityId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Library(MaterialEntity):
-    """
-    A library that is used in an experiment protocol to generate the input for an instrument.
+    A user in GHGA.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.Library
-    class_class_curie: ClassVar[str] = "GHGA:Library"
-    class_name: ClassVar[str] = "library"
-    class_model_uri: ClassVar[URIRef] = GHGA.Library
+    class_class_uri: ClassVar[URIRef] = GHGA.User
+    class_class_curie: ClassVar[str] = "GHGA:User"
+    class_name: ClassVar[str] = "user"
+    class_model_uri: ClassVar[URIRef] = GHGA.User
 
-    id: Union[str, LibraryId] = None
-    layout: str = None
-    source: str = None
-    selection: str = None
-    strategy: str = None
-    name: Optional[str] = None
-    construction_protocol: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, LibraryId):
-            self.id = LibraryId(self.id)
-
-        if self._is_empty(self.layout):
-            self.MissingRequiredField("layout")
-        if not isinstance(self.layout, str):
-            self.layout = str(self.layout)
-
-        if self._is_empty(self.source):
-            self.MissingRequiredField("source")
-        if not isinstance(self.source, str):
-            self.source = str(self.source)
-
-        if self._is_empty(self.selection):
-            self.MissingRequiredField("selection")
-        if not isinstance(self.selection, str):
-            self.selection = str(self.selection)
-
-        if self._is_empty(self.strategy):
-            self.MissingRequiredField("strategy")
-        if not isinstance(self.strategy, str):
-            self.strategy = str(self.strategy)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.construction_protocol is not None and not isinstance(self.construction_protocol, str):
-            self.construction_protocol = str(self.construction_protocol)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Person(NamedThing):
-    """
-    A member of the species Homo sapiens.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.Person
-    class_class_curie: ClassVar[str] = "GHGA:Person"
-    class_name: ClassVar[str] = "person"
-    class_model_uri: ClassVar[URIRef] = GHGA.Person
-
-    id: Union[str, PersonId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PersonId):
-            self.id = PersonId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Individual(Person):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.Individual
-    class_class_curie: ClassVar[str] = "GHGA:Individual"
-    class_name: ClassVar[str] = "individual"
-    class_model_uri: ClassVar[URIRef] = GHGA.Individual
-
-    id: Union[str, IndividualId] = None
-    gender: str = None
-    sex: str = None
-    name: Optional[str] = None
-    age: Optional[int] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, IndividualId):
-            self.id = IndividualId(self.id)
-
-        if self._is_empty(self.gender):
-            self.MissingRequiredField("gender")
-        if not isinstance(self.gender, str):
-            self.gender = str(self.gender)
-
-        if self._is_empty(self.sex):
-            self.MissingRequiredField("sex")
-        if not isinstance(self.sex, str):
-            self.sex = str(self.sex)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.age is not None and not isinstance(self.age, int):
-            self.age = int(self.age)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Member(Person):
-    """
-    Member of an organization or a committee.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.Member
-    class_class_curie: ClassVar[str] = "GHGA:Member"
-    class_name: ClassVar[str] = "member"
-    class_model_uri: ClassVar[URIRef] = GHGA.Member
-
-    id: Union[str, MemberId] = None
-    name: str = None
-    telephone: str = None
-    organization: str = None
-    main_contact: Union[str, MemberId] = None
-    title: Optional[str] = None
+    id: Union[str, UserId] = None
     email: Optional[str] = None
+    role: Optional[Union[str, "UserRoleEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, MemberId):
-            self.id = MemberId(self.id)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self._is_empty(self.telephone):
-            self.MissingRequiredField("telephone")
-        if not isinstance(self.telephone, str):
-            self.telephone = str(self.telephone)
-
-        if self._is_empty(self.organization):
-            self.MissingRequiredField("organization")
-        if not isinstance(self.organization, str):
-            self.organization = str(self.organization)
-
-        if self._is_empty(self.main_contact):
-            self.MissingRequiredField("main_contact")
-        if not isinstance(self.main_contact, MemberId):
-            self.main_contact = MemberId(self.main_contact)
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
+        if not isinstance(self.id, UserId):
+            self.id = UserId(self.id)
 
         if self.email is not None and not isinstance(self.email, str):
             self.email = str(self.email)
+
+        if self.role is not None and not isinstance(self.role, UserRoleEnum):
+            self.role = UserRoleEnum(self.role)
 
         super().__post_init__(**kwargs)
 
 
 # Enumerations
+class CaseControlEnum(EnumDefinitionImpl):
+    """
+    Enum to capture whether a Sample is to be considered as Case or Control.
+    """
+    control = PermissibleValue(text="control",
+                                     description="The Sample is to be treated as Control")
+    case = PermissibleValue(text="case",
+                               description="The Sample is to be treated as Case")
 
+    _defn = EnumDefinition(
+        name="CaseControlEnum",
+        description="Enum to capture whether a Sample is to be considered as Case or Control.",
+    )
+
+class BiologicalSexEnum(EnumDefinitionImpl):
+    """
+    The biological sex of an Individual as determined by their chromosomes.
+    """
+    XX = PermissibleValue(text="XX",
+                           description="Female")
+    XY = PermissibleValue(text="XY",
+                           description="Male")
+    none = PermissibleValue(text="none",
+                               description="unspecified")
+
+    _defn = EnumDefinition(
+        name="BiologicalSexEnum",
+        description="The biological sex of an Individual as determined by their chromosomes.",
+    )
+
+class UserRoleEnum(EnumDefinitionImpl):
+    """
+    Enum to capture the different roles a GHGA User can have.
+    """
+    _defn = EnumDefinition(
+        name="UserRoleEnum",
+        description="Enum to capture the different roles a GHGA User can have.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "data requester",
+                PermissibleValue(text="data requester",
+                                 description="Role of a Data Requester where the user requests access to one or more Datasets.") )
+        setattr(cls, "data steward",
+                PermissibleValue(text="data steward",
+                                 description="Role of a Data Steward where the user is responsible for approving request from a user for one or more Datasets.") )
 
 # Slots
 class slots:
@@ -1126,6 +1974,18 @@ class slots:
 
 slots.id = Slot(uri=GHGA.id, name="id", curie=GHGA.curie('id'),
                    model_uri=GHGA.id, domain=None, range=URIRef)
+
+slots.accession = Slot(uri=GHGA.accession, name="accession", curie=GHGA.curie('accession'),
+                   model_uri=GHGA.accession, domain=None, range=Optional[str])
+
+slots.given_name = Slot(uri=GHGA.given_name, name="given name", curie=GHGA.curie('given_name'),
+                   model_uri=GHGA.given_name, domain=None, range=Optional[str])
+
+slots.family_name = Slot(uri=GHGA.family_name, name="family name", curie=GHGA.curie('family_name'),
+                   model_uri=GHGA.family_name, domain=None, range=Optional[str])
+
+slots.additional_name = Slot(uri=GHGA.additional_name, name="additional name", curie=GHGA.curie('additional_name'),
+                   model_uri=GHGA.additional_name, domain=None, range=Optional[str])
 
 slots.name = Slot(uri=GHGA.name, name="name", curie=GHGA.curie('name'),
                    model_uri=GHGA.name, domain=None, range=Optional[str])
@@ -1139,9 +1999,6 @@ slots.title = Slot(uri=GHGA.title, name="title", curie=GHGA.curie('title'),
 slots.abstract = Slot(uri=GHGA.abstract, name="abstract", curie=GHGA.curie('abstract'),
                    model_uri=GHGA.abstract, domain=None, range=Optional[str])
 
-slots.publications = Slot(uri=GHGA.publications, name="publications", curie=GHGA.curie('publications'),
-                   model_uri=GHGA.publications, domain=None, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
-
 slots.xref = Slot(uri=GHGA.xref, name="xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.xref, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -1151,20 +2008,23 @@ slots.creation_date = Slot(uri=GHGA.creation_date, name="creation date", curie=G
 slots.update_date = Slot(uri=GHGA.update_date, name="update date", curie=GHGA.curie('update_date'),
                    model_uri=GHGA.update_date, domain=None, range=Optional[str])
 
-slots.attributes = Slot(uri=GHGA.attributes, name="attributes", curie=GHGA.curie('attributes'),
-                   model_uri=GHGA.attributes, domain=None, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+slots.url = Slot(uri=GHGA.url, name="url", curie=GHGA.curie('url'),
+                   model_uri=GHGA.url, domain=None, range=Optional[str])
+
+slots.has_attribute = Slot(uri=GHGA.has_attribute, name="has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.has_attribute, domain=None, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.parameters = Slot(uri=GHGA.parameters, name="parameters", curie=GHGA.curie('parameters'),
+                   model_uri=GHGA.parameters, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.description = Slot(uri=GHGA.description, name="description", curie=GHGA.curie('description'),
                    model_uri=GHGA.description, domain=None, range=Optional[str])
 
-slots.instrument_model = Slot(uri=GHGA.instrument_model, name="instrument model", curie=GHGA.curie('instrument_model'),
-                   model_uri=GHGA.instrument_model, domain=None, range=Optional[str])
-
 slots.has_study = Slot(uri=GHGA.has_study, name="has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.has_study, domain=None, range=Optional[Union[str, StudyId]])
 
-slots.has_library = Slot(uri=GHGA.has_library, name="has library", curie=GHGA.curie('has_library'),
-                   model_uri=GHGA.has_library, domain=None, range=Optional[Union[str, LibraryId]])
+slots.has_publication = Slot(uri=GHGA.has_publication, name="has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.has_publication, domain=None, range=Optional[Union[str, PublicationId]])
 
 slots.has_sample = Slot(uri=GHGA.has_sample, name="has sample", curie=GHGA.curie('has_sample'),
                    model_uri=GHGA.has_sample, domain=None, range=Optional[Union[str, SampleId]])
@@ -1175,53 +2035,101 @@ slots.has_protocol = Slot(uri=GHGA.has_protocol, name="has protocol", curie=GHGA
 slots.has_experiment = Slot(uri=GHGA.has_experiment, name="has experiment", curie=GHGA.curie('has_experiment'),
                    model_uri=GHGA.has_experiment, domain=None, range=Optional[Union[str, ExperimentId]])
 
+slots.has_analysis = Slot(uri=GHGA.has_analysis, name="has analysis", curie=GHGA.curie('has_analysis'),
+                   model_uri=GHGA.has_analysis, domain=None, range=Optional[str])
+
+slots.has_technology = Slot(uri=GHGA.has_technology, name="has technology", curie=GHGA.curie('has_technology'),
+                   model_uri=GHGA.has_technology, domain=None, range=Optional[Union[str, TechnologyId]])
+
+slots.has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="has experiment process", curie=GHGA.curie('has_experiment_process'),
+                   model_uri=GHGA.has_experiment_process, domain=None, range=Optional[Union[str, ExperimentProcessId]])
+
+slots.has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="has analysis process", curie=GHGA.curie('has_analysis_process'),
+                   model_uri=GHGA.has_analysis_process, domain=None, range=Optional[Union[str, AnalysisProcessId]])
+
 slots.has_file = Slot(uri=GHGA.has_file, name="has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.has_file, domain=None, range=Optional[Union[str, FileId]])
 
-slots.layout = Slot(uri=GHGA.layout, name="layout", curie=GHGA.curie('layout'),
-                   model_uri=GHGA.layout, domain=None, range=Optional[str])
+slots.has_input = Slot(uri=GHGA.has_input, name="has input", curie=GHGA.curie('has_input'),
+                   model_uri=GHGA.has_input, domain=None, range=Optional[Union[str, FileId]])
 
-slots.source = Slot(uri=GHGA.source, name="source", curie=GHGA.curie('source'),
-                   model_uri=GHGA.source, domain=None, range=Optional[str])
+slots.has_output = Slot(uri=GHGA.has_output, name="has output", curie=GHGA.curie('has_output'),
+                   model_uri=GHGA.has_output, domain=None, range=Optional[Union[str, FileId]])
 
-slots.selection = Slot(uri=GHGA.selection, name="selection", curie=GHGA.curie('selection'),
-                   model_uri=GHGA.selection, domain=None, range=Optional[str])
+slots.has_agent = Slot(uri=GHGA.has_agent, name="has agent", curie=GHGA.curie('has_agent'),
+                   model_uri=GHGA.has_agent, domain=None, range=Optional[Union[str, AgentId]])
 
-slots.strategy = Slot(uri=GHGA.strategy, name="strategy", curie=GHGA.curie('strategy'),
-                   model_uri=GHGA.strategy, domain=None, range=Optional[str])
+slots.has_workflow = Slot(uri=GHGA.has_workflow, name="has workflow", curie=GHGA.curie('has_workflow'),
+                   model_uri=GHGA.has_workflow, domain=None, range=Optional[Union[str, WorkflowId]])
 
-slots.construction_protocol = Slot(uri=GHGA.construction_protocol, name="construction protocol", curie=GHGA.curie('construction_protocol'),
-                   model_uri=GHGA.construction_protocol, domain=None, range=Optional[str])
+slots.has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="has workflow step", curie=GHGA.curie('has_workflow_step'),
+                   model_uri=GHGA.has_workflow_step, domain=None, range=Optional[Union[str, WorkflowStepId]])
 
-slots.subject = Slot(uri=GHGA.subject, name="subject", curie=GHGA.curie('subject'),
-                   model_uri=GHGA.subject, domain=None, range=Optional[Union[str, IndividualId]])
+slots.has_parameter = Slot(uri=GHGA.has_parameter, name="has parameter", curie=GHGA.curie('has_parameter'),
+                   model_uri=GHGA.has_parameter, domain=None, range=Optional[Union[dict, WorkflowParameter]])
 
-slots.biosample_accession = Slot(uri=GHGA.biosample_accession, name="biosample accession", curie=GHGA.curie('biosample_accession'),
-                   model_uri=GHGA.biosample_accession, domain=None, range=Optional[str])
+slots.has_dataset = Slot(uri=GHGA.has_dataset, name="has dataset", curie=GHGA.curie('has_dataset'),
+                   model_uri=GHGA.has_dataset, domain=None, range=Optional[Union[str, DatasetId]])
 
-slots.has_anatomical_site = Slot(uri=GHGA.has_anatomical_site, name="has anatomical site", curie=GHGA.curie('has_anatomical_site'),
-                   model_uri=GHGA.has_anatomical_site, domain=None, range=Optional[Union[str, AnatomicalEntityId]])
+slots.has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="has biospecimen", curie=GHGA.curie('has_biospecimen'),
+                   model_uri=GHGA.has_biospecimen, domain=None, range=Optional[Union[str, BiospecimenId]])
 
-slots.has_cell_line = Slot(uri=GHGA.has_cell_line, name="has cell line", curie=GHGA.curie('has_cell_line'),
-                   model_uri=GHGA.has_cell_line, domain=None, range=Optional[Union[str, CellLineId]])
+slots.has_individual = Slot(uri=GHGA.has_individual, name="has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.has_individual, domain=None, range=Optional[Union[str, IndividualId]])
+
+slots.has_anatomical_entity = Slot(uri=GHGA.has_anatomical_entity, name="has anatomical entity", curie=GHGA.curie('has_anatomical_entity'),
+                   model_uri=GHGA.has_anatomical_entity, domain=None, range=Optional[Union[str, AnatomicalEntityId]])
 
 slots.geographical_region = Slot(uri=GHGA.geographical_region, name="geographical region", curie=GHGA.curie('geographical_region'),
                    model_uri=GHGA.geographical_region, domain=None, range=Optional[str])
 
-slots.has_disease_of_phenotypic_feature = Slot(uri=GHGA.has_disease_of_phenotypic_feature, name="has disease of phenotypic feature", curie=GHGA.curie('has_disease_of_phenotypic_feature'),
-                   model_uri=GHGA.has_disease_of_phenotypic_feature, domain=None, range=Optional[Union[str, DiseaseOrPhenotypicFeatureId]])
+slots.has_disease = Slot(uri=GHGA.has_disease, name="has disease", curie=GHGA.curie('has_disease'),
+                   model_uri=GHGA.has_disease, domain=None, range=Optional[Union[str, DiseaseId]])
 
-slots.files = Slot(uri=GHGA.files, name="files", curie=GHGA.curie('files'),
-                   model_uri=GHGA.files, domain=None, range=Optional[Union[Union[str, FileId], List[Union[str, FileId]]]])
+slots.has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_feature, name="has phenotypic feature", curie=GHGA.curie('has_phenotypic_feature'),
+                   model_uri=GHGA.has_phenotypic_feature, domain=None, range=Optional[Union[str, PhenotypicFeatureId]])
+
+slots.has_parent = Slot(uri=GHGA.has_parent, name="has parent", curie=GHGA.curie('has_parent'),
+                   model_uri=GHGA.has_parent, domain=None, range=Optional[str])
+
+slots.has_children = Slot(uri=GHGA.has_children, name="has children", curie=GHGA.curie('has_children'),
+                   model_uri=GHGA.has_children, domain=None, range=Optional[str])
+
+slots.has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="has data use condition", curie=GHGA.curie('has_data_use_condition'),
+                   model_uri=GHGA.has_data_use_condition, domain=None, range=Optional[str])
+
+slots.role = Slot(uri=GHGA.role, name="role", curie=GHGA.curie('role'),
+                   model_uri=GHGA.role, domain=None, range=Optional[Union[str, "UserRoleEnum"]])
+
+slots.proband = Slot(uri=GHGA.proband, name="proband", curie=GHGA.curie('proband'),
+                   model_uri=GHGA.proband, domain=None, range=Optional[Union[str, IndividualId]])
+
+slots.permission = Slot(uri=GHGA.permission, name="permission", curie=GHGA.curie('permission'),
+                   model_uri=GHGA.permission, domain=None, range=Optional[str])
+
+slots.modifier = Slot(uri=GHGA.modifier, name="modifier", curie=GHGA.curie('modifier'),
+                   model_uri=GHGA.modifier, domain=None, range=Optional[str])
 
 slots.gender = Slot(uri=GHGA.gender, name="gender", curie=GHGA.curie('gender'),
                    model_uri=GHGA.gender, domain=None, range=Optional[str])
 
 slots.sex = Slot(uri=GHGA.sex, name="sex", curie=GHGA.curie('sex'),
-                   model_uri=GHGA.sex, domain=None, range=Optional[str])
+                   model_uri=GHGA.sex, domain=None, range=Optional[Union[str, "BiologicalSexEnum"]])
 
 slots.age = Slot(uri=GHGA.age, name="age", curie=GHGA.curie('age'),
                    model_uri=GHGA.age, domain=None, range=Optional[int])
+
+slots.year_of_birth = Slot(uri=GHGA.year_of_birth, name="year of birth", curie=GHGA.curie('year_of_birth'),
+                   model_uri=GHGA.year_of_birth, domain=None, range=Optional[str])
+
+slots.vital_status = Slot(uri=GHGA.vital_status, name="vital status", curie=GHGA.curie('vital_status'),
+                   model_uri=GHGA.vital_status, domain=None, range=Optional[str])
+
+slots.ethnicity = Slot(uri=GHGA.ethnicity, name="ethnicity", curie=GHGA.curie('ethnicity'),
+                   model_uri=GHGA.ethnicity, domain=None, range=Optional[str])
+
+slots.ancestry = Slot(uri=GHGA.ancestry, name="ancestry", curie=GHGA.curie('ancestry'),
+                   model_uri=GHGA.ancestry, domain=None, range=Optional[str])
 
 slots.format = Slot(uri=GHGA.format, name="format", curie=GHGA.curie('format'),
                    model_uri=GHGA.format, domain=None, range=Optional[str])
@@ -1253,8 +2161,8 @@ slots.has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name=
 slots.main_contact = Slot(uri=GHGA.main_contact, name="main contact", curie=GHGA.curie('main_contact'),
                    model_uri=GHGA.main_contact, domain=None, range=Optional[Union[str, MemberId]])
 
-slots.has_members = Slot(uri=GHGA.has_members, name="has members", curie=GHGA.curie('has_members'),
-                   model_uri=GHGA.has_members, domain=None, range=Optional[Union[str, List[str]]])
+slots.has_member = Slot(uri=GHGA.has_member, name="has member", curie=GHGA.curie('has_member'),
+                   model_uri=GHGA.has_member, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.telephone = Slot(uri=GHGA.telephone, name="telephone", curie=GHGA.curie('telephone'),
                    model_uri=GHGA.telephone, domain=None, range=Optional[str])
@@ -1277,29 +2185,71 @@ slots.value = Slot(uri=GHGA.value, name="value", curie=GHGA.curie('value'),
 slots.value_type = Slot(uri=GHGA.value_type, name="value type", curie=GHGA.curie('value_type'),
                    model_uri=GHGA.value_type, domain=None, range=Optional[str])
 
+slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
+                   model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
+
+slots.named_thing_accession = Slot(uri=GHGA.accession, name="named thing_accession", curie=GHGA.curie('accession'),
+                   model_uri=GHGA.named_thing_accession, domain=NamedThing, range=Optional[str])
+
+slots.named_thing_xref = Slot(uri=GHGA.xref, name="named thing_xref", curie=GHGA.curie('xref'),
+                   model_uri=GHGA.named_thing_xref, domain=NamedThing, range=Optional[Union[str, List[str]]])
+
+slots.named_thing_type = Slot(uri=GHGA.type, name="named thing_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.named_thing_type, domain=NamedThing, range=Optional[str])
+
+slots.named_thing_has_attribute = Slot(uri=GHGA.has_attribute, name="named thing_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.named_thing_has_attribute, domain=NamedThing, range=Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]])
+
+slots.named_thing_creation_date = Slot(uri=GHGA.creation_date, name="named thing_creation date", curie=GHGA.curie('creation_date'),
+                   model_uri=GHGA.named_thing_creation_date, domain=NamedThing, range=Optional[str])
+
+slots.named_thing_update_date = Slot(uri=GHGA.update_date, name="named thing_update date", curie=GHGA.curie('update_date'),
+                   model_uri=GHGA.named_thing_update_date, domain=NamedThing, range=Optional[str])
+
 slots.attribute_key = Slot(uri=GHGA.key, name="attribute_key", curie=GHGA.curie('key'),
                    model_uri=GHGA.attribute_key, domain=Attribute, range=str)
+
+slots.attribute_key_type = Slot(uri=GHGA.key_type, name="attribute_key type", curie=GHGA.curie('key_type'),
+                   model_uri=GHGA.attribute_key_type, domain=Attribute, range=Optional[str])
 
 slots.attribute_value = Slot(uri=GHGA.value, name="attribute_value", curie=GHGA.curie('value'),
                    model_uri=GHGA.attribute_value, domain=Attribute, range=str)
 
+slots.attribute_value_type = Slot(uri=GHGA.value_type, name="attribute_value type", curie=GHGA.curie('value_type'),
+                   model_uri=GHGA.attribute_value_type, domain=Attribute, range=Optional[str])
+
+slots.project_description = Slot(uri=GHGA.description, name="project_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.project_description, domain=Project, range=Optional[str])
+
+slots.project_has_publication = Slot(uri=GHGA.has_publication, name="project_has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.project_has_publication, domain=Project, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
+
+slots.project_has_study = Slot(uri=GHGA.has_study, name="project_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.project_has_study, domain=Project, range=Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]])
+
+slots.project_has_attribute = Slot(uri=GHGA.has_attribute, name="project_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.project_has_attribute, domain=Project, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
 slots.study_title = Slot(uri=GHGA.title, name="study_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.study_title, domain=Study, range=str)
+
+slots.study_description = Slot(uri=GHGA.description, name="study_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.study_description, domain=Study, range=str)
 
 slots.study_type = Slot(uri=GHGA.type, name="study_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.study_type, domain=Study, range=str)
 
-slots.study_name = Slot(uri=GHGA.name, name="study_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.study_name, domain=Study, range=Optional[str])
+slots.study_has_publication = Slot(uri=GHGA.has_publication, name="study_has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.study_has_publication, domain=Study, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
 
-slots.study_abstract = Slot(uri=GHGA.abstract, name="study_abstract", curie=GHGA.curie('abstract'),
-                   model_uri=GHGA.study_abstract, domain=Study, range=str)
+slots.study_has_experiment = Slot(uri=GHGA.has_experiment, name="study_has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.study_has_experiment, domain=Study, range=Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]])
 
-slots.study_publications = Slot(uri=GHGA.publications, name="study_publications", curie=GHGA.curie('publications'),
-                   model_uri=GHGA.study_publications, domain=Study, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
+slots.study_has_analysis = Slot(uri=GHGA.has_analysis, name="study_has analysis", curie=GHGA.curie('has_analysis'),
+                   model_uri=GHGA.study_has_analysis, domain=Study, range=Optional[Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]]])
 
-slots.study_attributes = Slot(uri=GHGA.attributes, name="study_attributes", curie=GHGA.curie('attributes'),
-                   model_uri=GHGA.study_attributes, domain=Study, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+slots.study_has_attribute = Slot(uri=GHGA.has_attribute, name="study_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.study_has_attribute, domain=Study, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.experiment_name = Slot(uri=GHGA.name, name="experiment_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.experiment_name, domain=Experiment, range=str)
@@ -1310,71 +2260,119 @@ slots.experiment_description = Slot(uri=GHGA.description, name="experiment_descr
 slots.experiment_has_study = Slot(uri=GHGA.has_study, name="experiment_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.experiment_has_study, domain=Experiment, range=Union[str, StudyId])
 
-slots.experiment_instrument_model = Slot(uri=GHGA.instrument_model, name="experiment_instrument model", curie=GHGA.curie('instrument_model'),
-                   model_uri=GHGA.experiment_instrument_model, domain=Experiment, range=str)
-
-slots.experiment_has_library = Slot(uri=GHGA.has_library, name="experiment_has library", curie=GHGA.curie('has_library'),
-                   model_uri=GHGA.experiment_has_library, domain=Experiment, range=Union[str, LibraryId])
-
 slots.experiment_has_sample = Slot(uri=GHGA.has_sample, name="experiment_has sample", curie=GHGA.curie('has_sample'),
                    model_uri=GHGA.experiment_has_sample, domain=Experiment, range=Union[str, SampleId])
 
-slots.experiment_has_protocol = Slot(uri=GHGA.has_protocol, name="experiment_has protocol", curie=GHGA.curie('has_protocol'),
-                   model_uri=GHGA.experiment_has_protocol, domain=Experiment, range=Optional[Union[str, ProtocolId]])
+slots.experiment_has_technology = Slot(uri=GHGA.has_technology, name="experiment_has technology", curie=GHGA.curie('has_technology'),
+                   model_uri=GHGA.experiment_has_technology, domain=Experiment, range=Optional[Union[str, TechnologyId]])
 
-slots.library_name = Slot(uri=GHGA.name, name="library_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.library_name, domain=Library, range=Optional[str])
+slots.experiment_has_file = Slot(uri=GHGA.has_file, name="experiment_has file", curie=GHGA.curie('has_file'),
+                   model_uri=GHGA.experiment_has_file, domain=Experiment, range=Optional[Union[Union[str, FileId], List[Union[str, FileId]]]])
 
-slots.library_layout = Slot(uri=GHGA.layout, name="library_layout", curie=GHGA.curie('layout'),
-                   model_uri=GHGA.library_layout, domain=Library, range=str)
+slots.experiment_has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="experiment_has experiment process", curie=GHGA.curie('has_experiment_process'),
+                   model_uri=GHGA.experiment_has_experiment_process, domain=Experiment, range=Optional[Union[Union[str, ExperimentProcessId], List[Union[str, ExperimentProcessId]]]])
 
-slots.library_source = Slot(uri=GHGA.source, name="library_source", curie=GHGA.curie('source'),
-                   model_uri=GHGA.library_source, domain=Library, range=str)
+slots.experiment_process_has_input = Slot(uri=GHGA.has_input, name="experiment process_has input", curie=GHGA.curie('has_input'),
+                   model_uri=GHGA.experiment_process_has_input, domain=ExperimentProcess, range=Optional[Union[str, SampleId]])
 
-slots.library_selection = Slot(uri=GHGA.selection, name="library_selection", curie=GHGA.curie('selection'),
-                   model_uri=GHGA.library_selection, domain=Library, range=str)
+slots.experiment_process_has_protocol = Slot(uri=GHGA.has_protocol, name="experiment process_has protocol", curie=GHGA.curie('has_protocol'),
+                   model_uri=GHGA.experiment_process_has_protocol, domain=ExperimentProcess, range=Optional[Union[str, ProtocolId]])
 
-slots.library_strategy = Slot(uri=GHGA.strategy, name="library_strategy", curie=GHGA.curie('strategy'),
-                   model_uri=GHGA.library_strategy, domain=Library, range=str)
+slots.experiment_process_has_agent = Slot(uri=GHGA.has_agent, name="experiment process_has agent", curie=GHGA.curie('has_agent'),
+                   model_uri=GHGA.experiment_process_has_agent, domain=ExperimentProcess, range=Optional[Union[str, AgentId]])
+
+slots.experiment_process_has_output = Slot(uri=GHGA.has_output, name="experiment process_has output", curie=GHGA.curie('has_output'),
+                   model_uri=GHGA.experiment_process_has_output, domain=ExperimentProcess, range=Optional[Union[str, FileId]])
+
+slots.protocol_name = Slot(uri=GHGA.name, name="protocol_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.protocol_name, domain=Protocol, range=Optional[str])
+
+slots.protocol_description = Slot(uri=GHGA.description, name="protocol_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.protocol_description, domain=Protocol, range=Optional[str])
+
+slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('url'),
+                   model_uri=GHGA.protocol_url, domain=Protocol, range=Optional[str])
+
+slots.protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="protocol_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.workflow_step_has_parameter = Slot(uri=GHGA.has_parameter, name="workflow step_has parameter", curie=GHGA.curie('has_parameter'),
+                   model_uri=GHGA.workflow_step_has_parameter, domain=WorkflowStep, range=Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]])
+
+slots.workflow_parameter_key = Slot(uri=GHGA.key, name="workflow parameter_key", curie=GHGA.curie('key'),
+                   model_uri=GHGA.workflow_parameter_key, domain=WorkflowParameter, range=Optional[str])
+
+slots.workflow_parameter_value = Slot(uri=GHGA.value, name="workflow parameter_value", curie=GHGA.curie('value'),
+                   model_uri=GHGA.workflow_parameter_value, domain=WorkflowParameter, range=Optional[str])
+
+slots.biospecimen_has_individual = Slot(uri=GHGA.has_individual, name="biospecimen_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.biospecimen_has_individual, domain=Biospecimen, range=Optional[Union[str, IndividualId]])
+
+slots.biospecimen_has_anatomical_entity = Slot(uri=GHGA.has_anatomical_entity, name="biospecimen_has anatomical entity", curie=GHGA.curie('has_anatomical_entity'),
+                   model_uri=GHGA.biospecimen_has_anatomical_entity, domain=Biospecimen, range=Optional[Union[str, AnatomicalEntityId]])
+
+slots.biospecimen_has_disease = Slot(uri=GHGA.has_disease, name="biospecimen_has disease", curie=GHGA.curie('has_disease'),
+                   model_uri=GHGA.biospecimen_has_disease, domain=Biospecimen, range=Optional[Union[str, DiseaseId]])
+
+slots.biospecimen_has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_feature, name="biospecimen_has phenotypic feature", curie=GHGA.curie('has_phenotypic_feature'),
+                   model_uri=GHGA.biospecimen_has_phenotypic_feature, domain=Biospecimen, range=Optional[Union[str, PhenotypicFeatureId]])
 
 slots.sample_name = Slot(uri=GHGA.name, name="sample_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.sample_name, domain=Sample, range=Optional[str])
 
 slots.sample_type = Slot(uri=GHGA.type, name="sample_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.sample_type, domain=Sample, range=Optional[str])
+                   model_uri=GHGA.sample_type, domain=Sample, range=Optional[Union[str, "CaseControlEnum"]])
 
 slots.sample_description = Slot(uri=GHGA.description, name="sample_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.sample_description, domain=Sample, range=Optional[str])
 
-slots.sample_subject = Slot(uri=GHGA.subject, name="sample_subject", curie=GHGA.curie('subject'),
-                   model_uri=GHGA.sample_subject, domain=Sample, range=Union[str, IndividualId])
+slots.sample_has_individual = Slot(uri=GHGA.has_individual, name="sample_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.sample_has_individual, domain=Sample, range=Union[str, IndividualId])
 
-slots.sample_biosample_accession = Slot(uri=GHGA.biosample_accession, name="sample_biosample accession", curie=GHGA.curie('biosample_accession'),
-                   model_uri=GHGA.sample_biosample_accession, domain=Sample, range=Optional[str])
+slots.sample_xref = Slot(uri=GHGA.xref, name="sample_xref", curie=GHGA.curie('xref'),
+                   model_uri=GHGA.sample_xref, domain=Sample, range=Optional[Union[str, List[str]]])
 
-slots.sample_has_anatomical_site = Slot(uri=GHGA.has_anatomical_site, name="sample_has anatomical site", curie=GHGA.curie('has_anatomical_site'),
-                   model_uri=GHGA.sample_has_anatomical_site, domain=Sample, range=Optional[Union[str, AnatomicalEntityId]])
-
-slots.sample_has_cell_line = Slot(uri=GHGA.has_cell_line, name="sample_has cell line", curie=GHGA.curie('has_cell_line'),
-                   model_uri=GHGA.sample_has_cell_line, domain=Sample, range=Optional[Union[str, CellLineId]])
-
-slots.sample_geographical_region = Slot(uri=GHGA.geographical_region, name="sample_geographical region", curie=GHGA.curie('geographical_region'),
-                   model_uri=GHGA.sample_geographical_region, domain=Sample, range=Optional[str])
-
-slots.sample_has_disease_of_phenotypic_feature = Slot(uri=GHGA.has_disease_of_phenotypic_feature, name="sample_has disease of phenotypic feature", curie=GHGA.curie('has_disease_of_phenotypic_feature'),
-                   model_uri=GHGA.sample_has_disease_of_phenotypic_feature, domain=Sample, range=Union[str, DiseaseOrPhenotypicFeatureId])
-
-slots.sample_files = Slot(uri=GHGA.files, name="sample_files", curie=GHGA.curie('files'),
-                   model_uri=GHGA.sample_files, domain=Sample, range=Union[Union[str, FileId], List[Union[str, FileId]]])
+slots.sample_has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="sample_has biospecimen", curie=GHGA.curie('has_biospecimen'),
+                   model_uri=GHGA.sample_has_biospecimen, domain=Sample, range=Optional[Union[str, BiospecimenId]])
 
 slots.individual_gender = Slot(uri=GHGA.gender, name="individual_gender", curie=GHGA.curie('gender'),
-                   model_uri=GHGA.individual_gender, domain=Individual, range=str)
+                   model_uri=GHGA.individual_gender, domain=Individual, range=Optional[str])
 
 slots.individual_sex = Slot(uri=GHGA.sex, name="individual_sex", curie=GHGA.curie('sex'),
-                   model_uri=GHGA.individual_sex, domain=Individual, range=str)
+                   model_uri=GHGA.individual_sex, domain=Individual, range=Union[str, "BiologicalSexEnum"])
 
 slots.individual_age = Slot(uri=GHGA.age, name="individual_age", curie=GHGA.curie('age'),
                    model_uri=GHGA.individual_age, domain=Individual, range=Optional[int])
+
+slots.individual_year_of_birth = Slot(uri=GHGA.year_of_birth, name="individual_year of birth", curie=GHGA.curie('year_of_birth'),
+                   model_uri=GHGA.individual_year_of_birth, domain=Individual, range=Optional[str])
+
+slots.individual_vital_status = Slot(uri=GHGA.vital_status, name="individual_vital status", curie=GHGA.curie('vital_status'),
+                   model_uri=GHGA.individual_vital_status, domain=Individual, range=Optional[str])
+
+slots.individual_ethnicity = Slot(uri=GHGA.ethnicity, name="individual_ethnicity", curie=GHGA.curie('ethnicity'),
+                   model_uri=GHGA.individual_ethnicity, domain=Individual, range=Optional[str])
+
+slots.individual_ancestry = Slot(uri=GHGA.ancestry, name="individual_ancestry", curie=GHGA.curie('ancestry'),
+                   model_uri=GHGA.individual_ancestry, domain=Individual, range=Optional[str])
+
+slots.individual_geographical_region = Slot(uri=GHGA.geographical_region, name="individual_geographical region", curie=GHGA.curie('geographical_region'),
+                   model_uri=GHGA.individual_geographical_region, domain=Individual, range=Optional[str])
+
+slots.individual_has_parent = Slot(uri=GHGA.has_parent, name="individual_has parent", curie=GHGA.curie('has_parent'),
+                   model_uri=GHGA.individual_has_parent, domain=Individual, range=Optional[str])
+
+slots.individual_has_children = Slot(uri=GHGA.has_children, name="individual_has children", curie=GHGA.curie('has_children'),
+                   model_uri=GHGA.individual_has_children, domain=Individual, range=Optional[str])
+
+slots.family_has_member = Slot(uri=GHGA.has_member, name="family_has member", curie=GHGA.curie('has_member'),
+                   model_uri=GHGA.family_has_member, domain=Family, range=Optional[Union[Union[str, IndividualId], List[Union[str, IndividualId]]]])
+
+slots.family_proband = Slot(uri=GHGA.proband, name="family_proband", curie=GHGA.curie('proband'),
+                   model_uri=GHGA.family_proband, domain=Family, range=Optional[Union[str, IndividualId]])
+
+slots.cohort_has_member = Slot(uri=GHGA.has_member, name="cohort_has member", curie=GHGA.curie('has_member'),
+                   model_uri=GHGA.cohort_has_member, domain=Cohort, range=Optional[Union[Union[str, IndividualId], List[Union[str, IndividualId]]]])
 
 slots.file_format = Slot(uri=GHGA.format, name="file_format", curie=GHGA.curie('format'),
                    model_uri=GHGA.file_format, domain=File, range=Optional[str])
@@ -1394,6 +2392,33 @@ slots.file_file_index = Slot(uri=GHGA.file_index, name="file_file_index", curie=
 slots.file_category = Slot(uri=GHGA.category, name="file_category", curie=GHGA.curie('category'),
                    model_uri=GHGA.file_category, domain=File, range=Optional[str])
 
+slots.analysis_has_input = Slot(uri=GHGA.has_input, name="analysis_has input", curie=GHGA.curie('has_input'),
+                   model_uri=GHGA.analysis_has_input, domain=Analysis, range=Optional[Union[Union[str, FileId], List[Union[str, FileId]]]])
+
+slots.analysis_has_study = Slot(uri=GHGA.has_study, name="analysis_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.analysis_has_study, domain=Analysis, range=Optional[Union[str, StudyId]])
+
+slots.analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis_has workflow", curie=GHGA.curie('has_workflow'),
+                   model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Optional[Union[str, WorkflowId]])
+
+slots.analysis_has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="analysis_has analysis process", curie=GHGA.curie('has_analysis_process'),
+                   model_uri=GHGA.analysis_has_analysis_process, domain=Analysis, range=Optional[Union[Union[str, AnalysisProcessId], List[Union[str, AnalysisProcessId]]]])
+
+slots.analysis_has_output = Slot(uri=GHGA.has_output, name="analysis_has output", curie=GHGA.curie('has_output'),
+                   model_uri=GHGA.analysis_has_output, domain=Analysis, range=Optional[Union[Union[str, FileId], List[Union[str, FileId]]]])
+
+slots.analysis_process_has_input = Slot(uri=GHGA.has_input, name="analysis process_has input", curie=GHGA.curie('has_input'),
+                   model_uri=GHGA.analysis_process_has_input, domain=AnalysisProcess, range=Optional[Union[Union[str, FileId], List[Union[str, FileId]]]])
+
+slots.analysis_process_has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="analysis process_has workflow step", curie=GHGA.curie('has_workflow_step'),
+                   model_uri=GHGA.analysis_process_has_workflow_step, domain=AnalysisProcess, range=Optional[Union[str, WorkflowStepId]])
+
+slots.analysis_process_has_agent = Slot(uri=GHGA.has_agent, name="analysis process_has agent", curie=GHGA.curie('has_agent'),
+                   model_uri=GHGA.analysis_process_has_agent, domain=AnalysisProcess, range=Optional[Union[str, AgentId]])
+
+slots.analysis_process_has_output = Slot(uri=GHGA.has_output, name="analysis process_has output", curie=GHGA.curie('has_output'),
+                   model_uri=GHGA.analysis_process_has_output, domain=AnalysisProcess, range=Optional[Union[str, FileId]])
+
 slots.dataset_title = Slot(uri=GHGA.title, name="dataset_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.dataset_title, domain=Dataset, range=str)
 
@@ -1403,20 +2428,38 @@ slots.dataset_description = Slot(uri=GHGA.description, name="dataset_description
 slots.dataset_type = Slot(uri=GHGA.type, name="dataset_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.dataset_type, domain=Dataset, range=str)
 
-slots.dataset_files = Slot(uri=GHGA.files, name="dataset_files", curie=GHGA.curie('files'),
-                   model_uri=GHGA.dataset_files, domain=Dataset, range=Union[Union[str, FileId], List[Union[str, FileId]]])
-
-slots.dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.dataset_has_data_access_policy, domain=Dataset, range=Union[str, DataAccessPolicyId])
-
-slots.dataset_has_study = Slot(uri=GHGA.has_study, name="dataset_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.dataset_has_study, domain=Dataset, range=Union[str, StudyId])
-
-slots.dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="dataset_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.dataset_has_experiment, domain=Dataset, range=Union[str, ExperimentId])
-
 slots.dataset_has_file = Slot(uri=GHGA.has_file, name="dataset_has file", curie=GHGA.curie('has_file'),
-                   model_uri=GHGA.dataset_has_file, domain=Dataset, range=Union[str, FileId])
+                   model_uri=GHGA.dataset_has_file, domain=Dataset, range=Union[Union[str, FileId], List[Union[str, FileId]]])
+
+slots.dataset_has_publication = Slot(uri=GHGA.has_publication, name="dataset_has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.dataset_has_publication, domain=Dataset, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
+
+slots.experiment_dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="experiment dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
+                   model_uri=GHGA.experiment_dataset_has_data_access_policy, domain=ExperimentDataset, range=Union[Union[str, DataAccessPolicyId], List[Union[str, DataAccessPolicyId]]])
+
+slots.experiment_dataset_has_study = Slot(uri=GHGA.has_study, name="experiment dataset_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.experiment_dataset_has_study, domain=ExperimentDataset, range=Union[Union[str, StudyId], List[Union[str, StudyId]]])
+
+slots.experiment_dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="experiment dataset_has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.experiment_dataset_has_experiment, domain=ExperimentDataset, range=Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]])
+
+slots.analysis_dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="analysis dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
+                   model_uri=GHGA.analysis_dataset_has_data_access_policy, domain=AnalysisDataset, range=Union[Union[str, DataAccessPolicyId], List[Union[str, DataAccessPolicyId]]])
+
+slots.analysis_dataset_has_study = Slot(uri=GHGA.has_study, name="analysis dataset_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.analysis_dataset_has_study, domain=AnalysisDataset, range=Union[Union[str, StudyId], List[Union[str, StudyId]]])
+
+slots.analysis_dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="analysis dataset_has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.analysis_dataset_has_experiment, domain=AnalysisDataset, range=Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]])
+
+slots.aggregate_dataset_has_dataset = Slot(uri=GHGA.has_dataset, name="aggregate dataset_has dataset", curie=GHGA.curie('has_dataset'),
+                   model_uri=GHGA.aggregate_dataset_has_dataset, domain=AggregateDataset, range=Optional[Union[Union[str, DatasetId], List[Union[str, DatasetId]]]])
+
+slots.data_use_condition_permission = Slot(uri=GHGA.permission, name="data use condition_permission", curie=GHGA.curie('permission'),
+                   model_uri=GHGA.data_use_condition_permission, domain=DataUseCondition, range=Optional[str])
+
+slots.data_use_condition_modifier = Slot(uri=GHGA.modifier, name="data use condition_modifier", curie=GHGA.curie('modifier'),
+                   model_uri=GHGA.data_use_condition_modifier, domain=DataUseCondition, range=Optional[str])
 
 slots.data_access_policy_description = Slot(uri=GHGA.description, name="data access policy_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.data_access_policy_description, domain=DataAccessPolicy, range=str)
@@ -1430,26 +2473,35 @@ slots.data_access_policy_policy_url = Slot(uri=GHGA.policy_url, name="data acces
 slots.data_access_policy_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="data access policy_has data access committee", curie=GHGA.curie('has_data_access_committee'),
                    model_uri=GHGA.data_access_policy_has_data_access_committee, domain=DataAccessPolicy, range=Union[str, DataAccessCommitteeId])
 
-slots.data_access_committee_title = Slot(uri=GHGA.title, name="data access committee_title", curie=GHGA.curie('title'),
-                   model_uri=GHGA.data_access_committee_title, domain=DataAccessCommittee, range=str)
+slots.data_access_policy_has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="data access policy_has data use condition", curie=GHGA.curie('has_data_use_condition'),
+                   model_uri=GHGA.data_access_policy_has_data_use_condition, domain=DataAccessPolicy, range=Optional[Union[Union[dict, DataUseCondition], List[Union[dict, DataUseCondition]]]])
+
+slots.data_access_committee_name = Slot(uri=GHGA.name, name="data access committee_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.data_access_committee_name, domain=DataAccessCommittee, range=str)
 
 slots.data_access_committee_main_contact = Slot(uri=GHGA.main_contact, name="data access committee_main contact", curie=GHGA.curie('main_contact'),
                    model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Optional[Union[str, MemberId]])
 
-slots.data_access_committee_has_members = Slot(uri=GHGA.has_members, name="data access committee_has members", curie=GHGA.curie('has_members'),
-                   model_uri=GHGA.data_access_committee_has_members, domain=DataAccessCommittee, range=Optional[Union[Union[str, MemberId], List[Union[str, MemberId]]]])
+slots.data_access_committee_has_member = Slot(uri=GHGA.has_member, name="data access committee_has member", curie=GHGA.curie('has_member'),
+                   model_uri=GHGA.data_access_committee_has_member, domain=DataAccessCommittee, range=Optional[Union[Union[str, MemberId], List[Union[str, MemberId]]]])
 
-slots.member_name = Slot(uri=GHGA.name, name="member_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.member_name, domain=Member, range=str)
+slots.member_email = Slot(uri=GHGA.email, name="member_email", curie=GHGA.curie('email'),
+                   model_uri=GHGA.member_email, domain=Member, range=str)
 
 slots.member_telephone = Slot(uri=GHGA.telephone, name="member_telephone", curie=GHGA.curie('telephone'),
                    model_uri=GHGA.member_telephone, domain=Member, range=str)
 
 slots.member_organization = Slot(uri=GHGA.organization, name="member_organization", curie=GHGA.curie('organization'),
-                   model_uri=GHGA.member_organization, domain=Member, range=str)
-
-slots.member_main_contact = Slot(uri=GHGA.main_contact, name="member_main contact", curie=GHGA.curie('main_contact'),
-                   model_uri=GHGA.member_main_contact, domain=Member, range=Union[str, MemberId])
+                   model_uri=GHGA.member_organization, domain=Member, range=Optional[str])
 
 slots.publication_id = Slot(uri=GHGA.id, name="publication_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.publication_id, domain=Publication, range=Union[str, PublicationId])
+
+slots.publication_title = Slot(uri=GHGA.title, name="publication_title", curie=GHGA.curie('title'),
+                   model_uri=GHGA.publication_title, domain=Publication, range=Optional[str])
+
+slots.publication_xref = Slot(uri=GHGA.xref, name="publication_xref", curie=GHGA.curie('xref'),
+                   model_uri=GHGA.publication_xref, domain=Publication, range=Optional[Union[str, List[str]]])
+
+slots.user_role = Slot(uri=GHGA.role, name="user_role", curie=GHGA.curie('role'),
+                   model_uri=GHGA.user_role, domain=User, range=Optional[Union[str, "UserRoleEnum"]])

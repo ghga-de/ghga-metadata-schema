@@ -1,26 +1,46 @@
 {
-   "$id": "https://w3id.org/GHGA-Metadata-Schema",
-   "$schema": "http://json-schema.org/draft-07/schema#",
-   "additionalProperties": true,
-   "definitions": {
-      "Activity": {
+   "$defs": {
+      "Agent": {
          "additionalProperties": false,
-         "description": "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
+         "description": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -30,27 +50,369 @@
          "required": [
             "id"
          ],
-         "title": "Activity",
+         "title": "Agent",
          "type": "object"
       },
-      "AnatomicalEntity": {
+      "AggregateDataset": {
          "additionalProperties": false,
-         "description": "An anatomical entity is an object that is a structural part (material or immaterial) of a biological entity.",
+         "description": "An Aggregate Dataset is a specialized dataset that is built by combining one or more Datasets together.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_dataset": {
+               "description": "One or more Datasets that constitutes this Aggregate Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "One or more File entities that collectively are part of this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "description",
+            "has_file",
+            "type"
+         ],
+         "title": "AggregateDataset",
+         "type": "object"
+      },
+      "Analysis": {
+         "additionalProperties": false,
+         "description": "An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_analysis_process": {
+               "description": "One or more Analysis Process entities associated with this Analysis.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_input": {
+               "description": "The input data File entities used in the Analysis.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_output": {
+               "description": "The output data File entities generated by this Analysis.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_study": {
+               "description": "The Study entity associated with this Analysis.",
+               "type": "string"
+            },
+            "has_workflow": {
+               "description": "The Workflow entity associated with this Analysis.",
                "type": "string"
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Analysis",
+         "type": "object"
+      },
+      "AnalysisDataset": {
+         "additionalProperties": false,
+         "description": "An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or more Studies.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_analysis": {
+               "description": "The analysis associated with an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_experiment": {
+               "description": "One or more Analysis entities that are referenced by this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "One or more File entities that collectively are part of this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_study": {
+               "description": "One or more Study entities that are referenced by this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "description",
+            "has_file",
+            "type",
+            "has_data_access_policy",
+            "has_study",
+            "has_experiment"
+         ],
+         "title": "AnalysisDataset",
+         "type": "object"
+      },
+      "AnalysisProcess": {
+         "additionalProperties": false,
+         "description": "An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_agent": {
+               "description": "The Agent - a software, institution, or human - that is executing or responsible for executing the workflow.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_input": {
+               "description": "The input data File entities used in the Analysis Process.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_output": {
+               "description": "The output data File entities generated by the Analysis Process.",
+               "type": "string"
+            },
+            "has_workflow_step": {
+               "description": "Workflow Step entity that performs a set of operations on the input data Files to generate a set of output data Files.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "AnalysisProcess",
+         "type": "object"
+      },
+      "AnatomicalEntity": {
+         "additionalProperties": false,
+         "description": "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -68,17 +430,19 @@
          "description": "A key/value pair that further characterizes an entity.",
          "properties": {
             "key": {
+               "description": "The key for an attribute.",
                "type": "string"
             },
             "key_type": {
-               "description": "The semantic type for the key of an attribute.",
+               "description": "A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.",
                "type": "string"
             },
             "value": {
+               "description": "The value for an attribute. Usually this is a numerical value (without the units).",
                "type": "string"
             },
             "value_type": {
-               "description": "The semantic type for the value of an attribute.",
+               "description": "The value type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.",
                "type": "string"
             }
          },
@@ -89,24 +453,39 @@
          "title": "Attribute",
          "type": "object"
       },
-      "BiologicalEntity": {
+      "BiologicalQuality": {
          "additionalProperties": false,
-         "description": "A biological entity is a heterogeneous substance that contains genomic material or is the product of a biological process.",
+         "description": "A biological quality is a quality held by a biological entity.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -116,27 +495,130 @@
          "required": [
             "id"
          ],
-         "title": "BiologicalEntity",
+         "title": "BiologicalQuality",
          "type": "object"
       },
-      "CellLine": {
+      "BiologicalSexEnum": {
+         "description": "The biological sex of an Individual as determined by their chromosomes.",
+         "enum": [
+            "XX",
+            "XY",
+            "none"
+         ],
+         "title": "BiologicalSexEnum",
+         "type": "string"
+      },
+      "Biospecimen": {
          "additionalProperties": false,
-         "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history",
+         "description": "A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_anatomical_entity": {
+               "description": "The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_disease": {
+               "description": "The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.",
+               "type": "string"
+            },
+            "has_individual": {
+               "description": "The Individual entity from which this Biospecimen was derived.",
+               "type": "string"
+            },
+            "has_phenotypic_feature": {
+               "description": "The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.",
                "type": "string"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Biospecimen",
+         "type": "object"
+      },
+      "CaseControlEnum": {
+         "description": "Enum to capture whether a Sample is to be considered as Case or Control.",
+         "enum": [
+            "control",
+            "case"
+         ],
+         "title": "CaseControlEnum",
+         "type": "string"
+      },
+      "CellLine": {
+         "additionalProperties": false,
+         "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -149,24 +631,99 @@
          "title": "CellLine",
          "type": "object"
       },
+      "Cohort": {
+         "additionalProperties": false,
+         "description": "A cohort is a collection of individuals that share a common characteristic/observation and have been grouped together for a research study/investigation.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_member": {
+               "description": "One or more Individuals that collectively define this Cohort.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Cohort",
+         "type": "object"
+      },
       "Committee": {
          "additionalProperties": false,
          "description": "A group of people organized for a specific purpose.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -183,38 +740,54 @@
          "additionalProperties": false,
          "description": "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_members": {
-               "description": "All the members that are part of this data access committee.",
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_member": {
+               "description": "All the members that are part of this Data Access Committee.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "main_contact": {
-               "description": "The main contact for the data access committee.",
+               "description": "The main contact for the Data Access Committee.",
                "type": "string"
             },
-            "title": {
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -223,44 +796,71 @@
          },
          "required": [
             "id",
-            "title"
+            "name"
          ],
          "title": "DataAccessCommittee",
          "type": "object"
       },
       "DataAccessPolicy": {
          "additionalProperties": false,
-         "description": "A data access policy specifies under which circumstances, legal or otherwise, a user can have access to one or more datasets belonging to one or more studies.",
+         "description": "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
                "description": "A short description for the Data Access Policy.",
                "type": "string"
             },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "has_data_access_committee": {
                "description": "The Data Access Committee linked to this policy.",
                "type": "string"
             },
+            "has_data_use_condition": {
+               "description": "Data Use Condition entities that are associated with the Data Access Policy.",
+               "items": {
+                  "$ref": "#/$defs/DataUseCondition"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
                "type": "string"
             },
             "policy_text": {
+               "description": "The terms of data use and policy verbiage should be captured here.",
                "type": "string"
             },
             "policy_url": {
-               "description": "The URL for the policy, if available.",
+               "description": "URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -276,56 +876,131 @@
          "title": "DataAccessPolicy",
          "type": "object"
       },
-      "Dataset": {
+      "DataTransformation": {
          "additionalProperties": false,
-         "description": "A dataset is a collection of files that represents data generated from a particular sample.",
+         "description": "A data transformation technique used to analyze and interpret data to gain a better understanding of it.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
+               "description": "Description of an entity.",
                "type": "string"
             },
-            "files": {
-               "description": "One or more files that collectively make this dataset.",
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Attribute"
                },
                "type": "array"
-            },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy that applies to this dataset.",
-               "type": "string"
-            },
-            "has_experiment": {
-               "description": "One or more experiments that collectively are part of the dataset",
-               "type": "string"
-            },
-            "has_file": {
-               "description": "One or more files that collectively are part of the dataset",
-               "type": "string"
-            },
-            "has_study": {
-               "description": "One or more studies that collectively are part of the dataset",
-               "type": "string"
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
             "title": {
+               "description": "The title that describes an entity.",
                "type": "string"
             },
             "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "DataTransformation",
+         "type": "object"
+      },
+      "DataUseCondition": {
+         "additionalProperties": false,
+         "description": "Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).",
+         "properties": {
+            "modifier": {
+               "description": "Modifier for Data use permission. Preferable descendants of 'DUO:0000017 data use modifier'",
+               "type": "string"
+            },
+            "permission": {
+               "description": "Data use permission. Typically one or more terms from DUO. Preferably descendants of 'DUO:0000001 data use permission'.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "DataUseCondition",
+         "type": "object"
+      },
+      "Dataset": {
+         "additionalProperties": false,
+         "description": "A Dataset is a collection of Files that is prepared for distribution.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "One or more File entities that collectively are part of this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -336,34 +1011,106 @@
             "id",
             "title",
             "description",
-            "type",
-            "files",
-            "has_data_access_policy",
-            "has_study",
-            "has_experiment",
-            "has_file"
+            "has_file",
+            "type"
          ],
          "title": "Dataset",
          "type": "object"
       },
-      "DiseaseOrPhenotypicFeature": {
+      "Disease": {
          "additionalProperties": false,
-         "description": "A disease or phenotypic feature.",
+         "description": "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Disease",
+         "type": "object"
+      },
+      "DiseaseOrPhenotypicFeature": {
+         "additionalProperties": false,
+         "description": "Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -376,52 +1123,179 @@
          "title": "DiseaseOrPhenotypicFeature",
          "type": "object"
       },
+      "Donor": {
+         "additionalProperties": false,
+         "description": "A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the Biospecimen is restricted to the consent provided by the Donor.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "additional_name": {
+               "description": "Additional name(s).",
+               "type": "string"
+            },
+            "age": {
+               "description": "Age of an Individual.",
+               "type": "integer"
+            },
+            "ancestry": {
+               "description": "Ancestry of an Individual.  Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0005' signifies this Individual belongs to the 'European' ancestry.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "ethnicity": {
+               "description": "Ethnicity of an Individual.",
+               "type": "string"
+            },
+            "family_name": {
+               "description": "Last name.",
+               "type": "string"
+            },
+            "gender": {
+               "description": "Gender of an Individual.",
+               "type": "string"
+            },
+            "geographical_region": {
+               "description": "The geographical region where the Individual is located. Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0047' signifies this Individual is from 'Western Europe' region.",
+               "type": "string"
+            },
+            "given_name": {
+               "description": "First name.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_children": {
+               "description": "One or more children for this Individual.",
+               "type": "string"
+            },
+            "has_parent": {
+               "description": "One or more parent for this Individual.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "sex": {
+               "$ref": "#/$defs/BiologicalSexEnum",
+               "description": "Biological Sex of an Individual."
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "vital_status": {
+               "description": "Vital status of an Individual.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "year_of_birth": {
+               "description": "Year of Birth of an Individual.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "sex"
+         ],
+         "title": "Donor",
+         "type": "object"
+      },
       "Experiment": {
          "additionalProperties": false,
          "description": "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
-               "description": "A description for the experiment.",
+               "description": "A description for the Experiment.",
                "type": "string"
             },
-            "has_library": {
-               "description": "The library associated with this experiment.",
-               "type": "string"
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
             },
-            "has_protocol": {
-               "description": "The protocol associated with this experiment.",
+            "has_experiment_process": {
+               "description": "One or more Experiment Processes entities associated with this Experiment.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "One or more Files entities that are generated as output of this Experiment.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "The Publication associated with an entity.",
                "type": "string"
             },
             "has_sample": {
-               "description": "The sample associated with this experiment.",
+               "description": "The Sample entity associated with this Experiment.",
                "type": "string"
             },
             "has_study": {
-               "description": "The study associated with this experiment.",
+               "description": "The Study entity associated with this Experiment.",
+               "type": "string"
+            },
+            "has_technology": {
+               "description": "The Technology entity associated with this Experiment.",
                "type": "string"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "instrument_model": {
-               "description": "The instrument model.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
-               "description": "Name for the experiment.",
+               "description": "Name for the Experiment.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -432,17 +1306,239 @@
             "id",
             "name",
             "has_study",
-            "instrument_model",
-            "has_library",
             "has_sample"
          ],
          "title": "Experiment",
+         "type": "object"
+      },
+      "ExperimentDataset": {
+         "additionalProperties": false,
+         "description": "An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_experiment": {
+               "description": "One or more Experiment entities that are referenced by this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "One or more File entities that collectively are part of this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_study": {
+               "description": "One or more Study entities that are referenced by this Dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id",
+            "title",
+            "description",
+            "has_file",
+            "type",
+            "has_data_access_policy",
+            "has_study",
+            "has_experiment"
+         ],
+         "title": "ExperimentDataset",
+         "type": "object"
+      },
+      "ExperimentProcess": {
+         "additionalProperties": false,
+         "description": "An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_agent": {
+               "description": "The Agent - a software, institution, or human - that is executing or responsible for executing the Experiment Process.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_input": {
+               "description": "The input to the Experiment Process. Usually a Sample entity.",
+               "type": "string"
+            },
+            "has_output": {
+               "description": "The output of this Experiment Process. Usually a File entity.",
+               "type": "string"
+            },
+            "has_protocol": {
+               "description": "The Protocol entity used by this Experiment Process.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "ExperimentProcess",
+         "type": "object"
+      },
+      "Family": {
+         "additionalProperties": false,
+         "description": "A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_member": {
+               "description": "One or more Individuals that collectively define this Family.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "proband": {
+               "description": "The Individual that is reported to have a disorder which results in the Family being brought into a Study.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Family",
          "type": "object"
       },
       "File": {
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "category": {
                "description": "The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.",
                "type": "string"
@@ -452,7 +1548,7 @@
                "type": "string"
             },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "file_index": {
@@ -463,8 +1559,15 @@
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc.",
                "type": "string"
             },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
@@ -480,11 +1583,11 @@
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -499,47 +1602,97 @@
       },
       "Individual": {
          "additionalProperties": false,
-         "description": "",
+         "description": "An Individual is a Person who is participating in a Study.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "additional_name": {
+               "description": "Additional name(s).",
+               "type": "string"
+            },
             "age": {
-               "description": "Age of an individual.",
+               "description": "Age of an Individual.",
                "type": "integer"
             },
+            "ancestry": {
+               "description": "Ancestry of an Individual.  Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0005' signifies this Individual belongs to the 'European' ancestry.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "ethnicity": {
+               "description": "Ethnicity of an Individual.",
+               "type": "string"
+            },
+            "family_name": {
+               "description": "Last name.",
                "type": "string"
             },
             "gender": {
-               "description": "Gender of an individual.",
+               "description": "Gender of an Individual.",
+               "type": "string"
+            },
+            "geographical_region": {
+               "description": "The geographical region where the Individual is located. Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0047' signifies this Individual is from 'Western Europe' region.",
+               "type": "string"
+            },
+            "given_name": {
+               "description": "First name.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_children": {
+               "description": "One or more children for this Individual.",
+               "type": "string"
+            },
+            "has_parent": {
+               "description": "One or more parent for this Individual.",
                "type": "string"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "name": {
-               "description": "The name for an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "sex": {
-               "description": "Biological Sex of an individual",
+               "$ref": "#/$defs/BiologicalSexEnum",
+               "description": "Biological Sex of an Individual."
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "vital_status": {
+               "description": "Vital status of an Individual.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
                "type": "array"
+            },
+            "year_of_birth": {
+               "description": "Year of Birth of an Individual.",
+               "type": "string"
             }
          },
          "required": [
             "id",
-            "gender",
             "sex"
          ],
          "title": "Individual",
@@ -549,20 +1702,35 @@
          "additionalProperties": false,
          "description": "A generically dependent continuant that is about some thing.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -575,44 +1743,51 @@
          "title": "InformationContentEntity",
          "type": "object"
       },
-      "Library": {
+      "Investigation": {
          "additionalProperties": false,
-         "description": "A library that is used in an experiment protocol to generate the input for an instrument.",
+         "description": "Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.",
          "properties": {
-            "construction_protocol": {
-               "description": "Description of how the library was constructed.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "The Publication associated with an entity.",
                "type": "string"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "layout": {
+            "title": {
+               "description": "The title that describes an entity.",
                "type": "string"
             },
-            "name": {
-               "description": "Name for the library.",
-               "type": "string"
-            },
-            "selection": {
-               "type": "string"
-            },
-            "source": {
-               "type": "string"
-            },
-            "strategy": {
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -620,33 +1795,44 @@
             }
          },
          "required": [
-            "id",
-            "layout",
-            "source",
-            "selection",
-            "strategy"
+            "id"
          ],
-         "title": "Library",
+         "title": "Investigation",
          "type": "object"
       },
       "MaterialEntity": {
          "additionalProperties": false,
          "description": "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -661,42 +1847,61 @@
       },
       "Member": {
          "additionalProperties": false,
-         "description": "Member of an organization or a committee.",
+         "description": "Member of an Organization or a Committee.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "additional_name": {
+               "description": "Additional name(s).",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "email": {
-               "description": "Email of a person.",
+               "description": "The email of the Member.",
                "type": "string"
+            },
+            "family_name": {
+               "description": "Last name.",
+               "type": "string"
+            },
+            "given_name": {
+               "description": "First name.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "main_contact": {
-               "type": "string"
-            },
-            "name": {
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "organization": {
+               "description": "The organization that the Member is part of.",
                "type": "string"
             },
             "telephone": {
+               "description": "The telephone number of the Member.",
                "type": "string"
             },
-            "title": {
-               "description": "The title that describes an entity.",
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -705,10 +1910,8 @@
          },
          "required": [
             "id",
-            "name",
-            "telephone",
-            "organization",
-            "main_contact"
+            "email",
+            "telephone"
          ],
          "title": "Member",
          "type": "object"
@@ -717,20 +1920,35 @@
          "additionalProperties": false,
          "description": "A databased entity, concept or class. This is a generic class that is the root of all the other classes.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -747,20 +1965,47 @@
          "additionalProperties": false,
          "description": "A member of the species Homo sapiens.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "additional_name": {
+               "description": "Additional name(s).",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "family_name": {
+               "description": "Last name.",
+               "type": "string"
+            },
+            "given_name": {
+               "description": "First name.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -773,56 +2018,47 @@
          "title": "Person",
          "type": "object"
       },
-      "ProcessedDataset": {
+      "PhenotypicFeature": {
          "additionalProperties": false,
-         "description": "A dataset that is generated by processing an existing dataset.",
+         "description": "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
+               "description": "Description of an entity.",
                "type": "string"
             },
-            "files": {
-               "description": "One or more files that collectively make this dataset.",
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Attribute"
                },
                "type": "array"
             },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy that applies to this dataset.",
-               "type": "string"
-            },
-            "has_experiment": {
-               "description": "One or more experiments that collectively are part of the dataset",
-               "type": "string"
-            },
-            "has_file": {
-               "description": "One or more files that collectively are part of the dataset",
-               "type": "string"
-            },
-            "has_study": {
-               "description": "One or more studies that collectively are part of the dataset",
-               "type": "string"
-            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "title": {
+            "name": {
+               "description": "The name for an entity.",
                "type": "string"
             },
             "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -830,37 +2066,217 @@
             }
          },
          "required": [
-            "id",
-            "title",
-            "description",
-            "type",
-            "files",
-            "has_data_access_policy",
-            "has_study",
-            "has_experiment",
-            "has_file"
+            "id"
          ],
-         "title": "ProcessedDataset",
+         "title": "PhenotypicFeature",
+         "type": "object"
+      },
+      "PlannedProcess": {
+         "additionalProperties": false,
+         "description": "A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "PlannedProcess",
+         "type": "object"
+      },
+      "Population": {
+         "additionalProperties": false,
+         "description": "A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Population",
+         "type": "object"
+      },
+      "Project": {
+         "additionalProperties": false,
+         "description": "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "A detailed description about this Project.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Custom key/value pairs that further characterizes this Project.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Project.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "has_study": {
+               "description": "One or more Study entities associated with this Project.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Project",
          "type": "object"
       },
       "Protocol": {
          "additionalProperties": false,
          "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Detailed description of the Protocol.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "Name of the Protocol.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "url": {
+               "description": "URL for the resource that describes this Protocol.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -875,26 +2291,41 @@
       },
       "Publication": {
          "additionalProperties": false,
-         "description": "Represents a publication.",
+         "description": "The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.",
          "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
             "id": {
-               "description": "A PMID or DOI for the publication.",
+               "description": "A PMID or DOI for the Publication.",
                "type": "string"
             },
             "title": {
-               "description": "The title that describes an entity.",
+               "description": "The title for the Publication.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "One or more cross-references for this Publication.",
                "items": {
                   "type": "string"
                },
@@ -911,20 +2342,47 @@
          "additionalProperties": false,
          "description": "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.",
          "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "Description of an entity.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "The Publication associated with an entity.",
                "type": "string"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "title": {
+               "description": "The title that describes an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -939,64 +2397,53 @@
       },
       "Sample": {
          "additionalProperties": false,
-         "description": "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. This could be either an individual, or sets of individuals from a population, or a portion of a substance like an isolate or tissue.",
+         "description": "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).",
          "properties": {
-            "biosample_accession": {
-               "description": "BioSample accession. For example, if the Sample is from EBI BioSamples.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
-               "description": "Brief description of a sample.",
+               "description": "Brief description of the Sample.",
                "type": "string"
             },
-            "files": {
-               "description": "One or more files that are linked to this Sample.",
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Attribute"
                },
                "type": "array"
             },
-            "geographical_region": {
-               "description": "A geographical region associated with the sample.",
+            "has_biospecimen": {
+               "description": "The Biospecimen from which this Sample was prepared from.",
                "type": "string"
             },
-            "has_anatomical_site": {
-               "description": "Anatomical site from which the sample was retrieved.",
-               "type": "string"
-            },
-            "has_cell_line": {
-               "description": "Type of cell line that was used.",
-               "type": "string"
-            },
-            "has_disease_of_phenotypic_feature": {
-               "description": "The phenotype or disease associated with the individual from which the sample was taken.",
+            "has_individual": {
+               "description": "The Individual from which this Sample was derived from.",
                "type": "string"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
-               "description": "Name of the sample.",
-               "type": "string"
-            },
-            "subject": {
+               "description": "Name of the Sample.",
                "type": "string"
             },
             "type": {
-               "description": "Type of sample: 'Case' or 'Control'.",
-               "type": "string"
+               "$ref": "#/$defs/CaseControlEnum",
+               "description": "Type of sample: 'Case' or 'Control'."
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.",
                "items": {
                   "type": "string"
                },
@@ -1005,9 +2452,7 @@
          },
          "required": [
             "id",
-            "subject",
-            "has_disease_of_phenotypic_feature",
-            "files"
+            "has_individual"
          ],
          "title": "Sample",
          "type": "object"
@@ -1016,115 +2461,64 @@
          "additionalProperties": false,
          "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
          "properties": {
-            "abstract": {
-               "description": "The study abstract that describes the goals. Can also hold abstract from a publication related to the study.",
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
-            },
-            "attributes": {
-               "description": "Custom key/value pairs that further characterizes the study.",
-               "items": {
-                  "$ref": "#/definitions/Attribute"
-               },
-               "type": "array"
             },
             "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
-               "type": "string"
-            },
-            "id": {
-               "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "name": {
-               "description": "A short name for the study.",
-               "type": "string"
-            },
-            "publications": {
-               "description": "The publication(s) associated with this study.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "title": {
-               "description": "A descriptive title for the study.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The study type. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\".",
-               "type": "string"
-            },
-            "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
-               "type": "string"
-            },
-            "xref": {
-               "description": "Alternate identifiers for an entity.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [
-            "id",
-            "title",
-            "type",
-            "abstract"
-         ],
-         "title": "Study",
-         "type": "object"
-      },
-      "SyntheticDataset": {
-         "additionalProperties": false,
-         "description": "A dataset that is built by combining one or more datasets.",
-         "properties": {
-            "creation_date": {
-               "description": "Timestamp when the entity was created in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
+               "description": "A detailed description (abstract) that describes the goals of this Study.",
                "type": "string"
             },
-            "files": {
-               "description": "One or more files that collectively make this dataset.",
+            "has_analysis": {
+               "description": "One or more Analysis entities associated with this Study.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy that applies to this dataset.",
-               "type": "string"
+            "has_attribute": {
+               "description": "Custom key/value pairs that further characterizes the Study.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
             },
             "has_experiment": {
-               "description": "One or more experiments that collectively are part of the dataset",
-               "type": "string"
+               "description": "One or more Experiment entities associated with this Study.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
-            "has_file": {
-               "description": "One or more files that collectively are part of the dataset",
-               "type": "string"
-            },
-            "has_study": {
-               "description": "One or more studies that collectively are part of the dataset",
-               "type": "string"
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Study.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "title": {
+               "description": "A descriptive title for the Study.",
                "type": "string"
             },
             "type": {
+               "description": "The type of Study. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\".",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp when the entity was updated in ISO 8601 format.",
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "xref": {
-               "description": "Alternate identifiers for an entity.",
+               "description": "Holds one or more database cross references.",
                "items": {
                   "type": "string"
                },
@@ -1135,17 +2529,248 @@
             "id",
             "title",
             "description",
-            "type",
-            "files",
-            "has_data_access_policy",
-            "has_study",
-            "has_experiment",
-            "has_file"
+            "type"
          ],
-         "title": "SyntheticDataset",
+         "title": "Study",
+         "type": "object"
+      },
+      "Technology": {
+         "additionalProperties": false,
+         "description": "A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Technology",
+         "type": "object"
+      },
+      "User": {
+         "additionalProperties": false,
+         "description": "A user in GHGA.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "additional_name": {
+               "description": "Additional name(s).",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "email": {
+               "description": "Email of a person.",
+               "type": "string"
+            },
+            "family_name": {
+               "description": "Last name.",
+               "type": "string"
+            },
+            "given_name": {
+               "description": "First name.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "role": {
+               "$ref": "#/$defs/UserRoleEnum",
+               "description": "The role of the user"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "User",
+         "type": "object"
+      },
+      "UserRoleEnum": {
+         "description": "Enum to capture the different roles a GHGA User can have.",
+         "enum": [
+            "data requester",
+            "data steward"
+         ],
+         "title": "UserRoleEnum",
+         "type": "string"
+      },
+      "Workflow": {
+         "additionalProperties": false,
+         "description": "A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Workflow",
+         "type": "object"
+      },
+      "WorkflowParameter": {
+         "additionalProperties": false,
+         "description": "A key/value pair that represents a parameter used in a Workflow Step.",
+         "properties": {
+            "key": {
+               "description": "Key that represents the parameter name.",
+               "type": "string"
+            },
+            "value": {
+               "description": "Value corresponding to the the parameter key.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "WorkflowParameter",
+         "type": "object"
+      },
+      "WorkflowStep": {
+         "additionalProperties": false,
+         "description": "A Workflow Step represents each individual step performed in a Workflow. If the Workflow is a single-step workflow then the Workflow has just one Workflow Step entity. If the Workflow is a multi-step workflow then the Workflow has a Workflow Step entity for each step. All Workflow step specific attributes like parameters, and metadata about execution environment are captured by the Workflow Step entity.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_parameter": {
+               "description": "One or more parameters that are associated with this Workflow Step.",
+               "items": {
+                  "$ref": "#/$defs/WorkflowParameter"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "WorkflowStep",
          "type": "object"
       }
    },
+   "$id": "https://w3id.org/GHGA-Metadata-Schema",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": true,
    "properties": {},
    "title": "GHGA-Metadata-Schema",
    "type": "object"
