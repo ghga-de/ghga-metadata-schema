@@ -511,9 +511,9 @@ type Project
     creationDate: String
     updateDate: String
     title: String
-    hasStudy: [Experiment]
     description: String
     hasPublication: [Publication]
+    hasStudy: [Experiment]
     hasAttribute: [Attribute]
   }
 
@@ -579,12 +579,14 @@ type Study
     xref: [String]
     creationDate: String
     updateDate: String
-    hasExperiment: [Experiment]
-    hasAnalysis: [Analysis]
     title: String!
     description: String!
     type: String!
+    shortName: String
+    institution: [String]!
     hasPublication: [Publication]
+    hasExperiment: [Experiment]
+    hasAnalysis: [Analysis]
     hasAttribute: [Attribute]
   }
 

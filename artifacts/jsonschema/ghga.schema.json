@@ -2182,7 +2182,7 @@
                "type": "string"
             },
             "has_attribute": {
-               "description": "Custom key/value pairs that further characterizes this Project.",
+               "description": "Key/value pairs corresponding to an entity.",
                "items": {
                   "$ref": "#/$defs/Attribute"
                },
@@ -2481,7 +2481,7 @@
                "type": "array"
             },
             "has_attribute": {
-               "description": "Custom key/value pairs that further characterizes the Study.",
+               "description": "Key/value pairs corresponding to an entity.",
                "items": {
                   "$ref": "#/$defs/Attribute"
                },
@@ -2503,6 +2503,17 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "institution": {
+               "description": "Institutions associated with this study",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "short_name": {
+               "description": "Abbreviated name of the study",
                "type": "string"
             },
             "title": {
@@ -2529,7 +2540,8 @@
             "id",
             "title",
             "description",
-            "type"
+            "type",
+            "institution"
          ],
          "title": "Study",
          "type": "object"
@@ -2772,6 +2784,7 @@
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": true,
    "properties": {},
+   "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object"
 }

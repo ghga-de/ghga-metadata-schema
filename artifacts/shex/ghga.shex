@@ -438,9 +438,9 @@ linkml:Nodeidentifier NONLITERAL
 <Project> CLOSED {
     (  $<Project_tes> (  &<ResearchActivity_tes> ;
           rdf:type [ <ResearchActivity> ] ? ;
-          <has_study> @<Experiment> * ;
           <description> @linkml:String ? ;
           <has_publication> @<Publication> * ;
+          <has_study> @<Experiment> * ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Project> ]
@@ -499,12 +499,14 @@ linkml:Nodeidentifier NONLITERAL
 <Study> CLOSED {
     (  $<Study_tes> (  &<Investigation_tes> ;
           rdf:type [ <Investigation> ] ? ;
-          <has_experiment> @<Experiment> * ;
-          <has_analysis> @<Analysis> * ;
           <title> @linkml:String ;
           <description> @linkml:String ;
           <type> @linkml:String ;
+          <short_name> @linkml:String ? ;
+          <institution> @linkml:String + ;
           <has_publication> @<Publication> * ;
+          <has_experiment> @<Experiment> * ;
+          <has_analysis> @<Analysis> * ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Study> ]
