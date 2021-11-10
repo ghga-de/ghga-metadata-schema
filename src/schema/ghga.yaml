@@ -1263,6 +1263,9 @@ slots:
 
   value type:
     description: The semantic type for the value of an attribute.
+  
+  short_name:
+    description: A short name for an instance.
 
 enums:
   case_control_enum:
