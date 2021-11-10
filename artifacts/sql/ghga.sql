@@ -322,9 +322,9 @@ CREATE TABLE project (
 	creation_date TEXT, 
 	update_date TEXT, 
 	title TEXT, 
-	has_study TEXT, 
 	description TEXT, 
 	has_publication TEXT, 
+	has_study TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -358,12 +358,13 @@ CREATE TABLE study (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	has_experiment TEXT, 
-	has_analysis TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	type TEXT NOT NULL, 
+	short_name TEXT, 
 	has_publication TEXT, 
+	has_experiment TEXT, 
+	has_analysis TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -718,6 +719,13 @@ CREATE TABLE study_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES study (id)
+);
+
+CREATE TABLE study_institution (
+	backref_id TEXT, 
+	institution TEXT NOT NULL, 
+	PRIMARY KEY (backref_id, institution), 
 	FOREIGN KEY(backref_id) REFERENCES study (id)
 );
 

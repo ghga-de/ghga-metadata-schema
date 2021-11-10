@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-05 09:54
+# Generation date: 2021-11-10T07:06:40
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -451,9 +451,10 @@ class Project(ResearchActivity):
     class_model_uri: ClassVar[URIRef] = GHGA.Project
 
     id: Union[str, ProjectId] = None
-    has_study: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
+    title: Optional[str] = None
     description: Optional[str] = None
     has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
+    has_study: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -462,9 +463,8 @@ class Project(ResearchActivity):
         if not isinstance(self.id, ProjectId):
             self.id = ProjectId(self.id)
 
-        if not isinstance(self.has_study, list):
-            self.has_study = [self.has_study] if self.has_study is not None else []
-        self.has_study = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_study]
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -472,6 +472,12 @@ class Project(ResearchActivity):
         if not isinstance(self.has_publication, list):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
         self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+
+        if not isinstance(self.has_study, list):
+            self.has_study = [self.has_study] if self.has_study is not None else []
+        self.has_study = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_study]
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -495,9 +501,11 @@ class Study(Investigation):
     title: str = None
     description: str = None
     type: str = None
+    institution: Union[str, List[str]] = None
+    short_name: Optional[str] = None
+    has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
     has_experiment: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
     has_analysis: Optional[Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]]] = empty_list()
-    has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -521,6 +529,19 @@ class Study(Investigation):
         if not isinstance(self.type, str):
             self.type = str(self.type)
 
+        if self._is_empty(self.institution):
+            self.MissingRequiredField("institution")
+        if not isinstance(self.institution, list):
+            self.institution = [self.institution] if self.institution is not None else []
+        self.institution = [v if isinstance(v, str) else str(v) for v in self.institution]
+
+        if self.short_name is not None and not isinstance(self.short_name, str):
+            self.short_name = str(self.short_name)
+
+        if not isinstance(self.has_publication, list):
+            self.has_publication = [self.has_publication] if self.has_publication is not None else []
+        self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+
         if not isinstance(self.has_experiment, list):
             self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
         self.has_experiment = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_experiment]
@@ -529,9 +550,7 @@ class Study(Investigation):
             self.has_analysis = [self.has_analysis] if self.has_analysis is not None else []
         self.has_analysis = [v if isinstance(v, AnalysisId) else AnalysisId(v) for v in self.has_analysis]
 
-        if not isinstance(self.has_publication, list):
-            self.has_publication = [self.has_publication] if self.has_publication is not None else []
-        self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -2185,6 +2204,12 @@ slots.value = Slot(uri=GHGA.value, name="value", curie=GHGA.curie('value'),
 slots.value_type = Slot(uri=GHGA.value_type, name="value type", curie=GHGA.curie('value_type'),
                    model_uri=GHGA.value_type, domain=None, range=Optional[str])
 
+slots.short_name = Slot(uri=GHGA.short_name, name="short_name", curie=GHGA.curie('short_name'),
+                   model_uri=GHGA.short_name, domain=None, range=Optional[str])
+
+slots.institution = Slot(uri=GHGA.institution, name="institution", curie=GHGA.curie('institution'),
+                   model_uri=GHGA.institution, domain=None, range=Optional[str])
+
 slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
 
@@ -2238,6 +2263,12 @@ slots.study_description = Slot(uri=GHGA.description, name="study_description", c
 
 slots.study_type = Slot(uri=GHGA.type, name="study_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.study_type, domain=Study, range=str)
+
+slots.study_short_name = Slot(uri=GHGA.short_name, name="study_short_name", curie=GHGA.curie('short_name'),
+                   model_uri=GHGA.study_short_name, domain=Study, range=Optional[str])
+
+slots.study_institution = Slot(uri=GHGA.institution, name="study_institution", curie=GHGA.curie('institution'),
+                   model_uri=GHGA.study_institution, domain=Study, range=Union[str, List[str]])
 
 slots.study_has_publication = Slot(uri=GHGA.has_publication, name="study_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.study_has_publication, domain=Study, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
