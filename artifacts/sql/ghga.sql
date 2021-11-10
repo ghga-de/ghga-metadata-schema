@@ -233,6 +233,17 @@ CREATE TABLE information_content_entity (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE library_preparation_protocol (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	name TEXT, 
+	has_attribute TEXT, 
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE material_entity (
 	id TEXT NOT NULL, 
 	accession TEXT, 
@@ -338,6 +349,8 @@ CREATE TABLE protocol (
 	name TEXT, 
 	description TEXT, 
 	url TEXT, 
+	has_library_preparation_protocol TEXT, 
+	has_sequencing_protocol TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -350,6 +363,17 @@ CREATE TABLE publication (
 	update_date TEXT, 
 	title TEXT, 
 	id TEXT NOT NULL, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE sequencing_protocol (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	name TEXT, 
+	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -645,6 +669,13 @@ CREATE TABLE information_content_entity_xref (
 	FOREIGN KEY(backref_id) REFERENCES information_content_entity (id)
 );
 
+CREATE TABLE library_preparation_protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES library_preparation_protocol (id)
+);
+
 CREATE TABLE material_entity_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -713,6 +744,13 @@ CREATE TABLE publication_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES publication (id)
+);
+
+CREATE TABLE sequencing_protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES sequencing_protocol (id)
 );
 
 CREATE TABLE study_xref (

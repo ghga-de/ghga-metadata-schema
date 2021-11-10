@@ -339,8 +339,8 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <InformationContentEntity> ]
        )
-    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR
-    @<WorkflowStep>
+    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<LibraryPreparationProtocol> OR @<Protocol> OR @<Publication> OR
+    @<SequencingProtocol> OR @<Technology> OR @<Workflow> OR @<WorkflowStep>
 )
 
 <Investigation>  (
@@ -356,6 +356,16 @@ linkml:Nodeidentifier NONLITERAL
        )
     } OR @<Experiment> OR @<Study>
 )
+
+<LibraryPreparationProtocol> CLOSED {
+    (  $<LibraryPreparationProtocol_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <name> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
+       ) ;
+       rdf:type [ <LibraryPreparationProtocol> ]
+    )
+}
 
 <MaterialEntity>  (
     CLOSED {
@@ -453,6 +463,8 @@ linkml:Nodeidentifier NONLITERAL
           <name> @linkml:String ? ;
           <description> @linkml:String ? ;
           <url> @linkml:String ? ;
+          <has_library_preparation_protocol> @linkml:String ? ;
+          <has_sequencing_protocol> @linkml:String ? ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Protocol> ]
@@ -493,6 +505,16 @@ linkml:Nodeidentifier NONLITERAL
           <xref> @linkml:String *
        ) ;
        rdf:type [ <Sample> ]
+    )
+}
+
+<SequencingProtocol> CLOSED {
+    (  $<SequencingProtocol_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <name> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
+       ) ;
+       rdf:type [ <SequencingProtocol> ]
     )
 }
 

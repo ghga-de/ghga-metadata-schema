@@ -1800,6 +1800,55 @@
          "title": "Investigation",
          "type": "object"
       },
+      "LibraryPreparationProtocol": {
+         "additionalProperties": false,
+         "description": "Information about the library preparation of an Experiment.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "Name of the Library Preparation Protocol.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "LibraryPreparationProtocol",
+         "type": "object"
+      },
       "MaterialEntity": {
          "additionalProperties": false,
          "description": "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.",
@@ -2255,6 +2304,14 @@
                },
                "type": "array"
             },
+            "has_library_preparation_protocol": {
+               "description": "The Library Preparation Protocol associated with an entity.",
+               "type": "string"
+            },
+            "has_sequencing_protocol": {
+               "description": "The sequencing protocol associated with an entity.",
+               "type": "string"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
@@ -2455,6 +2512,55 @@
             "has_individual"
          ],
          "title": "Sample",
+         "type": "object"
+      },
+      "SequencingProtocol": {
+         "additionalProperties": false,
+         "description": "Information about the sequencing of a sample.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "Name of the Sequencing Protocol.",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "SequencingProtocol",
          "type": "object"
       },
       "Study": {

@@ -353,6 +353,15 @@ tbl_investigation = Table('investigation', metadata,
     Column('type', Text),
     Column('has_publication', Text, ForeignKey('publication.id')),
 )
+tbl_library_preparation_protocol = Table('library_preparation_protocol', metadata, 
+    Column('id', Text, primary_key=True),
+    Column('accession', Text),
+    Column('type', Text),
+    Column('creation_date', Text),
+    Column('update_date', Text),
+    Column('name', Text),
+    Column('has_attribute', Text),
+)
 tbl_material_entity = Table('material_entity', metadata, 
     Column('id', Text, primary_key=True),
     Column('accession', Text),
@@ -442,6 +451,8 @@ tbl_protocol = Table('protocol', metadata,
     Column('name', Text),
     Column('description', Text),
     Column('url', Text),
+    Column('has_library_preparation_protocol', Text),
+    Column('has_sequencing_protocol', Text),
     Column('has_attribute', Text),
 )
 tbl_publication = Table('publication', metadata, 
@@ -475,6 +486,15 @@ tbl_sample = Table('sample', metadata,
     Column('has_individual', Text, ForeignKey('individual.id')),
     Column('has_biospecimen', Text, ForeignKey('biospecimen.id')),
     Column('type', Text),
+)
+tbl_sequencing_protocol = Table('sequencing_protocol', metadata, 
+    Column('id', Text, primary_key=True),
+    Column('accession', Text),
+    Column('type', Text),
+    Column('creation_date', Text),
+    Column('update_date', Text),
+    Column('name', Text),
+    Column('has_attribute', Text),
 )
 tbl_study = Table('study', metadata, 
     Column('id', Text, primary_key=True),
@@ -636,6 +656,10 @@ tbl_investigation_xref = Table('investigation_xref', metadata,
     Column('backref_id', Text, ForeignKey('investigation.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
+tbl_library_preparation_protocol_xref = Table('library_preparation_protocol_xref', metadata, 
+    Column('backref_id', Text, ForeignKey('library_preparation_protocol.id'), primary_key=True),
+    Column('xref', Text, primary_key=True),
+)
 tbl_material_entity_xref = Table('material_entity_xref', metadata, 
     Column('backref_id', Text, ForeignKey('material_entity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
@@ -682,6 +706,10 @@ tbl_research_activity_xref = Table('research_activity_xref', metadata,
 )
 tbl_sample_xref = Table('sample_xref', metadata, 
     Column('backref_id', Text, ForeignKey('sample.id'), primary_key=True),
+    Column('xref', Text, primary_key=True),
+)
+tbl_sequencing_protocol_xref = Table('sequencing_protocol_xref', metadata, 
+    Column('backref_id', Text, ForeignKey('sequencing_protocol.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_study_xref = Table('study_xref', metadata, 
@@ -788,6 +816,8 @@ mapper_registry.map_imperatively(InformationContentEntity, tbl_information_conte
 })
 mapper_registry.map_imperatively(Investigation, tbl_investigation, properties={
 })
+mapper_registry.map_imperatively(LibraryPreparationProtocol, tbl_library_preparation_protocol, properties={
+})
 mapper_registry.map_imperatively(MaterialEntity, tbl_material_entity, properties={
 })
 mapper_registry.map_imperatively(Member, tbl_member, properties={
@@ -811,6 +841,8 @@ mapper_registry.map_imperatively(Publication, tbl_publication, properties={
 mapper_registry.map_imperatively(ResearchActivity, tbl_research_activity, properties={
 })
 mapper_registry.map_imperatively(Sample, tbl_sample, properties={
+})
+mapper_registry.map_imperatively(SequencingProtocol, tbl_sequencing_protocol, properties={
 })
 mapper_registry.map_imperatively(Study, tbl_study, properties={
 })

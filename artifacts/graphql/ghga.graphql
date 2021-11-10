@@ -413,6 +413,18 @@ type Investigation
     hasPublication: Publication
   }
 
+type LibraryPreparationProtocol
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    creationDate: String
+    updateDate: String
+    name: String
+    hasAttribute: [Attribute]
+  }
+
 type MaterialEntity
   {
     id: String!
@@ -528,6 +540,8 @@ type Protocol
     name: String
     description: String
     url: String
+    hasLibraryPreparationProtocol: String
+    hasSequencingProtocol: String
     hasAttribute: [Attribute]
   }
 
@@ -570,6 +584,18 @@ type Sample
     hasBiospecimen: Biospecimen
     type: CaseControlEnum
     xref: [String]
+  }
+
+type SequencingProtocol
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    creationDate: String
+    updateDate: String
+    name: String
+    hasAttribute: [Attribute]
   }
 
 type Study

@@ -27,6 +27,7 @@ file,,
 individual,,An Individual is a Person who is participating in a Study.
 information_content_entity,,A generically dependent continuant that is about some thing.
 investigation,,Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
+library_preparation_protocol,,Information about the library preparation of an Experiment.
 material_entity,,"A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass."
 member,,Member of an Organization or a Committee.
 named_thing,,"A databased entity, concept or class. This is a generic class that is the root of all the other classes."
@@ -39,6 +40,7 @@ protocol,,"A plan specification which has sufficient level of detail and quantit
 publication,,"The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI."
 research_activity,,A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.
 sample,,"A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)."
+sequencing_protocol,,Information about the sequencing of a sample.
 study,,Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
 technology,,A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.
 user,,A user in GHGA.

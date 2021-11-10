@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-10T07:06:40
+# Generation date: 2021-11-10T07:54:11
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -176,6 +176,14 @@ class InformationContentEntityId(NamedThingId):
 
 
 class ProtocolId(InformationContentEntityId):
+    pass
+
+
+class LibraryPreparationProtocolId(InformationContentEntityId):
+    pass
+
+
+class SequencingProtocolId(InformationContentEntityId):
     pass
 
 
@@ -1480,6 +1488,8 @@ class Protocol(InformationContentEntity):
     name: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
+    has_library_preparation_protocol: Optional[str] = None
+    has_sequencing_protocol: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1496,6 +1506,76 @@ class Protocol(InformationContentEntity):
 
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
+
+        if self.has_library_preparation_protocol is not None and not isinstance(self.has_library_preparation_protocol, str):
+            self.has_library_preparation_protocol = str(self.has_library_preparation_protocol)
+
+        if self.has_sequencing_protocol is not None and not isinstance(self.has_sequencing_protocol, str):
+            self.has_sequencing_protocol = str(self.has_sequencing_protocol)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class LibraryPreparationProtocol(InformationContentEntity):
+    """
+    Information about the library preparation of an Experiment.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.LibraryPreparationProtocol
+    class_class_curie: ClassVar[str] = "GHGA:LibraryPreparationProtocol"
+    class_name: ClassVar[str] = "library preparation protocol"
+    class_model_uri: ClassVar[URIRef] = GHGA.LibraryPreparationProtocol
+
+    id: Union[str, LibraryPreparationProtocolId] = None
+    name: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, LibraryPreparationProtocolId):
+            self.id = LibraryPreparationProtocolId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SequencingProtocol(InformationContentEntity):
+    """
+    Information about the sequencing of a sample.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.SequencingProtocol
+    class_class_curie: ClassVar[str] = "GHGA:SequencingProtocol"
+    class_name: ClassVar[str] = "sequencing protocol"
+    class_model_uri: ClassVar[URIRef] = GHGA.SequencingProtocol
+
+    id: Union[str, SequencingProtocolId] = None
+    name: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SequencingProtocolId):
+            self.id = SequencingProtocolId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -2057,6 +2137,12 @@ slots.has_experiment = Slot(uri=GHGA.has_experiment, name="has experiment", curi
 slots.has_analysis = Slot(uri=GHGA.has_analysis, name="has analysis", curie=GHGA.curie('has_analysis'),
                    model_uri=GHGA.has_analysis, domain=None, range=Optional[str])
 
+slots.has_sequencing_protocol = Slot(uri=GHGA.has_sequencing_protocol, name="has sequencing protocol", curie=GHGA.curie('has_sequencing_protocol'),
+                   model_uri=GHGA.has_sequencing_protocol, domain=None, range=Optional[str])
+
+slots.has_library_preparation_protocol = Slot(uri=GHGA.has_library_preparation_protocol, name="has library preparation protocol", curie=GHGA.curie('has_library_preparation_protocol'),
+                   model_uri=GHGA.has_library_preparation_protocol, domain=None, range=Optional[str])
+
 slots.has_technology = Slot(uri=GHGA.has_technology, name="has technology", curie=GHGA.curie('has_technology'),
                    model_uri=GHGA.has_technology, domain=None, range=Optional[Union[str, TechnologyId]])
 
@@ -2326,6 +2412,18 @@ slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('u
 
 slots.protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.library_preparation_protocol_name = Slot(uri=GHGA.name, name="library preparation protocol_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.library_preparation_protocol_name, domain=LibraryPreparationProtocol, range=Optional[str])
+
+slots.library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="library preparation protocol_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.library_preparation_protocol_has_attribute, domain=LibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.sequencing_protocol_name = Slot(uri=GHGA.name, name="sequencing protocol_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.sequencing_protocol_name, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="sequencing protocol_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.sequencing_protocol_has_attribute, domain=SequencingProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.workflow_step_has_parameter = Slot(uri=GHGA.has_parameter, name="workflow step_has parameter", curie=GHGA.curie('has_parameter'),
                    model_uri=GHGA.workflow_step_has_parameter, domain=WorkflowStep, range=Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]])
