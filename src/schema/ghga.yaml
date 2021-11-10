@@ -209,6 +209,14 @@ classes:
           The type of Study. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
         # TODO: Enum
         required: true
+      short_name:
+        description: >-
+          Abbreviated name of the study
+      institution:
+        description: >-
+          Institutions associated with this study
+        required: true
+        multivalued: true
       has publication:
         description: >-
           One or more Publication entities associated with this Study.
