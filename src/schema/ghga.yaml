@@ -1267,6 +1267,9 @@ slots:
   short_name:
     description: A short name for an instance.
 
+  institution:
+    description: One or more institutes associated with an instance.
+
 enums:
   case_control_enum:
     description: >-
