@@ -189,7 +189,6 @@ classes:
       - title
       - description
       - type
-      - abstract
       - short_name
       - institution
       - has publication
