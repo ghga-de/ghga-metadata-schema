@@ -154,7 +154,11 @@ classes:
     close_mappings:
       - NCIT:C47885
     slots:
+      - title
+      - description
+      - has publication
       - has study
+      - has attribute
     slot_usage:
       description:
         description: >-
@@ -182,8 +186,16 @@ classes:
       detailed examination and analysis of a subject to learn more about the phenomenon
       being studied.
     slots:
+      - title
+      - description
+      - type
+      - abstract
+      - short_name
+      - institution
+      - has publication
       - has experiment
       - has analysis
+      - has attribute
     slot_usage:
       title:
         description: >-
