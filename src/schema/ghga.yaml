@@ -357,7 +357,7 @@ classes:
     is_a: information content entity
     description: >-
       Information about the library preparation of an Experiment.
-    slot:
+    slots:
       - name
       - has attribute
     slot_usage:
@@ -372,7 +372,7 @@ classes:
     is_a: information content entity
     description: >-
       Information about the sequencing of a sample.
-    slot:
+    slots:
       - name
       - has attribute
     slot_usage:
