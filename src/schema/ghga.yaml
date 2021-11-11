@@ -154,15 +154,17 @@ classes:
     close_mappings:
       - NCIT:C47885
     slots:
-      - title
       - description
       - has publication
       - has study
-      - has attribute
     slot_usage:
+      title:
+        description: >-
+          Comprehensive title for the project.
       description:
         description: >-
-          A detailed description about this Project.
+          Short textual description of the project  
+          (Some information on the protocol, sample used and collected etc)      
       has publication:
         description: >-
           One or more Publication entities associated with this Project.
@@ -186,11 +188,8 @@ classes:
       detailed examination and analysis of a subject to learn more about the phenomenon
       being studied.
     slots:
-      - title
-      - description
-      - type
       - short_name
-      - institution
+      - affiliation
       - has publication
       - has experiment
       - has analysis
@@ -207,14 +206,14 @@ classes:
       type:
         description: >-
           The type of Study. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
-        # TODO: Enum
+        range: study_type_enum
         required: true
       short_name:
         description: >-
           Abbreviated name of the study
-      institution:
+      affiliation:
         description: >-
-          Institutions associated with this study
+          Affiliations with this study.
         required: true
         multivalued: true
       has publication:
@@ -305,7 +304,7 @@ classes:
       has input:
         description: >-
           The input to the Experiment Process. Usually a Sample entity.
-        range: sample
+        range: sample    
       has protocol:
         description: >-
           The Protocol entity used by this Experiment Process.
@@ -321,6 +320,36 @@ classes:
         # TODO: what happens when we want to represent multiple samples via ExperimentProcess?
         range: file
 
+  library preparation protocol:
+    is_a: protocol
+    description: >-
+      Information about the library preparation of an Experiment.
+    slots:
+      - name
+      - has attribute
+    slot_usage:
+      name:
+        description: >-
+          Name of the Library Preparation Protocol.
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Library Preparation Protocol.
+
+  sequencing protocol:
+    is_a: protocol
+    description: >-
+      Information about the sequencing of a sample.
+    slots:
+      - name
+      - has attribute
+    slot_usage:
+      name:
+        description: >-
+          Name of the Sequencing Protocol.
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Sequencing Protocol.
+
   protocol:
     is_a: information content entity
     aliases: ['library protocol', 'experiment protocol']
@@ -332,8 +361,6 @@ classes:
       - name
       - description
       - url
-      - has library preparation protocol
-      - has sequencing protocol
       - has attribute
     exact_mappings:
       - OBI:0000272
@@ -352,36 +379,6 @@ classes:
       has attribute:
         description: >-
           One or more attributes that further characterizes this Protocol.
-
-  library preparation protocol:
-    is_a: information content entity
-    description: >-
-      Information about the library preparation of an Experiment.
-    slots:
-      - name
-      - has attribute
-    slot_usage:
-      name:
-        description: >-
-          Name of the Library Preparation Protocol.
-      has attribute:
-        description: >-
-          One or more attributes that further characterizes this Library Preparation Protocol.
-
-  sequencing protocol:
-    is_a: information content entity
-    description: >-
-      Information about the sequencing of a sample.
-    slots:
-      - name
-      - has attribute
-    slot_usage:
-      name:
-        description: >-
-          Name of the Sequencing Protocol.
-      has attribute:
-        description: >-
-          One or more attributes that further characterizes this Sequencing Protocol.
 
   agent:
     is_a: named thing
@@ -513,6 +510,9 @@ classes:
     slots:
       - name
       - description
+      - tissue #TODO
+      - isolation #TODO
+      - storage #TODO
       - has individual
       - has biospecimen
     slot_usage:
@@ -526,6 +526,17 @@ classes:
       description:
         description: >-
           Brief description of the Sample.
+      tissue:
+        description: >-
+          Description of Sample Source (eg: Blood, Serum etc).
+        required: true
+      isolation:
+        description: >-
+          Method or Device employed for collecting sample.
+      storage:
+        description: >-
+          Methods by which sample is stored 
+          (e.g. frozen in liquid nitrogen).
       has individual:
         description: >-
           The Individual from which this Sample was derived from.
@@ -571,19 +582,26 @@ classes:
       - has children
     slot_usage:
       gender:
-        description: Gender of an Individual.
+        description: >- 
+          Gender of an Individual/ Identification as male/masculine, 
+          female/feminine or something else, and association 
+          with a (social) role or set of behavioral and cultural traits
       sex:
-        description: Biological Sex of an Individual.
+        description: Biological sex of a sequenced individual. ("Female", "Male").
         required: true
         range: biological_sex_enum
       age:
         description: Age of an Individual.
+        required: true
       year of birth:
         description: Year of Birth of an Individual.
       vital status:
-        description: Vital status of an Individual.
+        description: Last known Vital Status of an Individual.
+        range: vital_status_enum
       ethnicity:
-        description: Ethnicity of an Individual.
+        description: >-
+          A social group characterized by a distinctive social and cultural 
+          tradition that is maintained from generation to generation..
       ancestry:
         description: >-
           Ancestry of an Individual.  Typically a value from Human Ancestry Ontology.
@@ -666,6 +684,7 @@ classes:
       type:
         description: >-
           The file type: Aligned Reads, Unaligned Reads, etc.
+        range: file_type_enum
       size:
         description: >-
           The file size in bytes.
@@ -965,6 +984,7 @@ classes:
       valid DOI.
     slots:
       - title
+      - abstract
     slot_usage:
       id:
         description: >-
@@ -972,6 +992,9 @@ classes:
       title:
         description: >-
           The title for the Publication.
+      abstract:
+        description: >-
+          The abstract of the Publication.
       xref:
         description: >-
           One or more cross-references for this Publication.
@@ -1232,6 +1255,15 @@ slots:
     description: The age of a person.
     range: integer
 
+  tissue:
+    description: The source of a sample.
+
+  isolation:
+    description: Method or device employed for collecting/isolating a sample.
+
+  storage:
+    description: Methods by which a sample is stored.
+
   year of birth:
     description: Year of Birth of a person.
 
@@ -1305,8 +1337,8 @@ slots:
   short_name:
     description: A short name for an instance.
 
-  institution:
-    description: One or more institutes associated with an instance.
+  affiliation:
+    description: Affiliations associated with an instance.
 
 enums:
   case_control_enum:
@@ -1341,3 +1373,74 @@ enums:
         description: >-
           Role of a Data Steward where the user is responsible for
           approving request from a user for one or more Datasets.
+  
+  vital_status_enum:
+    description: >-
+      Enum to capture the vital status of an individual.
+    permissible_values:
+      alive:
+        description: >-
+          Showing characteristics of life; displaying signs of life.
+      deceased:
+        description: >-
+          The cessation of life.
+  
+  study_type_enum:
+    description: >-
+      Enum to capture the type of a study.
+    permissible_values:
+      whole_genome_sequencing:
+        description: Whole Genome Sequencing
+      metagenomics:
+        description: Metagenomics
+      transcriptome_analysis:
+        description: Transcriptome Analysis
+      resequencing:
+        description: Resequencing 
+      epigenetics:
+        description: Epigenetics
+      synthetic_genomics:
+        description: Sythetic Genomics 
+      forensic_paleo_genomics:
+        description: Forensic or Paleo-genomics
+      gene_regulation:
+        description: Gene Regulation Study
+      cancer_genomics:
+        description: Cancer Genomics
+      population_genomics:
+        description: Population Genomics
+      rna_seq:
+        description: RNAseq
+      exome_sequencing:
+        description: Exome Sequencing
+      pooled_clone_sequencing:
+        description: Pooled Clone Sequencing
+      other:
+        description: Other study 
+
+  file_type_enum:
+    description: >-
+      Enum to capture file types.
+    permissible_values:
+      bam: 
+        description: BAM File 
+      complete_genomics:
+        description: Complete Genomics File 
+      cram: 
+        description: CRAM File 
+      fasta:
+        description: Fasta File 
+      fastq:
+        description: FastQ File 
+      pacbio_hdf5:
+        description: PacBio HDF5 File 
+      sff:
+        description: >- 
+          Standard flowgram format used to encode results 
+          of pyrosequencing from the 454 Life Sciences platform.
+      srf:
+        description: >-
+          SRF is a generic format for DNA sequence data.
+      vcf:
+        description: >-
+          vcf File for storing gene sequence variations.
