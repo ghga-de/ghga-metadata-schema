@@ -1148,7 +1148,7 @@
                "type": "string"
             },
             "ethnicity": {
-               "description": "Ethnicity of an Individual.",
+               "description": "A social group characterized by a distinctive social and cultural  tradition that is maintained from generation to generation..",
                "type": "string"
             },
             "family_name": {
@@ -1156,7 +1156,7 @@
                "type": "string"
             },
             "gender": {
-               "description": "Gender of an Individual.",
+               "description": "Gender of an Individual/ Identification as male/masculine,  female/feminine or something else, and association  with a (social) role or set of behavioral and cultural traits",
                "type": "string"
             },
             "geographical_region": {
@@ -1188,7 +1188,7 @@
             },
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
-               "description": "Biological Sex of an Individual."
+               "description": "Biological sex of a sequenced individual. (\"Female\", \"Male\")."
             },
             "type": {
                "description": "The type of an entity.",
@@ -1199,8 +1199,8 @@
                "type": "string"
             },
             "vital_status": {
-               "description": "Vital status of an Individual.",
-               "type": "string"
+               "$ref": "#/$defs/VitalStatusEnum",
+               "description": "Last known Vital Status of an Individual."
             },
             "xref": {
                "description": "Holds one or more database cross references.",
@@ -1216,7 +1216,8 @@
          },
          "required": [
             "id",
-            "sex"
+            "sex",
+            "age"
          ],
          "title": "Donor",
          "type": "object"
@@ -1579,8 +1580,8 @@
                "type": "string"
             },
             "type": {
-               "description": "The file type: Aligned Reads, Unaligned Reads, etc.",
-               "type": "string"
+               "$ref": "#/$defs/FileTypeEnum",
+               "description": "The file type: Aligned Reads, Unaligned Reads, etc."
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -1599,6 +1600,22 @@
          ],
          "title": "File",
          "type": "object"
+      },
+      "FileTypeEnum": {
+         "description": "Enum to capture file types.",
+         "enum": [
+            "bam",
+            "complete_genomics",
+            "cram",
+            "fasta",
+            "fastq",
+            "pacbio_hdf5",
+            "sff",
+            "srf",
+            "vcf"
+         ],
+         "title": "FileTypeEnum",
+         "type": "string"
       },
       "Individual": {
          "additionalProperties": false,
@@ -1625,7 +1642,7 @@
                "type": "string"
             },
             "ethnicity": {
-               "description": "Ethnicity of an Individual.",
+               "description": "A social group characterized by a distinctive social and cultural  tradition that is maintained from generation to generation..",
                "type": "string"
             },
             "family_name": {
@@ -1633,7 +1650,7 @@
                "type": "string"
             },
             "gender": {
-               "description": "Gender of an Individual.",
+               "description": "Gender of an Individual/ Identification as male/masculine,  female/feminine or something else, and association  with a (social) role or set of behavioral and cultural traits",
                "type": "string"
             },
             "geographical_region": {
@@ -1665,7 +1682,7 @@
             },
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
-               "description": "Biological Sex of an Individual."
+               "description": "Biological sex of a sequenced individual. (\"Female\", \"Male\")."
             },
             "type": {
                "description": "The type of an entity.",
@@ -1676,8 +1693,8 @@
                "type": "string"
             },
             "vital_status": {
-               "description": "Vital status of an Individual.",
-               "type": "string"
+               "$ref": "#/$defs/VitalStatusEnum",
+               "description": "Last known Vital Status of an Individual."
             },
             "xref": {
                "description": "Holds one or more database cross references.",
@@ -1693,7 +1710,8 @@
          },
          "required": [
             "id",
-            "sex"
+            "sex",
+            "age"
          ],
          "title": "Individual",
          "type": "object"
@@ -1812,8 +1830,12 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "description": {
+               "description": "Detailed description of the Protocol.",
+               "type": "string"
+            },
             "has_attribute": {
-               "description": "Key/value pairs corresponding to an entity.",
+               "description": "One or more attributes that further characterizes this Library Preparation Protocol.",
                "items": {
                   "$ref": "#/$defs/Attribute"
                },
@@ -1833,6 +1855,10 @@
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "url": {
+               "description": "URL for the resource that describes this Protocol.",
                "type": "string"
             },
             "xref": {
@@ -2227,11 +2253,11 @@
                "type": "string"
             },
             "description": {
-               "description": "A detailed description about this Project.",
+               "description": "Short textual description of the project   (Some information on the protocol, sample used and collected etc)      ",
                "type": "string"
             },
             "has_attribute": {
-               "description": "Key/value pairs corresponding to an entity.",
+               "description": "Custom key/value pairs that further characterizes this Project.",
                "items": {
                   "$ref": "#/$defs/Attribute"
                },
@@ -2256,7 +2282,7 @@
                "type": "string"
             },
             "title": {
-               "description": "The title that describes an entity.",
+               "description": "Comprehensive title for the project.",
                "type": "string"
             },
             "type": {
@@ -2304,14 +2330,6 @@
                },
                "type": "array"
             },
-            "has_library_preparation_protocol": {
-               "description": "The Library Preparation Protocol associated with an entity.",
-               "type": "string"
-            },
-            "has_sequencing_protocol": {
-               "description": "The sequencing protocol associated with an entity.",
-               "type": "string"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
@@ -2350,6 +2368,10 @@
          "additionalProperties": false,
          "description": "The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.",
          "properties": {
+            "abstract": {
+               "description": "The abstract of the Publication.",
+               "type": "string"
+            },
             "accession": {
                "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
@@ -2487,8 +2509,20 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "isolation": {
+               "description": "Method or Device employed for collecting sample.",
+               "type": "string"
+            },
             "name": {
                "description": "Name of the Sample.",
+               "type": "string"
+            },
+            "storage": {
+               "description": "Methods by which sample is stored  (e.g. frozen in liquid nitrogen).",
+               "type": "string"
+            },
+            "tissue": {
+               "description": "Description of Sample Source (eg: Blood, Serum etc).",
                "type": "string"
             },
             "type": {
@@ -2509,6 +2543,7 @@
          },
          "required": [
             "id",
+            "tissue",
             "has_individual"
          ],
          "title": "Sample",
@@ -2526,8 +2561,12 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "description": {
+               "description": "Detailed description of the Protocol.",
+               "type": "string"
+            },
             "has_attribute": {
-               "description": "Key/value pairs corresponding to an entity.",
+               "description": "One or more attributes that further characterizes this Sequencing Protocol.",
                "items": {
                   "$ref": "#/$defs/Attribute"
                },
@@ -2547,6 +2586,10 @@
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "url": {
+               "description": "URL for the resource that describes this Protocol.",
                "type": "string"
             },
             "xref": {
@@ -2570,6 +2613,13 @@
             "accession": {
                "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
+            },
+            "affiliation": {
+               "description": "Affiliations with this study.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
@@ -2611,13 +2661,6 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "institution": {
-               "description": "Institutions associated with this study",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "short_name": {
                "description": "Abbreviated name of the study",
                "type": "string"
@@ -2627,8 +2670,8 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of Study. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\".",
-               "type": "string"
+               "$ref": "#/$defs/StudyTypeEnum",
+               "description": "The type of Study. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\"."
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -2644,13 +2687,34 @@
          },
          "required": [
             "id",
+            "affiliation",
             "title",
             "description",
-            "type",
-            "institution"
+            "type"
          ],
          "title": "Study",
          "type": "object"
+      },
+      "StudyTypeEnum": {
+         "description": "Enum to capture the type of a study.",
+         "enum": [
+            "whole_genome_sequencing",
+            "metagenomics",
+            "transcriptome_analysis",
+            "resequencing",
+            "epigenetics",
+            "synthetic_genomics",
+            "forensic_paleo_genomics",
+            "gene_regulation",
+            "cancer_genomics",
+            "population_genomics",
+            "rna_seq",
+            "exome_sequencing",
+            "pooled_clone_sequencing",
+            "other"
+         ],
+         "title": "StudyTypeEnum",
+         "type": "string"
       },
       "Technology": {
          "additionalProperties": false,
@@ -2769,6 +2833,15 @@
             "data steward"
          ],
          "title": "UserRoleEnum",
+         "type": "string"
+      },
+      "VitalStatusEnum": {
+         "description": "Enum to capture the vital status of an individual.",
+         "enum": [
+            "alive",
+            "deceased"
+         ],
+         "title": "VitalStatusEnum",
          "type": "string"
       },
       "Workflow": {

@@ -306,7 +306,7 @@ linkml:Nodeidentifier NONLITERAL
           <checksum> @linkml:String ? ;
           <file_index> @linkml:String ? ;
           <category> @linkml:String ? ;
-          <type> @linkml:String ?
+          <type> @<FileTypeEnum> ?
        ) ;
        rdf:type [ <File> ]
     )
@@ -318,9 +318,9 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <Person> ] ? ;
              <gender> @linkml:String ? ;
              <sex> @<BiologicalSexEnum> ;
-             <age> @linkml:Integer ? ;
+             <age> @linkml:Integer ;
              <year_of_birth> @linkml:String ? ;
-             <vital_status> @linkml:String ? ;
+             <vital_status> @<VitalStatusEnum> ? ;
              <geographical_region> @linkml:String ? ;
              <ethnicity> @linkml:String ? ;
              <ancestry> @linkml:String ? ;
@@ -339,8 +339,8 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <InformationContentEntity> ]
        )
-    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<LibraryPreparationProtocol> OR @<Protocol> OR @<Publication> OR
-    @<SequencingProtocol> OR @<Technology> OR @<Workflow> OR @<WorkflowStep>
+    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR
+    @<WorkflowStep>
 )
 
 <Investigation>  (
@@ -358,8 +358,8 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <LibraryPreparationProtocol> CLOSED {
-    (  $<LibraryPreparationProtocol_tes> (  &<InformationContentEntity_tes> ;
-          rdf:type [ <InformationContentEntity> ] ? ;
+    (  $<LibraryPreparationProtocol_tes> (  &<Protocol_tes> ;
+          rdf:type [ <Protocol> ] ? ;
           <name> @linkml:String ? ;
           <has_attribute> @<Attribute> *
        ) ;
@@ -451,30 +451,32 @@ linkml:Nodeidentifier NONLITERAL
           <description> @linkml:String ? ;
           <has_publication> @<Publication> * ;
           <has_study> @<Experiment> * ;
+          <title> @linkml:String ? ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Project> ]
     )
 }
 
-<Protocol> CLOSED {
-    (  $<Protocol_tes> (  &<InformationContentEntity_tes> ;
-          rdf:type [ <InformationContentEntity> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ? ;
-          <url> @linkml:String ? ;
-          <has_library_preparation_protocol> @linkml:String ? ;
-          <has_sequencing_protocol> @linkml:String ? ;
-          <has_attribute> @<Attribute> *
-       ) ;
-       rdf:type [ <Protocol> ]
-    )
-}
+<Protocol>  (
+    CLOSED {
+       (  $<Protocol_tes> (  &<InformationContentEntity_tes> ;
+             rdf:type [ <InformationContentEntity> ] ? ;
+             <name> @linkml:String ? ;
+             <description> @linkml:String ? ;
+             <url> @linkml:String ? ;
+             <has_attribute> @<Attribute> *
+          ) ;
+          rdf:type [ <Protocol> ]
+       )
+    } OR @<LibraryPreparationProtocol> OR @<SequencingProtocol>
+)
 
 <Publication> CLOSED {
     (  $<Publication_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
           <title> @linkml:String ? ;
+          <abstract> @linkml:String ? ;
           <xref> @linkml:String *
        ) ;
        rdf:type [ <Publication> ]
@@ -499,6 +501,9 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <MaterialEntity> ] ? ;
           <name> @linkml:String ? ;
           <description> @linkml:String ? ;
+          <tissue> @linkml:String ;
+          <isolation> @linkml:String ? ;
+          <storage> @linkml:String ? ;
           <has_individual> @<Individual> ;
           <has_biospecimen> @<Biospecimen> ? ;
           <type> @<CaseControlEnum> ? ;
@@ -509,8 +514,8 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <SequencingProtocol> CLOSED {
-    (  $<SequencingProtocol_tes> (  &<InformationContentEntity_tes> ;
-          rdf:type [ <InformationContentEntity> ] ? ;
+    (  $<SequencingProtocol_tes> (  &<Protocol_tes> ;
+          rdf:type [ <Protocol> ] ? ;
           <name> @linkml:String ? ;
           <has_attribute> @<Attribute> *
        ) ;
@@ -521,15 +526,15 @@ linkml:Nodeidentifier NONLITERAL
 <Study> CLOSED {
     (  $<Study_tes> (  &<Investigation_tes> ;
           rdf:type [ <Investigation> ] ? ;
-          <title> @linkml:String ;
-          <description> @linkml:String ;
-          <type> @linkml:String ;
           <short_name> @linkml:String ? ;
-          <institution> @linkml:String + ;
+          <affiliation> @linkml:String + ;
           <has_publication> @<Publication> * ;
           <has_experiment> @<Experiment> * ;
           <has_analysis> @<Analysis> * ;
-          <has_attribute> @<Attribute> *
+          <has_attribute> @<Attribute> * ;
+          <title> @linkml:String ;
+          <description> @linkml:String ;
+          <type> @<StudyTypeEnum>
        ) ;
        rdf:type [ <Study> ]
     )

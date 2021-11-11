@@ -1,6 +1,9 @@
 
 CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
+CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased');
+CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
+CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
 
 CREATE TABLE agent (
@@ -156,9 +159,9 @@ CREATE TABLE donor (
 	additional_name TEXT, 
 	gender TEXT, 
 	sex biological_sex_enum NOT NULL, 
-	age INTEGER, 
+	age INTEGER NOT NULL, 
 	year_of_birth TEXT, 
-	vital_status TEXT, 
+	vital_status vital_status_enum, 
 	geographical_region TEXT, 
 	ethnicity TEXT, 
 	ancestry TEXT, 
@@ -196,7 +199,7 @@ CREATE TABLE file (
 	checksum TEXT, 
 	file_index TEXT, 
 	category TEXT, 
-	type TEXT, 
+	type file_type_enum, 
 	PRIMARY KEY (id)
 );
 
@@ -212,9 +215,9 @@ CREATE TABLE individual (
 	additional_name TEXT, 
 	gender TEXT, 
 	sex biological_sex_enum NOT NULL, 
-	age INTEGER, 
+	age INTEGER NOT NULL, 
 	year_of_birth TEXT, 
-	vital_status TEXT, 
+	vital_status vital_status_enum, 
 	geographical_region TEXT, 
 	ethnicity TEXT, 
 	ancestry TEXT, 
@@ -239,6 +242,8 @@ CREATE TABLE library_preparation_protocol (
 	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	description TEXT, 
+	url TEXT, 
 	name TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
@@ -332,10 +337,10 @@ CREATE TABLE project (
 	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	title TEXT, 
 	description TEXT, 
 	has_publication TEXT, 
 	has_study TEXT, 
+	title TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -349,8 +354,6 @@ CREATE TABLE protocol (
 	name TEXT, 
 	description TEXT, 
 	url TEXT, 
-	has_library_preparation_protocol TEXT, 
-	has_sequencing_protocol TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -362,6 +365,7 @@ CREATE TABLE publication (
 	creation_date TEXT, 
 	update_date TEXT, 
 	title TEXT, 
+	abstract TEXT, 
 	id TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
@@ -372,6 +376,8 @@ CREATE TABLE sequencing_protocol (
 	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	description TEXT, 
+	url TEXT, 
 	name TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
@@ -382,14 +388,14 @@ CREATE TABLE study (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	type TEXT NOT NULL, 
 	short_name TEXT, 
 	has_publication TEXT, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
 	has_attribute TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	type study_type_enum NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -760,10 +766,10 @@ CREATE TABLE study_xref (
 	FOREIGN KEY(backref_id) REFERENCES study (id)
 );
 
-CREATE TABLE study_institution (
+CREATE TABLE study_affiliation (
 	backref_id TEXT, 
-	institution TEXT NOT NULL, 
-	PRIMARY KEY (backref_id, institution), 
+	affiliation TEXT NOT NULL, 
+	PRIMARY KEY (backref_id, affiliation), 
 	FOREIGN KEY(backref_id) REFERENCES study (id)
 );
 
@@ -839,6 +845,9 @@ CREATE TABLE sample (
 	update_date TEXT, 
 	name TEXT, 
 	description TEXT, 
+	tissue TEXT NOT NULL, 
+	isolation TEXT, 
+	storage TEXT, 
 	has_individual TEXT NOT NULL, 
 	has_biospecimen TEXT, 
 	type case_control_enum, 

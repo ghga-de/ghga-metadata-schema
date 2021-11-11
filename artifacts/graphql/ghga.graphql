@@ -269,9 +269,9 @@ type Donor
     additionalName: String
     gender: String
     sex: BiologicalSexEnum!
-    age: Integer
+    age: Integer!
     yearOfBirth: String
-    vitalStatus: String
+    vitalStatus: VitalStatusEnum
     geographicalRegion: String
     ethnicity: String
     ancestry: String
@@ -361,7 +361,7 @@ type File
     checksum: String
     fileIndex: String
     category: String
-    type: String
+    type: FileTypeEnum
   }
 
 type Individual
@@ -378,9 +378,9 @@ type Individual
     additionalName: String
     gender: String
     sex: BiologicalSexEnum!
-    age: Integer
+    age: Integer!
     yearOfBirth: String
-    vitalStatus: String
+    vitalStatus: VitalStatusEnum
     geographicalRegion: String
     ethnicity: String
     ancestry: String
@@ -421,6 +421,8 @@ type LibraryPreparationProtocol
     type: String
     creationDate: String
     updateDate: String
+    description: String
+    url: String
     name: String
     hasAttribute: [Attribute]
   }
@@ -522,10 +524,10 @@ type Project
     type: String
     creationDate: String
     updateDate: String
-    title: String
     description: String
     hasPublication: [Publication]
     hasStudy: [Experiment]
+    title: String
     hasAttribute: [Attribute]
   }
 
@@ -540,8 +542,6 @@ type Protocol
     name: String
     description: String
     url: String
-    hasLibraryPreparationProtocol: String
-    hasSequencingProtocol: String
     hasAttribute: [Attribute]
   }
 
@@ -553,6 +553,7 @@ type Publication
     creationDate: String
     updateDate: String
     title: String
+    abstract: String
     id: String!
     xref: [String]
   }
@@ -580,6 +581,9 @@ type Sample
     updateDate: String
     name: String
     description: String
+    tissue: String!
+    isolation: String
+    storage: String
     hasIndividual: Individual!
     hasBiospecimen: Biospecimen
     type: CaseControlEnum
@@ -594,6 +598,8 @@ type SequencingProtocol
     type: String
     creationDate: String
     updateDate: String
+    description: String
+    url: String
     name: String
     hasAttribute: [Attribute]
   }
@@ -605,15 +611,15 @@ type Study
     xref: [String]
     creationDate: String
     updateDate: String
-    title: String!
-    description: String!
-    type: String!
     shortName: String
-    institution: [String]!
+    affiliation: [String]!
     hasPublication: [Publication]
     hasExperiment: [Experiment]
     hasAnalysis: [Analysis]
     hasAttribute: [Attribute]
+    title: String!
+    description: String!
+    type: StudyTypeEnum!
   }
 
 type Technology

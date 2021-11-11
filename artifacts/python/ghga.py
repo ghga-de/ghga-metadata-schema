@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-10T07:54:11
+# Generation date: 2021-11-11T10:23:39
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -179,11 +179,11 @@ class ProtocolId(InformationContentEntityId):
     pass
 
 
-class LibraryPreparationProtocolId(InformationContentEntityId):
+class LibraryPreparationProtocolId(ProtocolId):
     pass
 
 
-class SequencingProtocolId(InformationContentEntityId):
+class SequencingProtocolId(ProtocolId):
     pass
 
 
@@ -459,10 +459,10 @@ class Project(ResearchActivity):
     class_model_uri: ClassVar[URIRef] = GHGA.Project
 
     id: Union[str, ProjectId] = None
-    title: Optional[str] = None
     description: Optional[str] = None
     has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
     has_study: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
+    title: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -470,9 +470,6 @@ class Project(ResearchActivity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProjectId):
             self.id = ProjectId(self.id)
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -485,7 +482,8 @@ class Project(ResearchActivity):
             self.has_study = [self.has_study] if self.has_study is not None else []
         self.has_study = [v if isinstance(v, ExperimentId) else ExperimentId(v) for v in self.has_study]
 
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -506,10 +504,10 @@ class Study(Investigation):
     class_model_uri: ClassVar[URIRef] = GHGA.Study
 
     id: Union[str, StudyId] = None
+    affiliation: Union[str, List[str]] = None
     title: str = None
     description: str = None
-    type: str = None
-    institution: Union[str, List[str]] = None
+    type: Union[str, "StudyTypeEnum"] = None
     short_name: Optional[str] = None
     has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
     has_experiment: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
@@ -521,6 +519,12 @@ class Study(Investigation):
             self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
+
+        if self._is_empty(self.affiliation):
+            self.MissingRequiredField("affiliation")
+        if not isinstance(self.affiliation, list):
+            self.affiliation = [self.affiliation] if self.affiliation is not None else []
+        self.affiliation = [v if isinstance(v, str) else str(v) for v in self.affiliation]
 
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
@@ -534,14 +538,8 @@ class Study(Investigation):
 
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if self._is_empty(self.institution):
-            self.MissingRequiredField("institution")
-        if not isinstance(self.institution, list):
-            self.institution = [self.institution] if self.institution is not None else []
-        self.institution = [v if isinstance(v, str) else str(v) for v in self.institution]
+        if not isinstance(self.type, StudyTypeEnum):
+            self.type = StudyTypeEnum(self.type)
 
         if self.short_name is not None and not isinstance(self.short_name, str):
             self.short_name = str(self.short_name)
@@ -776,10 +774,10 @@ class Individual(Person):
 
     id: Union[str, IndividualId] = None
     sex: Union[str, "BiologicalSexEnum"] = None
+    age: int = None
     gender: Optional[str] = None
-    age: Optional[int] = None
     year_of_birth: Optional[str] = None
-    vital_status: Optional[str] = None
+    vital_status: Optional[Union[str, "VitalStatusEnum"]] = None
     geographical_region: Optional[str] = None
     ethnicity: Optional[str] = None
     ancestry: Optional[str] = None
@@ -797,17 +795,19 @@ class Individual(Person):
         if not isinstance(self.sex, BiologicalSexEnum):
             self.sex = BiologicalSexEnum(self.sex)
 
+        if self._is_empty(self.age):
+            self.MissingRequiredField("age")
+        if not isinstance(self.age, int):
+            self.age = int(self.age)
+
         if self.gender is not None and not isinstance(self.gender, str):
             self.gender = str(self.gender)
-
-        if self.age is not None and not isinstance(self.age, int):
-            self.age = int(self.age)
 
         if self.year_of_birth is not None and not isinstance(self.year_of_birth, str):
             self.year_of_birth = str(self.year_of_birth)
 
-        if self.vital_status is not None and not isinstance(self.vital_status, str):
-            self.vital_status = str(self.vital_status)
+        if self.vital_status is not None and not isinstance(self.vital_status, VitalStatusEnum):
+            self.vital_status = VitalStatusEnum(self.vital_status)
 
         if self.geographical_region is not None and not isinstance(self.geographical_region, str):
             self.geographical_region = str(self.geographical_region)
@@ -842,6 +842,7 @@ class Donor(Individual):
 
     id: Union[str, DonorId] = None
     sex: Union[str, "BiologicalSexEnum"] = None
+    age: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1168,9 +1169,12 @@ class Sample(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Sample
 
     id: Union[str, SampleId] = None
+    tissue: str = None
     has_individual: Union[str, IndividualId] = None
     name: Optional[str] = None
     description: Optional[str] = None
+    isolation: Optional[str] = None
+    storage: Optional[str] = None
     has_biospecimen: Optional[Union[str, BiospecimenId]] = None
     type: Optional[Union[str, "CaseControlEnum"]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
@@ -1180,6 +1184,11 @@ class Sample(MaterialEntity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SampleId):
             self.id = SampleId(self.id)
+
+        if self._is_empty(self.tissue):
+            self.MissingRequiredField("tissue")
+        if not isinstance(self.tissue, str):
+            self.tissue = str(self.tissue)
 
         if self._is_empty(self.has_individual):
             self.MissingRequiredField("has_individual")
@@ -1191,6 +1200,12 @@ class Sample(MaterialEntity):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.isolation is not None and not isinstance(self.isolation, str):
+            self.isolation = str(self.isolation)
+
+        if self.storage is not None and not isinstance(self.storage, str):
+            self.storage = str(self.storage)
 
         if self.has_biospecimen is not None and not isinstance(self.has_biospecimen, BiospecimenId):
             self.has_biospecimen = BiospecimenId(self.has_biospecimen)
@@ -1488,8 +1503,6 @@ class Protocol(InformationContentEntity):
     name: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
-    has_library_preparation_protocol: Optional[str] = None
-    has_sequencing_protocol: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1507,12 +1520,6 @@ class Protocol(InformationContentEntity):
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
 
-        if self.has_library_preparation_protocol is not None and not isinstance(self.has_library_preparation_protocol, str):
-            self.has_library_preparation_protocol = str(self.has_library_preparation_protocol)
-
-        if self.has_sequencing_protocol is not None and not isinstance(self.has_sequencing_protocol, str):
-            self.has_sequencing_protocol = str(self.has_sequencing_protocol)
-
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
@@ -1521,7 +1528,7 @@ class Protocol(InformationContentEntity):
 
 
 @dataclass
-class LibraryPreparationProtocol(InformationContentEntity):
+class LibraryPreparationProtocol(Protocol):
     """
     Information about the library preparation of an Experiment.
     """
@@ -1547,13 +1554,11 @@ class LibraryPreparationProtocol(InformationContentEntity):
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
-
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class SequencingProtocol(InformationContentEntity):
+class SequencingProtocol(Protocol):
     """
     Information about the sequencing of a sample.
     """
@@ -1576,8 +1581,6 @@ class SequencingProtocol(InformationContentEntity):
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
-
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -1681,7 +1684,7 @@ class File(InformationContentEntity):
     checksum: Optional[str] = None
     file_index: Optional[str] = None
     category: Optional[str] = None
-    type: Optional[str] = None
+    type: Optional[Union[str, "FileTypeEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1707,8 +1710,8 @@ class File(InformationContentEntity):
         if self.category is not None and not isinstance(self.category, str):
             self.category = str(self.category)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.type is not None and not isinstance(self.type, FileTypeEnum):
+            self.type = FileTypeEnum(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -1969,6 +1972,7 @@ class Publication(InformationContentEntity):
 
     id: Union[str, PublicationId] = None
     title: Optional[str] = None
+    abstract: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1979,6 +1983,9 @@ class Publication(InformationContentEntity):
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
+
+        if self.abstract is not None and not isinstance(self.abstract, str):
+            self.abstract = str(self.abstract)
 
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
@@ -2066,6 +2073,86 @@ class UserRoleEnum(EnumDefinitionImpl):
         setattr(cls, "data steward",
                 PermissibleValue(text="data steward",
                                  description="Role of a Data Steward where the user is responsible for approving request from a user for one or more Datasets.") )
+
+class VitalStatusEnum(EnumDefinitionImpl):
+    """
+    Enum to capture the vital status of an individual.
+    """
+    alive = PermissibleValue(text="alive",
+                                 description="Showing characteristics of life; displaying signs of life.")
+    deceased = PermissibleValue(text="deceased",
+                                       description="The cessation of life.")
+
+    _defn = EnumDefinition(
+        name="VitalStatusEnum",
+        description="Enum to capture the vital status of an individual.",
+    )
+
+class StudyTypeEnum(EnumDefinitionImpl):
+    """
+    Enum to capture the type of a study.
+    """
+    whole_genome_sequencing = PermissibleValue(text="whole_genome_sequencing",
+                                                                     description="Whole Genome Sequencing")
+    metagenomics = PermissibleValue(text="metagenomics",
+                                               description="Metagenomics")
+    transcriptome_analysis = PermissibleValue(text="transcriptome_analysis",
+                                                                   description="Transcriptome Analysis")
+    resequencing = PermissibleValue(text="resequencing",
+                                               description="Resequencing")
+    epigenetics = PermissibleValue(text="epigenetics",
+                                             description="Epigenetics")
+    synthetic_genomics = PermissibleValue(text="synthetic_genomics",
+                                                           description="Sythetic Genomics")
+    forensic_paleo_genomics = PermissibleValue(text="forensic_paleo_genomics",
+                                                                     description="Forensic or Paleo-genomics")
+    gene_regulation = PermissibleValue(text="gene_regulation",
+                                                     description="Gene Regulation Study")
+    cancer_genomics = PermissibleValue(text="cancer_genomics",
+                                                     description="Cancer Genomics")
+    population_genomics = PermissibleValue(text="population_genomics",
+                                                             description="Population Genomics")
+    rna_seq = PermissibleValue(text="rna_seq",
+                                     description="RNAseq")
+    exome_sequencing = PermissibleValue(text="exome_sequencing",
+                                                       description="Exome Sequencing")
+    pooled_clone_sequencing = PermissibleValue(text="pooled_clone_sequencing",
+                                                                     description="Pooled Clone Sequencing")
+    other = PermissibleValue(text="other",
+                                 description="Other study")
+
+    _defn = EnumDefinition(
+        name="StudyTypeEnum",
+        description="Enum to capture the type of a study.",
+    )
+
+class FileTypeEnum(EnumDefinitionImpl):
+    """
+    Enum to capture file types.
+    """
+    bam = PermissibleValue(text="bam",
+                             description="BAM File")
+    complete_genomics = PermissibleValue(text="complete_genomics",
+                                                         description="Complete Genomics File")
+    cram = PermissibleValue(text="cram",
+                               description="CRAM File")
+    fasta = PermissibleValue(text="fasta",
+                                 description="Fasta File")
+    fastq = PermissibleValue(text="fastq",
+                                 description="FastQ File")
+    pacbio_hdf5 = PermissibleValue(text="pacbio_hdf5",
+                                             description="PacBio HDF5 File")
+    sff = PermissibleValue(text="sff",
+                             description="Standard flowgram format used to encode results  of pyrosequencing from the 454 Life Sciences platform.")
+    srf = PermissibleValue(text="srf",
+                             description="SRF is a generic format for DNA sequence data.")
+    vcf = PermissibleValue(text="vcf",
+                             description="vcf File for storing gene sequence variations.")
+
+    _defn = EnumDefinition(
+        name="FileTypeEnum",
+        description="Enum to capture file types.",
+    )
 
 # Slots
 class slots:
@@ -2224,6 +2311,15 @@ slots.sex = Slot(uri=GHGA.sex, name="sex", curie=GHGA.curie('sex'),
 slots.age = Slot(uri=GHGA.age, name="age", curie=GHGA.curie('age'),
                    model_uri=GHGA.age, domain=None, range=Optional[int])
 
+slots.tissue = Slot(uri=GHGA.tissue, name="tissue", curie=GHGA.curie('tissue'),
+                   model_uri=GHGA.tissue, domain=None, range=Optional[str])
+
+slots.isolation = Slot(uri=GHGA.isolation, name="isolation", curie=GHGA.curie('isolation'),
+                   model_uri=GHGA.isolation, domain=None, range=Optional[str])
+
+slots.storage = Slot(uri=GHGA.storage, name="storage", curie=GHGA.curie('storage'),
+                   model_uri=GHGA.storage, domain=None, range=Optional[str])
+
 slots.year_of_birth = Slot(uri=GHGA.year_of_birth, name="year of birth", curie=GHGA.curie('year_of_birth'),
                    model_uri=GHGA.year_of_birth, domain=None, range=Optional[str])
 
@@ -2293,8 +2389,8 @@ slots.value_type = Slot(uri=GHGA.value_type, name="value type", curie=GHGA.curie
 slots.short_name = Slot(uri=GHGA.short_name, name="short_name", curie=GHGA.curie('short_name'),
                    model_uri=GHGA.short_name, domain=None, range=Optional[str])
 
-slots.institution = Slot(uri=GHGA.institution, name="institution", curie=GHGA.curie('institution'),
-                   model_uri=GHGA.institution, domain=None, range=Optional[str])
+slots.affiliation = Slot(uri=GHGA.affiliation, name="affiliation", curie=GHGA.curie('affiliation'),
+                   model_uri=GHGA.affiliation, domain=None, range=Optional[str])
 
 slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
@@ -2329,6 +2425,9 @@ slots.attribute_value = Slot(uri=GHGA.value, name="attribute_value", curie=GHGA.
 slots.attribute_value_type = Slot(uri=GHGA.value_type, name="attribute_value type", curie=GHGA.curie('value_type'),
                    model_uri=GHGA.attribute_value_type, domain=Attribute, range=Optional[str])
 
+slots.project_title = Slot(uri=GHGA.title, name="project_title", curie=GHGA.curie('title'),
+                   model_uri=GHGA.project_title, domain=Project, range=Optional[str])
+
 slots.project_description = Slot(uri=GHGA.description, name="project_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.project_description, domain=Project, range=Optional[str])
 
@@ -2348,13 +2447,13 @@ slots.study_description = Slot(uri=GHGA.description, name="study_description", c
                    model_uri=GHGA.study_description, domain=Study, range=str)
 
 slots.study_type = Slot(uri=GHGA.type, name="study_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.study_type, domain=Study, range=str)
+                   model_uri=GHGA.study_type, domain=Study, range=Union[str, "StudyTypeEnum"])
 
 slots.study_short_name = Slot(uri=GHGA.short_name, name="study_short_name", curie=GHGA.curie('short_name'),
                    model_uri=GHGA.study_short_name, domain=Study, range=Optional[str])
 
-slots.study_institution = Slot(uri=GHGA.institution, name="study_institution", curie=GHGA.curie('institution'),
-                   model_uri=GHGA.study_institution, domain=Study, range=Union[str, List[str]])
+slots.study_affiliation = Slot(uri=GHGA.affiliation, name="study_affiliation", curie=GHGA.curie('affiliation'),
+                   model_uri=GHGA.study_affiliation, domain=Study, range=Union[str, List[str]])
 
 slots.study_has_publication = Slot(uri=GHGA.has_publication, name="study_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.study_has_publication, domain=Study, range=Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]])
@@ -2401,18 +2500,6 @@ slots.experiment_process_has_agent = Slot(uri=GHGA.has_agent, name="experiment p
 slots.experiment_process_has_output = Slot(uri=GHGA.has_output, name="experiment process_has output", curie=GHGA.curie('has_output'),
                    model_uri=GHGA.experiment_process_has_output, domain=ExperimentProcess, range=Optional[Union[str, FileId]])
 
-slots.protocol_name = Slot(uri=GHGA.name, name="protocol_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.protocol_name, domain=Protocol, range=Optional[str])
-
-slots.protocol_description = Slot(uri=GHGA.description, name="protocol_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.protocol_description, domain=Protocol, range=Optional[str])
-
-slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('url'),
-                   model_uri=GHGA.protocol_url, domain=Protocol, range=Optional[str])
-
-slots.protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="protocol_has attribute", curie=GHGA.curie('has_attribute'),
-                   model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
-
 slots.library_preparation_protocol_name = Slot(uri=GHGA.name, name="library preparation protocol_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.library_preparation_protocol_name, domain=LibraryPreparationProtocol, range=Optional[str])
 
@@ -2424,6 +2511,18 @@ slots.sequencing_protocol_name = Slot(uri=GHGA.name, name="sequencing protocol_n
 
 slots.sequencing_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="sequencing protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.sequencing_protocol_has_attribute, domain=SequencingProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.protocol_name = Slot(uri=GHGA.name, name="protocol_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.protocol_name, domain=Protocol, range=Optional[str])
+
+slots.protocol_description = Slot(uri=GHGA.description, name="protocol_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.protocol_description, domain=Protocol, range=Optional[str])
+
+slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('url'),
+                   model_uri=GHGA.protocol_url, domain=Protocol, range=Optional[str])
+
+slots.protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="protocol_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.workflow_step_has_parameter = Slot(uri=GHGA.has_parameter, name="workflow step_has parameter", curie=GHGA.curie('has_parameter'),
                    model_uri=GHGA.workflow_step_has_parameter, domain=WorkflowStep, range=Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]])
@@ -2455,6 +2554,15 @@ slots.sample_type = Slot(uri=GHGA.type, name="sample_type", curie=GHGA.curie('ty
 slots.sample_description = Slot(uri=GHGA.description, name="sample_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.sample_description, domain=Sample, range=Optional[str])
 
+slots.sample_tissue = Slot(uri=GHGA.tissue, name="sample_tissue", curie=GHGA.curie('tissue'),
+                   model_uri=GHGA.sample_tissue, domain=Sample, range=str)
+
+slots.sample_isolation = Slot(uri=GHGA.isolation, name="sample_isolation", curie=GHGA.curie('isolation'),
+                   model_uri=GHGA.sample_isolation, domain=Sample, range=Optional[str])
+
+slots.sample_storage = Slot(uri=GHGA.storage, name="sample_storage", curie=GHGA.curie('storage'),
+                   model_uri=GHGA.sample_storage, domain=Sample, range=Optional[str])
+
 slots.sample_has_individual = Slot(uri=GHGA.has_individual, name="sample_has individual", curie=GHGA.curie('has_individual'),
                    model_uri=GHGA.sample_has_individual, domain=Sample, range=Union[str, IndividualId])
 
@@ -2471,13 +2579,13 @@ slots.individual_sex = Slot(uri=GHGA.sex, name="individual_sex", curie=GHGA.curi
                    model_uri=GHGA.individual_sex, domain=Individual, range=Union[str, "BiologicalSexEnum"])
 
 slots.individual_age = Slot(uri=GHGA.age, name="individual_age", curie=GHGA.curie('age'),
-                   model_uri=GHGA.individual_age, domain=Individual, range=Optional[int])
+                   model_uri=GHGA.individual_age, domain=Individual, range=int)
 
 slots.individual_year_of_birth = Slot(uri=GHGA.year_of_birth, name="individual_year of birth", curie=GHGA.curie('year_of_birth'),
                    model_uri=GHGA.individual_year_of_birth, domain=Individual, range=Optional[str])
 
 slots.individual_vital_status = Slot(uri=GHGA.vital_status, name="individual_vital status", curie=GHGA.curie('vital_status'),
-                   model_uri=GHGA.individual_vital_status, domain=Individual, range=Optional[str])
+                   model_uri=GHGA.individual_vital_status, domain=Individual, range=Optional[Union[str, "VitalStatusEnum"]])
 
 slots.individual_ethnicity = Slot(uri=GHGA.ethnicity, name="individual_ethnicity", curie=GHGA.curie('ethnicity'),
                    model_uri=GHGA.individual_ethnicity, domain=Individual, range=Optional[str])
@@ -2507,7 +2615,7 @@ slots.file_format = Slot(uri=GHGA.format, name="file_format", curie=GHGA.curie('
                    model_uri=GHGA.file_format, domain=File, range=Optional[str])
 
 slots.file_type = Slot(uri=GHGA.type, name="file_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.file_type, domain=File, range=Optional[str])
+                   model_uri=GHGA.file_type, domain=File, range=Optional[Union[str, "FileTypeEnum"]])
 
 slots.file_size = Slot(uri=GHGA.size, name="file_size", curie=GHGA.curie('size'),
                    model_uri=GHGA.file_size, domain=File, range=Optional[str])
@@ -2628,6 +2736,9 @@ slots.publication_id = Slot(uri=GHGA.id, name="publication_id", curie=GHGA.curie
 
 slots.publication_title = Slot(uri=GHGA.title, name="publication_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.publication_title, domain=Publication, range=Optional[str])
+
+slots.publication_abstract = Slot(uri=GHGA.abstract, name="publication_abstract", curie=GHGA.curie('abstract'),
+                   model_uri=GHGA.publication_abstract, domain=Publication, range=Optional[str])
 
 slots.publication_xref = Slot(uri=GHGA.xref, name="publication_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.publication_xref, domain=Publication, range=Optional[Union[str, List[str]]])
