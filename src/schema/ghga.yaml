@@ -156,9 +156,15 @@ classes:
     slots:
       - has study
     slot_usage:
+      title:
+        description: >-
+          Comprehensive title for the project.
+        required: true
       description:
         description: >-
-          A detailed description about this Project.
+          Short textual description of the project  
+          (Some information on the protocol, sample used and collected etc)  
+        required: true    
       has publication:
         description: >-
           One or more Publication entities associated with this Project.
@@ -171,7 +177,8 @@ classes:
         range: experiment
       has attribute:
         description: >-
-          Custom key/value pairs that further characterizes this Project.
+          Custom attributes for the Project 
+          (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)
         multivalued: true
         range: attribute
 
@@ -182,12 +189,15 @@ classes:
       detailed examination and analysis of a subject to learn more about the phenomenon
       being studied.
     slots:
+      - affiliation
+      - has publication
       - has experiment
       - has analysis
+      - has attribute
     slot_usage:
       title:
         description: >-
-          A descriptive title for the Study.
+          Comprehensive title for the study.
         required: true
       description:
         description: >-
@@ -196,8 +206,13 @@ classes:
       type:
         description: >-
           The type of Study. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
-        # TODO: Enum
+        range: study_type_enum
         required: true
+      affiliation:
+        description: >-
+          Affiliations with this study.
+        required: true
+        multivalued: true
       has publication:
         description: >-
           One or more Publication entities associated with this Study.
@@ -215,7 +230,8 @@ classes:
         range: analysis
       has attribute:
         description: >-
-          Custom key/value pairs that further characterizes the Study.
+          Custom key/value pairs that further characterizes the Study. 
+          (e.g.: approaches - single-cell, bulk etc)
         multivalued: true
         range: attribute
 
@@ -232,6 +248,9 @@ classes:
     slots:
       - name
       - description
+      - biological replicates
+      - technical replicates
+      - experimental replicates
       - has study
       - has sample
       - has technology
@@ -240,11 +259,12 @@ classes:
     slot_usage:
       name:
         description: >-
-          Name for the Experiment.
+          Name for the experiment (eg: GHGAE_PBMC_RNAseq).
         required: true
       description:
         description: >-
-          A description for the Experiment.
+          A detailed description of the Experiment.
+        required: true
       has study:
         description: >-
           The Study entity associated with this Experiment.
@@ -277,16 +297,20 @@ classes:
       to a File via an assay. The Experiment Process also keeps track of the Protocol
       used and the Agent that is running the experiment.
     slots:
-      - title
+      - name
       - has input
       - has protocol
       - has agent
       - has output
     slot_usage:
+      name:
+        description: >-
+          Explanation of the step(s) involved in performing the experiment until Sequencing part 
+          (eg: Sample extraction -> Target Enrichment) 
       has input:
         description: >-
           The input to the Experiment Process. Usually a Sample entity.
-        range: sample
+        range: sample    
       has protocol:
         description: >-
           The Protocol entity used by this Experiment Process.
@@ -301,6 +325,76 @@ classes:
           The output of this Experiment Process. Usually a File entity.
         # TODO: what happens when we want to represent multiple samples via ExperimentProcess?
         range: file
+
+  library preparation protocol:
+    is_a: protocol
+    description: >-
+      Information about the library preparation of an Experiment.
+    slots:
+      - name
+      - description
+      - library name
+      - library layout
+      - library type
+      - library selection
+      - library construction
+      - library preparation
+      - library level
+      - library construction kit retail name
+      - library construction kit manufacturer
+      - primer
+      - end bias 
+      - target regions
+      - rnaseq strandedness
+      - has attribute
+      - description
+    slot_usage:
+      name:
+        description: >-
+          Name of the library preparation protocol (eg: mRNA-seq library preparation).
+        required: true
+      description:
+        description: >-
+          Description about how a sequencing library was prepared (eg: Library construction method).
+        required: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Library Preparation Protocol.
+
+  sequencing protocol:
+    is_a: protocol
+    description: >-
+      Information about the sequencing of a sample.
+    slots:
+      - name
+      - description
+      - sequencing center 
+      - instrument model 
+      - read length
+      - read pair number 
+      - target coverage 
+      - reference annotation 
+      - lane number 
+      - flow cell id 
+      - flow cell type 
+      - umi barcode read
+      - umi barcode size
+      - umi barcode offset
+      - cell barcode read 
+      - cell barcode offset 
+      - cell barcode size 
+      - sample barcode read
+      - has attribute
+    slot_usage:
+      name:
+        description: >-
+          Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+      description: 
+        description: >-
+          Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Sequencing Protocol.
 
   protocol:
     is_a: information content entity
@@ -461,20 +555,39 @@ classes:
       - biolink:MaterialSample
     slots:
       - name
+      - type 
       - description
+      - vital status at sampling
+      - tissue #TODO
+      - isolation #TODO
+      - storage #TODO
       - has individual
       - has biospecimen
     slot_usage:
       name:
         description: >-
           Name of the Sample.
+        required: true
       type:
         description: >-
           Type of sample: 'Case' or 'Control'.
         range: case_control_enum
       description:
         description: >-
-          Brief description of the Sample.
+          Short textual description of the sample  
+          (How the sample was collected, sample source, 
+          protocol followed for processing the sample etc)      
+      tissue:
+        description: >-
+          Description of Sample Source (eg: Blood, Serum etc).
+        required: true
+      isolation:
+        description: >-
+          Method or Device employed for collecting sample.
+      storage:
+        description: >-
+          Methods by which sample is stored 
+          (e.g. frozen in liquid nitrogen).
       has individual:
         description: >-
           The Individual from which this Sample was derived from.
@@ -520,19 +633,27 @@ classes:
       - has children
     slot_usage:
       gender:
-        description: Gender of an Individual.
+        description: >- 
+          Gender of an Individual/ Identification as male/masculine, 
+          female/feminine or something else, and association 
+          with a (social) role or set of behavioral and cultural traits
       sex:
-        description: Biological Sex of an Individual.
+        description: Biological sex of a sequenced individual. ("Female", "Male").
         required: true
         range: biological_sex_enum
       age:
         description: Age of an Individual.
+        required: true
       year of birth:
         description: Year of Birth of an Individual.
       vital status:
-        description: Vital status of an Individual.
+        description: Last known Vital Status of an Individual.
+        required: true
+        range: vital_status_enum
       ethnicity:
-        description: Ethnicity of an Individual.
+        description: >-
+          A social group characterized by a distinctive social and cultural 
+          tradition that is maintained from generation to generation..
       ancestry:
         description: >-
           Ancestry of an Individual.  Typically a value from Human Ancestry Ontology.
@@ -615,6 +736,7 @@ classes:
       type:
         description: >-
           The file type: Aligned Reads, Unaligned Reads, etc.
+        range: file_type_enum
       size:
         description: >-
           The file size in bytes.
@@ -914,6 +1036,7 @@ classes:
       valid DOI.
     slots:
       - title
+      - abstract
     slot_usage:
       id:
         description: >-
@@ -921,6 +1044,9 @@ classes:
       title:
         description: >-
           The title for the Publication.
+      abstract:
+        description: >-
+          The abstract of the Publication.
       xref:
         description: >-
           One or more cross-references for this Publication.
@@ -1033,6 +1159,15 @@ slots:
   abstract:
     description: The abstract - a short blurb - associated with an entity.
 
+  technical replicates:
+    description: Number of replicate samples (technical replicates).
+
+  biological replicates:
+    description: Number of independent samples (biological replicates).
+
+  experimental replicates:
+    description: Number of experiment replications.
+
   xref:
     description: Alternate identifiers for an entity.
     multivalued: true
@@ -1080,6 +1215,12 @@ slots:
 
   has analysis:
     description: The analysis associated with an entity.
+
+  has sequencing protocol:
+    description: The sequencing protocol associated with an entity.
+
+  has library preparation protocol:
+    description: The Library Preparation Protocol associated with an entity.    
 
   has technology:
     description: The technology associated with an entity.
@@ -1175,6 +1316,15 @@ slots:
     description: The age of a person.
     range: integer
 
+  tissue:
+    description: The source of a sample.
+
+  isolation:
+    description: Method or device employed for collecting/isolating a sample.
+
+  storage:
+    description: Methods by which a sample is stored.
+
   year of birth:
     description: Year of Birth of a person.
 
@@ -1245,6 +1395,133 @@ slots:
   value type:
     description: The semantic type for the value of an attribute.
 
+  affiliation:
+    description: Affiliations associated with an instance.
+
+  library name:
+    description: >- 
+      Library Name (e.g.: Sequencer layout_macromolecule)
+  
+  library layout:
+    description: >-
+      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
+
+  library type:
+    description: >-
+      Describe the level of omics analysis (eg: Metagenome, transcriptome, etc) 
+
+  library selection:
+    description: >-
+      Library Selection method (e.g. random, PCA, cDNA, etc )
+
+  library construction:
+    description: >-
+      The name of a library construction approach being used. (eg: "10X v2 sequencing" or "Smart-seq2")
+
+  library preparation:
+    description: >-
+      The general method for sequencing library construction (e.g. KAPA PCR-free).
+
+  library level:
+    description: >-
+      Single Cell Sequencing or Bulk Sequencing
+
+  library construction kit retail name:
+    description: >-
+      A unique identifier for the kit used to construct a genomic library. 
+      This may include the vendor name, kit name and kit version 
+      (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+
+  library construction kit manufacturer:
+    description: >-
+      Manufacturer of library construction kit
+
+  primer:
+    description: >-
+      The type of primer used for reverse transcription, e.g. "oligo-dT" or "random" primer. 
+      This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
+
+  end bias:
+    description: >-
+      The end of the cDNA molecule that is preferentially sequenced, 
+      e.g. 3/5 prime tag or end, or the full-length transcript.
+
+  target regions:
+    description: >-
+      subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study
+
+  rnaseq strandedness:
+    description: >-
+      The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
+  
+  sequencing center: 
+    description: >-
+      Center where sample was sequenced.
+
+  instrument model:
+    description: >-
+      The name and model of the technology platform used to perform sequencing.
+
+  read length:
+    description: >-
+      Length of sequencing reads (eg: Long or short or actual number of the read length etc).
+  
+  read pair number:
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+
+  reference annotation:
+    description: >-
+      Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
+  
+  lane number:
+    description: >-
+      Number of lanes on used flow cell.
+
+  target coverage:
+    description: >-
+      Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing
+
+  flow cell id:
+    description: >-
+      Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
+
+  flow cell type:
+    description: >-
+      Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore)
+
+  umi barcode read:
+    description: >-
+      The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2)
+  
+  umi barcode offset:
+    description: >-
+      The offset in sequence of the UMI identifying barcode. (E.g. "16").
+
+  umi barcode size: 
+    description: >-
+      The size of the UMI identifying barcode (Eg. "10").
+
+  cell barcode read: 
+    description: >-
+      The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+
+  cell barcode offset: 
+    description: >-
+      The offset in sequence of the cell identifying barcode. (Eg. "0").
+
+  cell barcode size: 
+    description: >-
+      The size of the cell identifying barcode (E.g. "16").
+
+  sample barcode read: 
+    description: >-
+      The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+
+  vital status at sampling:
+    description: >-
+      Vital status at the age of the sampling.
+
 enums:
   case_control_enum:
     description: >-
@@ -1278,3 +1555,74 @@ enums:
         description: >-
           Role of a Data Steward where the user is responsible for
           approving request from a user for one or more Datasets.
+  
+  vital_status_enum:
+    description: >-
+      Enum to capture the vital status of an individual.
+    permissible_values:
+      alive:
+        description: >-
+          Showing characteristics of life; displaying signs of life.
+      deceased:
+        description: >-
+          The cessation of life.
+  
+  study_type_enum:
+    description: >-
+      Enum to capture the type of a study.
+    permissible_values:
+      whole_genome_sequencing:
+        description: Whole Genome Sequencing
+      metagenomics:
+        description: Metagenomics
+      transcriptome_analysis:
+        description: Transcriptome Analysis
+      resequencing:
+        description: Resequencing 
+      epigenetics:
+        description: Epigenetics
+      synthetic_genomics:
+        description: Sythetic Genomics 
+      forensic_paleo_genomics:
+        description: Forensic or Paleo-genomics
+      gene_regulation:
+        description: Gene Regulation Study
+      cancer_genomics:
+        description: Cancer Genomics
+      population_genomics:
+        description: Population Genomics
+      rna_seq:
+        description: RNAseq
+      exome_sequencing:
+        description: Exome Sequencing
+      pooled_clone_sequencing:
+        description: Pooled Clone Sequencing
+      other:
+        description: Other study 
+
+  file_type_enum:
+    description: >-
+      Enum to capture file types.
+    permissible_values:
+      bam: 
+        description: BAM File 
+      complete_genomics:
+        description: Complete Genomics File 
+      cram: 
+        description: CRAM File 
+      fasta:
+        description: Fasta File 
+      fastq:
+        description: FastQ File 
+      pacbio_hdf5:
+        description: PacBio HDF5 File 
+      sff:
+        description: >- 
+          Standard flowgram format used to encode results 
+          of pyrosequencing from the 454 Life Sciences platform.
+      srf:
+        description: >-
+          SRF is a generic format for DNA sequence data.
+      vcf:
+        description: >-
+          vcf File for storing gene sequence variations.
