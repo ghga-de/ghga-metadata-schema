@@ -1,6 +1,8 @@
 
 CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
-CREATE TYPE case_control_enum AS ENUM ('control', 'case');
+CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased');
+CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
+CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
 
 CREATE TABLE agent (
@@ -156,9 +158,9 @@ CREATE TABLE donor (
 	additional_name TEXT, 
 	gender TEXT, 
 	sex biological_sex_enum NOT NULL, 
-	age INTEGER, 
+	age INTEGER NOT NULL, 
 	year_of_birth TEXT, 
-	vital_status TEXT, 
+	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
 	ethnicity TEXT, 
 	ancestry TEXT, 
@@ -196,7 +198,7 @@ CREATE TABLE file (
 	checksum TEXT, 
 	file_index TEXT, 
 	category TEXT, 
-	type TEXT, 
+	type file_type_enum, 
 	PRIMARY KEY (id)
 );
 
@@ -212,9 +214,9 @@ CREATE TABLE individual (
 	additional_name TEXT, 
 	gender TEXT, 
 	sex biological_sex_enum NOT NULL, 
-	age INTEGER, 
+	age INTEGER NOT NULL, 
 	year_of_birth TEXT, 
-	vital_status TEXT, 
+	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
 	ethnicity TEXT, 
 	ancestry TEXT, 
@@ -230,6 +232,32 @@ CREATE TABLE information_content_entity (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE library_preparation_protocol (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	url TEXT, 
+	name TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	library_name TEXT, 
+	library_layout TEXT, 
+	library_type TEXT, 
+	library_selection TEXT, 
+	library_construction TEXT, 
+	library_preparation TEXT, 
+	library_level TEXT, 
+	library_construction_kit_retail_name TEXT, 
+	library_construction_kit_manufacturer TEXT, 
+	primer TEXT, 
+	end_bias TEXT, 
+	target_regions TEXT, 
+	rnaseq_strandedness TEXT, 
+	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -321,9 +349,9 @@ CREATE TABLE project (
 	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	title TEXT, 
 	has_study TEXT, 
-	description TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
 	has_publication TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
@@ -349,7 +377,37 @@ CREATE TABLE publication (
 	creation_date TEXT, 
 	update_date TEXT, 
 	title TEXT, 
+	abstract TEXT, 
 	id TEXT NOT NULL, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE sequencing_protocol (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	url TEXT, 
+	name TEXT, 
+	description TEXT, 
+	sequencing_center TEXT, 
+	instrument_model TEXT, 
+	read_length TEXT, 
+	read_pair_number TEXT, 
+	target_coverage TEXT, 
+	reference_annotation TEXT, 
+	lane_number TEXT, 
+	flow_cell_id TEXT, 
+	flow_cell_type TEXT, 
+	umi_barcode_read TEXT, 
+	umi_barcode_size TEXT, 
+	umi_barcode_offset TEXT, 
+	cell_barcode_read TEXT, 
+	cell_barcode_offset TEXT, 
+	cell_barcode_size TEXT, 
+	sample_barcode_read TEXT, 
+	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -358,13 +416,13 @@ CREATE TABLE study (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	has_publication TEXT, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
+	has_attribute TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
-	type TEXT NOT NULL, 
-	has_publication TEXT, 
-	has_attribute TEXT, 
+	type study_type_enum NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -644,6 +702,13 @@ CREATE TABLE information_content_entity_xref (
 	FOREIGN KEY(backref_id) REFERENCES information_content_entity (id)
 );
 
+CREATE TABLE library_preparation_protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES library_preparation_protocol (id)
+);
+
 CREATE TABLE material_entity_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -714,10 +779,24 @@ CREATE TABLE publication_xref (
 	FOREIGN KEY(backref_id) REFERENCES publication (id)
 );
 
+CREATE TABLE sequencing_protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES sequencing_protocol (id)
+);
+
 CREATE TABLE study_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES study (id)
+);
+
+CREATE TABLE study_affiliation (
+	backref_id TEXT, 
+	affiliation TEXT NOT NULL, 
+	PRIMARY KEY (backref_id, affiliation), 
 	FOREIGN KEY(backref_id) REFERENCES study (id)
 );
 
@@ -791,11 +870,15 @@ CREATE TABLE sample (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	name TEXT, 
+	name TEXT NOT NULL, 
+	type TEXT, 
 	description TEXT, 
+	vital_status_at_sampling TEXT, 
+	tissue TEXT NOT NULL, 
+	isolation TEXT, 
+	storage TEXT, 
 	has_individual TEXT NOT NULL, 
 	has_biospecimen TEXT, 
-	type case_control_enum, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
@@ -868,7 +951,10 @@ CREATE TABLE experiment (
 	type TEXT, 
 	has_publication TEXT, 
 	name TEXT NOT NULL, 
-	description TEXT, 
+	description TEXT NOT NULL, 
+	biological_replicates TEXT, 
+	technical_replicates TEXT, 
+	experimental_replicates TEXT, 
 	has_study TEXT NOT NULL, 
 	has_sample TEXT NOT NULL, 
 	has_technology TEXT, 
@@ -908,7 +994,7 @@ CREATE TABLE experiment_process (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	title TEXT, 
+	name TEXT, 
 	has_input TEXT, 
 	has_protocol TEXT, 
 	has_agent TEXT, 

@@ -269,9 +269,9 @@ type Donor
     additionalName: String
     gender: String
     sex: BiologicalSexEnum!
-    age: Integer
+    age: Integer!
     yearOfBirth: String
-    vitalStatus: String
+    vitalStatus: VitalStatusEnum!
     geographicalRegion: String
     ethnicity: String
     ancestry: String
@@ -291,7 +291,10 @@ type Experiment
     type: String
     hasPublication: Publication
     name: String!
-    description: String
+    description: String!
+    biologicalReplicates: String
+    technicalReplicates: String
+    experimentalReplicates: String
     hasStudy: Study!
     hasSample: Sample!
     hasTechnology: Technology
@@ -326,7 +329,7 @@ type ExperimentProcess
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    title: String
+    name: String
     hasInput: Sample
     hasProtocol: Protocol
     hasAgent: Agent
@@ -361,7 +364,7 @@ type File
     checksum: String
     fileIndex: String
     category: String
-    type: String
+    type: FileTypeEnum
   }
 
 type Individual
@@ -378,9 +381,9 @@ type Individual
     additionalName: String
     gender: String
     sex: BiologicalSexEnum!
-    age: Integer
+    age: Integer!
     yearOfBirth: String
-    vitalStatus: String
+    vitalStatus: VitalStatusEnum!
     geographicalRegion: String
     ethnicity: String
     ancestry: String
@@ -411,6 +414,33 @@ type Investigation
     description: String
     type: String
     hasPublication: Publication
+  }
+
+type LibraryPreparationProtocol
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    creationDate: String
+    updateDate: String
+    url: String
+    name: String!
+    description: String!
+    libraryName: String
+    libraryLayout: String
+    libraryType: String
+    librarySelection: String
+    libraryConstruction: String
+    libraryPreparation: String
+    libraryLevel: String
+    libraryConstructionKitRetailName: String
+    libraryConstructionKitManufacturer: String
+    primer: String
+    endBias: String
+    targetRegions: String
+    rnaseqStrandedness: String
+    hasAttribute: [Attribute]
   }
 
 type MaterialEntity
@@ -510,9 +540,9 @@ type Project
     type: String
     creationDate: String
     updateDate: String
-    title: String
     hasStudy: [Experiment]
-    description: String
+    title: String!
+    description: String!
     hasPublication: [Publication]
     hasAttribute: [Attribute]
   }
@@ -539,6 +569,7 @@ type Publication
     creationDate: String
     updateDate: String
     title: String
+    abstract: String
     id: String!
     xref: [String]
   }
@@ -564,12 +595,46 @@ type Sample
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    name: String
+    name: String!
+    type: String
     description: String
+    vitalStatusAtSampling: String
+    tissue: String!
+    isolation: String
+    storage: String
     hasIndividual: Individual!
     hasBiospecimen: Biospecimen
-    type: CaseControlEnum
     xref: [String]
+  }
+
+type SequencingProtocol
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    creationDate: String
+    updateDate: String
+    url: String
+    name: String
+    description: String
+    sequencingCenter: String
+    instrumentModel: String
+    readLength: String
+    readPairNumber: String
+    targetCoverage: String
+    referenceAnnotation: String
+    laneNumber: String
+    flowCellId: String
+    flowCellType: String
+    umiBarcodeRead: String
+    umiBarcodeSize: String
+    umiBarcodeOffset: String
+    cellBarcodeRead: String
+    cellBarcodeOffset: String
+    cellBarcodeSize: String
+    sampleBarcodeRead: String
+    hasAttribute: [Attribute]
   }
 
 type Study
@@ -579,13 +644,14 @@ type Study
     xref: [String]
     creationDate: String
     updateDate: String
+    affiliation: [String]!
+    hasPublication: [Publication]
     hasExperiment: [Experiment]
     hasAnalysis: [Analysis]
+    hasAttribute: [Attribute]
     title: String!
     description: String!
-    type: String!
-    hasPublication: [Publication]
-    hasAttribute: [Attribute]
+    type: StudyTypeEnum!
   }
 
 type Technology
