@@ -191,7 +191,7 @@ classes:
       detailed examination and analysis of a subject to learn more about the phenomenon
       being studied.
     slots:
-      - short_name
+      - short name
       - affiliation
       - has publication
       - has experiment
@@ -211,7 +211,7 @@ classes:
           The type of Study. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
         range: study_type_enum
         required: true
-      short_name:
+      short name:
         description: >-
           Abbreviated name of the study (eg: Name of the submitter_Disease Name_Date of Submission).
         required: true
@@ -1404,7 +1404,7 @@ slots:
   value type:
     description: The semantic type for the value of an attribute.
   
-  short_name:
+  short name:
     description: A short name for an instance.
 
   affiliation:
