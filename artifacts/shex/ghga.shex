@@ -32,19 +32,66 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-<Activity>  (
-    CLOSED {
-       (  $<Activity_tes> (  &<NamedThing_tes> ;
-             rdf:type [ <NamedThing> ] ?
-          ) ;
-          rdf:type [ <Activity> ]
-       )
-    } OR @<ResearchActivity>
-)
+<Agent> CLOSED {
+    (  $<Agent_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <name> @linkml:String ? ;
+          <description> @linkml:String ?
+       ) ;
+       rdf:type [ <Agent> ]
+    )
+}
+
+<AggregateDataset> CLOSED {
+    (  $<AggregateDataset_tes> (  &<Dataset_tes> ;
+          rdf:type [ <Dataset> ] ? ;
+          <has_dataset> @<Dataset> *
+       ) ;
+       rdf:type [ <AggregateDataset> ]
+    )
+}
+
+<Analysis> CLOSED {
+    (  $<Analysis_tes> (  &<DataTransformation_tes> ;
+          rdf:type [ <DataTransformation> ] ? ;
+          <has_input> @<File> * ;
+          <has_study> @<Study> ? ;
+          <has_workflow> @<Workflow> ? ;
+          <has_analysis_process> @<AnalysisProcess> * ;
+          <has_output> @<File> *
+       ) ;
+       rdf:type [ <Analysis> ]
+    )
+}
+
+<AnalysisDataset> CLOSED {
+    (  $<AnalysisDataset_tes> (  &<Dataset_tes> ;
+          rdf:type [ <Dataset> ] ? ;
+          <has_data_access_policy> @<DataAccessPolicy> + ;
+          <has_study> @<Study> + ;
+          <has_analysis> @linkml:String ? ;
+          <has_experiment> @<Analysis> +
+       ) ;
+       rdf:type [ <AnalysisDataset> ]
+    )
+}
+
+<AnalysisProcess> CLOSED {
+    (  $<AnalysisProcess_tes> (  &<PlannedProcess_tes> ;
+          rdf:type [ <PlannedProcess> ] ? ;
+          <title> @linkml:String ? ;
+          <has_input> @<File> * ;
+          <has_workflow_step> @<WorkflowStep> ? ;
+          <has_agent> @<Agent> ? ;
+          <has_output> @<File> ?
+       ) ;
+       rdf:type [ <AnalysisProcess> ]
+    )
+}
 
 <AnatomicalEntity> CLOSED {
-    (  $<AnatomicalEntity_tes> (  &<BiologicalEntity_tes> ;
-          rdf:type [ <BiologicalEntity> ] ?
+    (  $<AnatomicalEntity_tes> (  &<MaterialEntity_tes> ;
+          rdf:type [ <MaterialEntity> ] ?
        ) ;
        rdf:type [ <AnatomicalEntity> ]
     )
@@ -60,28 +107,52 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<BiologicalEntity>  (
+<BiologicalQuality>  (
     CLOSED {
-       (  $<BiologicalEntity_tes> (  &<NamedThing_tes> ;
+       (  $<BiologicalQuality_tes> (  &<NamedThing_tes> ;
              rdf:type [ <NamedThing> ] ?
           ) ;
-          rdf:type [ <BiologicalEntity> ]
+          rdf:type [ <BiologicalQuality> ]
        )
-    } OR @<AnatomicalEntity> OR @<CellLine> OR @<DiseaseOrPhenotypicFeature> OR @<Sample>
+    } OR @<DiseaseOrPhenotypicFeature>
 )
 
+<Biospecimen> CLOSED {
+    (  $<Biospecimen_tes> (  &<MaterialEntity_tes> ;
+          rdf:type [ <MaterialEntity> ] ? ;
+          <name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <has_individual> @<Individual> ? ;
+          <has_anatomical_entity> @<AnatomicalEntity> ? ;
+          <has_disease> @<Disease> ? ;
+          <has_phenotypic_feature> @<PhenotypicFeature> ?
+       ) ;
+       rdf:type [ <Biospecimen> ]
+    )
+}
+
 <CellLine> CLOSED {
-    (  $<CellLine_tes> (  &<BiologicalEntity_tes> ;
-          rdf:type [ <BiologicalEntity> ] ?
+    (  $<CellLine_tes> (  &<MaterialEntity_tes> ;
+          rdf:type [ <MaterialEntity> ] ?
        ) ;
        rdf:type [ <CellLine> ]
+    )
+}
+
+<Cohort> CLOSED {
+    (  $<Cohort_tes> (  &<Population_tes> ;
+          rdf:type [ <Population> ] ? ;
+          <has_member> @<Individual> *
+       ) ;
+       rdf:type [ <Cohort> ]
     )
 }
 
 <Committee>  (
     CLOSED {
        (  $<Committee_tes> (  &<NamedThing_tes> ;
-             rdf:type [ <NamedThing> ] ?
+             rdf:type [ <NamedThing> ] ? ;
+             <name> @linkml:String ?
           ) ;
           rdf:type [ <Committee> ]
        )
@@ -91,10 +162,10 @@ linkml:Nodeidentifier NONLITERAL
 <DataAccessCommittee> CLOSED {
     (  $<DataAccessCommittee_tes> (  &<Committee_tes> ;
           rdf:type [ <Committee> ] ? ;
-          <title> @linkml:String ;
+          <name> @linkml:String ;
           <description> @linkml:String ? ;
           <main_contact> @<Member> ? ;
-          <has_members> @<Member> *
+          <has_member> @<Member> *
        ) ;
        rdf:type [ <DataAccessCommittee> ]
     )
@@ -103,12 +174,34 @@ linkml:Nodeidentifier NONLITERAL
 <DataAccessPolicy> CLOSED {
     (  $<DataAccessPolicy_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
+          <name> @linkml:String ? ;
           <description> @linkml:String ;
           <policy_text> @linkml:String ;
           <policy_url> @linkml:String ? ;
-          <has_data_access_committee> @<DataAccessCommittee>
+          <has_data_access_committee> @<DataAccessCommittee> ;
+          <has_data_use_condition> @<DataUseCondition> *
        ) ;
        rdf:type [ <DataAccessPolicy> ]
+    )
+}
+
+<DataTransformation>  (
+    CLOSED {
+       (  $<DataTransformation_tes> (  &<PlannedProcess_tes> ;
+             rdf:type [ <PlannedProcess> ] ? ;
+             <title> @linkml:String ? ;
+             <description> @linkml:String ?
+          ) ;
+          rdf:type [ <DataTransformation> ]
+       )
+    } OR @<Analysis>
+)
+
+<DataUseCondition> CLOSED {
+    (  $<DataUseCondition_tes> (  <permission> @linkml:String ? ;
+          <modifier> @linkml:String ?
+       ) ;
+       rdf:type [ <DataUseCondition> ] ?
     )
 }
 
@@ -118,38 +211,92 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <InformationContentEntity> ] ? ;
              <title> @linkml:String ;
              <description> @linkml:String ;
-             <type> @linkml:String ;
-             <files> @<File> + ;
-             <has_data_access_policy> @<DataAccessPolicy> ;
-             <has_study> @<Study> ;
-             <has_experiment> @<Experiment> ;
-             <has_file> @<File>
+             <has_file> @<File> + ;
+             <has_publication> @<Publication> * ;
+             <type> @linkml:String
           ) ;
           rdf:type [ <Dataset> ]
        )
-    } OR @<ProcessedDataset> OR @<SyntheticDataset>
+    } OR @<AggregateDataset> OR @<AnalysisDataset> OR @<ExperimentDataset>
 )
 
-<DiseaseOrPhenotypicFeature> CLOSED {
-    (  $<DiseaseOrPhenotypicFeature_tes> (  &<BiologicalEntity_tes> ;
-          rdf:type [ <BiologicalEntity> ] ?
+<Disease> CLOSED {
+    (  $<Disease_tes> (  &<DiseaseOrPhenotypicFeature_tes> ;
+          rdf:type [ <DiseaseOrPhenotypicFeature> ] ?
        ) ;
-       rdf:type [ <DiseaseOrPhenotypicFeature> ]
+       rdf:type [ <Disease> ]
+    )
+}
+
+<DiseaseOrPhenotypicFeature>  (
+    CLOSED {
+       (  $<DiseaseOrPhenotypicFeature_tes> (  &<BiologicalQuality_tes> ;
+             rdf:type [ <BiologicalQuality> ] ? ;
+             <name> @linkml:String ? ;
+             <description> @linkml:String ?
+          ) ;
+          rdf:type [ <DiseaseOrPhenotypicFeature> ]
+       )
+    } OR @<Disease> OR @<PhenotypicFeature>
+)
+
+<Donor> CLOSED {
+    (  $<Donor_tes> (  &<Individual_tes> ;
+          rdf:type [ <Individual> ] ?
+       ) ;
+       rdf:type [ <Donor> ]
     )
 }
 
 <Experiment> CLOSED {
-    (  $<Experiment_tes> (  &<ResearchActivity_tes> ;
-          rdf:type [ <ResearchActivity> ] ? ;
+    (  $<Experiment_tes> (  &<Investigation_tes> ;
+          rdf:type [ <Investigation> ] ? ;
           <name> @linkml:String ;
-          <description> @linkml:String ? ;
+          <description> @linkml:String ;
+          <biological_replicates> @linkml:String ? ;
+          <technical_replicates> @linkml:String ? ;
+          <experimental_replicates> @linkml:String ? ;
           <has_study> @<Study> ;
-          <instrument_model> @linkml:String ;
-          <has_library> @<Library> ;
           <has_sample> @<Sample> ;
-          <has_protocol> @<Protocol> ?
+          <has_technology> @<Technology> ? ;
+          <has_file> @<File> * ;
+          <has_experiment_process> @<ExperimentProcess> *
        ) ;
        rdf:type [ <Experiment> ]
+    )
+}
+
+<ExperimentDataset> CLOSED {
+    (  $<ExperimentDataset_tes> (  &<Dataset_tes> ;
+          rdf:type [ <Dataset> ] ? ;
+          <has_data_access_policy> @<DataAccessPolicy> + ;
+          <has_study> @<Study> + ;
+          <has_experiment> @<Experiment> +
+       ) ;
+       rdf:type [ <ExperimentDataset> ]
+    )
+}
+
+<ExperimentProcess> CLOSED {
+    (  $<ExperimentProcess_tes> (  &<PlannedProcess_tes> ;
+          rdf:type [ <PlannedProcess> ] ? ;
+          <name> @linkml:String ? ;
+          <has_input> @<Sample> ? ;
+          <has_protocol> @<Protocol> ? ;
+          <has_agent> @<Agent> ? ;
+          <has_output> @<File> ?
+       ) ;
+       rdf:type [ <ExperimentProcess> ]
+    )
+}
+
+<Family> CLOSED {
+    (  $<Family_tes> (  &<Population_tes> ;
+          rdf:type [ <Population> ] ? ;
+          <has_member> @<Individual> * ;
+          <proband> @<Individual> ?
+       ) ;
+       rdf:type [ <Family> ]
     )
 }
 
@@ -158,27 +305,35 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <InformationContentEntity> ] ? ;
           <name> @linkml:String ? ;
           <format> @linkml:String ? ;
-          <type> @linkml:String ? ;
           <size> @linkml:String ? ;
           <checksum> @linkml:String ? ;
           <file_index> @linkml:String ? ;
-          <category> @linkml:String ?
+          <category> @linkml:String ? ;
+          <type> @<FileTypeEnum> ?
        ) ;
        rdf:type [ <File> ]
     )
 }
 
-<Individual> CLOSED {
-    (  $<Individual_tes> (  &<Person_tes> ;
-          rdf:type [ <Person> ] ? ;
-          <name> @linkml:String ? ;
-          <gender> @linkml:String ;
-          <sex> @linkml:String ;
-          <age> @linkml:Integer ?
-       ) ;
-       rdf:type [ <Individual> ]
-    )
-}
+<Individual>  (
+    CLOSED {
+       (  $<Individual_tes> (  &<Person_tes> ;
+             rdf:type [ <Person> ] ? ;
+             <gender> @linkml:String ? ;
+             <sex> @<BiologicalSexEnum> ;
+             <age> @linkml:Integer ;
+             <year_of_birth> @linkml:String ? ;
+             <vital_status> @<VitalStatusEnum> ;
+             <geographical_region> @linkml:String ? ;
+             <ethnicity> @linkml:String ? ;
+             <ancestry> @linkml:String ? ;
+             <has_parent> @linkml:String ? ;
+             <has_children> @linkml:String ?
+          ) ;
+          rdf:type [ <Individual> ]
+       )
+    } OR @<Donor>
+)
 
 <InformationContentEntity>  (
     CLOSED {
@@ -187,20 +342,45 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <InformationContentEntity> ]
        )
-    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication>
+    } OR @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR
+    @<WorkflowStep>
 )
 
-<Library> CLOSED {
-    (  $<Library_tes> (  &<MaterialEntity_tes> ;
-          rdf:type [ <MaterialEntity> ] ? ;
-          <name> @linkml:String ? ;
-          <layout> @linkml:String ;
-          <source> @linkml:String ;
-          <selection> @linkml:String ;
-          <strategy> @linkml:String ;
-          <construction_protocol> @linkml:String ?
+<Investigation>  (
+    CLOSED {
+       (  $<Investigation_tes> (  &<PlannedProcess_tes> ;
+             rdf:type [ <PlannedProcess> ] ? ;
+             <title> @linkml:String ? ;
+             <description> @linkml:String ? ;
+             <type> @linkml:String ? ;
+             <has_publication> @<Publication> ?
+          ) ;
+          rdf:type [ <Investigation> ]
+       )
+    } OR @<Experiment> OR @<Study>
+)
+
+<LibraryPreparationProtocol> CLOSED {
+    (  $<LibraryPreparationProtocol_tes> (  &<Protocol_tes> ;
+          rdf:type [ <Protocol> ] ? ;
+          <name> @linkml:String ;
+          <description> @linkml:String ;
+          <library_name> @linkml:String ? ;
+          <library_layout> @linkml:String ? ;
+          <library_type> @linkml:String ? ;
+          <library_selection> @linkml:String ? ;
+          <library_construction> @linkml:String ? ;
+          <library_preparation> @linkml:String ? ;
+          <library_level> @linkml:String ? ;
+          <library_construction_kit_retail_name> @linkml:String ? ;
+          <library_construction_kit_manufacturer> @linkml:String ? ;
+          <primer> @linkml:String ? ;
+          <end_bias> @linkml:String ? ;
+          <target_regions> @linkml:String ? ;
+          <rnaseq_strandedness> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
        ) ;
-       rdf:type [ <Library> ]
+       rdf:type [ <LibraryPreparationProtocol> ]
     )
 }
 
@@ -211,18 +391,15 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <MaterialEntity> ]
        )
-    } OR @<Library>
+    } OR @<AnatomicalEntity> OR @<Biospecimen> OR @<CellLine> OR @<Population> OR @<Sample>
 )
 
 <Member> CLOSED {
     (  $<Member_tes> (  &<Person_tes> ;
           rdf:type [ <Person> ] ? ;
-          <name> @linkml:String ;
-          <title> @linkml:String ? ;
-          <email> @linkml:String ? ;
+          <email> @linkml:String ;
           <telephone> @linkml:String ;
-          <organization> @linkml:String ;
-          <main_contact> @<Member>
+          <organization> @linkml:String ?
        ) ;
        rdf:type [ <Member> ]
     )
@@ -230,45 +407,94 @@ linkml:Nodeidentifier NONLITERAL
 
 <NamedThing>  (
     CLOSED {
-       (  $<NamedThing_tes> (  <xref> @linkml:String * ;
+       (  $<NamedThing_tes> (  <accession> @linkml:String ? ;
+             <xref> @linkml:String * ;
+             <type> @linkml:String ? ;
+             <has_attribute> @<Attribute> * ;
              <creation_date> @linkml:String ? ;
              <update_date> @linkml:String ?
           ) ;
           rdf:type [ <NamedThing> ]
        )
-    } OR @<Activity> OR @<BiologicalEntity> OR @<Committee> OR @<InformationContentEntity> OR @<MaterialEntity> OR @<Person>
+    } OR @<Agent> OR @<BiologicalQuality> OR @<Committee> OR @<InformationContentEntity> OR @<MaterialEntity> OR @<Person> OR
+    @<PlannedProcess>
 )
 
 <Person>  (
     CLOSED {
        (  $<Person_tes> (  &<NamedThing_tes> ;
-             rdf:type [ <NamedThing> ] ?
+             rdf:type [ <NamedThing> ] ? ;
+             <given_name> @linkml:String ? ;
+             <family_name> @linkml:String ? ;
+             <additional_name> @linkml:String ?
           ) ;
           rdf:type [ <Person> ]
        )
-    } OR @<Individual> OR @<Member>
+    } OR @<Individual> OR @<Member> OR @<User>
 )
 
-<ProcessedDataset> CLOSED {
-    (  $<ProcessedDataset_tes> (  &<Dataset_tes> ;
-          rdf:type [ <Dataset> ] ?
+<PhenotypicFeature> CLOSED {
+    (  $<PhenotypicFeature_tes> (  &<DiseaseOrPhenotypicFeature_tes> ;
+          rdf:type [ <DiseaseOrPhenotypicFeature> ] ?
        ) ;
-       rdf:type [ <ProcessedDataset> ]
+       rdf:type [ <PhenotypicFeature> ]
     )
 }
 
-<Protocol> CLOSED {
-    (  $<Protocol_tes> (  &<InformationContentEntity_tes> ;
-          rdf:type [ <InformationContentEntity> ] ?
+<PlannedProcess>  (
+    CLOSED {
+       (  $<PlannedProcess_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <PlannedProcess> ]
+       )
+    } OR @<AnalysisProcess> OR @<DataTransformation> OR @<ExperimentProcess> OR @<Investigation> OR @<ResearchActivity>
+)
+
+<Population>  (
+    CLOSED {
+       (  $<Population_tes> (  &<MaterialEntity_tes> ;
+             rdf:type [ <MaterialEntity> ] ? ;
+             <name> @linkml:String ?
+          ) ;
+          rdf:type [ <Population> ]
+       )
+    } OR @<Cohort> OR @<Family>
+)
+
+<Project> CLOSED {
+    (  $<Project_tes> (  &<ResearchActivity_tes> ;
+          rdf:type [ <ResearchActivity> ] ? ;
+          <has_study> @<Experiment> * ;
+          <title> @linkml:String ;
+          <description> @linkml:String ;
+          <has_publication> @<Publication> * ;
+          <has_attribute> @<Attribute> *
        ) ;
-       rdf:type [ <Protocol> ]
+       rdf:type [ <Project> ]
     )
 }
+
+<Protocol>  (
+    CLOSED {
+       (  $<Protocol_tes> (  &<InformationContentEntity_tes> ;
+             rdf:type [ <InformationContentEntity> ] ? ;
+             <name> @linkml:String ? ;
+             <description> @linkml:String ? ;
+             <url> @linkml:String ? ;
+             <has_attribute> @<Attribute> *
+          ) ;
+          rdf:type [ <Protocol> ]
+       )
+    } OR @<LibraryPreparationProtocol> OR @<SequencingProtocol>
+)
 
 <Publication> CLOSED {
     (  $<Publication_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
-          <title> @linkml:String ?
+          <title> @linkml:String ? ;
+          <abstract> @linkml:String ? ;
+          <xref> @linkml:String *
        ) ;
        rdf:type [ <Publication> ]
     )
@@ -276,51 +502,118 @@ linkml:Nodeidentifier NONLITERAL
 
 <ResearchActivity>  (
     CLOSED {
-       (  $<ResearchActivity_tes> (  &<Activity_tes> ;
-             rdf:type [ <Activity> ] ?
+       (  $<ResearchActivity_tes> (  &<PlannedProcess_tes> ;
+             rdf:type [ <PlannedProcess> ] ? ;
+             <title> @linkml:String ? ;
+             <description> @linkml:String ? ;
+             <has_publication> @<Publication> ?
           ) ;
           rdf:type [ <ResearchActivity> ]
        )
-    } OR @<Experiment> OR @<Study>
+    } OR @<Project>
 )
 
 <Sample> CLOSED {
-    (  $<Sample_tes> (  &<BiologicalEntity_tes> ;
-          rdf:type [ <BiologicalEntity> ] ? ;
-          <name> @linkml:String ? ;
+    (  $<Sample_tes> (  &<MaterialEntity_tes> ;
+          rdf:type [ <MaterialEntity> ] ? ;
+          <name> @linkml:String ;
           <type> @linkml:String ? ;
           <description> @linkml:String ? ;
-          <subject> @<Individual> ;
-          <biosample_accession> @linkml:String ? ;
-          <has_anatomical_site> @<AnatomicalEntity> ? ;
-          <has_cell_line> @<CellLine> ? ;
-          <geographical_region> @linkml:String ? ;
-          <has_disease_of_phenotypic_feature> @<DiseaseOrPhenotypicFeature> ;
-          <files> @<File> +
+          <vital_status_at_sampling> @linkml:String ? ;
+          <tissue> @linkml:String ;
+          <isolation> @linkml:String ? ;
+          <storage> @linkml:String ? ;
+          <has_individual> @<Individual> ;
+          <has_biospecimen> @<Biospecimen> ? ;
+          <xref> @linkml:String *
        ) ;
        rdf:type [ <Sample> ]
     )
 }
 
-<Study> CLOSED {
-    (  $<Study_tes> (  &<ResearchActivity_tes> ;
-          rdf:type [ <ResearchActivity> ] ? ;
-          <title> @linkml:String ;
-          <type> @linkml:String ;
+<SequencingProtocol> CLOSED {
+    (  $<SequencingProtocol_tes> (  &<Protocol_tes> ;
+          rdf:type [ <Protocol> ] ? ;
           <name> @linkml:String ? ;
-          <abstract> @linkml:String ;
-          <publications> @<Publication> * ;
-          <attributes> @<Attribute> *
+          <description> @linkml:String ? ;
+          <sequencing_center> @linkml:String ? ;
+          <instrument_model> @linkml:String ? ;
+          <read_length> @linkml:String ? ;
+          <read_pair_number> @linkml:String ? ;
+          <target_coverage> @linkml:String ? ;
+          <reference_annotation> @linkml:String ? ;
+          <lane_number> @linkml:String ? ;
+          <flow_cell_id> @linkml:String ? ;
+          <flow_cell_type> @linkml:String ? ;
+          <umi_barcode_read> @linkml:String ? ;
+          <umi_barcode_size> @linkml:String ? ;
+          <umi_barcode_offset> @linkml:String ? ;
+          <cell_barcode_read> @linkml:String ? ;
+          <cell_barcode_offset> @linkml:String ? ;
+          <cell_barcode_size> @linkml:String ? ;
+          <sample_barcode_read> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
+       ) ;
+       rdf:type [ <SequencingProtocol> ]
+    )
+}
+
+<Study> CLOSED {
+    (  $<Study_tes> (  &<Investigation_tes> ;
+          rdf:type [ <Investigation> ] ? ;
+          <affiliation> @linkml:String + ;
+          <has_publication> @<Publication> * ;
+          <has_experiment> @<Experiment> * ;
+          <has_analysis> @<Analysis> * ;
+          <has_attribute> @<Attribute> * ;
+          <title> @linkml:String ;
+          <description> @linkml:String ;
+          <type> @<StudyTypeEnum>
        ) ;
        rdf:type [ <Study> ]
     )
 }
 
-<SyntheticDataset> CLOSED {
-    (  $<SyntheticDataset_tes> (  &<Dataset_tes> ;
-          rdf:type [ <Dataset> ] ?
+<Technology> CLOSED {
+    (  $<Technology_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ?
        ) ;
-       rdf:type [ <SyntheticDataset> ]
+       rdf:type [ <Technology> ]
+    )
+}
+
+<User> CLOSED {
+    (  $<User_tes> (  &<Person_tes> ;
+          rdf:type [ <Person> ] ? ;
+          <email> @linkml:String ? ;
+          <role> @<UserRoleEnum> ?
+       ) ;
+       rdf:type [ <User> ]
+    )
+}
+
+<Workflow> CLOSED {
+    (  $<Workflow_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ?
+       ) ;
+       rdf:type [ <Workflow> ]
+    )
+}
+
+<WorkflowParameter> CLOSED {
+    (  $<WorkflowParameter_tes> (  <key> @linkml:String ? ;
+          <value> @linkml:String ?
+       ) ;
+       rdf:type [ <WorkflowParameter> ] ?
+    )
+}
+
+<WorkflowStep> CLOSED {
+    (  $<WorkflowStep_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <has_parameter> @<WorkflowParameter> *
+       ) ;
+       rdf:type [ <WorkflowStep> ]
     )
 }
 
