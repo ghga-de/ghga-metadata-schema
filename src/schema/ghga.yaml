@@ -105,6 +105,10 @@ classes:
 
   investigation:
     is_a: planned process
+    mixins:
+      - submission status mixin
+      - release status mixin
+      - deprecation mixin
     description: >-
       Investigation is the process of carrying out a plan or procedure so as to discover fact
       or information about the object of study.
@@ -822,6 +826,10 @@ classes:
 
   dataset:
     is_a: information content entity
+    mixins:
+      - submission status mixin
+      - release status mixin
+      - deprecation mixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution.
     exact_mappings:
@@ -1124,6 +1132,31 @@ classes:
         description: >-
           The role of the user
         range: user_role_enum
+
+  submission status mixin:
+    mixin: true
+    description: >-
+      A mixin that keeps track of the submission status.
+    slots:
+      - submission status
+      - submission date
+
+  release status mixin:
+    mixin: true
+    description: >-
+      A mixin that keeps track of the release status.
+    slots:
+      - release status
+      - release date
+
+  deprecation mixin:
+    mixin: true
+    description: >-
+      A mixin that keeps track of the deprecation status.
+    slots:
+      - deprecated
+      - deprecation date
+      - replaced by
 
 slots:
 
@@ -1522,6 +1555,38 @@ slots:
     description: >-
       Vital status at the age of the sampling.
 
+  submission status:
+    description: >-
+      The status of submission.
+    range: submission_status_enum
+
+  submission date:
+    description: >-
+      The date when submission was completed.
+
+  release status:
+    description: >-
+      The release status of an entity.
+    range: release_status_enum
+
+  release date:
+    description: >-
+      The date when the entity was released for public consumption.
+
+  deprecated:
+    description: >-
+      The deprecation status of an entity.
+    range: boolean
+
+  deprecation date:
+    description: >-
+      The date when the entity was deprecated.
+
+  replaced by:
+    description: >-
+      The entity which replaces a deprecated entity.
+    range: named thing
+
 enums:
   case_control_enum:
     description: >-
@@ -1626,3 +1691,21 @@ enums:
       vcf:
         description: >-
           vcf File for storing gene sequence variations.
+
+  submission_status_enum:
+    description: >-
+      Enum to capture submission status.
+    permissible_values:
+      in progress:
+        description: Signifies that a submission is in progress.
+      submitted:
+        description: Signifies that a submission is complete and submitted.
+
+  release_status_enum:
+    description: >-
+      Enum to capture the release status.
+    permissible_values:
+      unreleased:
+        description: Signifies that the submission is not released for public consumption.
+      released:
+        description: Signifies that the submission is released for public consumption.
