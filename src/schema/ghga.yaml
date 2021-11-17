@@ -731,7 +731,7 @@ classes:
       - format
       - size
       - checksum
-      - file_index
+      - file index
       - category
     slot_usage:
       format:
@@ -747,7 +747,7 @@ classes:
       checksum:
         description: >-
           The checksum for the file.
-      file_index:
+      file index:
         description: >-
           The index for this file. Commonly for BAM/VCF files.
       category:
@@ -1379,7 +1379,7 @@ slots:
   checksum:
     description: The checksum for a file.
 
-  file_index:
+  file index:
     description: The index file corresponding to the file.
 
   category:
