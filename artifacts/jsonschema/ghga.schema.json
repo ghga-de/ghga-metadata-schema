@@ -65,6 +65,14 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
+               "type": "string"
+            },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
@@ -100,6 +108,26 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
+            },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -225,6 +253,14 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
+               "type": "string"
+            },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
@@ -278,6 +314,26 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
+            },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -958,6 +1014,14 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
+               "type": "string"
+            },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
@@ -986,6 +1050,26 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
+            },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -1239,6 +1323,14 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
+               "type": "string"
+            },
             "description": {
                "description": "A detailed description of the Experiment.",
                "type": "string"
@@ -1292,6 +1384,26 @@
                "description": "Name for the experiment (eg: GHGAE_PBMC_RNAseq).",
                "type": "string"
             },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
+            },
             "technical_replicates": {
                "description": "Number of replicate samples (technical replicates).",
                "type": "string"
@@ -1336,6 +1448,14 @@
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -1387,6 +1507,26 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
+            },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -1788,6 +1928,14 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
+               "type": "string"
+            },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
@@ -1806,6 +1954,26 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
+            },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -2488,6 +2656,15 @@
          "title": "Publication",
          "type": "object"
       },
+      "ReleaseStatusEnum": {
+         "description": "Enum to capture the release status.",
+         "enum": [
+            "unreleased",
+            "released"
+         ],
+         "title": "ReleaseStatusEnum",
+         "type": "string"
+      },
       "ResearchActivity": {
          "additionalProperties": false,
          "description": "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.",
@@ -2765,6 +2942,14 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "deprecated": {
+               "description": "The deprecation status of an entity.",
+               "type": "boolean"
+            },
+            "deprecation_date": {
+               "description": "The date when the entity was deprecated.",
+               "type": "string"
+            },
             "description": {
                "description": "A detailed description (abstract) that describes the goals of this Study.",
                "type": "string"
@@ -2800,6 +2985,26 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
+            },
+            "release_date": {
+               "description": "The date when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of an entity."
+            },
+            "replaced_by": {
+               "description": "The entity which replaces a deprecated entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
             },
             "title": {
                "description": "Comprehensive title for the study.",
@@ -2850,6 +3055,15 @@
             "other"
          ],
          "title": "StudyTypeEnum",
+         "type": "string"
+      },
+      "SubmissionStatusEnum": {
+         "description": "Enum to capture submission status.",
+         "enum": [
+            "in progress",
+            "submitted"
+         ],
+         "title": "SubmissionStatusEnum",
          "type": "string"
       },
       "Technology": {

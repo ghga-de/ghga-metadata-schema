@@ -27,6 +27,7 @@
         <https://w3id.org/GHGA/DataTransformation>,
         <https://w3id.org/GHGA/DataUseCondition>,
         <https://w3id.org/GHGA/Dataset>,
+        <https://w3id.org/GHGA/DeprecationMixin>,
         <https://w3id.org/GHGA/Disease>,
         <https://w3id.org/GHGA/DiseaseOrPhenotypicFeature>,
         <https://w3id.org/GHGA/Donor>,
@@ -49,10 +50,12 @@
         <https://w3id.org/GHGA/Project>,
         <https://w3id.org/GHGA/Protocol>,
         <https://w3id.org/GHGA/Publication>,
+        <https://w3id.org/GHGA/ReleaseStatusMixin>,
         <https://w3id.org/GHGA/ResearchActivity>,
         <https://w3id.org/GHGA/Sample>,
         <https://w3id.org/GHGA/SequencingProtocol>,
         <https://w3id.org/GHGA/Study>,
+        <https://w3id.org/GHGA/SubmissionStatusMixin>,
         <https://w3id.org/GHGA/Technology>,
         <https://w3id.org/GHGA/User>,
         <https://w3id.org/GHGA/Workflow>,
@@ -66,25 +69,27 @@
     linkml:enums <https://w3id.org/GHGA/biological_sex_enum>,
         <https://w3id.org/GHGA/case_control_enum>,
         <https://w3id.org/GHGA/file_type_enum>,
+        <https://w3id.org/GHGA/release_status_enum>,
         <https://w3id.org/GHGA/study_type_enum>,
+        <https://w3id.org/GHGA/submission_status_enum>,
         <https://w3id.org/GHGA/user_role_enum>,
         <https://w3id.org/GHGA/vital_status_enum> ;
-    linkml:generation_date "2021-11-16T13:50:20"^^xsd:dateTime ;
+    linkml:generation_date "2021-11-18T09:29:40"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "biolink" ;
-            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
-        [ linkml:prefix_prefix "EFO" ;
+    linkml:prefixes [ linkml:prefix_prefix "EFO" ;
             linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
-        [ linkml:prefix_prefix "SIO" ;
-            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
-        [ linkml:prefix_prefix "COB" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
         [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
+        [ linkml:prefix_prefix "biolink" ;
+            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
+        [ linkml:prefix_prefix "COB" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
         [ linkml:prefix_prefix "GHGA" ;
-            linkml:prefix_reference <https://w3id.org/GHGA/> ] ;
+            linkml:prefix_reference <https://w3id.org/GHGA/> ],
+        [ linkml:prefix_prefix "SIO" ;
+            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/accession>,
         <https://w3id.org/GHGA/additional_name>,
@@ -135,6 +140,8 @@
         <https://w3id.org/GHGA/dataset_has_publication>,
         <https://w3id.org/GHGA/dataset_title>,
         <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
         <https://w3id.org/GHGA/description>,
         <https://w3id.org/GHGA/email>,
         <https://w3id.org/GHGA/end_bias>,
@@ -266,6 +273,9 @@
         <https://w3id.org/GHGA/read_length>,
         <https://w3id.org/GHGA/read_pair_number>,
         <https://w3id.org/GHGA/reference_annotation>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
         <https://w3id.org/GHGA/rnaseq_strandedness>,
         <https://w3id.org/GHGA/role>,
         <https://w3id.org/GHGA/sample_barcode_read>,
@@ -293,6 +303,8 @@
         <https://w3id.org/GHGA/study_has_publication>,
         <https://w3id.org/GHGA/study_title>,
         <https://w3id.org/GHGA/study_type>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status>,
         <https://w3id.org/GHGA/target_coverage>,
         <https://w3id.org/GHGA/target_regions>,
         <https://w3id.org/GHGA/technical_replicates>,
@@ -316,8 +328,8 @@
         <https://w3id.org/GHGA/xref>,
         <https://w3id.org/GHGA/year_of_birth> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2021-11-16T13:49:34"^^xsd:dateTime ;
-    linkml:source_file_size 48524 ;
+    linkml:source_file_date "2021-11-18T09:28:38"^^xsd:dateTime ;
+    linkml:source_file_size 50581 ;
     linkml:types <https://w3id.org/GHGA/boolean>,
         <https://w3id.org/GHGA/date>,
         <https://w3id.org/GHGA/datetime>,
@@ -340,15 +352,6 @@
 <https://w3id.org/GHGA/alive> skos:definition "Showing characteristics of life; displaying signs of life." .
 
 <https://w3id.org/GHGA/bam> skos:definition "BAM File" .
-
-<https://w3id.org/GHGA/boolean> a linkml:TypeDefinition ;
-    skos:definition "A binary (true or false) value" ;
-    skos:inScheme linkml:types ;
-    linkml:base "Bool" ;
-    linkml:definition_uri linkml:Boolean ;
-    linkml:imported_from "linkml:types" ;
-    linkml:repr "bool" ;
-    linkml:uri xsd:boolean .
 
 <https://w3id.org/GHGA/cancer_genomics> skos:definition "Cancer Genomics" .
 
@@ -421,6 +424,8 @@
 
 <https://w3id.org/GHGA/gene_regulation> skos:definition "Gene Regulation Study" .
 
+<https://w3id.org/GHGA/in%20progress> skos:definition "Signifies that a submission is in progress." .
+
 <https://w3id.org/GHGA/metagenomics> skos:definition "Metagenomics" .
 
 <https://w3id.org/GHGA/ncname> a linkml:TypeDefinition ;
@@ -461,6 +466,8 @@
 
 <https://w3id.org/GHGA/population_genomics> skos:definition "Population Genomics" .
 
+<https://w3id.org/GHGA/released> skos:definition "Signifies that the submission is released for public consumption." .
+
 <https://w3id.org/GHGA/resequencing> skos:definition "Resequencing" .
 
 <https://w3id.org/GHGA/rna_seq> skos:definition "RNAseq" .
@@ -468,6 +475,8 @@
 <https://w3id.org/GHGA/sff> skos:definition "Standard flowgram format used to encode results  of pyrosequencing from the 454 Life Sciences platform." .
 
 <https://w3id.org/GHGA/srf> skos:definition "SRF is a generic format for DNA sequence data." .
+
+<https://w3id.org/GHGA/submitted> skos:definition "Signifies that a submission is complete and submitted." .
 
 <https://w3id.org/GHGA/synthetic_genomics> skos:definition "Sythetic Genomics" .
 
@@ -482,6 +491,8 @@
     linkml:uri xsd:dateTime .
 
 <https://w3id.org/GHGA/transcriptome_analysis> skos:definition "Transcriptome Analysis" .
+
+<https://w3id.org/GHGA/unreleased> skos:definition "Signifies that the submission is not released for public consumption." .
 
 <https://w3id.org/GHGA/uri> a linkml:TypeDefinition ;
     skos:definition "a complete URI" ;
@@ -812,6 +823,15 @@
     linkml:range <https://w3id.org/GHGA/PhenotypicFeature> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_phenotypic_feature> ;
     linkml:usage_slot_name "has phenotypic feature" .
+
+<https://w3id.org/GHGA/boolean> a linkml:TypeDefinition ;
+    skos:definition "A binary (true or false) value" ;
+    skos:inScheme linkml:types ;
+    linkml:base "Bool" ;
+    linkml:definition_uri linkml:Boolean ;
+    linkml:imported_from "linkml:types" ;
+    linkml:repr "bool" ;
+    linkml:uri xsd:boolean .
 
 <https://w3id.org/GHGA/case_control_enum> skos:definition "Enum to capture whether a Sample is to be considered as Case or Control." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -1263,7 +1283,7 @@
 <https://w3id.org/GHGA/file_file_index> a linkml:SlotDefinition ;
     skos:definition "The index for this file. Commonly for BAM/VCF files." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    skos:prefLabel "file_index" ;
+    skos:prefLabel "file index" ;
     linkml:definition_uri <https://w3id.org/GHGA/file_index> ;
     linkml:domain <https://w3id.org/GHGA/File> ;
     linkml:domain_of <https://w3id.org/GHGA/File> ;
@@ -1272,7 +1292,7 @@
     linkml:owner <https://w3id.org/GHGA/File> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/file_index> ;
-    linkml:usage_slot_name "file_index" .
+    linkml:usage_slot_name "file index" .
 
 <https://w3id.org/GHGA/file_format> a linkml:SlotDefinition ;
     skos:definition "The format of the file: BAM, SAM, CRAM, BAI, etc." ;
@@ -1598,6 +1618,12 @@
     linkml:slot_uri <https://w3id.org/GHGA/xref> ;
     linkml:usage_slot_name "xref" .
 
+<https://w3id.org/GHGA/release_status_enum> skos:definition "Enum to capture the release status." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/ReleaseStatusEnum> ;
+    linkml:permissible_values <https://w3id.org/GHGA/released>,
+        <https://w3id.org/GHGA/unreleased> .
+
 <https://w3id.org/GHGA/sample_description> a linkml:SlotDefinition ;
     skos:definition "Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc)      " ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -1911,6 +1937,12 @@
         <https://w3id.org/GHGA/synthetic_genomics>,
         <https://w3id.org/GHGA/transcriptome_analysis>,
         <https://w3id.org/GHGA/whole_genome_sequencing> .
+
+<https://w3id.org/GHGA/submission_status_enum> skos:definition "Enum to capture submission status." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/SubmissionStatusEnum> ;
+    linkml:permissible_values <https://w3id.org/GHGA/in%20progress>,
+        <https://w3id.org/GHGA/submitted> .
 
 <https://w3id.org/GHGA/user_role> a linkml:SlotDefinition ;
     skos:definition "The role of the user" ;
@@ -3279,12 +3311,19 @@
         <https://w3id.org/GHGA/dataset_has_publication>,
         <https://w3id.org/GHGA/dataset_title>,
         <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
         <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_has_attribute>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref> .
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/DataTransformation> a linkml:ClassDefinition ;
     skos:definition "A data transformation technique used to analyze and interpret data to gain a better understanding of it." ;
@@ -3374,8 +3413,13 @@
     linkml:class_uri <https://w3id.org/GHGA/Investigation> ;
     linkml:definition_uri <https://w3id.org/GHGA/Investigation> ;
     linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
+    linkml:mixins <https://w3id.org/GHGA/DeprecationMixin>,
+        <https://w3id.org/GHGA/ReleaseStatusMixin>,
+        <https://w3id.org/GHGA/SubmissionStatusMixin> ;
     linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/description>,
+    linkml:slots <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
+        <https://w3id.org/GHGA/description>,
         <https://w3id.org/GHGA/has_publication>,
         <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
@@ -3383,8 +3427,33 @@
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status>,
         <https://w3id.org/GHGA/title>,
         <https://w3id.org/GHGA/type> .
+
+<https://w3id.org/GHGA/ReleaseStatusMixin> a linkml:ClassDefinition ;
+    skos:definition "A mixin that keeps track of the release status." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/ReleaseStatusMixin> ;
+    linkml:definition_uri <https://w3id.org/GHGA/ReleaseStatusMixin> ;
+    linkml:mixin true ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status> .
+
+<https://w3id.org/GHGA/SubmissionStatusMixin> a linkml:ClassDefinition ;
+    skos:definition "A mixin that keeps track of the submission status." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:definition_uri <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:mixin true ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/has_agent> a linkml:SlotDefinition ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -3503,6 +3572,17 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/xref> .
 
+<https://w3id.org/GHGA/DeprecationMixin> a linkml:ClassDefinition ;
+    skos:definition "A mixin that keeps track of the deprecation status." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:definition_uri <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:mixin true ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
+        <https://w3id.org/GHGA/replaced_by> .
+
 <https://w3id.org/GHGA/InformationContentEntity> a linkml:ClassDefinition ;
     skos:definition "A generically dependent continuant that is about some thing." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/IAO_0000030> ;
@@ -3518,6 +3598,69 @@
         <https://w3id.org/GHGA/named_thing_type>,
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref> .
+
+<https://w3id.org/GHGA/deprecated> a linkml:SlotDefinition ;
+    skos:definition "The deprecation status of an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/deprecated> ;
+    linkml:domain_of <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:owner <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:range <https://w3id.org/GHGA/boolean> ;
+    linkml:slot_uri <https://w3id.org/GHGA/deprecated> .
+
+<https://w3id.org/GHGA/deprecation_date> a linkml:SlotDefinition ;
+    skos:definition "The date when the entity was deprecated." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/deprecation_date> ;
+    linkml:domain_of <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:owner <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/deprecation_date> .
+
+<https://w3id.org/GHGA/release_date> a linkml:SlotDefinition ;
+    skos:definition "The date when the entity was released for public consumption." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/release_date> ;
+    linkml:domain_of <https://w3id.org/GHGA/ReleaseStatusMixin> ;
+    linkml:owner <https://w3id.org/GHGA/ReleaseStatusMixin> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/release_date> .
+
+<https://w3id.org/GHGA/release_status> a linkml:SlotDefinition ;
+    skos:definition "The release status of an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/release_status> ;
+    linkml:domain_of <https://w3id.org/GHGA/ReleaseStatusMixin> ;
+    linkml:owner <https://w3id.org/GHGA/ReleaseStatusMixin> ;
+    linkml:range <https://w3id.org/GHGA/release_status_enum> ;
+    linkml:slot_uri <https://w3id.org/GHGA/release_status> .
+
+<https://w3id.org/GHGA/replaced_by> a linkml:SlotDefinition ;
+    skos:definition "The entity which replaces a deprecated entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/replaced_by> ;
+    linkml:domain_of <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:owner <https://w3id.org/GHGA/DeprecationMixin> ;
+    linkml:range <https://w3id.org/GHGA/NamedThing> ;
+    linkml:slot_uri <https://w3id.org/GHGA/replaced_by> .
+
+<https://w3id.org/GHGA/submission_date> a linkml:SlotDefinition ;
+    skos:definition "The date when submission was completed." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/submission_date> ;
+    linkml:domain_of <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:owner <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/submission_date> .
+
+<https://w3id.org/GHGA/submission_status> a linkml:SlotDefinition ;
+    skos:definition "The status of submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/submission_status> ;
+    linkml:domain_of <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:owner <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:range <https://w3id.org/GHGA/submission_status_enum> ;
+    linkml:slot_uri <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/Family> a linkml:ClassDefinition ;
     skos:definition "A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption." ;
@@ -3642,6 +3785,8 @@
         <https://w3id.org/GHGA/dataset_has_publication>,
         <https://w3id.org/GHGA/dataset_title>,
         <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
         <https://w3id.org/GHGA/experiment_dataset_has_data_access_policy>,
         <https://w3id.org/GHGA/experiment_dataset_has_experiment>,
         <https://w3id.org/GHGA/experiment_dataset_has_study>,
@@ -3650,7 +3795,12 @@
         <https://w3id.org/GHGA/named_thing_has_attribute>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref> .
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/AnalysisDataset> a linkml:ClassDefinition ;
     skos:definition "An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or more Studies." ;
@@ -3667,13 +3817,20 @@
         <https://w3id.org/GHGA/dataset_has_publication>,
         <https://w3id.org/GHGA/dataset_title>,
         <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
         <https://w3id.org/GHGA/has_analysis>,
         <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_has_attribute>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref> .
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/has_study> a linkml:SlotDefinition ;
     skos:definition "The study associated with an entity." ;
@@ -3932,18 +4089,28 @@
     linkml:class_uri <https://w3id.org/GHGA/Dataset> ;
     linkml:definition_uri <https://w3id.org/GHGA/Dataset> ;
     linkml:is_a <https://w3id.org/GHGA/InformationContentEntity> ;
+    linkml:mixins <https://w3id.org/GHGA/DeprecationMixin>,
+        <https://w3id.org/GHGA/ReleaseStatusMixin>,
+        <https://w3id.org/GHGA/SubmissionStatusMixin> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/dataset_description>,
         <https://w3id.org/GHGA/dataset_has_file>,
         <https://w3id.org/GHGA/dataset_has_publication>,
         <https://w3id.org/GHGA/dataset_title>,
         <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
         <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_has_attribute>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref> .
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/DataAccessPolicy> a linkml:ClassDefinition ;
     skos:definition "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies." ;
@@ -3995,12 +4162,17 @@
     linkml:definition_uri <https://w3id.org/GHGA/Study> ;
     linkml:is_a <https://w3id.org/GHGA/Investigation> ;
     linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/has_attribute>,
+    linkml:slots <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
+        <https://w3id.org/GHGA/has_attribute>,
         <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
         <https://w3id.org/GHGA/study_affiliation>,
         <https://w3id.org/GHGA/study_description>,
         <https://w3id.org/GHGA/study_has_analysis>,
@@ -4008,7 +4180,9 @@
         <https://w3id.org/GHGA/study_has_experiment>,
         <https://w3id.org/GHGA/study_has_publication>,
         <https://w3id.org/GHGA/study_title>,
-        <https://w3id.org/GHGA/study_type> .
+        <https://w3id.org/GHGA/study_type>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/named_thing_type> a linkml:SlotDefinition ;
     skos:definition "The type of an entity." ;
@@ -4126,6 +4300,8 @@
     linkml:is_a <https://w3id.org/GHGA/Investigation> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/biological_replicates>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
         <https://w3id.org/GHGA/experiment_description>,
         <https://w3id.org/GHGA/experiment_has_experiment_process>,
         <https://w3id.org/GHGA/experiment_has_file>,
@@ -4141,6 +4317,11 @@
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status>,
         <https://w3id.org/GHGA/technical_replicates>,
         <https://w3id.org/GHGA/title>,
         <https://w3id.org/GHGA/type> .

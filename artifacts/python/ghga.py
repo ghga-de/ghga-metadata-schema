@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-16T13:50:19
+# Generation date: 2021-11-18T09:29:38
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -22,7 +22,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Integer, String
+from linkml_runtime.linkml_model.types import Boolean, Integer, String
+from linkml_runtime.utils.metamodelcore import Bool
 
 metamodel_version = "1.7.0"
 
@@ -357,6 +358,13 @@ class Investigation(PlannedProcess):
     description: Optional[str] = None
     type: Optional[str] = None
     has_publication: Optional[Union[str, PublicationId]] = None
+    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
+    submission_date: Optional[str] = None
+    release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
+    release_date: Optional[str] = None
+    deprecated: Optional[Union[bool, Bool]] = None
+    deprecation_date: Optional[str] = None
+    replaced_by: Optional[Union[str, NamedThingId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -375,6 +383,27 @@ class Investigation(PlannedProcess):
 
         if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
             self.has_publication = PublicationId(self.has_publication)
+
+        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
+            self.submission_status = SubmissionStatusEnum(self.submission_status)
+
+        if self.submission_date is not None and not isinstance(self.submission_date, str):
+            self.submission_date = str(self.submission_date)
+
+        if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
+            self.release_status = ReleaseStatusEnum(self.release_status)
+
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
+
+        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
+            self.deprecated = Bool(self.deprecated)
+
+        if self.deprecation_date is not None and not isinstance(self.deprecation_date, str):
+            self.deprecation_date = str(self.deprecation_date)
+
+        if self.replaced_by is not None and not isinstance(self.replaced_by, NamedThingId):
+            self.replaced_by = NamedThingId(self.replaced_by)
 
         super().__post_init__(**kwargs)
 
@@ -1891,6 +1920,13 @@ class Dataset(InformationContentEntity):
     has_file: Union[Union[str, FileId], List[Union[str, FileId]]] = None
     type: str = None
     has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
+    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
+    submission_date: Optional[str] = None
+    release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
+    release_date: Optional[str] = None
+    deprecated: Optional[Union[bool, Bool]] = None
+    deprecation_date: Optional[str] = None
+    replaced_by: Optional[Union[str, NamedThingId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1922,6 +1958,27 @@ class Dataset(InformationContentEntity):
         if not isinstance(self.has_publication, list):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
         self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
+
+        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
+            self.submission_status = SubmissionStatusEnum(self.submission_status)
+
+        if self.submission_date is not None and not isinstance(self.submission_date, str):
+            self.submission_date = str(self.submission_date)
+
+        if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
+            self.release_status = ReleaseStatusEnum(self.release_status)
+
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
+
+        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
+            self.deprecated = Bool(self.deprecated)
+
+        if self.deprecation_date is not None and not isinstance(self.deprecation_date, str):
+            self.deprecation_date = str(self.deprecation_date)
+
+        if self.replaced_by is not None and not isinstance(self.replaced_by, NamedThingId):
+            self.replaced_by = NamedThingId(self.replaced_by)
 
         super().__post_init__(**kwargs)
 
@@ -2182,6 +2239,85 @@ class User(Person):
         super().__post_init__(**kwargs)
 
 
+@dataclass
+class SubmissionStatusMixin(YAMLRoot):
+    """
+    A mixin that keeps track of the submission status.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.SubmissionStatusMixin
+    class_class_curie: ClassVar[str] = "GHGA:SubmissionStatusMixin"
+    class_name: ClassVar[str] = "submission status mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.SubmissionStatusMixin
+
+    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
+    submission_date: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
+            self.submission_status = SubmissionStatusEnum(self.submission_status)
+
+        if self.submission_date is not None and not isinstance(self.submission_date, str):
+            self.submission_date = str(self.submission_date)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ReleaseStatusMixin(YAMLRoot):
+    """
+    A mixin that keeps track of the release status.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.ReleaseStatusMixin
+    class_class_curie: ClassVar[str] = "GHGA:ReleaseStatusMixin"
+    class_name: ClassVar[str] = "release status mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.ReleaseStatusMixin
+
+    release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
+    release_date: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
+            self.release_status = ReleaseStatusEnum(self.release_status)
+
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DeprecationMixin(YAMLRoot):
+    """
+    A mixin that keeps track of the deprecation status.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.DeprecationMixin
+    class_class_curie: ClassVar[str] = "GHGA:DeprecationMixin"
+    class_name: ClassVar[str] = "deprecation mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.DeprecationMixin
+
+    deprecated: Optional[Union[bool, Bool]] = None
+    deprecation_date: Optional[str] = None
+    replaced_by: Optional[Union[str, NamedThingId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
+            self.deprecated = Bool(self.deprecated)
+
+        if self.deprecation_date is not None and not isinstance(self.deprecation_date, str):
+            self.deprecation_date = str(self.deprecation_date)
+
+        if self.replaced_by is not None and not isinstance(self.replaced_by, NamedThingId):
+            self.replaced_by = NamedThingId(self.replaced_by)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class CaseControlEnum(EnumDefinitionImpl):
     """
@@ -2309,6 +2445,38 @@ class FileTypeEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="FileTypeEnum",
         description="Enum to capture file types.",
+    )
+
+class SubmissionStatusEnum(EnumDefinitionImpl):
+    """
+    Enum to capture submission status.
+    """
+    submitted = PermissibleValue(text="submitted",
+                                         description="Signifies that a submission is complete and submitted.")
+
+    _defn = EnumDefinition(
+        name="SubmissionStatusEnum",
+        description="Enum to capture submission status.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "in progress",
+                PermissibleValue(text="in progress",
+                                 description="Signifies that a submission is in progress.") )
+
+class ReleaseStatusEnum(EnumDefinitionImpl):
+    """
+    Enum to capture the release status.
+    """
+    unreleased = PermissibleValue(text="unreleased",
+                                           description="Signifies that the submission is not released for public consumption.")
+    released = PermissibleValue(text="released",
+                                       description="Signifies that the submission is released for public consumption.")
+
+    _defn = EnumDefinition(
+        name="ReleaseStatusEnum",
+        description="Enum to capture the release status.",
     )
 
 # Slots
@@ -2507,7 +2675,7 @@ slots.size = Slot(uri=GHGA.size, name="size", curie=GHGA.curie('size'),
 slots.checksum = Slot(uri=GHGA.checksum, name="checksum", curie=GHGA.curie('checksum'),
                    model_uri=GHGA.checksum, domain=None, range=Optional[str])
 
-slots.file_index = Slot(uri=GHGA.file_index, name="file_index", curie=GHGA.curie('file_index'),
+slots.file_index = Slot(uri=GHGA.file_index, name="file index", curie=GHGA.curie('file_index'),
                    model_uri=GHGA.file_index, domain=None, range=Optional[str])
 
 slots.category = Slot(uri=GHGA.category, name="category", curie=GHGA.curie('category'),
@@ -2644,6 +2812,27 @@ slots.sample_barcode_read = Slot(uri=GHGA.sample_barcode_read, name="sample barc
 
 slots.vital_status_at_sampling = Slot(uri=GHGA.vital_status_at_sampling, name="vital status at sampling", curie=GHGA.curie('vital_status_at_sampling'),
                    model_uri=GHGA.vital_status_at_sampling, domain=None, range=Optional[str])
+
+slots.submission_status = Slot(uri=GHGA.submission_status, name="submission status", curie=GHGA.curie('submission_status'),
+                   model_uri=GHGA.submission_status, domain=None, range=Optional[Union[str, "SubmissionStatusEnum"]])
+
+slots.submission_date = Slot(uri=GHGA.submission_date, name="submission date", curie=GHGA.curie('submission_date'),
+                   model_uri=GHGA.submission_date, domain=None, range=Optional[str])
+
+slots.release_status = Slot(uri=GHGA.release_status, name="release status", curie=GHGA.curie('release_status'),
+                   model_uri=GHGA.release_status, domain=None, range=Optional[Union[str, "ReleaseStatusEnum"]])
+
+slots.release_date = Slot(uri=GHGA.release_date, name="release date", curie=GHGA.curie('release_date'),
+                   model_uri=GHGA.release_date, domain=None, range=Optional[str])
+
+slots.deprecated = Slot(uri=GHGA.deprecated, name="deprecated", curie=GHGA.curie('deprecated'),
+                   model_uri=GHGA.deprecated, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.deprecation_date = Slot(uri=GHGA.deprecation_date, name="deprecation date", curie=GHGA.curie('deprecation_date'),
+                   model_uri=GHGA.deprecation_date, domain=None, range=Optional[str])
+
+slots.replaced_by = Slot(uri=GHGA.replaced_by, name="replaced by", curie=GHGA.curie('replaced_by'),
+                   model_uri=GHGA.replaced_by, domain=None, range=Optional[Union[str, NamedThingId]])
 
 slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
@@ -2882,7 +3071,7 @@ slots.file_size = Slot(uri=GHGA.size, name="file_size", curie=GHGA.curie('size')
 slots.file_checksum = Slot(uri=GHGA.checksum, name="file_checksum", curie=GHGA.curie('checksum'),
                    model_uri=GHGA.file_checksum, domain=File, range=Optional[str])
 
-slots.file_file_index = Slot(uri=GHGA.file_index, name="file_file_index", curie=GHGA.curie('file_index'),
+slots.file_file_index = Slot(uri=GHGA.file_index, name="file_file index", curie=GHGA.curie('file_index'),
                    model_uri=GHGA.file_file_index, domain=File, range=Optional[str])
 
 slots.file_category = Slot(uri=GHGA.category, name="file_category", curie=GHGA.curie('category'),

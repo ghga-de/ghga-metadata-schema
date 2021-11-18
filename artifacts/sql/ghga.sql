@@ -1,4 +1,6 @@
 
+CREATE TYPE submission_status_enum AS ENUM ('in progress', 'submitted');
+CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
 CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased');
 CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
@@ -14,38 +16,6 @@ CREATE TABLE agent (
 	update_date TEXT, 
 	name TEXT, 
 	description TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE aggregate_dataset (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_publication TEXT, 
-	type TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE analysis_dataset (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_publication TEXT, 
-	type TEXT NOT NULL, 
-	has_data_access_policy TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_analysis TEXT, 
-	has_experiment TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -166,23 +136,6 @@ CREATE TABLE donor (
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE experiment_dataset (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_publication TEXT, 
-	type TEXT NOT NULL, 
-	has_data_access_policy TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_experiment TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -411,21 +364,6 @@ CREATE TABLE sequencing_protocol (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE study (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	has_publication TEXT, 
-	has_experiment TEXT, 
-	has_analysis TEXT, 
-	has_attribute TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	type study_type_enum NOT NULL, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE technology (
 	id TEXT NOT NULL, 
 	accession TEXT, 
@@ -471,22 +409,52 @@ CREATE TABLE workflow_step (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE analysis (
+CREATE TABLE aggregate_dataset (
+	id TEXT NOT NULL, 
 	accession TEXT, 
-	type TEXT, 
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	id TEXT NOT NULL, 
-	title TEXT, 
-	description TEXT, 
-	has_input TEXT, 
-	has_study TEXT, 
-	has_workflow TEXT, 
-	has_output TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_publication TEXT, 
+	type TEXT NOT NULL, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_workflow) REFERENCES workflow (id)
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE analysis_dataset (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_publication TEXT, 
+	type TEXT NOT NULL, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
+	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_analysis TEXT, 
+	has_experiment TEXT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE biospecimen (
@@ -524,7 +492,7 @@ CREATE TABLE data_access_committee (
 	FOREIGN KEY(main_contact) REFERENCES member (id)
 );
 
-CREATE TABLE dataset (
+CREATE TABLE experiment_dataset (
 	id TEXT NOT NULL, 
 	accession TEXT, 
 	has_attribute TEXT, 
@@ -535,9 +503,18 @@ CREATE TABLE dataset (
 	has_file TEXT NOT NULL, 
 	has_publication TEXT, 
 	type TEXT NOT NULL, 
-	aggregate_dataset_id TEXT, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
+	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(aggregate_dataset_id) REFERENCES aggregate_dataset (id)
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE family (
@@ -564,8 +541,16 @@ CREATE TABLE investigation (
 	description TEXT, 
 	type TEXT, 
 	has_publication TEXT, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_publication) REFERENCES publication (id)
+	FOREIGN KEY(has_publication) REFERENCES publication (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE research_activity (
@@ -582,6 +567,29 @@ CREATE TABLE research_activity (
 	FOREIGN KEY(has_publication) REFERENCES publication (id)
 );
 
+CREATE TABLE study (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
+	has_publication TEXT, 
+	has_experiment TEXT, 
+	has_analysis TEXT, 
+	has_attribute TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	type study_type_enum NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
 CREATE TABLE workflow_parameter (
 	key TEXT, 
 	value TEXT, 
@@ -595,20 +603,6 @@ CREATE TABLE agent_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES agent (id)
-);
-
-CREATE TABLE aggregate_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES aggregate_dataset (id)
-);
-
-CREATE TABLE analysis_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis_dataset (id)
 );
 
 CREATE TABLE anatomical_entity_xref (
@@ -672,13 +666,6 @@ CREATE TABLE donor_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES donor (id)
-);
-
-CREATE TABLE experiment_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES experiment_dataset (id)
 );
 
 CREATE TABLE file_xref (
@@ -786,20 +773,6 @@ CREATE TABLE sequencing_protocol_xref (
 	FOREIGN KEY(backref_id) REFERENCES sequencing_protocol (id)
 );
 
-CREATE TABLE study_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES study (id)
-);
-
-CREATE TABLE study_affiliation (
-	backref_id TEXT, 
-	affiliation TEXT NOT NULL, 
-	PRIMARY KEY (backref_id, affiliation), 
-	FOREIGN KEY(backref_id) REFERENCES study (id)
-);
-
 CREATE TABLE technology_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -828,24 +801,22 @@ CREATE TABLE workflow_step_xref (
 	FOREIGN KEY(backref_id) REFERENCES workflow_step (id)
 );
 
-CREATE TABLE analysis_process (
-	id TEXT NOT NULL, 
+CREATE TABLE analysis (
 	accession TEXT, 
 	type TEXT, 
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	id TEXT NOT NULL, 
 	title TEXT, 
+	description TEXT, 
 	has_input TEXT, 
-	has_workflow_step TEXT, 
-	has_agent TEXT, 
+	has_study TEXT, 
+	has_workflow TEXT, 
 	has_output TEXT, 
-	analysis_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_workflow_step) REFERENCES workflow_step (id), 
-	FOREIGN KEY(has_agent) REFERENCES agent (id), 
-	FOREIGN KEY(has_output) REFERENCES file (id), 
-	FOREIGN KEY(analysis_id) REFERENCES analysis (id)
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_workflow) REFERENCES workflow (id)
 );
 
 CREATE TABLE data_access_policy (
@@ -862,6 +833,30 @@ CREATE TABLE data_access_policy (
 	has_data_access_committee TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
+);
+
+CREATE TABLE dataset (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_publication TEXT, 
+	type TEXT NOT NULL, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
+	aggregate_dataset_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
+	FOREIGN KEY(aggregate_dataset_id) REFERENCES aggregate_dataset (id)
 );
 
 CREATE TABLE sample (
@@ -884,11 +879,18 @@ CREATE TABLE sample (
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
 );
 
-CREATE TABLE analysis_xref (
+CREATE TABLE aggregate_dataset_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis (id)
+	FOREIGN KEY(backref_id) REFERENCES aggregate_dataset (id)
+);
+
+CREATE TABLE analysis_dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES analysis_dataset (id)
 );
 
 CREATE TABLE biospecimen_xref (
@@ -905,11 +907,11 @@ CREATE TABLE data_access_committee_xref (
 	FOREIGN KEY(backref_id) REFERENCES data_access_committee (id)
 );
 
-CREATE TABLE dataset_xref (
+CREATE TABLE experiment_dataset_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES dataset (id)
+	FOREIGN KEY(backref_id) REFERENCES experiment_dataset (id)
 );
 
 CREATE TABLE family_xref (
@@ -933,6 +935,40 @@ CREATE TABLE research_activity_xref (
 	FOREIGN KEY(backref_id) REFERENCES research_activity (id)
 );
 
+CREATE TABLE study_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES study (id)
+);
+
+CREATE TABLE study_affiliation (
+	backref_id TEXT, 
+	affiliation TEXT NOT NULL, 
+	PRIMARY KEY (backref_id, affiliation), 
+	FOREIGN KEY(backref_id) REFERENCES study (id)
+);
+
+CREATE TABLE analysis_process (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	title TEXT, 
+	has_input TEXT, 
+	has_workflow_step TEXT, 
+	has_agent TEXT, 
+	has_output TEXT, 
+	analysis_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_workflow_step) REFERENCES workflow_step (id), 
+	FOREIGN KEY(has_agent) REFERENCES agent (id), 
+	FOREIGN KEY(has_output) REFERENCES file (id), 
+	FOREIGN KEY(analysis_id) REFERENCES analysis (id)
+);
+
 CREATE TABLE data_use_condition (
 	permission TEXT, 
 	modifier TEXT, 
@@ -950,6 +986,13 @@ CREATE TABLE experiment (
 	title TEXT, 
 	type TEXT, 
 	has_publication TEXT, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	release_status release_status_enum, 
+	release_date TEXT, 
+	deprecated BOOLEAN, 
+	deprecation_date TEXT, 
+	replaced_by TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	biological_replicates TEXT, 
@@ -961,16 +1004,17 @@ CREATE TABLE experiment (
 	has_file TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_publication) REFERENCES publication (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_sample) REFERENCES sample (id), 
 	FOREIGN KEY(has_technology) REFERENCES technology (id)
 );
 
-CREATE TABLE analysis_process_xref (
+CREATE TABLE analysis_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis_process (id)
+	FOREIGN KEY(backref_id) REFERENCES analysis (id)
 );
 
 CREATE TABLE data_access_policy_xref (
@@ -978,6 +1022,13 @@ CREATE TABLE data_access_policy_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES data_access_policy (id)
+);
+
+CREATE TABLE dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
 CREATE TABLE sample_xref (
@@ -1006,6 +1057,13 @@ CREATE TABLE experiment_process (
 	FOREIGN KEY(has_agent) REFERENCES agent (id), 
 	FOREIGN KEY(has_output) REFERENCES file (id), 
 	FOREIGN KEY(experiment_id) REFERENCES experiment (id)
+);
+
+CREATE TABLE analysis_process_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES analysis_process (id)
 );
 
 CREATE TABLE experiment_xref (

@@ -24,6 +24,13 @@ type AggregateDataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
     hasDataset: [Dataset]
   }
 
@@ -58,6 +65,13 @@ type AnalysisDataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
     hasDataAccessPolicy: [DataAccessPolicy]!
     hasStudy: [Study]!
     hasAnalysis: String
@@ -214,7 +228,7 @@ type DataUseCondition
     modifier: String
   }
 
-type Dataset
+type Dataset implements SubmissionStatusMixin, ReleaseStatusMixin, DeprecationMixin
   {
     id: String!
     accession: String
@@ -227,6 +241,20 @@ type Dataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
+  }
+
+interface DeprecationMixin
+  {
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
   }
 
 type Disease
@@ -290,6 +318,13 @@ type Experiment
     title: String
     type: String
     hasPublication: Publication
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
     name: String!
     description: String!
     biologicalReplicates: String
@@ -315,6 +350,13 @@ type ExperimentDataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
     hasDataAccessPolicy: [DataAccessPolicy]!
     hasStudy: [Study]!
     hasExperiment: [Experiment]!
@@ -402,7 +444,7 @@ type InformationContentEntity
     updateDate: String
   }
 
-type Investigation
+type Investigation implements SubmissionStatusMixin, ReleaseStatusMixin, DeprecationMixin
   {
     id: String!
     accession: String
@@ -414,6 +456,13 @@ type Investigation
     description: String
     type: String
     hasPublication: Publication
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
   }
 
 type LibraryPreparationProtocol
@@ -574,6 +623,12 @@ type Publication
     xref: [String]
   }
 
+interface ReleaseStatusMixin
+  {
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+  }
+
 type ResearchActivity
   {
     id: String!
@@ -644,6 +699,13 @@ type Study
     xref: [String]
     creationDate: String
     updateDate: String
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
+    releaseStatus: ReleaseStatusEnum
+    releaseDate: String
+    deprecated: Boolean
+    deprecationDate: String
+    replacedBy: NamedThing
     affiliation: [String]!
     hasPublication: [Publication]
     hasExperiment: [Experiment]
@@ -652,6 +714,12 @@ type Study
     title: String!
     description: String!
     type: StudyTypeEnum!
+  }
+
+interface SubmissionStatusMixin
+  {
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
   }
 
 type Technology
