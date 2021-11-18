@@ -198,6 +198,7 @@ What does it mean for an external concept to be one of `related_mappings`,
 
 Here is an decision tree that will help you determine the granularity of your
 mappings:
+
 - An external concept can be considered as an exact mapping to class or slot if the
 former can be used interchangeably with the latter. That is, the semantics are
 identical and any transitive property that the external concept might bring into
