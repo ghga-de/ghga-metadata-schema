@@ -188,3 +188,25 @@ being defined.
 The `related_mappings` slot can be used to define external concepts, predicates,
 or properties which are considered to be related mappings to the class (or slot)
 being defined.
+
+---
+
+## Determining the granularity of mappings
+
+What does it mean for an external concept to be one of `related_mappings`,
+`broad_mappings`, `narrow_mappings`, `close_mappings`, `exact_mappings`?
+
+Here is an decision tree that will help you determine the granularity of your
+mappings:
+- An external concept can be considered as an exact mapping to class or slot if the
+former can be used interchangeably with the latter. That is, the semantics are
+identical and any transitive property that the external concept might bring into
+the model must not violate the internal consistency of the model.
+- If it is difficult to determine if an external concept can be considered an
+exact mapping then it is much safer to treat it as a close mapping
+- If an external concept can be treated a sub-class of the class or slot then
+it can be treated as a narrow mapping
+- If an external concept can be treated as a super-class of the class or slot
+then it can be treated as a broad mapping
+- If an external concept is distantly related to a class or slot then it can
+be treated as a related mapping
