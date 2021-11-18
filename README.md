@@ -49,7 +49,3 @@ Artifacts that are currently a work in progress:
 - Pydantic classes
 
 
-## GHGA Metadata Schema Overview
-
-![GHGA Metadata Schema](ghga-overview.png "GHGA Metadata Schema")
-
