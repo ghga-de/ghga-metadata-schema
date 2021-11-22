@@ -109,7 +109,6 @@ classes:
   investigation:
     is_a: planned process
     mixins:
-      - submission status mixin
       - release status mixin
       - deprecation mixin
     description: >-
@@ -1139,6 +1138,80 @@ classes:
         description: >-
           The role of the user
         range: user_role_enum
+
+  submission:
+    is_a: named thing
+    mixins:
+      - submission status mixin
+    description: >-
+      A grouping entity that represents information about one or more entities.
+      A submission can be considered as a set of inter-related (and inter-connected)
+      entities that represent a data submission to GHGA.
+    slots:
+      - has study
+      - has project
+      - has sample
+      - has biospecimen
+      - has individual
+      - has experiment
+      - has analysis
+      - has file
+      - has data access policy
+    slot_usage:
+      has study:
+        description: >-
+          Information about a Study entities associated with this submission.
+        range: study
+        inlined: true
+        inlined_as_list: false
+      has project:
+        description: >-
+          Information about a Project entity associated with this submission.
+        range: project
+        inlined: true
+        inlined_as_list: false
+      has sample:
+        description: >-
+          Information about one or more Sample entities associated with this submission.
+        range: sample
+        multivalued: true
+        inlined_as_list: true
+      has biospecimen:
+        description: >-
+          Information about one or more Biospecimen entities associated with this submission.
+        range: biospecimen
+        multivalued: true
+        inlined_as_list: true
+      has individual:
+        description: >-
+          Information about one or more Individual entities associated with this submission.
+        range: individual
+        multivalued: true
+        inlined_as_list: true
+      has experiment:
+        description: >-
+          Information about one or more Experiment entities associated with this submission.
+        range: experiment
+        multivalued: true
+        inlined_as_list: true
+      has analysis:
+        description: >-
+          Information about one or more Analysis entities associated with this submission.
+        range: analysis
+        multivalued: true
+        inlined_as_list: true
+      has file:
+        description: >-
+          Information about one or more File entities associated with this submission.
+        range: file
+        multivalued: true
+        inlined_as_list: true
+      has data access policy:
+        description: >-
+          The Data Access Policy entity that applies to the data associated with this submission.
+        range: data access policy
+        inlined: true
+        inlined_as_list: false
 
   submission status mixin:
     mixin: true
