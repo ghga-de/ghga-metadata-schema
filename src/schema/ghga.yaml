@@ -54,6 +54,9 @@ classes:
       has attribute:
         description: >-
           Holds one or more Attribute entities that further characterizes this entity.
+        range: attribute
+        multivalued: true
+        inlined_as_list: true
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the entity was created.
