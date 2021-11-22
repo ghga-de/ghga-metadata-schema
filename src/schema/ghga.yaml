@@ -197,6 +197,7 @@ classes:
       - has publication
       - has experiment
       - has analysis
+      - has project
       - has attribute
     slot_usage:
       title:
@@ -232,6 +233,9 @@ classes:
           One or more Analysis entities associated with this Study.
         multivalued: true
         range: analysis
+      has project:
+        description: The project associated with this Study.
+        range: project
       has attribute:
         description: >-
           Custom key/value pairs that further characterizes the Study. 
@@ -1229,6 +1233,10 @@ slots:
   has study:
     description: The study associated with an entity.
     range: study
+
+  has project:
+    description: The project associated with an entity.
+    range: project
 
   has publication:
     description: The Publication associated with an entity.
