@@ -83,7 +83,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_input> @<File> * ;
           <has_workflow_step> @<WorkflowStep> ? ;
           <has_agent> @<Agent> ? ;
-          <has_output> @<File> ?
+          <has_output> @<File> *
        ) ;
        rdf:type [ <AnalysisProcess> ]
     )
@@ -124,8 +124,8 @@ linkml:Nodeidentifier NONLITERAL
           <description> @linkml:String ? ;
           <has_individual> @<Individual> ? ;
           <has_anatomical_entity> @<AnatomicalEntity> ? ;
-          <has_disease> @<Disease> ? ;
-          <has_phenotypic_feature> @<PhenotypicFeature> ?
+          <has_disease> @<Disease> * ;
+          <has_phenotypic_feature> @<PhenotypicFeature> *
        ) ;
        rdf:type [ <Biospecimen> ]
     )
@@ -209,8 +209,6 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<Dataset_tes> (  &<InformationContentEntity_tes> ;
              rdf:type [ <InformationContentEntity> ] ? ;
-             &<SubmissionStatusMixin_tes> ;
-             rdf:type [ <SubmissionStatusMixin> ] ? ;
              &<ReleaseStatusMixin_tes> ;
              rdf:type [ <ReleaseStatusMixin> ] ? ;
              &<DeprecationMixin_tes> ;
@@ -220,8 +218,6 @@ linkml:Nodeidentifier NONLITERAL
              <has_file> @<File> + ;
              <has_publication> @<Publication> * ;
              <type> @linkml:String ;
-             <submission_status> @<SubmissionStatusEnum> ? ;
-             <submission_date> @linkml:String ? ;
              <release_status> @<ReleaseStatusEnum> ? ;
              <release_date> @linkml:String ? ;
              <deprecated> @linkml:Boolean ? ;
@@ -273,8 +269,6 @@ linkml:Nodeidentifier NONLITERAL
 <Experiment> CLOSED {
     (  $<Experiment_tes> (  &<Investigation_tes> ;
           rdf:type [ <Investigation> ] ? ;
-          <name> @linkml:String ;
-          <description> @linkml:String ;
           <biological_replicates> @linkml:String ? ;
           <technical_replicates> @linkml:String ? ;
           <experimental_replicates> @linkml:String ? ;
@@ -282,7 +276,9 @@ linkml:Nodeidentifier NONLITERAL
           <has_sample> @<Sample> ;
           <has_technology> @<Technology> ? ;
           <has_file> @<File> * ;
-          <has_experiment_process> @<ExperimentProcess> *
+          <has_experiment_process> @<ExperimentProcess> * ;
+          <title> @linkml:String ;
+          <description> @linkml:String
        ) ;
        rdf:type [ <Experiment> ]
     )
@@ -302,7 +298,7 @@ linkml:Nodeidentifier NONLITERAL
 <ExperimentProcess> CLOSED {
     (  $<ExperimentProcess_tes> (  &<PlannedProcess_tes> ;
           rdf:type [ <PlannedProcess> ] ? ;
-          <name> @linkml:String ? ;
+          <title> @linkml:String ? ;
           <has_input> @<Sample> ? ;
           <has_protocol> @<Protocol> ? ;
           <has_agent> @<Agent> ? ;
@@ -316,7 +312,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Family_tes> (  &<Population_tes> ;
           rdf:type [ <Population> ] ? ;
           <has_member> @<Individual> * ;
-          <proband> @<Individual> ?
+          <has_proband> @<Individual> ?
        ) ;
        rdf:type [ <Family> ]
     )
@@ -349,8 +345,8 @@ linkml:Nodeidentifier NONLITERAL
              <geographical_region> @linkml:String ? ;
              <ethnicity> @linkml:String ? ;
              <ancestry> @linkml:String ? ;
-             <has_parent> @linkml:String ? ;
-             <has_children> @linkml:String ?
+             <has_parent> @<Individual> * ;
+             <has_children> @<Individual> *
           ) ;
           rdf:type [ <Individual> ]
        )
@@ -378,7 +374,6 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <DeprecationMixin> ] ? ;
              <title> @linkml:String ? ;
              <description> @linkml:String ? ;
-             <type> @linkml:String ? ;
              <has_publication> @<Publication> ? ;
              <release_status> @<ReleaseStatusEnum> ? ;
              <release_date> @linkml:String ? ;
@@ -394,8 +389,6 @@ linkml:Nodeidentifier NONLITERAL
 <LibraryPreparationProtocol> CLOSED {
     (  $<LibraryPreparationProtocol_tes> (  &<Protocol_tes> ;
           rdf:type [ <Protocol> ] ? ;
-          <name> @linkml:String ;
-          <description> @linkml:String ;
           <library_name> @linkml:String ? ;
           <library_layout> @linkml:String ? ;
           <library_type> @linkml:String ? ;
@@ -409,6 +402,8 @@ linkml:Nodeidentifier NONLITERAL
           <end_bias> @linkml:String ? ;
           <target_regions> @linkml:String ? ;
           <rnaseq_strandedness> @linkml:String ? ;
+          <name> @linkml:String ;
+          <description> @linkml:String ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <LibraryPreparationProtocol> ]
@@ -556,7 +551,6 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Sample_tes> (  &<MaterialEntity_tes> ;
           rdf:type [ <MaterialEntity> ] ? ;
           <name> @linkml:String ;
-          <type> @linkml:String ? ;
           <description> @linkml:String ? ;
           <vital_status_at_sampling> @linkml:String ? ;
           <tissue> @linkml:String ;
@@ -564,6 +558,7 @@ linkml:Nodeidentifier NONLITERAL
           <storage> @linkml:String ? ;
           <has_individual> @<Individual> ;
           <has_biospecimen> @<Biospecimen> ? ;
+          <type> @<CaseControlEnum> ? ;
           <xref> @linkml:String *
        ) ;
        rdf:type [ <Sample> ]
@@ -573,8 +568,6 @@ linkml:Nodeidentifier NONLITERAL
 <SequencingProtocol> CLOSED {
     (  $<SequencingProtocol_tes> (  &<Protocol_tes> ;
           rdf:type [ <Protocol> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ? ;
           <sequencing_center> @linkml:String ? ;
           <instrument_model> @linkml:String ? ;
           <read_length> @linkml:String ? ;
@@ -591,6 +584,8 @@ linkml:Nodeidentifier NONLITERAL
           <cell_barcode_offset> @linkml:String ? ;
           <cell_barcode_size> @linkml:String ? ;
           <sample_barcode_read> @linkml:String ? ;
+          <name> @linkml:String ? ;
+          <description> @linkml:String ? ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <SequencingProtocol> ]
@@ -601,14 +596,14 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Study_tes> (  &<Investigation_tes> ;
           rdf:type [ <Investigation> ] ? ;
           <affiliation> @linkml:String + ;
-          <has_publication> @<Publication> * ;
           <has_experiment> @<Experiment> * ;
           <has_analysis> @<Analysis> * ;
           <has_project> @<Project> ? ;
-          <has_attribute> @<Attribute> * ;
           <title> @linkml:String ;
           <description> @linkml:String ;
-          <type> @<StudyTypeEnum>
+          <type> @<StudyTypeEnum> ;
+          <has_publication> @<Publication> * ;
+          <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Study> ]
     )

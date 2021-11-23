@@ -24,8 +24,6 @@ type AggregateDataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -65,8 +63,6 @@ type AnalysisDataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -91,7 +87,7 @@ type AnalysisProcess
     hasInput: [File]
     hasWorkflowStep: WorkflowStep
     hasAgent: Agent
-    hasOutput: File
+    hasOutput: [File]
   }
 
 type AnatomicalEntity
@@ -137,8 +133,8 @@ type Biospecimen
     description: String
     hasIndividual: Individual
     hasAnatomicalEntity: AnatomicalEntity
-    hasDisease: Disease
-    hasPhenotypicFeature: PhenotypicFeature
+    hasDisease: [Disease]
+    hasPhenotypicFeature: [PhenotypicFeature]
   }
 
 type CellLine
@@ -228,7 +224,7 @@ type DataUseCondition
     modifier: String
   }
 
-type Dataset implements SubmissionStatusMixin, ReleaseStatusMixin, DeprecationMixin
+type Dataset implements ReleaseStatusMixin, DeprecationMixin
   {
     id: String!
     accession: String
@@ -241,8 +237,6 @@ type Dataset implements SubmissionStatusMixin, ReleaseStatusMixin, DeprecationMi
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -303,8 +297,8 @@ type Donor
     geographicalRegion: String
     ethnicity: String
     ancestry: String
-    hasParent: String
-    hasChildren: String
+    hasParent: [Individual]
+    hasChildren: [Individual]
   }
 
 type Experiment
@@ -312,19 +306,16 @@ type Experiment
     id: String!
     accession: String
     xref: [String]
+    type: String
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    title: String
-    type: String
     hasPublication: Publication
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
     deprecationDate: String
     replacedBy: NamedThing
-    name: String!
-    description: String!
     biologicalReplicates: String
     technicalReplicates: String
     experimentalReplicates: String
@@ -333,6 +324,8 @@ type Experiment
     hasTechnology: Technology
     hasFile: [File]
     hasExperimentProcess: [ExperimentProcess]
+    title: String!
+    description: String!
   }
 
 type ExperimentDataset
@@ -348,8 +341,6 @@ type ExperimentDataset
     hasFile: [File]!
     hasPublication: [Publication]
     type: String!
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -369,7 +360,7 @@ type ExperimentProcess
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    name: String
+    title: String
     hasInput: Sample
     hasProtocol: Protocol
     hasAgent: Agent
@@ -387,7 +378,7 @@ type Family
     updateDate: String
     name: String
     hasMember: [Individual]
-    proband: Individual
+    hasProband: Individual
   }
 
 type File
@@ -427,8 +418,8 @@ type Individual
     geographicalRegion: String
     ethnicity: String
     ancestry: String
-    hasParent: String
-    hasChildren: String
+    hasParent: [Individual]
+    hasChildren: [Individual]
   }
 
 type InformationContentEntity
@@ -447,12 +438,12 @@ type Investigation implements ReleaseStatusMixin, DeprecationMixin
     id: String!
     accession: String
     xref: [String]
+    type: String
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
     title: String
     description: String
-    type: String
     hasPublication: Publication
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
@@ -470,8 +461,6 @@ type LibraryPreparationProtocol
     creationDate: String
     updateDate: String
     url: String
-    name: String!
-    description: String!
     libraryName: String
     libraryLayout: String
     libraryType: String
@@ -485,6 +474,8 @@ type LibraryPreparationProtocol
     endBias: String
     targetRegions: String
     rnaseqStrandedness: String
+    name: String!
+    description: String!
     hasAttribute: [Attribute]
   }
 
@@ -647,7 +638,6 @@ type Sample
     creationDate: String
     updateDate: String
     name: String!
-    type: String
     description: String
     vitalStatusAtSampling: String
     tissue: String!
@@ -655,6 +645,7 @@ type Sample
     storage: String
     hasIndividual: Individual!
     hasBiospecimen: Biospecimen
+    type: CaseControlEnum
     xref: [String]
   }
 
@@ -667,8 +658,6 @@ type SequencingProtocol
     creationDate: String
     updateDate: String
     url: String
-    name: String
-    description: String
     sequencingCenter: String
     instrumentModel: String
     readLength: String
@@ -685,6 +674,8 @@ type SequencingProtocol
     cellBarcodeOffset: String
     cellBarcodeSize: String
     sampleBarcodeRead: String
+    name: String
+    description: String
     hasAttribute: [Attribute]
   }
 
@@ -701,14 +692,14 @@ type Study
     deprecationDate: String
     replacedBy: NamedThing
     affiliation: [String]!
-    hasPublication: [Publication]
     hasExperiment: [Experiment]
     hasAnalysis: [Analysis]
     hasProject: Project
-    hasAttribute: [Attribute]
     title: String!
     description: String!
     type: StudyTypeEnum!
+    hasPublication: [Publication]
+    hasAttribute: [Attribute]
   }
 
 type Submission implements SubmissionStatusMixin

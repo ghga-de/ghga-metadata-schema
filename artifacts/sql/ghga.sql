@@ -1,10 +1,11 @@
 
-CREATE TYPE submission_status_enum AS ENUM ('in progress', 'submitted');
 CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
 CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased');
 CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
+CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
+CREATE TYPE submission_status_enum AS ENUM ('in progress', 'submitted');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
 
 CREATE TABLE agent (
@@ -88,18 +89,6 @@ CREATE TABLE data_transformation (
 	update_date TEXT, 
 	id TEXT NOT NULL, 
 	title TEXT, 
-	description TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE disease (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	name TEXT, 
 	description TEXT, 
 	PRIMARY KEY (id)
 );
@@ -195,8 +184,6 @@ CREATE TABLE library_preparation_protocol (
 	creation_date TEXT, 
 	update_date TEXT, 
 	url TEXT, 
-	name TEXT NOT NULL, 
-	description TEXT NOT NULL, 
 	library_name TEXT, 
 	library_layout TEXT, 
 	library_type TEXT, 
@@ -210,6 +197,8 @@ CREATE TABLE library_preparation_protocol (
 	end_bias TEXT, 
 	target_regions TEXT, 
 	rnaseq_strandedness TEXT, 
+	name TEXT NOT NULL, 
+	description TEXT NOT NULL, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -260,18 +249,6 @@ CREATE TABLE person (
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE phenotypic_feature (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	name TEXT, 
-	description TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -342,8 +319,6 @@ CREATE TABLE sequencing_protocol (
 	creation_date TEXT, 
 	update_date TEXT, 
 	url TEXT, 
-	name TEXT, 
-	description TEXT, 
 	sequencing_center TEXT, 
 	instrument_model TEXT, 
 	read_length TEXT, 
@@ -360,6 +335,8 @@ CREATE TABLE sequencing_protocol (
 	cell_barcode_offset TEXT, 
 	cell_barcode_size TEXT, 
 	sample_barcode_read TEXT, 
+	name TEXT, 
+	description TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -420,8 +397,6 @@ CREATE TABLE aggregate_dataset (
 	has_file TEXT NOT NULL, 
 	has_publication TEXT, 
 	type TEXT NOT NULL, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -442,8 +417,6 @@ CREATE TABLE analysis_dataset (
 	has_file TEXT NOT NULL, 
 	has_publication TEXT, 
 	type TEXT NOT NULL, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -468,13 +441,9 @@ CREATE TABLE biospecimen (
 	description TEXT, 
 	has_individual TEXT, 
 	has_anatomical_entity TEXT, 
-	has_disease TEXT, 
-	has_phenotypic_feature TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
-	FOREIGN KEY(has_anatomical_entity) REFERENCES anatomical_entity (id), 
-	FOREIGN KEY(has_disease) REFERENCES disease (id), 
-	FOREIGN KEY(has_phenotypic_feature) REFERENCES phenotypic_feature (id)
+	FOREIGN KEY(has_anatomical_entity) REFERENCES anatomical_entity (id)
 );
 
 CREATE TABLE data_access_committee (
@@ -503,8 +472,6 @@ CREATE TABLE experiment_dataset (
 	has_file TEXT NOT NULL, 
 	has_publication TEXT, 
 	type TEXT NOT NULL, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -526,20 +493,20 @@ CREATE TABLE family (
 	update_date TEXT, 
 	name TEXT, 
 	has_member TEXT, 
-	proband TEXT, 
+	has_proband TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(proband) REFERENCES individual (id)
+	FOREIGN KEY(has_proband) REFERENCES individual (id)
 );
 
 CREATE TABLE investigation (
 	id TEXT NOT NULL, 
 	accession TEXT, 
+	type TEXT, 
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	title TEXT, 
 	description TEXT, 
-	type TEXT, 
 	has_publication TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
@@ -575,14 +542,14 @@ CREATE TABLE study (
 	deprecated BOOLEAN, 
 	deprecation_date TEXT, 
 	replaced_by TEXT, 
-	has_publication TEXT, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
 	has_project TEXT, 
-	has_attribute TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	type study_type_enum NOT NULL, 
+	has_publication TEXT, 
+	has_attribute TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id)
@@ -643,13 +610,6 @@ CREATE TABLE data_transformation_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES data_transformation (id)
-);
-
-CREATE TABLE disease_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES disease (id)
 );
 
 CREATE TABLE disease_or_phenotypic_feature_xref (
@@ -720,13 +680,6 @@ CREATE TABLE person_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES person (id)
-);
-
-CREATE TABLE phenotypic_feature_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES phenotypic_feature (id)
 );
 
 CREATE TABLE planned_process_xref (
@@ -844,8 +797,6 @@ CREATE TABLE dataset (
 	has_file TEXT NOT NULL, 
 	has_publication TEXT, 
 	type TEXT NOT NULL, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -857,6 +808,34 @@ CREATE TABLE dataset (
 	FOREIGN KEY(aggregate_dataset_id) REFERENCES aggregate_dataset (id)
 );
 
+CREATE TABLE disease (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	name TEXT, 
+	description TEXT, 
+	biospecimen_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(biospecimen_id) REFERENCES biospecimen (id)
+);
+
+CREATE TABLE phenotypic_feature (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	name TEXT, 
+	description TEXT, 
+	biospecimen_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(biospecimen_id) REFERENCES biospecimen (id)
+);
+
 CREATE TABLE sample (
 	id TEXT NOT NULL, 
 	accession TEXT, 
@@ -864,7 +843,6 @@ CREATE TABLE sample (
 	creation_date TEXT, 
 	update_date TEXT, 
 	name TEXT NOT NULL, 
-	type TEXT, 
 	description TEXT, 
 	vital_status_at_sampling TEXT, 
 	tissue TEXT NOT NULL, 
@@ -872,6 +850,7 @@ CREATE TABLE sample (
 	storage TEXT, 
 	has_individual TEXT NOT NULL, 
 	has_biospecimen TEXT, 
+	type case_control_enum, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
@@ -963,7 +942,6 @@ CREATE TABLE analysis_process (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_workflow_step) REFERENCES workflow_step (id), 
 	FOREIGN KEY(has_agent) REFERENCES agent (id), 
-	FOREIGN KEY(has_output) REFERENCES file (id), 
 	FOREIGN KEY(analysis_id) REFERENCES analysis (id)
 );
 
@@ -978,19 +956,16 @@ CREATE TABLE data_use_condition (
 CREATE TABLE experiment (
 	id TEXT NOT NULL, 
 	accession TEXT, 
+	type TEXT, 
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	title TEXT, 
-	type TEXT, 
 	has_publication TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
 	deprecation_date TEXT, 
 	replaced_by TEXT, 
-	name TEXT NOT NULL, 
-	description TEXT NOT NULL, 
 	biological_replicates TEXT, 
 	technical_replicates TEXT, 
 	experimental_replicates TEXT, 
@@ -998,6 +973,8 @@ CREATE TABLE experiment (
 	has_sample TEXT NOT NULL, 
 	has_technology TEXT, 
 	has_file TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_publication) REFERENCES publication (id), 
 	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
@@ -1051,6 +1028,20 @@ CREATE TABLE dataset_xref (
 	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
+CREATE TABLE disease_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES disease (id)
+);
+
+CREATE TABLE phenotypic_feature_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES phenotypic_feature (id)
+);
+
 CREATE TABLE sample_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -1065,7 +1056,7 @@ CREATE TABLE experiment_process (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	name TEXT, 
+	title TEXT, 
 	has_input TEXT, 
 	has_protocol TEXT, 
 	has_agent TEXT, 
