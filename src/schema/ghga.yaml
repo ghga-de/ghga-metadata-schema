@@ -117,7 +117,6 @@ classes:
     slots:
       - title
       - description
-      - type
       - has publication
     exact_mappings:
       - SIO:000747
@@ -196,11 +195,9 @@ classes:
       being studied.
     slots:
       - affiliation
-      - has publication
       - has experiment
       - has analysis
       - has project
-      - has attribute
     slot_usage:
       title:
         description: >-
@@ -256,8 +253,6 @@ classes:
     close_mappings:
       - NCIT:C42790
     slots:
-      - name
-      - description
       - biological replicates
       - technical replicates
       - experimental replicates
@@ -267,7 +262,7 @@ classes:
       - has file
       - has experiment process
     slot_usage:
-      name:
+      title:
         description: >-
           Name for the experiment (eg: GHGAE_PBMC_RNAseq).
         required: true
@@ -307,15 +302,16 @@ classes:
       to a File via an assay. The Experiment Process also keeps track of the Protocol
       used and the Agent that is running the experiment.
     slots:
-      - name
+      - title
       - has input
       - has protocol
       - has agent
       - has output
     slot_usage:
-      name:
+      title:
         description: >-
-          Explanation of the step(s) involved in performing the experiment until Sequencing part 
+          A descriptive title that explains the step(s) involved in performing the experiment
+          leading up to the sequencing of the sample and generation of raw data from the instrument.
           (eg: Sample extraction -> Target Enrichment) 
       has input:
         description: >-
@@ -336,13 +332,40 @@ classes:
         # TODO: what happens when we want to represent multiple samples via ExperimentProcess?
         range: file
 
+  protocol:
+    is_a: information content entity
+    aliases: ['library protocol', 'experiment protocol']
+    description: >-
+      A plan specification which has sufficient level of detail and quantitative information
+      to communicate it between investigation agents, so that different investigation agents
+      will reliably be able to independently reproduce the process.
+    slots:
+      - name
+      - description
+      - url
+    exact_mappings:
+      - OBI:0000272
+    close_mappings:
+      - NCIT:C41111
+    slot_usage:
+      name:
+        description: >-
+          Name of the Protocol.
+      description:
+        description: >-
+          Detailed description of the Protocol.
+      url:
+        description: >-
+          URL for the resource that describes this Protocol.
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Protocol.
+
   library preparation protocol:
     is_a: protocol
     description: >-
       Information about the library preparation of an Experiment.
     slots:
-      - name
-      - description
       - library name
       - library layout
       - library type
@@ -356,8 +379,6 @@ classes:
       - end bias 
       - target regions
       - rnaseq strandedness
-      - has attribute
-      - description
     slot_usage:
       name:
         description: >-
@@ -376,8 +397,6 @@ classes:
     description: >-
       Information about the sequencing of a sample.
     slots:
-      - name
-      - description
       - sequencing center 
       - instrument model 
       - read length
@@ -394,7 +413,6 @@ classes:
       - cell barcode offset 
       - cell barcode size 
       - sample barcode read
-      - has attribute
     slot_usage:
       name:
         description: >-
@@ -405,36 +423,6 @@ classes:
       has attribute:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
-
-  protocol:
-    is_a: information content entity
-    aliases: ['library protocol', 'experiment protocol']
-    description: >-
-      A plan specification which has sufficient level of detail and quantitative information
-      to communicate it between investigation agents, so that different investigation agents
-      will reliably be able to independently reproduce the process.
-    slots:
-      - name
-      - description
-      - url
-      - has attribute
-    exact_mappings:
-      - OBI:0000272
-    close_mappings:
-      - NCIT:C41111
-    slot_usage:
-      name:
-        description: >-
-          Name of the Protocol.
-      description:
-        description: >-
-          Detailed description of the Protocol.
-      url:
-        description: >-
-          URL for the resource that describes this Protocol.
-      has attribute:
-        description: >-
-          One or more attributes that further characterizes this Protocol.
 
   agent:
     is_a: named thing
@@ -565,7 +553,6 @@ classes:
       - biolink:MaterialSample
     slots:
       - name
-      - type 
       - description
       - vital status at sampling
       - tissue #TODO
@@ -702,14 +689,14 @@ classes:
       from a common ancestor, marriage, or adoption.
     slots:
       - has member
-      - proband
+      - has proband
     slot_usage:
       has member:
         description: >-
           One or more Individuals that collectively define this Family.
         multivalued: true
         range: individual
-      proband:
+      has proband:
         description: >-
           The Individual that is reported to have a disorder which results in the
           Family being brought into a Study.
@@ -833,7 +820,6 @@ classes:
   dataset:
     is_a: information content entity
     mixins:
-      - submission status mixin
       - release status mixin
       - deprecation mixin
     description: >-
@@ -1355,27 +1341,35 @@ slots:
     range: file
 
   has input:
+    description: The input to a Planned Process.
     range: file
 
   has output:
+    description: The output of a Planned Process entity.
     range: file
 
   has agent:
+    description: A person or an entity that is performing a Planned Process entity.
     range: agent
 
   has workflow:
+    description: The Workflow entity associated wtih a Planned Process entity.
     range: workflow
 
   has workflow step:
+    description: The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.
     range: workflow step
 
   has parameter:
+    description: The parameter(s) associated with a Workflow Step entity.
     range: workflow parameter
 
   has dataset:
+    description: The Dataset associated with an entity.
     range: dataset
 
   has biospecimen:
+    description: The biospecimen associated with an entity.
     range: biospecimen
 
   has individual:
@@ -1407,9 +1401,11 @@ slots:
     description: Data Use Condition entities that are associated with an entity.
 
   role:
+    description: The role that a user has within GHGA.
     range: user_role_enum
 
-  proband:
+  has proband:
+    description: The Individual that is reported to have a disorder in a Family.
     range: individual
 
   permission:
@@ -1426,7 +1422,7 @@ slots:
   sex:
     description: >-
       The assemblage of physical properties or qualities
-      by which male is distinguished from female.[NCI]
+      by which male is distinguished from female. [NCI]
     range: biological_sex_enum
 
   age:
