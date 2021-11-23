@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-18T09:29:38
+# Generation date: 2021-11-23T08:50:58
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -232,6 +232,10 @@ class UserId(PersonId):
     pass
 
 
+class SubmissionId(NamedThingId):
+    pass
+
+
 @dataclass
 class NamedThing(YAMLRoot):
     """
@@ -268,7 +272,7 @@ class NamedThing(YAMLRoot):
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
 
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         if self.creation_date is not None and not isinstance(self.creation_date, str):
             self.creation_date = str(self.creation_date)
@@ -358,8 +362,6 @@ class Investigation(PlannedProcess):
     description: Optional[str] = None
     type: Optional[str] = None
     has_publication: Optional[Union[str, PublicationId]] = None
-    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
-    submission_date: Optional[str] = None
     release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
     release_date: Optional[str] = None
     deprecated: Optional[Union[bool, Bool]] = None
@@ -383,12 +385,6 @@ class Investigation(PlannedProcess):
 
         if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
             self.has_publication = PublicationId(self.has_publication)
-
-        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
-            self.submission_status = SubmissionStatusEnum(self.submission_status)
-
-        if self.submission_date is not None and not isinstance(self.submission_date, str):
-            self.submission_date = str(self.submission_date)
 
         if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
             self.release_status = ReleaseStatusEnum(self.release_status)
@@ -518,7 +514,7 @@ class Project(ResearchActivity):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
         self.has_publication = [v if isinstance(v, PublicationId) else PublicationId(v) for v in self.has_publication]
 
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -544,6 +540,7 @@ class Study(Investigation):
     has_publication: Optional[Union[Union[str, PublicationId], List[Union[str, PublicationId]]]] = empty_list()
     has_experiment: Optional[Union[Union[str, ExperimentId], List[Union[str, ExperimentId]]]] = empty_list()
     has_analysis: Optional[Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]]] = empty_list()
+    has_project: Optional[Union[str, ProjectId]] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -585,9 +582,12 @@ class Study(Investigation):
             self.has_analysis = [self.has_analysis] if self.has_analysis is not None else []
         self.has_analysis = [v if isinstance(v, AnalysisId) else AnalysisId(v) for v in self.has_analysis]
 
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if self.has_project is not None and not isinstance(self.has_project, ProjectId):
+            self.has_project = ProjectId(self.has_project)
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -1577,7 +1577,7 @@ class Protocol(InformationContentEntity):
 
         self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2240,6 +2240,68 @@ class User(Person):
 
 
 @dataclass
+class Submission(NamedThing):
+    """
+    A grouping entity that represents information about one or more entities. A submission can be considered as a set
+    of inter-related (and inter-connected) entities that represent a data submission to GHGA.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.Submission
+    class_class_curie: ClassVar[str] = "GHGA:Submission"
+    class_name: ClassVar[str] = "submission"
+    class_model_uri: ClassVar[URIRef] = GHGA.Submission
+
+    id: Union[str, SubmissionId] = None
+    has_study: Optional[Union[dict, Study]] = None
+    has_project: Optional[Union[dict, Project]] = None
+    has_sample: Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]] = empty_dict()
+    has_biospecimen: Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]] = empty_dict()
+    has_individual: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
+    has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
+    has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
+    has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
+    has_data_access_policy: Optional[Union[dict, DataAccessPolicy]] = None
+    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
+    submission_date: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SubmissionId):
+            self.id = SubmissionId(self.id)
+
+        if self.has_study is not None and not isinstance(self.has_study, Study):
+            self.has_study = Study(**as_dict(self.has_study))
+
+        if self.has_project is not None and not isinstance(self.has_project, Project):
+            self.has_project = Project(**as_dict(self.has_project))
+
+        self._normalize_inlined_as_list(slot_name="has_sample", slot_type=Sample, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_biospecimen", slot_type=Biospecimen, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_analysis", slot_type=Analysis, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
+
+        if self.has_data_access_policy is not None and not isinstance(self.has_data_access_policy, DataAccessPolicy):
+            self.has_data_access_policy = DataAccessPolicy(**as_dict(self.has_data_access_policy))
+
+        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
+            self.submission_status = SubmissionStatusEnum(self.submission_status)
+
+        if self.submission_date is not None and not isinstance(self.submission_date, str):
+            self.submission_date = str(self.submission_date)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class SubmissionStatusMixin(YAMLRoot):
     """
     A mixin that keeps track of the submission status.
@@ -2542,6 +2604,9 @@ slots.description = Slot(uri=GHGA.description, name="description", curie=GHGA.cu
 
 slots.has_study = Slot(uri=GHGA.has_study, name="has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.has_study, domain=None, range=Optional[Union[str, StudyId]])
+
+slots.has_project = Slot(uri=GHGA.has_project, name="has project", curie=GHGA.curie('has_project'),
+                   model_uri=GHGA.has_project, domain=None, range=Optional[Union[str, ProjectId]])
 
 slots.has_publication = Slot(uri=GHGA.has_publication, name="has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.has_publication, domain=None, range=Optional[Union[str, PublicationId]])
@@ -2903,6 +2968,9 @@ slots.study_has_experiment = Slot(uri=GHGA.has_experiment, name="study_has exper
 slots.study_has_analysis = Slot(uri=GHGA.has_analysis, name="study_has analysis", curie=GHGA.curie('has_analysis'),
                    model_uri=GHGA.study_has_analysis, domain=Study, range=Optional[Union[Union[str, AnalysisId], List[Union[str, AnalysisId]]]])
 
+slots.study_has_project = Slot(uri=GHGA.has_project, name="study_has project", curie=GHGA.curie('has_project'),
+                   model_uri=GHGA.study_has_project, domain=Study, range=Optional[Union[str, ProjectId]])
+
 slots.study_has_attribute = Slot(uri=GHGA.has_attribute, name="study_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.study_has_attribute, domain=Study, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
@@ -3193,3 +3261,30 @@ slots.publication_xref = Slot(uri=GHGA.xref, name="publication_xref", curie=GHGA
 
 slots.user_role = Slot(uri=GHGA.role, name="user_role", curie=GHGA.curie('role'),
                    model_uri=GHGA.user_role, domain=User, range=Optional[Union[str, "UserRoleEnum"]])
+
+slots.submission_has_study = Slot(uri=GHGA.has_study, name="submission_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[dict, Study]])
+
+slots.submission_has_project = Slot(uri=GHGA.has_project, name="submission_has project", curie=GHGA.curie('has_project'),
+                   model_uri=GHGA.submission_has_project, domain=Submission, range=Optional[Union[dict, Project]])
+
+slots.submission_has_sample = Slot(uri=GHGA.has_sample, name="submission_has sample", curie=GHGA.curie('has_sample'),
+                   model_uri=GHGA.submission_has_sample, domain=Submission, range=Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]])
+
+slots.submission_has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="submission_has biospecimen", curie=GHGA.curie('has_biospecimen'),
+                   model_uri=GHGA.submission_has_biospecimen, domain=Submission, range=Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]])
+
+slots.submission_has_individual = Slot(uri=GHGA.has_individual, name="submission_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.submission_has_individual, domain=Submission, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
+
+slots.submission_has_experiment = Slot(uri=GHGA.has_experiment, name="submission_has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.submission_has_experiment, domain=Submission, range=Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]])
+
+slots.submission_has_analysis = Slot(uri=GHGA.has_analysis, name="submission_has analysis", curie=GHGA.curie('has_analysis'),
+                   model_uri=GHGA.submission_has_analysis, domain=Submission, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])
+
+slots.submission_has_file = Slot(uri=GHGA.has_file, name="submission_has file", curie=GHGA.curie('has_file'),
+                   model_uri=GHGA.submission_has_file, domain=Submission, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
+
+slots.submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
+                   model_uri=GHGA.submission_has_data_access_policy, domain=Submission, range=Optional[Union[dict, DataAccessPolicy]])

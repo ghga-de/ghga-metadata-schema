@@ -541,8 +541,6 @@ CREATE TABLE investigation (
 	description TEXT, 
 	type TEXT, 
 	has_publication TEXT, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -572,8 +570,6 @@ CREATE TABLE study (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -582,12 +578,14 @@ CREATE TABLE study (
 	has_publication TEXT, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
+	has_project TEXT, 
 	has_attribute TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	type study_type_enum NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
+	FOREIGN KEY(has_project) REFERENCES project (id)
 );
 
 CREATE TABLE workflow_parameter (
@@ -986,8 +984,6 @@ CREATE TABLE experiment (
 	title TEXT, 
 	type TEXT, 
 	has_publication TEXT, 
-	submission_status submission_status_enum, 
-	submission_date TEXT, 
 	release_status release_status_enum, 
 	release_date TEXT, 
 	deprecated BOOLEAN, 
@@ -1008,6 +1004,30 @@ CREATE TABLE experiment (
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_sample) REFERENCES sample (id), 
 	FOREIGN KEY(has_technology) REFERENCES technology (id)
+);
+
+CREATE TABLE submission (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	has_study TEXT, 
+	has_project TEXT, 
+	has_sample TEXT, 
+	has_biospecimen TEXT, 
+	has_individual TEXT, 
+	has_experiment TEXT, 
+	has_analysis TEXT, 
+	has_file TEXT, 
+	has_data_access_policy TEXT, 
+	submission_status submission_status_enum, 
+	submission_date TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_project) REFERENCES project (id), 
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
 );
 
 CREATE TABLE analysis_xref (
@@ -1071,6 +1091,13 @@ CREATE TABLE experiment_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES experiment (id)
+);
+
+CREATE TABLE submission_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES submission (id)
 );
 
 CREATE TABLE experiment_process_xref (

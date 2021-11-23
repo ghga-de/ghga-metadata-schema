@@ -318,8 +318,6 @@ type Experiment
     title: String
     type: String
     hasPublication: Publication
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -444,7 +442,7 @@ type InformationContentEntity
     updateDate: String
   }
 
-type Investigation implements SubmissionStatusMixin, ReleaseStatusMixin, DeprecationMixin
+type Investigation implements ReleaseStatusMixin, DeprecationMixin
   {
     id: String!
     accession: String
@@ -456,8 +454,6 @@ type Investigation implements SubmissionStatusMixin, ReleaseStatusMixin, Depreca
     description: String
     type: String
     hasPublication: Publication
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -699,8 +695,6 @@ type Study
     xref: [String]
     creationDate: String
     updateDate: String
-    submissionStatus: SubmissionStatusEnum
-    submissionDate: String
     releaseStatus: ReleaseStatusEnum
     releaseDate: String
     deprecated: Boolean
@@ -710,10 +704,33 @@ type Study
     hasPublication: [Publication]
     hasExperiment: [Experiment]
     hasAnalysis: [Analysis]
+    hasProject: Project
     hasAttribute: [Attribute]
     title: String!
     description: String!
     type: StudyTypeEnum!
+  }
+
+type Submission implements SubmissionStatusMixin
+  {
+    id: String!
+    accession: String
+    xref: [String]
+    type: String
+    hasAttribute: [Attribute]
+    creationDate: String
+    updateDate: String
+    hasStudy: Study
+    hasProject: Project
+    hasSample: [Sample]
+    hasBiospecimen: [Biospecimen]
+    hasIndividual: [Individual]
+    hasExperiment: [Experiment]
+    hasAnalysis: [Analysis]
+    hasFile: [File]
+    hasDataAccessPolicy: DataAccessPolicy
+    submissionStatus: SubmissionStatusEnum
+    submissionDate: String
   }
 
 interface SubmissionStatusMixin

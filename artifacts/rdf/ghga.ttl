@@ -55,6 +55,7 @@
         <https://w3id.org/GHGA/Sample>,
         <https://w3id.org/GHGA/SequencingProtocol>,
         <https://w3id.org/GHGA/Study>,
+        <https://w3id.org/GHGA/Submission>,
         <https://w3id.org/GHGA/SubmissionStatusMixin>,
         <https://w3id.org/GHGA/Technology>,
         <https://w3id.org/GHGA/User>,
@@ -74,22 +75,22 @@
         <https://w3id.org/GHGA/submission_status_enum>,
         <https://w3id.org/GHGA/user_role_enum>,
         <https://w3id.org/GHGA/vital_status_enum> ;
-    linkml:generation_date "2021-11-18T09:29:40"^^xsd:dateTime ;
+    linkml:generation_date "2021-11-23T08:51:00"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "EFO" ;
-            linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
-        [ linkml:prefix_prefix "linkml" ;
-            linkml:prefix_reference linkml: ],
+    linkml:prefixes [ linkml:prefix_prefix "SIO" ;
+            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
         [ linkml:prefix_prefix "biolink" ;
             linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
-        [ linkml:prefix_prefix "COB" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference linkml: ],
         [ linkml:prefix_prefix "GHGA" ;
             linkml:prefix_reference <https://w3id.org/GHGA/> ],
-        [ linkml:prefix_prefix "SIO" ;
-            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ] ;
+        [ linkml:prefix_prefix "EFO" ;
+            linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
+        [ linkml:prefix_prefix "COB" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/accession>,
         <https://w3id.org/GHGA/additional_name>,
@@ -201,6 +202,7 @@
         <https://w3id.org/GHGA/has_parameter>,
         <https://w3id.org/GHGA/has_parent>,
         <https://w3id.org/GHGA/has_phenotypic_feature>,
+        <https://w3id.org/GHGA/has_project>,
         <https://w3id.org/GHGA/has_protocol>,
         <https://w3id.org/GHGA/has_publication>,
         <https://w3id.org/GHGA/has_sample>,
@@ -300,10 +302,20 @@
         <https://w3id.org/GHGA/study_has_analysis>,
         <https://w3id.org/GHGA/study_has_attribute>,
         <https://w3id.org/GHGA/study_has_experiment>,
+        <https://w3id.org/GHGA/study_has_project>,
         <https://w3id.org/GHGA/study_has_publication>,
         <https://w3id.org/GHGA/study_title>,
         <https://w3id.org/GHGA/study_type>,
         <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_has_analysis>,
+        <https://w3id.org/GHGA/submission_has_biospecimen>,
+        <https://w3id.org/GHGA/submission_has_data_access_policy>,
+        <https://w3id.org/GHGA/submission_has_experiment>,
+        <https://w3id.org/GHGA/submission_has_file>,
+        <https://w3id.org/GHGA/submission_has_individual>,
+        <https://w3id.org/GHGA/submission_has_project>,
+        <https://w3id.org/GHGA/submission_has_sample>,
+        <https://w3id.org/GHGA/submission_has_study>,
         <https://w3id.org/GHGA/submission_status>,
         <https://w3id.org/GHGA/target_coverage>,
         <https://w3id.org/GHGA/target_regions>,
@@ -328,8 +340,8 @@
         <https://w3id.org/GHGA/xref>,
         <https://w3id.org/GHGA/year_of_birth> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2021-11-18T09:28:38"^^xsd:dateTime ;
-    linkml:source_file_size 50581 ;
+    linkml:source_file_date "2021-11-23T08:50:06"^^xsd:dateTime ;
+    linkml:source_file_size 53312 ;
     linkml:types <https://w3id.org/GHGA/boolean>,
         <https://w3id.org/GHGA/date>,
         <https://w3id.org/GHGA/datetime>,
@@ -1462,6 +1474,7 @@
     linkml:domain <https://w3id.org/GHGA/Project> ;
     linkml:domain_of <https://w3id.org/GHGA/Project> ;
     linkml:inlined true ;
+    linkml:inlined_as_list true ;
     linkml:is_a <https://w3id.org/GHGA/named_thing_has_attribute> ;
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
@@ -1537,6 +1550,7 @@
     linkml:domain <https://w3id.org/GHGA/Protocol> ;
     linkml:domain_of <https://w3id.org/GHGA/Protocol> ;
     linkml:inlined true ;
+    linkml:inlined_as_list true ;
     linkml:is_a <https://w3id.org/GHGA/named_thing_has_attribute> ;
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
@@ -1852,6 +1866,7 @@
     linkml:domain <https://w3id.org/GHGA/Study> ;
     linkml:domain_of <https://w3id.org/GHGA/Study> ;
     linkml:inlined true ;
+    linkml:inlined_as_list true ;
     linkml:is_a <https://w3id.org/GHGA/named_thing_has_attribute> ;
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
@@ -1874,6 +1889,20 @@
     linkml:range <https://w3id.org/GHGA/Experiment> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_experiment> ;
     linkml:usage_slot_name "has experiment" .
+
+<https://w3id.org/GHGA/study_has_project> a linkml:SlotDefinition ;
+    skos:definition "The project associated with this Study." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has project" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_project> ;
+    linkml:domain <https://w3id.org/GHGA/Study> ;
+    linkml:domain_of <https://w3id.org/GHGA/Study> ;
+    linkml:is_a <https://w3id.org/GHGA/has_project> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/Study> ;
+    linkml:range <https://w3id.org/GHGA/Project> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_project> ;
+    linkml:usage_slot_name "has project" .
 
 <https://w3id.org/GHGA/study_has_publication> a linkml:SlotDefinition ;
     skos:definition "One or more Publication entities associated with this Study." ;
@@ -1937,6 +1966,153 @@
         <https://w3id.org/GHGA/synthetic_genomics>,
         <https://w3id.org/GHGA/transcriptome_analysis>,
         <https://w3id.org/GHGA/whole_genome_sequencing> .
+
+<https://w3id.org/GHGA/submission_has_analysis> a linkml:SlotDefinition ;
+    skos:definition "Information about one or more Analysis entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has analysis" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_analysis> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:is_a <https://w3id.org/GHGA/has_analysis> ;
+    linkml:is_usage_slot true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Analysis> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_analysis> ;
+    linkml:usage_slot_name "has analysis" .
+
+<https://w3id.org/GHGA/submission_has_biospecimen> a linkml:SlotDefinition ;
+    skos:definition "Information about one or more Biospecimen entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has biospecimen" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_biospecimen> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:is_a <https://w3id.org/GHGA/has_biospecimen> ;
+    linkml:is_usage_slot true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Biospecimen> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_biospecimen> ;
+    linkml:usage_slot_name "has biospecimen" .
+
+<https://w3id.org/GHGA/submission_has_data_access_policy> a linkml:SlotDefinition ;
+    skos:definition "The Data Access Policy entity that applies to the data associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has data access policy" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_data_access_policy> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:is_a <https://w3id.org/GHGA/has_data_access_policy> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_data_access_policy> ;
+    linkml:usage_slot_name "has data access policy" .
+
+<https://w3id.org/GHGA/submission_has_experiment> a linkml:SlotDefinition ;
+    skos:definition "Information about one or more Experiment entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has experiment" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_experiment> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:is_a <https://w3id.org/GHGA/has_experiment> ;
+    linkml:is_usage_slot true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Experiment> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_experiment> ;
+    linkml:usage_slot_name "has experiment" .
+
+<https://w3id.org/GHGA/submission_has_file> a linkml:SlotDefinition ;
+    skos:definition "Information about one or more File entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has file" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_file> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:is_a <https://w3id.org/GHGA/has_file> ;
+    linkml:is_usage_slot true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/File> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_file> ;
+    linkml:usage_slot_name "has file" .
+
+<https://w3id.org/GHGA/submission_has_individual> a linkml:SlotDefinition ;
+    skos:definition "Information about one or more Individual entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has individual" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:is_a <https://w3id.org/GHGA/has_individual> ;
+    linkml:is_usage_slot true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Individual> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_individual> ;
+    linkml:usage_slot_name "has individual" .
+
+<https://w3id.org/GHGA/submission_has_project> a linkml:SlotDefinition ;
+    skos:definition "Information about a Project entity associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has project" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_project> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:is_a <https://w3id.org/GHGA/has_project> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Project> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_project> ;
+    linkml:usage_slot_name "has project" .
+
+<https://w3id.org/GHGA/submission_has_sample> a linkml:SlotDefinition ;
+    skos:definition "Information about one or more Sample entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has sample" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_sample> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:is_a <https://w3id.org/GHGA/has_sample> ;
+    linkml:is_usage_slot true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Sample> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_sample> ;
+    linkml:usage_slot_name "has sample" .
+
+<https://w3id.org/GHGA/submission_has_study> a linkml:SlotDefinition ;
+    skos:definition "Information about a Study entities associated with this submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has study" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_study> ;
+    linkml:domain <https://w3id.org/GHGA/Submission> ;
+    linkml:domain_of <https://w3id.org/GHGA/Submission> ;
+    linkml:inlined true ;
+    linkml:is_a <https://w3id.org/GHGA/has_study> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Study> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_study> ;
+    linkml:usage_slot_name "has study" .
 
 <https://w3id.org/GHGA/submission_status_enum> skos:definition "Enum to capture submission status." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -2895,14 +3071,6 @@
     linkml:range <https://w3id.org/GHGA/AnatomicalEntity> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_anatomical_entity> .
 
-<https://w3id.org/GHGA/has_biospecimen> a linkml:SlotDefinition ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_biospecimen> ;
-    linkml:domain_of <https://w3id.org/GHGA/Sample> ;
-    linkml:owner <https://w3id.org/GHGA/Sample> ;
-    linkml:range <https://w3id.org/GHGA/Biospecimen> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_biospecimen> .
-
 <https://w3id.org/GHGA/has_children> a linkml:SlotDefinition ;
     skos:definition "The children of an entity." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -2990,15 +3158,6 @@
     linkml:owner <https://w3id.org/GHGA/ExperimentProcess> ;
     linkml:range <https://w3id.org/GHGA/Protocol> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_protocol> .
-
-<https://w3id.org/GHGA/has_sample> a linkml:SlotDefinition ;
-    skos:definition "The sample associated with an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_sample> ;
-    linkml:domain_of <https://w3id.org/GHGA/Experiment> ;
-    linkml:owner <https://w3id.org/GHGA/Experiment> ;
-    linkml:range <https://w3id.org/GHGA/Sample> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_sample> .
 
 <https://w3id.org/GHGA/has_technology> a linkml:SlotDefinition ;
     skos:definition "The technology associated with an entity." ;
@@ -3270,16 +3429,6 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/email> .
 
-<https://w3id.org/GHGA/has_analysis> a linkml:SlotDefinition ;
-    skos:definition "The analysis associated with an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_analysis> ;
-    linkml:domain_of <https://w3id.org/GHGA/AnalysisDataset>,
-        <https://w3id.org/GHGA/Study> ;
-    linkml:owner <https://w3id.org/GHGA/AnalysisDataset> ;
-    linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_analysis> .
-
 <https://w3id.org/GHGA/Agent> a linkml:ClassDefinition ;
     skos:definition "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity." ;
     skos:exactMatch <prov:Agent> ;
@@ -3414,8 +3563,7 @@
     linkml:definition_uri <https://w3id.org/GHGA/Investigation> ;
     linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
     linkml:mixins <https://w3id.org/GHGA/DeprecationMixin>,
-        <https://w3id.org/GHGA/ReleaseStatusMixin>,
-        <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+        <https://w3id.org/GHGA/ReleaseStatusMixin> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/deprecated>,
         <https://w3id.org/GHGA/deprecation_date>,
@@ -3430,8 +3578,6 @@
         <https://w3id.org/GHGA/release_date>,
         <https://w3id.org/GHGA/release_status>,
         <https://w3id.org/GHGA/replaced_by>,
-        <https://w3id.org/GHGA/submission_date>,
-        <https://w3id.org/GHGA/submission_status>,
         <https://w3id.org/GHGA/title>,
         <https://w3id.org/GHGA/type> .
 
@@ -3464,35 +3610,34 @@
     linkml:range <https://w3id.org/GHGA/Agent> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_agent> .
 
-<https://w3id.org/GHGA/has_data_access_policy> a linkml:SlotDefinition ;
-    skos:definition "Data Access Policy associated with an entity." ;
+<https://w3id.org/GHGA/has_biospecimen> a linkml:SlotDefinition ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_data_access_policy> ;
-    linkml:domain_of <https://w3id.org/GHGA/AnalysisDataset>,
-        <https://w3id.org/GHGA/ExperimentDataset> ;
-    linkml:owner <https://w3id.org/GHGA/AnalysisDataset> ;
-    linkml:range <https://w3id.org/GHGA/DataAccessPolicy> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_data_access_policy> .
+    linkml:definition_uri <https://w3id.org/GHGA/has_biospecimen> ;
+    linkml:domain_of <https://w3id.org/GHGA/Sample>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Biospecimen> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_biospecimen> .
 
-<https://w3id.org/GHGA/has_file> a linkml:SlotDefinition ;
-    skos:definition "The file associated with an entity." ;
+<https://w3id.org/GHGA/has_project> a linkml:SlotDefinition ;
+    skos:definition "The project associated with an entity." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_file> ;
-    linkml:domain_of <https://w3id.org/GHGA/Dataset>,
-        <https://w3id.org/GHGA/Experiment> ;
-    linkml:owner <https://w3id.org/GHGA/Dataset> ;
-    linkml:range <https://w3id.org/GHGA/File> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_file> .
+    linkml:definition_uri <https://w3id.org/GHGA/has_project> ;
+    linkml:domain_of <https://w3id.org/GHGA/Study>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Project> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_project> .
 
-<https://w3id.org/GHGA/has_individual> a linkml:SlotDefinition ;
-    skos:definition "The subject/individual associated with an entity." ;
+<https://w3id.org/GHGA/has_sample> a linkml:SlotDefinition ;
+    skos:definition "The sample associated with an entity." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
-    linkml:domain_of <https://w3id.org/GHGA/Biospecimen>,
-        <https://w3id.org/GHGA/Sample> ;
-    linkml:owner <https://w3id.org/GHGA/Sample> ;
-    linkml:range <https://w3id.org/GHGA/Individual> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_individual> .
+    linkml:definition_uri <https://w3id.org/GHGA/has_sample> ;
+    linkml:domain_of <https://w3id.org/GHGA/Experiment>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Sample> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_sample> .
 
 <https://w3id.org/GHGA/key> a linkml:SlotDefinition ;
     skos:definition "The key of an attribute." ;
@@ -3503,6 +3648,24 @@
     linkml:owner <https://w3id.org/GHGA/WorkflowParameter> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/key> .
+
+<https://w3id.org/GHGA/submission_date> a linkml:SlotDefinition ;
+    skos:definition "The date when submission was completed." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/submission_date> ;
+    linkml:domain_of <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:owner <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/submission_date> .
+
+<https://w3id.org/GHGA/submission_status> a linkml:SlotDefinition ;
+    skos:definition "The status of submission." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/submission_status> ;
+    linkml:domain_of <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:owner <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:range <https://w3id.org/GHGA/submission_status_enum> ;
+    linkml:slot_uri <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/value> a linkml:SlotDefinition ;
     skos:definition "The value of an attribute" ;
@@ -3549,6 +3712,17 @@
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref>,
         <https://w3id.org/GHGA/workflow_step_has_parameter> .
+
+<https://w3id.org/GHGA/has_analysis> a linkml:SlotDefinition ;
+    skos:definition "The analysis associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_analysis> ;
+    linkml:domain_of <https://w3id.org/GHGA/AnalysisDataset>,
+        <https://w3id.org/GHGA/Study>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_analysis> .
 
 <https://w3id.org/GHGA/id> a linkml:SlotDefinition ;
     skos:definition "An identifier that uniquely represents an entity." ;
@@ -3644,24 +3818,6 @@
     linkml:range <https://w3id.org/GHGA/NamedThing> ;
     linkml:slot_uri <https://w3id.org/GHGA/replaced_by> .
 
-<https://w3id.org/GHGA/submission_date> a linkml:SlotDefinition ;
-    skos:definition "The date when submission was completed." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/submission_date> ;
-    linkml:domain_of <https://w3id.org/GHGA/SubmissionStatusMixin> ;
-    linkml:owner <https://w3id.org/GHGA/SubmissionStatusMixin> ;
-    linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:slot_uri <https://w3id.org/GHGA/submission_date> .
-
-<https://w3id.org/GHGA/submission_status> a linkml:SlotDefinition ;
-    skos:definition "The status of submission." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/submission_status> ;
-    linkml:domain_of <https://w3id.org/GHGA/SubmissionStatusMixin> ;
-    linkml:owner <https://w3id.org/GHGA/SubmissionStatusMixin> ;
-    linkml:range <https://w3id.org/GHGA/submission_status_enum> ;
-    linkml:slot_uri <https://w3id.org/GHGA/submission_status> .
-
 <https://w3id.org/GHGA/Family> a linkml:ClassDefinition ;
     skos:definition "A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -3701,15 +3857,38 @@
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref> .
 
-<https://w3id.org/GHGA/has_experiment> a linkml:SlotDefinition ;
-    skos:definition "The experiment associated with an entity." ;
+<https://w3id.org/GHGA/has_data_access_policy> a linkml:SlotDefinition ;
+    skos:definition "Data Access Policy associated with an entity." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_experiment> ;
-    linkml:domain_of <https://w3id.org/GHGA/ExperimentDataset>,
-        <https://w3id.org/GHGA/Study> ;
-    linkml:owner <https://w3id.org/GHGA/ExperimentDataset> ;
-    linkml:range <https://w3id.org/GHGA/Experiment> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_experiment> .
+    linkml:definition_uri <https://w3id.org/GHGA/has_data_access_policy> ;
+    linkml:domain_of <https://w3id.org/GHGA/AnalysisDataset>,
+        <https://w3id.org/GHGA/ExperimentDataset>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_data_access_policy> .
+
+<https://w3id.org/GHGA/has_file> a linkml:SlotDefinition ;
+    skos:definition "The file associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_file> ;
+    linkml:domain_of <https://w3id.org/GHGA/Dataset>,
+        <https://w3id.org/GHGA/Experiment>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/File> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_file> .
+
+<https://w3id.org/GHGA/has_individual> a linkml:SlotDefinition ;
+    skos:definition "The subject/individual associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
+    linkml:domain_of <https://w3id.org/GHGA/Biospecimen>,
+        <https://w3id.org/GHGA/Sample>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Individual> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_individual> .
 
 <https://w3id.org/GHGA/has_input> a linkml:SlotDefinition ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -3752,56 +3931,6 @@
     linkml:slots <https://w3id.org/GHGA/data_use_condition_modifier>,
         <https://w3id.org/GHGA/data_use_condition_permission> .
 
-<https://w3id.org/GHGA/WorkflowParameter> a linkml:ClassDefinition ;
-    skos:definition "A key/value pair that represents a parameter used in a Workflow Step." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/WorkflowParameter> ;
-    linkml:definition_uri <https://w3id.org/GHGA/WorkflowParameter> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/workflow_parameter_key>,
-        <https://w3id.org/GHGA/workflow_parameter_value> .
-
-<https://w3id.org/GHGA/has_publication> a linkml:SlotDefinition ;
-    skos:definition "The Publication associated with an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_publication> ;
-    linkml:domain_of <https://w3id.org/GHGA/Dataset>,
-        <https://w3id.org/GHGA/Investigation>,
-        <https://w3id.org/GHGA/ResearchActivity>,
-        <https://w3id.org/GHGA/Study> ;
-    linkml:owner <https://w3id.org/GHGA/Dataset> ;
-    linkml:range <https://w3id.org/GHGA/Publication> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_publication> .
-
-<https://w3id.org/GHGA/ExperimentDataset> a linkml:ClassDefinition ;
-    skos:definition "An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/ExperimentDataset> ;
-    linkml:definition_uri <https://w3id.org/GHGA/ExperimentDataset> ;
-    linkml:is_a <https://w3id.org/GHGA/Dataset> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/dataset_description>,
-        <https://w3id.org/GHGA/dataset_has_file>,
-        <https://w3id.org/GHGA/dataset_has_publication>,
-        <https://w3id.org/GHGA/dataset_title>,
-        <https://w3id.org/GHGA/dataset_type>,
-        <https://w3id.org/GHGA/deprecated>,
-        <https://w3id.org/GHGA/deprecation_date>,
-        <https://w3id.org/GHGA/experiment_dataset_has_data_access_policy>,
-        <https://w3id.org/GHGA/experiment_dataset_has_experiment>,
-        <https://w3id.org/GHGA/experiment_dataset_has_study>,
-        <https://w3id.org/GHGA/named_thing_accession>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_has_attribute>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/release_date>,
-        <https://w3id.org/GHGA/release_status>,
-        <https://w3id.org/GHGA/replaced_by>,
-        <https://w3id.org/GHGA/submission_date>,
-        <https://w3id.org/GHGA/submission_status> .
-
 <https://w3id.org/GHGA/AnalysisDataset> a linkml:ClassDefinition ;
     skos:definition "An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or more Studies." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -3832,18 +3961,66 @@
         <https://w3id.org/GHGA/submission_date>,
         <https://w3id.org/GHGA/submission_status> .
 
-<https://w3id.org/GHGA/has_study> a linkml:SlotDefinition ;
-    skos:definition "The study associated with an entity." ;
+<https://w3id.org/GHGA/ExperimentDataset> a linkml:ClassDefinition ;
+    skos:definition "An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_study> ;
-    linkml:domain_of <https://w3id.org/GHGA/Analysis>,
-        <https://w3id.org/GHGA/AnalysisDataset>,
-        <https://w3id.org/GHGA/Experiment>,
-        <https://w3id.org/GHGA/ExperimentDataset>,
-        <https://w3id.org/GHGA/Project> ;
-    linkml:owner <https://w3id.org/GHGA/AnalysisDataset> ;
-    linkml:range <https://w3id.org/GHGA/Study> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_study> .
+    linkml:class_uri <https://w3id.org/GHGA/ExperimentDataset> ;
+    linkml:definition_uri <https://w3id.org/GHGA/ExperimentDataset> ;
+    linkml:is_a <https://w3id.org/GHGA/Dataset> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/dataset_description>,
+        <https://w3id.org/GHGA/dataset_has_file>,
+        <https://w3id.org/GHGA/dataset_has_publication>,
+        <https://w3id.org/GHGA/dataset_title>,
+        <https://w3id.org/GHGA/dataset_type>,
+        <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
+        <https://w3id.org/GHGA/experiment_dataset_has_data_access_policy>,
+        <https://w3id.org/GHGA/experiment_dataset_has_experiment>,
+        <https://w3id.org/GHGA/experiment_dataset_has_study>,
+        <https://w3id.org/GHGA/named_thing_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_has_attribute>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_status> .
+
+<https://w3id.org/GHGA/WorkflowParameter> a linkml:ClassDefinition ;
+    skos:definition "A key/value pair that represents a parameter used in a Workflow Step." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/WorkflowParameter> ;
+    linkml:definition_uri <https://w3id.org/GHGA/WorkflowParameter> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/workflow_parameter_key>,
+        <https://w3id.org/GHGA/workflow_parameter_value> .
+
+<https://w3id.org/GHGA/has_experiment> a linkml:SlotDefinition ;
+    skos:definition "The experiment associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_experiment> ;
+    linkml:domain_of <https://w3id.org/GHGA/ExperimentDataset>,
+        <https://w3id.org/GHGA/Study>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Experiment> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_experiment> .
+
+<https://w3id.org/GHGA/has_publication> a linkml:SlotDefinition ;
+    skos:definition "The Publication associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_publication> ;
+    linkml:domain_of <https://w3id.org/GHGA/Dataset>,
+        <https://w3id.org/GHGA/Investigation>,
+        <https://w3id.org/GHGA/ResearchActivity>,
+        <https://w3id.org/GHGA/Study> ;
+    linkml:owner <https://w3id.org/GHGA/Dataset> ;
+    linkml:range <https://w3id.org/GHGA/Publication> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_publication> .
 
 <https://w3id.org/GHGA/type> a linkml:SlotDefinition ;
     skos:definition "The type of an entity." ;
@@ -3855,26 +4032,6 @@
     linkml:owner <https://w3id.org/GHGA/Sample> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/type> .
-
-<https://w3id.org/GHGA/Project> a linkml:ClassDefinition ;
-    skos:closeMatch <ncit:C47885> ;
-    skos:definition "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/Project> ;
-    linkml:definition_uri <https://w3id.org/GHGA/Project> ;
-    linkml:is_a <https://w3id.org/GHGA/ResearchActivity> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/named_thing_accession>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_type>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/project_description>,
-        <https://w3id.org/GHGA/project_has_attribute>,
-        <https://w3id.org/GHGA/project_has_publication>,
-        <https://w3id.org/GHGA/project_has_study>,
-        <https://w3id.org/GHGA/project_title> .
 
 <https://w3id.org/GHGA/Member> a linkml:ClassDefinition ;
     skos:definition "Member of an Organization or a Committee." ;
@@ -3931,6 +4088,20 @@
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref> .
 
+<https://w3id.org/GHGA/has_study> a linkml:SlotDefinition ;
+    skos:definition "The study associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_study> ;
+    linkml:domain_of <https://w3id.org/GHGA/Analysis>,
+        <https://w3id.org/GHGA/AnalysisDataset>,
+        <https://w3id.org/GHGA/Experiment>,
+        <https://w3id.org/GHGA/ExperimentDataset>,
+        <https://w3id.org/GHGA/Project>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Study> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_study> .
+
 <https://w3id.org/GHGA/title> a linkml:SlotDefinition ;
     skos:definition "The title that describes an entity." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -3944,6 +4115,26 @@
     linkml:owner <https://w3id.org/GHGA/Publication> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/title> .
+
+<https://w3id.org/GHGA/Project> a linkml:ClassDefinition ;
+    skos:closeMatch <ncit:C47885> ;
+    skos:definition "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/Project> ;
+    linkml:definition_uri <https://w3id.org/GHGA/Project> ;
+    linkml:is_a <https://w3id.org/GHGA/ResearchActivity> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/named_thing_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/project_description>,
+        <https://w3id.org/GHGA/project_has_attribute>,
+        <https://w3id.org/GHGA/project_has_publication>,
+        <https://w3id.org/GHGA/project_has_study>,
+        <https://w3id.org/GHGA/project_title> .
 
 <https://w3id.org/GHGA/Publication> a linkml:ClassDefinition ;
     skos:definition "The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI." ;
@@ -4005,6 +4196,26 @@
         <https://w3id.org/GHGA/named_thing_xref>,
         <https://w3id.org/GHGA/title> .
 
+<https://w3id.org/GHGA/ExperimentProcess> a linkml:ClassDefinition ;
+    skos:definition "An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/ExperimentProcess> ;
+    linkml:definition_uri <https://w3id.org/GHGA/ExperimentProcess> ;
+    linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/experiment_process_has_agent>,
+        <https://w3id.org/GHGA/experiment_process_has_input>,
+        <https://w3id.org/GHGA/experiment_process_has_output>,
+        <https://w3id.org/GHGA/experiment_process_has_protocol>,
+        <https://w3id.org/GHGA/experiment_process_name>,
+        <https://w3id.org/GHGA/named_thing_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_has_attribute>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref> .
+
 <https://w3id.org/GHGA/Biospecimen> a linkml:ClassDefinition ;
     skos:definition "A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived." ;
     skos:exactMatch <https://w3id.org/GHGA/OBI:0100051> ;
@@ -4019,26 +4230,6 @@
         <https://w3id.org/GHGA/biospecimen_has_phenotypic_feature>,
         <https://w3id.org/GHGA/description>,
         <https://w3id.org/GHGA/name>,
-        <https://w3id.org/GHGA/named_thing_accession>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_has_attribute>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_type>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref> .
-
-<https://w3id.org/GHGA/ExperimentProcess> a linkml:ClassDefinition ;
-    skos:definition "An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/ExperimentProcess> ;
-    linkml:definition_uri <https://w3id.org/GHGA/ExperimentProcess> ;
-    linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/experiment_process_has_agent>,
-        <https://w3id.org/GHGA/experiment_process_has_input>,
-        <https://w3id.org/GHGA/experiment_process_has_output>,
-        <https://w3id.org/GHGA/experiment_process_has_protocol>,
-        <https://w3id.org/GHGA/experiment_process_name>,
         <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_has_attribute>,
@@ -4155,49 +4346,6 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/name> .
 
-<https://w3id.org/GHGA/Study> a linkml:ClassDefinition ;
-    skos:definition "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/Study> ;
-    linkml:definition_uri <https://w3id.org/GHGA/Study> ;
-    linkml:is_a <https://w3id.org/GHGA/Investigation> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/deprecated>,
-        <https://w3id.org/GHGA/deprecation_date>,
-        <https://w3id.org/GHGA/has_attribute>,
-        <https://w3id.org/GHGA/named_thing_accession>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/release_date>,
-        <https://w3id.org/GHGA/release_status>,
-        <https://w3id.org/GHGA/replaced_by>,
-        <https://w3id.org/GHGA/study_affiliation>,
-        <https://w3id.org/GHGA/study_description>,
-        <https://w3id.org/GHGA/study_has_analysis>,
-        <https://w3id.org/GHGA/study_has_attribute>,
-        <https://w3id.org/GHGA/study_has_experiment>,
-        <https://w3id.org/GHGA/study_has_publication>,
-        <https://w3id.org/GHGA/study_title>,
-        <https://w3id.org/GHGA/study_type>,
-        <https://w3id.org/GHGA/submission_date>,
-        <https://w3id.org/GHGA/submission_status> .
-
-<https://w3id.org/GHGA/named_thing_type> a linkml:SlotDefinition ;
-    skos:definition "The type of an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    skos:prefLabel "type" ;
-    linkml:definition_uri <https://w3id.org/GHGA/type> ;
-    linkml:domain <https://w3id.org/GHGA/NamedThing> ;
-    linkml:domain_of <https://w3id.org/GHGA/NamedThing> ;
-    linkml:is_a <https://w3id.org/GHGA/type> ;
-    linkml:is_usage_slot true ;
-    linkml:owner <https://w3id.org/GHGA/NamedThing> ;
-    linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:slot_uri <https://w3id.org/GHGA/type> ;
-    linkml:usage_slot_name "type" .
-
 <https://w3id.org/GHGA/LibraryPreparationProtocol> a linkml:ClassDefinition ;
     skos:definition "Information about the library preparation of an Experiment." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -4252,6 +4400,20 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/description> .
 
+<https://w3id.org/GHGA/named_thing_type> a linkml:SlotDefinition ;
+    skos:definition "The type of an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "type" ;
+    linkml:definition_uri <https://w3id.org/GHGA/type> ;
+    linkml:domain <https://w3id.org/GHGA/NamedThing> ;
+    linkml:domain_of <https://w3id.org/GHGA/NamedThing> ;
+    linkml:is_a <https://w3id.org/GHGA/type> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/NamedThing> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/type> ;
+    linkml:usage_slot_name "type" .
+
 <https://w3id.org/GHGA/File> a linkml:ClassDefinition ;
     skos:altLabel "file object" ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -4273,22 +4435,33 @@
         <https://w3id.org/GHGA/named_thing_update_date>,
         <https://w3id.org/GHGA/named_thing_xref> .
 
-<https://w3id.org/GHGA/NamedThing> a linkml:ClassDefinition ;
-    skos:altLabel "entity",
-        "named entity",
-        "object" ;
-    skos:definition "A databased entity, concept or class. This is a generic class that is the root of all the other classes." ;
+<https://w3id.org/GHGA/Study> a linkml:ClassDefinition ;
+    skos:definition "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/NamedThing> ;
-    linkml:definition_uri <https://w3id.org/GHGA/NamedThing> ;
+    linkml:class_uri <https://w3id.org/GHGA/Study> ;
+    linkml:definition_uri <https://w3id.org/GHGA/Study> ;
+    linkml:is_a <https://w3id.org/GHGA/Investigation> ;
     linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/named_thing_accession>,
+    linkml:slots <https://w3id.org/GHGA/deprecated>,
+        <https://w3id.org/GHGA/deprecation_date>,
+        <https://w3id.org/GHGA/has_attribute>,
+        <https://w3id.org/GHGA/named_thing_accession>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_has_attribute>,
         <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_type>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref> .
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/release_date>,
+        <https://w3id.org/GHGA/release_status>,
+        <https://w3id.org/GHGA/replaced_by>,
+        <https://w3id.org/GHGA/study_affiliation>,
+        <https://w3id.org/GHGA/study_description>,
+        <https://w3id.org/GHGA/study_has_analysis>,
+        <https://w3id.org/GHGA/study_has_attribute>,
+        <https://w3id.org/GHGA/study_has_experiment>,
+        <https://w3id.org/GHGA/study_has_project>,
+        <https://w3id.org/GHGA/study_has_publication>,
+        <https://w3id.org/GHGA/study_title>,
+        <https://w3id.org/GHGA/study_type> .
 
 <https://w3id.org/GHGA/Experiment> a linkml:ClassDefinition ;
     skos:closeMatch <ncit:C42790> ;
@@ -4320,11 +4493,26 @@
         <https://w3id.org/GHGA/release_date>,
         <https://w3id.org/GHGA/release_status>,
         <https://w3id.org/GHGA/replaced_by>,
-        <https://w3id.org/GHGA/submission_date>,
-        <https://w3id.org/GHGA/submission_status>,
         <https://w3id.org/GHGA/technical_replicates>,
         <https://w3id.org/GHGA/title>,
         <https://w3id.org/GHGA/type> .
+
+<https://w3id.org/GHGA/NamedThing> a linkml:ClassDefinition ;
+    skos:altLabel "entity",
+        "named entity",
+        "object" ;
+    skos:definition "A databased entity, concept or class. This is a generic class that is the root of all the other classes." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/NamedThing> ;
+    linkml:definition_uri <https://w3id.org/GHGA/NamedThing> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/named_thing_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_has_attribute>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref> .
 
 <https://w3id.org/GHGA/named_thing_has_attribute> a linkml:SlotDefinition ;
     skos:definition "Holds one or more Attribute entities that further characterizes this entity." ;
@@ -4334,6 +4522,7 @@
     linkml:domain <https://w3id.org/GHGA/NamedThing> ;
     linkml:domain_of <https://w3id.org/GHGA/NamedThing> ;
     linkml:inlined true ;
+    linkml:inlined_as_list true ;
     linkml:is_a <https://w3id.org/GHGA/has_attribute> ;
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
@@ -4357,6 +4546,40 @@
     linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/id> ;
     linkml:usage_slot_name "id" .
+
+<https://w3id.org/GHGA/SequencingProtocol> a linkml:ClassDefinition ;
+    skos:definition "Information about the sequencing of a sample." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/SequencingProtocol> ;
+    linkml:definition_uri <https://w3id.org/GHGA/SequencingProtocol> ;
+    linkml:is_a <https://w3id.org/GHGA/Protocol> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/cell_barcode_offset>,
+        <https://w3id.org/GHGA/cell_barcode_read>,
+        <https://w3id.org/GHGA/cell_barcode_size>,
+        <https://w3id.org/GHGA/flow_cell_id>,
+        <https://w3id.org/GHGA/flow_cell_type>,
+        <https://w3id.org/GHGA/instrument_model>,
+        <https://w3id.org/GHGA/lane_number>,
+        <https://w3id.org/GHGA/named_thing_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/protocol_url>,
+        <https://w3id.org/GHGA/read_length>,
+        <https://w3id.org/GHGA/read_pair_number>,
+        <https://w3id.org/GHGA/reference_annotation>,
+        <https://w3id.org/GHGA/sample_barcode_read>,
+        <https://w3id.org/GHGA/sequencing_center>,
+        <https://w3id.org/GHGA/sequencing_protocol_description>,
+        <https://w3id.org/GHGA/sequencing_protocol_has_attribute>,
+        <https://w3id.org/GHGA/sequencing_protocol_name>,
+        <https://w3id.org/GHGA/target_coverage>,
+        <https://w3id.org/GHGA/umi_barcode_offset>,
+        <https://w3id.org/GHGA/umi_barcode_read>,
+        <https://w3id.org/GHGA/umi_barcode_size> .
 
 <https://w3id.org/GHGA/named_thing_accession> a linkml:SlotDefinition ;
     skos:definition "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope." ;
@@ -4415,40 +4638,6 @@
     linkml:slot_uri <https://w3id.org/GHGA/xref> ;
     linkml:usage_slot_name "xref" .
 
-<https://w3id.org/GHGA/SequencingProtocol> a linkml:ClassDefinition ;
-    skos:definition "Information about the sequencing of a sample." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/SequencingProtocol> ;
-    linkml:definition_uri <https://w3id.org/GHGA/SequencingProtocol> ;
-    linkml:is_a <https://w3id.org/GHGA/Protocol> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/cell_barcode_offset>,
-        <https://w3id.org/GHGA/cell_barcode_read>,
-        <https://w3id.org/GHGA/cell_barcode_size>,
-        <https://w3id.org/GHGA/flow_cell_id>,
-        <https://w3id.org/GHGA/flow_cell_type>,
-        <https://w3id.org/GHGA/instrument_model>,
-        <https://w3id.org/GHGA/lane_number>,
-        <https://w3id.org/GHGA/named_thing_accession>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_type>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/protocol_url>,
-        <https://w3id.org/GHGA/read_length>,
-        <https://w3id.org/GHGA/read_pair_number>,
-        <https://w3id.org/GHGA/reference_annotation>,
-        <https://w3id.org/GHGA/sample_barcode_read>,
-        <https://w3id.org/GHGA/sequencing_center>,
-        <https://w3id.org/GHGA/sequencing_protocol_description>,
-        <https://w3id.org/GHGA/sequencing_protocol_has_attribute>,
-        <https://w3id.org/GHGA/sequencing_protocol_name>,
-        <https://w3id.org/GHGA/target_coverage>,
-        <https://w3id.org/GHGA/umi_barcode_offset>,
-        <https://w3id.org/GHGA/umi_barcode_read>,
-        <https://w3id.org/GHGA/umi_barcode_size> .
-
 <https://w3id.org/GHGA/Sample> a linkml:ClassDefinition ;
     skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)." ;
     skos:exactMatch <biolink:MaterialSample>,
@@ -4474,6 +4663,33 @@
         <https://w3id.org/GHGA/sample_xref>,
         <https://w3id.org/GHGA/type>,
         <https://w3id.org/GHGA/vital_status_at_sampling> .
+
+<https://w3id.org/GHGA/Submission> a linkml:ClassDefinition ;
+    skos:definition "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/Submission> ;
+    linkml:definition_uri <https://w3id.org/GHGA/Submission> ;
+    linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
+    linkml:mixins <https://w3id.org/GHGA/SubmissionStatusMixin> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/named_thing_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_has_attribute>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/submission_date>,
+        <https://w3id.org/GHGA/submission_has_analysis>,
+        <https://w3id.org/GHGA/submission_has_biospecimen>,
+        <https://w3id.org/GHGA/submission_has_data_access_policy>,
+        <https://w3id.org/GHGA/submission_has_experiment>,
+        <https://w3id.org/GHGA/submission_has_file>,
+        <https://w3id.org/GHGA/submission_has_individual>,
+        <https://w3id.org/GHGA/submission_has_project>,
+        <https://w3id.org/GHGA/submission_has_sample>,
+        <https://w3id.org/GHGA/submission_has_study>,
+        <https://w3id.org/GHGA/submission_status> .
 
 <https://w3id.org/GHGA/Individual> a linkml:ClassDefinition ;
     skos:altLabel "patient",

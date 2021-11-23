@@ -44,6 +44,7 @@ research_activity,,A planned process executed in the performance of scientific r
 sample,,"A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)."
 sequencing_protocol,,Information about the sequencing of a sample.
 study,,Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
+submission,,A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
 submission_status_mixin,,A mixin that keeps track of the submission status.
 technology,,A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.
 user,,A user in GHGA.

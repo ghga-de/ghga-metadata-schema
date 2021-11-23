@@ -1396,14 +1396,6 @@
                "description": "The entity which replaces a deprecated entity.",
                "type": "string"
             },
-            "submission_date": {
-               "description": "The date when submission was completed.",
-               "type": "string"
-            },
-            "submission_status": {
-               "$ref": "#/$defs/SubmissionStatusEnum",
-               "description": "The status of submission."
-            },
             "technical_replicates": {
                "description": "Number of replicate samples (technical replicates).",
                "type": "string"
@@ -1966,14 +1958,6 @@
             "replaced_by": {
                "description": "The entity which replaces a deprecated entity.",
                "type": "string"
-            },
-            "submission_date": {
-               "description": "The date when submission was completed.",
-               "type": "string"
-            },
-            "submission_status": {
-               "$ref": "#/$defs/SubmissionStatusEnum",
-               "description": "The status of submission."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -2975,6 +2959,10 @@
                },
                "type": "array"
             },
+            "has_project": {
+               "description": "The project associated with this Study.",
+               "type": "string"
+            },
             "has_publication": {
                "description": "One or more Publication entities associated with this Study.",
                "items": {
@@ -2997,14 +2985,6 @@
             "replaced_by": {
                "description": "The entity which replaces a deprecated entity.",
                "type": "string"
-            },
-            "submission_date": {
-               "description": "The date when submission was completed.",
-               "type": "string"
-            },
-            "submission_status": {
-               "$ref": "#/$defs/SubmissionStatusEnum",
-               "description": "The status of submission."
             },
             "title": {
                "description": "Comprehensive title for the study.",
@@ -3056,6 +3036,113 @@
          ],
          "title": "StudyTypeEnum",
          "type": "string"
+      },
+      "Submission": {
+         "additionalProperties": false,
+         "description": "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.",
+         "properties": {
+            "accession": {
+               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_analysis": {
+               "description": "Information about one or more Analysis entities associated with this submission.",
+               "items": {
+                  "$ref": "#/$defs/Analysis"
+               },
+               "type": "array"
+            },
+            "has_attribute": {
+               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "items": {
+                  "$ref": "#/$defs/Attribute"
+               },
+               "type": "array"
+            },
+            "has_biospecimen": {
+               "description": "Information about one or more Biospecimen entities associated with this submission.",
+               "items": {
+                  "$ref": "#/$defs/Biospecimen"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "$ref": "#/$defs/DataAccessPolicy",
+               "description": "The Data Access Policy entity that applies to the data associated with this submission."
+            },
+            "has_experiment": {
+               "description": "Information about one or more Experiment entities associated with this submission.",
+               "items": {
+                  "$ref": "#/$defs/Experiment"
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "Information about one or more File entities associated with this submission.",
+               "items": {
+                  "$ref": "#/$defs/File"
+               },
+               "type": "array"
+            },
+            "has_individual": {
+               "description": "Information about one or more Individual entities associated with this submission.",
+               "items": {
+                  "$ref": "#/$defs/Individual"
+               },
+               "type": "array"
+            },
+            "has_project": {
+               "$ref": "#/$defs/Project",
+               "description": "Information about a Project entity associated with this submission."
+            },
+            "has_sample": {
+               "description": "Information about one or more Sample entities associated with this submission.",
+               "items": {
+                  "$ref": "#/$defs/Sample"
+               },
+               "type": "array"
+            },
+            "has_study": {
+               "$ref": "#/$defs/Study",
+               "description": "Information about a Study entities associated with this submission."
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "submission_date": {
+               "description": "The date when submission was completed.",
+               "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of submission."
+            },
+            "type": {
+               "description": "The type of an entity.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Submission",
+         "type": "object"
       },
       "SubmissionStatusEnum": {
          "description": "Enum to capture submission status.",

@@ -372,8 +372,6 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<Investigation_tes> (  &<PlannedProcess_tes> ;
              rdf:type [ <PlannedProcess> ] ? ;
-             &<SubmissionStatusMixin_tes> ;
-             rdf:type [ <SubmissionStatusMixin> ] ? ;
              &<ReleaseStatusMixin_tes> ;
              rdf:type [ <ReleaseStatusMixin> ] ? ;
              &<DeprecationMixin_tes> ;
@@ -382,8 +380,6 @@ linkml:Nodeidentifier NONLITERAL
              <description> @linkml:String ? ;
              <type> @linkml:String ? ;
              <has_publication> @<Publication> ? ;
-             <submission_status> @<SubmissionStatusEnum> ? ;
-             <submission_date> @linkml:String ? ;
              <release_status> @<ReleaseStatusEnum> ? ;
              <release_date> @linkml:String ? ;
              <deprecated> @linkml:Boolean ? ;
@@ -452,7 +448,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <NamedThing> ]
        )
     } OR @<Agent> OR @<BiologicalQuality> OR @<Committee> OR @<InformationContentEntity> OR @<MaterialEntity> OR @<Person> OR
-    @<PlannedProcess>
+    @<PlannedProcess> OR @<Submission>
 )
 
 <Person>  (
@@ -608,12 +604,34 @@ linkml:Nodeidentifier NONLITERAL
           <has_publication> @<Publication> * ;
           <has_experiment> @<Experiment> * ;
           <has_analysis> @<Analysis> * ;
+          <has_project> @<Project> ? ;
           <has_attribute> @<Attribute> * ;
           <title> @linkml:String ;
           <description> @linkml:String ;
           <type> @<StudyTypeEnum>
        ) ;
        rdf:type [ <Study> ]
+    )
+}
+
+<Submission> CLOSED {
+    (  $<Submission_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          &<SubmissionStatusMixin_tes> ;
+          rdf:type [ <SubmissionStatusMixin> ] ? ;
+          <has_study> @<Study> ? ;
+          <has_project> @<Project> ? ;
+          <has_sample> @<Sample> * ;
+          <has_biospecimen> @<Biospecimen> * ;
+          <has_individual> @<Individual> * ;
+          <has_experiment> @<Experiment> * ;
+          <has_analysis> @<Analysis> * ;
+          <has_file> @<File> * ;
+          <has_data_access_policy> @<DataAccessPolicy> ? ;
+          <submission_status> @<SubmissionStatusEnum> ? ;
+          <submission_date> @linkml:String ?
+       ) ;
+       rdf:type [ <Submission> ]
     )
 }
 
