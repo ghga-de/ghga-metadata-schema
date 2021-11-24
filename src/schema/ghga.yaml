@@ -168,15 +168,15 @@ classes:
         description: >-
           Comprehensive title for the project.
         required: true
-        related_mappings:
-          - SIO:000185
       description:
         description: >-
           Short textual description of the project  
           (Some information on the protocol, sample used and collected etc)  
         required: true
-        broad_mappings:
+        exact_mappings:
           - NCIT:C25365
+          - SIO:000136
+          
       has publication:
         description: >-
           One or more Publication entities associated with this Project.
@@ -281,8 +281,6 @@ classes:
         description: >-
           Name for the experiment (eg: GHGAE_PBMC_RNAseq).
         required: true
-        broad_mappings:
-          - NCIT:C181729
       description:
         description: >-
           A detailed description of the Experiment.
@@ -667,8 +665,6 @@ classes:
         description: >-
           Type of sample: 'Case' or 'Control'.
         range: case_control_enum
-        related_mappings:
-          - NCIT:C15197
       description:
         description: >-
           Short textual description of the sample  
@@ -1382,7 +1378,7 @@ slots:
     description: >-
       The study abstract that describes the goals. 
       Can also hold abstract from a publication related to this study
-    related_mappings:
+    close_mappings:
       - NCIT:C60765
 
   technical replicates:
@@ -1413,6 +1409,8 @@ slots:
 
   description:
     description: Description of an entity.
+    exact_mappings:
+      - SIO:000185
 
   has study:
     description: The study associated with an entity.
@@ -1559,26 +1557,26 @@ slots:
     description: Age of an individual.
     range: integer
     close_mappings:
-      - SNOMEDCT:397669002
+      - EFO:0000246
 
   tissue:
     description: >- 
       An anatomical structure consisting of similarly specialized cells and intercellular matrix, 
       aggregated according to genetically determined spatial relationships, performing a specific function.
-    broad_mappings:
+    close_mappings:
       - NCIT:C12801
 
   isolation:
     description: >-
       Method or device employed for collecting/isolating a sample.
-    related_mappings:
+    close_mappings:
       - NCIT:C25549
 
   storage:
     description: >-
       Methods by which sample is stored 
       (e.g. frozen in liquid nitrogen).
-    related_mappings:
+    close_mappings:
       - NCIT:C60824
 
   year of birth:
@@ -1598,7 +1596,7 @@ slots:
     description: >-
       A social group characterized by a distinctive social and cultural tradition 
       that is maintained from generation to generation.
-    related_mappings:
+    exact_mappings:
       - SIO:001014
 
   ancestry:
@@ -1682,7 +1680,7 @@ slots:
   affiliation:
     description: >-
       Institutions associated with this study.
-    related_mappings:
+    close_mappings:
       - NCIT:C25412
 
   library name:
@@ -1704,7 +1702,7 @@ slots:
     description: >-
         Whether any method was used to select for or against, enrich, or screen the material being sequenced.
         Library Selection method (e.g. random, PCA, cDNA, etc )
-    broad_mappings:
+    close_mappings:
       - GENEPIO:0001940
 
   library construction:
@@ -1741,12 +1739,14 @@ slots:
       This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
     broad_mappings:
       - NCIT:C1451
+    exact_mappings:
+      - EFO:0010192
 
   end bias:
     description: >-
       The end of the cDNA molecule that is preferentially sequenced, 
       e.g. 3/5 prime tag or end, or the full-length transcript.
-    broad_mappings:
+    exact_mappings:
       - EFO:0010187
 
   target regions:
@@ -1766,7 +1766,7 @@ slots:
     description: >-
       Center where sample was sequenced.
     close_mappings:
-      - NCIT:C172274
+      - GENEPIO:0000070
 
   instrument model:
     description: >-
