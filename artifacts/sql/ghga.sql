@@ -1,7 +1,7 @@
 
 CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
 CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
-CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased');
+CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
 CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
@@ -134,7 +134,7 @@ CREATE TABLE file (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	name TEXT, 
+	name TEXT NOT NULL, 
 	format TEXT, 
 	size TEXT, 
 	checksum TEXT, 
@@ -180,19 +180,19 @@ CREATE TABLE information_content_entity (
 CREATE TABLE library_preparation_protocol (
 	id TEXT NOT NULL, 
 	accession TEXT, 
-	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	url TEXT, 
-	library_name TEXT, 
-	library_layout TEXT, 
-	library_type TEXT, 
-	library_selection TEXT, 
-	library_construction TEXT, 
-	library_preparation TEXT, 
+	type TEXT, 
+	library_name TEXT NOT NULL, 
+	library_layout TEXT NOT NULL, 
+	library_type TEXT NOT NULL, 
+	library_selection TEXT NOT NULL, 
+	library_construction TEXT NOT NULL, 
+	library_preparation TEXT NOT NULL, 
 	library_level TEXT, 
-	library_construction_kit_retail_name TEXT, 
-	library_construction_kit_manufacturer TEXT, 
+	library_construction_kit_retail_name TEXT NOT NULL, 
+	library_construction_kit_manufacturer TEXT NOT NULL, 
 	primer TEXT, 
 	end_bias TEXT, 
 	target_regions TEXT, 
@@ -225,7 +225,7 @@ CREATE TABLE member (
 	additional_name TEXT, 
 	email TEXT NOT NULL, 
 	telephone TEXT NOT NULL, 
-	organization TEXT, 
+	organization TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -290,12 +290,12 @@ CREATE TABLE project (
 CREATE TABLE protocol (
 	id TEXT NOT NULL, 
 	accession TEXT, 
-	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	name TEXT, 
 	description TEXT, 
 	url TEXT, 
+	type TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -315,14 +315,15 @@ CREATE TABLE publication (
 CREATE TABLE sequencing_protocol (
 	id TEXT NOT NULL, 
 	accession TEXT, 
-	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	url TEXT, 
-	sequencing_center TEXT, 
-	instrument_model TEXT, 
+	type TEXT, 
+	sequencing_center TEXT NOT NULL, 
+	instrument_model TEXT NOT NULL, 
 	read_length TEXT, 
 	read_pair_number TEXT, 
+	sequencing_length TEXT, 
 	target_coverage TEXT, 
 	reference_annotation TEXT, 
 	lane_number TEXT, 
@@ -843,7 +844,7 @@ CREATE TABLE sample (
 	creation_date TEXT, 
 	update_date TEXT, 
 	name TEXT NOT NULL, 
-	description TEXT, 
+	description TEXT NOT NULL, 
 	vital_status_at_sampling TEXT, 
 	tissue TEXT NOT NULL, 
 	isolation TEXT, 

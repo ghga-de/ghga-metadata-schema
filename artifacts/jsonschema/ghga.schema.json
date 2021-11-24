@@ -1205,11 +1205,11 @@
                "type": "string"
             },
             "age": {
-               "description": "Age of an Individual.",
+               "description": "Age of an individual.",
                "type": "integer"
             },
             "ancestry": {
-               "description": "Ancestry of an Individual.  Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0005' signifies this Individual belongs to the 'European' ancestry.",
+               "description": "A person's descent or lineage, from a person or from a population.",
                "type": "string"
             },
             "creation_date": {
@@ -1217,7 +1217,7 @@
                "type": "string"
             },
             "ethnicity": {
-               "description": "A social group characterized by a distinctive social and cultural  tradition that is maintained from generation to generation..",
+               "description": "A social group characterized by a distinctive social and cultural tradition  that is maintained from generation to generation.",
                "type": "string"
             },
             "family_name": {
@@ -1225,11 +1225,11 @@
                "type": "string"
             },
             "gender": {
-               "description": "Gender of an Individual/ Identification as male/masculine,  female/feminine or something else, and association  with a (social) role or set of behavioral and cultural traits",
+               "description": "Identification as male/masculine, female/feminine or something else,  and association with a (social) role or set of behavioral and cultural traits.",
                "type": "string"
             },
             "geographical_region": {
-               "description": "The geographical region where the Individual is located. Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0047' signifies this Individual is from 'Western Europe' region.",
+               "description": "The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.",
                "type": "string"
             },
             "given_name": {
@@ -1263,7 +1263,7 @@
             },
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
-               "description": "Biological sex of a sequenced individual. (\"Female\", \"Male\")."
+               "description": "The assemblage of physical properties or qualities by which male is distinguished from female;  the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
             "type": {
                "description": "The type of an entity.",
@@ -1285,7 +1285,7 @@
                "type": "array"
             },
             "year_of_birth": {
-               "description": "Year of Birth of an Individual.",
+               "description": "The year in which the individual was born.",
                "type": "string"
             }
          },
@@ -1307,7 +1307,7 @@
                "type": "string"
             },
             "biological_replicates": {
-               "description": "Number of independent samples (biological replicates).",
+               "description": "A biological replicate is a replicate role that consists of  independent biological replicates made from different individual biosamples.",
                "type": "string"
             },
             "creation_date": {
@@ -1327,7 +1327,7 @@
                "type": "string"
             },
             "experimental_replicates": {
-               "description": "Number of experiment replications.",
+               "description": "The replicate number of the assay, i.e. the numeric iteration  for the assay that was repeated.",
                "type": "string"
             },
             "has_attribute": {
@@ -1384,7 +1384,7 @@
                "type": "string"
             },
             "technical_replicates": {
-               "description": "Number of replicate samples (technical replicates).",
+               "description": "A technical replicate is a replicate role where the same BioSample is use e.g.  the same pool of RNA used to assess technical (as opposed to biological)  variation within an experiment.",
                "type": "string"
             },
             "title": {
@@ -1670,7 +1670,7 @@
                "type": "string"
             },
             "checksum": {
-               "description": "The checksum for the file.",
+               "description": "A computed value which depends on the contents of a block of data and which is transmitted or  stored along with the data in order to detect corruption of the data.  The receiving system recomputes the checksum based upon the received data and compares this  value with the one sent with the data. If the two values are the same, the receiver has some confidence  that the data was received correctly.",
                "type": "string"
             },
             "creation_date": {
@@ -1701,7 +1701,7 @@
                "type": "string"
             },
             "size": {
-               "description": "The file size in bytes.",
+               "description": "The size of a file in bytes.",
                "type": "string"
             },
             "type": {
@@ -1721,7 +1721,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "name"
          ],
          "title": "File",
          "type": "object"
@@ -1755,11 +1756,11 @@
                "type": "string"
             },
             "age": {
-               "description": "Age of an Individual.",
+               "description": "Age of an individual.",
                "type": "integer"
             },
             "ancestry": {
-               "description": "Ancestry of an Individual.  Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0005' signifies this Individual belongs to the 'European' ancestry.",
+               "description": "A person's descent or lineage, from a person or from a population.",
                "type": "string"
             },
             "creation_date": {
@@ -1767,7 +1768,7 @@
                "type": "string"
             },
             "ethnicity": {
-               "description": "A social group characterized by a distinctive social and cultural  tradition that is maintained from generation to generation..",
+               "description": "A social group characterized by a distinctive social and cultural tradition  that is maintained from generation to generation.",
                "type": "string"
             },
             "family_name": {
@@ -1775,11 +1776,11 @@
                "type": "string"
             },
             "gender": {
-               "description": "Gender of an Individual/ Identification as male/masculine,  female/feminine or something else, and association  with a (social) role or set of behavioral and cultural traits",
+               "description": "Identification as male/masculine, female/feminine or something else,  and association with a (social) role or set of behavioral and cultural traits.",
                "type": "string"
             },
             "geographical_region": {
-               "description": "The geographical region where the Individual is located. Typically a value from Human Ancestry Ontology. For example, 'HANCESTRO:0047' signifies this Individual is from 'Western Europe' region.",
+               "description": "The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.",
                "type": "string"
             },
             "given_name": {
@@ -1813,7 +1814,7 @@
             },
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
-               "description": "Biological sex of a sequenced individual. (\"Female\", \"Male\")."
+               "description": "The assemblage of physical properties or qualities by which male is distinguished from female;  the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
             "type": {
                "description": "The type of an entity.",
@@ -1835,7 +1836,7 @@
                "type": "array"
             },
             "year_of_birth": {
-               "description": "Year of Birth of an Individual.",
+               "description": "The year in which the individual was born.",
                "type": "string"
             }
          },
@@ -2022,7 +2023,7 @@
                "type": "string"
             },
             "library_name": {
-               "description": "Library Name (e.g.: Sequencer layout_macromolecule)",
+               "description": "A short name identifying the library to potential users.  The same name may refer to multiple versions of the same continually updated library.",
                "type": "string"
             },
             "library_preparation": {
@@ -2030,7 +2031,7 @@
                "type": "string"
             },
             "library_selection": {
-               "description": "Library Selection method (e.g. random, PCA, cDNA, etc )",
+               "description": "Whether any method was used to select for or against, enrich, or screen the material being sequenced. Library Selection method (e.g. random, PCA, cDNA, etc )",
                "type": "string"
             },
             "library_type": {
@@ -2046,15 +2047,15 @@
                "type": "string"
             },
             "rnaseq_strandedness": {
-               "description": "The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.",
+               "description": "The strandedness of the library, whether reads come from both strands of the cDNA  or only from the first (antisense) or the second (sense) strand.",
                "type": "string"
             },
             "target_regions": {
-               "description": "subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study",
+               "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study. ",
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "Type of the protocol (eg: Target enrichment).",
                "type": "string"
             },
             "update_date": {
@@ -2066,7 +2067,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )",
                "items": {
                   "type": "string"
                },
@@ -2075,6 +2076,14 @@
          },
          "required": [
             "id",
+            "library_name",
+            "library_layout",
+            "library_type",
+            "library_selection",
+            "library_construction",
+            "library_preparation",
+            "library_construction_kit_retail_name",
+            "library_construction_kit_manufacturer",
             "name",
             "description"
          ],
@@ -2192,7 +2201,8 @@
          "required": [
             "id",
             "email",
-            "telephone"
+            "telephone",
+            "organization"
          ],
          "title": "Member",
          "type": "object"
@@ -2543,11 +2553,11 @@
                "type": "string"
             },
             "name": {
-               "description": "Name of the Protocol.",
+               "description": "Name of the protocol (eg: Sample extraction_PCR amplification).",
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "Type of the protocol (eg: Target enrichment).",
                "type": "string"
             },
             "update_date": {
@@ -2559,7 +2569,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )",
                "items": {
                   "type": "string"
                },
@@ -2577,7 +2587,7 @@
          "description": "The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.",
          "properties": {
             "abstract": {
-               "description": "The abstract of the Publication.",
+               "description": "The study abstract that describes the goals.  Can also hold abstract from a publication related to this study",
                "type": "string"
             },
             "accession": {
@@ -2704,7 +2714,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc)      ",
+               "description": "Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc).",
                "type": "string"
             },
             "has_attribute": {
@@ -2727,11 +2737,11 @@
                "type": "string"
             },
             "isolation": {
-               "description": "Method or Device employed for collecting sample.",
+               "description": "Method or device employed for collecting/isolating a sample.",
                "type": "string"
             },
             "name": {
-               "description": "Name of the Sample.",
+               "description": "Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).",
                "type": "string"
             },
             "storage": {
@@ -2739,7 +2749,7 @@
                "type": "string"
             },
             "tissue": {
-               "description": "Description of Sample Source (eg: Blood, Serum etc).",
+               "description": "An anatomical structure consisting of similarly specialized cells and intercellular matrix,  aggregated according to genetically determined spatial relationships, performing a specific function.",
                "type": "string"
             },
             "type": {
@@ -2751,7 +2761,7 @@
                "type": "string"
             },
             "vital_status_at_sampling": {
-               "description": "Vital status at the age of the sampling.",
+               "description": "Vital Status of an Individual at the point of sampling (eg:\"Alive\", \"Deceased\").",
                "type": "string"
             },
             "xref": {
@@ -2765,6 +2775,7 @@
          "required": [
             "id",
             "name",
+            "description",
             "tissue",
             "has_individual"
          ],
@@ -2800,11 +2811,11 @@
                "type": "string"
             },
             "flow_cell_id": {
-               "description": "Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).",
+               "description": "Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.",
                "type": "string"
             },
             "flow_cell_type": {
-               "description": "Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore)",
+               "description": "Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet.  Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.  The sample flows through the center of a fluid column of sheath fluid in the flow cell.",
                "type": "string"
             },
             "has_attribute": {
@@ -2823,7 +2834,7 @@
                "type": "string"
             },
             "lane_number": {
-               "description": "Number of lanes on used flow cell.",
+               "description": "he numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.",
                "type": "string"
             },
             "name": {
@@ -2831,15 +2842,15 @@
                "type": "string"
             },
             "read_length": {
-               "description": "Length of sequencing reads (eg: Long or short or actual number of the read length etc).",
+               "description": "Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment  obtained after the completion of a sequencing process",
                "type": "string"
             },
             "read_pair_number": {
-               "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.",
+               "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.",
                "type": "string"
             },
             "reference_annotation": {
-               "description": "Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).",
+               "description": "A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).",
                "type": "string"
             },
             "sample_barcode_read": {
@@ -2850,12 +2861,16 @@
                "description": "Center where sample was sequenced.",
                "type": "string"
             },
+            "sequencing_length": {
+               "description": "Long or Short Read.",
+               "type": "string"
+            },
             "target_coverage": {
-               "description": "Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing",
+               "description": "Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.",
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "Type of the protocol (eg: Target enrichment).",
                "type": "string"
             },
             "umi_barcode_offset": {
@@ -2863,7 +2878,7 @@
                "type": "string"
             },
             "umi_barcode_read": {
-               "description": "The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2)",
+               "description": "The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).",
                "type": "string"
             },
             "umi_barcode_size": {
@@ -2879,7 +2894,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )",
                "items": {
                   "type": "string"
                },
@@ -2887,7 +2902,9 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "sequencing_center",
+            "instrument_model"
          ],
          "title": "SequencingProtocol",
          "type": "object"
@@ -2901,7 +2918,7 @@
                "type": "string"
             },
             "affiliation": {
-               "description": "Affiliations with this study.",
+               "description": "Institutions associated with this study.",
                "items": {
                   "type": "string"
                },
@@ -3261,7 +3278,8 @@
          "description": "Enum to capture the vital status of an individual.",
          "enum": [
             "alive",
-            "deceased"
+            "deceased",
+            "unknown"
          ],
          "title": "VitalStatusEnum",
          "type": "string"

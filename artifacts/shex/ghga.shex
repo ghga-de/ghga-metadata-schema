@@ -321,7 +321,7 @@ linkml:Nodeidentifier NONLITERAL
 <File> CLOSED {
     (  $<File_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
-          <name> @linkml:String ? ;
+          <name> @linkml:String ;
           <format> @linkml:String ? ;
           <size> @linkml:String ? ;
           <checksum> @linkml:String ? ;
@@ -389,15 +389,15 @@ linkml:Nodeidentifier NONLITERAL
 <LibraryPreparationProtocol> CLOSED {
     (  $<LibraryPreparationProtocol_tes> (  &<Protocol_tes> ;
           rdf:type [ <Protocol> ] ? ;
-          <library_name> @linkml:String ? ;
-          <library_layout> @linkml:String ? ;
-          <library_type> @linkml:String ? ;
-          <library_selection> @linkml:String ? ;
-          <library_construction> @linkml:String ? ;
-          <library_preparation> @linkml:String ? ;
+          <library_name> @linkml:String ;
+          <library_layout> @linkml:String ;
+          <library_type> @linkml:String ;
+          <library_selection> @linkml:String ;
+          <library_construction> @linkml:String ;
+          <library_preparation> @linkml:String ;
           <library_level> @linkml:String ? ;
-          <library_construction_kit_retail_name> @linkml:String ? ;
-          <library_construction_kit_manufacturer> @linkml:String ? ;
+          <library_construction_kit_retail_name> @linkml:String ;
+          <library_construction_kit_manufacturer> @linkml:String ;
           <primer> @linkml:String ? ;
           <end_bias> @linkml:String ? ;
           <target_regions> @linkml:String ? ;
@@ -425,7 +425,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Person> ] ? ;
           <email> @linkml:String ;
           <telephone> @linkml:String ;
-          <organization> @linkml:String ?
+          <organization> @linkml:String
        ) ;
        rdf:type [ <Member> ]
     )
@@ -508,6 +508,8 @@ linkml:Nodeidentifier NONLITERAL
              <name> @linkml:String ? ;
              <description> @linkml:String ? ;
              <url> @linkml:String ? ;
+             <type> @linkml:String ? ;
+             <xref> @linkml:String * ;
              <has_attribute> @<Attribute> *
           ) ;
           rdf:type [ <Protocol> ]
@@ -551,7 +553,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Sample_tes> (  &<MaterialEntity_tes> ;
           rdf:type [ <MaterialEntity> ] ? ;
           <name> @linkml:String ;
-          <description> @linkml:String ? ;
+          <description> @linkml:String ;
           <vital_status_at_sampling> @linkml:String ? ;
           <tissue> @linkml:String ;
           <isolation> @linkml:String ? ;
@@ -568,10 +570,11 @@ linkml:Nodeidentifier NONLITERAL
 <SequencingProtocol> CLOSED {
     (  $<SequencingProtocol_tes> (  &<Protocol_tes> ;
           rdf:type [ <Protocol> ] ? ;
-          <sequencing_center> @linkml:String ? ;
-          <instrument_model> @linkml:String ? ;
+          <sequencing_center> @linkml:String ;
+          <instrument_model> @linkml:String ;
           <read_length> @linkml:String ? ;
           <read_pair_number> @linkml:String ? ;
+          <sequencing_length> @linkml:String ? ;
           <target_coverage> @linkml:String ? ;
           <reference_annotation> @linkml:String ? ;
           <lane_number> @linkml:String ? ;

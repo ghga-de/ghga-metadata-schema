@@ -389,7 +389,7 @@ type File
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    name: String
+    name: String!
     format: String
     size: String
     checksum: String
@@ -456,20 +456,20 @@ type LibraryPreparationProtocol
   {
     id: String!
     accession: String
-    xref: [String]
-    type: String
     creationDate: String
     updateDate: String
     url: String
-    libraryName: String
-    libraryLayout: String
-    libraryType: String
-    librarySelection: String
-    libraryConstruction: String
-    libraryPreparation: String
+    type: String
+    xref: [String]
+    libraryName: String!
+    libraryLayout: String!
+    libraryType: String!
+    librarySelection: String!
+    libraryConstruction: String!
+    libraryPreparation: String!
     libraryLevel: String
-    libraryConstructionKitRetailName: String
-    libraryConstructionKitManufacturer: String
+    libraryConstructionKitRetailName: String!
+    libraryConstructionKitManufacturer: String!
     primer: String
     endBias: String
     targetRegions: String
@@ -504,7 +504,7 @@ type Member
     additionalName: String
     email: String!
     telephone: String!
-    organization: String
+    organization: String!
   }
 
 type NamedThing
@@ -587,13 +587,13 @@ type Protocol
   {
     id: String!
     accession: String
-    xref: [String]
-    type: String
     creationDate: String
     updateDate: String
     name: String
     description: String
     url: String
+    type: String
+    xref: [String]
     hasAttribute: [Attribute]
   }
 
@@ -638,7 +638,7 @@ type Sample
     creationDate: String
     updateDate: String
     name: String!
-    description: String
+    description: String!
     vitalStatusAtSampling: String
     tissue: String!
     isolation: String
@@ -653,15 +653,16 @@ type SequencingProtocol
   {
     id: String!
     accession: String
-    xref: [String]
-    type: String
     creationDate: String
     updateDate: String
     url: String
-    sequencingCenter: String
-    instrumentModel: String
+    type: String
+    xref: [String]
+    sequencingCenter: String!
+    instrumentModel: String!
     readLength: String
     readPairNumber: String
+    sequencingLength: String
     targetCoverage: String
     referenceAnnotation: String
     laneNumber: String

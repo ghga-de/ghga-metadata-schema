@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-23T14:05:06
+# Generation date: 2021-11-24T12:26:25
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -34,6 +34,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 CLO = CurieNamespace('CLO', 'http://purl.obolibrary.org/obo/CLO_')
 COB = CurieNamespace('COB', 'http://purl.obolibrary.org/obo/COB_')
 EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/EFO_')
+GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
 GHGA = CurieNamespace('GHGA', 'https://w3id.org/GHGA/')
 HP = CurieNamespace('HP', 'http://purl.obolibrary.org/obo/HP_')
 IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
@@ -42,6 +43,7 @@ NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 SEPIO = CurieNamespace('SEPIO', 'http://purl.obolibrary.org/obo/SEPIO_')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
+SNOMEDCT = CurieNamespace('SNOMEDCT', 'http://purl.bioontology.org/ontology/SNOMEDCT/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -1071,7 +1073,7 @@ class Member(Person):
     id: Union[str, MemberId] = None
     email: str = None
     telephone: str = None
-    organization: Optional[str] = None
+    organization: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1089,7 +1091,9 @@ class Member(Person):
         if not isinstance(self.telephone, str):
             self.telephone = str(self.telephone)
 
-        if self.organization is not None and not isinstance(self.organization, str):
+        if self._is_empty(self.organization):
+            self.MissingRequiredField("organization")
+        if not isinstance(self.organization, str):
             self.organization = str(self.organization)
 
         super().__post_init__(**kwargs)
@@ -1181,9 +1185,9 @@ class Sample(MaterialEntity):
 
     id: Union[str, SampleId] = None
     name: str = None
+    description: str = None
     tissue: str = None
     has_individual: Union[dict, "Individual"] = None
-    description: Optional[str] = None
     vital_status_at_sampling: Optional[str] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
@@ -1202,6 +1206,11 @@ class Sample(MaterialEntity):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
         if self._is_empty(self.tissue):
             self.MissingRequiredField("tissue")
         if not isinstance(self.tissue, str):
@@ -1211,9 +1220,6 @@ class Sample(MaterialEntity):
             self.MissingRequiredField("has_individual")
         if not isinstance(self.has_individual, Individual):
             self.has_individual = Individual(**as_dict(self.has_individual))
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
 
         if self.vital_status_at_sampling is not None and not isinstance(self.vital_status_at_sampling, str):
             self.vital_status_at_sampling = str(self.vital_status_at_sampling)
@@ -1516,6 +1522,8 @@ class Protocol(InformationContentEntity):
     name: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
+    type: Optional[str] = None
+    xref: Optional[Union[str, List[str]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1532,6 +1540,13 @@ class Protocol(InformationContentEntity):
 
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if not isinstance(self.xref, list):
+            self.xref = [self.xref] if self.xref is not None else []
+        self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
 
         self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -1551,17 +1566,17 @@ class LibraryPreparationProtocol(Protocol):
     class_model_uri: ClassVar[URIRef] = GHGA.LibraryPreparationProtocol
 
     id: Union[str, LibraryPreparationProtocolId] = None
+    library_name: str = None
+    library_layout: str = None
+    library_type: str = None
+    library_selection: str = None
+    library_construction: str = None
+    library_preparation: str = None
+    library_construction_kit_retail_name: str = None
+    library_construction_kit_manufacturer: str = None
     name: str = None
     description: str = None
-    library_name: Optional[str] = None
-    library_layout: Optional[str] = None
-    library_type: Optional[str] = None
-    library_selection: Optional[str] = None
-    library_construction: Optional[str] = None
-    library_preparation: Optional[str] = None
     library_level: Optional[str] = None
-    library_construction_kit_retail_name: Optional[str] = None
-    library_construction_kit_manufacturer: Optional[str] = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
     target_regions: Optional[str] = None
@@ -1574,6 +1589,46 @@ class LibraryPreparationProtocol(Protocol):
         if not isinstance(self.id, LibraryPreparationProtocolId):
             self.id = LibraryPreparationProtocolId(self.id)
 
+        if self._is_empty(self.library_name):
+            self.MissingRequiredField("library_name")
+        if not isinstance(self.library_name, str):
+            self.library_name = str(self.library_name)
+
+        if self._is_empty(self.library_layout):
+            self.MissingRequiredField("library_layout")
+        if not isinstance(self.library_layout, str):
+            self.library_layout = str(self.library_layout)
+
+        if self._is_empty(self.library_type):
+            self.MissingRequiredField("library_type")
+        if not isinstance(self.library_type, str):
+            self.library_type = str(self.library_type)
+
+        if self._is_empty(self.library_selection):
+            self.MissingRequiredField("library_selection")
+        if not isinstance(self.library_selection, str):
+            self.library_selection = str(self.library_selection)
+
+        if self._is_empty(self.library_construction):
+            self.MissingRequiredField("library_construction")
+        if not isinstance(self.library_construction, str):
+            self.library_construction = str(self.library_construction)
+
+        if self._is_empty(self.library_preparation):
+            self.MissingRequiredField("library_preparation")
+        if not isinstance(self.library_preparation, str):
+            self.library_preparation = str(self.library_preparation)
+
+        if self._is_empty(self.library_construction_kit_retail_name):
+            self.MissingRequiredField("library_construction_kit_retail_name")
+        if not isinstance(self.library_construction_kit_retail_name, str):
+            self.library_construction_kit_retail_name = str(self.library_construction_kit_retail_name)
+
+        if self._is_empty(self.library_construction_kit_manufacturer):
+            self.MissingRequiredField("library_construction_kit_manufacturer")
+        if not isinstance(self.library_construction_kit_manufacturer, str):
+            self.library_construction_kit_manufacturer = str(self.library_construction_kit_manufacturer)
+
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
@@ -1584,32 +1639,8 @@ class LibraryPreparationProtocol(Protocol):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.library_name is not None and not isinstance(self.library_name, str):
-            self.library_name = str(self.library_name)
-
-        if self.library_layout is not None and not isinstance(self.library_layout, str):
-            self.library_layout = str(self.library_layout)
-
-        if self.library_type is not None and not isinstance(self.library_type, str):
-            self.library_type = str(self.library_type)
-
-        if self.library_selection is not None and not isinstance(self.library_selection, str):
-            self.library_selection = str(self.library_selection)
-
-        if self.library_construction is not None and not isinstance(self.library_construction, str):
-            self.library_construction = str(self.library_construction)
-
-        if self.library_preparation is not None and not isinstance(self.library_preparation, str):
-            self.library_preparation = str(self.library_preparation)
-
         if self.library_level is not None and not isinstance(self.library_level, str):
             self.library_level = str(self.library_level)
-
-        if self.library_construction_kit_retail_name is not None and not isinstance(self.library_construction_kit_retail_name, str):
-            self.library_construction_kit_retail_name = str(self.library_construction_kit_retail_name)
-
-        if self.library_construction_kit_manufacturer is not None and not isinstance(self.library_construction_kit_manufacturer, str):
-            self.library_construction_kit_manufacturer = str(self.library_construction_kit_manufacturer)
 
         if self.primer is not None and not isinstance(self.primer, str):
             self.primer = str(self.primer)
@@ -1641,10 +1672,11 @@ class SequencingProtocol(Protocol):
     class_model_uri: ClassVar[URIRef] = GHGA.SequencingProtocol
 
     id: Union[str, SequencingProtocolId] = None
-    sequencing_center: Optional[str] = None
-    instrument_model: Optional[str] = None
+    sequencing_center: str = None
+    instrument_model: str = None
     read_length: Optional[str] = None
     read_pair_number: Optional[str] = None
+    sequencing_length: Optional[str] = None
     target_coverage: Optional[str] = None
     reference_annotation: Optional[str] = None
     lane_number: Optional[str] = None
@@ -1667,10 +1699,14 @@ class SequencingProtocol(Protocol):
         if not isinstance(self.id, SequencingProtocolId):
             self.id = SequencingProtocolId(self.id)
 
-        if self.sequencing_center is not None and not isinstance(self.sequencing_center, str):
+        if self._is_empty(self.sequencing_center):
+            self.MissingRequiredField("sequencing_center")
+        if not isinstance(self.sequencing_center, str):
             self.sequencing_center = str(self.sequencing_center)
 
-        if self.instrument_model is not None and not isinstance(self.instrument_model, str):
+        if self._is_empty(self.instrument_model):
+            self.MissingRequiredField("instrument_model")
+        if not isinstance(self.instrument_model, str):
             self.instrument_model = str(self.instrument_model)
 
         if self.read_length is not None and not isinstance(self.read_length, str):
@@ -1678,6 +1714,9 @@ class SequencingProtocol(Protocol):
 
         if self.read_pair_number is not None and not isinstance(self.read_pair_number, str):
             self.read_pair_number = str(self.read_pair_number)
+
+        if self.sequencing_length is not None and not isinstance(self.sequencing_length, str):
+            self.sequencing_length = str(self.sequencing_length)
 
         if self.target_coverage is not None and not isinstance(self.target_coverage, str):
             self.target_coverage = str(self.target_coverage)
@@ -1817,7 +1856,7 @@ class File(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.File
 
     id: Union[str, FileId] = None
-    name: Optional[str] = None
+    name: str = None
     format: Optional[str] = None
     size: Optional[str] = None
     checksum: Optional[str] = None
@@ -1831,7 +1870,9 @@ class File(InformationContentEntity):
         if not isinstance(self.id, FileId):
             self.id = FileId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
             self.name = str(self.name)
 
         if self.format is not None and not isinstance(self.format, str):
@@ -2364,6 +2405,8 @@ class VitalStatusEnum(EnumDefinitionImpl):
                                  description="Showing characteristics of life; displaying signs of life.")
     deceased = PermissibleValue(text="deceased",
                                        description="The cessation of life.")
+    unknown = PermissibleValue(text="unknown",
+                                     description="Vital status is unknown.")
 
     _defn = EnumDefinition(
         name="VitalStatusEnum",
@@ -2647,7 +2690,7 @@ slots.year_of_birth = Slot(uri=GHGA.year_of_birth, name="year of birth", curie=G
                    model_uri=GHGA.year_of_birth, domain=None, range=Optional[str])
 
 slots.vital_status = Slot(uri=GHGA.vital_status, name="vital status", curie=GHGA.curie('vital_status'),
-                   model_uri=GHGA.vital_status, domain=None, range=Optional[str])
+                   model_uri=GHGA.vital_status, domain=None, range=Optional[Union[str, "VitalStatusEnum"]])
 
 slots.ethnicity = Slot(uri=GHGA.ethnicity, name="ethnicity", curie=GHGA.curie('ethnicity'),
                    model_uri=GHGA.ethnicity, domain=None, range=Optional[str])
@@ -2759,6 +2802,9 @@ slots.instrument_model = Slot(uri=GHGA.instrument_model, name="instrument model"
 
 slots.read_length = Slot(uri=GHGA.read_length, name="read length", curie=GHGA.curie('read_length'),
                    model_uri=GHGA.read_length, domain=None, range=Optional[str])
+
+slots.sequencing_length = Slot(uri=GHGA.sequencing_length, name="sequencing length", curie=GHGA.curie('sequencing_length'),
+                   model_uri=GHGA.sequencing_length, domain=None, range=Optional[str])
 
 slots.read_pair_number = Slot(uri=GHGA.read_pair_number, name="read pair number", curie=GHGA.curie('read_pair_number'),
                    model_uri=GHGA.read_pair_number, domain=None, range=Optional[str])
@@ -2904,6 +2950,15 @@ slots.experiment_title = Slot(uri=GHGA.title, name="experiment_title", curie=GHG
 slots.experiment_description = Slot(uri=GHGA.description, name="experiment_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.experiment_description, domain=Experiment, range=str)
 
+slots.experiment_biological_replicates = Slot(uri=GHGA.biological_replicates, name="experiment_biological replicates", curie=GHGA.curie('biological_replicates'),
+                   model_uri=GHGA.experiment_biological_replicates, domain=Experiment, range=Optional[str])
+
+slots.experiment_technical_replicates = Slot(uri=GHGA.technical_replicates, name="experiment_technical replicates", curie=GHGA.curie('technical_replicates'),
+                   model_uri=GHGA.experiment_technical_replicates, domain=Experiment, range=Optional[str])
+
+slots.experiment_experimental_replicates = Slot(uri=GHGA.experimental_replicates, name="experiment_experimental replicates", curie=GHGA.curie('experimental_replicates'),
+                   model_uri=GHGA.experiment_experimental_replicates, domain=Experiment, range=Optional[str])
+
 slots.experiment_has_study = Slot(uri=GHGA.has_study, name="experiment_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.experiment_has_study, domain=Experiment, range=Union[dict, Study])
 
@@ -2937,11 +2992,17 @@ slots.experiment_process_has_output = Slot(uri=GHGA.has_output, name="experiment
 slots.protocol_name = Slot(uri=GHGA.name, name="protocol_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.protocol_name, domain=Protocol, range=Optional[str])
 
+slots.protocol_type = Slot(uri=GHGA.type, name="protocol_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.protocol_type, domain=Protocol, range=Optional[str])
+
 slots.protocol_description = Slot(uri=GHGA.description, name="protocol_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.protocol_description, domain=Protocol, range=Optional[str])
 
 slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('url'),
                    model_uri=GHGA.protocol_url, domain=Protocol, range=Optional[str])
+
+slots.protocol_xref = Slot(uri=GHGA.xref, name="protocol_xref", curie=GHGA.curie('xref'),
+                   model_uri=GHGA.protocol_xref, domain=Protocol, range=Optional[Union[str, List[str]]])
 
 slots.protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
@@ -2952,8 +3013,38 @@ slots.library_preparation_protocol_name = Slot(uri=GHGA.name, name="library prep
 slots.library_preparation_protocol_description = Slot(uri=GHGA.description, name="library preparation protocol_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.library_preparation_protocol_description, domain=LibraryPreparationProtocol, range=str)
 
+slots.library_preparation_protocol_library_name = Slot(uri=GHGA.library_name, name="library preparation protocol_library name", curie=GHGA.curie('library_name'),
+                   model_uri=GHGA.library_preparation_protocol_library_name, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_layout = Slot(uri=GHGA.library_layout, name="library preparation protocol_library layout", curie=GHGA.curie('library_layout'),
+                   model_uri=GHGA.library_preparation_protocol_library_layout, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_type = Slot(uri=GHGA.library_type, name="library preparation protocol_library type", curie=GHGA.curie('library_type'),
+                   model_uri=GHGA.library_preparation_protocol_library_type, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_selection = Slot(uri=GHGA.library_selection, name="library preparation protocol_library selection", curie=GHGA.curie('library_selection'),
+                   model_uri=GHGA.library_preparation_protocol_library_selection, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_construction = Slot(uri=GHGA.library_construction, name="library preparation protocol_library construction", curie=GHGA.curie('library_construction'),
+                   model_uri=GHGA.library_preparation_protocol_library_construction, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_preparation = Slot(uri=GHGA.library_preparation, name="library preparation protocol_library preparation", curie=GHGA.curie('library_preparation'),
+                   model_uri=GHGA.library_preparation_protocol_library_preparation, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_construction_kit_retail_name = Slot(uri=GHGA.library_construction_kit_retail_name, name="library preparation protocol_library construction kit retail name", curie=GHGA.curie('library_construction_kit_retail_name'),
+                   model_uri=GHGA.library_preparation_protocol_library_construction_kit_retail_name, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_library_construction_kit_manufacturer = Slot(uri=GHGA.library_construction_kit_manufacturer, name="library preparation protocol_library construction kit manufacturer", curie=GHGA.curie('library_construction_kit_manufacturer'),
+                   model_uri=GHGA.library_preparation_protocol_library_construction_kit_manufacturer, domain=LibraryPreparationProtocol, range=str)
+
 slots.library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="library preparation protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.library_preparation_protocol_has_attribute, domain=LibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.sequencing_protocol_sequencing_center = Slot(uri=GHGA.sequencing_center, name="sequencing protocol_sequencing center", curie=GHGA.curie('sequencing_center'),
+                   model_uri=GHGA.sequencing_protocol_sequencing_center, domain=SequencingProtocol, range=str)
+
+slots.sequencing_protocol_instrument_model = Slot(uri=GHGA.instrument_model, name="sequencing protocol_instrument model", curie=GHGA.curie('instrument_model'),
+                   model_uri=GHGA.sequencing_protocol_instrument_model, domain=SequencingProtocol, range=str)
 
 slots.sequencing_protocol_name = Slot(uri=GHGA.name, name="sequencing protocol_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.sequencing_protocol_name, domain=SequencingProtocol, range=Optional[str])
@@ -2992,16 +3083,10 @@ slots.sample_type = Slot(uri=GHGA.type, name="sample_type", curie=GHGA.curie('ty
                    model_uri=GHGA.sample_type, domain=Sample, range=Optional[Union[str, "CaseControlEnum"]])
 
 slots.sample_description = Slot(uri=GHGA.description, name="sample_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.sample_description, domain=Sample, range=Optional[str])
+                   model_uri=GHGA.sample_description, domain=Sample, range=str)
 
 slots.sample_tissue = Slot(uri=GHGA.tissue, name="sample_tissue", curie=GHGA.curie('tissue'),
                    model_uri=GHGA.sample_tissue, domain=Sample, range=str)
-
-slots.sample_isolation = Slot(uri=GHGA.isolation, name="sample_isolation", curie=GHGA.curie('isolation'),
-                   model_uri=GHGA.sample_isolation, domain=Sample, range=Optional[str])
-
-slots.sample_storage = Slot(uri=GHGA.storage, name="sample_storage", curie=GHGA.curie('storage'),
-                   model_uri=GHGA.sample_storage, domain=Sample, range=Optional[str])
 
 slots.sample_has_individual = Slot(uri=GHGA.has_individual, name="sample_has individual", curie=GHGA.curie('has_individual'),
                    model_uri=GHGA.sample_has_individual, domain=Sample, range=Union[dict, "Individual"])
@@ -3012,29 +3097,14 @@ slots.sample_xref = Slot(uri=GHGA.xref, name="sample_xref", curie=GHGA.curie('xr
 slots.sample_has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="sample_has biospecimen", curie=GHGA.curie('has_biospecimen'),
                    model_uri=GHGA.sample_has_biospecimen, domain=Sample, range=Optional[Union[dict, Biospecimen]])
 
-slots.individual_gender = Slot(uri=GHGA.gender, name="individual_gender", curie=GHGA.curie('gender'),
-                   model_uri=GHGA.individual_gender, domain=Individual, range=Optional[str])
-
 slots.individual_sex = Slot(uri=GHGA.sex, name="individual_sex", curie=GHGA.curie('sex'),
                    model_uri=GHGA.individual_sex, domain=Individual, range=Union[str, "BiologicalSexEnum"])
 
 slots.individual_age = Slot(uri=GHGA.age, name="individual_age", curie=GHGA.curie('age'),
                    model_uri=GHGA.individual_age, domain=Individual, range=int)
 
-slots.individual_year_of_birth = Slot(uri=GHGA.year_of_birth, name="individual_year of birth", curie=GHGA.curie('year_of_birth'),
-                   model_uri=GHGA.individual_year_of_birth, domain=Individual, range=Optional[str])
-
 slots.individual_vital_status = Slot(uri=GHGA.vital_status, name="individual_vital status", curie=GHGA.curie('vital_status'),
                    model_uri=GHGA.individual_vital_status, domain=Individual, range=Union[str, "VitalStatusEnum"])
-
-slots.individual_ethnicity = Slot(uri=GHGA.ethnicity, name="individual_ethnicity", curie=GHGA.curie('ethnicity'),
-                   model_uri=GHGA.individual_ethnicity, domain=Individual, range=Optional[str])
-
-slots.individual_ancestry = Slot(uri=GHGA.ancestry, name="individual_ancestry", curie=GHGA.curie('ancestry'),
-                   model_uri=GHGA.individual_ancestry, domain=Individual, range=Optional[str])
-
-slots.individual_geographical_region = Slot(uri=GHGA.geographical_region, name="individual_geographical region", curie=GHGA.curie('geographical_region'),
-                   model_uri=GHGA.individual_geographical_region, domain=Individual, range=Optional[str])
 
 slots.individual_has_parent = Slot(uri=GHGA.has_parent, name="individual_has parent", curie=GHGA.curie('has_parent'),
                    model_uri=GHGA.individual_has_parent, domain=Individual, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, "Individual"]], List[Union[dict, "Individual"]]]])
@@ -3051,23 +3121,11 @@ slots.family_has_proband = Slot(uri=GHGA.has_proband, name="family_has proband",
 slots.cohort_has_member = Slot(uri=GHGA.has_member, name="cohort_has member", curie=GHGA.curie('has_member'),
                    model_uri=GHGA.cohort_has_member, domain=Cohort, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
 
-slots.file_format = Slot(uri=GHGA.format, name="file_format", curie=GHGA.curie('format'),
-                   model_uri=GHGA.file_format, domain=File, range=Optional[str])
+slots.file_name = Slot(uri=GHGA.name, name="file_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.file_name, domain=File, range=str)
 
 slots.file_type = Slot(uri=GHGA.type, name="file_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.file_type, domain=File, range=Optional[Union[str, "FileTypeEnum"]])
-
-slots.file_size = Slot(uri=GHGA.size, name="file_size", curie=GHGA.curie('size'),
-                   model_uri=GHGA.file_size, domain=File, range=Optional[str])
-
-slots.file_checksum = Slot(uri=GHGA.checksum, name="file_checksum", curie=GHGA.curie('checksum'),
-                   model_uri=GHGA.file_checksum, domain=File, range=Optional[str])
-
-slots.file_file_index = Slot(uri=GHGA.file_index, name="file_file index", curie=GHGA.curie('file_index'),
-                   model_uri=GHGA.file_file_index, domain=File, range=Optional[str])
-
-slots.file_category = Slot(uri=GHGA.category, name="file_category", curie=GHGA.curie('category'),
-                   model_uri=GHGA.file_category, domain=File, range=Optional[str])
 
 slots.analysis_has_input = Slot(uri=GHGA.has_input, name="analysis_has input", curie=GHGA.curie('has_input'),
                    model_uri=GHGA.analysis_has_input, domain=Analysis, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
@@ -3169,16 +3227,13 @@ slots.member_telephone = Slot(uri=GHGA.telephone, name="member_telephone", curie
                    model_uri=GHGA.member_telephone, domain=Member, range=str)
 
 slots.member_organization = Slot(uri=GHGA.organization, name="member_organization", curie=GHGA.curie('organization'),
-                   model_uri=GHGA.member_organization, domain=Member, range=Optional[str])
+                   model_uri=GHGA.member_organization, domain=Member, range=str)
 
 slots.publication_id = Slot(uri=GHGA.id, name="publication_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.publication_id, domain=Publication, range=Union[str, PublicationId])
 
 slots.publication_title = Slot(uri=GHGA.title, name="publication_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.publication_title, domain=Publication, range=Optional[str])
-
-slots.publication_abstract = Slot(uri=GHGA.abstract, name="publication_abstract", curie=GHGA.curie('abstract'),
-                   model_uri=GHGA.publication_abstract, domain=Publication, range=Optional[str])
 
 slots.publication_xref = Slot(uri=GHGA.xref, name="publication_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.publication_xref, domain=Publication, range=Optional[Union[str, List[str]]])
