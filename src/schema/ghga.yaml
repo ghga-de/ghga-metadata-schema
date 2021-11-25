@@ -218,7 +218,7 @@ classes:
         required: true
       type:
         description: >-
-          The type of Study. For example, "Cancer Genomics", "Epigenetics", "Exome Sequencing".
+          The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
         range: study_type_enum
         required: true
         broad_mappings:
@@ -1707,7 +1707,7 @@ slots:
 
   library construction:
     description: >-
-      The name of a library construction approach being used. (eg: "10X v2 sequencing" or "Smart-seq2")
+      The name of a library construction approach being used. (eg: '10X v2 sequencing' or 'Smart-seq2')
     close_mappings:
       - OBI:0000711
 
@@ -1735,7 +1735,7 @@ slots:
 
   primer:
     description: >-
-      The type of primer used for reverse transcription, e.g. "oligo-dT" or "random" primer. 
+      The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer.
       This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
     broad_mappings:
       - NCIT:C1451
@@ -1835,13 +1835,13 @@ slots:
   
   umi barcode offset:
     description: >-
-      The offset in sequence of the UMI identifying barcode. (E.g. "16").
+      The offset in sequence of the UMI identifying barcode. (E.g. '16').
     close_mappings:
       - EFO:0010207
 
   umi barcode size: 
     description: >-
-      The size of the UMI identifying barcode (Eg. "10").
+      The size of the UMI identifying barcode (Eg. '10').
     close_mappings:
       - EFO:0010209
 
@@ -1853,13 +1853,13 @@ slots:
 
   cell barcode offset: 
     description: >-
-      The offset in sequence of the cell identifying barcode. (Eg. "0").
+      The offset in sequence of the cell identifying barcode. (Eg. '0').
     close_mappings:
       - EFO:0010204
 
   cell barcode size: 
     description: >-
-      The size of the cell identifying barcode (E.g. "16").
+      The size of the cell identifying barcode (E.g. '16').
     close_mappings:
       - EFO:0010205
 
@@ -1871,7 +1871,7 @@ slots:
 
   vital status at sampling:
     description: >-
-      Vital Status of an Individual at the point of sampling (eg:"Alive", "Deceased").
+      Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
     close_mappings:
       - NCIT:C25717
 
