@@ -5,7 +5,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = ghga
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = graphql jsonschema markdown shex owl csv graphql python rdf sql
+TGTS = graphql jsonschema markdown shex owl csv graphql python pydantic rdf sql
 
 # Optional arguments to supply to the generators
 #For example, GEN_OPTS = --no-mergeimports
@@ -71,6 +71,15 @@ gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pydantic classes
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+gen-pydantic: $(patsubst %, target/pydantic/%_models.py, $(SCHEMA_NAMES))
+.PHONY: gen-pydantic
+target/pydantic/%_models.py: $(SCHEMA_DIR)/%.yaml  tdir-pydantic
+	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # GraphQL
