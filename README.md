@@ -23,29 +23,24 @@ found in `src/schema/`.
 Using the YAML, and the [LinkML framework](https://github.com/linkml/linkml),
 we autogenerate vendor/technology specific artifacts like:
 
-- JSON Schema
+- [JSON Schema](artifacts/jsonschema)
     - JSON Schema definitions of all classes and properties
-- Python Dataclasses
+- [Python Dataclasses](artifacts/python)
     - Python Dataclasses for each defined class
-- SQL DDL
+- [Pydantic models](artifacts/pydantic)
+    - Pydantic models for each defined class
+- [SQL DDL](artifacts/sql)
     - SQL Data Definition Language to create SQL tables for all classes
-- SQLAlchemy classes
-    - SQLAlchemy classes to map SQL tables and columns to each defined class
-and slot, respectively
-- GraphQL
+- [SQLAlchemy classes](artifacts/sql)
+    - SQLAlchemy classes to map SQL tables and columns to each defined class and slot, respectively
+- [GraphQL](artifacts/graphql)
     - GraphQL types for each defined class
-- ShEx
+- [ShEx](artifacts/shex)
     - Shape Expressions for each defined class
-- RDF
+- [RDF](artifacts/rdf)
     - The model represented as RDF Turtle (TTL)
-- OWL
+- [OWL](artifacts/owl)
     - The model in Web Ontology Language (OWL), serialized as RDF Turtle (TTL)
-- CSV
+- [CSV](artifacts/csv)
     - A CSV summary of the model and its classes
-
-
-Artifacts that are currently a work in progress:
-- Protobuf
-- Pydantic classes
-
 
