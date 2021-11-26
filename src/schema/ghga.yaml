@@ -623,6 +623,8 @@ classes:
 
   disease or phenotypic feature:
     is_a: biological quality
+    mixins:
+      - ontology class mixin
     description: >-
       Disease or Phenotypic Feature that the entity is associated with. This entity is a union
       of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
@@ -1207,6 +1209,8 @@ classes:
 
   anatomical entity:
     is_a: material entity
+    mixins:
+      - ontology class mixin
     description: >-
       Biological entity that is either an individual member of a biological species or constitutes
       the structural organization of an individual member of a biological species.
