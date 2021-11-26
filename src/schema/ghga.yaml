@@ -583,6 +583,8 @@ classes:
       - description
       - has individual
       - has anatomical entity
+      - has disease
+      - has phenotypic feature
     slot_usage:
       has individual:
         description: >-
@@ -601,6 +603,24 @@ classes:
         inlined_as_list: false
         broad_mappings:
           - EFO:0000635
+      has disease:
+        description: >-
+          The Disease entity that is associated with the Individual. Typically, a concept
+          from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that
+          the Individual suffers from 'Heart Disease'.
+        range: disease
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has phenotypic feature:
+        description: >-
+          The Phenotypic Feature entity that is associated with the Individual. Typically, a
+          concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the
+          Individual exhibits 'Fibrosarcoma' as one of its phenotype.
+        range: phenotypic feature
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   disease or phenotypic feature:
     is_a: biological quality
