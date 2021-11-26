@@ -33,7 +33,6 @@ classes:
       of all the other classes.
     slots:
       - id
-      - accession
       - xref
       - type
       - creation date
@@ -144,6 +143,7 @@ classes:
   project:
     is_a: research activity
     mixins:
+      - accession mixin
       - attribute mixin
     description: >-
       Any specifically defined piece of work that is undertaken or attempted to meet
@@ -187,6 +187,7 @@ classes:
   study:
     is_a: investigation
     mixins:
+      - accession mixin
       - publication mixin
       - attribute mixin
       - status mixin
@@ -256,6 +257,8 @@ classes:
 
   experiment:
     is_a: investigation
+    mixins:
+      - accession mixin
     description: >-
       An experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
@@ -566,6 +569,8 @@ classes:
 
   biospecimen:
     is_a: material entity
+    mixins:
+      - accession mixin
     description: >-
           A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
           diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
@@ -622,9 +627,6 @@ classes:
       Disease or Phenotypic Feature that the entity is associated with. This entity is a union
       of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
       are used interchangeably with Phenotype concepts or vice-versa.
-    slots:
-      - name
-      - description
     union_of:
       - disease
       - phenotypic feature
@@ -633,6 +635,8 @@ classes:
 
   sample:
     is_a: material entity
+    mixins:
+      - accession mixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
       inspection, investigation, demonstration, or trial use. A sample is prepared from
@@ -700,6 +704,8 @@ classes:
 
   individual:
     is_a: person
+    mixins:
+      - accession mixin
     aliases: ['subject', 'patient']
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -776,6 +782,8 @@ classes:
 
   family:
     is_a: population
+    mixins:
+      - accession mixin
     description: >-
       A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated)
       from a common ancestor, marriage, or adoption.
@@ -800,6 +808,8 @@ classes:
 
   cohort:
     is_a: population
+    mixins:
+      - accession mixin
     description: >-
       A cohort is a collection of individuals that share a common characteristic/observation
       and have been grouped together for a research study/investigation.
@@ -816,6 +826,8 @@ classes:
 
   file:
     is_a: information content entity
+    mixins:
+    - accession mixin
     aliases: ['file object']
     slots:
       - name
@@ -834,6 +846,8 @@ classes:
 
   analysis:
     is_a: data transformation
+    mixins:
+      - accession mixin
     aliases: ['data analysis']
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -924,6 +938,7 @@ classes:
   dataset:
     is_a: information content entity
     mixins:
+      - accession mixin
       - publication mixin
       - status mixin
     description: >-
@@ -1063,6 +1078,8 @@ classes:
 
   data access policy:
     is_a: information content entity
+    mixins:
+      - accession mixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -1103,6 +1120,8 @@ classes:
 
   data access committee:
     is_a: committee
+    mixins:
+      - accession mixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
@@ -1347,6 +1366,29 @@ classes:
         description: >-
           The status of a Submission. For example, 'in progress' or 'submitted'.
         range: status_enum
+
+  ontology class mixin:
+    description: Mixin for entities that represent an class/term/concept from an ontology.
+    slots:
+      - id
+      - name
+      - description
+    slot_usage:
+        id:
+          description: >-
+            The Compact UR Identifier (CURIE) that uniquely identifies
+            this ontology class.
+        name:
+          description: >-
+            The name or label (rdfs:label) of an ontology class.
+        description:
+          description: >-
+            The description or definition of an ontology class.
+
+  accession mixin:
+    description: Mixin for entities that can be assigned a GHGA accession.
+    slots:
+      - accession
 
   attribute mixin:
     description: Mixin for entities that can have one or more attributes.
