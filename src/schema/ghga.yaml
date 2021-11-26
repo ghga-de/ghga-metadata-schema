@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 1.0.0a
+version: 0.1.0
 
 imports:
 - linkml:types
@@ -39,6 +39,8 @@ classes:
       - has attribute
       - creation date
       - update date
+      - replaces
+      - replaced by
     slot_usage:
       id:
         description: >-
@@ -111,9 +113,6 @@ classes:
 
   investigation:
     is_a: planned process
-    mixins:
-      - release status mixin
-      - deprecation mixin
     description: >-
       Investigation is the process of carrying out a plan or procedure so as to discover fact
       or information about the object of study.
@@ -121,6 +120,9 @@ classes:
       - title
       - description
       - has publication
+      - status
+      - release date
+      - deprecation date
     exact_mappings:
       - SIO:000747
       - OBI:0000066
@@ -176,7 +178,6 @@ classes:
         exact_mappings:
           - NCIT:C25365
           - SIO:000136
-          
       has publication:
         description: >-
           One or more Publication entities associated with this Project.
@@ -187,7 +188,7 @@ classes:
       has study:
         description: >-
           One or more Study entities associated with this Project.
-        range: experiment
+        range: study
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -582,8 +583,6 @@ classes:
       - description
       - has individual
       - has anatomical entity
-      - has disease
-      - has phenotypic feature
     slot_usage:
       has individual:
         description: >-
@@ -602,26 +601,6 @@ classes:
         inlined_as_list: false
         broad_mappings:
           - EFO:0000635
-      has disease:
-        description: >-
-          The Disease entity that is associated with this Biospecimen at the time of retrieval
-          from the organism. Typically, a concept from Mondo Disease Ontology.
-          For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen
-          was extracted from - suffers from 'Heart Fibrosarcoma'.
-        range: disease
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has phenotypic feature:
-        description: >-
-          The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
-          from the organism. Typically, a concept from Human Phenotype Ontology.
-          For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen
-          was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.
-        range: phenotypic feature
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
 
   disease or phenotypic feature:
     is_a: biological quality
@@ -721,6 +700,8 @@ classes:
       - ancestry
       - has parent
       - has children
+      - has disease
+      - has phenotypic feature
     slot_usage:
       sex:
         required: true
@@ -739,6 +720,26 @@ classes:
       has children:
         description: One or more children for this Individual.
         range: individual
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has disease:
+        description: >-
+          The Disease entity that is associated with this Biospecimen at the time of retrieval
+          from the organism. Typically, a concept from Mondo Disease Ontology.
+          For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen
+          was extracted from - suffers from 'Heart Fibrosarcoma'.
+        range: disease
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has phenotypic feature:
+        description: >-
+          The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
+          from the organism. Typically, a concept from Human Phenotype Ontology.
+          For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen
+          was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.
+        range: phenotypic feature
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -908,9 +909,6 @@ classes:
 
   dataset:
     is_a: information content entity
-    mixins:
-      - release status mixin
-      - deprecation mixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution.
     exact_mappings:
@@ -920,6 +918,7 @@ classes:
       - description
       - has file
       - has publication
+      - status
     slot_usage:
       title:
         required: true
@@ -941,6 +940,8 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      status:
+        range: status_enum
 
   experiment dataset:
     is_a: dataset
@@ -1239,14 +1240,12 @@ classes:
         range: user_role_enum
 
   submission:
-    is_a: named thing
-    mixins:
-      - submission status mixin
     description: >-
       A grouping entity that represents information about one or more entities.
       A submission can be considered as a set of inter-related (and inter-connected)
       entities that represent a data submission to GHGA.
     slots:
+      - id
       - has study
       - has project
       - has sample
@@ -1256,7 +1255,16 @@ classes:
       - has analysis
       - has file
       - has data access policy
+      - submission date
+      - status
+      - creation date
+      - update date
+      - replaces
+      - replaced by
     slot_usage:
+      id:
+        description: >-
+          A internal unique identifier for the Submission.
       has study:
         description: >-
           Information about a Study entities associated with this submission.
@@ -1317,31 +1325,22 @@ classes:
         range: data access policy
         inlined: true
         inlined_as_list: false
-
-  submission status mixin:
-    mixin: true
-    description: >-
-      A mixin that keeps track of the submission status.
-    slots:
-      - submission status
-      - submission date
-
-  release status mixin:
-    mixin: true
-    description: >-
-      A mixin that keeps track of the release status.
-    slots:
-      - release status
-      - release date
-
-  deprecation mixin:
-    mixin: true
-    description: >-
-      A mixin that keeps track of the deprecation status.
-    slots:
-      - deprecated
-      - deprecation date
-      - replaced by
+      creation date:
+        description: >-
+          Timestamp (in ISO 8601 format) when the Submission was created.
+      update date:
+        description: >-
+          Timestamp (in ISO 8601 format) when the Submission was updated.
+      replaces:
+        description: >-
+          Refers to a deprecated Submission that is being replaced by the current Submission.
+      replaced by:
+        description: >-
+          Refers to the Submission which replaces a currently deprecated Submission.
+      status:
+        description: >-
+          The status of a Submission. For example, 'in progress' or 'submitted'.
+        range: status_enum
 
 slots:
 
@@ -1875,37 +1874,34 @@ slots:
     close_mappings:
       - NCIT:C25717
 
-  submission status:
-    description: >-
-      The status of submission.
-    range: submission_status_enum
-
   submission date:
     description: >-
-      The date when submission was completed.
-
-  release status:
-    description: >-
-      The release status of an entity.
-    range: release_status_enum
+      The timestamp (in ISO 8601 format) when submission was marked completed.
 
   release date:
     description: >-
-      The date when the entity was released for public consumption.
-
-  deprecated:
-    description: >-
-      The deprecation status of an entity.
-    range: boolean
+      The timestamp (in ISO 8601 format) when the entity was released for public consumption.
 
   deprecation date:
     description: >-
-      The date when the entity was deprecated.
+      The timestamp (in ISO 8601 format) when the entity was deprecated.
 
   replaced by:
     description: >-
-      The entity which replaces a deprecated entity.
+      Refers to the entity which replaces a currently deprecated entity.
+    domain: named thing
     range: named thing
+
+  replaces:
+    inverse: replaced by
+    description: >-
+      Refers to a deprecated entity that is being replaced by the current entity.
+    domain: named thing
+    range: named thing
+
+  status:
+    description: The status of an entity.
+    range: status_enum
 
 enums:
   case_control_enum:
@@ -2015,20 +2011,17 @@ enums:
         description: >-
           vcf File for storing gene sequence variations.
 
-  submission_status_enum:
+  status_enum:
     description: >-
-      Enum to capture submission status.
+      Enum to capture the status of an entity.
     permissible_values:
       in progress:
-        description: Signifies that a submission is in progress.
+        description: Signifies that the entity is in the process of being submitted.
       submitted:
-        description: Signifies that a submission is complete and submitted.
-
-  release_status_enum:
-    description: >-
-      Enum to capture the release status.
-    permissible_values:
+        description: Signifies that the entity has been successfully submitted.
       unreleased:
-        description: Signifies that the submission is not released for public consumption.
+        description: Signifies that the entity is submitted but unreleased for public consumption.
       released:
-        description: Signifies that the submission is released for public consumption.
+        description: Signifies that the entity is submitted and released for public conusmption.
+      deprecated:
+        description: Signifies that the entity is deprecated and is replaced by another entity.
