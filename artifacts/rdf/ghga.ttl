@@ -72,26 +72,26 @@
         <https://w3id.org/GHGA/study_type_enum>,
         <https://w3id.org/GHGA/user_role_enum>,
         <https://w3id.org/GHGA/vital_status_enum> ;
-    linkml:generation_date "2021-11-26T07:50:05"^^xsd:dateTime ;
+    linkml:generation_date "2021-11-26T09:15:02"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "biolink" ;
-            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
-        [ linkml:prefix_prefix "SIO" ;
+    linkml:prefixes [ linkml:prefix_prefix "SIO" ;
             linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
+        [ linkml:prefix_prefix "SNOMEDCT" ;
+            linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference linkml: ],
+        [ linkml:prefix_prefix "COB" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
         [ linkml:prefix_prefix "GENEPIO" ;
             linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
         [ linkml:prefix_prefix "EFO" ;
             linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
-        [ linkml:prefix_prefix "COB" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
-        [ linkml:prefix_prefix "SNOMEDCT" ;
-            linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ],
         [ linkml:prefix_prefix "GHGA" ;
             linkml:prefix_reference <https://w3id.org/GHGA/> ],
-        [ linkml:prefix_prefix "linkml" ;
-            linkml:prefix_reference linkml: ] ;
+        [ linkml:prefix_prefix "biolink" ;
+            linkml:prefix_reference <https://w3id.org/biolink/vocab/> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/accession>,
         <https://w3id.org/GHGA/additional_name>,
@@ -352,7 +352,7 @@
         <https://w3id.org/GHGA/xref>,
         <https://w3id.org/GHGA/year_of_birth> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2021-11-26T07:49:08"^^xsd:dateTime ;
+    linkml:source_file_date "2021-11-26T09:14:13"^^xsd:dateTime ;
     linkml:source_file_size 62067 ;
     linkml:types <https://w3id.org/GHGA/boolean>,
         <https://w3id.org/GHGA/date>,
@@ -2418,8 +2418,8 @@
 
 <https://w3id.org/GHGA/CellLine> a linkml:ClassDefinition ;
     skos:definition "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history." ;
-    skos:exactMatch <https://w3id.org/GHGA/CLO:0000031>,
-        <https://w3id.org/GHGA/SIO:010054> ;
+    skos:exactMatch <clo:0000031>,
+        <sio:010054> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/CellLine> ;
     linkml:definition_uri <https://w3id.org/GHGA/CellLine> ;
@@ -2628,7 +2628,7 @@
 
 <https://w3id.org/GHGA/BiologicalQuality> a linkml:ClassDefinition ;
     skos:definition "A biological quality is a quality held by a biological entity." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000475> ;
+    skos:exactMatch <sio:000475> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/BiologicalQuality> ;
     linkml:definition_uri <https://w3id.org/GHGA/BiologicalQuality> ;
@@ -3038,7 +3038,7 @@
 
 <https://w3id.org/GHGA/AnatomicalEntity> a linkml:ClassDefinition ;
     skos:definition "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species." ;
-    skos:exactMatch <https://w3id.org/GHGA/UBERON:0001062> ;
+    skos:exactMatch <uberon:0001062> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/AnatomicalEntity> ;
     linkml:definition_uri <https://w3id.org/GHGA/AnatomicalEntity> ;
@@ -3715,7 +3715,7 @@
 
 <https://w3id.org/GHGA/DataTransformation> a linkml:ClassDefinition ;
     skos:definition "A data transformation technique used to analyze and interpret data to gain a better understanding of it." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0200000> ;
+    skos:exactMatch <obi:0200000> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/DataTransformation> ;
     linkml:definition_uri <https://w3id.org/GHGA/DataTransformation> ;
@@ -3735,8 +3735,8 @@
 
 <https://w3id.org/GHGA/Disease> a linkml:ClassDefinition ;
     skos:definition "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism." ;
-    skos:exactMatch <https://w3id.org/GHGA/EFO:0000408>,
-        <https://w3id.org/GHGA/MONDO:0000001> ;
+    skos:exactMatch <efo:0000408>,
+        <mondo:0000001> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Disease> ;
     linkml:definition_uri <https://w3id.org/GHGA/Disease> ;
@@ -3779,9 +3779,9 @@
 <https://w3id.org/GHGA/PhenotypicFeature> a linkml:ClassDefinition ;
     skos:closeMatch <ncit:C16977> ;
     skos:definition "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype." ;
-    skos:exactMatch <https://w3id.org/GHGA/EFO:0000651>,
-        <https://w3id.org/GHGA/HP:0000118>,
-        <https://w3id.org/GHGA/SIO:010056> ;
+    skos:exactMatch <efo:0000651>,
+        <hp:0000118>,
+        <sio:010056> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/PhenotypicFeature> ;
     linkml:definition_uri <https://w3id.org/GHGA/PhenotypicFeature> ;
@@ -3802,7 +3802,7 @@
 <https://w3id.org/GHGA/ResearchActivity> a linkml:ClassDefinition ;
     skos:closeMatch <ncit:C15429> ;
     skos:definition "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world." ;
-    skos:exactMatch <https://w3id.org/GHGA/SEPIO:0000004> ;
+    skos:exactMatch <sepio:0000004> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/ResearchActivity> ;
     linkml:definition_uri <https://w3id.org/GHGA/ResearchActivity> ;
@@ -3877,7 +3877,7 @@
 
 <https://w3id.org/GHGA/MaterialEntity> a linkml:ClassDefinition ;
     skos:definition "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000004> ;
+    skos:exactMatch <sio:000004> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/MaterialEntity> ;
     linkml:definition_uri <https://w3id.org/GHGA/MaterialEntity> ;
@@ -3895,9 +3895,9 @@
 
 <https://w3id.org/GHGA/PlannedProcess> a linkml:ClassDefinition ;
     skos:definition "A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs." ;
-    skos:exactMatch <https://w3id.org/GHGA/COB:0000082>,
-        <https://w3id.org/GHGA/EFO:0004542>,
-        <https://w3id.org/GHGA/OBI:0000011> ;
+    skos:exactMatch <cob:0000082>,
+        <efo:0004542>,
+        <obi:0000011> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/PlannedProcess> ;
     linkml:definition_uri <https://w3id.org/GHGA/PlannedProcess> ;
@@ -4131,9 +4131,9 @@
 
 <https://w3id.org/GHGA/Person> a linkml:ClassDefinition ;
     skos:definition "A member of the species Homo sapiens." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000498>,
-        <ncit:C25190>,
-        <prov:Person> ;
+    skos:exactMatch <ncit:C25190>,
+        <prov:Person>,
+        <sio:000498> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Person> ;
     linkml:definition_uri <https://w3id.org/GHGA/Person> ;
@@ -4242,8 +4242,8 @@
 <https://w3id.org/GHGA/Investigation> a linkml:ClassDefinition ;
     skos:closeMatch <ncit:C15429> ;
     skos:definition "Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0000066>,
-        <https://w3id.org/GHGA/SIO:000747> ;
+    skos:exactMatch <obi:0000066>,
+        <sio:000747> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Investigation> ;
     linkml:definition_uri <https://w3id.org/GHGA/Investigation> ;
@@ -4489,7 +4489,7 @@
 
 <https://w3id.org/GHGA/Biospecimen> a linkml:ClassDefinition ;
     skos:definition "A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0100051> ;
+    skos:exactMatch <obi:0100051> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Biospecimen> ;
     linkml:definition_uri <https://w3id.org/GHGA/Biospecimen> ;
@@ -4597,7 +4597,7 @@
 
 <https://w3id.org/GHGA/Attribute> a linkml:ClassDefinition ;
     skos:definition "A key/value pair that further characterizes an entity." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000614> ;
+    skos:exactMatch <sio:000614> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Attribute> ;
     linkml:definition_uri <https://w3id.org/GHGA/Attribute> ;
@@ -4612,7 +4612,7 @@
         "library protocol" ;
     skos:closeMatch <ncit:C41111> ;
     skos:definition "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0000272> ;
+    skos:exactMatch <obi:0000272> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Protocol> ;
     linkml:definition_uri <https://w3id.org/GHGA/Protocol> ;
@@ -4697,7 +4697,7 @@
 
 <https://w3id.org/GHGA/Dataset> a linkml:ClassDefinition ;
     skos:definition "A Dataset is a collection of Files that is prepared for distribution." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000089> ;
+    skos:exactMatch <sio:000089> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Dataset> ;
     linkml:definition_uri <https://w3id.org/GHGA/Dataset> ;
@@ -4741,7 +4741,7 @@
 <https://w3id.org/GHGA/Sample> a linkml:ClassDefinition ;
     skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)." ;
     skos:exactMatch <biolink:MaterialSample>,
-        <https://w3id.org/GHGA/SIO:001050> ;
+        <sio:001050> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Sample> ;
     linkml:definition_uri <https://w3id.org/GHGA/Sample> ;
@@ -4899,7 +4899,7 @@
 <https://w3id.org/GHGA/Experiment> a linkml:ClassDefinition ;
     skos:closeMatch <ncit:C42790> ;
     skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000994> ;
+    skos:exactMatch <sio:000994> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Experiment> ;
     linkml:definition_uri <https://w3id.org/GHGA/Experiment> ;
