@@ -1,34 +1,11 @@
 
-CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
+CREATE TYPE status_enum AS ENUM ('in progress', 'submitted', 'unreleased', 'released', 'deprecated');
 CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
 CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
-CREATE TYPE submission_status_enum AS ENUM ('in progress', 'submitted');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
-
-CREATE TABLE agent (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	name TEXT, 
-	description TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE anatomical_entity (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	PRIMARY KEY (id)
-);
 
 CREATE TABLE attribute (
 	key TEXT NOT NULL, 
@@ -38,6 +15,92 @@ CREATE TABLE attribute (
 	PRIMARY KEY (key, key_type, value, value_type)
 );
 
+CREATE TABLE named_thing (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE agent (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	name TEXT, 
+	description TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE aggregate_dataset (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_publication TEXT, 
+	status status_enum, 
+	type TEXT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE analysis_dataset (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_publication TEXT, 
+	status status_enum, 
+	type TEXT NOT NULL, 
+	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_analysis TEXT, 
+	has_experiment TEXT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE anatomical_entity (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
 CREATE TABLE biological_quality (
 	id TEXT NOT NULL, 
 	accession TEXT, 
@@ -45,7 +108,11 @@ CREATE TABLE biological_quality (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE cell_line (
@@ -55,7 +122,11 @@ CREATE TABLE cell_line (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE cohort (
@@ -65,9 +136,13 @@ CREATE TABLE cohort (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
 	has_member TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE committee (
@@ -77,8 +152,12 @@ CREATE TABLE committee (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE data_transformation (
@@ -87,10 +166,30 @@ CREATE TABLE data_transformation (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	id TEXT NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE disease (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	name TEXT, 
+	description TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE disease_or_phenotypic_feature (
@@ -100,9 +199,13 @@ CREATE TABLE disease_or_phenotypic_feature (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
 	description TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE donor (
@@ -112,6 +215,8 @@ CREATE TABLE donor (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
@@ -125,7 +230,33 @@ CREATE TABLE donor (
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
-	PRIMARY KEY (id)
+	has_disease TEXT, 
+	has_phenotypic_feature TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE experiment_dataset (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_publication TEXT, 
+	status status_enum, 
+	type TEXT NOT NULL, 
+	has_data_access_policy TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE file (
@@ -134,6 +265,8 @@ CREATE TABLE file (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT NOT NULL, 
 	format TEXT, 
 	size TEXT, 
@@ -141,7 +274,9 @@ CREATE TABLE file (
 	file_index TEXT, 
 	category TEXT, 
 	type file_type_enum, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE individual (
@@ -151,6 +286,8 @@ CREATE TABLE individual (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
@@ -164,7 +301,11 @@ CREATE TABLE individual (
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
-	PRIMARY KEY (id)
+	has_disease TEXT, 
+	has_phenotypic_feature TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE information_content_entity (
@@ -174,7 +315,11 @@ CREATE TABLE information_content_entity (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE library_preparation_protocol (
@@ -182,6 +327,8 @@ CREATE TABLE library_preparation_protocol (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	url TEXT, 
 	type TEXT, 
 	library_name TEXT NOT NULL, 
@@ -200,7 +347,9 @@ CREATE TABLE library_preparation_protocol (
 	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_attribute TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE material_entity (
@@ -210,7 +359,11 @@ CREATE TABLE material_entity (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE member (
@@ -220,23 +373,17 @@ CREATE TABLE member (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
 	email TEXT NOT NULL, 
 	telephone TEXT NOT NULL, 
 	organization TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE named_thing (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE person (
@@ -246,10 +393,30 @@ CREATE TABLE person (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+);
+
+CREATE TABLE phenotypic_feature (
+	id TEXT NOT NULL, 
+	accession TEXT, 
+	type TEXT, 
+	has_attribute TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
+	name TEXT, 
+	description TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE planned_process (
@@ -259,7 +426,11 @@ CREATE TABLE planned_process (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE population (
@@ -269,8 +440,12 @@ CREATE TABLE population (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE project (
@@ -279,12 +454,16 @@ CREATE TABLE project (
 	type TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	has_study TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_publication TEXT, 
 	has_attribute TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE protocol (
@@ -292,12 +471,16 @@ CREATE TABLE protocol (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
 	description TEXT, 
 	url TEXT, 
 	type TEXT, 
 	has_attribute TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE publication (
@@ -306,10 +489,14 @@ CREATE TABLE publication (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	title TEXT, 
 	abstract TEXT, 
 	id TEXT NOT NULL, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE sequencing_protocol (
@@ -317,6 +504,8 @@ CREATE TABLE sequencing_protocol (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	url TEXT, 
 	type TEXT, 
 	sequencing_center TEXT NOT NULL, 
@@ -339,7 +528,9 @@ CREATE TABLE sequencing_protocol (
 	name TEXT, 
 	description TEXT, 
 	has_attribute TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE technology (
@@ -349,7 +540,11 @@ CREATE TABLE technology (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE "user" (
@@ -359,12 +554,16 @@ CREATE TABLE "user" (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
 	email TEXT, 
 	role user_role_enum, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE workflow (
@@ -374,7 +573,11 @@ CREATE TABLE workflow (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
+	replaces TEXT, 
+	replaced_by TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE workflow_step (
@@ -384,51 +587,18 @@ CREATE TABLE workflow_step (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE aggregate_dataset (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_publication TEXT, 
-	type TEXT NOT NULL, 
-	release_status release_status_enum, 
-	release_date TEXT, 
-	deprecated BOOLEAN, 
-	deprecation_date TEXT, 
+	replaces TEXT, 
 	replaced_by TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
 	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
-CREATE TABLE analysis_dataset (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_publication TEXT, 
-	type TEXT NOT NULL, 
-	release_status release_status_enum, 
-	release_date TEXT, 
-	deprecated BOOLEAN, 
-	deprecation_date TEXT, 
-	replaced_by TEXT, 
-	has_data_access_policy TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_analysis TEXT, 
-	has_experiment TEXT NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+CREATE TABLE named_thing_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES named_thing (id)
 );
 
 CREATE TABLE biospecimen (
@@ -438,11 +608,17 @@ CREATE TABLE biospecimen (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
 	description TEXT, 
 	has_individual TEXT, 
 	has_anatomical_entity TEXT, 
+	has_disease TEXT, 
+	has_phenotypic_feature TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
 	FOREIGN KEY(has_anatomical_entity) REFERENCES anatomical_entity (id)
 );
@@ -454,35 +630,37 @@ CREATE TABLE data_access_committee (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT, 
 	main_contact TEXT, 
 	has_member TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(main_contact) REFERENCES member (id)
 );
 
-CREATE TABLE experiment_dataset (
+CREATE TABLE dataset (
 	id TEXT NOT NULL, 
 	accession TEXT, 
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_file TEXT NOT NULL, 
 	has_publication TEXT, 
+	status status_enum, 
 	type TEXT NOT NULL, 
-	release_status release_status_enum, 
-	release_date TEXT, 
-	deprecated BOOLEAN, 
-	deprecation_date TEXT, 
-	replaced_by TEXT, 
-	has_data_access_policy TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_experiment TEXT NOT NULL, 
+	aggregate_dataset_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
+	FOREIGN KEY(aggregate_dataset_id) REFERENCES aggregate_dataset (id)
 );
 
 CREATE TABLE family (
@@ -492,10 +670,14 @@ CREATE TABLE family (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
 	has_member TEXT, 
 	has_proband TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_proband) REFERENCES individual (id)
 );
 
@@ -506,17 +688,18 @@ CREATE TABLE investigation (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	title TEXT, 
 	description TEXT, 
 	has_publication TEXT, 
-	release_status release_status_enum, 
+	status status_enum, 
 	release_date TEXT, 
-	deprecated BOOLEAN, 
 	deprecation_date TEXT, 
-	replaced_by TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_publication) REFERENCES publication (id), 
-	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
+	FOREIGN KEY(has_publication) REFERENCES publication (id)
 );
 
 CREATE TABLE research_activity (
@@ -526,10 +709,14 @@ CREATE TABLE research_activity (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	title TEXT, 
 	description TEXT, 
 	has_publication TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_publication) REFERENCES publication (id)
 );
 
@@ -538,11 +725,11 @@ CREATE TABLE study (
 	accession TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	release_status release_status_enum, 
-	release_date TEXT, 
-	deprecated BOOLEAN, 
-	deprecation_date TEXT, 
+	replaces TEXT, 
 	replaced_by TEXT, 
+	status status_enum, 
+	release_date TEXT, 
+	deprecation_date TEXT, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
 	has_project TEXT, 
@@ -552,6 +739,7 @@ CREATE TABLE study (
 	has_publication TEXT, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
 	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id)
 );
@@ -569,6 +757,20 @@ CREATE TABLE agent_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES agent (id)
+);
+
+CREATE TABLE aggregate_dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES aggregate_dataset (id)
+);
+
+CREATE TABLE analysis_dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES analysis_dataset (id)
 );
 
 CREATE TABLE anatomical_entity_xref (
@@ -613,6 +815,13 @@ CREATE TABLE data_transformation_xref (
 	FOREIGN KEY(backref_id) REFERENCES data_transformation (id)
 );
 
+CREATE TABLE disease_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES disease (id)
+);
+
 CREATE TABLE disease_or_phenotypic_feature_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -625,6 +834,13 @@ CREATE TABLE donor_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES donor (id)
+);
+
+CREATE TABLE experiment_dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES experiment_dataset (id)
 );
 
 CREATE TABLE file_xref (
@@ -669,18 +885,18 @@ CREATE TABLE member_xref (
 	FOREIGN KEY(backref_id) REFERENCES member (id)
 );
 
-CREATE TABLE named_thing_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES named_thing (id)
-);
-
 CREATE TABLE person_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES person (id)
+);
+
+CREATE TABLE phenotypic_feature_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES phenotypic_feature (id)
 );
 
 CREATE TABLE planned_process_xref (
@@ -759,6 +975,8 @@ CREATE TABLE analysis (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	id TEXT NOT NULL, 
 	title TEXT, 
 	description TEXT, 
@@ -767,6 +985,8 @@ CREATE TABLE analysis (
 	has_workflow TEXT, 
 	has_output TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_workflow) REFERENCES workflow (id)
 );
@@ -778,63 +998,17 @@ CREATE TABLE data_access_policy (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT, 
 	description TEXT NOT NULL, 
 	policy_text TEXT NOT NULL, 
 	policy_url TEXT, 
 	has_data_access_committee TEXT NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
-);
-
-CREATE TABLE dataset (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_publication TEXT, 
-	type TEXT NOT NULL, 
-	release_status release_status_enum, 
-	release_date TEXT, 
-	deprecated BOOLEAN, 
-	deprecation_date TEXT, 
-	replaced_by TEXT, 
-	aggregate_dataset_id TEXT, 
-	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
 	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
-	FOREIGN KEY(aggregate_dataset_id) REFERENCES aggregate_dataset (id)
-);
-
-CREATE TABLE disease (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	name TEXT, 
-	description TEXT, 
-	biospecimen_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(biospecimen_id) REFERENCES biospecimen (id)
-);
-
-CREATE TABLE phenotypic_feature (
-	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	name TEXT, 
-	description TEXT, 
-	biospecimen_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(biospecimen_id) REFERENCES biospecimen (id)
+	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
 );
 
 CREATE TABLE sample (
@@ -843,6 +1017,8 @@ CREATE TABLE sample (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	vital_status_at_sampling TEXT, 
@@ -853,22 +1029,10 @@ CREATE TABLE sample (
 	has_biospecimen TEXT, 
 	type case_control_enum, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
-);
-
-CREATE TABLE aggregate_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES aggregate_dataset (id)
-);
-
-CREATE TABLE analysis_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis_dataset (id)
 );
 
 CREATE TABLE biospecimen_xref (
@@ -885,11 +1049,11 @@ CREATE TABLE data_access_committee_xref (
 	FOREIGN KEY(backref_id) REFERENCES data_access_committee (id)
 );
 
-CREATE TABLE experiment_dataset_xref (
+CREATE TABLE dataset_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES experiment_dataset (id)
+	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
 CREATE TABLE family_xref (
@@ -934,6 +1098,8 @@ CREATE TABLE analysis_process (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	title TEXT, 
 	has_input TEXT, 
 	has_workflow_step TEXT, 
@@ -941,6 +1107,8 @@ CREATE TABLE analysis_process (
 	has_output TEXT, 
 	analysis_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_workflow_step) REFERENCES workflow_step (id), 
 	FOREIGN KEY(has_agent) REFERENCES agent (id), 
 	FOREIGN KEY(analysis_id) REFERENCES analysis (id)
@@ -961,12 +1129,12 @@ CREATE TABLE experiment (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	has_publication TEXT, 
-	release_status release_status_enum, 
-	release_date TEXT, 
-	deprecated BOOLEAN, 
-	deprecation_date TEXT, 
+	replaces TEXT, 
 	replaced_by TEXT, 
+	has_publication TEXT, 
+	status status_enum, 
+	release_date TEXT, 
+	deprecation_date TEXT, 
 	biological_replicates TEXT, 
 	technical_replicates TEXT, 
 	experimental_replicates TEXT, 
@@ -977,8 +1145,9 @@ CREATE TABLE experiment (
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_publication) REFERENCES publication (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
 	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
+	FOREIGN KEY(has_publication) REFERENCES publication (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_sample) REFERENCES sample (id), 
 	FOREIGN KEY(has_technology) REFERENCES technology (id)
@@ -986,11 +1155,6 @@ CREATE TABLE experiment (
 
 CREATE TABLE submission (
 	id TEXT NOT NULL, 
-	accession TEXT, 
-	type TEXT, 
-	has_attribute TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
 	has_study TEXT, 
 	has_project TEXT, 
 	has_sample TEXT, 
@@ -1000,12 +1164,18 @@ CREATE TABLE submission (
 	has_analysis TEXT, 
 	has_file TEXT, 
 	has_data_access_policy TEXT, 
-	submission_status submission_status_enum, 
 	submission_date TEXT, 
+	status status_enum, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id), 
-	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE analysis_xref (
@@ -1022,27 +1192,6 @@ CREATE TABLE data_access_policy_xref (
 	FOREIGN KEY(backref_id) REFERENCES data_access_policy (id)
 );
 
-CREATE TABLE dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES dataset (id)
-);
-
-CREATE TABLE disease_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES disease (id)
-);
-
-CREATE TABLE phenotypic_feature_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES phenotypic_feature (id)
-);
-
 CREATE TABLE sample_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -1057,6 +1206,8 @@ CREATE TABLE experiment_process (
 	has_attribute TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	replaces TEXT, 
+	replaced_by TEXT, 
 	title TEXT, 
 	has_input TEXT, 
 	has_protocol TEXT, 
@@ -1064,6 +1215,8 @@ CREATE TABLE experiment_process (
 	has_output TEXT, 
 	experiment_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(replaces) REFERENCES named_thing (id), 
+	FOREIGN KEY(replaced_by) REFERENCES named_thing (id), 
 	FOREIGN KEY(has_input) REFERENCES sample (id), 
 	FOREIGN KEY(has_protocol) REFERENCES protocol (id), 
 	FOREIGN KEY(has_agent) REFERENCES agent (id), 
@@ -1083,13 +1236,6 @@ CREATE TABLE experiment_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES experiment (id)
-);
-
-CREATE TABLE submission_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES submission (id)
 );
 
 CREATE TABLE experiment_process_xref (

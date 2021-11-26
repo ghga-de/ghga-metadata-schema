@@ -31,6 +31,14 @@
                "description": "The name for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -63,14 +71,6 @@
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
-            "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -109,17 +109,17 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "release_date": {
-               "description": "The date when the entity was released for public consumption.",
-               "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
-            },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -207,6 +207,14 @@
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "title": {
                "description": "The title that describes an entity.",
                "type": "string"
@@ -243,14 +251,6 @@
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
-            "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -307,17 +307,17 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "release_date": {
-               "description": "The date when the entity was released for public consumption.",
-               "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
-            },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -397,6 +397,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "title": {
                "description": "The title that describes an entity.",
                "type": "string"
@@ -444,6 +452,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -519,6 +535,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -579,7 +603,7 @@
                "type": "array"
             },
             "has_disease": {
-               "description": "The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.",
+               "description": "The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.",
                "items": {
                   "$ref": "#/$defs/Disease"
                },
@@ -590,7 +614,7 @@
                "description": "The Individual entity from which this Biospecimen was derived."
             },
             "has_phenotypic_feature": {
-               "description": "The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.",
+               "description": "The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.",
                "items": {
                   "$ref": "#/$defs/PhenotypicFeature"
                },
@@ -602,6 +626,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -656,6 +688,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -714,6 +754,14 @@
                "description": "The name for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -761,6 +809,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -825,6 +881,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -900,6 +964,14 @@
                "description": "URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -950,6 +1022,14 @@
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -1007,14 +1087,6 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
-            "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
-               "type": "string"
-            },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
@@ -1044,17 +1116,17 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "release_date": {
-               "description": "The date when the entity was released for public consumption.",
-               "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
-            },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -1117,6 +1189,14 @@
                "description": "The name for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -1168,6 +1248,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -1250,6 +1338,13 @@
                },
                "type": "array"
             },
+            "has_disease": {
+               "description": "The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.",
+               "items": {
+                  "$ref": "#/$defs/Disease"
+               },
+               "type": "array"
+            },
             "has_parent": {
                "description": "One or more parent for this Individual.",
                "items": {
@@ -1257,8 +1352,23 @@
                },
                "type": "array"
             },
+            "has_phenotypic_feature": {
+               "description": "The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.",
+               "items": {
+                  "$ref": "#/$defs/PhenotypicFeature"
+               },
+               "type": "array"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "sex": {
@@ -1314,12 +1424,8 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
             "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
+               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -1372,16 +1478,20 @@
                "type": "string"
             },
             "release_date": {
-               "description": "The date when the entity was released for public consumption.",
+               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
                "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
             },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "technical_replicates": {
                "description": "A technical replicate is a replicate role where the same BioSample is use e.g.  the same pool of RNA used to assess technical (as opposed to biological)  variation within an experiment.",
@@ -1427,14 +1537,6 @@
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
-            "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -1487,17 +1589,17 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "release_date": {
-               "description": "The date when the entity was released for public consumption.",
-               "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
-            },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -1571,6 +1673,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "title": {
                "description": "A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment) ",
                "type": "string"
@@ -1633,6 +1743,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -1698,6 +1816,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "size": {
@@ -1801,6 +1927,13 @@
                },
                "type": "array"
             },
+            "has_disease": {
+               "description": "The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.",
+               "items": {
+                  "$ref": "#/$defs/Disease"
+               },
+               "type": "array"
+            },
             "has_parent": {
                "description": "One or more parent for this Individual.",
                "items": {
@@ -1808,8 +1941,23 @@
                },
                "type": "array"
             },
+            "has_phenotypic_feature": {
+               "description": "The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.",
+               "items": {
+                  "$ref": "#/$defs/PhenotypicFeature"
+               },
+               "type": "array"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "sex": {
@@ -1872,6 +2020,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -1906,12 +2062,8 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
             "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
+               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -1934,16 +2086,20 @@
                "type": "string"
             },
             "release_date": {
-               "description": "The date when the entity was released for public consumption.",
+               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
                "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
             },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -2003,7 +2159,7 @@
                "type": "string"
             },
             "library_construction": {
-               "description": "The name of a library construction approach being used. (eg: \"10X v2 sequencing\" or \"Smart-seq2\")",
+               "description": "The name of a library construction approach being used. (eg: '10X v2 sequencing' or 'Smart-seq2')",
                "type": "string"
             },
             "library_construction_kit_manufacturer": {
@@ -2043,7 +2199,15 @@
                "type": "string"
             },
             "primer": {
-               "description": "The type of primer used for reverse transcription, e.g. \"oligo-dT\" or \"random\" primer.  This allows users to identify content of the cDNA library input e.g. enriched for mRNA.",
+               "description": "The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "rnaseq_strandedness": {
@@ -2113,6 +2277,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -2178,6 +2350,14 @@
                "description": "The organization that the Member is part of.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "telephone": {
                "description": "The telephone number of the Member.",
                "type": "string"
@@ -2228,6 +2408,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2287,6 +2475,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -2340,6 +2536,14 @@
                "description": "The name for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -2383,6 +2587,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2432,6 +2644,14 @@
             },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2489,12 +2709,20 @@
             "has_study": {
                "description": "One or more Study entities associated with this Project.",
                "items": {
-                  "$ref": "#/$defs/Experiment"
+                  "$ref": "#/$defs/Study"
                },
                "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -2556,6 +2784,14 @@
                "description": "Name of the protocol (eg: Sample extraction_PCR amplification).",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "Type of the protocol (eg: Target enrichment).",
                "type": "string"
@@ -2609,6 +2845,14 @@
                "description": "A PMID or DOI for the Publication.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "title": {
                "description": "The title for the Publication.",
                "type": "string"
@@ -2634,15 +2878,6 @@
          ],
          "title": "Publication",
          "type": "object"
-      },
-      "ReleaseStatusEnum": {
-         "description": "Enum to capture the release status.",
-         "enum": [
-            "unreleased",
-            "released"
-         ],
-         "title": "ReleaseStatusEnum",
-         "type": "string"
       },
       "ResearchActivity": {
          "additionalProperties": false,
@@ -2673,6 +2908,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -2744,6 +2987,14 @@
                "description": "Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "storage": {
                "description": "Methods by which sample is stored  (e.g. frozen in liquid nitrogen).",
                "type": "string"
@@ -2761,7 +3012,7 @@
                "type": "string"
             },
             "vital_status_at_sampling": {
-               "description": "Vital Status of an Individual at the point of sampling (eg:\"Alive\", \"Deceased\").",
+               "description": "Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').",
                "type": "string"
             },
             "xref": {
@@ -2791,7 +3042,7 @@
                "type": "string"
             },
             "cell_barcode_offset": {
-               "description": "The offset in sequence of the cell identifying barcode. (Eg. \"0\").",
+               "description": "The offset in sequence of the cell identifying barcode. (Eg. '0').",
                "type": "string"
             },
             "cell_barcode_read": {
@@ -2799,7 +3050,7 @@
                "type": "string"
             },
             "cell_barcode_size": {
-               "description": "The size of the cell identifying barcode (E.g. \"16\").",
+               "description": "The size of the cell identifying barcode (E.g. '16').",
                "type": "string"
             },
             "creation_date": {
@@ -2853,6 +3104,14 @@
                "description": "A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "sample_barcode_read": {
                "description": "The type of read that contains the sample barcode (eg: index1/index2/read1/read2).",
                "type": "string"
@@ -2874,7 +3133,7 @@
                "type": "string"
             },
             "umi_barcode_offset": {
-               "description": "The offset in sequence of the UMI identifying barcode. (E.g. \"16\").",
+               "description": "The offset in sequence of the UMI identifying barcode. (E.g. '16').",
                "type": "string"
             },
             "umi_barcode_read": {
@@ -2882,7 +3141,7 @@
                "type": "string"
             },
             "umi_barcode_size": {
-               "description": "The size of the UMI identifying barcode (Eg. \"10\").",
+               "description": "The size of the UMI identifying barcode (Eg. '10').",
                "type": "string"
             },
             "update_date": {
@@ -2909,6 +3168,18 @@
          "title": "SequencingProtocol",
          "type": "object"
       },
+      "StatusEnum": {
+         "description": "Enum to capture the status of an entity.",
+         "enum": [
+            "in progress",
+            "submitted",
+            "unreleased",
+            "released",
+            "deprecated"
+         ],
+         "title": "StatusEnum",
+         "type": "string"
+      },
       "Study": {
          "additionalProperties": false,
          "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
@@ -2928,12 +3199,8 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "deprecated": {
-               "description": "The deprecation status of an entity.",
-               "type": "boolean"
-            },
             "deprecation_date": {
-               "description": "The date when the entity was deprecated.",
+               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -2977,16 +3244,20 @@
                "type": "string"
             },
             "release_date": {
-               "description": "The date when the entity was released for public consumption.",
+               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
                "type": "string"
-            },
-            "release_status": {
-               "$ref": "#/$defs/ReleaseStatusEnum",
-               "description": "The release status of an entity."
             },
             "replaced_by": {
-               "description": "The entity which replaces a deprecated entity.",
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
                "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
             },
             "title": {
                "description": "Comprehensive title for the study.",
@@ -2994,7 +3265,7 @@
             },
             "type": {
                "$ref": "#/$defs/StudyTypeEnum",
-               "description": "The type of Study. For example, \"Cancer Genomics\", \"Epigenetics\", \"Exome Sequencing\"."
+               "description": "The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'."
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -3043,25 +3314,14 @@
          "additionalProperties": false,
          "description": "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "description": "Timestamp (in ISO 8601 format) when the Submission was created.",
                "type": "string"
             },
             "has_analysis": {
                "description": "Information about one or more Analysis entities associated with this submission.",
                "items": {
                   "$ref": "#/$defs/Analysis"
-               },
-               "type": "array"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
                },
                "type": "array"
             },
@@ -3113,31 +3373,28 @@
                "description": "Information about a Study entities associated with this submission."
             },
             "id": {
-               "description": "The internal unique identifier for an entity.",
+               "description": "A internal unique identifier for the Submission.",
                "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the Submission which replaces a currently deprecated Submission.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated Submission that is being replaced by the current Submission.",
+               "type": "string"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of a Submission. For example, 'in progress' or 'submitted'."
             },
             "submission_date": {
-               "description": "The date when submission was completed.",
-               "type": "string"
-            },
-            "submission_status": {
-               "$ref": "#/$defs/SubmissionStatusEnum",
-               "description": "The status of submission."
-            },
-            "type": {
-               "description": "The type of an entity.",
+               "description": "The timestamp (in ISO 8601 format) when submission was marked completed.",
                "type": "string"
             },
             "update_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "description": "Timestamp (in ISO 8601 format) when the Submission was updated.",
                "type": "string"
-            },
-            "xref": {
-               "description": "Holds one or more database cross references.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
@@ -3145,15 +3402,6 @@
          ],
          "title": "Submission",
          "type": "object"
-      },
-      "SubmissionStatusEnum": {
-         "description": "Enum to capture submission status.",
-         "enum": [
-            "in progress",
-            "submitted"
-         ],
-         "title": "SubmissionStatusEnum",
-         "type": "string"
       },
       "Technology": {
          "additionalProperties": false,
@@ -3176,6 +3424,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -3237,6 +3493,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "role": {
@@ -3307,6 +3571,14 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "type": "string"
+            },
             "type": {
                "description": "The type of an entity.",
                "type": "string"
@@ -3374,6 +3646,14 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            },
+            "replaces": {
+               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {

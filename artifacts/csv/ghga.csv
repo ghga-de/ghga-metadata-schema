@@ -16,7 +16,6 @@ data_access_policy,,"A Data Access Policy specifies under which circumstances, l
 data_transformation,,A data transformation technique used to analyze and interpret data to gain a better understanding of it.
 data_use_condition,,Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).
 dataset,,A Dataset is a collection of Files that is prepared for distribution.
-deprecation_mixin,,A mixin that keeps track of the deprecation status.
 disease,,A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
 disease_or_phenotypic_feature,,Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
 donor,,A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the Biospecimen is restricted to the consent provided by the Donor.
@@ -39,13 +38,11 @@ population,,"A population is a collection of individuals from the same taxonomic
 project,,Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.
 protocol,,"A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process."
 publication,,"The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI."
-release_status_mixin,,A mixin that keeps track of the release status.
 research_activity,,A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.
 sample,,"A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)."
 sequencing_protocol,,Information about the sequencing of a sample.
 study,,Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
 submission,,A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
-submission_status_mixin,,A mixin that keeps track of the submission status.
 technology,,A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.
 user,,A user in GHGA.
 workflow,,A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.

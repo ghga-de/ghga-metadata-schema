@@ -209,34 +209,17 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<Dataset_tes> (  &<InformationContentEntity_tes> ;
              rdf:type [ <InformationContentEntity> ] ? ;
-             &<ReleaseStatusMixin_tes> ;
-             rdf:type [ <ReleaseStatusMixin> ] ? ;
-             &<DeprecationMixin_tes> ;
-             rdf:type [ <DeprecationMixin> ] ? ;
              <title> @linkml:String ;
              <description> @linkml:String ;
              <has_file> @<File> + ;
              <has_publication> @<Publication> * ;
-             <type> @linkml:String ;
-             <release_status> @<ReleaseStatusEnum> ? ;
-             <release_date> @linkml:String ? ;
-             <deprecated> @linkml:Boolean ? ;
-             <deprecation_date> @linkml:String ? ;
-             <replaced_by> @<NamedThing> ?
+             <status> @<StatusEnum> ? ;
+             <type> @linkml:String
           ) ;
           rdf:type [ <Dataset> ]
        )
     } OR @<AggregateDataset> OR @<AnalysisDataset> OR @<ExperimentDataset>
 )
-
-<DeprecationMixin> {
-    (  $<DeprecationMixin_tes> (  <deprecated> @linkml:Boolean ? ;
-          <deprecation_date> @linkml:String ? ;
-          <replaced_by> @<NamedThing> ?
-       ) ;
-       rdf:type [ <DeprecationMixin> ] ?
-    )
-}
 
 <Disease> CLOSED {
     (  $<Disease_tes> (  &<DiseaseOrPhenotypicFeature_tes> ;
@@ -346,7 +329,9 @@ linkml:Nodeidentifier NONLITERAL
              <ethnicity> @linkml:String ? ;
              <ancestry> @linkml:String ? ;
              <has_parent> @<Individual> * ;
-             <has_children> @<Individual> *
+             <has_children> @<Individual> * ;
+             <has_disease> @<Disease> * ;
+             <has_phenotypic_feature> @<PhenotypicFeature> *
           ) ;
           rdf:type [ <Individual> ]
        )
@@ -368,18 +353,12 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<Investigation_tes> (  &<PlannedProcess_tes> ;
              rdf:type [ <PlannedProcess> ] ? ;
-             &<ReleaseStatusMixin_tes> ;
-             rdf:type [ <ReleaseStatusMixin> ] ? ;
-             &<DeprecationMixin_tes> ;
-             rdf:type [ <DeprecationMixin> ] ? ;
              <title> @linkml:String ? ;
              <description> @linkml:String ? ;
              <has_publication> @<Publication> ? ;
-             <release_status> @<ReleaseStatusEnum> ? ;
+             <status> @<StatusEnum> ? ;
              <release_date> @linkml:String ? ;
-             <deprecated> @linkml:Boolean ? ;
-             <deprecation_date> @linkml:String ? ;
-             <replaced_by> @<NamedThing> ?
+             <deprecation_date> @linkml:String ?
           ) ;
           rdf:type [ <Investigation> ]
        )
@@ -438,12 +417,14 @@ linkml:Nodeidentifier NONLITERAL
              <type> @linkml:String ? ;
              <has_attribute> @<Attribute> * ;
              <creation_date> @linkml:String ? ;
-             <update_date> @linkml:String ?
+             <update_date> @linkml:String ? ;
+             <replaces> @<NamedThing> ? ;
+             <replaced_by> @<NamedThing> ?
           ) ;
           rdf:type [ <NamedThing> ]
        )
     } OR @<Agent> OR @<BiologicalQuality> OR @<Committee> OR @<InformationContentEntity> OR @<MaterialEntity> OR @<Person> OR
-    @<PlannedProcess> OR @<Submission>
+    @<PlannedProcess>
 )
 
 <Person>  (
@@ -491,7 +472,7 @@ linkml:Nodeidentifier NONLITERAL
 <Project> CLOSED {
     (  $<Project_tes> (  &<ResearchActivity_tes> ;
           rdf:type [ <ResearchActivity> ] ? ;
-          <has_study> @<Experiment> * ;
+          <has_study> @<Study> * ;
           <title> @linkml:String ;
           <description> @linkml:String ;
           <has_publication> @<Publication> * ;
@@ -525,14 +506,6 @@ linkml:Nodeidentifier NONLITERAL
           <xref> @linkml:String *
        ) ;
        rdf:type [ <Publication> ]
-    )
-}
-
-<ReleaseStatusMixin> {
-    (  $<ReleaseStatusMixin_tes> (  <release_status> @<ReleaseStatusEnum> ? ;
-          <release_date> @linkml:String ?
-       ) ;
-       rdf:type [ <ReleaseStatusMixin> ] ?
     )
 }
 
@@ -613,11 +586,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Submission> CLOSED {
-    (  $<Submission_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          &<SubmissionStatusMixin_tes> ;
-          rdf:type [ <SubmissionStatusMixin> ] ? ;
-          <has_study> @<Study> ? ;
+    (  $<Submission_tes> (  <has_study> @<Study> ? ;
           <has_project> @<Project> ? ;
           <has_sample> @<Sample> * ;
           <has_biospecimen> @<Biospecimen> * ;
@@ -626,18 +595,14 @@ linkml:Nodeidentifier NONLITERAL
           <has_analysis> @<Analysis> * ;
           <has_file> @<File> * ;
           <has_data_access_policy> @<DataAccessPolicy> ? ;
-          <submission_status> @<SubmissionStatusEnum> ? ;
-          <submission_date> @linkml:String ?
+          <submission_date> @linkml:String ? ;
+          <status> @<StatusEnum> ? ;
+          <creation_date> @linkml:String ? ;
+          <update_date> @linkml:String ? ;
+          <replaces> @<NamedThing> ? ;
+          <replaced_by> @<NamedThing> ?
        ) ;
        rdf:type [ <Submission> ]
-    )
-}
-
-<SubmissionStatusMixin> {
-    (  $<SubmissionStatusMixin_tes> (  <submission_status> @<SubmissionStatusEnum> ? ;
-          <submission_date> @linkml:String ?
-       ) ;
-       rdf:type [ <SubmissionStatusMixin> ] ?
     )
 }
 
