@@ -7,6 +7,8 @@ type Agent
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String
   }
@@ -19,10 +21,13 @@ type AggregateDataset
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String!
     description: String!
     hasFile: [File]!
     hasPublication: [Publication]
+    status: StatusEnum
     type: String!
     hasDataset: [Dataset]
   }
@@ -35,6 +40,8 @@ type Analysis
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     id: String!
     title: String
     description: String
@@ -53,10 +60,13 @@ type AnalysisDataset
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String!
     description: String!
     hasFile: [File]!
     hasPublication: [Publication]
+    status: StatusEnum
     type: String!
     hasDataAccessPolicy: [DataAccessPolicy]!
     hasStudy: [Study]!
@@ -73,11 +83,13 @@ type AnalysisProcess
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String
     hasInput: [File]
     hasWorkflowStep: WorkflowStep
     hasAgent: Agent
-    hasOutput: File
+    hasOutput: [File]
   }
 
 type AnatomicalEntity
@@ -89,6 +101,8 @@ type AnatomicalEntity
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Attribute
@@ -108,6 +122,8 @@ type BiologicalQuality
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Biospecimen
@@ -119,12 +135,14 @@ type Biospecimen
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String
     hasIndividual: Individual
     hasAnatomicalEntity: AnatomicalEntity
-    hasDisease: Disease
-    hasPhenotypicFeature: PhenotypicFeature
+    hasDisease: [Disease]
+    hasPhenotypicFeature: [PhenotypicFeature]
   }
 
 type CellLine
@@ -136,6 +154,8 @@ type CellLine
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Cohort
@@ -147,6 +167,8 @@ type Cohort
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     hasMember: [Individual]
   }
@@ -160,6 +182,8 @@ type Committee
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
   }
 
@@ -172,6 +196,8 @@ type DataAccessCommittee
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String!
     description: String
     mainContact: Member
@@ -187,6 +213,8 @@ type DataAccessPolicy
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String!
     policyText: String!
@@ -203,6 +231,8 @@ type DataTransformation
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     id: String!
     title: String
     description: String
@@ -222,10 +252,13 @@ type Dataset
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String!
     description: String!
     hasFile: [File]!
     hasPublication: [Publication]
+    status: StatusEnum
     type: String!
   }
 
@@ -238,6 +271,8 @@ type Disease
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String
   }
@@ -251,6 +286,8 @@ type DiseaseOrPhenotypicFeature
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String
   }
@@ -264,19 +301,23 @@ type Donor
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     givenName: String
     familyName: String
     additionalName: String
     gender: String
     sex: BiologicalSexEnum!
-    age: Integer
+    age: Integer!
     yearOfBirth: String
-    vitalStatus: String
+    vitalStatus: VitalStatusEnum!
     geographicalRegion: String
     ethnicity: String
     ancestry: String
-    hasParent: String
-    hasChildren: String
+    hasParent: [Individual]
+    hasChildren: [Individual]
+    hasDisease: [Disease]
+    hasPhenotypicFeature: [PhenotypicFeature]
   }
 
 type Experiment
@@ -284,19 +325,26 @@ type Experiment
     id: String!
     accession: String
     xref: [String]
+    type: String
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    title: String
-    type: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     hasPublication: Publication
-    name: String!
-    description: String
+    status: StatusEnum
+    releaseDate: String
+    deprecationDate: String
+    biologicalReplicates: String
+    technicalReplicates: String
+    experimentalReplicates: String
     hasStudy: Study!
     hasSample: Sample!
     hasTechnology: Technology
     hasFile: [File]
     hasExperimentProcess: [ExperimentProcess]
+    title: String!
+    description: String!
   }
 
 type ExperimentDataset
@@ -307,10 +355,13 @@ type ExperimentDataset
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String!
     description: String!
     hasFile: [File]!
     hasPublication: [Publication]
+    status: StatusEnum
     type: String!
     hasDataAccessPolicy: [DataAccessPolicy]!
     hasStudy: [Study]!
@@ -326,6 +377,8 @@ type ExperimentProcess
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String
     hasInput: Sample
     hasProtocol: Protocol
@@ -342,9 +395,11 @@ type Family
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     hasMember: [Individual]
-    proband: Individual
+    hasProband: Individual
   }
 
 type File
@@ -355,13 +410,15 @@ type File
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    name: String
+    replaces: NamedThing
+    replacedBy: NamedThing
+    name: String!
     format: String
     size: String
     checksum: String
     fileIndex: String
     category: String
-    type: String
+    type: FileTypeEnum
   }
 
 type Individual
@@ -373,19 +430,23 @@ type Individual
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     givenName: String
     familyName: String
     additionalName: String
     gender: String
     sex: BiologicalSexEnum!
-    age: Integer
+    age: Integer!
     yearOfBirth: String
-    vitalStatus: String
+    vitalStatus: VitalStatusEnum!
     geographicalRegion: String
     ethnicity: String
     ancestry: String
-    hasParent: String
-    hasChildren: String
+    hasParent: [Individual]
+    hasChildren: [Individual]
+    hasDisease: [Disease]
+    hasPhenotypicFeature: [PhenotypicFeature]
   }
 
 type InformationContentEntity
@@ -397,6 +458,8 @@ type InformationContentEntity
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Investigation
@@ -404,13 +467,47 @@ type Investigation
     id: String!
     accession: String
     xref: [String]
+    type: String
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String
     description: String
-    type: String
     hasPublication: Publication
+    status: StatusEnum
+    releaseDate: String
+    deprecationDate: String
+  }
+
+type LibraryPreparationProtocol
+  {
+    id: String!
+    accession: String
+    creationDate: String
+    updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
+    url: String
+    type: String
+    xref: [String]
+    libraryName: String!
+    libraryLayout: String!
+    libraryType: String!
+    librarySelection: String!
+    libraryConstruction: String!
+    libraryPreparation: String!
+    libraryLevel: String
+    libraryConstructionKitRetailName: String!
+    libraryConstructionKitManufacturer: String!
+    primer: String
+    endBias: String
+    targetRegions: String
+    rnaseqStrandedness: String
+    name: String!
+    description: String!
+    hasAttribute: [Attribute]
   }
 
 type MaterialEntity
@@ -422,6 +519,8 @@ type MaterialEntity
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Member
@@ -433,12 +532,14 @@ type Member
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     givenName: String
     familyName: String
     additionalName: String
     email: String!
     telephone: String!
-    organization: String
+    organization: String!
   }
 
 type NamedThing
@@ -450,6 +551,8 @@ type NamedThing
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Person
@@ -461,6 +564,8 @@ type Person
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     givenName: String
     familyName: String
     additionalName: String
@@ -475,6 +580,8 @@ type PhenotypicFeature
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String
   }
@@ -488,6 +595,8 @@ type PlannedProcess
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Population
@@ -499,6 +608,8 @@ type Population
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
   }
 
@@ -510,9 +621,11 @@ type Project
     type: String
     creationDate: String
     updateDate: String
-    title: String
-    hasStudy: [Experiment]
-    description: String
+    replaces: NamedThing
+    replacedBy: NamedThing
+    hasStudy: [Study]
+    title: String!
+    description: String!
     hasPublication: [Publication]
     hasAttribute: [Attribute]
   }
@@ -521,13 +634,15 @@ type Protocol
   {
     id: String!
     accession: String
-    xref: [String]
-    type: String
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     name: String
     description: String
     url: String
+    type: String
+    xref: [String]
     hasAttribute: [Attribute]
   }
 
@@ -538,7 +653,10 @@ type Publication
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String
+    abstract: String
     id: String!
     xref: [String]
   }
@@ -552,6 +670,8 @@ type ResearchActivity
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     title: String
     description: String
     hasPublication: Publication
@@ -564,12 +684,51 @@ type Sample
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
-    name: String
-    description: String
+    replaces: NamedThing
+    replacedBy: NamedThing
+    name: String!
+    description: String!
+    vitalStatusAtSampling: String
+    tissue: String!
+    isolation: String
+    storage: String
     hasIndividual: Individual!
     hasBiospecimen: Biospecimen
     type: CaseControlEnum
     xref: [String]
+  }
+
+type SequencingProtocol
+  {
+    id: String!
+    accession: String
+    creationDate: String
+    updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
+    url: String
+    type: String
+    xref: [String]
+    sequencingCenter: String!
+    instrumentModel: String!
+    readLength: String
+    readPairNumber: String
+    sequencingLength: String
+    targetCoverage: String
+    referenceAnnotation: String
+    laneNumber: String
+    flowCellId: String
+    flowCellType: String
+    umiBarcodeRead: String
+    umiBarcodeSize: String
+    umiBarcodeOffset: String
+    cellBarcodeRead: String
+    cellBarcodeOffset: String
+    cellBarcodeSize: String
+    sampleBarcodeRead: String
+    name: String
+    description: String
+    hasAttribute: [Attribute]
   }
 
 type Study
@@ -579,13 +738,40 @@ type Study
     xref: [String]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
+    status: StatusEnum
+    releaseDate: String
+    deprecationDate: String
+    affiliation: [String]!
     hasExperiment: [Experiment]
     hasAnalysis: [Analysis]
+    hasProject: Project
     title: String!
     description: String!
-    type: String!
+    type: StudyTypeEnum!
     hasPublication: [Publication]
     hasAttribute: [Attribute]
+  }
+
+type Submission
+  {
+    id: String!
+    hasStudy: Study
+    hasProject: Project
+    hasSample: [Sample]
+    hasBiospecimen: [Biospecimen]
+    hasIndividual: [Individual]
+    hasExperiment: [Experiment]
+    hasAnalysis: [Analysis]
+    hasFile: [File]
+    hasDataAccessPolicy: DataAccessPolicy
+    submissionDate: String
+    status: StatusEnum
+    creationDate: String
+    updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type Technology
@@ -597,6 +783,8 @@ type Technology
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type User
@@ -608,6 +796,8 @@ type User
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     givenName: String
     familyName: String
     additionalName: String
@@ -624,6 +814,8 @@ type Workflow
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
   }
 
 type WorkflowParameter
@@ -641,6 +833,8 @@ type WorkflowStep
     hasAttribute: [Attribute]
     creationDate: String
     updateDate: String
+    replaces: NamedThing
+    replacedBy: NamedThing
     hasParameter: [WorkflowParameter]
   }
 
