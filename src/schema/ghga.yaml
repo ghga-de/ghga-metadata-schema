@@ -34,17 +34,12 @@ classes:
     slots:
       - id
       - xref
-      - type
       - creation date
       - update date
     slot_usage:
       id:
         description: >-
           The internal unique identifier for an entity.
-      accession:
-        description: >-
-          A unique identifier assigned to an entity for the sole purpose of
-          referring to that entity in a global scope.
       xref:
         description: >-
           Holds one or more database cross references.
