@@ -145,8 +145,6 @@ classes:
       a single requirement.
     close_mappings:
       - NCIT:C47885
-    slots:
-      - has study
     slot_usage:
       title:
         description: >-
