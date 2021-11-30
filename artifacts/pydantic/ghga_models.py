@@ -92,14 +92,9 @@ class NamedThing(BaseModel):
     A databased entity, concept or class. This is a generic class that is the root of all the other classes.
     """
     id: str = Field(None, description="The internal unique identifier for an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Holds one or more database cross references.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Holds one or more Attribute entities that further characterizes this entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -119,14 +114,9 @@ class PlannedProcess(NamedThing):
     A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -136,19 +126,10 @@ class Investigation(PlannedProcess):
     """
     title: Optional[str] = Field(None, description="The title that describes an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    has_publication: Optional[str] = Field(None, description="The Publication associated with an entity.")
-    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
-    release_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was released for public consumption.")
-    deprecation_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was deprecated.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -159,14 +140,9 @@ class DataTransformation(PlannedProcess):
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
     title: Optional[str] = Field(None, description="The title that describes an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -176,16 +152,10 @@ class ResearchActivity(PlannedProcess):
     """
     title: Optional[str] = Field(None, description="The title that describes an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    has_publication: Optional[str] = Field(None, description="The Publication associated with an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -193,19 +163,14 @@ class Project(ResearchActivity):
     """
     Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.
     """
-    has_study: Optional[List[Study]] = Field(None, description="One or more Study entities associated with this Project.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)")
     title: str = Field(None, description="Comprehensive title for the project.")
     description: str = Field(None, description="Short textual description of the project   (Some information on the protocol, sample used and collected etc)  ")
-    has_publication: Optional[List[Publication]] = Field(None, description="One or more Publication entities associated with this Project.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -217,21 +182,17 @@ class Study(Investigation):
     has_experiment: Optional[List[Experiment]] = Field(None, description="One or more Experiment entities associated with this Study.")
     has_analysis: Optional[List[Analysis]] = Field(None, description="One or more Analysis entities associated with this Study.")
     has_project: Optional[Project] = Field(None, description="The project associated with this Study.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    has_publication: Optional[List[Publication]] = Field(None, description="One or more Publication entities associated with this Study.")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="Custom key/value pairs that further characterizes the Study.  (e.g.: approaches - single-cell, bulk etc)")
+    status: Optional[StatusEnum] = Field(None, description="The status of a Study. For example, 'released' or 'unreleased'.")
+    release_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was released for public consumption.")
     title: str = Field(None, description="Comprehensive title for the study.")
     description: str = Field(None, description="A detailed description (abstract) that describes the goals of this Study.")
-    has_publication: Optional[List[Publication]] = Field(None, description="One or more Publication entities associated with this Study.")
-    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
-    release_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was released for public consumption.")
-    deprecation_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was deprecated.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: StudyTypeEnum = Field(None, description="The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Custom key/value pairs that further characterizes the Study.  (e.g.: approaches - single-cell, bulk etc)")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -247,21 +208,13 @@ class Experiment(Investigation):
     has_technology: Optional[Technology] = Field(None, description="The Technology entity associated with this Experiment.")
     has_file: Optional[List[File]] = Field(None, description="One or more Files entities that are generated as output of this Experiment.")
     has_experiment_process: Optional[List[ExperimentProcess]] = Field(None, description="One or more Experiment Processes entities associated with this Experiment.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     title: str = Field(None, description="Name for the experiment (eg: GHGAE_PBMC_RNAseq).")
     description: str = Field(None, description="A detailed description of the Experiment.")
-    has_publication: Optional[str] = Field(None, description="The Publication associated with an entity.")
-    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
-    release_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was released for public consumption.")
-    deprecation_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was deprecated.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -275,14 +228,9 @@ class ExperimentProcess(PlannedProcess):
     has_agent: Optional[Agent] = Field(None, description="The Agent - a software, institution, or human - that is executing or responsible for executing the Experiment Process.")
     has_output: Optional[File] = Field(None, description="The output of this Experiment Process. Usually a File entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -293,15 +241,11 @@ class Protocol(InformationContentEntity):
     name: Optional[str] = Field(None, description="Name of the protocol (eg: Sample extraction_PCR amplification).")
     description: Optional[str] = Field(None, description="Detailed description of the Protocol.")
     url: Optional[str] = Field(None, description="URL for the resource that describes this Protocol.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
-    xref: Optional[List[str]] = Field(None, description="One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )")
-    type: Optional[str] = Field(None, description="Type of the protocol (eg: Target enrichment).")
     has_attribute: Optional[List[Attribute]] = Field(None, description="One or more attributes that further characterizes this Protocol.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
+    xref: Optional[List[str]] = Field(None, description="One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -325,15 +269,11 @@ class LibraryPreparationProtocol(Protocol):
     name: str = Field(None, description="Name of the library preparation protocol (eg: mRNA-seq library preparation).")
     description: str = Field(None, description="Description about how a sequencing library was prepared (eg: Library construction method).")
     url: Optional[str] = Field(None, description="A URL to a resource.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
-    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
     has_attribute: Optional[List[Attribute]] = Field(None, description="One or more attributes that further characterizes this Library Preparation Protocol.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
+    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -361,15 +301,11 @@ class SequencingProtocol(Protocol):
     name: Optional[str] = Field(None, description="Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).")
     description: Optional[str] = Field(None, description="Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).")
     url: Optional[str] = Field(None, description="A URL to a resource.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
-    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
     has_attribute: Optional[List[Attribute]] = Field(None, description="One or more attributes that further characterizes this Sequencing Protocol.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
+    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -380,14 +316,9 @@ class Agent(NamedThing):
     name: Optional[str] = Field(None, description="The name for an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -396,14 +327,9 @@ class Technology(InformationContentEntity):
     A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -412,14 +338,9 @@ class Workflow(InformationContentEntity):
     A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -429,14 +350,9 @@ class WorkflowStep(InformationContentEntity):
     """
     has_parameter: Optional[List[WorkflowParameter]] = Field(None, description="One or more parameters that are associated with this Workflow Step.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -459,15 +375,11 @@ class Biospecimen(MaterialEntity):
     has_anatomical_entity: Optional[AnatomicalEntity] = Field(None, description="The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.")
     has_disease: Optional[List[Disease]] = Field(None, description="The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.")
     has_phenotypic_feature: Optional[List[PhenotypicFeature]] = Field(None, description="The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -475,17 +387,12 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
     """
     Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
     """
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     name: Optional[str] = Field(None, description="The name for an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -501,15 +408,11 @@ class Sample(MaterialEntity):
     storage: Optional[str] = Field(None, description="Methods by which sample is stored  (e.g. frozen in liquid nitrogen).")
     has_individual: Individual = Field(None, description="The Individual from which this Sample was derived from.")
     has_biospecimen: Optional[Biospecimen] = Field(None, description="The Biospecimen from which this Sample was prepared from.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     xref: Optional[List[str]] = Field(None, description="One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.")
-    type: Optional[CaseControlEnum] = Field(None, description="Type of sample: 'Case' or 'Control'.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -521,14 +424,9 @@ class Person(NamedThing):
     family_name: Optional[str] = Field(None, description="Last name.")
     additional_name: Optional[str] = Field(None, description="Additional name(s).")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -548,18 +446,14 @@ class Individual(Person):
     has_children: Optional[List[Individual]] = Field(None, description="One or more children for this Individual.")
     has_disease: Optional[List[Disease]] = Field(None, description="The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.")
     has_phenotypic_feature: Optional[List[PhenotypicFeature]] = Field(None, description="The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     given_name: Optional[str] = Field(None, description="First name.")
     family_name: Optional[str] = Field(None, description="Last name.")
     additional_name: Optional[str] = Field(None, description="Additional name(s).")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -579,18 +473,14 @@ class Donor(Individual):
     has_children: Optional[List[Individual]] = Field(None, description="The children of an entity.")
     has_disease: Optional[List[Disease]] = Field(None, description="Disease concept that the entity is associated with.")
     has_phenotypic_feature: Optional[List[PhenotypicFeature]] = Field(None, description="Phenotypic feature concept that the entity is associated with.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     given_name: Optional[str] = Field(None, description="First name.")
     family_name: Optional[str] = Field(None, description="Last name.")
     additional_name: Optional[str] = Field(None, description="Additional name(s).")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -600,14 +490,9 @@ class Population(MaterialEntity):
     """
     name: Optional[str] = Field(None, description="The name for an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -617,16 +502,12 @@ class Family(Population):
     """
     has_member: Optional[List[Individual]] = Field(None, description="One or more Individuals that collectively define this Family.")
     has_proband: Optional[Individual] = Field(None, description="The Individual that is reported to have a disorder which results in the Family being brought into a Study.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     name: Optional[str] = Field(None, description="The name for an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -635,16 +516,12 @@ class Cohort(Population):
     A cohort is a collection of individuals that share a common characteristic/observation and have been grouped together for a research study/investigation.
     """
     has_member: Optional[List[Individual]] = Field(None, description="One or more Individuals that collectively define this Cohort.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     name: Optional[str] = Field(None, description="The name for an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -656,15 +533,11 @@ class File(InformationContentEntity):
     checksum: Optional[str] = Field(None, description="A computed value which depends on the contents of a block of data and which is transmitted or  stored along with the data in order to detect corruption of the data.  The receiving system recomputes the checksum based upon the received data and compares this  value with the one sent with the data. If the two values are the same, the receiver has some confidence  that the data was received correctly.")
     file_index: Optional[str] = Field(None, description="The index for this file. Commonly for BAM/VCF files.")
     category: Optional[str] = Field(None, description="The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[FileTypeEnum] = Field(None, description="The file type: Aligned Reads, Unaligned Reads, etc.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -677,17 +550,13 @@ class Analysis(DataTransformation):
     has_workflow: Optional[Workflow] = Field(None, description="The Workflow entity associated with this Analysis.")
     has_analysis_process: Optional[List[AnalysisProcess]] = Field(None, description="One or more Analysis Process entities associated with this Analysis.")
     has_output: Optional[List[File]] = Field(None, description="The output data File entities generated by this Analysis.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
     title: Optional[str] = Field(None, description="The title that describes an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -701,14 +570,9 @@ class AnalysisProcess(PlannedProcess):
     has_agent: Optional[Agent] = Field(None, description="The Agent - a software, institution, or human - that is executing or responsible for executing the workflow.")
     has_output: Optional[List[File]] = Field(None, description="The output data File entities generated by the Analysis Process.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -719,17 +583,13 @@ class Dataset(InformationContentEntity):
     title: str = Field(None, description="The title that describes an entity.")
     description: str = Field(None, description="Description of an entity.")
     has_file: List[File] = Field(None, description="One or more File entities that collectively are part of this Dataset.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     has_publication: Optional[List[Publication]] = Field(None, description="One or more Publication entities associated with this Dataset.")
     status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: str = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -743,17 +603,13 @@ class ExperimentDataset(Dataset):
     title: str = Field(None, description="The title that describes an entity.")
     description: str = Field(None, description="Description of an entity.")
     has_file: List[File] = Field(None, description="The file associated with an entity.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     has_publication: Optional[List[Publication]] = Field(None, description="The Publication associated with an entity.")
     status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: str = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -767,17 +623,13 @@ class AnalysisDataset(Dataset):
     title: str = Field(None, description="The title that describes an entity.")
     description: str = Field(None, description="Description of an entity.")
     has_file: List[File] = Field(None, description="The file associated with an entity.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     has_publication: Optional[List[Publication]] = Field(None, description="The Publication associated with an entity.")
     status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: str = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -789,17 +641,13 @@ class AggregateDataset(Dataset):
     title: str = Field(None, description="The title that describes an entity.")
     description: str = Field(None, description="Description of an entity.")
     has_file: List[File] = Field(None, description="The file associated with an entity.")
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     has_publication: Optional[List[Publication]] = Field(None, description="The Publication associated with an entity.")
     status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: str = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -822,15 +670,11 @@ class DataAccessPolicy(InformationContentEntity):
     policy_url: Optional[str] = Field(None, description="URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.")
     has_data_access_committee: DataAccessCommittee = Field(None, description="The Data Access Committee linked to this policy.")
     has_data_use_condition: Optional[List[DataUseCondition]] = Field(None, description="Data Use Condition entities that are associated with the Data Access Policy.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -842,15 +686,11 @@ class DataAccessCommittee(Committee):
     description: Optional[str] = Field(None, description="Description of an entity.")
     main_contact: Optional[Member] = Field(None, description="The main contact for the Data Access Committee.")
     has_member: Optional[List[Member]] = Field(None, description="All the members that are part of this Data Access Committee.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -860,14 +700,9 @@ class Committee(NamedThing):
     """
     name: Optional[str] = Field(None, description="The name for an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -882,14 +717,9 @@ class Member(Person):
     family_name: Optional[str] = Field(None, description="Last name.")
     additional_name: Optional[str] = Field(None, description="Additional name(s).")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -900,14 +730,9 @@ class Publication(InformationContentEntity):
     title: Optional[str] = Field(None, description="The title for the Publication.")
     abstract: Optional[str] = Field(None, description="The study abstract that describes the goals.  Can also hold abstract from a publication related to this study")
     id: str = Field(None, description="A PMID or DOI for the Publication.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="One or more cross-references for this Publication.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -916,14 +741,9 @@ class MaterialEntity(NamedThing):
     A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -932,14 +752,11 @@ class AnatomicalEntity(MaterialEntity):
     Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    name: Optional[str] = Field(None, description="The name for an entity.")
+    description: Optional[str] = Field(None, description="Description of an entity.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -948,14 +765,9 @@ class CellLine(MaterialEntity):
     A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -963,17 +775,12 @@ class Disease(DiseaseOrPhenotypicFeature):
     """
     A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
     """
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     name: Optional[str] = Field(None, description="The name for an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -981,17 +788,12 @@ class PhenotypicFeature(DiseaseOrPhenotypicFeature):
     """
     The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
     """
+    id: str = Field(None, description="An identifier that uniquely represents an entity.")
     name: Optional[str] = Field(None, description="The name for an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -1000,14 +802,9 @@ class BiologicalQuality(NamedThing):
     A biological quality is a quality held by a biological entity.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -1016,14 +813,9 @@ class InformationContentEntity(NamedThing):
     A generically dependent continuant that is about some thing.
     """
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -1037,14 +829,9 @@ class User(Person):
     family_name: Optional[str] = Field(None, description="Last name.")
     additional_name: Optional[str] = Field(None, description="Additional name(s).")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    type: Optional[str] = Field(None, description="The type of an entity.")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated entity that is being replaced by the current entity.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
     
     
 
@@ -1063,11 +850,68 @@ class Submission(BaseModel):
     has_file: Optional[List[File]] = Field(None, description="Information about one or more File entities associated with this submission.")
     has_data_access_policy: Optional[DataAccessPolicy] = Field(None, description="The Data Access Policy entity that applies to the data associated with this submission.")
     submission_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when submission was marked completed.")
-    status: Optional[StatusEnum] = Field(None, description="The status of a Submission. For example, 'in progress' or 'submitted'.")
     creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the Submission was created.")
     update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the Submission was updated.")
-    replaces: Optional[str] = Field(None, description="Refers to a deprecated Submission that is being replaced by the current Submission.")
-    replaced_by: Optional[str] = Field(None, description="Refers to the Submission which replaces a currently deprecated Submission.")
+    status: Optional[StatusEnum] = Field(None, description="The status of a Submission. For example, 'in progress' or 'submitted'.")
+    
+    
+
+class OntologyClassMixin(BaseModel):
+    """
+    Mixin for entities that represent an class/term/concept from an ontology.
+    """
+    id: str = Field(None, description="The Compact UR Identifier (CURIE) that uniquely identifies this ontology class.")
+    name: Optional[str] = Field(None, description="The name or label (rdfs:label) of an ontology class.")
+    description: Optional[str] = Field(None, description="The description or definition of an ontology class.")
+    
+    
+
+class AccessionMixin(BaseModel):
+    """
+    Mixin for entities that can be assigned a GHGA accession.
+    """
+    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
+    
+    
+
+class AttributeMixin(BaseModel):
+    """
+    Mixin for entities that can have one or more attributes.
+    """
+    has_attribute: Optional[List[Attribute]] = Field(None, description="Key/value pairs corresponding to an entity.")
+    
+    
+
+class PublicationMixin(BaseModel):
+    """
+    Mixin for entities that can have one or more publications.
+    """
+    has_publication: Optional[str] = Field(None, description="The Publication associated with an entity.")
+    
+    
+
+class DeprecatedMixin(BaseModel):
+    """
+    Mixin for entities that can be deprecated.
+    """
+    replaced_by: Optional[str] = Field(None, description="Refers to the entity which replaces a currently deprecated entity.")
+    deprecation_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was deprecated.")
+    
+    
+
+class StatusMixin(BaseModel):
+    """
+    Mixin for entities that can have a status.
+    """
+    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
+    
+    
+
+class ReleaseMixin(BaseModel):
+    """
+    Mixin for entities that can be released at a later point in time.
+    """
+    release_date: Optional[str] = Field(None, description="The timestamp (in ISO 8601 format) when the entity was released for public consumption.")
     
     
 
@@ -1170,4 +1014,18 @@ InformationContentEntity.update_forward_refs()
 User.update_forward_refs()
 
 Submission.update_forward_refs()
+
+OntologyClassMixin.update_forward_refs()
+
+AccessionMixin.update_forward_refs()
+
+AttributeMixin.update_forward_refs()
+
+PublicationMixin.update_forward_refs()
+
+DeprecatedMixin.update_forward_refs()
+
+StatusMixin.update_forward_refs()
+
+ReleaseMixin.update_forward_refs()
 

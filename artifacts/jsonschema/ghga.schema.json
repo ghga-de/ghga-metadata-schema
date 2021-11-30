@@ -1,13 +1,22 @@
 {
    "$defs": {
-      "Agent": {
+      "AccessionMixin": {
          "additionalProperties": false,
-         "description": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity.",
+         "description": "Mixin for entities that can be assigned a GHGA accession.",
          "properties": {
             "accession": {
                "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
-            },
+            }
+         },
+         "required": [],
+         "title": "AccessionMixin",
+         "type": "object"
+      },
+      "Agent": {
+         "additionalProperties": false,
+         "description": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity.",
+         "properties": {
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -16,27 +25,12 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -77,13 +71,6 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_dataset": {
                "description": "One or more Datasets that constitutes this Aggregate Dataset.",
                "items": {
@@ -107,14 +94,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "status": {
@@ -174,13 +153,6 @@
                },
                "type": "array"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_input": {
                "description": "The input data File entities used in the Analysis.",
                "items": {
@@ -205,14 +177,6 @@
             },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -261,13 +225,6 @@
                "description": "The analysis associated with an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_data_access_policy": {
                "description": "The Data Access Policy that applies to this Dataset.",
                "items": {
@@ -305,14 +262,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "status": {
@@ -356,10 +305,6 @@
          "additionalProperties": false,
          "description": "An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -367,13 +312,6 @@
             "has_agent": {
                "$ref": "#/$defs/Agent",
                "description": "The Agent - a software, institution, or human - that is executing or responsible for executing the workflow."
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "has_input": {
                "description": "The input data File entities used in the Analysis Process.",
@@ -395,14 +333,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -435,31 +365,20 @@
          "additionalProperties": false,
          "description": "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "type": {
@@ -512,35 +431,32 @@
          "title": "Attribute",
          "type": "object"
       },
-      "BiologicalQuality": {
+      "AttributeMixin": {
          "additionalProperties": false,
-         "description": "A biological quality is a quality held by a biological entity.",
+         "description": "Mixin for entities that can have one or more attributes.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
             "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
+               "description": "Key/value pairs corresponding to an entity.",
                "items": {
                   "$ref": "#/$defs/Attribute"
                },
                "type": "array"
+            }
+         },
+         "required": [],
+         "title": "AttributeMixin",
+         "type": "object"
+      },
+      "BiologicalQuality": {
+         "additionalProperties": false,
+         "description": "A biological quality is a quality held by a biological entity.",
+         "properties": {
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -595,13 +511,6 @@
                "$ref": "#/$defs/AnatomicalEntity",
                "description": "The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual."
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_disease": {
                "description": "The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.",
                "items": {
@@ -626,14 +535,6 @@
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -671,31 +572,12 @@
          "additionalProperties": false,
          "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -732,13 +614,6 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_member": {
                "description": "One or more Individuals that collectively define this Cohort.",
                "items": {
@@ -752,14 +627,6 @@
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -788,20 +655,9 @@
          "additionalProperties": false,
          "description": "A group of people organized for a specific purpose.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -809,14 +665,6 @@
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -857,13 +705,6 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_member": {
                "description": "All the members that are part of this Data Access Committee.",
                "items": {
@@ -881,14 +722,6 @@
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -930,13 +763,6 @@
                "description": "A short description for the Data Access Policy.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_data_access_committee": {
                "$ref": "#/$defs/DataAccessCommittee",
                "description": "The Data Access Committee linked to this policy."
@@ -962,14 +788,6 @@
             },
             "policy_url": {
                "description": "URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -1001,10 +819,6 @@
          "additionalProperties": false,
          "description": "A data transformation technique used to analyze and interpret data to gain a better understanding of it.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1013,23 +827,8 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "An identifier that uniquely represents an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -1091,13 +890,6 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_file": {
                "description": "One or more File entities that collectively are part of this Dataset.",
                "items": {
@@ -1114,14 +906,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "status": {
@@ -1158,43 +942,41 @@
          "title": "Dataset",
          "type": "object"
       },
+      "DeprecatedMixin": {
+         "additionalProperties": false,
+         "description": "Mixin for entities that can be deprecated.",
+         "properties": {
+            "deprecation_date": {
+               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
+               "type": "string"
+            },
+            "replaced_by": {
+               "description": "Refers to the entity which replaces a currently deprecated entity.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "DeprecatedMixin",
+         "type": "object"
+      },
       "Disease": {
          "additionalProperties": false,
          "description": "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
-               "description": "Description of an entity.",
+               "description": "The description or definition of an ontology class.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
-               "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "type": {
@@ -1223,39 +1005,20 @@
          "additionalProperties": false,
          "description": "Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
-               "description": "Description of an entity.",
+               "description": "The description or definition of an ontology class.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
-               "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "type": {
@@ -1324,13 +1087,6 @@
                "description": "First name.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_children": {
                "description": "One or more children for this Individual.",
                "items": {
@@ -1361,14 +1117,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "sex": {
@@ -1424,10 +1172,6 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "deprecation_date": {
-               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
-               "type": "string"
-            },
             "description": {
                "description": "A detailed description of the Experiment.",
                "type": "string"
@@ -1435,13 +1179,6 @@
             "experimental_replicates": {
                "description": "The replicate number of the assay, i.e. the numeric iteration  for the assay that was repeated.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "has_experiment_process": {
                "description": "One or more Experiment Processes entities associated with this Experiment.",
@@ -1456,10 +1193,6 @@
                   "$ref": "#/$defs/File"
                },
                "type": "array"
-            },
-            "has_publication": {
-               "description": "The Publication associated with an entity.",
-               "type": "string"
             },
             "has_sample": {
                "$ref": "#/$defs/Sample",
@@ -1476,22 +1209,6 @@
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
-            },
-            "release_date": {
-               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
-               "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
             },
             "technical_replicates": {
                "description": "A technical replicate is a replicate role where the same BioSample is use e.g.  the same pool of RNA used to assess technical (as opposed to biological)  variation within an experiment.",
@@ -1543,13 +1260,6 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_data_access_policy": {
                "description": "The Data Access Policy that applies to this Dataset.",
                "items": {
@@ -1587,14 +1297,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "status": {
@@ -1638,10 +1340,6 @@
          "additionalProperties": false,
          "description": "An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1649,13 +1347,6 @@
             "has_agent": {
                "$ref": "#/$defs/Agent",
                "description": "The Agent - a software, institution, or human - that is executing or responsible for executing the Experiment Process."
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "has_input": {
                "$ref": "#/$defs/Sample",
@@ -1671,14 +1362,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -1719,13 +1402,6 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_member": {
                "description": "One or more Individuals that collectively define this Family.",
                "items": {
@@ -1743,14 +1419,6 @@
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -1803,27 +1471,12 @@
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "size": {
@@ -1913,13 +1566,6 @@
                "description": "First name.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_children": {
                "description": "One or more children for this Individual.",
                "items": {
@@ -1950,14 +1596,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "sex": {
@@ -2001,31 +1639,12 @@
          "additionalProperties": false,
          "description": "A generically dependent continuant that is about some thing.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2054,52 +1673,17 @@
          "additionalProperties": false,
          "description": "Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "deprecation_date": {
-               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
                "type": "string"
             },
             "description": {
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
-            "has_publication": {
-               "description": "The Publication associated with an entity.",
-               "type": "string"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
-            },
-            "release_date": {
-               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
-               "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
             },
             "title": {
                "description": "The title that describes an entity.",
@@ -2131,10 +1715,6 @@
          "additionalProperties": false,
          "description": "Information about the library preparation of an Experiment.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2202,14 +1782,6 @@
                "description": "The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.",
                "type": "string"
             },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
-               "type": "string"
-            },
             "rnaseq_strandedness": {
                "description": "The strandedness of the library, whether reads come from both strands of the cDNA  or only from the first (antisense) or the second (sense) strand.",
                "type": "string"
@@ -2258,31 +1830,12 @@
          "additionalProperties": false,
          "description": "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2311,10 +1864,6 @@
          "additionalProperties": false,
          "description": "Member of an Organization or a Committee.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "additional_name": {
                "description": "Additional name(s).",
                "type": "string"
@@ -2335,27 +1884,12 @@
                "description": "First name.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "organization": {
                "description": "The organization that the Member is part of.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "telephone": {
@@ -2391,31 +1925,12 @@
          "additionalProperties": false,
          "description": "A databased entity, concept or class. This is a generic class that is the root of all the other classes.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2440,14 +1955,33 @@
          "title": "NamedThing",
          "type": "object"
       },
+      "OntologyClassMixin": {
+         "additionalProperties": false,
+         "description": "Mixin for entities that represent an class/term/concept from an ontology.",
+         "properties": {
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The Compact UR Identifier (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "OntologyClassMixin",
+         "type": "object"
+      },
       "Person": {
          "additionalProperties": false,
          "description": "A member of the species Homo sapiens.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "additional_name": {
                "description": "Additional name(s).",
                "type": "string"
@@ -2464,23 +1998,8 @@
                "description": "First name.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2509,39 +2028,20 @@
          "additionalProperties": false,
          "description": "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
-               "description": "Description of an entity.",
+               "description": "The description or definition of an ontology class.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
-               "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "type": {
@@ -2570,31 +2070,12 @@
          "additionalProperties": false,
          "description": "A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2623,20 +2104,9 @@
          "additionalProperties": false,
          "description": "A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -2644,14 +2114,6 @@
             },
             "name": {
                "description": "The name for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2717,14 +2179,6 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
-               "type": "string"
-            },
             "title": {
                "description": "Comprehensive title for the project.",
                "type": "string"
@@ -2757,10 +2211,6 @@
          "additionalProperties": false,
          "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2782,14 +2232,6 @@
             },
             "name": {
                "description": "Name of the protocol (eg: Sample extraction_PCR amplification).",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -2826,31 +2268,12 @@
                "description": "The study abstract that describes the goals.  Can also hold abstract from a publication related to this study",
                "type": "string"
             },
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "A PMID or DOI for the Publication.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -2879,14 +2302,36 @@
          "title": "Publication",
          "type": "object"
       },
+      "PublicationMixin": {
+         "additionalProperties": false,
+         "description": "Mixin for entities that can have one or more publications.",
+         "properties": {
+            "has_publication": {
+               "description": "The Publication associated with an entity.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "PublicationMixin",
+         "type": "object"
+      },
+      "ReleaseMixin": {
+         "additionalProperties": false,
+         "description": "Mixin for entities that can be released at a later point in time.",
+         "properties": {
+            "release_date": {
+               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "ReleaseMixin",
+         "type": "object"
+      },
       "ResearchActivity": {
          "additionalProperties": false,
          "description": "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2895,27 +2340,8 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
-            "has_publication": {
-               "description": "The Publication associated with an entity.",
-               "type": "string"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "title": {
@@ -2960,13 +2386,6 @@
                "description": "Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc).",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "has_biospecimen": {
                "$ref": "#/$defs/Biospecimen",
                "description": "The Biospecimen from which this Sample was prepared from."
@@ -2985,14 +2404,6 @@
             },
             "name": {
                "description": "Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "storage": {
@@ -3037,10 +2448,6 @@
          "additionalProperties": false,
          "description": "Information about the sequencing of a sample.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "cell_barcode_offset": {
                "description": "The offset in sequence of the cell identifying barcode. (Eg. '0').",
                "type": "string"
@@ -3102,14 +2509,6 @@
             },
             "reference_annotation": {
                "description": "A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "sample_barcode_read": {
@@ -3180,6 +2579,19 @@
          "title": "StatusEnum",
          "type": "string"
       },
+      "StatusMixin": {
+         "additionalProperties": false,
+         "description": "Mixin for entities that can have a status.",
+         "properties": {
+            "status": {
+               "$ref": "#/$defs/StatusEnum",
+               "description": "The status of an entity."
+            }
+         },
+         "required": [],
+         "title": "StatusMixin",
+         "type": "object"
+      },
       "Study": {
          "additionalProperties": false,
          "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
@@ -3197,10 +2609,6 @@
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "deprecation_date": {
-               "description": "The timestamp (in ISO 8601 format) when the entity was deprecated.",
                "type": "string"
             },
             "description": {
@@ -3247,17 +2655,9 @@
                "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
                "type": "string"
             },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
-               "type": "string"
-            },
             "status": {
                "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
+               "description": "The status of a Study. For example, 'released' or 'unreleased'."
             },
             "title": {
                "description": "Comprehensive title for the study.",
@@ -3376,14 +2776,6 @@
                "description": "A internal unique identifier for the Submission.",
                "type": "string"
             },
-            "replaced_by": {
-               "description": "Refers to the Submission which replaces a currently deprecated Submission.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated Submission that is being replaced by the current Submission.",
-               "type": "string"
-            },
             "status": {
                "$ref": "#/$defs/StatusEnum",
                "description": "The status of a Submission. For example, 'in progress' or 'submitted'."
@@ -3407,31 +2799,12 @@
          "additionalProperties": false,
          "description": "A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -3460,10 +2833,6 @@
          "additionalProperties": false,
          "description": "A user in GHGA.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "additional_name": {
                "description": "Additional name(s).",
                "type": "string"
@@ -3484,23 +2853,8 @@
                "description": "First name.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "role": {
@@ -3552,31 +2906,12 @@
          "additionalProperties": false,
          "description": "A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
-            },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
@@ -3622,20 +2957,9 @@
          "additionalProperties": false,
          "description": "A Workflow Step represents each individual step performed in a Workflow. If the Workflow is a single-step workflow then the Workflow has just one Workflow Step entity. If the Workflow is a multi-step workflow then the Workflow has a Workflow Step entity for each step. All Workflow step specific attributes like parameters, and metadata about execution environment are captured by the Workflow Step entity.",
          "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Holds one or more Attribute entities that further characterizes this entity.",
-               "items": {
-                  "$ref": "#/$defs/Attribute"
-               },
-               "type": "array"
             },
             "has_parameter": {
                "description": "One or more parameters that are associated with this Workflow Step.",
@@ -3646,14 +2970,6 @@
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "replaced_by": {
-               "description": "Refers to the entity which replaces a currently deprecated entity.",
-               "type": "string"
-            },
-            "replaces": {
-               "description": "Refers to a deprecated entity that is being replaced by the current entity.",
                "type": "string"
             },
             "type": {
