@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-26T07:50:01
+# Generation date: 2021-11-30T08:35:15
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -237,6 +237,10 @@ class SubmissionId(extended_str):
     pass
 
 
+class OntologyClassMixinId(extended_str):
+    pass
+
+
 @dataclass
 class NamedThing(YAMLRoot):
     """
@@ -250,14 +254,10 @@ class NamedThing(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.NamedThing
 
     id: Union[str, NamedThingId] = None
-    accession: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
-    type: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]] = empty_list()
     creation_date: Optional[str] = None
     update_date: Optional[str] = None
-    replaces: Optional[Union[str, NamedThingId]] = None
-    replaced_by: Optional[Union[str, NamedThingId]] = None
+    type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -265,17 +265,9 @@ class NamedThing(YAMLRoot):
         if not isinstance(self.id, NamedThingId):
             self.id = NamedThingId(self.id)
 
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
         if self.creation_date is not None and not isinstance(self.creation_date, str):
             self.creation_date = str(self.creation_date)
@@ -283,11 +275,8 @@ class NamedThing(YAMLRoot):
         if self.update_date is not None and not isinstance(self.update_date, str):
             self.update_date = str(self.update_date)
 
-        if self.replaces is not None and not isinstance(self.replaces, NamedThingId):
-            self.replaces = NamedThingId(self.replaces)
-
-        if self.replaced_by is not None and not isinstance(self.replaced_by, NamedThingId):
-            self.replaced_by = NamedThingId(self.replaced_by)
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -369,10 +358,6 @@ class Investigation(PlannedProcess):
     id: Union[str, InvestigationId] = None
     title: Optional[str] = None
     description: Optional[str] = None
-    has_publication: Optional[Union[str, PublicationId]] = None
-    status: Optional[Union[str, "StatusEnum"]] = None
-    release_date: Optional[str] = None
-    deprecation_date: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -385,18 +370,6 @@ class Investigation(PlannedProcess):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
-            self.has_publication = PublicationId(self.has_publication)
-
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
-
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
-
-        if self.deprecation_date is not None and not isinstance(self.deprecation_date, str):
-            self.deprecation_date = str(self.deprecation_date)
 
         super().__post_init__(**kwargs)
 
@@ -448,7 +421,6 @@ class ResearchActivity(PlannedProcess):
     id: Union[str, ResearchActivityId] = None
     title: Optional[str] = None
     description: Optional[str] = None
-    has_publication: Optional[Union[str, PublicationId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -461,9 +433,6 @@ class ResearchActivity(PlannedProcess):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
-            self.has_publication = PublicationId(self.has_publication)
 
         super().__post_init__(**kwargs)
 
@@ -483,9 +452,10 @@ class Project(ResearchActivity):
     id: Union[str, ProjectId] = None
     title: str = None
     description: str = None
-    has_study: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
+    has_study: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -503,11 +473,14 @@ class Project(ResearchActivity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
-
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
+        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
+
         self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -535,6 +508,9 @@ class Study(Investigation):
     has_project: Optional[Union[dict, Project]] = None
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+    status: Optional[Union[str, "StatusEnum"]] = None
+    accession: Optional[str] = None
+    release_date: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -574,6 +550,15 @@ class Study(Investigation):
 
         self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
+        if self.status is not None and not isinstance(self.status, StatusEnum):
+            self.status = StatusEnum(self.status)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
+
         super().__post_init__(**kwargs)
 
 
@@ -601,6 +586,7 @@ class Experiment(Investigation):
     has_technology: Optional[Union[dict, "Technology"]] = None
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]] = empty_dict()
     has_experiment_process: Optional[Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]]] = empty_dict()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -643,6 +629,9 @@ class Experiment(Investigation):
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_experiment_process", slot_type=ExperimentProcess, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -809,6 +798,7 @@ class Individual(Person):
     has_children: Optional[Union[Dict[Union[str, IndividualId], Union[dict, "Individual"]], List[Union[dict, "Individual"]]]] = empty_dict()
     has_disease: Optional[Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]]] = empty_dict()
     has_phenotypic_feature: Optional[Union[Dict[Union[str, PhenotypicFeatureId], Union[dict, "PhenotypicFeature"]], List[Union[dict, "PhenotypicFeature"]]]] = empty_dict()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -853,6 +843,9 @@ class Individual(Person):
         self._normalize_inlined_as_list(slot_name="has_disease", slot_type=Disease, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_phenotypic_feature", slot_type=PhenotypicFeature, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -903,6 +896,7 @@ class Analysis(DataTransformation):
     has_workflow: Optional[Union[dict, Workflow]] = None
     has_analysis_process: Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]] = empty_dict()
     has_output: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -921,6 +915,9 @@ class Analysis(DataTransformation):
         self._normalize_inlined_as_list(slot_name="has_analysis_process", slot_type=AnalysisProcess, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_output", slot_type=File, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1040,6 +1037,7 @@ class DataAccessCommittee(Committee):
     description: Optional[str] = None
     main_contact: Optional[Union[dict, "Member"]] = None
     has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]] = empty_dict()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1059,6 +1057,9 @@ class DataAccessCommittee(Committee):
             self.main_contact = Member(**as_dict(self.main_contact))
 
         self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1149,6 +1150,7 @@ class Biospecimen(MaterialEntity):
     has_anatomical_entity: Optional[Union[dict, "AnatomicalEntity"]] = None
     has_disease: Optional[Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]]] = empty_dict()
     has_phenotypic_feature: Optional[Union[Dict[Union[str, PhenotypicFeatureId], Union[dict, "PhenotypicFeature"]], List[Union[dict, "PhenotypicFeature"]]]] = empty_dict()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1171,6 +1173,9 @@ class Biospecimen(MaterialEntity):
         self._normalize_inlined_as_list(slot_name="has_disease", slot_type=Disease, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_phenotypic_feature", slot_type=PhenotypicFeature, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1199,6 +1204,7 @@ class Sample(MaterialEntity):
     has_biospecimen: Optional[Union[dict, Biospecimen]] = None
     type: Optional[Union[str, "CaseControlEnum"]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1244,6 +1250,9 @@ class Sample(MaterialEntity):
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1292,6 +1301,7 @@ class Family(Population):
     id: Union[str, FamilyId] = None
     has_member: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
     has_proband: Optional[Union[dict, Individual]] = None
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1303,6 +1313,9 @@ class Family(Population):
 
         if self.has_proband is not None and not isinstance(self.has_proband, Individual):
             self.has_proband = Individual(**as_dict(self.has_proband))
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1322,6 +1335,7 @@ class Cohort(Population):
 
     id: Union[str, CohortId] = None
     has_member: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1330,6 +1344,9 @@ class Cohort(Population):
             self.id = CohortId(self.id)
 
         self._normalize_inlined_as_list(slot_name="has_member", slot_type=Individual, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1348,12 +1365,20 @@ class AnatomicalEntity(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.AnatomicalEntity
 
     id: Union[str, AnatomicalEntityId] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, AnatomicalEntityId):
             self.id = AnatomicalEntityId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
@@ -1868,6 +1893,7 @@ class File(InformationContentEntity):
     file_index: Optional[str] = None
     category: Optional[str] = None
     type: Optional[Union[str, "FileTypeEnum"]] = None
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1898,6 +1924,9 @@ class File(InformationContentEntity):
         if self.type is not None and not isinstance(self.type, FileTypeEnum):
             self.type = FileTypeEnum(self.type)
 
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
         super().__post_init__(**kwargs)
 
 
@@ -1919,6 +1948,7 @@ class Dataset(InformationContentEntity):
     has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     type: str = None
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
+    accession: Optional[str] = None
     status: Optional[Union[str, "StatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1947,6 +1977,9 @@ class Dataset(InformationContentEntity):
             self.type = str(self.type)
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         if self.status is not None and not isinstance(self.status, StatusEnum):
             self.status = StatusEnum(self.status)
@@ -2093,6 +2126,7 @@ class DataAccessPolicy(InformationContentEntity):
     name: Optional[str] = None
     policy_url: Optional[str] = None
     has_data_use_condition: Optional[Union[Union[dict, DataUseCondition], List[Union[dict, DataUseCondition]]]] = empty_list()
+    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2124,6 +2158,9 @@ class DataAccessPolicy(InformationContentEntity):
         if not isinstance(self.has_data_use_condition, list):
             self.has_data_use_condition = [self.has_data_use_condition] if self.has_data_use_condition is not None else []
         self.has_data_use_condition = [v if isinstance(v, DataUseCondition) else DataUseCondition(**as_dict(v)) for v in self.has_data_use_condition]
+
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -2220,11 +2257,9 @@ class Submission(YAMLRoot):
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
     has_data_access_policy: Optional[Union[dict, DataAccessPolicy]] = None
     submission_date: Optional[str] = None
-    status: Optional[Union[str, "StatusEnum"]] = None
     creation_date: Optional[str] = None
     update_date: Optional[str] = None
-    replaces: Optional[Union[str, NamedThingId]] = None
-    replaced_by: Optional[Union[str, NamedThingId]] = None
+    status: Optional[Union[str, "StatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2256,20 +2291,174 @@ class Submission(YAMLRoot):
         if self.submission_date is not None and not isinstance(self.submission_date, str):
             self.submission_date = str(self.submission_date)
 
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
-
         if self.creation_date is not None and not isinstance(self.creation_date, str):
             self.creation_date = str(self.creation_date)
 
         if self.update_date is not None and not isinstance(self.update_date, str):
             self.update_date = str(self.update_date)
 
-        if self.replaces is not None and not isinstance(self.replaces, NamedThingId):
-            self.replaces = NamedThingId(self.replaces)
+        if self.status is not None and not isinstance(self.status, StatusEnum):
+            self.status = StatusEnum(self.status)
 
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OntologyClassMixin(YAMLRoot):
+    """
+    Mixin for entities that represent an class/term/concept from an ontology.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.OntologyClassMixin
+    class_class_curie: ClassVar[str] = "GHGA:OntologyClassMixin"
+    class_name: ClassVar[str] = "ontology class mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.OntologyClassMixin
+
+    id: Union[str, OntologyClassMixinId] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, OntologyClassMixinId):
+            self.id = OntologyClassMixinId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AccessionMixin(YAMLRoot):
+    """
+    Mixin for entities that can be assigned a GHGA accession.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.AccessionMixin
+    class_class_curie: ClassVar[str] = "GHGA:AccessionMixin"
+    class_name: ClassVar[str] = "accession mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.AccessionMixin
+
+    accession: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.accession is not None and not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AttributeMixin(YAMLRoot):
+    """
+    Mixin for entities that can have one or more attributes.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.AttributeMixin
+    class_class_curie: ClassVar[str] = "GHGA:AttributeMixin"
+    class_name: ClassVar[str] = "attribute mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.AttributeMixin
+
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class PublicationMixin(YAMLRoot):
+    """
+    Mixin for entities that can have one or more publications.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.PublicationMixin
+    class_class_curie: ClassVar[str] = "GHGA:PublicationMixin"
+    class_name: ClassVar[str] = "publication mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.PublicationMixin
+
+    has_publication: Optional[Union[str, PublicationId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
+            self.has_publication = PublicationId(self.has_publication)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DeprecatedMixin(YAMLRoot):
+    """
+    Mixin for entities that can be deprecated.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.DeprecatedMixin
+    class_class_curie: ClassVar[str] = "GHGA:DeprecatedMixin"
+    class_name: ClassVar[str] = "deprecated mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.DeprecatedMixin
+
+    replaced_by: Optional[Union[str, NamedThingId]] = None
+    deprecation_date: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.replaced_by is not None and not isinstance(self.replaced_by, NamedThingId):
             self.replaced_by = NamedThingId(self.replaced_by)
+
+        if self.deprecation_date is not None and not isinstance(self.deprecation_date, str):
+            self.deprecation_date = str(self.deprecation_date)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class StatusMixin(YAMLRoot):
+    """
+    Mixin for entities that can have a status.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.StatusMixin
+    class_class_curie: ClassVar[str] = "GHGA:StatusMixin"
+    class_name: ClassVar[str] = "status mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.StatusMixin
+
+    status: Optional[Union[str, "StatusEnum"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.status is not None and not isinstance(self.status, StatusEnum):
+            self.status = StatusEnum(self.status)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ReleaseMixin(YAMLRoot):
+    """
+    Mixin for entities that can be released at a later point in time.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.ReleaseMixin
+    class_class_curie: ClassVar[str] = "GHGA:ReleaseMixin"
+    class_name: ClassVar[str] = "release mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.ReleaseMixin
+
+    release_date: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
 
         super().__post_init__(**kwargs)
 
@@ -2414,9 +2603,9 @@ class StatusEnum(EnumDefinitionImpl):
     unreleased = PermissibleValue(text="unreleased",
                                            description="Signifies that the entity is submitted but unreleased for public consumption.")
     released = PermissibleValue(text="released",
-                                       description="Signifies that the entity is submitted and released for public conusmption.")
+                                       description="Signifies that the entity is submitted and released for public consumption.")
     deprecated = PermissibleValue(text="deprecated",
-                                           description="Signifies that the entity is deprecated and is replaced by another entity.")
+                                           description="Signifies that the entity is deprecated and may be replaced by another entity.")
 
     _defn = EnumDefinition(
         name="StatusEnum",
@@ -2482,7 +2671,7 @@ slots.url = Slot(uri=GHGA.url, name="url", curie=GHGA.curie('url'),
                    model_uri=GHGA.url, domain=None, range=Optional[str])
 
 slots.has_attribute = Slot(uri=GHGA.has_attribute, name="has attribute", curie=GHGA.curie('has_attribute'),
-                   model_uri=GHGA.has_attribute, domain=None, range=Optional[Union[dict, Attribute]])
+                   model_uri=GHGA.has_attribute, domain=None, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.description = Slot(uri=GHGA.description, name="description", curie=GHGA.curie('description'),
                    model_uri=GHGA.description, domain=None, range=Optional[str])
@@ -2787,17 +2976,11 @@ slots.status = Slot(uri=GHGA.status, name="status", curie=GHGA.curie('status'),
 slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
 
-slots.named_thing_accession = Slot(uri=GHGA.accession, name="named thing_accession", curie=GHGA.curie('accession'),
-                   model_uri=GHGA.named_thing_accession, domain=NamedThing, range=Optional[str])
-
 slots.named_thing_xref = Slot(uri=GHGA.xref, name="named thing_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.named_thing_xref, domain=NamedThing, range=Optional[Union[str, List[str]]])
 
 slots.named_thing_type = Slot(uri=GHGA.type, name="named thing_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.named_thing_type, domain=NamedThing, range=Optional[str])
-
-slots.named_thing_has_attribute = Slot(uri=GHGA.has_attribute, name="named thing_has attribute", curie=GHGA.curie('has_attribute'),
-                   model_uri=GHGA.named_thing_has_attribute, domain=NamedThing, range=Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]])
 
 slots.named_thing_creation_date = Slot(uri=GHGA.creation_date, name="named thing_creation date", curie=GHGA.curie('creation_date'),
                    model_uri=GHGA.named_thing_creation_date, domain=NamedThing, range=Optional[str])
@@ -2858,6 +3041,9 @@ slots.study_has_project = Slot(uri=GHGA.has_project, name="study_has project", c
 
 slots.study_has_attribute = Slot(uri=GHGA.has_attribute, name="study_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.study_has_attribute, domain=Study, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.study_status = Slot(uri=GHGA.status, name="study_status", curie=GHGA.curie('status'),
+                   model_uri=GHGA.study_status, domain=Study, range=Optional[Union[str, "StatusEnum"]])
 
 slots.experiment_title = Slot(uri=GHGA.title, name="experiment_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.experiment_title, domain=Experiment, range=str)
@@ -3090,9 +3276,6 @@ slots.dataset_has_file = Slot(uri=GHGA.has_file, name="dataset_has file", curie=
 slots.dataset_has_publication = Slot(uri=GHGA.has_publication, name="dataset_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.dataset_has_publication, domain=Dataset, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]])
 
-slots.dataset_status = Slot(uri=GHGA.status, name="dataset_status", curie=GHGA.curie('status'),
-                   model_uri=GHGA.dataset_status, domain=Dataset, range=Optional[Union[str, "StatusEnum"]])
-
 slots.experiment_dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="experiment dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
                    model_uri=GHGA.experiment_dataset_has_data_access_policy, domain=ExperimentDataset, range=Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]])
 
@@ -3201,11 +3384,14 @@ slots.submission_creation_date = Slot(uri=GHGA.creation_date, name="submission_c
 slots.submission_update_date = Slot(uri=GHGA.update_date, name="submission_update date", curie=GHGA.curie('update_date'),
                    model_uri=GHGA.submission_update_date, domain=Submission, range=Optional[str])
 
-slots.submission_replaces = Slot(uri=GHGA.replaces, name="submission_replaces", curie=GHGA.curie('replaces'),
-                   model_uri=GHGA.submission_replaces, domain=Submission, range=Optional[Union[str, NamedThingId]])
-
-slots.submission_replaced_by = Slot(uri=GHGA.replaced_by, name="submission_replaced by", curie=GHGA.curie('replaced_by'),
-                   model_uri=GHGA.submission_replaced_by, domain=Submission, range=Optional[Union[str, NamedThingId]])
-
 slots.submission_status = Slot(uri=GHGA.status, name="submission_status", curie=GHGA.curie('status'),
                    model_uri=GHGA.submission_status, domain=Submission, range=Optional[Union[str, "StatusEnum"]])
+
+slots.ontology_class_mixin_id = Slot(uri=GHGA.id, name="ontology class mixin_id", curie=GHGA.curie('id'),
+                   model_uri=GHGA.ontology_class_mixin_id, domain=OntologyClassMixin, range=Union[str, OntologyClassMixinId])
+
+slots.ontology_class_mixin_name = Slot(uri=GHGA.name, name="ontology class mixin_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.ontology_class_mixin_name, domain=OntologyClassMixin, range=Optional[str])
+
+slots.ontology_class_mixin_description = Slot(uri=GHGA.description, name="ontology class mixin_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.ontology_class_mixin_description, domain=OntologyClassMixin, range=Optional[str])
