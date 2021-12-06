@@ -930,13 +930,19 @@ classes:
       - publication mixin
       - status mixin
     description: >-
-      A Dataset is a collection of Files that is prepared for distribution.
+      A Dataset is a collection of Files that is prepared for distribution
+      and is tied to a Data Access Policy.
     exact_mappings:
       - SIO:000089
     slots:
       - title
       - description
+      - has study
+      - has experiment
+      - has sample
+      - has analysis
       - has file
+      - has data access policy
     slot_usage:
       title:
         required: true
@@ -944,74 +950,6 @@ classes:
         required: true
       type:
         required: true
-      has file:
-        description: >-
-          One or more File entities that collectively are part of this Dataset.
-        required: true
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has publication:
-        description: >-
-          One or more Publication entities associated with this Dataset.
-        range: publication
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-
-  experiment dataset:
-    is_a: dataset
-    description: >-
-      An Experiment Dataset is a collection of Files linked to one or more Experiments
-      from one or more Studies.
-    slots:
-      - has data access policy
-      - has study
-      - has experiment
-    slot_usage:
-      has data access policy:
-        description: >-
-          The Data Access Policy that applies to this Dataset.
-        range: data access policy
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
-      has study:
-        description: >-
-          One or more Study entities that are referenced by this Dataset.
-        range: study
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
-      has experiment:
-        description: >-
-          One or more Experiment entities that are referenced by this Dataset.
-        range: experiment
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
-
-  analysis dataset:
-    is_a: dataset
-    description: >-
-      An Analysis Dataset is a collection of Files generated from one or more Analysis
-      performed on data from one or more Studies.
-    slots:
-      - has data access policy
-      - has study
-      - has analysis
-    slot_usage:
-      has data access policy:
-        description: >-
-          The Data Access Policy that applies to this Dataset.
-        range: data access policy
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
       has study:
         description: >-
           One or more Study entities that are referenced by this Dataset.
@@ -1028,19 +966,41 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-
-  aggregate dataset:
-    is_a: dataset
-    description: >-
-      An Aggregate Dataset is a specialized dataset that is built by combining one
-      or more Datasets together.
-    slots:
-      - has dataset
-    slot_usage:
-      has dataset:
+      has sample:
         description: >-
-          One or more Datasets that constitutes this Aggregate Dataset.
-        range: dataset
+          One or more Sample entities that are referenced by this Dataset.
+        range: study
+        multivalued: true
+        required: true
+        inlined: true
+        inlined_as_list: true
+      has analysis:
+        description: >-
+          One or more Analysis entities that are referenced by this Dataset.
+        range: study
+        multivalued: true
+        required: true
+        inlined: true
+        inlined_as_list: true
+      has file:
+        description: >-
+          One or more File entities that collectively are part of this Dataset.
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has data access policy:
+        description: >-
+          The Data Access Policy that applies to this Dataset.
+        range: data access policy
+        multivalued: true
+        required: true
+        inlined: true
+        inlined_as_list: true
+      has publication:
+        description: >-
+          One or more Publication entities associated with this Dataset.
+        range: publication
         multivalued: true
         inlined: true
         inlined_as_list: true
