@@ -165,13 +165,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has study:
-        description: >-
-          One or more Study entities associated with this Project.
-        range: study
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
       has attribute:
         description: >-
           Custom attributes for the Project 
