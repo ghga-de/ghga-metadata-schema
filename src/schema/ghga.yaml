@@ -1086,7 +1086,7 @@ classes:
         description: >-
           The main contact for the Data Access Committee.
         range: member
-        inlined: true
+        inlined: false
         inlined_as_list: false
       has member:
         description: >-
