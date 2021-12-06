@@ -48,15 +48,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<AggregateDataset> CLOSED {
-    (  $<AggregateDataset_tes> (  &<Dataset_tes> ;
-          rdf:type [ <Dataset> ] ? ;
-          <has_dataset> @<Dataset> *
-       ) ;
-       rdf:type [ <AggregateDataset> ]
-    )
-}
-
 <Analysis> CLOSED {
     (  $<Analysis_tes> (  &<DataTransformation_tes> ;
           rdf:type [ <DataTransformation> ] ? ;
@@ -70,18 +61,6 @@ linkml:Nodeidentifier NONLITERAL
           <accession> @linkml:String ?
        ) ;
        rdf:type [ <Analysis> ]
-    )
-}
-
-<AnalysisDataset> CLOSED {
-    (  $<AnalysisDataset_tes> (  &<Dataset_tes> ;
-          rdf:type [ <Dataset> ] ? ;
-          <has_data_access_policy> @<DataAccessPolicy> + ;
-          <has_study> @<Study> + ;
-          <has_analysis> @linkml:String ? ;
-          <has_experiment> @<Analysis> +
-       ) ;
-       rdf:type [ <AnalysisDataset> ]
     )
 }
 
@@ -236,28 +215,31 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<Dataset>  (
-    CLOSED {
-       (  $<Dataset_tes> (  &<InformationContentEntity_tes> ;
-             rdf:type [ <InformationContentEntity> ] ? ;
-             &<AccessionMixin_tes> ;
-             rdf:type [ <AccessionMixin> ] ? ;
-             &<PublicationMixin_tes> ;
-             rdf:type [ <PublicationMixin> ] ? ;
-             &<StatusMixin_tes> ;
-             rdf:type [ <StatusMixin> ] ? ;
-             <title> @linkml:String ;
-             <description> @linkml:String ;
-             <has_file> @<File> + ;
-             <type> @linkml:String ;
-             <has_publication> @<Publication> * ;
-             <accession> @linkml:String ? ;
-             <status> @<StatusEnum> ?
-          ) ;
-          rdf:type [ <Dataset> ]
-       )
-    } OR @<AggregateDataset> OR @<AnalysisDataset> OR @<ExperimentDataset>
-)
+<Dataset> CLOSED {
+    (  $<Dataset_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          &<AccessionMixin_tes> ;
+          rdf:type [ <AccessionMixin> ] ? ;
+          &<PublicationMixin_tes> ;
+          rdf:type [ <PublicationMixin> ] ? ;
+          &<StatusMixin_tes> ;
+          rdf:type [ <StatusMixin> ] ? ;
+          <title> @linkml:String ;
+          <description> @linkml:String ;
+          <has_study> @<Study> + ;
+          <has_experiment> @<Analysis> + ;
+          <has_sample> @<Study> + ;
+          <has_analysis> @<Study> + ;
+          <has_file> @<File> + ;
+          <has_data_access_policy> @<DataAccessPolicy> + ;
+          <type> @linkml:String ;
+          <has_publication> @<Publication> * ;
+          <accession> @linkml:String ? ;
+          <status> @<StatusEnum> ?
+       ) ;
+       rdf:type [ <Dataset> ]
+    )
+}
 
 <DeprecatedMixin> CLOSED {
     (  $<DeprecatedMixin_tes> (  <replaced_by> @<NamedThing> ? ;
@@ -315,17 +297,6 @@ linkml:Nodeidentifier NONLITERAL
           <accession> @linkml:String ?
        ) ;
        rdf:type [ <Experiment> ]
-    )
-}
-
-<ExperimentDataset> CLOSED {
-    (  $<ExperimentDataset_tes> (  &<Dataset_tes> ;
-          rdf:type [ <Dataset> ] ? ;
-          <has_data_access_policy> @<DataAccessPolicy> + ;
-          <has_study> @<Study> + ;
-          <has_experiment> @<Experiment> +
-       ) ;
-       rdf:type [ <ExperimentDataset> ]
     )
 }
 
@@ -539,7 +510,6 @@ linkml:Nodeidentifier NONLITERAL
           <title> @linkml:String ;
           <description> @linkml:String ;
           <has_publication> @<Publication> * ;
-          <has_study> @<Study> * ;
           <has_attribute> @<Attribute> * ;
           <accession> @linkml:String ?
        ) ;

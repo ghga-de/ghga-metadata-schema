@@ -22,38 +22,6 @@ CREATE TABLE agent (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE aggregate_dataset (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	type TEXT NOT NULL, 
-	has_publication TEXT, 
-	accession TEXT, 
-	status status_enum, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE analysis_dataset (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	type TEXT NOT NULL, 
-	has_publication TEXT, 
-	accession TEXT, 
-	status status_enum, 
-	has_data_access_policy TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_analysis TEXT, 
-	has_experiment TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE anatomical_entity (
 	id TEXT NOT NULL, 
 	creation_date TEXT, 
@@ -123,6 +91,25 @@ CREATE TABLE data_transformation (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE dataset (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
+	has_sample TEXT NOT NULL, 
+	has_analysis TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_data_access_policy TEXT NOT NULL, 
+	type TEXT NOT NULL, 
+	has_publication TEXT, 
+	accession TEXT, 
+	status status_enum, 
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE disease (
 	id TEXT NOT NULL, 
 	creation_date TEXT, 
@@ -164,23 +151,6 @@ CREATE TABLE donor (
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
 	accession TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE experiment_dataset (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	type TEXT NOT NULL, 
-	has_publication TEXT, 
-	accession TEXT, 
-	status status_enum, 
-	has_data_access_policy TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_experiment TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -349,7 +319,6 @@ CREATE TABLE project (
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_publication TEXT, 
-	has_study TEXT, 
 	has_attribute TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id)
@@ -494,22 +463,6 @@ CREATE TABLE data_access_committee (
 	FOREIGN KEY(main_contact) REFERENCES member (id)
 );
 
-CREATE TABLE dataset (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	type TEXT NOT NULL, 
-	has_publication TEXT, 
-	accession TEXT, 
-	status status_enum, 
-	aggregate_dataset_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(aggregate_dataset_id) REFERENCES aggregate_dataset (id)
-);
-
 CREATE TABLE deprecated_mixin (
 	replaced_by TEXT, 
 	deprecation_date TEXT, 
@@ -570,20 +523,6 @@ CREATE TABLE agent_xref (
 	FOREIGN KEY(backref_id) REFERENCES agent (id)
 );
 
-CREATE TABLE aggregate_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES aggregate_dataset (id)
-);
-
-CREATE TABLE analysis_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis_dataset (id)
-);
-
 CREATE TABLE anatomical_entity_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -626,6 +565,13 @@ CREATE TABLE data_transformation_xref (
 	FOREIGN KEY(backref_id) REFERENCES data_transformation (id)
 );
 
+CREATE TABLE dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES dataset (id)
+);
+
 CREATE TABLE disease_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -645,13 +591,6 @@ CREATE TABLE donor_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES donor (id)
-);
-
-CREATE TABLE experiment_dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES experiment_dataset (id)
 );
 
 CREATE TABLE file_xref (
@@ -864,13 +803,6 @@ CREATE TABLE data_access_committee_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES data_access_committee (id)
-);
-
-CREATE TABLE dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
 CREATE TABLE family_xref (

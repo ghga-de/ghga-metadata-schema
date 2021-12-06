@@ -578,71 +578,18 @@ class AnalysisProcess(PlannedProcess):
 
 class Dataset(InformationContentEntity):
     """
-    A Dataset is a collection of Files that is prepared for distribution.
+    A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
     """
     title: str = Field(None, description="The title that describes an entity.")
     description: str = Field(None, description="Description of an entity.")
+    has_study: List[Study] = Field(None, description="One or more Study entities that are referenced by this Dataset.")
+    has_experiment: List[Analysis] = Field(None, description="One or more Analysis entities that are referenced by this Dataset.")
+    has_sample: List[Study] = Field(None, description="One or more Sample entities that are referenced by this Dataset.")
+    has_analysis: List[Study] = Field(None, description="One or more Analysis entities that are referenced by this Dataset.")
     has_file: List[File] = Field(None, description="One or more File entities that collectively are part of this Dataset.")
+    has_data_access_policy: List[DataAccessPolicy] = Field(None, description="The Data Access Policy that applies to this Dataset.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     has_publication: Optional[List[Publication]] = Field(None, description="One or more Publication entities associated with this Dataset.")
-    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
-    update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    
-    
-
-class ExperimentDataset(Dataset):
-    """
-    An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies.
-    """
-    has_data_access_policy: List[DataAccessPolicy] = Field(None, description="The Data Access Policy that applies to this Dataset.")
-    has_study: List[Study] = Field(None, description="One or more Study entities that are referenced by this Dataset.")
-    has_experiment: List[Experiment] = Field(None, description="One or more Experiment entities that are referenced by this Dataset.")
-    title: str = Field(None, description="The title that describes an entity.")
-    description: str = Field(None, description="Description of an entity.")
-    has_file: List[File] = Field(None, description="The file associated with an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
-    has_publication: Optional[List[Publication]] = Field(None, description="The Publication associated with an entity.")
-    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
-    update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    
-    
-
-class AnalysisDataset(Dataset):
-    """
-    An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or more Studies.
-    """
-    has_data_access_policy: List[DataAccessPolicy] = Field(None, description="The Data Access Policy that applies to this Dataset.")
-    has_study: List[Study] = Field(None, description="One or more Study entities that are referenced by this Dataset.")
-    has_analysis: Optional[str] = Field(None, description="The analysis associated with an entity.")
-    title: str = Field(None, description="The title that describes an entity.")
-    description: str = Field(None, description="Description of an entity.")
-    has_file: List[File] = Field(None, description="The file associated with an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
-    has_publication: Optional[List[Publication]] = Field(None, description="The Publication associated with an entity.")
-    status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
-    id: str = Field(None, description="An identifier that uniquely represents an entity.")
-    xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
-    creation_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was created.")
-    update_date: Optional[str] = Field(None, description="Timestamp (in ISO 8601 format) when the entity was updated.")
-    
-    
-
-class AggregateDataset(Dataset):
-    """
-    An Aggregate Dataset is a specialized dataset that is built by combining one or more Datasets together.
-    """
-    has_dataset: Optional[List[Dataset]] = Field(None, description="One or more Datasets that constitutes this Aggregate Dataset.")
-    title: str = Field(None, description="The title that describes an entity.")
-    description: str = Field(None, description="Description of an entity.")
-    has_file: List[File] = Field(None, description="The file associated with an entity.")
-    accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
-    has_publication: Optional[List[Publication]] = Field(None, description="The Publication associated with an entity.")
     status: Optional[StatusEnum] = Field(None, description="The status of an entity.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
     xref: Optional[List[str]] = Field(None, description="Alternate identifiers for an entity.")
@@ -684,7 +631,7 @@ class DataAccessCommittee(Committee):
     """
     name: str = Field(None, description="The name for an entity.")
     description: Optional[str] = Field(None, description="Description of an entity.")
-    main_contact: Optional[Member] = Field(None, description="The main contact for the Data Access Committee.")
+    main_contact: Optional[str] = Field(None, description="The main contact for the Data Access Committee.")
     has_member: Optional[List[Member]] = Field(None, description="All the members that are part of this Data Access Committee.")
     accession: Optional[str] = Field(None, description="A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.")
     id: str = Field(None, description="An identifier that uniquely represents an entity.")
@@ -978,12 +925,6 @@ Analysis.update_forward_refs()
 AnalysisProcess.update_forward_refs()
 
 Dataset.update_forward_refs()
-
-ExperimentDataset.update_forward_refs()
-
-AnalysisDataset.update_forward_refs()
-
-AggregateDataset.update_forward_refs()
 
 DataUseCondition.update_forward_refs()
 
