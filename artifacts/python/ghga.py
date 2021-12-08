@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-30T08:35:15
+# Generation date: 2021-12-06T16:37:53
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -206,18 +206,6 @@ class FileId(InformationContentEntityId):
 
 
 class DatasetId(InformationContentEntityId):
-    pass
-
-
-class ExperimentDatasetId(DatasetId):
-    pass
-
-
-class AnalysisDatasetId(DatasetId):
-    pass
-
-
-class AggregateDatasetId(DatasetId):
     pass
 
 
@@ -453,7 +441,6 @@ class Project(ResearchActivity):
     title: str = None
     description: str = None
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
-    has_study: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
 
@@ -474,8 +461,6 @@ class Project(ResearchActivity):
             self.description = str(self.description)
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
 
@@ -1035,7 +1020,7 @@ class DataAccessCommittee(Committee):
     id: Union[str, DataAccessCommitteeId] = None
     name: str = None
     description: Optional[str] = None
-    main_contact: Optional[Union[dict, "Member"]] = None
+    main_contact: Optional[Union[str, MemberId]] = None
     has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]] = empty_dict()
     accession: Optional[str] = None
 
@@ -1053,8 +1038,8 @@ class DataAccessCommittee(Committee):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.main_contact is not None and not isinstance(self.main_contact, Member):
-            self.main_contact = Member(**as_dict(self.main_contact))
+        if self.main_contact is not None and not isinstance(self.main_contact, MemberId):
+            self.main_contact = MemberId(self.main_contact)
 
         self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
 
@@ -1933,7 +1918,7 @@ class File(InformationContentEntity):
 @dataclass
 class Dataset(InformationContentEntity):
     """
-    A Dataset is a collection of Files that is prepared for distribution.
+    A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1945,7 +1930,12 @@ class Dataset(InformationContentEntity):
     id: Union[str, DatasetId] = None
     title: str = None
     description: str = None
+    has_study: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
+    has_experiment: Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]] = empty_dict()
+    has_sample: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
+    has_analysis: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
     has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
+    has_data_access_policy: Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]] = empty_dict()
     type: str = None
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
     accession: Optional[str] = None
@@ -1967,9 +1957,29 @@ class Dataset(InformationContentEntity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_experiment):
+            self.MissingRequiredField("has_experiment")
+        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Analysis, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_sample):
+            self.MissingRequiredField("has_sample")
+        self._normalize_inlined_as_list(slot_name="has_sample", slot_type=Study, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_analysis):
+            self.MissingRequiredField("has_analysis")
+        self._normalize_inlined_as_list(slot_name="has_analysis", slot_type=Study, key_name="id", keyed=True)
+
         if self._is_empty(self.has_file):
             self.MissingRequiredField("has_file")
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_data_access_policy):
+            self.MissingRequiredField("has_data_access_policy")
+        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
 
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
@@ -1983,125 +1993,6 @@ class Dataset(InformationContentEntity):
 
         if self.status is not None and not isinstance(self.status, StatusEnum):
             self.status = StatusEnum(self.status)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class ExperimentDataset(Dataset):
-    """
-    An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.ExperimentDataset
-    class_class_curie: ClassVar[str] = "GHGA:ExperimentDataset"
-    class_name: ClassVar[str] = "experiment dataset"
-    class_model_uri: ClassVar[URIRef] = GHGA.ExperimentDataset
-
-    id: Union[str, ExperimentDatasetId] = None
-    title: str = None
-    description: str = None
-    has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
-    type: str = None
-    has_data_access_policy: Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]] = empty_dict()
-    has_study: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
-    has_experiment: Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ExperimentDatasetId):
-            self.id = ExperimentDatasetId(self.id)
-
-        if self._is_empty(self.has_data_access_policy):
-            self.MissingRequiredField("has_data_access_policy")
-        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
-
-        if self._is_empty(self.has_study):
-            self.MissingRequiredField("has_study")
-        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
-
-        if self._is_empty(self.has_experiment):
-            self.MissingRequiredField("has_experiment")
-        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AnalysisDataset(Dataset):
-    """
-    An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or
-    more Studies.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.AnalysisDataset
-    class_class_curie: ClassVar[str] = "GHGA:AnalysisDataset"
-    class_name: ClassVar[str] = "analysis dataset"
-    class_model_uri: ClassVar[URIRef] = GHGA.AnalysisDataset
-
-    id: Union[str, AnalysisDatasetId] = None
-    title: str = None
-    description: str = None
-    has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
-    type: str = None
-    has_data_access_policy: Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]] = empty_dict()
-    has_study: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
-    has_experiment: Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]] = empty_dict()
-    has_analysis: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AnalysisDatasetId):
-            self.id = AnalysisDatasetId(self.id)
-
-        if self._is_empty(self.has_data_access_policy):
-            self.MissingRequiredField("has_data_access_policy")
-        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
-
-        if self._is_empty(self.has_study):
-            self.MissingRequiredField("has_study")
-        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
-
-        if self._is_empty(self.has_experiment):
-            self.MissingRequiredField("has_experiment")
-        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Analysis, key_name="id", keyed=True)
-
-        if self.has_analysis is not None and not isinstance(self.has_analysis, str):
-            self.has_analysis = str(self.has_analysis)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AggregateDataset(Dataset):
-    """
-    An Aggregate Dataset is a specialized dataset that is built by combining one or more Datasets together.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.AggregateDataset
-    class_class_curie: ClassVar[str] = "GHGA:AggregateDataset"
-    class_name: ClassVar[str] = "aggregate dataset"
-    class_model_uri: ClassVar[URIRef] = GHGA.AggregateDataset
-
-    id: Union[str, AggregateDatasetId] = None
-    title: str = None
-    description: str = None
-    has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
-    type: str = None
-    has_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AggregateDatasetId):
-            self.id = AggregateDatasetId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -3009,9 +2900,6 @@ slots.project_description = Slot(uri=GHGA.description, name="project_description
 slots.project_has_publication = Slot(uri=GHGA.has_publication, name="project_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.project_has_publication, domain=Project, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]])
 
-slots.project_has_study = Slot(uri=GHGA.has_study, name="project_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.project_has_study, domain=Project, range=Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]])
-
 slots.project_has_attribute = Slot(uri=GHGA.has_attribute, name="project_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.project_has_attribute, domain=Project, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
@@ -3270,32 +3158,26 @@ slots.dataset_description = Slot(uri=GHGA.description, name="dataset_description
 slots.dataset_type = Slot(uri=GHGA.type, name="dataset_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.dataset_type, domain=Dataset, range=str)
 
+slots.dataset_has_study = Slot(uri=GHGA.has_study, name="dataset_has study", curie=GHGA.curie('has_study'),
+                   model_uri=GHGA.dataset_has_study, domain=Dataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
+
+slots.dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="dataset_has experiment", curie=GHGA.curie('has_experiment'),
+                   model_uri=GHGA.dataset_has_experiment, domain=Dataset, range=Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]])
+
+slots.dataset_has_sample = Slot(uri=GHGA.has_sample, name="dataset_has sample", curie=GHGA.curie('has_sample'),
+                   model_uri=GHGA.dataset_has_sample, domain=Dataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
+
+slots.dataset_has_analysis = Slot(uri=GHGA.has_analysis, name="dataset_has analysis", curie=GHGA.curie('has_analysis'),
+                   model_uri=GHGA.dataset_has_analysis, domain=Dataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
+
 slots.dataset_has_file = Slot(uri=GHGA.has_file, name="dataset_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.dataset_has_file, domain=Dataset, range=Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]])
 
+slots.dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
+                   model_uri=GHGA.dataset_has_data_access_policy, domain=Dataset, range=Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]])
+
 slots.dataset_has_publication = Slot(uri=GHGA.has_publication, name="dataset_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.dataset_has_publication, domain=Dataset, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]])
-
-slots.experiment_dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="experiment dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.experiment_dataset_has_data_access_policy, domain=ExperimentDataset, range=Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]])
-
-slots.experiment_dataset_has_study = Slot(uri=GHGA.has_study, name="experiment dataset_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.experiment_dataset_has_study, domain=ExperimentDataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
-
-slots.experiment_dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="experiment dataset_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.experiment_dataset_has_experiment, domain=ExperimentDataset, range=Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]])
-
-slots.analysis_dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="analysis dataset_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.analysis_dataset_has_data_access_policy, domain=AnalysisDataset, range=Union[Dict[Union[str, DataAccessPolicyId], Union[dict, "DataAccessPolicy"]], List[Union[dict, "DataAccessPolicy"]]])
-
-slots.analysis_dataset_has_study = Slot(uri=GHGA.has_study, name="analysis dataset_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.analysis_dataset_has_study, domain=AnalysisDataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
-
-slots.analysis_dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="analysis dataset_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.analysis_dataset_has_experiment, domain=AnalysisDataset, range=Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]])
-
-slots.aggregate_dataset_has_dataset = Slot(uri=GHGA.has_dataset, name="aggregate dataset_has dataset", curie=GHGA.curie('has_dataset'),
-                   model_uri=GHGA.aggregate_dataset_has_dataset, domain=AggregateDataset, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]])
 
 slots.data_use_condition_permission = Slot(uri=GHGA.permission, name="data use condition_permission", curie=GHGA.curie('permission'),
                    model_uri=GHGA.data_use_condition_permission, domain=DataUseCondition, range=Optional[str])
@@ -3322,7 +3204,7 @@ slots.data_access_committee_name = Slot(uri=GHGA.name, name="data access committ
                    model_uri=GHGA.data_access_committee_name, domain=DataAccessCommittee, range=str)
 
 slots.data_access_committee_main_contact = Slot(uri=GHGA.main_contact, name="data access committee_main contact", curie=GHGA.curie('main_contact'),
-                   model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Optional[Union[dict, "Member"]])
+                   model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Optional[Union[str, MemberId]])
 
 slots.data_access_committee_has_member = Slot(uri=GHGA.has_member, name="data access committee_has member", curie=GHGA.curie('has_member'),
                    model_uri=GHGA.data_access_committee_has_member, domain=DataAccessCommittee, range=Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]])

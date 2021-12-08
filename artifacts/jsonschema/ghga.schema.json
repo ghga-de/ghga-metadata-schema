@@ -55,81 +55,6 @@
          "title": "Agent",
          "type": "object"
       },
-      "AggregateDataset": {
-         "additionalProperties": false,
-         "description": "An Aggregate Dataset is a specialized dataset that is built by combining one or more Datasets together.",
-         "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "description": {
-               "description": "Description of an entity.",
-               "type": "string"
-            },
-            "has_dataset": {
-               "description": "One or more Datasets that constitutes this Aggregate Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Dataset"
-               },
-               "type": "array"
-            },
-            "has_file": {
-               "description": "One or more File entities that collectively are part of this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/File"
-               },
-               "type": "array"
-            },
-            "has_publication": {
-               "description": "One or more Publication entities associated with this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Publication"
-               },
-               "type": "array"
-            },
-            "id": {
-               "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
-            },
-            "title": {
-               "description": "The title that describes an entity.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
-            "update_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
-               "type": "string"
-            },
-            "xref": {
-               "description": "Holds one or more database cross references.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [
-            "id",
-            "title",
-            "description",
-            "has_file",
-            "type"
-         ],
-         "title": "AggregateDataset",
-         "type": "object"
-      },
       "Analysis": {
          "additionalProperties": false,
          "description": "An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.",
@@ -203,102 +128,6 @@
             "id"
          ],
          "title": "Analysis",
-         "type": "object"
-      },
-      "AnalysisDataset": {
-         "additionalProperties": false,
-         "description": "An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or more Studies.",
-         "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "description": {
-               "description": "Description of an entity.",
-               "type": "string"
-            },
-            "has_analysis": {
-               "description": "The analysis associated with an entity.",
-               "type": "string"
-            },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy that applies to this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/DataAccessPolicy"
-               },
-               "type": "array"
-            },
-            "has_experiment": {
-               "description": "One or more Analysis entities that are referenced by this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Analysis"
-               },
-               "type": "array"
-            },
-            "has_file": {
-               "description": "One or more File entities that collectively are part of this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/File"
-               },
-               "type": "array"
-            },
-            "has_publication": {
-               "description": "One or more Publication entities associated with this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Publication"
-               },
-               "type": "array"
-            },
-            "has_study": {
-               "description": "One or more Study entities that are referenced by this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Study"
-               },
-               "type": "array"
-            },
-            "id": {
-               "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
-            },
-            "title": {
-               "description": "The title that describes an entity.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
-            "update_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
-               "type": "string"
-            },
-            "xref": {
-               "description": "Holds one or more database cross references.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [
-            "id",
-            "title",
-            "description",
-            "has_file",
-            "type",
-            "has_data_access_policy",
-            "has_study",
-            "has_experiment"
-         ],
-         "title": "AnalysisDataset",
          "type": "object"
       },
       "AnalysisProcess": {
@@ -717,8 +546,8 @@
                "type": "string"
             },
             "main_contact": {
-               "$ref": "#/$defs/Member",
-               "description": "The main contact for the Data Access Committee."
+               "description": "The main contact for the Data Access Committee.",
+               "type": "string"
             },
             "name": {
                "description": "The name for an entity.",
@@ -876,7 +705,7 @@
       },
       "Dataset": {
          "additionalProperties": false,
-         "description": "A Dataset is a collection of Files that is prepared for distribution.",
+         "description": "A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.",
          "properties": {
             "accession": {
                "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
@@ -890,6 +719,27 @@
                "description": "Description of an entity.",
                "type": "string"
             },
+            "has_analysis": {
+               "description": "One or more Analysis entities that are referenced by this Dataset.",
+               "items": {
+                  "$ref": "#/$defs/Study"
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to this Dataset.",
+               "items": {
+                  "$ref": "#/$defs/DataAccessPolicy"
+               },
+               "type": "array"
+            },
+            "has_experiment": {
+               "description": "One or more Analysis entities that are referenced by this Dataset.",
+               "items": {
+                  "$ref": "#/$defs/Analysis"
+               },
+               "type": "array"
+            },
             "has_file": {
                "description": "One or more File entities that collectively are part of this Dataset.",
                "items": {
@@ -901,6 +751,20 @@
                "description": "One or more Publication entities associated with this Dataset.",
                "items": {
                   "$ref": "#/$defs/Publication"
+               },
+               "type": "array"
+            },
+            "has_sample": {
+               "description": "One or more Sample entities that are referenced by this Dataset.",
+               "items": {
+                  "$ref": "#/$defs/Study"
+               },
+               "type": "array"
+            },
+            "has_study": {
+               "description": "One or more Study entities that are referenced by this Dataset.",
+               "items": {
+                  "$ref": "#/$defs/Study"
                },
                "type": "array"
             },
@@ -936,7 +800,12 @@
             "id",
             "title",
             "description",
+            "has_study",
+            "has_experiment",
+            "has_sample",
+            "has_analysis",
             "has_file",
+            "has_data_access_policy",
             "type"
          ],
          "title": "Dataset",
@@ -1242,98 +1111,6 @@
             "description"
          ],
          "title": "Experiment",
-         "type": "object"
-      },
-      "ExperimentDataset": {
-         "additionalProperties": false,
-         "description": "An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies.",
-         "properties": {
-            "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "description": {
-               "description": "Description of an entity.",
-               "type": "string"
-            },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy that applies to this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/DataAccessPolicy"
-               },
-               "type": "array"
-            },
-            "has_experiment": {
-               "description": "One or more Experiment entities that are referenced by this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Experiment"
-               },
-               "type": "array"
-            },
-            "has_file": {
-               "description": "One or more File entities that collectively are part of this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/File"
-               },
-               "type": "array"
-            },
-            "has_publication": {
-               "description": "One or more Publication entities associated with this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Publication"
-               },
-               "type": "array"
-            },
-            "has_study": {
-               "description": "One or more Study entities that are referenced by this Dataset.",
-               "items": {
-                  "$ref": "#/$defs/Study"
-               },
-               "type": "array"
-            },
-            "id": {
-               "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
-            },
-            "title": {
-               "description": "The title that describes an entity.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
-            "update_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
-               "type": "string"
-            },
-            "xref": {
-               "description": "Holds one or more database cross references.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [
-            "id",
-            "title",
-            "description",
-            "has_file",
-            "type",
-            "has_data_access_policy",
-            "has_study",
-            "has_experiment"
-         ],
-         "title": "ExperimentDataset",
          "type": "object"
       },
       "ExperimentProcess": {
@@ -2165,13 +1942,6 @@
                "description": "One or more Publication entities associated with this Project.",
                "items": {
                   "$ref": "#/$defs/Publication"
-               },
-               "type": "array"
-            },
-            "has_study": {
-               "description": "One or more Study entities associated with this Project.",
-               "items": {
-                  "$ref": "#/$defs/Study"
                },
                "type": "array"
             },

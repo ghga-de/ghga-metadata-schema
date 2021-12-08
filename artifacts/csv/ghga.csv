@@ -1,9 +1,7 @@
 id,mappings,description
 accession_mixin,,Mixin for entities that can be assigned a GHGA accession.
 agent,,"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity."
-aggregate_dataset,,An Aggregate Dataset is a specialized dataset that is built by combining one or more Datasets together.
 analysis,,An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
-analysis_dataset,,An Analysis Dataset is a collection of Files generated from one or more Analysis performed on data from one or more Studies.
 analysis_process,,"An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis."
 anatomical_entity,,Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
 attribute,,A key/value pair that further characterizes an entity.
@@ -17,13 +15,12 @@ data_access_committee,,"A group of members that are delegated to grant access to
 data_access_policy,,"A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies."
 data_transformation,,A data transformation technique used to analyze and interpret data to gain a better understanding of it.
 data_use_condition,,Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).
-dataset,,A Dataset is a collection of Files that is prepared for distribution.
+dataset,,A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
 deprecated_mixin,,Mixin for entities that can be deprecated.
 disease,,A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
 disease_or_phenotypic_feature,,Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
 donor,,A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the Biospecimen is restricted to the consent provided by the Donor.
 experiment,,"An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis."
-experiment_dataset,,An Experiment Dataset is a collection of Files linked to one or more Experiments from one or more Studies.
 experiment_process,,An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.
 family,,"A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption."
 file,,

@@ -31,18 +31,6 @@ tbl_agent = Table('agent', metadata,
     Column('name', Text),
     Column('description', Text),
 )
-tbl_aggregate_dataset = Table('aggregate_dataset', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('title', Text),
-    Column('description', Text),
-    Column('has_file', Text),
-    Column('type', Text),
-    Column('has_publication', Text),
-    Column('accession', Text),
-    Column('status', Text),
-)
 tbl_analysis = Table('analysis', metadata, 
     Column('creation_date', Text),
     Column('update_date', Text),
@@ -55,22 +43,6 @@ tbl_analysis = Table('analysis', metadata,
     Column('has_workflow', Text, ForeignKey('workflow.id')),
     Column('has_output', Text),
     Column('accession', Text),
-)
-tbl_analysis_dataset = Table('analysis_dataset', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('title', Text),
-    Column('description', Text),
-    Column('has_file', Text),
-    Column('type', Text),
-    Column('has_publication', Text),
-    Column('accession', Text),
-    Column('status', Text),
-    Column('has_data_access_policy', Text),
-    Column('has_study', Text),
-    Column('has_analysis', Text),
-    Column('has_experiment', Text),
 )
 tbl_analysis_process = Table('analysis_process', metadata, 
     Column('id', Text, primary_key=True),
@@ -184,12 +156,16 @@ tbl_dataset = Table('dataset', metadata,
     Column('update_date', Text),
     Column('title', Text),
     Column('description', Text),
+    Column('has_study', Text),
+    Column('has_experiment', Text),
+    Column('has_sample', Text),
+    Column('has_analysis', Text),
     Column('has_file', Text),
+    Column('has_data_access_policy', Text),
     Column('type', Text),
     Column('has_publication', Text),
     Column('accession', Text),
     Column('status', Text),
-    Column('aggregate_dataset_id', Text, ForeignKey('aggregate_dataset.id')),
 )
 tbl_deprecated_mixin = Table('deprecated_mixin', metadata, 
     Column('replaced_by', Text, ForeignKey('named_thing.id'), primary_key=True),
@@ -248,21 +224,6 @@ tbl_experiment = Table('experiment', metadata,
     Column('title', Text),
     Column('description', Text),
     Column('accession', Text),
-)
-tbl_experiment_dataset = Table('experiment_dataset', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('title', Text),
-    Column('description', Text),
-    Column('has_file', Text),
-    Column('type', Text),
-    Column('has_publication', Text),
-    Column('accession', Text),
-    Column('status', Text),
-    Column('has_data_access_policy', Text),
-    Column('has_study', Text),
-    Column('has_experiment', Text),
 )
 tbl_experiment_process = Table('experiment_process', metadata, 
     Column('id', Text, primary_key=True),
@@ -425,7 +386,6 @@ tbl_project = Table('project', metadata,
     Column('title', Text),
     Column('description', Text),
     Column('has_publication', Text),
-    Column('has_study', Text),
     Column('has_attribute', Text),
     Column('accession', Text),
 )
@@ -576,16 +536,8 @@ tbl_agent_xref = Table('agent_xref', metadata,
     Column('backref_id', Text, ForeignKey('agent.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_aggregate_dataset_xref = Table('aggregate_dataset_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('aggregate_dataset.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_analysis_xref = Table('analysis_xref', metadata, 
     Column('backref_id', Text, ForeignKey('analysis.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_analysis_dataset_xref = Table('analysis_dataset_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('analysis_dataset.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_analysis_process_xref = Table('analysis_process_xref', metadata, 
@@ -646,10 +598,6 @@ tbl_donor_xref = Table('donor_xref', metadata,
 )
 tbl_experiment_xref = Table('experiment_xref', metadata, 
     Column('backref_id', Text, ForeignKey('experiment.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_experiment_dataset_xref = Table('experiment_dataset_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('experiment_dataset.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_experiment_process_xref = Table('experiment_process_xref', metadata, 
@@ -760,14 +708,6 @@ mapper_registry.map_imperatively(AccessionMixin, tbl_accession_mixin, properties
 })
 mapper_registry.map_imperatively(Agent, tbl_agent, properties={
 })
-mapper_registry.map_imperatively(AggregateDataset, tbl_aggregate_dataset, properties={
-
-    'has_dataset': 
-        relationship(Dataset, 
-                      foreign_keys=tbl_dataset.columns["aggregate_dataset_id"],
-                      backref='AggregateDataset'),
-
-})
 mapper_registry.map_imperatively(Analysis, tbl_analysis, properties={
 
     'has_analysis_process': 
@@ -775,8 +715,6 @@ mapper_registry.map_imperatively(Analysis, tbl_analysis, properties={
                       foreign_keys=tbl_analysis_process.columns["analysis_id"],
                       backref='Analysis'),
 
-})
-mapper_registry.map_imperatively(AnalysisDataset, tbl_analysis_dataset, properties={
 })
 mapper_registry.map_imperatively(AnalysisProcess, tbl_analysis_process, properties={
 })
@@ -827,8 +765,6 @@ mapper_registry.map_imperatively(Experiment, tbl_experiment, properties={
                       foreign_keys=tbl_experiment_process.columns["experiment_id"],
                       backref='Experiment'),
 
-})
-mapper_registry.map_imperatively(ExperimentDataset, tbl_experiment_dataset, properties={
 })
 mapper_registry.map_imperatively(ExperimentProcess, tbl_experiment_process, properties={
 })

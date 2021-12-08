@@ -14,22 +14,6 @@ type Agent
     description: String
   }
 
-type AggregateDataset
-  {
-    id: String!
-    xref: [String]
-    creationDate: String
-    updateDate: String
-    title: String!
-    description: String!
-    hasFile: [File]!
-    type: String!
-    hasPublication: [Publication]
-    accession: String
-    status: StatusEnum
-    hasDataset: [Dataset]
-  }
-
 type Analysis implements AccessionMixin
   {
     xref: [String]
@@ -45,25 +29,6 @@ type Analysis implements AccessionMixin
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]
     accession: String
-  }
-
-type AnalysisDataset
-  {
-    id: String!
-    xref: [String]
-    creationDate: String
-    updateDate: String
-    title: String!
-    description: String!
-    hasFile: [File]!
-    type: String!
-    hasPublication: [Publication]
-    accession: String
-    status: StatusEnum
-    hasDataAccessPolicy: [DataAccessPolicy]!
-    hasStudy: [Study]!
-    hasAnalysis: String
-    hasExperiment: [Analysis]!
   }
 
 type AnalysisProcess
@@ -215,7 +180,12 @@ type Dataset implements AccessionMixin, PublicationMixin, StatusMixin
     updateDate: String
     title: String!
     description: String!
+    hasStudy: [Study]!
+    hasExperiment: [Analysis]!
+    hasSample: [Study]!
+    hasAnalysis: [Study]!
     hasFile: [File]!
+    hasDataAccessPolicy: [DataAccessPolicy]!
     type: String!
     hasPublication: [Publication]
     accession: String
@@ -293,24 +263,6 @@ type Experiment implements AccessionMixin
     title: String!
     description: String!
     accession: String
-  }
-
-type ExperimentDataset
-  {
-    id: String!
-    xref: [String]
-    creationDate: String
-    updateDate: String
-    title: String!
-    description: String!
-    hasFile: [File]!
-    type: String!
-    hasPublication: [Publication]
-    accession: String
-    status: StatusEnum
-    hasDataAccessPolicy: [DataAccessPolicy]!
-    hasStudy: [Study]!
-    hasExperiment: [Experiment]!
   }
 
 type ExperimentProcess
@@ -519,7 +471,6 @@ type Project implements AccessionMixin, AttributeMixin
     title: String!
     description: String!
     hasPublication: [Publication]
-    hasStudy: [Study]
     hasAttribute: [Attribute]
     accession: String
   }
