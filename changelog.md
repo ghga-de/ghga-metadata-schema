@@ -1,3 +1,9 @@
+## 0.3.0 release
+
+- Simplified the definition of `dataset` by combining slots from
+`experiment dataset` and `analysis dataset`
+- Removed `experiment dataset` and `analysis dataset`
+
 ## 0.2.0 release
 
 - Rearranged fields that are likely to be sparse and unnecessary for
