@@ -24,6 +24,11 @@ default_curi_maps:
   - idot_context
   - semweb_context
 
+subsets:
+  restricted:
+    description: >-
+      Subset of properties that are considered to be restricted.
+
 classes:
 
   named thing:
@@ -711,14 +716,43 @@ classes:
       - has disease
       - has phenotypic feature
     slot_usage:
+      given name:
+        in_subset:
+          - restricted
+      family name:
+        in_subset:
+          - restricted
+      additional name:
+        in_subset:
+          - restricted
+      gender:
+        in_subset:
+          - restricted
       sex:
         required: true
+        in_subset:
+          - restricted
       age:
         required: true
+        in_subset:
+          - restricted
+      year of birth:
+        in_subset:
+          - restricted
+      ethnicity:
+        in_subset:
+          - restricted
+      geographical region:
+        in_subset:
+          - restricted
+      ancestry:
+        in_subset:
+          - restricted
       vital status:
         description: Last known Vital Status of an Individual.
         required: true
         range: vital_status_enum
+        in_subset: restricted
       has parent:
         description: One or more parent for this Individual.
         range: individual
@@ -741,6 +775,8 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        in_subset:
+          - restricted
       has phenotypic feature:
         description: >-
           The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
@@ -751,6 +787,8 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        in_subset:
+          - restricted
 
   donor:
     is_a: individual
@@ -1610,6 +1648,8 @@ slots:
     description: The year in which the individual was born.
     close_mappings:
       - NCIT:C83164
+    in_subset:
+      - restricted
 
   vital status:
     description: >- 
@@ -1625,12 +1665,16 @@ slots:
       that is maintained from generation to generation.
     exact_mappings:
       - SIO:001014
+    in_subset:
+      - restricted
 
   ancestry:
     description: >-
       A person's descent or lineage, from a person or from a population.
     close_mappings: 
       - NCIT:C176763
+    in_subset:
+      - restricted
 
   format:
     description: >-
