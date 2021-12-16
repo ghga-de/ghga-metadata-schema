@@ -14,6 +14,7 @@ CREATE TABLE accession_mixin (
 
 CREATE TABLE agent (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -24,6 +25,7 @@ CREATE TABLE agent (
 
 CREATE TABLE anatomical_entity (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -47,6 +49,7 @@ CREATE TABLE attribute_mixin (
 
 CREATE TABLE biological_quality (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -55,6 +58,7 @@ CREATE TABLE biological_quality (
 
 CREATE TABLE cell_line (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -63,6 +67,7 @@ CREATE TABLE cell_line (
 
 CREATE TABLE cohort (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -74,6 +79,7 @@ CREATE TABLE cohort (
 
 CREATE TABLE committee (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -82,6 +88,7 @@ CREATE TABLE committee (
 );
 
 CREATE TABLE data_transformation (
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -93,6 +100,7 @@ CREATE TABLE data_transformation (
 
 CREATE TABLE dataset (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	title TEXT NOT NULL, 
@@ -106,12 +114,14 @@ CREATE TABLE dataset (
 	type TEXT NOT NULL, 
 	has_publication TEXT, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	status status_enum, 
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE disease (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -122,6 +132,7 @@ CREATE TABLE disease (
 
 CREATE TABLE disease_or_phenotypic_feature (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -132,12 +143,10 @@ CREATE TABLE disease_or_phenotypic_feature (
 
 CREATE TABLE donor (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
 	gender TEXT, 
 	sex biological_sex_enum NOT NULL, 
 	age INTEGER NOT NULL, 
@@ -150,12 +159,22 @@ CREATE TABLE donor (
 	has_children TEXT, 
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
+	given_name TEXT, 
+	family_name TEXT, 
+	additional_name TEXT, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id)
+);
+
+CREATE TABLE ega_accession_mixin (
+	ega_accession TEXT, 
+	PRIMARY KEY (ega_accession)
 );
 
 CREATE TABLE file (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	name TEXT NOT NULL, 
@@ -166,17 +185,16 @@ CREATE TABLE file (
 	category TEXT, 
 	type file_type_enum, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE individual (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
 	gender TEXT, 
 	sex biological_sex_enum NOT NULL, 
 	age INTEGER NOT NULL, 
@@ -189,12 +207,17 @@ CREATE TABLE individual (
 	has_children TEXT, 
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
+	given_name TEXT, 
+	family_name TEXT, 
+	additional_name TEXT, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE information_content_entity (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -203,6 +226,7 @@ CREATE TABLE information_content_entity (
 
 CREATE TABLE investigation (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -213,6 +237,7 @@ CREATE TABLE investigation (
 
 CREATE TABLE library_preparation_protocol (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	url TEXT, 
@@ -238,6 +263,7 @@ CREATE TABLE library_preparation_protocol (
 
 CREATE TABLE material_entity (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -246,6 +272,7 @@ CREATE TABLE material_entity (
 
 CREATE TABLE member (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -260,6 +287,7 @@ CREATE TABLE member (
 
 CREATE TABLE named_thing (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -275,6 +303,7 @@ CREATE TABLE ontology_class_mixin (
 
 CREATE TABLE person (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -286,6 +315,7 @@ CREATE TABLE person (
 
 CREATE TABLE phenotypic_feature (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -296,6 +326,7 @@ CREATE TABLE phenotypic_feature (
 
 CREATE TABLE planned_process (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -304,6 +335,7 @@ CREATE TABLE planned_process (
 
 CREATE TABLE population (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -313,6 +345,7 @@ CREATE TABLE population (
 
 CREATE TABLE project (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -326,6 +359,7 @@ CREATE TABLE project (
 
 CREATE TABLE protocol (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	name TEXT, 
@@ -337,6 +371,7 @@ CREATE TABLE protocol (
 );
 
 CREATE TABLE publication (
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -353,6 +388,7 @@ CREATE TABLE release_mixin (
 
 CREATE TABLE research_activity (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -363,6 +399,7 @@ CREATE TABLE research_activity (
 
 CREATE TABLE sequencing_protocol (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	url TEXT, 
@@ -397,6 +434,7 @@ CREATE TABLE status_mixin (
 
 CREATE TABLE technology (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -405,6 +443,7 @@ CREATE TABLE technology (
 
 CREATE TABLE "user" (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -418,6 +457,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE workflow (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -426,6 +466,7 @@ CREATE TABLE workflow (
 
 CREATE TABLE workflow_step (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -434,11 +475,14 @@ CREATE TABLE workflow_step (
 
 CREATE TABLE biospecimen (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
 	name TEXT, 
 	description TEXT, 
+	isolation TEXT, 
+	storage TEXT, 
 	has_individual TEXT, 
 	has_anatomical_entity TEXT, 
 	has_disease TEXT, 
@@ -451,6 +495,7 @@ CREATE TABLE biospecimen (
 
 CREATE TABLE data_access_committee (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -459,6 +504,7 @@ CREATE TABLE data_access_committee (
 	main_contact TEXT, 
 	has_member TEXT, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(main_contact) REFERENCES member (id)
 );
@@ -472,6 +518,7 @@ CREATE TABLE deprecated_mixin (
 
 CREATE TABLE family (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -491,6 +538,7 @@ CREATE TABLE publication_mixin (
 
 CREATE TABLE study (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	has_experiment TEXT, 
@@ -503,6 +551,7 @@ CREATE TABLE study (
 	has_attribute TEXT, 
 	status status_enum, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	release_date TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id)
@@ -741,6 +790,7 @@ CREATE TABLE workflow_step_xref (
 );
 
 CREATE TABLE analysis (
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -752,6 +802,7 @@ CREATE TABLE analysis (
 	has_workflow TEXT, 
 	has_output TEXT, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_workflow) REFERENCES workflow (id)
@@ -759,6 +810,7 @@ CREATE TABLE analysis (
 
 CREATE TABLE data_access_policy (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -768,26 +820,31 @@ CREATE TABLE data_access_policy (
 	policy_url TEXT, 
 	has_data_access_committee TEXT NOT NULL, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
 );
 
 CREATE TABLE sample (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	vital_status_at_sampling TEXT, 
-	tissue TEXT NOT NULL, 
 	isolation TEXT, 
 	storage TEXT, 
 	has_individual TEXT NOT NULL, 
+	has_anatomical_entity TEXT, 
 	has_biospecimen TEXT, 
 	type case_control_enum, 
+	tissue TEXT NOT NULL, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
+	FOREIGN KEY(has_anatomical_entity) REFERENCES anatomical_entity (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
 );
 
@@ -828,6 +885,7 @@ CREATE TABLE study_affiliation (
 
 CREATE TABLE analysis_process (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -853,6 +911,7 @@ CREATE TABLE data_use_condition (
 
 CREATE TABLE experiment (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -866,6 +925,7 @@ CREATE TABLE experiment (
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	accession TEXT, 
+	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_sample) REFERENCES sample (id), 
@@ -916,6 +976,7 @@ CREATE TABLE sample_xref (
 
 CREATE TABLE experiment_process (
 	id TEXT NOT NULL, 
+	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 

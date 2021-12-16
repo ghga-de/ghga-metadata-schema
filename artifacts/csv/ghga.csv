@@ -20,6 +20,7 @@ deprecated_mixin,,Mixin for entities that can be deprecated.
 disease,,A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
 disease_or_phenotypic_feature,,Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
 donor,,A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the Biospecimen is restricted to the consent provided by the Donor.
+ega_accession_mixin,,"Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession."
 experiment,,"An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis."
 experiment_process,,An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.
 family,,"A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption."
