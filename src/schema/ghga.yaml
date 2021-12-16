@@ -577,6 +577,8 @@ classes:
     slots:
       - name
       - description
+      - isolation
+      - storage
       - has individual
       - has anatomical entity
       - has disease
@@ -648,10 +650,10 @@ classes:
       - name
       - description
       - vital status at sampling
-      - tissue #TODO
-      - isolation #TODO
-      - storage #TODO
+      - isolation
+      - storage
       - has individual
+      - has anatomical entity
       - has biospecimen
     slot_usage:
       name:
@@ -1660,13 +1662,13 @@ slots:
 
   isolation:
     description: >-
-      Method or device employed for collecting/isolating a sample.
+      Method or device employed for collecting/isolating a biospecimen or a sample.
     close_mappings:
       - NCIT:C25549
 
   storage:
     description: >-
-      Methods by which sample is stored 
+      Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
     close_mappings:
       - NCIT:C60824
