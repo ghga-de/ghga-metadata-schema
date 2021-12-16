@@ -38,6 +38,7 @@ classes:
       of all the other classes.
     slots:
       - id
+      - alias
       - xref
       - creation date
       - update date
@@ -45,9 +46,12 @@ classes:
       id:
         description: >-
           The internal unique identifier for an entity.
+      alias:
+        description: >-
+          The alias (alternate identifier) for an entity.
       xref:
         description: >-
-          Holds one or more database cross references.
+          Holds one or more database cross references for an entity.
       type:
         description: >-
           The type of an entity.
@@ -1412,6 +1416,9 @@ slots:
     identifier: true
     required: true
 
+  alias:
+    description: The alias for an entity.
+
   accession:
     description: >-
       A unique identifier assigned to an entity for the sole purpose of
@@ -1453,7 +1460,7 @@ slots:
     description: Number of experiment replications.
 
   xref:
-    description: Alternate identifiers for an entity.
+    description: Database cross references for an entity.
     multivalued: true
 
   creation date:
