@@ -183,6 +183,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - ega accession mixin
       - publication mixin
       - attribute mixin
       - status mixin
@@ -254,6 +255,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       An experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
@@ -634,6 +636,7 @@ classes:
     is_a: material entity
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
       inspection, investigation, demonstration, or trial use. A sample is prepared from
@@ -703,6 +706,7 @@ classes:
     is_a: person
     mixins:
       - accession mixin
+      - ega accession mixin
     aliases: ['subject', 'patient']
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -858,6 +862,7 @@ classes:
     is_a: information content entity
     mixins:
     - accession mixin
+    - ega accession mixin
     aliases: ['file object']
     slots:
       - name
@@ -878,6 +883,7 @@ classes:
     is_a: data transformation
     mixins:
       - accession mixin
+      - ega accession mixin
     aliases: ['data analysis']
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -969,6 +975,7 @@ classes:
     is_a: information content entity
     mixins:
       - accession mixin
+      - ega accession mixin
       - publication mixin
       - status mixin
     description: >-
@@ -1070,6 +1077,7 @@ classes:
     is_a: information content entity
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -1112,6 +1120,7 @@ classes:
     is_a: committee
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
@@ -1382,6 +1391,11 @@ classes:
     slots:
       - accession
 
+  ega accession mixin:
+    description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
+    slots:
+      - ega accession
+
   attribute mixin:
     description: Mixin for entities that can have one or more attributes.
     slots:
@@ -1421,8 +1435,14 @@ slots:
 
   accession:
     description: >-
-      A unique identifier assigned to an entity for the sole purpose of
+      A unique GHGA identifier assigned to an entity for the sole purpose of
       referring to that entity in a global scope.
+
+  ega accession:
+    description: >-
+      A unique European Genome-Phenome Archive (EGA) identifier assigned to an
+      entity for the sole purpose of referring to that entity within the EGA
+      federated network.
 
   given name:
     description: First name.
