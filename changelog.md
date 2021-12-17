@@ -1,3 +1,10 @@
+## 0.4.0 release
+
+- Added a `restricted` subset to the schema and tag slots that are
+restricted to be part of the restricted subset
+- Added `alias` to all entities
+- Added `ega_accession` to all relevant entities
+
 ## 0.3.0 release
 
 - Simplified the definition of `dataset` by combining slots from
