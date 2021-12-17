@@ -24,6 +24,11 @@ default_curi_maps:
   - idot_context
   - semweb_context
 
+subsets:
+  restricted:
+    description: >-
+      Subset of properties that are considered to be restricted.
+
 classes:
 
   named thing:
@@ -33,6 +38,7 @@ classes:
       of all the other classes.
     slots:
       - id
+      - alias
       - xref
       - creation date
       - update date
@@ -40,9 +46,12 @@ classes:
       id:
         description: >-
           The internal unique identifier for an entity.
+      alias:
+        description: >-
+          The alias (alternate identifier) for an entity.
       xref:
         description: >-
-          Holds one or more database cross references.
+          Holds one or more database cross references for an entity.
       type:
         description: >-
           The type of an entity.
@@ -174,6 +183,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - ega accession mixin
       - publication mixin
       - attribute mixin
       - status mixin
@@ -245,6 +255,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       An experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
@@ -566,6 +577,8 @@ classes:
     slots:
       - name
       - description
+      - isolation
+      - storage
       - has individual
       - has anatomical entity
       - has disease
@@ -625,6 +638,7 @@ classes:
     is_a: material entity
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
       inspection, investigation, demonstration, or trial use. A sample is prepared from
@@ -636,10 +650,10 @@ classes:
       - name
       - description
       - vital status at sampling
-      - tissue #TODO
-      - isolation #TODO
-      - storage #TODO
+      - isolation
+      - storage
       - has individual
+      - has anatomical entity
       - has biospecimen
     slot_usage:
       name:
@@ -694,6 +708,7 @@ classes:
     is_a: person
     mixins:
       - accession mixin
+      - ega accession mixin
     aliases: ['subject', 'patient']
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -711,14 +726,43 @@ classes:
       - has disease
       - has phenotypic feature
     slot_usage:
+      given name:
+        in_subset:
+          - restricted
+      family name:
+        in_subset:
+          - restricted
+      additional name:
+        in_subset:
+          - restricted
+      gender:
+        in_subset:
+          - restricted
       sex:
         required: true
+        in_subset:
+          - restricted
       age:
         required: true
+        in_subset:
+          - restricted
+      year of birth:
+        in_subset:
+          - restricted
+      ethnicity:
+        in_subset:
+          - restricted
+      geographical region:
+        in_subset:
+          - restricted
+      ancestry:
+        in_subset:
+          - restricted
       vital status:
         description: Last known Vital Status of an Individual.
         required: true
         range: vital_status_enum
+        in_subset: restricted
       has parent:
         description: One or more parent for this Individual.
         range: individual
@@ -741,6 +785,8 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        in_subset:
+          - restricted
       has phenotypic feature:
         description: >-
           The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
@@ -751,6 +797,8 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        in_subset:
+          - restricted
 
   donor:
     is_a: individual
@@ -816,6 +864,7 @@ classes:
     is_a: information content entity
     mixins:
     - accession mixin
+    - ega accession mixin
     aliases: ['file object']
     slots:
       - name
@@ -836,6 +885,7 @@ classes:
     is_a: data transformation
     mixins:
       - accession mixin
+      - ega accession mixin
     aliases: ['data analysis']
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -927,6 +977,7 @@ classes:
     is_a: information content entity
     mixins:
       - accession mixin
+      - ega accession mixin
       - publication mixin
       - status mixin
     description: >-
@@ -1028,6 +1079,7 @@ classes:
     is_a: information content entity
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -1070,6 +1122,7 @@ classes:
     is_a: committee
     mixins:
       - accession mixin
+      - ega accession mixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
@@ -1340,6 +1393,11 @@ classes:
     slots:
       - accession
 
+  ega accession mixin:
+    description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
+    slots:
+      - ega accession
+
   attribute mixin:
     description: Mixin for entities that can have one or more attributes.
     slots:
@@ -1374,10 +1432,19 @@ slots:
     identifier: true
     required: true
 
+  alias:
+    description: The alias for an entity.
+
   accession:
     description: >-
-      A unique identifier assigned to an entity for the sole purpose of
+      A unique GHGA identifier assigned to an entity for the sole purpose of
       referring to that entity in a global scope.
+
+  ega accession:
+    description: >-
+      A unique European Genome-Phenome Archive (EGA) identifier assigned to an
+      entity for the sole purpose of referring to that entity within the EGA
+      federated network.
 
   given name:
     description: First name.
@@ -1415,7 +1482,7 @@ slots:
     description: Number of experiment replications.
 
   xref:
-    description: Alternate identifiers for an entity.
+    description: Database cross references for an entity.
     multivalued: true
 
   creation date:
@@ -1595,13 +1662,13 @@ slots:
 
   isolation:
     description: >-
-      Method or device employed for collecting/isolating a sample.
+      Method or device employed for collecting/isolating a biospecimen or a sample.
     close_mappings:
       - NCIT:C25549
 
   storage:
     description: >-
-      Methods by which sample is stored 
+      Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
     close_mappings:
       - NCIT:C60824
@@ -1610,6 +1677,8 @@ slots:
     description: The year in which the individual was born.
     close_mappings:
       - NCIT:C83164
+    in_subset:
+      - restricted
 
   vital status:
     description: >- 
@@ -1625,12 +1694,16 @@ slots:
       that is maintained from generation to generation.
     exact_mappings:
       - SIO:001014
+    in_subset:
+      - restricted
 
   ancestry:
     description: >-
       A person's descent or lineage, from a person or from a population.
     close_mappings: 
       - NCIT:C176763
+    in_subset:
+      - restricted
 
   format:
     description: >-

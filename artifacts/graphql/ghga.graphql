@@ -6,6 +6,7 @@ type AccessionMixin
 type Agent
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -14,8 +15,9 @@ type Agent
     description: String
   }
 
-type Analysis implements AccessionMixin
+type Analysis implements AccessionMixin, EgaAccessionMixin
   {
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -29,11 +31,13 @@ type Analysis implements AccessionMixin
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]
     accession: String
+    egaAccession: String
   }
 
 type AnalysisProcess
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -48,6 +52,7 @@ type AnalysisProcess
 type AnatomicalEntity implements OntologyClassMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -72,6 +77,7 @@ type AttributeMixin
 type BiologicalQuality
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -81,12 +87,15 @@ type BiologicalQuality
 type Biospecimen implements AccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
     name: String
     description: String
+    isolation: String
+    storage: String
     hasIndividual: Individual
     hasAnatomicalEntity: AnatomicalEntity
     hasDisease: [Disease]
@@ -97,6 +106,7 @@ type Biospecimen implements AccessionMixin
 type CellLine
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -106,6 +116,7 @@ type CellLine
 type Cohort implements AccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -118,6 +129,7 @@ type Cohort implements AccessionMixin
 type Committee
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -125,9 +137,10 @@ type Committee
     name: String
   }
 
-type DataAccessCommittee implements AccessionMixin
+type DataAccessCommittee implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -137,11 +150,13 @@ type DataAccessCommittee implements AccessionMixin
     mainContact: Member
     hasMember: [Member]
     accession: String
+    egaAccession: String
   }
 
-type DataAccessPolicy implements AccessionMixin
+type DataAccessPolicy implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -153,10 +168,12 @@ type DataAccessPolicy implements AccessionMixin
     hasDataAccessCommittee: DataAccessCommittee!
     hasDataUseCondition: [DataUseCondition]
     accession: String
+    egaAccession: String
   }
 
 type DataTransformation
   {
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -172,9 +189,10 @@ type DataUseCondition
     modifier: String
   }
 
-type Dataset implements AccessionMixin, PublicationMixin, StatusMixin
+type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, StatusMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -189,6 +207,7 @@ type Dataset implements AccessionMixin, PublicationMixin, StatusMixin
     type: String!
     hasPublication: [Publication]
     accession: String
+    egaAccession: String
     status: StatusEnum
   }
 
@@ -201,6 +220,7 @@ type DeprecatedMixin
 type Disease
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -212,6 +232,7 @@ type Disease
 type DiseaseOrPhenotypicFeature implements OntologyClassMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -223,13 +244,11 @@ type DiseaseOrPhenotypicFeature implements OntologyClassMixin
 type Donor
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
-    givenName: String
-    familyName: String
-    additionalName: String
     gender: String
     sex: BiologicalSexEnum!
     age: Integer!
@@ -242,12 +261,22 @@ type Donor
     hasChildren: [Individual]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
+    givenName: String
+    familyName: String
+    additionalName: String
     accession: String
+    egaAccession: String
   }
 
-type Experiment implements AccessionMixin
+type EgaAccessionMixin
+  {
+    egaAccession: String
+  }
+
+type Experiment implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -263,11 +292,13 @@ type Experiment implements AccessionMixin
     title: String!
     description: String!
     accession: String
+    egaAccession: String
   }
 
 type ExperimentProcess
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -282,6 +313,7 @@ type ExperimentProcess
 type Family implements AccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -292,9 +324,10 @@ type Family implements AccessionMixin
     accession: String
   }
 
-type File implements AccessionMixin
+type File implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -306,18 +339,17 @@ type File implements AccessionMixin
     category: String
     type: FileTypeEnum
     accession: String
+    egaAccession: String
   }
 
-type Individual implements AccessionMixin
+type Individual implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
-    givenName: String
-    familyName: String
-    additionalName: String
     gender: String
     sex: BiologicalSexEnum!
     age: Integer!
@@ -330,12 +362,17 @@ type Individual implements AccessionMixin
     hasChildren: [Individual]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
+    givenName: String
+    familyName: String
+    additionalName: String
     accession: String
+    egaAccession: String
   }
 
 type InformationContentEntity
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -345,6 +382,7 @@ type InformationContentEntity
 type Investigation
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -356,6 +394,7 @@ type Investigation
 type LibraryPreparationProtocol
   {
     id: String!
+    alias: String
     creationDate: String
     updateDate: String
     url: String
@@ -382,6 +421,7 @@ type LibraryPreparationProtocol
 type MaterialEntity
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -391,6 +431,7 @@ type MaterialEntity
 type Member
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -406,6 +447,7 @@ type Member
 type NamedThing
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -422,6 +464,7 @@ type OntologyClassMixin
 type Person
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -434,6 +477,7 @@ type Person
 type PhenotypicFeature
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -445,6 +489,7 @@ type PhenotypicFeature
 type PlannedProcess
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -454,6 +499,7 @@ type PlannedProcess
 type Population
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -464,6 +510,7 @@ type Population
 type Project implements AccessionMixin, AttributeMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -478,6 +525,7 @@ type Project implements AccessionMixin, AttributeMixin
 type Protocol implements AttributeMixin
   {
     id: String!
+    alias: String
     creationDate: String
     updateDate: String
     name: String
@@ -490,6 +538,7 @@ type Protocol implements AttributeMixin
 
 type Publication
   {
+    alias: String
     creationDate: String
     updateDate: String
     type: String
@@ -512,6 +561,7 @@ type ReleaseMixin
 type ResearchActivity
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -520,27 +570,31 @@ type ResearchActivity
     description: String
   }
 
-type Sample implements AccessionMixin
+type Sample implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
+    alias: String
     creationDate: String
     updateDate: String
     name: String!
     description: String!
     vitalStatusAtSampling: String
-    tissue: String!
     isolation: String
     storage: String
     hasIndividual: Individual!
+    hasAnatomicalEntity: AnatomicalEntity
     hasBiospecimen: Biospecimen
     type: CaseControlEnum
+    tissue: String!
     xref: [String]
     accession: String
+    egaAccession: String
   }
 
 type SequencingProtocol
   {
     id: String!
+    alias: String
     creationDate: String
     updateDate: String
     url: String
@@ -573,9 +627,10 @@ type StatusMixin
     status: StatusEnum
   }
 
-type Study implements AccessionMixin, PublicationMixin, AttributeMixin, StatusMixin, ReleaseMixin
+type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, AttributeMixin, StatusMixin, ReleaseMixin
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -590,6 +645,7 @@ type Study implements AccessionMixin, PublicationMixin, AttributeMixin, StatusMi
     hasAttribute: [Attribute]
     status: StatusEnum
     accession: String
+    egaAccession: String
     releaseDate: String
   }
 
@@ -614,6 +670,7 @@ type Submission implements StatusMixin
 type Technology
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -623,6 +680,7 @@ type Technology
 type User
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -637,6 +695,7 @@ type User
 type Workflow
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -652,6 +711,7 @@ type WorkflowParameter
 type WorkflowStep
   {
     id: String!
+    alias: String
     xref: [String]
     creationDate: String
     updateDate: String

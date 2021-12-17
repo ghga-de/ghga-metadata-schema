@@ -5,7 +5,7 @@
          "description": "Mixin for entities that can be assigned a GHGA accession.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             }
          },
@@ -17,6 +17,10 @@
          "additionalProperties": false,
          "description": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -42,7 +46,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -60,7 +64,11 @@
          "description": "An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -69,6 +77,10 @@
             },
             "description": {
                "description": "Description of an entity.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "has_analysis_process": {
@@ -117,7 +129,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -134,6 +146,10 @@
          "additionalProperties": false,
          "description": "An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -177,7 +193,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -194,6 +210,10 @@
          "additionalProperties": false,
          "description": "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -219,7 +239,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -280,6 +300,10 @@
          "additionalProperties": false,
          "description": "A biological quality is a quality held by a biological entity.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -297,7 +321,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -325,7 +349,11 @@
          "description": "A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -362,8 +390,16 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "isolation": {
+               "description": "Method or device employed for collecting/isolating a biospecimen or a sample.",
+               "type": "string"
+            },
             "name": {
                "description": "The name for an entity.",
+               "type": "string"
+            },
+            "storage": {
+               "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
                "type": "string"
             },
             "type": {
@@ -375,7 +411,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -401,6 +437,10 @@
          "additionalProperties": false,
          "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -418,7 +458,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -436,7 +476,11 @@
          "description": "A cohort is a collection of individuals that share a common characteristic/observation and have been grouped together for a research study/investigation.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -467,7 +511,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -484,6 +528,10 @@
          "additionalProperties": false,
          "description": "A group of people organized for a specific purpose.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -505,7 +553,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -523,7 +571,11 @@
          "description": "A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -532,6 +584,10 @@
             },
             "description": {
                "description": "Description of an entity.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "has_member": {
@@ -562,7 +618,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -581,7 +637,11 @@
          "description": "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -590,6 +650,10 @@
             },
             "description": {
                "description": "A short description for the Data Access Policy.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "has_data_access_committee": {
@@ -628,7 +692,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -648,6 +712,10 @@
          "additionalProperties": false,
          "description": "A data transformation technique used to analyze and interpret data to gain a better understanding of it.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -673,7 +741,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -708,7 +776,11 @@
          "description": "A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -717,6 +789,10 @@
             },
             "description": {
                "description": "Description of an entity.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "has_analysis": {
@@ -789,7 +865,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -832,6 +908,10 @@
          "additionalProperties": false,
          "description": "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -857,7 +937,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -874,6 +954,10 @@
          "additionalProperties": false,
          "description": "Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -899,7 +983,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -917,7 +1001,7 @@
          "description": "A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the Biospecimen is restricted to the consent provided by the Donor.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
             "additional_name": {
@@ -928,12 +1012,20 @@
                "description": "Age of an individual.",
                "type": "integer"
             },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "ancestry": {
                "description": "A person's descent or lineage, from a person or from a population.",
                "type": "string"
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "ethnicity": {
@@ -1005,7 +1097,7 @@
                "description": "Last known Vital Status of an Individual."
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1025,12 +1117,29 @@
          "title": "Donor",
          "type": "object"
       },
+      "EgaAccessionMixin": {
+         "additionalProperties": false,
+         "description": "Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.",
+         "properties": {
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "EgaAccessionMixin",
+         "type": "object"
+      },
       "Experiment": {
          "additionalProperties": false,
          "description": "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "biological_replicates": {
@@ -1043,6 +1152,10 @@
             },
             "description": {
                "description": "A detailed description of the Experiment.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "experimental_replicates": {
@@ -1096,7 +1209,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1117,6 +1230,10 @@
          "additionalProperties": false,
          "description": "An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1154,7 +1271,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1172,7 +1289,11 @@
          "description": "A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -1207,7 +1328,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1225,7 +1346,11 @@
          "description": "",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "category": {
@@ -1238,6 +1363,10 @@
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "file_index": {
@@ -1269,7 +1398,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1304,7 +1433,7 @@
          "description": "An Individual is a Person who is participating in a Study.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
             "additional_name": {
@@ -1315,12 +1444,20 @@
                "description": "Age of an individual.",
                "type": "integer"
             },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "ancestry": {
                "description": "A person's descent or lineage, from a person or from a population.",
                "type": "string"
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "ethnicity": {
@@ -1392,7 +1529,7 @@
                "description": "Last known Vital Status of an Individual."
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1416,6 +1553,10 @@
          "additionalProperties": false,
          "description": "A generically dependent continuant that is about some thing.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1433,7 +1574,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1450,6 +1591,10 @@
          "additionalProperties": false,
          "description": "Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1475,7 +1620,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1492,6 +1637,10 @@
          "additionalProperties": false,
          "description": "Information about the library preparation of an Experiment.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1607,6 +1756,10 @@
          "additionalProperties": false,
          "description": "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1624,7 +1777,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1643,6 +1796,10 @@
          "properties": {
             "additional_name": {
                "description": "Additional name(s).",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -1682,7 +1839,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1702,6 +1859,10 @@
          "additionalProperties": false,
          "description": "A databased entity, concept or class. This is a generic class that is the root of all the other classes.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1719,7 +1880,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1763,6 +1924,10 @@
                "description": "Additional name(s).",
                "type": "string"
             },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1788,7 +1953,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1805,6 +1970,10 @@
          "additionalProperties": false,
          "description": "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1830,7 +1999,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1847,6 +2016,10 @@
          "additionalProperties": false,
          "description": "A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1864,7 +2037,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1881,6 +2054,10 @@
          "additionalProperties": false,
          "description": "A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1902,7 +2079,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1920,7 +2097,11 @@
          "description": "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -1962,7 +2143,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -1981,6 +2162,10 @@
          "additionalProperties": false,
          "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2036,6 +2221,10 @@
          "properties": {
             "abstract": {
                "description": "The study abstract that describes the goals.  Can also hold abstract from a publication related to this study",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2102,6 +2291,10 @@
          "additionalProperties": false,
          "description": "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2127,7 +2320,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -2145,7 +2338,11 @@
          "description": "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2154,6 +2351,14 @@
             },
             "description": {
                "description": "Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc).",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
+               "type": "string"
+            },
+            "has_anatomical_entity": {
+               "description": "Anatomical site associated with an entity.",
                "type": "string"
             },
             "has_biospecimen": {
@@ -2169,7 +2374,7 @@
                "type": "string"
             },
             "isolation": {
-               "description": "Method or device employed for collecting/isolating a sample.",
+               "description": "Method or device employed for collecting/isolating a biospecimen or a sample.",
                "type": "string"
             },
             "name": {
@@ -2177,7 +2382,7 @@
                "type": "string"
             },
             "storage": {
-               "description": "Methods by which sample is stored  (e.g. frozen in liquid nitrogen).",
+               "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
                "type": "string"
             },
             "tissue": {
@@ -2208,8 +2413,8 @@
             "id",
             "name",
             "description",
-            "tissue",
-            "has_individual"
+            "has_individual",
+            "tissue"
          ],
          "title": "Sample",
          "type": "object"
@@ -2218,6 +2423,10 @@
          "additionalProperties": false,
          "description": "Information about the sequencing of a sample.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "cell_barcode_offset": {
                "description": "The offset in sequence of the cell identifying barcode. (Eg. '0').",
                "type": "string"
@@ -2367,7 +2576,7 @@
          "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
          "properties": {
             "accession": {
-               "description": "A unique identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
                "type": "string"
             },
             "affiliation": {
@@ -2377,12 +2586,20 @@
                },
                "type": "array"
             },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
             "description": {
                "description": "A detailed description (abstract) that describes the goals of this Study.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
             "has_analysis": {
@@ -2442,7 +2659,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -2569,6 +2786,10 @@
          "additionalProperties": false,
          "description": "A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2586,7 +2807,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -2605,6 +2826,10 @@
          "properties": {
             "additional_name": {
                "description": "Additional name(s).",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2640,7 +2865,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -2676,6 +2901,10 @@
          "additionalProperties": false,
          "description": "A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2693,7 +2922,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
@@ -2727,6 +2956,10 @@
          "additionalProperties": false,
          "description": "A Workflow Step represents each individual step performed in a Workflow. If the Workflow is a single-step workflow then the Workflow has just one Workflow Step entity. If the Workflow is a multi-step workflow then the Workflow has a Workflow Step entity for each step. All Workflow step specific attributes like parameters, and metadata about execution environment are captured by the Workflow Step entity.",
          "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -2751,7 +2984,7 @@
                "type": "string"
             },
             "xref": {
-               "description": "Holds one or more database cross references.",
+               "description": "Holds one or more database cross references for an entity.",
                "items": {
                   "type": "string"
                },
