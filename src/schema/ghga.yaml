@@ -871,6 +871,7 @@ classes:
       - format
       - size
       - checksum
+      - checksum type
       - file index
       - category
     slot_usage:
@@ -880,6 +881,18 @@ classes:
         description: >-
           The file type: Aligned Reads, Unaligned Reads, etc.
         range: file_type_enum
+      format:
+        required: true
+      size:
+        required: true
+      checksum:
+        required: true
+      checksum type:
+        required: true
+      creation date:
+        required: true
+      update date:
+        required: true
 
   analysis:
     is_a: data transformation
@@ -1711,6 +1724,7 @@ slots:
 
   size:
     description: The size of a file in bytes.
+    range: integer
 
   checksum:
     description: >-
@@ -1721,6 +1735,11 @@ slots:
       that the data was received correctly.
     exact_mappings:
       - NCIT:C43522
+
+  checksum type:
+    description: >-
+      The type of algorithm used to generate the checksum for a file.
+    range: checksum_type_enum
 
   file index:
     description: The index for this file. Commonly for BAM/VCF files.
@@ -2126,3 +2145,11 @@ enums:
         description: Signifies that the entity is submitted and released for public consumption.
       deprecated:
         description: Signifies that the entity is deprecated and may be replaced by another entity.
+
+  checksum_type_enum:
+    description: >-
+      Enum to capture the various checksum types that are supported.
+    permissible_values:
+      md5:
+        description: >-
+          MD5 (Message-Digest algorithm 5), a cryptographic hash function with a 128-bit hash value
