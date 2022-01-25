@@ -1296,6 +1296,7 @@ classes:
       entities that represent a data submission to GHGA.
     slots:
       - id
+      - alias
       - has study
       - has project
       - has sample
@@ -1312,6 +1313,9 @@ classes:
       id:
         description: >-
           A internal unique identifier for the Submission.
+      alias:
+        description: >-
+          The alias (alternate user submitted identifier) for a Submission.
       has study:
         description: >-
           Information about a Study entities associated with this submission.
