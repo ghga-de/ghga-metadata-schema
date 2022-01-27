@@ -104,6 +104,60 @@ classes:
       - OBI:0000011
       - COB:0000082
 
+  biological quality:
+    is_a: named thing
+    description: >-
+      A biological quality is a quality held by a biological entity.
+    exact_mappings:
+      - SIO:000475
+
+  information content entity:
+    is_a: named thing
+    description: >-
+      A generically dependent continuant that is about some thing.
+    exact_mappings:
+      - IAO:0000030
+
+  material entity:
+    is_a: named thing
+    description: >-
+      A material entity is a physical entity that is spatially extended, exists as a
+      whole at any point in time and has mass.
+    exact_mappings:
+      - SIO:000004
+
+  committee:
+    is_a: named thing
+    description: >-
+      A group of people organized for a specific purpose.
+    slots:
+      - name
+
+  agent:
+    is_a: named thing
+    description: >-
+      An agent is something that bears some form of responsibility for an activity taking place,
+      for the existence of an entity, or for another agent's activity. Agents include a Person,
+      Organization, or Software that performs an activity.
+    slots:
+      - name
+      - description
+    exact_mappings:
+      - prov:Agent
+
+  person:
+    is_a: named thing
+    description: >-
+      A member of the species Homo sapiens.
+    slots:
+      - given name
+      - family name
+      - additional name
+    exact_mappings:
+      - NCIT:C25190
+      - SIO:000498
+      - prov:Person
+
   investigation:
     is_a: planned process
     description: >-
@@ -503,18 +557,6 @@ classes:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
 
-  agent:
-    is_a: named thing
-    description: >-
-      An agent is something that bears some form of responsibility for an activity taking place,
-      for the existence of an entity, or for another agent's activity. Agents include a Person,
-      Organization, or Software that performs an activity.
-    slots:
-      - name
-      - description
-    exact_mappings:
-      - prov:Agent
-
   technology:
     is_a: information content entity
     description: >-
@@ -691,19 +733,6 @@ classes:
         inlined: true
         inlined_as_list: false
 
-  person:
-    is_a: named thing
-    description: >-
-      A member of the species Homo sapiens.
-    slots:
-      - given name
-      - family name
-      - additional name
-    exact_mappings:
-      - NCIT:C25190
-      - SIO:000498
-      - prov:Person
-
   individual:
     is_a: person
     mixins:
@@ -863,8 +892,8 @@ classes:
   file:
     is_a: information content entity
     mixins:
-    - accession mixin
-    - ega accession mixin
+      - accession mixin
+      - ega accession mixin
     aliases: ['file object']
     slots:
       - name
@@ -1162,13 +1191,6 @@ classes:
         inlined: true
         inlined_as_list: true
 
-  committee:
-    is_a: named thing
-    description: >-
-      A group of people organized for a specific purpose.
-    slots:
-      - name
-
   member:
     is_a: person
     description: >-
@@ -1211,14 +1233,6 @@ classes:
         description: >-
           One or more cross-references for this Publication.
 
-  material entity:
-    is_a: named thing
-    description: >-
-      A material entity is a physical entity that is spatially extended, exists as a
-      whole at any point in time and has mass.
-    exact_mappings:
-      - SIO:000004
-
   anatomical entity:
     is_a: material entity
     mixins:
@@ -1259,20 +1273,6 @@ classes:
       - SIO:010056
     close_mappings:
       - NCIT:C16977
-
-  biological quality:
-    is_a: named thing
-    description: >-
-      A biological quality is a quality held by a biological entity.
-    exact_mappings:
-      - SIO:000475
-
-  information content entity:
-    is_a: named thing
-    description: >-
-      A generically dependent continuant that is about some thing.
-    exact_mappings:
-      - IAO:0000030
 
   user:
     is_a: person
