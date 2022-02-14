@@ -3,7 +3,7 @@
 [![Build artifacts](https://github.com/ghga-de/ghga-metadata-schema/actions/workflows/build-artifacts.yml/badge.svg?branch=main)](https://github.com/ghga-de/ghga-metadata-schema/actions/workflows/build-artifacts.yml)
 [![Build Documentation](https://github.com/ghga-de/ghga-metadata-schema/actions/workflows/build-documentation.yml/badge.svg?branch=main)](https://github.com/ghga-de/ghga-metadata-schema/actions/workflows/build-documentation.yml)
 
-The [German Human Genome-Phenome Archive (GHGA)](https://ghga.dkfz.de/) is
+The [German Human Genome-Phenome Archive (GHGA)](https://www.ghga.de/) is
 funded by the [German Research Foundation (DFG)](https://www.dfg.de/en/)
 within the framework of the
 [National Research Data Infrastructure (NFDI)](https://www.nfdi.de/en-gb).
