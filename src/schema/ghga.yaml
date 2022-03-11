@@ -104,6 +104,60 @@ classes:
       - OBI:0000011
       - COB:0000082
 
+  biological quality:
+    is_a: named thing
+    description: >-
+      A biological quality is a quality held by a biological entity.
+    exact_mappings:
+      - SIO:000475
+
+  information content entity:
+    is_a: named thing
+    description: >-
+      A generically dependent continuant that is about some thing.
+    exact_mappings:
+      - IAO:0000030
+
+  material entity:
+    is_a: named thing
+    description: >-
+      A material entity is a physical entity that is spatially extended, exists as a
+      whole at any point in time and has mass.
+    exact_mappings:
+      - SIO:000004
+
+  committee:
+    is_a: named thing
+    description: >-
+      A group of people organized for a specific purpose.
+    slots:
+      - name
+
+  agent:
+    is_a: named thing
+    description: >-
+      An agent is something that bears some form of responsibility for an activity taking place,
+      for the existence of an entity, or for another agent's activity. Agents include a Person,
+      Organization, or Software that performs an activity.
+    slots:
+      - name
+      - description
+    exact_mappings:
+      - prov:Agent
+
+  person:
+    is_a: named thing
+    description: >-
+      A member of the species Homo sapiens.
+    slots:
+      - given name
+      - family name
+      - additional name
+    exact_mappings:
+      - NCIT:C25190
+      - SIO:000498
+      - prov:Person
+
   investigation:
     is_a: planned process
     description: >-
@@ -246,10 +300,6 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study. 
           (e.g.: approaches - single-cell, bulk etc)
-      status:
-        description: >-
-          The status of a Study. For example, 'released' or 'unreleased'.
-        range: status_enum
 
   experiment:
     is_a: investigation
@@ -503,18 +553,6 @@ classes:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
 
-  agent:
-    is_a: named thing
-    description: >-
-      An agent is something that bears some form of responsibility for an activity taking place,
-      for the existence of an entity, or for another agent's activity. Agents include a Person,
-      Organization, or Software that performs an activity.
-    slots:
-      - name
-      - description
-    exact_mappings:
-      - prov:Agent
-
   technology:
     is_a: information content entity
     description: >-
@@ -691,19 +729,6 @@ classes:
         inlined: true
         inlined_as_list: false
 
-  person:
-    is_a: named thing
-    description: >-
-      A member of the species Homo sapiens.
-    slots:
-      - given name
-      - family name
-      - additional name
-    exact_mappings:
-      - NCIT:C25190
-      - SIO:000498
-      - prov:Person
-
   individual:
     is_a: person
     mixins:
@@ -863,14 +888,15 @@ classes:
   file:
     is_a: information content entity
     mixins:
-    - accession mixin
-    - ega accession mixin
+      - accession mixin
+      - ega accession mixin
     aliases: ['file object']
     slots:
       - name
       - format
       - size
       - checksum
+      - checksum type
       - file index
       - category
     slot_usage:
@@ -880,6 +906,18 @@ classes:
         description: >-
           The file type: Aligned Reads, Unaligned Reads, etc.
         range: file_type_enum
+      format:
+        required: true
+      size:
+        required: true
+      checksum:
+        required: true
+      checksum type:
+        required: true
+      creation date:
+        required: true
+      update date:
+        required: true
 
   analysis:
     is_a: data transformation
@@ -994,6 +1032,7 @@ classes:
       - has analysis
       - has file
       - has data access policy
+      - status
     slot_usage:
       title:
         required: true
@@ -1055,6 +1094,10 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      status:
+        description: >-
+          The status of a Dataset. For example, 'unreleased', 'released', or 'deprecated'.
+        range: dataset_status_enum
 
   data use condition:
     description: >-
@@ -1149,13 +1192,6 @@ classes:
         inlined: true
         inlined_as_list: true
 
-  committee:
-    is_a: named thing
-    description: >-
-      A group of people organized for a specific purpose.
-    slots:
-      - name
-
   member:
     is_a: person
     description: >-
@@ -1198,14 +1234,6 @@ classes:
         description: >-
           One or more cross-references for this Publication.
 
-  material entity:
-    is_a: named thing
-    description: >-
-      A material entity is a physical entity that is spatially extended, exists as a
-      whole at any point in time and has mass.
-    exact_mappings:
-      - SIO:000004
-
   anatomical entity:
     is_a: material entity
     mixins:
@@ -1247,20 +1275,6 @@ classes:
     close_mappings:
       - NCIT:C16977
 
-  biological quality:
-    is_a: named thing
-    description: >-
-      A biological quality is a quality held by a biological entity.
-    exact_mappings:
-      - SIO:000475
-
-  information content entity:
-    is_a: named thing
-    description: >-
-      A generically dependent continuant that is about some thing.
-    exact_mappings:
-      - IAO:0000030
-
   user:
     is_a: person
     description: >-
@@ -1283,6 +1297,7 @@ classes:
       entities that represent a data submission to GHGA.
     slots:
       - id
+      - alias
       - has study
       - has project
       - has sample
@@ -1291,18 +1306,22 @@ classes:
       - has experiment
       - has analysis
       - has file
-      - has data access policy
       - submission date
       - creation date
       - update date
+      - status
     slot_usage:
       id:
         description: >-
           A internal unique identifier for the Submission.
+      alias:
+        description: >-
+          The alias (alternate user submitted identifier) for a Submission.
       has study:
         description: >-
           Information about a Study entities associated with this submission.
         range: study
+        required: true
         inlined: true
         inlined_as_list: false
       has project:
@@ -1315,6 +1334,7 @@ classes:
         description: >-
           Information about one or more Sample entities associated with this submission.
         range: sample
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1322,6 +1342,7 @@ classes:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
         range: biospecimen
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1329,6 +1350,7 @@ classes:
         description: >-
           Information about one or more Individual entities associated with this submission.
         range: individual
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1350,15 +1372,10 @@ classes:
         description: >-
           Information about one or more File entities associated with this submission.
         range: file
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has data access policy:
-        description: >-
-          The Data Access Policy entity that applies to the data associated with this submission.
-        range: data access policy
-        inlined: true
-        inlined_as_list: false
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the Submission was created.
@@ -1368,7 +1385,7 @@ classes:
       status:
         description: >-
           The status of a Submission. For example, 'in progress' or 'submitted'.
-        range: status_enum
+        range: submission_status_enum
 
   ontology class mixin:
     description: Mixin for entities that represent an class/term/concept from an ontology.
@@ -1711,6 +1728,7 @@ slots:
 
   size:
     description: The size of a file in bytes.
+    range: integer
 
   checksum:
     description: >-
@@ -1721,6 +1739,11 @@ slots:
       that the data was received correctly.
     exact_mappings:
       - NCIT:C43522
+
+  checksum type:
+    description: >-
+      The type of algorithm used to generate the checksum for a file.
+    range: checksum_type_enum
 
   file index:
     description: The index for this file. Commonly for BAM/VCF files.
@@ -2002,7 +2025,6 @@ slots:
 
   status:
     description: The status of an entity.
-    range: status_enum
 
 enums:
   case_control_enum:
@@ -2112,17 +2134,31 @@ enums:
         description: >-
           vcf File for storing gene sequence variations.
 
-  status_enum:
+  submission_status_enum:
     description: >-
-      Enum to capture the status of an entity.
+      Enum to capture the status of a Submission.
     permissible_values:
       in progress:
-        description: Signifies that the entity is in the process of being submitted.
-      submitted:
-        description: Signifies that the entity has been successfully submitted.
+        description: Signifies that the submission is in the process of being submitted.
+      completed:
+        description: Signifies that the submission has been successfully completed.
+
+  dataset_status_enum:
+    description: >-
+      Enum to capture the release status of a Dataset.
+    permissible_values:
       unreleased:
-        description: Signifies that the entity is submitted but unreleased for public consumption.
+        description: Signifies that the Dataset is not yet released for public consumption.
       released:
-        description: Signifies that the entity is submitted and released for public consumption.
+        description: Signifies that the Dataset is released for public consumption.
       deprecated:
-        description: Signifies that the entity is deprecated and may be replaced by another entity.
+        description: Signifies that the Dataset is deprecated and may be replaced by another Dataset.
+
+
+  checksum_type_enum:
+    description: >-
+      Enum to capture the various checksum types that are supported.
+    permissible_values:
+      md5:
+        description: >-
+          MD5 (Message-Digest algorithm 5), a cryptographic hash function with a 128-bit hash value
