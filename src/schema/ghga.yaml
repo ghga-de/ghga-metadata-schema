@@ -270,8 +270,8 @@ classes:
       - experimental replicates
       - has study
       - has sample
-      - has technology
       - has file
+      - has protocol
       - has experiment process
     slot_usage:
       title:
@@ -315,12 +315,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
-      has technology:
-        description: >-
-          The Technology entity associated with this Experiment.
-        range: technology
-        inlined: true
-        inlined_as_list: false
       has file:
         description: >-
           One or more Files entities that are generated as output of this Experiment.
@@ -328,6 +322,12 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      has protocol:
+        description: >-
+          One or more Protocol entities associated with this Experiment.
+        range: protocol
+        inlined: true
+        inlined_as_list: false
       has experiment process:
         description: >-
           One or more Experiment Processes entities associated with this Experiment.
@@ -517,6 +517,7 @@ classes:
 
   technology:
     is_a: information content entity
+    deprecated: true
     description: >-
       A Technology is an abstraction that represents the instrument used for an assay. The Technology
       entity captures instrument-specific attributes that are relevant for an Experiment entity.
@@ -1540,7 +1541,7 @@ slots:
     description: The Library Preparation Protocol associated with an entity.    
 
   has technology:
-    description: The technology associated with an entity.
+    deprecated: true
     range: technology
 
   has experiment process:
