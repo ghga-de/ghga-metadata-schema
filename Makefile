@@ -95,7 +95,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+	gen-json-schema --include-range-class-descendants $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ShEx
@@ -136,4 +136,4 @@ target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 
 gen-sql: target/sql/$(SCHEMA_NAME).sql
 target/sql/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sql
-	gen-sqlddl $(GEN_OPTS) --sqla-file  target/sql/$(SCHEMA_NAME)_models.py --dialect postgresql+psycopg2 $< > $@
+	gen-sqlddl-legacy $(GEN_OPTS) --sqla-file  target/sql/$(SCHEMA_NAME)_models.py --dialect postgresql+psycopg2 $< > $@
