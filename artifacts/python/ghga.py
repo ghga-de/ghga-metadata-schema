@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-16T09:15:32
+# Generation date: 2022-03-22T08:27:50
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -25,6 +25,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
+version = "0.5.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -247,6 +248,8 @@ class NamedThing(YAMLRoot):
     creation_date: Optional[str] = None
     update_date: Optional[str] = None
     type: Optional[str] = None
+    schema_type: Optional[str] = None
+    schema_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -269,6 +272,12 @@ class NamedThing(YAMLRoot):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if self.schema_type is not None and not isinstance(self.schema_type, str):
+            self.schema_type = str(self.schema_type)
+
+        if self.schema_version is not None and not isinstance(self.schema_version, str):
+            self.schema_version = str(self.schema_version)
 
         super().__post_init__(**kwargs)
 
@@ -466,7 +475,9 @@ class Project(ResearchActivity):
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -538,7 +549,9 @@ class Study(Investigation):
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.status is not None and not isinstance(self.status, StatusEnum):
             self.status = StatusEnum(self.status)
@@ -576,8 +589,8 @@ class Experiment(Investigation):
     biological_replicates: Optional[str] = None
     technical_replicates: Optional[str] = None
     experimental_replicates: Optional[str] = None
-    has_technology: Optional[Union[dict, "Technology"]] = None
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]] = empty_dict()
+    has_protocol: Optional[Union[dict, "Protocol"]] = None
     has_experiment_process: Optional[Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]]] = empty_dict()
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
@@ -617,10 +630,10 @@ class Experiment(Investigation):
         if self.experimental_replicates is not None and not isinstance(self.experimental_replicates, str):
             self.experimental_replicates = str(self.experimental_replicates)
 
-        if self.has_technology is not None and not isinstance(self.has_technology, Technology):
-            self.has_technology = Technology(**as_dict(self.has_technology))
-
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
+
+        if self.has_protocol is not None and not isinstance(self.has_protocol, Protocol):
+            self.has_protocol = Protocol(**as_dict(self.has_protocol))
 
         self._normalize_inlined_as_list(slot_name="has_experiment_process", slot_type=ExperimentProcess, key_name="id", keyed=True)
 
@@ -1615,7 +1628,9 @@ class Protocol(InformationContentEntity):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
 
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1721,7 +1736,9 @@ class LibraryPreparationProtocol(Protocol):
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
 
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1827,7 +1844,9 @@ class SequencingProtocol(Protocol):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -2290,6 +2309,31 @@ class OntologyClassMixin(YAMLRoot):
 
 
 @dataclass
+class MetadataMixin(YAMLRoot):
+    """
+    Mixin for tracking schema specific metadata about an instance.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GHGA.MetadataMixin
+    class_class_curie: ClassVar[str] = "GHGA:MetadataMixin"
+    class_name: ClassVar[str] = "metadata mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.MetadataMixin
+
+    schema_type: Optional[str] = None
+    schema_version: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schema_type is not None and not isinstance(self.schema_type, str):
+            self.schema_type = str(self.schema_type)
+
+        if self.schema_version is not None and not isinstance(self.schema_version, str):
+            self.schema_version = str(self.schema_version)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class AccessionMixin(YAMLRoot):
     """
     Mixin for entities that can be assigned a GHGA accession.
@@ -2346,7 +2390,9 @@ class AttributeMixin(YAMLRoot):
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="has_attribute", slot_type=Attribute, key_name="key", keyed=False)
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -2597,6 +2643,12 @@ class StatusEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.schema_type = Slot(uri=GHGA.schema_type, name="schema type", curie=GHGA.curie('schema_type'),
+                   model_uri=GHGA.schema_type, domain=None, range=Optional[str])
+
+slots.schema_version = Slot(uri=GHGA.schema_version, name="schema version", curie=GHGA.curie('schema_version'),
+                   model_uri=GHGA.schema_version, domain=None, range=Optional[str])
 
 slots.id = Slot(uri=GHGA.id, name="id", curie=GHGA.curie('id'),
                    model_uri=GHGA.id, domain=None, range=URIRef)
@@ -3048,11 +3100,11 @@ slots.experiment_has_study = Slot(uri=GHGA.has_study, name="experiment_has study
 slots.experiment_has_sample = Slot(uri=GHGA.has_sample, name="experiment_has sample", curie=GHGA.curie('has_sample'),
                    model_uri=GHGA.experiment_has_sample, domain=Experiment, range=Union[dict, "Sample"])
 
-slots.experiment_has_technology = Slot(uri=GHGA.has_technology, name="experiment_has technology", curie=GHGA.curie('has_technology'),
-                   model_uri=GHGA.experiment_has_technology, domain=Experiment, range=Optional[Union[dict, "Technology"]])
-
 slots.experiment_has_file = Slot(uri=GHGA.has_file, name="experiment_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.experiment_has_file, domain=Experiment, range=Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]])
+
+slots.experiment_has_protocol = Slot(uri=GHGA.has_protocol, name="experiment_has protocol", curie=GHGA.curie('has_protocol'),
+                   model_uri=GHGA.experiment_has_protocol, domain=Experiment, range=Optional[Union[dict, "Protocol"]])
 
 slots.experiment_has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="experiment_has experiment process", curie=GHGA.curie('has_experiment_process'),
                    model_uri=GHGA.experiment_has_experiment_process, domain=Experiment, range=Optional[Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]]])
@@ -3388,10 +3440,10 @@ slots.submission_status = Slot(uri=GHGA.status, name="submission_status", curie=
                    model_uri=GHGA.submission_status, domain=Submission, range=Optional[Union[str, "StatusEnum"]])
 
 slots.ontology_class_mixin_id = Slot(uri=GHGA.id, name="ontology class mixin_id", curie=GHGA.curie('id'),
-                   model_uri=GHGA.ontology_class_mixin_id, domain=OntologyClassMixin, range=Union[str, OntologyClassMixinId])
+                   model_uri=GHGA.ontology_class_mixin_id, domain=None, range=Union[str, OntologyClassMixinId])
 
 slots.ontology_class_mixin_name = Slot(uri=GHGA.name, name="ontology class mixin_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.ontology_class_mixin_name, domain=OntologyClassMixin, range=Optional[str])
+                   model_uri=GHGA.ontology_class_mixin_name, domain=None, range=Optional[str])
 
 slots.ontology_class_mixin_description = Slot(uri=GHGA.description, name="ontology class mixin_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.ontology_class_mixin_description, domain=OntologyClassMixin, range=Optional[str])
+                   model_uri=GHGA.ontology_class_mixin_description, domain=None, range=Optional[str])

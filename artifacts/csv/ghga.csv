@@ -1,3 +1,5 @@
+# metamodel_version: 1.7.0
+# version: 0.5.0
 id,mappings,description
 accession_mixin,,Mixin for entities that can be assigned a GHGA accession.
 agent,,"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity."
@@ -31,6 +33,7 @@ investigation,,Investigation is the process of carrying out a plan or procedure 
 library_preparation_protocol,,Information about the library preparation of an Experiment.
 material_entity,,"A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass."
 member,,Member of an Organization or a Committee.
+metadata_mixin,,Mixin for tracking schema specific metadata about an instance.
 named_thing,,"A databased entity, concept or class. This is a generic class that is the root of all the other classes."
 ontology_class_mixin,,Mixin for entities that represent an class/term/concept from an ontology.
 person,,A member of the species Homo sapiens.

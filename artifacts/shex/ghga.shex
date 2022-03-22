@@ -1,3 +1,5 @@
+# metamodel_version: 1.7.0
+# version: 0.5.0
 BASE <https://w3id.org/GHGA/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -32,7 +34,7 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-<AccessionMixin> CLOSED {
+<AccessionMixin> {
     (  $<AccessionMixin_tes> <accession> @linkml:String ? ;
        rdf:type [ <AccessionMixin> ] ?
     )
@@ -102,7 +104,7 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<AttributeMixin> CLOSED {
+<AttributeMixin> {
     (  $<AttributeMixin_tes> <has_attribute> @<Attribute> * ;
        rdf:type [ <AttributeMixin> ] ?
     )
@@ -255,7 +257,7 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<DeprecatedMixin> CLOSED {
+<DeprecatedMixin> {
     (  $<DeprecatedMixin_tes> (  <replaced_by> @<NamedThing> ? ;
           <deprecation_date> @linkml:String ?
        ) ;
@@ -293,7 +295,7 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<EgaAccessionMixin> CLOSED {
+<EgaAccessionMixin> {
     (  $<EgaAccessionMixin_tes> <ega_accession> @linkml:String ? ;
        rdf:type [ <EgaAccessionMixin> ] ?
     )
@@ -311,8 +313,8 @@ linkml:Nodeidentifier NONLITERAL
           <experimental_replicates> @linkml:String ? ;
           <has_study> @<Study> ;
           <has_sample> @<Sample> ;
-          <has_technology> @<Technology> ? ;
           <has_file> @<File> * ;
+          <has_protocol> @<Protocol> ? ;
           <has_experiment_process> @<ExperimentProcess> * ;
           <title> @linkml:String ;
           <description> @linkml:String ;
@@ -469,13 +471,25 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<MetadataMixin> {
+    (  $<MetadataMixin_tes> (  <schema_type> @linkml:String ? ;
+          <schema_version> @linkml:String ?
+       ) ;
+       rdf:type [ <MetadataMixin> ] ?
+    )
+}
+
 <NamedThing>  (
     CLOSED {
-       (  $<NamedThing_tes> (  <alias> @linkml:String ? ;
+       (  $<NamedThing_tes> (  &<MetadataMixin_tes> ;
+             rdf:type [ <MetadataMixin> ] ? ;
+             <alias> @linkml:String ? ;
              <xref> @linkml:String * ;
              <creation_date> @linkml:String ? ;
              <update_date> @linkml:String ? ;
-             <type> @linkml:String ?
+             <type> @linkml:String ? ;
+             <schema_type> @linkml:String ? ;
+             <schema_version> @linkml:String ?
           ) ;
           rdf:type [ <NamedThing> ]
        )
@@ -483,7 +497,7 @@ linkml:Nodeidentifier NONLITERAL
     @<PlannedProcess>
 )
 
-<OntologyClassMixin> CLOSED {
+<OntologyClassMixin> {
     (  $<OntologyClassMixin_tes> (  <name> @linkml:String ? ;
           <description> @linkml:String ?
        ) ;
@@ -579,13 +593,13 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<PublicationMixin> CLOSED {
+<PublicationMixin> {
     (  $<PublicationMixin_tes> <has_publication> @<Publication> ? ;
        rdf:type [ <PublicationMixin> ] ?
     )
 }
 
-<ReleaseMixin> CLOSED {
+<ReleaseMixin> {
     (  $<ReleaseMixin_tes> <release_date> @linkml:String ? ;
        rdf:type [ <ReleaseMixin> ] ?
     )
@@ -656,7 +670,7 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<StatusMixin> CLOSED {
+<StatusMixin> {
     (  $<StatusMixin_tes> <status> @<StatusEnum> ? ;
        rdf:type [ <StatusMixin> ] ?
     )
