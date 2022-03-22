@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 0.1.0
+version: 0.5.0
 
 imports:
 - linkml:types
@@ -19,6 +19,8 @@ prefixes:
 
 default_prefix: GHGA
 
+default_range: string
+
 default_curi_maps:
   - obo_context
   - idot_context
@@ -32,6 +34,8 @@ subsets:
 classes:
 
   named thing:
+    mixins:
+      - metadata mixin
     aliases: ['named entity', 'entity', 'object']
     description: >-
       A databased entity, concept or class. This is a generic class that is the root
@@ -270,8 +274,8 @@ classes:
       - experimental replicates
       - has study
       - has sample
-      - has technology
       - has file
+      - has protocol
       - has experiment process
     slot_usage:
       title:
@@ -315,12 +319,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
-      has technology:
-        description: >-
-          The Technology entity associated with this Experiment.
-        range: technology
-        inlined: true
-        inlined_as_list: false
       has file:
         description: >-
           One or more Files entities that are generated as output of this Experiment.
@@ -328,6 +326,12 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      has protocol:
+        description: >-
+          One or more Protocol entities associated with this Experiment.
+        range: protocol
+        inlined: true
+        inlined_as_list: false
       has experiment process:
         description: >-
           One or more Experiment Processes entities associated with this Experiment.
@@ -517,6 +521,7 @@ classes:
 
   technology:
     is_a: information content entity
+    deprecated: true
     description: >-
       A Technology is an abstraction that represents the instrument used for an assay. The Technology
       entity captures instrument-specific attributes that are relevant for an Experiment entity.
@@ -1371,6 +1376,7 @@ classes:
         range: status_enum
 
   ontology class mixin:
+    mixin: true
     description: Mixin for entities that represent an class/term/concept from an ontology.
     slots:
       - id
@@ -1388,44 +1394,64 @@ classes:
           description: >-
             The description or definition of an ontology class.
 
+  metadata mixin:
+    mixin: true
+    description: Mixin for tracking schema specific metadata about an instance.
+    slots:
+      - schema type
+      - schema version
+
   accession mixin:
+    mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
     slots:
       - accession
 
   ega accession mixin:
+    mixin: true
     description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
     slots:
       - ega accession
 
   attribute mixin:
+    mixin: true
     description: Mixin for entities that can have one or more attributes.
     slots:
       - has attribute
 
   publication mixin:
+    mixin: true
     description: >-
       Mixin for entities that can have one or more publications.
     slots:
       - has publication
 
   deprecated mixin:
+    mixin: true
     description: Mixin for entities that can be deprecated.
     slots:
       - replaced by
       - deprecation date
 
   status mixin:
+    mixin: true
     description: Mixin for entities that can have a status.
     slots:
       - status
 
   release mixin:
+    mixin: true
     description: Mixin for entities that can be released at a later point in time.
     slots:
       - release date
 
 slots:
+
+  schema type:
+    description: The schema type an instance corresponds to.
+
+  schema version:
+    description: The version of the schema an instance corresponds to.
 
   id:
     description: An identifier that uniquely represents an entity.
@@ -1540,7 +1566,7 @@ slots:
     description: The Library Preparation Protocol associated with an entity.    
 
   has technology:
-    description: The technology associated with an entity.
+    deprecated: true
     range: technology
 
   has experiment process:
