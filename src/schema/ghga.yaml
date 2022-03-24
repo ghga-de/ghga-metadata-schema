@@ -1024,18 +1024,12 @@ classes:
         range: data access policy
         multivalued: true
         required: true
-        in_subset:
-          - essential
-          - restricted
         inlined: true
         inlined_as_list: true
       has publication:
         description: >-
           One or more Publication entities associated with this Dataset.
         range: publication
-        in_subset:
-          - optional
-          - public
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1084,9 +1078,6 @@ classes:
         description: >-
           A short description for the Data Access Policy.
         required: true
-        in_subset:
-          - essential
-          - restricted
       policy text:
         description: >-
           The terms of data use and policy verbiage should be captured here.
@@ -1875,6 +1866,9 @@ slots:
   has data access policy:
     description: Data Access Policy associated with an entity.
     range: data access policy
+    in_subset:
+      - essential
+      - restricted
 
   policy text:
     description: The complete text for the Data Access Policy.
