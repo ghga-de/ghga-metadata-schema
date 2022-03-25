@@ -44,6 +44,9 @@ stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* artifacts/
 
+stage-derived-schemas:
+	cp -pr target/derived_schema artifacts/
+
 # Build and deploy docs locally with mkdocs
 docserve:
 	mkdocs serve
