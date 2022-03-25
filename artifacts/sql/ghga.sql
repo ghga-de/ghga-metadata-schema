@@ -2,9 +2,9 @@
 /* version: 0.5.0 */
 
 CREATE TYPE status_enum AS ENUM ('in progress', 'submitted', 'unreleased', 'released', 'deprecated');
-CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
+CREATE TYPE biological_sex_enum AS ENUM ('Female', 'Male', 'Unknown');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
-CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
+CREATE TYPE file_format_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
@@ -106,7 +106,6 @@ CREATE TABLE data_transformation (
 
 CREATE TABLE dataset (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	schema_type TEXT, 
@@ -119,6 +118,7 @@ CREATE TABLE dataset (
 	has_analysis TEXT NOT NULL, 
 	has_file TEXT NOT NULL, 
 	has_data_access_policy TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
 	type TEXT NOT NULL, 
 	has_publication TEXT, 
 	accession TEXT, 
@@ -155,27 +155,25 @@ CREATE TABLE disease_or_phenotypic_feature (
 
 CREATE TABLE donor (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	gender TEXT, 
+	given_name TEXT, 
+	family_name TEXT, 
+	additional_name TEXT, 
 	sex biological_sex_enum NOT NULL, 
+	karyotype TEXT, 
 	age INTEGER NOT NULL, 
-	year_of_birth TEXT, 
 	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
-	ethnicity TEXT, 
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id)
@@ -183,18 +181,17 @@ CREATE TABLE donor (
 
 CREATE TABLE file (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	type TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
-	format TEXT, 
+	file_format file_format_enum NOT NULL, 
 	size TEXT, 
-	checksum TEXT, 
-	file_index TEXT, 
-	category TEXT, 
-	type file_type_enum, 
+	checksum TEXT NOT NULL, 
+	checksum_type TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id)
@@ -202,27 +199,25 @@ CREATE TABLE file (
 
 CREATE TABLE individual (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	gender TEXT, 
+	given_name TEXT, 
+	family_name TEXT, 
+	additional_name TEXT, 
+	alias TEXT, 
 	sex biological_sex_enum NOT NULL, 
+	karyotype TEXT, 
 	age INTEGER NOT NULL, 
-	year_of_birth TEXT, 
 	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
-	ethnicity TEXT, 
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id)
@@ -259,22 +254,20 @@ CREATE TABLE library_preparation_protocol (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
+	name TEXT, 
 	url TEXT, 
 	type TEXT, 
 	library_name TEXT NOT NULL, 
 	library_layout TEXT NOT NULL, 
 	library_type TEXT NOT NULL, 
 	library_selection TEXT NOT NULL, 
-	library_construction TEXT NOT NULL, 
 	library_preparation TEXT NOT NULL, 
-	library_level TEXT, 
-	library_construction_kit_retail_name TEXT NOT NULL, 
-	library_construction_kit_manufacturer TEXT NOT NULL, 
+	library_preparation_kit_retail_name TEXT NOT NULL, 
+	library_preparation_kit_manufacturer TEXT NOT NULL, 
 	primer TEXT, 
 	end_bias TEXT, 
-	target_regions TEXT, 
+	target_regions TEXT NOT NULL, 
 	rnaseq_strandedness TEXT, 
-	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
@@ -371,12 +364,12 @@ CREATE TABLE population (
 
 CREATE TABLE project (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
+	alias TEXT NOT NULL, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_publication TEXT, 
@@ -433,15 +426,14 @@ CREATE TABLE sequencing_protocol (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
+	name TEXT, 
 	url TEXT, 
-	type TEXT, 
-	sequencing_center TEXT NOT NULL, 
+	sequencing_center TEXT, 
 	instrument_model TEXT NOT NULL, 
-	read_length TEXT, 
-	read_pair_number TEXT, 
-	sequencing_length TEXT, 
+	paired_or_single_end TEXT, 
+	sequencing_read_length TEXT, 
+	index_sequence TEXT, 
 	target_coverage TEXT, 
-	reference_annotation TEXT, 
 	lane_number TEXT, 
 	flow_cell_id TEXT, 
 	flow_cell_type TEXT, 
@@ -452,8 +444,8 @@ CREATE TABLE sequencing_protocol (
 	cell_barcode_offset TEXT, 
 	cell_barcode_size TEXT, 
 	sample_barcode_read TEXT, 
-	name TEXT, 
-	description TEXT, 
+	type TEXT, 
+	description TEXT NOT NULL, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
@@ -509,12 +501,12 @@ CREATE TABLE workflow_step (
 
 CREATE TABLE biospecimen (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
+	alias TEXT, 
 	name TEXT, 
 	description TEXT, 
 	isolation TEXT, 
@@ -531,7 +523,6 @@ CREATE TABLE biospecimen (
 
 CREATE TABLE data_access_committee (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -539,8 +530,9 @@ CREATE TABLE data_access_committee (
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT, 
-	main_contact TEXT, 
+	main_contact TEXT NOT NULL, 
 	has_member TEXT, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -565,7 +557,6 @@ CREATE TABLE family (
 
 CREATE TABLE study (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	schema_type TEXT, 
@@ -573,6 +564,7 @@ CREATE TABLE study (
 	has_experiment TEXT, 
 	has_analysis TEXT, 
 	has_project TEXT, 
+	alias TEXT NOT NULL, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	type study_type_enum NOT NULL, 
@@ -819,19 +811,21 @@ CREATE TABLE workflow_step_xref (
 );
 
 CREATE TABLE analysis (
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	type TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
 	id TEXT NOT NULL, 
 	title TEXT, 
-	description TEXT, 
-	has_input TEXT, 
+	reference_genome TEXT NOT NULL, 
+	reference_chromosome TEXT NOT NULL, 
+	has_input TEXT NOT NULL, 
 	has_study TEXT, 
 	has_workflow TEXT, 
 	has_output TEXT, 
+	alias TEXT NOT NULL, 
+	type TEXT NOT NULL, 
+	description TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -841,7 +835,6 @@ CREATE TABLE analysis (
 
 CREATE TABLE data_access_policy (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -852,6 +845,7 @@ CREATE TABLE data_access_policy (
 	policy_text TEXT NOT NULL, 
 	policy_url TEXT, 
 	has_data_access_committee TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -860,7 +854,6 @@ CREATE TABLE data_access_policy (
 
 CREATE TABLE sample (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	schema_type TEXT, 
@@ -873,6 +866,7 @@ CREATE TABLE sample (
 	has_individual TEXT NOT NULL, 
 	has_anatomical_entity TEXT, 
 	has_biospecimen TEXT, 
+	alias TEXT NOT NULL, 
 	type case_control_enum, 
 	tissue TEXT NOT NULL, 
 	accession TEXT, 
@@ -948,7 +942,6 @@ CREATE TABLE data_use_condition (
 
 CREATE TABLE experiment (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
@@ -960,8 +953,9 @@ CREATE TABLE experiment (
 	has_study TEXT NOT NULL, 
 	has_sample TEXT NOT NULL, 
 	has_file TEXT, 
-	has_protocol TEXT, 
-	title TEXT NOT NULL, 
+	has_protocol TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
+	title TEXT, 
 	description TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 

@@ -21,21 +21,23 @@ type Agent
 
 type Analysis implements AccessionMixin, EgaAccessionMixin
   {
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     id: String!
     title: String
-    description: String
-    hasInput: [File]
+    referenceGenome: String!
+    referenceChromosome: String!
+    hasInput: [File]!
     hasStudy: Study
     hasWorkflow: Workflow
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]
+    alias: String!
+    type: String!
+    description: String
     accession: String
     egaAccession: String
   }
@@ -99,13 +101,13 @@ type BiologicalQuality
 type Biospecimen implements AccessionMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
     schemaType: String
     schemaVersion: String
+    alias: String
     name: String
     description: String
     isolation: String
@@ -160,7 +162,6 @@ type Committee
 type DataAccessCommittee implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -169,8 +170,9 @@ type DataAccessCommittee implements AccessionMixin, EgaAccessionMixin
     schemaVersion: String
     name: String!
     description: String
-    mainContact: Member
+    mainContact: Member!
     hasMember: [Member]
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -178,7 +180,6 @@ type DataAccessCommittee implements AccessionMixin, EgaAccessionMixin
 type DataAccessPolicy implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -191,6 +192,7 @@ type DataAccessPolicy implements AccessionMixin, EgaAccessionMixin
     policyUrl: String
     hasDataAccessCommittee: DataAccessCommittee!
     hasDataUseCondition: [DataUseCondition]
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -218,7 +220,6 @@ type DataUseCondition
 type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, StatusMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -232,6 +233,7 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Sta
     hasAnalysis: [Study]!
     hasFile: [File]!
     hasDataAccessPolicy: [DataAccessPolicy]!
+    alias: String!
     type: String!
     hasPublication: [Publication]
     accession: String
@@ -276,28 +278,26 @@ type DiseaseOrPhenotypicFeature implements OntologyClassMixin
 type Donor
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
     schemaType: String
     schemaVersion: String
-    gender: String
+    givenName: String
+    familyName: String
+    additionalName: String
     sex: BiologicalSexEnum!
+    karyotype: String
     age: Integer!
-    yearOfBirth: String
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
-    ethnicity: String
     ancestry: String
     hasParent: [Individual]
     hasChildren: [Individual]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
-    givenName: String
-    familyName: String
-    additionalName: String
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -310,7 +310,6 @@ interface EgaAccessionMixin
 type Experiment implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -323,9 +322,10 @@ type Experiment implements AccessionMixin, EgaAccessionMixin
     hasStudy: Study!
     hasSample: Sample!
     hasFile: [File]
-    hasProtocol: Protocol
+    hasProtocol: Protocol!
     hasExperimentProcess: [ExperimentProcess]
-    title: String!
+    alias: String!
+    title: String
     description: String!
     accession: String
     egaAccession: String
@@ -367,19 +367,18 @@ type Family implements AccessionMixin
 type File implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
+    type: String
     schemaType: String
     schemaVersion: String
     name: String!
-    format: String
+    fileFormat: FileFormatEnum!
     size: String
-    checksum: String
-    fileIndex: String
-    category: String
-    type: FileTypeEnum
+    checksum: String!
+    checksumType: String!
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -387,28 +386,26 @@ type File implements AccessionMixin, EgaAccessionMixin
 type Individual implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
     schemaType: String
     schemaVersion: String
-    gender: String
+    givenName: String
+    familyName: String
+    additionalName: String
+    alias: String
     sex: BiologicalSexEnum!
+    karyotype: String
     age: Integer!
-    yearOfBirth: String
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
-    ethnicity: String
     ancestry: String
     hasParent: [Individual]
     hasChildren: [Individual]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
-    givenName: String
-    familyName: String
-    additionalName: String
     accession: String
     egaAccession: String
   }
@@ -447,6 +444,7 @@ type LibraryPreparationProtocol
     updateDate: String
     schemaType: String
     schemaVersion: String
+    name: String
     url: String
     type: String
     xref: [String]
@@ -454,16 +452,13 @@ type LibraryPreparationProtocol
     libraryLayout: String!
     libraryType: String!
     librarySelection: String!
-    libraryConstruction: String!
     libraryPreparation: String!
-    libraryLevel: String
-    libraryConstructionKitRetailName: String!
-    libraryConstructionKitManufacturer: String!
+    libraryPreparationKitRetailName: String!
+    libraryPreparationKitManufacturer: String!
     primer: String
     endBias: String
-    targetRegions: String
+    targetRegions: String!
     rnaseqStrandedness: String
-    name: String!
     description: String!
     hasAttribute: [Attribute]
   }
@@ -580,13 +575,13 @@ type Population
 type Project implements AccessionMixin, AttributeMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
     type: String
     schemaType: String
     schemaVersion: String
+    alias: String!
     title: String!
     description: String!
     hasPublication: [Publication]
@@ -651,7 +646,6 @@ type ResearchActivity
 type Sample implements AccessionMixin, EgaAccessionMixin
   {
     id: String!
-    alias: String
     creationDate: String
     updateDate: String
     schemaType: String
@@ -664,6 +658,7 @@ type Sample implements AccessionMixin, EgaAccessionMixin
     hasIndividual: Individual!
     hasAnatomicalEntity: AnatomicalEntity
     hasBiospecimen: Biospecimen
+    alias: String!
     type: CaseControlEnum
     tissue: String!
     xref: [String]
@@ -679,16 +674,15 @@ type SequencingProtocol
     updateDate: String
     schemaType: String
     schemaVersion: String
+    name: String
     url: String
-    type: String
     xref: [String]
-    sequencingCenter: String!
+    sequencingCenter: String
     instrumentModel: String!
-    readLength: String
-    readPairNumber: String
-    sequencingLength: String
+    pairedOrSingleEnd: String
+    sequencingReadLength: String
+    indexSequence: String
     targetCoverage: String
-    referenceAnnotation: String
     laneNumber: String
     flowCellId: String
     flowCellType: String
@@ -699,8 +693,8 @@ type SequencingProtocol
     cellBarcodeOffset: String
     cellBarcodeSize: String
     sampleBarcodeRead: String
-    name: String
-    description: String
+    type: String
+    description: String!
     hasAttribute: [Attribute]
   }
 
@@ -712,7 +706,6 @@ interface StatusMixin
 type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, AttributeMixin, StatusMixin, ReleaseMixin
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
@@ -722,6 +715,7 @@ type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Attri
     hasExperiment: [Experiment]
     hasAnalysis: [Analysis]
     hasProject: Project
+    alias: String!
     title: String!
     description: String!
     type: StudyTypeEnum!

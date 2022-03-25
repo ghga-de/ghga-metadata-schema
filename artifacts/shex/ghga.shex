@@ -57,11 +57,16 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
-          <has_input> @<File> * ;
+          <reference_genome> @linkml:String ;
+          <reference_chromosome> @linkml:String ;
+          <has_input> @<File> + ;
           <has_study> @<Study> ? ;
           <has_workflow> @<Workflow> ? ;
           <has_analysis_process> @<AnalysisProcess> * ;
           <has_output> @<File> * ;
+          <alias> @linkml:String ;
+          <type> @linkml:String ;
+          <description> @linkml:String ? ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -125,6 +130,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <MaterialEntity> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
+          <alias> @linkml:String ? ;
           <name> @linkml:String ? ;
           <description> @linkml:String ? ;
           <isolation> @linkml:String ? ;
@@ -179,8 +185,9 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <EgaAccessionMixin> ] ? ;
           <name> @linkml:String ;
           <description> @linkml:String ? ;
-          <main_contact> @<Member> ? ;
+          <main_contact> @<Member> ;
           <has_member> @<Member> * ;
+          <alias> @linkml:String ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -201,6 +208,7 @@ linkml:Nodeidentifier NONLITERAL
           <policy_url> @linkml:String ? ;
           <has_data_access_committee> @<DataAccessCommittee> ;
           <has_data_use_condition> @<DataUseCondition> * ;
+          <alias> @linkml:String ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -247,6 +255,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_analysis> @<Study> + ;
           <has_file> @<File> + ;
           <has_data_access_policy> @<DataAccessPolicy> + ;
+          <alias> @linkml:String ;
           <type> @linkml:String ;
           <has_publication> @<Publication> * ;
           <accession> @linkml:String ? ;
@@ -314,9 +323,10 @@ linkml:Nodeidentifier NONLITERAL
           <has_study> @<Study> ;
           <has_sample> @<Sample> ;
           <has_file> @<File> * ;
-          <has_protocol> @<Protocol> ? ;
+          <has_protocol> @<Protocol> ;
           <has_experiment_process> @<ExperimentProcess> * ;
-          <title> @linkml:String ;
+          <alias> @linkml:String ;
+          <title> @linkml:String ? ;
           <description> @linkml:String ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
@@ -359,12 +369,11 @@ linkml:Nodeidentifier NONLITERAL
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
           <name> @linkml:String ;
-          <format> @linkml:String ? ;
+          <file_format> @<FileFormatEnum> ;
           <size> @linkml:String ? ;
-          <checksum> @linkml:String ? ;
-          <file_index> @linkml:String ? ;
-          <category> @linkml:String ? ;
-          <type> @<FileTypeEnum> ? ;
+          <checksum> @linkml:String ;
+          <checksum_type> @linkml:String ;
+          <alias> @linkml:String ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -380,21 +389,17 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <AccessionMixin> ] ? ;
              &<EgaAccessionMixin_tes> ;
              rdf:type [ <EgaAccessionMixin> ] ? ;
-             <gender> @linkml:String ? ;
+             <alias> @linkml:String ? ;
              <sex> @<BiologicalSexEnum> ;
+             <karyotype> @linkml:String ? ;
              <age> @linkml:Integer ;
-             <year_of_birth> @linkml:String ? ;
              <vital_status> @<VitalStatusEnum> ;
              <geographical_region> @linkml:String ? ;
-             <ethnicity> @linkml:String ? ;
              <ancestry> @linkml:String ? ;
              <has_parent> @<Individual> * ;
              <has_children> @<Individual> * ;
              <has_disease> @<Disease> * ;
              <has_phenotypic_feature> @<PhenotypicFeature> * ;
-             <given_name> @linkml:String ? ;
-             <family_name> @linkml:String ? ;
-             <additional_name> @linkml:String ? ;
              <accession> @linkml:String ? ;
              <ega_accession> @linkml:String ?
           ) ;
@@ -433,16 +438,13 @@ linkml:Nodeidentifier NONLITERAL
           <library_layout> @linkml:String ;
           <library_type> @linkml:String ;
           <library_selection> @linkml:String ;
-          <library_construction> @linkml:String ;
           <library_preparation> @linkml:String ;
-          <library_level> @linkml:String ? ;
-          <library_construction_kit_retail_name> @linkml:String ;
-          <library_construction_kit_manufacturer> @linkml:String ;
+          <library_preparation_kit_retail_name> @linkml:String ;
+          <library_preparation_kit_manufacturer> @linkml:String ;
           <primer> @linkml:String ? ;
           <end_bias> @linkml:String ? ;
-          <target_regions> @linkml:String ? ;
+          <target_regions> @linkml:String ;
           <rnaseq_strandedness> @linkml:String ? ;
-          <name> @linkml:String ;
           <description> @linkml:String ;
           <has_attribute> @<Attribute> *
        ) ;
@@ -554,6 +556,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AccessionMixin> ] ? ;
           &<AttributeMixin_tes> ;
           rdf:type [ <AttributeMixin> ] ? ;
+          <alias> @linkml:String ;
           <title> @linkml:String ;
           <description> @linkml:String ;
           <has_publication> @<Publication> * ;
@@ -632,6 +635,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_individual> @<Individual> ;
           <has_anatomical_entity> @<AnatomicalEntity> ? ;
           <has_biospecimen> @<Biospecimen> ? ;
+          <alias> @linkml:String ;
           <type> @<CaseControlEnum> ? ;
           <tissue> @linkml:String ;
           <xref> @linkml:String * ;
@@ -645,13 +649,12 @@ linkml:Nodeidentifier NONLITERAL
 <SequencingProtocol> CLOSED {
     (  $<SequencingProtocol_tes> (  &<Protocol_tes> ;
           rdf:type [ <Protocol> ] ? ;
-          <sequencing_center> @linkml:String ;
+          <sequencing_center> @linkml:String ? ;
           <instrument_model> @linkml:String ;
-          <read_length> @linkml:String ? ;
-          <read_pair_number> @linkml:String ? ;
-          <sequencing_length> @linkml:String ? ;
+          <paired_or_single_end> @linkml:String ? ;
+          <sequencing_read_length> @linkml:String ? ;
+          <index_sequence> @linkml:String ? ;
           <target_coverage> @linkml:String ? ;
-          <reference_annotation> @linkml:String ? ;
           <lane_number> @linkml:String ? ;
           <flow_cell_id> @linkml:String ? ;
           <flow_cell_type> @linkml:String ? ;
@@ -662,8 +665,8 @@ linkml:Nodeidentifier NONLITERAL
           <cell_barcode_offset> @linkml:String ? ;
           <cell_barcode_size> @linkml:String ? ;
           <sample_barcode_read> @linkml:String ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ? ;
+          <type> @linkml:String ? ;
+          <description> @linkml:String ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <SequencingProtocol> ]
@@ -695,6 +698,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_experiment> @<Experiment> * ;
           <has_analysis> @<Analysis> * ;
           <has_project> @<Project> ? ;
+          <alias> @linkml:String ;
           <title> @linkml:String ;
           <description> @linkml:String ;
           <type> @<StudyTypeEnum> ;

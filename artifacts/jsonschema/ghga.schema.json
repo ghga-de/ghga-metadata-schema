@@ -63,7 +63,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "An alias uniquely identifying this Analysis entitiy.",
                "type": "string"
             },
             "creation_date": {
@@ -71,7 +71,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Description of an entity.",
+               "description": "Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).",
                "type": "string"
             },
             "ega_accession": {
@@ -131,6 +131,14 @@
                "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
+            "reference_chromosome": {
+               "description": "The reference chromosome used for this Analysis.",
+               "type": "string"
+            },
+            "reference_genome": {
+               "description": "A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -144,7 +152,7 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)",
                "type": "string"
             },
             "update_date": {
@@ -160,7 +168,12 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "reference_genome",
+            "reference_chromosome",
+            "has_input",
+            "alias",
+            "type"
          ],
          "title": "Analysis",
          "type": "object"
@@ -384,9 +397,9 @@
       "BiologicalSexEnum": {
          "description": "The biological sex of an Individual as determined by their chromosomes.",
          "enum": [
-            "XX",
-            "XY",
-            "none"
+            "Female",
+            "Male",
+            "Unknown"
          ],
          "title": "BiologicalSexEnum",
          "type": "string"
@@ -400,7 +413,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -680,7 +693,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -688,7 +701,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Description of an entity.",
+               "description": "A description for the Data Access Committee.",
                "type": "string"
             },
             "ega_accession": {
@@ -715,7 +728,7 @@
                "type": "string"
             },
             "name": {
-               "description": "The name for an entity.",
+               "description": "The name for the Data Access Committee.",
                "type": "string"
             },
             "schema_type": {
@@ -744,7 +757,9 @@
          },
          "required": [
             "id",
-            "name"
+            "name",
+            "main_contact",
+            "alias"
          ],
          "title": "DataAccessCommittee",
          "type": "object"
@@ -758,7 +773,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -797,7 +812,7 @@
                "type": "string"
             },
             "name": {
-               "description": "The name for an entity.",
+               "description": "A name for the Data Access Policy.",
                "type": "string"
             },
             "policy_text": {
@@ -836,7 +851,8 @@
             "id",
             "description",
             "policy_text",
-            "has_data_access_committee"
+            "has_data_access_committee",
+            "alias"
          ],
          "title": "DataAccessPolicy",
          "type": "object"
@@ -921,7 +937,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -1030,7 +1046,7 @@
                "description": "The status of an entity."
             },
             "title": {
-               "description": "The title that describes an entity.",
+               "description": "A title for the submitted Dataset.",
                "type": "string"
             },
             "type": {
@@ -1059,6 +1075,7 @@
             "has_analysis",
             "has_file",
             "has_data_access_policy",
+            "alias",
             "type"
          ],
          "title": "Dataset",
@@ -1189,7 +1206,7 @@
                "type": "integer"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "ancestry": {
@@ -1204,16 +1221,8 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
-            "ethnicity": {
-               "description": "A social group characterized by a distinctive social and cultural tradition  that is maintained from generation to generation.",
-               "type": "string"
-            },
             "family_name": {
                "description": "Last name.",
-               "type": "string"
-            },
-            "gender": {
-               "description": "Identification as male/masculine, female/feminine or something else,  and association with a (social) role or set of behavioral and cultural traits.",
                "type": "string"
             },
             "geographical_region": {
@@ -1278,6 +1287,10 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "karyotype": {
+               "description": "The karyotype of an individual if defined.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -1288,7 +1301,7 @@
             },
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
-               "description": "The assemblage of physical properties or qualities by which male is distinguished from female;  the physical difference between male and female; the distinguishing peculiarity of male or female."
+               "description": "The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
             "type": {
                "description": "The type of an entity.",
@@ -1308,17 +1321,14 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "year_of_birth": {
-               "description": "The year in which the individual was born.",
-               "type": "string"
             }
          },
          "required": [
             "id",
             "sex",
             "age",
-            "vital_status"
+            "vital_status",
+            "alias"
          ],
          "title": "Donor",
          "type": "object"
@@ -1332,11 +1342,11 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "biological_replicates": {
-               "description": "A biological replicate is a replicate role that consists of  independent biological replicates made from different individual biosamples.",
+               "description": "A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.",
                "type": "string"
             },
             "creation_date": {
@@ -1352,7 +1362,7 @@
                "type": "string"
             },
             "experimental_replicates": {
-               "description": "The replicate number of the assay, i.e. the numeric iteration  for the assay that was repeated.",
+               "description": "The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.",
                "type": "string"
             },
             "has_experiment_process": {
@@ -1420,7 +1430,7 @@
                "type": "string"
             },
             "technical_replicates": {
-               "description": "A technical replicate is a replicate role where the same BioSample is use e.g.  the same pool of RNA used to assess technical (as opposed to biological)  variation within an experiment.",
+               "description": "A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.",
                "type": "string"
             },
             "title": {
@@ -1447,7 +1457,8 @@
             "id",
             "has_study",
             "has_sample",
-            "title",
+            "has_protocol",
+            "alias",
             "description"
          ],
          "title": "Experiment",
@@ -1516,7 +1527,7 @@
                "type": "string"
             },
             "title": {
-               "description": "A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment) ",
+               "description": "A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment)",
                "type": "string"
             },
             "type": {
@@ -1629,15 +1640,15 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
-               "type": "string"
-            },
-            "category": {
-               "description": "The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "checksum": {
-               "description": "A computed value which depends on the contents of a block of data and which is transmitted or  stored along with the data in order to detect corruption of the data.  The receiving system recomputes the checksum based upon the received data and compares this  value with the one sent with the data. If the two values are the same, the receiver has some confidence  that the data was received correctly.",
+               "description": "A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.",
+               "type": "string"
+            },
+            "checksum_type": {
+               "description": "The type of algorithm used to generate the checksum of a file.",
                "type": "string"
             },
             "creation_date": {
@@ -1648,20 +1659,16 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
-            "file_index": {
-               "description": "The index for this file. Commonly for BAM/VCF files.",
-               "type": "string"
-            },
-            "format": {
-               "description": "The format of the file: BAM, SAM, CRAM, BAI, etc.",
-               "type": "string"
+            "file_format": {
+               "$ref": "#/$defs/FileFormatEnum",
+               "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "name": {
-               "description": "The name for an entity.",
+               "description": "The given filename.",
                "type": "string"
             },
             "schema_type": {
@@ -1677,8 +1684,8 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/FileTypeEnum",
-               "description": "The file type: Aligned Reads, Unaligned Reads, etc."
+               "description": "The type of an entity.",
+               "type": "string"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -1694,12 +1701,16 @@
          },
          "required": [
             "id",
-            "name"
+            "name",
+            "file_format",
+            "checksum",
+            "checksum_type",
+            "alias"
          ],
          "title": "File",
          "type": "object"
       },
-      "FileTypeEnum": {
+      "FileFormatEnum": {
          "description": "Enum to capture file types.",
          "enum": [
             "bam",
@@ -1712,7 +1723,7 @@
             "srf",
             "vcf"
          ],
-         "title": "FileTypeEnum",
+         "title": "FileFormatEnum",
          "type": "string"
       },
       "Individual": {
@@ -1732,7 +1743,7 @@
                "type": "integer"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "ancestry": {
@@ -1747,16 +1758,8 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
-            "ethnicity": {
-               "description": "A social group characterized by a distinctive social and cultural tradition  that is maintained from generation to generation.",
-               "type": "string"
-            },
             "family_name": {
                "description": "Last name.",
-               "type": "string"
-            },
-            "gender": {
-               "description": "Identification as male/masculine, female/feminine or something else,  and association with a (social) role or set of behavioral and cultural traits.",
                "type": "string"
             },
             "geographical_region": {
@@ -1821,6 +1824,10 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "karyotype": {
+               "description": "The karyotype of an individual if defined.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -1831,7 +1838,7 @@
             },
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
-               "description": "The assemblage of physical properties or qualities by which male is distinguished from female;  the physical difference between male and female; the distinguishing peculiarity of male or female."
+               "description": "The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
             "type": {
                "description": "The type of an entity.",
@@ -1851,10 +1858,6 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "year_of_birth": {
-               "description": "The year in which the individual was born.",
-               "type": "string"
             }
          },
          "required": [
@@ -1983,7 +1986,7 @@
                "type": "string"
             },
             "end_bias": {
-               "description": "The end of the cDNA molecule that is preferentially sequenced,  e.g. 3/5 prime tag or end, or the full-length transcript.",
+               "description": "The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.",
                "type": "string"
             },
             "has_attribute": {
@@ -2001,32 +2004,24 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "library_construction": {
-               "description": "The name of a library construction approach being used. (eg: '10X v2 sequencing' or 'Smart-seq2')",
-               "type": "string"
-            },
-            "library_construction_kit_manufacturer": {
-               "description": "Manufacturer of library construction kit",
-               "type": "string"
-            },
-            "library_construction_kit_retail_name": {
-               "description": "A unique identifier for the kit used to construct a genomic library.  This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)",
-               "type": "string"
-            },
             "library_layout": {
                "description": "Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode",
                "type": "string"
             },
-            "library_level": {
-               "description": "Single Cell Sequencing or Bulk Sequencing",
-               "type": "string"
-            },
             "library_name": {
-               "description": "A short name identifying the library to potential users.  The same name may refer to multiple versions of the same continually updated library.",
+               "description": "A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.",
                "type": "string"
             },
             "library_preparation": {
-               "description": "The general method for sequencing library construction (e.g. KAPA PCR-free).",
+               "description": "The general method for sequencing library preparation (e.g. KAPA PCR-free).",
+               "type": "string"
+            },
+            "library_preparation_kit_manufacturer": {
+               "description": "Manufacturer of library preparation kit",
+               "type": "string"
+            },
+            "library_preparation_kit_retail_name": {
+               "description": "A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)",
                "type": "string"
             },
             "library_selection": {
@@ -2034,11 +2029,11 @@
                "type": "string"
             },
             "library_type": {
-               "description": "Describe the level of omics analysis (eg: Metagenome, transcriptome, etc) ",
+               "description": "Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)",
                "type": "string"
             },
             "name": {
-               "description": "Name of the library preparation protocol (eg: mRNA-seq library preparation).",
+               "description": "Name of the protocol (eg: Sample extraction_PCR amplification).",
                "type": "string"
             },
             "primer": {
@@ -2046,7 +2041,7 @@
                "type": "string"
             },
             "rnaseq_strandedness": {
-               "description": "The strandedness of the library, whether reads come from both strands of the cDNA  or only from the first (antisense) or the second (sense) strand.",
+               "description": "The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.",
                "type": "string"
             },
             "schema_type": {
@@ -2058,7 +2053,7 @@
                "type": "string"
             },
             "target_regions": {
-               "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study. ",
+               "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.",
                "type": "string"
             },
             "type": {
@@ -2087,11 +2082,10 @@
             "library_layout",
             "library_type",
             "library_selection",
-            "library_construction",
             "library_preparation",
-            "library_construction_kit_retail_name",
-            "library_construction_kit_manufacturer",
-            "name",
+            "library_preparation_kit_retail_name",
+            "library_preparation_kit_manufacturer",
+            "target_regions",
             "description"
          ],
          "title": "LibraryPreparationProtocol",
@@ -2479,7 +2473,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2487,7 +2481,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Short textual description of the project   (Some information on the protocol, sample used and collected etc)  ",
+               "description": "Short textual description of the project (Some information on the protocol, sample used and collected etc)",
                "type": "string"
             },
             "has_attribute": {
@@ -2546,6 +2540,7 @@
          },
          "required": [
             "id",
+            "alias",
             "title",
             "description"
          ],
@@ -2626,7 +2621,7 @@
          "description": "The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.",
          "properties": {
             "abstract": {
-               "description": "The study abstract that describes the goals.  Can also hold abstract from a publication related to this study",
+               "description": "The study abstract that describes the goals. Can also hold abstract from a publication related to this study.",
                "type": "string"
             },
             "alias": {
@@ -2738,7 +2733,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2746,7 +2741,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc).",
+               "description": "Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).",
                "type": "string"
             },
             "ega_accession": {
@@ -2801,7 +2796,7 @@
                "type": "string"
             },
             "tissue": {
-               "description": "An anatomical structure consisting of similarly specialized cells and intercellular matrix,  aggregated according to genetically determined spatial relationships, performing a specific function.",
+               "description": "An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.",
                "type": "string"
             },
             "type": {
@@ -2829,6 +2824,7 @@
             "name",
             "description",
             "has_individual",
+            "alias",
             "tissue"
          ],
          "title": "Sample",
@@ -2867,7 +2863,7 @@
                "type": "string"
             },
             "flow_cell_type": {
-               "description": "Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet.  Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.  The sample flows through the center of a fluid column of sheath fluid in the flow cell.",
+               "description": "Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.",
                "type": "string"
             },
             "has_attribute": {
@@ -2885,28 +2881,24 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "index_sequence": {
+               "description": "A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.",
+               "type": "string"
+            },
             "instrument_model": {
                "description": "The name and model of the technology platform used to perform sequencing.",
                "type": "string"
             },
             "lane_number": {
-               "description": "he numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.",
+               "description": "The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.",
                "type": "string"
             },
             "name": {
-               "description": "Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).",
+               "description": "Name of the protocol (eg: Sample extraction_PCR amplification).",
                "type": "string"
             },
-            "read_length": {
-               "description": "Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment  obtained after the completion of a sequencing process",
-               "type": "string"
-            },
-            "read_pair_number": {
+            "paired_or_single_end": {
                "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.",
-               "type": "string"
-            },
-            "reference_annotation": {
-               "description": "A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).",
                "type": "string"
             },
             "sample_barcode_read": {
@@ -2925,8 +2917,8 @@
                "description": "Center where sample was sequenced.",
                "type": "string"
             },
-            "sequencing_length": {
-               "description": "Long or Short Read.",
+            "sequencing_read_length": {
+               "description": "Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process",
                "type": "string"
             },
             "target_coverage": {
@@ -2934,7 +2926,7 @@
                "type": "string"
             },
             "type": {
-               "description": "Type of the protocol (eg: Target enrichment).",
+               "description": "Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).",
                "type": "string"
             },
             "umi_barcode_offset": {
@@ -2967,8 +2959,8 @@
          },
          "required": [
             "id",
-            "sequencing_center",
-            "instrument_model"
+            "instrument_model",
+            "description"
          ],
          "title": "SequencingProtocol",
          "type": "object"
@@ -3001,7 +2993,7 @@
                "type": "array"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -3028,7 +3020,7 @@
                "type": "array"
             },
             "has_attribute": {
-               "description": "Custom key/value pairs that further characterizes the Study.  (e.g.: approaches - single-cell, bulk etc)",
+               "description": "Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)",
                "items": {
                   "oneOf": [
                      {
@@ -3089,7 +3081,7 @@
                "description": "The status of a Study. For example, 'released' or 'unreleased'."
             },
             "title": {
-               "description": "Comprehensive title for the study.",
+               "description": "A comprehensive title for the study.",
                "type": "string"
             },
             "type": {
@@ -3111,6 +3103,7 @@
          "required": [
             "id",
             "affiliation",
+            "alias",
             "title",
             "description",
             "type"

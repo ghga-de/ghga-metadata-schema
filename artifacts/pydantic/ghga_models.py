@@ -28,9 +28,9 @@ class CaseControlEnum(str, Enum):
 
 class BiologicalSexEnum(str, Enum):
     
-    XX = "XX"
-    XY = "XY"
-    none = "none"
+    Female = "Female"
+    Male = "Male"
+    Unknown = "Unknown"
     
     
 
@@ -68,7 +68,7 @@ class StudyTypeEnum(str, Enum):
     
     
 
-class FileTypeEnum(str, Enum):
+class FileFormatEnum(str, Enum):
     
     bam = "bam"
     complete_genomics = "complete_genomics"
@@ -231,7 +231,7 @@ class ExperimentProcess(PlannedProcess):
     """
     An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.
     """
-    title: Optional[str] = Field(None, description="""A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment) """)
+    title: Optional[str] = Field(None, description="""A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment)""")
     has_input: Optional[Sample] = Field(None, description="""The input to the Experiment Process. Usually a Sample entity.""")
     has_protocol: Optional[Protocol] = Field(None, description="""The Protocol entity used by this Experiment Process.""")
     has_agent: Optional[Agent] = Field(None, description="""The Agent - a software, institution, or human - that is executing or responsible for executing the Experiment Process.""")
@@ -534,7 +534,7 @@ class Publication(InformationContentEntity):
     The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
     """
     title: Optional[str] = Field(None, description="""The title for the Publication.""")
-    abstract: Optional[str] = Field(None, description="""The study abstract that describes the goals.  Can also hold abstract from a publication related to this study""")
+    abstract: Optional[str] = Field(None, description="""The study abstract that describes the goals. Can also hold abstract from a publication related to this study.""")
     id: str = Field(None, description="""A PMID or DOI for the Publication.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Publication.""")
@@ -579,6 +579,7 @@ class Biospecimen(MaterialEntity):
     """
     A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
     """
+    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
@@ -589,7 +590,6 @@ class Biospecimen(MaterialEntity):
     has_phenotypic_feature: Optional[List[PhenotypicFeature]] = Field(None, description="""The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -649,20 +649,20 @@ class Experiment(Investigation):
     """
     An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
     """
-    biological_replicates: Optional[str] = Field(None, description="""A biological replicate is a replicate role that consists of  independent biological replicates made from different individual biosamples.""")
-    technical_replicates: Optional[str] = Field(None, description="""A technical replicate is a replicate role where the same BioSample is use e.g.  the same pool of RNA used to assess technical (as opposed to biological)  variation within an experiment.""")
-    experimental_replicates: Optional[str] = Field(None, description="""The replicate number of the assay, i.e. the numeric iteration  for the assay that was repeated.""")
+    biological_replicates: Optional[str] = Field(None, description="""A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.""")
+    technical_replicates: Optional[str] = Field(None, description="""A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.""")
+    experimental_replicates: Optional[str] = Field(None, description="""The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.""")
     has_study: Study = Field(None, description="""The Study entity associated with this Experiment.""")
     has_sample: Sample = Field(None, description="""The Sample entity associated with this Experiment.""")
     has_file: Optional[List[File]] = Field(None, description="""One or more Files entities that are generated as output of this Experiment.""")
-    has_protocol: Optional[Protocol] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
+    has_protocol: Protocol = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
     has_experiment_process: Optional[List[ExperimentProcess]] = Field(None, description="""One or more Experiment Processes entities associated with this Experiment.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
-    title: str = Field(None, description="""Name for the experiment (eg: GHGAE_PBMC_RNAseq).""")
+    title: Optional[str] = Field(None, description="""Name for the experiment (eg: GHGAE_PBMC_RNAseq).""")
     description: str = Field(None, description="""A detailed description of the Experiment.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -677,7 +677,7 @@ class Sample(MaterialEntity):
     A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
     """
     name: str = Field(None, description="""Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).""")
-    description: str = Field(None, description="""Short textual description of the sample   (How the sample was collected, sample source,  protocol followed for processing the sample etc).""")
+    description: str = Field(None, description="""Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).""")
     vital_status_at_sampling: Optional[str] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
@@ -687,7 +687,7 @@ class Sample(MaterialEntity):
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -701,13 +701,12 @@ class Individual(Person):
     """
     An Individual is a Person who is participating in a Study.
     """
-    gender: Optional[str] = Field(None, description="""Identification as male/masculine, female/feminine or something else,  and association with a (social) role or set of behavioral and cultural traits.""")
-    sex: BiologicalSexEnum = Field(None, description="""The assemblage of physical properties or qualities by which male is distinguished from female;  the physical difference between male and female; the distinguishing peculiarity of male or female.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    sex: BiologicalSexEnum = Field(None, description="""The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.""")
+    karyotype: Optional[str] = Field(None, description="""The karyotype of an individual if defined.""")
     age: int = Field(None, description="""Age of an individual.""")
-    year_of_birth: Optional[str] = Field(None, description="""The year in which the individual was born.""")
     vital_status: VitalStatusEnum = Field(None, description="""Last known Vital Status of an Individual.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
-    ethnicity: Optional[str] = Field(None, description="""A social group characterized by a distinctive social and cultural tradition  that is maintained from generation to generation.""")
     ancestry: Optional[str] = Field(None, description="""A person's descent or lineage, from a person or from a population.""")
     has_parent: Optional[List[Individual]] = Field(None, description="""One or more parent for this Individual.""")
     has_children: Optional[List[Individual]] = Field(None, description="""One or more children for this Individual.""")
@@ -719,7 +718,6 @@ class Individual(Person):
     family_name: Optional[str] = Field(None, description="""Last name.""")
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -733,13 +731,12 @@ class Donor(Individual):
     """
     A Donor is an Individual that participates in a research Study by donating a Biospecimen. The use of the Biospecimen is restricted to the consent provided by the Donor.
     """
-    gender: Optional[str] = Field(None, description="""Identification as male/masculine, female/feminine or something else,  and association with a (social) role or set of behavioral and cultural traits.""")
-    sex: BiologicalSexEnum = Field(None, description="""The assemblage of physical properties or qualities by which male is distinguished from female;  the physical difference between male and female; the distinguishing peculiarity of male or female.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    sex: BiologicalSexEnum = Field(None, description="""The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.""")
+    karyotype: Optional[str] = Field(None, description="""The karyotype of an individual if defined.""")
     age: int = Field(None, description="""Age of an individual.""")
-    year_of_birth: Optional[str] = Field(None, description="""The year in which the individual was born.""")
-    vital_status: VitalStatusEnum = Field(None, description="""The state or condition of being living or deceased;  also includes the case where the vital status is unknown.""")
+    vital_status: VitalStatusEnum = Field(None, description="""The state or condition of being living or deceased; also includes the case where the vital status is unknown.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
-    ethnicity: Optional[str] = Field(None, description="""A social group characterized by a distinctive social and cultural tradition  that is maintained from generation to generation.""")
     ancestry: Optional[str] = Field(None, description="""A person's descent or lineage, from a person or from a population.""")
     has_parent: Optional[List[Individual]] = Field(None, description="""The parent of an entity.""")
     has_children: Optional[List[Individual]] = Field(None, description="""The children of an entity.""")
@@ -751,7 +748,6 @@ class Donor(Individual):
     family_name: Optional[str] = Field(None, description="""Last name.""")
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -763,16 +759,15 @@ class Donor(Individual):
 @dataclass(config=PydanticConfig)
 class File(InformationContentEntity):
     
-    name: str = Field(None, description="""The name for an entity.""")
-    format: Optional[str] = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
+    name: str = Field(None, description="""The given filename.""")
+    file_format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
     size: Optional[str] = Field(None, description="""The size of a file in bytes.""")
-    checksum: Optional[str] = Field(None, description="""A computed value which depends on the contents of a block of data and which is transmitted or  stored along with the data in order to detect corruption of the data.  The receiving system recomputes the checksum based upon the received data and compares this  value with the one sent with the data. If the two values are the same, the receiver has some confidence  that the data was received correctly.""")
-    file_index: Optional[str] = Field(None, description="""The index for this file. Commonly for BAM/VCF files.""")
-    category: Optional[str] = Field(None, description="""The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.""")
+    checksum: str = Field(None, description="""A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.""")
+    checksum_type: str = Field(None, description="""The type of algorithm used to generate the checksum of a file.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -786,7 +781,9 @@ class Analysis(DataTransformation):
     """
     An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
     """
-    has_input: Optional[List[File]] = Field(None, description="""The input data File entities used in the Analysis.""")
+    reference_genome: str = Field(None, description="""A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).""")
+    reference_chromosome: str = Field(None, description="""The reference chromosome used for this Analysis.""")
+    has_input: List[File] = Field(None, description="""The input data File entities used in the Analysis.""")
     has_study: Optional[Study] = Field(None, description="""The Study entity associated with this Analysis.""")
     has_workflow: Optional[Workflow] = Field(None, description="""The Workflow entity associated with this Analysis.""")
     has_analysis_process: Optional[List[AnalysisProcess]] = Field(None, description="""One or more Analysis Process entities associated with this Analysis.""")
@@ -795,8 +792,8 @@ class Analysis(DataTransformation):
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     title: Optional[str] = Field(None, description="""The title that describes an entity.""")
-    description: Optional[str] = Field(None, description="""Description of an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    description: Optional[str] = Field(None, description="""Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).""")
+    alias: str = Field(None, description="""An alias uniquely identifying this Analysis entitiy.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -810,7 +807,7 @@ class DataAccessPolicy(InformationContentEntity):
     """
     A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    name: Optional[str] = Field(None, description="""A name for the Data Access Policy.""")
     description: str = Field(None, description="""A short description for the Data Access Policy.""")
     policy_text: str = Field(None, description="""The terms of data use and policy verbiage should be captured here.""")
     policy_url: Optional[str] = Field(None, description="""URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.""")
@@ -819,7 +816,7 @@ class DataAccessPolicy(InformationContentEntity):
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -833,14 +830,14 @@ class DataAccessCommittee(Committee):
     """
     A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
     """
-    name: str = Field(None, description="""The name for an entity.""")
-    description: Optional[str] = Field(None, description="""Description of an entity.""")
-    main_contact: Optional[str] = Field(None, description="""The main contact for the Data Access Committee.""")
+    name: str = Field(None, description="""The name for the Data Access Committee.""")
+    description: Optional[str] = Field(None, description="""A description for the Data Access Committee.""")
+    main_contact: str = Field(None, description="""The main contact for the Data Access Committee.""")
     has_member: Optional[List[Member]] = Field(None, description="""All the members that are part of this Data Access Committee.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -866,9 +863,9 @@ class Project(ResearchActivity):
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)""")
     title: str = Field(None, description="""Comprehensive title for the project.""")
-    description: str = Field(None, description="""Short textual description of the project   (Some information on the protocol, sample used and collected etc)  """)
+    description: str = Field(None, description="""Short textual description of the project (Some information on the protocol, sample used and collected etc)""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -901,20 +898,18 @@ class LibraryPreparationProtocol(Protocol):
     """
     Information about the library preparation of an Experiment.
     """
-    library_name: str = Field(None, description="""A short name identifying the library to potential users.  The same name may refer to multiple versions of the same continually updated library.""")
+    library_name: str = Field(None, description="""A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.""")
     library_layout: str = Field(None, description="""Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode""")
-    library_type: str = Field(None, description="""Describe the level of omics analysis (eg: Metagenome, transcriptome, etc) """)
+    library_type: str = Field(None, description="""Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)""")
     library_selection: str = Field(None, description="""Whether any method was used to select for or against, enrich, or screen the material being sequenced. Library Selection method (e.g. random, PCA, cDNA, etc )""")
-    library_construction: str = Field(None, description="""The name of a library construction approach being used. (eg: '10X v2 sequencing' or 'Smart-seq2')""")
-    library_preparation: str = Field(None, description="""The general method for sequencing library construction (e.g. KAPA PCR-free).""")
-    library_level: Optional[str] = Field(None, description="""Single Cell Sequencing or Bulk Sequencing""")
-    library_construction_kit_retail_name: str = Field(None, description="""A unique identifier for the kit used to construct a genomic library.  This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)""")
-    library_construction_kit_manufacturer: str = Field(None, description="""Manufacturer of library construction kit""")
+    library_preparation: str = Field(None, description="""The general method for sequencing library preparation (e.g. KAPA PCR-free).""")
+    library_preparation_kit_retail_name: str = Field(None, description="""A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)""")
+    library_preparation_kit_manufacturer: str = Field(None, description="""Manufacturer of library preparation kit""")
     primer: Optional[str] = Field(None, description="""The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.""")
-    end_bias: Optional[str] = Field(None, description="""The end of the cDNA molecule that is preferentially sequenced,  e.g. 3/5 prime tag or end, or the full-length transcript.""")
-    target_regions: Optional[str] = Field(None, description="""Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study. """)
-    rnaseq_strandedness: Optional[str] = Field(None, description="""The strandedness of the library, whether reads come from both strands of the cDNA  or only from the first (antisense) or the second (sense) strand.""")
-    name: str = Field(None, description="""Name of the library preparation protocol (eg: mRNA-seq library preparation).""")
+    end_bias: Optional[str] = Field(None, description="""The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.""")
+    target_regions: str = Field(None, description="""Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.""")
+    rnaseq_strandedness: Optional[str] = Field(None, description="""The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.""")
+    name: Optional[str] = Field(None, description="""The name for an entity.""")
     description: str = Field(None, description="""Description about how a sequencing library was prepared (eg: Library construction method).""")
     url: Optional[str] = Field(None, description="""A URL to a resource.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Library Preparation Protocol.""")
@@ -933,16 +928,15 @@ class SequencingProtocol(Protocol):
     """
     Information about the sequencing of a sample.
     """
-    sequencing_center: str = Field(None, description="""Center where sample was sequenced.""")
+    sequencing_center: Optional[str] = Field(None, description="""Center where sample was sequenced.""")
     instrument_model: str = Field(None, description="""The name and model of the technology platform used to perform sequencing.""")
-    read_length: Optional[str] = Field(None, description="""Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment  obtained after the completion of a sequencing process""")
-    read_pair_number: Optional[str] = Field(None, description="""Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.""")
-    sequencing_length: Optional[str] = Field(None, description="""Long or Short Read.""")
+    paired_or_single_end: Optional[str] = Field(None, description="""Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.""")
+    sequencing_read_length: Optional[str] = Field(None, description="""Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process""")
+    index_sequence: Optional[str] = Field(None, description="""A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.""")
     target_coverage: Optional[str] = Field(None, description="""Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.""")
-    reference_annotation: Optional[str] = Field(None, description="""A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).""")
-    lane_number: Optional[str] = Field(None, description="""he numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.""")
+    lane_number: Optional[str] = Field(None, description="""The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.""")
     flow_cell_id: Optional[str] = Field(None, description="""Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.""")
-    flow_cell_type: Optional[str] = Field(None, description="""Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet.  Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.  The sample flows through the center of a fluid column of sheath fluid in the flow cell.""")
+    flow_cell_type: Optional[str] = Field(None, description="""Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.""")
     umi_barcode_read: Optional[str] = Field(None, description="""The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).""")
     umi_barcode_size: Optional[str] = Field(None, description="""The size of the UMI identifying barcode (Eg. '10').""")
     umi_barcode_offset: Optional[str] = Field(None, description="""The offset in sequence of the UMI identifying barcode. (E.g. '16').""")
@@ -950,8 +944,8 @@ class SequencingProtocol(Protocol):
     cell_barcode_offset: Optional[str] = Field(None, description="""The offset in sequence of the cell identifying barcode. (Eg. '0').""")
     cell_barcode_size: Optional[str] = Field(None, description="""The size of the cell identifying barcode (E.g. '16').""")
     sample_barcode_read: Optional[str] = Field(None, description="""The type of read that contains the sample barcode (eg: index1/index2/read1/read2).""")
-    name: Optional[str] = Field(None, description="""Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).""")
-    description: Optional[str] = Field(None, description="""Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).""")
+    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    description: str = Field(None, description="""Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).""")
     url: Optional[str] = Field(None, description="""A URL to a resource.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Sequencing Protocol.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
@@ -997,7 +991,7 @@ class Dataset(InformationContentEntity):
     """
     A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
     """
-    title: str = Field(None, description="""The title that describes an entity.""")
+    title: str = Field(None, description="""A title for the submitted Dataset.""")
     description: str = Field(None, description="""Description of an entity.""")
     has_study: List[Study] = Field(None, description="""One or more Study entities that are referenced by this Dataset.""")
     has_experiment: List[Analysis] = Field(None, description="""One or more Analysis entities that are referenced by this Dataset.""")
@@ -1010,7 +1004,7 @@ class Dataset(InformationContentEntity):
     has_publication: Optional[List[Publication]] = Field(None, description="""One or more Publication entities associated with this Dataset.""")
     status: Optional[StatusEnum] = Field(None, description="""The status of an entity.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -1062,13 +1056,13 @@ class Study(Investigation):
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     has_publication: Optional[List[Publication]] = Field(None, description="""One or more Publication entities associated with this Study.""")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom key/value pairs that further characterizes the Study.  (e.g.: approaches - single-cell, bulk etc)""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)""")
     status: Optional[StatusEnum] = Field(None, description="""The status of a Study. For example, 'released' or 'unreleased'.""")
     release_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was released for public consumption.""")
-    title: str = Field(None, description="""Comprehensive title for the study.""")
+    title: str = Field(None, description="""A comprehensive title for the study.""")
     description: str = Field(None, description="""A detailed description (abstract) that describes the goals of this Study.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
