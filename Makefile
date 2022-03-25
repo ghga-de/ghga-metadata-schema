@@ -137,3 +137,27 @@ target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 gen-sql: target/sql/$(SCHEMA_NAME).sql
 target/sql/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sql
 	gen-sqlddl-legacy $(GEN_OPTS) --sqla-file  target/sql/$(SCHEMA_NAME)_models.py --dialect postgresql+psycopg2 $< > $@
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Derived schemas: creation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+gen-creation-schema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+target/derived_schema/creation/%_creation.yaml: $(SCHEMA_DIR)/%.yaml
+	mkdir -p target/derived_schema/creation
+	python scripts/generate_creation_schema.py --schema-yaml $< --output $@
+
+gen-creation-schema-artifacts: gen-creation-schema gen-creation-schema-python-classes gen-creation-schema-pydantic-models gen-creation-schema-jsonschema
+
+gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
+target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+
+gen-creation-schema-pydantic-models: target/derived_schema/creation/$(SCHEMA_NAME)_creation_models.py
+target/derived_schema/creation/%_creation_models.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
+
+gen-creation-schema-jsonschema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.schema.json
+target/derived_schema/creation/%_creation.schema.json: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	gen-json-schema --include-range-class-descendants $(GEN_OPTS) $< > $@
