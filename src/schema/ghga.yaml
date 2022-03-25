@@ -48,6 +48,7 @@ classes:
   named thing:
     mixins:
       - metadata mixin
+    abstract: true
     aliases: ['named entity', 'entity', 'object']
     description: >-
       A databased entity, concept or class. This is a generic class that is the root
@@ -112,6 +113,7 @@ classes:
 
   planned process:
     is_a: named thing
+    abstract: true
     description: >-
       A process is an entity that exists in time by occurring or happening, has temporal parts and
       always involves and depends on some entity during the time it occurs.
@@ -122,6 +124,7 @@ classes:
 
   investigation:
     is_a: planned process
+    abstract: true
     description: >-
       Investigation is the process of carrying out a plan or procedure so as to discover fact
       or information about the object of study.
@@ -134,6 +137,7 @@ classes:
 
   data transformation:
     is_a: planned process
+    abstract: true
     description: >-
       A data transformation technique used to analyze and interpret data to gain a better
       understanding of it.
@@ -146,6 +150,7 @@ classes:
 
   research activity:
     is_a: planned process
+    abstract: true
     description: >-
       A planned process executed in the performance of scientific research wherein
       systematic investigations are performed to establish facts and reach new conclusions
@@ -678,6 +683,7 @@ classes:
 
   person:
     is_a: named thing
+    abstract: true
     description: >-
       A member of the species Homo sapiens.
     slots:
@@ -762,6 +768,7 @@ classes:
 
   population:
     is_a: material entity
+    abstract: true
     description: >-
       A population is a collection of individuals from the same taxonomic class living,
       counted or sampled at a particular site or in a particular area.
@@ -1143,6 +1150,7 @@ classes:
 
   committee:
     is_a: named thing
+    abstract: true
     description: >-
       A group of people organized for a specific purpose.
     slots:
@@ -1196,6 +1204,7 @@ classes:
 
   material entity:
     is_a: named thing
+    abstract: true
     description: >-
       A material entity is a physical entity that is spatially extended, exists as a
       whole at any point in time and has mass.
@@ -1243,6 +1252,7 @@ classes:
 
   biological quality:
     is_a: named thing
+    abstract: true
     description: >-
       A biological quality is a quality held by a biological entity.
     exact_mappings:
@@ -1250,6 +1260,7 @@ classes:
 
   information content entity:
     is_a: named thing
+    abstract: true
     description: >-
       A generically dependent continuant that is about some thing.
     exact_mappings:
