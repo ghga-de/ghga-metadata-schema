@@ -7,50 +7,16 @@
 """
 import copy
 import typer
-import yaml
-from typing import Dict, Optional, Set, List
+import ruamel.yaml
+from typing import Dict, Set
 from linkml_runtime.utils.schemaview import SchemaView
-from collections import OrderedDict
+from ruamel.yaml.comments import CommentedMap
 
 
 ROOT_CLASS = "named thing"
 SLOTS_TO_RELAX: Set = {}
 SLOTS_TO_ENFORCE: Set = {"alias"}
 SLOTS_TO_REMOVE: Set = {"id", "creation date", "update date"}
-
-yaml.add_constructor(
-    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-    lambda loader, node: OrderedDict(loader.construct_pairs(node)),
-)
-
-
-def representer(dumper: yaml.SafeDumper, data: OrderedDict) -> yaml.nodes.MappingNode:
-    """
-    Get a representer to translate OrderedDict to regular dict.
-
-    Args:
-        dumper: An instance of `yaml.SafeDumper`
-        data: An instance of `OrderedDict`
-
-    Returns:
-        An instance of yaml.nodes.MappingNode
-
-    """
-    return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict(data))
-
-
-def get_dumper() -> yaml.SafeDumper:
-    """
-    Add representers to an instance of yaml.SafeDumper.
-    This ensures that a custom representer is used at the time of serialization.
-
-    Returns:
-        An instance of yaml.SafeDumper
-
-    """
-    safe_dumper = yaml.SafeDumper
-    safe_dumper.add_representer(OrderedDict, representer)
-    return safe_dumper
 
 
 def get_creation_classes(schemaview: SchemaView) -> Set[str]:
@@ -86,7 +52,7 @@ def adjust_slot_definitions(
         A dictionary of adjust slot definitions
 
     """
-    adjusted_slots = OrderedDict()
+    adjusted_slots = CommentedMap()
     for slot_name, slot_def in schema["slots"].items():
         if slot_name.startswith("has ") and slot_name not in {
             "has attribute",
@@ -124,7 +90,7 @@ def adjust_class_definitions(
         A dictionary of adjust class definitions
 
     """
-    adjusted_classes = OrderedDict()
+    adjusted_classes = CommentedMap()
     for cls_name, cls_def in schema["classes"].items():
         if cls_name in creation_classes:
             new_cls_def = copy.deepcopy(cls_def)
@@ -165,7 +131,7 @@ def parse_schema(
         A new schema derived from the incoming schema
 
     """
-    new_schema = OrderedDict()
+    new_schema = CommentedMap()
     for k, v in schema.items():
         if k not in {"classes", "slots"}:
             new_schema[k] = v
@@ -239,7 +205,8 @@ def enforce_slots(schema: Dict, slots: Set) -> None:
 
 
 def main(schema_yaml: str = None, output: str = None):
-    schema = yaml.load(open(schema_yaml, "r"), Loader=yaml.FullLoader)
+    yaml = ruamel.yaml.YAML()
+    schema = yaml.load(open(schema_yaml, "r"))
     schemaview = SchemaView(schema=schema_yaml)
     creation_classes = get_creation_classes(schemaview)
     if not output:
@@ -251,13 +218,7 @@ def main(schema_yaml: str = None, output: str = None):
     relax_slots(new_schema, SLOTS_TO_RELAX)
     enforce_slots(new_schema, SLOTS_TO_ENFORCE)
     remove_slots(new_schema, SLOTS_TO_REMOVE)
-    yaml.dump(
-        new_schema,
-        open(output, "w"),
-        default_flow_style=False,
-        sort_keys=False,
-        Dumper=get_dumper(),
-    )
+    yaml.dump(new_schema, open(output, 'w'))
     print(
         f"Total classes: {len(schema['classes'])} (original) vs {len(new_schema['classes'])} (new)"
     )
