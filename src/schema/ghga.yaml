@@ -273,6 +273,7 @@ classes:
       - has experiment
       - has analysis
       - has project
+      - has attribute
     slot_usage:
       alias:
         required: true
@@ -347,6 +348,7 @@ classes:
       - has file
       - has protocol
       - has experiment process
+      - has attribute
     slot_usage:
       alias:
         required: true
@@ -690,6 +692,7 @@ classes:
       - has individual
       - has anatomical entity
       - has biospecimen
+      - has attribute
     slot_usage:
       alias:
         required: true
