@@ -82,15 +82,6 @@ tbl_attribute = Table('attribute', metadata,
     Column('value', Text, primary_key=True),
     Column('value_type', Text, primary_key=True),
 )
-tbl_biological_quality = Table('biological_quality', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-)
 tbl_biospecimen = Table('biospecimen', metadata, 
     Column('id', Text, primary_key=True),
     Column('creation_date', Text),
@@ -130,16 +121,6 @@ tbl_cohort = Table('cohort', metadata,
     Column('has_member', Text),
     Column('accession', Text),
 )
-tbl_committee = Table('committee', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('name', Text),
-)
 tbl_data_access_committee = Table('data_access_committee', metadata, 
     Column('id', Text, primary_key=True),
     Column('creation_date', Text),
@@ -171,17 +152,6 @@ tbl_data_access_policy = Table('data_access_policy', metadata,
     Column('accession', Text),
     Column('ega_accession', Text),
 )
-tbl_data_transformation = Table('data_transformation', metadata, 
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('id', Text, primary_key=True),
-    Column('title', Text),
-    Column('description', Text),
-)
 tbl_data_use_condition = Table('data_use_condition', metadata, 
     Column('permission', Text, primary_key=True),
     Column('modifier', Text, primary_key=True),
@@ -200,7 +170,7 @@ tbl_dataset = Table('dataset', metadata,
     Column('has_sample', Text),
     Column('has_analysis', Text),
     Column('has_file', Text),
-    Column('has_data_access_policy', Text),
+    Column('has_data_access_policy', Text, ForeignKey('data_access_policy.id')),
     Column('alias', Text),
     Column('type', Text),
     Column('has_publication', Text),
@@ -268,6 +238,7 @@ tbl_experiment = Table('experiment', metadata,
     Column('has_sample', Text, ForeignKey('sample.id')),
     Column('has_file', Text),
     Column('has_protocol', Text, ForeignKey('protocol.id')),
+    Column('has_attribute', Text),
     Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
@@ -342,26 +313,6 @@ tbl_individual = Table('individual', metadata,
     Column('accession', Text),
     Column('ega_accession', Text),
 )
-tbl_information_content_entity = Table('information_content_entity', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-)
-tbl_investigation = Table('investigation', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('title', Text),
-    Column('description', Text),
-)
 tbl_library_preparation_protocol = Table('library_preparation_protocol', metadata, 
     Column('id', Text, primary_key=True),
     Column('alias', Text),
@@ -386,15 +337,6 @@ tbl_library_preparation_protocol = Table('library_preparation_protocol', metadat
     Column('description', Text),
     Column('has_attribute', Text),
 )
-tbl_material_entity = Table('material_entity', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-)
 tbl_member = Table('member', metadata, 
     Column('id', Text, primary_key=True),
     Column('alias', Text),
@@ -410,27 +352,6 @@ tbl_member = Table('member', metadata,
     Column('telephone', Text),
     Column('organization', Text),
 )
-tbl_named_thing = Table('named_thing', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-)
-tbl_person = Table('person', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('given_name', Text),
-    Column('family_name', Text),
-    Column('additional_name', Text),
-)
 tbl_phenotypic_feature = Table('phenotypic_feature', metadata, 
     Column('id', Text, primary_key=True),
     Column('alias', Text),
@@ -441,25 +362,6 @@ tbl_phenotypic_feature = Table('phenotypic_feature', metadata,
     Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
-)
-tbl_planned_process = Table('planned_process', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-)
-tbl_population = Table('population', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('name', Text),
 )
 tbl_project = Table('project', metadata, 
     Column('id', Text, primary_key=True),
@@ -499,17 +401,6 @@ tbl_publication = Table('publication', metadata,
     Column('abstract', Text),
     Column('id', Text, primary_key=True),
 )
-tbl_research_activity = Table('research_activity', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('title', Text),
-    Column('description', Text),
-)
 tbl_sample = Table('sample', metadata, 
     Column('id', Text, primary_key=True),
     Column('creation_date', Text),
@@ -524,6 +415,7 @@ tbl_sample = Table('sample', metadata,
     Column('has_individual', Text, ForeignKey('individual.id')),
     Column('has_anatomical_entity', Text, ForeignKey('anatomical_entity.id')),
     Column('has_biospecimen', Text, ForeignKey('biospecimen.id')),
+    Column('has_attribute', Text),
     Column('alias', Text),
     Column('type', Text),
     Column('tissue', Text),
@@ -568,12 +460,12 @@ tbl_study = Table('study', metadata,
     Column('has_experiment', Text),
     Column('has_analysis', Text),
     Column('has_project', Text, ForeignKey('project.id')),
+    Column('has_attribute', Text),
     Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
     Column('type', Text),
     Column('has_publication', Text),
-    Column('has_attribute', Text),
     Column('status', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
@@ -657,10 +549,6 @@ tbl_anatomical_entity_xref = Table('anatomical_entity_xref', metadata,
     Column('backref_id', Text, ForeignKey('anatomical_entity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_biological_quality_xref = Table('biological_quality_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('biological_quality.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_biospecimen_xref = Table('biospecimen_xref', metadata, 
     Column('backref_id', Text, ForeignKey('biospecimen.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
@@ -673,20 +561,12 @@ tbl_cohort_xref = Table('cohort_xref', metadata,
     Column('backref_id', Text, ForeignKey('cohort.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_committee_xref = Table('committee_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('committee.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_data_access_committee_xref = Table('data_access_committee_xref', metadata, 
     Column('backref_id', Text, ForeignKey('data_access_committee.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_data_access_policy_xref = Table('data_access_policy_xref', metadata, 
     Column('backref_id', Text, ForeignKey('data_access_policy.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_data_transformation_xref = Table('data_transformation_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('data_transformation.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_dataset_xref = Table('dataset_xref', metadata, 
@@ -725,44 +605,16 @@ tbl_individual_xref = Table('individual_xref', metadata,
     Column('backref_id', Text, ForeignKey('individual.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_information_content_entity_xref = Table('information_content_entity_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('information_content_entity.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_investigation_xref = Table('investigation_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('investigation.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_library_preparation_protocol_xref = Table('library_preparation_protocol_xref', metadata, 
     Column('backref_id', Text, ForeignKey('library_preparation_protocol.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_material_entity_xref = Table('material_entity_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('material_entity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_member_xref = Table('member_xref', metadata, 
     Column('backref_id', Text, ForeignKey('member.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_named_thing_xref = Table('named_thing_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('named_thing.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_person_xref = Table('person_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('person.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_phenotypic_feature_xref = Table('phenotypic_feature_xref', metadata, 
     Column('backref_id', Text, ForeignKey('phenotypic_feature.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_planned_process_xref = Table('planned_process_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('planned_process.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_population_xref = Table('population_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('population.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_project_xref = Table('project_xref', metadata, 
@@ -775,10 +627,6 @@ tbl_protocol_xref = Table('protocol_xref', metadata,
 )
 tbl_publication_xref = Table('publication_xref', metadata, 
     Column('backref_id', Text, ForeignKey('publication.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_research_activity_xref = Table('research_activity_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('research_activity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_sample_xref = Table('sample_xref', metadata, 
@@ -829,15 +677,11 @@ mapper_registry.map_imperatively(AnatomicalEntity, tbl_anatomical_entity, proper
 })
 mapper_registry.map_imperatively(Attribute, tbl_attribute, properties={
 })
-mapper_registry.map_imperatively(BiologicalQuality, tbl_biological_quality, properties={
-})
 mapper_registry.map_imperatively(Biospecimen, tbl_biospecimen, properties={
 })
 mapper_registry.map_imperatively(CellLine, tbl_cell_line, properties={
 })
 mapper_registry.map_imperatively(Cohort, tbl_cohort, properties={
-})
-mapper_registry.map_imperatively(Committee, tbl_committee, properties={
 })
 mapper_registry.map_imperatively(DataAccessCommittee, tbl_data_access_committee, properties={
 })
@@ -848,8 +692,6 @@ mapper_registry.map_imperatively(DataAccessPolicy, tbl_data_access_policy, prope
                       foreign_keys=tbl_data_use_condition.columns["data_access_policy_id"],
                       backref='DataAccessPolicy'),
 
-})
-mapper_registry.map_imperatively(DataTransformation, tbl_data_transformation, properties={
 })
 mapper_registry.map_imperatively(DataUseCondition, tbl_data_use_condition, properties={
 })
@@ -877,33 +719,17 @@ mapper_registry.map_imperatively(File, tbl_file, properties={
 })
 mapper_registry.map_imperatively(Individual, tbl_individual, properties={
 })
-mapper_registry.map_imperatively(InformationContentEntity, tbl_information_content_entity, properties={
-})
-mapper_registry.map_imperatively(Investigation, tbl_investigation, properties={
-})
 mapper_registry.map_imperatively(LibraryPreparationProtocol, tbl_library_preparation_protocol, properties={
-})
-mapper_registry.map_imperatively(MaterialEntity, tbl_material_entity, properties={
 })
 mapper_registry.map_imperatively(Member, tbl_member, properties={
 })
-mapper_registry.map_imperatively(NamedThing, tbl_named_thing, properties={
-})
-mapper_registry.map_imperatively(Person, tbl_person, properties={
-})
 mapper_registry.map_imperatively(PhenotypicFeature, tbl_phenotypic_feature, properties={
-})
-mapper_registry.map_imperatively(PlannedProcess, tbl_planned_process, properties={
-})
-mapper_registry.map_imperatively(Population, tbl_population, properties={
 })
 mapper_registry.map_imperatively(Project, tbl_project, properties={
 })
 mapper_registry.map_imperatively(Protocol, tbl_protocol, properties={
 })
 mapper_registry.map_imperatively(Publication, tbl_publication, properties={
-})
-mapper_registry.map_imperatively(ResearchActivity, tbl_research_activity, properties={
 })
 mapper_registry.map_imperatively(Sample, tbl_sample, properties={
 })

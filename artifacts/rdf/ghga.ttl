@@ -80,26 +80,26 @@
         <https://w3id.org/GHGA/study_type_enum>,
         <https://w3id.org/GHGA/user_role_enum>,
         <https://w3id.org/GHGA/vital_status_enum> ;
-    linkml:generation_date "2022-03-25T08:27:47"^^xsd:dateTime ;
+    linkml:generation_date "2022-03-30T09:11:30"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "SNOMEDCT" ;
-            linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ],
-        [ linkml:prefix_prefix "GENEPIO" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
-        [ linkml:prefix_prefix "EFO" ;
-            linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
-        [ linkml:prefix_prefix "GHGA" ;
-            linkml:prefix_reference <https://w3id.org/GHGA/> ],
-        [ linkml:prefix_prefix "linkml" ;
-            linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "biolink" ;
+    linkml:prefixes [ linkml:prefix_prefix "biolink" ;
             linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
         [ linkml:prefix_prefix "SIO" ;
             linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
         [ linkml:prefix_prefix "COB" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ] ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
+        [ linkml:prefix_prefix "EFO" ;
+            linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference linkml: ],
+        [ linkml:prefix_prefix "GENEPIO" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
+        [ linkml:prefix_prefix "GHGA" ;
+            linkml:prefix_reference <https://w3id.org/GHGA/> ],
+        [ linkml:prefix_prefix "SNOMEDCT" ;
+            linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/accession>,
         <https://w3id.org/GHGA/additional_name>,
@@ -307,6 +307,7 @@
         <https://w3id.org/GHGA/sample_alias>,
         <https://w3id.org/GHGA/sample_barcode_read>,
         <https://w3id.org/GHGA/sample_description>,
+        <https://w3id.org/GHGA/sample_has_anatomical_entity>,
         <https://w3id.org/GHGA/sample_has_biospecimen>,
         <https://w3id.org/GHGA/sample_has_individual>,
         <https://w3id.org/GHGA/sample_name>,
@@ -372,8 +373,8 @@
         <https://w3id.org/GHGA/workflow_step_has_parameter>,
         <https://w3id.org/GHGA/xref> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2022-03-25T08:27:02"^^xsd:dateTime ;
-    linkml:source_file_size 66634 ;
+    linkml:source_file_date "2022-03-30T09:10:40"^^xsd:dateTime ;
+    linkml:source_file_size 66998 ;
     linkml:subsets <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/optional>,
         <https://w3id.org/GHGA/public>,
@@ -1034,6 +1035,7 @@
     linkml:definition_uri <https://w3id.org/GHGA/main_contact> ;
     linkml:domain <https://w3id.org/GHGA/DataAccessCommittee> ;
     linkml:domain_of <https://w3id.org/GHGA/DataAccessCommittee> ;
+    linkml:inlined true ;
     linkml:is_a <https://w3id.org/GHGA/main_contact> ;
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
@@ -1277,10 +1279,8 @@
     linkml:domain <https://w3id.org/GHGA/Dataset> ;
     linkml:domain_of <https://w3id.org/GHGA/Dataset> ;
     linkml:inlined true ;
-    linkml:inlined_as_list true ;
     linkml:is_a <https://w3id.org/GHGA/has_data_access_policy> ;
     linkml:is_usage_slot true ;
-    linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Dataset> ;
     linkml:range <https://w3id.org/GHGA/DataAccessPolicy> ;
     linkml:required true ;
@@ -2195,6 +2195,23 @@
     linkml:slot_uri <https://w3id.org/GHGA/description> ;
     linkml:usage_slot_name "description" .
 
+<https://w3id.org/GHGA/sample_has_anatomical_entity> a linkml:SlotDefinition ;
+    OIO:inSubset <https://w3id.org/GHGA/public>,
+        <https://w3id.org/GHGA/recommended> ;
+    skos:definition "Anatomical site associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "has anatomical entity" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_anatomical_entity> ;
+    linkml:domain <https://w3id.org/GHGA/Sample> ;
+    linkml:domain_of <https://w3id.org/GHGA/Sample> ;
+    linkml:inlined true ;
+    linkml:is_a <https://w3id.org/GHGA/has_anatomical_entity> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/Sample> ;
+    linkml:range <https://w3id.org/GHGA/AnatomicalEntity> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_anatomical_entity> ;
+    linkml:usage_slot_name "has anatomical entity" .
+
 <https://w3id.org/GHGA/sample_has_biospecimen> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/optional>,
         <https://w3id.org/GHGA/restricted> ;
@@ -2865,8 +2882,8 @@
 
 <https://w3id.org/GHGA/CellLine> a linkml:ClassDefinition ;
     skos:definition "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history." ;
-    skos:exactMatch <https://w3id.org/GHGA/CLO:0000031>,
-        <https://w3id.org/GHGA/SIO:010054> ;
+    skos:exactMatch <clo:0000031>,
+        <sio:010054> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/CellLine> ;
     linkml:definition_uri <https://w3id.org/GHGA/CellLine> ;
@@ -3135,8 +3152,9 @@
 
 <https://w3id.org/GHGA/BiologicalQuality> a linkml:ClassDefinition ;
     skos:definition "A biological quality is a quality held by a biological entity." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000475> ;
+    skos:exactMatch <sio:000475> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/BiologicalQuality> ;
     linkml:definition_uri <https://w3id.org/GHGA/BiologicalQuality> ;
     linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
@@ -3544,29 +3562,10 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/vital_status_at_sampling> .
 
-<https://w3id.org/GHGA/AnatomicalEntity> a linkml:ClassDefinition ;
-    skos:definition "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species." ;
-    skos:exactMatch <https://w3id.org/GHGA/UBERON:0001062> ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/AnatomicalEntity> ;
-    linkml:definition_uri <https://w3id.org/GHGA/AnatomicalEntity> ;
-    linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
-    linkml:mixins <https://w3id.org/GHGA/OntologyClassMixin> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/named_thing_alias>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_type>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/ontology_class_mixin_description>,
-        <https://w3id.org/GHGA/ontology_class_mixin_name>,
-        <https://w3id.org/GHGA/schema_type>,
-        <https://w3id.org/GHGA/schema_version> .
-
 <https://w3id.org/GHGA/Committee> a linkml:ClassDefinition ;
     skos:definition "A group of people organized for a specific purpose." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/Committee> ;
     linkml:definition_uri <https://w3id.org/GHGA/Committee> ;
     linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
@@ -3695,6 +3694,26 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/storage> .
 
+<https://w3id.org/GHGA/AnatomicalEntity> a linkml:ClassDefinition ;
+    skos:definition "Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species." ;
+    skos:exactMatch <uberon:0001062> ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/AnatomicalEntity> ;
+    linkml:definition_uri <https://w3id.org/GHGA/AnatomicalEntity> ;
+    linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
+    linkml:mixins <https://w3id.org/GHGA/OntologyClassMixin> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/named_thing_alias>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/ontology_class_mixin_description>,
+        <https://w3id.org/GHGA/ontology_class_mixin_name>,
+        <https://w3id.org/GHGA/schema_type>,
+        <https://w3id.org/GHGA/schema_version> .
+
 <https://w3id.org/GHGA/DeprecatedMixin> a linkml:ClassDefinition ;
     skos:definition "Mixin for entities that can be deprecated." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -3708,6 +3727,7 @@
 <https://w3id.org/GHGA/Population> a linkml:ClassDefinition ;
     skos:definition "A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/Population> ;
     linkml:definition_uri <https://w3id.org/GHGA/Population> ;
     linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
@@ -3733,8 +3753,9 @@
 
 <https://w3id.org/GHGA/ResearchActivity> a linkml:ClassDefinition ;
     skos:definition "A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world." ;
-    skos:exactMatch <https://w3id.org/GHGA/SEPIO:0000004> ;
+    skos:exactMatch <sepio:0000004> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/ResearchActivity> ;
     linkml:definition_uri <https://w3id.org/GHGA/ResearchActivity> ;
     linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
@@ -4244,8 +4265,9 @@
 
 <https://w3id.org/GHGA/DataTransformation> a linkml:ClassDefinition ;
     skos:definition "A data transformation technique used to analyze and interpret data to gain a better understanding of it." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0200000> ;
+    skos:exactMatch <obi:0200000> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/DataTransformation> ;
     linkml:definition_uri <https://w3id.org/GHGA/DataTransformation> ;
     linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
@@ -4263,8 +4285,8 @@
 
 <https://w3id.org/GHGA/Disease> a linkml:ClassDefinition ;
     skos:definition "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism." ;
-    skos:exactMatch <https://w3id.org/GHGA/EFO:0000408>,
-        <https://w3id.org/GHGA/MONDO:0000001> ;
+    skos:exactMatch <efo:0000408>,
+        <mondo:0000001> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Disease> ;
     linkml:definition_uri <https://w3id.org/GHGA/Disease> ;
@@ -4283,9 +4305,10 @@
 
 <https://w3id.org/GHGA/Investigation> a linkml:ClassDefinition ;
     skos:definition "Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0000066>,
-        <https://w3id.org/GHGA/SIO:000747> ;
+    skos:exactMatch <obi:0000066>,
+        <sio:000747> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/Investigation> ;
     linkml:definition_uri <https://w3id.org/GHGA/Investigation> ;
     linkml:is_a <https://w3id.org/GHGA/PlannedProcess> ;
@@ -4303,9 +4326,9 @@
 
 <https://w3id.org/GHGA/PhenotypicFeature> a linkml:ClassDefinition ;
     skos:definition "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype." ;
-    skos:exactMatch <https://w3id.org/GHGA/EFO:0000651>,
-        <https://w3id.org/GHGA/HP:0000118>,
-        <https://w3id.org/GHGA/SIO:010056> ;
+    skos:exactMatch <efo:0000651>,
+        <hp:0000118>,
+        <sio:010056> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/PhenotypicFeature> ;
     linkml:definition_uri <https://w3id.org/GHGA/PhenotypicFeature> ;
@@ -4341,18 +4364,6 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/email> .
 
-<https://w3id.org/GHGA/has_anatomical_entity> a linkml:SlotDefinition ;
-    OIO:inSubset <https://w3id.org/GHGA/public>,
-        <https://w3id.org/GHGA/recommended> ;
-    skos:definition "Anatomical site associated with an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_anatomical_entity> ;
-    linkml:domain_of <https://w3id.org/GHGA/Biospecimen>,
-        <https://w3id.org/GHGA/Sample> ;
-    linkml:owner <https://w3id.org/GHGA/Sample> ;
-    linkml:range <https://w3id.org/GHGA/AnatomicalEntity> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_anatomical_entity> .
-
 <https://w3id.org/GHGA/Agent> a linkml:ClassDefinition ;
     skos:definition "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity." ;
     skos:exactMatch prov:Agent ;
@@ -4383,8 +4394,9 @@
 
 <https://w3id.org/GHGA/MaterialEntity> a linkml:ClassDefinition ;
     skos:definition "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000004> ;
+    skos:exactMatch <sio:000004> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/MaterialEntity> ;
     linkml:definition_uri <https://w3id.org/GHGA/MaterialEntity> ;
     linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
@@ -4410,10 +4422,11 @@
 
 <https://w3id.org/GHGA/PlannedProcess> a linkml:ClassDefinition ;
     skos:definition "A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs." ;
-    skos:exactMatch <https://w3id.org/GHGA/COB:0000082>,
-        <https://w3id.org/GHGA/EFO:0004542>,
-        <https://w3id.org/GHGA/OBI:0000011> ;
+    skos:exactMatch <cob:0000082>,
+        <efo:0004542>,
+        <obi:0000011> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/PlannedProcess> ;
     linkml:definition_uri <https://w3id.org/GHGA/PlannedProcess> ;
     linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
@@ -4487,6 +4500,18 @@
     linkml:owner <https://w3id.org/GHGA/AnalysisProcess> ;
     linkml:range <https://w3id.org/GHGA/Agent> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_agent> .
+
+<https://w3id.org/GHGA/has_anatomical_entity> a linkml:SlotDefinition ;
+    OIO:inSubset <https://w3id.org/GHGA/public>,
+        <https://w3id.org/GHGA/recommended> ;
+    skos:definition "Anatomical site associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_anatomical_entity> ;
+    linkml:domain_of <https://w3id.org/GHGA/Biospecimen>,
+        <https://w3id.org/GHGA/Sample> ;
+    linkml:owner <https://w3id.org/GHGA/Sample> ;
+    linkml:range <https://w3id.org/GHGA/AnatomicalEntity> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_anatomical_entity> .
 
 <https://w3id.org/GHGA/has_biospecimen> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/optional>,
@@ -4630,8 +4655,9 @@
 
 <https://w3id.org/GHGA/InformationContentEntity> a linkml:ClassDefinition ;
     skos:definition "A generically dependent continuant that is about some thing." ;
-    skos:exactMatch <https://w3id.org/GHGA/IAO:0000030> ;
+    skos:exactMatch <iao:0000030> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/InformationContentEntity> ;
     linkml:definition_uri <https://w3id.org/GHGA/InformationContentEntity> ;
     linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
@@ -4678,9 +4704,10 @@
 <https://w3id.org/GHGA/Person> a linkml:ClassDefinition ;
     skos:definition "A member of the species Homo sapiens." ;
     skos:exactMatch prov:Person,
-        <https://w3id.org/GHGA/SIO:000498>,
-        <ncit:C25190> ;
+        <ncit:C25190>,
+        <sio:000498> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/Person> ;
     linkml:definition_uri <https://w3id.org/GHGA/Person> ;
     linkml:is_a <https://w3id.org/GHGA/NamedThing> ;
@@ -4888,20 +4915,6 @@
     linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/id> .
 
-<https://w3id.org/GHGA/has_attribute> a linkml:SlotDefinition ;
-    OIO:inSubset <https://w3id.org/GHGA/optional>,
-        <https://w3id.org/GHGA/restricted> ;
-    skos:definition "Key/value pairs corresponding to an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_attribute> ;
-    linkml:domain_of <https://w3id.org/GHGA/AttributeMixin> ;
-    linkml:inlined true ;
-    linkml:inlined_as_list true ;
-    linkml:multivalued true ;
-    linkml:owner <https://w3id.org/GHGA/AttributeMixin> ;
-    linkml:range <https://w3id.org/GHGA/Attribute> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_attribute> .
-
 <https://w3id.org/GHGA/AccessionMixin> a linkml:ClassDefinition ;
     skos:definition "Mixin for entities that can be assigned a GHGA accession." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -4928,6 +4941,23 @@
     linkml:definition_uri <https://w3id.org/GHGA/type> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/type> .
+
+<https://w3id.org/GHGA/has_attribute> a linkml:SlotDefinition ;
+    OIO:inSubset <https://w3id.org/GHGA/optional>,
+        <https://w3id.org/GHGA/restricted> ;
+    skos:definition "Key/value pairs corresponding to an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_attribute> ;
+    linkml:domain_of <https://w3id.org/GHGA/AttributeMixin>,
+        <https://w3id.org/GHGA/Experiment>,
+        <https://w3id.org/GHGA/Sample>,
+        <https://w3id.org/GHGA/Study> ;
+    linkml:inlined true ;
+    linkml:inlined_as_list true ;
+    linkml:multivalued true ;
+    linkml:owner <https://w3id.org/GHGA/AttributeMixin> ;
+    linkml:range <https://w3id.org/GHGA/Attribute> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_attribute> .
 
 <https://w3id.org/GHGA/Member> a linkml:ClassDefinition ;
     skos:definition "Member of an Organization or a Committee." ;
@@ -5088,7 +5118,7 @@
 
 <https://w3id.org/GHGA/Attribute> a linkml:ClassDefinition ;
     skos:definition "A key/value pair that further characterizes an entity." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000614> ;
+    skos:exactMatch <sio:000614> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Attribute> ;
     linkml:definition_uri <https://w3id.org/GHGA/Attribute> ;
@@ -5100,7 +5130,7 @@
 
 <https://w3id.org/GHGA/Biospecimen> a linkml:ClassDefinition ;
     skos:definition "A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0100051> ;
+    skos:exactMatch <obi:0100051> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Biospecimen> ;
     linkml:definition_uri <https://w3id.org/GHGA/Biospecimen> ;
@@ -5162,7 +5192,7 @@
     skos:altLabel "experiment protocol",
         "library protocol" ;
     skos:definition "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process." ;
-    skos:exactMatch <https://w3id.org/GHGA/OBI:0000272> ;
+    skos:exactMatch <obi:0000272> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Protocol> ;
     linkml:definition_uri <https://w3id.org/GHGA/Protocol> ;
@@ -5244,6 +5274,7 @@
         "object" ;
     skos:definition "A databased entity, concept or class. This is a generic class that is the root of all the other classes." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:abstract true ;
     linkml:class_uri <https://w3id.org/GHGA/NamedThing> ;
     linkml:definition_uri <https://w3id.org/GHGA/NamedThing> ;
     linkml:mixins <https://w3id.org/GHGA/MetadataMixin> ;
@@ -5329,37 +5360,6 @@
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:definition_uri <https://w3id.org/GHGA/Optional> .
 
-<https://w3id.org/GHGA/Experiment> a linkml:ClassDefinition ;
-    skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000994> ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/Experiment> ;
-    linkml:definition_uri <https://w3id.org/GHGA/Experiment> ;
-    linkml:is_a <https://w3id.org/GHGA/Investigation> ;
-    linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
-        <https://w3id.org/GHGA/EgaAccessionMixin> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/accession>,
-        <https://w3id.org/GHGA/biological_replicates>,
-        <https://w3id.org/GHGA/ega_accession>,
-        <https://w3id.org/GHGA/experiment_alias>,
-        <https://w3id.org/GHGA/experiment_description>,
-        <https://w3id.org/GHGA/experiment_has_experiment_process>,
-        <https://w3id.org/GHGA/experiment_has_file>,
-        <https://w3id.org/GHGA/experiment_has_protocol>,
-        <https://w3id.org/GHGA/experiment_has_sample>,
-        <https://w3id.org/GHGA/experiment_has_study>,
-        <https://w3id.org/GHGA/experiment_title>,
-        <https://w3id.org/GHGA/experimental_replicates>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_type>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/schema_type>,
-        <https://w3id.org/GHGA/schema_version>,
-        <https://w3id.org/GHGA/technical_replicates> .
-
 <https://w3id.org/GHGA/description> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/public> ;
@@ -5382,36 +5382,37 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/description> .
 
-<https://w3id.org/GHGA/Sample> a linkml:ClassDefinition ;
-    skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)." ;
-    skos:exactMatch <biolink:MaterialSample>,
-        <https://w3id.org/GHGA/SIO:001050> ;
+<https://w3id.org/GHGA/Experiment> a linkml:ClassDefinition ;
+    skos:definition "An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis." ;
+    skos:exactMatch <sio:000994> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/Sample> ;
-    linkml:definition_uri <https://w3id.org/GHGA/Sample> ;
-    linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
+    linkml:class_uri <https://w3id.org/GHGA/Experiment> ;
+    linkml:definition_uri <https://w3id.org/GHGA/Experiment> ;
+    linkml:is_a <https://w3id.org/GHGA/Investigation> ;
     linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
         <https://w3id.org/GHGA/EgaAccessionMixin> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/accession>,
+        <https://w3id.org/GHGA/biological_replicates>,
         <https://w3id.org/GHGA/ega_accession>,
-        <https://w3id.org/GHGA/has_anatomical_entity>,
-        <https://w3id.org/GHGA/isolation>,
+        <https://w3id.org/GHGA/experiment_alias>,
+        <https://w3id.org/GHGA/experiment_description>,
+        <https://w3id.org/GHGA/experiment_has_experiment_process>,
+        <https://w3id.org/GHGA/experiment_has_file>,
+        <https://w3id.org/GHGA/experiment_has_protocol>,
+        <https://w3id.org/GHGA/experiment_has_sample>,
+        <https://w3id.org/GHGA/experiment_has_study>,
+        <https://w3id.org/GHGA/experiment_title>,
+        <https://w3id.org/GHGA/experimental_replicates>,
+        <https://w3id.org/GHGA/has_attribute>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_type>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/sample_alias>,
-        <https://w3id.org/GHGA/sample_description>,
-        <https://w3id.org/GHGA/sample_has_biospecimen>,
-        <https://w3id.org/GHGA/sample_has_individual>,
-        <https://w3id.org/GHGA/sample_name>,
-        <https://w3id.org/GHGA/sample_tissue>,
-        <https://w3id.org/GHGA/sample_type>,
-        <https://w3id.org/GHGA/sample_xref>,
+        <https://w3id.org/GHGA/named_thing_xref>,
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version>,
-        <https://w3id.org/GHGA/storage>,
-        <https://w3id.org/GHGA/vital_status_at_sampling> .
+        <https://w3id.org/GHGA/technical_replicates> .
 
 <https://w3id.org/GHGA/named_thing_creation_date> a linkml:SlotDefinition ;
     skos:definition "Timestamp (in ISO 8601 format) when the entity was created." ;
@@ -5443,7 +5444,7 @@
 
 <https://w3id.org/GHGA/Dataset> a linkml:ClassDefinition ;
     skos:definition "A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy." ;
-    skos:exactMatch <https://w3id.org/GHGA/SIO:000089> ;
+    skos:exactMatch <sio:000089> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:class_uri <https://w3id.org/GHGA/Dataset> ;
     linkml:definition_uri <https://w3id.org/GHGA/Dataset> ;
@@ -5521,6 +5522,38 @@
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version>,
         <https://w3id.org/GHGA/title> .
+
+<https://w3id.org/GHGA/Sample> a linkml:ClassDefinition ;
+    skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)." ;
+    skos:exactMatch <biolink:MaterialSample>,
+        <sio:001050> ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/Sample> ;
+    linkml:definition_uri <https://w3id.org/GHGA/Sample> ;
+    linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
+    linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
+        <https://w3id.org/GHGA/EgaAccessionMixin> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/accession>,
+        <https://w3id.org/GHGA/ega_accession>,
+        <https://w3id.org/GHGA/has_attribute>,
+        <https://w3id.org/GHGA/isolation>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/sample_alias>,
+        <https://w3id.org/GHGA/sample_description>,
+        <https://w3id.org/GHGA/sample_has_anatomical_entity>,
+        <https://w3id.org/GHGA/sample_has_biospecimen>,
+        <https://w3id.org/GHGA/sample_has_individual>,
+        <https://w3id.org/GHGA/sample_name>,
+        <https://w3id.org/GHGA/sample_tissue>,
+        <https://w3id.org/GHGA/sample_type>,
+        <https://w3id.org/GHGA/sample_xref>,
+        <https://w3id.org/GHGA/schema_type>,
+        <https://w3id.org/GHGA/schema_version>,
+        <https://w3id.org/GHGA/storage>,
+        <https://w3id.org/GHGA/vital_status_at_sampling> .
 
 <https://w3id.org/GHGA/SequencingProtocol> a linkml:ClassDefinition ;
     skos:definition "Information about the sequencing of a sample." ;
