@@ -3,4 +3,4 @@ linkml-runtime>=1.2.2
 mkdocs>=1.2.1
 mkdocs-material>=7.1.9
 ruamel.yaml>=0.17.21
-typer>=0.4.0
+typer
