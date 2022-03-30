@@ -10,6 +10,14 @@ from linkml_runtime.utils.formatutils import camelcase, underscore
 
 
 NON_REFERENCE_SLOTS = {"has attribute", "has parameter", "has data use condition"}
+TEMPLATE_EXTENSION = """
+{#-
+
+  Jinja2 Template for a pydantic classes
+-#}
+from __future__ import annotations
+from typing import Union
+"""
 
 
 class CustomPydanticGenerator(PydanticGenerator):
@@ -50,10 +58,24 @@ class CustomPydanticGenerator(PydanticGenerator):
         self.reference_slots = set()
         for slot in self.schema.slots:
             slot_alias_name = self.aliased_slot_name(slot)
-            if (
-                slot_alias_name.startswith("has ") or slot_alias_name == "main contact"
-            ) and (slot_alias_name not in NON_REFERENCE_SLOTS):
+            if (slot_alias_name.startswith("has ") or slot_alias_name == "main contact") and (
+                slot_alias_name not in NON_REFERENCE_SLOTS
+            ):
                 self.reference_slots.add(underscore(slot_alias_name))
+        self.default_template = self.patch_template(default_template)
+
+    def patch_template(self, template: str):
+        """
+        Patch the default Jinja2 Template.
+        """
+        template_elements = template.split("\n")
+        index = None
+        for line in template_elements:
+            if line.startswith("from __future__"):
+                index = template_elements.index(line)
+                break
+        patched_template = TEMPLATE_EXTENSION + "\n" + "\n".join(template_elements[index + 1 :])
+        return patched_template
 
     def serialize(self) -> str:
         """
@@ -69,7 +91,7 @@ class CustomPydanticGenerator(PydanticGenerator):
             with open(self.template_file) as template_file:
                 template_obj = Template(template_file.read())
         else:
-            template_obj = Template(default_template)
+            template_obj = Template(self.default_template)
         sv: SchemaView
         sv = self.schemaview
         schema = sv.schema
