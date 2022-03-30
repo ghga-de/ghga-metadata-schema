@@ -82,7 +82,7 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 gen-pydantic: $(patsubst %, target/pydantic/%_models.py, $(SCHEMA_NAMES))
 .PHONY: gen-pydantic
 target/pydantic/%_models.py: $(SCHEMA_DIR)/%.yaml  tdir-pydantic
-	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
+	python scripts/custom_pydanticgen.py --no-mergeimports $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # GraphQL
@@ -98,7 +98,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema --include-range-class-descendants $(GEN_OPTS) $< > $@
+	python scripts/custom_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ShEx
@@ -159,8 +159,8 @@ target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(S
 
 gen-creation-schema-pydantic-models: target/derived_schema/creation/$(SCHEMA_NAME)_creation_models.py
 target/derived_schema/creation/%_creation_models.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
-	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
+	python scripts/custom_pydanticgen.py --no-mergeimports $(GEN_OPTS) $< > $@
 
 gen-creation-schema-jsonschema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.schema.json
 target/derived_schema/creation/%_creation.schema.json: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
-	gen-json-schema --include-range-class-descendants $(GEN_OPTS) $< > $@
+	python scripts/custom_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
