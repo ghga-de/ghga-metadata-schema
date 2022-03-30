@@ -19,7 +19,8 @@ theme:
     repo: fontawesome/brands/github-square
 nav:
   - Home: index.md
-  - Documentation: docs/index.md
+  - Schema Documentation: docs/index.md
+  - Derived Schemas: derived-schemas.md
   - Contributing: contributing.md
   - LinkML Quickstart Guide: linkml-quickstart.md
   - Referencing Ontologies: referencing-ontologies.md
