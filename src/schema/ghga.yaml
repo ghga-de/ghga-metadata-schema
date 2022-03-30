@@ -262,8 +262,7 @@ classes:
       - ega accession mixin
       - publication mixin
       - attribute mixin
-      - status mixin
-      - release mixin
+      - release status mixin
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
       detailed examination and analysis of a subject to learn more about the phenomenon
@@ -323,10 +322,10 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell, bulk etc)
-      status:
+      release status:
         description: >-
-          The status of a Study. For example, 'released' or 'unreleased'.
-        range: status_enum
+          The release status of a Study.
+        range: release_status_enum
 
   experiment:
     is_a: investigation
@@ -384,9 +383,10 @@ classes:
         description: >-
           One or more Protocol entities associated with this Experiment.
         range: protocol
+        multivalued: true
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has experiment process:
         description: >-
           One or more Experiment Processes entities associated with this Experiment.
@@ -867,7 +867,7 @@ classes:
     aliases: ['file object']
     slots:
       - name
-      - file format
+      - format
       - size
       - checksum
       - checksum type
@@ -878,7 +878,7 @@ classes:
         description: >-
           The given filename.
         required: true
-      file format:
+      format:
         required: true
       checksum:
         required: true
@@ -1001,7 +1001,7 @@ classes:
       - accession mixin
       - ega accession mixin
       - publication mixin
-      - status mixin
+      - release status mixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
       and is tied to a Data Access Policy.
@@ -1080,6 +1080,10 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      release status:
+        description: >-
+          The release status of a Dataset.
+        range: release_status_enum
 
   data use condition:
     description: >-
@@ -1286,8 +1290,6 @@ classes:
         range: user_role_enum
 
   submission:
-    mixins:
-      - status mixin
     description: >-
       A grouping entity that represents information about one or more entities.
       A submission can be considered as a set of inter-related (and inter-connected)
@@ -1306,6 +1308,7 @@ classes:
       - submission date
       - creation date
       - update date
+      - submission status
     slot_usage:
       id:
         description: >-
@@ -1376,10 +1379,10 @@ classes:
       update date:
         description: >-
           Timestamp (in ISO 8601 format) when the Submission was updated.
-      status:
+      submission status:
         description: >-
-          The status of a Submission. For example, 'in progress' or 'submitted'.
-        range: status_enum
+          The status of a Submission.
+        range: submission_status_enum
 
   ontology class mixin:
     mixin: true
@@ -1439,16 +1442,11 @@ classes:
       - replaced by
       - deprecation date
 
-  status mixin:
-    mixin: true
-    description: Mixin for entities that can have a status.
-    slots:
-      - status
-
-  release mixin:
+  release status mixin:
     mixin: true
     description: Mixin for entities that can be released at a later point in time.
     slots:
+      - release status
       - release date
 
 slots:
@@ -1846,7 +1844,7 @@ slots:
       - optional
       - restricted
 
-  file format:
+  format:
     description: >-
       The format of the file: BAM, SAM, CRAM, BAI, etc.
     in_subset:
@@ -2172,9 +2170,17 @@ slots:
       - recommended
       - public
 
+  submission status:
+    description: >-
+      The status of a submission.
+
   submission date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
+
+  release status:
+    description: >-
+      The release status of an entity.
 
   release date:
     description: >-
@@ -2196,10 +2202,6 @@ slots:
       Refers to a deprecated entity that is being replaced by the current entity.
     domain: named thing
     range: named thing
-
-  status:
-    description: The status of an entity.
-    range: status_enum
 
 enums:
   case_control_enum:
@@ -2309,17 +2311,20 @@ enums:
         description: >-
           vcf File for storing gene sequence variations.
 
-  status_enum:
+  submission_status_enum:
     description: >-
-      Enum to capture the status of an entity.
+      Enum to capture the status of a Submission.
     permissible_values:
       in progress:
-        description: Signifies that the entity is in the process of being submitted.
-      submitted:
-        description: Signifies that the entity has been successfully submitted.
+        description: Signifies that the Submission is in the process of being submitted.
+      completed:
+        description: Signifies that the Submission is completed.
+
+  release_status_enum:
+    description: >-
+      Enum to capture the release status of an entity.
+    permissible_values:
       unreleased:
-        description: Signifies that the entity is submitted but unreleased for public consumption.
+        description: signifies that the entity has not yet been release for public consumption.
       released:
-        description: Signifies that the entity is submitted and released for public consumption.
-      deprecated:
-        description: Signifies that the entity is deprecated and may be replaced by another entity.
+        description: signifies that the entity has been release for public consumption.
