@@ -675,6 +675,10 @@ classes:
         range: biospecimen
         inlined: true
         inlined_as_list: false
+      has anatomical entity:
+        range: anatomical entity
+        inlined: true
+        inlined_as_list: false
 
   person:
     is_a: named thing
@@ -1023,10 +1027,9 @@ classes:
         description: >-
           The Data Access Policy that applies to this Dataset.
         range: data access policy
-        multivalued: true
         required: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       has publication:
         description: >-
           One or more Publication entities associated with this Dataset.
@@ -1131,7 +1134,7 @@ classes:
           The main contact for the Data Access Committee.
         range: member
         required: true
-        inlined: false
+        inlined: true
         inlined_as_list: false
       has member:
         description: >-
