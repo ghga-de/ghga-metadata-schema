@@ -39,6 +39,14 @@ jobs:
       - name: Build the schema
         run: |
           make all
+
+      - name: Generate derived schemas
+        run: |
+          make gen-creation-schema-artifacts stage-derived-schemas
+
+      - name: Push artifacts
+        run: |
+          make all
           if [[ ! -z $(git status -s artifacts) ]]
           then
             git config --local user.email "action@github.com"
