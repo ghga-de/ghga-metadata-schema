@@ -153,14 +153,14 @@ target/derived_schema/creation/%_creation.yaml: $(SCHEMA_DIR)/%.yaml
 
 gen-creation-schema-artifacts: gen-creation-schema gen-creation-schema-python-classes gen-creation-schema-pydantic-models gen-creation-schema-jsonschema
 
-gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
-target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
-	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+# gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
+# target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+# 	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
 
 gen-creation-schema-pydantic-models: target/derived_schema/creation/$(SCHEMA_NAME)_creation_models.py
 target/derived_schema/creation/%_creation_models.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
-	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
+	python scripts/custom_pydanticgen.py --no-mergeimports $(GEN_OPTS) $< > $@
 
 gen-creation-schema-jsonschema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.schema.json
 target/derived_schema/creation/%_creation.schema.json: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
-	gen-json-schema --include-range-class-descendants $(GEN_OPTS) $< > $@
+	python scripts/custom_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
