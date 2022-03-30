@@ -153,9 +153,9 @@ target/derived_schema/creation/%_creation.yaml: $(SCHEMA_DIR)/%.yaml
 
 gen-creation-schema-artifacts: gen-creation-schema gen-creation-schema-python-classes gen-creation-schema-pydantic-models gen-creation-schema-jsonschema
 
-# gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
-# target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
-# 	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
+target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
 
 gen-creation-schema-pydantic-models: target/derived_schema/creation/$(SCHEMA_NAME)_creation_models.py
 target/derived_schema/creation/%_creation_models.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
