@@ -79,7 +79,7 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 gen-pydantic: $(patsubst %, target/pydantic/%_models.py, $(SCHEMA_NAMES))
 .PHONY: gen-pydantic
 target/pydantic/%_models.py: $(SCHEMA_DIR)/%.yaml  tdir-pydantic
-	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
+	python scripts/custom_pydanticgen.py --no-mergeimports $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # GraphQL
@@ -95,7 +95,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema --include-range-class-descendants $(GEN_OPTS) $< > $@
+	python scripts/custom_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ShEx
