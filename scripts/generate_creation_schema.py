@@ -15,8 +15,13 @@ from ruamel.yaml.comments import CommentedMap
 
 ROOT_CLASS = "named thing"
 SLOTS_TO_RELAX: Set = {}
+CLASS_SLOTS_TO_RELAX: Set = {
+    "create dataset.has study", "create dataset.has experiment", "create dataset.has sample", "create dataset.has analysis"
+}
 SLOTS_TO_ENFORCE: Set = {"alias"}
+CLASS_SLOTS_TO_ENFORCE: Set = {}
 SLOTS_TO_REMOVE: Set = {"id", "creation date", "update date"}
+CLASS_SLOTS_TO_REMOVE: Set = {}
 
 
 def get_creation_classes(schemaview: SchemaView) -> Set[str]:
@@ -74,7 +79,6 @@ def adjust_slot_definitions(
             adjusted_slots[slot_name] = new_slot_def
     return adjusted_slots
 
-
 def adjust_class_definitions(
     schema: Dict, creation_classes: Set[str], slots_to_relax, slots_to_enforce
 ) -> Dict:
@@ -115,6 +119,119 @@ def adjust_class_definitions(
     return adjusted_classes
 
 
+def relax_slots(schema: Dict, slots: Set) -> None:
+    """
+    Given a schema and a set of slots, if the slot is
+    marked as required in the schema then relax this constraint.
+
+    Args:
+        schema: A schema
+        slots: A set of slots to relax
+
+    """
+    for slot in slots:
+        slot_def = schema["slots"][slot]
+        slot_def["required"] = False
+        if slot == "id":
+            slot_def["identifier"] = False
+
+
+def relax_class_slots(schema: Dict, class_slots: Set) -> None:
+    """
+    Given a schema and a set of class specific slots, if the slot is
+    marked as required for a class in the schema then relax this constraint.
+
+    Args:
+        schema: A schema
+        slots: A set of class specific slots to relax
+
+    """
+    for class_slot in class_slots:
+        (cls, slot) = class_slot.split(".")
+        if cls and cls in schema["classes"]:
+            cls_def = schema["classes"][cls]
+            if "slot_usage" in cls_def and slot in cls_def["slot_usage"]:
+                slot_def = cls_def["slot_usage"][slot]
+                slot_def["required"] = False
+
+
+def remove_slots(schema: Dict, slots: Set) -> None:
+    """
+    Given a schema and a set of slots, remove all occurrence
+    of ``slots`` from the schema.
+
+    Args:
+        schema: A schema
+        slots: A set of slots to remove
+
+    """
+    for slot in slots:
+        if slot in schema["slots"]:
+            del schema["slots"][slot]
+        for cls_name, cls_def in schema["classes"].items():
+            if "slots" in cls_def:
+                if slot in cls_def["slots"]:
+                    cls_def["slots"].remove(slot)
+            if "slot_usage" in cls_def:
+                if slot in cls_def["slot_usage"]:
+                    del cls_def["slot_usage"][slot]
+
+
+def remove_class_slots(schema: Dict, class_slots: Set) -> None:
+    """
+    Given a schema and a set of class specific slots, if the slot is
+    is part of the class then remove the slot from the class.
+
+    Args:
+        schema: A schema
+        slots: A set of class specific slots to remove
+
+    """
+    for class_slot in class_slots:
+        (cls, slot) = class_slot.split(".")
+        if cls and cls in schema["classes"]:
+            cls_def = schema["classes"][cls]
+            if "slot_usage" in cls_def and slot in cls_def["slot_usage"]:
+                del cls_def[slot]
+            if "slots" in cls_def and slot in cls_def["slots"]:
+                cls_def.remove(slot)
+
+
+def enforce_slots(schema: Dict, slots: Set) -> None:
+    """
+    Given a schema and a set of slots, if the slot is
+    marked as not required in the schema then enforce the slot
+    by marking it as required.
+
+    Args:
+        schema: A schema
+        slots: A set of slots to relax
+
+    """
+    for slot in slots:
+        slot_def = schema["slots"][slot]
+        slot_def["required"] = True
+
+
+def enforce_class_slots(schema: Dict, class_slots: Set) -> None:
+    """
+    Given a schema and a set of class specific slots, mark the slot
+    as required for the given class.
+
+    Args:
+        schema: A schema
+        slots: A set of class specific slots to enforce
+
+    """
+    for class_slot in class_slots:
+        (cls, slot) = class_slot.split(".")
+        if cls and cls in schema["classes"]:
+            cls_def = schema["classes"][cls]
+            if "slot_usage" in cls_def and slot in cls_def["slot_usage"]:
+                slot_def = cls_def[slot]
+                slot_def["required"] = True
+
+
 def parse_schema(
     schema: Dict, schemaview: SchemaView, creation_classes, slots_to_relax, slots_to_enforce
 ) -> Dict:
@@ -149,61 +266,6 @@ def parse_schema(
     return new_schema
 
 
-def relax_slots(schema: Dict, slots: Set) -> None:
-    """
-    Given a schema and a set of slots, if the slot is
-    marked as required in the schema then relax this constraint.
-
-    Args:
-        schema: A schema
-        slots: A set of slots to relax
-
-    """
-    for slot in slots:
-        slot_def = schema["slots"][slot]
-        slot_def["required"] = False
-        if slot == "id":
-            slot_def["identifier"] = False
-
-
-def remove_slots(schema: Dict, slots: Set) -> None:
-    """
-    Given a schema and a set of slots, remove all occurrence
-    of ``slots`` from the schema.
-
-    Args:
-        schema: A schema
-        slots: A set of slots to remove
-
-    """
-    for slot in slots:
-        if slot in schema["slots"]:
-            del schema["slots"][slot]
-        for cls_name, cls_def in schema["classes"].items():
-            if "slots" in cls_def:
-                if slot in cls_def["slots"]:
-                    cls_def["slots"].remove(slot)
-            if "slot_usage" in cls_def:
-                if slot in cls_def["slot_usage"]:
-                    del cls_def["slot_usage"][slot]
-
-
-def enforce_slots(schema: Dict, slots: Set) -> None:
-    """
-    Given a schema and a set of slots, if the slot is
-    marked as not required in the schema then enforce the slot
-    by marking it as required.
-
-    Args:
-        schema: A schema
-        slots: A set of slots to relax
-
-    """
-    for slot in slots:
-        slot_def = schema["slots"][slot]
-        slot_def["required"] = True
-
-
 def main(schema_yaml: str = None, output: str = None):
     yaml = ruamel.yaml.YAML()
     schema = yaml.load(open(schema_yaml, "r"))
@@ -215,9 +277,19 @@ def main(schema_yaml: str = None, output: str = None):
     new_schema = parse_schema(
         schema, schemaview, creation_classes, SLOTS_TO_RELAX, SLOTS_TO_ENFORCE
     )
-    relax_slots(new_schema, SLOTS_TO_RELAX)
-    enforce_slots(new_schema, SLOTS_TO_ENFORCE)
-    remove_slots(new_schema, SLOTS_TO_REMOVE)
+    if SLOTS_TO_RELAX:
+        relax_slots(new_schema, SLOTS_TO_RELAX)
+    if CLASS_SLOTS_TO_RELAX:
+        relax_class_slots(new_schema, CLASS_SLOTS_TO_RELAX)
+    if SLOTS_TO_ENFORCE:
+        enforce_slots(new_schema, SLOTS_TO_ENFORCE)
+    if CLASS_SLOTS_TO_ENFORCE:
+        enforce_class_slots(new_schema, CLASS_SLOTS_TO_ENFORCE)
+    if SLOTS_TO_REMOVE:
+        remove_slots(new_schema, SLOTS_TO_REMOVE)
+    if CLASS_SLOTS_TO_REMOVE:
+        remove_class_slots(new_schema, CLASS_SLOTS_TO_REMOVE)
+
     yaml.dump(new_schema, open(output, 'w'))
     print(
         f"Total classes: {len(schema['classes'])} (original) vs {len(new_schema['classes'])} (new)"
