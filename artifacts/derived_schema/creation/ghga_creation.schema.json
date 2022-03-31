@@ -820,6 +820,14 @@
                },
                "type": "array"
             },
+            "release_date": {
+               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of a Dataset."
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -827,10 +835,6 @@
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of an entity."
             },
             "title": {
                "description": "A title for the submitted Dataset.",
@@ -1159,20 +1163,23 @@
             },
             "has_protocol": {
                "description": "One or more Protocol entities associated with this Experiment.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/CreateProtocol"
-                  },
-                  {
-                     "$ref": "#/$defs/CreateLibraryPreparationProtocol"
-                  },
-                  {
-                     "$ref": "#/$defs/CreateSequencingProtocol"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateProtocol"
+                     },
+                     {
+                        "$ref": "#/$defs/CreateLibraryPreparationProtocol"
+                     },
+                     {
+                        "$ref": "#/$defs/CreateSequencingProtocol"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_sample": {
                "description": "The Sample entity associated with this Experiment.",
@@ -1419,7 +1426,7 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
-            "file_format": {
+            "format": {
                "$ref": "#/$defs/FileFormatEnum",
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
             },
@@ -1453,7 +1460,7 @@
          },
          "required": [
             "name",
-            "file_format",
+            "format",
             "checksum",
             "checksum_type",
             "alias"
@@ -2324,6 +2331,10 @@
                "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
                "type": "string"
             },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of a Study."
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -2331,10 +2342,6 @@
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of a Study. For example, 'released' or 'unreleased'."
             },
             "title": {
                "description": "A comprehensive title for the study.",
@@ -2486,13 +2493,13 @@
                   }
                ]
             },
-            "status": {
-               "$ref": "#/$defs/StatusEnum",
-               "description": "The status of a Submission. For example, 'in progress' or 'submitted'."
-            },
             "submission_date": {
                "description": "The timestamp (in ISO 8601 format) when submission was marked completed.",
                "type": "string"
+            },
+            "submission_status": {
+               "$ref": "#/$defs/SubmissionStatusEnum",
+               "description": "The status of a Submission."
             }
          },
          "required": [],
@@ -2699,16 +2706,13 @@
          "title": "FileFormatEnum",
          "type": "string"
       },
-      "StatusEnum": {
-         "description": "Enum to capture the status of an entity.",
+      "ReleaseStatusEnum": {
+         "description": "Enum to capture the release status of an entity.",
          "enum": [
-            "in progress",
-            "submitted",
             "unreleased",
-            "released",
-            "deprecated"
+            "released"
          ],
-         "title": "StatusEnum",
+         "title": "ReleaseStatusEnum",
          "type": "string"
       },
       "StudyTypeEnum": {
@@ -2730,6 +2734,15 @@
             "other"
          ],
          "title": "StudyTypeEnum",
+         "type": "string"
+      },
+      "SubmissionStatusEnum": {
+         "description": "Enum to capture the status of a Submission.",
+         "enum": [
+            "in progress",
+            "completed"
+         ],
+         "title": "SubmissionStatusEnum",
          "type": "string"
       },
       "UserRoleEnum": {

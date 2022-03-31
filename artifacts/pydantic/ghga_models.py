@@ -84,13 +84,17 @@ class FileFormatEnum(str, Enum):
     
     
 
-class StatusEnum(str, Enum):
+class SubmissionStatusEnum(str, Enum):
     
     in_progress = "in progress"
-    submitted = "submitted"
+    completed = "completed"
+    
+    
+
+class ReleaseStatusEnum(str, Enum):
+    
     unreleased = "unreleased"
     released = "released"
-    deprecated = "deprecated"
     
     
 
@@ -123,6 +127,28 @@ class DataUseCondition:
     """
     permission: Optional[str] = Field(None, description="""Data use permission. Typically one or more terms from DUO. Preferably descendants of 'DUO:0000001 data use permission'.""")
     modifier: Optional[str] = Field(None, description="""Modifier for Data use permission. Preferable descendants of 'DUO:0000017 data use modifier'""")
+    
+
+
+@dataclass(config=PydanticConfig)
+class Submission:
+    """
+    A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
+    """
+    id: str = Field(None, description="""A internal unique identifier for the Submission.""")
+    has_study: Optional[Union[Study, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
+    has_project: Optional[Union[Project, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
+    has_sample: Optional[Union[List[Sample], str]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
+    has_biospecimen: Optional[Union[List[Biospecimen], str]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")
+    has_individual: Optional[Union[List[Individual], str]] = Field(None, description="""Information about one or more Individual entities associated with this submission.""")
+    has_experiment: Optional[Union[List[Experiment], str]] = Field(None, description="""Information about one or more Experiment entities associated with this submission.""")
+    has_analysis: Optional[Union[List[Analysis], str]] = Field(None, description="""Information about one or more Analysis entities associated with this submission.""")
+    has_file: Optional[Union[List[File], str]] = Field(None, description="""Information about one or more File entities associated with this submission.""")
+    has_data_access_policy: Optional[Union[DataAccessPolicy, str]] = Field(None, description="""The Data Access Policy entity that applies to the data associated with this submission.""")
+    submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was updated.""")
+    submission_status: Optional[SubmissionStatusEnum] = Field(None, description="""The status of a Submission.""")
     
 
 
@@ -657,7 +683,7 @@ class Experiment(Investigation):
     has_study: Union[Study, str] = Field(None, description="""The Study entity associated with this Experiment.""")
     has_sample: Union[Sample, str] = Field(None, description="""The Sample entity associated with this Experiment.""")
     has_file: Optional[Union[List[File], str]] = Field(None, description="""One or more Files entities that are generated as output of this Experiment.""")
-    has_protocol: Union[Protocol, str] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
+    has_protocol: Union[List[Protocol], str] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
     has_experiment_process: Optional[Union[List[ExperimentProcess], str]] = Field(None, description="""One or more Experiment Processes entities associated with this Experiment.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -764,7 +790,7 @@ class Donor(Individual):
 class File(InformationContentEntity):
     
     name: str = Field(None, description="""The given filename.""")
-    file_format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
+    format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
     size: Optional[str] = Field(None, description="""The size of a file in bytes.""")
     checksum: str = Field(None, description="""A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.""")
     checksum_type: str = Field(None, description="""The type of algorithm used to generate the checksum of a file.""")
@@ -982,11 +1008,39 @@ class DeprecatedMixin:
 
 
 @dataclass(config=PydanticConfig)
-class StatusMixin:
+class ReleaseStatusMixin:
     """
-    Mixin for entities that can have a status.
+    Mixin for entities that can be released at a later point in time.
     """
-    status: Optional[StatusEnum] = Field(None, description="""The status of an entity.""")
+    release_status: Optional[str] = Field(None, description="""The release status of an entity.""")
+    release_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was released for public consumption.""")
+    
+
+
+@dataclass(config=PydanticConfig)
+class Study(Investigation):
+    """
+    Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
+    """
+    affiliation: List[str] = Field(None, description="""Institutions associated with this study.""")
+    has_experiment: Optional[Union[List[Experiment], str]] = Field(None, description="""One or more Experiment entities associated with this Study.""")
+    has_analysis: Optional[Union[List[Analysis], str]] = Field(None, description="""One or more Analysis entities associated with this Study.""")
+    has_project: Optional[Union[Project, str]] = Field(None, description="""The project associated with this Study.""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)""")
+    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
+    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
+    has_publication: Optional[Union[List[Publication], str]] = Field(None, description="""One or more Publication entities associated with this Study.""")
+    release_status: Optional[ReleaseStatusEnum] = Field(None, description="""The release status of a Study.""")
+    release_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was released for public consumption.""")
+    title: str = Field(None, description="""A comprehensive title for the study.""")
+    description: str = Field(None, description="""A detailed description (abstract) that describes the goals of this Study.""")
+    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
 
@@ -1006,65 +1060,8 @@ class Dataset(InformationContentEntity):
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     has_publication: Optional[Union[List[Publication], str]] = Field(None, description="""One or more Publication entities associated with this Dataset.""")
-    status: Optional[StatusEnum] = Field(None, description="""The status of an entity.""")
-    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: str = Field(None, description="""The alias for an entity.""")
-    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
-    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
-    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
-    
-
-
-@dataclass(config=PydanticConfig)
-class Submission:
-    """
-    A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
-    """
-    id: str = Field(None, description="""A internal unique identifier for the Submission.""")
-    has_study: Optional[Union[Study, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
-    has_project: Optional[Union[Project, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
-    has_sample: Optional[Union[List[Sample], str]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
-    has_biospecimen: Optional[Union[List[Biospecimen], str]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")
-    has_individual: Optional[Union[List[Individual], str]] = Field(None, description="""Information about one or more Individual entities associated with this submission.""")
-    has_experiment: Optional[Union[List[Experiment], str]] = Field(None, description="""Information about one or more Experiment entities associated with this submission.""")
-    has_analysis: Optional[Union[List[Analysis], str]] = Field(None, description="""Information about one or more Analysis entities associated with this submission.""")
-    has_file: Optional[Union[List[File], str]] = Field(None, description="""Information about one or more File entities associated with this submission.""")
-    has_data_access_policy: Optional[Union[DataAccessPolicy, str]] = Field(None, description="""The Data Access Policy entity that applies to the data associated with this submission.""")
-    submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
-    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was created.""")
-    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was updated.""")
-    status: Optional[StatusEnum] = Field(None, description="""The status of a Submission. For example, 'in progress' or 'submitted'.""")
-    
-
-
-@dataclass(config=PydanticConfig)
-class ReleaseMixin:
-    """
-    Mixin for entities that can be released at a later point in time.
-    """
+    release_status: Optional[ReleaseStatusEnum] = Field(None, description="""The release status of a Dataset.""")
     release_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was released for public consumption.""")
-    
-
-
-@dataclass(config=PydanticConfig)
-class Study(Investigation):
-    """
-    Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
-    """
-    affiliation: List[str] = Field(None, description="""Institutions associated with this study.""")
-    has_experiment: Optional[Union[List[Experiment], str]] = Field(None, description="""One or more Experiment entities associated with this Study.""")
-    has_analysis: Optional[Union[List[Analysis], str]] = Field(None, description="""One or more Analysis entities associated with this Study.""")
-    has_project: Optional[Union[Project, str]] = Field(None, description="""The project associated with this Study.""")
-    has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)""")
-    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
-    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
-    has_publication: Optional[Union[List[Publication], str]] = Field(None, description="""One or more Publication entities associated with this Study.""")
-    status: Optional[StatusEnum] = Field(None, description="""The status of a Study. For example, 'released' or 'unreleased'.""")
-    release_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was released for public consumption.""")
-    title: str = Field(None, description="""A comprehensive title for the study.""")
-    description: str = Field(None, description="""A detailed description (abstract) that describes the goals of this Study.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
@@ -1081,6 +1078,7 @@ class Study(Investigation):
 Attribute.__pydantic_model__.update_forward_refs()
 WorkflowParameter.__pydantic_model__.update_forward_refs()
 DataUseCondition.__pydantic_model__.update_forward_refs()
+Submission.__pydantic_model__.update_forward_refs()
 OntologyClassMixin.__pydantic_model__.update_forward_refs()
 MetadataMixin.__pydantic_model__.update_forward_refs()
 NamedThing.__pydantic_model__.update_forward_refs()
@@ -1128,9 +1126,7 @@ LibraryPreparationProtocol.__pydantic_model__.update_forward_refs()
 SequencingProtocol.__pydantic_model__.update_forward_refs()
 PublicationMixin.__pydantic_model__.update_forward_refs()
 DeprecatedMixin.__pydantic_model__.update_forward_refs()
-StatusMixin.__pydantic_model__.update_forward_refs()
-Dataset.__pydantic_model__.update_forward_refs()
-Submission.__pydantic_model__.update_forward_refs()
-ReleaseMixin.__pydantic_model__.update_forward_refs()
+ReleaseStatusMixin.__pydantic_model__.update_forward_refs()
 Study.__pydantic_model__.update_forward_refs()
+Dataset.__pydantic_model__.update_forward_refs()
 

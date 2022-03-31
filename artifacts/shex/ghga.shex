@@ -245,8 +245,8 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <EgaAccessionMixin> ] ? ;
           &<PublicationMixin_tes> ;
           rdf:type [ <PublicationMixin> ] ? ;
-          &<StatusMixin_tes> ;
-          rdf:type [ <StatusMixin> ] ? ;
+          &<ReleaseStatusMixin_tes> ;
+          rdf:type [ <ReleaseStatusMixin> ] ? ;
           <title> @linkml:String ;
           <description> @linkml:String ;
           <has_study> @<Study> + ;
@@ -258,9 +258,10 @@ linkml:Nodeidentifier NONLITERAL
           <alias> @linkml:String ;
           <type> @linkml:String ;
           <has_publication> @<Publication> * ;
+          <release_status> @<ReleaseStatusEnum> ? ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ? ;
-          <status> @<StatusEnum> ?
+          <release_date> @linkml:String ?
        ) ;
        rdf:type [ <Dataset> ]
     )
@@ -323,7 +324,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_study> @<Study> ;
           <has_sample> @<Sample> ;
           <has_file> @<File> * ;
-          <has_protocol> @<Protocol> ;
+          <has_protocol> @<Protocol> + ;
           <has_experiment_process> @<ExperimentProcess> * ;
           <has_attribute> @<Attribute> * ;
           <alias> @linkml:String ;
@@ -370,7 +371,7 @@ linkml:Nodeidentifier NONLITERAL
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
           <name> @linkml:String ;
-          <file_format> @<FileFormatEnum> ;
+          <format> @<FileFormatEnum> ;
           <size> @linkml:String ? ;
           <checksum> @linkml:String ;
           <checksum_type> @linkml:String ;
@@ -617,9 +618,11 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<ReleaseMixin> {
-    (  $<ReleaseMixin_tes> <release_date> @linkml:String ? ;
-       rdf:type [ <ReleaseMixin> ] ?
+<ReleaseStatusMixin> {
+    (  $<ReleaseStatusMixin_tes> (  <release_status> @linkml:String ? ;
+          <release_date> @linkml:String ?
+       ) ;
+       rdf:type [ <ReleaseStatusMixin> ] ?
     )
 }
 
@@ -689,12 +692,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<StatusMixin> {
-    (  $<StatusMixin_tes> <status> @<StatusEnum> ? ;
-       rdf:type [ <StatusMixin> ] ?
-    )
-}
-
 <Study> CLOSED {
     (  $<Study_tes> (  &<Investigation_tes> ;
           rdf:type [ <Investigation> ] ? ;
@@ -706,10 +703,8 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <PublicationMixin> ] ? ;
           &<AttributeMixin_tes> ;
           rdf:type [ <AttributeMixin> ] ? ;
-          &<StatusMixin_tes> ;
-          rdf:type [ <StatusMixin> ] ? ;
-          &<ReleaseMixin_tes> ;
-          rdf:type [ <ReleaseMixin> ] ? ;
+          &<ReleaseStatusMixin_tes> ;
+          rdf:type [ <ReleaseStatusMixin> ] ? ;
           <affiliation> @linkml:String + ;
           <has_experiment> @<Experiment> * ;
           <has_analysis> @<Analysis> * ;
@@ -720,7 +715,7 @@ linkml:Nodeidentifier NONLITERAL
           <description> @linkml:String ;
           <type> @<StudyTypeEnum> ;
           <has_publication> @<Publication> * ;
-          <status> @<StatusEnum> ? ;
+          <release_status> @<ReleaseStatusEnum> ? ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ? ;
           <release_date> @linkml:String ?
@@ -730,9 +725,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Submission> CLOSED {
-    (  $<Submission_tes> (  &<StatusMixin_tes> ;
-          rdf:type [ <StatusMixin> ] ? ;
-          <has_study> @<Study> ? ;
+    (  $<Submission_tes> (  <has_study> @<Study> ? ;
           <has_project> @<Project> ? ;
           <has_sample> @<Sample> * ;
           <has_biospecimen> @<Biospecimen> * ;
@@ -744,7 +737,7 @@ linkml:Nodeidentifier NONLITERAL
           <submission_date> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
           <update_date> @linkml:String ? ;
-          <status> @<StatusEnum> ?
+          <submission_status> @<SubmissionStatusEnum> ?
        ) ;
        rdf:type [ <Submission> ]
     )

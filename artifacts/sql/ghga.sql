@@ -1,12 +1,13 @@
 /* metamodel_version: 1.7.0 */
 /* version: 0.5.0 */
 
-CREATE TYPE status_enum AS ENUM ('in progress', 'submitted', 'unreleased', 'released', 'deprecated');
+CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
 CREATE TYPE biological_sex_enum AS ENUM ('Female', 'Male', 'Unknown');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
 CREATE TYPE file_format_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
+CREATE TYPE submission_status_enum AS ENUM ('in progress', 'completed');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
 
 CREATE TABLE agent (
@@ -128,7 +129,7 @@ CREATE TABLE file (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
-	file_format file_format_enum NOT NULL, 
+	format file_format_enum NOT NULL, 
 	size TEXT, 
 	checksum TEXT NOT NULL, 
 	checksum_type TEXT NOT NULL, 
@@ -415,7 +416,7 @@ CREATE TABLE study (
 	description TEXT NOT NULL, 
 	type study_type_enum NOT NULL, 
 	has_publication TEXT, 
-	status status_enum, 
+	release_status release_status_enum, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	release_date TEXT, 
@@ -719,9 +720,10 @@ CREATE TABLE dataset (
 	alias TEXT NOT NULL, 
 	type TEXT NOT NULL, 
 	has_publication TEXT, 
+	release_status release_status_enum, 
 	accession TEXT, 
 	ega_accession TEXT, 
-	status status_enum, 
+	release_date TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
 );
@@ -748,8 +750,7 @@ CREATE TABLE experiment (
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_sample) REFERENCES sample (id), 
-	FOREIGN KEY(has_protocol) REFERENCES protocol (id)
+	FOREIGN KEY(has_sample) REFERENCES sample (id)
 );
 
 CREATE TABLE submission (
@@ -766,7 +767,7 @@ CREATE TABLE submission (
 	submission_date TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	status status_enum, 
+	submission_status submission_status_enum, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id), 

@@ -217,7 +217,7 @@ type DataUseCondition
     modifier: String
   }
 
-type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, StatusMixin
+type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, ReleaseStatusMixin
   {
     id: String!
     xref: [String]
@@ -236,9 +236,10 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Sta
     alias: String!
     type: String!
     hasPublication: [Publication]
+    releaseStatus: ReleaseStatusEnum
     accession: String
     egaAccession: String
-    status: StatusEnum
+    releaseDate: String
   }
 
 interface DeprecatedMixin
@@ -322,7 +323,7 @@ type Experiment implements AccessionMixin, EgaAccessionMixin
     hasStudy: Study!
     hasSample: Sample!
     hasFile: [File]
-    hasProtocol: Protocol!
+    hasProtocol: [Protocol]!
     hasExperimentProcess: [ExperimentProcess]
     hasAttribute: [Attribute]
     alias: String!
@@ -375,7 +376,7 @@ type File implements AccessionMixin, EgaAccessionMixin
     schemaType: String
     schemaVersion: String
     name: String!
-    fileFormat: FileFormatEnum!
+    format: FileFormatEnum!
     size: String
     checksum: String!
     checksumType: String!
@@ -625,8 +626,9 @@ interface PublicationMixin
     hasPublication: Publication
   }
 
-interface ReleaseMixin
+interface ReleaseStatusMixin
   {
+    releaseStatus: String
     releaseDate: String
   }
 
@@ -700,12 +702,7 @@ type SequencingProtocol
     hasAttribute: [Attribute]
   }
 
-interface StatusMixin
-  {
-    status: StatusEnum
-  }
-
-type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, AttributeMixin, StatusMixin, ReleaseMixin
+type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, AttributeMixin, ReleaseStatusMixin
   {
     id: String!
     xref: [String]
@@ -723,13 +720,13 @@ type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Attri
     description: String!
     type: StudyTypeEnum!
     hasPublication: [Publication]
-    status: StatusEnum
+    releaseStatus: ReleaseStatusEnum
     accession: String
     egaAccession: String
     releaseDate: String
   }
 
-type Submission implements StatusMixin
+type Submission
   {
     id: String!
     hasStudy: Study
@@ -744,7 +741,7 @@ type Submission implements StatusMixin
     submissionDate: String
     creationDate: String
     updateDate: String
-    status: StatusEnum
+    submissionStatus: SubmissionStatusEnum
   }
 
 type Technology

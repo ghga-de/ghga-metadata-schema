@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T09:11:36
+# Generation date: 2022-03-31T12:45:47
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -424,7 +424,7 @@ class CreateStudy(Investigation):
     has_project: Optional[Union[dict, CreateProject]] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     has_publication: Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]] = empty_list()
-    status: Optional[Union[str, "StatusEnum"]] = None
+    release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
     release_date: Optional[str] = None
@@ -475,8 +475,8 @@ class CreateStudy(Investigation):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
         self.has_publication = [v if isinstance(v, CreatePublication) else CreatePublication(**as_dict(v)) for v in self.has_publication]
 
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
+        if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
+            self.release_status = ReleaseStatusEnum(self.release_status)
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -505,7 +505,7 @@ class CreateExperiment(Investigation):
 
     has_study: Union[dict, CreateStudy] = None
     has_sample: Union[dict, "CreateSample"] = None
-    has_protocol: Union[dict, "CreateProtocol"] = None
+    has_protocol: Union[Union[dict, "CreateProtocol"], List[Union[dict, "CreateProtocol"]]] = None
     alias: str = None
     description: str = None
     biological_replicates: Optional[str] = None
@@ -531,8 +531,9 @@ class CreateExperiment(Investigation):
 
         if self._is_empty(self.has_protocol):
             self.MissingRequiredField("has_protocol")
-        if not isinstance(self.has_protocol, CreateProtocol):
-            self.has_protocol = CreateProtocol(**as_dict(self.has_protocol))
+        if not isinstance(self.has_protocol, list):
+            self.has_protocol = [self.has_protocol] if self.has_protocol is not None else []
+        self.has_protocol = [v if isinstance(v, CreateProtocol) else CreateProtocol(**as_dict(v)) for v in self.has_protocol]
 
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
@@ -1311,7 +1312,7 @@ class CreateFile(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateFile
 
     name: str = None
-    file_format: Union[str, "FileFormatEnum"] = None
+    format: Union[str, "FileFormatEnum"] = None
     checksum: str = None
     checksum_type: str = None
     alias: str = None
@@ -1325,10 +1326,10 @@ class CreateFile(InformationContentEntity):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self._is_empty(self.file_format):
-            self.MissingRequiredField("file_format")
-        if not isinstance(self.file_format, FileFormatEnum):
-            self.file_format = FileFormatEnum(self.file_format)
+        if self._is_empty(self.format):
+            self.MissingRequiredField("format")
+        if not isinstance(self.format, FileFormatEnum):
+            self.format = FileFormatEnum(self.format)
 
         if self._is_empty(self.checksum):
             self.MissingRequiredField("checksum")
@@ -1501,9 +1502,10 @@ class CreateDataset(InformationContentEntity):
     alias: str = None
     type: str = None
     has_publication: Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]] = empty_list()
+    release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
-    status: Optional[Union[str, "StatusEnum"]] = None
+    release_date: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.title):
@@ -1565,14 +1567,17 @@ class CreateDataset(InformationContentEntity):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
         self.has_publication = [v if isinstance(v, CreatePublication) else CreatePublication(**as_dict(v)) for v in self.has_publication]
 
+        if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
+            self.release_status = ReleaseStatusEnum(self.release_status)
+
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
         if self.ega_accession is not None and not isinstance(self.ega_accession, str):
             self.ega_accession = str(self.ega_accession)
 
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
+        if self.release_date is not None and not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
 
         super().__post_init__(**kwargs)
 
@@ -1909,7 +1914,7 @@ class CreateSubmission(YAMLRoot):
     has_file: Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]] = empty_list()
     has_data_access_policy: Optional[Union[dict, CreateDataAccessPolicy]] = None
     submission_date: Optional[str] = None
-    status: Optional[Union[str, "StatusEnum"]] = None
+    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.has_study is not None and not isinstance(self.has_study, CreateStudy):
@@ -1948,8 +1953,8 @@ class CreateSubmission(YAMLRoot):
         if self.submission_date is not None and not isinstance(self.submission_date, str):
             self.submission_date = str(self.submission_date)
 
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
+        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
+            self.submission_status = SubmissionStatusEnum(self.submission_status)
 
         super().__post_init__(**kwargs)
 
@@ -2115,41 +2120,24 @@ class DeprecatedMixin(YAMLRoot):
 
 
 @dataclass
-class StatusMixin(YAMLRoot):
-    """
-    Mixin for entities that can have a status.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.StatusMixin
-    class_class_curie: ClassVar[str] = "GHGA:StatusMixin"
-    class_name: ClassVar[str] = "status mixin"
-    class_model_uri: ClassVar[URIRef] = GHGA.StatusMixin
-
-    status: Optional[Union[str, "StatusEnum"]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class ReleaseMixin(YAMLRoot):
+class ReleaseStatusMixin(YAMLRoot):
     """
     Mixin for entities that can be released at a later point in time.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = GHGA.ReleaseMixin
-    class_class_curie: ClassVar[str] = "GHGA:ReleaseMixin"
-    class_name: ClassVar[str] = "release mixin"
-    class_model_uri: ClassVar[URIRef] = GHGA.ReleaseMixin
+    class_class_uri: ClassVar[URIRef] = GHGA.ReleaseStatusMixin
+    class_class_curie: ClassVar[str] = "GHGA:ReleaseStatusMixin"
+    class_name: ClassVar[str] = "release status mixin"
+    class_model_uri: ClassVar[URIRef] = GHGA.ReleaseStatusMixin
 
+    release_status: Optional[str] = None
     release_date: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.release_status is not None and not isinstance(self.release_status, str):
+            self.release_status = str(self.release_status)
+
         if self.release_date is not None and not isinstance(self.release_date, str):
             self.release_date = str(self.release_date)
 
@@ -2287,29 +2275,37 @@ class FileFormatEnum(EnumDefinitionImpl):
         description="Enum to capture file types.",
     )
 
-class StatusEnum(EnumDefinitionImpl):
+class SubmissionStatusEnum(EnumDefinitionImpl):
     """
-    Enum to capture the status of an entity.
+    Enum to capture the status of a Submission.
     """
-    submitted = PermissibleValue(text="submitted",
-                                         description="Signifies that the entity has been successfully submitted.")
-    unreleased = PermissibleValue(text="unreleased",
-                                           description="Signifies that the entity is submitted but unreleased for public consumption.")
-    released = PermissibleValue(text="released",
-                                       description="Signifies that the entity is submitted and released for public consumption.")
-    deprecated = PermissibleValue(text="deprecated",
-                                           description="Signifies that the entity is deprecated and may be replaced by another entity.")
+    completed = PermissibleValue(text="completed",
+                                         description="Signifies that the Submission is completed.")
 
     _defn = EnumDefinition(
-        name="StatusEnum",
-        description="Enum to capture the status of an entity.",
+        name="SubmissionStatusEnum",
+        description="Enum to capture the status of a Submission.",
     )
 
     @classmethod
     def _addvals(cls):
         setattr(cls, "in progress",
                 PermissibleValue(text="in progress",
-                                 description="Signifies that the entity is in the process of being submitted.") )
+                                 description="Signifies that the Submission is in the process of being submitted.") )
+
+class ReleaseStatusEnum(EnumDefinitionImpl):
+    """
+    Enum to capture the release status of an entity.
+    """
+    unreleased = PermissibleValue(text="unreleased",
+                                           description="signifies that the entity has not yet been release for public consumption.")
+    released = PermissibleValue(text="released",
+                                       description="signifies that the entity has been release for public consumption.")
+
+    _defn = EnumDefinition(
+        name="ReleaseStatusEnum",
+        description="Enum to capture the release status of an entity.",
+    )
 
 # Slots
 class slots:
@@ -2495,8 +2491,8 @@ slots.vital_status = Slot(uri=GHGA.vital_status, name="vital status", curie=GHGA
 slots.ancestry = Slot(uri=GHGA.ancestry, name="ancestry", curie=GHGA.curie('ancestry'),
                    model_uri=GHGA.ancestry, domain=None, range=Optional[str])
 
-slots.file_format = Slot(uri=GHGA.file_format, name="file format", curie=GHGA.curie('file_format'),
-                   model_uri=GHGA.file_format, domain=None, range=Optional[Union[str, "FileFormatEnum"]])
+slots.format = Slot(uri=GHGA.format, name="format", curie=GHGA.curie('format'),
+                   model_uri=GHGA.format, domain=None, range=Optional[Union[str, "FileFormatEnum"]])
 
 slots.size = Slot(uri=GHGA.size, name="size", curie=GHGA.curie('size'),
                    model_uri=GHGA.size, domain=None, range=Optional[str])
@@ -2642,8 +2638,14 @@ slots.sample_barcode_read = Slot(uri=GHGA.sample_barcode_read, name="sample barc
 slots.vital_status_at_sampling = Slot(uri=GHGA.vital_status_at_sampling, name="vital status at sampling", curie=GHGA.curie('vital_status_at_sampling'),
                    model_uri=GHGA.vital_status_at_sampling, domain=None, range=Optional[str])
 
+slots.submission_status = Slot(uri=GHGA.submission_status, name="submission status", curie=GHGA.curie('submission_status'),
+                   model_uri=GHGA.submission_status, domain=None, range=Optional[str])
+
 slots.submission_date = Slot(uri=GHGA.submission_date, name="submission date", curie=GHGA.curie('submission_date'),
                    model_uri=GHGA.submission_date, domain=None, range=Optional[str])
+
+slots.release_status = Slot(uri=GHGA.release_status, name="release status", curie=GHGA.curie('release_status'),
+                   model_uri=GHGA.release_status, domain=None, range=Optional[str])
 
 slots.release_date = Slot(uri=GHGA.release_date, name="release date", curie=GHGA.curie('release_date'),
                    model_uri=GHGA.release_date, domain=None, range=Optional[str])
@@ -2656,9 +2658,6 @@ slots.replaced_by = Slot(uri=GHGA.replaced_by, name="replaced by", curie=GHGA.cu
 
 slots.replaces = Slot(uri=GHGA.replaces, name="replaces", curie=GHGA.curie('replaces'),
                    model_uri=GHGA.replaces, domain=NamedThing, range=Optional[Union[dict, "NamedThing"]])
-
-slots.status = Slot(uri=GHGA.status, name="status", curie=GHGA.curie('status'),
-                   model_uri=GHGA.status, domain=None, range=Optional[Union[str, "StatusEnum"]])
 
 slots.named_thing_alias = Slot(uri=GHGA.alias, name="named thing_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.named_thing_alias, domain=NamedThing, range=str)
@@ -2726,8 +2725,8 @@ slots.create_study_has_project = Slot(uri=GHGA.has_project, name="create study_h
 slots.create_study_has_attribute = Slot(uri=GHGA.has_attribute, name="create study_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.create_study_has_attribute, domain=CreateStudy, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
-slots.create_study_status = Slot(uri=GHGA.status, name="create study_status", curie=GHGA.curie('status'),
-                   model_uri=GHGA.create_study_status, domain=CreateStudy, range=Optional[Union[str, "StatusEnum"]])
+slots.create_study_release_status = Slot(uri=GHGA.release_status, name="create study_release status", curie=GHGA.curie('release_status'),
+                   model_uri=GHGA.create_study_release_status, domain=CreateStudy, range=Optional[Union[str, "ReleaseStatusEnum"]])
 
 slots.create_experiment_alias = Slot(uri=GHGA.alias, name="create experiment_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_experiment_alias, domain=CreateExperiment, range=str)
@@ -2748,7 +2747,7 @@ slots.create_experiment_has_file = Slot(uri=GHGA.has_file, name="create experime
                    model_uri=GHGA.create_experiment_has_file, domain=CreateExperiment, range=Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]])
 
 slots.create_experiment_has_protocol = Slot(uri=GHGA.has_protocol, name="create experiment_has protocol", curie=GHGA.curie('has_protocol'),
-                   model_uri=GHGA.create_experiment_has_protocol, domain=CreateExperiment, range=Union[dict, "CreateProtocol"])
+                   model_uri=GHGA.create_experiment_has_protocol, domain=CreateExperiment, range=Union[Union[dict, "CreateProtocol"], List[Union[dict, "CreateProtocol"]]])
 
 slots.create_experiment_has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="create experiment_has experiment process", curie=GHGA.curie('has_experiment_process'),
                    model_uri=GHGA.create_experiment_has_experiment_process, domain=CreateExperiment, range=Optional[Union[Union[dict, "CreateExperimentProcess"], List[Union[dict, "CreateExperimentProcess"]]]])
@@ -2915,8 +2914,8 @@ slots.create_file_alias = Slot(uri=GHGA.alias, name="create file_alias", curie=G
 slots.create_file_name = Slot(uri=GHGA.name, name="create file_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.create_file_name, domain=CreateFile, range=str)
 
-slots.create_file_file_format = Slot(uri=GHGA.file_format, name="create file_file format", curie=GHGA.curie('file_format'),
-                   model_uri=GHGA.create_file_file_format, domain=CreateFile, range=Union[str, "FileFormatEnum"])
+slots.create_file_format = Slot(uri=GHGA.format, name="create file_format", curie=GHGA.curie('format'),
+                   model_uri=GHGA.create_file_format, domain=CreateFile, range=Union[str, "FileFormatEnum"])
 
 slots.create_file_checksum = Slot(uri=GHGA.checksum, name="create file_checksum", curie=GHGA.curie('checksum'),
                    model_uri=GHGA.create_file_checksum, domain=CreateFile, range=str)
@@ -2998,6 +2997,9 @@ slots.create_dataset_has_data_access_policy = Slot(uri=GHGA.has_data_access_poli
 
 slots.create_dataset_has_publication = Slot(uri=GHGA.has_publication, name="create dataset_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.create_dataset_has_publication, domain=CreateDataset, range=Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]])
+
+slots.create_dataset_release_status = Slot(uri=GHGA.release_status, name="create dataset_release status", curie=GHGA.curie('release_status'),
+                   model_uri=GHGA.create_dataset_release_status, domain=CreateDataset, range=Optional[Union[str, "ReleaseStatusEnum"]])
 
 slots.data_use_condition_permission = Slot(uri=GHGA.permission, name="data use condition_permission", curie=GHGA.curie('permission'),
                    model_uri=GHGA.data_use_condition_permission, domain=DataUseCondition, range=Optional[str])
@@ -3089,8 +3091,8 @@ slots.create_submission_has_file = Slot(uri=GHGA.has_file, name="create submissi
 slots.create_submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="create submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
                    model_uri=GHGA.create_submission_has_data_access_policy, domain=CreateSubmission, range=Optional[Union[dict, CreateDataAccessPolicy]])
 
-slots.create_submission_status = Slot(uri=GHGA.status, name="create submission_status", curie=GHGA.curie('status'),
-                   model_uri=GHGA.create_submission_status, domain=CreateSubmission, range=Optional[Union[str, "StatusEnum"]])
+slots.create_submission_submission_status = Slot(uri=GHGA.submission_status, name="create submission_submission status", curie=GHGA.curie('submission_status'),
+                   model_uri=GHGA.create_submission_submission_status, domain=CreateSubmission, range=Optional[Union[str, "SubmissionStatusEnum"]])
 
 slots.ontology_class_mixin_name = Slot(uri=GHGA.name, name="ontology class mixin_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.ontology_class_mixin_name, domain=None, range=Optional[str])
