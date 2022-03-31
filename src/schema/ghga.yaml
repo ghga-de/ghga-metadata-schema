@@ -1842,6 +1842,8 @@ slots:
   ancestry:
     description: >-
       A person's descent or lineage, from a person or from a population.
+      Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+    multivalued: true
     in_subset:
       - optional
       - restricted
