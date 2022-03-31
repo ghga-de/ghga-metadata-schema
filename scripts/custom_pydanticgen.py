@@ -10,15 +10,63 @@ from linkml_runtime.utils.formatutils import camelcase, underscore
 
 
 NON_REFERENCE_SLOTS = {"has attribute", "has parameter", "has data use condition"}
-TEMPLATE_EXTENSION = """
+DEFAULT_TEMPLATE = """
 {#-
 
   Jinja2 Template for a pydantic classes
 -#}
 from __future__ import annotations
-from typing import Union
-"""
+from enum import Enum
+from typing import List, Optional, Union
+from pydantic import BaseModel, Field
 
+metamodel_version = "{{metamodel_version}}"
+version = "{{version if version else None}}"
+
+{% for e in enums.values() %}
+class {{ e.name }}(str, Enum):
+    {% if e.description -%}
+    \"\"\"
+    {{ e.description }}
+    \"\"\"
+    {%- endif %}
+    {% for label, value in e['values'].items() -%}
+    {{label}} = "{{value}}"
+    {% endfor %}
+    {% if not e['values'] -%}
+    dummy = "dummy"
+    {% endif %}
+{% endfor %}
+
+{%- for c in schema.classes.values() %}
+class {{ c.name }}
+                   {%- if c.is_a %}({{c.is_a}}){%- else %}(BaseModel){% endif -%}
+                   {#- {%- for p in c.mixins %}, "{{p}}" {% endfor -%} -#}
+                  :
+    {% if c.description -%}
+    \"\"\"
+    {{ c.description }}
+    \"\"\"
+    {%- endif %}
+    {% for attr in c.attributes.values() if c.attributes -%}
+    {{attr.name}}: {{ attr.annotations['python_range'].value }} = Field(None
+    {%- if attr.title != None %}, title="{{attr.title}}"{% endif -%}
+    {%- if attr.description %}, description=\"\"\"{{attr.description}}\"\"\"{% endif -%}
+    {%- if attr.minimum_value != None %}, ge={{attr.minimum_value}}{% endif -%}
+    {%- if attr.maximum_value != None %}, le={{attr.maximum_value}}{% endif -%}
+    )
+    {% else -%}
+    None
+    {% endfor %}
+
+{% endfor %}
+
+# Update forward refs
+# see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
+{% for c in schema.classes.values() -%}
+{{ c.name }}.update_forward_refs()
+{% endfor %}
+"""
 
 class CustomPydanticGenerator(PydanticGenerator):
     """
@@ -62,20 +110,7 @@ class CustomPydanticGenerator(PydanticGenerator):
                 slot_alias_name not in NON_REFERENCE_SLOTS
             ):
                 self.reference_slots.add(underscore(slot_alias_name))
-        self.default_template = self.patch_template(default_template)
-
-    def patch_template(self, template: str):
-        """
-        Patch the default Jinja2 Template.
-        """
-        template_elements = template.split("\n")
-        index = None
-        for line in template_elements:
-            if line.startswith("from __future__"):
-                index = template_elements.index(line)
-                break
-        patched_template = TEMPLATE_EXTENSION + "\n" + "\n".join(template_elements[index + 1 :])
-        return patched_template
+        self.default_template = DEFAULT_TEMPLATE
 
     def serialize(self) -> str:
         """
@@ -152,7 +187,10 @@ class CustomPydanticGenerator(PydanticGenerator):
                 # Making reference slots more permissible
                 if s.name in self.reference_slots:
                     if ("[str]" not in pyrange) and (pyrange != "str"):
-                        pyrange = f"Union[{pyrange}, str]"
+                        if s.multivalued:
+                            pyrange = f"Union[{pyrange}, List[str]]"
+                        else:
+                            pyrange = f"Union[{pyrange}, str]"
 
                 if not s.required:
                     pyrange = f"Optional[{pyrange}]"
