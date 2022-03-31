@@ -1040,7 +1040,7 @@ classes:
         description: >-
           One or more Analysis entities that are referenced by this Dataset.
         range: analysis
-        required: true
+        multivalued: true
         inlined: true
         inlined_as_list: true
       has sample:
