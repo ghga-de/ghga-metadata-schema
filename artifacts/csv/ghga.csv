@@ -1,3 +1,5 @@
+# metamodel_version: 1.7.0
+# version: 0.5.0
 id,mappings,description
 accession_mixin,,Mixin for entities that can be assigned a GHGA accession.
 agent,,"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity."
@@ -31,6 +33,7 @@ investigation,,Investigation is the process of carrying out a plan or procedure 
 library_preparation_protocol,,Information about the library preparation of an Experiment.
 material_entity,,"A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass."
 member,,Member of an Organization or a Committee.
+metadata_mixin,,Mixin for tracking schema specific metadata about an instance.
 named_thing,,"A databased entity, concept or class. This is a generic class that is the root of all the other classes."
 ontology_class_mixin,,Mixin for entities that represent an class/term/concept from an ontology.
 person,,A member of the species Homo sapiens.
@@ -41,11 +44,10 @@ project,,Any specifically defined piece of work that is undertaken or attempted 
 protocol,,"A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process."
 publication,,"The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI."
 publication_mixin,,Mixin for entities that can have one or more publications.
-release_mixin,,Mixin for entities that can be released at a later point in time.
+release_status_mixin,,Mixin for entities that can be released at a later point in time.
 research_activity,,A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.
 sample,,"A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)."
 sequencing_protocol,,Information about the sequencing of a sample.
-status_mixin,,Mixin for entities that can have a status.
 study,,Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
 submission,,A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
 technology,,A Technology is an abstraction that represents the instrument used for an assay. The Technology entity captures instrument-specific attributes that are relevant for an Experiment entity. The Technology entity may be further characterized by its children where each child has fields that are relevant to that particular technology.

@@ -3,7 +3,7 @@
 The following is a set of guidelines for contributing to the GHGA Metadata
 Schema.
 
-Before you start, please refer to the [Code of Conduct](code-of-conduct.md).
+Before you start, please refer to the [Code of Conduct](https://github.com/ghga-de/ghga-metadata-schema/blob/main/code-of-conduct.md).
 By participating, you are expected to uphold its principles.
 
 The GHGA Metadata Schema is authored using the LinkML framework. For

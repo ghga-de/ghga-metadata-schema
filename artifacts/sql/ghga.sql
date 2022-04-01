@@ -1,16 +1,14 @@
+/* metamodel_version: 1.7.0 */
+/* version: 0.5.0 */
 
-CREATE TYPE status_enum AS ENUM ('in progress', 'submitted', 'unreleased', 'released', 'deprecated');
-CREATE TYPE biological_sex_enum AS ENUM ('XX', 'XY', 'none');
+CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
+CREATE TYPE biological_sex_enum AS ENUM ('Female', 'Male', 'Unknown');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
-CREATE TYPE file_type_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
+CREATE TYPE file_format_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
+CREATE TYPE submission_status_enum AS ENUM ('in progress', 'completed');
 CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
-
-CREATE TABLE accession_mixin (
-	accession TEXT, 
-	PRIMARY KEY (accession)
-);
 
 CREATE TABLE agent (
 	id TEXT NOT NULL, 
@@ -18,6 +16,8 @@ CREATE TABLE agent (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
 	PRIMARY KEY (id)
@@ -29,6 +29,8 @@ CREATE TABLE anatomical_entity (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
 	PRIMARY KEY (id)
@@ -42,26 +44,14 @@ CREATE TABLE attribute (
 	PRIMARY KEY (key, key_type, value, value_type)
 );
 
-CREATE TABLE attribute_mixin (
-	has_attribute TEXT, 
-	PRIMARY KEY (has_attribute)
-);
-
-CREATE TABLE biological_quality (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE cell_line (
 	id TEXT NOT NULL, 
 	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -71,51 +61,11 @@ CREATE TABLE cohort (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	has_member TEXT, 
 	accession TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE committee (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	name TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE data_transformation (
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	id TEXT NOT NULL, 
-	title TEXT, 
-	description TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE dataset (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	title TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_study TEXT NOT NULL, 
-	has_experiment TEXT NOT NULL, 
-	has_sample TEXT NOT NULL, 
-	has_analysis TEXT NOT NULL, 
-	has_file TEXT NOT NULL, 
-	has_data_access_policy TEXT NOT NULL, 
-	type TEXT NOT NULL, 
-	has_publication TEXT, 
-	accession TEXT, 
-	ega_accession TEXT, 
-	status status_enum, 
 	PRIMARY KEY (id)
 );
 
@@ -125,6 +75,8 @@ CREATE TABLE disease (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
 	PRIMARY KEY (id)
@@ -136,6 +88,8 @@ CREATE TABLE disease_or_phenotypic_feature (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
 	PRIMARY KEY (id)
@@ -143,47 +97,43 @@ CREATE TABLE disease_or_phenotypic_feature (
 
 CREATE TABLE donor (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
-	gender TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	given_name TEXT, 
+	family_name TEXT, 
+	additional_name TEXT, 
 	sex biological_sex_enum NOT NULL, 
+	karyotype TEXT, 
 	age INTEGER NOT NULL, 
-	year_of_birth TEXT, 
 	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
-	ethnicity TEXT, 
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE ega_accession_mixin (
-	ega_accession TEXT, 
-	PRIMARY KEY (ega_accession)
-);
-
 CREATE TABLE file (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT NOT NULL, 
-	format TEXT, 
+	format file_format_enum NOT NULL, 
 	size TEXT, 
-	checksum TEXT, 
-	file_index TEXT, 
-	category TEXT, 
-	type file_type_enum, 
+	checksum TEXT NOT NULL, 
+	checksum_type TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id)
@@ -191,47 +141,27 @@ CREATE TABLE file (
 
 CREATE TABLE individual (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
-	gender TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	given_name TEXT, 
+	family_name TEXT, 
+	additional_name TEXT, 
+	alias TEXT, 
 	sex biological_sex_enum NOT NULL, 
+	karyotype TEXT, 
 	age INTEGER NOT NULL, 
-	year_of_birth TEXT, 
 	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
-	ethnicity TEXT, 
 	ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
 	has_disease TEXT, 
 	has_phenotypic_feature TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE information_content_entity (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE investigation (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	title TEXT, 
-	description TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -240,33 +170,24 @@ CREATE TABLE library_preparation_protocol (
 	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
 	url TEXT, 
 	type TEXT, 
 	library_name TEXT NOT NULL, 
 	library_layout TEXT NOT NULL, 
 	library_type TEXT NOT NULL, 
 	library_selection TEXT NOT NULL, 
-	library_construction TEXT NOT NULL, 
 	library_preparation TEXT NOT NULL, 
-	library_level TEXT, 
-	library_construction_kit_retail_name TEXT NOT NULL, 
-	library_construction_kit_manufacturer TEXT NOT NULL, 
+	library_preparation_kit_retail_name TEXT NOT NULL, 
+	library_preparation_kit_manufacturer TEXT NOT NULL, 
 	primer TEXT, 
 	end_bias TEXT, 
-	target_regions TEXT, 
+	target_regions TEXT NOT NULL, 
 	rnaseq_strandedness TEXT, 
-	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_attribute TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE material_entity (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -276,6 +197,8 @@ CREATE TABLE member (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
@@ -285,70 +208,27 @@ CREATE TABLE member (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE named_thing (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE ontology_class_mixin (
-	id TEXT NOT NULL, 
-	name TEXT, 
-	description TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE person (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	given_name TEXT, 
-	family_name TEXT, 
-	additional_name TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE phenotypic_feature (
 	id TEXT NOT NULL, 
 	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE planned_process (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE population (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	name TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE project (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	alias TEXT NOT NULL, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	has_publication TEXT, 
@@ -362,6 +242,8 @@ CREATE TABLE protocol (
 	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
 	url TEXT, 
@@ -375,25 +257,11 @@ CREATE TABLE publication (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	title TEXT, 
 	abstract TEXT, 
 	id TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE release_mixin (
-	release_date TEXT, 
-	PRIMARY KEY (release_date)
-);
-
-CREATE TABLE research_activity (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	type TEXT, 
-	title TEXT, 
-	description TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -402,15 +270,16 @@ CREATE TABLE sequencing_protocol (
 	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
 	url TEXT, 
-	type TEXT, 
-	sequencing_center TEXT NOT NULL, 
+	sequencing_center TEXT, 
 	instrument_model TEXT NOT NULL, 
-	read_length TEXT, 
-	read_pair_number TEXT, 
-	sequencing_length TEXT, 
+	paired_or_single_end TEXT, 
+	sequencing_read_length TEXT, 
+	index_sequence TEXT, 
 	target_coverage TEXT, 
-	reference_annotation TEXT, 
 	lane_number TEXT, 
 	flow_cell_id TEXT, 
 	flow_cell_type TEXT, 
@@ -421,15 +290,10 @@ CREATE TABLE sequencing_protocol (
 	cell_barcode_offset TEXT, 
 	cell_barcode_size TEXT, 
 	sample_barcode_read TEXT, 
-	name TEXT, 
-	description TEXT, 
+	type TEXT, 
+	description TEXT NOT NULL, 
 	has_attribute TEXT, 
 	PRIMARY KEY (id)
-);
-
-CREATE TABLE status_mixin (
-	status status_enum, 
-	PRIMARY KEY (status)
 );
 
 CREATE TABLE technology (
@@ -438,6 +302,8 @@ CREATE TABLE technology (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -447,6 +313,8 @@ CREATE TABLE "user" (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
@@ -461,6 +329,8 @@ CREATE TABLE workflow (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -470,15 +340,19 @@ CREATE TABLE workflow_step (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE biospecimen (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	alias TEXT, 
 	name TEXT, 
 	description TEXT, 
 	isolation TEXT, 
@@ -495,25 +369,20 @@ CREATE TABLE biospecimen (
 
 CREATE TABLE data_access_committee (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT, 
-	main_contact TEXT, 
+	main_contact TEXT NOT NULL, 
 	has_member TEXT, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(main_contact) REFERENCES member (id)
-);
-
-CREATE TABLE deprecated_mixin (
-	replaced_by TEXT, 
-	deprecation_date TEXT, 
-	PRIMARY KEY (replaced_by, deprecation_date), 
-	FOREIGN KEY(replaced_by) REFERENCES named_thing (id)
 );
 
 CREATE TABLE family (
@@ -522,6 +391,8 @@ CREATE TABLE family (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	has_member TEXT, 
 	has_proband TEXT, 
@@ -530,26 +401,22 @@ CREATE TABLE family (
 	FOREIGN KEY(has_proband) REFERENCES individual (id)
 );
 
-CREATE TABLE publication_mixin (
-	has_publication TEXT, 
-	PRIMARY KEY (has_publication), 
-	FOREIGN KEY(has_publication) REFERENCES publication (id)
-);
-
 CREATE TABLE study (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
 	has_project TEXT, 
+	has_attribute TEXT, 
+	alias TEXT NOT NULL, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	type study_type_enum NOT NULL, 
 	has_publication TEXT, 
-	has_attribute TEXT, 
-	status status_enum, 
+	release_status release_status_enum, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	release_date TEXT, 
@@ -579,13 +446,6 @@ CREATE TABLE anatomical_entity_xref (
 	FOREIGN KEY(backref_id) REFERENCES anatomical_entity (id)
 );
 
-CREATE TABLE biological_quality_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES biological_quality (id)
-);
-
 CREATE TABLE cell_line_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -598,27 +458,6 @@ CREATE TABLE cohort_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES cohort (id)
-);
-
-CREATE TABLE committee_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES committee (id)
-);
-
-CREATE TABLE data_transformation_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES data_transformation (id)
-);
-
-CREATE TABLE dataset_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
 CREATE TABLE disease_xref (
@@ -656,32 +495,11 @@ CREATE TABLE individual_xref (
 	FOREIGN KEY(backref_id) REFERENCES individual (id)
 );
 
-CREATE TABLE information_content_entity_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES information_content_entity (id)
-);
-
-CREATE TABLE investigation_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES investigation (id)
-);
-
 CREATE TABLE library_preparation_protocol_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES library_preparation_protocol (id)
-);
-
-CREATE TABLE material_entity_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES material_entity (id)
 );
 
 CREATE TABLE member_xref (
@@ -691,39 +509,11 @@ CREATE TABLE member_xref (
 	FOREIGN KEY(backref_id) REFERENCES member (id)
 );
 
-CREATE TABLE named_thing_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES named_thing (id)
-);
-
-CREATE TABLE person_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES person (id)
-);
-
 CREATE TABLE phenotypic_feature_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES phenotypic_feature (id)
-);
-
-CREATE TABLE planned_process_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES planned_process (id)
-);
-
-CREATE TABLE population_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES population (id)
 );
 
 CREATE TABLE project_xref (
@@ -745,13 +535,6 @@ CREATE TABLE publication_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES publication (id)
-);
-
-CREATE TABLE research_activity_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES research_activity (id)
 );
 
 CREATE TABLE sequencing_protocol_xref (
@@ -790,17 +573,21 @@ CREATE TABLE workflow_step_xref (
 );
 
 CREATE TABLE analysis (
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	id TEXT NOT NULL, 
 	title TEXT, 
-	description TEXT, 
-	has_input TEXT, 
+	reference_genome TEXT NOT NULL, 
+	reference_chromosome TEXT NOT NULL, 
+	has_input TEXT NOT NULL, 
 	has_study TEXT, 
 	has_workflow TEXT, 
 	has_output TEXT, 
+	alias TEXT NOT NULL, 
+	type TEXT NOT NULL, 
+	description TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -810,15 +597,17 @@ CREATE TABLE analysis (
 
 CREATE TABLE data_access_policy (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT, 
 	description TEXT NOT NULL, 
 	policy_text TEXT NOT NULL, 
 	policy_url TEXT, 
 	has_data_access_committee TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -827,9 +616,10 @@ CREATE TABLE data_access_policy (
 
 CREATE TABLE sample (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT NOT NULL, 
 	vital_status_at_sampling TEXT, 
@@ -838,6 +628,8 @@ CREATE TABLE sample (
 	has_individual TEXT NOT NULL, 
 	has_anatomical_entity TEXT, 
 	has_biospecimen TEXT, 
+	has_attribute TEXT, 
+	alias TEXT NOT NULL, 
 	type case_control_enum, 
 	tissue TEXT NOT NULL, 
 	accession TEXT, 
@@ -889,6 +681,8 @@ CREATE TABLE analysis_process (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	title TEXT, 
 	has_input TEXT, 
 	has_workflow_step TEXT, 
@@ -909,27 +703,54 @@ CREATE TABLE data_use_condition (
 	FOREIGN KEY(data_access_policy_id) REFERENCES data_access_policy (id)
 );
 
+CREATE TABLE dataset (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	title TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_study TEXT NOT NULL, 
+	has_experiment TEXT NOT NULL, 
+	has_sample TEXT NOT NULL, 
+	has_analysis TEXT NOT NULL, 
+	has_file TEXT NOT NULL, 
+	has_data_access_policy TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
+	type TEXT NOT NULL, 
+	has_publication TEXT, 
+	release_status release_status_enum, 
+	accession TEXT, 
+	ega_accession TEXT, 
+	release_date TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+);
+
 CREATE TABLE experiment (
 	id TEXT NOT NULL, 
-	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	biological_replicates TEXT, 
 	technical_replicates TEXT, 
 	experimental_replicates TEXT, 
 	has_study TEXT NOT NULL, 
 	has_sample TEXT NOT NULL, 
-	has_technology TEXT, 
 	has_file TEXT, 
-	title TEXT NOT NULL, 
+	has_protocol TEXT NOT NULL, 
+	has_attribute TEXT, 
+	alias TEXT NOT NULL, 
+	title TEXT, 
 	description TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_sample) REFERENCES sample (id), 
-	FOREIGN KEY(has_technology) REFERENCES technology (id)
+	FOREIGN KEY(has_sample) REFERENCES sample (id)
 );
 
 CREATE TABLE submission (
@@ -946,7 +767,7 @@ CREATE TABLE submission (
 	submission_date TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	status status_enum, 
+	submission_status submission_status_enum, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id), 
@@ -980,6 +801,8 @@ CREATE TABLE experiment_process (
 	creation_date TEXT, 
 	update_date TEXT, 
 	type TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	title TEXT, 
 	has_input TEXT, 
 	has_protocol TEXT, 
@@ -999,6 +822,13 @@ CREATE TABLE analysis_process_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES analysis_process (id)
+);
+
+CREATE TABLE dataset_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
 CREATE TABLE experiment_xref (

@@ -20,30 +20,33 @@ metadata = MetaData()
 from GHGA-Metadata-Schema import *
 
 
-tbl_accession_mixin = Table('accession_mixin', metadata, 
-    Column('accession', Text, primary_key=True),
-)
 tbl_agent = Table('agent', metadata, 
     Column('id', Text, primary_key=True),
     Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
 )
 tbl_analysis = Table('analysis', metadata, 
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
-    Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('id', Text, primary_key=True),
     Column('title', Text),
-    Column('description', Text),
+    Column('reference_genome', Text),
+    Column('reference_chromosome', Text),
     Column('has_input', Text),
     Column('has_study', Text, ForeignKey('study.id')),
     Column('has_workflow', Text, ForeignKey('workflow.id')),
     Column('has_output', Text),
+    Column('alias', Text),
+    Column('type', Text),
+    Column('description', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
@@ -53,6 +56,8 @@ tbl_analysis_process = Table('analysis_process', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('title', Text),
     Column('has_input', Text),
     Column('has_workflow_step', Text, ForeignKey('workflow_step.id')),
@@ -66,6 +71,8 @@ tbl_anatomical_entity = Table('anatomical_entity', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
 )
@@ -75,22 +82,14 @@ tbl_attribute = Table('attribute', metadata,
     Column('value', Text, primary_key=True),
     Column('value_type', Text, primary_key=True),
 )
-tbl_attribute_mixin = Table('attribute_mixin', metadata, 
-    Column('has_attribute', Text, primary_key=True),
-)
-tbl_biological_quality = Table('biological_quality', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-)
 tbl_biospecimen = Table('biospecimen', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('alias', Text),
     Column('name', Text),
     Column('description', Text),
     Column('isolation', Text),
@@ -107,6 +106,8 @@ tbl_cell_line = Table('cell_line', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
 )
 tbl_cohort = Table('cohort', metadata, 
     Column('id', Text, primary_key=True),
@@ -114,53 +115,42 @@ tbl_cohort = Table('cohort', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('has_member', Text),
     Column('accession', Text),
 )
-tbl_committee = Table('committee', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('name', Text),
-)
 tbl_data_access_committee = Table('data_access_committee', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
     Column('main_contact', Text, ForeignKey('member.id')),
     Column('has_member', Text),
+    Column('alias', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
 tbl_data_access_policy = Table('data_access_policy', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
     Column('policy_text', Text),
     Column('policy_url', Text),
     Column('has_data_access_committee', Text, ForeignKey('data_access_committee.id')),
+    Column('alias', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
-)
-tbl_data_transformation = Table('data_transformation', metadata, 
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('id', Text, primary_key=True),
-    Column('title', Text),
-    Column('description', Text),
 )
 tbl_data_use_condition = Table('data_use_condition', metadata, 
     Column('permission', Text, primary_key=True),
@@ -169,9 +159,10 @@ tbl_data_use_condition = Table('data_use_condition', metadata,
 )
 tbl_dataset = Table('dataset', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('title', Text),
     Column('description', Text),
     Column('has_study', Text),
@@ -179,16 +170,14 @@ tbl_dataset = Table('dataset', metadata,
     Column('has_sample', Text),
     Column('has_analysis', Text),
     Column('has_file', Text),
-    Column('has_data_access_policy', Text),
+    Column('has_data_access_policy', Text, ForeignKey('data_access_policy.id')),
+    Column('alias', Text),
     Column('type', Text),
     Column('has_publication', Text),
+    Column('release_status', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
-    Column('status', Text),
-)
-tbl_deprecated_mixin = Table('deprecated_mixin', metadata, 
-    Column('replaced_by', Text, ForeignKey('named_thing.id'), primary_key=True),
-    Column('deprecation_date', Text, primary_key=True),
+    Column('release_date', Text),
 )
 tbl_disease = Table('disease', metadata, 
     Column('id', Text, primary_key=True),
@@ -196,6 +185,8 @@ tbl_disease = Table('disease', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
 )
@@ -205,49 +196,51 @@ tbl_disease_or_phenotypic_feature = Table('disease_or_phenotypic_feature', metad
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
 )
 tbl_donor = Table('donor', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
-    Column('gender', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('given_name', Text),
+    Column('family_name', Text),
+    Column('additional_name', Text),
     Column('sex', Text),
+    Column('karyotype', Text),
     Column('age', Text),
-    Column('year_of_birth', Text),
     Column('vital_status', Text),
     Column('geographical_region', Text),
-    Column('ethnicity', Text),
     Column('ancestry', Text),
     Column('has_parent', Text),
     Column('has_children', Text),
     Column('has_disease', Text),
     Column('has_phenotypic_feature', Text),
-    Column('given_name', Text),
-    Column('family_name', Text),
-    Column('additional_name', Text),
+    Column('alias', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
-tbl_ega_accession_mixin = Table('ega_accession_mixin', metadata, 
-    Column('ega_accession', Text, primary_key=True),
-)
 tbl_experiment = Table('experiment', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('biological_replicates', Text),
     Column('technical_replicates', Text),
     Column('experimental_replicates', Text),
     Column('has_study', Text, ForeignKey('study.id')),
     Column('has_sample', Text, ForeignKey('sample.id')),
-    Column('has_technology', Text, ForeignKey('technology.id')),
     Column('has_file', Text),
+    Column('has_protocol', Text),
+    Column('has_attribute', Text),
+    Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
     Column('accession', Text),
@@ -259,6 +252,8 @@ tbl_experiment_process = Table('experiment_process', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('title', Text),
     Column('has_input', Text, ForeignKey('sample.id')),
     Column('has_protocol', Text, ForeignKey('protocol.id')),
@@ -272,6 +267,8 @@ tbl_family = Table('family', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('has_member', Text),
     Column('has_proband', Text, ForeignKey('individual.id')),
@@ -279,89 +276,67 @@ tbl_family = Table('family', metadata,
 )
 tbl_file = Table('file', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('format', Text),
     Column('size', Text),
     Column('checksum', Text),
-    Column('file_index', Text),
-    Column('category', Text),
-    Column('type', Text),
+    Column('checksum_type', Text),
+    Column('alias', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
 tbl_individual = Table('individual', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
-    Column('gender', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('given_name', Text),
+    Column('family_name', Text),
+    Column('additional_name', Text),
+    Column('alias', Text),
     Column('sex', Text),
+    Column('karyotype', Text),
     Column('age', Text),
-    Column('year_of_birth', Text),
     Column('vital_status', Text),
     Column('geographical_region', Text),
-    Column('ethnicity', Text),
     Column('ancestry', Text),
     Column('has_parent', Text),
     Column('has_children', Text),
     Column('has_disease', Text),
     Column('has_phenotypic_feature', Text),
-    Column('given_name', Text),
-    Column('family_name', Text),
-    Column('additional_name', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
-)
-tbl_information_content_entity = Table('information_content_entity', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-)
-tbl_investigation = Table('investigation', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('title', Text),
-    Column('description', Text),
 )
 tbl_library_preparation_protocol = Table('library_preparation_protocol', metadata, 
     Column('id', Text, primary_key=True),
     Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('name', Text),
     Column('url', Text),
     Column('type', Text),
     Column('library_name', Text),
     Column('library_layout', Text),
     Column('library_type', Text),
     Column('library_selection', Text),
-    Column('library_construction', Text),
     Column('library_preparation', Text),
-    Column('library_level', Text),
-    Column('library_construction_kit_retail_name', Text),
-    Column('library_construction_kit_manufacturer', Text),
+    Column('library_preparation_kit_retail_name', Text),
+    Column('library_preparation_kit_manufacturer', Text),
     Column('primer', Text),
     Column('end_bias', Text),
     Column('target_regions', Text),
     Column('rnaseq_strandedness', Text),
-    Column('name', Text),
     Column('description', Text),
     Column('has_attribute', Text),
-)
-tbl_material_entity = Table('material_entity', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
 )
 tbl_member = Table('member', metadata, 
     Column('id', Text, primary_key=True),
@@ -369,6 +344,8 @@ tbl_member = Table('member', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('given_name', Text),
     Column('family_name', Text),
     Column('additional_name', Text),
@@ -376,58 +353,25 @@ tbl_member = Table('member', metadata,
     Column('telephone', Text),
     Column('organization', Text),
 )
-tbl_named_thing = Table('named_thing', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-)
-tbl_ontology_class_mixin = Table('ontology_class_mixin', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('name', Text),
-    Column('description', Text),
-)
-tbl_person = Table('person', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('given_name', Text),
-    Column('family_name', Text),
-    Column('additional_name', Text),
-)
 tbl_phenotypic_feature = Table('phenotypic_feature', metadata, 
     Column('id', Text, primary_key=True),
     Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
 )
-tbl_planned_process = Table('planned_process', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-)
-tbl_population = Table('population', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('name', Text),
-)
 tbl_project = Table('project', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
     Column('has_publication', Text),
@@ -439,6 +383,8 @@ tbl_protocol = Table('protocol', metadata,
     Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
     Column('url', Text),
@@ -450,30 +396,18 @@ tbl_publication = Table('publication', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('title', Text),
     Column('abstract', Text),
     Column('id', Text, primary_key=True),
 )
-tbl_publication_mixin = Table('publication_mixin', metadata, 
-    Column('has_publication', Text, ForeignKey('publication.id'), primary_key=True),
-)
-tbl_release_mixin = Table('release_mixin', metadata, 
-    Column('release_date', Text, primary_key=True),
-)
-tbl_research_activity = Table('research_activity', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('type', Text),
-    Column('title', Text),
-    Column('description', Text),
-)
 tbl_sample = Table('sample', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
     Column('vital_status_at_sampling', Text),
@@ -482,6 +416,8 @@ tbl_sample = Table('sample', metadata,
     Column('has_individual', Text, ForeignKey('individual.id')),
     Column('has_anatomical_entity', Text, ForeignKey('anatomical_entity.id')),
     Column('has_biospecimen', Text, ForeignKey('biospecimen.id')),
+    Column('has_attribute', Text),
+    Column('alias', Text),
     Column('type', Text),
     Column('tissue', Text),
     Column('accession', Text),
@@ -492,15 +428,16 @@ tbl_sequencing_protocol = Table('sequencing_protocol', metadata,
     Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('name', Text),
     Column('url', Text),
-    Column('type', Text),
     Column('sequencing_center', Text),
     Column('instrument_model', Text),
-    Column('read_length', Text),
-    Column('read_pair_number', Text),
-    Column('sequencing_length', Text),
+    Column('paired_or_single_end', Text),
+    Column('sequencing_read_length', Text),
+    Column('index_sequence', Text),
     Column('target_coverage', Text),
-    Column('reference_annotation', Text),
     Column('lane_number', Text),
     Column('flow_cell_id', Text),
     Column('flow_cell_type', Text),
@@ -511,27 +448,26 @@ tbl_sequencing_protocol = Table('sequencing_protocol', metadata,
     Column('cell_barcode_offset', Text),
     Column('cell_barcode_size', Text),
     Column('sample_barcode_read', Text),
-    Column('name', Text),
+    Column('type', Text),
     Column('description', Text),
     Column('has_attribute', Text),
 )
-tbl_status_mixin = Table('status_mixin', metadata, 
-    Column('status', Text, primary_key=True),
-)
 tbl_study = Table('study', metadata, 
     Column('id', Text, primary_key=True),
-    Column('alias', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('has_experiment', Text),
     Column('has_analysis', Text),
     Column('has_project', Text, ForeignKey('project.id')),
+    Column('has_attribute', Text),
+    Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
     Column('type', Text),
     Column('has_publication', Text),
-    Column('has_attribute', Text),
-    Column('status', Text),
+    Column('release_status', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
     Column('release_date', Text),
@@ -550,7 +486,7 @@ tbl_submission = Table('submission', metadata,
     Column('submission_date', Text),
     Column('creation_date', Text),
     Column('update_date', Text),
-    Column('status', Text),
+    Column('submission_status', Text),
 )
 tbl_technology = Table('technology', metadata, 
     Column('id', Text, primary_key=True),
@@ -558,6 +494,8 @@ tbl_technology = Table('technology', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
 )
 tbl_user = Table('user', metadata, 
     Column('id', Text, primary_key=True),
@@ -565,6 +503,8 @@ tbl_user = Table('user', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
     Column('given_name', Text),
     Column('family_name', Text),
     Column('additional_name', Text),
@@ -577,6 +517,8 @@ tbl_workflow = Table('workflow', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
 )
 tbl_workflow_parameter = Table('workflow_parameter', metadata, 
     Column('key', Text, primary_key=True),
@@ -589,6 +531,8 @@ tbl_workflow_step = Table('workflow_step', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('type', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
 )
 tbl_agent_xref = Table('agent_xref', metadata, 
     Column('backref_id', Text, ForeignKey('agent.id'), primary_key=True),
@@ -606,10 +550,6 @@ tbl_anatomical_entity_xref = Table('anatomical_entity_xref', metadata,
     Column('backref_id', Text, ForeignKey('anatomical_entity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_biological_quality_xref = Table('biological_quality_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('biological_quality.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_biospecimen_xref = Table('biospecimen_xref', metadata, 
     Column('backref_id', Text, ForeignKey('biospecimen.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
@@ -622,20 +562,12 @@ tbl_cohort_xref = Table('cohort_xref', metadata,
     Column('backref_id', Text, ForeignKey('cohort.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_committee_xref = Table('committee_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('committee.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_data_access_committee_xref = Table('data_access_committee_xref', metadata, 
     Column('backref_id', Text, ForeignKey('data_access_committee.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_data_access_policy_xref = Table('data_access_policy_xref', metadata, 
     Column('backref_id', Text, ForeignKey('data_access_policy.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_data_transformation_xref = Table('data_transformation_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('data_transformation.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_dataset_xref = Table('dataset_xref', metadata, 
@@ -674,44 +606,16 @@ tbl_individual_xref = Table('individual_xref', metadata,
     Column('backref_id', Text, ForeignKey('individual.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_information_content_entity_xref = Table('information_content_entity_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('information_content_entity.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_investigation_xref = Table('investigation_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('investigation.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_library_preparation_protocol_xref = Table('library_preparation_protocol_xref', metadata, 
     Column('backref_id', Text, ForeignKey('library_preparation_protocol.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_material_entity_xref = Table('material_entity_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('material_entity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_member_xref = Table('member_xref', metadata, 
     Column('backref_id', Text, ForeignKey('member.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_named_thing_xref = Table('named_thing_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('named_thing.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_person_xref = Table('person_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('person.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_phenotypic_feature_xref = Table('phenotypic_feature_xref', metadata, 
     Column('backref_id', Text, ForeignKey('phenotypic_feature.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_planned_process_xref = Table('planned_process_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('planned_process.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_population_xref = Table('population_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('population.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_project_xref = Table('project_xref', metadata, 
@@ -724,10 +628,6 @@ tbl_protocol_xref = Table('protocol_xref', metadata,
 )
 tbl_publication_xref = Table('publication_xref', metadata, 
     Column('backref_id', Text, ForeignKey('publication.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
-tbl_research_activity_xref = Table('research_activity_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('research_activity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
 tbl_sample_xref = Table('sample_xref', metadata, 
@@ -762,8 +662,6 @@ tbl_workflow_step_xref = Table('workflow_step_xref', metadata,
     Column('backref_id', Text, ForeignKey('workflow_step.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-mapper_registry.map_imperatively(AccessionMixin, tbl_accession_mixin, properties={
-})
 mapper_registry.map_imperatively(Agent, tbl_agent, properties={
 })
 mapper_registry.map_imperatively(Analysis, tbl_analysis, properties={
@@ -780,17 +678,11 @@ mapper_registry.map_imperatively(AnatomicalEntity, tbl_anatomical_entity, proper
 })
 mapper_registry.map_imperatively(Attribute, tbl_attribute, properties={
 })
-mapper_registry.map_imperatively(AttributeMixin, tbl_attribute_mixin, properties={
-})
-mapper_registry.map_imperatively(BiologicalQuality, tbl_biological_quality, properties={
-})
 mapper_registry.map_imperatively(Biospecimen, tbl_biospecimen, properties={
 })
 mapper_registry.map_imperatively(CellLine, tbl_cell_line, properties={
 })
 mapper_registry.map_imperatively(Cohort, tbl_cohort, properties={
-})
-mapper_registry.map_imperatively(Committee, tbl_committee, properties={
 })
 mapper_registry.map_imperatively(DataAccessCommittee, tbl_data_access_committee, properties={
 })
@@ -802,21 +694,15 @@ mapper_registry.map_imperatively(DataAccessPolicy, tbl_data_access_policy, prope
                       backref='DataAccessPolicy'),
 
 })
-mapper_registry.map_imperatively(DataTransformation, tbl_data_transformation, properties={
-})
 mapper_registry.map_imperatively(DataUseCondition, tbl_data_use_condition, properties={
 })
 mapper_registry.map_imperatively(Dataset, tbl_dataset, properties={
-})
-mapper_registry.map_imperatively(DeprecatedMixin, tbl_deprecated_mixin, properties={
 })
 mapper_registry.map_imperatively(Disease, tbl_disease, properties={
 })
 mapper_registry.map_imperatively(DiseaseOrPhenotypicFeature, tbl_disease_or_phenotypic_feature, properties={
 })
 mapper_registry.map_imperatively(Donor, tbl_donor, properties={
-})
-mapper_registry.map_imperatively(EgaAccessionMixin, tbl_ega_accession_mixin, properties={
 })
 mapper_registry.map_imperatively(Experiment, tbl_experiment, properties={
 
@@ -834,27 +720,11 @@ mapper_registry.map_imperatively(File, tbl_file, properties={
 })
 mapper_registry.map_imperatively(Individual, tbl_individual, properties={
 })
-mapper_registry.map_imperatively(InformationContentEntity, tbl_information_content_entity, properties={
-})
-mapper_registry.map_imperatively(Investigation, tbl_investigation, properties={
-})
 mapper_registry.map_imperatively(LibraryPreparationProtocol, tbl_library_preparation_protocol, properties={
-})
-mapper_registry.map_imperatively(MaterialEntity, tbl_material_entity, properties={
 })
 mapper_registry.map_imperatively(Member, tbl_member, properties={
 })
-mapper_registry.map_imperatively(NamedThing, tbl_named_thing, properties={
-})
-mapper_registry.map_imperatively(OntologyClassMixin, tbl_ontology_class_mixin, properties={
-})
-mapper_registry.map_imperatively(Person, tbl_person, properties={
-})
 mapper_registry.map_imperatively(PhenotypicFeature, tbl_phenotypic_feature, properties={
-})
-mapper_registry.map_imperatively(PlannedProcess, tbl_planned_process, properties={
-})
-mapper_registry.map_imperatively(Population, tbl_population, properties={
 })
 mapper_registry.map_imperatively(Project, tbl_project, properties={
 })
@@ -862,17 +732,9 @@ mapper_registry.map_imperatively(Protocol, tbl_protocol, properties={
 })
 mapper_registry.map_imperatively(Publication, tbl_publication, properties={
 })
-mapper_registry.map_imperatively(PublicationMixin, tbl_publication_mixin, properties={
-})
-mapper_registry.map_imperatively(ReleaseMixin, tbl_release_mixin, properties={
-})
-mapper_registry.map_imperatively(ResearchActivity, tbl_research_activity, properties={
-})
 mapper_registry.map_imperatively(Sample, tbl_sample, properties={
 })
 mapper_registry.map_imperatively(SequencingProtocol, tbl_sequencing_protocol, properties={
-})
-mapper_registry.map_imperatively(StatusMixin, tbl_status_mixin, properties={
 })
 mapper_registry.map_imperatively(Study, tbl_study, properties={
 })

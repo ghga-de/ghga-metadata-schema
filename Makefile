@@ -44,6 +44,9 @@ stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* artifacts/
 
+stage-derived-schemas:
+	cp -pr target/derived_schema artifacts/
+
 # Build and deploy docs locally with mkdocs
 docserve:
 	mkdocs serve
@@ -79,7 +82,7 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 gen-pydantic: $(patsubst %, target/pydantic/%_models.py, $(SCHEMA_NAMES))
 .PHONY: gen-pydantic
 target/pydantic/%_models.py: $(SCHEMA_DIR)/%.yaml  tdir-pydantic
-	gen-pydantic --no-mergeimports $(GEN_OPTS) $< > $@
+	python scripts/custom_pydanticgen.py --no-mergeimports $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # GraphQL
@@ -95,7 +98,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+	python scripts/custom_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ShEx
@@ -136,4 +139,28 @@ target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 
 gen-sql: target/sql/$(SCHEMA_NAME).sql
 target/sql/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sql
-	gen-sqlddl $(GEN_OPTS) --sqla-file  target/sql/$(SCHEMA_NAME)_models.py --dialect postgresql+psycopg2 $< > $@
+	gen-sqlddl-legacy $(GEN_OPTS) --sqla-file  target/sql/$(SCHEMA_NAME)_models.py --dialect postgresql+psycopg2 $< > $@
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Derived schemas: creation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+gen-creation-schema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+target/derived_schema/creation/%_creation.yaml: $(SCHEMA_DIR)/%.yaml
+	mkdir -p target/derived_schema/creation
+	python scripts/generate_creation_schema.py --schema-yaml $< --output $@
+
+gen-creation-schema-artifacts: gen-creation-schema gen-creation-schema-python-classes gen-creation-schema-pydantic-models gen-creation-schema-jsonschema
+
+gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
+target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+
+gen-creation-schema-pydantic-models: target/derived_schema/creation/$(SCHEMA_NAME)_creation_models.py
+target/derived_schema/creation/%_creation_models.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	python scripts/custom_pydanticgen.py --no-mergeimports $(GEN_OPTS) $< > $@
+
+gen-creation-schema-jsonschema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.schema.json
+target/derived_schema/creation/%_creation.schema.json: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
+	python scripts/custom_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
