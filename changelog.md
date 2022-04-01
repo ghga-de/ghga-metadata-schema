@@ -1,3 +1,12 @@
+## 0.5.0 release
+
+- Deprecated `technology` class and `has technology` slot
+- Added `has protocol` slot to `experiment` class to capture protocol at the experiment level
+- Added fields to track schema specific metadata
+- Categorized slots as `essential`, `recommended`, and `optional`
+- Added scripts for generation of use-case specific artifacts to support metadata submission
+- Added scripts for generation of a relaxed schema to support metadata submission
+
 ## 0.4.0 release
 
 - Added a `restricted` subset to the schema and tag slots that are
