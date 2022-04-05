@@ -69,9 +69,6 @@ classes:
       xref:
         description: >-
           Holds one or more database cross references for an entity.
-      type:
-        description: >-
-          The type of an entity.
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the entity was created.
@@ -201,7 +198,6 @@ classes:
       A data transformation technique used to analyze and interpret data to gain a better
       understanding of it.
     slots:
-      - id
       - title
       - description
     exact_mappings:
@@ -268,11 +264,11 @@ classes:
       detailed examination and analysis of a subject to learn more about the phenomenon
       being studied.
     slots:
+      - type
       - affiliation
       - has experiment
       - has analysis
       - has project
-      - has attribute
     slot_usage:
       alias:
         required: true
@@ -339,6 +335,7 @@ classes:
     exact_mappings:
       - SIO:000994
     slots:
+      - type
       - biological replicates
       - technical replicates
       - experimental replicates
@@ -347,7 +344,6 @@ classes:
       - has file
       - has protocol
       - has experiment process
-      - has attribute
     slot_usage:
       alias:
         required: true
@@ -357,6 +353,10 @@ classes:
       description:
         description: >-
           A detailed description of the Experiment.
+        required: true
+      type:
+        description: >-
+          The type of Experiment.
         required: true
       has study:
         description: >-
@@ -450,6 +450,7 @@ classes:
       will reliably be able to independently reproduce the process.
     slots:
       - name
+      - type
       - description
       - url
     exact_mappings:
@@ -577,9 +578,9 @@ classes:
       All Workflow step specific attributes like parameters, and metadata about execution environment
       are captured by the Workflow Step entity.
     slots:
-      - has parameter
+      - has workflow parameter
     slot_usage:
-      has parameter:
+      has workflow parameter:
         description: >-
           One or more parameters that are associated with this Workflow Step.
         range: workflow parameter
@@ -612,7 +613,6 @@ classes:
     exact_mappings:
       - OBI:0100051
     slots:
-      - alias
       - name
       - description
       - isolation
@@ -675,6 +675,7 @@ classes:
     mixins:
       - accession mixin
       - ega accession mixin
+      - attribute mixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
       inspection, investigation, demonstration, or trial use. A sample is prepared from
@@ -684,6 +685,7 @@ classes:
       - biolink:MaterialSample
     slots:
       - name
+      - type
       - description
       - vital status at sampling
       - isolation
@@ -691,7 +693,6 @@ classes:
       - has individual
       - has anatomical entity
       - has biospecimen
-      - has attribute
     slot_usage:
       alias:
         required: true
@@ -743,7 +744,6 @@ classes:
     description: >-
       An Individual is a Person who is participating in a Study.
     slots:
-      - alias
       - sex
       - karyotype
       - age
@@ -894,6 +894,7 @@ classes:
       An Analysis is a data transformation that transforms input data to output data.
       The workflow used to achieve this transformation and the individual steps are also captured.
     slots:
+      - type
       - reference genome
       - reference chromosome
       - has input
@@ -1010,6 +1011,7 @@ classes:
     slots:
       - title
       - description
+      - type
       - has study
       - has experiment
       - has sample
@@ -1690,7 +1692,7 @@ slots:
     description: The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.
     range: workflow step
 
-  has parameter:
+  has workflow parameter:
     description: The parameter(s) associated with a Workflow Step entity.
     range: workflow parameter
 
