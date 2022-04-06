@@ -1130,6 +1130,7 @@ classes:
       - policy url
       - has data access committee
       - has data use condition
+      - data request form
     slot_usage:
       alias:
         required: true
@@ -1162,6 +1163,9 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      data request form:
+        description: >-
+          Data Request Form that is associated with this Data Access Policy.
 
   data access committee:
     is_a: committee
@@ -2248,6 +2252,10 @@ slots:
       Refers to a deprecated entity that is being replaced by the current entity.
     domain: named thing
     range: named thing
+
+  data request form:
+    description: >-
+      Data Request Form that is associated with a Data Access Policy.
 
   ontology name:
     description: >-
