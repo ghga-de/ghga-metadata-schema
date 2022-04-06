@@ -32,10 +32,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -143,7 +139,7 @@
                ]
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "reference_chromosome": {
@@ -184,11 +180,12 @@
          },
          "required": [
             "id",
+            "type",
             "reference_genome",
             "reference_chromosome",
             "has_input",
-            "alias",
-            "type"
+            "has_output",
+            "alias"
          ],
          "title": "Analysis",
          "type": "object"
@@ -271,10 +268,6 @@
                "description": "The title that describes an entity.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -323,10 +316,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -394,7 +383,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -482,10 +471,6 @@
                "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -535,10 +520,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -606,10 +587,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -693,10 +670,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -788,10 +761,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -996,14 +965,12 @@
             "id",
             "title",
             "description",
+            "type",
             "has_study",
-            "has_experiment",
             "has_sample",
-            "has_analysis",
             "has_file",
             "has_data_access_policy",
-            "alias",
-            "type"
+            "alias"
          ],
          "title": "Dataset",
          "type": "object"
@@ -1038,10 +1005,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -1094,10 +1057,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1137,8 +1096,11 @@
                "type": "string"
             },
             "ancestry": {
-               "description": "A person's descent or lineage, from a person or from a population.",
-               "type": "string"
+               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
@@ -1242,10 +1204,6 @@
                "$ref": "#/$defs/BiologicalSexEnum",
                "description": "The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1303,17 +1261,6 @@
             "experimental_replicates": {
                "description": "The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.",
                "type": "string"
-            },
-            "has_attribute": {
-               "description": "Key/value pairs corresponding to an entity.",
-               "items": {
-                  "oneOf": [
-                     {
-                        "$ref": "#/$defs/Attribute"
-                     }
-                  ]
-               },
-               "type": "array"
             },
             "has_experiment_process": {
                "description": "One or more Experiment Processes entities associated with this Experiment.",
@@ -1406,7 +1353,7 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "The type of Experiment.",
                "type": "string"
             },
             "update_date": {
@@ -1423,6 +1370,7 @@
          },
          "required": [
             "id",
+            "type",
             "has_study",
             "has_sample",
             "has_protocol",
@@ -1510,10 +1458,6 @@
                "description": "A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment)",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1595,10 +1539,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1669,10 +1609,6 @@
                "description": "The size of a file in bytes.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1733,8 +1669,11 @@
                "type": "string"
             },
             "ancestry": {
-               "description": "A person's descent or lineage, from a person or from a population.",
-               "type": "string"
+               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
@@ -1838,10 +1777,6 @@
                "$ref": "#/$defs/BiologicalSexEnum",
                "description": "The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1862,7 +1797,8 @@
             "id",
             "sex",
             "age",
-            "vital_status"
+            "vital_status",
+            "alias"
          ],
          "title": "Individual",
          "type": "object"
@@ -2037,10 +1973,6 @@
                "description": "The telephone number of the Member.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -2056,7 +1988,6 @@
          "required": [
             "id",
             "email",
-            "telephone",
             "organization"
          ],
          "title": "Member",
@@ -2092,10 +2023,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -2175,10 +2102,6 @@
             },
             "title": {
                "description": "Comprehensive title for the project.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -2301,10 +2224,6 @@
             },
             "title": {
                "description": "The title for the Publication.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -2736,11 +2655,11 @@
          },
          "required": [
             "id",
+            "type",
             "affiliation",
             "alias",
             "title",
-            "description",
-            "type"
+            "description"
          ],
          "title": "Study",
          "type": "object"
@@ -2950,10 +2869,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -3014,10 +2929,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -3081,10 +2992,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -3132,12 +3039,15 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_parameter": {
+            "has_workflow_parameter": {
                "description": "One or more parameters that are associated with this Workflow Step.",
                "items": {
                   "oneOf": [
                      {
                         "$ref": "#/$defs/WorkflowParameter"
+                     },
+                     {
+                        "type": "string"
                      }
                   ]
                },
@@ -3153,10 +3063,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
