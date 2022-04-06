@@ -104,36 +104,6 @@ class WorkflowParameter(BaseModel):
     
 
 
-class DataUseCondition(BaseModel):
-    """
-    Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).
-    """
-    permission: Optional[str] = Field(None, description="""Data use permission. Typically one or more terms from DUO. Preferably descendants of 'DUO:0000001 data use permission'.""")
-    modifier: Optional[str] = Field(None, description="""Modifier for Data use permission. Preferable descendants of 'DUO:0000017 data use modifier'""")
-    
-
-
-class Submission(BaseModel):
-    """
-    A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
-    """
-    id: str = Field(None, description="""A internal unique identifier for the Submission.""")
-    has_study: Optional[Union[Study, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
-    has_project: Optional[Union[Project, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
-    has_sample: Optional[Union[List[Sample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
-    has_biospecimen: Optional[Union[List[Biospecimen], List[str]]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")
-    has_individual: Optional[Union[List[Individual], List[str]]] = Field(None, description="""Information about one or more Individual entities associated with this submission.""")
-    has_experiment: Optional[Union[List[Experiment], List[str]]] = Field(None, description="""Information about one or more Experiment entities associated with this submission.""")
-    has_analysis: Optional[Union[List[Analysis], List[str]]] = Field(None, description="""Information about one or more Analysis entities associated with this submission.""")
-    has_file: Optional[Union[List[File], List[str]]] = Field(None, description="""Information about one or more File entities associated with this submission.""")
-    has_data_access_policy: Optional[Union[DataAccessPolicy, str]] = Field(None, description="""The Data Access Policy entity that applies to the data associated with this submission.""")
-    submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
-    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was created.""")
-    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was updated.""")
-    submission_status: Optional[SubmissionStatusEnum] = Field(None, description="""The status of a Submission.""")
-    
-
-
 class OntologyClassMixin(BaseModel):
     """
     Mixin for entities that represent an class/term/concept from an ontology.
@@ -141,6 +111,8 @@ class OntologyClassMixin(BaseModel):
     id: str = Field(None, description="""The Compact UR Identifier (CURIE) that uniquely identifies this ontology class.""")
     name: Optional[str] = Field(None, description="""The name or label (rdfs:label) of an ontology class.""")
     description: Optional[str] = Field(None, description="""The description or definition of an ontology class.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     
 
 
@@ -388,6 +360,8 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
@@ -412,6 +386,24 @@ class Population(MaterialEntity):
     
 
 
+class Ancestry(Population):
+    """
+    Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
+    """
+    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
+    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
 class AnalysisProcess(PlannedProcess):
     """
     An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis.
@@ -421,6 +413,22 @@ class AnalysisProcess(PlannedProcess):
     has_workflow_step: Optional[Union[WorkflowStep, str]] = Field(None, description="""Workflow Step entity that performs a set of operations on the input data Files to generate a set of output data Files.""")
     has_agent: Optional[Union[Agent, str]] = Field(None, description="""The Agent - a software, institution, or human - that is executing or responsible for executing the workflow.""")
     has_output: Optional[Union[List[File], List[str]]] = Field(None, description="""The output data File entities generated by the Analysis Process.""")
+    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
+    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class DataUseCondition(InformationContentEntity):
+    """
+    Data Use Condition represents the use conditions associated with a policy.
+    """
+    has_data_use_permission: Optional[Union[DataUsePermission, str]] = Field(None, description="""Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.""")
+    has_data_use_modifier: Optional[Union[DataUseModifier, str]] = Field(None, description="""Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
@@ -474,6 +482,8 @@ class AnatomicalEntity(MaterialEntity):
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
@@ -504,6 +514,8 @@ class Disease(DiseaseOrPhenotypicFeature):
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
@@ -520,6 +532,8 @@ class PhenotypicFeature(DiseaseOrPhenotypicFeature):
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
@@ -548,6 +562,65 @@ class User(Person):
     
 
 
+class Submission(BaseModel):
+    """
+    A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
+    """
+    id: str = Field(None, description="""A internal unique identifier for the Submission.""")
+    has_study: Optional[Union[Study, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
+    has_project: Optional[Union[Project, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
+    has_sample: Optional[Union[List[Sample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
+    has_biospecimen: Optional[Union[List[Biospecimen], List[str]]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")
+    has_individual: Optional[Union[List[Individual], List[str]]] = Field(None, description="""Information about one or more Individual entities associated with this submission.""")
+    has_experiment: Optional[Union[List[Experiment], List[str]]] = Field(None, description="""Information about one or more Experiment entities associated with this submission.""")
+    has_analysis: Optional[Union[List[Analysis], List[str]]] = Field(None, description="""Information about one or more Analysis entities associated with this submission.""")
+    has_file: Optional[Union[List[File], List[str]]] = Field(None, description="""Information about one or more File entities associated with this submission.""")
+    has_data_access_policy: Optional[Union[DataAccessPolicy, str]] = Field(None, description="""The Data Access Policy entity that applies to the data associated with this submission.""")
+    submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was updated.""")
+    submission_status: Optional[SubmissionStatusEnum] = Field(None, description="""The status of a Submission.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class DataUsePermission(InformationContentEntity):
+    """
+    A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
+    """
+    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
+    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class DataUseModifier(InformationContentEntity):
+    """
+    Data use modifiers indicate additional conditions for use.
+    """
+    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
+    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
+    update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
 class AccessionMixin(BaseModel):
     """
     Mixin for entities that can be assigned a GHGA accession.
@@ -565,7 +638,7 @@ class Biospecimen(MaterialEntity):
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
     has_individual: Optional[Union[Individual, str]] = Field(None, description="""The Individual entity from which this Biospecimen was derived.""")
-    has_anatomical_entity: Optional[Union[AnatomicalEntity, str]] = Field(None, description="""The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.""")
+    has_anatomical_entity: Optional[Union[List[AnatomicalEntity], List[str]]] = Field(None, description="""The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.""")
     has_disease: Optional[Union[List[Disease], List[str]]] = Field(None, description="""The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.""")
     has_phenotypic_feature: Optional[Union[List[PhenotypicFeature], List[str]]] = Field(None, description="""The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -658,7 +731,7 @@ class Individual(Person):
     age: int = Field(None, description="""Age of an individual.""")
     vital_status: VitalStatusEnum = Field(None, description="""Last known Vital Status of an Individual.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
-    ancestry: Optional[List[str]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
+    has_ancestry: Optional[Union[List[Ancestry], List[str]]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
     has_parent: Optional[Union[List[Individual], List[str]]] = Field(None, description="""One or more parent for this Individual.""")
     has_children: Optional[Union[List[Individual], List[str]]] = Field(None, description="""One or more children for this Individual.""")
     has_disease: Optional[Union[List[Disease], List[str]]] = Field(None, description="""The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.""")
@@ -687,7 +760,7 @@ class Donor(Individual):
     age: int = Field(None, description="""Age of an individual.""")
     vital_status: VitalStatusEnum = Field(None, description="""The state or condition of being living or deceased; also includes the case where the vital status is unknown.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
-    ancestry: Optional[List[str]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
+    has_ancestry: Optional[Union[List[Ancestry], List[str]]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
     has_parent: Optional[Union[List[Individual], List[str]]] = Field(None, description="""The parent of an entity.""")
     has_children: Optional[Union[List[Individual], List[str]]] = Field(None, description="""The children of an entity.""")
     has_disease: Optional[Union[List[Disease], List[str]]] = Field(None, description="""Disease concept that the entity is associated with.""")
@@ -916,7 +989,7 @@ class Sample(MaterialEntity):
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
     has_individual: Union[Individual, str] = Field(None, description="""The Individual from which this Sample was derived from.""")
-    has_anatomical_entity: Optional[Union[AnatomicalEntity, str]] = Field(None, description="""Anatomical site associated with an entity.""")
+    has_anatomical_entity: Optional[Union[List[AnatomicalEntity], List[str]]] = Field(None, description="""Anatomical site associated with an entity.""")
     has_biospecimen: Optional[Union[Biospecimen, str]] = Field(None, description="""The Biospecimen from which this Sample was prepared from.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
@@ -1017,8 +1090,6 @@ class Dataset(InformationContentEntity):
 # see https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
 Attribute.update_forward_refs()
 WorkflowParameter.update_forward_refs()
-DataUseCondition.update_forward_refs()
-Submission.update_forward_refs()
 OntologyClassMixin.update_forward_refs()
 MetadataMixin.update_forward_refs()
 NamedThing.update_forward_refs()
@@ -1038,7 +1109,9 @@ Workflow.update_forward_refs()
 WorkflowStep.update_forward_refs()
 DiseaseOrPhenotypicFeature.update_forward_refs()
 Population.update_forward_refs()
+Ancestry.update_forward_refs()
 AnalysisProcess.update_forward_refs()
+DataUseCondition.update_forward_refs()
 Member.update_forward_refs()
 Publication.update_forward_refs()
 AnatomicalEntity.update_forward_refs()
@@ -1046,6 +1119,9 @@ CellLine.update_forward_refs()
 Disease.update_forward_refs()
 PhenotypicFeature.update_forward_refs()
 User.update_forward_refs()
+Submission.update_forward_refs()
+DataUsePermission.update_forward_refs()
+DataUseModifier.update_forward_refs()
 AccessionMixin.update_forward_refs()
 Biospecimen.update_forward_refs()
 Family.update_forward_refs()

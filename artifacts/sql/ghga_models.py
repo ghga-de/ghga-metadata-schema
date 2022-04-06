@@ -72,6 +72,20 @@ tbl_anatomical_entity = Table('anatomical_entity', metadata,
     Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
+)
+tbl_ancestry = Table('ancestry', metadata, 
+    Column('id', Text, primary_key=True),
+    Column('alias', Text),
+    Column('creation_date', Text),
+    Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('name', Text),
+    Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
 )
 tbl_attribute = Table('attribute', metadata, 
     Column('key', Text, primary_key=True),
@@ -91,7 +105,7 @@ tbl_biospecimen = Table('biospecimen', metadata,
     Column('isolation', Text),
     Column('storage', Text),
     Column('has_individual', Text, ForeignKey('individual.id')),
-    Column('has_anatomical_entity', Text, ForeignKey('anatomical_entity.id')),
+    Column('has_anatomical_entity', Text),
     Column('has_disease', Text),
     Column('has_phenotypic_feature', Text),
     Column('accession', Text),
@@ -146,9 +160,39 @@ tbl_data_access_policy = Table('data_access_policy', metadata,
     Column('ega_accession', Text),
 )
 tbl_data_use_condition = Table('data_use_condition', metadata, 
-    Column('permission', Text, primary_key=True),
-    Column('modifier', Text, primary_key=True),
-    Column('data_access_policy_id', Text, ForeignKey('data_access_policy.id'), primary_key=True),
+    Column('id', Text, primary_key=True),
+    Column('alias', Text),
+    Column('creation_date', Text),
+    Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('has_data_use_permission', Text, ForeignKey('data_use_permission.id')),
+    Column('has_data_use_modifier', Text, ForeignKey('data_use_modifier.id')),
+    Column('data_access_policy_id', Text, ForeignKey('data_access_policy.id')),
+)
+tbl_data_use_modifier = Table('data_use_modifier', metadata, 
+    Column('id', Text, primary_key=True),
+    Column('alias', Text),
+    Column('creation_date', Text),
+    Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('name', Text),
+    Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
+)
+tbl_data_use_permission = Table('data_use_permission', metadata, 
+    Column('id', Text, primary_key=True),
+    Column('alias', Text),
+    Column('creation_date', Text),
+    Column('update_date', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
+    Column('name', Text),
+    Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
 )
 tbl_dataset = Table('dataset', metadata, 
     Column('id', Text, primary_key=True),
@@ -181,6 +225,8 @@ tbl_disease = Table('disease', metadata,
     Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
 )
 tbl_disease_or_phenotypic_feature = Table('disease_or_phenotypic_feature', metadata, 
     Column('id', Text, primary_key=True),
@@ -191,6 +237,8 @@ tbl_disease_or_phenotypic_feature = Table('disease_or_phenotypic_feature', metad
     Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
 )
 tbl_donor = Table('donor', metadata, 
     Column('id', Text, primary_key=True),
@@ -206,6 +254,7 @@ tbl_donor = Table('donor', metadata,
     Column('age', Text),
     Column('vital_status', Text),
     Column('geographical_region', Text),
+    Column('has_ancestry', Text),
     Column('has_parent', Text),
     Column('has_children', Text),
     Column('has_disease', Text),
@@ -289,6 +338,7 @@ tbl_individual = Table('individual', metadata,
     Column('age', Text),
     Column('vital_status', Text),
     Column('geographical_region', Text),
+    Column('has_ancestry', Text),
     Column('has_parent', Text),
     Column('has_children', Text),
     Column('has_disease', Text),
@@ -344,6 +394,8 @@ tbl_phenotypic_feature = Table('phenotypic_feature', metadata,
     Column('schema_version', Text),
     Column('name', Text),
     Column('description', Text),
+    Column('ontology_name', Text),
+    Column('ontology_version', Text),
 )
 tbl_project = Table('project', metadata, 
     Column('id', Text, primary_key=True),
@@ -394,7 +446,7 @@ tbl_sample = Table('sample', metadata,
     Column('isolation', Text),
     Column('storage', Text),
     Column('has_individual', Text, ForeignKey('individual.id')),
-    Column('has_anatomical_entity', Text, ForeignKey('anatomical_entity.id')),
+    Column('has_anatomical_entity', Text),
     Column('has_biospecimen', Text, ForeignKey('biospecimen.id')),
     Column('alias', Text),
     Column('tissue', Text),
@@ -466,6 +518,8 @@ tbl_submission = Table('submission', metadata,
     Column('creation_date', Text),
     Column('update_date', Text),
     Column('submission_status', Text),
+    Column('schema_type', Text),
+    Column('schema_version', Text),
 )
 tbl_technology = Table('technology', metadata, 
     Column('id', Text, primary_key=True),
@@ -525,6 +579,10 @@ tbl_anatomical_entity_xref = Table('anatomical_entity_xref', metadata,
     Column('backref_id', Text, ForeignKey('anatomical_entity.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
+tbl_ancestry_xref = Table('ancestry_xref', metadata, 
+    Column('backref_id', Text, ForeignKey('ancestry.id'), primary_key=True),
+    Column('xref', Text, primary_key=True),
+)
 tbl_biospecimen_xref = Table('biospecimen_xref', metadata, 
     Column('backref_id', Text, ForeignKey('biospecimen.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
@@ -545,6 +603,18 @@ tbl_data_access_policy_xref = Table('data_access_policy_xref', metadata,
     Column('backref_id', Text, ForeignKey('data_access_policy.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
+tbl_data_use_condition_xref = Table('data_use_condition_xref', metadata, 
+    Column('backref_id', Text, ForeignKey('data_use_condition.id'), primary_key=True),
+    Column('xref', Text, primary_key=True),
+)
+tbl_data_use_modifier_xref = Table('data_use_modifier_xref', metadata, 
+    Column('backref_id', Text, ForeignKey('data_use_modifier.id'), primary_key=True),
+    Column('xref', Text, primary_key=True),
+)
+tbl_data_use_permission_xref = Table('data_use_permission_xref', metadata, 
+    Column('backref_id', Text, ForeignKey('data_use_permission.id'), primary_key=True),
+    Column('xref', Text, primary_key=True),
+)
 tbl_dataset_xref = Table('dataset_xref', metadata, 
     Column('backref_id', Text, ForeignKey('dataset.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
@@ -560,10 +630,6 @@ tbl_disease_or_phenotypic_feature_xref = Table('disease_or_phenotypic_feature_xr
 tbl_donor_xref = Table('donor_xref', metadata, 
     Column('backref_id', Text, ForeignKey('donor.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
-)
-tbl_donor_ancestry = Table('donor_ancestry', metadata, 
-    Column('backref_id', Text, ForeignKey('donor.id'), primary_key=True),
-    Column('ancestry', Text, primary_key=True),
 )
 tbl_experiment_xref = Table('experiment_xref', metadata, 
     Column('backref_id', Text, ForeignKey('experiment.id'), primary_key=True),
@@ -584,10 +650,6 @@ tbl_file_xref = Table('file_xref', metadata,
 tbl_individual_xref = Table('individual_xref', metadata, 
     Column('backref_id', Text, ForeignKey('individual.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
-)
-tbl_individual_ancestry = Table('individual_ancestry', metadata, 
-    Column('backref_id', Text, ForeignKey('individual.id'), primary_key=True),
-    Column('ancestry', Text, primary_key=True),
 )
 tbl_library_preparation_protocol_xref = Table('library_preparation_protocol_xref', metadata, 
     Column('backref_id', Text, ForeignKey('library_preparation_protocol.id'), primary_key=True),
@@ -659,6 +721,8 @@ mapper_registry.map_imperatively(AnalysisProcess, tbl_analysis_process, properti
 })
 mapper_registry.map_imperatively(AnatomicalEntity, tbl_anatomical_entity, properties={
 })
+mapper_registry.map_imperatively(Ancestry, tbl_ancestry, properties={
+})
 mapper_registry.map_imperatively(Attribute, tbl_attribute, properties={
 })
 mapper_registry.map_imperatively(Biospecimen, tbl_biospecimen, properties={
@@ -678,6 +742,10 @@ mapper_registry.map_imperatively(DataAccessPolicy, tbl_data_access_policy, prope
 
 })
 mapper_registry.map_imperatively(DataUseCondition, tbl_data_use_condition, properties={
+})
+mapper_registry.map_imperatively(DataUseModifier, tbl_data_use_modifier, properties={
+})
+mapper_registry.map_imperatively(DataUsePermission, tbl_data_use_permission, properties={
 })
 mapper_registry.map_imperatively(Dataset, tbl_dataset, properties={
 })

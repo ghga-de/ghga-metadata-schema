@@ -478,14 +478,23 @@ slots:
     description: The Individual that is reported to have a disorder in a Family.
     range: create individual
 
-  permission:
-    description: Data use permission.
+  has data use permission:
+    description: >-
+      Data use permission associated with an entity. Typically one or more terms from
+      DUO.
+      Should be descendants of 'DUO:0000001 data use permission'.
+    range: create data use permission
+    inlined: true
     in_subset:
     - recommended
     - restricted
 
-  modifier:
-    description: Modifier for Data user permission.
+  has data use modifier:
+    description: >-
+      Modifier for Data use permission associated with an entity.
+      Should be descendants of 'DUO:0000017 data use modifier'
+    range: create data use modifier
+    inlined: true
     in_subset:
     - recommended
     - restricted
@@ -549,11 +558,14 @@ slots:
     - essential
     - restricted
 
-  ancestry:
+  has ancestry:
     description: >-
       A person's descent or lineage, from a person or from a population.
       Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+    range: create ancestry
     multivalued: true
+    inlined: true
+    inlined_as_list: true
     in_subset:
     - optional
     - restricted
@@ -943,6 +955,13 @@ slots:
     description: >-
       Data Request Form that is associated with a Data Access Policy.
 
+  ontology name:
+    description: >-
+      The name of the ontology from which this ontology class was chosen.
+
+  ontology version:
+    description: >-
+      The version of the ontology from which this ontology class was chosen.
 
 classes:
   named thing:
@@ -1552,8 +1571,9 @@ classes:
           from
           the 'Heart Endothelium' of an Individual.
         range: create anatomical entity
+        multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has disease:
         description: >-
           The Disease entity that is associated with the Individual. Typically, a
@@ -1655,8 +1675,9 @@ classes:
         inlined_as_list: false
       has anatomical entity:
         range: create anatomical entity
+        multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
 
   create individual:
     is_a: person
@@ -1672,7 +1693,7 @@ classes:
     - age
     - vital status
     - geographical region
-    - ancestry
+    - has ancestry
     - has parent
     - has children
     - has disease
@@ -1785,6 +1806,17 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+
+  create ancestry:
+    is_a: population
+    mixins:
+    - ontology class mixin
+    description: >-
+      Population category defined using ancestry informative markers (AIMs) based
+      on genetic/genomic data.
+    aliases: [ancestral group, ancestry category]
+    exact_mappings:
+    - HANCESTRO:0004
 
   create file:
     is_a: information content entity
@@ -2021,24 +2053,23 @@ classes:
           The release status of a Dataset.
         range: release_status_enum
 
-  data use condition:
+  create data use condition:
+    is_a: information content entity
     description: >-
-      Data Use Condition represents the use conditions associated with a Dataset.
-      A permission field can have one or more terms that collectively defines the
-      data use condition. The modifier determines the interpretation of the use
-      permission(s).
+      Data Use Condition represents the use conditions associated with a policy.
     slots:
-    - permission
-    - modifier
+    - has data use permission
+    - has data use modifier
     slot_usage:
-    - permission:
+      has data use permission:
         description: >-
-          Data use permission. Typically one or more terms from DUO.
-          Preferably descendants of 'DUO:0000001 data use permission'.
-    - modifier:
+          Data use permission associated with a policy. Typically one or more terms
+          from DUO
+          and should be descendants of 'DUO:0000001 data use permission'.
+      has data use modifier:
         description: >-
-          Modifier for Data use permission.
-          Preferable descendants of 'DUO:0000017 data use modifier'
+          Modifier for Data use permission associated with a policy.
+          Should be descendants of 'DUO:0000017 data use modifier'
 
   create data access policy:
     is_a: information content entity
@@ -2085,7 +2116,7 @@ classes:
       has data use condition:
         description: >-
           Data Use Condition entities that are associated with the Data Access Policy.
-        range: data use condition
+        range: create data use condition
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -2234,6 +2265,8 @@ classes:
         range: user_role_enum
 
   create submission:
+    mixins:
+    - metadata mixin
     description: >-
       A grouping entity that represents information about one or more entities.
       A submission can be considered as a set of inter-related (and inter-connected)
@@ -2318,12 +2351,35 @@ classes:
           The status of a Submission.
         range: submission_status_enum
 
+  create data use permission:
+    is_a: information content entity
+    mixins:
+    - ontology class mixin
+    description: >-
+      A data item that is used to indicate consent permissions for datasets and/or
+      materials
+      and relates to the purposes for which datasets and/or material might be removed,
+      stored or used.
+    exact_mappings:
+    - DUO:0000001
+
+  create data use modifier:
+    is_a: information content entity
+    mixins:
+    - ontology class mixin
+    description: >-
+      Data use modifiers indicate additional conditions for use.
+    exact_mappings:
+    - DUO:0000017
+
   ontology class mixin:
     mixin: true
     description: Mixin for entities that represent an class/term/concept from an ontology.
     slots:
     - name
     - description
+    - ontology name
+    - ontology version
     slot_usage:
       name:
         description: >-

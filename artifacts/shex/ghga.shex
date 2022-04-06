@@ -93,9 +93,24 @@ linkml:Nodeidentifier NONLITERAL
           &<OntologyClassMixin_tes> ;
           rdf:type [ <OntologyClassMixin> ] ? ;
           <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <AnatomicalEntity> ]
+    )
+}
+
+<Ancestry> CLOSED {
+    (  $<Ancestry_tes> (  &<Population_tes> ;
+          rdf:type [ <Population> ] ? ;
+          &<OntologyClassMixin_tes> ;
+          rdf:type [ <OntologyClassMixin> ] ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
+       ) ;
+       rdf:type [ <Ancestry> ]
     )
 }
 
@@ -135,7 +150,7 @@ linkml:Nodeidentifier NONLITERAL
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
           <has_individual> @<Individual> ? ;
-          <has_anatomical_entity> @<AnatomicalEntity> ? ;
+          <has_anatomical_entity> @<AnatomicalEntity> * ;
           <has_disease> @<Disease> * ;
           <has_phenotypic_feature> @<PhenotypicFeature> * ;
           <accession> @linkml:String ?
@@ -229,10 +244,40 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <DataUseCondition> CLOSED {
-    (  $<DataUseCondition_tes> (  <permission> @linkml:String ? ;
-          <modifier> @linkml:String ?
+    (  $<DataUseCondition_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <has_data_use_permission> @<DataUsePermission> ? ;
+          <has_data_use_modifier> @<DataUseModifier> ?
        ) ;
-       rdf:type [ <DataUseCondition> ] ?
+       rdf:type [ <DataUseCondition> ]
+    )
+}
+
+<DataUseModifier> CLOSED {
+    (  $<DataUseModifier_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          &<OntologyClassMixin_tes> ;
+          rdf:type [ <OntologyClassMixin> ] ? ;
+          <name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
+       ) ;
+       rdf:type [ <DataUseModifier> ]
+    )
+}
+
+<DataUsePermission> CLOSED {
+    (  $<DataUsePermission_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          &<OntologyClassMixin_tes> ;
+          rdf:type [ <OntologyClassMixin> ] ? ;
+          <name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
+       ) ;
+       rdf:type [ <DataUsePermission> ]
     )
 }
 
@@ -290,7 +335,9 @@ linkml:Nodeidentifier NONLITERAL
              &<OntologyClassMixin_tes> ;
              rdf:type [ <OntologyClassMixin> ] ? ;
              <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             <description> @linkml:String ? ;
+             <ontology_name> @linkml:String ? ;
+             <ontology_version> @linkml:String ?
           ) ;
           rdf:type [ <DiseaseOrPhenotypicFeature> ]
        )
@@ -396,7 +443,7 @@ linkml:Nodeidentifier NONLITERAL
              <age> @linkml:Integer ;
              <vital_status> @<VitalStatusEnum> ;
              <geographical_region> @linkml:String ? ;
-             <ancestry> @linkml:String * ;
+             <has_ancestry> @<Ancestry> * ;
              <has_parent> @<Individual> * ;
              <has_children> @<Individual> * ;
              <has_disease> @<Disease> * ;
@@ -411,8 +458,8 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <InformationContentEntity>  (
-    @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR
-    @<WorkflowStep>
+    @<DataAccessPolicy> OR @<DataUseCondition> OR @<DataUseModifier> OR @<DataUsePermission> OR @<Dataset> OR @<File> OR
+    @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR @<WorkflowStep>
 )
 
 <InformationContentEntity_struct> {
@@ -510,7 +557,9 @@ linkml:Nodeidentifier NONLITERAL
 
 <OntologyClassMixin> {
     (  $<OntologyClassMixin_tes> (  <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <OntologyClassMixin> ]
     )
@@ -552,7 +601,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Population>  (
-    @<Cohort> OR @<Family>
+    @<Ancestry> OR @<Cohort> OR @<Family>
 )
 
 <Population_struct> {
@@ -653,7 +702,7 @@ linkml:Nodeidentifier NONLITERAL
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
           <has_individual> @<Individual> ;
-          <has_anatomical_entity> @<AnatomicalEntity> ? ;
+          <has_anatomical_entity> @<AnatomicalEntity> * ;
           <has_biospecimen> @<Biospecimen> ? ;
           <alias> @linkml:String ;
           <tissue> @linkml:String ;
@@ -726,7 +775,9 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Submission> CLOSED {
-    (  $<Submission_tes> (  <has_study> @<Study> ? ;
+    (  $<Submission_tes> (  &<MetadataMixin_tes> ;
+          rdf:type [ <MetadataMixin> ] ? ;
+          <has_study> @<Study> ? ;
           <has_project> @<Project> ? ;
           <has_sample> @<Sample> * ;
           <has_biospecimen> @<Biospecimen> * ;
@@ -738,7 +789,9 @@ linkml:Nodeidentifier NONLITERAL
           <submission_date> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
           <update_date> @linkml:String ? ;
-          <submission_status> @<SubmissionStatusEnum> ?
+          <submission_status> @<SubmissionStatusEnum> ? ;
+          <schema_type> @linkml:String ? ;
+          <schema_version> @linkml:String ?
        ) ;
        rdf:type [ <Submission> ]
     )

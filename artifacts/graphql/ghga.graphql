@@ -68,6 +68,23 @@ type AnatomicalEntity implements OntologyClassMixin
     schemaVersion: String
     name: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
+  }
+
+type Ancestry implements OntologyClassMixin
+  {
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    name: String
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Attribute
@@ -108,7 +125,7 @@ type Biospecimen implements AccessionMixin
     isolation: String
     storage: String
     hasIndividual: Individual
-    hasAnatomicalEntity: AnatomicalEntity
+    hasAnatomicalEntity: [AnatomicalEntity]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
     accession: String
@@ -203,8 +220,45 @@ interface DataTransformation
 
 type DataUseCondition
   {
-    permission: String
-    modifier: String
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    hasDataUsePermission: DataUsePermission
+    hasDataUseModifier: DataUseModifier
+  }
+
+type DataUseModifier implements OntologyClassMixin
+  {
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    name: String
+    description: String
+    ontologyName: String
+    ontologyVersion: String
+  }
+
+type DataUsePermission implements OntologyClassMixin
+  {
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    name: String
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, ReleaseStatusMixin
@@ -249,6 +303,8 @@ type Disease
     schemaVersion: String
     name: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type DiseaseOrPhenotypicFeature implements OntologyClassMixin
@@ -262,6 +318,8 @@ type DiseaseOrPhenotypicFeature implements OntologyClassMixin
     schemaVersion: String
     name: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Donor
@@ -280,7 +338,7 @@ type Donor
     age: Integer!
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
-    ancestry: [String]
+    hasAncestry: [Ancestry]
     hasParent: [Individual]
     hasChildren: [Individual]
     hasDisease: [Disease]
@@ -384,7 +442,7 @@ type Individual implements AccessionMixin, EgaAccessionMixin
     age: Integer!
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
-    ancestry: [String]
+    hasAncestry: [Ancestry]
     hasParent: [Individual]
     hasChildren: [Individual]
     hasDisease: [Disease]
@@ -495,6 +553,8 @@ interface OntologyClassMixin
     id: String!
     name: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 interface Person
@@ -522,6 +582,8 @@ type PhenotypicFeature
     schemaVersion: String
     name: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 interface PlannedProcess
@@ -630,7 +692,7 @@ type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     isolation: String
     storage: String
     hasIndividual: Individual!
-    hasAnatomicalEntity: AnatomicalEntity
+    hasAnatomicalEntity: [AnatomicalEntity]
     hasBiospecimen: Biospecimen
     alias: String!
     tissue: String!
@@ -696,7 +758,7 @@ type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Attri
     releaseDate: String
   }
 
-type Submission
+type Submission implements MetadataMixin
   {
     id: String!
     hasStudy: Study
@@ -712,6 +774,8 @@ type Submission
     creationDate: String
     updateDate: String
     submissionStatus: SubmissionStatusEnum
+    schemaType: String
+    schemaVersion: String
   }
 
 type Technology

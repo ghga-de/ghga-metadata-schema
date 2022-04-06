@@ -31,6 +31,22 @@ CREATE TABLE anatomical_entity (
 	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE ancestry (
+	id TEXT NOT NULL, 
+	alias TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -65,6 +81,34 @@ CREATE TABLE cohort (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE data_use_modifier (
+	id TEXT NOT NULL, 
+	alias TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE data_use_permission (
+	id TEXT NOT NULL, 
+	alias TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE disease (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -74,6 +118,8 @@ CREATE TABLE disease (
 	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -86,6 +132,8 @@ CREATE TABLE disease_or_phenotypic_feature (
 	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -103,6 +151,7 @@ CREATE TABLE donor (
 	age INTEGER NOT NULL, 
 	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
+	has_ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
 	has_disease TEXT, 
@@ -144,6 +193,7 @@ CREATE TABLE individual (
 	age INTEGER NOT NULL, 
 	vital_status vital_status_enum NOT NULL, 
 	geographical_region TEXT, 
+	has_ancestry TEXT, 
 	has_parent TEXT, 
 	has_children TEXT, 
 	has_disease TEXT, 
@@ -205,6 +255,8 @@ CREATE TABLE phenotypic_feature (
 	schema_version TEXT, 
 	name TEXT, 
 	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -343,8 +395,7 @@ CREATE TABLE biospecimen (
 	has_phenotypic_feature TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_individual) REFERENCES individual (id), 
-	FOREIGN KEY(has_anatomical_entity) REFERENCES anatomical_entity (id)
+	FOREIGN KEY(has_individual) REFERENCES individual (id)
 );
 
 CREATE TABLE data_access_committee (
@@ -424,6 +475,13 @@ CREATE TABLE anatomical_entity_xref (
 	FOREIGN KEY(backref_id) REFERENCES anatomical_entity (id)
 );
 
+CREATE TABLE ancestry_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES ancestry (id)
+);
+
 CREATE TABLE cell_line_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -436,6 +494,20 @@ CREATE TABLE cohort_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES cohort (id)
+);
+
+CREATE TABLE data_use_modifier_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES data_use_modifier (id)
+);
+
+CREATE TABLE data_use_permission_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES data_use_permission (id)
 );
 
 CREATE TABLE disease_xref (
@@ -459,13 +531,6 @@ CREATE TABLE donor_xref (
 	FOREIGN KEY(backref_id) REFERENCES donor (id)
 );
 
-CREATE TABLE donor_ancestry (
-	backref_id TEXT, 
-	ancestry TEXT, 
-	PRIMARY KEY (backref_id, ancestry), 
-	FOREIGN KEY(backref_id) REFERENCES donor (id)
-);
-
 CREATE TABLE file_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -477,13 +542,6 @@ CREATE TABLE individual_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES individual (id)
-);
-
-CREATE TABLE individual_ancestry (
-	backref_id TEXT, 
-	ancestry TEXT, 
-	PRIMARY KEY (backref_id, ancestry), 
 	FOREIGN KEY(backref_id) REFERENCES individual (id)
 );
 
@@ -628,7 +686,6 @@ CREATE TABLE sample (
 	has_attribute TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
-	FOREIGN KEY(has_anatomical_entity) REFERENCES anatomical_entity (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
 );
 
@@ -687,10 +744,18 @@ CREATE TABLE analysis_process (
 );
 
 CREATE TABLE data_use_condition (
-	permission TEXT, 
-	modifier TEXT, 
+	id TEXT NOT NULL, 
+	alias TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	has_data_use_permission TEXT, 
+	has_data_use_modifier TEXT, 
 	data_access_policy_id TEXT, 
-	PRIMARY KEY (permission, modifier, data_access_policy_id), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_data_use_permission) REFERENCES data_use_permission (id), 
+	FOREIGN KEY(has_data_use_modifier) REFERENCES data_use_modifier (id), 
 	FOREIGN KEY(data_access_policy_id) REFERENCES data_access_policy (id)
 );
 
@@ -758,6 +823,8 @@ CREATE TABLE submission (
 	creation_date TEXT, 
 	update_date TEXT, 
 	submission_status submission_status_enum, 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_study) REFERENCES study (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id), 
@@ -811,6 +878,13 @@ CREATE TABLE analysis_process_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES analysis_process (id)
+);
+
+CREATE TABLE data_use_condition_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES data_use_condition (id)
 );
 
 CREATE TABLE dataset_xref (

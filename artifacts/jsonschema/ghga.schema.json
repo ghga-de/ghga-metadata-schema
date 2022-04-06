@@ -310,6 +310,14 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -334,6 +342,64 @@
             "id"
          ],
          "title": "AnatomicalEntity",
+         "type": "object"
+      },
+      "Ancestry": {
+         "additionalProperties": false,
+         "description": "Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Ancestry",
          "type": "object"
       },
       "Attribute": {
@@ -396,14 +462,17 @@
             },
             "has_anatomical_entity": {
                "description": "The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/AnatomicalEntity"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/AnatomicalEntity"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_disease": {
                "description": "The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.",
@@ -791,19 +860,182 @@
       },
       "DataUseCondition": {
          "additionalProperties": false,
-         "description": "Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).",
+         "description": "Data Use Condition represents the use conditions associated with a policy.",
          "properties": {
-            "modifier": {
-               "description": "Modifier for Data use permission. Preferable descendants of 'DUO:0000017 data use modifier'",
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
-            "permission": {
-               "description": "Data use permission. Typically one or more terms from DUO. Preferably descendants of 'DUO:0000001 data use permission'.",
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
+            },
+            "has_data_use_modifier": {
+               "description": "Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/DataUseModifier"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "has_data_use_permission": {
+               "description": "Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/DataUsePermission"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
-         "required": [],
+         "required": [
+            "id"
+         ],
          "title": "DataUseCondition",
+         "type": "object"
+      },
+      "DataUseModifier": {
+         "additionalProperties": false,
+         "description": "Data use modifiers indicate additional conditions for use.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "DataUseModifier",
+         "type": "object"
+      },
+      "DataUsePermission": {
+         "additionalProperties": false,
+         "description": "A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "DataUsePermission",
          "type": "object"
       },
       "Dataset": {
@@ -1003,6 +1235,14 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -1053,6 +1293,14 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -1099,13 +1347,6 @@
                "description": "The alias for an entity.",
                "type": "string"
             },
-            "ancestry": {
-               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1125,6 +1366,20 @@
             "given_name": {
                "description": "First name.",
                "type": "string"
+            },
+            "has_ancestry": {
+               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Ancestry"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_children": {
                "description": "One or more children for this Individual.",
@@ -1672,13 +1927,6 @@
                "description": "The alias for an entity.",
                "type": "string"
             },
-            "ancestry": {
-               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1698,6 +1946,20 @@
             "given_name": {
                "description": "First name.",
                "type": "string"
+            },
+            "has_ancestry": {
+               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Ancestry"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_children": {
                "description": "One or more children for this Individual.",
@@ -2021,6 +2283,14 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -2283,14 +2553,17 @@
             },
             "has_anatomical_entity": {
                "description": "Anatomical site associated with an entity.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/AnatomicalEntity"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/AnatomicalEntity"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_attribute": {
                "description": "Key/value pairs corresponding to an entity.",
@@ -2819,6 +3092,14 @@
             },
             "id": {
                "description": "A internal unique identifier for the Submission.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
             "submission_date": {
