@@ -939,6 +939,11 @@ slots:
     domain: named thing
     range: named thing
 
+  data request form:
+    description: >-
+      Data Request Form that is associated with a Data Access Policy.
+
+
 classes:
   named thing:
     mixins:
@@ -2050,6 +2055,7 @@ classes:
     - policy url
     - has data access committee
     - has data use condition
+    - data request form
     slot_usage:
       alias:
         required: true
@@ -2083,6 +2089,9 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      data request form:
+        description: >-
+          Data Request Form that is associated with this Data Access Policy.
 
   create data access committee:
     is_a: committee

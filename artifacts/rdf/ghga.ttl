@@ -80,26 +80,26 @@
         <https://w3id.org/GHGA/submission_status_enum>,
         <https://w3id.org/GHGA/user_role_enum>,
         <https://w3id.org/GHGA/vital_status_enum> ;
-    linkml:generation_date "2022-04-06T08:20:36"^^xsd:dateTime ;
+    linkml:generation_date "2022-04-06T08:53:58"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
     linkml:prefixes [ linkml:prefix_prefix "EFO" ;
             linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
-        [ linkml:prefix_prefix "GENEPIO" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
         [ linkml:prefix_prefix "biolink" ;
             linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
-        [ linkml:prefix_prefix "COB" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
         [ linkml:prefix_prefix "SNOMEDCT" ;
             linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ],
-        [ linkml:prefix_prefix "SIO" ;
-            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
+        [ linkml:prefix_prefix "COB" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference linkml: ],
         [ linkml:prefix_prefix "GHGA" ;
             linkml:prefix_reference <https://w3id.org/GHGA/> ],
-        [ linkml:prefix_prefix "linkml" ;
-            linkml:prefix_reference linkml: ] ;
+        [ linkml:prefix_prefix "GENEPIO" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
+        [ linkml:prefix_prefix "SIO" ;
+            linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/accession>,
         <https://w3id.org/GHGA/additional_name>,
@@ -144,12 +144,14 @@
         <https://w3id.org/GHGA/data_access_committee_main_contact>,
         <https://w3id.org/GHGA/data_access_committee_name>,
         <https://w3id.org/GHGA/data_access_policy_alias>,
+        <https://w3id.org/GHGA/data_access_policy_data_request_form>,
         <https://w3id.org/GHGA/data_access_policy_description>,
         <https://w3id.org/GHGA/data_access_policy_has_data_access_committee>,
         <https://w3id.org/GHGA/data_access_policy_has_data_use_condition>,
         <https://w3id.org/GHGA/data_access_policy_name>,
         <https://w3id.org/GHGA/data_access_policy_policy_text>,
         <https://w3id.org/GHGA/data_access_policy_policy_url>,
+        <https://w3id.org/GHGA/data_request_form>,
         <https://w3id.org/GHGA/data_use_condition_modifier>,
         <https://w3id.org/GHGA/data_use_condition_permission>,
         <https://w3id.org/GHGA/dataset_alias>,
@@ -375,8 +377,8 @@
         <https://w3id.org/GHGA/workflow_step_has_workflow_parameter>,
         <https://w3id.org/GHGA/xref> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2022-04-06T08:19:42"^^xsd:dateTime ;
-    linkml:source_file_size 67108 ;
+    linkml:source_file_date "2022-04-06T08:53:13"^^xsd:dateTime ;
+    linkml:source_file_size 67373 ;
     linkml:subsets <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/optional>,
         <https://w3id.org/GHGA/public>,
@@ -1078,6 +1080,20 @@
     linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/alias> ;
     linkml:usage_slot_name "alias" .
+
+<https://w3id.org/GHGA/data_access_policy_data_request_form> a linkml:SlotDefinition ;
+    skos:definition "Data Request Form that is associated with this Data Access Policy." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    skos:prefLabel "data request form" ;
+    linkml:definition_uri <https://w3id.org/GHGA/data_request_form> ;
+    linkml:domain <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:is_a <https://w3id.org/GHGA/data_request_form> ;
+    linkml:is_usage_slot true ;
+    linkml:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/data_request_form> ;
+    linkml:usage_slot_name "data request form" .
 
 <https://w3id.org/GHGA/data_access_policy_description> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
@@ -3853,6 +3869,15 @@
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/checksum_type> .
 
+<https://w3id.org/GHGA/data_request_form> a linkml:SlotDefinition ;
+    skos:definition "Data Request Form that is associated with a Data Access Policy." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/data_request_form> ;
+    linkml:domain_of <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/data_request_form> .
+
 <https://w3id.org/GHGA/format> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/public> ;
@@ -5241,31 +5266,6 @@
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version> .
 
-<https://w3id.org/GHGA/DataAccessPolicy> a linkml:ClassDefinition ;
-    skos:definition "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/DataAccessPolicy> ;
-    linkml:definition_uri <https://w3id.org/GHGA/DataAccessPolicy> ;
-    linkml:is_a <https://w3id.org/GHGA/InformationContentEntity> ;
-    linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
-        <https://w3id.org/GHGA/EgaAccessionMixin> ;
-    linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/accession>,
-        <https://w3id.org/GHGA/data_access_policy_alias>,
-        <https://w3id.org/GHGA/data_access_policy_description>,
-        <https://w3id.org/GHGA/data_access_policy_has_data_access_committee>,
-        <https://w3id.org/GHGA/data_access_policy_has_data_use_condition>,
-        <https://w3id.org/GHGA/data_access_policy_name>,
-        <https://w3id.org/GHGA/data_access_policy_policy_text>,
-        <https://w3id.org/GHGA/data_access_policy_policy_url>,
-        <https://w3id.org/GHGA/ega_accession>,
-        <https://w3id.org/GHGA/named_thing_creation_date>,
-        <https://w3id.org/GHGA/named_thing_id>,
-        <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/named_thing_xref>,
-        <https://w3id.org/GHGA/schema_type>,
-        <https://w3id.org/GHGA/schema_version> .
-
 <https://w3id.org/GHGA/File> a linkml:ClassDefinition ;
     skos:altLabel "file object" ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
@@ -5311,6 +5311,32 @@
     skos:definition "Subset of properties that are considered to be optional." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:definition_uri <https://w3id.org/GHGA/Optional> .
+
+<https://w3id.org/GHGA/DataAccessPolicy> a linkml:ClassDefinition ;
+    skos:definition "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:class_uri <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:definition_uri <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:is_a <https://w3id.org/GHGA/InformationContentEntity> ;
+    linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
+        <https://w3id.org/GHGA/EgaAccessionMixin> ;
+    linkml:slot_usage [ ] ;
+    linkml:slots <https://w3id.org/GHGA/accession>,
+        <https://w3id.org/GHGA/data_access_policy_alias>,
+        <https://w3id.org/GHGA/data_access_policy_data_request_form>,
+        <https://w3id.org/GHGA/data_access_policy_description>,
+        <https://w3id.org/GHGA/data_access_policy_has_data_access_committee>,
+        <https://w3id.org/GHGA/data_access_policy_has_data_use_condition>,
+        <https://w3id.org/GHGA/data_access_policy_name>,
+        <https://w3id.org/GHGA/data_access_policy_policy_text>,
+        <https://w3id.org/GHGA/data_access_policy_policy_url>,
+        <https://w3id.org/GHGA/ega_accession>,
+        <https://w3id.org/GHGA/named_thing_creation_date>,
+        <https://w3id.org/GHGA/named_thing_id>,
+        <https://w3id.org/GHGA/named_thing_update_date>,
+        <https://w3id.org/GHGA/named_thing_xref>,
+        <https://w3id.org/GHGA/schema_type>,
+        <https://w3id.org/GHGA/schema_version> .
 
 <https://w3id.org/GHGA/description> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,

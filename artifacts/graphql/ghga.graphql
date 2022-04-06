@@ -182,6 +182,7 @@ type DataAccessPolicy implements AccessionMixin, EgaAccessionMixin
     policyUrl: String
     hasDataAccessCommittee: DataAccessCommittee!
     hasDataUseCondition: [DataUseCondition]
+    dataRequestForm: String
     alias: String!
     accession: String
     egaAccession: String

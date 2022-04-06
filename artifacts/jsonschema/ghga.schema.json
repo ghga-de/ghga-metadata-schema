@@ -709,6 +709,10 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "data_request_form": {
+               "description": "Data Request Form that is associated with this Data Access Policy.",
+               "type": "string"
+            },
             "description": {
                "description": "A short description for the Data Access Policy.",
                "type": "string"

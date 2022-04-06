@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-06T08:20:32
+# Generation date: 2022-04-06T08:53:54
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1880,6 +1880,7 @@ class DataAccessPolicy(InformationContentEntity):
     name: Optional[str] = None
     policy_url: Optional[str] = None
     has_data_use_condition: Optional[Union[Union[dict, DataUseCondition], List[Union[dict, DataUseCondition]]]] = empty_list()
+    data_request_form: Optional[str] = None
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
 
@@ -1918,6 +1919,9 @@ class DataAccessPolicy(InformationContentEntity):
         if not isinstance(self.has_data_use_condition, list):
             self.has_data_use_condition = [self.has_data_use_condition] if self.has_data_use_condition is not None else []
         self.has_data_use_condition = [v if isinstance(v, DataUseCondition) else DataUseCondition(**as_dict(v)) for v in self.has_data_use_condition]
+
+        if self.data_request_form is not None and not isinstance(self.data_request_form, str):
+            self.data_request_form = str(self.data_request_form)
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -2981,6 +2985,9 @@ slots.replaced_by = Slot(uri=GHGA.replaced_by, name="replaced by", curie=GHGA.cu
 slots.replaces = Slot(uri=GHGA.replaces, name="replaces", curie=GHGA.curie('replaces'),
                    model_uri=GHGA.replaces, domain=NamedThing, range=Optional[Union[str, NamedThingId]])
 
+slots.data_request_form = Slot(uri=GHGA.data_request_form, name="data request form", curie=GHGA.curie('data_request_form'),
+                   model_uri=GHGA.data_request_form, domain=None, range=Optional[str])
+
 slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
 
@@ -3358,6 +3365,9 @@ slots.data_access_policy_has_data_access_committee = Slot(uri=GHGA.has_data_acce
 
 slots.data_access_policy_has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="data access policy_has data use condition", curie=GHGA.curie('has_data_use_condition'),
                    model_uri=GHGA.data_access_policy_has_data_use_condition, domain=DataAccessPolicy, range=Optional[Union[Union[dict, DataUseCondition], List[Union[dict, DataUseCondition]]]])
+
+slots.data_access_policy_data_request_form = Slot(uri=GHGA.data_request_form, name="data access policy_data request form", curie=GHGA.curie('data_request_form'),
+                   model_uri=GHGA.data_access_policy_data_request_form, domain=DataAccessPolicy, range=Optional[str])
 
 slots.data_access_committee_alias = Slot(uri=GHGA.alias, name="data access committee_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.data_access_committee_alias, domain=DataAccessCommittee, range=str)

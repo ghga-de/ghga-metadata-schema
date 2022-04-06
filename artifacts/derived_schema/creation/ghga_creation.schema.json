@@ -607,6 +607,10 @@
                "description": "The alias for an entity.",
                "type": "string"
             },
+            "data_request_form": {
+               "description": "Data Request Form that is associated with this Data Access Policy.",
+               "type": "string"
+            },
             "description": {
                "description": "A short description for the Data Access Policy.",
                "type": "string"

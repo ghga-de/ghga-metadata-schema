@@ -762,6 +762,7 @@ class DataAccessPolicy(InformationContentEntity):
     policy_url: Optional[str] = Field(None, description="""URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.""")
     has_data_access_committee: Union[DataAccessCommittee, str] = Field(None, description="""The Data Access Committee linked to this policy.""")
     has_data_use_condition: Optional[List[DataUseCondition]] = Field(None, description="""Data Use Condition entities that are associated with the Data Access Policy.""")
+    data_request_form: Optional[str] = Field(None, description="""Data Request Form that is associated with this Data Access Policy.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
