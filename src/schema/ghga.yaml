@@ -1320,7 +1320,6 @@ classes:
       - has experiment
       - has analysis
       - has file
-      - has data access policy
       - submission date
       - creation date
       - update date
@@ -1383,12 +1382,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has data access policy:
-        description: >-
-          The Data Access Policy entity that applies to the data associated with this submission.
-        range: data access policy
-        inlined: true
-        inlined_as_list: false
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the Submission was created.
