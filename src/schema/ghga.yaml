@@ -1318,8 +1318,10 @@ classes:
       - has biospecimen
       - has individual
       - has experiment
+      - has protocol
       - has analysis
       - has file
+      - has publication
       - submission date
       - creation date
       - update date
@@ -1368,6 +1370,14 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      has protocol:
+        description: >-
+          One or more Protocol entities associated with this Submission.
+        range: protocol
+        multivalued: true
+        required: true
+        inlined: true
+        inlined_as_list: true
       has analysis:
         description: >-
           Information about one or more Analysis entities associated with this submission.
@@ -1379,6 +1389,13 @@ classes:
         description: >-
           Information about one or more File entities associated with this submission.
         range: file
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has publication:
+        description: >-
+          One or more Publication entities associated with this Submission.
+        range: publication
         multivalued: true
         inlined: true
         inlined_as_list: true
