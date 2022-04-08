@@ -397,6 +397,8 @@ classes:
 
   experiment process:
     is_a: planned process
+    mixins:
+      - attribute mixin
     description: >-
       An Experiment Process is a process that describes how a Sample is transformed
       to a File via an assay. The Experiment Process also keeps track of the Protocol
