@@ -413,7 +413,7 @@ classes:
     slot_usage:
       type:
         description: >-
-          The type of experiment process
+          The type of experiment process.
         range: experiment_process_type_enum
       title:
         description: >-
