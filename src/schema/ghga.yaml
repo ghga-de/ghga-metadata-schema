@@ -575,6 +575,14 @@ classes:
       entity captures workflow-specific attributes that are relevant for an Analysis entity.
       The Workflow entity may be further characterized by its children where each child has fields
       that are relevant to that particular workflow.
+    slots:
+      - has workflow step
+    slot_usage:
+      has workflow step:
+        range: workflow step
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   workflow step:
     is_a: information content entity
@@ -954,10 +962,11 @@ classes:
         inlined_as_list: false
       has workflow:
         description: >-
-          The Workflow entity associated with this Analysis.
+          One or more Workflow entities associated with this Analysis.
         range: workflow
+        multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has analysis process:
         description: >-
           One or more Analysis Process entities associated with this Analysis.
@@ -983,7 +992,7 @@ classes:
     slots:
       - title
       - has input
-      - has workflow step
+      - has workflow
       - has agent
       - has output
     slot_usage:
@@ -994,11 +1003,10 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has workflow step:
+      has workflow:
         description: >-
-          Workflow Step entity that performs a set of operations on the input data Files to generate
-          a set of output data Files.
-        range: workflow step
+          The Workflow entity associated with this Analysis Process.
+        range: workflow
         inlined: true
         inlined_as_list: false
       has agent:
