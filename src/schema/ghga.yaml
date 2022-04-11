@@ -397,17 +397,24 @@ classes:
 
   experiment process:
     is_a: planned process
+    mixins:
+      - attribute mixin
     description: >-
       An Experiment Process is a process that describes how a Sample is transformed
       to a File via an assay. The Experiment Process also keeps track of the Protocol
       used and the Agent that is running the experiment.
     slots:
+      - type
       - title
       - has input
       - has protocol
       - has agent
       - has output
     slot_usage:
+      type:
+        description: >-
+          The type of experiment process.
+        range: experiment_process_type_enum
       title:
         description: >-
           A descriptive title that explains the step(s) involved in performing the experiment
@@ -568,6 +575,14 @@ classes:
       entity captures workflow-specific attributes that are relevant for an Analysis entity.
       The Workflow entity may be further characterized by its children where each child has fields
       that are relevant to that particular workflow.
+    slots:
+      - has workflow step
+    slot_usage:
+      has workflow step:
+        range: workflow step
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   workflow step:
     is_a: information content entity
@@ -947,10 +962,11 @@ classes:
         inlined_as_list: false
       has workflow:
         description: >-
-          The Workflow entity associated with this Analysis.
+          One or more Workflow entities associated with this Analysis.
         range: workflow
+        multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has analysis process:
         description: >-
           One or more Analysis Process entities associated with this Analysis.
@@ -976,7 +992,7 @@ classes:
     slots:
       - title
       - has input
-      - has workflow step
+      - has workflow
       - has agent
       - has output
     slot_usage:
@@ -987,11 +1003,10 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has workflow step:
+      has workflow:
         description: >-
-          Workflow Step entity that performs a set of operations on the input data Files to generate
-          a set of output data Files.
-        range: workflow step
+          The Workflow entity associated with this Analysis Process.
+        range: workflow
         inlined: true
         inlined_as_list: false
       has agent:
@@ -1318,9 +1333,10 @@ classes:
       - has biospecimen
       - has individual
       - has experiment
+      - has protocol
       - has analysis
       - has file
-      - has data access policy
+      - has publication
       - submission date
       - creation date
       - update date
@@ -1369,6 +1385,14 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      has protocol:
+        description: >-
+          One or more Protocol entities associated with this Submission.
+        range: protocol
+        multivalued: true
+        required: true
+        inlined: true
+        inlined_as_list: true
       has analysis:
         description: >-
           Information about one or more Analysis entities associated with this submission.
@@ -1383,12 +1407,13 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has data access policy:
+      has publication:
         description: >-
-          The Data Access Policy entity that applies to the data associated with this submission.
-        range: data access policy
+          One or more Publication entities associated with this Submission.
+        range: publication
+        multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the Submission was created.
@@ -2390,3 +2415,20 @@ enums:
         description: signifies that the entity has not yet been release for public consumption.
       released:
         description: signifies that the entity has been release for public consumption.
+
+  experiment_process_type_enum:
+    description: >-
+      The different types of Experiment Processes.
+    permissible_values:
+      sample preparation:
+        description: >-
+          An Experiment Process that represents the transformation of a Sample
+          in preparation for an assay.
+          When an Experiment Process is of type 'sample preparation', both the input and
+          output to the Experiment Process is a Sample.
+      assay:
+        description: >-
+          An Experiment Process that represents an assay which performs measurement on
+          a Sample to generate data.
+          When an Experiemnt Process is of type 'assay', the input is a Sample and the
+          output is a File.
