@@ -4,6 +4,7 @@
 CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
 CREATE TYPE biological_sex_enum AS ENUM ('Female', 'Male', 'Unknown');
 CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
+CREATE TYPE experiment_process_type_enum AS ENUM ('sample preparation', 'assay');
 CREATE TYPE file_format_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
 CREATE TYPE case_control_enum AS ENUM ('control', 'case');
 CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
@@ -368,16 +369,6 @@ CREATE TABLE workflow (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE workflow_step (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE biospecimen (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -453,12 +444,16 @@ CREATE TABLE study (
 	FOREIGN KEY(has_project) REFERENCES project (id)
 );
 
-CREATE TABLE workflow_parameter (
-	key TEXT, 
-	value TEXT, 
-	workflow_step_id TEXT, 
-	PRIMARY KEY (key, value, workflow_step_id), 
-	FOREIGN KEY(workflow_step_id) REFERENCES workflow_step (id)
+CREATE TABLE workflow_step (
+	id TEXT NOT NULL, 
+	alias TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	workflow_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(workflow_id) REFERENCES workflow (id)
 );
 
 CREATE TABLE agent_xref (
@@ -615,13 +610,6 @@ CREATE TABLE workflow_xref (
 	FOREIGN KEY(backref_id) REFERENCES workflow (id)
 );
 
-CREATE TABLE workflow_step_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES workflow_step (id)
-);
-
 CREATE TABLE analysis (
 	id TEXT NOT NULL, 
 	creation_date TEXT, 
@@ -641,8 +629,7 @@ CREATE TABLE analysis (
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_workflow) REFERENCES workflow (id)
+	FOREIGN KEY(has_study) REFERENCES study (id)
 );
 
 CREATE TABLE data_access_policy (
@@ -689,6 +676,37 @@ CREATE TABLE sample (
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
 );
 
+CREATE TABLE submission (
+	id TEXT NOT NULL, 
+	has_study TEXT, 
+	has_project TEXT, 
+	has_sample TEXT, 
+	has_biospecimen TEXT, 
+	has_individual TEXT, 
+	has_experiment TEXT, 
+	has_protocol TEXT NOT NULL, 
+	has_analysis TEXT, 
+	has_file TEXT, 
+	has_publication TEXT, 
+	submission_date TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	submission_status submission_status_enum, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_project) REFERENCES project (id)
+);
+
+CREATE TABLE workflow_parameter (
+	key TEXT, 
+	value TEXT, 
+	workflow_step_id TEXT, 
+	PRIMARY KEY (key, value, workflow_step_id), 
+	FOREIGN KEY(workflow_step_id) REFERENCES workflow_step (id)
+);
+
 CREATE TABLE biospecimen_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -724,6 +742,13 @@ CREATE TABLE study_affiliation (
 	FOREIGN KEY(backref_id) REFERENCES study (id)
 );
 
+CREATE TABLE workflow_step_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES workflow_step (id)
+);
+
 CREATE TABLE analysis_process (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -733,12 +758,12 @@ CREATE TABLE analysis_process (
 	schema_version TEXT, 
 	title TEXT, 
 	has_input TEXT, 
-	has_workflow_step TEXT, 
+	has_workflow TEXT, 
 	has_agent TEXT, 
 	has_output TEXT, 
 	analysis_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_workflow_step) REFERENCES workflow_step (id), 
+	FOREIGN KEY(has_workflow) REFERENCES workflow (id), 
 	FOREIGN KEY(has_agent) REFERENCES agent (id), 
 	FOREIGN KEY(analysis_id) REFERENCES analysis (id)
 );
@@ -808,29 +833,6 @@ CREATE TABLE experiment (
 	FOREIGN KEY(has_sample) REFERENCES sample (id)
 );
 
-CREATE TABLE submission (
-	id TEXT NOT NULL, 
-	has_study TEXT, 
-	has_project TEXT, 
-	has_sample TEXT, 
-	has_biospecimen TEXT, 
-	has_individual TEXT, 
-	has_experiment TEXT, 
-	has_analysis TEXT, 
-	has_file TEXT, 
-	has_data_access_policy TEXT, 
-	submission_date TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	submission_status submission_status_enum, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_project) REFERENCES project (id), 
-	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
-);
-
 CREATE TABLE analysis_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -859,11 +861,13 @@ CREATE TABLE experiment_process (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
+	type experiment_process_type_enum, 
 	title TEXT, 
 	has_input TEXT, 
 	has_protocol TEXT, 
 	has_agent TEXT, 
 	has_output TEXT, 
+	has_attribute TEXT, 
 	experiment_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_input) REFERENCES sample (id), 

@@ -159,15 +159,18 @@
                ]
             },
             "has_workflow": {
-               "description": "The Workflow entity associated with this Analysis.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/CreateWorkflow"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "description": "One or more Workflow entities associated with this Analysis.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateWorkflow"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "reference_chromosome": {
                "description": "The reference chromosome used for this Analysis.",
@@ -259,11 +262,11 @@
                },
                "type": "array"
             },
-            "has_workflow_step": {
-               "description": "Workflow Step entity that performs a set of operations on the input data Files to generate a set of output data Files.",
+            "has_workflow": {
+               "description": "The Workflow entity associated with this Analysis Process.",
                "oneOf": [
                   {
-                     "$ref": "#/$defs/CreateWorkflowStep"
+                     "$ref": "#/$defs/CreateWorkflow"
                   },
                   {
                      "type": "string"
@@ -1434,6 +1437,17 @@
                   }
                ]
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_input": {
                "description": "The input to the Experiment Process. Usually a Sample entity.",
                "oneOf": [
@@ -1484,6 +1498,10 @@
             "title": {
                "description": "A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment)",
                "type": "string"
+            },
+            "type": {
+               "$ref": "#/$defs/ExperimentProcessTypeEnum",
+               "description": "The type of experiment process."
             },
             "xref": {
                "description": "Holds one or more database cross references for an entity.",
@@ -2563,17 +2581,6 @@
                },
                "type": "array"
             },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy entity that applies to the data associated with this submission.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/CreateDataAccessPolicy"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
-            },
             "has_experiment": {
                "description": "Information about one or more Experiment entities associated with this submission.",
                "items": {
@@ -2630,6 +2637,40 @@
                   }
                ]
             },
+            "has_protocol": {
+               "description": "One or more Protocol entities associated with this Submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateProtocol"
+                     },
+                     {
+                        "$ref": "#/$defs/CreateLibraryPreparationProtocol"
+                     },
+                     {
+                        "$ref": "#/$defs/CreateSequencingProtocol"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreatePublication"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_sample": {
                "description": "Information about one or more Sample entities associated with this submission.",
                "items": {
@@ -2672,7 +2713,9 @@
                "description": "The status of a Submission."
             }
          },
-         "required": [],
+         "required": [
+            "has_protocol"
+         ],
          "title": "CreateSubmission",
          "type": "object"
       },
@@ -2764,6 +2807,20 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
+            "has_workflow_step": {
+               "description": "The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateWorkflowStep"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -2829,6 +2886,15 @@
          ],
          "title": "CreateWorkflowStep",
          "type": "object"
+      },
+      "ExperimentProcessTypeEnum": {
+         "description": "The different types of Experiment Processes.",
+         "enum": [
+            "sample preparation",
+            "assay"
+         ],
+         "title": "ExperimentProcessTypeEnum",
+         "type": "string"
       },
       "FileFormatEnum": {
          "description": "Enum to capture file types.",

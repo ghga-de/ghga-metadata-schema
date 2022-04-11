@@ -128,15 +128,18 @@
                ]
             },
             "has_workflow": {
-               "description": "The Workflow entity associated with this Analysis.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/Workflow"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "description": "One or more Workflow entities associated with this Analysis.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Workflow"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -241,11 +244,11 @@
                },
                "type": "array"
             },
-            "has_workflow_step": {
-               "description": "Workflow Step entity that performs a set of operations on the input data Files to generate a set of output data Files.",
+            "has_workflow": {
+               "description": "The Workflow entity associated with this Analysis Process.",
                "oneOf": [
                   {
-                     "$ref": "#/$defs/WorkflowStep"
+                     "$ref": "#/$defs/Workflow"
                   },
                   {
                      "type": "string"
@@ -1662,6 +1665,17 @@
                   }
                ]
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_input": {
                "description": "The input to the Experiment Process. Usually a Sample entity.",
                "oneOf": [
@@ -1717,6 +1731,10 @@
                "description": "A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment)",
                "type": "string"
             },
+            "type": {
+               "$ref": "#/$defs/ExperimentProcessTypeEnum",
+               "description": "The type of experiment process."
+            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1734,6 +1752,15 @@
          ],
          "title": "ExperimentProcess",
          "type": "object"
+      },
+      "ExperimentProcessTypeEnum": {
+         "description": "The different types of Experiment Processes.",
+         "enum": [
+            "sample preparation",
+            "assay"
+         ],
+         "title": "ExperimentProcessTypeEnum",
+         "type": "string"
       },
       "Family": {
          "additionalProperties": false,
@@ -2998,17 +3025,6 @@
                },
                "type": "array"
             },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy entity that applies to the data associated with this submission.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/DataAccessPolicy"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
-            },
             "has_experiment": {
                "description": "Information about one or more Experiment entities associated with this submission.",
                "items": {
@@ -3065,6 +3081,40 @@
                   }
                ]
             },
+            "has_protocol": {
+               "description": "One or more Protocol entities associated with this Submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Protocol"
+                     },
+                     {
+                        "$ref": "#/$defs/LibraryPreparationProtocol"
+                     },
+                     {
+                        "$ref": "#/$defs/SequencingProtocol"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Publication"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_sample": {
                "description": "Information about one or more Sample entities associated with this submission.",
                "items": {
@@ -3116,7 +3166,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "has_protocol"
          ],
          "title": "Submission",
          "type": "object"
@@ -3264,6 +3315,20 @@
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
+            },
+            "has_workflow_step": {
+               "description": "The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/WorkflowStep"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",

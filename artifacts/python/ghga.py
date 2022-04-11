@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-06T09:11:36
+# Generation date: 2022-04-11T09:29:05
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -801,17 +801,22 @@ class ExperimentProcess(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.ExperimentProcess
 
     id: Union[str, ExperimentProcessId] = None
+    type: Optional[Union[str, "ExperimentProcessTypeEnum"]] = None
     title: Optional[str] = None
     has_input: Optional[Union[dict, "Sample"]] = None
     has_protocol: Optional[Union[dict, "Protocol"]] = None
     has_agent: Optional[Union[dict, Agent]] = None
     has_output: Optional[Union[dict, "File"]] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ExperimentProcessId):
             self.id = ExperimentProcessId(self.id)
+
+        if self.type is not None and not isinstance(self.type, ExperimentProcessTypeEnum):
+            self.type = ExperimentProcessTypeEnum(self.type)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -827,6 +832,10 @@ class ExperimentProcess(PlannedProcess):
 
         if self.has_output is not None and not isinstance(self.has_output, File):
             self.has_output = File(**as_dict(self.has_output))
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1120,12 +1129,15 @@ class Workflow(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Workflow
 
     id: Union[str, WorkflowId] = None
+    has_workflow_step: Optional[Union[Dict[Union[str, WorkflowStepId], Union[dict, "WorkflowStep"]], List[Union[dict, "WorkflowStep"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, WorkflowId):
             self.id = WorkflowId(self.id)
+
+        self._normalize_inlined_as_list(slot_name="has_workflow_step", slot_type=WorkflowStep, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -1697,7 +1709,7 @@ class Analysis(DataTransformation):
     has_output: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     alias: str = None
     has_study: Optional[Union[dict, Study]] = None
-    has_workflow: Optional[Union[dict, Workflow]] = None
+    has_workflow: Optional[Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]]] = empty_dict()
     has_analysis_process: Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]] = empty_dict()
     description: Optional[str] = None
     accession: Optional[str] = None
@@ -1740,8 +1752,7 @@ class Analysis(DataTransformation):
         if self.has_study is not None and not isinstance(self.has_study, Study):
             self.has_study = Study(**as_dict(self.has_study))
 
-        if self.has_workflow is not None and not isinstance(self.has_workflow, Workflow):
-            self.has_workflow = Workflow(**as_dict(self.has_workflow))
+        self._normalize_inlined_as_list(slot_name="has_workflow", slot_type=Workflow, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_analysis_process", slot_type=AnalysisProcess, key_name="id", keyed=True)
 
@@ -1774,7 +1785,7 @@ class AnalysisProcess(PlannedProcess):
     id: Union[str, AnalysisProcessId] = None
     title: Optional[str] = None
     has_input: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
-    has_workflow_step: Optional[Union[dict, WorkflowStep]] = None
+    has_workflow: Optional[Union[dict, Workflow]] = None
     has_agent: Optional[Union[dict, Agent]] = None
     has_output: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
 
@@ -1789,8 +1800,8 @@ class AnalysisProcess(PlannedProcess):
 
         self._normalize_inlined_as_list(slot_name="has_input", slot_type=File, key_name="id", keyed=True)
 
-        if self.has_workflow_step is not None and not isinstance(self.has_workflow_step, WorkflowStep):
-            self.has_workflow_step = WorkflowStep(**as_dict(self.has_workflow_step))
+        if self.has_workflow is not None and not isinstance(self.has_workflow, Workflow):
+            self.has_workflow = Workflow(**as_dict(self.has_workflow))
 
         if self.has_agent is not None and not isinstance(self.has_agent, Agent):
             self.has_agent = Agent(**as_dict(self.has_agent))
@@ -2285,6 +2296,7 @@ class Submission(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.Submission
 
     id: Union[str, SubmissionId] = None
+    has_protocol: Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]] = empty_dict()
     has_study: Optional[Union[dict, Study]] = None
     has_project: Optional[Union[dict, Project]] = None
     has_sample: Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]] = empty_dict()
@@ -2293,7 +2305,7 @@ class Submission(YAMLRoot):
     has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
     has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
-    has_data_access_policy: Optional[Union[dict, DataAccessPolicy]] = None
+    has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]] = empty_dict()
     submission_date: Optional[str] = None
     creation_date: Optional[str] = None
     update_date: Optional[str] = None
@@ -2306,6 +2318,10 @@ class Submission(YAMLRoot):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SubmissionId):
             self.id = SubmissionId(self.id)
+
+        if self._is_empty(self.has_protocol):
+            self.MissingRequiredField("has_protocol")
+        self._normalize_inlined_as_list(slot_name="has_protocol", slot_type=Protocol, key_name="id", keyed=True)
 
         if self.has_study is not None and not isinstance(self.has_study, Study):
             self.has_study = Study(**as_dict(self.has_study))
@@ -2325,8 +2341,7 @@ class Submission(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
 
-        if self.has_data_access_policy is not None and not isinstance(self.has_data_access_policy, DataAccessPolicy):
-            self.has_data_access_policy = DataAccessPolicy(**as_dict(self.has_data_access_policy))
+        self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
         if self.submission_date is not None and not isinstance(self.submission_date, str):
             self.submission_date = str(self.submission_date)
@@ -2789,6 +2804,24 @@ class ReleaseStatusEnum(EnumDefinitionImpl):
         name="ReleaseStatusEnum",
         description="Enum to capture the release status of an entity.",
     )
+
+class ExperimentProcessTypeEnum(EnumDefinitionImpl):
+    """
+    The different types of Experiment Processes.
+    """
+    assay = PermissibleValue(text="assay",
+                                 description="An Experiment Process that represents an assay which performs measurement on a Sample to generate data. When an Experiemnt Process is of type 'assay', the input is a Sample and the output is a File.")
+
+    _defn = EnumDefinition(
+        name="ExperimentProcessTypeEnum",
+        description="The different types of Experiment Processes.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "sample preparation",
+                PermissibleValue(text="sample preparation",
+                                 description="An Experiment Process that represents the transformation of a Sample in preparation for an assay. When an Experiment Process is of type 'sample preparation', both the input and output to the Experiment Process is a Sample.") )
 
 # Slots
 class slots:
@@ -3262,6 +3295,9 @@ slots.experiment_has_protocol = Slot(uri=GHGA.has_protocol, name="experiment_has
 slots.experiment_has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="experiment_has experiment process", curie=GHGA.curie('has_experiment_process'),
                    model_uri=GHGA.experiment_has_experiment_process, domain=Experiment, range=Optional[Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]]])
 
+slots.experiment_process_type = Slot(uri=GHGA.type, name="experiment process_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.experiment_process_type, domain=ExperimentProcess, range=Optional[Union[str, "ExperimentProcessTypeEnum"]])
+
 slots.experiment_process_title = Slot(uri=GHGA.title, name="experiment process_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.experiment_process_title, domain=ExperimentProcess, range=Optional[str])
 
@@ -3336,6 +3372,9 @@ slots.sequencing_protocol_description = Slot(uri=GHGA.description, name="sequenc
 
 slots.sequencing_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="sequencing protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.sequencing_protocol_has_attribute, domain=SequencingProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.workflow_has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="workflow_has workflow step", curie=GHGA.curie('has_workflow_step'),
+                   model_uri=GHGA.workflow_has_workflow_step, domain=Workflow, range=Optional[Union[Dict[Union[str, WorkflowStepId], Union[dict, "WorkflowStep"]], List[Union[dict, "WorkflowStep"]]]])
 
 slots.workflow_step_has_workflow_parameter = Slot(uri=GHGA.has_workflow_parameter, name="workflow step_has workflow parameter", curie=GHGA.curie('has_workflow_parameter'),
                    model_uri=GHGA.workflow_step_has_workflow_parameter, domain=WorkflowStep, range=Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]])
@@ -3455,7 +3494,7 @@ slots.analysis_has_study = Slot(uri=GHGA.has_study, name="analysis_has study", c
                    model_uri=GHGA.analysis_has_study, domain=Analysis, range=Optional[Union[dict, Study]])
 
 slots.analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis_has workflow", curie=GHGA.curie('has_workflow'),
-                   model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Optional[Union[dict, Workflow]])
+                   model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Optional[Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]]])
 
 slots.analysis_has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="analysis_has analysis process", curie=GHGA.curie('has_analysis_process'),
                    model_uri=GHGA.analysis_has_analysis_process, domain=Analysis, range=Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]])
@@ -3466,8 +3505,8 @@ slots.analysis_has_output = Slot(uri=GHGA.has_output, name="analysis_has output"
 slots.analysis_process_has_input = Slot(uri=GHGA.has_input, name="analysis process_has input", curie=GHGA.curie('has_input'),
                    model_uri=GHGA.analysis_process_has_input, domain=AnalysisProcess, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
 
-slots.analysis_process_has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="analysis process_has workflow step", curie=GHGA.curie('has_workflow_step'),
-                   model_uri=GHGA.analysis_process_has_workflow_step, domain=AnalysisProcess, range=Optional[Union[dict, WorkflowStep]])
+slots.analysis_process_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis process_has workflow", curie=GHGA.curie('has_workflow'),
+                   model_uri=GHGA.analysis_process_has_workflow, domain=AnalysisProcess, range=Optional[Union[dict, Workflow]])
 
 slots.analysis_process_has_agent = Slot(uri=GHGA.has_agent, name="analysis process_has agent", curie=GHGA.curie('has_agent'),
                    model_uri=GHGA.analysis_process_has_agent, domain=AnalysisProcess, range=Optional[Union[dict, Agent]])
@@ -3601,14 +3640,17 @@ slots.submission_has_individual = Slot(uri=GHGA.has_individual, name="submission
 slots.submission_has_experiment = Slot(uri=GHGA.has_experiment, name="submission_has experiment", curie=GHGA.curie('has_experiment'),
                    model_uri=GHGA.submission_has_experiment, domain=Submission, range=Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]])
 
+slots.submission_has_protocol = Slot(uri=GHGA.has_protocol, name="submission_has protocol", curie=GHGA.curie('has_protocol'),
+                   model_uri=GHGA.submission_has_protocol, domain=Submission, range=Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]])
+
 slots.submission_has_analysis = Slot(uri=GHGA.has_analysis, name="submission_has analysis", curie=GHGA.curie('has_analysis'),
                    model_uri=GHGA.submission_has_analysis, domain=Submission, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])
 
 slots.submission_has_file = Slot(uri=GHGA.has_file, name="submission_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.submission_has_file, domain=Submission, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
 
-slots.submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.submission_has_data_access_policy, domain=Submission, range=Optional[Union[dict, DataAccessPolicy]])
+slots.submission_has_publication = Slot(uri=GHGA.has_publication, name="submission_has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.submission_has_publication, domain=Submission, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]])
 
 slots.submission_creation_date = Slot(uri=GHGA.creation_date, name="submission_creation date", curie=GHGA.curie('creation_date'),
                    model_uri=GHGA.submission_creation_date, domain=Submission, range=Optional[str])

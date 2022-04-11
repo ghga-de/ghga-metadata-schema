@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-06T09:11:44
+# Generation date: 2022-04-11T09:29:16
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -591,13 +591,18 @@ class CreateExperimentProcess(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateExperimentProcess
 
     alias: str = None
+    type: Optional[Union[str, "ExperimentProcessTypeEnum"]] = None
     title: Optional[str] = None
     has_input: Optional[Union[dict, "CreateSample"]] = None
     has_protocol: Optional[Union[dict, "CreateProtocol"]] = None
     has_agent: Optional[Union[dict, CreateAgent]] = None
     has_output: Optional[Union[dict, "CreateFile"]] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.type is not None and not isinstance(self.type, ExperimentProcessTypeEnum):
+            self.type = ExperimentProcessTypeEnum(self.type)
+
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
 
@@ -612,6 +617,10 @@ class CreateExperimentProcess(PlannedProcess):
 
         if self.has_output is not None and not isinstance(self.has_output, CreateFile):
             self.has_output = CreateFile(**as_dict(self.has_output))
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -881,6 +890,15 @@ class CreateWorkflow(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateWorkflow
 
     alias: str = None
+    has_workflow_step: Optional[Union[Union[dict, "CreateWorkflowStep"], List[Union[dict, "CreateWorkflowStep"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.has_workflow_step, list):
+            self.has_workflow_step = [self.has_workflow_step] if self.has_workflow_step is not None else []
+        self.has_workflow_step = [v if isinstance(v, CreateWorkflowStep) else CreateWorkflowStep(**as_dict(v)) for v in self.has_workflow_step]
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass
 class CreateWorkflowStep(InformationContentEntity):
@@ -1412,7 +1430,7 @@ class CreateAnalysis(DataTransformation):
     has_output: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
     alias: str = None
     has_study: Optional[Union[dict, CreateStudy]] = None
-    has_workflow: Optional[Union[dict, CreateWorkflow]] = None
+    has_workflow: Optional[Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]]] = empty_list()
     has_analysis_process: Optional[Union[Union[dict, "CreateAnalysisProcess"], List[Union[dict, "CreateAnalysisProcess"]]]] = empty_list()
     description: Optional[str] = None
     accession: Optional[str] = None
@@ -1454,8 +1472,9 @@ class CreateAnalysis(DataTransformation):
         if self.has_study is not None and not isinstance(self.has_study, CreateStudy):
             self.has_study = CreateStudy(**as_dict(self.has_study))
 
-        if self.has_workflow is not None and not isinstance(self.has_workflow, CreateWorkflow):
-            self.has_workflow = CreateWorkflow(**as_dict(self.has_workflow))
+        if not isinstance(self.has_workflow, list):
+            self.has_workflow = [self.has_workflow] if self.has_workflow is not None else []
+        self.has_workflow = [v if isinstance(v, CreateWorkflow) else CreateWorkflow(**as_dict(v)) for v in self.has_workflow]
 
         if not isinstance(self.has_analysis_process, list):
             self.has_analysis_process = [self.has_analysis_process] if self.has_analysis_process is not None else []
@@ -1490,7 +1509,7 @@ class CreateAnalysisProcess(PlannedProcess):
     alias: str = None
     title: Optional[str] = None
     has_input: Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]] = empty_list()
-    has_workflow_step: Optional[Union[dict, CreateWorkflowStep]] = None
+    has_workflow: Optional[Union[dict, CreateWorkflow]] = None
     has_agent: Optional[Union[dict, CreateAgent]] = None
     has_output: Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]] = empty_list()
 
@@ -1502,8 +1521,8 @@ class CreateAnalysisProcess(PlannedProcess):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, CreateFile) else CreateFile(**as_dict(v)) for v in self.has_input]
 
-        if self.has_workflow_step is not None and not isinstance(self.has_workflow_step, CreateWorkflowStep):
-            self.has_workflow_step = CreateWorkflowStep(**as_dict(self.has_workflow_step))
+        if self.has_workflow is not None and not isinstance(self.has_workflow, CreateWorkflow):
+            self.has_workflow = CreateWorkflow(**as_dict(self.has_workflow))
 
         if self.has_agent is not None and not isinstance(self.has_agent, CreateAgent):
             self.has_agent = CreateAgent(**as_dict(self.has_agent))
@@ -1941,6 +1960,7 @@ class CreateSubmission(YAMLRoot):
     class_name: ClassVar[str] = "create submission"
     class_model_uri: ClassVar[URIRef] = GHGA.CreateSubmission
 
+    has_protocol: Union[Union[dict, CreateProtocol], List[Union[dict, CreateProtocol]]] = None
     has_study: Optional[Union[dict, CreateStudy]] = None
     has_project: Optional[Union[dict, CreateProject]] = None
     has_sample: Optional[Union[Union[dict, CreateSample], List[Union[dict, CreateSample]]]] = empty_list()
@@ -1949,13 +1969,19 @@ class CreateSubmission(YAMLRoot):
     has_experiment: Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]] = empty_list()
     has_analysis: Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]] = empty_list()
     has_file: Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]] = empty_list()
-    has_data_access_policy: Optional[Union[dict, CreateDataAccessPolicy]] = None
+    has_publication: Optional[Union[Union[dict, CreatePublication], List[Union[dict, CreatePublication]]]] = empty_list()
     submission_date: Optional[str] = None
     submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
     schema_type: Optional[str] = None
     schema_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.has_protocol):
+            self.MissingRequiredField("has_protocol")
+        if not isinstance(self.has_protocol, list):
+            self.has_protocol = [self.has_protocol] if self.has_protocol is not None else []
+        self.has_protocol = [v if isinstance(v, CreateProtocol) else CreateProtocol(**as_dict(v)) for v in self.has_protocol]
+
         if self.has_study is not None and not isinstance(self.has_study, CreateStudy):
             self.has_study = CreateStudy(**as_dict(self.has_study))
 
@@ -1986,8 +2012,9 @@ class CreateSubmission(YAMLRoot):
             self.has_file = [self.has_file] if self.has_file is not None else []
         self.has_file = [v if isinstance(v, CreateFile) else CreateFile(**as_dict(v)) for v in self.has_file]
 
-        if self.has_data_access_policy is not None and not isinstance(self.has_data_access_policy, CreateDataAccessPolicy):
-            self.has_data_access_policy = CreateDataAccessPolicy(**as_dict(self.has_data_access_policy))
+        if not isinstance(self.has_publication, list):
+            self.has_publication = [self.has_publication] if self.has_publication is not None else []
+        self.has_publication = [v if isinstance(v, CreatePublication) else CreatePublication(**as_dict(v)) for v in self.has_publication]
 
         if self.submission_date is not None and not isinstance(self.submission_date, str):
             self.submission_date = str(self.submission_date)
@@ -2428,6 +2455,24 @@ class ReleaseStatusEnum(EnumDefinitionImpl):
         name="ReleaseStatusEnum",
         description="Enum to capture the release status of an entity.",
     )
+
+class ExperimentProcessTypeEnum(EnumDefinitionImpl):
+    """
+    The different types of Experiment Processes.
+    """
+    assay = PermissibleValue(text="assay",
+                                 description="An Experiment Process that represents an assay which performs measurement on a Sample to generate data. When an Experiemnt Process is of type 'assay', the input is a Sample and the output is a File.")
+
+    _defn = EnumDefinition(
+        name="ExperimentProcessTypeEnum",
+        description="The different types of Experiment Processes.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "sample preparation",
+                PermissibleValue(text="sample preparation",
+                                 description="An Experiment Process that represents the transformation of a Sample in preparation for an assay. When an Experiment Process is of type 'sample preparation', both the input and output to the Experiment Process is a Sample.") )
 
 # Slots
 class slots:
@@ -2883,6 +2928,9 @@ slots.create_experiment_has_protocol = Slot(uri=GHGA.has_protocol, name="create 
 slots.create_experiment_has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="create experiment_has experiment process", curie=GHGA.curie('has_experiment_process'),
                    model_uri=GHGA.create_experiment_has_experiment_process, domain=CreateExperiment, range=Optional[Union[Union[dict, "CreateExperimentProcess"], List[Union[dict, "CreateExperimentProcess"]]]])
 
+slots.create_experiment_process_type = Slot(uri=GHGA.type, name="create experiment process_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.create_experiment_process_type, domain=CreateExperimentProcess, range=Optional[Union[str, "ExperimentProcessTypeEnum"]])
+
 slots.create_experiment_process_title = Slot(uri=GHGA.title, name="create experiment process_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.create_experiment_process_title, domain=CreateExperimentProcess, range=Optional[str])
 
@@ -2957,6 +3005,9 @@ slots.create_sequencing_protocol_description = Slot(uri=GHGA.description, name="
 
 slots.create_sequencing_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="create sequencing protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.create_sequencing_protocol_has_attribute, domain=CreateSequencingProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.create_workflow_has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="create workflow_has workflow step", curie=GHGA.curie('has_workflow_step'),
+                   model_uri=GHGA.create_workflow_has_workflow_step, domain=CreateWorkflow, range=Optional[Union[Union[dict, "CreateWorkflowStep"], List[Union[dict, "CreateWorkflowStep"]]]])
 
 slots.create_workflow_step_has_workflow_parameter = Slot(uri=GHGA.has_workflow_parameter, name="create workflow step_has workflow parameter", curie=GHGA.curie('has_workflow_parameter'),
                    model_uri=GHGA.create_workflow_step_has_workflow_parameter, domain=CreateWorkflowStep, range=Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]])
@@ -3076,7 +3127,7 @@ slots.create_analysis_has_study = Slot(uri=GHGA.has_study, name="create analysis
                    model_uri=GHGA.create_analysis_has_study, domain=CreateAnalysis, range=Optional[Union[dict, CreateStudy]])
 
 slots.create_analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="create analysis_has workflow", curie=GHGA.curie('has_workflow'),
-                   model_uri=GHGA.create_analysis_has_workflow, domain=CreateAnalysis, range=Optional[Union[dict, CreateWorkflow]])
+                   model_uri=GHGA.create_analysis_has_workflow, domain=CreateAnalysis, range=Optional[Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]]])
 
 slots.create_analysis_has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="create analysis_has analysis process", curie=GHGA.curie('has_analysis_process'),
                    model_uri=GHGA.create_analysis_has_analysis_process, domain=CreateAnalysis, range=Optional[Union[Union[dict, "CreateAnalysisProcess"], List[Union[dict, "CreateAnalysisProcess"]]]])
@@ -3087,8 +3138,8 @@ slots.create_analysis_has_output = Slot(uri=GHGA.has_output, name="create analys
 slots.create_analysis_process_has_input = Slot(uri=GHGA.has_input, name="create analysis process_has input", curie=GHGA.curie('has_input'),
                    model_uri=GHGA.create_analysis_process_has_input, domain=CreateAnalysisProcess, range=Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]])
 
-slots.create_analysis_process_has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="create analysis process_has workflow step", curie=GHGA.curie('has_workflow_step'),
-                   model_uri=GHGA.create_analysis_process_has_workflow_step, domain=CreateAnalysisProcess, range=Optional[Union[dict, CreateWorkflowStep]])
+slots.create_analysis_process_has_workflow = Slot(uri=GHGA.has_workflow, name="create analysis process_has workflow", curie=GHGA.curie('has_workflow'),
+                   model_uri=GHGA.create_analysis_process_has_workflow, domain=CreateAnalysisProcess, range=Optional[Union[dict, CreateWorkflow]])
 
 slots.create_analysis_process_has_agent = Slot(uri=GHGA.has_agent, name="create analysis process_has agent", curie=GHGA.curie('has_agent'),
                    model_uri=GHGA.create_analysis_process_has_agent, domain=CreateAnalysisProcess, range=Optional[Union[dict, CreateAgent]])
@@ -3216,14 +3267,17 @@ slots.create_submission_has_individual = Slot(uri=GHGA.has_individual, name="cre
 slots.create_submission_has_experiment = Slot(uri=GHGA.has_experiment, name="create submission_has experiment", curie=GHGA.curie('has_experiment'),
                    model_uri=GHGA.create_submission_has_experiment, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]])
 
+slots.create_submission_has_protocol = Slot(uri=GHGA.has_protocol, name="create submission_has protocol", curie=GHGA.curie('has_protocol'),
+                   model_uri=GHGA.create_submission_has_protocol, domain=CreateSubmission, range=Union[Union[dict, CreateProtocol], List[Union[dict, CreateProtocol]]])
+
 slots.create_submission_has_analysis = Slot(uri=GHGA.has_analysis, name="create submission_has analysis", curie=GHGA.curie('has_analysis'),
                    model_uri=GHGA.create_submission_has_analysis, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]])
 
 slots.create_submission_has_file = Slot(uri=GHGA.has_file, name="create submission_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.create_submission_has_file, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]])
 
-slots.create_submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="create submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.create_submission_has_data_access_policy, domain=CreateSubmission, range=Optional[Union[dict, CreateDataAccessPolicy]])
+slots.create_submission_has_publication = Slot(uri=GHGA.has_publication, name="create submission_has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.create_submission_has_publication, domain=CreateSubmission, range=Optional[Union[Union[dict, CreatePublication], List[Union[dict, CreatePublication]]]])
 
 slots.create_submission_submission_status = Slot(uri=GHGA.submission_status, name="create submission_submission status", curie=GHGA.curie('submission_status'),
                    model_uri=GHGA.create_submission_submission_status, domain=CreateSubmission, range=Optional[Union[str, "SubmissionStatusEnum"]])

@@ -32,7 +32,7 @@ type Analysis implements AccessionMixin, EgaAccessionMixin
     referenceChromosome: String!
     hasInput: [File]!
     hasStudy: Study
-    hasWorkflow: Workflow
+    hasWorkflow: [Workflow]
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]!
     alias: String!
@@ -52,7 +52,7 @@ type AnalysisProcess
     schemaVersion: String
     title: String
     hasInput: [File]
-    hasWorkflowStep: WorkflowStep
+    hasWorkflow: Workflow
     hasAgent: Agent
     hasOutput: [File]
   }
@@ -377,7 +377,7 @@ type Experiment implements AccessionMixin, EgaAccessionMixin
     egaAccession: String
   }
 
-type ExperimentProcess
+type ExperimentProcess implements AttributeMixin
   {
     id: String!
     alias: String
@@ -386,11 +386,13 @@ type ExperimentProcess
     updateDate: String
     schemaType: String
     schemaVersion: String
+    type: ExperimentProcessTypeEnum
     title: String
     hasInput: Sample
     hasProtocol: Protocol
     hasAgent: Agent
     hasOutput: File
+    hasAttribute: [Attribute]
   }
 
 type Family implements AccessionMixin
@@ -767,9 +769,10 @@ type Submission implements MetadataMixin
     hasBiospecimen: [Biospecimen]
     hasIndividual: [Individual]
     hasExperiment: [Experiment]
+    hasProtocol: [Protocol]!
     hasAnalysis: [Analysis]
     hasFile: [File]
-    hasDataAccessPolicy: DataAccessPolicy
+    hasPublication: [Publication]
     submissionDate: String
     creationDate: String
     updateDate: String
@@ -814,6 +817,7 @@ type Workflow
     updateDate: String
     schemaType: String
     schemaVersion: String
+    hasWorkflowStep: [WorkflowStep]
   }
 
 type WorkflowParameter
