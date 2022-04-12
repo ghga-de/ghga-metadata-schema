@@ -283,7 +283,7 @@ classes:
       type:
         description: >-
           The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
-        range: study_type_enum
+        range: study type enum
         required: true
       affiliation:
         required: true
@@ -321,7 +321,7 @@ classes:
       release status:
         description: >-
           The release status of a Study.
-        range: release_status_enum
+        range: release status enum
 
   experiment:
     is_a: investigation
@@ -414,7 +414,7 @@ classes:
       type:
         description: >-
           The type of experiment process.
-        range: experiment_process_type_enum
+        range: experiment process type enum
       title:
         description: >-
           A descriptive title that explains the step(s) involved in performing the experiment
@@ -719,7 +719,7 @@ classes:
       type:
         description: >-
           Type of sample: 'Case' or 'Control'.
-        range: case_control_enum
+        range: case control enum
       description:
         description: >-
           Short textual description of the sample
@@ -1111,7 +1111,7 @@ classes:
       release status:
         description: >-
           The release status of a Dataset.
-        range: release_status_enum
+        range: release status enum
 
   data use condition:
     is_a: information content entity
@@ -1316,7 +1316,7 @@ classes:
       role:
         description: >-
           The role of the user
-        range: user_role_enum
+        range: user role enum
 
   submission:
     mixins:
@@ -1423,7 +1423,7 @@ classes:
       submission status:
         description: >-
           The status of a Submission.
-        range: submission_status_enum
+        range: submission status enum
 
   data use permission:
     is_a: information content entity
@@ -1826,7 +1826,7 @@ slots:
 
   role:
     description: The role that a user has within GHGA.
-    range: user_role_enum
+    range: user role enum
 
   has proband:
     description: The Individual that is reported to have a disorder in a Family.
@@ -1856,7 +1856,7 @@ slots:
     description: >-
       The assemblage of physical properties or qualities by which male is distinguished from female;
       the physical difference between male and female; the distinguishing peculiarity of male or female.
-    range: biological_sex_enum
+    range: biological sex enum
     in_subset:
       - essential
       - restricted
@@ -1902,7 +1902,7 @@ slots:
     description: >- 
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
-    range: vital_status_enum
+    range: vital status enum
     in_subset:
       - essential
       - restricted
@@ -1925,7 +1925,7 @@ slots:
     in_subset:
       - essential
       - public
-    range: file_format_enum
+    range: file format enum
 
   size:
     description: The size of a file in bytes.
@@ -2301,7 +2301,7 @@ slots:
       The version of the ontology from which this ontology class was chosen.
 
 enums:
-  case_control_enum:
+  case control enum:
     description: >-
       Enum to capture whether a Sample is to be considered as Case or Control.
     permissible_values:
@@ -2310,7 +2310,7 @@ enums:
       case:
         description: The Sample is to be treated as Case
 
-  biological_sex_enum:
+  biological sex enum:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
     permissible_values:
@@ -2321,7 +2321,7 @@ enums:
       Unknown:
         description: unspecified
 
-  user_role_enum:
+  user role enum:
     description: >-
       Enum to capture the different roles a GHGA User can have.
     permissible_values:
@@ -2334,7 +2334,7 @@ enums:
           Role of a Data Steward where the user is responsible for
           approving request from a user for one or more Datasets.
   
-  vital_status_enum:
+  vital status enum:
     description: >-
       Enum to capture the vital status of an individual.
     permissible_values:
@@ -2348,7 +2348,7 @@ enums:
         description: >-
           Vital status is unknown.
   
-  study_type_enum:
+  study type enum:
     description: >-
       Enum to capture the type of a study.
     permissible_values:
@@ -2381,7 +2381,7 @@ enums:
       other:
         description: Other study
 
-  file_format_enum:
+  file format enum:
     description: >-
       Enum to capture file types.
     permissible_values:
@@ -2408,7 +2408,7 @@ enums:
         description: >-
           vcf File for storing gene sequence variations.
 
-  submission_status_enum:
+  submission status enum:
     description: >-
       Enum to capture the status of a Submission.
     permissible_values:
@@ -2417,7 +2417,7 @@ enums:
       completed:
         description: Signifies that the Submission is completed.
 
-  release_status_enum:
+  release status enum:
     description: >-
       Enum to capture the release status of an entity.
     permissible_values:
@@ -2426,7 +2426,7 @@ enums:
       released:
         description: signifies that the entity has been release for public consumption.
 
-  experiment_process_type_enum:
+  experiment process type enum:
     description: >-
       The different types of Experiment Processes.
     permissible_values:
