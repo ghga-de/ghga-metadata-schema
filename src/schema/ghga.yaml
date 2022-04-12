@@ -2444,6 +2444,8 @@ enums:
           output is a File.
 
   age range enum:
+    description: >-
+      Enum to capture the age range that an Indiviudal belongs to.
     permissible_values:
       0-5:
         description: Age between 0 to 5.
