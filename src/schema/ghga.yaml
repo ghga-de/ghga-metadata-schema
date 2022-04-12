@@ -1870,7 +1870,7 @@ slots:
 
   age:
     description: Age of an individual.
-    range: integer
+    range: age range enum
     in_subset:
       - essential
       - restricted
@@ -2442,3 +2442,40 @@ enums:
           a Sample to generate data.
           When an Experiemnt Process is of type 'assay', the input is a Sample and the
           output is a File.
+
+  age range enum:
+    permissible_values:
+      0-5:
+        description: Age between 0 to 5.
+      6-10:
+        description: Age between 6 to 10.
+      11-15:
+        description: Age between 11 to 15.
+      16-20:
+        description: Age between 16 to 20.
+      21-25:
+        description: Age between 21 to 25.
+      26-30:
+        description: Age between 26 to 30.
+      31-35:
+        description: Age between 31 to 35.
+      36-40:
+        description: Age between 36 to 40.
+      41-45:
+        description: Age between 41 to 45.
+      46-50:
+        description: Age between 46 to 50.
+      51-55:
+        description: Age between 51 to 55.
+      56-60:
+        description: Age between 56 to 60.
+      61-65:
+        description: Age between 61 to 65.
+      66-70:
+        description: Age between 66 to 70.
+      71-75:
+        description: Age between 71 to 75.
+      76-80:
+        description: Age between 76 to 80.
+      80+:
+        description: Age above 80.
