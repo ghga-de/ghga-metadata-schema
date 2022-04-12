@@ -283,7 +283,7 @@ classes:
       type:
         description: >-
           The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
-        range: study_type_enum
+        range: study type enum
         required: true
       affiliation:
         required: true
@@ -321,7 +321,7 @@ classes:
       release status:
         description: >-
           The release status of a Study.
-        range: release_status_enum
+        range: release status enum
 
   experiment:
     is_a: investigation
@@ -414,7 +414,7 @@ classes:
       type:
         description: >-
           The type of experiment process.
-        range: experiment_process_type_enum
+        range: experiment process type enum
       title:
         description: >-
           A descriptive title that explains the step(s) involved in performing the experiment
@@ -719,7 +719,7 @@ classes:
       type:
         description: >-
           Type of sample: 'Case' or 'Control'.
-        range: case_control_enum
+        range: case control enum
       description:
         description: >-
           Short textual description of the sample
@@ -1111,7 +1111,7 @@ classes:
       release status:
         description: >-
           The release status of a Dataset.
-        range: release_status_enum
+        range: release status enum
 
   data use condition:
     is_a: information content entity
@@ -1316,7 +1316,7 @@ classes:
       role:
         description: >-
           The role of the user
-        range: user_role_enum
+        range: user role enum
 
   submission:
     mixins:
@@ -1423,7 +1423,7 @@ classes:
       submission status:
         description: >-
           The status of a Submission.
-        range: submission_status_enum
+        range: submission status enum
 
   data use permission:
     is_a: information content entity
@@ -1449,15 +1449,15 @@ classes:
     description: Mixin for entities that represent an class/term/concept from an ontology.
     slots:
       - id
-      - name
+      - concept identifier
+      - concept name
       - description
       - ontology name
       - ontology version
     slot_usage:
-        id:
+        concept identifier:
           description: >-
-            The Compact UR Identifier (CURIE) that uniquely identifies
-            this ontology class.
+            The Compact URI (CURIE) that uniquely identifies this ontology class.
         name:
           description: >-
             The name or label (rdfs:label) of an ontology class.
@@ -1826,7 +1826,7 @@ slots:
 
   role:
     description: The role that a user has within GHGA.
-    range: user_role_enum
+    range: user role enum
 
   has proband:
     description: The Individual that is reported to have a disorder in a Family.
@@ -1856,7 +1856,7 @@ slots:
     description: >-
       The assemblage of physical properties or qualities by which male is distinguished from female;
       the physical difference between male and female; the distinguishing peculiarity of male or female.
-    range: biological_sex_enum
+    range: biological sex enum
     in_subset:
       - essential
       - restricted
@@ -1870,7 +1870,7 @@ slots:
 
   age:
     description: Age of an individual.
-    range: integer
+    range: age range enum
     in_subset:
       - essential
       - restricted
@@ -1902,7 +1902,7 @@ slots:
     description: >- 
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
-    range: vital_status_enum
+    range: vital status enum
     in_subset:
       - essential
       - restricted
@@ -1925,7 +1925,7 @@ slots:
     in_subset:
       - essential
       - public
-    range: file_format_enum
+    range: file format enum
 
   size:
     description: The size of a file in bytes.
@@ -2282,6 +2282,16 @@ slots:
     description: >-
       Data Request Form that is associated with a Data Access Policy.
 
+  concept identifier:
+    description: >-
+      The Compact URI (CURIE) that uniquely identifies a concept from an ontology,
+      thesaurus, or terminology.
+
+  concept name:
+    description: >-
+      The name or label (typically, rdfs:label) of concept from an ontology, thesaurus,
+      or terminology.
+
   ontology name:
     description: >-
       The name of the ontology from which this ontology class was chosen.
@@ -2291,7 +2301,7 @@ slots:
       The version of the ontology from which this ontology class was chosen.
 
 enums:
-  case_control_enum:
+  case control enum:
     description: >-
       Enum to capture whether a Sample is to be considered as Case or Control.
     permissible_values:
@@ -2300,31 +2310,31 @@ enums:
       case:
         description: The Sample is to be treated as Case
 
-  biological_sex_enum:
+  biological sex enum:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
     permissible_values:
-      Female:
+      female:
         description: Female
-      Male:
+      male:
         description: Male
-      Unknown:
+      unknown:
         description: unspecified
 
-  user_role_enum:
+  user role enum:
     description: >-
       Enum to capture the different roles a GHGA User can have.
     permissible_values:
-      data requester:
+      data_requester:
         description: >-
           Role of a Data Requester where the user requests access
           to one or more Datasets.
-      data steward:
+      data_steward:
         description: >-
           Role of a Data Steward where the user is responsible for
           approving request from a user for one or more Datasets.
   
-  vital_status_enum:
+  vital status enum:
     description: >-
       Enum to capture the vital status of an individual.
     permissible_values:
@@ -2338,7 +2348,7 @@ enums:
         description: >-
           Vital status is unknown.
   
-  study_type_enum:
+  study type enum:
     description: >-
       Enum to capture the type of a study.
     permissible_values:
@@ -2371,7 +2381,7 @@ enums:
       other:
         description: Other study
 
-  file_format_enum:
+  file format enum:
     description: >-
       Enum to capture file types.
     permissible_values:
@@ -2398,16 +2408,16 @@ enums:
         description: >-
           vcf File for storing gene sequence variations.
 
-  submission_status_enum:
+  submission status enum:
     description: >-
       Enum to capture the status of a Submission.
     permissible_values:
-      in progress:
+      in_progress:
         description: Signifies that the Submission is in the process of being submitted.
       completed:
         description: Signifies that the Submission is completed.
 
-  release_status_enum:
+  release status enum:
     description: >-
       Enum to capture the release status of an entity.
     permissible_values:
@@ -2416,11 +2426,11 @@ enums:
       released:
         description: signifies that the entity has been release for public consumption.
 
-  experiment_process_type_enum:
+  experiment process type enum:
     description: >-
       The different types of Experiment Processes.
     permissible_values:
-      sample preparation:
+      sample_preparation:
         description: >-
           An Experiment Process that represents the transformation of a Sample
           in preparation for an assay.
@@ -2432,3 +2442,42 @@ enums:
           a Sample to generate data.
           When an Experiemnt Process is of type 'assay', the input is a Sample and the
           output is a File.
+
+  age range enum:
+    description: >-
+      Enum to capture the age range that an Indiviudal belongs to.
+    permissible_values:
+      0-5:
+        description: Age between 0 to 5.
+      6-10:
+        description: Age between 6 to 10.
+      11-15:
+        description: Age between 11 to 15.
+      16-20:
+        description: Age between 16 to 20.
+      21-25:
+        description: Age between 21 to 25.
+      26-30:
+        description: Age between 26 to 30.
+      31-35:
+        description: Age between 31 to 35.
+      36-40:
+        description: Age between 36 to 40.
+      41-45:
+        description: Age between 41 to 45.
+      46-50:
+        description: Age between 46 to 50.
+      51-55:
+        description: Age between 51 to 55.
+      56-60:
+        description: Age between 56 to 60.
+      61-65:
+        description: Age between 61 to 65.
+      66-70:
+        description: Age between 66 to 70.
+      71-75:
+        description: Age between 71 to 75.
+      76-80:
+        description: Age between 76 to 80.
+      80+:
+        description: Age above 80.
