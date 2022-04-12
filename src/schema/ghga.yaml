@@ -1449,15 +1449,15 @@ classes:
     description: Mixin for entities that represent an class/term/concept from an ontology.
     slots:
       - id
-      - name
+      - concept identifier
+      - concept name
       - description
       - ontology name
       - ontology version
     slot_usage:
-        id:
+        concept identifier:
           description: >-
-            The Compact UR Identifier (CURIE) that uniquely identifies
-            this ontology class.
+            The Compact URI (CURIE) that uniquely identifies this ontology class.
         name:
           description: >-
             The name or label (rdfs:label) of an ontology class.
@@ -2281,6 +2281,16 @@ slots:
   data request form:
     description: >-
       Data Request Form that is associated with a Data Access Policy.
+
+  concept identifier:
+    description: >-
+      The Compact URI (CURIE) that uniquely identifies a concept from an ontology,
+      thesaurus, or terminology.
+
+  concept name:
+    description: >-
+      The name or label (typically, rdfs:label) of concept from an ontology, thesaurus,
+      or terminology.
 
   ontology name:
     description: >-
