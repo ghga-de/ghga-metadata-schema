@@ -2314,22 +2314,22 @@ enums:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
     permissible_values:
-      Female:
+      female:
         description: Female
-      Male:
+      male:
         description: Male
-      Unknown:
+      unknown:
         description: unspecified
 
   user role enum:
     description: >-
       Enum to capture the different roles a GHGA User can have.
     permissible_values:
-      data requester:
+      data_requester:
         description: >-
           Role of a Data Requester where the user requests access
           to one or more Datasets.
-      data steward:
+      data_steward:
         description: >-
           Role of a Data Steward where the user is responsible for
           approving request from a user for one or more Datasets.
@@ -2412,7 +2412,7 @@ enums:
     description: >-
       Enum to capture the status of a Submission.
     permissible_values:
-      in progress:
+      in_progress:
         description: Signifies that the Submission is in the process of being submitted.
       completed:
         description: Signifies that the Submission is completed.
@@ -2430,7 +2430,7 @@ enums:
     description: >-
       The different types of Experiment Processes.
     permissible_values:
-      sample preparation:
+      sample_preparation:
         description: >-
           An Experiment Process that represents the transformation of a Sample
           in preparation for an assay.
