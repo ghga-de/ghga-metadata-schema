@@ -1,15 +1,16 @@
 /* metamodel_version: 1.7.0 */
 /* version: 0.5.0 */
 
-CREATE TYPE release_status_enum AS ENUM ('unreleased', 'released');
-CREATE TYPE biological_sex_enum AS ENUM ('Female', 'Male', 'Unknown');
-CREATE TYPE vital_status_enum AS ENUM ('alive', 'deceased', 'unknown');
-CREATE TYPE experiment_process_type_enum AS ENUM ('sample preparation', 'assay');
-CREATE TYPE file_format_enum AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
-CREATE TYPE case_control_enum AS ENUM ('control', 'case');
-CREATE TYPE study_type_enum AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
-CREATE TYPE submission_status_enum AS ENUM ('in progress', 'completed');
-CREATE TYPE user_role_enum AS ENUM ('data requester', 'data steward');
+CREATE TYPE "release status enum" AS ENUM ('unreleased', 'released');
+CREATE TYPE "biological sex enum" AS ENUM ('female', 'male', 'unknown');
+CREATE TYPE "age range enum" AS ENUM ('0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '41-45', '46-50', '51-55', '56-60', '61-65', '66-70', '71-75', '76-80', '80+');
+CREATE TYPE "vital status enum" AS ENUM ('alive', 'deceased', 'unknown');
+CREATE TYPE "experiment process type enum" AS ENUM ('sample_preparation', 'assay');
+CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
+CREATE TYPE "case control enum" AS ENUM ('control', 'case');
+CREATE TYPE "study type enum" AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'other');
+CREATE TYPE "submission status enum" AS ENUM ('in_progress', 'completed');
+CREATE TYPE "user role enum" AS ENUM ('data_requester', 'data_steward');
 
 CREATE TABLE agent (
 	id TEXT NOT NULL, 
@@ -30,10 +31,12 @@ CREATE TABLE anatomical_entity (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -45,6 +48,8 @@ CREATE TABLE ancestry (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
@@ -89,10 +94,12 @@ CREATE TABLE data_use_modifier (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -103,10 +110,12 @@ CREATE TABLE data_use_permission (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -117,10 +126,12 @@ CREATE TABLE disease (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -131,10 +142,12 @@ CREATE TABLE disease_or_phenotypic_feature (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -147,10 +160,10 @@ CREATE TABLE donor (
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
-	sex biological_sex_enum NOT NULL, 
+	sex "biological sex enum" NOT NULL, 
 	karyotype TEXT, 
-	age INTEGER NOT NULL, 
-	vital_status vital_status_enum NOT NULL, 
+	age "age range enum" NOT NULL, 
+	vital_status "vital status enum" NOT NULL, 
 	geographical_region TEXT, 
 	has_ancestry TEXT, 
 	has_parent TEXT, 
@@ -170,7 +183,7 @@ CREATE TABLE file (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
-	format file_format_enum NOT NULL, 
+	format "file format enum" NOT NULL, 
 	size TEXT, 
 	checksum TEXT NOT NULL, 
 	checksum_type TEXT NOT NULL, 
@@ -189,10 +202,10 @@ CREATE TABLE individual (
 	given_name TEXT, 
 	family_name TEXT, 
 	additional_name TEXT, 
-	sex biological_sex_enum NOT NULL, 
+	sex "biological sex enum" NOT NULL, 
 	karyotype TEXT, 
-	age INTEGER NOT NULL, 
-	vital_status vital_status_enum NOT NULL, 
+	age "age range enum" NOT NULL, 
+	vital_status "vital status enum" NOT NULL, 
 	geographical_region TEXT, 
 	has_ancestry TEXT, 
 	has_parent TEXT, 
@@ -254,10 +267,12 @@ CREATE TABLE phenotypic_feature (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	name TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
 	description TEXT, 
 	ontology_name TEXT, 
 	ontology_version TEXT, 
+	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -355,7 +370,7 @@ CREATE TABLE "user" (
 	family_name TEXT, 
 	additional_name TEXT, 
 	email TEXT, 
-	role user_role_enum, 
+	role "user role enum", 
 	PRIMARY KEY (id)
 );
 
@@ -427,7 +442,7 @@ CREATE TABLE study (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	type study_type_enum NOT NULL, 
+	type "study type enum" NOT NULL, 
 	has_experiment TEXT, 
 	has_analysis TEXT, 
 	has_project TEXT, 
@@ -436,7 +451,7 @@ CREATE TABLE study (
 	description TEXT NOT NULL, 
 	has_publication TEXT, 
 	has_attribute TEXT, 
-	release_status release_status_enum, 
+	release_status "release status enum", 
 	accession TEXT, 
 	ega_accession TEXT, 
 	release_date TEXT, 
@@ -658,7 +673,7 @@ CREATE TABLE sample (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
-	type case_control_enum, 
+	type "case control enum", 
 	description TEXT NOT NULL, 
 	vital_status_at_sampling TEXT, 
 	isolation TEXT, 
@@ -691,7 +706,7 @@ CREATE TABLE submission (
 	submission_date TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
-	submission_status submission_status_enum, 
+	submission_status "submission status enum", 
 	schema_type TEXT, 
 	schema_version TEXT, 
 	PRIMARY KEY (id), 
@@ -801,7 +816,7 @@ CREATE TABLE dataset (
 	has_data_access_policy TEXT NOT NULL, 
 	alias TEXT NOT NULL, 
 	has_publication TEXT, 
-	release_status release_status_enum, 
+	release_status "release status enum", 
 	accession TEXT, 
 	ega_accession TEXT, 
 	release_date TEXT, 
@@ -861,7 +876,7 @@ CREATE TABLE experiment_process (
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	type experiment_process_type_enum, 
+	type "experiment process type enum", 
 	title TEXT, 
 	has_input TEXT, 
 	has_protocol TEXT, 

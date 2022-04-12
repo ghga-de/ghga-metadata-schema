@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-11T09:29:05
+# Generation date: 2022-04-12T10:23:09
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -22,7 +22,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Integer, String
+from linkml_runtime.linkml_model.types import String
 
 metamodel_version = "1.7.0"
 version = "0.5.0"
@@ -1271,10 +1271,12 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
     class_model_uri: ClassVar[URIRef] = GHGA.DiseaseOrPhenotypicFeature
 
     id: Union[str, DiseaseOrPhenotypicFeatureId] = None
-    name: Optional[str] = None
+    concept_identifier: Optional[str] = None
+    concept_name: Optional[str] = None
     description: Optional[str] = None
     ontology_name: Optional[str] = None
     ontology_version: Optional[str] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1282,8 +1284,11 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
         if not isinstance(self.id, DiseaseOrPhenotypicFeatureId):
             self.id = DiseaseOrPhenotypicFeatureId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+            self.concept_identifier = str(self.concept_identifier)
+
+        if self.concept_name is not None and not isinstance(self.concept_name, str):
+            self.concept_name = str(self.concept_name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1293,6 +1298,9 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
 
         if self.ontology_version is not None and not isinstance(self.ontology_version, str):
             self.ontology_version = str(self.ontology_version)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -1406,7 +1414,7 @@ class Individual(Person):
 
     id: Union[str, IndividualId] = None
     sex: Union[str, "BiologicalSexEnum"] = None
-    age: int = None
+    age: Union[str, "AgeRangeEnum"] = None
     vital_status: Union[str, "VitalStatusEnum"] = None
     alias: str = None
     karyotype: Optional[str] = None
@@ -1432,8 +1440,8 @@ class Individual(Person):
 
         if self._is_empty(self.age):
             self.MissingRequiredField("age")
-        if not isinstance(self.age, int):
-            self.age = int(self.age)
+        if not isinstance(self.age, AgeRangeEnum):
+            self.age = AgeRangeEnum(self.age)
 
         if self._is_empty(self.vital_status):
             self.MissingRequiredField("vital_status")
@@ -1485,7 +1493,7 @@ class Donor(Individual):
 
     id: Union[str, DonorId] = None
     sex: Union[str, "BiologicalSexEnum"] = None
-    age: int = None
+    age: Union[str, "AgeRangeEnum"] = None
     vital_status: Union[str, "VitalStatusEnum"] = None
     alias: str = None
 
@@ -1600,7 +1608,8 @@ class Ancestry(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.Ancestry
 
     id: Union[str, AncestryId] = None
-    name: Optional[str] = None
+    concept_identifier: Optional[str] = None
+    concept_name: Optional[str] = None
     description: Optional[str] = None
     ontology_name: Optional[str] = None
     ontology_version: Optional[str] = None
@@ -1611,8 +1620,11 @@ class Ancestry(Population):
         if not isinstance(self.id, AncestryId):
             self.id = AncestryId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+            self.concept_identifier = str(self.concept_identifier)
+
+        if self.concept_name is not None and not isinstance(self.concept_name, str):
+            self.concept_name = str(self.concept_name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2153,10 +2165,12 @@ class AnatomicalEntity(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.AnatomicalEntity
 
     id: Union[str, AnatomicalEntityId] = None
-    name: Optional[str] = None
+    concept_identifier: Optional[str] = None
+    concept_name: Optional[str] = None
     description: Optional[str] = None
     ontology_name: Optional[str] = None
     ontology_version: Optional[str] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2164,8 +2178,11 @@ class AnatomicalEntity(MaterialEntity):
         if not isinstance(self.id, AnatomicalEntityId):
             self.id = AnatomicalEntityId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+            self.concept_identifier = str(self.concept_identifier)
+
+        if self.concept_name is not None and not isinstance(self.concept_name, str):
+            self.concept_name = str(self.concept_name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2175,6 +2192,9 @@ class AnatomicalEntity(MaterialEntity):
 
         if self.ontology_version is not None and not isinstance(self.ontology_version, str):
             self.ontology_version = str(self.ontology_version)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2378,10 +2398,12 @@ class DataUsePermission(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataUsePermission
 
     id: Union[str, DataUsePermissionId] = None
-    name: Optional[str] = None
+    concept_identifier: Optional[str] = None
+    concept_name: Optional[str] = None
     description: Optional[str] = None
     ontology_name: Optional[str] = None
     ontology_version: Optional[str] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2389,8 +2411,11 @@ class DataUsePermission(InformationContentEntity):
         if not isinstance(self.id, DataUsePermissionId):
             self.id = DataUsePermissionId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+            self.concept_identifier = str(self.concept_identifier)
+
+        if self.concept_name is not None and not isinstance(self.concept_name, str):
+            self.concept_name = str(self.concept_name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2400,6 +2425,9 @@ class DataUsePermission(InformationContentEntity):
 
         if self.ontology_version is not None and not isinstance(self.ontology_version, str):
             self.ontology_version = str(self.ontology_version)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2417,10 +2445,12 @@ class DataUseModifier(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataUseModifier
 
     id: Union[str, DataUseModifierId] = None
-    name: Optional[str] = None
+    concept_identifier: Optional[str] = None
+    concept_name: Optional[str] = None
     description: Optional[str] = None
     ontology_name: Optional[str] = None
     ontology_version: Optional[str] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2428,8 +2458,11 @@ class DataUseModifier(InformationContentEntity):
         if not isinstance(self.id, DataUseModifierId):
             self.id = DataUseModifierId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+            self.concept_identifier = str(self.concept_identifier)
+
+        if self.concept_name is not None and not isinstance(self.concept_name, str):
+            self.concept_name = str(self.concept_name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2439,6 +2472,9 @@ class DataUseModifier(InformationContentEntity):
 
         if self.ontology_version is not None and not isinstance(self.ontology_version, str):
             self.ontology_version = str(self.ontology_version)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2456,10 +2492,12 @@ class OntologyClassMixin(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.OntologyClassMixin
 
     id: Union[str, OntologyClassMixinId] = None
-    name: Optional[str] = None
+    concept_identifier: Optional[str] = None
+    concept_name: Optional[str] = None
     description: Optional[str] = None
     ontology_name: Optional[str] = None
     ontology_version: Optional[str] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2467,8 +2505,11 @@ class OntologyClassMixin(YAMLRoot):
         if not isinstance(self.id, OntologyClassMixinId):
             self.id = OntologyClassMixinId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+            self.concept_identifier = str(self.concept_identifier)
+
+        if self.concept_name is not None and not isinstance(self.concept_name, str):
+            self.concept_name = str(self.concept_name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2478,6 +2519,9 @@ class OntologyClassMixin(YAMLRoot):
 
         if self.ontology_version is not None and not isinstance(self.ontology_version, str):
             self.ontology_version = str(self.ontology_version)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2661,11 +2705,11 @@ class BiologicalSexEnum(EnumDefinitionImpl):
     """
     The biological sex of an Individual as determined by their chromosomes.
     """
-    Female = PermissibleValue(text="Female",
+    female = PermissibleValue(text="female",
                                    description="Female")
-    Male = PermissibleValue(text="Male",
+    male = PermissibleValue(text="male",
                                description="Male")
-    Unknown = PermissibleValue(text="Unknown",
+    unknown = PermissibleValue(text="unknown",
                                      description="unspecified")
 
     _defn = EnumDefinition(
@@ -2677,19 +2721,15 @@ class UserRoleEnum(EnumDefinitionImpl):
     """
     Enum to capture the different roles a GHGA User can have.
     """
+    data_requester = PermissibleValue(text="data_requester",
+                                                   description="Role of a Data Requester where the user requests access to one or more Datasets.")
+    data_steward = PermissibleValue(text="data_steward",
+                                               description="Role of a Data Steward where the user is responsible for approving request from a user for one or more Datasets.")
+
     _defn = EnumDefinition(
         name="UserRoleEnum",
         description="Enum to capture the different roles a GHGA User can have.",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "data requester",
-                PermissibleValue(text="data requester",
-                                 description="Role of a Data Requester where the user requests access to one or more Datasets.") )
-        setattr(cls, "data steward",
-                PermissibleValue(text="data steward",
-                                 description="Role of a Data Steward where the user is responsible for approving request from a user for one or more Datasets.") )
 
 class VitalStatusEnum(EnumDefinitionImpl):
     """
@@ -2777,6 +2817,8 @@ class SubmissionStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture the status of a Submission.
     """
+    in_progress = PermissibleValue(text="in_progress",
+                                             description="Signifies that the Submission is in the process of being submitted.")
     completed = PermissibleValue(text="completed",
                                          description="Signifies that the Submission is completed.")
 
@@ -2784,12 +2826,6 @@ class SubmissionStatusEnum(EnumDefinitionImpl):
         name="SubmissionStatusEnum",
         description="Enum to capture the status of a Submission.",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "in progress",
-                PermissibleValue(text="in progress",
-                                 description="Signifies that the Submission is in the process of being submitted.") )
 
 class ReleaseStatusEnum(EnumDefinitionImpl):
     """
@@ -2809,6 +2845,8 @@ class ExperimentProcessTypeEnum(EnumDefinitionImpl):
     """
     The different types of Experiment Processes.
     """
+    sample_preparation = PermissibleValue(text="sample_preparation",
+                                                           description="An Experiment Process that represents the transformation of a Sample in preparation for an assay. When an Experiment Process is of type 'sample preparation', both the input and output to the Experiment Process is a Sample.")
     assay = PermissibleValue(text="assay",
                                  description="An Experiment Process that represents an assay which performs measurement on a Sample to generate data. When an Experiemnt Process is of type 'assay', the input is a Sample and the output is a File.")
 
@@ -2817,11 +2855,68 @@ class ExperimentProcessTypeEnum(EnumDefinitionImpl):
         description="The different types of Experiment Processes.",
     )
 
+class AgeRangeEnum(EnumDefinitionImpl):
+    """
+    Enum to capture the age range that an Indiviudal belongs to.
+    """
+    _defn = EnumDefinition(
+        name="AgeRangeEnum",
+        description="Enum to capture the age range that an Indiviudal belongs to.",
+    )
+
     @classmethod
     def _addvals(cls):
-        setattr(cls, "sample preparation",
-                PermissibleValue(text="sample preparation",
-                                 description="An Experiment Process that represents the transformation of a Sample in preparation for an assay. When an Experiment Process is of type 'sample preparation', both the input and output to the Experiment Process is a Sample.") )
+        setattr(cls, "0-5",
+                PermissibleValue(text="0-5",
+                                 description="Age between 0 to 5.") )
+        setattr(cls, "6-10",
+                PermissibleValue(text="6-10",
+                                 description="Age between 6 to 10.") )
+        setattr(cls, "11-15",
+                PermissibleValue(text="11-15",
+                                 description="Age between 11 to 15.") )
+        setattr(cls, "16-20",
+                PermissibleValue(text="16-20",
+                                 description="Age between 16 to 20.") )
+        setattr(cls, "21-25",
+                PermissibleValue(text="21-25",
+                                 description="Age between 21 to 25.") )
+        setattr(cls, "26-30",
+                PermissibleValue(text="26-30",
+                                 description="Age between 26 to 30.") )
+        setattr(cls, "31-35",
+                PermissibleValue(text="31-35",
+                                 description="Age between 31 to 35.") )
+        setattr(cls, "36-40",
+                PermissibleValue(text="36-40",
+                                 description="Age between 36 to 40.") )
+        setattr(cls, "41-45",
+                PermissibleValue(text="41-45",
+                                 description="Age between 41 to 45.") )
+        setattr(cls, "46-50",
+                PermissibleValue(text="46-50",
+                                 description="Age between 46 to 50.") )
+        setattr(cls, "51-55",
+                PermissibleValue(text="51-55",
+                                 description="Age between 51 to 55.") )
+        setattr(cls, "56-60",
+                PermissibleValue(text="56-60",
+                                 description="Age between 56 to 60.") )
+        setattr(cls, "61-65",
+                PermissibleValue(text="61-65",
+                                 description="Age between 61 to 65.") )
+        setattr(cls, "66-70",
+                PermissibleValue(text="66-70",
+                                 description="Age between 66 to 70.") )
+        setattr(cls, "71-75",
+                PermissibleValue(text="71-75",
+                                 description="Age between 71 to 75.") )
+        setattr(cls, "76-80",
+                PermissibleValue(text="76-80",
+                                 description="Age between 76 to 80.") )
+        setattr(cls, "80+",
+                PermissibleValue(text="80+",
+                                 description="Age above 80.") )
 
 # Slots
 class slots:
@@ -2999,7 +3094,7 @@ slots.karyotype = Slot(uri=GHGA.karyotype, name="karyotype", curie=GHGA.curie('k
                    model_uri=GHGA.karyotype, domain=None, range=Optional[str])
 
 slots.age = Slot(uri=GHGA.age, name="age", curie=GHGA.curie('age'),
-                   model_uri=GHGA.age, domain=None, range=Optional[int])
+                   model_uri=GHGA.age, domain=None, range=Optional[Union[str, "AgeRangeEnum"]])
 
 slots.tissue = Slot(uri=GHGA.tissue, name="tissue", curie=GHGA.curie('tissue'),
                    model_uri=GHGA.tissue, domain=None, range=Optional[str])
@@ -3186,6 +3281,12 @@ slots.replaces = Slot(uri=GHGA.replaces, name="replaces", curie=GHGA.curie('repl
 
 slots.data_request_form = Slot(uri=GHGA.data_request_form, name="data request form", curie=GHGA.curie('data_request_form'),
                    model_uri=GHGA.data_request_form, domain=None, range=Optional[str])
+
+slots.concept_identifier = Slot(uri=GHGA.concept_identifier, name="concept identifier", curie=GHGA.curie('concept_identifier'),
+                   model_uri=GHGA.concept_identifier, domain=None, range=Optional[str])
+
+slots.concept_name = Slot(uri=GHGA.concept_name, name="concept name", curie=GHGA.curie('concept_name'),
+                   model_uri=GHGA.concept_name, domain=None, range=Optional[str])
 
 slots.ontology_name = Slot(uri=GHGA.ontology_name, name="ontology name", curie=GHGA.curie('ontology_name'),
                    model_uri=GHGA.ontology_name, domain=None, range=Optional[str])
@@ -3431,7 +3532,7 @@ slots.individual_sex = Slot(uri=GHGA.sex, name="individual_sex", curie=GHGA.curi
                    model_uri=GHGA.individual_sex, domain=Individual, range=Union[str, "BiologicalSexEnum"])
 
 slots.individual_age = Slot(uri=GHGA.age, name="individual_age", curie=GHGA.curie('age'),
-                   model_uri=GHGA.individual_age, domain=Individual, range=int)
+                   model_uri=GHGA.individual_age, domain=Individual, range=Union[str, "AgeRangeEnum"])
 
 slots.individual_vital_status = Slot(uri=GHGA.vital_status, name="individual_vital status", curie=GHGA.curie('vital_status'),
                    model_uri=GHGA.individual_vital_status, domain=Individual, range=Union[str, "VitalStatusEnum"])
@@ -3661,8 +3762,8 @@ slots.submission_update_date = Slot(uri=GHGA.update_date, name="submission_updat
 slots.submission_submission_status = Slot(uri=GHGA.submission_status, name="submission_submission status", curie=GHGA.curie('submission_status'),
                    model_uri=GHGA.submission_submission_status, domain=Submission, range=Optional[Union[str, "SubmissionStatusEnum"]])
 
-slots.ontology_class_mixin_id = Slot(uri=GHGA.id, name="ontology class mixin_id", curie=GHGA.curie('id'),
-                   model_uri=GHGA.ontology_class_mixin_id, domain=None, range=Union[str, OntologyClassMixinId])
+slots.ontology_class_mixin_concept_identifier = Slot(uri=GHGA.concept_identifier, name="ontology class mixin_concept identifier", curie=GHGA.curie('concept_identifier'),
+                   model_uri=GHGA.ontology_class_mixin_concept_identifier, domain=None, range=Optional[str])
 
 slots.ontology_class_mixin_name = Slot(uri=GHGA.name, name="ontology class mixin_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.ontology_class_mixin_name, domain=None, range=Optional[str])

@@ -66,10 +66,12 @@ type AnatomicalEntity implements OntologyClassMixin
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 type Ancestry implements OntologyClassMixin
@@ -82,6 +84,8 @@ type Ancestry implements OntologyClassMixin
     schemaType: String
     schemaVersion: String
     name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
@@ -240,10 +244,12 @@ type DataUseModifier implements OntologyClassMixin
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 type DataUsePermission implements OntologyClassMixin
@@ -255,10 +261,12 @@ type DataUsePermission implements OntologyClassMixin
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, ReleaseStatusMixin
@@ -301,10 +309,12 @@ type Disease
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 type DiseaseOrPhenotypicFeature implements OntologyClassMixin
@@ -316,10 +326,12 @@ type DiseaseOrPhenotypicFeature implements OntologyClassMixin
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 type Donor
@@ -335,7 +347,7 @@ type Donor
     additionalName: String
     sex: BiologicalSexEnum!
     karyotype: String
-    age: Integer!
+    age: AgeRangeEnum!
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
     hasAncestry: [Ancestry]
@@ -441,7 +453,7 @@ type Individual implements AccessionMixin, EgaAccessionMixin
     additionalName: String
     sex: BiologicalSexEnum!
     karyotype: String
-    age: Integer!
+    age: AgeRangeEnum!
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
     hasAncestry: [Ancestry]
@@ -553,10 +565,12 @@ type NamedThing implements MetadataMixin
 interface OntologyClassMixin
   {
     id: String!
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 interface Person
@@ -582,10 +596,12 @@ type PhenotypicFeature
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
     ontologyName: String
     ontologyVersion: String
+    name: String
   }
 
 interface PlannedProcess

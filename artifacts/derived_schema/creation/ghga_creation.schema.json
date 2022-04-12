@@ -1,5 +1,29 @@
 {
    "$defs": {
+      "AgeRangeEnum": {
+         "description": "Enum to capture the age range that an Indiviudal belongs to.",
+         "enum": [
+            "0-5",
+            "6-10",
+            "11-15",
+            "16-20",
+            "21-25",
+            "26-30",
+            "31-35",
+            "36-40",
+            "41-45",
+            "46-50",
+            "51-55",
+            "56-60",
+            "61-65",
+            "66-70",
+            "71-75",
+            "76-80",
+            "80+"
+         ],
+         "title": "AgeRangeEnum",
+         "type": "string"
+      },
       "Attribute": {
          "additionalProperties": false,
          "description": "A key/value pair that further characterizes an entity.",
@@ -31,9 +55,9 @@
       "BiologicalSexEnum": {
          "description": "The biological sex of an Individual as determined by their chromosomes.",
          "enum": [
-            "Female",
-            "Male",
-            "Unknown"
+            "female",
+            "male",
+            "unknown"
          ],
          "title": "BiologicalSexEnum",
          "type": "string"
@@ -307,6 +331,14 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
             "description": {
                "description": "The description or definition of an ontology class.",
                "type": "string"
@@ -351,6 +383,14 @@
          "properties": {
             "alias": {
                "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
                "type": "string"
             },
             "description": {
@@ -798,6 +838,14 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
             "description": {
                "description": "The description or definition of an ontology class.",
                "type": "string"
@@ -842,6 +890,14 @@
          "properties": {
             "alias": {
                "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
                "type": "string"
             },
             "description": {
@@ -1048,6 +1104,14 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
             "description": {
                "description": "The description or definition of an ontology class.",
                "type": "string"
@@ -1092,6 +1156,14 @@
          "properties": {
             "alias": {
                "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
                "type": "string"
             },
             "description": {
@@ -1145,8 +1217,8 @@
                "type": "string"
             },
             "age": {
-               "description": "Age of an individual.",
-               "type": "integer"
+               "$ref": "#/$defs/AgeRangeEnum",
+               "description": "Age of an individual."
             },
             "alias": {
                "description": "The alias for an entity.",
@@ -1661,8 +1733,8 @@
                "type": "string"
             },
             "age": {
-               "description": "Age of an individual.",
-               "type": "integer"
+               "$ref": "#/$defs/AgeRangeEnum",
+               "description": "Age of an individual."
             },
             "alias": {
                "description": "The alias for an entity.",
@@ -1969,6 +2041,14 @@
          "properties": {
             "alias": {
                "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
                "type": "string"
             },
             "description": {
@@ -2890,7 +2970,7 @@
       "ExperimentProcessTypeEnum": {
          "description": "The different types of Experiment Processes.",
          "enum": [
-            "sample preparation",
+            "sample_preparation",
             "assay"
          ],
          "title": "ExperimentProcessTypeEnum",
@@ -2945,7 +3025,7 @@
       "SubmissionStatusEnum": {
          "description": "Enum to capture the status of a Submission.",
          "enum": [
-            "in progress",
+            "in_progress",
             "completed"
          ],
          "title": "SubmissionStatusEnum",
@@ -2954,8 +3034,8 @@
       "UserRoleEnum": {
          "description": "Enum to capture the different roles a GHGA User can have.",
          "enum": [
-            "data requester",
-            "data steward"
+            "data_requester",
+            "data_steward"
          ],
          "title": "UserRoleEnum",
          "type": "string"

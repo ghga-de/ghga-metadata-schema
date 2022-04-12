@@ -16,16 +16,16 @@ class CaseControlEnum(str, Enum):
 
 class BiologicalSexEnum(str, Enum):
     
-    Female = "Female"
-    Male = "Male"
-    Unknown = "Unknown"
+    female = "female"
+    male = "male"
+    unknown = "unknown"
     
     
 
 class UserRoleEnum(str, Enum):
     
-    data_requester = "data requester"
-    data_steward = "data steward"
+    data_requester = "data_requester"
+    data_steward = "data_steward"
     
     
 
@@ -72,7 +72,7 @@ class FileFormatEnum(str, Enum):
 
 class SubmissionStatusEnum(str, Enum):
     
-    in_progress = "in progress"
+    in_progress = "in_progress"
     completed = "completed"
     
     
@@ -86,8 +86,30 @@ class ReleaseStatusEnum(str, Enum):
 
 class ExperimentProcessTypeEnum(str, Enum):
     
-    sample_preparation = "sample preparation"
+    sample_preparation = "sample_preparation"
     assay = "assay"
+    
+    
+
+class AgeRangeEnum(str, Enum):
+    
+    number_0_5 = "0-5"
+    number_6_10 = "6-10"
+    number_11_15 = "11-15"
+    number_16_20 = "16-20"
+    number_21_25 = "21-25"
+    number_26_30 = "26-30"
+    number_31_35 = "31-35"
+    number_36_40 = "36-40"
+    number_41_45 = "41-45"
+    number_46_50 = "46-50"
+    number_51_55 = "51-55"
+    number_56_60 = "56-60"
+    number_61_65 = "61-65"
+    number_66_70 = "66-70"
+    number_71_75 = "71-75"
+    number_76_80 = "76-80"
+    number_80PLUS_SIGN = "80+"
     
     
 
@@ -115,7 +137,8 @@ class OntologyClassMixin(BaseModel):
     """
     Mixin for entities that represent an class/term/concept from an ontology.
     """
-    name: Optional[str] = Field(None, description="""The name or label (rdfs:label) of an ontology class.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies this ontology class.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""The description or definition of an ontology class.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -303,7 +326,8 @@ class CreateDiseaseOrPhenotypicFeature(BiologicalQuality):
     """
     Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -330,10 +354,12 @@ class CreateAncestry(Population):
     """
     Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    name: Optional[str] = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
@@ -404,7 +430,8 @@ class CreateAnatomicalEntity(MaterialEntity):
     """
     Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -430,7 +457,8 @@ class CreateDisease(CreateDiseaseOrPhenotypicFeature):
     """
     A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -445,7 +473,8 @@ class CreatePhenotypicFeature(CreateDiseaseOrPhenotypicFeature):
     """
     The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -497,7 +526,8 @@ class CreateDataUsePermission(InformationContentEntity):
     """
     A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -512,7 +542,8 @@ class CreateDataUseModifier(InformationContentEntity):
     """
     Data use modifiers indicate additional conditions for use.
     """
-    name: Optional[str] = Field(None, description="""The name for an entity.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
@@ -618,7 +649,7 @@ class CreateIndividual(Person):
     """
     sex: BiologicalSexEnum = Field(None, description="""The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.""")
     karyotype: Optional[str] = Field(None, description="""The karyotype of an individual if defined.""")
-    age: int = Field(None, description="""Age of an individual.""")
+    age: AgeRangeEnum = Field(None, description="""Age of an individual.""")
     vital_status: VitalStatusEnum = Field(None, description="""Last known Vital Status of an Individual.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
     has_ancestry: Optional[Union[List[CreateAncestry], List[str]]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
@@ -644,7 +675,7 @@ class CreateDonor(CreateIndividual):
     """
     sex: BiologicalSexEnum = Field(None, description="""The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.""")
     karyotype: Optional[str] = Field(None, description="""The karyotype of an individual if defined.""")
-    age: int = Field(None, description="""Age of an individual.""")
+    age: AgeRangeEnum = Field(None, description="""Age of an individual.""")
     vital_status: VitalStatusEnum = Field(None, description="""The state or condition of being living or deceased; also includes the case where the vital status is unknown.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
     has_ancestry: Optional[Union[List[CreateAncestry], List[str]]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
