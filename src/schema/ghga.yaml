@@ -35,10 +35,10 @@ subsets:
       Subset of properties that are considered to be public. 
   essential:
     description: >-
-      Subset of properties that are considered to be essential for the funtionality of GHGA.
+      Subset of properties that are considered to be essential for the functionality of GHGA.
   recommended:
     description: >-
-      Subset of properties that are considered to be required for FAIR data sharing.
+      Subset of properties that are considered to be of importance for FAIR data sharing.
   optional:
     description: >-
       Subset of properties that are considered to be optional.
@@ -222,8 +222,9 @@ classes:
       - accession mixin
       - attribute mixin
     description: >-
-      Any specifically defined piece of work that is undertaken or attempted to meet
-      a single requirement.
+      A high level organization for a collection of investigations based on a
+      research proposal that aims to achieve certain goals.
+
     slot_usage:
       alias:
         required: true
@@ -463,6 +464,8 @@ classes:
     exact_mappings:
       - OBI:0000272
     slot_usage:
+      alias:
+        required: true
       name:
         description: >-
           Name of the protocol (eg: Sample extraction_PCR amplification).
@@ -500,6 +503,8 @@ classes:
       - target regions
       - rnaseq strandedness
     slot_usage:
+      alias:
+        required: true
       description:
         description: >-
           Description about how a sequencing library was prepared (eg: Library construction method).
@@ -546,6 +551,8 @@ classes:
       - cell barcode size
       - sample barcode read
     slot_usage:
+      alias:
+        required: true
       instrument model:
         required: true
       type:
@@ -576,8 +583,13 @@ classes:
       The Workflow entity may be further characterized by its children where each child has fields
       that are relevant to that particular workflow.
     slots:
+      - name
       - has workflow step
     slot_usage:
+      alias:
+        required: true
+      name:
+        required: true
       has workflow step:
         range: workflow step
         multivalued: true
@@ -637,6 +649,8 @@ classes:
       - has disease
       - has phenotypic feature
     slot_usage:
+      alias:
+        required: true
       has individual:
         description: >-
           The Individual entity from which this Biospecimen was derived.
@@ -725,8 +739,6 @@ classes:
           Short textual description of the sample
           (How the sample was collected, sample source,
           protocol followed for processing the sample etc).
-        required: true
-      tissue:
         required: true
       has individual:
         description: >-
@@ -892,6 +904,9 @@ classes:
     - accession mixin
     - ega accession mixin
     aliases: ['file object']
+    description: >-
+      A file is an object that contains information generated from a process, either an
+      Experiment or an Analysis.
     slots:
       - name
       - format
@@ -964,6 +979,7 @@ classes:
         description: >-
           One or more Workflow entities associated with this Analysis.
         range: workflow
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1125,6 +1141,7 @@ classes:
         description: >-
           Data use permission associated with a policy. Typically one or more terms from DUO
           and should be descendants of 'DUO:0000001 data use permission'.
+        required: true
       has data use modifier:
         description: >-
           Modifier for Data use permission associated with a policy.
