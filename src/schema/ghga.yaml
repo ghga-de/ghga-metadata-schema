@@ -142,6 +142,7 @@ classes:
     slots:
       - name
 
+
   material entity:
     is_a: named thing
     abstract: true
@@ -222,7 +223,7 @@ classes:
       - accession mixin
       - attribute mixin
     description: >-
-      A high level organization for a collection of investigations based on a
+      A high level organization for a collection of studies based on a
       research proposal that aims to achieve certain goals.
     slot_usage:
       alias:
@@ -233,12 +234,8 @@ classes:
         required: true
       description:
         description: >-
-          Short textual description of the project
-          (Some information on the protocol, sample used and collected etc)
+          Short textual description of the project.
         required: true
-        exact_mappings:
-          - NCIT:C25365
-          - SIO:000136
       has publication:
         description: >-
           One or more Publication entities associated with this Project.
@@ -442,7 +439,6 @@ classes:
       has output:
         description: >-
           The output of this Experiment Process. Usually a File entity.
-        # TODO: what happens when we want to represent multiple samples via ExperimentProcess?
         range: file
         inlined: true
         inlined_as_list: false
