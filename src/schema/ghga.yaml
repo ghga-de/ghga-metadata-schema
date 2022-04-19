@@ -224,7 +224,6 @@ classes:
     description: >-
       A high level organization for a collection of investigations based on a
       research proposal that aims to achieve certain goals.
-
     slot_usage:
       alias:
         required: true
@@ -1344,6 +1343,7 @@ classes:
       entities that represent a data submission to GHGA.
     slots:
       - id
+      - affiliation
       - has study
       - has project
       - has sample
@@ -1362,6 +1362,9 @@ classes:
       id:
         description: >-
           A internal unique identifier for the Submission.
+      affiliation:
+        description: >-
+          Institution/Center/Data Hub that is providing this submission.
       has study:
         description: >-
           Information about a Study entities associated with this submission.
@@ -2032,7 +2035,7 @@ slots:
 
   affiliation:
     description: >-
-      Institutions associated with this study.
+      The Institution(s) associated with an entity.
     in_subset:
       - essential
       - public
