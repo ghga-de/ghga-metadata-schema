@@ -1265,8 +1265,8 @@ classes:
       - abstract
     slot_usage:
       id:
-        description: >-
-          A PMID or DOI for the Publication.
+        required: true
+      alias:
         required: true
       title:
         description: >-
