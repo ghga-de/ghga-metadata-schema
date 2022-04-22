@@ -233,6 +233,7 @@
             "reference_genome",
             "reference_chromosome",
             "has_input",
+            "has_workflow",
             "has_output",
             "alias"
          ],
@@ -440,7 +441,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "description": {
@@ -825,7 +826,8 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "has_data_use_permission"
          ],
          "title": "CreateDataUseCondition",
          "type": "object"
@@ -1285,6 +1287,20 @@
                },
                "type": "array"
             },
+            "has_file": {
+               "description": "Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateFile"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_parent": {
                "description": "One or more parent for this Individual.",
                "items": {
@@ -1660,7 +1676,7 @@
       },
       "CreateFile": {
          "additionalProperties": false,
-         "description": "",
+         "description": "A file is an object that contains information generated from a process, either an Experiment or an Analysis.",
          "properties": {
             "accession": {
                "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
@@ -1676,6 +1692,10 @@
             },
             "checksum_type": {
                "description": "The type of algorithm used to generate the checksum of a file.",
+               "type": "string"
+            },
+            "drs_uri": {
+               "description": "GA4GH Data Repository Service (DRS) identifier URI for a file.",
                "type": "string"
             },
             "ega_accession": {
@@ -1801,6 +1821,20 @@
                },
                "type": "array"
             },
+            "has_file": {
+               "description": "Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateFile"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_parent": {
                "description": "One or more parent for this Individual.",
                "items": {
@@ -1874,7 +1908,7 @@
          "description": "Information about the library preparation of an Experiment.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "description": {
@@ -1965,7 +1999,6 @@
             }
          },
          "required": [
-            "alias",
             "library_name",
             "library_layout",
             "library_type",
@@ -1974,6 +2007,7 @@
             "library_preparation_kit_retail_name",
             "library_preparation_kit_manufacturer",
             "target_regions",
+            "alias",
             "description"
          ],
          "title": "CreateLibraryPreparationProtocol",
@@ -2091,7 +2125,7 @@
       },
       "CreateProject": {
          "additionalProperties": false,
-         "description": "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.",
+         "description": "A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.",
          "properties": {
             "accession": {
                "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
@@ -2102,7 +2136,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Short textual description of the project (Some information on the protocol, sample used and collected etc)",
+               "description": "Short textual description of the project.",
                "type": "string"
             },
             "has_attribute": {
@@ -2163,7 +2197,7 @@
          "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "description": {
@@ -2224,7 +2258,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "schema_type": {
@@ -2343,17 +2377,13 @@
                "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
                "type": "string"
             },
-            "tissue": {
-               "description": "An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.",
-               "type": "string"
-            },
             "type": {
                "$ref": "#/$defs/CaseControlEnum",
                "description": "Type of sample: 'Case' or 'Control'."
             },
             "vital_status_at_sampling": {
-               "description": "Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').",
-               "type": "string"
+               "$ref": "#/$defs/VitalStatusEnum",
+               "description": "Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased')."
             },
             "xref": {
                "description": "One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.",
@@ -2367,8 +2397,7 @@
             "name",
             "description",
             "has_individual",
-            "alias",
-            "tissue"
+            "alias"
          ],
          "title": "CreateSample",
          "type": "object"
@@ -2378,7 +2407,7 @@
          "description": "Information about the sequencing of a sample.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "cell_barcode_offset": {
@@ -2489,8 +2518,8 @@
             }
          },
          "required": [
-            "alias",
             "instrument_model",
+            "alias",
             "description"
          ],
          "title": "CreateSequencingProtocol",
@@ -2505,7 +2534,7 @@
                "type": "string"
             },
             "affiliation": {
-               "description": "Institutions associated with this study.",
+               "description": "The Institution(s) associated with an entity.",
                "items": {
                   "type": "string"
                },
@@ -2554,6 +2583,20 @@
                   "oneOf": [
                      {
                         "$ref": "#/$defs/CreateExperiment"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "Additional/supplementary files associated with a Study.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateFile"
                      },
                      {
                         "type": "string"
@@ -2633,6 +2676,10 @@
          "additionalProperties": false,
          "description": "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.",
          "properties": {
+            "affiliation": {
+               "description": "Institution/Center/Data Hub that is providing this submission.",
+               "type": "string"
+            },
             "has_analysis": {
                "description": "Information about one or more Analysis entities associated with this submission.",
                "items": {
@@ -2884,7 +2931,7 @@
          "description": "A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "has_workflow_step": {
@@ -2900,6 +2947,10 @@
                   ]
                },
                "type": "array"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
             },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
@@ -2918,6 +2969,7 @@
             }
          },
          "required": [
+            "name",
             "alias"
          ],
          "title": "CreateWorkflow",
@@ -3017,6 +3069,7 @@
             "rna_seq",
             "exome_sequencing",
             "pooled_clone_sequencing",
+            "genome_wide_association_study",
             "other"
          ],
          "title": "StudyTypeEnum",
@@ -3076,6 +3129,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.5.0"
+   "version": "0.6.0"
 }
 

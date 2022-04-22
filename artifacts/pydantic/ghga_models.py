@@ -4,7 +4,7 @@ from typing import List, Optional, Union
 from pydantic import BaseModel, Field
 
 metamodel_version = "None"
-version = "0.5.0"
+version = "0.6.0"
 
 
 class CaseControlEnum(str, Enum):
@@ -52,6 +52,7 @@ class StudyTypeEnum(str, Enum):
     rna_seq = "rna_seq"
     exome_sequencing = "exome_sequencing"
     pooled_clone_sequencing = "pooled_clone_sequencing"
+    genome_wide_association_study = "genome_wide_association_study"
     other = "other"
     
     
@@ -339,9 +340,10 @@ class Workflow(InformationContentEntity):
     """
     A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.
     """
+    name: str = Field(None, description="""The name for an entity.""")
     has_workflow_step: Optional[Union[List[WorkflowStep], List[str]]] = Field(None, description="""The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -442,7 +444,7 @@ class DataUseCondition(InformationContentEntity):
     """
     Data Use Condition represents the use conditions associated with a policy.
     """
-    has_data_use_permission: Optional[Union[DataUsePermission, str]] = Field(None, description="""Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.""")
+    has_data_use_permission: Union[DataUsePermission, str] = Field(None, description="""Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.""")
     has_data_use_modifier: Optional[Union[DataUseModifier, str]] = Field(None, description="""Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     alias: Optional[str] = Field(None, description="""The alias for an entity.""")
@@ -480,8 +482,8 @@ class Publication(InformationContentEntity):
     """
     title: Optional[str] = Field(None, description="""The title for the Publication.""")
     abstract: Optional[str] = Field(None, description="""The study abstract that describes the goals. Can also hold abstract from a publication related to this study.""")
-    id: str = Field(None, description="""A PMID or DOI for the Publication.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Publication.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -585,6 +587,7 @@ class Submission(BaseModel):
     A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
     """
     id: str = Field(None, description="""A internal unique identifier for the Submission.""")
+    affiliation: Optional[str] = Field(None, description="""Institution/Center/Data Hub that is providing this submission.""")
     has_study: Optional[Union[Study, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
     has_project: Optional[Union[Project, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
     has_sample: Optional[Union[List[Sample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
@@ -664,7 +667,7 @@ class Biospecimen(MaterialEntity):
     has_phenotypic_feature: Optional[Union[List[PhenotypicFeature], List[str]]] = Field(None, description="""The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -757,6 +760,7 @@ class Individual(Person):
     has_children: Optional[Union[List[Individual], List[str]]] = Field(None, description="""One or more children for this Individual.""")
     has_disease: Optional[Union[List[Disease], List[str]]] = Field(None, description="""The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.""")
     has_phenotypic_feature: Optional[Union[List[PhenotypicFeature], List[str]]] = Field(None, description="""The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.""")
+    has_file: Optional[Union[List[File], List[str]]] = Field(None, description="""Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     given_name: Optional[str] = Field(None, description="""First name.""")
@@ -786,6 +790,7 @@ class Donor(Individual):
     has_children: Optional[Union[List[Individual], List[str]]] = Field(None, description="""The children of an entity.""")
     has_disease: Optional[Union[List[Disease], List[str]]] = Field(None, description="""Disease concept that the entity is associated with.""")
     has_phenotypic_feature: Optional[Union[List[PhenotypicFeature], List[str]]] = Field(None, description="""Phenotypic feature concept that the entity is associated with.""")
+    has_file: Optional[Union[List[File], List[str]]] = Field(None, description="""The file associated with an entity.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     given_name: Optional[str] = Field(None, description="""First name.""")
@@ -802,7 +807,10 @@ class Donor(Individual):
 
 
 class File(InformationContentEntity):
-    
+    """
+    A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+    """
+    drs_uri: Optional[str] = Field(None, description="""GA4GH Data Repository Service (DRS) identifier URI for a file.""")
     name: str = Field(None, description="""The given filename.""")
     format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
     size: Optional[str] = Field(None, description="""The size of a file in bytes.""")
@@ -829,7 +837,7 @@ class Analysis(DataTransformation):
     reference_chromosome: str = Field(None, description="""The reference chromosome used for this Analysis.""")
     has_input: Union[List[File], List[str]] = Field(None, description="""The input data File entities used in the Analysis.""")
     has_study: Optional[Union[Study, str]] = Field(None, description="""The Study entity associated with this Analysis.""")
-    has_workflow: Optional[Union[List[Workflow], List[str]]] = Field(None, description="""One or more Workflow entities associated with this Analysis.""")
+    has_workflow: Union[List[Workflow], List[str]] = Field(None, description="""One or more Workflow entities associated with this Analysis.""")
     has_analysis_process: Optional[Union[List[AnalysisProcess], List[str]]] = Field(None, description="""One or more Analysis Process entities associated with this Analysis.""")
     has_output: Union[List[File], List[str]] = Field(None, description="""The output data File entities generated by this Analysis.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -899,12 +907,12 @@ class AttributeMixin(BaseModel):
 
 class Project(ResearchActivity):
     """
-    Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.
+    A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.
     """
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)""")
     title: str = Field(None, description="""Comprehensive title for the project.""")
-    description: str = Field(None, description="""Short textual description of the project (Some information on the protocol, sample used and collected etc)""")
+    description: str = Field(None, description="""Short textual description of the project.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
@@ -946,7 +954,7 @@ class Protocol(InformationContentEntity):
     url: Optional[str] = Field(None, description="""URL for the resource that describes this Protocol.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Protocol.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -976,7 +984,7 @@ class LibraryPreparationProtocol(Protocol):
     url: Optional[str] = Field(None, description="""A URL to a resource.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Library Preparation Protocol.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -1011,7 +1019,7 @@ class SequencingProtocol(Protocol):
     url: Optional[str] = Field(None, description="""A URL to a resource.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Sequencing Protocol.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")
-    alias: Optional[str] = Field(None, description="""The alias for an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was created.""")
     update_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the entity was updated.""")
@@ -1027,7 +1035,7 @@ class Sample(MaterialEntity):
     name: str = Field(None, description="""Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).""")
     type: Optional[CaseControlEnum] = Field(None, description="""Type of sample: 'Case' or 'Control'.""")
     description: str = Field(None, description="""Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).""")
-    vital_status_at_sampling: Optional[str] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
+    vital_status_at_sampling: Optional[VitalStatusEnum] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
     has_individual: Union[Individual, str] = Field(None, description="""The Individual from which this Sample was derived from.""")
@@ -1077,10 +1085,11 @@ class Study(Investigation):
     Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
     """
     type: StudyTypeEnum = Field(None, description="""The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.""")
-    affiliation: List[str] = Field(None, description="""Institutions associated with this study.""")
+    affiliation: List[str] = Field(None, description="""The Institution(s) associated with an entity.""")
     has_experiment: Optional[Union[List[Experiment], List[str]]] = Field(None, description="""One or more Experiment entities associated with this Study.""")
     has_analysis: Optional[Union[List[Analysis], List[str]]] = Field(None, description="""One or more Analysis entities associated with this Study.""")
     has_project: Optional[Union[Project, str]] = Field(None, description="""The project associated with this Study.""")
+    has_file: Optional[Union[List[File], List[str]]] = Field(None, description="""Additional/supplementary files associated with a Study.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     has_publication: Optional[Union[List[Publication], List[str]]] = Field(None, description="""One or more Publication entities associated with this Study.""")
