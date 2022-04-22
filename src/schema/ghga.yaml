@@ -2274,6 +2274,7 @@ slots:
   vital status at sampling:
     description: >-
       Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+    range: vital status enumm
     in_subset:
       - recommended
       - public
