@@ -2411,6 +2411,8 @@ enums:
         description: Exome Sequencing
       pooled_clone_sequencing:
         description: Pooled Clone Sequencing
+      genome_wide_association_study:
+        description: Genome-wide Association Study
       other:
         description: Other study
 
