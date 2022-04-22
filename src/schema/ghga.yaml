@@ -266,6 +266,7 @@ classes:
       - has experiment
       - has analysis
       - has project
+      - has file
     slot_usage:
       alias:
         required: true
@@ -319,6 +320,13 @@ classes:
         description: >-
           The release status of a Study.
         range: release status enum
+      has file:
+        description: >-
+          Additional/supplementary files associated with a Study.
+        range: file
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   experiment:
     is_a: investigation
@@ -778,6 +786,7 @@ classes:
       - has children
       - has disease
       - has phenotypic feature
+      - has file
     slot_usage:
       alias:
         required: true
@@ -817,6 +826,14 @@ classes:
           For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen
           was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.
         range: phenotypic feature
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has file:
+        description: >-
+          Additional/supplementary files associated with an Individual.
+          Typically, a phenopacket or pedigree file.
+        range: file
         multivalued: true
         inlined: true
         inlined_as_list: true
