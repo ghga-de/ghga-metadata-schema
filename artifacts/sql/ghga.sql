@@ -7,7 +7,6 @@ CREATE TYPE "age range enum" AS ENUM ('0-5', '6-10', '11-15', '16-20', '21-25', 
 CREATE TYPE "vital status enum" AS ENUM ('alive', 'deceased', 'unknown');
 CREATE TYPE "experiment process type enum" AS ENUM ('sample_preparation', 'assay');
 CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
-CREATE TYPE "case control enum" AS ENUM ('control', 'case');
 CREATE TYPE "study type enum" AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'genome_wide_association_study', 'other');
 CREATE TYPE "submission status enum" AS ENUM ('in_progress', 'completed');
 CREATE TYPE "user role enum" AS ENUM ('data_requester', 'data_steward');
@@ -221,32 +220,6 @@ CREATE TABLE individual (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE library_preparation_protocol (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	name TEXT, 
-	type TEXT, 
-	url TEXT, 
-	library_name TEXT NOT NULL, 
-	library_layout TEXT NOT NULL, 
-	library_type TEXT NOT NULL, 
-	library_selection TEXT NOT NULL, 
-	library_preparation TEXT NOT NULL, 
-	library_preparation_kit_retail_name TEXT NOT NULL, 
-	library_preparation_kit_manufacturer TEXT NOT NULL, 
-	primer TEXT, 
-	end_bias TEXT, 
-	target_regions TEXT NOT NULL, 
-	rnaseq_strandedness TEXT, 
-	alias TEXT NOT NULL, 
-	description TEXT NOT NULL, 
-	has_attribute TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE member (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -294,21 +267,6 @@ CREATE TABLE project (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE protocol (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	name TEXT, 
-	type TEXT, 
-	description TEXT, 
-	url TEXT, 
-	alias TEXT NOT NULL, 
-	has_attribute TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE publication (
 	creation_date TEXT, 
 	update_date TEXT, 
@@ -318,37 +276,6 @@ CREATE TABLE publication (
 	abstract TEXT, 
 	id TEXT NOT NULL, 
 	alias TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE sequencing_protocol (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	name TEXT, 
-	url TEXT, 
-	sequencing_center TEXT, 
-	instrument_model TEXT NOT NULL, 
-	paired_or_single_end TEXT, 
-	sequencing_read_length TEXT, 
-	index_sequence TEXT, 
-	target_coverage TEXT, 
-	lane_number TEXT, 
-	flow_cell_id TEXT, 
-	flow_cell_type TEXT, 
-	umi_barcode_read TEXT, 
-	umi_barcode_size TEXT, 
-	umi_barcode_offset TEXT, 
-	cell_barcode_read TEXT, 
-	cell_barcode_offset TEXT, 
-	cell_barcode_size TEXT, 
-	sample_barcode_read TEXT, 
-	alias TEXT NOT NULL, 
-	type TEXT, 
-	description TEXT NOT NULL, 
-	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -395,6 +322,7 @@ CREATE TABLE biospecimen (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
+	type TEXT, 
 	description TEXT, 
 	isolation TEXT, 
 	storage TEXT, 
@@ -438,6 +366,84 @@ CREATE TABLE family (
 	accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_proband) REFERENCES individual (id)
+);
+
+CREATE TABLE library_preparation_protocol (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
+	type TEXT, 
+	url TEXT, 
+	has_file TEXT, 
+	library_name TEXT NOT NULL, 
+	library_layout TEXT NOT NULL, 
+	library_type TEXT NOT NULL, 
+	library_selection TEXT NOT NULL, 
+	library_preparation TEXT NOT NULL, 
+	library_preparation_kit_retail_name TEXT NOT NULL, 
+	library_preparation_kit_manufacturer TEXT NOT NULL, 
+	primer TEXT, 
+	end_bias TEXT, 
+	target_regions TEXT NOT NULL, 
+	rnaseq_strandedness TEXT, 
+	alias TEXT NOT NULL, 
+	description TEXT NOT NULL, 
+	has_attribute TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_file) REFERENCES file (id)
+);
+
+CREATE TABLE protocol (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
+	type TEXT, 
+	description TEXT, 
+	url TEXT, 
+	has_file TEXT, 
+	alias TEXT NOT NULL, 
+	has_attribute TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_file) REFERENCES file (id)
+);
+
+CREATE TABLE sequencing_protocol (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	name TEXT, 
+	url TEXT, 
+	has_file TEXT, 
+	sequencing_center TEXT, 
+	instrument_model TEXT NOT NULL, 
+	paired_or_single_end TEXT, 
+	sequencing_read_length TEXT, 
+	index_sequence TEXT, 
+	target_coverage TEXT, 
+	lane_number TEXT, 
+	flow_cell_id TEXT, 
+	flow_cell_type TEXT, 
+	umi_barcode_read TEXT, 
+	umi_barcode_size TEXT, 
+	umi_barcode_offset TEXT, 
+	cell_barcode_read TEXT, 
+	cell_barcode_offset TEXT, 
+	cell_barcode_size TEXT, 
+	sample_barcode_read TEXT, 
+	alias TEXT NOT NULL, 
+	type TEXT, 
+	description TEXT NOT NULL, 
+	has_attribute TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_file) REFERENCES file (id)
 );
 
 CREATE TABLE study (
@@ -560,13 +566,6 @@ CREATE TABLE individual_xref (
 	FOREIGN KEY(backref_id) REFERENCES individual (id)
 );
 
-CREATE TABLE library_preparation_protocol_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES library_preparation_protocol (id)
-);
-
 CREATE TABLE member_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -588,25 +587,11 @@ CREATE TABLE project_xref (
 	FOREIGN KEY(backref_id) REFERENCES project (id)
 );
 
-CREATE TABLE protocol_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES protocol (id)
-);
-
 CREATE TABLE publication_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES publication (id)
-);
-
-CREATE TABLE sequencing_protocol_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES sequencing_protocol (id)
 );
 
 CREATE TABLE technology_xref (
@@ -671,6 +656,29 @@ CREATE TABLE data_access_policy (
 	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
 );
 
+CREATE TABLE experiment (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	type TEXT NOT NULL, 
+	biological_replicates TEXT, 
+	technical_replicates TEXT, 
+	experimental_replicates TEXT, 
+	has_study TEXT NOT NULL, 
+	has_sample TEXT NOT NULL, 
+	has_file TEXT, 
+	has_protocol TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
+	title TEXT, 
+	description TEXT NOT NULL, 
+	accession TEXT, 
+	ega_accession TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id)
+);
+
 CREATE TABLE sample (
 	id TEXT NOT NULL, 
 	creation_date TEXT, 
@@ -678,7 +686,7 @@ CREATE TABLE sample (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
-	type "case control enum", 
+	type TEXT, 
 	description TEXT NOT NULL, 
 	vital_status_at_sampling "vital status enum", 
 	isolation TEXT, 
@@ -746,6 +754,27 @@ CREATE TABLE family_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES family (id)
+);
+
+CREATE TABLE library_preparation_protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES library_preparation_protocol (id)
+);
+
+CREATE TABLE protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES protocol (id)
+);
+
+CREATE TABLE sequencing_protocol_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES sequencing_protocol (id)
 );
 
 CREATE TABLE study_xref (
@@ -829,51 +858,6 @@ CREATE TABLE dataset (
 	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
 );
 
-CREATE TABLE experiment (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	type TEXT NOT NULL, 
-	biological_replicates TEXT, 
-	technical_replicates TEXT, 
-	experimental_replicates TEXT, 
-	has_study TEXT NOT NULL, 
-	has_sample TEXT NOT NULL, 
-	has_file TEXT, 
-	has_protocol TEXT NOT NULL, 
-	alias TEXT NOT NULL, 
-	title TEXT, 
-	description TEXT NOT NULL, 
-	accession TEXT, 
-	ega_accession TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_sample) REFERENCES sample (id)
-);
-
-CREATE TABLE analysis_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis (id)
-);
-
-CREATE TABLE data_access_policy_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES data_access_policy (id)
-);
-
-CREATE TABLE sample_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES sample (id)
-);
-
 CREATE TABLE experiment_process (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -893,8 +877,35 @@ CREATE TABLE experiment_process (
 	FOREIGN KEY(has_input) REFERENCES sample (id), 
 	FOREIGN KEY(has_protocol) REFERENCES protocol (id), 
 	FOREIGN KEY(has_agent) REFERENCES agent (id), 
-	FOREIGN KEY(has_output) REFERENCES file (id), 
 	FOREIGN KEY(experiment_id) REFERENCES experiment (id)
+);
+
+CREATE TABLE analysis_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES analysis (id)
+);
+
+CREATE TABLE data_access_policy_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES data_access_policy (id)
+);
+
+CREATE TABLE experiment_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES experiment (id)
+);
+
+CREATE TABLE sample_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES sample (id)
 );
 
 CREATE TABLE analysis_process_xref (
@@ -916,13 +927,6 @@ CREATE TABLE dataset_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES dataset (id)
-);
-
-CREATE TABLE experiment_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES experiment (id)
 );
 
 CREATE TABLE experiment_process_xref (

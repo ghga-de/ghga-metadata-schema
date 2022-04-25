@@ -124,6 +124,7 @@ type Biospecimen implements AccessionMixin
     schemaType: String
     schemaVersion: String
     name: String
+    type: String
     description: String
     isolation: String
     storage: String
@@ -379,7 +380,7 @@ type Experiment implements AccessionMixin, EgaAccessionMixin
     technicalReplicates: String
     experimentalReplicates: String
     hasStudy: Study!
-    hasSample: Sample!
+    hasSample: [Sample]!
     hasFile: [File]
     hasProtocol: [Protocol]!
     hasExperimentProcess: [ExperimentProcess]
@@ -404,7 +405,7 @@ type ExperimentProcess implements AttributeMixin
     hasInput: Sample
     hasProtocol: Protocol
     hasAgent: Agent
-    hasOutput: File
+    hasOutput: [File]
     hasAttribute: [Attribute]
   }
 
@@ -503,6 +504,7 @@ type LibraryPreparationProtocol
     name: String
     type: String
     url: String
+    hasFile: File
     xref: [String]
     libraryName: String!
     libraryLayout: String!
@@ -657,6 +659,7 @@ type Protocol implements AttributeMixin
     type: String
     description: String
     url: String
+    hasFile: File
     alias: String!
     xref: [String]
     hasAttribute: [Attribute]
@@ -707,7 +710,7 @@ type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     schemaType: String
     schemaVersion: String
     name: String!
-    type: CaseControlEnum
+    type: String
     description: String!
     vitalStatusAtSampling: VitalStatusEnum
     isolation: String
@@ -731,6 +734,7 @@ type SequencingProtocol
     schemaVersion: String
     name: String
     url: String
+    hasFile: File
     xref: [String]
     sequencingCenter: String
     instrumentModel: String!

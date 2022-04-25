@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-22T11:54:17
+# Generation date: 2022-04-25T09:21:49
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -509,7 +509,7 @@ class CreateExperiment(Investigation):
 
     type: str = None
     has_study: Union[dict, CreateStudy] = None
-    has_sample: Union[dict, "CreateSample"] = None
+    has_sample: Union[Union[dict, "CreateSample"], List[Union[dict, "CreateSample"]]] = None
     has_protocol: Union[Union[dict, "CreateProtocol"], List[Union[dict, "CreateProtocol"]]] = None
     alias: str = None
     description: str = None
@@ -535,8 +535,9 @@ class CreateExperiment(Investigation):
 
         if self._is_empty(self.has_sample):
             self.MissingRequiredField("has_sample")
-        if not isinstance(self.has_sample, CreateSample):
-            self.has_sample = CreateSample(**as_dict(self.has_sample))
+        if not isinstance(self.has_sample, list):
+            self.has_sample = [self.has_sample] if self.has_sample is not None else []
+        self.has_sample = [v if isinstance(v, CreateSample) else CreateSample(**as_dict(v)) for v in self.has_sample]
 
         if self._is_empty(self.has_protocol):
             self.MissingRequiredField("has_protocol")
@@ -602,7 +603,7 @@ class CreateExperimentProcess(PlannedProcess):
     has_input: Optional[Union[dict, "CreateSample"]] = None
     has_protocol: Optional[Union[dict, "CreateProtocol"]] = None
     has_agent: Optional[Union[dict, CreateAgent]] = None
-    has_output: Optional[Union[dict, "CreateFile"]] = None
+    has_output: Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -621,8 +622,7 @@ class CreateExperimentProcess(PlannedProcess):
         if self.has_agent is not None and not isinstance(self.has_agent, CreateAgent):
             self.has_agent = CreateAgent(**as_dict(self.has_agent))
 
-        if self.has_output is not None and not isinstance(self.has_output, CreateFile):
-            self.has_output = CreateFile(**as_dict(self.has_output))
+        self._normalize_inlined_as_dict(slot_name="has_output", slot_type=CreateFile, key_name="name", keyed=False)
 
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
@@ -650,6 +650,7 @@ class CreateProtocol(InformationContentEntity):
     type: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
+    has_file: Optional[Union[dict, "CreateFile"]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -670,6 +671,9 @@ class CreateProtocol(InformationContentEntity):
 
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
+
+        if self.has_file is not None and not isinstance(self.has_file, CreateFile):
+            self.has_file = CreateFile(**as_dict(self.has_file))
 
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
@@ -999,6 +1003,7 @@ class CreateBiospecimen(MaterialEntity):
 
     alias: str = None
     name: Optional[str] = None
+    type: Optional[str] = None
     description: Optional[str] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
@@ -1016,6 +1021,9 @@ class CreateBiospecimen(MaterialEntity):
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1108,7 +1116,7 @@ class CreateSample(MaterialEntity):
     description: str = None
     has_individual: Union[dict, "CreateIndividual"] = None
     alias: str = None
-    type: Optional[Union[str, "CaseControlEnum"]] = None
+    type: Optional[str] = None
     vital_status_at_sampling: Optional[Union[str, "VitalStatusEnum"]] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
@@ -1140,8 +1148,8 @@ class CreateSample(MaterialEntity):
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
 
-        if self.type is not None and not isinstance(self.type, CaseControlEnum):
-            self.type = CaseControlEnum(self.type)
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if self.vital_status_at_sampling is not None and not isinstance(self.vital_status_at_sampling, VitalStatusEnum):
             self.vital_status_at_sampling = VitalStatusEnum(self.vital_status_at_sampling)
@@ -2394,20 +2402,6 @@ class ReleaseStatusMixin(YAMLRoot):
 
 
 # Enumerations
-class CaseControlEnum(EnumDefinitionImpl):
-    """
-    Enum to capture whether a Sample is to be considered as Case or Control.
-    """
-    control = PermissibleValue(text="control",
-                                     description="The Sample is to be treated as Control")
-    case = PermissibleValue(text="case",
-                               description="The Sample is to be treated as Case")
-
-    _defn = EnumDefinition(
-        name="CaseControlEnum",
-        description="Enum to capture whether a Sample is to be considered as Case or Control.",
-    )
-
 class BiologicalSexEnum(EnumDefinitionImpl):
     """
     The biological sex of an Individual as determined by their chromosomes.
@@ -3082,7 +3076,7 @@ slots.create_experiment_has_study = Slot(uri=GHGA.has_study, name="create experi
                    model_uri=GHGA.create_experiment_has_study, domain=CreateExperiment, range=Union[dict, CreateStudy])
 
 slots.create_experiment_has_sample = Slot(uri=GHGA.has_sample, name="create experiment_has sample", curie=GHGA.curie('has_sample'),
-                   model_uri=GHGA.create_experiment_has_sample, domain=CreateExperiment, range=Union[dict, "CreateSample"])
+                   model_uri=GHGA.create_experiment_has_sample, domain=CreateExperiment, range=Union[Union[dict, "CreateSample"], List[Union[dict, "CreateSample"]]])
 
 slots.create_experiment_has_file = Slot(uri=GHGA.has_file, name="create experiment_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.create_experiment_has_file, domain=CreateExperiment, range=Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]])
@@ -3109,7 +3103,7 @@ slots.create_experiment_process_has_agent = Slot(uri=GHGA.has_agent, name="creat
                    model_uri=GHGA.create_experiment_process_has_agent, domain=CreateExperimentProcess, range=Optional[Union[dict, CreateAgent]])
 
 slots.create_experiment_process_has_output = Slot(uri=GHGA.has_output, name="create experiment process_has output", curie=GHGA.curie('has_output'),
-                   model_uri=GHGA.create_experiment_process_has_output, domain=CreateExperimentProcess, range=Optional[Union[dict, "CreateFile"]])
+                   model_uri=GHGA.create_experiment_process_has_output, domain=CreateExperimentProcess, range=Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]])
 
 slots.create_protocol_alias = Slot(uri=GHGA.alias, name="create protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_protocol_alias, domain=CreateProtocol, range=str)
@@ -3125,6 +3119,9 @@ slots.create_protocol_description = Slot(uri=GHGA.description, name="create prot
 
 slots.create_protocol_url = Slot(uri=GHGA.url, name="create protocol_url", curie=GHGA.curie('url'),
                    model_uri=GHGA.create_protocol_url, domain=CreateProtocol, range=Optional[str])
+
+slots.create_protocol_has_file = Slot(uri=GHGA.has_file, name="create protocol_has file", curie=GHGA.curie('has_file'),
+                   model_uri=GHGA.create_protocol_has_file, domain=CreateProtocol, range=Optional[Union[dict, "CreateFile"]])
 
 slots.create_protocol_xref = Slot(uri=GHGA.xref, name="create protocol_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.create_protocol_xref, domain=CreateProtocol, range=Optional[Union[str, List[str]]])
@@ -3201,6 +3198,9 @@ slots.workflow_parameter_value = Slot(uri=GHGA.value, name="workflow parameter_v
 slots.create_biospecimen_alias = Slot(uri=GHGA.alias, name="create biospecimen_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_biospecimen_alias, domain=CreateBiospecimen, range=str)
 
+slots.create_biospecimen_type = Slot(uri=GHGA.type, name="create biospecimen_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.create_biospecimen_type, domain=CreateBiospecimen, range=Optional[str])
+
 slots.create_biospecimen_has_individual = Slot(uri=GHGA.has_individual, name="create biospecimen_has individual", curie=GHGA.curie('has_individual'),
                    model_uri=GHGA.create_biospecimen_has_individual, domain=CreateBiospecimen, range=Optional[Union[dict, "CreateIndividual"]])
 
@@ -3220,7 +3220,7 @@ slots.create_sample_name = Slot(uri=GHGA.name, name="create sample_name", curie=
                    model_uri=GHGA.create_sample_name, domain=CreateSample, range=str)
 
 slots.create_sample_type = Slot(uri=GHGA.type, name="create sample_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.create_sample_type, domain=CreateSample, range=Optional[Union[str, "CaseControlEnum"]])
+                   model_uri=GHGA.create_sample_type, domain=CreateSample, range=Optional[str])
 
 slots.create_sample_description = Slot(uri=GHGA.description, name="create sample_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.create_sample_description, domain=CreateSample, range=str)

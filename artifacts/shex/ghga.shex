@@ -150,6 +150,7 @@ linkml:Nodeidentifier NONLITERAL
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
           <name> @linkml:String ? ;
+          <type> @linkml:String ? ;
           <description> @linkml:String ? ;
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
@@ -381,7 +382,7 @@ linkml:Nodeidentifier NONLITERAL
           <technical_replicates> @linkml:String ? ;
           <experimental_replicates> @linkml:String ? ;
           <has_study> @<Study> ;
-          <has_sample> @<Sample> ;
+          <has_sample> @<Sample> + ;
           <has_file> @<File> * ;
           <has_protocol> @<Protocol> + ;
           <has_experiment_process> @<ExperimentProcess> * ;
@@ -405,7 +406,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_input> @<Sample> ? ;
           <has_protocol> @<Protocol> ? ;
           <has_agent> @<Agent> ? ;
-          <has_output> @<File> ? ;
+          <has_output> @<File> * ;
           <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <ExperimentProcess> ]
@@ -661,6 +662,7 @@ linkml:Nodeidentifier NONLITERAL
              <type> @linkml:String ? ;
              <description> @linkml:String ? ;
              <url> @linkml:String ? ;
+             <has_file> @<File> ? ;
              <alias> @linkml:String ;
              <xref> @linkml:String * ;
              <has_attribute> @<Attribute> *
@@ -718,7 +720,7 @@ linkml:Nodeidentifier NONLITERAL
           &<AttributeMixin_tes> ;
           rdf:type [ <AttributeMixin> ] ? ;
           <name> @linkml:String ;
-          <type> @<CaseControlEnum> ? ;
+          <type> @linkml:String ? ;
           <description> @linkml:String ;
           <vital_status_at_sampling> @<VitalStatusEnum> ? ;
           <isolation> @linkml:String ? ;

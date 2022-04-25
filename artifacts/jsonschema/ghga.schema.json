@@ -584,6 +584,10 @@
                "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
                "type": "string"
             },
+            "type": {
+               "description": "The type of Biospecimen.",
+               "type": "string"
+            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -602,15 +606,6 @@
          ],
          "title": "Biospecimen",
          "type": "object"
-      },
-      "CaseControlEnum": {
-         "description": "Enum to capture whether a Sample is to be considered as Case or Control.",
-         "enum": [
-            "control",
-            "case"
-         ],
-         "title": "CaseControlEnum",
-         "type": "string"
       },
       "CellLine": {
          "additionalProperties": false,
@@ -1663,14 +1658,17 @@
             },
             "has_sample": {
                "description": "The Sample entity associated with this Experiment.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/Sample"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Sample"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_study": {
                "description": "The Study entity associated with this Experiment.",
@@ -1777,15 +1775,10 @@
                ]
             },
             "has_output": {
-               "description": "The output of this Experiment Process. Usually a File entity.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/File"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "additionalProperties": {
+                  "$ref": "#/$defs/File__identifier_optional"
+               },
+               "description": "The output of this Experiment Process. Usually a File entity."
             },
             "has_protocol": {
                "description": "The Protocol entity used by this Experiment Process.",
@@ -2027,6 +2020,84 @@
          "title": "FileFormatEnum",
          "type": "string"
       },
+      "File__identifier_optional": {
+         "additionalProperties": false,
+         "description": "A file is an object that contains information generated from a process, either an Experiment or an Analysis.",
+         "properties": {
+            "accession": {
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias for an entity.",
+               "type": "string"
+            },
+            "checksum": {
+               "description": "A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.",
+               "type": "string"
+            },
+            "checksum_type": {
+               "description": "The type of algorithm used to generate the checksum of a file.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "drs_uri": {
+               "description": "GA4GH Data Repository Service (DRS) identifier URI for a file.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
+               "type": "string"
+            },
+            "format": {
+               "$ref": "#/$defs/FileFormatEnum",
+               "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The given filename.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "size": {
+               "description": "The size of a file in bytes.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "name",
+            "format",
+            "checksum",
+            "checksum_type",
+            "alias"
+         ],
+         "title": "File",
+         "type": "object"
+      },
       "Individual": {
          "additionalProperties": false,
          "description": "An Individual is a Person who is participating in a Study.",
@@ -2233,6 +2304,10 @@
                   ]
                },
                "type": "array"
+            },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -2569,6 +2644,10 @@
                },
                "type": "array"
             },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "type": "string"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
@@ -2771,8 +2850,8 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/CaseControlEnum",
-               "description": "Type of sample: 'Case' or 'Control'."
+               "description": "The type of sample.",
+               "type": "string"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -2846,6 +2925,10 @@
                   ]
                },
                "type": "array"
+            },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",

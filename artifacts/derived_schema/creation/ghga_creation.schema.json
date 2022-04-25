@@ -62,15 +62,6 @@
          "title": "BiologicalSexEnum",
          "type": "string"
       },
-      "CaseControlEnum": {
-         "description": "Enum to capture whether a Sample is to be considered as Case or Control.",
-         "enum": [
-            "control",
-            "case"
-         ],
-         "title": "CaseControlEnum",
-         "type": "string"
-      },
       "CreateAgent": {
          "additionalProperties": false,
          "description": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity.",
@@ -522,6 +513,10 @@
             },
             "storage": {
                "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
+               "type": "string"
+            },
+            "type": {
+               "description": "The type of Biospecimen.",
                "type": "string"
             },
             "xref": {
@@ -1447,14 +1442,17 @@
             },
             "has_sample": {
                "description": "The Sample entity associated with this Experiment.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/CreateSample"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateSample"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_study": {
                "description": "The Study entity associated with this Experiment.",
@@ -1549,14 +1547,17 @@
             },
             "has_output": {
                "description": "The output of this Experiment Process. Usually a File entity.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/CreateFile"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateFile"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_protocol": {
                "description": "The Protocol entity used by this Experiment Process.",
@@ -1930,6 +1931,17 @@
                },
                "type": "array"
             },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/CreateFile"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
             "library_layout": {
                "description": "Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode",
                "type": "string"
@@ -2215,6 +2227,17 @@
                },
                "type": "array"
             },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/CreateFile"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
             "name": {
                "description": "Name of the protocol (eg: Sample extraction_PCR amplification).",
                "type": "string"
@@ -2378,8 +2401,8 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/CaseControlEnum",
-               "description": "Type of sample: 'Case' or 'Control'."
+               "description": "The type of sample.",
+               "type": "string"
             },
             "vital_status_at_sampling": {
                "$ref": "#/$defs/VitalStatusEnum",
@@ -2444,6 +2467,17 @@
                   ]
                },
                "type": "array"
+            },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/CreateFile"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
             },
             "index_sequence": {
                "description": "A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.",

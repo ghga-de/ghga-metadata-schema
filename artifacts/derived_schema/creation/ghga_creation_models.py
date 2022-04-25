@@ -7,13 +7,6 @@ metamodel_version = "None"
 version = "0.6.0"
 
 
-class CaseControlEnum(str, Enum):
-    
-    control = "control"
-    case = "case"
-    
-    
-
 class BiologicalSexEnum(str, Enum):
     
     female = "female"
@@ -570,6 +563,7 @@ class CreateBiospecimen(MaterialEntity):
     A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
     """
     name: Optional[str] = Field(None, description="""The name for an entity.""")
+    type: Optional[str] = Field(None, description="""The type of Biospecimen.""")
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
@@ -631,7 +625,7 @@ class CreateExperiment(Investigation):
     technical_replicates: Optional[str] = Field(None, description="""A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.""")
     experimental_replicates: Optional[str] = Field(None, description="""The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.""")
     has_study: Union[CreateStudy, str] = Field(None, description="""The Study entity associated with this Experiment.""")
-    has_sample: Union[CreateSample, str] = Field(None, description="""The Sample entity associated with this Experiment.""")
+    has_sample: Union[List[CreateSample], List[str]] = Field(None, description="""The Sample entity associated with this Experiment.""")
     has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""One or more Files entities that are generated as output of this Experiment.""")
     has_protocol: Union[List[CreateProtocol], List[str]] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
     has_experiment_process: Optional[Union[List[CreateExperimentProcess], List[str]]] = Field(None, description="""One or more Experiment Processes entities associated with this Experiment.""")
@@ -811,7 +805,7 @@ class CreateExperimentProcess(PlannedProcess):
     has_input: Optional[Union[CreateSample, str]] = Field(None, description="""The input to the Experiment Process. Usually a Sample entity.""")
     has_protocol: Optional[Union[CreateProtocol, str]] = Field(None, description="""The Protocol entity used by this Experiment Process.""")
     has_agent: Optional[Union[CreateAgent, str]] = Field(None, description="""The Agent - a software, institution, or human - that is executing or responsible for executing the Experiment Process.""")
-    has_output: Optional[Union[CreateFile, str]] = Field(None, description="""The output of this Experiment Process. Usually a File entity.""")
+    has_output: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""The output of this Experiment Process. Usually a File entity.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
@@ -828,6 +822,7 @@ class CreateProtocol(InformationContentEntity):
     type: Optional[str] = Field(None, description="""Type of the protocol (eg: Target enrichment).""")
     description: Optional[str] = Field(None, description="""Detailed description of the Protocol.""")
     url: Optional[str] = Field(None, description="""URL for the resource that describes this Protocol.""")
+    has_file: Optional[Union[CreateFile, str]] = Field(None, description="""A document that describes the Protocol.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Protocol.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )""")
@@ -855,6 +850,7 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     type: Optional[str] = Field(None, description="""The type of an entity.""")
     description: str = Field(None, description="""Description about how a sequencing library was prepared (eg: Library construction method).""")
     url: Optional[str] = Field(None, description="""A URL to a resource.""")
+    has_file: Optional[Union[CreateFile, str]] = Field(None, description="""The file associated with an entity.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Library Preparation Protocol.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
@@ -887,6 +883,7 @@ class CreateSequencingProtocol(CreateProtocol):
     type: Optional[str] = Field(None, description="""Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).""")
     description: str = Field(None, description="""Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).""")
     url: Optional[str] = Field(None, description="""A URL to a resource.""")
+    has_file: Optional[Union[CreateFile, str]] = Field(None, description="""The file associated with an entity.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Sequencing Protocol.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
@@ -900,7 +897,7 @@ class CreateSample(MaterialEntity):
     A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
     """
     name: str = Field(None, description="""Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).""")
-    type: Optional[CaseControlEnum] = Field(None, description="""Type of sample: 'Case' or 'Control'.""")
+    type: Optional[str] = Field(None, description="""The type of sample.""")
     description: str = Field(None, description="""Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).""")
     vital_status_at_sampling: Optional[VitalStatusEnum] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
