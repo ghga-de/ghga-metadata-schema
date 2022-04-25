@@ -15,6 +15,7 @@ prefixes:
   EFO: http://www.ebi.ac.uk/efo/EFO_
   COB: http://purl.obolibrary.org/obo/COB_
   GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
+  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
   SNOMEDCT: http://purl.bioontology.org/ontology/SNOMEDCT/
 
 default_prefix: GHGA
@@ -263,8 +264,6 @@ classes:
     slots:
       - type
       - affiliation
-      - has experiment
-      - has analysis
       - has project
       - has file
     slot_usage:
@@ -293,20 +292,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has experiment:
-        description: >-
-          One or more Experiment entities associated with this Study.
-        range: experiment
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has analysis:
-        description: >-
-          One or more Analysis entities associated with this Study.
-        range: analysis
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
       has project:
         description: The project associated with this Study.
         range: project
@@ -331,6 +316,7 @@ classes:
   experiment:
     is_a: investigation
     mixins:
+      - attribute mixin
       - accession mixin
       - ega accession mixin
     description: >-
@@ -358,11 +344,9 @@ classes:
       description:
         description: >-
           A detailed description of the Experiment.
-        required: true
       type:
         description: >-
           The type of Experiment.
-        required: true
       has study:
         description: >-
           The Study entity associated with this Experiment.
@@ -531,8 +515,6 @@ classes:
       library preparation kit retail name:
         required: true
       library preparation kit manufacturer:
-        required: true
-      target regions:
         required: true
       has attribute:
         description: >-
@@ -742,7 +724,6 @@ classes:
       name:
         description: >-
           Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
-        required: true
       type:
         description: >-
           The type of sample.
@@ -751,12 +732,10 @@ classes:
           Short textual description of the sample
           (How the sample was collected, sample source,
           protocol followed for processing the sample etc).
-        required: true
       has individual:
         description: >-
           The Individual from which this Sample was derived from.
         range: individual
-        required: true
         inlined: true
         inlined_as_list: false
       xref:
@@ -924,6 +903,7 @@ classes:
     mixins:
     - accession mixin
     - ega accession mixin
+    - attribute mixin
     aliases: ['file object']
     description: >-
       A file is an object that contains information generated from a process, either an
@@ -975,7 +955,6 @@ classes:
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
-        required: true
       description:
         description: >-
           Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
@@ -1069,6 +1048,7 @@ classes:
       - ega accession mixin
       - publication mixin
       - release status mixin
+      - attribute mixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
       and is tied to a Data Access Policy.
@@ -1092,8 +1072,6 @@ classes:
           A title for the submitted Dataset.
         required: true
       description:
-        required: true
-      type:
         required: true
       has study:
         description: >-
@@ -1172,6 +1150,7 @@ classes:
   data access policy:
     is_a: information content entity
     mixins:
+      - attribute mixin
       - accession mixin
       - ega accession mixin
     description: >-
@@ -1194,7 +1173,6 @@ classes:
       description:
         description: >-
           A short description for the Data Access Policy.
-        required: true
       policy text:
         description: >-
           The terms of data use and policy verbiage should be captured here.
@@ -1224,6 +1202,7 @@ classes:
   data access committee:
     is_a: committee
     mixins:
+      - attribute mixin
       - accession mixin
       - ega accession mixin
     description: >-
@@ -1249,7 +1228,6 @@ classes:
         description: >-
           The main contact for the Data Access Committee.
         range: member
-        required: true
         inlined: true
         inlined_as_list: false
       has member:
@@ -1972,6 +1950,7 @@ slots:
 
   size:
     description: The size of a file in bytes.
+    range: integer
 
   checksum:
     description: >-
@@ -2448,7 +2427,17 @@ enums:
           SRF is a generic format for DNA sequence data.
       vcf:
         description: >-
-          vcf File for storing gene sequence variations.
+          VCF file for storing gene sequence variations.
+      txt:
+        description: >-
+          Text file.
+      pxf:
+        description: >-
+          Phenopacket file.
+      other:
+        description: >-
+          Other format.
+
 
   submission status enum:
     description: >-
@@ -2523,3 +2512,5 @@ enums:
         description: Age between 76 to 80.
       80+:
         description: Age above 80.
+      unknown:
+        description: Age range unknown.
