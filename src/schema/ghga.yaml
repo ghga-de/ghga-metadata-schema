@@ -745,8 +745,7 @@ classes:
         required: true
       type:
         description: >-
-          Type of sample: 'Case' or 'Control'.
-        range: case control enum
+          The type of sample.
       description:
         description: >-
           Short textual description of the sample
@@ -2350,14 +2349,6 @@ slots:
       The version of the ontology from which this ontology class was chosen.
 
 enums:
-  case control enum:
-    description: >-
-      Enum to capture whether a Sample is to be considered as Case or Control.
-    permissible_values:
-      control:
-        description: The Sample is to be treated as Control
-      case:
-        description: The Sample is to be treated as Case
 
   biological sex enum:
     description: >-
