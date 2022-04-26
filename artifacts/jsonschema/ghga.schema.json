@@ -19,7 +19,8 @@
             "66-70",
             "71-75",
             "76-80",
-            "80+"
+            "80+",
+            "unknown"
          ],
          "title": "AgeRangeEnum",
          "type": "string"
@@ -207,7 +208,6 @@
          },
          "required": [
             "id",
-            "type",
             "reference_genome",
             "reference_chromosome",
             "has_input",
@@ -740,6 +740,17 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_member": {
                "description": "All the members that are part of this Data Access Committee.",
                "items": {
@@ -796,7 +807,6 @@
          "required": [
             "id",
             "name",
-            "main_contact",
             "alias"
          ],
          "title": "DataAccessCommittee",
@@ -829,6 +839,17 @@
             "ega_accession": {
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_data_access_committee": {
                "description": "The Data Access Committee linked to this policy.",
@@ -890,7 +911,6 @@
          },
          "required": [
             "id",
-            "description",
             "policy_text",
             "has_data_access_committee",
             "alias"
@@ -1133,6 +1153,17 @@
                },
                "type": "array"
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_data_access_policy": {
                "description": "The Data Access Policy that applies to this Dataset.",
                "oneOf": [
@@ -1258,7 +1289,6 @@
             "id",
             "title",
             "description",
-            "type",
             "has_study",
             "has_sample",
             "has_file",
@@ -1608,6 +1638,17 @@
                "description": "The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.",
                "type": "string"
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_experiment_process": {
                "description": "One or more Experiment Processes entities associated with this Experiment.",
                "items": {
@@ -1719,7 +1760,6 @@
          },
          "required": [
             "id",
-            "type",
             "has_study",
             "has_sample",
             "has_protocol",
@@ -1961,6 +2001,17 @@
                "$ref": "#/$defs/FileFormatEnum",
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
@@ -1979,7 +2030,7 @@
             },
             "size": {
                "description": "The size of a file in bytes.",
-               "type": "string"
+               "type": "integer"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -2015,7 +2066,10 @@
             "pacbio_hdf5",
             "sff",
             "srf",
-            "vcf"
+            "vcf",
+            "txt",
+            "pxf",
+            "other"
          ],
          "title": "FileFormatEnum",
          "type": "string"
@@ -2056,6 +2110,17 @@
                "$ref": "#/$defs/FileFormatEnum",
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
                "type": "string"
@@ -2074,7 +2139,7 @@
             },
             "size": {
                "description": "The size of a file in bytes.",
-               "type": "string"
+               "type": "integer"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -2394,7 +2459,6 @@
             "library_preparation",
             "library_preparation_kit_retail_name",
             "library_preparation_kit_manufacturer",
-            "target_regions",
             "alias",
             "description"
          ],
@@ -2873,7 +2937,6 @@
             "id",
             "name",
             "description",
-            "has_individual",
             "alias"
          ],
          "title": "Sample",
@@ -3050,40 +3113,12 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
-            "has_analysis": {
-               "description": "One or more Analysis entities associated with this Study.",
-               "items": {
-                  "oneOf": [
-                     {
-                        "$ref": "#/$defs/Analysis"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
-            },
             "has_attribute": {
                "description": "Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)",
                "items": {
                   "oneOf": [
                      {
                         "$ref": "#/$defs/Attribute"
-                     }
-                  ]
-               },
-               "type": "array"
-            },
-            "has_experiment": {
-               "description": "One or more Experiment entities associated with this Study.",
-               "items": {
-                  "oneOf": [
-                     {
-                        "$ref": "#/$defs/Experiment"
-                     },
-                     {
-                        "type": "string"
                      }
                   ]
                },

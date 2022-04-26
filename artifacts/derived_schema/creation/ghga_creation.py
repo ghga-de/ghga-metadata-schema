@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-25T09:21:49
+# Generation date: 2022-04-26T10:28:08
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -22,7 +22,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import String
+from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
 version = "0.6.0"
@@ -37,7 +37,7 @@ DUO = CurieNamespace('DUO', 'http://purl.obolibrary.org/obo/DUO_')
 EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/EFO_')
 GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
 GHGA = CurieNamespace('GHGA', 'https://w3id.org/GHGA/')
-HANCESTRO = CurieNamespace('HANCESTRO', 'http://example.org/UNKNOWN/HANCESTRO/')
+HANCESTRO = CurieNamespace('HANCESTRO', 'http://purl.obolibrary.org/obo/HANCESTRO_')
 HP = CurieNamespace('HP', 'http://purl.obolibrary.org/obo/HP_')
 IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
 MONDO = CurieNamespace('MONDO', 'http://purl.obolibrary.org/obo/MONDO_')
@@ -418,8 +418,6 @@ class CreateStudy(Investigation):
     alias: str = None
     title: str = None
     description: str = None
-    has_experiment: Optional[Union[Union[dict, "CreateExperiment"], List[Union[dict, "CreateExperiment"]]]] = empty_list()
-    has_analysis: Optional[Union[Union[dict, "CreateAnalysis"], List[Union[dict, "CreateAnalysis"]]]] = empty_list()
     has_project: Optional[Union[dict, CreateProject]] = None
     has_file: Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]] = empty_list()
     has_publication: Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]] = empty_list()
@@ -455,14 +453,6 @@ class CreateStudy(Investigation):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if not isinstance(self.has_experiment, list):
-            self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
-        self.has_experiment = [v if isinstance(v, CreateExperiment) else CreateExperiment(**as_dict(v)) for v in self.has_experiment]
-
-        if not isinstance(self.has_analysis, list):
-            self.has_analysis = [self.has_analysis] if self.has_analysis is not None else []
-        self.has_analysis = [v if isinstance(v, CreateAnalysis) else CreateAnalysis(**as_dict(v)) for v in self.has_analysis]
 
         if self.has_project is not None and not isinstance(self.has_project, CreateProject):
             self.has_project = CreateProject(**as_dict(self.has_project))
@@ -507,27 +497,23 @@ class CreateExperiment(Investigation):
     class_name: ClassVar[str] = "create experiment"
     class_model_uri: ClassVar[URIRef] = GHGA.CreateExperiment
 
-    type: str = None
     has_study: Union[dict, CreateStudy] = None
     has_sample: Union[Union[dict, "CreateSample"], List[Union[dict, "CreateSample"]]] = None
     has_protocol: Union[Union[dict, "CreateProtocol"], List[Union[dict, "CreateProtocol"]]] = None
     alias: str = None
     description: str = None
+    type: Optional[str] = None
     biological_replicates: Optional[str] = None
     technical_replicates: Optional[str] = None
     experimental_replicates: Optional[str] = None
     has_file: Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]] = empty_list()
     has_experiment_process: Optional[Union[Union[dict, "CreateExperimentProcess"], List[Union[dict, "CreateExperimentProcess"]]]] = empty_list()
     title: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
-
         if self._is_empty(self.has_study):
             self.MissingRequiredField("has_study")
         if not isinstance(self.has_study, CreateStudy):
@@ -555,6 +541,9 @@ class CreateExperiment(Investigation):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
         if self.biological_replicates is not None and not isinstance(self.biological_replicates, str):
             self.biological_replicates = str(self.biological_replicates)
 
@@ -574,6 +563,10 @@ class CreateExperiment(Investigation):
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -705,11 +698,11 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     library_preparation: str = None
     library_preparation_kit_retail_name: str = None
     library_preparation_kit_manufacturer: str = None
-    target_regions: str = None
     alias: str = None
     description: str = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
+    target_regions: Optional[str] = None
     rnaseq_strandedness: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -749,11 +742,6 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
         if not isinstance(self.library_preparation_kit_manufacturer, str):
             self.library_preparation_kit_manufacturer = str(self.library_preparation_kit_manufacturer)
 
-        if self._is_empty(self.target_regions):
-            self.MissingRequiredField("target_regions")
-        if not isinstance(self.target_regions, str):
-            self.target_regions = str(self.target_regions)
-
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -769,6 +757,9 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
 
         if self.end_bias is not None and not isinstance(self.end_bias, str):
             self.end_bias = str(self.end_bias)
+
+        if self.target_regions is not None and not isinstance(self.target_regions, str):
+            self.target_regions = str(self.target_regions)
 
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
@@ -1114,12 +1105,12 @@ class CreateSample(MaterialEntity):
 
     name: str = None
     description: str = None
-    has_individual: Union[dict, "CreateIndividual"] = None
     alias: str = None
     type: Optional[str] = None
     vital_status_at_sampling: Optional[Union[str, "VitalStatusEnum"]] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
+    has_individual: Optional[Union[dict, "CreateIndividual"]] = None
     has_anatomical_entity: Optional[Union[Union[dict, "CreateAnatomicalEntity"], List[Union[dict, "CreateAnatomicalEntity"]]]] = empty_list()
     has_biospecimen: Optional[Union[dict, CreateBiospecimen]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
@@ -1138,11 +1129,6 @@ class CreateSample(MaterialEntity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self._is_empty(self.has_individual):
-            self.MissingRequiredField("has_individual")
-        if not isinstance(self.has_individual, CreateIndividual):
-            self.has_individual = CreateIndividual(**as_dict(self.has_individual))
-
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -1159,6 +1145,9 @@ class CreateSample(MaterialEntity):
 
         if self.storage is not None and not isinstance(self.storage, str):
             self.storage = str(self.storage)
+
+        if self.has_individual is not None and not isinstance(self.has_individual, CreateIndividual):
+            self.has_individual = CreateIndividual(**as_dict(self.has_individual))
 
         if not isinstance(self.has_anatomical_entity, list):
             self.has_anatomical_entity = [self.has_anatomical_entity] if self.has_anatomical_entity is not None else []
@@ -1428,9 +1417,10 @@ class CreateFile(InformationContentEntity):
     checksum_type: str = None
     alias: str = None
     drs_uri: Optional[str] = None
-    size: Optional[str] = None
+    size: Optional[int] = None
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.name):
@@ -1461,14 +1451,18 @@ class CreateFile(InformationContentEntity):
         if self.drs_uri is not None and not isinstance(self.drs_uri, str):
             self.drs_uri = str(self.drs_uri)
 
-        if self.size is not None and not isinstance(self.size, str):
-            self.size = str(self.size)
+        if self.size is not None and not isinstance(self.size, int):
+            self.size = int(self.size)
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
         if self.ega_accession is not None and not isinstance(self.ega_accession, str):
             self.ega_accession = str(self.ega_accession)
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1486,13 +1480,13 @@ class CreateAnalysis(DataTransformation):
     class_name: ClassVar[str] = "create analysis"
     class_model_uri: ClassVar[URIRef] = GHGA.CreateAnalysis
 
-    type: str = None
     reference_genome: str = None
     reference_chromosome: str = None
     has_input: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
     has_workflow: Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]] = None
     has_output: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
     alias: str = None
+    type: Optional[str] = None
     has_study: Optional[Union[dict, CreateStudy]] = None
     has_analysis_process: Optional[Union[Union[dict, "CreateAnalysisProcess"], List[Union[dict, "CreateAnalysisProcess"]]]] = empty_list()
     description: Optional[str] = None
@@ -1500,11 +1494,6 @@ class CreateAnalysis(DataTransformation):
     ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
-
         if self._is_empty(self.reference_genome):
             self.MissingRequiredField("reference_genome")
         if not isinstance(self.reference_genome, str):
@@ -1537,6 +1526,9 @@ class CreateAnalysis(DataTransformation):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if self.has_study is not None and not isinstance(self.has_study, CreateStudy):
             self.has_study = CreateStudy(**as_dict(self.has_study))
@@ -1613,10 +1605,10 @@ class CreateDataset(InformationContentEntity):
 
     title: str = None
     description: str = None
-    type: str = None
     has_file: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
     has_data_access_policy: Union[dict, "CreateDataAccessPolicy"] = None
     alias: str = None
+    type: Optional[str] = None
     has_study: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
     has_experiment: Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]] = empty_list()
     has_sample: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
@@ -1626,6 +1618,7 @@ class CreateDataset(InformationContentEntity):
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
     release_date: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.title):
@@ -1637,11 +1630,6 @@ class CreateDataset(InformationContentEntity):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
 
         if self._is_empty(self.has_file):
             self.MissingRequiredField("has_file")
@@ -1658,6 +1646,9 @@ class CreateDataset(InformationContentEntity):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if not isinstance(self.has_study, list):
             self.has_study = [self.has_study] if self.has_study is not None else []
@@ -1690,6 +1681,10 @@ class CreateDataset(InformationContentEntity):
 
         if self.release_date is not None and not isinstance(self.release_date, str):
             self.release_date = str(self.release_date)
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1735,23 +1730,19 @@ class CreateDataAccessPolicy(InformationContentEntity):
     class_name: ClassVar[str] = "create data access policy"
     class_model_uri: ClassVar[URIRef] = GHGA.CreateDataAccessPolicy
 
-    description: str = None
     policy_text: str = None
     has_data_access_committee: Union[dict, "CreateDataAccessCommittee"] = None
     alias: str = None
     name: Optional[str] = None
+    description: Optional[str] = None
     policy_url: Optional[str] = None
     has_data_use_condition: Optional[Union[Union[dict, CreateDataUseCondition], List[Union[dict, CreateDataUseCondition]]]] = empty_list()
     data_request_form: Optional[str] = None
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
         if self._is_empty(self.policy_text):
             self.MissingRequiredField("policy_text")
         if not isinstance(self.policy_text, str):
@@ -1770,6 +1761,9 @@ class CreateDataAccessPolicy(InformationContentEntity):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
         if self.policy_url is not None and not isinstance(self.policy_url, str):
             self.policy_url = str(self.policy_url)
 
@@ -1779,6 +1773,10 @@ class CreateDataAccessPolicy(InformationContentEntity):
 
         if self.data_request_form is not None and not isinstance(self.data_request_form, str):
             self.data_request_form = str(self.data_request_form)
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -1803,10 +1801,11 @@ class CreateDataAccessCommittee(Committee):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateDataAccessCommittee
 
     name: str = None
-    main_contact: Union[dict, "CreateMember"] = None
     alias: str = None
     description: Optional[str] = None
+    main_contact: Optional[Union[dict, "CreateMember"]] = None
     has_member: Optional[Union[Union[dict, "CreateMember"], List[Union[dict, "CreateMember"]]]] = empty_list()
+    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
 
@@ -1816,11 +1815,6 @@ class CreateDataAccessCommittee(Committee):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self._is_empty(self.main_contact):
-            self.MissingRequiredField("main_contact")
-        if not isinstance(self.main_contact, CreateMember):
-            self.main_contact = CreateMember(**as_dict(self.main_contact))
-
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -1829,9 +1823,16 @@ class CreateDataAccessCommittee(Committee):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self.main_contact is not None and not isinstance(self.main_contact, CreateMember):
+            self.main_contact = CreateMember(**as_dict(self.main_contact))
+
         if not isinstance(self.has_member, list):
             self.has_member = [self.has_member] if self.has_member is not None else []
         self.has_member = [v if isinstance(v, CreateMember) else CreateMember(**as_dict(v)) for v in self.has_member]
+
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -2509,7 +2510,13 @@ class FileFormatEnum(EnumDefinitionImpl):
     srf = PermissibleValue(text="srf",
                              description="SRF is a generic format for DNA sequence data.")
     vcf = PermissibleValue(text="vcf",
-                             description="vcf File for storing gene sequence variations.")
+                             description="VCF file for storing gene sequence variations.")
+    txt = PermissibleValue(text="txt",
+                             description="Text file.")
+    pxf = PermissibleValue(text="pxf",
+                             description="Phenopacket file.")
+    other = PermissibleValue(text="other",
+                                 description="Other format.")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -2562,6 +2569,9 @@ class AgeRangeEnum(EnumDefinitionImpl):
     """
     Enum to capture the age range that an Indiviudal belongs to.
     """
+    unknown = PermissibleValue(text="unknown",
+                                     description="Age range unknown.")
+
     _defn = EnumDefinition(
         name="AgeRangeEnum",
         description="Enum to capture the age range that an Indiviudal belongs to.",
@@ -2809,7 +2819,7 @@ slots.format = Slot(uri=GHGA.format, name="format", curie=GHGA.curie('format'),
                    model_uri=GHGA.format, domain=None, range=Optional[Union[str, "FileFormatEnum"]])
 
 slots.size = Slot(uri=GHGA.size, name="size", curie=GHGA.curie('size'),
-                   model_uri=GHGA.size, domain=None, range=Optional[str])
+                   model_uri=GHGA.size, domain=None, range=Optional[int])
 
 slots.checksum = Slot(uri=GHGA.checksum, name="checksum", curie=GHGA.curie('checksum'),
                    model_uri=GHGA.checksum, domain=None, range=Optional[str])
@@ -3042,12 +3052,6 @@ slots.create_study_affiliation = Slot(uri=GHGA.affiliation, name="create study_a
 slots.create_study_has_publication = Slot(uri=GHGA.has_publication, name="create study_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.create_study_has_publication, domain=CreateStudy, range=Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]])
 
-slots.create_study_has_experiment = Slot(uri=GHGA.has_experiment, name="create study_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.create_study_has_experiment, domain=CreateStudy, range=Optional[Union[Union[dict, "CreateExperiment"], List[Union[dict, "CreateExperiment"]]]])
-
-slots.create_study_has_analysis = Slot(uri=GHGA.has_analysis, name="create study_has analysis", curie=GHGA.curie('has_analysis'),
-                   model_uri=GHGA.create_study_has_analysis, domain=CreateStudy, range=Optional[Union[Union[dict, "CreateAnalysis"], List[Union[dict, "CreateAnalysis"]]]])
-
 slots.create_study_has_project = Slot(uri=GHGA.has_project, name="create study_has project", curie=GHGA.curie('has_project'),
                    model_uri=GHGA.create_study_has_project, domain=CreateStudy, range=Optional[Union[dict, CreateProject]])
 
@@ -3070,7 +3074,7 @@ slots.create_experiment_description = Slot(uri=GHGA.description, name="create ex
                    model_uri=GHGA.create_experiment_description, domain=CreateExperiment, range=str)
 
 slots.create_experiment_type = Slot(uri=GHGA.type, name="create experiment_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.create_experiment_type, domain=CreateExperiment, range=str)
+                   model_uri=GHGA.create_experiment_type, domain=CreateExperiment, range=Optional[str])
 
 slots.create_experiment_has_study = Slot(uri=GHGA.has_study, name="create experiment_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.create_experiment_has_study, domain=CreateExperiment, range=Union[dict, CreateStudy])
@@ -3156,9 +3160,6 @@ slots.create_library_preparation_protocol_library_preparation_kit_retail_name = 
 slots.create_library_preparation_protocol_library_preparation_kit_manufacturer = Slot(uri=GHGA.library_preparation_kit_manufacturer, name="create library preparation protocol_library preparation kit manufacturer", curie=GHGA.curie('library_preparation_kit_manufacturer'),
                    model_uri=GHGA.create_library_preparation_protocol_library_preparation_kit_manufacturer, domain=CreateLibraryPreparationProtocol, range=str)
 
-slots.create_library_preparation_protocol_target_regions = Slot(uri=GHGA.target_regions, name="create library preparation protocol_target regions", curie=GHGA.curie('target_regions'),
-                   model_uri=GHGA.create_library_preparation_protocol_target_regions, domain=CreateLibraryPreparationProtocol, range=str)
-
 slots.create_library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="create library preparation protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.create_library_preparation_protocol_has_attribute, domain=CreateLibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
@@ -3226,7 +3227,7 @@ slots.create_sample_description = Slot(uri=GHGA.description, name="create sample
                    model_uri=GHGA.create_sample_description, domain=CreateSample, range=str)
 
 slots.create_sample_has_individual = Slot(uri=GHGA.has_individual, name="create sample_has individual", curie=GHGA.curie('has_individual'),
-                   model_uri=GHGA.create_sample_has_individual, domain=CreateSample, range=Union[dict, "CreateIndividual"])
+                   model_uri=GHGA.create_sample_has_individual, domain=CreateSample, range=Optional[Union[dict, "CreateIndividual"]])
 
 slots.create_sample_xref = Slot(uri=GHGA.xref, name="create sample_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.create_sample_xref, domain=CreateSample, range=Optional[Union[str, List[str]]])
@@ -3292,7 +3293,7 @@ slots.create_analysis_alias = Slot(uri=GHGA.alias, name="create analysis_alias",
                    model_uri=GHGA.create_analysis_alias, domain=CreateAnalysis, range=str)
 
 slots.create_analysis_type = Slot(uri=GHGA.type, name="create analysis_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.create_analysis_type, domain=CreateAnalysis, range=str)
+                   model_uri=GHGA.create_analysis_type, domain=CreateAnalysis, range=Optional[str])
 
 slots.create_analysis_description = Slot(uri=GHGA.description, name="create analysis_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.create_analysis_description, domain=CreateAnalysis, range=Optional[str])
@@ -3339,9 +3340,6 @@ slots.create_dataset_title = Slot(uri=GHGA.title, name="create dataset_title", c
 slots.create_dataset_description = Slot(uri=GHGA.description, name="create dataset_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.create_dataset_description, domain=CreateDataset, range=str)
 
-slots.create_dataset_type = Slot(uri=GHGA.type, name="create dataset_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.create_dataset_type, domain=CreateDataset, range=str)
-
 slots.create_dataset_has_study = Slot(uri=GHGA.has_study, name="create dataset_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.create_dataset_has_study, domain=CreateDataset, range=Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]])
 
@@ -3379,7 +3377,7 @@ slots.create_data_access_policy_name = Slot(uri=GHGA.name, name="create data acc
                    model_uri=GHGA.create_data_access_policy_name, domain=CreateDataAccessPolicy, range=Optional[str])
 
 slots.create_data_access_policy_description = Slot(uri=GHGA.description, name="create data access policy_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.create_data_access_policy_description, domain=CreateDataAccessPolicy, range=str)
+                   model_uri=GHGA.create_data_access_policy_description, domain=CreateDataAccessPolicy, range=Optional[str])
 
 slots.create_data_access_policy_policy_text = Slot(uri=GHGA.policy_text, name="create data access policy_policy text", curie=GHGA.curie('policy_text'),
                    model_uri=GHGA.create_data_access_policy_policy_text, domain=CreateDataAccessPolicy, range=str)
@@ -3406,7 +3404,7 @@ slots.create_data_access_committee_description = Slot(uri=GHGA.description, name
                    model_uri=GHGA.create_data_access_committee_description, domain=CreateDataAccessCommittee, range=Optional[str])
 
 slots.create_data_access_committee_main_contact = Slot(uri=GHGA.main_contact, name="create data access committee_main contact", curie=GHGA.curie('main_contact'),
-                   model_uri=GHGA.create_data_access_committee_main_contact, domain=CreateDataAccessCommittee, range=Union[dict, "CreateMember"])
+                   model_uri=GHGA.create_data_access_committee_main_contact, domain=CreateDataAccessCommittee, range=Optional[Union[dict, "CreateMember"]])
 
 slots.create_data_access_committee_has_member = Slot(uri=GHGA.has_member, name="create data access committee_has member", curie=GHGA.curie('has_member'),
                    model_uri=GHGA.create_data_access_committee_has_member, domain=CreateDataAccessCommittee, range=Optional[Union[Union[dict, "CreateMember"], List[Union[dict, "CreateMember"]]]])

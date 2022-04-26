@@ -3,10 +3,10 @@
 
 CREATE TYPE "release status enum" AS ENUM ('unreleased', 'released');
 CREATE TYPE "biological sex enum" AS ENUM ('female', 'male', 'unknown');
-CREATE TYPE "age range enum" AS ENUM ('0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '41-45', '46-50', '51-55', '56-60', '61-65', '66-70', '71-75', '76-80', '80+');
+CREATE TYPE "age range enum" AS ENUM ('0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '41-45', '46-50', '51-55', '56-60', '61-65', '66-70', '71-75', '76-80', '80+', 'unknown');
 CREATE TYPE "vital status enum" AS ENUM ('alive', 'deceased', 'unknown');
 CREATE TYPE "experiment process type enum" AS ENUM ('sample_preparation', 'assay');
-CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf');
+CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf', 'txt', 'pxf', 'other');
 CREATE TYPE "study type enum" AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'genome_wide_association_study', 'other');
 CREATE TYPE "submission status enum" AS ENUM ('in_progress', 'completed');
 CREATE TYPE "user role enum" AS ENUM ('data_requester', 'data_steward');
@@ -185,12 +185,13 @@ CREATE TABLE file (
 	drs_uri TEXT, 
 	name TEXT NOT NULL, 
 	format "file format enum" NOT NULL, 
-	size TEXT, 
+	size INTEGER, 
 	checksum TEXT NOT NULL, 
 	checksum_type TEXT NOT NULL, 
 	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
+	has_attribute TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -344,9 +345,10 @@ CREATE TABLE data_access_committee (
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT, 
-	main_contact TEXT NOT NULL, 
+	main_contact TEXT, 
 	has_member TEXT, 
 	alias TEXT NOT NULL, 
+	has_attribute TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -387,7 +389,7 @@ CREATE TABLE library_preparation_protocol (
 	library_preparation_kit_manufacturer TEXT NOT NULL, 
 	primer TEXT, 
 	end_bias TEXT, 
-	target_regions TEXT NOT NULL, 
+	target_regions TEXT, 
 	rnaseq_strandedness TEXT, 
 	alias TEXT NOT NULL, 
 	description TEXT NOT NULL, 
@@ -453,8 +455,6 @@ CREATE TABLE study (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	type "study type enum" NOT NULL, 
-	has_experiment TEXT, 
-	has_analysis TEXT, 
 	has_project TEXT, 
 	has_file TEXT, 
 	alias TEXT NOT NULL, 
@@ -622,7 +622,7 @@ CREATE TABLE analysis (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	title TEXT, 
-	type TEXT NOT NULL, 
+	type TEXT, 
 	reference_genome TEXT NOT NULL, 
 	reference_chromosome TEXT NOT NULL, 
 	has_input TEXT NOT NULL, 
@@ -644,39 +644,17 @@ CREATE TABLE data_access_policy (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
-	description TEXT NOT NULL, 
+	description TEXT, 
 	policy_text TEXT NOT NULL, 
 	policy_url TEXT, 
 	has_data_access_committee TEXT NOT NULL, 
 	data_request_form TEXT, 
 	alias TEXT NOT NULL, 
+	has_attribute TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
-);
-
-CREATE TABLE experiment (
-	id TEXT NOT NULL, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	type TEXT NOT NULL, 
-	biological_replicates TEXT, 
-	technical_replicates TEXT, 
-	experimental_replicates TEXT, 
-	has_study TEXT NOT NULL, 
-	has_sample TEXT NOT NULL, 
-	has_file TEXT, 
-	has_protocol TEXT NOT NULL, 
-	alias TEXT NOT NULL, 
-	title TEXT, 
-	description TEXT NOT NULL, 
-	accession TEXT, 
-	ega_accession TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_study) REFERENCES study (id)
 );
 
 CREATE TABLE sample (
@@ -691,7 +669,7 @@ CREATE TABLE sample (
 	vital_status_at_sampling "vital status enum", 
 	isolation TEXT, 
 	storage TEXT, 
-	has_individual TEXT NOT NULL, 
+	has_individual TEXT, 
 	has_anatomical_entity TEXT, 
 	has_biospecimen TEXT, 
 	alias TEXT NOT NULL, 
@@ -711,7 +689,6 @@ CREATE TABLE submission (
 	has_sample TEXT, 
 	has_biospecimen TEXT, 
 	has_individual TEXT, 
-	has_experiment TEXT, 
 	has_protocol TEXT NOT NULL, 
 	has_analysis TEXT, 
 	has_file TEXT, 
@@ -841,7 +818,7 @@ CREATE TABLE dataset (
 	schema_version TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
-	type TEXT NOT NULL, 
+	type TEXT, 
 	has_study TEXT NOT NULL, 
 	has_experiment TEXT, 
 	has_sample TEXT NOT NULL, 
@@ -854,8 +831,56 @@ CREATE TABLE dataset (
 	accession TEXT, 
 	ega_accession TEXT, 
 	release_date TEXT, 
+	has_attribute TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+);
+
+CREATE TABLE experiment (
+	id TEXT NOT NULL, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	type TEXT, 
+	biological_replicates TEXT, 
+	technical_replicates TEXT, 
+	experimental_replicates TEXT, 
+	has_study TEXT NOT NULL, 
+	has_sample TEXT NOT NULL, 
+	has_file TEXT, 
+	has_protocol TEXT NOT NULL, 
+	alias TEXT NOT NULL, 
+	title TEXT, 
+	description TEXT NOT NULL, 
+	has_attribute TEXT, 
+	accession TEXT, 
+	ega_accession TEXT, 
+	submission_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(submission_id) REFERENCES submission (id)
+);
+
+CREATE TABLE analysis_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES analysis (id)
+);
+
+CREATE TABLE data_access_policy_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES data_access_policy (id)
+);
+
+CREATE TABLE sample_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES sample (id)
 );
 
 CREATE TABLE experiment_process (
@@ -880,34 +905,6 @@ CREATE TABLE experiment_process (
 	FOREIGN KEY(experiment_id) REFERENCES experiment (id)
 );
 
-CREATE TABLE analysis_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES analysis (id)
-);
-
-CREATE TABLE data_access_policy_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES data_access_policy (id)
-);
-
-CREATE TABLE experiment_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES experiment (id)
-);
-
-CREATE TABLE sample_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES sample (id)
-);
-
 CREATE TABLE analysis_process_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -927,6 +924,13 @@ CREATE TABLE dataset_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES dataset (id)
+);
+
+CREATE TABLE experiment_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES experiment (id)
 );
 
 CREATE TABLE experiment_process_xref (

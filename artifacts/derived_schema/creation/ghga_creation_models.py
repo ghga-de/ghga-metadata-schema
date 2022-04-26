@@ -61,6 +61,9 @@ class FileFormatEnum(str, Enum):
     sff = "sff"
     srf = "srf"
     vcf = "vcf"
+    txt = "txt"
+    pxf = "pxf"
+    other = "other"
     
     
 
@@ -104,6 +107,7 @@ class AgeRangeEnum(str, Enum):
     number_71_75 = "71-75"
     number_76_80 = "76-80"
     number_80PLUS_SIGN = "80+"
+    unknown = "unknown"
     
     
 
@@ -616,30 +620,6 @@ class EgaAccessionMixin(BaseModel):
     
 
 
-class CreateExperiment(Investigation):
-    """
-    An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
-    """
-    type: str = Field(None, description="""The type of Experiment.""")
-    biological_replicates: Optional[str] = Field(None, description="""A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.""")
-    technical_replicates: Optional[str] = Field(None, description="""A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.""")
-    experimental_replicates: Optional[str] = Field(None, description="""The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.""")
-    has_study: Union[CreateStudy, str] = Field(None, description="""The Study entity associated with this Experiment.""")
-    has_sample: Union[List[CreateSample], List[str]] = Field(None, description="""The Sample entity associated with this Experiment.""")
-    has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""One or more Files entities that are generated as output of this Experiment.""")
-    has_protocol: Union[List[CreateProtocol], List[str]] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
-    has_experiment_process: Optional[Union[List[CreateExperimentProcess], List[str]]] = Field(None, description="""One or more Experiment Processes entities associated with this Experiment.""")
-    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
-    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
-    title: Optional[str] = Field(None, description="""Name for the experiment (eg: GHGAE_PBMC_RNAseq).""")
-    description: str = Field(None, description="""A detailed description of the Experiment.""")
-    alias: str = Field(None, description="""The alias for an entity.""")
-    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
-    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
-    
-
-
 class CreateIndividual(Person):
     """
     An Individual is a Person who is participating in a Study.
@@ -694,30 +674,11 @@ class CreateDonor(CreateIndividual):
     
 
 
-class CreateFile(InformationContentEntity):
-    """
-    A file is an object that contains information generated from a process, either an Experiment or an Analysis.
-    """
-    drs_uri: Optional[str] = Field(None, description="""GA4GH Data Repository Service (DRS) identifier URI for a file.""")
-    name: str = Field(None, description="""The given filename.""")
-    format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
-    size: Optional[str] = Field(None, description="""The size of a file in bytes.""")
-    checksum: str = Field(None, description="""A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.""")
-    checksum_type: str = Field(None, description="""The type of algorithm used to generate the checksum of a file.""")
-    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
-    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
-    alias: str = Field(None, description="""The alias for an entity.""")
-    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
-    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
-    
-
-
 class CreateAnalysis(DataTransformation):
     """
     An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
     """
-    type: str = Field(None, description="""The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)""")
+    type: Optional[str] = Field(None, description="""The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)""")
     reference_genome: str = Field(None, description="""A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).""")
     reference_chromosome: str = Field(None, description="""The reference chromosome used for this Analysis.""")
     has_input: Union[List[CreateFile], List[str]] = Field(None, description="""The input data File entities used in the Analysis.""")
@@ -730,43 +691,6 @@ class CreateAnalysis(DataTransformation):
     title: Optional[str] = Field(None, description="""The title that describes an entity.""")
     description: Optional[str] = Field(None, description="""Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).""")
     alias: str = Field(None, description="""An alias uniquely identifying this Analysis entitiy.""")
-    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
-    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
-    
-
-
-class CreateDataAccessPolicy(InformationContentEntity):
-    """
-    A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
-    """
-    name: Optional[str] = Field(None, description="""A name for the Data Access Policy.""")
-    description: str = Field(None, description="""A short description for the Data Access Policy.""")
-    policy_text: str = Field(None, description="""The terms of data use and policy verbiage should be captured here.""")
-    policy_url: Optional[str] = Field(None, description="""URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.""")
-    has_data_access_committee: Union[CreateDataAccessCommittee, str] = Field(None, description="""The Data Access Committee linked to this policy.""")
-    has_data_use_condition: Optional[List[CreateDataUseCondition]] = Field(None, description="""Data Use Condition entities that are associated with the Data Access Policy.""")
-    data_request_form: Optional[str] = Field(None, description="""Data Request Form that is associated with this Data Access Policy.""")
-    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
-    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
-    alias: str = Field(None, description="""The alias for an entity.""")
-    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
-    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
-    
-
-
-class CreateDataAccessCommittee(Committee):
-    """
-    A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
-    """
-    name: str = Field(None, description="""The name for the Data Access Committee.""")
-    description: Optional[str] = Field(None, description="""A description for the Data Access Committee.""")
-    main_contact: Union[CreateMember, str] = Field(None, description="""The main contact for the Data Access Committee.""")
-    has_member: Optional[Union[List[CreateMember], List[str]]] = Field(None, description="""All the members that are part of this Data Access Committee.""")
-    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
-    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
-    alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
@@ -789,6 +713,31 @@ class CreateProject(ResearchActivity):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)""")
     title: str = Field(None, description="""Comprehensive title for the project.""")
     description: str = Field(None, description="""Short textual description of the project.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class CreateExperiment(Investigation):
+    """
+    An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+    """
+    type: Optional[str] = Field(None, description="""The type of Experiment.""")
+    biological_replicates: Optional[str] = Field(None, description="""A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.""")
+    technical_replicates: Optional[str] = Field(None, description="""A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.""")
+    experimental_replicates: Optional[str] = Field(None, description="""The replicate number of the assay, i.e. the numeric iteration for the assay that was repeated.""")
+    has_study: Union[CreateStudy, str] = Field(None, description="""The Study entity associated with this Experiment.""")
+    has_sample: Union[List[CreateSample], List[str]] = Field(None, description="""The Sample entity associated with this Experiment.""")
+    has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""One or more Files entities that are generated as output of this Experiment.""")
+    has_protocol: Union[List[CreateProtocol], List[str]] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
+    has_experiment_process: Optional[Union[List[CreateExperimentProcess], List[str]]] = Field(None, description="""One or more Experiment Processes entities associated with this Experiment.""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
+    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
+    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
+    title: Optional[str] = Field(None, description="""Name for the experiment (eg: GHGAE_PBMC_RNAseq).""")
+    description: str = Field(None, description="""A detailed description of the Experiment.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
@@ -844,7 +793,7 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     library_preparation_kit_manufacturer: str = Field(None, description="""Manufacturer of library preparation kit""")
     primer: Optional[str] = Field(None, description="""The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.""")
     end_bias: Optional[str] = Field(None, description="""The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.""")
-    target_regions: str = Field(None, description="""Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.""")
+    target_regions: Optional[str] = Field(None, description="""Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.""")
     rnaseq_strandedness: Optional[str] = Field(None, description="""The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     type: Optional[str] = Field(None, description="""The type of an entity.""")
@@ -902,7 +851,7 @@ class CreateSample(MaterialEntity):
     vital_status_at_sampling: Optional[VitalStatusEnum] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
-    has_individual: Union[CreateIndividual, str] = Field(None, description="""The Individual from which this Sample was derived from.""")
+    has_individual: Optional[Union[CreateIndividual, str]] = Field(None, description="""The Individual from which this Sample was derived from.""")
     has_anatomical_entity: Optional[Union[List[CreateAnatomicalEntity], List[str]]] = Field(None, description="""Anatomical site associated with an entity.""")
     has_biospecimen: Optional[Union[CreateBiospecimen, str]] = Field(None, description="""The Biospecimen from which this Sample was prepared from.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -910,6 +859,65 @@ class CreateSample(MaterialEntity):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class CreateFile(InformationContentEntity):
+    """
+    A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+    """
+    drs_uri: Optional[str] = Field(None, description="""GA4GH Data Repository Service (DRS) identifier URI for a file.""")
+    name: str = Field(None, description="""The given filename.""")
+    format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
+    size: Optional[int] = Field(None, description="""The size of a file in bytes.""")
+    checksum: str = Field(None, description="""A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.""")
+    checksum_type: str = Field(None, description="""The type of algorithm used to generate the checksum of a file.""")
+    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
+    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class CreateDataAccessPolicy(InformationContentEntity):
+    """
+    A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
+    """
+    name: Optional[str] = Field(None, description="""A name for the Data Access Policy.""")
+    description: Optional[str] = Field(None, description="""A short description for the Data Access Policy.""")
+    policy_text: str = Field(None, description="""The terms of data use and policy verbiage should be captured here.""")
+    policy_url: Optional[str] = Field(None, description="""URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.""")
+    has_data_access_committee: Union[CreateDataAccessCommittee, str] = Field(None, description="""The Data Access Committee linked to this policy.""")
+    has_data_use_condition: Optional[List[CreateDataUseCondition]] = Field(None, description="""Data Use Condition entities that are associated with the Data Access Policy.""")
+    data_request_form: Optional[str] = Field(None, description="""Data Request Form that is associated with this Data Access Policy.""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
+    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
+    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
+    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
+    
+
+
+class CreateDataAccessCommittee(Committee):
+    """
+    A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
+    """
+    name: str = Field(None, description="""The name for the Data Access Committee.""")
+    description: Optional[str] = Field(None, description="""A description for the Data Access Committee.""")
+    main_contact: Optional[Union[CreateMember, str]] = Field(None, description="""The main contact for the Data Access Committee.""")
+    has_member: Optional[Union[List[CreateMember], List[str]]] = Field(None, description="""All the members that are part of this Data Access Committee.""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
+    accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
+    ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
+    alias: str = Field(None, description="""The alias for an entity.""")
+    xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
@@ -947,8 +955,6 @@ class CreateStudy(Investigation):
     """
     type: StudyTypeEnum = Field(None, description="""The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.""")
     affiliation: List[str] = Field(None, description="""The Institution(s) associated with an entity.""")
-    has_experiment: Optional[Union[List[CreateExperiment], List[str]]] = Field(None, description="""One or more Experiment entities associated with this Study.""")
-    has_analysis: Optional[Union[List[CreateAnalysis], List[str]]] = Field(None, description="""One or more Analysis entities associated with this Study.""")
     has_project: Optional[Union[CreateProject, str]] = Field(None, description="""The project associated with this Study.""")
     has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""Additional/supplementary files associated with a Study.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -972,7 +978,7 @@ class CreateDataset(InformationContentEntity):
     """
     title: str = Field(None, description="""A title for the submitted Dataset.""")
     description: str = Field(None, description="""Description of an entity.""")
-    type: str = Field(None, description="""The type of an entity.""")
+    type: Optional[str] = Field(None, description="""The type of an entity.""")
     has_study: Optional[Union[List[CreateStudy], List[str]]] = Field(None, description="""One or more Study entities that are referenced by this Dataset.""")
     has_experiment: Optional[Union[List[CreateAnalysis], List[str]]] = Field(None, description="""One or more Analysis entities that are referenced by this Dataset.""")
     has_sample: Optional[Union[List[CreateStudy], List[str]]] = Field(None, description="""One or more Sample entities that are referenced by this Dataset.""")
@@ -984,6 +990,7 @@ class CreateDataset(InformationContentEntity):
     has_publication: Optional[Union[List[CreatePublication], List[str]]] = Field(None, description="""One or more Publication entities associated with this Dataset.""")
     release_status: Optional[ReleaseStatusEnum] = Field(None, description="""The release status of a Dataset.""")
     release_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was released for public consumption.""")
+    has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
@@ -1032,20 +1039,20 @@ CreateBiospecimen.update_forward_refs()
 CreateFamily.update_forward_refs()
 CreateCohort.update_forward_refs()
 EgaAccessionMixin.update_forward_refs()
-CreateExperiment.update_forward_refs()
 CreateIndividual.update_forward_refs()
 CreateDonor.update_forward_refs()
-CreateFile.update_forward_refs()
 CreateAnalysis.update_forward_refs()
-CreateDataAccessPolicy.update_forward_refs()
-CreateDataAccessCommittee.update_forward_refs()
 AttributeMixin.update_forward_refs()
 CreateProject.update_forward_refs()
+CreateExperiment.update_forward_refs()
 CreateExperimentProcess.update_forward_refs()
 CreateProtocol.update_forward_refs()
 CreateLibraryPreparationProtocol.update_forward_refs()
 CreateSequencingProtocol.update_forward_refs()
 CreateSample.update_forward_refs()
+CreateFile.update_forward_refs()
+CreateDataAccessPolicy.update_forward_refs()
+CreateDataAccessCommittee.update_forward_refs()
 PublicationMixin.update_forward_refs()
 DeprecatedMixin.update_forward_refs()
 ReleaseStatusMixin.update_forward_refs()

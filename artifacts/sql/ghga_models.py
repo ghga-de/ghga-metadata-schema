@@ -145,6 +145,7 @@ tbl_data_access_committee = Table('data_access_committee', metadata,
     Column('main_contact', Text, ForeignKey('member.id')),
     Column('has_member', Text),
     Column('alias', Text),
+    Column('has_attribute', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
@@ -161,6 +162,7 @@ tbl_data_access_policy = Table('data_access_policy', metadata,
     Column('has_data_access_committee', Text, ForeignKey('data_access_committee.id')),
     Column('data_request_form', Text),
     Column('alias', Text),
+    Column('has_attribute', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
@@ -224,6 +226,7 @@ tbl_dataset = Table('dataset', metadata,
     Column('accession', Text),
     Column('ega_accession', Text),
     Column('release_date', Text),
+    Column('has_attribute', Text),
 )
 tbl_disease = Table('disease', metadata, 
     Column('id', Text, primary_key=True),
@@ -294,8 +297,10 @@ tbl_experiment = Table('experiment', metadata,
     Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
+    Column('has_attribute', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
+    Column('submission_id', Text, ForeignKey('submission.id')),
 )
 tbl_experiment_process = Table('experiment_process', metadata, 
     Column('id', Text, primary_key=True),
@@ -340,6 +345,7 @@ tbl_file = Table('file', metadata,
     Column('alias', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
+    Column('has_attribute', Text),
 )
 tbl_individual = Table('individual', metadata, 
     Column('id', Text, primary_key=True),
@@ -512,8 +518,6 @@ tbl_study = Table('study', metadata,
     Column('schema_type', Text),
     Column('schema_version', Text),
     Column('type', Text),
-    Column('has_experiment', Text),
-    Column('has_analysis', Text),
     Column('has_project', Text, ForeignKey('project.id')),
     Column('has_file', Text),
     Column('alias', Text),
@@ -534,7 +538,6 @@ tbl_submission = Table('submission', metadata,
     Column('has_sample', Text),
     Column('has_biospecimen', Text),
     Column('has_individual', Text),
-    Column('has_experiment', Text),
     Column('has_protocol', Text),
     Column('has_analysis', Text),
     Column('has_file', Text),
@@ -817,6 +820,12 @@ mapper_registry.map_imperatively(SequencingProtocol, tbl_sequencing_protocol, pr
 mapper_registry.map_imperatively(Study, tbl_study, properties={
 })
 mapper_registry.map_imperatively(Submission, tbl_submission, properties={
+
+    'has_experiment': 
+        relationship(Experiment, 
+                      foreign_keys=tbl_experiment.columns["submission_id"],
+                      backref='Submission'),
+
 })
 mapper_registry.map_imperatively(Technology, tbl_technology, properties={
 })
