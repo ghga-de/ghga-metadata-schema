@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.5.0
+# version: 0.6.0
 BASE <https://w3id.org/GHGA/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -57,15 +57,15 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
+          <type> @linkml:String ? ;
           <reference_genome> @linkml:String ;
           <reference_chromosome> @linkml:String ;
           <has_input> @<File> + ;
           <has_study> @<Study> ? ;
-          <has_workflow> @<Workflow> ? ;
+          <has_workflow> @<Workflow> + ;
           <has_analysis_process> @<AnalysisProcess> * ;
-          <has_output> @<File> * ;
+          <has_output> @<File> + ;
           <alias> @linkml:String ;
-          <type> @linkml:String ;
           <description> @linkml:String ? ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
@@ -79,7 +79,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <PlannedProcess> ] ? ;
           <title> @linkml:String ? ;
           <has_input> @<File> * ;
-          <has_workflow_step> @<WorkflowStep> ? ;
+          <has_workflow> @<Workflow> ? ;
           <has_agent> @<Agent> ? ;
           <has_output> @<File> *
        ) ;
@@ -92,10 +92,29 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <MaterialEntity> ] ? ;
           &<OntologyClassMixin_tes> ;
           rdf:type [ <OntologyClassMixin> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          <concept_identifier> @linkml:String ? ;
+          <concept_name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ? ;
+          <name> @linkml:String ?
        ) ;
        rdf:type [ <AnatomicalEntity> ]
+    )
+}
+
+<Ancestry> CLOSED {
+    (  $<Ancestry_tes> (  &<Population_tes> ;
+          rdf:type [ <Population> ] ? ;
+          &<OntologyClassMixin_tes> ;
+          rdf:type [ <OntologyClassMixin> ] ? ;
+          <concept_identifier> @linkml:String ? ;
+          <concept_name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
+       ) ;
+       rdf:type [ <Ancestry> ]
     )
 }
 
@@ -130,15 +149,16 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <MaterialEntity> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
-          <alias> @linkml:String ? ;
           <name> @linkml:String ? ;
+          <type> @linkml:String ? ;
           <description> @linkml:String ? ;
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
           <has_individual> @<Individual> ? ;
-          <has_anatomical_entity> @<AnatomicalEntity> ? ;
+          <has_anatomical_entity> @<AnatomicalEntity> * ;
           <has_disease> @<Disease> * ;
           <has_phenotypic_feature> @<PhenotypicFeature> * ;
+          <alias> @linkml:String ;
           <accession> @linkml:String ?
        ) ;
        rdf:type [ <Biospecimen> ]
@@ -179,15 +199,18 @@ linkml:Nodeidentifier NONLITERAL
 <DataAccessCommittee> CLOSED {
     (  $<DataAccessCommittee_tes> (  &<Committee_tes> ;
           rdf:type [ <Committee> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
           <name> @linkml:String ;
           <description> @linkml:String ? ;
-          <main_contact> @<Member> ;
+          <main_contact> @<Member> ? ;
           <has_member> @<Member> * ;
           <alias> @linkml:String ;
+          <has_attribute> @<Attribute> * ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -198,17 +221,21 @@ linkml:Nodeidentifier NONLITERAL
 <DataAccessPolicy> CLOSED {
     (  $<DataAccessPolicy_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
           <name> @linkml:String ? ;
-          <description> @linkml:String ;
+          <description> @linkml:String ? ;
           <policy_text> @linkml:String ;
           <policy_url> @linkml:String ? ;
           <has_data_access_committee> @<DataAccessCommittee> ;
           <has_data_use_condition> @<DataUseCondition> * ;
+          <data_request_form> @linkml:String ? ;
           <alias> @linkml:String ;
+          <has_attribute> @<Attribute> * ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -229,10 +256,44 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <DataUseCondition> CLOSED {
-    (  $<DataUseCondition_tes> (  <permission> @linkml:String ? ;
-          <modifier> @linkml:String ?
+    (  $<DataUseCondition_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <has_data_use_permission> @<DataUsePermission> ;
+          <has_data_use_modifier> @<DataUseModifier> ?
        ) ;
-       rdf:type [ <DataUseCondition> ] ?
+       rdf:type [ <DataUseCondition> ]
+    )
+}
+
+<DataUseModifier> CLOSED {
+    (  $<DataUseModifier_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          &<OntologyClassMixin_tes> ;
+          rdf:type [ <OntologyClassMixin> ] ? ;
+          <concept_identifier> @linkml:String ? ;
+          <concept_name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ? ;
+          <name> @linkml:String ?
+       ) ;
+       rdf:type [ <DataUseModifier> ]
+    )
+}
+
+<DataUsePermission> CLOSED {
+    (  $<DataUsePermission_tes> (  &<InformationContentEntity_tes> ;
+          rdf:type [ <InformationContentEntity> ] ? ;
+          &<OntologyClassMixin_tes> ;
+          rdf:type [ <OntologyClassMixin> ] ? ;
+          <concept_identifier> @linkml:String ? ;
+          <concept_name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ? ;
+          <name> @linkml:String ?
+       ) ;
+       rdf:type [ <DataUsePermission> ]
     )
 }
 
@@ -247,21 +308,24 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <PublicationMixin> ] ? ;
           &<ReleaseStatusMixin_tes> ;
           rdf:type [ <ReleaseStatusMixin> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
           <title> @linkml:String ;
           <description> @linkml:String ;
+          <type> @linkml:String ? ;
           <has_study> @<Study> + ;
-          <has_experiment> @<Analysis> + ;
+          <has_experiment> @<Analysis> * ;
           <has_sample> @<Study> + ;
-          <has_analysis> @<Study> + ;
+          <has_analysis> @<Study> * ;
           <has_file> @<File> + ;
           <has_data_access_policy> @<DataAccessPolicy> ;
           <alias> @linkml:String ;
-          <type> @linkml:String ;
           <has_publication> @<Publication> * ;
           <release_status> @<ReleaseStatusEnum> ? ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ? ;
-          <release_date> @linkml:String ?
+          <release_date> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Dataset> ]
     )
@@ -289,8 +353,12 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <BiologicalQuality> ] ? ;
              &<OntologyClassMixin_tes> ;
              rdf:type [ <OntologyClassMixin> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             <concept_identifier> @linkml:String ? ;
+             <concept_name> @linkml:String ? ;
+             <description> @linkml:String ? ;
+             <ontology_name> @linkml:String ? ;
+             <ontology_version> @linkml:String ? ;
+             <name> @linkml:String ?
           ) ;
           rdf:type [ <DiseaseOrPhenotypicFeature> ]
        )
@@ -314,22 +382,25 @@ linkml:Nodeidentifier NONLITERAL
 <Experiment> CLOSED {
     (  $<Experiment_tes> (  &<Investigation_tes> ;
           rdf:type [ <Investigation> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
+          <type> @linkml:String ? ;
           <biological_replicates> @linkml:String ? ;
           <technical_replicates> @linkml:String ? ;
           <experimental_replicates> @linkml:String ? ;
           <has_study> @<Study> ;
-          <has_sample> @<Sample> ;
+          <has_sample> @<Sample> + ;
           <has_file> @<File> * ;
           <has_protocol> @<Protocol> + ;
           <has_experiment_process> @<ExperimentProcess> * ;
-          <has_attribute> @<Attribute> * ;
           <alias> @linkml:String ;
           <title> @linkml:String ? ;
           <description> @linkml:String ;
+          <has_attribute> @<Attribute> * ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -340,11 +411,15 @@ linkml:Nodeidentifier NONLITERAL
 <ExperimentProcess> CLOSED {
     (  $<ExperimentProcess_tes> (  &<PlannedProcess_tes> ;
           rdf:type [ <PlannedProcess> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
+          <type> @<ExperimentProcessTypeEnum> ? ;
           <title> @linkml:String ? ;
           <has_input> @<Sample> ? ;
           <has_protocol> @<Protocol> ? ;
           <has_agent> @<Agent> ? ;
-          <has_output> @<File> ?
+          <has_output> @<File> * ;
+          <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <ExperimentProcess> ]
     )
@@ -370,14 +445,18 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
+          <drs_uri> @linkml:String ? ;
           <name> @linkml:String ;
           <format> @<FileFormatEnum> ;
-          <size> @linkml:String ? ;
+          <size> @linkml:Integer ? ;
           <checksum> @linkml:String ;
           <checksum_type> @linkml:String ;
           <alias> @linkml:String ;
           <accession> @linkml:String ? ;
-          <ega_accession> @linkml:String ?
+          <ega_accession> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <File> ]
     )
@@ -391,17 +470,18 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <AccessionMixin> ] ? ;
              &<EgaAccessionMixin_tes> ;
              rdf:type [ <EgaAccessionMixin> ] ? ;
-             <alias> @linkml:String ? ;
              <sex> @<BiologicalSexEnum> ;
              <karyotype> @linkml:String ? ;
-             <age> @linkml:Integer ;
+             <age> @<AgeRangeEnum> ;
              <vital_status> @<VitalStatusEnum> ;
              <geographical_region> @linkml:String ? ;
-             <ancestry> @linkml:String ? ;
+             <has_ancestry> @<Ancestry> * ;
              <has_parent> @<Individual> * ;
              <has_children> @<Individual> * ;
              <has_disease> @<Disease> * ;
              <has_phenotypic_feature> @<PhenotypicFeature> * ;
+             <has_file> @<File> * ;
+             <alias> @linkml:String ;
              <accession> @linkml:String ? ;
              <ega_accession> @linkml:String ?
           ) ;
@@ -411,8 +491,8 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <InformationContentEntity>  (
-    @<DataAccessPolicy> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR
-    @<WorkflowStep>
+    @<DataAccessPolicy> OR @<DataUseCondition> OR @<DataUseModifier> OR @<DataUsePermission> OR @<Dataset> OR @<File> OR
+    @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR @<WorkflowStep>
 )
 
 <InformationContentEntity_struct> {
@@ -449,8 +529,9 @@ linkml:Nodeidentifier NONLITERAL
           <library_preparation_kit_manufacturer> @linkml:String ;
           <primer> @linkml:String ? ;
           <end_bias> @linkml:String ? ;
-          <target_regions> @linkml:String ;
+          <target_regions> @linkml:String ? ;
           <rnaseq_strandedness> @linkml:String ? ;
+          <alias> @linkml:String ;
           <description> @linkml:String ;
           <has_attribute> @<Attribute> *
        ) ;
@@ -474,7 +555,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Member_tes> (  &<Person_tes> ;
           rdf:type [ <Person> ] ? ;
           <email> @linkml:String ;
-          <telephone> @linkml:String ;
+          <telephone> @linkml:String ? ;
           <organization> @linkml:String
        ) ;
        rdf:type [ <Member> ]
@@ -501,7 +582,6 @@ linkml:Nodeidentifier NONLITERAL
           <xref> @linkml:String * ;
           <creation_date> @linkml:String ? ;
           <update_date> @linkml:String ? ;
-          <type> @linkml:String ? ;
           <schema_type> @linkml:String ? ;
           <schema_version> @linkml:String ?
        ) ;
@@ -510,8 +590,12 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <OntologyClassMixin> {
-    (  $<OntologyClassMixin_tes> (  <name> @linkml:String ? ;
-          <description> @linkml:String ?
+    (  $<OntologyClassMixin_tes> (  <concept_identifier> @linkml:String ? ;
+          <concept_name> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ? ;
+          <name> @linkml:String ?
        ) ;
        rdf:type [ <OntologyClassMixin> ]
     )
@@ -553,7 +637,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Population>  (
-    @<Cohort> OR @<Family>
+    @<Ancestry> OR @<Cohort> OR @<Family>
 )
 
 <Population_struct> {
@@ -590,9 +674,11 @@ linkml:Nodeidentifier NONLITERAL
              &<AttributeMixin_tes> ;
              rdf:type [ <AttributeMixin> ] ? ;
              <name> @linkml:String ? ;
+             <type> @linkml:String ? ;
              <description> @linkml:String ? ;
              <url> @linkml:String ? ;
-             <type> @linkml:String ? ;
+             <has_file> @<File> ? ;
+             <alias> @linkml:String ;
              <xref> @linkml:String * ;
              <has_attribute> @<Attribute> *
           ) ;
@@ -606,6 +692,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <InformationContentEntity> ] ? ;
           <title> @linkml:String ? ;
           <abstract> @linkml:String ? ;
+          <alias> @linkml:String ;
           <xref> @linkml:String *
        ) ;
        rdf:type [ <Publication> ]
@@ -645,21 +732,22 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AccessionMixin> ] ? ;
           &<EgaAccessionMixin_tes> ;
           rdf:type [ <EgaAccessionMixin> ] ? ;
+          &<AttributeMixin_tes> ;
+          rdf:type [ <AttributeMixin> ] ? ;
           <name> @linkml:String ;
+          <type> @linkml:String ? ;
           <description> @linkml:String ;
-          <vital_status_at_sampling> @linkml:String ? ;
+          <vital_status_at_sampling> @<VitalStatusEnum> ? ;
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
-          <has_individual> @<Individual> ;
-          <has_anatomical_entity> @<AnatomicalEntity> ? ;
+          <has_individual> @<Individual> ? ;
+          <has_anatomical_entity> @<AnatomicalEntity> * ;
           <has_biospecimen> @<Biospecimen> ? ;
-          <has_attribute> @<Attribute> * ;
           <alias> @linkml:String ;
-          <type> @<CaseControlEnum> ? ;
-          <tissue> @linkml:String ;
           <xref> @linkml:String * ;
           <accession> @linkml:String ? ;
-          <ega_accession> @linkml:String ?
+          <ega_accession> @linkml:String ? ;
+          <has_attribute> @<Attribute> *
        ) ;
        rdf:type [ <Sample> ]
     )
@@ -684,6 +772,7 @@ linkml:Nodeidentifier NONLITERAL
           <cell_barcode_offset> @linkml:String ? ;
           <cell_barcode_size> @linkml:String ? ;
           <sample_barcode_read> @linkml:String ? ;
+          <alias> @linkml:String ;
           <type> @linkml:String ? ;
           <description> @linkml:String ;
           <has_attribute> @<Attribute> *
@@ -705,16 +794,15 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AttributeMixin> ] ? ;
           &<ReleaseStatusMixin_tes> ;
           rdf:type [ <ReleaseStatusMixin> ] ? ;
+          <type> @<StudyTypeEnum> ;
           <affiliation> @linkml:String + ;
-          <has_experiment> @<Experiment> * ;
-          <has_analysis> @<Analysis> * ;
           <has_project> @<Project> ? ;
-          <has_attribute> @<Attribute> * ;
+          <has_file> @<File> * ;
           <alias> @linkml:String ;
           <title> @linkml:String ;
           <description> @linkml:String ;
-          <type> @<StudyTypeEnum> ;
           <has_publication> @<Publication> * ;
+          <has_attribute> @<Attribute> * ;
           <release_status> @<ReleaseStatusEnum> ? ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ? ;
@@ -725,19 +813,25 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Submission> CLOSED {
-    (  $<Submission_tes> (  <has_study> @<Study> ? ;
+    (  $<Submission_tes> (  &<MetadataMixin_tes> ;
+          rdf:type [ <MetadataMixin> ] ? ;
+          <affiliation> @linkml:String ? ;
+          <has_study> @<Study> ? ;
           <has_project> @<Project> ? ;
           <has_sample> @<Sample> * ;
           <has_biospecimen> @<Biospecimen> * ;
           <has_individual> @<Individual> * ;
           <has_experiment> @<Experiment> * ;
+          <has_protocol> @<Protocol> + ;
           <has_analysis> @<Analysis> * ;
           <has_file> @<File> * ;
-          <has_data_access_policy> @<DataAccessPolicy> ? ;
+          <has_publication> @<Publication> * ;
           <submission_date> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
           <update_date> @linkml:String ? ;
-          <submission_status> @<SubmissionStatusEnum> ?
+          <submission_status> @<SubmissionStatusEnum> ? ;
+          <schema_type> @linkml:String ? ;
+          <schema_version> @linkml:String ?
        ) ;
        rdf:type [ <Submission> ]
     )
@@ -763,7 +857,10 @@ linkml:Nodeidentifier NONLITERAL
 
 <Workflow> CLOSED {
     (  $<Workflow_tes> (  &<InformationContentEntity_tes> ;
-          rdf:type [ <InformationContentEntity> ] ?
+          rdf:type [ <InformationContentEntity> ] ? ;
+          <name> @linkml:String ;
+          <has_workflow_step> @<WorkflowStep> * ;
+          <alias> @linkml:String
        ) ;
        rdf:type [ <Workflow> ]
     )
@@ -780,7 +877,7 @@ linkml:Nodeidentifier NONLITERAL
 <WorkflowStep> CLOSED {
     (  $<WorkflowStep_tes> (  &<InformationContentEntity_tes> ;
           rdf:type [ <InformationContentEntity> ] ? ;
-          <has_parameter> @<WorkflowParameter> *
+          <has_workflow_parameter> @<WorkflowParameter> *
        ) ;
        rdf:type [ <WorkflowStep> ]
     )

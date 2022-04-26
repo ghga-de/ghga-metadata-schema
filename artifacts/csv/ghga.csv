@@ -1,11 +1,12 @@
 # metamodel_version: 1.7.0
-# version: 0.5.0
+# version: 0.6.0
 id,mappings,description
 accession_mixin,,Mixin for entities that can be assigned a GHGA accession.
 agent,,"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity."
 analysis,,An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
 analysis_process,,"An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis."
 anatomical_entity,,Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
+ancestry,,Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
 attribute,,A key/value pair that further characterizes an entity.
 attribute_mixin,,Mixin for entities that can have one or more attributes.
 biological_quality,,A biological quality is a quality held by a biological entity.
@@ -16,7 +17,9 @@ committee,,A group of people organized for a specific purpose.
 data_access_committee,,"A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns."
 data_access_policy,,"A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies."
 data_transformation,,A data transformation technique used to analyze and interpret data to gain a better understanding of it.
-data_use_condition,,Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).
+data_use_condition,,Data Use Condition represents the use conditions associated with a policy.
+data_use_modifier,,Data use modifiers indicate additional conditions for use.
+data_use_permission,,"A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used."
 dataset,,A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
 deprecated_mixin,,Mixin for entities that can be deprecated.
 disease,,A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
@@ -26,7 +29,7 @@ ega_accession_mixin,,"Mixin for entities that can be assigned an EGA accession, 
 experiment,,"An experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis."
 experiment_process,,An Experiment Process is a process that describes how a Sample is transformed to a File via an assay. The Experiment Process also keeps track of the Protocol used and the Agent that is running the experiment.
 family,,"A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption."
-file,,
+file,,"A file is an object that contains information generated from a process, either an Experiment or an Analysis."
 individual,,An Individual is a Person who is participating in a Study.
 information_content_entity,,A generically dependent continuant that is about some thing.
 investigation,,Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
@@ -40,7 +43,7 @@ person,,A member of the species Homo sapiens.
 phenotypic_feature,,"The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype."
 planned_process,,"A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs."
 population,,"A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area."
-project,,Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.
+project,,A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.
 protocol,,"A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process."
 publication,,"The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI."
 publication_mixin,,Mixin for entities that can have one or more publications.

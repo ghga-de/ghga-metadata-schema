@@ -1,5 +1,30 @@
 {
    "$defs": {
+      "AgeRangeEnum": {
+         "description": "Enum to capture the age range that an Indiviudal belongs to.",
+         "enum": [
+            "0-5",
+            "6-10",
+            "11-15",
+            "16-20",
+            "21-25",
+            "26-30",
+            "31-35",
+            "36-40",
+            "41-45",
+            "46-50",
+            "51-55",
+            "56-60",
+            "61-65",
+            "66-70",
+            "71-75",
+            "76-80",
+            "80+",
+            "unknown"
+         ],
+         "title": "AgeRangeEnum",
+         "type": "string"
+      },
       "Agent": {
          "additionalProperties": false,
          "description": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity.",
@@ -30,10 +55,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -132,18 +153,21 @@
                ]
             },
             "has_workflow": {
-               "description": "The Workflow entity associated with this Analysis.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/Workflow"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "description": "One or more Workflow entities associated with this Analysis.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Workflow"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "id": {
-               "description": "An identifier that uniquely represents an entity.",
+               "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
             "reference_chromosome": {
@@ -187,8 +211,9 @@
             "reference_genome",
             "reference_chromosome",
             "has_input",
-            "alias",
-            "type"
+            "has_workflow",
+            "has_output",
+            "alias"
          ],
          "title": "Analysis",
          "type": "object"
@@ -244,11 +269,11 @@
                },
                "type": "array"
             },
-            "has_workflow_step": {
-               "description": "Workflow Step entity that performs a set of operations on the input data Files to generate a set of output data Files.",
+            "has_workflow": {
+               "description": "The Workflow entity associated with this Analysis Process.",
                "oneOf": [
                   {
-                     "$ref": "#/$defs/WorkflowStep"
+                     "$ref": "#/$defs/Workflow"
                   },
                   {
                      "type": "string"
@@ -269,10 +294,6 @@
             },
             "title": {
                "description": "The title that describes an entity.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -301,6 +322,14 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -317,16 +346,20 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -345,6 +378,72 @@
             "id"
          ],
          "title": "AnatomicalEntity",
+         "type": "object"
+      },
+      "Ancestry": {
+         "additionalProperties": false,
+         "description": "Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Ancestry",
          "type": "object"
       },
       "Attribute": {
@@ -378,9 +477,9 @@
       "BiologicalSexEnum": {
          "description": "The biological sex of an Individual as determined by their chromosomes.",
          "enum": [
-            "Female",
-            "Male",
-            "Unknown"
+            "female",
+            "male",
+            "unknown"
          ],
          "title": "BiologicalSexEnum",
          "type": "string"
@@ -407,14 +506,17 @@
             },
             "has_anatomical_entity": {
                "description": "The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/AnatomicalEntity"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/AnatomicalEntity"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_disease": {
                "description": "The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.",
@@ -483,7 +585,7 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "The type of Biospecimen.",
                "type": "string"
             },
             "update_date": {
@@ -499,19 +601,11 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "alias"
          ],
          "title": "Biospecimen",
          "type": "object"
-      },
-      "CaseControlEnum": {
-         "description": "Enum to capture whether a Sample is to be considered as Case or Control.",
-         "enum": [
-            "control",
-            "case"
-         ],
-         "title": "CaseControlEnum",
-         "type": "string"
       },
       "CellLine": {
          "additionalProperties": false,
@@ -535,10 +629,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -608,10 +698,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -654,6 +740,17 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_member": {
                "description": "All the members that are part of this Data Access Committee.",
                "items": {
@@ -695,10 +792,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -714,7 +807,6 @@
          "required": [
             "id",
             "name",
-            "main_contact",
             "alias"
          ],
          "title": "DataAccessCommittee",
@@ -736,6 +828,10 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "data_request_form": {
+               "description": "Data Request Form that is associated with this Data Access Policy.",
+               "type": "string"
+            },
             "description": {
                "description": "A short description for the Data Access Policy.",
                "type": "string"
@@ -743,6 +839,17 @@
             "ega_accession": {
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_data_access_committee": {
                "description": "The Data Access Committee linked to this policy.",
@@ -790,8 +897,71 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id",
+            "policy_text",
+            "has_data_access_committee",
+            "alias"
+         ],
+         "title": "DataAccessPolicy",
+         "type": "object"
+      },
+      "DataUseCondition": {
+         "additionalProperties": false,
+         "description": "Data Use Condition represents the use conditions associated with a policy.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "has_data_use_modifier": {
+               "description": "Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/DataUseModifier"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "has_data_use_permission": {
+               "description": "Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/DataUsePermission"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
             "update_date": {
@@ -808,29 +978,141 @@
          },
          "required": [
             "id",
-            "description",
-            "policy_text",
-            "has_data_access_committee",
-            "alias"
+            "has_data_use_permission"
          ],
-         "title": "DataAccessPolicy",
+         "title": "DataUseCondition",
          "type": "object"
       },
-      "DataUseCondition": {
+      "DataUseModifier": {
          "additionalProperties": false,
-         "description": "Data Use Condition represents the use conditions associated with a Dataset. A permission field can have one or more terms that collectively defines the data use condition. The modifier determines the interpretation of the use permission(s).",
+         "description": "Data use modifiers indicate additional conditions for use.",
          "properties": {
-            "modifier": {
-               "description": "Modifier for Data use permission. Preferable descendants of 'DUO:0000017 data use modifier'",
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
-            "permission": {
-               "description": "Data use permission. Typically one or more terms from DUO. Preferably descendants of 'DUO:0000001 data use permission'.",
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
                "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
-         "required": [],
-         "title": "DataUseCondition",
+         "required": [
+            "id"
+         ],
+         "title": "DataUseModifier",
+         "type": "object"
+      },
+      "DataUsePermission": {
+         "additionalProperties": false,
+         "description": "A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "DataUsePermission",
          "type": "object"
       },
       "Dataset": {
@@ -866,6 +1148,17 @@
                      },
                      {
                         "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
                      }
                   ]
                },
@@ -997,13 +1290,10 @@
             "title",
             "description",
             "has_study",
-            "has_experiment",
             "has_sample",
-            "has_analysis",
             "has_file",
             "has_data_access_policy",
-            "alias",
-            "type"
+            "alias"
          ],
          "title": "Dataset",
          "type": "object"
@@ -1014,6 +1304,14 @@
          "properties": {
             "alias": {
                "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
                "type": "string"
             },
             "creation_date": {
@@ -1032,16 +1330,20 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -1070,6 +1372,14 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -1086,16 +1396,20 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -1129,15 +1443,11 @@
                "type": "string"
             },
             "age": {
-               "description": "Age of an individual.",
-               "type": "integer"
+               "$ref": "#/$defs/AgeRangeEnum",
+               "description": "Age of an individual."
             },
             "alias": {
                "description": "The alias for an entity.",
-               "type": "string"
-            },
-            "ancestry": {
-               "description": "A person's descent or lineage, from a person or from a population.",
                "type": "string"
             },
             "creation_date": {
@@ -1159,6 +1469,20 @@
             "given_name": {
                "description": "First name.",
                "type": "string"
+            },
+            "has_ancestry": {
+               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Ancestry"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_children": {
                "description": "One or more children for this Individual.",
@@ -1183,6 +1507,20 @@
                   "oneOf": [
                      {
                         "$ref": "#/$defs/Disease"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/File"
                      },
                      {
                         "type": "string"
@@ -1241,10 +1579,6 @@
             "sex": {
                "$ref": "#/$defs/BiologicalSexEnum",
                "description": "The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female."
-            },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -1365,14 +1699,17 @@
             },
             "has_sample": {
                "description": "The Sample entity associated with this Experiment.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/Sample"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Sample"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_study": {
                "description": "The Study entity associated with this Experiment.",
@@ -1406,7 +1743,7 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
+               "description": "The type of Experiment.",
                "type": "string"
             },
             "update_date": {
@@ -1455,6 +1792,17 @@
                   }
                ]
             },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_input": {
                "description": "The input to the Experiment Process. Usually a Sample entity.",
                "oneOf": [
@@ -1467,15 +1815,10 @@
                ]
             },
             "has_output": {
-               "description": "The output of this Experiment Process. Usually a File entity.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/File"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "additionalProperties": {
+                  "$ref": "#/$defs/File__identifier_optional"
+               },
+               "description": "The output of this Experiment Process. Usually a File entity."
             },
             "has_protocol": {
                "description": "The Protocol entity used by this Experiment Process.",
@@ -1511,8 +1854,8 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
-               "type": "string"
+               "$ref": "#/$defs/ExperimentProcessTypeEnum",
+               "description": "The type of experiment process."
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -1531,6 +1874,15 @@
          ],
          "title": "ExperimentProcess",
          "type": "object"
+      },
+      "ExperimentProcessTypeEnum": {
+         "description": "The different types of Experiment Processes.",
+         "enum": [
+            "sample_preparation",
+            "assay"
+         ],
+         "title": "ExperimentProcessTypeEnum",
+         "type": "string"
       },
       "Family": {
          "additionalProperties": false,
@@ -1595,10 +1947,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1619,7 +1967,7 @@
       },
       "File": {
          "additionalProperties": false,
-         "description": "",
+         "description": "A file is an object that contains information generated from a process, either an Experiment or an Analysis.",
          "properties": {
             "accession": {
                "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
@@ -1641,6 +1989,10 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "drs_uri": {
+               "description": "GA4GH Data Repository Service (DRS) identifier URI for a file.",
+               "type": "string"
+            },
             "ega_accession": {
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
@@ -1648,6 +2000,17 @@
             "format": {
                "$ref": "#/$defs/FileFormatEnum",
                "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -1667,11 +2030,7 @@
             },
             "size": {
                "description": "The size of a file in bytes.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
+               "type": "integer"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -1707,10 +2066,102 @@
             "pacbio_hdf5",
             "sff",
             "srf",
-            "vcf"
+            "vcf",
+            "txt",
+            "pxf",
+            "other"
          ],
          "title": "FileFormatEnum",
          "type": "string"
+      },
+      "File__identifier_optional": {
+         "additionalProperties": false,
+         "description": "A file is an object that contains information generated from a process, either an Experiment or an Analysis.",
+         "properties": {
+            "accession": {
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias for an entity.",
+               "type": "string"
+            },
+            "checksum": {
+               "description": "A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.",
+               "type": "string"
+            },
+            "checksum_type": {
+               "description": "The type of algorithm used to generate the checksum of a file.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "drs_uri": {
+               "description": "GA4GH Data Repository Service (DRS) identifier URI for a file.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
+               "type": "string"
+            },
+            "format": {
+               "$ref": "#/$defs/FileFormatEnum",
+               "description": "The format of the file: BAM, SAM, CRAM, BAI, etc."
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The given filename.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "size": {
+               "description": "The size of a file in bytes.",
+               "type": "integer"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "name",
+            "format",
+            "checksum",
+            "checksum_type",
+            "alias"
+         ],
+         "title": "File",
+         "type": "object"
       },
       "Individual": {
          "additionalProperties": false,
@@ -1725,15 +2176,11 @@
                "type": "string"
             },
             "age": {
-               "description": "Age of an individual.",
-               "type": "integer"
+               "$ref": "#/$defs/AgeRangeEnum",
+               "description": "Age of an individual."
             },
             "alias": {
                "description": "The alias for an entity.",
-               "type": "string"
-            },
-            "ancestry": {
-               "description": "A person's descent or lineage, from a person or from a population.",
                "type": "string"
             },
             "creation_date": {
@@ -1755,6 +2202,20 @@
             "given_name": {
                "description": "First name.",
                "type": "string"
+            },
+            "has_ancestry": {
+               "description": "A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Ancestry"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_children": {
                "description": "One or more children for this Individual.",
@@ -1779,6 +2240,20 @@
                   "oneOf": [
                      {
                         "$ref": "#/$defs/Disease"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/File"
                      },
                      {
                         "type": "string"
@@ -1838,10 +2313,6 @@
                "$ref": "#/$defs/BiologicalSexEnum",
                "description": "The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female."
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -1862,7 +2333,8 @@
             "id",
             "sex",
             "age",
-            "vital_status"
+            "vital_status",
+            "alias"
          ],
          "title": "Individual",
          "type": "object"
@@ -1872,7 +2344,7 @@
          "description": "Information about the library preparation of an Experiment.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -1897,6 +2369,10 @@
                   ]
                },
                "type": "array"
+            },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -1983,7 +2459,7 @@
             "library_preparation",
             "library_preparation_kit_retail_name",
             "library_preparation_kit_manufacturer",
-            "target_regions",
+            "alias",
             "description"
          ],
          "title": "LibraryPreparationProtocol",
@@ -2037,10 +2513,6 @@
                "description": "The telephone number of the Member.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -2056,7 +2528,6 @@
          "required": [
             "id",
             "email",
-            "telephone",
             "organization"
          ],
          "title": "Member",
@@ -2068,6 +2539,14 @@
          "properties": {
             "alias": {
                "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
                "type": "string"
             },
             "creation_date": {
@@ -2086,16 +2565,20 @@
                "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -2118,7 +2601,7 @@
       },
       "Project": {
          "additionalProperties": false,
-         "description": "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement.",
+         "description": "A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.",
          "properties": {
             "accession": {
                "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
@@ -2133,7 +2616,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Short textual description of the project (Some information on the protocol, sample used and collected etc)",
+               "description": "Short textual description of the project.",
                "type": "string"
             },
             "has_attribute": {
@@ -2177,10 +2660,6 @@
                "description": "Comprehensive title for the project.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -2207,7 +2686,7 @@
          "description": "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2228,6 +2707,10 @@
                   ]
                },
                "type": "array"
+            },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -2266,7 +2749,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "alias"
          ],
          "title": "Protocol",
          "type": "object"
@@ -2280,7 +2764,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
@@ -2288,7 +2772,7 @@
                "type": "string"
             },
             "id": {
-               "description": "A PMID or DOI for the Publication.",
+               "description": "An identifier that uniquely represents an entity.",
                "type": "string"
             },
             "schema_type": {
@@ -2301,10 +2785,6 @@
             },
             "title": {
                "description": "The title for the Publication.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -2320,7 +2800,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "alias"
          ],
          "title": "Publication",
          "type": "object"
@@ -2360,14 +2841,17 @@
             },
             "has_anatomical_entity": {
                "description": "Anatomical site associated with an entity.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/AnatomicalEntity"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/AnatomicalEntity"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "has_attribute": {
                "description": "Key/value pairs corresponding to an entity.",
@@ -2429,21 +2913,17 @@
                "description": "Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).",
                "type": "string"
             },
-            "tissue": {
-               "description": "An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.",
-               "type": "string"
-            },
             "type": {
-               "$ref": "#/$defs/CaseControlEnum",
-               "description": "Type of sample: 'Case' or 'Control'."
+               "description": "The type of sample.",
+               "type": "string"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
             },
             "vital_status_at_sampling": {
-               "description": "Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').",
-               "type": "string"
+               "$ref": "#/$defs/VitalStatusEnum",
+               "description": "Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased')."
             },
             "xref": {
                "description": "One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.",
@@ -2457,9 +2937,7 @@
             "id",
             "name",
             "description",
-            "has_individual",
-            "alias",
-            "tissue"
+            "alias"
          ],
          "title": "Sample",
          "type": "object"
@@ -2469,7 +2947,7 @@
          "description": "Information about the sequencing of a sample.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "cell_barcode_offset": {
@@ -2510,6 +2988,10 @@
                   ]
                },
                "type": "array"
+            },
+            "has_file": {
+               "description": "A document that describes the Protocol.",
+               "type": "string"
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -2594,6 +3076,7 @@
          "required": [
             "id",
             "instrument_model",
+            "alias",
             "description"
          ],
          "title": "SequencingProtocol",
@@ -2608,7 +3091,7 @@
                "type": "string"
             },
             "affiliation": {
-               "description": "Institutions associated with this study.",
+               "description": "The Institution(s) associated with an entity.",
                "items": {
                   "type": "string"
                },
@@ -2630,20 +3113,6 @@
                "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
                "type": "string"
             },
-            "has_analysis": {
-               "description": "One or more Analysis entities associated with this Study.",
-               "items": {
-                  "oneOf": [
-                     {
-                        "$ref": "#/$defs/Analysis"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
-            },
             "has_attribute": {
                "description": "Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)",
                "items": {
@@ -2655,12 +3124,12 @@
                },
                "type": "array"
             },
-            "has_experiment": {
-               "description": "One or more Experiment entities associated with this Study.",
+            "has_file": {
+               "description": "Additional/supplementary files associated with a Study.",
                "items": {
                   "oneOf": [
                      {
-                        "$ref": "#/$defs/Experiment"
+                        "$ref": "#/$defs/File"
                      },
                      {
                         "type": "string"
@@ -2736,11 +3205,11 @@
          },
          "required": [
             "id",
+            "type",
             "affiliation",
             "alias",
             "title",
-            "description",
-            "type"
+            "description"
          ],
          "title": "Study",
          "type": "object"
@@ -2761,6 +3230,7 @@
             "rna_seq",
             "exome_sequencing",
             "pooled_clone_sequencing",
+            "genome_wide_association_study",
             "other"
          ],
          "title": "StudyTypeEnum",
@@ -2770,6 +3240,10 @@
          "additionalProperties": false,
          "description": "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.",
          "properties": {
+            "affiliation": {
+               "description": "Institution/Center/Data Hub that is providing this submission.",
+               "type": "string"
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the Submission was created.",
                "type": "string"
@@ -2801,17 +3275,6 @@
                   ]
                },
                "type": "array"
-            },
-            "has_data_access_policy": {
-               "description": "The Data Access Policy entity that applies to the data associated with this submission.",
-               "oneOf": [
-                  {
-                     "$ref": "#/$defs/DataAccessPolicy"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ]
             },
             "has_experiment": {
                "description": "Information about one or more Experiment entities associated with this submission.",
@@ -2869,6 +3332,40 @@
                   }
                ]
             },
+            "has_protocol": {
+               "description": "One or more Protocol entities associated with this Submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Protocol"
+                     },
+                     {
+                        "$ref": "#/$defs/LibraryPreparationProtocol"
+                     },
+                     {
+                        "$ref": "#/$defs/SequencingProtocol"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Publication"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_sample": {
                "description": "Information about one or more Sample entities associated with this submission.",
                "items": {
@@ -2898,6 +3395,14 @@
                "description": "A internal unique identifier for the Submission.",
                "type": "string"
             },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
             "submission_date": {
                "description": "The timestamp (in ISO 8601 format) when submission was marked completed.",
                "type": "string"
@@ -2912,7 +3417,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "has_protocol"
          ],
          "title": "Submission",
          "type": "object"
@@ -2920,7 +3426,7 @@
       "SubmissionStatusEnum": {
          "description": "Enum to capture the status of a Submission.",
          "enum": [
-            "in progress",
+            "in_progress",
             "completed"
          ],
          "title": "SubmissionStatusEnum",
@@ -2948,10 +3454,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -3016,10 +3518,6 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
-            "type": {
-               "description": "The type of an entity.",
-               "type": "string"
-            },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
                "type": "string"
@@ -3041,8 +3539,8 @@
       "UserRoleEnum": {
          "description": "Enum to capture the different roles a GHGA User can have.",
          "enum": [
-            "data requester",
-            "data steward"
+            "data_requester",
+            "data_steward"
          ],
          "title": "UserRoleEnum",
          "type": "string"
@@ -3062,15 +3560,33 @@
          "description": "A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow.",
          "properties": {
             "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
+               "description": "The alias for an entity.",
                "type": "string"
             },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
+            "has_workflow_step": {
+               "description": "The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/WorkflowStep"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "id": {
                "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name for an entity.",
                "type": "string"
             },
             "schema_type": {
@@ -3079,10 +3595,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -3098,7 +3610,9 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "name",
+            "alias"
          ],
          "title": "Workflow",
          "type": "object"
@@ -3132,12 +3646,15 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_parameter": {
+            "has_workflow_parameter": {
                "description": "One or more parameters that are associated with this Workflow Step.",
                "items": {
                   "oneOf": [
                      {
                         "$ref": "#/$defs/WorkflowParameter"
+                     },
+                     {
+                        "type": "string"
                      }
                   ]
                },
@@ -3153,10 +3670,6 @@
             },
             "schema_version": {
                "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "type": {
-               "description": "The type of an entity.",
                "type": "string"
             },
             "update_date": {
@@ -3186,6 +3699,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.5.0"
+   "version": "0.6.0"
 }
 

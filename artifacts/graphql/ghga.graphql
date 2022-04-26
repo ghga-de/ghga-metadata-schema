@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.5.0
+# version: 0.6.0
 interface AccessionMixin
   {
     accession: String
@@ -12,7 +12,6 @@ type Agent
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String
@@ -21,22 +20,22 @@ type Agent
 
 type Analysis implements AccessionMixin, EgaAccessionMixin
   {
+    id: String!
     xref: [String]
     creationDate: String
     updateDate: String
     schemaType: String
     schemaVersion: String
-    id: String!
     title: String
+    type: String
     referenceGenome: String!
     referenceChromosome: String!
     hasInput: [File]!
     hasStudy: Study
-    hasWorkflow: Workflow
+    hasWorkflow: [Workflow]!
     hasAnalysisProcess: [AnalysisProcess]
-    hasOutput: [File]
+    hasOutput: [File]!
     alias: String!
-    type: String!
     description: String
     accession: String
     egaAccession: String
@@ -49,12 +48,11 @@ type AnalysisProcess
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     title: String
     hasInput: [File]
-    hasWorkflowStep: WorkflowStep
+    hasWorkflow: Workflow
     hasAgent: Agent
     hasOutput: [File]
   }
@@ -66,11 +64,31 @@ type AnatomicalEntity implements OntologyClassMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
+    schemaType: String
+    schemaVersion: String
+    conceptIdentifier: String
+    conceptName: String
+    description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
+  }
+
+type Ancestry implements OntologyClassMixin
+  {
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
     schemaType: String
     schemaVersion: String
     name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Attribute
@@ -93,7 +111,6 @@ interface BiologicalQuality
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -104,18 +121,18 @@ type Biospecimen implements AccessionMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
-    alias: String
     name: String
+    type: String
     description: String
     isolation: String
     storage: String
     hasIndividual: Individual
-    hasAnatomicalEntity: AnatomicalEntity
+    hasAnatomicalEntity: [AnatomicalEntity]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
+    alias: String!
     accession: String
   }
 
@@ -126,7 +143,6 @@ type CellLine
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -138,7 +154,6 @@ type Cohort implements AccessionMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String
@@ -153,71 +168,111 @@ interface Committee
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String
   }
 
-type DataAccessCommittee implements AccessionMixin, EgaAccessionMixin
+type DataAccessCommittee implements AttributeMixin, AccessionMixin, EgaAccessionMixin
   {
     id: String!
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String!
     description: String
-    mainContact: Member!
+    mainContact: Member
     hasMember: [Member]
     alias: String!
+    hasAttribute: [Attribute]
     accession: String
     egaAccession: String
   }
 
-type DataAccessPolicy implements AccessionMixin, EgaAccessionMixin
+type DataAccessPolicy implements AttributeMixin, AccessionMixin, EgaAccessionMixin
   {
     id: String!
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String
-    description: String!
+    description: String
     policyText: String!
     policyUrl: String
     hasDataAccessCommittee: DataAccessCommittee!
     hasDataUseCondition: [DataUseCondition]
+    dataRequestForm: String
     alias: String!
+    hasAttribute: [Attribute]
     accession: String
     egaAccession: String
   }
 
 interface DataTransformation
   {
+    id: String!
     alias: String
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
-    id: String!
     title: String
     description: String
   }
 
 type DataUseCondition
   {
-    permission: String
-    modifier: String
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    hasDataUsePermission: DataUsePermission!
+    hasDataUseModifier: DataUseModifier
   }
 
-type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, ReleaseStatusMixin
+type DataUseModifier implements OntologyClassMixin
+  {
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    conceptIdentifier: String
+    conceptName: String
+    description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
+  }
+
+type DataUsePermission implements OntologyClassMixin
+  {
+    id: String!
+    alias: String
+    xref: [String]
+    creationDate: String
+    updateDate: String
+    schemaType: String
+    schemaVersion: String
+    conceptIdentifier: String
+    conceptName: String
+    description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
+  }
+
+type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, ReleaseStatusMixin, AttributeMixin
   {
     id: String!
     xref: [String]
@@ -227,19 +282,20 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Rel
     schemaVersion: String
     title: String!
     description: String!
+    type: String
     hasStudy: [Study]!
-    hasExperiment: [Analysis]!
+    hasExperiment: [Analysis]
     hasSample: [Study]!
-    hasAnalysis: [Study]!
+    hasAnalysis: [Study]
     hasFile: [File]!
     hasDataAccessPolicy: DataAccessPolicy!
     alias: String!
-    type: String!
     hasPublication: [Publication]
     releaseStatus: ReleaseStatusEnum
     accession: String
     egaAccession: String
     releaseDate: String
+    hasAttribute: [Attribute]
   }
 
 interface DeprecatedMixin
@@ -255,11 +311,14 @@ type Disease
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
   }
 
 type DiseaseOrPhenotypicFeature implements OntologyClassMixin
@@ -269,11 +328,14 @@ type DiseaseOrPhenotypicFeature implements OntologyClassMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
   }
 
 type Donor
@@ -282,7 +344,6 @@ type Donor
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     givenName: String
@@ -290,14 +351,15 @@ type Donor
     additionalName: String
     sex: BiologicalSexEnum!
     karyotype: String
-    age: Integer!
+    age: AgeRangeEnum!
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
-    ancestry: String
+    hasAncestry: [Ancestry]
     hasParent: [Individual]
     hasChildren: [Individual]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
+    hasFile: [File]
     alias: String!
     accession: String
     egaAccession: String
@@ -308,46 +370,47 @@ interface EgaAccessionMixin
     egaAccession: String
   }
 
-type Experiment implements AccessionMixin, EgaAccessionMixin
+type Experiment implements AttributeMixin, AccessionMixin, EgaAccessionMixin
   {
     id: String!
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
+    type: String
     biologicalReplicates: String
     technicalReplicates: String
     experimentalReplicates: String
     hasStudy: Study!
-    hasSample: Sample!
+    hasSample: [Sample]!
     hasFile: [File]
     hasProtocol: [Protocol]!
     hasExperimentProcess: [ExperimentProcess]
-    hasAttribute: [Attribute]
     alias: String!
     title: String
     description: String!
+    hasAttribute: [Attribute]
     accession: String
     egaAccession: String
   }
 
-type ExperimentProcess
+type ExperimentProcess implements AttributeMixin
   {
     id: String!
     alias: String
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
+    type: ExperimentProcessTypeEnum
     title: String
     hasInput: Sample
     hasProtocol: Protocol
     hasAgent: Agent
-    hasOutput: File
+    hasOutput: [File]
+    hasAttribute: [Attribute]
   }
 
 type Family implements AccessionMixin
@@ -357,7 +420,6 @@ type Family implements AccessionMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String
@@ -366,23 +428,24 @@ type Family implements AccessionMixin
     accession: String
   }
 
-type File implements AccessionMixin, EgaAccessionMixin
+type File implements AccessionMixin, EgaAccessionMixin, AttributeMixin
   {
     id: String!
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
+    drsUri: String
     name: String!
     format: FileFormatEnum!
-    size: String
+    size: Integer
     checksum: String!
     checksumType: String!
     alias: String!
     accession: String
     egaAccession: String
+    hasAttribute: [Attribute]
   }
 
 type Individual implements AccessionMixin, EgaAccessionMixin
@@ -391,23 +454,23 @@ type Individual implements AccessionMixin, EgaAccessionMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     givenName: String
     familyName: String
     additionalName: String
-    alias: String
     sex: BiologicalSexEnum!
     karyotype: String
-    age: Integer!
+    age: AgeRangeEnum!
     vitalStatus: VitalStatusEnum!
     geographicalRegion: String
-    ancestry: String
+    hasAncestry: [Ancestry]
     hasParent: [Individual]
     hasChildren: [Individual]
     hasDisease: [Disease]
     hasPhenotypicFeature: [PhenotypicFeature]
+    hasFile: [File]
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -419,7 +482,6 @@ interface InformationContentEntity
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -431,7 +493,6 @@ interface Investigation
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     title: String
@@ -441,14 +502,14 @@ interface Investigation
 type LibraryPreparationProtocol
   {
     id: String!
-    alias: String
     creationDate: String
     updateDate: String
     schemaType: String
     schemaVersion: String
     name: String
-    url: String
     type: String
+    url: String
+    hasFile: File
     xref: [String]
     libraryName: String!
     libraryLayout: String!
@@ -459,8 +520,9 @@ type LibraryPreparationProtocol
     libraryPreparationKitManufacturer: String!
     primer: String
     endBias: String
-    targetRegions: String!
+    targetRegions: String
     rnaseqStrandedness: String
+    alias: String!
     description: String!
     hasAttribute: [Attribute]
   }
@@ -472,7 +534,6 @@ interface MaterialEntity
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -484,14 +545,13 @@ type Member
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     givenName: String
     familyName: String
     additionalName: String
     email: String!
-    telephone: String!
+    telephone: String
     organization: String!
   }
 
@@ -508,7 +568,6 @@ type NamedThing implements MetadataMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -516,8 +575,12 @@ type NamedThing implements MetadataMixin
 interface OntologyClassMixin
   {
     id: String!
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
   }
 
 interface Person
@@ -527,7 +590,6 @@ interface Person
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     givenName: String
@@ -542,11 +604,14 @@ type PhenotypicFeature
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
-    name: String
+    conceptIdentifier: String
+    conceptName: String
     description: String
+    ontologyName: String
+    ontologyVersion: String
+    name: String
   }
 
 interface PlannedProcess
@@ -556,7 +621,6 @@ interface PlannedProcess
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -568,7 +632,6 @@ interface Population
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     name: String
@@ -580,7 +643,6 @@ type Project implements AccessionMixin, AttributeMixin
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     alias: String!
@@ -594,30 +656,30 @@ type Project implements AccessionMixin, AttributeMixin
 type Protocol implements AttributeMixin
   {
     id: String!
-    alias: String
     creationDate: String
     updateDate: String
     schemaType: String
     schemaVersion: String
     name: String
+    type: String
     description: String
     url: String
-    type: String
+    hasFile: File
+    alias: String!
     xref: [String]
     hasAttribute: [Attribute]
   }
 
 type Publication
   {
-    alias: String
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     title: String
     abstract: String
     id: String!
+    alias: String!
     xref: [String]
   }
 
@@ -639,14 +701,13 @@ interface ResearchActivity
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     title: String
     description: String
   }
 
-type Sample implements AccessionMixin, EgaAccessionMixin
+type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
   {
     id: String!
     creationDate: String
@@ -654,32 +715,31 @@ type Sample implements AccessionMixin, EgaAccessionMixin
     schemaType: String
     schemaVersion: String
     name: String!
+    type: String
     description: String!
-    vitalStatusAtSampling: String
+    vitalStatusAtSampling: VitalStatusEnum
     isolation: String
     storage: String
-    hasIndividual: Individual!
-    hasAnatomicalEntity: AnatomicalEntity
+    hasIndividual: Individual
+    hasAnatomicalEntity: [AnatomicalEntity]
     hasBiospecimen: Biospecimen
-    hasAttribute: [Attribute]
     alias: String!
-    type: CaseControlEnum
-    tissue: String!
     xref: [String]
     accession: String
     egaAccession: String
+    hasAttribute: [Attribute]
   }
 
 type SequencingProtocol
   {
     id: String!
-    alias: String
     creationDate: String
     updateDate: String
     schemaType: String
     schemaVersion: String
     name: String
     url: String
+    hasFile: File
     xref: [String]
     sequencingCenter: String
     instrumentModel: String!
@@ -697,6 +757,7 @@ type SequencingProtocol
     cellBarcodeOffset: String
     cellBarcodeSize: String
     sampleBarcodeRead: String
+    alias: String!
     type: String
     description: String!
     hasAttribute: [Attribute]
@@ -710,38 +771,41 @@ type Study implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Attri
     updateDate: String
     schemaType: String
     schemaVersion: String
+    type: StudyTypeEnum!
     affiliation: [String]!
-    hasExperiment: [Experiment]
-    hasAnalysis: [Analysis]
     hasProject: Project
-    hasAttribute: [Attribute]
+    hasFile: [File]
     alias: String!
     title: String!
     description: String!
-    type: StudyTypeEnum!
     hasPublication: [Publication]
+    hasAttribute: [Attribute]
     releaseStatus: ReleaseStatusEnum
     accession: String
     egaAccession: String
     releaseDate: String
   }
 
-type Submission
+type Submission implements MetadataMixin
   {
     id: String!
+    affiliation: String
     hasStudy: Study
     hasProject: Project
     hasSample: [Sample]
     hasBiospecimen: [Biospecimen]
     hasIndividual: [Individual]
     hasExperiment: [Experiment]
+    hasProtocol: [Protocol]!
     hasAnalysis: [Analysis]
     hasFile: [File]
-    hasDataAccessPolicy: DataAccessPolicy
+    hasPublication: [Publication]
     submissionDate: String
     creationDate: String
     updateDate: String
     submissionStatus: SubmissionStatusEnum
+    schemaType: String
+    schemaVersion: String
   }
 
 type Technology
@@ -751,7 +815,6 @@ type Technology
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
   }
@@ -763,7 +826,6 @@ type User
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
     givenName: String
@@ -776,13 +838,14 @@ type User
 type Workflow
   {
     id: String!
-    alias: String
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
+    name: String!
+    hasWorkflowStep: [WorkflowStep]
+    alias: String!
   }
 
 type WorkflowParameter
@@ -798,10 +861,9 @@ type WorkflowStep
     xref: [String]
     creationDate: String
     updateDate: String
-    type: String
     schemaType: String
     schemaVersion: String
-    hasParameter: [WorkflowParameter]
+    hasWorkflowParameter: [WorkflowParameter]
   }
 
 

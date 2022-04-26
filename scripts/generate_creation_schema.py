@@ -59,10 +59,7 @@ def adjust_slot_definitions(
     """
     adjusted_slots = CommentedMap()
     for slot_name, slot_def in schema["slots"].items():
-        if slot_name.startswith("has ") and slot_name not in {
-            "has attribute",
-            "has data use condition",
-        }:
+        if slot_name.startswith("has ") and slot_name not in {"has attribute"}:
             new_slot_def = copy.deepcopy(slot_def)
             if "range" in new_slot_def and new_slot_def["range"] in schema["classes"]:
                 if new_slot_def["range"] in creation_classes:
