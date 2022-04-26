@@ -344,6 +344,7 @@ classes:
       description:
         description: >-
           A detailed description of the Experiment.
+        required: true
       type:
         description: >-
           The type of Experiment.
@@ -724,6 +725,7 @@ classes:
       name:
         description: >-
           Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+        required: true
       type:
         description: >-
           The type of sample.
@@ -732,6 +734,7 @@ classes:
           Short textual description of the sample
           (How the sample was collected, sample source,
           protocol followed for processing the sample etc).
+        required: true
       has individual:
         description: >-
           The Individual from which this Sample was derived from.
