@@ -713,6 +713,7 @@ classes:
       - name
       - type
       - description
+      - case_control
       - vital status at sampling
       - isolation
       - storage
@@ -2268,6 +2269,11 @@ slots:
       - recommended
       - public
 
+  case_control:
+    description: >-
+      Whether the sample is to be treated as Case or Control in a Study.
+    range: case control enum
+
   vital status at sampling:
     description: >-
       Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
@@ -2442,6 +2448,14 @@ enums:
         description: >-
           Other format.
 
+  case control enum:
+    description: >-
+      Enum to capture whether a Sample in a Study is to be considered as Case or Control.
+    permissible_values:
+      control:
+        description: The Sample is to be treated as Control
+      case:
+        description: The Sample is to be treated as Case
 
   submission status enum:
     description: >-
