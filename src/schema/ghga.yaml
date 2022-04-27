@@ -713,7 +713,7 @@ classes:
       - name
       - type
       - description
-      - case_control
+      - case control status
       - vital status at sampling
       - isolation
       - storage
@@ -2269,10 +2269,13 @@ slots:
       - recommended
       - public
 
-  case_control:
+  case control status:
     description: >-
       Whether the sample is to be treated as Case or Control in a Study.
-    range: case control enum
+    range: case control status enum
+    in_subset:
+      - recommended
+      - public
 
   vital status at sampling:
     description: >-
@@ -2448,7 +2451,7 @@ enums:
         description: >-
           Other format.
 
-  case control enum:
+  case control status enum:
     description: >-
       Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     permissible_values:
