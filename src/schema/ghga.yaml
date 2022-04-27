@@ -1086,15 +1086,15 @@ classes:
         inlined_as_list: true
       has experiment:
         description: >-
-          One or more Analysis entities that are referenced by this Dataset.
-        range: analysis
+          One or more Experiment entities that are referenced by this Dataset.
+        range: experiment
         multivalued: true
         inlined: true
         inlined_as_list: true
       has sample:
         description: >-
           One or more Sample entities that are referenced by this Dataset.
-        range: study
+        range: sample
         multivalued: true
         required: true
         inlined: true
@@ -1102,13 +1102,14 @@ classes:
       has analysis:
         description: >-
           One or more Analysis entities that are referenced by this Dataset.
-        range: study
+        range: analysis
         multivalued: true
         inlined: true
         inlined_as_list: true
       has file:
         description: >-
           One or more File entities that collectively are part of this Dataset.
+        range: file
         required: true
         multivalued: true
         inlined: true
