@@ -2174,6 +2174,10 @@ slots:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
+    range: paired or single end enum
+    in_subset:
+      - recommended
+      - public
 
   reference chromosome:
     description: >-
@@ -2459,6 +2463,15 @@ enums:
         description: The Sample is to be treated as Control
       case:
         description: The Sample is to be treated as Case
+
+  paired or single end enum:
+    description: >-
+      Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
+    permissible_values:
+      paired:
+        description: The reads are Paired-end
+      single:
+        description: The reads are Single-end
 
   submission status enum:
     description: >-
