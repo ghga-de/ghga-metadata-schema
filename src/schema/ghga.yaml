@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 0.6.0
+version: 0.7.0
 
 imports:
 - linkml:types
@@ -713,6 +713,7 @@ classes:
       - name
       - type
       - description
+      - case control status
       - vital status at sampling
       - isolation
       - storage
@@ -1086,15 +1087,15 @@ classes:
         inlined_as_list: true
       has experiment:
         description: >-
-          One or more Analysis entities that are referenced by this Dataset.
-        range: analysis
+          One or more Experiment entities that are referenced by this Dataset.
+        range: experiment
         multivalued: true
         inlined: true
         inlined_as_list: true
       has sample:
         description: >-
           One or more Sample entities that are referenced by this Dataset.
-        range: study
+        range: sample
         multivalued: true
         required: true
         inlined: true
@@ -1102,13 +1103,14 @@ classes:
       has analysis:
         description: >-
           One or more Analysis entities that are referenced by this Dataset.
-        range: study
+        range: analysis
         multivalued: true
         inlined: true
         inlined_as_list: true
       has file:
         description: >-
           One or more File entities that collectively are part of this Dataset.
+        range: file
         required: true
         multivalued: true
         inlined: true
@@ -2172,6 +2174,10 @@ slots:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
+    range: paired or single end enum
+    in_subset:
+      - recommended
+      - public
 
   reference chromosome:
     description: >-
@@ -2263,6 +2269,14 @@ slots:
   sample barcode read: 
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+    in_subset:
+      - recommended
+      - public
+
+  case control status:
+    description: >-
+      Whether the sample is to be treated as Case or Control in a Study.
+    range: case control status enum
     in_subset:
       - recommended
       - public
@@ -2441,6 +2455,23 @@ enums:
         description: >-
           Other format.
 
+  case control status enum:
+    description: >-
+      Enum to capture whether a Sample in a Study is to be considered as Case or Control.
+    permissible_values:
+      control:
+        description: The Sample is to be treated as Control
+      case:
+        description: The Sample is to be treated as Case
+
+  paired or single end enum:
+    description: >-
+      Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
+    permissible_values:
+      paired:
+        description: The reads are Paired-end
+      single:
+        description: The reads are Single-end
 
   submission status enum:
     description: >-
