@@ -1,3 +1,9 @@
+## 0.7.0 release
+
+- Fixed range for Dataset slots
+- Added `case control status` slot to Sample
+- Added enum for paired end/single end read status
+
 ## 0.6.0 release
 
 - Added `type` to appropriate classes
@@ -32,7 +38,6 @@
 - Changed `has individual` to optional for `sample` class
 - Changed `type` to optional for `dataset` class
 - Fixed range of `size` to integer
-
 
 ## 0.5.0 release
 

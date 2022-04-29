@@ -4,7 +4,7 @@ from typing import List, Optional, Union
 from pydantic import BaseModel, Field
 
 metamodel_version = "None"
-version = "0.6.0"
+version = "0.7.0"
 
 
 class BiologicalSexEnum(str, Enum):
@@ -64,6 +64,20 @@ class FileFormatEnum(str, Enum):
     txt = "txt"
     pxf = "pxf"
     other = "other"
+    
+    
+
+class CaseControlStatusEnum(str, Enum):
+    
+    control = "control"
+    case = "case"
+    
+    
+
+class PairedOrSingleEndEnum(str, Enum):
+    
+    paired = "paired"
+    single = "single"
     
     
 
@@ -935,7 +949,7 @@ class SequencingProtocol(Protocol):
     """
     sequencing_center: Optional[str] = Field(None, description="""Center where sample was sequenced.""")
     instrument_model: str = Field(None, description="""The name and model of the technology platform used to perform sequencing.""")
-    paired_or_single_end: Optional[str] = Field(None, description="""Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.""")
+    paired_or_single_end: Optional[PairedOrSingleEndEnum] = Field(None, description="""Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.""")
     sequencing_read_length: Optional[str] = Field(None, description="""Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process""")
     index_sequence: Optional[str] = Field(None, description="""A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.""")
     target_coverage: Optional[str] = Field(None, description="""Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.""")
@@ -972,6 +986,7 @@ class Sample(MaterialEntity):
     name: str = Field(None, description="""Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).""")
     type: Optional[str] = Field(None, description="""The type of sample.""")
     description: str = Field(None, description="""Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).""")
+    case_control_status: Optional[CaseControlStatusEnum] = Field(None, description="""Whether the sample is to be treated as Case or Control in a Study.""")
     vital_status_at_sampling: Optional[VitalStatusEnum] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
@@ -1119,9 +1134,9 @@ class Dataset(InformationContentEntity):
     description: str = Field(None, description="""Description of an entity.""")
     type: Optional[str] = Field(None, description="""The type of an entity.""")
     has_study: Union[List[Study], List[str]] = Field(None, description="""One or more Study entities that are referenced by this Dataset.""")
-    has_experiment: Optional[Union[List[Analysis], List[str]]] = Field(None, description="""One or more Analysis entities that are referenced by this Dataset.""")
-    has_sample: Union[List[Study], List[str]] = Field(None, description="""One or more Sample entities that are referenced by this Dataset.""")
-    has_analysis: Optional[Union[List[Study], List[str]]] = Field(None, description="""One or more Analysis entities that are referenced by this Dataset.""")
+    has_experiment: Optional[Union[List[Experiment], List[str]]] = Field(None, description="""One or more Experiment entities that are referenced by this Dataset.""")
+    has_sample: Union[List[Sample], List[str]] = Field(None, description="""One or more Sample entities that are referenced by this Dataset.""")
+    has_analysis: Optional[Union[List[Analysis], List[str]]] = Field(None, description="""One or more Analysis entities that are referenced by this Dataset.""")
     has_file: Union[List[File], List[str]] = Field(None, description="""One or more File entities that collectively are part of this Dataset.""")
     has_data_access_policy: Union[DataAccessPolicy, str] = Field(None, description="""The Data Access Policy that applies to this Dataset.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")

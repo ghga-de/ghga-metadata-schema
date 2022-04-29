@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.6.0
+# version: 0.7.0
 BASE <https://w3id.org/GHGA/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -314,9 +314,9 @@ linkml:Nodeidentifier NONLITERAL
           <description> @linkml:String ;
           <type> @linkml:String ? ;
           <has_study> @<Study> + ;
-          <has_experiment> @<Analysis> * ;
-          <has_sample> @<Study> + ;
-          <has_analysis> @<Study> * ;
+          <has_experiment> @<Experiment> * ;
+          <has_sample> @<Sample> + ;
+          <has_analysis> @<Analysis> * ;
           <has_file> @<File> + ;
           <has_data_access_policy> @<DataAccessPolicy> ;
           <alias> @linkml:String ;
@@ -737,6 +737,7 @@ linkml:Nodeidentifier NONLITERAL
           <name> @linkml:String ;
           <type> @linkml:String ? ;
           <description> @linkml:String ;
+          <case_control_status> @<CaseControlStatusEnum> ? ;
           <vital_status_at_sampling> @<VitalStatusEnum> ? ;
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
@@ -758,7 +759,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Protocol> ] ? ;
           <sequencing_center> @linkml:String ? ;
           <instrument_model> @linkml:String ;
-          <paired_or_single_end> @linkml:String ? ;
+          <paired_or_single_end> @<PairedOrSingleEndEnum> ? ;
           <sequencing_read_length> @linkml:String ? ;
           <index_sequence> @linkml:String ? ;
           <target_coverage> @linkml:String ? ;
