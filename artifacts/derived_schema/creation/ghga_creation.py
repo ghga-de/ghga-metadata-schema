@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-26T10:28:08
+# Generation date: 2022-04-29T13:43:08
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -25,7 +25,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
-version = "0.6.0"
+version = "0.7.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -787,7 +787,7 @@ class CreateSequencingProtocol(CreateProtocol):
     alias: str = None
     description: str = None
     sequencing_center: Optional[str] = None
-    paired_or_single_end: Optional[str] = None
+    paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
     sequencing_read_length: Optional[str] = None
     index_sequence: Optional[str] = None
     target_coverage: Optional[str] = None
@@ -823,8 +823,8 @@ class CreateSequencingProtocol(CreateProtocol):
         if self.sequencing_center is not None and not isinstance(self.sequencing_center, str):
             self.sequencing_center = str(self.sequencing_center)
 
-        if self.paired_or_single_end is not None and not isinstance(self.paired_or_single_end, str):
-            self.paired_or_single_end = str(self.paired_or_single_end)
+        if self.paired_or_single_end is not None and not isinstance(self.paired_or_single_end, PairedOrSingleEndEnum):
+            self.paired_or_single_end = PairedOrSingleEndEnum(self.paired_or_single_end)
 
         if self.sequencing_read_length is not None and not isinstance(self.sequencing_read_length, str):
             self.sequencing_read_length = str(self.sequencing_read_length)
@@ -1107,6 +1107,7 @@ class CreateSample(MaterialEntity):
     description: str = None
     alias: str = None
     type: Optional[str] = None
+    case_control_status: Optional[Union[str, "CaseControlStatusEnum"]] = None
     vital_status_at_sampling: Optional[Union[str, "VitalStatusEnum"]] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
@@ -1136,6 +1137,9 @@ class CreateSample(MaterialEntity):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if self.case_control_status is not None and not isinstance(self.case_control_status, CaseControlStatusEnum):
+            self.case_control_status = CaseControlStatusEnum(self.case_control_status)
 
         if self.vital_status_at_sampling is not None and not isinstance(self.vital_status_at_sampling, VitalStatusEnum):
             self.vital_status_at_sampling = VitalStatusEnum(self.vital_status_at_sampling)
@@ -1610,9 +1614,9 @@ class CreateDataset(InformationContentEntity):
     alias: str = None
     type: Optional[str] = None
     has_study: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
-    has_experiment: Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]] = empty_list()
-    has_sample: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
-    has_analysis: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
+    has_experiment: Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]] = empty_list()
+    has_sample: Optional[Union[Union[dict, CreateSample], List[Union[dict, CreateSample]]]] = empty_list()
+    has_analysis: Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]] = empty_list()
     has_publication: Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]] = empty_list()
     release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
     accession: Optional[str] = None
@@ -1656,15 +1660,15 @@ class CreateDataset(InformationContentEntity):
 
         if not isinstance(self.has_experiment, list):
             self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
-        self.has_experiment = [v if isinstance(v, CreateAnalysis) else CreateAnalysis(**as_dict(v)) for v in self.has_experiment]
+        self.has_experiment = [v if isinstance(v, CreateExperiment) else CreateExperiment(**as_dict(v)) for v in self.has_experiment]
 
         if not isinstance(self.has_sample, list):
             self.has_sample = [self.has_sample] if self.has_sample is not None else []
-        self.has_sample = [v if isinstance(v, CreateStudy) else CreateStudy(**as_dict(v)) for v in self.has_sample]
+        self.has_sample = [v if isinstance(v, CreateSample) else CreateSample(**as_dict(v)) for v in self.has_sample]
 
         if not isinstance(self.has_analysis, list):
             self.has_analysis = [self.has_analysis] if self.has_analysis is not None else []
-        self.has_analysis = [v if isinstance(v, CreateStudy) else CreateStudy(**as_dict(v)) for v in self.has_analysis]
+        self.has_analysis = [v if isinstance(v, CreateAnalysis) else CreateAnalysis(**as_dict(v)) for v in self.has_analysis]
 
         if not isinstance(self.has_publication, list):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
@@ -2523,6 +2527,34 @@ class FileFormatEnum(EnumDefinitionImpl):
         description="Enum to capture file types.",
     )
 
+class CaseControlStatusEnum(EnumDefinitionImpl):
+    """
+    Enum to capture whether a Sample in a Study is to be considered as Case or Control.
+    """
+    control = PermissibleValue(text="control",
+                                     description="The Sample is to be treated as Control")
+    case = PermissibleValue(text="case",
+                               description="The Sample is to be treated as Case")
+
+    _defn = EnumDefinition(
+        name="CaseControlStatusEnum",
+        description="Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
+    )
+
+class PairedOrSingleEndEnum(EnumDefinitionImpl):
+    """
+    Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
+    """
+    paired = PermissibleValue(text="paired",
+                                   description="The reads are Paired-end")
+    single = PermissibleValue(text="single",
+                                   description="The reads are Single-end")
+
+    _defn = EnumDefinition(
+        name="PairedOrSingleEndEnum",
+        description="Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.",
+    )
+
 class SubmissionStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture the status of a Submission.
@@ -2921,7 +2953,7 @@ slots.index_sequence = Slot(uri=GHGA.index_sequence, name="index sequence", curi
                    model_uri=GHGA.index_sequence, domain=None, range=Optional[str])
 
 slots.paired_or_single_end = Slot(uri=GHGA.paired_or_single_end, name="paired or single end", curie=GHGA.curie('paired_or_single_end'),
-                   model_uri=GHGA.paired_or_single_end, domain=None, range=Optional[str])
+                   model_uri=GHGA.paired_or_single_end, domain=None, range=Optional[Union[str, "PairedOrSingleEndEnum"]])
 
 slots.reference_chromosome = Slot(uri=GHGA.reference_chromosome, name="reference chromosome", curie=GHGA.curie('reference_chromosome'),
                    model_uri=GHGA.reference_chromosome, domain=None, range=Optional[str])
@@ -2961,6 +2993,9 @@ slots.cell_barcode_size = Slot(uri=GHGA.cell_barcode_size, name="cell barcode si
 
 slots.sample_barcode_read = Slot(uri=GHGA.sample_barcode_read, name="sample barcode read", curie=GHGA.curie('sample_barcode_read'),
                    model_uri=GHGA.sample_barcode_read, domain=None, range=Optional[str])
+
+slots.case_control_status = Slot(uri=GHGA.case_control_status, name="case control status", curie=GHGA.curie('case_control_status'),
+                   model_uri=GHGA.case_control_status, domain=None, range=Optional[Union[str, "CaseControlStatusEnum"]])
 
 slots.vital_status_at_sampling = Slot(uri=GHGA.vital_status_at_sampling, name="vital status at sampling", curie=GHGA.curie('vital_status_at_sampling'),
                    model_uri=GHGA.vital_status_at_sampling, domain=None, range=Optional[Union[str, "VitalStatusEnum"]])
@@ -3344,13 +3379,13 @@ slots.create_dataset_has_study = Slot(uri=GHGA.has_study, name="create dataset_h
                    model_uri=GHGA.create_dataset_has_study, domain=CreateDataset, range=Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]])
 
 slots.create_dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="create dataset_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.create_dataset_has_experiment, domain=CreateDataset, range=Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]])
+                   model_uri=GHGA.create_dataset_has_experiment, domain=CreateDataset, range=Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]])
 
 slots.create_dataset_has_sample = Slot(uri=GHGA.has_sample, name="create dataset_has sample", curie=GHGA.curie('has_sample'),
-                   model_uri=GHGA.create_dataset_has_sample, domain=CreateDataset, range=Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]])
+                   model_uri=GHGA.create_dataset_has_sample, domain=CreateDataset, range=Optional[Union[Union[dict, CreateSample], List[Union[dict, CreateSample]]]])
 
 slots.create_dataset_has_analysis = Slot(uri=GHGA.has_analysis, name="create dataset_has analysis", curie=GHGA.curie('has_analysis'),
-                   model_uri=GHGA.create_dataset_has_analysis, domain=CreateDataset, range=Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]])
+                   model_uri=GHGA.create_dataset_has_analysis, domain=CreateDataset, range=Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]])
 
 slots.create_dataset_has_file = Slot(uri=GHGA.has_file, name="create dataset_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.create_dataset_has_file, domain=CreateDataset, range=Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]])

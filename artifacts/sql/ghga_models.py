@@ -300,7 +300,6 @@ tbl_experiment = Table('experiment', metadata,
     Column('has_attribute', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
-    Column('submission_id', Text, ForeignKey('submission.id')),
 )
 tbl_experiment_process = Table('experiment_process', metadata, 
     Column('id', Text, primary_key=True),
@@ -470,6 +469,7 @@ tbl_sample = Table('sample', metadata,
     Column('name', Text),
     Column('type', Text),
     Column('description', Text),
+    Column('case_control_status', Text),
     Column('vital_status_at_sampling', Text),
     Column('isolation', Text),
     Column('storage', Text),
@@ -538,6 +538,7 @@ tbl_submission = Table('submission', metadata,
     Column('has_sample', Text),
     Column('has_biospecimen', Text),
     Column('has_individual', Text),
+    Column('has_experiment', Text),
     Column('has_protocol', Text),
     Column('has_analysis', Text),
     Column('has_file', Text),
@@ -820,12 +821,6 @@ mapper_registry.map_imperatively(SequencingProtocol, tbl_sequencing_protocol, pr
 mapper_registry.map_imperatively(Study, tbl_study, properties={
 })
 mapper_registry.map_imperatively(Submission, tbl_submission, properties={
-
-    'has_experiment': 
-        relationship(Experiment, 
-                      foreign_keys=tbl_experiment.columns["submission_id"],
-                      backref='Submission'),
-
 })
 mapper_registry.map_imperatively(Technology, tbl_technology, properties={
 })

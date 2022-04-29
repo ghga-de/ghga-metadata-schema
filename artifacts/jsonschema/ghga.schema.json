@@ -607,6 +607,15 @@
          "title": "Biospecimen",
          "type": "object"
       },
+      "CaseControlStatusEnum": {
+         "description": "Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
+         "enum": [
+            "control",
+            "case"
+         ],
+         "title": "CaseControlStatusEnum",
+         "type": "string"
+      },
       "CellLine": {
          "additionalProperties": false,
          "description": "A cultured cell population that represents a genetically stable and homogenous population of cultured cells that shares a common propagation history.",
@@ -1144,7 +1153,7 @@
                "items": {
                   "oneOf": [
                      {
-                        "$ref": "#/$defs/Study"
+                        "$ref": "#/$defs/Analysis"
                      },
                      {
                         "type": "string"
@@ -1176,11 +1185,11 @@
                ]
             },
             "has_experiment": {
-               "description": "One or more Analysis entities that are referenced by this Dataset.",
+               "description": "One or more Experiment entities that are referenced by this Dataset.",
                "items": {
                   "oneOf": [
                      {
-                        "$ref": "#/$defs/Analysis"
+                        "$ref": "#/$defs/Experiment"
                      },
                      {
                         "type": "string"
@@ -1222,7 +1231,7 @@
                "items": {
                   "oneOf": [
                      {
-                        "$ref": "#/$defs/Study"
+                        "$ref": "#/$defs/Sample"
                      },
                      {
                         "type": "string"
@@ -2533,6 +2542,15 @@
          "title": "Member",
          "type": "object"
       },
+      "PairedOrSingleEndEnum": {
+         "description": "Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.",
+         "enum": [
+            "paired",
+            "single"
+         ],
+         "title": "PairedOrSingleEndEnum",
+         "type": "string"
+      },
       "PhenotypicFeature": {
          "additionalProperties": false,
          "description": "The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.",
@@ -2827,6 +2845,10 @@
                "description": "The alias for an entity.",
                "type": "string"
             },
+            "case_control_status": {
+               "$ref": "#/$defs/CaseControlStatusEnum",
+               "description": "Whether the sample is to be treated as Case or Control in a Study."
+            },
             "creation_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
@@ -3014,8 +3036,8 @@
                "type": "string"
             },
             "paired_or_single_end": {
-               "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.",
-               "type": "string"
+               "$ref": "#/$defs/PairedOrSingleEndEnum",
+               "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications."
             },
             "sample_barcode_read": {
                "description": "The type of read that contains the sample barcode (eg: index1/index2/read1/read2).",
@@ -3699,6 +3721,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.6.0"
+   "version": "0.7.0"
 }
 

@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.6.0
+# version: 0.7.0
 interface AccessionMixin
   {
     accession: String
@@ -284,9 +284,9 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Rel
     description: String!
     type: String
     hasStudy: [Study]!
-    hasExperiment: [Analysis]
-    hasSample: [Study]!
-    hasAnalysis: [Study]
+    hasExperiment: [Experiment]
+    hasSample: [Sample]!
+    hasAnalysis: [Analysis]
     hasFile: [File]!
     hasDataAccessPolicy: DataAccessPolicy!
     alias: String!
@@ -717,6 +717,7 @@ type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     name: String!
     type: String
     description: String!
+    caseControlStatus: CaseControlStatusEnum
     vitalStatusAtSampling: VitalStatusEnum
     isolation: String
     storage: String
@@ -743,7 +744,7 @@ type SequencingProtocol
     xref: [String]
     sequencingCenter: String
     instrumentModel: String!
-    pairedOrSingleEnd: String
+    pairedOrSingleEnd: PairedOrSingleEndEnum
     sequencingReadLength: String
     indexSequence: String
     targetCoverage: String
