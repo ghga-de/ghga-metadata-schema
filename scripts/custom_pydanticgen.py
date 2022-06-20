@@ -161,7 +161,13 @@ class CustomPydanticGenerator(PydanticGenerator):
                     if range_cls.class_uri == "linkml:Any":
                         pyrange = "Any"
                     elif s.inlined or sv.get_identifier_slot(range_cls.name) is None:
-                        pyrange = f"{camelcase(s.range)}"
+                        pyrange_list = []
+                        descendants = sv.class_descendants(s.range)
+                        for descendant in reversed(descendants):
+                            pyrange_list.append(f"{camelcase(descendant)}")
+                        pyrange = ",".join(pyrange_list)
+                        if len(pyrange_list) > 1:
+                            pyrange = f"Union[{pyrange}]"
                         if (
                             sv.get_identifier_slot(range_cls.name) is not None
                             and not s.inlined_as_list
