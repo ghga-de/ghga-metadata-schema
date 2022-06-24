@@ -17,7 +17,8 @@ DEFAULT_TEMPLATE = """
 -#}
 from __future__ import annotations
 from enum import Enum
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Literal
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 
 metamodel_version = "{{metamodel_version}}"
@@ -49,16 +50,25 @@ class {{ c.name }}
     \"\"\"
     {%- endif %}
     {% for attr in c.attributes.values() if c.attributes -%}
+    {%- if attr.name == "schema_type" -%}
+    {{attr.name}}: {{ attr.annotations['python_range'].value }}
+    {% else -%}
     {{attr.name}}: {{ attr.annotations['python_range'].value }} = Field(None
     {%- if attr.title != None %}, title="{{attr.title}}"{% endif -%}
     {%- if attr.description %}, description=\"\"\"{{attr.description}}\"\"\"{% endif -%}
     {%- if attr.minimum_value != None %}, ge={{attr.minimum_value}}{% endif -%}
     {%- if attr.maximum_value != None %}, le={{attr.maximum_value}}{% endif -%}
     )
+    {% endif -%}
     {% else -%}
     None
     {% endfor %}
 
+{% endfor %}
+
+
+{% for au in annotated_unions.values() -%}
+{{ au.name }} = Annotated[Union[{{ ','.join(au.members) }}], Field(discriminator="{{au.discriminator_field}}")]
 {% endfor %}
 
 # Update forward refs
@@ -66,6 +76,7 @@ class {{ c.name }}
 {% for c in schema.classes.values() -%}
 {{ c.name }}.update_forward_refs()
 {% endfor %}
+
 """
 
 class CustomPydanticGenerator(PydanticGenerator):
@@ -104,6 +115,7 @@ class CustomPydanticGenerator(PydanticGenerator):
             **kwargs,
         )
         self.reference_slots = set()
+        self.annotated_unions = {}
         for slot in self.schema.slots:
             slot_alias_name = self.aliased_slot_name(slot)
             if (slot_alias_name.startswith("has ") or slot_alias_name == "main contact") and (
@@ -156,12 +168,27 @@ class CustomPydanticGenerator(PydanticGenerator):
                     s.description = s.description.replace('"', '\\"')
                 class_def.attributes[s.name] = s
                 collection_key = None
-                if s.range in sv.all_classes():
+                if s.name == "schema_type":
+                    # Treat schema_type as a specialized Literal field
+                    pyrange = f'Literal["{class_def.name}"]'
+                elif s.range in sv.all_classes():
                     range_cls = sv.get_class(s.range)
                     if range_cls.class_uri == "linkml:Any":
                         pyrange = "Any"
                     elif s.inlined or sv.get_identifier_slot(range_cls.name) is None:
-                        pyrange = f"{camelcase(s.range)}"
+                        pyrange_list = []
+                        descendants = sv.class_descendants(s.range)
+                        for descendant in reversed(descendants):
+                            pyrange_list.append(f"{camelcase(descendant)}")
+                        pyrange = ",".join(pyrange_list)
+                        if len(pyrange_list) > 1:
+                            annotated_union_name = camelcase(f'annotated {descendants[0]}')
+                            if annotated_union_name not in self.annotated_unions:
+                                annotated_union = {"name": annotated_union_name, "discriminator_field": "schema_type"}
+                                annotated_union_members = [f'{camelcase(x)}' for x in pyrange_list]
+                                annotated_union["members"] = annotated_union_members
+                                self.annotated_unions[annotated_union_name] = annotated_union
+                            pyrange = f'{annotated_union_name}'
                         if (
                             sv.get_identifier_slot(range_cls.name) is not None
                             and not s.inlined_as_list
@@ -192,12 +219,13 @@ class CustomPydanticGenerator(PydanticGenerator):
                         else:
                             pyrange = f"Union[{pyrange}, str]"
 
-                if not s.required:
+                if not s.required and s.name != "schema_type":
                     pyrange = f"Optional[{pyrange}]"
                 ann = Annotation("python_range", pyrange)
                 s.annotations[ann.tag] = ann
         code = template_obj.render(
             schema=pyschema,
+            annotated_unions=self.annotated_unions,
             underscore=underscore,
             enums=enums,
             allow_extra=self.allow_extra,
