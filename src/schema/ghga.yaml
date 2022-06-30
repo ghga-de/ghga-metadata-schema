@@ -1419,7 +1419,6 @@ classes:
           One or more Protocol entities associated with this Submission.
         range: protocol
         multivalued: true
-        required: true
         inlined: true
         inlined_as_list: true
       has analysis:
