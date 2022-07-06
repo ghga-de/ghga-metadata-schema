@@ -11,8 +11,7 @@ First check whether the `version` in schema YAML matches with the
 latest release tag. If the version is the same then bump the version
 in preparation for a new release.
 
-Follow [Versioning guidelines](versioning.md) to decide whether the bump in
-version is major, minor, or patch.
+Follow [Versioning Guidelines](versioning.md) to decide whether the bump in version is major, minor, or patch.
 
 **Update Changelog**
 
@@ -25,9 +24,9 @@ Merge the `dev` branch to the `main` branch to bring them in sync.
 
 **Release on GitHub**
 
-Go to [https://github.com/ghga-de/ghga-metadata-schema/releases](),
-create a new release, and add the contents from `changelog.md`
-corresponding to the new release.
+- Go to [https://github.com/ghga-de/ghga-metadata-schema/releases]()
+- Create a new release
+- Add the contents from `changelog.md` to release notes
 
 **Announcement**
 
