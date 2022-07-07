@@ -1,5 +1,8 @@
 # Derived Schemas
 
+
+> **Note:** This will be retired in 0.9.0
+
 ## Overview
 
 The GHGA Metadata Schema, as represented in `src/schema/ghga.yaml`, is the source of

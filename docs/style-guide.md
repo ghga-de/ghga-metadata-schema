@@ -9,6 +9,8 @@ regarding the schema
 - **[Classes](#classes)**: Section that defines all the classes
 - **[Slots](#slots)**: Section that defines all the slots
 - **[Types](#types)**: Section that defines all the custom data types
+- **[Enums](#enums)**: Section that defines all enums
+
 
 ## Schema Properties
 
@@ -24,8 +26,9 @@ default CURI maps
 
 All classes in the schema must be defined in this section, where:
 
-- Class names must be in `sentence case`
-- Class names must be unambiguous and must be a noun
+- Class name must be in `sentence case`
+- Class name must be in singular form
+- Class name must be unambiguous and must be a noun
 - A class should have a definition that describes the class and gives an
 idea of its intended usage
 
@@ -35,8 +38,9 @@ idea of its intended usage
 All slots (also known as fields or properties) must be defined in this
 section, where:
 
-- Slot names must be in `sentence case`
-- Slot names must be unambiguous to avoid misuse
+- Slot name must be in `sentence case`
+- Slot name must be in singular form
+- Slot name must be unambiguous to avoid misuse
 - A slot should have a definition that describes the slot and gives an
 idea of its indended usage
 
@@ -45,9 +49,21 @@ idea of its indended usage
 
 All custom data types must be defined in this section, where:
 
-- Type names must be in `sentence case`
-- Type names must be unambiguous to avoid misuse
+- Type name must be in `sentence case`
+- Type name must be in singular form
+- Type name must be unambiguous to avoid misuse
 - A type must clarify what its value space is, by the way of inheritance
 or by defining its `range`
 - A type should have a definition that describes the type and gives an
 idea of its indended usage
+
+
+## Enums
+
+All enum types must be defined in this section, where:
+
+- Enum name must be in `sentence case`
+- Enum name must be in singular form
+- Enum name must be unambiguous to avoid misuse
+- Each
+ enum value must be accompanied by a description
