@@ -2776,6 +2776,48 @@
                },
                "type": "array"
             },
+            "has_data_access_committee": {
+               "description": "The Data Access Committee that applies to Dataset in this submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateDataAccessCommittee"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "description": "The Data Access Policy that applies to Dataset in this submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateDataAccessPolicy"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_dataset": {
+               "description": "One or more Dataset that are part of this submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/CreateDataset"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_experiment": {
                "description": "Information about one or more Experiment entities associated with this submission.",
                "items": {
@@ -2908,9 +2950,7 @@
                "description": "The status of a Submission."
             }
          },
-         "required": [
-            "has_protocol"
-         ],
+         "required": [],
          "title": "CreateSubmission",
          "type": "object"
       },
@@ -3209,6 +3249,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.7.0"
+   "version": "0.8.0"
 }
 

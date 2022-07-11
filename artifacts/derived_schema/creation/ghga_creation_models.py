@@ -1,10 +1,11 @@
 from __future__ import annotations
 from enum import Enum
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Literal
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 
 metamodel_version = "None"
-version = "0.7.0"
+version = "0.8.0"
 
 
 class BiologicalSexEnum(str, Enum):
@@ -161,7 +162,7 @@ class MetadataMixin(BaseModel):
     """
     Mixin for tracking schema specific metadata about an instance.
     """
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["MetadataMixin"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -172,7 +173,7 @@ class NamedThing(BaseModel):
     """
     alias: str = Field(None, description="""The alias (alternate identifier) for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Holds one or more database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["NamedThing"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -185,7 +186,7 @@ class CreateAgent(NamedThing):
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateAgent"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -199,7 +200,7 @@ class Person(NamedThing):
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["Person"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -211,7 +212,7 @@ class Committee(NamedThing):
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["Committee"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -222,7 +223,7 @@ class MaterialEntity(NamedThing):
     """
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["MaterialEntity"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -233,7 +234,7 @@ class BiologicalQuality(NamedThing):
     """
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["BiologicalQuality"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -244,7 +245,7 @@ class InformationContentEntity(NamedThing):
     """
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["InformationContentEntity"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -255,7 +256,7 @@ class PlannedProcess(NamedThing):
     """
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["PlannedProcess"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -268,7 +269,7 @@ class Investigation(PlannedProcess):
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["Investigation"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -281,7 +282,7 @@ class DataTransformation(PlannedProcess):
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["DataTransformation"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -294,7 +295,7 @@ class ResearchActivity(PlannedProcess):
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["ResearchActivity"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -305,7 +306,7 @@ class CreateTechnology(InformationContentEntity):
     """
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateTechnology"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -318,7 +319,7 @@ class CreateWorkflow(InformationContentEntity):
     has_workflow_step: Optional[Union[List[CreateWorkflowStep], List[str]]] = Field(None, description="""The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateWorkflow"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -330,7 +331,7 @@ class CreateWorkflowStep(InformationContentEntity):
     has_workflow_parameter: Optional[Union[List[WorkflowParameter], List[str]]] = Field(None, description="""One or more parameters that are associated with this Workflow Step.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateWorkflowStep"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -346,7 +347,7 @@ class CreateDiseaseOrPhenotypicFeature(BiologicalQuality):
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDiseaseOrPhenotypicFeature"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -358,7 +359,7 @@ class Population(MaterialEntity):
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["Population"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -375,7 +376,7 @@ class CreateAncestry(Population):
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateAncestry"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -391,7 +392,7 @@ class CreateAnalysisProcess(PlannedProcess):
     has_output: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""The output data File entities generated by the Analysis Process.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateAnalysisProcess"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -404,7 +405,7 @@ class CreateDataUseCondition(InformationContentEntity):
     has_data_use_modifier: Optional[Union[CreateDataUseModifier, str]] = Field(None, description="""Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDataUseCondition"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -421,7 +422,7 @@ class CreateMember(Person):
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateMember"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -434,7 +435,7 @@ class CreatePublication(InformationContentEntity):
     abstract: Optional[str] = Field(None, description="""The study abstract that describes the goals. Can also hold abstract from a publication related to this study.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Publication.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreatePublication"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -450,7 +451,7 @@ class CreateAnatomicalEntity(MaterialEntity):
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateAnatomicalEntity"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -461,7 +462,7 @@ class CreateCellLine(MaterialEntity):
     """
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateCellLine"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -477,7 +478,7 @@ class CreateDisease(CreateDiseaseOrPhenotypicFeature):
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDisease"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -493,7 +494,7 @@ class CreatePhenotypicFeature(CreateDiseaseOrPhenotypicFeature):
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreatePhenotypicFeature"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -509,7 +510,7 @@ class CreateUser(Person):
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateUser"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -523,15 +524,18 @@ class CreateSubmission(BaseModel):
     has_project: Optional[Union[CreateProject, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
     has_sample: Optional[Union[List[CreateSample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
     has_biospecimen: Optional[Union[List[CreateBiospecimen], List[str]]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")
-    has_individual: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""Information about one or more Individual entities associated with this submission.""")
+    has_individual: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""Information about one or more Individual entities associated with this submission.""")
     has_experiment: Optional[Union[List[CreateExperiment], List[str]]] = Field(None, description="""Information about one or more Experiment entities associated with this submission.""")
-    has_protocol: Union[List[CreateProtocol], List[str]] = Field(None, description="""One or more Protocol entities associated with this Submission.""")
+    has_protocol: Optional[Union[List[AnnotatedCreateProtocol], List[str]]] = Field(None, description="""One or more Protocol entities associated with this Submission.""")
     has_analysis: Optional[Union[List[CreateAnalysis], List[str]]] = Field(None, description="""Information about one or more Analysis entities associated with this submission.""")
     has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""Information about one or more File entities associated with this submission.""")
+    has_dataset: Optional[Union[List[CreateDataset], List[str]]] = Field(None, description="""One or more Dataset that are part of this submission.""")
+    has_data_access_policy: Optional[Union[List[CreateDataAccessPolicy], List[str]]] = Field(None, description="""The Data Access Policy that applies to Dataset in this submission.""")
+    has_data_access_committee: Optional[Union[List[CreateDataAccessCommittee], List[str]]] = Field(None, description="""The Data Access Committee that applies to Dataset in this submission.""")
     has_publication: Optional[Union[List[CreatePublication], List[str]]] = Field(None, description="""One or more Publication entities associated with this Submission.""")
     submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
     submission_status: Optional[SubmissionStatusEnum] = Field(None, description="""The status of a Submission.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateSubmission"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -547,7 +551,7 @@ class CreateDataUsePermission(InformationContentEntity):
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDataUsePermission"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -563,7 +567,7 @@ class CreateDataUseModifier(InformationContentEntity):
     ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDataUseModifier"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -585,14 +589,14 @@ class CreateBiospecimen(MaterialEntity):
     description: Optional[str] = Field(None, description="""Description of an entity.""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
-    has_individual: Optional[Union[CreateIndividual, str]] = Field(None, description="""The Individual entity from which this Biospecimen was derived.""")
+    has_individual: Optional[Union[AnnotatedCreateIndividual, str]] = Field(None, description="""The Individual entity from which this Biospecimen was derived.""")
     has_anatomical_entity: Optional[Union[List[CreateAnatomicalEntity], List[str]]] = Field(None, description="""The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.""")
     has_disease: Optional[Union[List[CreateDisease], List[str]]] = Field(None, description="""The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.""")
     has_phenotypic_feature: Optional[Union[List[CreatePhenotypicFeature], List[str]]] = Field(None, description="""The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateBiospecimen"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -601,13 +605,13 @@ class CreateFamily(Population):
     """
     A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption.
     """
-    has_member: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Family.""")
-    has_proband: Optional[Union[CreateIndividual, str]] = Field(None, description="""The Individual that is reported to have a disorder which results in the Family being brought into a Study.""")
+    has_member: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Family.""")
+    has_proband: Optional[Union[AnnotatedCreateIndividual, str]] = Field(None, description="""The Individual that is reported to have a disorder which results in the Family being brought into a Study.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateFamily"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -616,12 +620,12 @@ class CreateCohort(Population):
     """
     A cohort is a collection of individuals that share a common characteristic/observation and have been grouped together for a research study/investigation.
     """
-    has_member: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Cohort.""")
+    has_member: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Cohort.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateCohort"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -644,8 +648,8 @@ class CreateIndividual(Person):
     vital_status: VitalStatusEnum = Field(None, description="""Last known Vital Status of an Individual.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
     has_ancestry: Optional[Union[List[CreateAncestry], List[str]]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
-    has_parent: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""One or more parent for this Individual.""")
-    has_children: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""One or more children for this Individual.""")
+    has_parent: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""One or more parent for this Individual.""")
+    has_children: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""One or more children for this Individual.""")
     has_disease: Optional[Union[List[CreateDisease], List[str]]] = Field(None, description="""The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.""")
     has_phenotypic_feature: Optional[Union[List[CreatePhenotypicFeature], List[str]]] = Field(None, description="""The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.""")
     has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.""")
@@ -656,7 +660,7 @@ class CreateIndividual(Person):
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateIndividual"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -671,8 +675,8 @@ class CreateDonor(CreateIndividual):
     vital_status: VitalStatusEnum = Field(None, description="""The state or condition of being living or deceased; also includes the case where the vital status is unknown.""")
     geographical_region: Optional[str] = Field(None, description="""The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.""")
     has_ancestry: Optional[Union[List[CreateAncestry], List[str]]] = Field(None, description="""A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).""")
-    has_parent: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""The parent of an entity.""")
-    has_children: Optional[Union[List[CreateIndividual], List[str]]] = Field(None, description="""The children of an entity.""")
+    has_parent: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""The parent of an entity.""")
+    has_children: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""The children of an entity.""")
     has_disease: Optional[Union[List[CreateDisease], List[str]]] = Field(None, description="""Disease concept that the entity is associated with.""")
     has_phenotypic_feature: Optional[Union[List[CreatePhenotypicFeature], List[str]]] = Field(None, description="""Phenotypic feature concept that the entity is associated with.""")
     has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""The file associated with an entity.""")
@@ -683,7 +687,7 @@ class CreateDonor(CreateIndividual):
     additional_name: Optional[str] = Field(None, description="""Additional name(s).""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDonor"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -706,7 +710,7 @@ class CreateAnalysis(DataTransformation):
     description: Optional[str] = Field(None, description="""Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).""")
     alias: str = Field(None, description="""An alias uniquely identifying this Analysis entitiy.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateAnalysis"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -729,7 +733,7 @@ class CreateProject(ResearchActivity):
     description: str = Field(None, description="""Short textual description of the project.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateProject"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -745,7 +749,7 @@ class CreateExperiment(Investigation):
     has_study: Union[CreateStudy, str] = Field(None, description="""The Study entity associated with this Experiment.""")
     has_sample: Union[List[CreateSample], List[str]] = Field(None, description="""The Sample entity associated with this Experiment.""")
     has_file: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""One or more Files entities that are generated as output of this Experiment.""")
-    has_protocol: Union[List[CreateProtocol], List[str]] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
+    has_protocol: Union[List[AnnotatedCreateProtocol], List[str]] = Field(None, description="""One or more Protocol entities associated with this Experiment.""")
     has_experiment_process: Optional[Union[List[CreateExperimentProcess], List[str]]] = Field(None, description="""One or more Experiment Processes entities associated with this Experiment.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -754,7 +758,7 @@ class CreateExperiment(Investigation):
     description: str = Field(None, description="""A detailed description of the Experiment.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateExperiment"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -766,13 +770,13 @@ class CreateExperimentProcess(PlannedProcess):
     type: Optional[ExperimentProcessTypeEnum] = Field(None, description="""The type of experiment process.""")
     title: Optional[str] = Field(None, description="""A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -> Target Enrichment)""")
     has_input: Optional[Union[CreateSample, str]] = Field(None, description="""The input to the Experiment Process. Usually a Sample entity.""")
-    has_protocol: Optional[Union[CreateProtocol, str]] = Field(None, description="""The Protocol entity used by this Experiment Process.""")
+    has_protocol: Optional[Union[AnnotatedCreateProtocol, str]] = Field(None, description="""The Protocol entity used by this Experiment Process.""")
     has_agent: Optional[Union[CreateAgent, str]] = Field(None, description="""The Agent - a software, institution, or human - that is executing or responsible for executing the Experiment Process.""")
     has_output: Optional[Union[List[CreateFile], List[str]]] = Field(None, description="""The output of this Experiment Process. Usually a File entity.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateExperimentProcess"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -789,7 +793,7 @@ class CreateProtocol(InformationContentEntity):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Protocol.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateProtocol"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -817,7 +821,7 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Library Preparation Protocol.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateLibraryPreparationProtocol"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -850,7 +854,7 @@ class CreateSequencingProtocol(CreateProtocol):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""One or more attributes that further characterizes this Sequencing Protocol.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateSequencingProtocol"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -866,7 +870,7 @@ class CreateSample(MaterialEntity):
     vital_status_at_sampling: Optional[VitalStatusEnum] = Field(None, description="""Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').""")
     isolation: Optional[str] = Field(None, description="""Method or device employed for collecting/isolating a biospecimen or a sample.""")
     storage: Optional[str] = Field(None, description="""Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).""")
-    has_individual: Optional[Union[CreateIndividual, str]] = Field(None, description="""The Individual from which this Sample was derived from.""")
+    has_individual: Optional[Union[AnnotatedCreateIndividual, str]] = Field(None, description="""The Individual from which this Sample was derived from.""")
     has_anatomical_entity: Optional[Union[List[CreateAnatomicalEntity], List[str]]] = Field(None, description="""Anatomical site associated with an entity.""")
     has_biospecimen: Optional[Union[CreateBiospecimen, str]] = Field(None, description="""The Biospecimen from which this Sample was prepared from.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -874,7 +878,7 @@ class CreateSample(MaterialEntity):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateSample"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -894,7 +898,7 @@ class CreateFile(InformationContentEntity):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateFile"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -915,7 +919,7 @@ class CreateDataAccessPolicy(InformationContentEntity):
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDataAccessPolicy"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -933,7 +937,7 @@ class CreateDataAccessCommittee(Committee):
     ega_accession: Optional[str] = Field(None, description="""A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDataAccessCommittee"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -950,7 +954,7 @@ class DeprecatedMixin(BaseModel):
     """
     Mixin for entities that can be deprecated.
     """
-    replaced_by: Optional[NamedThing] = Field(None, description="""Refers to the entity which replaces a currently deprecated entity.""")
+    replaced_by: Optional[AnnotatedNamedThing] = Field(None, description="""Refers to the entity which replaces a currently deprecated entity.""")
     deprecation_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when the entity was deprecated.""")
     
 
@@ -982,7 +986,7 @@ class CreateStudy(Investigation):
     description: str = Field(None, description="""A detailed description (abstract) that describes the goals of this Study.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateStudy"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
@@ -1008,10 +1012,16 @@ class CreateDataset(InformationContentEntity):
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: Optional[List[str]] = Field(None, description="""Database cross references for an entity.""")
-    schema_type: Optional[str] = Field(None, description="""The schema type an instance corresponds to.""")
+    schema_type: Literal["CreateDataset"]
     schema_version: Optional[str] = Field(None, description="""The version of the schema an instance corresponds to.""")
     
 
+
+
+
+AnnotatedCreateIndividual = Annotated[Union[CreateDonor,CreateIndividual], Field(discriminator="schema_type")]
+AnnotatedCreateProtocol = Annotated[Union[CreateSequencingProtocol,CreateLibraryPreparationProtocol,CreateProtocol], Field(discriminator="schema_type")]
+AnnotatedNamedThing = Annotated[Union[CreateDonor,CreateUser,CreateMember,CreateIndividual,CreateDataAccessCommittee,CreateAncestry,CreateCohort,CreateFamily,CreateCellLine,CreateAnatomicalEntity,Population,CreateSample,CreateBiospecimen,CreatePhenotypicFeature,CreateDisease,CreateDiseaseOrPhenotypicFeature,CreateSequencingProtocol,CreateLibraryPreparationProtocol,CreateDataUseModifier,CreateDataUsePermission,CreatePublication,CreateDataAccessPolicy,CreateDataUseCondition,CreateDataset,CreateFile,CreateWorkflowStep,CreateWorkflow,CreateTechnology,CreateProtocol,CreateExperiment,CreateStudy,CreateAnalysis,CreateProject,CreateAnalysisProcess,CreateExperimentProcess,ResearchActivity,DataTransformation,Investigation,PlannedProcess,InformationContentEntity,BiologicalQuality,MaterialEntity,Committee,Person,CreateAgent,NamedThing], Field(discriminator="schema_type")]
 
 
 # Update forward refs
@@ -1073,4 +1083,5 @@ DeprecatedMixin.update_forward_refs()
 ReleaseStatusMixin.update_forward_refs()
 CreateStudy.update_forward_refs()
 CreateDataset.update_forward_refs()
+
 

@@ -227,6 +227,7 @@ tbl_dataset = Table('dataset', metadata,
     Column('ega_accession', Text),
     Column('release_date', Text),
     Column('has_attribute', Text),
+    Column('submission_id', Text, ForeignKey('submission.id')),
 )
 tbl_disease = Table('disease', metadata, 
     Column('id', Text, primary_key=True),
@@ -542,6 +543,8 @@ tbl_submission = Table('submission', metadata,
     Column('has_protocol', Text),
     Column('has_analysis', Text),
     Column('has_file', Text),
+    Column('has_data_access_policy', Text),
+    Column('has_data_access_committee', Text),
     Column('has_publication', Text),
     Column('submission_date', Text),
     Column('creation_date', Text),
@@ -821,6 +824,12 @@ mapper_registry.map_imperatively(SequencingProtocol, tbl_sequencing_protocol, pr
 mapper_registry.map_imperatively(Study, tbl_study, properties={
 })
 mapper_registry.map_imperatively(Submission, tbl_submission, properties={
+
+    'has_dataset': 
+        relationship(Dataset, 
+                      foreign_keys=tbl_dataset.columns["submission_id"],
+                      backref='Submission'),
+
 })
 mapper_registry.map_imperatively(Technology, tbl_technology, properties={
 })

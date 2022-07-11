@@ -927,6 +927,111 @@
          "title": "DataAccessPolicy",
          "type": "object"
       },
+      "DataAccessPolicy__identifier_optional": {
+         "additionalProperties": false,
+         "description": "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.",
+         "properties": {
+            "accession": {
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "alias": {
+               "description": "The alias for an entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "data_request_form": {
+               "description": "Data Request Form that is associated with this Data Access Policy.",
+               "type": "string"
+            },
+            "description": {
+               "description": "A short description for the Data Access Policy.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Key/value pairs corresponding to an entity.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_data_access_committee": {
+               "description": "The Data Access Committee linked to this policy.",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/DataAccessCommittee"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "has_data_use_condition": {
+               "description": "Data Use Condition entities that are associated with the Data Access Policy.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/DataUseCondition"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "A name for the Data Access Policy.",
+               "type": "string"
+            },
+            "policy_text": {
+               "description": "The terms of data use and policy verbiage should be captured here.",
+               "type": "string"
+            },
+            "policy_url": {
+               "description": "URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "policy_text",
+            "has_data_access_committee",
+            "alias"
+         ],
+         "title": "DataAccessPolicy",
+         "type": "object"
+      },
       "DataUseCondition": {
          "additionalProperties": false,
          "description": "Data Use Condition represents the use conditions associated with a policy.",
@@ -3298,6 +3403,40 @@
                },
                "type": "array"
             },
+            "has_data_access_committee": {
+               "description": "The Data Access Committee that applies to Dataset in this submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/DataAccessCommittee"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_data_access_policy": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/DataAccessPolicy__identifier_optional"
+               },
+               "description": "The Data Access Policy that applies to Dataset in this submission."
+            },
+            "has_dataset": {
+               "description": "One or more Dataset that are part of this submission.",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Dataset"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
             "has_experiment": {
                "description": "Information about one or more Experiment entities associated with this submission.",
                "items": {
@@ -3439,8 +3578,7 @@
             }
          },
          "required": [
-            "id",
-            "has_protocol"
+            "id"
          ],
          "title": "Submission",
          "type": "object"
@@ -3721,6 +3859,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.7.0"
+   "version": "0.8.0"
 }
 

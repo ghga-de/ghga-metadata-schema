@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.7.0
+# version: 0.8.0
 BASE <https://w3id.org/GHGA/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -23,6 +23,8 @@ linkml:Time xsd:dateTime
 linkml:Date xsd:date
 
 linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
 
 linkml:Uriorcurie IRI
 
@@ -823,9 +825,12 @@ linkml:Nodeidentifier NONLITERAL
           <has_biospecimen> @<Biospecimen> * ;
           <has_individual> @<Individual> * ;
           <has_experiment> @<Experiment> * ;
-          <has_protocol> @<Protocol> + ;
+          <has_protocol> @<Protocol> * ;
           <has_analysis> @<Analysis> * ;
           <has_file> @<File> * ;
+          <has_dataset> @<Dataset> * ;
+          <has_data_access_policy> @<DataAccessPolicy> * ;
+          <has_data_access_committee> @<DataAccessCommittee> * ;
           <has_publication> @<Publication> * ;
           <submission_date> @linkml:String ? ;
           <creation_date> @linkml:String ? ;

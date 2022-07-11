@@ -1,5 +1,5 @@
 /* metamodel_version: 1.7.0 */
-/* version: 0.7.0 */
+/* version: 0.8.0 */
 
 CREATE TYPE "release status enum" AS ENUM ('unreleased', 'released');
 CREATE TYPE "biological sex enum" AS ENUM ('female', 'male', 'unknown');
@@ -717,9 +717,11 @@ CREATE TABLE submission (
 	has_biospecimen TEXT, 
 	has_individual TEXT, 
 	has_experiment TEXT, 
-	has_protocol TEXT NOT NULL, 
+	has_protocol TEXT, 
 	has_analysis TEXT, 
 	has_file TEXT, 
+	has_data_access_policy TEXT, 
+	has_data_access_committee TEXT, 
 	has_publication TEXT, 
 	submission_date TEXT, 
 	creation_date TEXT, 
@@ -860,8 +862,10 @@ CREATE TABLE dataset (
 	ega_accession TEXT, 
 	release_date TEXT, 
 	has_attribute TEXT, 
+	submission_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id)
+	FOREIGN KEY(has_data_access_policy) REFERENCES data_access_policy (id), 
+	FOREIGN KEY(submission_id) REFERENCES submission (id)
 );
 
 CREATE TABLE experiment_process (

@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.7.0
+# version: 0.8.0
 interface AccessionMixin
   {
     accession: String
@@ -797,9 +797,12 @@ type Submission implements MetadataMixin
     hasBiospecimen: [Biospecimen]
     hasIndividual: [Individual]
     hasExperiment: [Experiment]
-    hasProtocol: [Protocol]!
+    hasProtocol: [Protocol]
     hasAnalysis: [Analysis]
     hasFile: [File]
+    hasDataset: [Dataset]
+    hasDataAccessPolicy: [DataAccessPolicy]
+    hasDataAccessCommittee: [DataAccessCommittee]
     hasPublication: [Publication]
     submissionDate: String
     creationDate: String

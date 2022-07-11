@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-29T13:43:08
+# Generation date: 2022-07-11T09:13:31
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -25,7 +25,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
-version = "0.7.0"
+version = "0.8.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -2045,7 +2045,6 @@ class CreateSubmission(YAMLRoot):
     class_name: ClassVar[str] = "create submission"
     class_model_uri: ClassVar[URIRef] = GHGA.CreateSubmission
 
-    has_protocol: Union[Union[dict, CreateProtocol], List[Union[dict, CreateProtocol]]] = None
     affiliation: Optional[str] = None
     has_study: Optional[Union[dict, CreateStudy]] = None
     has_project: Optional[Union[dict, CreateProject]] = None
@@ -2053,8 +2052,12 @@ class CreateSubmission(YAMLRoot):
     has_biospecimen: Optional[Union[Union[dict, CreateBiospecimen], List[Union[dict, CreateBiospecimen]]]] = empty_list()
     has_individual: Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]] = empty_list()
     has_experiment: Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]] = empty_list()
+    has_protocol: Optional[Union[Union[dict, CreateProtocol], List[Union[dict, CreateProtocol]]]] = empty_list()
     has_analysis: Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]] = empty_list()
     has_file: Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]] = empty_list()
+    has_dataset: Optional[Union[Union[dict, CreateDataset], List[Union[dict, CreateDataset]]]] = empty_list()
+    has_data_access_policy: Optional[Union[Union[dict, CreateDataAccessPolicy], List[Union[dict, CreateDataAccessPolicy]]]] = empty_list()
+    has_data_access_committee: Optional[Union[Union[dict, CreateDataAccessCommittee], List[Union[dict, CreateDataAccessCommittee]]]] = empty_list()
     has_publication: Optional[Union[Union[dict, CreatePublication], List[Union[dict, CreatePublication]]]] = empty_list()
     submission_date: Optional[str] = None
     submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
@@ -2062,12 +2065,6 @@ class CreateSubmission(YAMLRoot):
     schema_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.has_protocol):
-            self.MissingRequiredField("has_protocol")
-        if not isinstance(self.has_protocol, list):
-            self.has_protocol = [self.has_protocol] if self.has_protocol is not None else []
-        self.has_protocol = [v if isinstance(v, CreateProtocol) else CreateProtocol(**as_dict(v)) for v in self.has_protocol]
-
         if self.affiliation is not None and not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
 
@@ -2093,6 +2090,10 @@ class CreateSubmission(YAMLRoot):
             self.has_experiment = [self.has_experiment] if self.has_experiment is not None else []
         self.has_experiment = [v if isinstance(v, CreateExperiment) else CreateExperiment(**as_dict(v)) for v in self.has_experiment]
 
+        if not isinstance(self.has_protocol, list):
+            self.has_protocol = [self.has_protocol] if self.has_protocol is not None else []
+        self.has_protocol = [v if isinstance(v, CreateProtocol) else CreateProtocol(**as_dict(v)) for v in self.has_protocol]
+
         if not isinstance(self.has_analysis, list):
             self.has_analysis = [self.has_analysis] if self.has_analysis is not None else []
         self.has_analysis = [v if isinstance(v, CreateAnalysis) else CreateAnalysis(**as_dict(v)) for v in self.has_analysis]
@@ -2100,6 +2101,16 @@ class CreateSubmission(YAMLRoot):
         if not isinstance(self.has_file, list):
             self.has_file = [self.has_file] if self.has_file is not None else []
         self.has_file = [v if isinstance(v, CreateFile) else CreateFile(**as_dict(v)) for v in self.has_file]
+
+        if not isinstance(self.has_dataset, list):
+            self.has_dataset = [self.has_dataset] if self.has_dataset is not None else []
+        self.has_dataset = [v if isinstance(v, CreateDataset) else CreateDataset(**as_dict(v)) for v in self.has_dataset]
+
+        self._normalize_inlined_as_dict(slot_name="has_data_access_policy", slot_type=CreateDataAccessPolicy, key_name="policy text", keyed=False)
+
+        if not isinstance(self.has_data_access_committee, list):
+            self.has_data_access_committee = [self.has_data_access_committee] if self.has_data_access_committee is not None else []
+        self.has_data_access_committee = [v if isinstance(v, CreateDataAccessCommittee) else CreateDataAccessCommittee(**as_dict(v)) for v in self.has_data_access_committee]
 
         if not isinstance(self.has_publication, list):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
@@ -3490,13 +3501,22 @@ slots.create_submission_has_experiment = Slot(uri=GHGA.has_experiment, name="cre
                    model_uri=GHGA.create_submission_has_experiment, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]])
 
 slots.create_submission_has_protocol = Slot(uri=GHGA.has_protocol, name="create submission_has protocol", curie=GHGA.curie('has_protocol'),
-                   model_uri=GHGA.create_submission_has_protocol, domain=CreateSubmission, range=Union[Union[dict, CreateProtocol], List[Union[dict, CreateProtocol]]])
+                   model_uri=GHGA.create_submission_has_protocol, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateProtocol], List[Union[dict, CreateProtocol]]]])
 
 slots.create_submission_has_analysis = Slot(uri=GHGA.has_analysis, name="create submission_has analysis", curie=GHGA.curie('has_analysis'),
                    model_uri=GHGA.create_submission_has_analysis, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateAnalysis], List[Union[dict, CreateAnalysis]]]])
 
 slots.create_submission_has_file = Slot(uri=GHGA.has_file, name="create submission_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.create_submission_has_file, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]]])
+
+slots.create_submission_has_dataset = Slot(uri=GHGA.has_dataset, name="create submission_has dataset", curie=GHGA.curie('has_dataset'),
+                   model_uri=GHGA.create_submission_has_dataset, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateDataset], List[Union[dict, CreateDataset]]]])
+
+slots.create_submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="create submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
+                   model_uri=GHGA.create_submission_has_data_access_policy, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateDataAccessPolicy], List[Union[dict, CreateDataAccessPolicy]]]])
+
+slots.create_submission_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="create submission_has data access committee", curie=GHGA.curie('has_data_access_committee'),
+                   model_uri=GHGA.create_submission_has_data_access_committee, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateDataAccessCommittee], List[Union[dict, CreateDataAccessCommittee]]]])
 
 slots.create_submission_has_publication = Slot(uri=GHGA.has_publication, name="create submission_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.create_submission_has_publication, domain=CreateSubmission, range=Optional[Union[Union[dict, CreatePublication], List[Union[dict, CreatePublication]]]])
