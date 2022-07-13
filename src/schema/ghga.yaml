@@ -932,6 +932,8 @@ classes:
         required: true
       checksum type:
         required: true
+      size:
+        required: true
 
   analysis:
     is_a: data transformation
