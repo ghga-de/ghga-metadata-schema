@@ -532,6 +532,7 @@ class CreateSubmission(BaseModel):
     has_dataset: Optional[Union[List[CreateDataset], List[str]]] = Field(None, description="""One or more Dataset that are part of this submission.""")
     has_data_access_policy: Optional[Union[List[CreateDataAccessPolicy], List[str]]] = Field(None, description="""The Data Access Policy that applies to Dataset in this submission.""")
     has_data_access_committee: Optional[Union[List[CreateDataAccessCommittee], List[str]]] = Field(None, description="""The Data Access Committee that applies to Dataset in this submission.""")
+    has_member: Optional[Union[List[AnnotatedCreateIndividual], List[str]]] = Field(None, description="""One or more member that are part of the Data Access Committee referenced in this submission.""")
     has_publication: Optional[Union[List[CreatePublication], List[str]]] = Field(None, description="""One or more Publication entities associated with this Submission.""")
     submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
     submission_status: Optional[SubmissionStatusEnum] = Field(None, description="""The status of a Submission.""")
@@ -890,7 +891,7 @@ class CreateFile(InformationContentEntity):
     drs_uri: Optional[str] = Field(None, description="""GA4GH Data Repository Service (DRS) identifier URI for a file.""")
     name: str = Field(None, description="""The given filename.""")
     format: FileFormatEnum = Field(None, description="""The format of the file: BAM, SAM, CRAM, BAI, etc.""")
-    size: Optional[int] = Field(None, description="""The size of a file in bytes.""")
+    size: int = Field(None, description="""The size of a file in bytes.""")
     checksum: str = Field(None, description="""A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.""")
     checksum_type: str = Field(None, description="""The type of algorithm used to generate the checksum of a file.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
@@ -1019,9 +1020,12 @@ class CreateDataset(InformationContentEntity):
 
 
 
-AnnotatedCreateIndividual = Annotated[Union[CreateDonor,CreateIndividual], Field(discriminator="schema_type")]
-AnnotatedCreateProtocol = Annotated[Union[CreateSequencingProtocol,CreateLibraryPreparationProtocol,CreateProtocol], Field(discriminator="schema_type")]
-AnnotatedNamedThing = Annotated[Union[CreateDonor,CreateUser,CreateMember,CreateIndividual,CreateDataAccessCommittee,CreateAncestry,CreateCohort,CreateFamily,CreateCellLine,CreateAnatomicalEntity,Population,CreateSample,CreateBiospecimen,CreatePhenotypicFeature,CreateDisease,CreateDiseaseOrPhenotypicFeature,CreateSequencingProtocol,CreateLibraryPreparationProtocol,CreateDataUseModifier,CreateDataUsePermission,CreatePublication,CreateDataAccessPolicy,CreateDataUseCondition,CreateDataset,CreateFile,CreateWorkflowStep,CreateWorkflow,CreateTechnology,CreateProtocol,CreateExperiment,CreateStudy,CreateAnalysis,CreateProject,CreateAnalysisProcess,CreateExperimentProcess,ResearchActivity,DataTransformation,Investigation,PlannedProcess,InformationContentEntity,BiologicalQuality,MaterialEntity,Committee,Person,CreateAgent,NamedThing], Field(discriminator="schema_type")]
+AnnotatedCreateIndividual = Annotated[Union[CreateDonor,CreateIndividual],
+Field(discriminator="schema_type")]
+AnnotatedCreateProtocol = Annotated[Union[CreateSequencingProtocol,CreateLibraryPreparationProtocol,CreateProtocol],
+Field(discriminator="schema_type")]
+AnnotatedNamedThing = Annotated[Union[CreateDonor,CreateUser,CreateMember,CreateIndividual,CreateDataAccessCommittee,CreateAncestry,CreateCohort,CreateFamily,CreateCellLine,CreateAnatomicalEntity,Population,CreateSample,CreateBiospecimen,CreatePhenotypicFeature,CreateDisease,CreateDiseaseOrPhenotypicFeature,CreateSequencingProtocol,CreateLibraryPreparationProtocol,CreateDataUseModifier,CreateDataUsePermission,CreatePublication,CreateDataAccessPolicy,CreateDataUseCondition,CreateDataset,CreateFile,CreateWorkflowStep,CreateWorkflow,CreateTechnology,CreateProtocol,CreateExperiment,CreateStudy,CreateAnalysis,CreateProject,CreateAnalysisProcess,CreateExperimentProcess,ResearchActivity,DataTransformation,Investigation,PlannedProcess,InformationContentEntity,BiologicalQuality,MaterialEntity,Committee,Person,CreateAgent,NamedThing],
+Field(discriminator="schema_type")]
 
 
 # Update forward refs

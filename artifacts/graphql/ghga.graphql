@@ -439,7 +439,7 @@ type File implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     drsUri: String
     name: String!
     format: FileFormatEnum!
-    size: Integer
+    size: Integer!
     checksum: String!
     checksumType: String!
     alias: String!
@@ -803,6 +803,7 @@ type Submission implements MetadataMixin
     hasDataset: [Dataset]
     hasDataAccessPolicy: [DataAccessPolicy]
     hasDataAccessCommittee: [DataAccessCommittee]
+    hasMember: [Individual]
     hasPublication: [Publication]
     submissionDate: String
     creationDate: String

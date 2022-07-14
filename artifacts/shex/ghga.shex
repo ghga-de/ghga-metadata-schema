@@ -452,7 +452,7 @@ linkml:Nodeidentifier NONLITERAL
           <drs_uri> @linkml:String ? ;
           <name> @linkml:String ;
           <format> @<FileFormatEnum> ;
-          <size> @linkml:Integer ? ;
+          <size> @linkml:Integer ;
           <checksum> @linkml:String ;
           <checksum_type> @linkml:String ;
           <alias> @linkml:String ;
@@ -831,6 +831,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_dataset> @<Dataset> * ;
           <has_data_access_policy> @<DataAccessPolicy> * ;
           <has_data_access_committee> @<DataAccessCommittee> * ;
+          <has_member> @<Individual> * ;
           <has_publication> @<Publication> * ;
           <submission_date> @linkml:String ? ;
           <creation_date> @linkml:String ? ;

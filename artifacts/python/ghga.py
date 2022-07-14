@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-11T09:13:23
+# Generation date: 2022-07-14T08:38:35
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1693,11 +1693,11 @@ class File(InformationContentEntity):
     id: Union[str, FileId] = None
     name: str = None
     format: Union[str, "FileFormatEnum"] = None
+    size: int = None
     checksum: str = None
     checksum_type: str = None
     alias: str = None
     drs_uri: Optional[str] = None
-    size: Optional[int] = None
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
@@ -1718,6 +1718,11 @@ class File(InformationContentEntity):
         if not isinstance(self.format, FileFormatEnum):
             self.format = FileFormatEnum(self.format)
 
+        if self._is_empty(self.size):
+            self.MissingRequiredField("size")
+        if not isinstance(self.size, int):
+            self.size = int(self.size)
+
         if self._is_empty(self.checksum):
             self.MissingRequiredField("checksum")
         if not isinstance(self.checksum, str):
@@ -1735,9 +1740,6 @@ class File(InformationContentEntity):
 
         if self.drs_uri is not None and not isinstance(self.drs_uri, str):
             self.drs_uri = str(self.drs_uri)
-
-        if self.size is not None and not isinstance(self.size, int):
-            self.size = int(self.size)
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -2398,6 +2400,7 @@ class Submission(YAMLRoot):
     has_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]] = empty_dict()
     has_data_access_policy: Optional[Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]]] = empty_dict()
     has_data_access_committee: Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]] = empty_dict()
+    has_member: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]] = empty_dict()
     submission_date: Optional[str] = None
     creation_date: Optional[str] = None
@@ -2440,6 +2443,8 @@ class Submission(YAMLRoot):
         self._normalize_inlined_as_dict(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Individual, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
@@ -3702,6 +3707,9 @@ slots.file_checksum = Slot(uri=GHGA.checksum, name="file_checksum", curie=GHGA.c
 slots.file_checksum_type = Slot(uri=GHGA.checksum_type, name="file_checksum type", curie=GHGA.curie('checksum_type'),
                    model_uri=GHGA.file_checksum_type, domain=File, range=str)
 
+slots.file_size = Slot(uri=GHGA.size, name="file_size", curie=GHGA.curie('size'),
+                   model_uri=GHGA.file_size, domain=File, range=int)
+
 slots.analysis_alias = Slot(uri=GHGA.alias, name="analysis_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.analysis_alias, domain=Analysis, range=str)
 
@@ -3890,6 +3898,9 @@ slots.submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, 
 
 slots.submission_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="submission_has data access committee", curie=GHGA.curie('has_data_access_committee'),
                    model_uri=GHGA.submission_has_data_access_committee, domain=Submission, range=Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]])
+
+slots.submission_has_member = Slot(uri=GHGA.has_member, name="submission_has member", curie=GHGA.curie('has_member'),
+                   model_uri=GHGA.submission_has_member, domain=Submission, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
 
 slots.submission_has_publication = Slot(uri=GHGA.has_publication, name="submission_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.submission_has_publication, domain=Submission, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]])
