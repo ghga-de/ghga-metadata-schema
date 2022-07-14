@@ -932,6 +932,8 @@ classes:
         required: true
       checksum type:
         required: true
+      size:
+        required: true
 
   analysis:
     is_a: data transformation
@@ -1362,6 +1364,7 @@ classes:
       - has dataset
       - has data access policy
       - has data access committee
+      - has member
       - has publication
       - submission date
       - creation date
@@ -1453,6 +1456,13 @@ classes:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
         range: data access committee
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has member:
+        description: >-
+          One or more member that are part of the Data Access Committee referenced in this submission.
+        range: individual
         multivalued: true
         inlined: true
         inlined_as_list: true
