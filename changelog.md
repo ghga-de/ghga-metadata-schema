@@ -1,3 +1,11 @@
+## 0.8.0 release
+
+- Added `has dataset`, `has data access policy`, `has data access committee` and `has member` to the `submission` class
+- Changed `size` slot for a `file` as required
+- Added Submission spreadsheet template to repository
+- Retired custom generators in favor of GHGA specific generators
+- Updated documentation
+
 ## 0.7.0 release
 
 - Fixed range for Dataset slots
