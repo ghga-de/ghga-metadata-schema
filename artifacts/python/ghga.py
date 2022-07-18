@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-14T08:38:35
+# Generation date: 2022-07-18T15:59:09
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -25,7 +25,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
-version = "0.8.0"
+version = "0.9.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -1016,6 +1016,7 @@ class SequencingProtocol(Protocol):
     description: str = None
     sequencing_center: Optional[str] = None
     paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
+    seq_forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
     sequencing_read_length: Optional[str] = None
     index_sequence: Optional[str] = None
     target_coverage: Optional[str] = None
@@ -1058,6 +1059,9 @@ class SequencingProtocol(Protocol):
 
         if self.paired_or_single_end is not None and not isinstance(self.paired_or_single_end, PairedOrSingleEndEnum):
             self.paired_or_single_end = PairedOrSingleEndEnum(self.paired_or_single_end)
+
+        if self.seq_forward_or_reverse is not None and not isinstance(self.seq_forward_or_reverse, ForwardOrReverseEnum):
+            self.seq_forward_or_reverse = ForwardOrReverseEnum(self.seq_forward_or_reverse)
 
         if self.sequencing_read_length is not None and not isinstance(self.sequencing_read_length, str):
             self.sequencing_read_length = str(self.sequencing_read_length)
@@ -2388,7 +2392,7 @@ class Submission(YAMLRoot):
 
     id: Union[str, SubmissionId] = None
     affiliation: Optional[str] = None
-    has_study: Optional[Union[dict, Study]] = None
+    has_study: Optional[Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]]] = empty_dict()
     has_project: Optional[Union[dict, Project]] = None
     has_sample: Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]] = empty_dict()
     has_biospecimen: Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]] = empty_dict()
@@ -2418,8 +2422,7 @@ class Submission(YAMLRoot):
         if self.affiliation is not None and not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
 
-        if self.has_study is not None and not isinstance(self.has_study, Study):
-            self.has_study = Study(**as_dict(self.has_study))
+        self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
 
         if self.has_project is not None and not isinstance(self.has_project, Project):
             self.has_project = Project(**as_dict(self.has_project))
@@ -2440,7 +2443,7 @@ class Submission(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
 
@@ -2920,6 +2923,20 @@ class PairedOrSingleEndEnum(EnumDefinitionImpl):
         description="Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.",
     )
 
+class ForwardOrReverseEnum(EnumDefinitionImpl):
+    """
+    Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+    """
+    forward = PermissibleValue(text="forward",
+                                     description="The reads are forward (R1) reads")
+    reverse = PermissibleValue(text="reverse",
+                                     description="The reads are reverse (R2) reads")
+
+    _defn = EnumDefinition(
+        name="ForwardOrReverseEnum",
+        description="Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
+    )
+
 class SubmissionStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture the status of a Submission.
@@ -3328,6 +3345,9 @@ slots.index_sequence = Slot(uri=GHGA.index_sequence, name="index sequence", curi
 
 slots.paired_or_single_end = Slot(uri=GHGA.paired_or_single_end, name="paired or single end", curie=GHGA.curie('paired_or_single_end'),
                    model_uri=GHGA.paired_or_single_end, domain=None, range=Optional[Union[str, "PairedOrSingleEndEnum"]])
+
+slots.seq_forward_or_reverse = Slot(uri=GHGA.seq_forward_or_reverse, name="seq forward or reverse", curie=GHGA.curie('seq_forward_or_reverse'),
+                   model_uri=GHGA.seq_forward_or_reverse, domain=None, range=Optional[Union[str, "ForwardOrReverseEnum"]])
 
 slots.reference_chromosome = Slot(uri=GHGA.reference_chromosome, name="reference chromosome", curie=GHGA.curie('reference_chromosome'),
                    model_uri=GHGA.reference_chromosome, domain=None, range=Optional[str])
@@ -3864,7 +3884,7 @@ slots.submission_affiliation = Slot(uri=GHGA.affiliation, name="submission_affil
                    model_uri=GHGA.submission_affiliation, domain=Submission, range=Optional[str])
 
 slots.submission_has_study = Slot(uri=GHGA.has_study, name="submission_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[dict, Study]])
+                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]]])
 
 slots.submission_has_project = Slot(uri=GHGA.has_project, name="submission_has project", curie=GHGA.curie('has_project'),
                    model_uri=GHGA.submission_has_project, domain=Submission, range=Optional[Union[dict, Project]])

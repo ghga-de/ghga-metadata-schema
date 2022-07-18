@@ -2574,6 +2574,10 @@
                "description": "The version of the schema an instance corresponds to.",
                "type": "string"
             },
+            "seq_forward_or_reverse": {
+               "$ref": "#/$defs/ForwardOrReverseEnum",
+               "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction."
+            },
             "sequencing_center": {
                "description": "Center where sample was sequenced.",
                "type": "string"
@@ -2941,15 +2945,18 @@
                "type": "array"
             },
             "has_study": {
-               "anyOf": [
-                  {
-                     "$ref": "#/$defs/CreateStudy"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ],
-               "description": "Information about a Study entities associated with this submission."
+               "description": "Information about a Study entities associated with this submission.",
+               "items": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/$defs/CreateStudy"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
             },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
@@ -3173,6 +3180,15 @@
          "title": "FileFormatEnum",
          "type": "string"
       },
+      "ForwardOrReverseEnum": {
+         "description": "Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
+         "enum": [
+            "forward",
+            "reverse"
+         ],
+         "title": "ForwardOrReverseEnum",
+         "type": "string"
+      },
       "PairedOrSingleEndEnum": {
          "description": "Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.",
          "enum": [
@@ -3267,6 +3283,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.8.0"
+   "version": "0.9.0"
 }
 
