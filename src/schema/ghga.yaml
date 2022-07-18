@@ -529,6 +529,7 @@ classes:
       - sequencing center
       - instrument model
       - paired or single end
+      - seq forward or reverse
       - sequencing read length
       - index sequence
       - target coverage
@@ -2205,6 +2206,7 @@ slots:
       - NCIT:C165443
   
   paired or single end:
+    deprecated: true
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
@@ -2212,6 +2214,16 @@ slots:
     in_subset:
       - recommended
       - public
+
+  seq forward or reverse:
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+      The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
+    range: forward or reverse enum
+    in_subset:
+      - recommended
+      - public
+
 
   reference chromosome:
     description: >-
@@ -2499,6 +2511,7 @@ enums:
         description: The Sample is to be treated as Case
 
   paired or single end enum:
+    deprecated: true
     description: >-
       Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
     permissible_values:
@@ -2506,6 +2519,15 @@ enums:
         description: The reads are Paired-end
       single:
         description: The reads are Single-end
+
+  forward or reverse enum:
+    description: >-
+      Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+    permissible_values:
+      forward:
+        description: The reads are forward (R1) reads
+      reverse:
+        description: The reads are reverse (R2) reads
 
   submission status enum:
     description: >-
