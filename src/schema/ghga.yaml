@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 0.8.0
+version: 0.9.0
 
 imports:
 - linkml:types
@@ -1381,8 +1381,9 @@ classes:
         description: >-
           Information about a Study entities associated with this submission.
         range: study
+        multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has project:
         description: >-
           Information about a Project entity associated with this submission.
@@ -1451,7 +1452,7 @@ classes:
         range: data access policy
         multivalued: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has data access committee:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
