@@ -762,7 +762,7 @@ linkml:Nodeidentifier NONLITERAL
           <sequencing_center> @linkml:String ? ;
           <instrument_model> @linkml:String ;
           <paired_or_single_end> @<PairedOrSingleEndEnum> ? ;
-          <seq_forward_or_reverse> @<ForwardOrReverseEnum> ? ;
+          <forward_or_reverse> @<ForwardOrReverseEnum> ? ;
           <sequencing_read_length> @linkml:String ? ;
           <index_sequence> @linkml:String ? ;
           <target_coverage> @linkml:String ? ;

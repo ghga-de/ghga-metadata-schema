@@ -745,7 +745,7 @@ type SequencingProtocol
     sequencingCenter: String
     instrumentModel: String!
     pairedOrSingleEnd: PairedOrSingleEndEnum
-    seqForwardOrReverse: ForwardOrReverseEnum
+    forwardOrReverse: ForwardOrReverseEnum
     sequencingReadLength: String
     indexSequence: String
     targetCoverage: String

@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-18T15:59:09
+# Generation date: 2022-07-19T09:33:11
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1016,7 +1016,7 @@ class SequencingProtocol(Protocol):
     description: str = None
     sequencing_center: Optional[str] = None
     paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
-    seq_forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
+    forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
     sequencing_read_length: Optional[str] = None
     index_sequence: Optional[str] = None
     target_coverage: Optional[str] = None
@@ -1060,8 +1060,8 @@ class SequencingProtocol(Protocol):
         if self.paired_or_single_end is not None and not isinstance(self.paired_or_single_end, PairedOrSingleEndEnum):
             self.paired_or_single_end = PairedOrSingleEndEnum(self.paired_or_single_end)
 
-        if self.seq_forward_or_reverse is not None and not isinstance(self.seq_forward_or_reverse, ForwardOrReverseEnum):
-            self.seq_forward_or_reverse = ForwardOrReverseEnum(self.seq_forward_or_reverse)
+        if self.forward_or_reverse is not None and not isinstance(self.forward_or_reverse, ForwardOrReverseEnum):
+            self.forward_or_reverse = ForwardOrReverseEnum(self.forward_or_reverse)
 
         if self.sequencing_read_length is not None and not isinstance(self.sequencing_read_length, str):
             self.sequencing_read_length = str(self.sequencing_read_length)
@@ -3346,8 +3346,8 @@ slots.index_sequence = Slot(uri=GHGA.index_sequence, name="index sequence", curi
 slots.paired_or_single_end = Slot(uri=GHGA.paired_or_single_end, name="paired or single end", curie=GHGA.curie('paired_or_single_end'),
                    model_uri=GHGA.paired_or_single_end, domain=None, range=Optional[Union[str, "PairedOrSingleEndEnum"]])
 
-slots.seq_forward_or_reverse = Slot(uri=GHGA.seq_forward_or_reverse, name="seq forward or reverse", curie=GHGA.curie('seq_forward_or_reverse'),
-                   model_uri=GHGA.seq_forward_or_reverse, domain=None, range=Optional[Union[str, "ForwardOrReverseEnum"]])
+slots.forward_or_reverse = Slot(uri=GHGA.forward_or_reverse, name="forward or reverse", curie=GHGA.curie('forward_or_reverse'),
+                   model_uri=GHGA.forward_or_reverse, domain=None, range=Optional[Union[str, "ForwardOrReverseEnum"]])
 
 slots.reference_chromosome = Slot(uri=GHGA.reference_chromosome, name="reference chromosome", curie=GHGA.curie('reference_chromosome'),
                    model_uri=GHGA.reference_chromosome, domain=None, range=Optional[str])

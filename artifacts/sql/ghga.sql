@@ -430,7 +430,7 @@ CREATE TABLE sequencing_protocol (
 	sequencing_center TEXT, 
 	instrument_model TEXT NOT NULL, 
 	paired_or_single_end "paired or single end enum", 
-	seq_forward_or_reverse "forward or reverse enum", 
+	forward_or_reverse "forward or reverse enum", 
 	sequencing_read_length TEXT, 
 	index_sequence TEXT, 
 	target_coverage TEXT, 
