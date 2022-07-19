@@ -529,7 +529,7 @@ classes:
       - sequencing center
       - instrument model
       - paired or single end
-      - seq forward or reverse
+      - forward or reverse
       - sequencing read length
       - index sequence
       - target coverage
@@ -2215,7 +2215,7 @@ slots:
       - recommended
       - public
 
-  seq forward or reverse:
+  forward or reverse:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
