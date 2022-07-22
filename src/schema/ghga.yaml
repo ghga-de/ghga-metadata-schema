@@ -856,10 +856,10 @@ classes:
       A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated)
       from a common ancestor, marriage, or adoption.
     slots:
-      - has member
+      - has individual
       - has proband
     slot_usage:
-      has member:
+      has individual:
         description: >-
           One or more Individuals that collectively define this Family.
         range: individual
@@ -882,9 +882,9 @@ classes:
       A cohort is a collection of individuals that share a common characteristic/observation
       and have been grouped together for a research study/investigation.
     slots:
-      - has member
+      - has individual
     slot_usage:
-      has member:
+      has individual:
         description: >-
           One or more Individuals that collectively define this Cohort.
         range: individual
@@ -1464,7 +1464,7 @@ classes:
       has member:
         description: >-
           One or more member that are part of the Data Access Committee referenced in this submission.
-        range: individual
+        range: member
         multivalued: true
         inlined: true
         inlined_as_list: true
