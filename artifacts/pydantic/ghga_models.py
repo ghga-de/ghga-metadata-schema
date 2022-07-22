@@ -619,7 +619,7 @@ class Submission(BaseModel):
     has_dataset: Optional[Union[List[Dataset], List[str]]] = Field(None, description="""One or more Dataset that are part of this submission.""")
     has_data_access_policy: Optional[Union[List[DataAccessPolicy], List[str]]] = Field(None, description="""The Data Access Policy that applies to Dataset in this submission.""")
     has_data_access_committee: Optional[Union[List[DataAccessCommittee], List[str]]] = Field(None, description="""The Data Access Committee that applies to Dataset in this submission.""")
-    has_member: Optional[Union[List[AnnotatedIndividual], List[str]]] = Field(None, description="""One or more member that are part of the Data Access Committee referenced in this submission.""")
+    has_member: Optional[Union[List[Member], List[str]]] = Field(None, description="""One or more member that are part of the Data Access Committee referenced in this submission.""")
     has_publication: Optional[Union[List[Publication], List[str]]] = Field(None, description="""One or more Publication entities associated with this Submission.""")
     submission_date: Optional[str] = Field(None, description="""The timestamp (in ISO 8601 format) when submission was marked completed.""")
     creation_date: Optional[str] = Field(None, description="""Timestamp (in ISO 8601 format) when the Submission was created.""")
@@ -704,7 +704,7 @@ class Family(Population):
     """
     A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption.
     """
-    has_member: Optional[Union[List[AnnotatedIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Family.""")
+    has_individual: Optional[Union[List[AnnotatedIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Family.""")
     has_proband: Optional[Union[AnnotatedIndividual, str]] = Field(None, description="""The Individual that is reported to have a disorder which results in the Family being brought into a Study.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
@@ -722,7 +722,7 @@ class Cohort(Population):
     """
     A cohort is a collection of individuals that share a common characteristic/observation and have been grouped together for a research study/investigation.
     """
-    has_member: Optional[Union[List[AnnotatedIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Cohort.""")
+    has_individual: Optional[Union[List[AnnotatedIndividual], List[str]]] = Field(None, description="""One or more Individuals that collectively define this Cohort.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     id: str = Field(None, description="""An identifier that uniquely represents an entity.""")

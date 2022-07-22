@@ -76,28 +76,28 @@
         "semweb_context" ;
     linkml:default_prefix "GHGA" ;
     linkml:default_range <https://w3id.org/GHGA/string> ;
-    linkml:generation_date "2022-07-19T09:33:14"^^xsd:dateTime ;
+    linkml:generation_date "2022-07-22T07:57:00"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "SIO" ;
+    linkml:prefixes [ linkml:prefix_prefix "HANCESTRO" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/HANCESTRO_> ],
+        [ linkml:prefix_prefix "GHGA" ;
+            linkml:prefix_reference <https://w3id.org/GHGA/> ],
+        [ linkml:prefix_prefix "SIO" ;
             linkml:prefix_reference <http://semanticscience.org/resource/SIO_> ],
         [ linkml:prefix_prefix "EFO" ;
             linkml:prefix_reference <http://www.ebi.ac.uk/efo/EFO_> ],
         [ linkml:prefix_prefix "biolink" ;
             linkml:prefix_reference <https://w3id.org/biolink/vocab/> ],
+        [ linkml:prefix_prefix "GENEPIO" ;
+            linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
         [ linkml:prefix_prefix "COB" ;
             linkml:prefix_reference <http://purl.obolibrary.org/obo/COB_> ],
         [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "GHGA" ;
-            linkml:prefix_reference <https://w3id.org/GHGA/> ],
-        [ linkml:prefix_prefix "GENEPIO" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/GENEPIO_> ],
         [ linkml:prefix_prefix "SNOMEDCT" ;
-            linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ],
-        [ linkml:prefix_prefix "HANCESTRO" ;
-            linkml:prefix_reference <http://purl.obolibrary.org/obo/HANCESTRO_> ] ;
+            linkml:prefix_reference <http://purl.bioontology.org/ontology/SNOMEDCT/> ] ;
     linkml:slots <https://w3id.org/GHGA/abstract>,
         <https://w3id.org/GHGA/accession>,
         <https://w3id.org/GHGA/additional_name>,
@@ -136,7 +136,7 @@
         <https://w3id.org/GHGA/cell_barcode_size>,
         <https://w3id.org/GHGA/checksum>,
         <https://w3id.org/GHGA/checksum_type>,
-        <https://w3id.org/GHGA/cohort_has_member>,
+        <https://w3id.org/GHGA/cohort_has_individual>,
         <https://w3id.org/GHGA/concept_identifier>,
         <https://w3id.org/GHGA/concept_name>,
         <https://w3id.org/GHGA/creation_date>,
@@ -189,7 +189,7 @@
         <https://w3id.org/GHGA/experiment_title>,
         <https://w3id.org/GHGA/experiment_type>,
         <https://w3id.org/GHGA/experimental_replicates>,
-        <https://w3id.org/GHGA/family_has_member>,
+        <https://w3id.org/GHGA/family_has_individual>,
         <https://w3id.org/GHGA/family_has_proband>,
         <https://w3id.org/GHGA/family_name>,
         <https://w3id.org/GHGA/file_alias>,
@@ -397,8 +397,8 @@
         <https://w3id.org/GHGA/workflow_step_has_workflow_parameter>,
         <https://w3id.org/GHGA/xref> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2022-07-19T09:32:26"^^xsd:dateTime ;
-    linkml:source_file_size 75102 ;
+    linkml:source_file_date "2022-07-22T07:56:27"^^xsd:dateTime ;
+    linkml:source_file_size 75114 ;
     linkml:subsets <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/optional>,
         <https://w3id.org/GHGA/public>,
@@ -511,7 +511,7 @@
 
 <https://w3id.org/GHGA/time> a linkml:TypeDefinition ;
     skos:definition "A time object represents a (local) time of day, independent of any particular day" ;
-    skos:editorialNote "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+    skos:editorialNote "URI is dateTime because OWL reasoners do not work with straight date or time" ;
     skos:inScheme linkml:types ;
     linkml:base "XSDTime" ;
     linkml:definition_uri linkml:Time ;
@@ -948,22 +948,24 @@
     linkml:slot_uri <https://w3id.org/GHGA/type> ;
     linkml:usage_slot_name "type" .
 
-<https://w3id.org/GHGA/cohort_has_member> a linkml:SlotDefinition ;
+<https://w3id.org/GHGA/cohort_has_individual> a linkml:SlotDefinition ;
+    OIO:inSubset <https://w3id.org/GHGA/essential>,
+        <https://w3id.org/GHGA/restricted> ;
     skos:definition "One or more Individuals that collectively define this Cohort." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    skos:prefLabel "has member" ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_member> ;
+    skos:prefLabel "has individual" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
     linkml:domain <https://w3id.org/GHGA/Cohort> ;
     linkml:domain_of <https://w3id.org/GHGA/Cohort> ;
     linkml:inlined true ;
     linkml:inlined_as_list true ;
-    linkml:is_a <https://w3id.org/GHGA/has_member> ;
+    linkml:is_a <https://w3id.org/GHGA/has_individual> ;
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Cohort> ;
     linkml:range <https://w3id.org/GHGA/Individual> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_member> ;
-    linkml:usage_slot_name "has member" .
+    linkml:slot_uri <https://w3id.org/GHGA/has_individual> ;
+    linkml:usage_slot_name "has individual" .
 
 <https://w3id.org/GHGA/data_access_committee_alias> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
@@ -1684,22 +1686,24 @@
     linkml:slot_uri <https://w3id.org/GHGA/type> ;
     linkml:usage_slot_name "type" .
 
-<https://w3id.org/GHGA/family_has_member> a linkml:SlotDefinition ;
+<https://w3id.org/GHGA/family_has_individual> a linkml:SlotDefinition ;
+    OIO:inSubset <https://w3id.org/GHGA/essential>,
+        <https://w3id.org/GHGA/restricted> ;
     skos:definition "One or more Individuals that collectively define this Family." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    skos:prefLabel "has member" ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_member> ;
+    skos:prefLabel "has individual" ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
     linkml:domain <https://w3id.org/GHGA/Family> ;
     linkml:domain_of <https://w3id.org/GHGA/Family> ;
     linkml:inlined true ;
     linkml:inlined_as_list true ;
-    linkml:is_a <https://w3id.org/GHGA/has_member> ;
+    linkml:is_a <https://w3id.org/GHGA/has_individual> ;
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Family> ;
     linkml:range <https://w3id.org/GHGA/Individual> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_member> ;
-    linkml:usage_slot_name "has member" .
+    linkml:slot_uri <https://w3id.org/GHGA/has_individual> ;
+    linkml:usage_slot_name "has individual" .
 
 <https://w3id.org/GHGA/family_has_proband> a linkml:SlotDefinition ;
     skos:definition "The Individual that is reported to have a disorder which results in the Family being brought into a Study." ;
@@ -2802,7 +2806,7 @@
     linkml:is_usage_slot true ;
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
-    linkml:range <https://w3id.org/GHGA/Individual> ;
+    linkml:range <https://w3id.org/GHGA/Member> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_member> ;
     linkml:usage_slot_name "has member" .
 
@@ -4489,7 +4493,7 @@
     linkml:mixins <https://w3id.org/GHGA/AccessionMixin> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/accession>,
-        <https://w3id.org/GHGA/cohort_has_member>,
+        <https://w3id.org/GHGA/cohort_has_individual>,
         <https://w3id.org/GHGA/name>,
         <https://w3id.org/GHGA/named_thing_alias>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
@@ -4840,6 +4844,16 @@
     linkml:range <https://w3id.org/GHGA/Experiment> ;
     linkml:slot_uri <https://w3id.org/GHGA/has_experiment> .
 
+<https://w3id.org/GHGA/has_member> a linkml:SlotDefinition ;
+    skos:definition "The members associated with a committee." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_member> ;
+    linkml:domain_of <https://w3id.org/GHGA/DataAccessCommittee>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_member> .
+
 <https://w3id.org/GHGA/has_phenotypic_feature> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/restricted> ;
@@ -5016,7 +5030,7 @@
     linkml:mixins <https://w3id.org/GHGA/AccessionMixin> ;
     linkml:slot_usage [ ] ;
     linkml:slots <https://w3id.org/GHGA/accession>,
-        <https://w3id.org/GHGA/family_has_member>,
+        <https://w3id.org/GHGA/family_has_individual>,
         <https://w3id.org/GHGA/family_has_proband>,
         <https://w3id.org/GHGA/name>,
         <https://w3id.org/GHGA/named_thing_alias>,
@@ -5048,19 +5062,6 @@
         <https://w3id.org/GHGA/named_thing_xref>,
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version> .
-
-<https://w3id.org/GHGA/has_individual> a linkml:SlotDefinition ;
-    OIO:inSubset <https://w3id.org/GHGA/essential>,
-        <https://w3id.org/GHGA/restricted> ;
-    skos:definition "The subject/individual associated with an entity." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
-    linkml:domain_of <https://w3id.org/GHGA/Biospecimen>,
-        <https://w3id.org/GHGA/Sample>,
-        <https://w3id.org/GHGA/Submission> ;
-    linkml:owner <https://w3id.org/GHGA/Submission> ;
-    linkml:range <https://w3id.org/GHGA/Individual> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_individual> .
 
 <https://w3id.org/GHGA/has_input> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
@@ -5211,18 +5212,6 @@
     linkml:slots <https://w3id.org/GHGA/workflow_parameter_key>,
         <https://w3id.org/GHGA/workflow_parameter_value> .
 
-<https://w3id.org/GHGA/has_member> a linkml:SlotDefinition ;
-    skos:definition "The members associated with a committee." ;
-    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:definition_uri <https://w3id.org/GHGA/has_member> ;
-    linkml:domain_of <https://w3id.org/GHGA/Cohort>,
-        <https://w3id.org/GHGA/DataAccessCommittee>,
-        <https://w3id.org/GHGA/Family>,
-        <https://w3id.org/GHGA/Submission> ;
-    linkml:owner <https://w3id.org/GHGA/Submission> ;
-    linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:slot_uri <https://w3id.org/GHGA/has_member> .
-
 <https://w3id.org/GHGA/has_study> a linkml:SlotDefinition ;
     OIO:inSubset <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/public> ;
@@ -5283,6 +5272,21 @@
     linkml:owner <https://w3id.org/GHGA/AccessionMixin> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/accession> .
+
+<https://w3id.org/GHGA/has_individual> a linkml:SlotDefinition ;
+    OIO:inSubset <https://w3id.org/GHGA/essential>,
+        <https://w3id.org/GHGA/restricted> ;
+    skos:definition "The subject/individual associated with an entity." ;
+    skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
+    linkml:definition_uri <https://w3id.org/GHGA/has_individual> ;
+    linkml:domain_of <https://w3id.org/GHGA/Biospecimen>,
+        <https://w3id.org/GHGA/Cohort>,
+        <https://w3id.org/GHGA/Family>,
+        <https://w3id.org/GHGA/Sample>,
+        <https://w3id.org/GHGA/Submission> ;
+    linkml:owner <https://w3id.org/GHGA/Submission> ;
+    linkml:range <https://w3id.org/GHGA/Individual> ;
+    linkml:slot_uri <https://w3id.org/GHGA/has_individual> .
 
 <https://w3id.org/GHGA/Member> a linkml:ClassDefinition ;
     skos:definition "Member of an Organization or a Committee." ;

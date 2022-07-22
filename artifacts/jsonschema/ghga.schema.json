@@ -674,7 +674,7 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_member": {
+            "has_individual": {
                "description": "One or more Individuals that collectively define this Cohort.",
                "items": {
                   "anyOf": [
@@ -1909,7 +1909,7 @@
                "description": "Timestamp (in ISO 8601 format) when the entity was created.",
                "type": "string"
             },
-            "has_member": {
+            "has_individual": {
                "description": "One or more Individuals that collectively define this Family.",
                "items": {
                   "anyOf": [
@@ -3405,10 +3405,7 @@
                "items": {
                   "anyOf": [
                      {
-                        "$ref": "#/$defs/Individual"
-                     },
-                     {
-                        "$ref": "#/$defs/Donor"
+                        "$ref": "#/$defs/Member"
                      },
                      {
                         "type": "string"

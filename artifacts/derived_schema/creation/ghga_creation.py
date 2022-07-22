@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-19T09:33:20
+# Generation date: 2022-07-22T07:57:04
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1323,14 +1323,14 @@ class CreateFamily(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateFamily
 
     alias: str = None
-    has_member: Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]] = empty_list()
+    has_individual: Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]] = empty_list()
     has_proband: Optional[Union[dict, CreateIndividual]] = None
     accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.has_member, list):
-            self.has_member = [self.has_member] if self.has_member is not None else []
-        self.has_member = [v if isinstance(v, CreateIndividual) else CreateIndividual(**as_dict(v)) for v in self.has_member]
+        if not isinstance(self.has_individual, list):
+            self.has_individual = [self.has_individual] if self.has_individual is not None else []
+        self.has_individual = [v if isinstance(v, CreateIndividual) else CreateIndividual(**as_dict(v)) for v in self.has_individual]
 
         if self.has_proband is not None and not isinstance(self.has_proband, CreateIndividual):
             self.has_proband = CreateIndividual(**as_dict(self.has_proband))
@@ -1355,13 +1355,13 @@ class CreateCohort(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateCohort
 
     alias: str = None
-    has_member: Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]] = empty_list()
+    has_individual: Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]] = empty_list()
     accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.has_member, list):
-            self.has_member = [self.has_member] if self.has_member is not None else []
-        self.has_member = [v if isinstance(v, CreateIndividual) else CreateIndividual(**as_dict(v)) for v in self.has_member]
+        if not isinstance(self.has_individual, list):
+            self.has_individual = [self.has_individual] if self.has_individual is not None else []
+        self.has_individual = [v if isinstance(v, CreateIndividual) else CreateIndividual(**as_dict(v)) for v in self.has_individual]
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -2064,7 +2064,7 @@ class CreateSubmission(YAMLRoot):
     has_dataset: Optional[Union[Union[dict, CreateDataset], List[Union[dict, CreateDataset]]]] = empty_list()
     has_data_access_policy: Optional[Union[Union[dict, CreateDataAccessPolicy], List[Union[dict, CreateDataAccessPolicy]]]] = empty_list()
     has_data_access_committee: Optional[Union[Union[dict, CreateDataAccessCommittee], List[Union[dict, CreateDataAccessCommittee]]]] = empty_list()
-    has_member: Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]] = empty_list()
+    has_member: Optional[Union[Union[dict, CreateMember], List[Union[dict, CreateMember]]]] = empty_list()
     has_publication: Optional[Union[Union[dict, CreatePublication], List[Union[dict, CreatePublication]]]] = empty_list()
     submission_date: Optional[str] = None
     submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
@@ -2124,7 +2124,7 @@ class CreateSubmission(YAMLRoot):
 
         if not isinstance(self.has_member, list):
             self.has_member = [self.has_member] if self.has_member is not None else []
-        self.has_member = [v if isinstance(v, CreateIndividual) else CreateIndividual(**as_dict(v)) for v in self.has_member]
+        self.has_member = [v if isinstance(v, CreateMember) else CreateMember(**as_dict(v)) for v in self.has_member]
 
         if not isinstance(self.has_publication, list):
             self.has_publication = [self.has_publication] if self.has_publication is not None else []
@@ -3342,14 +3342,14 @@ slots.create_individual_has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_fe
 slots.create_individual_has_file = Slot(uri=GHGA.has_file, name="create individual_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.create_individual_has_file, domain=CreateIndividual, range=Optional[Union[Union[dict, "CreateFile"], List[Union[dict, "CreateFile"]]]])
 
-slots.create_family_has_member = Slot(uri=GHGA.has_member, name="create family_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.create_family_has_member, domain=CreateFamily, range=Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]])
+slots.create_family_has_individual = Slot(uri=GHGA.has_individual, name="create family_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.create_family_has_individual, domain=CreateFamily, range=Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]])
 
 slots.create_family_has_proband = Slot(uri=GHGA.has_proband, name="create family_has proband", curie=GHGA.curie('has_proband'),
                    model_uri=GHGA.create_family_has_proband, domain=CreateFamily, range=Optional[Union[dict, CreateIndividual]])
 
-slots.create_cohort_has_member = Slot(uri=GHGA.has_member, name="create cohort_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.create_cohort_has_member, domain=CreateCohort, range=Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]])
+slots.create_cohort_has_individual = Slot(uri=GHGA.has_individual, name="create cohort_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.create_cohort_has_individual, domain=CreateCohort, range=Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]])
 
 slots.create_file_alias = Slot(uri=GHGA.alias, name="create file_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_file_alias, domain=CreateFile, range=str)
@@ -3553,7 +3553,7 @@ slots.create_submission_has_data_access_committee = Slot(uri=GHGA.has_data_acces
                    model_uri=GHGA.create_submission_has_data_access_committee, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateDataAccessCommittee], List[Union[dict, CreateDataAccessCommittee]]]])
 
 slots.create_submission_has_member = Slot(uri=GHGA.has_member, name="create submission_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.create_submission_has_member, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateIndividual], List[Union[dict, CreateIndividual]]]])
+                   model_uri=GHGA.create_submission_has_member, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateMember], List[Union[dict, CreateMember]]]])
 
 slots.create_submission_has_publication = Slot(uri=GHGA.has_publication, name="create submission_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.create_submission_has_publication, domain=CreateSubmission, range=Optional[Union[Union[dict, CreatePublication], List[Union[dict, CreatePublication]]]])

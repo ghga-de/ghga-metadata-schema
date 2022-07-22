@@ -584,7 +584,7 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
-            "has_member": {
+            "has_individual": {
                "description": "One or more Individuals that collectively define this Cohort.",
                "items": {
                   "anyOf": [
@@ -1667,7 +1667,7 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
-            "has_member": {
+            "has_individual": {
                "description": "One or more Individuals that collectively define this Family.",
                "items": {
                   "anyOf": [
@@ -2873,10 +2873,7 @@
                "items": {
                   "anyOf": [
                      {
-                        "$ref": "#/$defs/CreateIndividual"
-                     },
-                     {
-                        "$ref": "#/$defs/CreateDonor"
+                        "$ref": "#/$defs/CreateMember"
                      },
                      {
                         "type": "string"

@@ -84,7 +84,7 @@ CREATE TABLE cohort (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
-	has_member TEXT, 
+	has_individual TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id)
 );
@@ -366,7 +366,7 @@ CREATE TABLE family (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
-	has_member TEXT, 
+	has_individual TEXT, 
 	has_proband TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id), 
