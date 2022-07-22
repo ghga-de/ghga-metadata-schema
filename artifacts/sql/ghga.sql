@@ -1,5 +1,5 @@
 /* metamodel_version: 1.7.0 */
-/* version: 0.8.0 */
+/* version: 0.9.0 */
 
 CREATE TYPE "release status enum" AS ENUM ('unreleased', 'released');
 CREATE TYPE "biological sex enum" AS ENUM ('female', 'male', 'unknown');
@@ -9,6 +9,7 @@ CREATE TYPE "experiment process type enum" AS ENUM ('sample_preparation', 'assay
 CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf', 'txt', 'pxf', 'other');
 CREATE TYPE "case control status enum" AS ENUM ('control', 'case');
 CREATE TYPE "paired or single end enum" AS ENUM ('paired', 'single');
+CREATE TYPE "forward or reverse enum" AS ENUM ('forward', 'reverse');
 CREATE TYPE "study type enum" AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'genome_wide_association_study', 'other');
 CREATE TYPE "submission status enum" AS ENUM ('in_progress', 'completed');
 CREATE TYPE "user role enum" AS ENUM ('data_requester', 'data_steward');
@@ -429,6 +430,7 @@ CREATE TABLE sequencing_protocol (
 	sequencing_center TEXT, 
 	instrument_model TEXT NOT NULL, 
 	paired_or_single_end "paired or single end enum", 
+	forward_or_reverse "forward or reverse enum", 
 	sequencing_read_length TEXT, 
 	index_sequence TEXT, 
 	target_coverage TEXT, 
@@ -468,6 +470,32 @@ CREATE TABLE study (
 	accession TEXT, 
 	ega_accession TEXT, 
 	release_date TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_project) REFERENCES project (id)
+);
+
+CREATE TABLE submission (
+	id TEXT NOT NULL, 
+	affiliation TEXT, 
+	has_study TEXT, 
+	has_project TEXT, 
+	has_sample TEXT, 
+	has_biospecimen TEXT, 
+	has_individual TEXT, 
+	has_experiment TEXT, 
+	has_protocol TEXT, 
+	has_analysis TEXT, 
+	has_file TEXT, 
+	has_data_access_policy TEXT, 
+	has_data_access_committee TEXT, 
+	has_member TEXT, 
+	has_publication TEXT, 
+	submission_date TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	submission_status "submission status enum", 
+	schema_type TEXT, 
+	schema_version TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_project) REFERENCES project (id)
 );
@@ -706,33 +734,6 @@ CREATE TABLE sample (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
-);
-
-CREATE TABLE submission (
-	id TEXT NOT NULL, 
-	affiliation TEXT, 
-	has_study TEXT, 
-	has_project TEXT, 
-	has_sample TEXT, 
-	has_biospecimen TEXT, 
-	has_individual TEXT, 
-	has_experiment TEXT, 
-	has_protocol TEXT, 
-	has_analysis TEXT, 
-	has_file TEXT, 
-	has_data_access_policy TEXT, 
-	has_data_access_committee TEXT, 
-	has_member TEXT, 
-	has_publication TEXT, 
-	submission_date TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	submission_status "submission status enum", 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_study) REFERENCES study (id), 
-	FOREIGN KEY(has_project) REFERENCES project (id)
 );
 
 CREATE TABLE workflow_parameter (

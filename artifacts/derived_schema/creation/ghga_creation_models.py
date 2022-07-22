@@ -5,7 +5,7 @@ from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 
 metamodel_version = "None"
-version = "0.8.0"
+version = "0.9.0"
 
 
 class BiologicalSexEnum(str, Enum):
@@ -79,6 +79,13 @@ class PairedOrSingleEndEnum(str, Enum):
     
     paired = "paired"
     single = "single"
+    
+    
+
+class ForwardOrReverseEnum(str, Enum):
+    
+    forward = "forward"
+    reverse = "reverse"
     
     
 
@@ -520,7 +527,7 @@ class CreateSubmission(BaseModel):
     A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
     """
     affiliation: Optional[str] = Field(None, description="""Institution/Center/Data Hub that is providing this submission.""")
-    has_study: Optional[Union[CreateStudy, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
+    has_study: Optional[Union[List[CreateStudy], List[str]]] = Field(None, description="""Information about a Study entities associated with this submission.""")
     has_project: Optional[Union[CreateProject, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
     has_sample: Optional[Union[List[CreateSample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
     has_biospecimen: Optional[Union[List[CreateBiospecimen], List[str]]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")
@@ -834,6 +841,7 @@ class CreateSequencingProtocol(CreateProtocol):
     sequencing_center: Optional[str] = Field(None, description="""Center where sample was sequenced.""")
     instrument_model: str = Field(None, description="""The name and model of the technology platform used to perform sequencing.""")
     paired_or_single_end: Optional[PairedOrSingleEndEnum] = Field(None, description="""Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.""")
+    forward_or_reverse: Optional[ForwardOrReverseEnum] = Field(None, description="""Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.""")
     sequencing_read_length: Optional[str] = Field(None, description="""Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process""")
     index_sequence: Optional[str] = Field(None, description="""A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.""")
     target_coverage: Optional[str] = Field(None, description="""Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.""")

@@ -1,3 +1,9 @@
+## 0.9.0 release
+
+- Changed `has data access policy`, `has data access committee`, `has study` to multivalued for submission class
+- Added updated version of the submission spreadhseet
+- Fixed usage of `has member` and `has individual` fields
+
 ## 0.8.0 release
 
 - Added `has dataset`, `has data access policy`, `has data access committee` and `has member` to the `submission` class

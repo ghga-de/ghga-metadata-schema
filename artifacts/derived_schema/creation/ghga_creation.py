@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-14T08:38:44
+# Generation date: 2022-07-19T09:33:20
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -25,7 +25,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
-version = "0.8.0"
+version = "0.9.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -788,6 +788,7 @@ class CreateSequencingProtocol(CreateProtocol):
     description: str = None
     sequencing_center: Optional[str] = None
     paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
+    forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
     sequencing_read_length: Optional[str] = None
     index_sequence: Optional[str] = None
     target_coverage: Optional[str] = None
@@ -825,6 +826,9 @@ class CreateSequencingProtocol(CreateProtocol):
 
         if self.paired_or_single_end is not None and not isinstance(self.paired_or_single_end, PairedOrSingleEndEnum):
             self.paired_or_single_end = PairedOrSingleEndEnum(self.paired_or_single_end)
+
+        if self.forward_or_reverse is not None and not isinstance(self.forward_or_reverse, ForwardOrReverseEnum):
+            self.forward_or_reverse = ForwardOrReverseEnum(self.forward_or_reverse)
 
         if self.sequencing_read_length is not None and not isinstance(self.sequencing_read_length, str):
             self.sequencing_read_length = str(self.sequencing_read_length)
@@ -2048,7 +2052,7 @@ class CreateSubmission(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateSubmission
 
     affiliation: Optional[str] = None
-    has_study: Optional[Union[dict, CreateStudy]] = None
+    has_study: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
     has_project: Optional[Union[dict, CreateProject]] = None
     has_sample: Optional[Union[Union[dict, CreateSample], List[Union[dict, CreateSample]]]] = empty_list()
     has_biospecimen: Optional[Union[Union[dict, CreateBiospecimen], List[Union[dict, CreateBiospecimen]]]] = empty_list()
@@ -2071,8 +2075,9 @@ class CreateSubmission(YAMLRoot):
         if self.affiliation is not None and not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
 
-        if self.has_study is not None and not isinstance(self.has_study, CreateStudy):
-            self.has_study = CreateStudy(**as_dict(self.has_study))
+        if not isinstance(self.has_study, list):
+            self.has_study = [self.has_study] if self.has_study is not None else []
+        self.has_study = [v if isinstance(v, CreateStudy) else CreateStudy(**as_dict(v)) for v in self.has_study]
 
         if self.has_project is not None and not isinstance(self.has_project, CreateProject):
             self.has_project = CreateProject(**as_dict(self.has_project))
@@ -2109,7 +2114,9 @@ class CreateSubmission(YAMLRoot):
             self.has_dataset = [self.has_dataset] if self.has_dataset is not None else []
         self.has_dataset = [v if isinstance(v, CreateDataset) else CreateDataset(**as_dict(v)) for v in self.has_dataset]
 
-        self._normalize_inlined_as_dict(slot_name="has_data_access_policy", slot_type=CreateDataAccessPolicy, key_name="policy text", keyed=False)
+        if not isinstance(self.has_data_access_policy, list):
+            self.has_data_access_policy = [self.has_data_access_policy] if self.has_data_access_policy is not None else []
+        self.has_data_access_policy = [v if isinstance(v, CreateDataAccessPolicy) else CreateDataAccessPolicy(**as_dict(v)) for v in self.has_data_access_policy]
 
         if not isinstance(self.has_data_access_committee, list):
             self.has_data_access_committee = [self.has_data_access_committee] if self.has_data_access_committee is not None else []
@@ -2573,6 +2580,20 @@ class PairedOrSingleEndEnum(EnumDefinitionImpl):
         description="Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.",
     )
 
+class ForwardOrReverseEnum(EnumDefinitionImpl):
+    """
+    Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+    """
+    forward = PermissibleValue(text="forward",
+                                     description="The reads are forward (R1) reads")
+    reverse = PermissibleValue(text="reverse",
+                                     description="The reads are reverse (R2) reads")
+
+    _defn = EnumDefinition(
+        name="ForwardOrReverseEnum",
+        description="Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
+    )
+
 class SubmissionStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture the status of a Submission.
@@ -2972,6 +2993,9 @@ slots.index_sequence = Slot(uri=GHGA.index_sequence, name="index sequence", curi
 
 slots.paired_or_single_end = Slot(uri=GHGA.paired_or_single_end, name="paired or single end", curie=GHGA.curie('paired_or_single_end'),
                    model_uri=GHGA.paired_or_single_end, domain=None, range=Optional[Union[str, "PairedOrSingleEndEnum"]])
+
+slots.forward_or_reverse = Slot(uri=GHGA.forward_or_reverse, name="forward or reverse", curie=GHGA.curie('forward_or_reverse'),
+                   model_uri=GHGA.forward_or_reverse, domain=None, range=Optional[Union[str, "ForwardOrReverseEnum"]])
 
 slots.reference_chromosome = Slot(uri=GHGA.reference_chromosome, name="reference chromosome", curie=GHGA.curie('reference_chromosome'),
                    model_uri=GHGA.reference_chromosome, domain=None, range=Optional[str])
@@ -3493,7 +3517,7 @@ slots.create_submission_affiliation = Slot(uri=GHGA.affiliation, name="create su
                    model_uri=GHGA.create_submission_affiliation, domain=CreateSubmission, range=Optional[str])
 
 slots.create_submission_has_study = Slot(uri=GHGA.has_study, name="create submission_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.create_submission_has_study, domain=CreateSubmission, range=Optional[Union[dict, CreateStudy]])
+                   model_uri=GHGA.create_submission_has_study, domain=CreateSubmission, range=Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]])
 
 slots.create_submission_has_project = Slot(uri=GHGA.has_project, name="create submission_has project", curie=GHGA.curie('has_project'),
                    model_uri=GHGA.create_submission_has_project, domain=CreateSubmission, range=Optional[Union[dict, CreateProject]])
