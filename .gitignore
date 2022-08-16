@@ -3,3 +3,4 @@ target/
 site/
 env/
 artifacts/markdown/
+.vscode

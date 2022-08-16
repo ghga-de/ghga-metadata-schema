@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-14T08:38:44
+# Generation date: 2022-08-16T14:23:30
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1611,10 +1611,10 @@ class CreateDataset(InformationContentEntity):
 
     title: str = None
     description: str = None
+    type: Union[str, List[str]] = None
     has_file: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
     has_data_access_policy: Union[dict, "CreateDataAccessPolicy"] = None
     alias: str = None
-    type: Optional[str] = None
     has_study: Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]] = empty_list()
     has_experiment: Optional[Union[Union[dict, CreateExperiment], List[Union[dict, CreateExperiment]]]] = empty_list()
     has_sample: Optional[Union[Union[dict, CreateSample], List[Union[dict, CreateSample]]]] = empty_list()
@@ -1637,6 +1637,12 @@ class CreateDataset(InformationContentEntity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, list):
+            self.type = [self.type] if self.type is not None else []
+        self.type = [v if isinstance(v, str) else str(v) for v in self.type]
+
         if self._is_empty(self.has_file):
             self.MissingRequiredField("has_file")
         if not isinstance(self.has_file, list):
@@ -1652,9 +1658,6 @@ class CreateDataset(InformationContentEntity):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
 
         if not isinstance(self.has_study, list):
             self.has_study = [self.has_study] if self.has_study is not None else []
@@ -3395,6 +3398,9 @@ slots.create_dataset_title = Slot(uri=GHGA.title, name="create dataset_title", c
 
 slots.create_dataset_description = Slot(uri=GHGA.description, name="create dataset_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.create_dataset_description, domain=CreateDataset, range=str)
+
+slots.create_dataset_type = Slot(uri=GHGA.type, name="create dataset_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.create_dataset_type, domain=CreateDataset, range=Union[str, List[str]])
 
 slots.create_dataset_has_study = Slot(uri=GHGA.has_study, name="create dataset_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.create_dataset_has_study, domain=CreateDataset, range=Optional[Union[Union[dict, CreateStudy], List[Union[dict, CreateStudy]]]])

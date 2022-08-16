@@ -849,7 +849,6 @@ CREATE TABLE dataset (
 	schema_version TEXT, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
-	type TEXT, 
 	has_study TEXT NOT NULL, 
 	has_experiment TEXT, 
 	has_sample TEXT NOT NULL, 
@@ -937,6 +936,13 @@ CREATE TABLE dataset_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES dataset (id)
+);
+
+CREATE TABLE dataset_type (
+	backref_id TEXT, 
+	type TEXT NOT NULL, 
+	PRIMARY KEY (backref_id, type), 
 	FOREIGN KEY(backref_id) REFERENCES dataset (id)
 );
 
