@@ -792,7 +792,7 @@ type Submission implements MetadataMixin
   {
     id: String!
     affiliation: String
-    hasStudy: [Study]
+    hasStudy: Study
     hasProject: Project
     hasSample: [Sample]
     hasBiospecimen: [Biospecimen]

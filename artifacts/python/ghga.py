@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-19T14:27:04
+# Generation date: 2022-08-19T14:52:31
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -2392,7 +2392,7 @@ class Submission(YAMLRoot):
 
     id: Union[str, SubmissionId] = None
     affiliation: Optional[str] = None
-    has_study: Optional[Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]]] = empty_dict()
+    has_study: Optional[Union[dict, Study]] = None
     has_project: Optional[Union[dict, Project]] = None
     has_sample: Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]] = empty_dict()
     has_biospecimen: Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]] = empty_dict()
@@ -2422,7 +2422,8 @@ class Submission(YAMLRoot):
         if self.affiliation is not None and not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
 
-        self._normalize_inlined_as_dict(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
+        if self.has_study is not None and not isinstance(self.has_study, Study):
+            self.has_study = Study(**as_dict(self.has_study))
 
         if self.has_project is not None and not isinstance(self.has_project, Project):
             self.has_project = Project(**as_dict(self.has_project))
@@ -3884,7 +3885,7 @@ slots.submission_affiliation = Slot(uri=GHGA.affiliation, name="submission_affil
                    model_uri=GHGA.submission_affiliation, domain=Submission, range=Optional[str])
 
 slots.submission_has_study = Slot(uri=GHGA.has_study, name="submission_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]]])
+                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[dict, Study]])
 
 slots.submission_has_project = Slot(uri=GHGA.has_project, name="submission_has project", curie=GHGA.curie('has_project'),
                    model_uri=GHGA.submission_has_project, domain=Submission, range=Optional[Union[dict, Project]])

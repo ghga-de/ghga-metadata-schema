@@ -474,32 +474,6 @@ CREATE TABLE study (
 	FOREIGN KEY(has_project) REFERENCES project (id)
 );
 
-CREATE TABLE submission (
-	id TEXT NOT NULL, 
-	affiliation TEXT, 
-	has_study TEXT, 
-	has_project TEXT, 
-	has_sample TEXT, 
-	has_biospecimen TEXT, 
-	has_individual TEXT, 
-	has_experiment TEXT, 
-	has_protocol TEXT, 
-	has_analysis TEXT, 
-	has_file TEXT, 
-	has_data_access_policy TEXT, 
-	has_data_access_committee TEXT, 
-	has_member TEXT, 
-	has_publication TEXT, 
-	submission_date TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	submission_status "submission status enum", 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_project) REFERENCES project (id)
-);
-
 CREATE TABLE workflow_step (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -734,6 +708,33 @@ CREATE TABLE sample (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_individual) REFERENCES individual (id), 
 	FOREIGN KEY(has_biospecimen) REFERENCES biospecimen (id)
+);
+
+CREATE TABLE submission (
+	id TEXT NOT NULL, 
+	affiliation TEXT, 
+	has_study TEXT, 
+	has_project TEXT, 
+	has_sample TEXT, 
+	has_biospecimen TEXT, 
+	has_individual TEXT, 
+	has_experiment TEXT, 
+	has_protocol TEXT, 
+	has_analysis TEXT, 
+	has_file TEXT, 
+	has_data_access_policy TEXT, 
+	has_data_access_committee TEXT, 
+	has_member TEXT, 
+	has_publication TEXT, 
+	submission_date TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	submission_status "submission status enum", 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_study) REFERENCES study (id), 
+	FOREIGN KEY(has_project) REFERENCES project (id)
 );
 
 CREATE TABLE workflow_parameter (

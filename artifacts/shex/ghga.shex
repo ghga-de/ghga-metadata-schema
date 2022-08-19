@@ -820,7 +820,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Submission_tes> (  &<MetadataMixin_tes> ;
           rdf:type [ <MetadataMixin> ] ? ;
           <affiliation> @linkml:String ? ;
-          <has_study> @<Study> * ;
+          <has_study> @<Study> ? ;
           <has_project> @<Project> ? ;
           <has_sample> @<Sample> * ;
           <has_biospecimen> @<Biospecimen> * ;

@@ -527,7 +527,7 @@ class CreateSubmission(BaseModel):
     A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
     """
     affiliation: Optional[str] = Field(None, description="""Institution/Center/Data Hub that is providing this submission.""")
-    has_study: Optional[Union[List[CreateStudy], List[str]]] = Field(None, description="""Information about a Study entities associated with this submission.""")
+    has_study: Optional[Union[CreateStudy, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
     has_project: Optional[Union[CreateProject, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
     has_sample: Optional[Union[List[CreateSample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
     has_biospecimen: Optional[Union[List[CreateBiospecimen], List[str]]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")

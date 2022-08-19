@@ -607,7 +607,7 @@ class Submission(BaseModel):
     """
     id: str = Field(None, description="""A internal unique identifier for the Submission.""")
     affiliation: Optional[str] = Field(None, description="""Institution/Center/Data Hub that is providing this submission.""")
-    has_study: Optional[Union[List[Study], List[str]]] = Field(None, description="""Information about a Study entities associated with this submission.""")
+    has_study: Optional[Union[Study, str]] = Field(None, description="""Information about a Study entities associated with this submission.""")
     has_project: Optional[Union[Project, str]] = Field(None, description="""Information about a Project entity associated with this submission.""")
     has_sample: Optional[Union[List[Sample], List[str]]] = Field(None, description="""Information about one or more Sample entities associated with this submission.""")
     has_biospecimen: Optional[Union[List[Biospecimen], List[str]]] = Field(None, description="""Information about one or more Biospecimen entities associated with this submission.""")

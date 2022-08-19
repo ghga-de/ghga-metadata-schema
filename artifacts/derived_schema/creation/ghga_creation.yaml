@@ -2471,7 +2471,6 @@ classes:
         description: >-
           Information about a Study entities associated with this submission.
         range: create study
-        multivalued: true
         inlined: true
         inlined_as_list: false
       has project:

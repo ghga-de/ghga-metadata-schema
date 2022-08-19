@@ -2942,18 +2942,15 @@
                "type": "array"
             },
             "has_study": {
-               "description": "Information about a Study entities associated with this submission.",
-               "items": {
-                  "anyOf": [
-                     {
-                        "$ref": "#/$defs/CreateStudy"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
+               "anyOf": [
+                  {
+                     "$ref": "#/$defs/CreateStudy"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ],
+               "description": "Information about a Study entities associated with this submission."
             },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
