@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.8.0
+# version: 0.9.0
 interface AccessionMixin
   {
     accession: String
@@ -157,7 +157,7 @@ type Cohort implements AccessionMixin
     schemaType: String
     schemaVersion: String
     name: String
-    hasMember: [Individual]
+    hasIndividual: [Individual]
     accession: String
   }
 
@@ -423,7 +423,7 @@ type Family implements AccessionMixin
     schemaType: String
     schemaVersion: String
     name: String
-    hasMember: [Individual]
+    hasIndividual: [Individual]
     hasProband: Individual
     accession: String
   }
@@ -745,6 +745,7 @@ type SequencingProtocol
     sequencingCenter: String
     instrumentModel: String!
     pairedOrSingleEnd: PairedOrSingleEndEnum
+    forwardOrReverse: ForwardOrReverseEnum
     sequencingReadLength: String
     indexSequence: String
     targetCoverage: String
@@ -803,7 +804,7 @@ type Submission implements MetadataMixin
     hasDataset: [Dataset]
     hasDataAccessPolicy: [DataAccessPolicy]
     hasDataAccessCommittee: [DataAccessCommittee]
-    hasMember: [Individual]
+    hasMember: [Member]
     hasPublication: [Publication]
     submissionDate: String
     creationDate: String

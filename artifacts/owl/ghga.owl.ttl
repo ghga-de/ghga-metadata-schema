@@ -9,7 +9,6 @@
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pav: <http://purl.org/pav/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -28,12 +27,12 @@
         GHGA:ReleaseStatusMixin,
         GHGA:WorkflowParameter ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    pav:version "0.8.0" ;
-    linkml:generation_date "2022-07-14T08:38:32" ;
+    pav:version "0.9.0" ;
+    linkml:generation_date "2022-08-19T14:52:27" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2022-07-14T08:38:02" ;
-    linkml:source_file_size 74352 .
+    linkml:source_file_date "2022-08-19T14:52:01" ;
+    linkml:source_file_size 74987 .
 
 GHGA:CellLine a owl:Class,
         linkml:ClassDefinition ;
@@ -48,7 +47,7 @@ GHGA:Cohort a owl:Class,
     rdfs:label "cohort" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Individual ;
-            owl:onProperty GHGA:has_member ],
+            owl:onProperty GHGA:has_individual ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -72,12 +71,12 @@ GHGA:Family a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty GHGA:accession ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Individual ;
-            owl:onProperty GHGA:has_member ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:Individual ;
             owl:onProperty GHGA:has_proband ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Individual ;
+            owl:onProperty GHGA:has_individual ],
         GHGA:AccessionMixin,
         GHGA:Population ;
     skos:definition "A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated) from a common ancestor, marriage, or adoption." .
@@ -87,24 +86,47 @@ GHGA:LibraryPreparationProtocol a owl:Class,
     rdfs:label "library preparation protocol" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:library_preparation_kit_manufacturer ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:library_preparation_kit_retail_name ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:library_type ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:end_bias ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:library_layout ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:description ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:library_selection ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:library_preparation ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:library_name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:primer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -114,31 +136,8 @@ GHGA:LibraryPreparationProtocol a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty GHGA:rnaseq_strandedness ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:primer ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:library_selection ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:end_bias ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:library_preparation ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:library_name ;
+            owl:onProperty GHGA:library_preparation_kit_retail_name ;
             owl:qualifiedCardinality 1 ],
         GHGA:Protocol ;
     skos:definition "Information about the library preparation of an Experiment." .
@@ -149,19 +148,22 @@ GHGA:SequencingProtocol a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:index_sequence ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:umi_barcode_offset ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:sequencing_read_length ],
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:ForwardOrReverseEnum ;
+            owl:onProperty GHGA:forward_or_reverse ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ;
+            owl:onProperty GHGA:instrument_model ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -169,15 +171,43 @@ GHGA:SequencingProtocol a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty GHGA:index_sequence ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:lane_number ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:sequencing_read_length ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:umi_barcode_read ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:umi_barcode_size ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty GHGA:target_coverage ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:description ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:cell_barcode_read ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:PairedOrSingleEndEnum ;
+            owl:onProperty GHGA:paired_or_single_end ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:cell_barcode_offset ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:cell_barcode_size ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -187,36 +217,9 @@ GHGA:SequencingProtocol a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty GHGA:type ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:instrument_model ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:cell_barcode_read ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:umi_barcode_size ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:PairedOrSingleEndEnum ;
-            owl:onProperty GHGA:paired_or_single_end ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:lane_number ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:sample_barcode_read ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
+            owl:onProperty GHGA:cell_barcode_size ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -224,7 +227,7 @@ GHGA:SequencingProtocol a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:umi_barcode_read ],
+            owl:onProperty GHGA:sample_barcode_read ],
         GHGA:Protocol ;
     skos:definition "Information about the sequencing of a sample." .
 
@@ -232,6 +235,64 @@ GHGA:Submission a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "submission" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:submission_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Individual ;
+            owl:onProperty GHGA:has_individual ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Publication ;
+            owl:onProperty GHGA:has_publication ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:File ;
+            owl:onProperty GHGA:has_file ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:update_date ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:Study ;
+            owl:onProperty GHGA:has_study ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Biospecimen ;
+            owl:onProperty GHGA:has_biospecimen ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:DataAccessPolicy ;
+            owl:onProperty GHGA:has_data_access_policy ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:schema_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Protocol ;
+            owl:onProperty GHGA:has_protocol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Analysis ;
+            owl:onProperty GHGA:has_analysis ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Experiment ;
+            owl:onProperty GHGA:has_experiment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:creation_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Member ;
+            owl:onProperty GHGA:has_member ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:affiliation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:schema_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:DataAccessCommittee ;
+            owl:onProperty GHGA:has_data_access_committee ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:id ;
             owl:qualifiedCardinality 1 ],
@@ -240,73 +301,15 @@ GHGA:Submission a owl:Class,
             owl:onProperty GHGA:has_dataset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:schema_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Biospecimen ;
-            owl:onProperty GHGA:has_biospecimen ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Project ;
-            owl:onProperty GHGA:has_project ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:submission_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Individual ;
-            owl:onProperty GHGA:has_member ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Protocol ;
-            owl:onProperty GHGA:has_protocol ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:affiliation ],
+            owl:onClass GHGA:SubmissionStatusEnum ;
+            owl:onProperty GHGA:submission_status ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Sample ;
             owl:onProperty GHGA:has_sample ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:SubmissionStatusEnum ;
-            owl:onProperty GHGA:submission_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Analysis ;
-            owl:onProperty GHGA:has_analysis ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:schema_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:DataAccessPolicy ;
-            owl:onProperty GHGA:has_data_access_policy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:File ;
-            owl:onProperty GHGA:has_file ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Study ;
-            owl:onProperty GHGA:has_study ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Experiment ;
-            owl:onProperty GHGA:has_experiment ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:DataAccessCommittee ;
-            owl:onProperty GHGA:has_data_access_committee ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Publication ;
-            owl:onProperty GHGA:has_publication ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Individual ;
-            owl:onProperty GHGA:has_individual ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:creation_date ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:update_date ],
+            owl:onClass GHGA:Project ;
+            owl:onProperty GHGA:has_project ],
         GHGA:MetadataMixin ;
     skos:definition "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA." .
 
@@ -315,12 +318,12 @@ GHGA:User a owl:Class,
     rdfs:label "user" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:email ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:UserRoleEnum ;
             owl:onProperty GHGA:role ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:email ],
         GHGA:Person ;
     skos:definition "A user in GHGA." .
 
@@ -385,11 +388,11 @@ GHGA:DataTransformation a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ],
+            owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
+            owl:onProperty GHGA:title ],
         GHGA:PlannedProcess ;
     skos:definition "A data transformation technique used to analyze and interpret data to gain a better understanding of it." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/OBI_0200000> .
@@ -413,12 +416,12 @@ GHGA:DeprecatedMixin a owl:Class,
     rdfs:label "deprecated mixin" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:NamedThing ;
-            owl:onProperty GHGA:replaced_by ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:deprecation_date ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:NamedThing ;
+            owl:onProperty GHGA:replaced_by ],
         linkml:mixin ;
     skos:definition "Mixin for entities that can be deprecated." .
 
@@ -560,6 +563,12 @@ GHGA:format a owl:ObjectProperty,
     rdfs:label "format" ;
     rdfs:range GHGA:FileFormatEnum ;
     skos:definition "The format of the file: BAM, SAM, CRAM, BAI, etc." .
+
+GHGA:forward_or_reverse a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "forward or reverse" ;
+    rdfs:range GHGA:ForwardOrReverseEnum ;
+    skos:definition "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction." .
 
 GHGA:geographical_region a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -970,12 +979,22 @@ GHGA:vital_status_at_sampling a owl:ObjectProperty,
 GHGA:Analysis a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "analysis" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom GHGA:File ;
-                        owl:onProperty GHGA:has_output ] [ a owl:Restriction ;
-                        owl:onProperty GHGA:has_output ;
-                        owl:someValuesFrom GHGA:File ] ) ],
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:description ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:reference_genome ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:accession ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom GHGA:Workflow ;
@@ -986,21 +1005,16 @@ GHGA:Analysis a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:type ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom GHGA:File ;
+                        owl:onProperty GHGA:has_output ] [ a owl:Restriction ;
+                        owl:onProperty GHGA:has_output ;
+                        owl:someValuesFrom GHGA:File ] ) ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:AnalysisProcess ;
-            owl:onProperty GHGA:has_analysis_process ],
+            owl:onProperty GHGA:reference_chromosome ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom GHGA:File ;
@@ -1008,21 +1022,16 @@ GHGA:Analysis a owl:Class,
                         owl:onProperty GHGA:has_input ;
                         owl:someValuesFrom GHGA:File ] ) ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:reference_genome ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:Study ;
             owl:onProperty GHGA:has_study ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom GHGA:AnalysisProcess ;
+            owl:onProperty GHGA:has_analysis_process ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:reference_chromosome ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty GHGA:ega_accession ],
         GHGA:AccessionMixin,
         GHGA:DataTransformation,
         GHGA:EgaAccessionMixin ;
@@ -1034,22 +1043,22 @@ GHGA:AnalysisProcess a owl:Class,
     rdfs:label "analysis process" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:Agent ;
             owl:onProperty GHGA:has_agent ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:File ;
             owl:onProperty GHGA:has_input ],
         [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:File ;
+            owl:onProperty GHGA:has_output ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:Workflow ;
             owl:onProperty GHGA:has_workflow ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:File ;
-            owl:onProperty GHGA:has_output ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:title ],
         GHGA:PlannedProcess ;
     skos:definition "An analysis process is a process that describes how one or more Files, from a Study, are transformed to another set of Files via a Workflow. The analysis process also keeps track of the workflow metadata and the Agent that is running the Analysis." .
 
@@ -1063,15 +1072,15 @@ GHGA:Ancestry a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty GHGA:concept_identifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:ontology_name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:concept_identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1109,7 +1118,7 @@ GHGA:DataUseModifier a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:ontology_version ],
+            owl:onProperty GHGA:name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1117,7 +1126,7 @@ GHGA:DataUseModifier a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ],
+            owl:onProperty GHGA:ontology_version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1125,11 +1134,11 @@ GHGA:DataUseModifier a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
+            owl:onProperty GHGA:concept_identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:concept_identifier ],
+            owl:onProperty GHGA:description ],
         GHGA:InformationContentEntity,
         GHGA:OntologyClassMixin ;
     skos:definition "Data use modifiers indicate additional conditions for use." ;
@@ -1141,15 +1150,11 @@ GHGA:DataUsePermission a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:concept_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:concept_identifier ],
+            owl:onProperty GHGA:ontology_version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1157,11 +1162,15 @@ GHGA:DataUsePermission a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty GHGA:concept_identifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty GHGA:ontology_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:ontology_version ],
+            owl:onProperty GHGA:description ],
         GHGA:InformationContentEntity,
         GHGA:OntologyClassMixin ;
     skos:definition "A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used." ;
@@ -1171,18 +1180,30 @@ GHGA:Dataset a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "dataset" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Publication ;
+            owl:onProperty GHGA:has_publication ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:release_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Experiment ;
-            owl:onProperty GHGA:has_experiment ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom GHGA:Sample ;
-                        owl:onProperty GHGA:has_sample ] [ a owl:Restriction ;
-                        owl:onProperty GHGA:has_sample ;
-                        owl:someValuesFrom GHGA:Sample ] ) ],
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Analysis ;
+            owl:onProperty GHGA:has_analysis ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:title ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:ega_accession ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom GHGA:File ;
@@ -1194,23 +1215,15 @@ GHGA:Dataset a owl:Class,
             owl:onClass GHGA:ReleaseStatusEnum ;
             owl:onProperty GHGA:release_status ],
         [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Experiment ;
+            owl:onProperty GHGA:has_experiment ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:description ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Analysis ;
-            owl:onProperty GHGA:has_analysis ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:type ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
+            owl:onClass GHGA:DataAccessPolicy ;
+            owl:onProperty GHGA:has_data_access_policy ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
@@ -1219,23 +1232,19 @@ GHGA:Dataset a owl:Class,
                         owl:onProperty GHGA:has_study ;
                         owl:someValuesFrom GHGA:Study ] ) ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
-        [ a owl:Restriction ;
-            owl:onClass GHGA:DataAccessPolicy ;
-            owl:onProperty GHGA:has_data_access_policy ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty GHGA:accession ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Publication ;
-            owl:onProperty GHGA:has_publication ],
+            owl:onProperty GHGA:type ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom GHGA:Sample ;
+                        owl:onProperty GHGA:has_sample ] [ a owl:Restriction ;
+                        owl:onProperty GHGA:has_sample ;
+                        owl:someValuesFrom GHGA:Sample ] ) ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:EgaAccessionMixin,
@@ -1251,15 +1260,15 @@ GHGA:DiseaseOrPhenotypicFeature a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:ontology_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:concept_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1282,26 +1291,26 @@ GHGA:ExperimentProcess a owl:Class,
     rdfs:label "experiment process" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Agent ;
-            owl:onProperty GHGA:has_agent ],
+            owl:onClass GHGA:Sample ;
+            owl:onProperty GHGA:has_input ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:Protocol ;
+            owl:onProperty GHGA:has_protocol ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Attribute ;
             owl:onProperty GHGA:has_attribute ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:Agent ;
+            owl:onProperty GHGA:has_agent ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:File ;
             owl:onProperty GHGA:has_output ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Sample ;
-            owl:onProperty GHGA:has_input ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:ExperimentProcessTypeEnum ;
             owl:onProperty GHGA:type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Protocol ;
-            owl:onProperty GHGA:has_protocol ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1366,17 +1375,25 @@ GHGA:ExperimentProcess a owl:Class,
         GHGA:FileFormatEnum ;
     rdfs:label "vcf" .
 
+<https://w3id.org/GHGA/ForwardOrReverseEnum#forward> a owl:Class,
+        GHGA:ForwardOrReverseEnum ;
+    rdfs:label "forward" .
+
+<https://w3id.org/GHGA/ForwardOrReverseEnum#reverse> a owl:Class,
+        GHGA:ForwardOrReverseEnum ;
+    rdfs:label "reverse" .
+
 GHGA:Investigation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "investigation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ],
+            owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
+            owl:onProperty GHGA:title ],
         GHGA:PlannedProcess ;
     skos:definition "Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/OBI_0000066>,
@@ -1555,6 +1572,12 @@ GHGA:has_experiment a owl:ObjectProperty,
     rdfs:range GHGA:Experiment ;
     skos:definition "The experiment associated with an entity." .
 
+GHGA:has_member a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has member" ;
+    rdfs:range linkml:String ;
+    skos:definition "The members associated with a committee." .
+
 GHGA:has_phenotypic_feature a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has phenotypic feature" ;
@@ -1618,7 +1641,7 @@ GHGA:Agent a owl:Class,
             owl:onProperty GHGA:description ],
         GHGA:NamedThing ;
     skos:definition "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity." ;
-    skos:exactMatch prov:Agent .
+    skos:exactMatch <http://www.w3.org/ns/prov#Agent> .
 
 GHGA:AnatomicalEntity a owl:Class,
         linkml:ClassDefinition ;
@@ -1626,11 +1649,11 @@ GHGA:AnatomicalEntity a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:concept_identifier ],
+            owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
+            owl:onProperty GHGA:ontology_version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1638,11 +1661,11 @@ GHGA:AnatomicalEntity a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ],
+            owl:onProperty GHGA:concept_identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:ontology_version ],
+            owl:onProperty GHGA:name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1658,11 +1681,17 @@ GHGA:Biospecimen a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:isolation ],
+            owl:onProperty GHGA:name ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
+            owl:allValuesFrom GHGA:Disease ;
+            owl:onProperty GHGA:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:AnatomicalEntity ;
+            owl:onProperty GHGA:has_anatomical_entity ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:type ],
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:Individual ;
@@ -1670,32 +1699,26 @@ GHGA:Biospecimen a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty GHGA:storage ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Disease ;
-            owl:onProperty GHGA:has_disease ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:storage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ],
+            owl:onProperty GHGA:accession ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:PhenotypicFeature ;
             owl:onProperty GHGA:has_phenotypic_feature ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:AnatomicalEntity ;
-            owl:onProperty GHGA:has_anatomical_entity ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:isolation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:type ],
         GHGA:AccessionMixin,
         GHGA:MaterialEntity ;
     skos:definition "A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived." ;
@@ -1705,35 +1728,35 @@ GHGA:DataAccessCommittee a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "data access committee" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
+        [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Member ;
             owl:onProperty GHGA:has_member ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Member ;
-            owl:onProperty GHGA:main_contact ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:ega_accession ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:accession ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:Member ;
+            owl:onProperty GHGA:main_contact ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:name ;
+            owl:qualifiedCardinality 1 ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:Committee,
@@ -1746,36 +1769,36 @@ GHGA:DataAccessPolicy a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:data_request_form ],
+            owl:onProperty GHGA:ega_accession ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:DataUseCondition ;
             owl:onProperty GHGA:has_data_use_condition ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
+            owl:onProperty GHGA:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:data_request_form ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:alias ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:policy_text ;
+            owl:onClass GHGA:DataAccessCommittee ;
+            owl:onProperty GHGA:has_data_access_committee ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
-        [ a owl:Restriction ;
-            owl:onClass GHGA:DataAccessCommittee ;
-            owl:onProperty GHGA:has_data_access_committee ;
+            owl:onProperty GHGA:policy_text ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -1784,7 +1807,7 @@ GHGA:DataAccessPolicy a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ],
+            owl:onProperty GHGA:accession ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:EgaAccessionMixin,
@@ -1805,20 +1828,25 @@ GHGA:Experiment a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ],
+            owl:onProperty GHGA:ega_accession ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:ExperimentProcess ;
-            owl:onProperty GHGA:has_experiment_process ],
-        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty GHGA:accession ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom GHGA:Sample ;
+                        owl:onProperty GHGA:has_sample ] [ a owl:Restriction ;
+                        owl:onProperty GHGA:has_sample ;
+                        owl:someValuesFrom GHGA:Sample ] ) ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:experimental_replicates ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:File ;
-            owl:onProperty GHGA:has_file ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:title ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom GHGA:Protocol ;
@@ -1826,29 +1854,19 @@ GHGA:Experiment a owl:Class,
                         owl:onProperty GHGA:has_protocol ;
                         owl:someValuesFrom GHGA:Protocol ] ) ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:experimental_replicates ],
-        [ a owl:Restriction ;
-            owl:onClass GHGA:Study ;
-            owl:onProperty GHGA:has_study ;
+            owl:onProperty GHGA:description ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
+            owl:allValuesFrom GHGA:ExperimentProcess ;
+            owl:onProperty GHGA:has_experiment_process ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:technical_replicates ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1857,12 +1875,17 @@ GHGA:Experiment a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:type ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom GHGA:Sample ;
-                        owl:onProperty GHGA:has_sample ] [ a owl:Restriction ;
-                        owl:onProperty GHGA:has_sample ;
-                        owl:someValuesFrom GHGA:Sample ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:File ;
+            owl:onProperty GHGA:has_file ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass GHGA:Study ;
+            owl:onProperty GHGA:has_study ;
+            owl:qualifiedCardinality 1 ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:EgaAccessionMixin,
@@ -1876,24 +1899,6 @@ GHGA:ExperimentProcessTypeEnum a owl:Class,
     owl:unionOf ( <https://w3id.org/GHGA/ExperimentProcessTypeEnum#sample_preparation> <https://w3id.org/GHGA/ExperimentProcessTypeEnum#assay> ) ;
     linkml:permissible_values <https://w3id.org/GHGA/ExperimentProcessTypeEnum#assay>,
         <https://w3id.org/GHGA/ExperimentProcessTypeEnum#sample_preparation> .
-
-GHGA:Member a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "member" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:organization ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:telephone ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:email ;
-            owl:qualifiedCardinality 1 ],
-        GHGA:Person ;
-    skos:definition "Member of an Organization or a Committee." .
 
 GHGA:MetadataMixin a owl:Class,
         linkml:ClassDefinition ;
@@ -1919,16 +1924,16 @@ GHGA:Person a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:family_name ],
+            owl:onProperty GHGA:additional_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:additional_name ],
+            owl:onProperty GHGA:family_name ],
         GHGA:NamedThing ;
     skos:definition "A member of the species Homo sapiens." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/NCIT_C25190>,
         SIO:000498,
-        prov:Person .
+        <http://www.w3.org/ns/prov#Person> .
 
 GHGA:PhenotypicFeature a owl:Class,
         linkml:ClassDefinition ;
@@ -1953,23 +1958,23 @@ GHGA:Project a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "project" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:title ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:accession ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:description ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Attribute ;
             owl:onProperty GHGA:has_attribute ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Publication ;
@@ -2029,12 +2034,6 @@ GHGA:affiliation a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:definition "The Institution(s) associated with an entity." .
 
-GHGA:has_individual a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has individual" ;
-    rdfs:range GHGA:Individual ;
-    skos:definition "The subject/individual associated with an entity." .
-
 GHGA:has_workflow a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has workflow" ;
@@ -2072,6 +2071,31 @@ GHGA:CaseControlStatusEnum a owl:Class,
     linkml:permissible_values <https://w3id.org/GHGA/CaseControlStatusEnum#case>,
         <https://w3id.org/GHGA/CaseControlStatusEnum#control> .
 
+GHGA:ForwardOrReverseEnum a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "forward or reverse enum" ;
+    owl:unionOf ( <https://w3id.org/GHGA/ForwardOrReverseEnum#forward> <https://w3id.org/GHGA/ForwardOrReverseEnum#reverse> ) ;
+    linkml:permissible_values <https://w3id.org/GHGA/ForwardOrReverseEnum#forward>,
+        <https://w3id.org/GHGA/ForwardOrReverseEnum#reverse> .
+
+GHGA:Member a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "member" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:organization ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:telephone ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:email ;
+            owl:qualifiedCardinality 1 ],
+        GHGA:Person ;
+    skos:definition "Member of an Organization or a Committee." .
+
 GHGA:PairedOrSingleEndEnum a owl:Class,
         linkml:EnumDefinition ;
     rdfs:label "paired or single end enum" ;
@@ -2097,15 +2121,15 @@ GHGA:Workflow a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "workflow" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:allValuesFrom GHGA:WorkflowStep ;
             owl:onProperty GHGA:has_workflow_step ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
             owl:qualifiedCardinality 1 ],
         GHGA:InformationContentEntity ;
     skos:definition "A Workflow is an abstraction that represents the workflow used to perform an analysis. The Workflow entity captures workflow-specific attributes that are relevant for an Analysis entity. The Workflow entity may be further characterized by its children where each child has fields that are relevant to that particular workflow." .
@@ -2115,12 +2139,6 @@ GHGA:has_input a owl:ObjectProperty,
     rdfs:label "has input" ;
     rdfs:range GHGA:File ;
     skos:definition "The input to a Planned Process." .
-
-GHGA:has_member a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has member" ;
-    rdfs:range linkml:String ;
-    skos:definition "The members associated with a committee." .
 
 GHGA:has_output a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -2170,6 +2188,12 @@ GHGA:PlannedProcess a owl:Class,
         <http://purl.obolibrary.org/obo/OBI_0000011>,
         EFO:0004542 .
 
+GHGA:has_individual a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has individual" ;
+    rdfs:range GHGA:Individual ;
+    skos:definition "The subject/individual associated with an entity." .
+
 GHGA:has_publication a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has publication" ;
@@ -2194,15 +2218,7 @@ GHGA:OntologyClassMixin a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:ontology_version ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:concept_name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:concept_identifier ],
+            owl:onProperty GHGA:description ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:id ;
@@ -2210,11 +2226,19 @@ GHGA:OntologyClassMixin a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
+            owl:onProperty GHGA:concept_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:ontology_version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:ontology_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:concept_identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -2226,14 +2250,6 @@ GHGA:Publication a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "publication" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:abstract ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:title ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty GHGA:xref ],
         [ a owl:Restriction ;
@@ -2244,6 +2260,14 @@ GHGA:Publication a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty GHGA:alias ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:abstract ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:title ],
         GHGA:InformationContentEntity ;
     skos:definition "The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI." .
 
@@ -2251,9 +2275,20 @@ GHGA:Study a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "study" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass GHGA:StudyTypeEnum ;
+            owl:onProperty GHGA:type ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Publication ;
+            owl:onProperty GHGA:has_publication ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:ReleaseStatusEnum ;
-            owl:onProperty GHGA:release_status ],
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:ega_accession ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:String ;
@@ -2265,42 +2300,31 @@ GHGA:Study a owl:Class,
             owl:onProperty GHGA:title ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
+            owl:allValuesFrom GHGA:File ;
+            owl:onProperty GHGA:has_file ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:description ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:File ;
-            owl:onProperty GHGA:has_file ],
-        [ a owl:Restriction ;
-            owl:onClass GHGA:StudyTypeEnum ;
-            owl:onProperty GHGA:type ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Publication ;
-            owl:onProperty GHGA:has_publication ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:release_date ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:Project ;
+            owl:onProperty GHGA:has_project ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:ReleaseStatusEnum ;
+            owl:onProperty GHGA:release_status ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:accession ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Project ;
-            owl:onProperty GHGA:has_project ],
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:EgaAccessionMixin,
@@ -2338,20 +2362,24 @@ GHGA:Protocol a owl:Class,
     rdfs:label "protocol" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:url ],
+            owl:onClass GHGA:File ;
+            owl:onProperty GHGA:has_file ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:name ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:description ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:alias ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:url ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Attribute ;
             owl:onProperty GHGA:has_attribute ],
@@ -2360,12 +2388,8 @@ GHGA:Protocol a owl:Class,
             owl:onProperty GHGA:xref ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:File ;
-            owl:onProperty GHGA:has_file ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ],
+            owl:onProperty GHGA:type ],
         GHGA:AttributeMixin,
         GHGA:InformationContentEntity ;
     skos:definition "A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process." ;
@@ -2375,23 +2399,16 @@ GHGA:Sample a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:Biospecimen ;
             owl:onProperty GHGA:has_biospecimen ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Attribute ;
             owl:onProperty GHGA:has_attribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty GHGA:xref ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass GHGA:Individual ;
-            owl:onProperty GHGA:has_individual ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -2399,11 +2416,30 @@ GHGA:Sample a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
+            owl:onProperty GHGA:storage ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:isolation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass GHGA:Individual ;
+            owl:onProperty GHGA:has_individual ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:description ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty GHGA:xref ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:AnatomicalEntity ;
             owl:onProperty GHGA:has_anatomical_entity ],
@@ -2414,23 +2450,11 @@ GHGA:Sample a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:storage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:ega_accession ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass GHGA:VitalStatusEnum ;
             owl:onProperty GHGA:vital_status_at_sampling ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:description ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:name ;
-            owl:qualifiedCardinality 1 ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:EgaAccessionMixin,
@@ -2490,23 +2514,45 @@ GHGA:AttributeMixin a owl:Class,
         linkml:mixin ;
     skos:definition "Mixin for entities that can have one or more attributes." .
 
-GHGA:InformationContentEntity a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "information content entity" ;
-    rdfs:subClassOf GHGA:NamedThing ;
-    skos:definition "A generically dependent continuant that is about some thing." ;
-    skos:exactMatch IAO:0000030 .
-
 GHGA:Individual a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "individual" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:karyotype ],
+        [ a owl:Restriction ;
+            owl:onClass GHGA:BiologicalSexEnum ;
+            owl:onProperty GHGA:sex ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:geographical_region ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:ega_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Individual ;
+            owl:onProperty GHGA:has_children ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:File ;
+            owl:onProperty GHGA:has_file ],
+        [ a owl:Restriction ;
             owl:onClass GHGA:VitalStatusEnum ;
             owl:onProperty GHGA:vital_status ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Disease ;
             owl:onProperty GHGA:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom GHGA:Individual ;
+            owl:onProperty GHGA:has_parent ],
         [ a owl:Restriction ;
             owl:allValuesFrom GHGA:PhenotypicFeature ;
             owl:onProperty GHGA:has_phenotypic_feature ],
@@ -2515,41 +2561,12 @@ GHGA:Individual a owl:Class,
             owl:onProperty GHGA:age ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:File ;
-            owl:onProperty GHGA:has_file ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass GHGA:BiologicalSexEnum ;
-            owl:onProperty GHGA:sex ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:geographical_region ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Individual ;
-            owl:onProperty GHGA:has_children ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:accession ],
         [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Individual ;
-            owl:onProperty GHGA:has_parent ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:karyotype ],
-        [ a owl:Restriction ;
             owl:allValuesFrom GHGA:Ancestry ;
             owl:onProperty GHGA:has_ancestry ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
         GHGA:AccessionMixin,
         GHGA:EgaAccessionMixin,
         GHGA:Person ;
@@ -2557,10 +2574,32 @@ GHGA:Individual a owl:Class,
         "subject" ;
     skos:definition "An Individual is a Person who is participating in a Study." .
 
+GHGA:InformationContentEntity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "information content entity" ;
+    rdfs:subClassOf GHGA:NamedThing ;
+    skos:definition "A generically dependent continuant that is about some thing." ;
+    skos:exactMatch IAO:0000030 .
+
 GHGA:NamedThing a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "named thing" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:creation_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty GHGA:xref ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:alias ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:schema_type ],
@@ -2571,22 +2610,7 @@ GHGA:NamedThing a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:creation_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty GHGA:xref ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty GHGA:schema_version ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:alias ],
         GHGA:MetadataMixin ;
     skos:altLabel "entity",
         "named entity",
@@ -2638,19 +2662,19 @@ GHGA:Attribute a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:value_type ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:value ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty GHGA:key_type ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:key ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:value ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:key_type ] ;
+            owl:onProperty GHGA:value_type ] ;
     skos:definition "A key/value pair that further characterizes an entity." ;
     skos:exactMatch SIO:000614 .
 
@@ -2686,26 +2710,18 @@ GHGA:File a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty GHGA:accession ],
+            owl:onProperty GHGA:ega_accession ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:drs_uri ],
+            owl:allValuesFrom GHGA:Attribute ;
+            owl:onProperty GHGA:has_attribute ],
         [ a owl:Restriction ;
             owl:onClass GHGA:FileFormatEnum ;
             owl:onProperty GHGA:format ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty GHGA:ega_accession ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:alias ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom GHGA:Attribute ;
-            owl:onProperty GHGA:has_attribute ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:checksum_type ;
@@ -2719,9 +2735,17 @@ GHGA:File a owl:Class,
             owl:onProperty GHGA:size ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:drs_uri ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty GHGA:checksum ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty GHGA:accession ],
         GHGA:AccessionMixin,
         GHGA:AttributeMixin,
         GHGA:EgaAccessionMixin,
