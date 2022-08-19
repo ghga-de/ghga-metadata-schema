@@ -30,7 +30,7 @@ subsets:
       Subset of properties that are considered to be restricted.
   public:
     description: >-
-      Subset of properties that are considered to be public. 
+      Subset of properties that are considered to be public.
   essential:
     description: >-
       Subset of properties that are considered to be essential for the functionality
@@ -43,7 +43,6 @@ subsets:
       Subset of properties that are considered to be optional.
 
 enums:
-
   biological sex enum:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
@@ -927,7 +926,6 @@ slots:
     - recommended
     - public
 
-
   reference chromosome:
     description: >-
       The reference chromosome used for this Analysis.
@@ -1187,7 +1185,6 @@ classes:
       A group of people organized for a specific purpose.
     slots:
     - name
-
 
   material entity:
     is_a: named thing
@@ -2476,7 +2473,7 @@ classes:
         range: create study
         multivalued: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       has project:
         description: >-
           Information about a Project entity associated with this submission.

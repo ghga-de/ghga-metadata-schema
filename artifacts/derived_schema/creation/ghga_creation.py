@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-22T07:57:04
+# Generation date: 2022-08-19T14:27:14
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -2075,9 +2075,7 @@ class CreateSubmission(YAMLRoot):
         if self.affiliation is not None and not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
 
-        if not isinstance(self.has_study, list):
-            self.has_study = [self.has_study] if self.has_study is not None else []
-        self.has_study = [v if isinstance(v, CreateStudy) else CreateStudy(**as_dict(v)) for v in self.has_study]
+        self._normalize_inlined_as_dict(slot_name="has_study", slot_type=CreateStudy, key_name="type", keyed=False)
 
         if self.has_project is not None and not isinstance(self.has_project, CreateProject):
             self.has_project = CreateProject(**as_dict(self.has_project))

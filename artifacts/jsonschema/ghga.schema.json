@@ -3273,6 +3273,137 @@
          "title": "StudyTypeEnum",
          "type": "string"
       },
+      "Study__identifier_optional": {
+         "additionalProperties": false,
+         "description": "Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
+         "properties": {
+            "accession": {
+               "description": "A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.",
+               "type": "string"
+            },
+            "affiliation": {
+               "description": "The Institution(s) associated with an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "alias": {
+               "description": "The alias for an entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "A detailed description (abstract) that describes the goals of this Study.",
+               "type": "string"
+            },
+            "ega_accession": {
+               "description": "A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.",
+               "type": "string"
+            },
+            "has_attribute": {
+               "description": "Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)",
+               "items": {
+                  "oneOf": [
+                     {
+                        "$ref": "#/$defs/Attribute"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_file": {
+               "description": "Additional/supplementary files associated with a Study.",
+               "items": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/$defs/File"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "has_project": {
+               "anyOf": [
+                  {
+                     "$ref": "#/$defs/Project"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ],
+               "description": "The project associated with this Study."
+            },
+            "has_publication": {
+               "description": "One or more Publication entities associated with this Study.",
+               "items": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/$defs/Publication"
+                     },
+                     {
+                        "type": "string"
+                     }
+                  ]
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "release_date": {
+               "description": "The timestamp (in ISO 8601 format) when the entity was released for public consumption.",
+               "type": "string"
+            },
+            "release_status": {
+               "$ref": "#/$defs/ReleaseStatusEnum",
+               "description": "The release status of a Study."
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "title": {
+               "description": "A comprehensive title for the study.",
+               "type": "string"
+            },
+            "type": {
+               "$ref": "#/$defs/StudyTypeEnum",
+               "description": "The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'."
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "type",
+            "affiliation",
+            "alias",
+            "title",
+            "description"
+         ],
+         "title": "Study",
+         "type": "object"
+      },
       "Submission": {
          "additionalProperties": false,
          "description": "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.",
@@ -3474,18 +3605,10 @@
                "type": "array"
             },
             "has_study": {
-               "description": "Information about a Study entities associated with this submission.",
-               "items": {
-                  "anyOf": [
-                     {
-                        "$ref": "#/$defs/Study"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
+               "additionalProperties": {
+                  "$ref": "#/$defs/Study__identifier_optional"
                },
-               "type": "array"
+               "description": "Information about a Study entities associated with this submission."
             },
             "id": {
                "description": "A internal unique identifier for the Submission.",
