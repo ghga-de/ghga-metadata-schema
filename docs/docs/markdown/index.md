@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 0.8.0
+**version:** 0.9.0
 
 
 The metadata schema for the German Human Genome-Phenome Archive (GHGA).

@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 0.8.0
+version: 0.9.0
 
 imports:
 - linkml:types

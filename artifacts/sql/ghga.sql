@@ -1,5 +1,5 @@
 /* metamodel_version: 1.7.0 */
-/* version: 0.8.0 */
+/* version: 0.9.0 */
 
 CREATE TYPE "release status enum" AS ENUM ('unreleased', 'released');
 CREATE TYPE "biological sex enum" AS ENUM ('female', 'male', 'unknown');
