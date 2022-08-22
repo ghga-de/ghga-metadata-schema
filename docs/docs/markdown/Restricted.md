@@ -27,6 +27,7 @@ URI: [GHGA:restricted](https://w3id.org/GHGA/restricted)
  * [biospecimen➞alias](biospecimen_alias.md) - The alias for an entity.
  * [biospecimen➞has individual](biospecimen_has_individual.md) - The Individual entity from which this Biospecimen was derived.
  * [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.
+ * [cohort➞has individual](cohort_has_individual.md) - One or more Individuals that collectively define this Cohort.
  * [data access committee➞alias](data_access_committee_alias.md) - The alias for an entity.
  * [data access committee➞main contact](data_access_committee_main_contact.md) - The main contact for the Data Access Committee.
  * [data access policy➞alias](data_access_policy_alias.md) - The alias for an entity.
@@ -52,6 +53,7 @@ URI: [GHGA:restricted](https://w3id.org/GHGA/restricted)
  * [experiment➞has protocol](experiment_has_protocol.md) - One or more Protocol entities associated with this Experiment.
  * [experiment➞has sample](experiment_has_sample.md) - The Sample entity associated with this Experiment.
  * [family name](family_name.md) - Last name.
+ * [family➞has individual](family_has_individual.md) - One or more Individuals that collectively define this Family.
  * [file➞alias](file_alias.md) - The alias for an entity.
  * [geographical region](geographical_region.md) - The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
  * [given name](given_name.md) - First name.

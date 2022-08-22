@@ -7,7 +7,7 @@ A cohort is a collection of individuals that share a common characteristic/obser
 URI: [GHGA:Cohort](https://w3id.org/GHGA/Cohort)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20member%200..*-++[Cohort&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Cohort]uses%20-.->[AccessionMixin],[Population]^-[Cohort],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20member%200..*-++[Cohort&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Cohort]uses%20-.->[AccessionMixin],[Population]^-[Cohort],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20individual%200..*-++[Cohort&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Cohort]uses%20-.->[AccessionMixin],[Population]^-[Cohort],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20individual%200..*-++[Cohort&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Cohort]uses%20-.->[AccessionMixin],[Population]^-[Cohort],[AccessionMixin])
 
 ## Parents
 
@@ -25,9 +25,10 @@ URI: [GHGA:Cohort](https://w3id.org/GHGA/Cohort)
 
 ### Own
 
- * [cohort➞has member](cohort_has_member.md)  <sub>0..\*</sub>
+ * [cohort➞has individual](cohort_has_individual.md)  <sub>0..\*</sub>
      * Description: One or more Individuals that collectively define this Cohort.
      * Range: [Individual](Individual.md)
+     * in subsets: (essential,restricted)
 
 ### Inherited from population:
 

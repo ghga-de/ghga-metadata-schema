@@ -57,6 +57,7 @@ URI: [GHGA:public](https://w3id.org/GHGA/public)
  * [flow cell id](flow_cell_id.md) - Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
  * [flow cell type](flow_cell_type.md) - Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
  * [format](format.md) - The format of the file: BAM, SAM, CRAM, BAI, etc.
+ * [forward or reverse](forward_or_reverse.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
  * [has anatomical entity](has_anatomical_entity.md) - Anatomical site associated with an entity.
  * [has disease](has_disease.md) - Disease concept that the entity is associated with.
  * [has project](has_project.md) - The project associated with an entity.

@@ -33,6 +33,7 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [biospecimen➞type](biospecimen_type.md) - The type of Biospecimen.
  * [checksum](checksum.md) - A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.
  * [checksum type](checksum_type.md) - The type of algorithm used to generate the checksum of a file.
+ * [cohort➞has individual](cohort_has_individual.md) - One or more Individuals that collectively define this Cohort.
  * [data access committee➞alias](data_access_committee_alias.md) - The alias for an entity.
  * [data access committee➞description](data_access_committee_description.md) - A description for the Data Access Committee.
  * [data access committee➞main contact](data_access_committee_main_contact.md) - The main contact for the Data Access Committee.
@@ -66,6 +67,7 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [experiment➞has study](experiment_has_study.md) - The Study entity associated with this Experiment.
  * [experiment➞title](experiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
  * [experiment➞type](experiment_type.md) - The type of Experiment.
+ * [family➞has individual](family_has_individual.md) - One or more Individuals that collectively define this Family.
  * [file➞alias](file_alias.md) - The alias for an entity.
  * [file➞checksum](file_checksum.md)
  * [file➞checksum type](file_checksum_type.md)
