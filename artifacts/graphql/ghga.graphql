@@ -282,7 +282,7 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Rel
     schemaVersion: String
     title: String!
     description: String!
-    type: String
+    type: [String]!
     hasStudy: [Study]!
     hasExperiment: [Experiment]
     hasSample: [Sample]!

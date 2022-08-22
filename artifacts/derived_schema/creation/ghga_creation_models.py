@@ -1006,7 +1006,7 @@ class CreateDataset(InformationContentEntity):
     """
     title: str = Field(None, description="""A title for the submitted Dataset.""")
     description: str = Field(None, description="""Description of an entity.""")
-    type: Optional[str] = Field(None, description="""The type of an entity.""")
+    type: List[str] = Field(None, description="""The type of a dataset.""")
     has_study: Optional[Union[List[CreateStudy], List[str]]] = Field(None, description="""One or more Study entities that are referenced by this Dataset.""")
     has_experiment: Optional[Union[List[CreateExperiment], List[str]]] = Field(None, description="""One or more Experiment entities that are referenced by this Dataset.""")
     has_sample: Optional[Union[List[CreateSample], List[str]]] = Field(None, description="""One or more Sample entities that are referenced by this Dataset.""")

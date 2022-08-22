@@ -1279,8 +1279,11 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
-               "type": "string"
+               "description": "The type of a dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "update_date": {
                "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
@@ -1298,6 +1301,7 @@
             "id",
             "title",
             "description",
+            "type",
             "has_study",
             "has_sample",
             "has_file",

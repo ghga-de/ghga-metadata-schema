@@ -3,3 +3,5 @@ target/
 site/
 env/
 artifacts/markdown/
+.vscode
+.DS_store

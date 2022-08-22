@@ -1111,8 +1111,11 @@
                "type": "string"
             },
             "type": {
-               "description": "The type of an entity.",
-               "type": "string"
+               "description": "The type of a dataset.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "xref": {
                "description": "Holds one or more database cross references for an entity.",
@@ -1125,6 +1128,7 @@
          "required": [
             "title",
             "description",
+            "type",
             "has_file",
             "has_data_access_policy",
             "alias"

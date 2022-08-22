@@ -314,7 +314,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <AttributeMixin> ] ? ;
           <title> @linkml:String ;
           <description> @linkml:String ;
-          <type> @linkml:String ? ;
+          <type> @linkml:String + ;
           <has_study> @<Study> + ;
           <has_experiment> @<Experiment> * ;
           <has_sample> @<Sample> + ;

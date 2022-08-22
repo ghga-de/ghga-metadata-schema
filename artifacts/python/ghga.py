@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-19T14:52:31
+# Generation date: 2022-08-22T12:24:51
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1896,12 +1896,12 @@ class Dataset(InformationContentEntity):
     id: Union[str, DatasetId] = None
     title: str = None
     description: str = None
+    type: Union[str, List[str]] = None
     has_study: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
     has_sample: Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]] = empty_dict()
     has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     has_data_access_policy: Union[dict, "DataAccessPolicy"] = None
     alias: str = None
-    type: Optional[str] = None
     has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
     has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
@@ -1927,6 +1927,12 @@ class Dataset(InformationContentEntity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, list):
+            self.type = [self.type] if self.type is not None else []
+        self.type = [v if isinstance(v, str) else str(v) for v in self.type]
+
         if self._is_empty(self.has_study):
             self.MissingRequiredField("has_study")
         self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
@@ -1948,9 +1954,6 @@ class Dataset(InformationContentEntity):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
 
         self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
 
@@ -3781,6 +3784,9 @@ slots.dataset_title = Slot(uri=GHGA.title, name="dataset_title", curie=GHGA.curi
 
 slots.dataset_description = Slot(uri=GHGA.description, name="dataset_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.dataset_description, domain=Dataset, range=str)
+
+slots.dataset_type = Slot(uri=GHGA.type, name="dataset_type", curie=GHGA.curie('type'),
+                   model_uri=GHGA.dataset_type, domain=Dataset, range=Union[str, List[str]])
 
 slots.dataset_has_study = Slot(uri=GHGA.has_study, name="dataset_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.dataset_has_study, domain=Dataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
