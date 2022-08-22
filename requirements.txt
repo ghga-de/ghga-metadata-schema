@@ -1,6 +1,6 @@
 linkml>=1.2.3
 linkml-runtime>=1.2.2
-ghga-metadata-utils>=0.0.2
+ghga-metadata-utils>=0.0.5
 mkdocs>=1.2.1
 mkdocs-material>=7.1.9
 ruamel.yaml>=0.17.21

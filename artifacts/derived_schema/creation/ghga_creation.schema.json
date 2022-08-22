@@ -584,7 +584,7 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
-            "has_member": {
+            "has_individual": {
                "description": "One or more Individuals that collectively define this Cohort.",
                "items": {
                   "anyOf": [
@@ -1671,7 +1671,7 @@
                "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
-            "has_member": {
+            "has_individual": {
                "description": "One or more Individuals that collectively define this Family.",
                "items": {
                   "anyOf": [
@@ -2524,6 +2524,10 @@
                "description": "Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.",
                "type": "string"
             },
+            "forward_or_reverse": {
+               "$ref": "#/$defs/ForwardOrReverseEnum",
+               "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction."
+            },
             "has_attribute": {
                "description": "One or more attributes that further characterizes this Sequencing Protocol.",
                "items": {
@@ -2873,10 +2877,7 @@
                "items": {
                   "anyOf": [
                      {
-                        "$ref": "#/$defs/CreateIndividual"
-                     },
-                     {
-                        "$ref": "#/$defs/CreateDonor"
+                        "$ref": "#/$defs/CreateMember"
                      },
                      {
                         "type": "string"
@@ -3175,6 +3176,15 @@
             "other"
          ],
          "title": "FileFormatEnum",
+         "type": "string"
+      },
+      "ForwardOrReverseEnum": {
+         "description": "Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
+         "enum": [
+            "forward",
+            "reverse"
+         ],
+         "title": "ForwardOrReverseEnum",
          "type": "string"
       },
       "PairedOrSingleEndEnum": {

@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-19T15:49:45
+# Generation date: 2022-08-19T14:52:31
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1016,6 +1016,7 @@ class SequencingProtocol(Protocol):
     description: str = None
     sequencing_center: Optional[str] = None
     paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
+    forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
     sequencing_read_length: Optional[str] = None
     index_sequence: Optional[str] = None
     target_coverage: Optional[str] = None
@@ -1058,6 +1059,9 @@ class SequencingProtocol(Protocol):
 
         if self.paired_or_single_end is not None and not isinstance(self.paired_or_single_end, PairedOrSingleEndEnum):
             self.paired_or_single_end = PairedOrSingleEndEnum(self.paired_or_single_end)
+
+        if self.forward_or_reverse is not None and not isinstance(self.forward_or_reverse, ForwardOrReverseEnum):
+            self.forward_or_reverse = ForwardOrReverseEnum(self.forward_or_reverse)
 
         if self.sequencing_read_length is not None and not isinstance(self.sequencing_read_length, str):
             self.sequencing_read_length = str(self.sequencing_read_length)
@@ -1583,7 +1587,7 @@ class Family(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.Family
 
     id: Union[str, FamilyId] = None
-    has_member: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
+    has_individual: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
     has_proband: Optional[Union[dict, Individual]] = None
     accession: Optional[str] = None
 
@@ -1593,7 +1597,7 @@ class Family(Population):
         if not isinstance(self.id, FamilyId):
             self.id = FamilyId(self.id)
 
-        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Individual, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
 
         if self.has_proband is not None and not isinstance(self.has_proband, Individual):
             self.has_proband = Individual(**as_dict(self.has_proband))
@@ -1618,7 +1622,7 @@ class Cohort(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.Cohort
 
     id: Union[str, CohortId] = None
-    has_member: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
+    has_individual: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
     accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1627,7 +1631,7 @@ class Cohort(Population):
         if not isinstance(self.id, CohortId):
             self.id = CohortId(self.id)
 
-        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Individual, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -2403,7 +2407,7 @@ class Submission(YAMLRoot):
     has_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]] = empty_dict()
     has_data_access_policy: Optional[Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]]] = empty_dict()
     has_data_access_committee: Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]] = empty_dict()
-    has_member: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
+    has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]] = empty_dict()
     submission_date: Optional[str] = None
     creation_date: Optional[str] = None
@@ -2443,11 +2447,11 @@ class Submission(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Individual, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
@@ -2923,6 +2927,20 @@ class PairedOrSingleEndEnum(EnumDefinitionImpl):
         description="Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.",
     )
 
+class ForwardOrReverseEnum(EnumDefinitionImpl):
+    """
+    Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+    """
+    forward = PermissibleValue(text="forward",
+                                     description="The reads are forward (R1) reads")
+    reverse = PermissibleValue(text="reverse",
+                                     description="The reads are reverse (R2) reads")
+
+    _defn = EnumDefinition(
+        name="ForwardOrReverseEnum",
+        description="Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
+    )
+
 class SubmissionStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture the status of a Submission.
@@ -3332,6 +3350,9 @@ slots.index_sequence = Slot(uri=GHGA.index_sequence, name="index sequence", curi
 slots.paired_or_single_end = Slot(uri=GHGA.paired_or_single_end, name="paired or single end", curie=GHGA.curie('paired_or_single_end'),
                    model_uri=GHGA.paired_or_single_end, domain=None, range=Optional[Union[str, "PairedOrSingleEndEnum"]])
 
+slots.forward_or_reverse = Slot(uri=GHGA.forward_or_reverse, name="forward or reverse", curie=GHGA.curie('forward_or_reverse'),
+                   model_uri=GHGA.forward_or_reverse, domain=None, range=Optional[Union[str, "ForwardOrReverseEnum"]])
+
 slots.reference_chromosome = Slot(uri=GHGA.reference_chromosome, name="reference chromosome", curie=GHGA.curie('reference_chromosome'),
                    model_uri=GHGA.reference_chromosome, domain=None, range=Optional[str])
 
@@ -3686,14 +3707,14 @@ slots.individual_has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_feature, 
 slots.individual_has_file = Slot(uri=GHGA.has_file, name="individual_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.individual_has_file, domain=Individual, range=Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]])
 
-slots.family_has_member = Slot(uri=GHGA.has_member, name="family_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.family_has_member, domain=Family, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
+slots.family_has_individual = Slot(uri=GHGA.has_individual, name="family_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.family_has_individual, domain=Family, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
 
 slots.family_has_proband = Slot(uri=GHGA.has_proband, name="family_has proband", curie=GHGA.curie('has_proband'),
                    model_uri=GHGA.family_has_proband, domain=Family, range=Optional[Union[dict, Individual]])
 
-slots.cohort_has_member = Slot(uri=GHGA.has_member, name="cohort_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.cohort_has_member, domain=Cohort, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
+slots.cohort_has_individual = Slot(uri=GHGA.has_individual, name="cohort_has individual", curie=GHGA.curie('has_individual'),
+                   model_uri=GHGA.cohort_has_individual, domain=Cohort, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
 
 slots.file_alias = Slot(uri=GHGA.alias, name="file_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.file_alias, domain=File, range=str)
@@ -3906,7 +3927,7 @@ slots.submission_has_data_access_committee = Slot(uri=GHGA.has_data_access_commi
                    model_uri=GHGA.submission_has_data_access_committee, domain=Submission, range=Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]])
 
 slots.submission_has_member = Slot(uri=GHGA.has_member, name="submission_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.submission_has_member, domain=Submission, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
+                   model_uri=GHGA.submission_has_member, domain=Submission, range=Optional[Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]]])
 
 slots.submission_has_publication = Slot(uri=GHGA.has_publication, name="submission_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.submission_has_publication, domain=Submission, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]])

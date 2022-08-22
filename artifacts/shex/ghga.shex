@@ -180,7 +180,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Population> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
-          <has_member> @<Individual> * ;
+          <has_individual> @<Individual> * ;
           <accession> @linkml:String ?
        ) ;
        rdf:type [ <Cohort> ]
@@ -432,7 +432,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Population> ] ? ;
           &<AccessionMixin_tes> ;
           rdf:type [ <AccessionMixin> ] ? ;
-          <has_member> @<Individual> * ;
+          <has_individual> @<Individual> * ;
           <has_proband> @<Individual> ? ;
           <accession> @linkml:String ?
        ) ;
@@ -762,6 +762,7 @@ linkml:Nodeidentifier NONLITERAL
           <sequencing_center> @linkml:String ? ;
           <instrument_model> @linkml:String ;
           <paired_or_single_end> @<PairedOrSingleEndEnum> ? ;
+          <forward_or_reverse> @<ForwardOrReverseEnum> ? ;
           <sequencing_read_length> @linkml:String ? ;
           <index_sequence> @linkml:String ? ;
           <target_coverage> @linkml:String ? ;
@@ -831,7 +832,7 @@ linkml:Nodeidentifier NONLITERAL
           <has_dataset> @<Dataset> * ;
           <has_data_access_policy> @<DataAccessPolicy> * ;
           <has_data_access_committee> @<DataAccessCommittee> * ;
-          <has_member> @<Individual> * ;
+          <has_member> @<Member> * ;
           <has_publication> @<Publication> * ;
           <submission_date> @linkml:String ? ;
           <creation_date> @linkml:String ? ;

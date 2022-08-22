@@ -9,6 +9,7 @@ CREATE TYPE "experiment process type enum" AS ENUM ('sample_preparation', 'assay
 CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf', 'txt', 'pxf', 'other');
 CREATE TYPE "case control status enum" AS ENUM ('control', 'case');
 CREATE TYPE "paired or single end enum" AS ENUM ('paired', 'single');
+CREATE TYPE "forward or reverse enum" AS ENUM ('forward', 'reverse');
 CREATE TYPE "study type enum" AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'genome_wide_association_study', 'other');
 CREATE TYPE "submission status enum" AS ENUM ('in_progress', 'completed');
 CREATE TYPE "user role enum" AS ENUM ('data_requester', 'data_steward');
@@ -83,7 +84,7 @@ CREATE TABLE cohort (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
-	has_member TEXT, 
+	has_individual TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id)
 );
@@ -365,7 +366,7 @@ CREATE TABLE family (
 	schema_type TEXT, 
 	schema_version TEXT, 
 	name TEXT, 
-	has_member TEXT, 
+	has_individual TEXT, 
 	has_proband TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id), 
@@ -429,6 +430,7 @@ CREATE TABLE sequencing_protocol (
 	sequencing_center TEXT, 
 	instrument_model TEXT NOT NULL, 
 	paired_or_single_end "paired or single end enum", 
+	forward_or_reverse "forward or reverse enum", 
 	sequencing_read_length TEXT, 
 	index_sequence TEXT, 
 	target_coverage TEXT, 
