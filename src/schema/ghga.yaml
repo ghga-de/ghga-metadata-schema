@@ -1246,6 +1246,9 @@ classes:
     slots:
       - title
       - abstract
+      - author
+      - year 
+      - journal
     slot_usage:
       id:
         required: true
@@ -1260,6 +1263,7 @@ classes:
       xref:
         description: >-
           One or more cross-references for this Publication.
+  
 
   anatomical entity:
     is_a: material entity

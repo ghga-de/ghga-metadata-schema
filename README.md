@@ -56,3 +56,4 @@ Changes made
  - Introduced description to Analysis
  - Introduced type to Dataset
  - Introduced description as mandatory to Data Access Policy
+ - Introduced author, year and journal to Publication
