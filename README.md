@@ -44,3 +44,15 @@ we autogenerate vendor/technology specific artifacts like:
 - [CSV](artifacts/csv)
     - A CSV summary of the model and its classes
 
+
+Changes made
+ - has_publication removed from Project
+ - has_study made as list in Experiment
+ - introduced target regions as mandatory in Library preparation protocol
+ - Deleted has anatomical entity from Biospecimen
+ - Deleted has disease from Biospecimen
+ - Deleted has phenotypic feature from Biospecimen
+ - Introduced lane number and sample index sequence to Sample
+ - Introduced description to Analysis
+ - Introduced type to Dataset
+ - Introduced description as mandatory to Data Access Policy
