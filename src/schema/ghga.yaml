@@ -634,12 +634,15 @@ classes:
       - description
       - isolation
       - storage
+      - has individual
     slot_usage:
       alias:
         required: true
       type:
         description: >-
           The type of Biospecimen.
+      has individual:
+        required: true
 
   disease or phenotypic feature:
     is_a: biological quality
@@ -679,6 +682,8 @@ classes:
       - has individual
       - has anatomical entity
       - has biospecimen
+      - sample index sequence
+      - lane number
     slot_usage:
       alias:
         required: true
@@ -717,6 +722,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
 
   individual:
     is_a: person
@@ -738,7 +744,6 @@ classes:
       - has disease
       - has phenotypic feature
       - has file
-      - has biospecimen
     slot_usage:
       alias:
         required: true
@@ -913,6 +918,7 @@ classes:
       - has workflow
       - has analysis process
       - has output
+      - description
     slot_usage:
       alias:
         description: >-
@@ -1039,6 +1045,8 @@ classes:
         required: true
       description:
         required: true
+      type:
+        required: true
       has study:
         description: >-
           One or more Study entities that are referenced by this Dataset.
@@ -1137,9 +1145,11 @@ classes:
       name:
         description: >-
           A name for the Data Access Policy.
+        required: true
       description:
         description: >-
           A short description for the Data Access Policy.
+        required: true
       policy text:
         description: >-
           The terms of data use and policy verbiage should be captured here.
@@ -1148,6 +1158,7 @@ classes:
         description: >-
           URL for the policy, if available. This is useful if the terms of the policy is
           made available online at a resolvable URL.
+        required: true
       has data access committee:
         description: >-
           The Data Access Committee linked to this policy.
