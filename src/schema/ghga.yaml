@@ -2,9 +2,10 @@ id: https://w3id.org/GHGA-Metadata-Schema
 name: GHGA-Metadata-Schema
 description: >-
   The metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 0.9.0
+version: 0.8.0
+
 imports:
-  - linkml:types
+- linkml:types
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -32,7 +33,7 @@ subsets:
       Subset of properties that are considered to be restricted.
   public:
     description: >-
-      Subset of properties that are considered to be public.
+      Subset of properties that are considered to be public. 
   essential:
     description: >-
       Subset of properties that are considered to be essential for the functionality of GHGA.
@@ -44,11 +45,12 @@ subsets:
       Subset of properties that are considered to be optional.
 
 classes:
+
   named thing:
     mixins:
       - metadata mixin
     abstract: true
-    aliases: ["named entity", "entity", "object"]
+    aliases: ['named entity', 'entity', 'object']
     description: >-
       A databased entity, concept or class. This is a generic class that is the root
       of all the other classes.
@@ -140,6 +142,7 @@ classes:
       A group of people organized for a specific purpose.
     slots:
       - name
+
 
   material entity:
     is_a: named thing
@@ -234,13 +237,6 @@ classes:
         description: >-
           Short textual description of the project.
         required: true
-      has publication:
-        description: >-
-          One or more Publication entities associated with this Project.
-        range: publication
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
       has attribute:
         description: >-
           Custom attributes for the Project 
@@ -351,7 +347,7 @@ classes:
         range: study
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has sample:
         description: >-
           The Sample entity associated with this Experiment.
@@ -490,7 +486,7 @@ classes:
       - library preparation kit retail name
       - library preparation kit manufacturer
       - primer
-      - end bias
+      - end bias 
       - target regions
       - rnaseq strandedness
     slot_usage:
@@ -504,15 +500,17 @@ classes:
         required: true
       library layout:
         required: true
-      library type:
-        required: true
+      library type: 
+        required: true 
       library selection:
         required: true
       library preparation:
         required: true
       library preparation kit retail name:
-        required: true
+        required: false
       library preparation kit manufacturer:
+        required: false
+      target regions:
         required: true
       has attribute:
         description: >-
@@ -526,7 +524,6 @@ classes:
       - sequencing center
       - instrument model
       - paired or single end
-      - forward or reverse
       - sequencing read length
       - index sequence
       - target coverage
@@ -543,12 +540,14 @@ classes:
     slot_usage:
       alias:
         required: true
+      sequencing center:
+        required: false
       instrument model:
         required: true
       type:
         description: >-
           Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
-      description:
+      description: 
         description: >-
           Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
         required: true
@@ -624,9 +623,9 @@ classes:
     mixins:
       - accession mixin
     description: >-
-      A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
-      diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
-      the Biospecimen is derived.
+          A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
+          diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
+          the Biospecimen is derived.
     exact_mappings:
       - OBI:0100051
     slots:
@@ -635,50 +634,12 @@ classes:
       - description
       - isolation
       - storage
-      - has individual
-      - has anatomical entity
-      - has disease
-      - has phenotypic feature
     slot_usage:
       alias:
         required: true
       type:
         description: >-
           The type of Biospecimen.
-      has individual:
-        description: >-
-          The Individual entity from which this Biospecimen was derived.
-        range: individual
-        inlined: true
-        inlined_as_list: false
-      has anatomical entity:
-        description: >-
-          The Anatomical entity, that represents the site, from which the Biospecimen was retrieved.
-          Typically, a concept from Uber-anatomy Ontology (UBERON).
-          For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from
-          the 'Heart Endothelium' of an Individual.
-        range: anatomical entity
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has disease:
-        description: >-
-          The Disease entity that is associated with the Individual. Typically, a concept
-          from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that
-          the Individual suffers from 'Heart Disease'.
-        range: disease
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has phenotypic feature:
-        description: >-
-          The Phenotypic Feature entity that is associated with the Individual. Typically, a
-          concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the
-          Individual exhibits 'Fibrosarcoma' as one of its phenotype.
-        range: phenotypic feature
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
 
   disease or phenotypic feature:
     is_a: biological quality
@@ -762,7 +723,7 @@ classes:
     mixins:
       - accession mixin
       - ega accession mixin
-    aliases: ["subject", "patient"]
+    aliases: ['subject', 'patient']
     description: >-
       An Individual is a Person who is participating in a Study.
     slots:
@@ -777,6 +738,7 @@ classes:
       - has disease
       - has phenotypic feature
       - has file
+      - has biospecimen
     slot_usage:
       alias:
         required: true
@@ -830,7 +792,7 @@ classes:
 
   donor:
     is_a: individual
-    aliases: ["participant"]
+    aliases: ['participant']
     description: >-
       A Donor is an Individual that participates in a research Study by donating
       a Biospecimen. The use of the Biospecimen is restricted to the consent provided
@@ -853,10 +815,10 @@ classes:
       A domestic group, or a number of domestic groups linked through descent (demonstrated or stipulated)
       from a common ancestor, marriage, or adoption.
     slots:
-      - has individual
+      - has member
       - has proband
     slot_usage:
-      has individual:
+      has member:
         description: >-
           One or more Individuals that collectively define this Family.
         range: individual
@@ -879,9 +841,9 @@ classes:
       A cohort is a collection of individuals that share a common characteristic/observation
       and have been grouped together for a research study/investigation.
     slots:
-      - has individual
+      - has member
     slot_usage:
-      has individual:
+      has member:
         description: >-
           One or more Individuals that collectively define this Cohort.
         range: individual
@@ -896,17 +858,17 @@ classes:
     description: >-
       Population category defined using ancestry informative markers (AIMs) based
       on genetic/genomic data.
-    aliases: ["ancestral group", "ancestry category"]
+    aliases: ['ancestral group', 'ancestry category']
     exact_mappings:
       - HANCESTRO:0004
 
   file:
     is_a: information content entity
     mixins:
-      - accession mixin
-      - ega accession mixin
-      - attribute mixin
-    aliases: ["file object"]
+    - accession mixin
+    - ega accession mixin
+    - attribute mixin
+    aliases: ['file object']
     description: >-
       A file is an object that contains information generated from a process, either an
       Experiment or an Analysis.
@@ -938,7 +900,7 @@ classes:
     mixins:
       - accession mixin
       - ega accession mixin
-    aliases: ["data analysis"]
+    aliases: ['data analysis']
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
       The workflow used to achieve this transformation and the individual steps are also captured.
@@ -1077,11 +1039,6 @@ classes:
         required: true
       description:
         required: true
-      type:
-        description: >-
-          The type of a dataset.
-        required: true
-        multivalued: true
       has study:
         description: >-
           One or more Study entities that are referenced by this Dataset.
@@ -1454,7 +1411,7 @@ classes:
         range: data access policy
         multivalued: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       has data access committee:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
@@ -1465,7 +1422,7 @@ classes:
       has member:
         description: >-
           One or more member that are part of the Data Access Committee referenced in this submission.
-        range: member
+        range: individual
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1517,15 +1474,15 @@ classes:
       - ontology name
       - ontology version
     slot_usage:
-      concept identifier:
-        description: >-
-          The Compact URI (CURIE) that uniquely identifies this ontology class.
-      name:
-        description: >-
-          The name or label (rdfs:label) of an ontology class.
-      description:
-        description: >-
-          The description or definition of an ontology class.
+        concept identifier:
+          description: >-
+            The Compact URI (CURIE) that uniquely identifies this ontology class.
+        name:
+          description: >-
+            The name or label (rdfs:label) of an ontology class.
+        description:
+          description: >-
+            The description or definition of an ontology class.
 
   metadata mixin:
     mixin: true
@@ -1574,6 +1531,7 @@ classes:
       - release date
 
 slots:
+
   schema type:
     description: The schema type an instance corresponds to.
 
@@ -1648,25 +1606,25 @@ slots:
       - public
 
   technical replicates:
-    description: >-
-      A technical replicate is a replicate role where the same BioSample is use e.g.
-      the same pool of RNA used to assess technical (as opposed to biological)
-      variation within an experiment.
-    in_subset:
-      - optional
-      - public
-    exact_mappings:
-      - EFO:0002090
+      description: >-
+        A technical replicate is a replicate role where the same BioSample is use e.g.
+        the same pool of RNA used to assess technical (as opposed to biological)
+        variation within an experiment.
+      in_subset:
+        - optional
+        - public
+      exact_mappings:
+        - EFO:0002090
 
   biological replicates:
-    description: >-
-      A biological replicate is a replicate role that consists of
-      independent biological replicates made from different individual biosamples.
-    in_subset:
-      - optional
-      - public
-    exact_mappings:
-      - EFO:0002091
+      description: >-
+        A biological replicate is a replicate role that consists of
+        independent biological replicates made from different individual biosamples.
+      in_subset:
+        - optional
+        - public
+      exact_mappings:
+        - EFO:0002091
 
   experimental replicates:
     description: >-
@@ -1846,7 +1804,7 @@ slots:
       - public
 
   geographical region:
-    description: >-
+    description: >- 
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     in_subset:
@@ -1937,7 +1895,7 @@ slots:
       - restricted
 
   tissue:
-    description: >-
+    description: >- 
       An anatomical structure consisting of similarly specialized cells and intercellular matrix,
       aggregated according to genetically determined spatial relationships, performing a specific function.
     in_subset:
@@ -1960,7 +1918,7 @@ slots:
       - public
 
   vital status:
-    description: >-
+    description: >- 
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
     range: vital status enum
@@ -2004,7 +1962,7 @@ slots:
       - public
     exact_mappings:
       - NCIT:C43522
-
+    
   checksum type:
     description: >-
       The type of algorithm used to generate the checksum of a file.
@@ -2087,13 +2045,13 @@ slots:
       - public
 
   library name:
-    description: >-
+    description: >- 
       A short name identifying the library to potential users.
       The same name may refer to multiple versions of the same continually updated library.
     in_subset:
       - essential
       - public
-
+  
   library layout:
     description: >-
       Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
@@ -2112,8 +2070,8 @@ slots:
 
   library selection:
     description: >-
-      Whether any method was used to select for or against, enrich, or screen the material being sequenced.
-      Library Selection method (e.g. random, PCA, cDNA, etc )
+        Whether any method was used to select for or against, enrich, or screen the material being sequenced.
+        Library Selection method (e.g. random, PCA, cDNA, etc )
     in_subset:
       - essential
       - public
@@ -2175,8 +2133,8 @@ slots:
     in_subset:
       - recommended
       - public
-
-  sequencing center:
+  
+  sequencing center: 
     description: >-
       Center where sample was sequenced.
     in_subset:
@@ -2204,22 +2162,12 @@ slots:
       - public
     exact_mappings:
       - NCIT:C165443
-
+  
   paired or single end:
-    deprecated: true
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
     range: paired or single end enum
-    in_subset:
-      - recommended
-      - public
-
-  forward or reverse:
-    description: >-
-      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
-      The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
-    range: forward or reverse enum
     in_subset:
       - recommended
       - public
@@ -2238,7 +2186,7 @@ slots:
     in_subset:
       - essential
       - public
-
+  
   lane number:
     description: >-
       The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
@@ -2275,7 +2223,7 @@ slots:
     in_subset:
       - recommended
       - public
-
+  
   umi barcode offset:
     description: >-
       The offset in sequence of the UMI identifying barcode. (E.g. '16').
@@ -2283,35 +2231,35 @@ slots:
       - recommended
       - public
 
-  umi barcode size:
+  umi barcode size: 
     description: >-
       The size of the UMI identifying barcode (Eg. '10').
     in_subset:
       - recommended
       - public
 
-  cell barcode read:
+  cell barcode read: 
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
     in_subset:
       - recommended
       - public
 
-  cell barcode offset:
+  cell barcode offset: 
     description: >-
       The offset in sequence of the cell identifying barcode. (Eg. '0').
     in_subset:
       - recommended
       - public
 
-  cell barcode size:
+  cell barcode size: 
     description: >-
       The size of the cell identifying barcode (E.g. '16').
     in_subset:
       - recommended
       - public
 
-  sample barcode read:
+  sample barcode read: 
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
     in_subset:
@@ -2390,6 +2338,7 @@ slots:
       The version of the ontology from which this ontology class was chosen.
 
 enums:
+
   biological sex enum:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
@@ -2413,7 +2362,7 @@ enums:
         description: >-
           Role of a Data Steward where the user is responsible for
           approving request from a user for one or more Datasets.
-
+  
   vital status enum:
     description: >-
       Enum to capture the vital status of an individual.
@@ -2427,7 +2376,7 @@ enums:
       unknown:
         description: >-
           Vital status is unknown.
-
+  
   study type enum:
     description: >-
       Enum to capture the type of a study.
@@ -2467,11 +2416,11 @@ enums:
     description: >-
       Enum to capture file types.
     permissible_values:
-      bam:
+      bam: 
         description: BAM File
       complete_genomics:
         description: Complete Genomics File
-      cram:
+      cram: 
         description: CRAM File
       fasta:
         description: Fasta File
@@ -2480,7 +2429,7 @@ enums:
       pacbio_hdf5:
         description: PacBio HDF5 File
       sff:
-        description: >-
+        description: >- 
           Standard flowgram format used to encode results
           of pyrosequencing from the 454 Life Sciences platform.
       srf:
@@ -2509,7 +2458,6 @@ enums:
         description: The Sample is to be treated as Case
 
   paired or single end enum:
-    deprecated: true
     description: >-
       Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
     permissible_values:
@@ -2517,15 +2465,6 @@ enums:
         description: The reads are Paired-end
       single:
         description: The reads are Single-end
-
-  forward or reverse enum:
-    description: >-
-      Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
-    permissible_values:
-      forward:
-        description: The reads are forward (R1) reads
-      reverse:
-        description: The reads are reverse (R2) reads
 
   submission status enum:
     description: >-
