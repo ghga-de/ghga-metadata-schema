@@ -2352,6 +2352,26 @@ slots:
     description: >-
       The version of the ontology from which this ontology class was chosen.
 
+  sample index sequence:
+    description: >-
+      A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
+      
+  author:
+    description: >-
+      The individual who is responsible for the content of a document version.
+
+  year:
+    description: >-
+      Year in which the paper was published.
+
+  journal:
+    description: >-
+      Name of the journal.
+  
+  sample lane number:
+    description: >-
+      The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
+
 enums:
 
   biological sex enum:
