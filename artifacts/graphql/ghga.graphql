@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.9.0
+# version: 0.8.0
 interface AccessionMixin
   {
     accession: String
@@ -35,8 +35,8 @@ type Analysis implements AccessionMixin, EgaAccessionMixin
     hasWorkflow: [Workflow]!
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]!
-    alias: String!
     description: String
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -128,10 +128,7 @@ type Biospecimen implements AccessionMixin
     description: String
     isolation: String
     storage: String
-    hasIndividual: Individual
-    hasAnatomicalEntity: [AnatomicalEntity]
-    hasDisease: [Disease]
-    hasPhenotypicFeature: [PhenotypicFeature]
+    hasIndividual: Individual!
     alias: String!
     accession: String
   }
@@ -157,7 +154,7 @@ type Cohort implements AccessionMixin
     schemaType: String
     schemaVersion: String
     name: String
-    hasIndividual: [Individual]
+    hasMember: [Individual]
     accession: String
   }
 
@@ -199,10 +196,10 @@ type DataAccessPolicy implements AttributeMixin, AccessionMixin, EgaAccessionMix
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
-    description: String
+    name: String!
+    description: String!
     policyText: String!
-    policyUrl: String
+    policyUrl: String!
     hasDataAccessCommittee: DataAccessCommittee!
     hasDataUseCondition: [DataUseCondition]
     dataRequestForm: String
@@ -282,7 +279,7 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Rel
     schemaVersion: String
     title: String!
     description: String!
-    type: [String]!
+    type: String!
     hasStudy: [Study]!
     hasExperiment: [Experiment]
     hasSample: [Sample]!
@@ -423,7 +420,7 @@ type Family implements AccessionMixin
     schemaType: String
     schemaVersion: String
     name: String
-    hasIndividual: [Individual]
+    hasMember: [Individual]
     hasProband: Individual
     accession: String
   }
@@ -516,11 +513,11 @@ type LibraryPreparationProtocol
     libraryType: String!
     librarySelection: String!
     libraryPreparation: String!
-    libraryPreparationKitRetailName: String!
-    libraryPreparationKitManufacturer: String!
+    libraryPreparationKitRetailName: String
+    libraryPreparationKitManufacturer: String
     primer: String
     endBias: String
-    targetRegions: String
+    targetRegions: String!
     rnaseqStrandedness: String
     alias: String!
     description: String!
@@ -648,7 +645,6 @@ type Project implements AccessionMixin, AttributeMixin
     alias: String!
     title: String!
     description: String!
-    hasPublication: [Publication]
     hasAttribute: [Attribute]
     accession: String
   }
@@ -678,6 +674,9 @@ type Publication
     schemaVersion: String
     title: String
     abstract: String
+    author: String
+    year: String
+    journal: String
     id: String!
     alias: String!
     xref: [String]
@@ -722,8 +721,10 @@ type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     isolation: String
     storage: String
     hasIndividual: Individual
-    hasAnatomicalEntity: [AnatomicalEntity]
+    hasAnatomicalEntity: [AnatomicalEntity]!
     hasBiospecimen: Biospecimen
+    sampleIndexSequence: String
+    laneNumber: String
     alias: String!
     xref: [String]
     accession: String
@@ -745,7 +746,6 @@ type SequencingProtocol
     sequencingCenter: String
     instrumentModel: String!
     pairedOrSingleEnd: PairedOrSingleEndEnum
-    forwardOrReverse: ForwardOrReverseEnum
     sequencingReadLength: String
     indexSequence: String
     targetCoverage: String
@@ -804,7 +804,7 @@ type Submission implements MetadataMixin
     hasDataset: [Dataset]
     hasDataAccessPolicy: [DataAccessPolicy]
     hasDataAccessCommittee: [DataAccessCommittee]
-    hasMember: [Member]
+    hasMember: [Individual]
     hasPublication: [Publication]
     submissionDate: String
     creationDate: String

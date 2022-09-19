@@ -16,10 +16,10 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [sequencing protocol➞sequencing center](sequencing_protocol_sequencing_center.md)
 
 ## Used by
 
- * [SequencingProtocol](SequencingProtocol.md)
 
 ## Other properties
 

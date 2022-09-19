@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [PhenotypicFeature](PhenotypicFeature.md)
 
 ## Children
 
- *  [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md)
  *  [individual➞has phenotypic feature](individual_has_phenotypic_feature.md)
 
 ## Used by

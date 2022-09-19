@@ -2,14 +2,14 @@
 # Slot: has individual
 
 
-The Individual entity from which this Biospecimen was derived.
+The subject/individual associated with an entity.
 
 URI: [GHGA:biospecimen_has_individual](https://w3id.org/GHGA/biospecimen_has_individual)
 
 
 ## Domain and Range
 
-[Biospecimen](Biospecimen.md) &#8594;  <sub>0..1</sub> [Individual](Individual.md)
+[Biospecimen](Biospecimen.md) &#8594;  <sub>1..1</sub> [Individual](Individual.md)
 
 ## Parents
 

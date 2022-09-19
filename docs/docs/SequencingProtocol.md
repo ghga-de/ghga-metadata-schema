@@ -21,7 +21,7 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 
 ### Own
 
- * [sequencing center](sequencing_center.md)  <sub>0..1</sub>
+ * [sequencing protocol➞sequencing center](sequencing_protocol_sequencing_center.md)  <sub>0..1</sub>
      * Description: Center where sample was sequenced.
      * Range: [String](types/String.md)
      * in subsets: (recommended,public)

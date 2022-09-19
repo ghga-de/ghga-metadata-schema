@@ -9,7 +9,7 @@ URI: [GHGA:dataset_type](https://w3id.org/GHGA/dataset_type)
 
 ## Domain and Range
 
-[Dataset](Dataset.md) &#8594;  <sub>1..\*</sub> [String](types/String.md)
+[Dataset](Dataset.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

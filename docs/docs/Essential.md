@@ -27,9 +27,7 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [analysis➞reference genome](analysis_reference_genome.md)
  * [analysis➞type](analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
  * [biospecimen➞alias](biospecimen_alias.md) - The alias for an entity.
- * [biospecimen➞has disease](biospecimen_has_disease.md) - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.
- * [biospecimen➞has individual](biospecimen_has_individual.md) - The Individual entity from which this Biospecimen was derived.
- * [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.
+ * [biospecimen➞has individual](biospecimen_has_individual.md)
  * [biospecimen➞type](biospecimen_type.md) - The type of Biospecimen.
  * [checksum](checksum.md) - A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.
  * [checksum type](checksum_type.md) - The type of algorithm used to generate the checksum of a file.
@@ -104,6 +102,7 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [library preparation protocol➞library preparation](library_preparation_protocol_library_preparation.md)
  * [library preparation protocol➞library selection](library_preparation_protocol_library_selection.md)
  * [library preparation protocol➞library type](library_preparation_protocol_library_type.md)
+ * [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
  * [library selection](library_selection.md) - Whether any method was used to select for or against, enrich, or screen the material being sequenced. Library Selection method (e.g. random, PCA, cDNA, etc )
  * [library type](library_type.md) - Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
  * [main contact](main_contact.md) - The person who is the main contact for a committee.

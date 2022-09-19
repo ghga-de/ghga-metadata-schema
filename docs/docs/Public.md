@@ -23,8 +23,6 @@ URI: [GHGA:public](https://w3id.org/GHGA/public)
  * [analysis➞reference genome](analysis_reference_genome.md)
  * [analysis➞type](analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
  * [biological replicates](biological_replicates.md) - A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.
- * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md) - The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.
- * [biospecimen➞has disease](biospecimen_has_disease.md) - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.
  * [biospecimen➞type](biospecimen_type.md) - The type of Biospecimen.
  * [case control status](case_control_status.md) - Whether the sample is to be treated as Case or Control in a Study.
  * [cell barcode offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
@@ -80,6 +78,7 @@ URI: [GHGA:public](https://w3id.org/GHGA/public)
  * [library preparation protocol➞library preparation kit retail name](library_preparation_protocol_library_preparation_kit_retail_name.md)
  * [library preparation protocol➞library selection](library_preparation_protocol_library_selection.md)
  * [library preparation protocol➞library type](library_preparation_protocol_library_type.md)
+ * [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
  * [library selection](library_selection.md) - Whether any method was used to select for or against, enrich, or screen the material being sequenced. Library Selection method (e.g. random, PCA, cDNA, etc )
  * [library type](library_type.md) - Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
  * [name](name.md) - The name for an entity.
@@ -89,7 +88,6 @@ URI: [GHGA:public](https://w3id.org/GHGA/public)
  * [paired or single end](paired_or_single_end.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.
  * [primer](primer.md) - The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
  * [project➞description](project_description.md) - Short textual description of the project.
- * [project➞has publication](project_has_publication.md) - One or more Publication entities associated with this Project.
  * [project➞title](project_title.md) - Comprehensive title for the project.
  * [protocol➞description](protocol_description.md) - Detailed description of the Protocol.
  * [protocol➞name](protocol_name.md) - Name of the protocol (eg: Sample extraction_PCR amplification).
@@ -110,6 +108,7 @@ URI: [GHGA:public](https://w3id.org/GHGA/public)
  * [sequencing center](sequencing_center.md) - Center where sample was sequenced.
  * [sequencing protocol➞description](sequencing_protocol_description.md) - Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
  * [sequencing protocol➞instrument model](sequencing_protocol_instrument_model.md)
+ * [sequencing protocol➞sequencing center](sequencing_protocol_sequencing_center.md)
  * [sequencing protocol➞type](sequencing_protocol_type.md) - Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
  * [storage](storage.md) - Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
  * [study➞affiliation](study_affiliation.md)

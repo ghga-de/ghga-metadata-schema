@@ -7,7 +7,7 @@ A high level organization for a collection of studies based on a research propos
 URI: [GHGA:Project](https://w3id.org/GHGA/Project)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Publication],[Attribute]<has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Publication]<has%20publication%200..*-++[Project],[Study]-%20has%20project(i)%200..1>[Project],[Submission]-%20has%20project(i)%200..1>[Project],[Study]++-%20has%20project%200..1>[Project],[Submission]++-%20has%20project%200..1>[Project],[Project]uses%20-.->[AccessionMixin],[Project]uses%20-.->[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Publication],[Attribute]<has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Publication]<has%20publication%200..*-++[Project],[Study]-%20has%20project(i)%200..1>[Project],[Submission]-%20has%20project(i)%200..1>[Project],[Study]++-%20has%20project%200..1>[Project],[Submission]++-%20has%20project%200..1>[Project],[Project]uses%20-.->[AccessionMixin],[Project]uses%20-.->[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Attribute]<has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Study]-%20has%20project(i)%200..1>[Project],[Submission]-%20has%20project(i)%200..1>[Project],[Study]++-%20has%20project%200..1>[Project],[Submission]++-%20has%20project%200..1>[Project],[Project]uses%20-.->[AccessionMixin],[Project]uses%20-.->[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Attribute]<has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Study]-%20has%20project(i)%200..1>[Project],[Submission]-%20has%20project(i)%200..1>[Project],[Study]++-%20has%20project%200..1>[Project],[Submission]++-%20has%20project%200..1>[Project],[Project]uses%20-.->[AccessionMixin],[Project]uses%20-.->[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -41,10 +41,6 @@ URI: [GHGA:Project](https://w3id.org/GHGA/Project)
      * Description: Short textual description of the project.
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
- * [project➞has publication](project_has_publication.md)  <sub>0..\*</sub>
-     * Description: One or more Publication entities associated with this Project.
-     * Range: [Publication](Publication.md)
-     * in subsets: (optional,public)
  * [project➞has attribute](project_has_attribute.md)  <sub>0..\*</sub>
      * Description: Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)
      * Range: [Attribute](Attribute.md)
