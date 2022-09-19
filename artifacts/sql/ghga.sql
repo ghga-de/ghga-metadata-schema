@@ -26,22 +26,6 @@ CREATE TABLE agent (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE anatomical_entity (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	concept_identifier TEXT, 
-	concept_name TEXT, 
-	description TEXT, 
-	ontology_name TEXT, 
-	ontology_version TEXT, 
-	name TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE ancestry (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -265,7 +249,6 @@ CREATE TABLE project (
 	alias TEXT NOT NULL, 
 	title TEXT NOT NULL, 
 	description TEXT NOT NULL, 
-	has_publication TEXT, 
 	has_attribute TEXT, 
 	accession TEXT, 
 	PRIMARY KEY (id)
@@ -278,6 +261,9 @@ CREATE TABLE publication (
 	schema_version TEXT, 
 	title TEXT, 
 	abstract TEXT, 
+	author TEXT, 
+	year TEXT, 
+	journal TEXT, 
 	id TEXT NOT NULL, 
 	alias TEXT NOT NULL, 
 	PRIMARY KEY (id)
@@ -330,10 +316,7 @@ CREATE TABLE biospecimen (
 	description TEXT, 
 	isolation TEXT, 
 	storage TEXT, 
-	has_individual TEXT, 
-	has_anatomical_entity TEXT, 
-	has_disease TEXT, 
-	has_phenotypic_feature TEXT, 
+	has_individual TEXT NOT NULL, 
 	alias TEXT NOT NULL, 
 	accession TEXT, 
 	PRIMARY KEY (id), 
@@ -388,11 +371,11 @@ CREATE TABLE library_preparation_protocol (
 	library_type TEXT NOT NULL, 
 	library_selection TEXT NOT NULL, 
 	library_preparation TEXT NOT NULL, 
-	library_preparation_kit_retail_name TEXT NOT NULL, 
-	library_preparation_kit_manufacturer TEXT NOT NULL, 
+	library_preparation_kit_retail_name TEXT, 
+	library_preparation_kit_manufacturer TEXT, 
 	primer TEXT, 
 	end_bias TEXT, 
-	target_regions TEXT, 
+	target_regions TEXT NOT NULL, 
 	rnaseq_strandedness TEXT, 
 	alias TEXT NOT NULL, 
 	description TEXT NOT NULL, 
@@ -491,13 +474,6 @@ CREATE TABLE agent_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES agent (id)
-);
-
-CREATE TABLE anatomical_entity_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES anatomical_entity (id)
 );
 
 CREATE TABLE ancestry_xref (
@@ -633,8 +609,8 @@ CREATE TABLE analysis (
 	has_study TEXT, 
 	has_workflow TEXT NOT NULL, 
 	has_output TEXT NOT NULL, 
-	alias TEXT NOT NULL, 
 	description TEXT, 
+	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
@@ -699,8 +675,9 @@ CREATE TABLE sample (
 	isolation TEXT, 
 	storage TEXT, 
 	has_individual TEXT, 
-	has_anatomical_entity TEXT, 
 	has_biospecimen TEXT, 
+	lane_number TEXT, 
+	sample_index_sequence TEXT, 
 	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
@@ -827,6 +804,24 @@ CREATE TABLE analysis_process (
 	FOREIGN KEY(analysis_id) REFERENCES analysis (id)
 );
 
+CREATE TABLE anatomical_entity (
+	id TEXT NOT NULL, 
+	alias TEXT, 
+	creation_date TEXT, 
+	update_date TEXT, 
+	schema_type TEXT, 
+	schema_version TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
+	name TEXT, 
+	sample_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(sample_id) REFERENCES sample (id)
+);
+
 CREATE TABLE data_use_condition (
 	id TEXT NOT NULL, 
 	alias TEXT, 
@@ -925,6 +920,13 @@ CREATE TABLE analysis_process_xref (
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
 	FOREIGN KEY(backref_id) REFERENCES analysis_process (id)
+);
+
+CREATE TABLE anatomical_entity_xref (
+	backref_id TEXT, 
+	xref TEXT, 
+	PRIMARY KEY (backref_id, xref), 
+	FOREIGN KEY(backref_id) REFERENCES anatomical_entity (id)
 );
 
 CREATE TABLE data_use_condition_xref (

@@ -67,8 +67,8 @@ linkml:Nodeidentifier NONLITERAL
           <has_workflow> @<Workflow> + ;
           <has_analysis_process> @<AnalysisProcess> * ;
           <has_output> @<File> + ;
-          <alias> @linkml:String ;
           <description> @linkml:String ? ;
+          <alias> @linkml:String ;
           <accession> @linkml:String ? ;
           <ega_accession> @linkml:String ?
        ) ;
@@ -156,10 +156,7 @@ linkml:Nodeidentifier NONLITERAL
           <description> @linkml:String ? ;
           <isolation> @linkml:String ? ;
           <storage> @linkml:String ? ;
-          <has_individual> @<Individual> ? ;
-          <has_anatomical_entity> @<AnatomicalEntity> * ;
-          <has_disease> @<Disease> * ;
-          <has_phenotypic_feature> @<PhenotypicFeature> * ;
+          <has_individual> @<Individual> ;
           <alias> @linkml:String ;
           <accession> @linkml:String ?
        ) ;
@@ -527,11 +524,11 @@ linkml:Nodeidentifier NONLITERAL
           <library_type> @linkml:String ;
           <library_selection> @linkml:String ;
           <library_preparation> @linkml:String ;
-          <library_preparation_kit_retail_name> @linkml:String ;
-          <library_preparation_kit_manufacturer> @linkml:String ;
+          <library_preparation_kit_retail_name> @linkml:String ? ;
+          <library_preparation_kit_manufacturer> @linkml:String ? ;
           <primer> @linkml:String ? ;
           <end_bias> @linkml:String ? ;
-          <target_regions> @linkml:String ? ;
+          <target_regions> @linkml:String ;
           <rnaseq_strandedness> @linkml:String ? ;
           <alias> @linkml:String ;
           <description> @linkml:String ;
@@ -661,7 +658,6 @@ linkml:Nodeidentifier NONLITERAL
           <alias> @linkml:String ;
           <title> @linkml:String ;
           <description> @linkml:String ;
-          <has_publication> @<Publication> * ;
           <has_attribute> @<Attribute> * ;
           <accession> @linkml:String ?
        ) ;
@@ -694,6 +690,9 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <InformationContentEntity> ] ? ;
           <title> @linkml:String ? ;
           <abstract> @linkml:String ? ;
+          <author> @linkml:String ? ;
+          <year> @linkml:String ? ;
+          <journal> @linkml:String ? ;
           <alias> @linkml:String ;
           <xref> @linkml:String *
        ) ;
@@ -746,6 +745,8 @@ linkml:Nodeidentifier NONLITERAL
           <has_individual> @<Individual> ? ;
           <has_anatomical_entity> @<AnatomicalEntity> * ;
           <has_biospecimen> @<Biospecimen> ? ;
+          <lane_number> @linkml:String ? ;
+          <sample_index_sequence> @linkml:String ? ;
           <alias> @linkml:String ;
           <xref> @linkml:String * ;
           <accession> @linkml:String ? ;

@@ -7,7 +7,7 @@ The Publication entity represents a publication. While a publication can be any 
 URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*>[Publication&#124;title:string%20%3F;abstract:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1>[Publication],[PublicationMixin]-%20has%20publication%200..1>[Publication],[Project]++-%20has%20publication%200..*>[Publication],[Study]++-%20has%20publication%200..*>[Publication],[Submission]++-%20has%20publication%200..*>[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[Project],[InformationContentEntity],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*>[Publication&#124;title:string%20%3F;abstract:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1>[Publication],[PublicationMixin]-%20has%20publication%200..1>[Publication],[Project]++-%20has%20publication%200..*>[Publication],[Study]++-%20has%20publication%200..*>[Publication],[Submission]++-%20has%20publication%200..*>[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[Project],[InformationContentEntity],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*>[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:string%20%3F;journal:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1>[Publication],[PublicationMixin]-%20has%20publication%200..1>[Publication],[Study]++-%20has%20publication%200..*>[Publication],[Submission]++-%20has%20publication%200..*>[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[InformationContentEntity],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*>[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:string%20%3F;journal:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1>[Publication],[PublicationMixin]-%20has%20publication%200..1>[Publication],[Study]++-%20has%20publication%200..*>[Publication],[Submission]++-%20has%20publication%200..*>[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[InformationContentEntity],[Dataset])
 
 ## Parents
 
@@ -17,7 +17,6 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
 
  *  **[Dataset](Dataset.md)** *[dataset➞has publication](dataset_has_publication.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
  *  **None** *[has publication](has_publication.md)*  <sub>0..1</sub>  **[Publication](Publication.md)**
- *  **[Project](Project.md)** *[project➞has publication](project_has_publication.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
  *  **[Study](Study.md)** *[study➞has publication](study_has_publication.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
  *  **[Submission](Submission.md)** *[submission➞has publication](submission_has_publication.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
 
@@ -34,6 +33,15 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
      * Description: The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
      * Range: [String](types/String.md)
      * in subsets: (optional,public)
+ * [author](author.md)  <sub>0..1</sub>
+     * Description: The individual who is responsible for the content of a document version.
+     * Range: [String](types/String.md)
+ * [year](year.md)  <sub>0..1</sub>
+     * Description: Year in which the paper was published.
+     * Range: [String](types/String.md)
+ * [journal](journal.md)  <sub>0..1</sub>
+     * Description: Name of the journal.
+     * Range: [String](types/String.md)
  * [publication➞id](publication_id.md)  <sub>1..1</sub>
      * Description: An identifier that uniquely represents an entity.
      * Range: [String](types/String.md)
