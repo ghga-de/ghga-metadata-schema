@@ -1,0 +1,610 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.1">
+    
+    
+      
+        <title>Subset: essential - GHGA Metadata Schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tilium+Web:300,300i,400,400i,700,700i%7CCourier+Prime:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Tilium Web";--md-code-font:"Courier Prime"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#subset-essential" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GHGA Metadata Schema" class="md-header__button md-logo" aria-label="GHGA Metadata Schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GHGA Metadata Schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Subset: essential
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ghga-de/ghga-metadata-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ghga-de/ghga-metadata-schema
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GHGA Metadata Schema" class="md-nav__button md-logo" aria-label="GHGA Metadata Schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    GHGA Metadata Schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ghga-de/ghga-metadata-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ghga-de/ghga-metadata-schema
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Schema Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../derived-schemas/" class="md-nav__link">
+        Derived Schemas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linkml-quickstart/" class="md-nav__link">
+        LinkML Quickstart Guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curating/" class="md-nav__link">
+        Curating
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maintaining/" class="md-nav__link">
+        Maintaining
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-process/" class="md-nav__link">
+        Release Process
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../versioning/" class="md-nav__link">
+        Versioning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../style-guide/" class="md-nav__link">
+        Style Guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencing-ontologies/" class="md-nav__link">
+        Referencing Ontologies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/ghga-de/ghga-metadata-schema/edit/master/docs/docs/Essential.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="subset-essential">Subset: essential<a class="headerlink" href="#subset-essential" title="Permanent link">&para;</a></h1>
+<p>Subset of properties that are considered to be essential for the functionality of GHGA.</p>
+<p>URI: <a href="https://w3id.org/GHGA/essential">GHGA:essential</a></p>
+<h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h3>
+<h3 id="mixins">Mixins<a class="headerlink" href="#mixins" title="Permanent link">&para;</a></h3>
+<h3 id="slots">Slots<a class="headerlink" href="#slots" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../affiliation/">affiliation</a> - The Institution(s) associated with an entity.</li>
+<li><a href="../age/">age</a> - Age of an individual.</li>
+<li><a href="../alias/">alias</a> - The alias for an entity.</li>
+<li><a href="../analysis_process_has_input/">analysis process➞has input</a> - The input data File entities used in the Analysis Process.</li>
+<li><a href="../analysis_alias/">analysis➞alias</a> - An alias uniquely identifying this Analysis entitiy.</li>
+<li><a href="../analysis_description/">analysis➞description</a> - Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).</li>
+<li><a href="../analysis_has_input/">analysis➞has input</a> - The input data File entities used in the Analysis.</li>
+<li><a href="../analysis_has_study/">analysis➞has study</a> - The Study entity associated with this Analysis.</li>
+<li><a href="../analysis_reference_chromosome/">analysis➞reference chromosome</a></li>
+<li><a href="../analysis_reference_genome/">analysis➞reference genome</a></li>
+<li><a href="../analysis_type/">analysis➞type</a> - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)</li>
+<li><a href="../biospecimen_alias/">biospecimen➞alias</a> - The alias for an entity.</li>
+<li><a href="../biospecimen_has_disease/">biospecimen➞has disease</a> - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.</li>
+<li><a href="../biospecimen_has_individual/">biospecimen➞has individual</a> - The Individual entity from which this Biospecimen was derived.</li>
+<li><a href="../biospecimen_has_phenotypic_feature/">biospecimen➞has phenotypic feature</a> - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.</li>
+<li><a href="../biospecimen_type/">biospecimen➞type</a> - The type of Biospecimen.</li>
+<li><a href="../checksum/">checksum</a> - A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.</li>
+<li><a href="../checksum_type/">checksum type</a> - The type of algorithm used to generate the checksum of a file.</li>
+<li><a href="../data_access_committee_alias/">data access committee➞alias</a> - The alias for an entity.</li>
+<li><a href="../data_access_committee_description/">data access committee➞description</a> - A description for the Data Access Committee.</li>
+<li><a href="../data_access_committee_main_contact/">data access committee➞main contact</a> - The main contact for the Data Access Committee.</li>
+<li><a href="../data_access_committee_name/">data access committee➞name</a> - The name for the Data Access Committee.</li>
+<li><a href="../data_access_policy_alias/">data access policy➞alias</a> - The alias for an entity.</li>
+<li><a href="../data_access_policy_description/">data access policy➞description</a> - A short description for the Data Access Policy.</li>
+<li><a href="../data_access_policy_has_data_access_committee/">data access policy➞has data access committee</a> - The Data Access Committee linked to this policy.</li>
+<li><a href="../data_access_policy_name/">data access policy➞name</a> - A name for the Data Access Policy.</li>
+<li><a href="../data_access_policy_policy_text/">data access policy➞policy text</a> - The terms of data use and policy verbiage should be captured here.</li>
+<li><a href="../dataset_alias/">dataset➞alias</a> - The alias for an entity.</li>
+<li><a href="../dataset_description/">dataset➞description</a></li>
+<li><a href="../dataset_has_analysis/">dataset➞has analysis</a> - One or more Analysis entities that are referenced by this Dataset.</li>
+<li><a href="../dataset_has_data_access_policy/">dataset➞has data access policy</a> - The Data Access Policy that applies to this Dataset.</li>
+<li><a href="../dataset_has_experiment/">dataset➞has experiment</a> - One or more Experiment entities that are referenced by this Dataset.</li>
+<li><a href="../dataset_has_file/">dataset➞has file</a> - One or more File entities that collectively are part of this Dataset.</li>
+<li><a href="../dataset_has_sample/">dataset➞has sample</a> - One or more Sample entities that are referenced by this Dataset.</li>
+<li><a href="../dataset_has_study/">dataset➞has study</a> - One or more Study entities that are referenced by this Dataset.</li>
+<li><a href="../dataset_title/">dataset➞title</a> - A title for the submitted Dataset.</li>
+<li><a href="../dataset_type/">dataset➞type</a></li>
+<li><a href="../description/">description</a> - Description of an entity.</li>
+<li><a href="../experiment_process_has_input/">experiment process➞has input</a> - The input to the Experiment Process. Usually a Sample entity.</li>
+<li><a href="../experiment_process_has_protocol/">experiment process➞has protocol</a> - The Protocol entity used by this Experiment Process.</li>
+<li><a href="../experiment_process_title/">experiment process➞title</a> - A descriptive title that explains the step(s) involved in performing the experiment leading up to the sequencing of the sample and generation of raw data from the instrument. (eg: Sample extraction -&gt; Target Enrichment)</li>
+<li><a href="../experiment_process_type/">experiment process➞type</a> - The type of experiment process.</li>
+<li><a href="../experiment_alias/">experiment➞alias</a> - The alias for an entity.</li>
+<li><a href="../experiment_description/">experiment➞description</a> - A detailed description of the Experiment.</li>
+<li><a href="../experiment_has_experiment_process/">experiment➞has experiment process</a> - One or more Experiment Processes entities associated with this Experiment.</li>
+<li><a href="../experiment_has_file/">experiment➞has file</a> - One or more Files entities that are generated as output of this Experiment.</li>
+<li><a href="../experiment_has_protocol/">experiment➞has protocol</a> - One or more Protocol entities associated with this Experiment.</li>
+<li><a href="../experiment_has_sample/">experiment➞has sample</a> - The Sample entity associated with this Experiment.</li>
+<li><a href="../experiment_has_study/">experiment➞has study</a> - The Study entity associated with this Experiment.</li>
+<li><a href="../experiment_title/">experiment➞title</a> - Name for the experiment (eg: GHGAE_PBMC_RNAseq).</li>
+<li><a href="../experiment_type/">experiment➞type</a> - The type of Experiment.</li>
+<li><a href="../file_alias/">file➞alias</a> - The alias for an entity.</li>
+<li><a href="../file_checksum/">file➞checksum</a></li>
+<li><a href="../file_checksum_type/">file➞checksum type</a></li>
+<li><a href="../file_format/">file➞format</a></li>
+<li><a href="../file_name/">file➞name</a> - The given filename.</li>
+<li><a href="../format/">format</a> - The format of the file: BAM, SAM, CRAM, BAI, etc.</li>
+<li><a href="../has_analysis/">has analysis</a> - The analysis associated with an entity.</li>
+<li><a href="../has_data_access_committee/">has data access committee</a> - Data Access Committee associated with an entity.</li>
+<li><a href="../has_data_access_policy/">has data access policy</a> - Data Access Policy associated with an entity.</li>
+<li><a href="../has_disease/">has disease</a> - Disease concept that the entity is associated with.</li>
+<li><a href="../has_experiment/">has experiment</a> - The experiment associated with an entity.</li>
+<li><a href="../has_experiment_process/">has experiment process</a></li>
+<li><a href="../has_file/">has file</a> - The file associated with an entity.</li>
+<li><a href="../has_individual/">has individual</a> - The subject/individual associated with an entity.</li>
+<li><a href="../has_input/">has input</a> - The input to a Planned Process.</li>
+<li><a href="../has_phenotypic_feature/">has phenotypic feature</a> - Phenotypic feature concept that the entity is associated with.</li>
+<li><a href="../has_protocol/">has protocol</a> - The protocol associated with an entity.</li>
+<li><a href="../has_sample/">has sample</a> - The sample associated with an entity.</li>
+<li><a href="../has_study/">has study</a> - The study associated with an entity.</li>
+<li><a href="../id/">id</a> - An identifier that uniquely represents an entity.</li>
+<li><a href="../individual_age/">individual➞age</a></li>
+<li><a href="../individual_alias/">individual➞alias</a> - The alias for an entity.</li>
+<li><a href="../individual_has_disease/">individual➞has disease</a> - The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.</li>
+<li><a href="../individual_has_file/">individual➞has file</a> - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.</li>
+<li><a href="../individual_has_phenotypic_feature/">individual➞has phenotypic feature</a> - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.</li>
+<li><a href="../individual_sex/">individual➞sex</a></li>
+<li><a href="../individual_vital_status/">individual➞vital status</a> - Last known Vital Status of an Individual.</li>
+<li><a href="../instrument_model/">instrument model</a> - The name and model of the technology platform used to perform sequencing.</li>
+<li><a href="../library_layout/">library layout</a> - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode</li>
+<li><a href="../library_name/">library name</a> - A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.</li>
+<li><a href="../library_preparation/">library preparation</a> - The general method for sequencing library preparation (e.g. KAPA PCR-free).</li>
+<li><a href="../library_preparation_protocol_alias/">library preparation protocol➞alias</a></li>
+<li><a href="../library_preparation_protocol_description/">library preparation protocol➞description</a> - Description about how a sequencing library was prepared (eg: Library construction method).</li>
+<li><a href="../library_preparation_protocol_library_layout/">library preparation protocol➞library layout</a></li>
+<li><a href="../library_preparation_protocol_library_name/">library preparation protocol➞library name</a></li>
+<li><a href="../library_preparation_protocol_library_preparation/">library preparation protocol➞library preparation</a></li>
+<li><a href="../library_preparation_protocol_library_selection/">library preparation protocol➞library selection</a></li>
+<li><a href="../library_preparation_protocol_library_type/">library preparation protocol➞library type</a></li>
+<li><a href="../library_selection/">library selection</a> - Whether any method was used to select for or against, enrich, or screen the material being sequenced. Library Selection method (e.g. random, PCA, cDNA, etc )</li>
+<li><a href="../library_type/">library type</a> - Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)</li>
+<li><a href="../main_contact/">main contact</a> - The person who is the main contact for a committee.</li>
+<li><a href="../name/">name</a> - The name for an entity.</li>
+<li><a href="../named_thing_alias/">named thing➞alias</a> - The alias (alternate identifier) for an entity.</li>
+<li><a href="../named_thing_id/">named thing➞id</a> - The internal unique identifier for an entity.</li>
+<li><a href="../ontology_class_mixin_description/">ontology class mixin➞description</a> - The description or definition of an ontology class.</li>
+<li><a href="../ontology_class_mixin_name/">ontology class mixin➞name</a> - The name or label (rdfs:label) of an ontology class.</li>
+<li><a href="../policy_text/">policy text</a> - The complete text for the Data Access Policy.</li>
+<li><a href="../project_alias/">project➞alias</a> - The alias for an entity.</li>
+<li><a href="../project_description/">project➞description</a> - Short textual description of the project.</li>
+<li><a href="../project_title/">project➞title</a> - Comprehensive title for the project.</li>
+<li><a href="../protocol_alias/">protocol➞alias</a> - The alias for an entity.</li>
+<li><a href="../protocol_description/">protocol➞description</a> - Detailed description of the Protocol.</li>
+<li><a href="../protocol_has_file/">protocol➞has file</a> - A document that describes the Protocol.</li>
+<li><a href="../protocol_name/">protocol➞name</a> - Name of the protocol (eg: Sample extraction_PCR amplification).</li>
+<li><a href="../protocol_type/">protocol➞type</a> - Type of the protocol (eg: Target enrichment).</li>
+<li><a href="../publication_alias/">publication➞alias</a> - The alias for an entity.</li>
+<li><a href="../publication_id/">publication➞id</a> - An identifier that uniquely represents an entity.</li>
+<li><a href="../publication_title/">publication➞title</a> - The title for the Publication.</li>
+<li><a href="../reference_chromosome/">reference chromosome</a> - The reference chromosome used for this Analysis.</li>
+<li><a href="../reference_genome/">reference genome</a> - A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).</li>
+<li><a href="../sample_alias/">sample➞alias</a> - The alias for an entity.</li>
+<li><a href="../sample_description/">sample➞description</a> - Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).</li>
+<li><a href="../sample_has_individual/">sample➞has individual</a> - The Individual from which this Sample was derived from.</li>
+<li><a href="../sample_name/">sample➞name</a> - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).</li>
+<li><a href="../sample_type/">sample➞type</a> - The type of sample.</li>
+<li><a href="../sequencing_protocol_alias/">sequencing protocol➞alias</a></li>
+<li><a href="../sequencing_protocol_description/">sequencing protocol➞description</a> - Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).</li>
+<li><a href="../sequencing_protocol_instrument_model/">sequencing protocol➞instrument model</a></li>
+<li><a href="../sequencing_protocol_type/">sequencing protocol➞type</a> - Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).</li>
+<li><a href="../sex/">sex</a> - The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.</li>
+<li><a href="../study_affiliation/">study➞affiliation</a></li>
+<li><a href="../study_alias/">study➞alias</a> - The alias for an entity.</li>
+<li><a href="../study_description/">study➞description</a> - A detailed description (abstract) that describes the goals of this Study.</li>
+<li><a href="../study_has_file/">study➞has file</a> - Additional/supplementary files associated with a Study.</li>
+<li><a href="../study_title/">study➞title</a> - A comprehensive title for the study.</li>
+<li><a href="../study_type/">study➞type</a> - The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.</li>
+<li><a href="../submission_affiliation/">submission➞affiliation</a> - Institution/Center/Data Hub that is providing this submission.</li>
+<li><a href="../submission_has_analysis/">submission➞has analysis</a> - Information about one or more Analysis entities associated with this submission.</li>
+<li><a href="../submission_has_data_access_committee/">submission➞has data access committee</a> - The Data Access Committee that applies to Dataset in this submission.</li>
+<li><a href="../submission_has_data_access_policy/">submission➞has data access policy</a> - The Data Access Policy that applies to Dataset in this submission.</li>
+<li><a href="../submission_has_experiment/">submission➞has experiment</a> - Information about one or more Experiment entities associated with this submission.</li>
+<li><a href="../submission_has_file/">submission➞has file</a> - Information about one or more File entities associated with this submission.</li>
+<li><a href="../submission_has_individual/">submission➞has individual</a> - Information about one or more Individual entities associated with this submission.</li>
+<li><a href="../submission_has_protocol/">submission➞has protocol</a> - One or more Protocol entities associated with this Submission.</li>
+<li><a href="../submission_has_sample/">submission➞has sample</a> - Information about one or more Sample entities associated with this submission.</li>
+<li><a href="../submission_has_study/">submission➞has study</a> - Information about a Study entities associated with this submission.</li>
+<li><a href="../submission_id/">submission➞id</a> - A internal unique identifier for the Submission.</li>
+<li><a href="../target_regions/">target regions</a> - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.</li>
+<li><a href="../tissue/">tissue</a> - An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.</li>
+<li><a href="../title/">title</a> - The title that describes an entity.</li>
+<li><a href="../type/">type</a> - The type of an entity.</li>
+<li><a href="../vital_status/">vital status</a> - The state or condition of being living or deceased; also includes the case where the vital status is unknown.</li>
+<li><a href="../workflow_alias/">workflow➞alias</a> - The alias for an entity.</li>
+<li><a href="../workflow_name/">workflow➞name</a></li>
+</ul>
+<h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h3>
+<h3 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.expand", "toc.integrate"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d691e9de.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,566 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.1">
+    
+    
+      
+        <title>Class: protocol - GHGA Metadata Schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tilium+Web:300,300i,400,400i,700,700i%7CCourier+Prime:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Tilium Web";--md-code-font:"Courier Prime"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#class-protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="GHGA Metadata Schema" class="md-header__button md-logo" aria-label="GHGA Metadata Schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GHGA Metadata Schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Class: protocol
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ghga-de/ghga-metadata-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ghga-de/ghga-metadata-schema
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="GHGA Metadata Schema" class="md-nav__button md-logo" aria-label="GHGA Metadata Schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    GHGA Metadata Schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ghga-de/ghga-metadata-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ghga-de/ghga-metadata-schema
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Schema Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../derived-schemas/" class="md-nav__link">
+        Derived Schemas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linkml-quickstart/" class="md-nav__link">
+        LinkML Quickstart Guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curating/" class="md-nav__link">
+        Curating
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../maintaining/" class="md-nav__link">
+        Maintaining
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-process/" class="md-nav__link">
+        Release Process
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../versioning/" class="md-nav__link">
+        Versioning
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../style-guide/" class="md-nav__link">
+        Style Guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../referencing-ontologies/" class="md-nav__link">
+        Referencing Ontologies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/ghga-de/ghga-metadata-schema/edit/master/docs/docs/markdown/Protocol.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="class-protocol">Class: protocol<a class="headerlink" href="#class-protocol" title="Permanent link">&para;</a></h1>
+<p>A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.</p>
+<p>URI: <a href="https://w3id.org/GHGA/Protocol">GHGA:Protocol</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]&lt;has%20attribute%200..*-++[Protocol&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;url:string%20%3F;alias:string;xref:string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[File]&lt;has%20file%200..1-%20[Protocol],[ExperimentProcess]++-%20has%20protocol%200..1&gt;[Protocol],[Experiment]++-%20has%20protocol%201..*&gt;[Protocol],[Experiment]-%20has%20protocol(i)%200..1&gt;[Protocol],[ExperimentProcess]-%20has%20protocol(i)%200..1&gt;[Protocol],[Submission]-%20has%20protocol(i)%200..1&gt;[Protocol],[Submission]++-%20has%20protocol%200..*&gt;[Protocol],[Protocol]uses%20-.-&gt;[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[File],[ExperimentProcess],[Experiment],[AttributeMixin],[Attribute]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]&lt;has%20attribute%200..*-++[Protocol&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;url:string%20%3F;alias:string;xref:string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[File]&lt;has%20file%200..1-%20[Protocol],[ExperimentProcess]++-%20has%20protocol%200..1&gt;[Protocol],[Experiment]++-%20has%20protocol%201..*&gt;[Protocol],[Experiment]-%20has%20protocol(i)%200..1&gt;[Protocol],[ExperimentProcess]-%20has%20protocol(i)%200..1&gt;[Protocol],[Submission]-%20has%20protocol(i)%200..1&gt;[Protocol],[Submission]++-%20has%20protocol%200..*&gt;[Protocol],[Protocol]uses%20-.-&gt;[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[File],[ExperimentProcess],[Experiment],[AttributeMixin],[Attribute]" /></a></p>
+<h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
+<ul>
+<li>is_a: <a href="../InformationContentEntity/">InformationContentEntity</a> - A generically dependent continuant that is about some thing.</li>
+</ul>
+<h2 id="uses-mixin">Uses Mixin<a class="headerlink" href="#uses-mixin" title="Permanent link">&para;</a></h2>
+<ul>
+<li>mixin: <a href="../AttributeMixin/">AttributeMixin</a> - Mixin for entities that can have one or more attributes.</li>
+</ul>
+<h2 id="children">Children<a class="headerlink" href="#children" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../LibraryPreparationProtocol/">LibraryPreparationProtocol</a> - Information about the library preparation of an Experiment.</li>
+<li><a href="../SequencingProtocol/">SequencingProtocol</a> - Information about the sequencing of a sample.</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class<a class="headerlink" href="#referenced-by-class" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../ExperimentProcess/">ExperimentProcess</a></strong> <em><a href="../experiment_process_has_protocol/">experiment process➞has protocol</a></em>  <sub>0..1</sub>  <strong><a href="./">Protocol</a></strong></li>
+<li><strong><a href="../Experiment/">Experiment</a></strong> <em><a href="../experiment_has_protocol/">experiment➞has protocol</a></em>  <sub>1..*</sub>  <strong><a href="./">Protocol</a></strong></li>
+<li><strong>None</strong> <em><a href="../has_protocol/">has protocol</a></em>  <sub>0..1</sub>  <strong><a href="./">Protocol</a></strong></li>
+<li><strong><a href="../Submission/">Submission</a></strong> <em><a href="../submission_has_protocol/">submission➞has protocol</a></em>  <sub>0..*</sub>  <strong><a href="./">Protocol</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h2>
+<h3 id="own">Own<a class="headerlink" href="#own" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../protocol_name/">protocol➞name</a>  <sub>0..1</sub><ul>
+<li>Description: Name of the protocol (eg: Sample extraction_PCR amplification).</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (essential,public)</li>
+</ul>
+</li>
+<li><a href="../protocol_type/">protocol➞type</a>  <sub>0..1</sub><ul>
+<li>Description: Type of the protocol (eg: Target enrichment).</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (essential,public)</li>
+</ul>
+</li>
+<li><a href="../protocol_description/">protocol➞description</a>  <sub>0..1</sub><ul>
+<li>Description: Detailed description of the Protocol.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (essential,public)</li>
+</ul>
+</li>
+<li><a href="../protocol_url/">protocol➞url</a>  <sub>0..1</sub><ul>
+<li>Description: URL for the resource that describes this Protocol.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../protocol_has_file/">protocol➞has file</a>  <sub>0..1</sub><ul>
+<li>Description: A document that describes the Protocol.</li>
+<li>Range: <a href="../File/">File</a></li>
+<li>in subsets: (essential,restricted)</li>
+</ul>
+</li>
+<li><a href="../protocol_alias/">protocol➞alias</a>  <sub>1..1</sub><ul>
+<li>Description: The alias for an entity.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (essential,restricted)</li>
+</ul>
+</li>
+<li><a href="../protocol_xref/">protocol➞xref</a>  <sub>0..*</sub><ul>
+<li>Description: One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (optional,public)</li>
+</ul>
+</li>
+<li><a href="../protocol_has_attribute/">protocol➞has attribute</a>  <sub>0..*</sub><ul>
+<li>Description: One or more attributes that further characterizes this Protocol.</li>
+<li>Range: <a href="../Attribute/">Attribute</a></li>
+<li>in subsets: (optional,restricted)</li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-information-content-entity">Inherited from information content entity:<a class="headerlink" href="#inherited-from-information-content-entity" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../named_thing_id/">named thing➞id</a>  <sub>1..1</sub><ul>
+<li>Description: The internal unique identifier for an entity.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (essential,restricted)</li>
+</ul>
+</li>
+<li><a href="../named_thing_creation_date/">named thing➞creation date</a>  <sub>0..1</sub><ul>
+<li>Description: Timestamp (in ISO 8601 format) when the entity was created.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../named_thing_update_date/">named thing➞update date</a>  <sub>0..1</sub><ul>
+<li>Description: Timestamp (in ISO 8601 format) when the entity was updated.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties<a class="headerlink" href="#other-properties" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exact Mappings:</strong></td>
+<td></td>
+<td>OBI:0000272</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.expand", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d691e9de.min.js"></script>
+      
+    
+  </body>
+</html>
