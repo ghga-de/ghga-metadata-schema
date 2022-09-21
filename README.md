@@ -55,8 +55,7 @@ Changes made
   - Deleted has disease from Biospecimen
   - Deleted has phenotypic feature from Biospecimen
   - has_individual made mandatory under Biospecimen
-  - Introduced lane number and sample index sequence to Sample
   - Introduced description to Analysis
   - Introduced description as mandatory to Data Access Policy
   - Introduced author, year and journal to Publication
-  - Defined slots for author, year, journal, sample lane number, sample index sequence
+  - Defined slots for author, year, journal
