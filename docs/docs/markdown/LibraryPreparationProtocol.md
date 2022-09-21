@@ -7,7 +7,7 @@ Information about the library preparation of an Experiment.
 URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]<has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string;library_preparation_kit_manufacturer:string;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20%3F;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]<has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string;library_preparation_kit_manufacturer:string;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20%3F;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]<has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]<has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute])
 
 ## Parents
 
@@ -41,11 +41,11 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
      * Description: The general method for sequencing library preparation (e.g. KAPA PCR-free).
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
- * [library preparation protocol➞library preparation kit retail name](library_preparation_protocol_library_preparation_kit_retail_name.md)  <sub>1..1</sub>
+ * [library preparation protocol➞library preparation kit retail name](library_preparation_protocol_library_preparation_kit_retail_name.md)  <sub>0..1</sub>
      * Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
      * Range: [String](types/String.md)
      * in subsets: (recommended,public)
- * [library preparation protocol➞library preparation kit manufacturer](library_preparation_protocol_library_preparation_kit_manufacturer.md)  <sub>1..1</sub>
+ * [library preparation protocol➞library preparation kit manufacturer](library_preparation_protocol_library_preparation_kit_manufacturer.md)  <sub>0..1</sub>
      * Description: Manufacturer of library preparation kit
      * Range: [String](types/String.md)
      * in subsets: (recommended,public)
@@ -57,7 +57,7 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
      * Description: The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
      * Range: [String](types/String.md)
      * in subsets: (recommended,public)
- * [target regions](target_regions.md)  <sub>0..1</sub>
+ * [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)  <sub>1..1</sub>
      * Description: Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
      * Range: [String](types/String.md)
      * in subsets: (essential,public)

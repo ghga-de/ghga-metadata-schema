@@ -35,8 +35,8 @@ type Analysis implements AccessionMixin, EgaAccessionMixin
     hasWorkflow: [Workflow]!
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]!
-    alias: String!
     description: String
+    alias: String!
     accession: String
     egaAccession: String
   }
@@ -128,10 +128,7 @@ type Biospecimen implements AccessionMixin
     description: String
     isolation: String
     storage: String
-    hasIndividual: Individual
-    hasAnatomicalEntity: [AnatomicalEntity]
-    hasDisease: [Disease]
-    hasPhenotypicFeature: [PhenotypicFeature]
+    hasIndividual: Individual!
     alias: String!
     accession: String
   }
@@ -516,11 +513,11 @@ type LibraryPreparationProtocol
     libraryType: String!
     librarySelection: String!
     libraryPreparation: String!
-    libraryPreparationKitRetailName: String!
-    libraryPreparationKitManufacturer: String!
+    libraryPreparationKitRetailName: String
+    libraryPreparationKitManufacturer: String
     primer: String
     endBias: String
-    targetRegions: String
+    targetRegions: String!
     rnaseqStrandedness: String
     alias: String!
     description: String!
@@ -648,7 +645,6 @@ type Project implements AccessionMixin, AttributeMixin
     alias: String!
     title: String!
     description: String!
-    hasPublication: [Publication]
     hasAttribute: [Attribute]
     accession: String
   }
@@ -678,6 +674,9 @@ type Publication
     schemaVersion: String
     title: String
     abstract: String
+    author: String
+    year: String
+    journal: String
     id: String!
     alias: String!
     xref: [String]

@@ -15,7 +15,6 @@ URI: [GHGA:recommended](https://w3id.org/GHGA/recommended)
 
 ### Slots
 
- * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md) - The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.
  * [case control status](case_control_status.md) - Whether the sample is to be treated as Case or Control in a Study.
  * [cell barcode offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
  * [cell barcode read](cell_barcode_read.md) - The type of read that contains the cell barcode (eg: index1/index2/read1/read2).

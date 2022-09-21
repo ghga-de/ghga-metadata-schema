@@ -17,7 +17,6 @@ None &#8594;  <sub>0..1</sub> [Publication](Publication.md)
 ## Children
 
  *  [dataset➞has publication](dataset_has_publication.md)
- *  [project➞has publication](project_has_publication.md)
  *  [study➞has publication](study_has_publication.md)
  *  [submission➞has publication](submission_has_publication.md)
 

@@ -9,7 +9,7 @@ URI: [GHGA:library_preparation_protocol_library_preparation_kit_manufacturer](ht
 
 ## Domain and Range
 
-[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

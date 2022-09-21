@@ -102,6 +102,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
          * [sample➞alias](sample_alias.md) - The alias for an entity.
          * [study➞alias](study_alias.md) - The alias for an entity.
          * [workflow➞alias](workflow_alias.md) - The alias for an entity.
+ * [author](author.md) - The individual who is responsible for the content of a document version.
  * [biological replicates](biological_replicates.md) - A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.
  * [case control status](case_control_status.md) - Whether the sample is to be treated as Case or Control in a Study.
  * [category](category.md) - The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
@@ -157,7 +158,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has analysis process](has_analysis_process.md)
      * [analysis➞has analysis process](analysis_has_analysis_process.md) - One or more Analysis Process entities associated with this Analysis.
  * [has anatomical entity](has_anatomical_entity.md) - Anatomical site associated with an entity.
-     * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md) - The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.
      * [sample➞has anatomical entity](sample_has_anatomical_entity.md)
  * [has ancestry](has_ancestry.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
  * [has attribute](has_attribute.md) - Key/value pairs corresponding to an entity.
@@ -186,7 +186,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has dataset](has_dataset.md) - The Dataset associated with an entity.
      * [submission➞has dataset](submission_has_dataset.md) - One or more Dataset that are part of this submission.
  * [has disease](has_disease.md) - Disease concept that the entity is associated with.
-     * [biospecimen➞has disease](biospecimen_has_disease.md) - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.
      * [individual➞has disease](individual_has_disease.md) - The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.
  * [has experiment](has_experiment.md) - The experiment associated with an entity.
      * [dataset➞has experiment](dataset_has_experiment.md) - One or more Experiment entities that are referenced by this Dataset.
@@ -221,7 +220,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has parent](has_parent.md) - The parent of an entity.
      * [individual➞has parent](individual_has_parent.md) - One or more parent for this Individual.
  * [has phenotypic feature](has_phenotypic_feature.md) - Phenotypic feature concept that the entity is associated with.
-     * [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.
      * [individual➞has phenotypic feature](individual_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.
  * [has proband](has_proband.md) - The Individual that is reported to have a disorder in a Family.
      * [family➞has proband](family_has_proband.md) - The Individual that is reported to have a disorder which results in the Family being brought into a Study.
@@ -234,7 +232,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
      * [submission➞has protocol](submission_has_protocol.md) - One or more Protocol entities associated with this Submission.
  * [has publication](has_publication.md) - The Publication associated with an entity.
      * [dataset➞has publication](dataset_has_publication.md) - One or more Publication entities associated with this Dataset.
-     * [project➞has publication](project_has_publication.md) - One or more Publication entities associated with this Project.
      * [study➞has publication](study_has_publication.md) - One or more Publication entities associated with this Study.
      * [submission➞has publication](submission_has_publication.md) - One or more Publication entities associated with this Submission.
  * [has sample](has_sample.md) - The sample associated with an entity.
@@ -263,6 +260,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [instrument model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [sequencing protocol➞instrument model](sequencing_protocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
+ * [journal](journal.md) - Name of the journal.
  * [karyotype](karyotype.md) - The karyotype of an individual if defined.
  * [key](key.md) - The key of an attribute.
      * [attribute➞key](attribute_key.md) - The key for an attribute.
@@ -332,6 +330,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
      * [submission➞submission status](submission_submission_status.md) - The status of a Submission.
  * [target coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
  * [target regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
+     * [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
  * [technical replicates](technical_replicates.md) - A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.
  * [telephone](telephone.md) - The telephone number associated with a person.
      * [member➞telephone](member_telephone.md) - The telephone number of the Member.
@@ -374,6 +373,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
          * [protocol➞xref](protocol_xref.md) - One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )
          * [publication➞xref](publication_xref.md) - One or more cross-references for this Publication.
          * [sample➞xref](sample_xref.md) - One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
+ * [year](year.md) - Year in which the paper was published.
 
 ### Enums
 

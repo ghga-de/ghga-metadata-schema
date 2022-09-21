@@ -234,13 +234,6 @@ classes:
         description: >-
           Short textual description of the project.
         required: true
-      has publication:
-        description: >-
-          One or more Publication entities associated with this Project.
-        range: publication
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
       has attribute:
         description: >-
           Custom attributes for the Project 
@@ -351,7 +344,7 @@ classes:
         range: study
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       has sample:
         description: >-
           The Sample entity associated with this Experiment.
@@ -511,12 +504,14 @@ classes:
       library preparation:
         required: true
       library preparation kit retail name:
-        required: true
+        required: false
       library preparation kit manufacturer:
-        required: true
+        required: false
       has attribute:
         description: >-
           One or more attributes that further characterizes this Library Preparation Protocol.
+      target regions:
+        required: true
 
   sequencing protocol:
     is_a: protocol
@@ -636,9 +631,7 @@ classes:
       - isolation
       - storage
       - has individual
-      - has anatomical entity
-      - has disease
-      - has phenotypic feature
+
     slot_usage:
       alias:
         required: true
@@ -651,34 +644,7 @@ classes:
         range: individual
         inlined: true
         inlined_as_list: false
-      has anatomical entity:
-        description: >-
-          The Anatomical entity, that represents the site, from which the Biospecimen was retrieved.
-          Typically, a concept from Uber-anatomy Ontology (UBERON).
-          For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from
-          the 'Heart Endothelium' of an Individual.
-        range: anatomical entity
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has disease:
-        description: >-
-          The Disease entity that is associated with the Individual. Typically, a concept
-          from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that
-          the Individual suffers from 'Heart Disease'.
-        range: disease
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has phenotypic feature:
-        description: >-
-          The Phenotypic Feature entity that is associated with the Individual. Typically, a
-          concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the
-          Individual exhibits 'Fibrosarcoma' as one of its phenotype.
-        range: phenotypic feature
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
+        required: true
 
   disease or phenotypic feature:
     is_a: biological quality
@@ -951,6 +917,7 @@ classes:
       - has workflow
       - has analysis process
       - has output
+      - description
     slot_usage:
       alias:
         description: >-
@@ -1278,6 +1245,9 @@ classes:
     slots:
       - title
       - abstract
+      - author
+      - year
+      - journal
     slot_usage:
       id:
         required: true
@@ -2388,6 +2358,18 @@ slots:
   ontology version:
     description: >-
       The version of the ontology from which this ontology class was chosen.
+
+  author:
+    description: >-
+      The individual who is responsible for the content of a document version.
+
+  year:
+    description: >-
+      Year in which the paper was published.
+
+  journal:
+    description: >-
+      Name of the journal.
 
 enums:
   biological sex enum:

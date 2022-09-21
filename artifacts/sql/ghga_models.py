@@ -44,8 +44,8 @@ tbl_analysis = Table('analysis', metadata,
     Column('has_study', Text, ForeignKey('study.id')),
     Column('has_workflow', Text),
     Column('has_output', Text),
-    Column('alias', Text),
     Column('description', Text),
+    Column('alias', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
 )
@@ -76,6 +76,7 @@ tbl_anatomical_entity = Table('anatomical_entity', metadata,
     Column('ontology_name', Text),
     Column('ontology_version', Text),
     Column('name', Text),
+    Column('sample_id', Text, ForeignKey('sample.id')),
 )
 tbl_ancestry = Table('ancestry', metadata, 
     Column('id', Text, primary_key=True),
@@ -109,9 +110,6 @@ tbl_biospecimen = Table('biospecimen', metadata,
     Column('isolation', Text),
     Column('storage', Text),
     Column('has_individual', Text, ForeignKey('individual.id')),
-    Column('has_anatomical_entity', Text),
-    Column('has_disease', Text),
-    Column('has_phenotypic_feature', Text),
     Column('alias', Text),
     Column('accession', Text),
 )
@@ -432,7 +430,6 @@ tbl_project = Table('project', metadata,
     Column('alias', Text),
     Column('title', Text),
     Column('description', Text),
-    Column('has_publication', Text),
     Column('has_attribute', Text),
     Column('accession', Text),
 )
@@ -457,6 +454,9 @@ tbl_publication = Table('publication', metadata,
     Column('schema_version', Text),
     Column('title', Text),
     Column('abstract', Text),
+    Column('author', Text),
+    Column('year', Text),
+    Column('journal', Text),
     Column('id', Text, primary_key=True),
     Column('alias', Text),
 )
@@ -474,7 +474,6 @@ tbl_sample = Table('sample', metadata,
     Column('isolation', Text),
     Column('storage', Text),
     Column('has_individual', Text, ForeignKey('individual.id')),
-    Column('has_anatomical_entity', Text),
     Column('has_biospecimen', Text, ForeignKey('biospecimen.id')),
     Column('alias', Text),
     Column('accession', Text),
@@ -823,6 +822,12 @@ mapper_registry.map_imperatively(Protocol, tbl_protocol, properties={
 mapper_registry.map_imperatively(Publication, tbl_publication, properties={
 })
 mapper_registry.map_imperatively(Sample, tbl_sample, properties={
+
+    'has_anatomical_entity': 
+        relationship(AnatomicalEntity, 
+                      foreign_keys=tbl_anatomical_entity.columns["sample_id"],
+                      backref='Sample'),
+
 })
 mapper_registry.map_imperatively(SequencingProtocol, tbl_sequencing_protocol, properties={
 })
