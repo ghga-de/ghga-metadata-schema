@@ -406,7 +406,7 @@
 <h1 id="class-publication">Class: publication<a class="headerlink" href="#class-publication" title="Permanent link">&para;</a></h1>
 <p>The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.</p>
 <p>URI: <a href="https://w3id.org/GHGA/Publication">GHGA:Publication</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*&gt;[Publication&#124;title:string%20%3F;abstract:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1&gt;[Publication],[PublicationMixin]-%20has%20publication%200..1&gt;[Publication],[Project]++-%20has%20publication%200..*&gt;[Publication],[Study]++-%20has%20publication%200..*&gt;[Publication],[Submission]++-%20has%20publication%200..*&gt;[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[Project],[InformationContentEntity],[Dataset]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*&gt;[Publication&#124;title:string%20%3F;abstract:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1&gt;[Publication],[PublicationMixin]-%20has%20publication%200..1&gt;[Publication],[Project]++-%20has%20publication%200..*&gt;[Publication],[Study]++-%20has%20publication%200..*&gt;[Publication],[Submission]++-%20has%20publication%200..*&gt;[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[Project],[InformationContentEntity],[Dataset]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*&gt;[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:string%20%3F;journal:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1&gt;[Publication],[PublicationMixin]-%20has%20publication%200..1&gt;[Publication],[Study]++-%20has%20publication%200..*&gt;[Publication],[Submission]++-%20has%20publication%200..*&gt;[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[InformationContentEntity],[Dataset]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Dataset]++-%20has%20publication%200..*&gt;[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:string%20%3F;journal:string%20%3F;id:string;alias:string;xref:string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Submission]-%20has%20publication(i)%200..1&gt;[Publication],[PublicationMixin]-%20has%20publication%200..1&gt;[Publication],[Study]++-%20has%20publication%200..*&gt;[Publication],[Submission]++-%20has%20publication%200..*&gt;[Publication],[InformationContentEntity]^-[Publication],[PublicationMixin],[InformationContentEntity],[Dataset]" /></a></p>
 <h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
 <ul>
 <li>is_a: <a href="../InformationContentEntity/">InformationContentEntity</a> - A generically dependent continuant that is about some thing.</li>
@@ -415,7 +415,6 @@
 <ul>
 <li><strong><a href="../Dataset/">Dataset</a></strong> <em><a href="../dataset_has_publication/">dataset➞has publication</a></em>  <sub>0..*</sub>  <strong><a href="./">Publication</a></strong></li>
 <li><strong>None</strong> <em><a href="../has_publication/">has publication</a></em>  <sub>0..1</sub>  <strong><a href="./">Publication</a></strong></li>
-<li><strong><a href="../Project/">Project</a></strong> <em><a href="../project_has_publication/">project➞has publication</a></em>  <sub>0..*</sub>  <strong><a href="./">Publication</a></strong></li>
 <li><strong><a href="../Study/">Study</a></strong> <em><a href="../study_has_publication/">study➞has publication</a></em>  <sub>0..*</sub>  <strong><a href="./">Publication</a></strong></li>
 <li><strong><a href="../Submission/">Submission</a></strong> <em><a href="../submission_has_publication/">submission➞has publication</a></em>  <sub>0..*</sub>  <strong><a href="./">Publication</a></strong></li>
 </ul>
@@ -432,6 +431,21 @@
 <li>Description: The study abstract that describes the goals. Can also hold abstract from a publication related to this study.</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>in subsets: (optional,public)</li>
+</ul>
+</li>
+<li><a href="../author/">author</a>  <sub>0..1</sub><ul>
+<li>Description: The individual who is responsible for the content of a document version.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../year/">year</a>  <sub>0..1</sub><ul>
+<li>Description: Year in which the paper was published.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../journal/">journal</a>  <sub>0..1</sub><ul>
+<li>Description: Name of the journal.</li>
+<li>Range: <a href="../types/String/">String</a></li>
 </ul>
 </li>
 <li><a href="../publication_id/">publication➞id</a>  <sub>1..1</sub><ul>

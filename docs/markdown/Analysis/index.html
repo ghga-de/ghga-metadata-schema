@@ -406,7 +406,7 @@
 <h1 id="class-analysis">Class: analysis<a class="headerlink" href="#class-analysis" title="Permanent link">&para;</a></h1>
 <p>An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.</p>
 <p>URI: <a href="https://w3id.org/GHGA/Analysis">GHGA:Analysis</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]&lt;has%20output%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string;description:string%20%3F;accession:string%20%3F;ega_accession:string%20%3F;title(i):string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]&lt;has%20analysis%20process%200..*-++[Analysis],[Workflow]&lt;has%20workflow%201..*-++[Analysis],[Study]&lt;has%20study%200..1-++[Analysis],[File]&lt;has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*&gt;[Analysis],[Submission]++-%20has%20analysis%200..*&gt;[Analysis],[Analysis]uses%20-.-&gt;[AccessionMixin],[Analysis]uses%20-.-&gt;[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]&lt;has%20output%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string;description:string%20%3F;accession:string%20%3F;ega_accession:string%20%3F;title(i):string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]&lt;has%20analysis%20process%200..*-++[Analysis],[Workflow]&lt;has%20workflow%201..*-++[Analysis],[Study]&lt;has%20study%200..1-++[Analysis],[File]&lt;has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*&gt;[Analysis],[Submission]++-%20has%20analysis%200..*&gt;[Analysis],[Analysis]uses%20-.-&gt;[AccessionMixin],[Analysis]uses%20-.-&gt;[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]&lt;has%20output%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;title(i):string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]&lt;has%20analysis%20process%200..*-++[Analysis],[Workflow]&lt;has%20workflow%201..*-++[Analysis],[Study]&lt;has%20study%200..1-++[Analysis],[File]&lt;has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*&gt;[Analysis],[Submission]++-%20has%20analysis%200..*&gt;[Analysis],[Analysis]uses%20-.-&gt;[AccessionMixin],[Analysis]uses%20-.-&gt;[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]&lt;has%20output%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;title(i):string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]&lt;has%20analysis%20process%200..*-++[Analysis],[Workflow]&lt;has%20workflow%201..*-++[Analysis],[Study]&lt;has%20study%200..1-++[Analysis],[File]&lt;has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*&gt;[Analysis],[Submission]++-%20has%20analysis%200..*&gt;[Analysis],[Analysis]uses%20-.-&gt;[AccessionMixin],[Analysis]uses%20-.-&gt;[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin]" /></a></p>
 <h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
 <ul>
 <li>is_a: <a href="../DataTransformation/">DataTransformation</a> - A data transformation technique used to analyze and interpret data to gain a better understanding of it.</li>
@@ -470,16 +470,16 @@
 <li>in subsets: (optional,restricted)</li>
 </ul>
 </li>
-<li><a href="../analysis_alias/">analysis➞alias</a>  <sub>1..1</sub><ul>
-<li>Description: An alias uniquely identifying this Analysis entitiy.</li>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>in subsets: (essential,restricted)</li>
-</ul>
-</li>
 <li><a href="../analysis_description/">analysis➞description</a>  <sub>0..1</sub><ul>
 <li>Description: Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>in subsets: (essential,public)</li>
+</ul>
+</li>
+<li><a href="../analysis_alias/">analysis➞alias</a>  <sub>1..1</sub><ul>
+<li>Description: An alias uniquely identifying this Analysis entitiy.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>in subsets: (essential,restricted)</li>
 </ul>
 </li>
 </ul>

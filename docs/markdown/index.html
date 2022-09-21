@@ -539,6 +539,7 @@
 </li>
 </ul>
 </li>
+<li><a href="author/">author</a> - The individual who is responsible for the content of a document version.</li>
 <li><a href="biological_replicates/">biological replicates</a> - A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.</li>
 <li><a href="case_control_status/">case control status</a> - Whether the sample is to be treated as Case or Control in a Study.</li>
 <li><a href="category/">category</a> - The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.</li>
@@ -618,7 +619,6 @@
 </ul>
 </li>
 <li><a href="has_anatomical_entity/">has anatomical entity</a> - Anatomical site associated with an entity.<ul>
-<li><a href="biospecimen_has_anatomical_entity/">biospecimen➞has anatomical entity</a> - The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.</li>
 <li><a href="sample_has_anatomical_entity/">sample➞has anatomical entity</a></li>
 </ul>
 </li>
@@ -669,7 +669,6 @@
 </ul>
 </li>
 <li><a href="has_disease/">has disease</a> - Disease concept that the entity is associated with.<ul>
-<li><a href="biospecimen_has_disease/">biospecimen➞has disease</a> - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.</li>
 <li><a href="individual_has_disease/">individual➞has disease</a> - The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.</li>
 </ul>
 </li>
@@ -722,7 +721,6 @@
 </ul>
 </li>
 <li><a href="has_phenotypic_feature/">has phenotypic feature</a> - Phenotypic feature concept that the entity is associated with.<ul>
-<li><a href="biospecimen_has_phenotypic_feature/">biospecimen➞has phenotypic feature</a> - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.</li>
 <li><a href="individual_has_phenotypic_feature/">individual➞has phenotypic feature</a> - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.</li>
 </ul>
 </li>
@@ -743,7 +741,6 @@
 </li>
 <li><a href="has_publication/">has publication</a> - The Publication associated with an entity.<ul>
 <li><a href="dataset_has_publication/">dataset➞has publication</a> - One or more Publication entities associated with this Dataset.</li>
-<li><a href="project_has_publication/">project➞has publication</a> - One or more Publication entities associated with this Project.</li>
 <li><a href="study_has_publication/">study➞has publication</a> - One or more Publication entities associated with this Study.</li>
 <li><a href="submission_has_publication/">submission➞has publication</a> - One or more Publication entities associated with this Submission.</li>
 </ul>
@@ -790,6 +787,7 @@
 </ul>
 </li>
 <li><a href="isolation/">isolation</a> - Method or device employed for collecting/isolating a biospecimen or a sample.</li>
+<li><a href="journal/">journal</a> - Name of the journal.</li>
 <li><a href="karyotype/">karyotype</a> - The karyotype of an individual if defined.</li>
 <li><a href="key/">key</a> - The key of an attribute.<ul>
 <li><a href="attribute_key/">attribute➞key</a> - The key for an attribute.</li>
@@ -900,7 +898,10 @@
 </ul>
 </li>
 <li><a href="target_coverage/">target coverage</a> - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.</li>
-<li><a href="target_regions/">target regions</a> - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.</li>
+<li><a href="target_regions/">target regions</a> - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.<ul>
+<li><a href="library_preparation_protocol_target_regions/">library preparation protocol➞target regions</a></li>
+</ul>
+</li>
 <li><a href="technical_replicates/">technical replicates</a> - A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.</li>
 <li><a href="telephone/">telephone</a> - The telephone number associated with a person.<ul>
 <li><a href="member_telephone/">member➞telephone</a> - The telephone number of the Member.</li>
@@ -965,6 +966,7 @@
 </li>
 </ul>
 </li>
+<li><a href="year/">year</a> - Year in which the paper was published.</li>
 </ul>
 <h3 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h3>
 <ul>

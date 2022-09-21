@@ -406,7 +406,7 @@
 <h1 id="class-project">Class: project<a class="headerlink" href="#class-project" title="Permanent link">&para;</a></h1>
 <p>A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.</p>
 <p>URI: <a href="https://w3id.org/GHGA/Project">GHGA:Project</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Publication],[Attribute]&lt;has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Publication]&lt;has%20publication%200..*-++[Project],[Study]-%20has%20project(i)%200..1&gt;[Project],[Submission]-%20has%20project(i)%200..1&gt;[Project],[Study]++-%20has%20project%200..1&gt;[Project],[Submission]++-%20has%20project%200..1&gt;[Project],[Project]uses%20-.-&gt;[AccessionMixin],[Project]uses%20-.-&gt;[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Publication],[Attribute]&lt;has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Publication]&lt;has%20publication%200..*-++[Project],[Study]-%20has%20project(i)%200..1&gt;[Project],[Submission]-%20has%20project(i)%200..1&gt;[Project],[Study]++-%20has%20project%200..1&gt;[Project],[Submission]++-%20has%20project%200..1&gt;[Project],[Project]uses%20-.-&gt;[AccessionMixin],[Project]uses%20-.-&gt;[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Attribute]&lt;has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Study]-%20has%20project(i)%200..1&gt;[Project],[Submission]-%20has%20project(i)%200..1&gt;[Project],[Study]++-%20has%20project%200..1&gt;[Project],[Submission]++-%20has%20project%200..1&gt;[Project],[Project]uses%20-.-&gt;[AccessionMixin],[Project]uses%20-.-&gt;[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[ResearchActivity],[Attribute]&lt;has%20attribute%200..*-++[Project&#124;alias:string;title:string;description:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Study]-%20has%20project(i)%200..1&gt;[Project],[Submission]-%20has%20project(i)%200..1&gt;[Project],[Study]++-%20has%20project%200..1&gt;[Project],[Submission]++-%20has%20project%200..1&gt;[Project],[Project]uses%20-.-&gt;[AccessionMixin],[Project]uses%20-.-&gt;[AttributeMixin],[ResearchActivity]^-[Project],[AttributeMixin],[Attribute],[AccessionMixin]" /></a></p>
 <h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
 <ul>
 <li>is_a: <a href="../ResearchActivity/">ResearchActivity</a> - A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.</li>
@@ -441,12 +441,6 @@
 <li>Description: Short textual description of the project.</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>in subsets: (essential,public)</li>
-</ul>
-</li>
-<li><a href="../project_has_publication/">project➞has publication</a>  <sub>0..*</sub><ul>
-<li>Description: One or more Publication entities associated with this Project.</li>
-<li>Range: <a href="../Publication/">Publication</a></li>
-<li>in subsets: (optional,public)</li>
 </ul>
 </li>
 <li><a href="../project_has_attribute/">project➞has attribute</a>  <sub>0..*</sub><ul>

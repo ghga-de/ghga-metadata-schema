@@ -13,7 +13,7 @@
     
     
       
-        <title>Class: phenotypic feature - GHGA Metadata Schema</title>
+        <title>Slot: sequencing center - GHGA Metadata Schema</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#class-phenotypic-feature" class="md-skip">
+        <a href="#slot-sequencing-center" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Class: phenotypic feature
+              Slot: sequencing center
             
           </span>
         </div>
@@ -397,56 +397,25 @@
                 
                   
 
-  <a href="https://github.com/ghga-de/ghga-metadata-schema/edit/master/docs/docs/markdown/PhenotypicFeature.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ghga-de/ghga-metadata-schema/edit/master/docs/docs/markdown/sequencing_protocol_sequencing_center.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="class-phenotypic-feature">Class: phenotypic feature<a class="headerlink" href="#class-phenotypic-feature" title="Permanent link">&para;</a></h1>
-<p>The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.</p>
-<p>URI: <a href="https://w3id.org/GHGA/PhenotypicFeature">GHGA:PhenotypicFeature</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]-%20has%20phenotypic%20feature(i)%200..1&gt;[PhenotypicFeature&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]++-%20has%20phenotypic%20feature%200..*&gt;[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[Individual],[DiseaseOrPhenotypicFeature]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]-%20has%20phenotypic%20feature(i)%200..1&gt;[PhenotypicFeature&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]++-%20has%20phenotypic%20feature%200..*&gt;[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[Individual],[DiseaseOrPhenotypicFeature]" /></a></p>
+<h1 id="slot-sequencing-center">Slot: sequencing center<a class="headerlink" href="#slot-sequencing-center" title="Permanent link">&para;</a></h1>
+<p>Center where sample was sequenced.</p>
+<p>URI: <a href="https://w3id.org/GHGA/sequencing_protocol_sequencing_center">GHGA:sequencing_protocol_sequencing_center</a></p>
+<h2 id="domain-and-range">Domain and Range<a class="headerlink" href="#domain-and-range" title="Permanent link">&para;</a></h2>
+<p><a href="../SequencingProtocol/">SequencingProtocol</a> &#8594;  <sub>0..1</sub> <a href="../types/String/">String</a></p>
 <h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
 <ul>
-<li>is_a: <a href="../DiseaseOrPhenotypicFeature/">DiseaseOrPhenotypicFeature</a> - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.</li>
+<li>is_a: <a href="../sequencing_center/">sequencing center</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by Class<a class="headerlink" href="#referenced-by-class" title="Permanent link">&para;</a></h2>
+<h2 id="children">Children<a class="headerlink" href="#children" title="Permanent link">&para;</a></h2>
+<h2 id="used-by">Used by<a class="headerlink" href="#used-by" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>None</strong> <em><a href="../has_phenotypic_feature/">has phenotypic feature</a></em>  <sub>0..1</sub>  <strong><a href="./">PhenotypicFeature</a></strong></li>
-<li><strong><a href="../Individual/">Individual</a></strong> <em><a href="../individual_has_phenotypic_feature/">individual➞has phenotypic feature</a></em>  <sub>0..*</sub>  <strong><a href="./">PhenotypicFeature</a></strong></li>
-</ul>
-<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h2>
-<h3 id="inherited-from-disease-or-phenotypic-feature">Inherited from disease or phenotypic feature:<a class="headerlink" href="#inherited-from-disease-or-phenotypic-feature" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="../named_thing_id/">named thing➞id</a>  <sub>1..1</sub><ul>
-<li>Description: The internal unique identifier for an entity.</li>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>in subsets: (essential,restricted)</li>
-</ul>
-</li>
-<li><a href="../named_thing_alias/">named thing➞alias</a>  <sub>0..1</sub><ul>
-<li>Description: The alias (alternate identifier) for an entity.</li>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>in subsets: (essential,restricted)</li>
-</ul>
-</li>
-<li><a href="../named_thing_xref/">named thing➞xref</a>  <sub>0..*</sub><ul>
-<li>Description: Holds one or more database cross references for an entity.</li>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>in subsets: (optional,public)</li>
-</ul>
-</li>
-<li><a href="../named_thing_creation_date/">named thing➞creation date</a>  <sub>0..1</sub><ul>
-<li>Description: Timestamp (in ISO 8601 format) when the entity was created.</li>
-<li>Range: <a href="../types/String/">String</a></li>
-</ul>
-</li>
-<li><a href="../named_thing_update_date/">named thing➞update date</a>  <sub>0..1</sub><ul>
-<li>Description: Timestamp (in ISO 8601 format) when the entity was updated.</li>
-<li>Range: <a href="../types/String/">String</a></li>
-</ul>
-</li>
+<li><a href="../SequencingProtocol/">SequencingProtocol</a></li>
 </ul>
 <h2 id="other-properties">Other properties<a class="headerlink" href="#other-properties" title="Permanent link">&para;</a></h2>
 <table>
@@ -459,19 +428,14 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Exact Mappings:</strong></td>
+<td><strong>In Subsets:</strong></td>
 <td></td>
-<td>HP:0000118</td>
+<td>recommended</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td>EFO:0000651</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>SIO:010056</td>
+<td>public</td>
 </tr>
 </tbody>
 </table>

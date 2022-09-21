@@ -406,7 +406,7 @@
 <h1 id="class-library-preparation-protocol">Class: library preparation protocol<a class="headerlink" href="#class-library-preparation-protocol" title="Permanent link">&para;</a></h1>
 <p>Information about the library preparation of an Experiment.</p>
 <p>URI: <a href="https://w3id.org/GHGA/LibraryPreparationProtocol">GHGA:LibraryPreparationProtocol</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]&lt;has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string;library_preparation_kit_manufacturer:string;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20%3F;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]&lt;has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string;library_preparation_kit_manufacturer:string;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20%3F;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]&lt;has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Protocol],[Attribute]&lt;has%20attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string%20%3F;type(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[LibraryPreparationProtocol],[File],[Attribute]" /></a></p>
 <h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
 <ul>
 <li>is_a: <a href="../Protocol/">Protocol</a> - A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.</li>
@@ -445,13 +445,13 @@
 <li>in subsets: (essential,public)</li>
 </ul>
 </li>
-<li><a href="../library_preparation_protocol_library_preparation_kit_retail_name/">library preparation protocol➞library preparation kit retail name</a>  <sub>1..1</sub><ul>
+<li><a href="../library_preparation_protocol_library_preparation_kit_retail_name/">library preparation protocol➞library preparation kit retail name</a>  <sub>0..1</sub><ul>
 <li>Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>in subsets: (recommended,public)</li>
 </ul>
 </li>
-<li><a href="../library_preparation_protocol_library_preparation_kit_manufacturer/">library preparation protocol➞library preparation kit manufacturer</a>  <sub>1..1</sub><ul>
+<li><a href="../library_preparation_protocol_library_preparation_kit_manufacturer/">library preparation protocol➞library preparation kit manufacturer</a>  <sub>0..1</sub><ul>
 <li>Description: Manufacturer of library preparation kit</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>in subsets: (recommended,public)</li>
@@ -469,7 +469,7 @@
 <li>in subsets: (recommended,public)</li>
 </ul>
 </li>
-<li><a href="../target_regions/">target regions</a>  <sub>0..1</sub><ul>
+<li><a href="../library_preparation_protocol_target_regions/">library preparation protocol➞target regions</a>  <sub>1..1</sub><ul>
 <li>Description: Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>in subsets: (essential,public)</li>

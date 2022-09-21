@@ -406,7 +406,7 @@
 <h1 id="class-biospecimen">Class: biospecimen<a class="headerlink" href="#class-biospecimen" title="Permanent link">&para;</a></h1>
 <p>A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.</p>
 <p>URI: <a href="https://w3id.org/GHGA/Biospecimen">GHGA:Biospecimen</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[PhenotypicFeature],[MaterialEntity],[Individual],[Disease],[PhenotypicFeature]&lt;has%20phenotypic%20feature%200..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Disease]&lt;has%20disease%200..*-++[Biospecimen],[AnatomicalEntity]&lt;has%20anatomical%20entity%200..*-++[Biospecimen],[Individual]&lt;has%20individual%200..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Sample]++-%20has%20biospecimen%200..1&gt;[Biospecimen],[Submission]++-%20has%20biospecimen%200..*&gt;[Biospecimen],[Biospecimen]uses%20-.-&gt;[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[PhenotypicFeature],[MaterialEntity],[Individual],[Disease],[PhenotypicFeature]&lt;has%20phenotypic%20feature%200..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Disease]&lt;has%20disease%200..*-++[Biospecimen],[AnatomicalEntity]&lt;has%20anatomical%20entity%200..*-++[Biospecimen],[Individual]&lt;has%20individual%200..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Sample]++-%20has%20biospecimen%200..1&gt;[Biospecimen],[Submission]++-%20has%20biospecimen%200..*&gt;[Biospecimen],[Biospecimen]uses%20-.-&gt;[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[Individual]&lt;has%20individual%201..1-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Sample]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Sample]++-%20has%20biospecimen%200..1&gt;[Biospecimen],[Submission]++-%20has%20biospecimen%200..*&gt;[Biospecimen],[Biospecimen]uses%20-.-&gt;[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AccessionMixin]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[Individual]&lt;has%20individual%201..1-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Sample]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1&gt;[Biospecimen],[Sample]++-%20has%20biospecimen%200..1&gt;[Biospecimen],[Submission]++-%20has%20biospecimen%200..*&gt;[Biospecimen],[Biospecimen]uses%20-.-&gt;[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AccessionMixin]" /></a></p>
 <h2 id="parents">Parents<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h2>
 <ul>
 <li>is_a: <a href="../MaterialEntity/">MaterialEntity</a> - A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.</li>
@@ -454,27 +454,9 @@
 <li>in subsets: (recommended,public)</li>
 </ul>
 </li>
-<li><a href="../biospecimen_has_individual/">biospecimen➞has individual</a>  <sub>0..1</sub><ul>
+<li><a href="../biospecimen_has_individual/">biospecimen➞has individual</a>  <sub>1..1</sub><ul>
 <li>Description: The Individual entity from which this Biospecimen was derived.</li>
 <li>Range: <a href="../Individual/">Individual</a></li>
-<li>in subsets: (essential,restricted)</li>
-</ul>
-</li>
-<li><a href="../biospecimen_has_anatomical_entity/">biospecimen➞has anatomical entity</a>  <sub>0..*</sub><ul>
-<li>Description: The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.</li>
-<li>Range: <a href="../AnatomicalEntity/">AnatomicalEntity</a></li>
-<li>in subsets: (recommended,public)</li>
-</ul>
-</li>
-<li><a href="../biospecimen_has_disease/">biospecimen➞has disease</a>  <sub>0..*</sub><ul>
-<li>Description: The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.</li>
-<li>Range: <a href="../Disease/">Disease</a></li>
-<li>in subsets: (essential,public)</li>
-</ul>
-</li>
-<li><a href="../biospecimen_has_phenotypic_feature/">biospecimen➞has phenotypic feature</a>  <sub>0..*</sub><ul>
-<li>Description: The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.</li>
-<li>Range: <a href="../PhenotypicFeature/">PhenotypicFeature</a></li>
 <li>in subsets: (essential,restricted)</li>
 </ul>
 </li>
