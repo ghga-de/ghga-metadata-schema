@@ -19,7 +19,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Used by
 
- * [Sample](Sample.md)
  * [SequencingProtocol](SequencingProtocol.md)
 
 ## Other properties

@@ -316,8 +316,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [role](role.md) - The role that a user has within GHGA.
      * [user➞role](user_role.md) - The role of the user
  * [sample barcode read](sample_barcode_read.md) - The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
- * [sample index sequence](sample_index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
- * [sample lane number](sample_lane_number.md) - The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
  * [schema type](schema_type.md) - The schema type an instance corresponds to.
  * [schema version](schema_version.md) - The version of the schema an instance corresponds to.
  * [sequencing center](sequencing_center.md) - Center where sample was sequenced.

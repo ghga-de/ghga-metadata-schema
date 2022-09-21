@@ -745,8 +745,6 @@ linkml:Nodeidentifier NONLITERAL
           <has_individual> @<Individual> ? ;
           <has_anatomical_entity> @<AnatomicalEntity> * ;
           <has_biospecimen> @<Biospecimen> ? ;
-          <lane_number> @linkml:String ? ;
-          <sample_index_sequence> @linkml:String ? ;
           <alias> @linkml:String ;
           <xref> @linkml:String * ;
           <accession> @linkml:String ? ;

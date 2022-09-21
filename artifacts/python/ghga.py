@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-19T16:08:52
+# Generation date: 2022-09-21T15:40:27
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1363,8 +1363,6 @@ class Sample(MaterialEntity):
     has_individual: Optional[Union[dict, "Individual"]] = None
     has_anatomical_entity: Optional[Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]]] = empty_dict()
     has_biospecimen: Optional[Union[dict, Biospecimen]] = None
-    lane_number: Optional[str] = None
-    sample_index_sequence: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
     accession: Optional[str] = None
     ega_accession: Optional[str] = None
@@ -1413,12 +1411,6 @@ class Sample(MaterialEntity):
 
         if self.has_biospecimen is not None and not isinstance(self.has_biospecimen, Biospecimen):
             self.has_biospecimen = Biospecimen(**as_dict(self.has_biospecimen))
-
-        if self.lane_number is not None and not isinstance(self.lane_number, str):
-            self.lane_number = str(self.lane_number)
-
-        if self.sample_index_sequence is not None and not isinstance(self.sample_index_sequence, str):
-            self.sample_index_sequence = str(self.sample_index_sequence)
 
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
@@ -3442,9 +3434,6 @@ slots.ontology_name = Slot(uri=GHGA.ontology_name, name="ontology name", curie=G
 slots.ontology_version = Slot(uri=GHGA.ontology_version, name="ontology version", curie=GHGA.curie('ontology_version'),
                    model_uri=GHGA.ontology_version, domain=None, range=Optional[str])
 
-slots.sample_index_sequence = Slot(uri=GHGA.sample_index_sequence, name="sample index sequence", curie=GHGA.curie('sample_index_sequence'),
-                   model_uri=GHGA.sample_index_sequence, domain=None, range=Optional[str])
-
 slots.author = Slot(uri=GHGA.author, name="author", curie=GHGA.curie('author'),
                    model_uri=GHGA.author, domain=None, range=Optional[str])
 
@@ -3453,9 +3442,6 @@ slots.year = Slot(uri=GHGA.year, name="year", curie=GHGA.curie('year'),
 
 slots.journal = Slot(uri=GHGA.journal, name="journal", curie=GHGA.curie('journal'),
                    model_uri=GHGA.journal, domain=None, range=Optional[str])
-
-slots.sample_lane_number = Slot(uri=GHGA.sample_lane_number, name="sample lane number", curie=GHGA.curie('sample_lane_number'),
-                   model_uri=GHGA.sample_lane_number, domain=None, range=Optional[str])
 
 slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie('id'),
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])

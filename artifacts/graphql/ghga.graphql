@@ -723,8 +723,6 @@ type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     hasIndividual: Individual
     hasAnatomicalEntity: [AnatomicalEntity]
     hasBiospecimen: Biospecimen
-    laneNumber: String
-    sampleIndexSequence: String
     alias: String!
     xref: [String]
     accession: String

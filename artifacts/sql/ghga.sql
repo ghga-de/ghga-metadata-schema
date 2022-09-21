@@ -676,8 +676,6 @@ CREATE TABLE sample (
 	storage TEXT, 
 	has_individual TEXT, 
 	has_biospecimen TEXT, 
-	lane_number TEXT, 
-	sample_index_sequence TEXT, 
 	alias TEXT NOT NULL, 
 	accession TEXT, 
 	ega_accession TEXT, 
