@@ -448,34 +448,6 @@
                "description": "Description of an entity.",
                "type": "string"
             },
-            "has_anatomical_entity": {
-               "description": "The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.",
-               "items": {
-                  "anyOf": [
-                     {
-                        "$ref": "#/$defs/CreateAnatomicalEntity"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
-            },
-            "has_disease": {
-               "description": "The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.",
-               "items": {
-                  "anyOf": [
-                     {
-                        "$ref": "#/$defs/CreateDisease"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
-            },
             "has_individual": {
                "anyOf": [
                   {
@@ -489,20 +461,6 @@
                   }
                ],
                "description": "The Individual entity from which this Biospecimen was derived."
-            },
-            "has_phenotypic_feature": {
-               "description": "The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.",
-               "items": {
-                  "anyOf": [
-                     {
-                        "$ref": "#/$defs/CreatePhenotypicFeature"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
             },
             "isolation": {
                "description": "Method or device employed for collecting/isolating a biospecimen or a sample.",
@@ -537,6 +495,7 @@
             }
          },
          "required": [
+            "has_individual",
             "alias"
          ],
          "title": "CreateBiospecimen",
@@ -2081,8 +2040,7 @@
             "library_type",
             "library_selection",
             "library_preparation",
-            "library_preparation_kit_retail_name",
-            "library_preparation_kit_manufacturer",
+            "target_regions",
             "alias",
             "description"
          ],
@@ -2226,20 +2184,6 @@
                },
                "type": "array"
             },
-            "has_publication": {
-               "description": "One or more Publication entities associated with this Project.",
-               "items": {
-                  "anyOf": [
-                     {
-                        "$ref": "#/$defs/CreatePublication"
-                     },
-                     {
-                        "type": "string"
-                     }
-                  ]
-               },
-               "type": "array"
-            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -2348,6 +2292,14 @@
                "description": "The alias for an entity.",
                "type": "string"
             },
+            "author": {
+               "description": "The individual who is responsible for the content of a document version.",
+               "type": "string"
+            },
+            "journal": {
+               "description": "Name of the journal.",
+               "type": "string"
+            },
             "schema_type": {
                "description": "The schema type an instance corresponds to.",
                "type": "string"
@@ -2366,6 +2318,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "year": {
+               "description": "Year in which the paper was published.",
+               "type": "string"
             }
          },
          "required": [
