@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-21T16:15:44
+# Generation date: 2022-09-22T11:33:54
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1887,7 +1887,7 @@ class CreatePublication(InformationContentEntity):
     title: Optional[str] = None
     abstract: Optional[str] = None
     author: Optional[str] = None
-    year: Optional[str] = None
+    year: Optional[int] = None
     journal: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
 
@@ -1906,8 +1906,8 @@ class CreatePublication(InformationContentEntity):
         if self.author is not None and not isinstance(self.author, str):
             self.author = str(self.author)
 
-        if self.year is not None and not isinstance(self.year, str):
-            self.year = str(self.year)
+        if self.year is not None and not isinstance(self.year, int):
+            self.year = int(self.year)
 
         if self.journal is not None and not isinstance(self.journal, str):
             self.journal = str(self.journal)
@@ -3076,7 +3076,7 @@ slots.author = Slot(uri=GHGA.author, name="author", curie=GHGA.curie('author'),
                    model_uri=GHGA.author, domain=None, range=Optional[str])
 
 slots.year = Slot(uri=GHGA.year, name="year", curie=GHGA.curie('year'),
-                   model_uri=GHGA.year, domain=None, range=Optional[str])
+                   model_uri=GHGA.year, domain=None, range=Optional[int])
 
 slots.journal = Slot(uri=GHGA.journal, name="journal", curie=GHGA.curie('journal'),
                    model_uri=GHGA.journal, domain=None, range=Optional[str])

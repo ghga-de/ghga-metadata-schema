@@ -675,7 +675,7 @@ type Publication
     title: String
     abstract: String
     author: String
-    year: String
+    year: Integer
     journal: String
     id: String!
     alias: String!
