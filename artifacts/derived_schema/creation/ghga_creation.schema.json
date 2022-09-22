@@ -2321,7 +2321,7 @@
             },
             "year": {
                "description": "Year in which the paper was published.",
-               "type": "string"
+               "type": "integer"
             }
          },
          "required": [

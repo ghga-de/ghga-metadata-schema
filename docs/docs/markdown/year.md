@@ -9,7 +9,7 @@ URI: [GHGA:year](https://w3id.org/GHGA/year)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 
 ## Parents
 

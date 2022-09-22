@@ -262,7 +262,7 @@ CREATE TABLE publication (
 	title TEXT, 
 	abstract TEXT, 
 	author TEXT, 
-	year TEXT, 
+	year INTEGER, 
 	journal TEXT, 
 	id TEXT NOT NULL, 
 	alias TEXT NOT NULL, 

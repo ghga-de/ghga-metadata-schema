@@ -1104,6 +1104,7 @@ slots:
   year:
     description: >-
       Year in which the paper was published.
+    range: integer
 
   journal:
     description: >-

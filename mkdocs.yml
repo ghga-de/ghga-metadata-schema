@@ -16,7 +16,7 @@ theme:
     - navigation.expand
     - toc.integrate
   icon:
-    repo: fontawesome/brands/github-square
+    repo: fontawesome/brands/github
 nav:
   - Home: index.md
   - Schema Documentation: docs/index.md

@@ -691,7 +691,7 @@ linkml:Nodeidentifier NONLITERAL
           <title> @linkml:String ? ;
           <abstract> @linkml:String ? ;
           <author> @linkml:String ? ;
-          <year> @linkml:String ? ;
+          <year> @linkml:Integer ? ;
           <journal> @linkml:String ? ;
           <alias> @linkml:String ;
           <xref> @linkml:String *
