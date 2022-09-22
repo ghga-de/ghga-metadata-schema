@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-22T12:25:05
+# Generation date: 2022-09-21T16:15:44
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -366,7 +366,6 @@ class CreateProject(ResearchActivity):
     alias: str = None
     title: str = None
     description: str = None
-    has_publication: Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
 
@@ -385,10 +384,6 @@ class CreateProject(ResearchActivity):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if not isinstance(self.has_publication, list):
-            self.has_publication = [self.has_publication] if self.has_publication is not None else []
-        self.has_publication = [v if isinstance(v, CreatePublication) else CreatePublication(**as_dict(v)) for v in self.has_publication]
 
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
@@ -696,13 +691,13 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     library_type: str = None
     library_selection: str = None
     library_preparation: str = None
-    library_preparation_kit_retail_name: str = None
-    library_preparation_kit_manufacturer: str = None
+    target_regions: str = None
     alias: str = None
     description: str = None
+    library_preparation_kit_retail_name: Optional[str] = None
+    library_preparation_kit_manufacturer: Optional[str] = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
-    target_regions: Optional[str] = None
     rnaseq_strandedness: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -732,15 +727,10 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
         if not isinstance(self.library_preparation, str):
             self.library_preparation = str(self.library_preparation)
 
-        if self._is_empty(self.library_preparation_kit_retail_name):
-            self.MissingRequiredField("library_preparation_kit_retail_name")
-        if not isinstance(self.library_preparation_kit_retail_name, str):
-            self.library_preparation_kit_retail_name = str(self.library_preparation_kit_retail_name)
-
-        if self._is_empty(self.library_preparation_kit_manufacturer):
-            self.MissingRequiredField("library_preparation_kit_manufacturer")
-        if not isinstance(self.library_preparation_kit_manufacturer, str):
-            self.library_preparation_kit_manufacturer = str(self.library_preparation_kit_manufacturer)
+        if self._is_empty(self.target_regions):
+            self.MissingRequiredField("target_regions")
+        if not isinstance(self.target_regions, str):
+            self.target_regions = str(self.target_regions)
 
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
@@ -752,14 +742,17 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self.library_preparation_kit_retail_name is not None and not isinstance(self.library_preparation_kit_retail_name, str):
+            self.library_preparation_kit_retail_name = str(self.library_preparation_kit_retail_name)
+
+        if self.library_preparation_kit_manufacturer is not None and not isinstance(self.library_preparation_kit_manufacturer, str):
+            self.library_preparation_kit_manufacturer = str(self.library_preparation_kit_manufacturer)
+
         if self.primer is not None and not isinstance(self.primer, str):
             self.primer = str(self.primer)
 
         if self.end_bias is not None and not isinstance(self.end_bias, str):
             self.end_bias = str(self.end_bias)
-
-        if self.target_regions is not None and not isinstance(self.target_regions, str):
-            self.target_regions = str(self.target_regions)
 
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
@@ -996,19 +989,21 @@ class CreateBiospecimen(MaterialEntity):
     class_name: ClassVar[str] = "create biospecimen"
     class_model_uri: ClassVar[URIRef] = GHGA.CreateBiospecimen
 
+    has_individual: Union[dict, "CreateIndividual"] = None
     alias: str = None
     name: Optional[str] = None
     type: Optional[str] = None
     description: Optional[str] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
-    has_individual: Optional[Union[dict, "CreateIndividual"]] = None
-    has_anatomical_entity: Optional[Union[Union[dict, "CreateAnatomicalEntity"], List[Union[dict, "CreateAnatomicalEntity"]]]] = empty_list()
-    has_disease: Optional[Union[Union[dict, "CreateDisease"], List[Union[dict, "CreateDisease"]]]] = empty_list()
-    has_phenotypic_feature: Optional[Union[Union[dict, "CreatePhenotypicFeature"], List[Union[dict, "CreatePhenotypicFeature"]]]] = empty_list()
     accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.has_individual):
+            self.MissingRequiredField("has_individual")
+        if not isinstance(self.has_individual, CreateIndividual):
+            self.has_individual = CreateIndividual(**as_dict(self.has_individual))
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -1028,21 +1023,6 @@ class CreateBiospecimen(MaterialEntity):
 
         if self.storage is not None and not isinstance(self.storage, str):
             self.storage = str(self.storage)
-
-        if self.has_individual is not None and not isinstance(self.has_individual, CreateIndividual):
-            self.has_individual = CreateIndividual(**as_dict(self.has_individual))
-
-        if not isinstance(self.has_anatomical_entity, list):
-            self.has_anatomical_entity = [self.has_anatomical_entity] if self.has_anatomical_entity is not None else []
-        self.has_anatomical_entity = [v if isinstance(v, CreateAnatomicalEntity) else CreateAnatomicalEntity(**as_dict(v)) for v in self.has_anatomical_entity]
-
-        if not isinstance(self.has_disease, list):
-            self.has_disease = [self.has_disease] if self.has_disease is not None else []
-        self.has_disease = [v if isinstance(v, CreateDisease) else CreateDisease(**as_dict(v)) for v in self.has_disease]
-
-        if not isinstance(self.has_phenotypic_feature, list):
-            self.has_phenotypic_feature = [self.has_phenotypic_feature] if self.has_phenotypic_feature is not None else []
-        self.has_phenotypic_feature = [v if isinstance(v, CreatePhenotypicFeature) else CreatePhenotypicFeature(**as_dict(v)) for v in self.has_phenotypic_feature]
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -1906,6 +1886,9 @@ class CreatePublication(InformationContentEntity):
     alias: str = None
     title: Optional[str] = None
     abstract: Optional[str] = None
+    author: Optional[str] = None
+    year: Optional[str] = None
+    journal: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1919,6 +1902,15 @@ class CreatePublication(InformationContentEntity):
 
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
+
+        if self.author is not None and not isinstance(self.author, str):
+            self.author = str(self.author)
+
+        if self.year is not None and not isinstance(self.year, str):
+            self.year = str(self.year)
+
+        if self.journal is not None and not isinstance(self.journal, str):
+            self.journal = str(self.journal)
 
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
@@ -3080,6 +3072,15 @@ slots.ontology_name = Slot(uri=GHGA.ontology_name, name="ontology name", curie=G
 slots.ontology_version = Slot(uri=GHGA.ontology_version, name="ontology version", curie=GHGA.curie('ontology_version'),
                    model_uri=GHGA.ontology_version, domain=None, range=Optional[str])
 
+slots.author = Slot(uri=GHGA.author, name="author", curie=GHGA.curie('author'),
+                   model_uri=GHGA.author, domain=None, range=Optional[str])
+
+slots.year = Slot(uri=GHGA.year, name="year", curie=GHGA.curie('year'),
+                   model_uri=GHGA.year, domain=None, range=Optional[str])
+
+slots.journal = Slot(uri=GHGA.journal, name="journal", curie=GHGA.curie('journal'),
+                   model_uri=GHGA.journal, domain=None, range=Optional[str])
+
 slots.named_thing_alias = Slot(uri=GHGA.alias, name="named thing_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.named_thing_alias, domain=NamedThing, range=str)
 
@@ -3106,9 +3107,6 @@ slots.create_project_title = Slot(uri=GHGA.title, name="create project_title", c
 
 slots.create_project_description = Slot(uri=GHGA.description, name="create project_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.create_project_description, domain=CreateProject, range=str)
-
-slots.create_project_has_publication = Slot(uri=GHGA.has_publication, name="create project_has publication", curie=GHGA.curie('has_publication'),
-                   model_uri=GHGA.create_project_has_publication, domain=CreateProject, range=Optional[Union[Union[dict, "CreatePublication"], List[Union[dict, "CreatePublication"]]]])
 
 slots.create_project_has_attribute = Slot(uri=GHGA.has_attribute, name="create project_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.create_project_has_attribute, domain=CreateProject, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
@@ -3234,13 +3232,16 @@ slots.create_library_preparation_protocol_library_preparation = Slot(uri=GHGA.li
                    model_uri=GHGA.create_library_preparation_protocol_library_preparation, domain=CreateLibraryPreparationProtocol, range=str)
 
 slots.create_library_preparation_protocol_library_preparation_kit_retail_name = Slot(uri=GHGA.library_preparation_kit_retail_name, name="create library preparation protocol_library preparation kit retail name", curie=GHGA.curie('library_preparation_kit_retail_name'),
-                   model_uri=GHGA.create_library_preparation_protocol_library_preparation_kit_retail_name, domain=CreateLibraryPreparationProtocol, range=str)
+                   model_uri=GHGA.create_library_preparation_protocol_library_preparation_kit_retail_name, domain=CreateLibraryPreparationProtocol, range=Optional[str])
 
 slots.create_library_preparation_protocol_library_preparation_kit_manufacturer = Slot(uri=GHGA.library_preparation_kit_manufacturer, name="create library preparation protocol_library preparation kit manufacturer", curie=GHGA.curie('library_preparation_kit_manufacturer'),
-                   model_uri=GHGA.create_library_preparation_protocol_library_preparation_kit_manufacturer, domain=CreateLibraryPreparationProtocol, range=str)
+                   model_uri=GHGA.create_library_preparation_protocol_library_preparation_kit_manufacturer, domain=CreateLibraryPreparationProtocol, range=Optional[str])
 
 slots.create_library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="create library preparation protocol_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.create_library_preparation_protocol_has_attribute, domain=CreateLibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+
+slots.create_library_preparation_protocol_target_regions = Slot(uri=GHGA.target_regions, name="create library preparation protocol_target regions", curie=GHGA.curie('target_regions'),
+                   model_uri=GHGA.create_library_preparation_protocol_target_regions, domain=CreateLibraryPreparationProtocol, range=str)
 
 slots.create_sequencing_protocol_alias = Slot(uri=GHGA.alias, name="create sequencing protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_sequencing_protocol_alias, domain=CreateSequencingProtocol, range=str)
@@ -3282,16 +3283,7 @@ slots.create_biospecimen_type = Slot(uri=GHGA.type, name="create biospecimen_typ
                    model_uri=GHGA.create_biospecimen_type, domain=CreateBiospecimen, range=Optional[str])
 
 slots.create_biospecimen_has_individual = Slot(uri=GHGA.has_individual, name="create biospecimen_has individual", curie=GHGA.curie('has_individual'),
-                   model_uri=GHGA.create_biospecimen_has_individual, domain=CreateBiospecimen, range=Optional[Union[dict, "CreateIndividual"]])
-
-slots.create_biospecimen_has_anatomical_entity = Slot(uri=GHGA.has_anatomical_entity, name="create biospecimen_has anatomical entity", curie=GHGA.curie('has_anatomical_entity'),
-                   model_uri=GHGA.create_biospecimen_has_anatomical_entity, domain=CreateBiospecimen, range=Optional[Union[Union[dict, "CreateAnatomicalEntity"], List[Union[dict, "CreateAnatomicalEntity"]]]])
-
-slots.create_biospecimen_has_disease = Slot(uri=GHGA.has_disease, name="create biospecimen_has disease", curie=GHGA.curie('has_disease'),
-                   model_uri=GHGA.create_biospecimen_has_disease, domain=CreateBiospecimen, range=Optional[Union[Union[dict, "CreateDisease"], List[Union[dict, "CreateDisease"]]]])
-
-slots.create_biospecimen_has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_feature, name="create biospecimen_has phenotypic feature", curie=GHGA.curie('has_phenotypic_feature'),
-                   model_uri=GHGA.create_biospecimen_has_phenotypic_feature, domain=CreateBiospecimen, range=Optional[Union[Union[dict, "CreatePhenotypicFeature"], List[Union[dict, "CreatePhenotypicFeature"]]]])
+                   model_uri=GHGA.create_biospecimen_has_individual, domain=CreateBiospecimen, range=Union[dict, "CreateIndividual"])
 
 slots.create_sample_alias = Slot(uri=GHGA.alias, name="create sample_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_sample_alias, domain=CreateSample, range=str)
