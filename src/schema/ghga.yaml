@@ -264,7 +264,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
-      - ega accession mixination mixin
+      - ega accession mixin
       - attribute mixin
       - release status mixin
     description: >-
@@ -630,7 +630,7 @@ classes:
         required: false
         recommended: true
       cell barcode size:
-        required: false 
+        required: false
         recommended: true
       cell barcode offset:
         required: false
@@ -638,7 +638,6 @@ classes:
       sample barcode read:
         required: false
         recommended: true
-      
 
   technology:
     is_a: information content entity
@@ -1141,7 +1140,7 @@ classes:
     is_a: information content entity
     mixins:
       - accession mixin
-      - ega accession mixination mixin
+      - ega accession mixin
       - release status mixin
       - attribute mixin
     description: >-
@@ -1188,7 +1187,6 @@ classes:
       has sample:
         description: >-
           One or more Sample entities that are referenced by this Dataset.
-        required: false
         multivalued: true
         required: true
         inlined: true
@@ -2226,7 +2224,7 @@ slots:
     in_subset:
 
   sequencing center:
-    required: falls
+    required: false
     description: >-
       Center where sample was sequenced.
     in_subset:
