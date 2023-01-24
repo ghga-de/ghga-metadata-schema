@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import click
 from ghga_metadata_utils.generators.jsonschemagen import GhgaJsonSchemaGenerator
 from linkml.utils.generator import shared_arguments
