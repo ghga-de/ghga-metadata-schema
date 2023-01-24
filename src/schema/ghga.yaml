@@ -30,9 +30,6 @@ subsets:
   restricted:
     description: >-
       Subset of properties that are considered to be restricted.
-  recommended:
-    description: >-
-      Subset of properties that are considered to be of importance for FAIR data sharing.
 
 classes:
   named thing:
@@ -539,12 +536,16 @@ classes:
         required: true
       library preparation kit retail name:
         required: false
+        recommended: true
       library preparation kit manufacturer:
         required: false
+        recommended: true
       primer:
         required: false
+        recommended: true
       end bias:
         required: false
+        recommended: true
       has attribute:
         description: >-
           One or more attributes that further characterizes this Library Preparation Protocol.
@@ -552,6 +553,7 @@ classes:
         required: true
       rnaseq strandedness:
         required: false
+        recommended: true
 
   sequencing protocol:
     is_a: protocol
@@ -592,34 +594,50 @@ classes:
           One or more attributes that further characterizes this Sequencing Protocol.
       sequencing center:
         required: false
+        recommended: true
       paired or single end:
         required: false
+        recommended: true
+      forward or reverse:
+        required: false
+        recommended: true
       sequencing read length:
         required: false
       index sequence:
         required: false
+        recommended: true
       target coverage:
         required: false
       lane number:
         required: false
+        recommended: true
       flow cell id:
         required: false
+        recommended: true
       flow cell type:
         required: false
+        recommended: true
       umi barcode read:
         required: false
+        recommended: true
       umi barcode size:
         required: false
+        recommended: true
       umi barcode offset:
         required: false
+        recommended: true
       cell barcode read:
         required: false
+        recommended: true
       cell barcode size:
         required: false 
+        recommended: true
       cell barcode offset:
         required: false
+        recommended: true
       sample barcode read:
         required: false
+        recommended: true
       
 
   technology:
@@ -717,8 +735,10 @@ classes:
         required: true
       isolation:
         required: false
+        recommended: true
       storage:
         required: false
+        recommended: true
       has individual:
         description: >-
           The Individual entity from which this Biospecimen was derived.
@@ -782,8 +802,10 @@ classes:
         required: true
       vital status at sampling:
         required: false
+        recommended: true
       case control status:
         required: false
+        recommended: true
       has individual:
         description: >-
           The Individual from which this Sample was derived from.
@@ -804,13 +826,16 @@ classes:
         inlined_as_list: false
       has anatomical entity:
         required: false
+        recommended: true
         multivalued: true
         inlined: true
         inlined_as_list: true
       isolation:
         required: false
+        recommended: true
       storage:
         required: false
+        recommended: true
 
   individual:
     is_a: person
@@ -1214,11 +1239,13 @@ classes:
           Data use permission associated with a policy. Typically one or more terms from DUO
           and should be descendants of 'DUO:0000001 data use permission'.
         required: true
+        recommended: true
       has data use modifier:
         description: >-
           Modifier for Data use permission associated with a policy.
           Should be descendants of 'DUO:0000017 data use modifier'
         required: false
+        recommended: true
 
   data access policy:
     is_a: information content entity
@@ -1255,6 +1282,7 @@ classes:
           URL for the policy, if available. This is useful if the terms of the policy is
           made available online at a resolvable URL.
         required: false
+        recommended: true
       has data access committee:
         description: >-
           The Data Access Committee linked to this policy.
@@ -1265,6 +1293,7 @@ classes:
         description: >-
           Data Use Condition entities that are associated with the Data Access Policy.
         required: false
+        recommended: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1918,7 +1947,6 @@ slots:
     description: Anatomical site associated with an entity.
     range: anatomical entity
     in_subset:
-      - recommended
 
   geographical region:
     description: >-
@@ -1951,7 +1979,6 @@ slots:
   has data use condition:
     description: Data Use Condition entities that are associated with an entity.
     in_subset:
-      - recommended
       - restricted
 
   role:
@@ -1969,7 +1996,6 @@ slots:
     range: data use permission
     inlined: true
     in_subset:
-      - recommended
       - restricted
 
   has data use modifier:
@@ -1979,7 +2005,6 @@ slots:
     range: data use modifier
     inlined: true
     in_subset:
-      - recommended
       - restricted
 
   sex:
@@ -2012,14 +2037,12 @@ slots:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
     in_subset:
-      - recommended
 
   storage:
     description: >-
       Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
     in_subset:
-      - recommended
 
   vital status:
     description: >-
@@ -2088,7 +2111,6 @@ slots:
   policy url:
     description: Alternative to pasting the Data Access Policy text.
     in_subset:
-      - recommended
       - restricted
 
   has data access committee:
@@ -2170,13 +2192,11 @@ slots:
       This may include the vendor name, kit name and kit version 
       (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
     in_subset:
-      - recommended
 
   library preparation kit manufacturer:
     description: >-
       Manufacturer of library preparation kit
     in_subset:
-      - recommended
 
   primer:
     description: >-
@@ -2185,7 +2205,6 @@ slots:
     exact_mappings:
       - EFO:0010192
     in_subset:
-      - recommended
 
   end bias:
     description: >-
@@ -2194,7 +2213,6 @@ slots:
     exact_mappings:
       - EFO:0010187
     in_subset:
-      - recommended
 
   target regions:
     description: >-
@@ -2206,14 +2224,12 @@ slots:
       The strandedness of the library, whether reads come from both strands of the cDNA
       or only from the first (antisense) or the second (sense) strand.
     in_subset:
-      - recommended
 
   sequencing center:
     required: falls
     description: >-
       Center where sample was sequenced.
     in_subset:
-      - recommended
 
   instrument model:
     description: >-
@@ -2230,7 +2246,6 @@ slots:
     description: >-
       A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
     in_subset:
-      - recommended
     exact_mappings:
       - NCIT:C165443
 
@@ -2241,7 +2256,6 @@ slots:
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
     range: paired or single end enum
     in_subset:
-      - recommended
 
   forward or reverse:
     description: >-
@@ -2249,7 +2263,6 @@ slots:
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: forward or reverse enum
     in_subset:
-      - recommended
 
   reference chromosome:
     description: >-
@@ -2266,7 +2279,6 @@ slots:
     description: >-
       The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
     in_subset:
-      - recommended
 
   target coverage:
     description: >-
@@ -2278,7 +2290,6 @@ slots:
       Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
       The barcode assigned to a flow cell used in nucleotide sequencing.
     in_subset:
-      - recommended
 
   flow cell type:
     description: >-
@@ -2287,63 +2298,53 @@ slots:
       Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
       The sample flows through the center of a fluid column of sheath fluid in the flow cell.
     in_subset:
-      - recommended
 
   umi barcode read:
     description: >-
       The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
     in_subset:
-      - recommended
 
   umi barcode offset:
     description: >-
       The offset in sequence of the UMI identifying barcode. (E.g. '16').
     in_subset:
-      - recommended
 
   umi barcode size:
     description: >-
       The size of the UMI identifying barcode (Eg. '10').
     in_subset:
-      - recommended
 
   cell barcode read:
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
     in_subset:
-      - recommended
 
   cell barcode offset:
     description: >-
       The offset in sequence of the cell identifying barcode. (Eg. '0').
     in_subset:
-      - recommended
 
   cell barcode size:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
     in_subset:
-      - recommended
 
   sample barcode read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
     in_subset:
-      - recommended
 
   case control status:
     description: >-
       Whether the sample is to be treated as Case or Control in a Study.
     range: case control status enum
     in_subset:
-      - recommended
 
   vital status at sampling:
     description: >-
       Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
     range: vital status enum
     in_subset:
-      - recommended
 
   submission status:
     description: >-
