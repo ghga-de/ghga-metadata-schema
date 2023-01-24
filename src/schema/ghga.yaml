@@ -30,9 +30,6 @@ subsets:
   restricted:
     description: >-
       Subset of properties that are considered to be restricted.
-  public:
-    description: >-
-      Subset of properties that are considered to be public.
   essential:
     description: >-
       Subset of properties that are considered to be essential for the functionality of GHGA.
@@ -243,8 +240,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
-      - ega accession mixin
-      - publication mixin
+      - ega accession mixination mixin
       - attribute mixin
       - release status mixin
     description: >-
@@ -1016,8 +1012,7 @@ classes:
     is_a: information content entity
     mixins:
       - accession mixin
-      - ega accession mixin
-      - publication mixin
+      - ega accession mixination mixin
       - release status mixin
       - attribute mixin
     description: >-
@@ -1594,20 +1589,17 @@ slots:
     description: The name for an entity.
     in_subset:
       - essential
-      - public
 
   type:
     description: The type of an entity.
     in_subset:
       - essential
-      - public
       # Note: Not to be confused with rdf:type
 
   title:
     description: The title that describes an entity.
     in_subset:
       - essential
-      - public
 
   abstract:
     description: >-
@@ -1615,7 +1607,6 @@ slots:
       Can also hold abstract from a publication related to this study
     in_subset:
       - optional
-      - public
 
   technical replicates:
     description: >-
@@ -1624,7 +1615,6 @@ slots:
       variation within an experiment.
     in_subset:
       - optional
-      - public
     exact_mappings:
       - EFO:0002090
 
@@ -1634,7 +1624,6 @@ slots:
       independent biological replicates made from different individual biosamples.
     in_subset:
       - optional
-      - public
     exact_mappings:
       - EFO:0002091
 
@@ -1644,7 +1633,6 @@ slots:
       for the assay that was repeated.
     in_subset:
       - optional
-      - public
     exact_mappings:
       - NCIT:C178859
 
@@ -1653,7 +1641,6 @@ slots:
     multivalued: true
     in_subset:
       - optional
-      - public
 
   creation date:
     description: Timestamp (in ISO 8601 format) when the entity was created.
@@ -1678,7 +1665,6 @@ slots:
     description: Description of an entity.
     in_subset:
       - essential
-      - public
     exact_mappings:
       - SIO:000185
 
@@ -1687,21 +1673,18 @@ slots:
     range: study
     in_subset:
       - essential
-      - public
 
   has project:
     description: The project associated with an entity.
     range: project
     in_subset:
       - optional
-      - public
 
   has publication:
     description: The Publication associated with an entity.
     range: publication
     in_subset:
       - optional
-      - public
 
   has sample:
     description: The sample associated with an entity.
@@ -1813,7 +1796,6 @@ slots:
     range: anatomical entity
     in_subset:
       - recommended
-      - public
 
   geographical region:
     description: >-
@@ -1828,7 +1810,6 @@ slots:
     range: disease
     in_subset:
       - essential
-      - public
 
   has phenotypic feature:
     description: Phenotypic feature concept that the entity is associated with.
@@ -1912,14 +1893,12 @@ slots:
       aggregated according to genetically determined spatial relationships, performing a specific function.
     in_subset:
       - essential
-      - public
 
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
     in_subset:
       - recommended
-      - public
 
   storage:
     description: >-
@@ -1927,7 +1906,6 @@ slots:
       (e.g. frozen in liquid nitrogen).
     in_subset:
       - recommended
-      - public
 
   vital status:
     description: >-
@@ -1955,7 +1933,6 @@ slots:
       The format of the file: BAM, SAM, CRAM, BAI, etc.
     in_subset:
       - essential
-      - public
     range: file format enum
 
   size:
@@ -1971,7 +1948,6 @@ slots:
       that the data was received correctly.
     in_subset:
       - essential
-      - public
     exact_mappings:
       - NCIT:C43522
 
@@ -1980,7 +1956,6 @@ slots:
       The type of algorithm used to generate the checksum of a file.
     in_subset:
       - essential
-      - public
 
   drs uri:
     description: >-
@@ -2054,7 +2029,6 @@ slots:
       The Institution(s) associated with an entity.
     in_subset:
       - essential
-      - public
 
   library name:
     description: >-
@@ -2062,7 +2036,6 @@ slots:
       The same name may refer to multiple versions of the same continually updated library.
     in_subset:
       - essential
-      - public
 
   library layout:
     description: >-
@@ -2071,14 +2044,12 @@ slots:
       - NCIT:C175894
     in_subset:
       - essential
-      - public
 
   library type:
     description: >-
       Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
     in_subset:
       - essential
-      - public
 
   library selection:
     description: >-
@@ -2086,14 +2057,12 @@ slots:
       Library Selection method (e.g. random, PCA, cDNA, etc )
     in_subset:
       - essential
-      - public
 
   library preparation:
     description: >-
       The general method for sequencing library preparation (e.g. KAPA PCR-free).
     in_subset:
       - essential
-      - public
 
   library preparation kit retail name:
     description: >-
@@ -2102,14 +2071,12 @@ slots:
       (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
     in_subset:
       - recommended
-      - public
 
   library preparation kit manufacturer:
     description: >-
       Manufacturer of library preparation kit
     in_subset:
       - recommended
-      - public
 
   primer:
     description: >-
@@ -2119,7 +2086,6 @@ slots:
       - EFO:0010192
     in_subset:
       - recommended
-      - public
 
   end bias:
     description: >-
@@ -2129,14 +2095,12 @@ slots:
       - EFO:0010187
     in_subset:
       - recommended
-      - public
 
   target regions:
     description: >-
       Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
     in_subset:
       - essential
-      - public
 
   rnaseq strandedness:
     description: >-
@@ -2144,21 +2108,18 @@ slots:
       or only from the first (antisense) or the second (sense) strand.
     in_subset:
       - recommended
-      - public
 
   sequencing center:
     description: >-
       Center where sample was sequenced.
     in_subset:
       - recommended
-      - public
 
   instrument model:
     description: >-
       The name and model of the technology platform used to perform sequencing.
     in_subset:
       - essential
-      - public
 
   sequencing read length:
     description: >-
@@ -2171,7 +2132,6 @@ slots:
       A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
     in_subset:
       - recommended
-      - public
     exact_mappings:
       - NCIT:C165443
 
@@ -2183,7 +2143,6 @@ slots:
     range: paired or single end enum
     in_subset:
       - recommended
-      - public
 
   forward or reverse:
     description: >-
@@ -2192,14 +2151,12 @@ slots:
     range: forward or reverse enum
     in_subset:
       - recommended
-      - public
 
   reference chromosome:
     description: >-
       The reference chromosome used for this Analysis.
     in_subset:
       - essential
-      - public
 
   reference genome:
     description: >-
@@ -2207,14 +2164,12 @@ slots:
       Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
     in_subset:
       - essential
-      - public
 
   lane number:
     description: >-
       The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
     in_subset:
       - recommended
-      - public
 
   target coverage:
     description: >-
@@ -2227,7 +2182,6 @@ slots:
       The barcode assigned to a flow cell used in nucleotide sequencing.
     in_subset:
       - recommended
-      - public
 
   flow cell type:
     description: >-
@@ -2237,56 +2191,48 @@ slots:
       The sample flows through the center of a fluid column of sheath fluid in the flow cell.
     in_subset:
       - recommended
-      - public
 
   umi barcode read:
     description: >-
       The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
     in_subset:
       - recommended
-      - public
 
   umi barcode offset:
     description: >-
       The offset in sequence of the UMI identifying barcode. (E.g. '16').
     in_subset:
       - recommended
-      - public
 
   umi barcode size:
     description: >-
       The size of the UMI identifying barcode (Eg. '10').
     in_subset:
       - recommended
-      - public
 
   cell barcode read:
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
     in_subset:
       - recommended
-      - public
 
   cell barcode offset:
     description: >-
       The offset in sequence of the cell identifying barcode. (Eg. '0').
     in_subset:
       - recommended
-      - public
 
   cell barcode size:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
     in_subset:
       - recommended
-      - public
 
   sample barcode read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
     in_subset:
       - recommended
-      - public
 
   case control status:
     description: >-
@@ -2294,7 +2240,6 @@ slots:
     range: case control status enum
     in_subset:
       - recommended
-      - public
 
   vital status at sampling:
     description: >-
@@ -2302,7 +2247,6 @@ slots:
     range: vital status enum
     in_subset:
       - recommended
-      - public
 
   submission status:
     description: >-
