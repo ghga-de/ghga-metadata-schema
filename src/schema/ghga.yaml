@@ -30,15 +30,9 @@ subsets:
   restricted:
     description: >-
       Subset of properties that are considered to be restricted.
-  essential:
-    description: >-
-      Subset of properties that are considered to be essential for the functionality of GHGA.
   recommended:
     description: >-
       Subset of properties that are considered to be of importance for FAIR data sharing.
-  optional:
-    description: >-
-      Subset of properties that are considered to be optional.
 
 classes:
   named thing:
@@ -59,18 +53,23 @@ classes:
       id:
         description: >-
           The internal unique identifier for an entity.
+        required: true
       alias:
         description: >-
           The alias (alternate identifier) for an entity.
+        required: true
       xref:
         description: >-
           Holds one or more database cross references for an entity.
+        required: true
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the entity was created.
+        required: true
       update date:
         description: >-
           Timestamp (in ISO 8601 format) when the entity was updated.
+        required: true
 
   attribute:
     description: >-
@@ -93,6 +92,7 @@ classes:
           term from an ontology.
           For example, 'MAXO:0000616' indicates that the attribute is a measurement
           of oxygen saturation in the blood.
+        required: false
       value:
         description: >-
           The value for an attribute. Usually this is a numerical value (without the units).
@@ -103,6 +103,7 @@ classes:
           term from an ontology that describes how to interpret the value.
           For example, 'SIO:001413' indicates that the value is to be interpreted as
           a percentage.
+        required: false
 
   agent:
     is_a: named thing
@@ -113,6 +114,11 @@ classes:
     slots:
       - name
       - description
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
     exact_mappings:
       - prov:Agent
 
@@ -125,6 +131,13 @@ classes:
       - given name
       - family name
       - additional name
+    slot_usage:
+      given name:
+        required: false
+      family name:
+        required: false
+      additional name:
+        required: false
     exact_mappings:
       - NCIT:C25190
       - SIO:000498
@@ -137,6 +150,9 @@ classes:
       A group of people organized for a specific purpose.
     slots:
       - name
+    slot_usage:
+      name:
+        required: true
 
   material entity:
     is_a: named thing
@@ -186,6 +202,11 @@ classes:
     exact_mappings:
       - SIO:000747
       - OBI:0000066
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
 
   data transformation:
     is_a: planned process
@@ -196,6 +217,11 @@ classes:
     slots:
       - title
       - description
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
     exact_mappings:
       - OBI:0200000
 
@@ -209,6 +235,11 @@ classes:
     slots:
       - title
       - description
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
     exact_mappings:
       - SEPIO:0000004
 
@@ -221,16 +252,12 @@ classes:
       A high level organization for a collection of studies based on a
       research proposal that aims to achieve certain goals.
     slot_usage:
-      alias:
-        required: true
       title:
         description: >-
           Comprehensive title for the project.
-        required: true
       description:
         description: >-
           Short textual description of the project.
-        required: true
       has attribute:
         description: >-
           Custom attributes for the Project 
@@ -252,17 +279,14 @@ classes:
       - affiliation
       - has project
       - has file
+      - has publication
     slot_usage:
-      alias:
-        required: true
       title:
         description: >-
           A comprehensive title for the study.
-        required: true
       description:
         description: >-
           A detailed description (abstract) that describes the goals of this Study.
-        required: true
       type:
         description: >-
           The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
@@ -274,13 +298,13 @@ classes:
       has publication:
         description: >-
           One or more Publication entities associated with this Study.
-        range: publication
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has project:
         description: The project associated with this Study.
-        range: project
+        required: false
         inlined: true
         inlined_as_list: false
       has attribute:
@@ -291,10 +315,12 @@ classes:
         description: >-
           The release status of a Study.
         range: release status enum
+        required: true
       has file:
         description: >-
           Additional/supplementary files associated with a Study.
         range: file
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -322,8 +348,6 @@ classes:
       - has protocol
       - has experiment process
     slot_usage:
-      alias:
-        required: true
       title:
         description: >-
           Name for the experiment (eg: GHGAE_PBMC_RNAseq).
@@ -334,17 +358,22 @@ classes:
       type:
         description: >-
           The type of Experiment.
+        required: true
+      biological replicates:
+        required: false
+      technical replicates:
+        required: false
+      experimental replicates:
+        required: false
       has study:
         description: >-
           The Study entity associated with this Experiment.
-        range: study
         required: true
         inlined: true
         inlined_as_list: true
       has sample:
         description: >-
           The Sample entity associated with this Experiment.
-        range: sample
         multivalued: true
         required: true
         inlined: true
@@ -352,14 +381,12 @@ classes:
       has file:
         description: >-
           One or more Files entities that are generated as output of this Experiment.
-        range: file
         multivalued: true
         inlined: true
         inlined_as_list: true
       has protocol:
         description: >-
           One or more Protocol entities associated with this Experiment.
-        range: protocol
         multivalued: true
         required: true
         inlined: true
@@ -368,6 +395,7 @@ classes:
         description: >-
           One or more Experiment Processes entities associated with this Experiment.
         range: experiment process
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -392,6 +420,7 @@ classes:
         description: >-
           The type of experiment process.
         range: experiment process type enum
+        required: true
       title:
         description: >-
           A descriptive title that explains the step(s) involved in performing the experiment
@@ -401,25 +430,27 @@ classes:
         description: >-
           The input to the Experiment Process. Usually a Sample entity.
         range: sample
+        required: true
         inlined: true
         inlined_as_list: false
       has protocol:
         description: >-
           The Protocol entity used by this Experiment Process.
-        range: protocol
+        required: true
         inlined: true
         inlined_as_list: false
       has agent:
         description: >-
           The Agent - a software, institution, or human - that is executing or
           responsible for executing the Experiment Process.
-        range: agent
+        required: true
         inlined: true
         inlined_as_list: false
       has output:
         description: >-
           The output of this Experiment Process. Usually a File entity.
         range: file
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: false
@@ -446,25 +477,32 @@ classes:
       name:
         description: >-
           Name of the protocol (eg: Sample extraction_PCR amplification).
+        required: true
       type:
         description: >-
           Type of the protocol (eg: Target enrichment).
+        required: true
       description:
         description: >-
           Detailed description of the Protocol.
+        required: true
       url:
         description: >-
           URL for the resource that describes this Protocol.
+        required: true
       has file:
         description: >-
           A document that describes the Protocol.
+        required: true
       xref:
         description: >-
           One or more cross-references for this Protocol. 
           (Eg: manufacturer protocol, protocol from publication etc )
+        required: true
       has attribute:
         description: >-
           One or more attributes that further characterizes this Protocol.
+        required: true
 
   library preparation protocol:
     is_a: protocol
@@ -503,11 +541,17 @@ classes:
         required: false
       library preparation kit manufacturer:
         required: false
+      primer:
+        required: false
+      end bias:
+        required: false
       has attribute:
         description: >-
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
         required: true
+      rnaseq strandedness:
+        required: false
 
   sequencing protocol:
     is_a: protocol
@@ -546,6 +590,37 @@ classes:
       has attribute:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
+      sequencing center:
+        required: false
+      paired or single end:
+        required: false
+      sequencing read length:
+        required: false
+      index sequence:
+        required: false
+      target coverage:
+        required: false
+      lane number:
+        required: false
+      flow cell id:
+        required: false
+      flow cell type:
+        required: false
+      umi barcode read:
+        required: false
+      umi barcode size:
+        required: false
+      umi barcode offset:
+        required: false
+      cell barcode read:
+        required: false
+      cell barcode size:
+        required: false 
+      cell barcode offset:
+        required: false
+      sample barcode read:
+        required: false
+      
 
   technology:
     is_a: information content entity
@@ -573,6 +648,7 @@ classes:
         required: true
       has workflow step:
         range: workflow step
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -592,6 +668,7 @@ classes:
         description: >-
           One or more parameters that are associated with this Workflow Step.
         range: workflow parameter
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -606,9 +683,11 @@ classes:
       key:
         description: >-
           Key that represents the parameter name.
+        required: true
       value:
         description: >-
           Value corresponding to the the parameter key.
+        required: true
 
   biospecimen:
     is_a: material entity
@@ -627,13 +706,19 @@ classes:
       - isolation
       - storage
       - has individual
-
     slot_usage:
-      alias:
+      name:
         required: true
       type:
         description: >-
           The type of Biospecimen.
+        required: false
+      description:
+        required: true
+      isolation:
+        required: false
+      storage:
+        required: false
       has individual:
         description: >-
           The Individual entity from which this Biospecimen was derived.
@@ -681,8 +766,6 @@ classes:
       - has anatomical entity
       - has biospecimen
     slot_usage:
-      alias:
-        required: true
       name:
         description: >-
           Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
@@ -690,34 +773,44 @@ classes:
       type:
         description: >-
           The type of sample.
+        required: true
       description:
         description: >-
           Short textual description of the sample
           (How the sample was collected, sample source,
           protocol followed for processing the sample etc).
         required: true
+      vital status at sampling:
+        required: false
+      case control status:
+        required: false
       has individual:
         description: >-
           The Individual from which this Sample was derived from.
-        range: individual
+        required: true
         inlined: true
         inlined_as_list: false
       xref:
         description: >-
           One or more cross-references for this Sample. For example, this Sample
           may have an EBI BioSamples accession or an EGA Sample accession.
+        required: false
         multivalued: true
       has biospecimen:
         description: >-
           The Biospecimen from which this Sample was prepared from.
-        range: biospecimen
+        required: false
         inlined: true
         inlined_as_list: false
       has anatomical entity:
-        range: anatomical entity
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
+      isolation:
+        required: false
+      storage:
+        required: false
 
   individual:
     is_a: person
@@ -740,24 +833,30 @@ classes:
       - has phenotypic feature
       - has file
     slot_usage:
-      alias:
-        required: true
       sex:
+        required: true
+      karyotype:
         required: true
       age:
         required: true
       vital status:
         description: Last known Vital Status of an Individual.
         required: true
+      geographical region:
+        required: false
+      has ancestry:
+        required: false
       has parent:
         description: One or more parent for this Individual.
         range: individual
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has children:
         description: One or more children for this Individual.
         range: individual
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -767,7 +866,7 @@ classes:
           from the organism. Typically, a concept from Mondo Disease Ontology.
           For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen
           was extracted from - suffers from 'Heart Fibrosarcoma'.
-        range: disease
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -777,7 +876,7 @@ classes:
           from the organism. Typically, a concept from Human Phenotype Ontology.
           For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen
           was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.
-        range: phenotypic feature
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -785,7 +884,7 @@ classes:
         description: >-
           Additional/supplementary files associated with an Individual.
           Typically, a phenopacket or pedigree file.
-        range: file
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -806,6 +905,9 @@ classes:
       counted or sampled at a particular site or in a particular area.
     slots:
       - name
+    slot_usage:
+      name:
+        required: true
 
   family:
     is_a: population
@@ -821,7 +923,7 @@ classes:
       has individual:
         description: >-
           One or more Individuals that collectively define this Family.
-        range: individual
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -829,7 +931,7 @@ classes:
         description: >-
           The Individual that is reported to have a disorder which results in the
           Family being brought into a Study.
-        range: individual
+        required: true
         inlined: true
         inlined_as_list: false
 
@@ -846,7 +948,7 @@ classes:
       has individual:
         description: >-
           One or more Individuals that collectively define this Cohort.
-        range: individual
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -880,14 +982,14 @@ classes:
       - checksum
       - checksum type
     slot_usage:
-      alias:
-        required: true
       name:
         description: >-
           The given filename.
         required: true
       format:
         required: true
+      drs uri:
+        required: false
       checksum:
         required: true
       checksum type:
@@ -918,13 +1020,14 @@ classes:
       alias:
         description: >-
           An alias uniquely identifying this Analysis entitiy.
-        required: true
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
+        required: true
       description:
         description: >-
           Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+        required: true
       reference genome:
         required: true
       reference chromosome:
@@ -940,13 +1043,12 @@ classes:
       has study:
         description: >-
           The Study entity associated with this Analysis.
-        range: study
+        required: true
         inlined: true
         inlined_as_list: false
       has workflow:
         description: >-
           One or more Workflow entities associated with this Analysis.
-        range: workflow
         required: true
         multivalued: true
         inlined: true
@@ -954,7 +1056,7 @@ classes:
       has analysis process:
         description: >-
           One or more Analysis Process entities associated with this Analysis.
-        range: analysis process
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -993,6 +1095,8 @@ classes:
         range: workflow
         inlined: true
         inlined_as_list: false
+      title:
+        required: true
       has agent:
         description: >-
           The Agent - a software, institution, or human - that is executing or
@@ -1031,8 +1135,6 @@ classes:
       - has file
       - has data access policy
     slot_usage:
-      alias:
-        required: true
       title:
         description: >-
           A title for the submitted Dataset.
@@ -1047,7 +1149,6 @@ classes:
       has study:
         description: >-
           One or more Study entities that are referenced by this Dataset.
-        range: study
         multivalued: true
         required: true
         inlined: true
@@ -1055,14 +1156,14 @@ classes:
       has experiment:
         description: >-
           One or more Experiment entities that are referenced by this Dataset.
-        range: experiment
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has sample:
         description: >-
           One or more Sample entities that are referenced by this Dataset.
-        range: sample
+        required: false
         multivalued: true
         required: true
         inlined: true
@@ -1070,14 +1171,13 @@ classes:
       has analysis:
         description: >-
           One or more Analysis entities that are referenced by this Dataset.
-        range: analysis
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has file:
         description: >-
           One or more File entities that collectively are part of this Dataset.
-        range: file
         required: true
         multivalued: true
         inlined: true
@@ -1085,20 +1185,20 @@ classes:
       has data access policy:
         description: >-
           The Data Access Policy that applies to this Dataset.
-        range: data access policy
         required: true
         inlined: true
         inlined_as_list: false
       has publication:
         description: >-
           One or more Publication entities associated with this Dataset.
-        range: publication
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       release status:
         description: >-
           The release status of a Dataset.
+        required: false
         range: release status enum
 
   data use condition:
@@ -1118,6 +1218,7 @@ classes:
         description: >-
           Modifier for Data use permission associated with a policy.
           Should be descendants of 'DUO:0000017 data use modifier'
+        required: false
 
   data access policy:
     is_a: information content entity
@@ -1137,14 +1238,14 @@ classes:
       - has data use condition
       - data request form
     slot_usage:
-      alias:
-        required: true
       name:
         description: >-
           A name for the Data Access Policy.
+        required: true
       description:
         description: >-
           A short description for the Data Access Policy.
+        required: true
       policy text:
         description: >-
           The terms of data use and policy verbiage should be captured here.
@@ -1153,23 +1254,24 @@ classes:
         description: >-
           URL for the policy, if available. This is useful if the terms of the policy is
           made available online at a resolvable URL.
+        required: false
       has data access committee:
         description: >-
           The Data Access Committee linked to this policy.
-        range: data access committee
         required: true
         inlined: true
         inlined_as_list: false
       has data use condition:
         description: >-
           Data Use Condition entities that are associated with the Data Access Policy.
-        range: data use condition
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       data request form:
         description: >-
           Data Request Form that is associated with this Data Access Policy.
+        required: false
 
   data access committee:
     is_a: committee
@@ -1187,8 +1289,6 @@ classes:
       - main contact
       - has member
     slot_usage:
-      alias:
-        required: true
       name:
         description: >-
           The name for the Data Access Committee.
@@ -1196,16 +1296,17 @@ classes:
       description:
         description: >-
           A description for the Data Access Committee.
+        required: true
       main contact:
         description: >-
           The main contact for the Data Access Committee.
-        range: member
+        required: true
         inlined: true
         inlined_as_list: false
       has member:
         description: >-
           All the members that are part of this Data Access Committee.
-        range: member
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1226,6 +1327,7 @@ classes:
       telephone:
         description: >-
           The telephone number of the Member.
+        required: false
       organization:
         description: >-
           The organization that the Member is part of.
@@ -1244,19 +1346,24 @@ classes:
       - year
       - journal
     slot_usage:
-      id:
-        required: true
-      alias:
-        required: true
       title:
         description: >-
           The title for the Publication.
+        required: true
       abstract:
         description: >-
           The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
+        required: false
+      author:
+        required: true
+      year:
+        required: true
+      journal:
+        required: true
       xref:
         description: >-
           One or more cross-references for this Publication.
+        required: false
 
   anatomical entity:
     is_a: material entity
@@ -1305,10 +1412,13 @@ classes:
       - email
       - role
     slot_usage:
+      email:
+        required: false
       role:
         description: >-
           The role of the user
         range: user role enum
+        required: false
 
   submission:
     mixins:
@@ -1342,115 +1452,119 @@ classes:
       id:
         description: >-
           A internal unique identifier for the Submission.
+        required: true
       affiliation:
         description: >-
           Institution/Center/Data Hub that is providing this submission.
+        required: true
       has study:
         description: >-
           Information about a Study entities associated with this submission.
-        range: study
+        required: true
         inlined: true
         inlined_as_list: false
       has project:
         description: >-
           Information about a Project entity associated with this submission.
-        range: project
+        required: false
         inlined: true
         inlined_as_list: false
       has sample:
         description: >-
           Information about one or more Sample entities associated with this submission.
-        range: sample
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has biospecimen:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
-        range: biospecimen
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has individual:
         description: >-
           Information about one or more Individual entities associated with this submission.
-        range: individual
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has experiment:
         description: >-
           Information about one or more Experiment entities associated with this submission.
-        range: experiment
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has protocol:
         description: >-
           One or more Protocol entities associated with this Submission.
-        range: protocol
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has analysis:
         description: >-
           Information about one or more Analysis entities associated with this submission.
-        range: analysis
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       has file:
         description: >-
           Information about one or more File entities associated with this submission.
-        range: file
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
       has dataset:
         description: >-
           One or more Dataset that are part of this submission.
-        range: dataset
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
       has data access policy:
         description: >-
           The Data Access Policy that applies to Dataset in this submission.
-        range: data access policy
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
       has data access committee:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
-        range: data access committee
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
       has member:
         description: >-
           One or more member that are part of the Data Access Committee referenced in this submission.
-        range: member
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
       has publication:
         description: >-
           One or more Publication entities associated with this Submission.
-        range: publication
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the Submission was created.
+        required: false
       update date:
         description: >-
           Timestamp (in ISO 8601 format) when the Submission was updated.
+        required: false
       submission status:
         description: >-
           The status of a Submission.
-        range: submission status enum
+        required: false
 
   data use permission:
     is_a: information content entity
@@ -1482,13 +1596,22 @@ classes:
       - ontology name
       - ontology version
     slot_usage:
+      id:
+        required: true
       concept identifier:
+        required: true
         description: >-
           The Compact URI (CURIE) that uniquely identifies this ontology class.
-      name:
+      concept name:
+        required: false
+      ontology name:
+        required: true
         description: >-
           The name or label (rdfs:label) of an ontology class.
+      ontology version:
+        required: true
       description:
+        required: true
         description: >-
           The description or definition of an ontology class.
 
@@ -1498,24 +1621,38 @@ classes:
     slots:
       - schema type
       - schema version
+    slot_usage:
+      schema type:
+        required: true
+      schema version:
+        required: true
 
   accession mixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
     slots:
       - accession
+    slot_usage:
+      accession:
+        required: true
 
   ega accession mixin:
     mixin: true
     description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
     slots:
       - ega accession
+    slot_usage:
+      ega accession:
+        required: true
 
   attribute mixin:
     mixin: true
     description: Mixin for entities that can have one or more attributes.
     slots:
       - has attribute
+    slot_usage:
+      has attribute:
+        required: true
 
   publication mixin:
     mixin: true
@@ -1523,6 +1660,9 @@ classes:
       Mixin for entities that can have one or more publications.
     slots:
       - has publication
+    slot_usage:
+      has publication:
+        required: true
 
   deprecated mixin:
     mixin: true
@@ -1530,6 +1670,11 @@ classes:
     slots:
       - replaced by
       - deprecation date
+    slot_usage:
+      replaced by:
+        required: true
+      deprecation date:
+        required: true
 
   release status mixin:
     mixin: true
@@ -1537,6 +1682,11 @@ classes:
     slots:
       - release status
       - release date
+    slot_usage:
+      release status:
+        required: true
+      release date:
+        required: true
 
 slots:
   schema type:
@@ -1548,15 +1698,12 @@ slots:
   id:
     description: An identifier that uniquely represents an entity.
     identifier: true
-    required: true
     in_subset:
-      - essential
       - restricted
 
   alias:
     description: The alias for an entity.
     in_subset:
-      - essential
       - restricted
 
   accession:
@@ -1588,25 +1735,21 @@ slots:
   name:
     description: The name for an entity.
     in_subset:
-      - essential
 
   type:
     description: The type of an entity.
     in_subset:
-      - essential
       # Note: Not to be confused with rdf:type
 
   title:
     description: The title that describes an entity.
     in_subset:
-      - essential
 
   abstract:
     description: >-
       The study abstract that describes the goals. 
       Can also hold abstract from a publication related to this study
     in_subset:
-      - optional
 
   technical replicates:
     description: >-
@@ -1614,7 +1757,6 @@ slots:
       the same pool of RNA used to assess technical (as opposed to biological)
       variation within an experiment.
     in_subset:
-      - optional
     exact_mappings:
       - EFO:0002090
 
@@ -1623,7 +1765,6 @@ slots:
       A biological replicate is a replicate role that consists of
       independent biological replicates made from different individual biosamples.
     in_subset:
-      - optional
     exact_mappings:
       - EFO:0002091
 
@@ -1632,7 +1773,6 @@ slots:
       The replicate number of the assay, i.e. the numeric iteration
       for the assay that was repeated.
     in_subset:
-      - optional
     exact_mappings:
       - NCIT:C178859
 
@@ -1640,7 +1780,6 @@ slots:
     description: Database cross references for an entity.
     multivalued: true
     in_subset:
-      - optional
 
   creation date:
     description: Timestamp (in ISO 8601 format) when the entity was created.
@@ -1655,7 +1794,6 @@ slots:
     description: Key/value pairs corresponding to an entity.
     range: attribute
     in_subset:
-      - optional
       - restricted
     multivalued: true
     inlined: true
@@ -1664,7 +1802,6 @@ slots:
   description:
     description: Description of an entity.
     in_subset:
-      - essential
     exact_mappings:
       - SIO:000185
 
@@ -1672,45 +1809,38 @@ slots:
     description: The study associated with an entity.
     range: study
     in_subset:
-      - essential
 
   has project:
     description: The project associated with an entity.
     range: project
     in_subset:
-      - optional
 
   has publication:
     description: The Publication associated with an entity.
     range: publication
     in_subset:
-      - optional
 
   has sample:
     description: The sample associated with an entity.
     range: sample
     in_subset:
-      - essential
       - restricted
 
   has protocol:
     description: The protocol associated with an entity.
     range: protocol
     in_subset:
-      - essential
       - restricted
 
   has experiment:
     description: The experiment associated with an entity.
     range: experiment
     in_subset:
-      - essential
       - restricted
 
   has analysis:
     description: The analysis associated with an entity.
     in_subset:
-      - essential
       - restricted
 
   has sequencing protocol:
@@ -1726,7 +1856,6 @@ slots:
   has experiment process:
     range: experiment process
     in_subset:
-      - essential
       - restricted
 
   has analysis process:
@@ -1737,28 +1866,24 @@ slots:
       The file associated with an entity.
     range: file
     in_subset:
-      - essential
       - restricted
 
   has input:
     description: The input to a Planned Process.
     range: file
     in_subset:
-      - essential
       - restricted
 
   has output:
     description: The output of a Planned Process entity.
     range: file
     in_subset:
-      - optional
       - restricted
 
   has agent:
     description: A person or an entity that is performing a Planned Process entity.
     range: agent
     in_subset:
-      - optional
       - restricted
 
   has workflow:
@@ -1781,14 +1906,12 @@ slots:
     description: The biospecimen associated with an entity.
     range: biospecimen
     in_subset:
-      - optional
       - restricted
 
   has individual:
     description: The subject/individual associated with an entity.
     range: individual
     in_subset:
-      - essential
       - restricted
 
   has anatomical entity:
@@ -1802,32 +1925,27 @@ slots:
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     in_subset:
-      - optional
       - restricted
 
   has disease:
     description: Disease concept that the entity is associated with.
     range: disease
     in_subset:
-      - essential
 
   has phenotypic feature:
     description: Phenotypic feature concept that the entity is associated with.
     range: phenotypic feature
     in_subset:
-      - essential
       - restricted
 
   has parent:
     description: The parent of an entity.
     in_subset:
-      - optional
       - restricted
 
   has children:
     description: The children of an entity.
     in_subset:
-      - optional
       - restricted
 
   has data use condition:
@@ -1870,21 +1988,18 @@ slots:
       the physical difference between male and female; the distinguishing peculiarity of male or female.
     range: biological sex enum
     in_subset:
-      - essential
       - restricted
 
   karyotype:
     description: >-
       The karyotype of an individual if defined.
     in_subset:
-      - optional
       - restricted
 
   age:
     description: Age of an individual.
     range: age range enum
     in_subset:
-      - essential
       - restricted
 
   tissue:
@@ -1892,7 +2007,6 @@ slots:
       An anatomical structure consisting of similarly specialized cells and intercellular matrix,
       aggregated according to genetically determined spatial relationships, performing a specific function.
     in_subset:
-      - essential
 
   isolation:
     description: >-
@@ -1913,7 +2027,6 @@ slots:
       also includes the case where the vital status is unknown.
     range: vital status enum
     in_subset:
-      - essential
       - restricted
 
   has ancestry:
@@ -1925,14 +2038,12 @@ slots:
     inlined: true
     inlined_as_list: true
     in_subset:
-      - optional
       - restricted
 
   format:
     description: >-
       The format of the file: BAM, SAM, CRAM, BAI, etc.
     in_subset:
-      - essential
     range: file format enum
 
   size:
@@ -1947,7 +2058,6 @@ slots:
       value with the one sent with the data. If the two values are the same, the receiver has some confidence
       that the data was received correctly.
     in_subset:
-      - essential
     exact_mappings:
       - NCIT:C43522
 
@@ -1955,7 +2065,6 @@ slots:
     description: >-
       The type of algorithm used to generate the checksum of a file.
     in_subset:
-      - essential
 
   drs uri:
     description: >-
@@ -1969,13 +2078,11 @@ slots:
     description: Data Access Policy associated with an entity.
     range: data access policy
     in_subset:
-      - essential
       - restricted
 
   policy text:
     description: The complete text for the Data Access Policy.
     in_subset:
-      - essential
       - restricted
 
   policy url:
@@ -1988,18 +2095,17 @@ slots:
     description: Data Access Committee associated with an entity.
     range: data access committee
     in_subset:
-      - essential
       - restricted
 
   main contact:
     description: The person who is the main contact for a committee.
     range: member
     in_subset:
-      - essential
       - restricted
 
   has member:
     description: The members associated with a committee.
+    range: member
 
   telephone:
     description: >-
@@ -2028,14 +2134,12 @@ slots:
     description: >-
       The Institution(s) associated with an entity.
     in_subset:
-      - essential
 
   library name:
     description: >-
       A short name identifying the library to potential users.
       The same name may refer to multiple versions of the same continually updated library.
     in_subset:
-      - essential
 
   library layout:
     description: >-
@@ -2043,26 +2147,22 @@ slots:
     exact_mappings:
       - NCIT:C175894
     in_subset:
-      - essential
 
   library type:
     description: >-
       Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
     in_subset:
-      - essential
 
   library selection:
     description: >-
       Whether any method was used to select for or against, enrich, or screen the material being sequenced.
       Library Selection method (e.g. random, PCA, cDNA, etc )
     in_subset:
-      - essential
 
   library preparation:
     description: >-
       The general method for sequencing library preparation (e.g. KAPA PCR-free).
     in_subset:
-      - essential
 
   library preparation kit retail name:
     description: >-
@@ -2100,7 +2200,6 @@ slots:
     description: >-
       Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
     in_subset:
-      - essential
 
   rnaseq strandedness:
     description: >-
@@ -2110,6 +2209,7 @@ slots:
       - recommended
 
   sequencing center:
+    required: falls
     description: >-
       Center where sample was sequenced.
     in_subset:
@@ -2119,7 +2219,6 @@ slots:
     description: >-
       The name and model of the technology platform used to perform sequencing.
     in_subset:
-      - essential
 
   sequencing read length:
     description: >-
@@ -2156,14 +2255,12 @@ slots:
     description: >-
       The reference chromosome used for this Analysis.
     in_subset:
-      - essential
 
   reference genome:
     description: >-
       A published genetic sequence that is used as a reference sequence against which other sequences are compared.
       Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
     in_subset:
-      - essential
 
   lane number:
     description: >-
