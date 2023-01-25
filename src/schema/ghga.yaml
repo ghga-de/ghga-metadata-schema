@@ -1867,13 +1867,16 @@ slots:
 
   has analysis:
     description: The analysis associated with an entity.
+    range: analysis
     in_subset:
       - restricted
 
   has sequencing protocol:
+    range: sequencing protocol
     description: The sequencing protocol associated with an entity.
 
   has library preparation protocol:
+    range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
 
   has technology:
@@ -1976,6 +1979,7 @@ slots:
 
   has data use condition:
     description: Data Use Condition entities that are associated with an entity.
+    range: data use condition
     in_subset:
       - restricted
 
