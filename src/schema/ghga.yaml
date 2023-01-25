@@ -316,7 +316,6 @@ classes:
       has file:
         description: >-
           Additional/supplementary files associated with a Study.
-        range: file
         required: false
         multivalued: true
         inlined: true
