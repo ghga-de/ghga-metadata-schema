@@ -25,6 +25,5 @@ None &#8594;  <sub>0..1</sub> [ExperimentProcess](ExperimentProcess.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

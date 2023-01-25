@@ -21,11 +21,3 @@ URI: [GHGA:analysis_reference_chromosome](https://w3id.org/GHGA/analysis_referen
 ## Used by
 
  * [Analysis](Analysis.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

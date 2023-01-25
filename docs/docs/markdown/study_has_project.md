@@ -21,11 +21,3 @@ URI: [GHGA:study_has_project](https://w3id.org/GHGA/study_has_project)
 ## Used by
 
  * [Study](Study.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
-

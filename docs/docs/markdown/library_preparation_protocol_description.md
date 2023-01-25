@@ -26,7 +26,5 @@ URI: [GHGA:library_preparation_protocol_description](https://w3id.org/GHGA/libra
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

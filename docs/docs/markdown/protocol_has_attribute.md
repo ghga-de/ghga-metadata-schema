@@ -9,7 +9,7 @@ URI: [GHGA:protocol_has_attribute](https://w3id.org/GHGA/protocol_has_attribute)
 
 ## Domain and Range
 
-[Protocol](Protocol.md) &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
+[Protocol](Protocol.md) &#8594;  <sub>1..\*</sub> [Attribute](Attribute.md)
 
 ## Parents
 
@@ -28,6 +28,5 @@ URI: [GHGA:protocol_has_attribute](https://w3id.org/GHGA/protocol_has_attribute)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

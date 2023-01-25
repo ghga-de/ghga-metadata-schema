@@ -16,28 +16,16 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [data access committee➞name](data_access_committee_name.md)
+ *  [agent➞name](agent_name.md)
+ *  [biospecimen➞name](biospecimen_name.md)
+ *  [committee➞name](committee_name.md)
  *  [data access policy➞name](data_access_policy_name.md)
  *  [file➞name](file_name.md)
- *  [ontology class mixin➞name](ontology_class_mixin_name.md)
+ *  [population➞name](population_name.md)
  *  [protocol➞name](protocol_name.md)
  *  [sample➞name](sample_name.md)
  *  [workflow➞name](workflow_name.md)
 
 ## Used by
 
- * [Agent](Agent.md)
- * [Ancestry](Ancestry.md)
- * [Biospecimen](Biospecimen.md)
- * [Cohort](Cohort.md)
- * [Committee](Committee.md)
- * [Family](Family.md)
- * [Population](Population.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-
+ * [DataAccessCommittee](DataAccessCommittee.md)

@@ -26,6 +26,5 @@ URI: [GHGA:submission_has_biospecimen](https://w3id.org/GHGA/submission_has_bios
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

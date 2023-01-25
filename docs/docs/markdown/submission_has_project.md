@@ -21,11 +21,3 @@ URI: [GHGA:submission_has_project](https://w3id.org/GHGA/submission_has_project)
 ## Used by
 
  * [Submission](Submission.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
-

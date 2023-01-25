@@ -21,11 +21,3 @@ URI: [GHGA:experiment_has_study](https://w3id.org/GHGA/experiment_has_study)
 ## Used by
 
  * [Experiment](Experiment.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

@@ -9,7 +9,7 @@ URI: [GHGA:experiment_process_has_output](https://w3id.org/GHGA/experiment_proce
 
 ## Domain and Range
 
-[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>0..\*</sub> [File](File.md)
+[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>1..\*</sub> [File](File.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:experiment_process_has_output](https://w3id.org/GHGA/experiment_proce
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

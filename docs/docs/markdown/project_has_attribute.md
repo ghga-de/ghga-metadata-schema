@@ -26,6 +26,5 @@ URI: [GHGA:project_has_attribute](https://w3id.org/GHGA/project_has_attribute)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

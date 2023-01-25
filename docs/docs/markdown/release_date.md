@@ -16,9 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [release status mixin➞release date](release_status_mixin_release_date.md)
 
 ## Used by
 
- * [Dataset](Dataset.md)
- * [ReleaseStatusMixin](ReleaseStatusMixin.md)
- * [Study](Study.md)

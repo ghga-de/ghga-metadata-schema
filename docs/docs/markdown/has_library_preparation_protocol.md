@@ -9,7 +9,7 @@ URI: [GHGA:has_library_preparation_protocol](https://w3id.org/GHGA/has_library_p
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
 
 ## Parents
 

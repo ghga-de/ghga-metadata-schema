@@ -16,16 +16,14 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [experiment➞technical replicates](experiment_technical_replicates.md)
 
 ## Used by
 
- * [Experiment](Experiment.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
 | **Exact Mappings:** | | EFO:0002090 |
 

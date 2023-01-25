@@ -9,7 +9,7 @@ URI: [GHGA:has_data_use_condition](https://w3id.org/GHGA/has_data_use_condition)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [DataUseCondition](DataUseCondition.md)
 
 ## Parents
 
@@ -25,6 +25,5 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

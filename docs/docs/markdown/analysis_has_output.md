@@ -26,6 +26,5 @@ URI: [GHGA:analysis_has_output](https://w3id.org/GHGA/analysis_has_output)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

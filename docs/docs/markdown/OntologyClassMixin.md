@@ -7,7 +7,7 @@ Mixin for entities that represent an class/term/concept from an ontology.
 URI: [GHGA:OntologyClassMixin](https://w3id.org/GHGA/OntologyClassMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name:string%20%3F],[DataUsePermission]uses%20-.->[OntologyClassMixin],[DataUseModifier]uses%20-.->[OntologyClassMixin],[Ancestry]uses%20-.->[OntologyClassMixin],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[DataUsePermission],[DataUseModifier],[Ancestry],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name:string%20%3F],[DataUsePermission]uses%20-.->[OntologyClassMixin],[DataUseModifier]uses%20-.->[OntologyClassMixin],[Ancestry]uses%20-.->[OntologyClassMixin],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[DataUsePermission],[DataUseModifier],[Ancestry],[AnatomicalEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string;concept_name:string%20%3F;description:string;ontology_name:string;ontology_version:string],[DataUsePermission]uses%20-.->[OntologyClassMixin],[DataUseModifier]uses%20-.->[OntologyClassMixin],[Ancestry]uses%20-.->[OntologyClassMixin],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[DataUsePermission],[DataUseModifier],[Ancestry],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string;concept_name:string%20%3F;description:string;ontology_name:string;ontology_version:string],[DataUsePermission]uses%20-.->[OntologyClassMixin],[DataUseModifier]uses%20-.->[OntologyClassMixin],[Ancestry]uses%20-.->[OntologyClassMixin],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[DataUsePermission],[DataUseModifier],[Ancestry],[AnatomicalEntity])
 
 ## Mixin for
 
@@ -25,27 +25,22 @@ URI: [GHGA:OntologyClassMixin](https://w3id.org/GHGA/OntologyClassMixin)
 
 ### Own
 
- * [id](id.md)  <sub>1..1</sub>
+ * [ontology class mixin➞id](ontology_class_mixin_id.md)  <sub>1..1</sub>
      * Description: An identifier that uniquely represents an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)  <sub>0..1</sub>
+     * in subsets: (restricted)
+ * [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)  <sub>1..1</sub>
      * Description: The Compact URI (CURIE) that uniquely identifies this ontology class.
      * Range: [String](types/String.md)
- * [concept name](concept_name.md)  <sub>0..1</sub>
+ * [ontology class mixin➞concept name](ontology_class_mixin_concept_name.md)  <sub>0..1</sub>
      * Description: The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.
      * Range: [String](types/String.md)
- * [ontology class mixin➞description](ontology_class_mixin_description.md)  <sub>0..1</sub>
+ * [ontology class mixin➞description](ontology_class_mixin_description.md)  <sub>1..1</sub>
      * Description: The description or definition of an ontology class.
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
- * [ontology name](ontology_name.md)  <sub>0..1</sub>
-     * Description: The name of the ontology from which this ontology class was chosen.
-     * Range: [String](types/String.md)
- * [ontology version](ontology_version.md)  <sub>0..1</sub>
-     * Description: The version of the ontology from which this ontology class was chosen.
-     * Range: [String](types/String.md)
- * [ontology class mixin➞name](ontology_class_mixin_name.md)  <sub>0..1</sub>
+ * [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)  <sub>1..1</sub>
      * Description: The name or label (rdfs:label) of an ontology class.
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
+ * [ontology class mixin➞ontology version](ontology_class_mixin_ontology_version.md)  <sub>1..1</sub>
+     * Description: The version of the ontology from which this ontology class was chosen.
+     * Range: [String](types/String.md)

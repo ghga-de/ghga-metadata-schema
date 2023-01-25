@@ -21,11 +21,3 @@ URI: [GHGA:study_type](https://w3id.org/GHGA/study_type)
 ## Used by
 
  * [Study](Study.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

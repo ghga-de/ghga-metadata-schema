@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-22T11:32:23
+# Generation date: 2023-01-25T18:58:46
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -261,12 +261,12 @@ class NamedThing(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.NamedThing
 
     id: Union[str, NamedThingId] = None
-    alias: Optional[str] = None
-    xref: Optional[Union[str, List[str]]] = empty_list()
-    creation_date: Optional[str] = None
-    update_date: Optional[str] = None
-    schema_type: Optional[str] = None
-    schema_version: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -274,23 +274,35 @@ class NamedThing(YAMLRoot):
         if not isinstance(self.id, NamedThingId):
             self.id = NamedThingId(self.id)
 
-        if self.alias is not None and not isinstance(self.alias, str):
+        if self._is_empty(self.alias):
+            self.MissingRequiredField("alias")
+        if not isinstance(self.alias, str):
             self.alias = str(self.alias)
 
+        if self._is_empty(self.xref):
+            self.MissingRequiredField("xref")
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
 
-        if self.creation_date is not None and not isinstance(self.creation_date, str):
+        if self._is_empty(self.creation_date):
+            self.MissingRequiredField("creation_date")
+        if not isinstance(self.creation_date, str):
             self.creation_date = str(self.creation_date)
 
-        if self.update_date is not None and not isinstance(self.update_date, str):
+        if self._is_empty(self.update_date):
+            self.MissingRequiredField("update_date")
+        if not isinstance(self.update_date, str):
             self.update_date = str(self.update_date)
 
-        if self.schema_type is not None and not isinstance(self.schema_type, str):
+        if self._is_empty(self.schema_type):
+            self.MissingRequiredField("schema_type")
+        if not isinstance(self.schema_type, str):
             self.schema_type = str(self.schema_type)
 
-        if self.schema_version is not None and not isinstance(self.schema_version, str):
+        if self._is_empty(self.schema_version):
+            self.MissingRequiredField("schema_version")
+        if not isinstance(self.schema_version, str):
             self.schema_version = str(self.schema_version)
 
         super().__post_init__(**kwargs)
@@ -348,8 +360,14 @@ class Agent(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.Agent
 
     id: Union[str, AgentId] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    description: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -357,10 +375,14 @@ class Agent(NamedThing):
         if not isinstance(self.id, AgentId):
             self.id = AgentId(self.id)
 
-        if self.name is not None and not isinstance(self.name, str):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.description is not None and not isinstance(self.description, str):
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
@@ -379,6 +401,12 @@ class Person(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.Person
 
     id: Union[str, PersonId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     given_name: Optional[str] = None
     family_name: Optional[str] = None
     additional_name: Optional[str] = None
@@ -409,10 +437,18 @@ class Committee(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.Committee
 
     id: Union[str, CommitteeId] = None
-    name: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.name is not None and not isinstance(self.name, str):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
             self.name = str(self.name)
 
         super().__post_init__(**kwargs)
@@ -432,6 +468,12 @@ class MaterialEntity(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.MaterialEntity
 
     id: Union[str, MaterialEntityId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
 @dataclass
 class BiologicalQuality(NamedThing):
@@ -446,6 +488,12 @@ class BiologicalQuality(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.BiologicalQuality
 
     id: Union[str, BiologicalQualityId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
 @dataclass
 class InformationContentEntity(NamedThing):
@@ -460,6 +508,12 @@ class InformationContentEntity(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.InformationContentEntity
 
     id: Union[str, InformationContentEntityId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
 @dataclass
 class PlannedProcess(NamedThing):
@@ -475,6 +529,12 @@ class PlannedProcess(NamedThing):
     class_model_uri: ClassVar[URIRef] = GHGA.PlannedProcess
 
     id: Union[str, PlannedProcessId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
 @dataclass
 class Investigation(PlannedProcess):
@@ -490,14 +550,24 @@ class Investigation(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.Investigation
 
     id: Union[str, InvestigationId] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    title: str = None
+    description: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.title is not None and not isinstance(self.title, str):
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self.description is not None and not isinstance(self.description, str):
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
@@ -516,14 +586,24 @@ class DataTransformation(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.DataTransformation
 
     id: Union[str, DataTransformationId] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    title: str = None
+    description: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.title is not None and not isinstance(self.title, str):
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self.description is not None and not isinstance(self.description, str):
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
@@ -543,14 +623,24 @@ class ResearchActivity(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.ResearchActivity
 
     id: Union[str, ResearchActivityId] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    title: str = None
+    description: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.title is not None and not isinstance(self.title, str):
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self.description is not None and not isinstance(self.description, str):
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
@@ -571,21 +661,21 @@ class Project(ResearchActivity):
 
     id: Union[str, ProjectId] = None
     alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     title: str = None
     description: str = None
+    accession: str = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
-    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProjectId):
             self.id = ProjectId(self.id)
-
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
 
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
@@ -597,12 +687,14 @@ class Project(ResearchActivity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -621,19 +713,24 @@ class Study(Investigation):
     class_model_uri: ClassVar[URIRef] = GHGA.Study
 
     id: Union[str, StudyId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     type: Union[str, "StudyTypeEnum"] = None
     affiliation: Union[str, List[str]] = None
-    alias: str = None
     title: str = None
     description: str = None
+    release_status: Union[str, "ReleaseStatusEnum"] = None
+    accession: str = None
+    ega_accession: str = None
+    release_date: str = None
     has_project: Optional[Union[dict, Project]] = None
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
-    release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
-    release_date: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -652,11 +749,6 @@ class Study(Investigation):
             self.affiliation = [self.affiliation] if self.affiliation is not None else []
         self.affiliation = [v if isinstance(v, str) else str(v) for v in self.affiliation]
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
-
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
         if not isinstance(self.title, str):
@@ -666,6 +758,26 @@ class Study(Investigation):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self._is_empty(self.release_status):
+            self.MissingRequiredField("release_status")
+        if not isinstance(self.release_status, ReleaseStatusEnum):
+            self.release_status = ReleaseStatusEnum(self.release_status)
+
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
+
+        if self._is_empty(self.release_date):
+            self.MissingRequiredField("release_date")
+        if not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
 
         if self.has_project is not None and not isinstance(self.has_project, Project):
             self.has_project = Project(**as_dict(self.has_project))
@@ -677,18 +789,6 @@ class Study(Investigation):
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
-
-        if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
-            self.release_status = ReleaseStatusEnum(self.release_status)
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
-
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
 
         super().__post_init__(**kwargs)
 
@@ -707,27 +807,37 @@ class Experiment(Investigation):
     class_model_uri: ClassVar[URIRef] = GHGA.Experiment
 
     id: Union[str, ExperimentId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    type: str = None
     has_study: Union[dict, Study] = None
     has_sample: Union[Dict[Union[str, SampleId], Union[dict, "Sample"]], List[Union[dict, "Sample"]]] = empty_dict()
     has_protocol: Union[Dict[Union[str, ProtocolId], Union[dict, "Protocol"]], List[Union[dict, "Protocol"]]] = empty_dict()
-    alias: str = None
+    has_experiment_process: Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]] = empty_dict()
+    title: str = None
     description: str = None
-    type: Optional[str] = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
+    accession: str = None
+    ega_accession: str = None
     biological_replicates: Optional[str] = None
     technical_replicates: Optional[str] = None
     experimental_replicates: Optional[str] = None
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]] = empty_dict()
-    has_experiment_process: Optional[Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]]] = empty_dict()
-    title: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ExperimentId):
             self.id = ExperimentId(self.id)
+
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if self._is_empty(self.has_study):
             self.MissingRequiredField("has_study")
@@ -742,18 +852,35 @@ class Experiment(Investigation):
             self.MissingRequiredField("has_protocol")
         self._normalize_inlined_as_list(slot_name="has_protocol", slot_type=Protocol, key_name="id", keyed=True)
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
+        if self._is_empty(self.has_experiment_process):
+            self.MissingRequiredField("has_experiment_process")
+        self._normalize_inlined_as_list(slot_name="has_experiment_process", slot_type=ExperimentProcess, key_name="id", keyed=True)
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
         if self._is_empty(self.description):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
+
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
 
         if self.biological_replicates is not None and not isinstance(self.biological_replicates, str):
             self.biological_replicates = str(self.biological_replicates)
@@ -765,21 +892,6 @@ class Experiment(Investigation):
             self.experimental_replicates = str(self.experimental_replicates)
 
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_experiment_process", slot_type=ExperimentProcess, key_name="id", keyed=True)
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if not isinstance(self.has_attribute, list):
-            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
-        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
 
         super().__post_init__(**kwargs)
 
@@ -798,13 +910,19 @@ class ExperimentProcess(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.ExperimentProcess
 
     id: Union[str, ExperimentProcessId] = None
-    type: Optional[Union[str, "ExperimentProcessTypeEnum"]] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    type: Union[str, "ExperimentProcessTypeEnum"] = None
+    has_input: Union[dict, "Sample"] = None
+    has_protocol: Union[dict, "Protocol"] = None
+    has_agent: Union[dict, Agent] = None
+    has_output: Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]] = empty_dict()
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
     title: Optional[str] = None
-    has_input: Optional[Union[dict, "Sample"]] = None
-    has_protocol: Optional[Union[dict, "Protocol"]] = None
-    has_agent: Optional[Union[dict, Agent]] = None
-    has_output: Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]] = empty_dict()
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -812,26 +930,38 @@ class ExperimentProcess(PlannedProcess):
         if not isinstance(self.id, ExperimentProcessId):
             self.id = ExperimentProcessId(self.id)
 
-        if self.type is not None and not isinstance(self.type, ExperimentProcessTypeEnum):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, ExperimentProcessTypeEnum):
             self.type = ExperimentProcessTypeEnum(self.type)
 
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.has_input is not None and not isinstance(self.has_input, Sample):
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, Sample):
             self.has_input = Sample(**as_dict(self.has_input))
 
-        if self.has_protocol is not None and not isinstance(self.has_protocol, Protocol):
+        if self._is_empty(self.has_protocol):
+            self.MissingRequiredField("has_protocol")
+        if not isinstance(self.has_protocol, Protocol):
             self.has_protocol = Protocol(**as_dict(self.has_protocol))
 
-        if self.has_agent is not None and not isinstance(self.has_agent, Agent):
+        if self._is_empty(self.has_agent):
+            self.MissingRequiredField("has_agent")
+        if not isinstance(self.has_agent, Agent):
             self.has_agent = Agent(**as_dict(self.has_agent))
 
+        if self._is_empty(self.has_output):
+            self.MissingRequiredField("has_output")
         self._normalize_inlined_as_dict(slot_name="has_output", slot_type=File, key_name="id", keyed=True)
 
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
 
         super().__post_init__(**kwargs)
 
@@ -851,14 +981,18 @@ class Protocol(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Protocol
 
     id: Union[str, ProtocolId] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    type: str = None
+    description: str = None
+    url: str = None
+    has_file: Union[str, FileId] = None
     alias: str = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    description: Optional[str] = None
-    url: Optional[str] = None
-    has_file: Optional[Union[str, FileId]] = None
-    xref: Optional[Union[str, List[str]]] = empty_list()
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+    xref: Union[str, List[str]] = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -866,30 +1000,44 @@ class Protocol(InformationContentEntity):
         if not isinstance(self.id, ProtocolId):
             self.id = ProtocolId(self.id)
 
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.url):
+            self.MissingRequiredField("url")
+        if not isinstance(self.url, str):
+            self.url = str(self.url)
+
+        if self._is_empty(self.has_file):
+            self.MissingRequiredField("has_file")
+        if not isinstance(self.has_file, FileId):
+            self.has_file = FileId(self.has_file)
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.url is not None and not isinstance(self.url, str):
-            self.url = str(self.url)
-
-        if self.has_file is not None and not isinstance(self.has_file, FileId):
-            self.has_file = FileId(self.has_file)
-
+        if self._is_empty(self.xref):
+            self.MissingRequiredField("xref")
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
 
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
@@ -910,6 +1058,15 @@ class LibraryPreparationProtocol(Protocol):
     class_model_uri: ClassVar[URIRef] = GHGA.LibraryPreparationProtocol
 
     id: Union[str, LibraryPreparationProtocolId] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    type: str = None
+    url: str = None
+    has_file: Union[str, FileId] = None
+    xref: Union[str, List[str]] = None
     library_name: str = None
     library_layout: str = None
     library_type: str = None
@@ -918,12 +1075,12 @@ class LibraryPreparationProtocol(Protocol):
     target_regions: str = None
     alias: str = None
     description: str = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
     library_preparation_kit_retail_name: Optional[str] = None
     library_preparation_kit_manufacturer: Optional[str] = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
     rnaseq_strandedness: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -971,6 +1128,12 @@ class LibraryPreparationProtocol(Protocol):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
+
         if self.library_preparation_kit_retail_name is not None and not isinstance(self.library_preparation_kit_retail_name, str):
             self.library_preparation_kit_retail_name = str(self.library_preparation_kit_retail_name)
 
@@ -985,10 +1148,6 @@ class LibraryPreparationProtocol(Protocol):
 
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
-
-        if not isinstance(self.has_attribute, list):
-            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
-        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1006,9 +1165,19 @@ class SequencingProtocol(Protocol):
     class_model_uri: ClassVar[URIRef] = GHGA.SequencingProtocol
 
     id: Union[str, SequencingProtocolId] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    url: str = None
+    has_file: Union[str, FileId] = None
+    xref: Union[str, List[str]] = None
     instrument_model: str = None
     alias: str = None
+    type: str = None
     description: str = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
     sequencing_center: Optional[str] = None
     paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
     forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
@@ -1025,8 +1194,6 @@ class SequencingProtocol(Protocol):
     cell_barcode_offset: Optional[str] = None
     cell_barcode_size: Optional[str] = None
     sample_barcode_read: Optional[str] = None
-    type: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1044,10 +1211,21 @@ class SequencingProtocol(Protocol):
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
 
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
+
         if self._is_empty(self.description):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.sequencing_center is not None and not isinstance(self.sequencing_center, str):
             self.sequencing_center = str(self.sequencing_center)
@@ -1097,13 +1275,6 @@ class SequencingProtocol(Protocol):
         if self.sample_barcode_read is not None and not isinstance(self.sample_barcode_read, str):
             self.sample_barcode_read = str(self.sample_barcode_read)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if not isinstance(self.has_attribute, list):
-            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
-        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
-
         super().__post_init__(**kwargs)
 
 
@@ -1122,6 +1293,12 @@ class Technology(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Technology
 
     id: Union[str, TechnologyId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1147,9 +1324,14 @@ class Workflow(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Workflow
 
     id: Union[str, WorkflowId] = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     name: str = None
+    has_workflow_step: Union[Dict[Union[str, WorkflowStepId], Union[dict, "WorkflowStep"]], List[Union[dict, "WorkflowStep"]]] = empty_dict()
     alias: str = None
-    has_workflow_step: Optional[Union[Dict[Union[str, WorkflowStepId], Union[dict, "WorkflowStep"]], List[Union[dict, "WorkflowStep"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1162,12 +1344,14 @@ class Workflow(InformationContentEntity):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.has_workflow_step):
+            self.MissingRequiredField("has_workflow_step")
+        self._normalize_inlined_as_list(slot_name="has_workflow_step", slot_type=WorkflowStep, key_name="id", keyed=True)
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
-
-        self._normalize_inlined_as_list(slot_name="has_workflow_step", slot_type=WorkflowStep, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -1188,6 +1372,12 @@ class WorkflowStep(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.WorkflowStep
 
     id: Union[str, WorkflowStepId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     has_workflow_parameter: Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1215,14 +1405,18 @@ class WorkflowParameter(YAMLRoot):
     class_name: ClassVar[str] = "workflow parameter"
     class_model_uri: ClassVar[URIRef] = GHGA.WorkflowParameter
 
-    key: Optional[str] = None
-    value: Optional[str] = None
+    key: str = None
+    value: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.key is not None and not isinstance(self.key, str):
+        if self._is_empty(self.key):
+            self.MissingRequiredField("key")
+        if not isinstance(self.key, str):
             self.key = str(self.key)
 
-        if self.value is not None and not isinstance(self.value, str):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
             self.value = str(self.value)
 
         super().__post_init__(**kwargs)
@@ -1243,14 +1437,19 @@ class Biospecimen(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Biospecimen
 
     id: Union[str, BiospecimenId] = None
-    has_individual: Union[dict, "Individual"] = None
     alias: str = None
-    name: Optional[str] = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    description: str = None
+    has_individual: Union[dict, "Individual"] = None
+    accession: str = None
     type: Optional[str] = None
-    description: Optional[str] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
-    accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1258,33 +1457,34 @@ class Biospecimen(MaterialEntity):
         if not isinstance(self.id, BiospecimenId):
             self.id = BiospecimenId(self.id)
 
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
         if self._is_empty(self.has_individual):
             self.MissingRequiredField("has_individual")
         if not isinstance(self.has_individual, Individual):
             self.has_individual = Individual(**as_dict(self.has_individual))
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
 
         if self.isolation is not None and not isinstance(self.isolation, str):
             self.isolation = str(self.isolation)
 
         if self.storage is not None and not isinstance(self.storage, str):
             self.storage = str(self.storage)
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
 
@@ -1304,12 +1504,17 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
     class_model_uri: ClassVar[URIRef] = GHGA.DiseaseOrPhenotypicFeature
 
     id: Union[str, DiseaseOrPhenotypicFeatureId] = None
-    concept_identifier: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
     concept_name: Optional[str] = None
-    description: Optional[str] = None
-    ontology_name: Optional[str] = None
-    ontology_version: Optional[str] = None
-    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1317,23 +1522,28 @@ class DiseaseOrPhenotypicFeature(BiologicalQuality):
         if not isinstance(self.id, DiseaseOrPhenotypicFeatureId):
             self.id = DiseaseOrPhenotypicFeatureId(self.id)
 
-        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+        if self._is_empty(self.concept_identifier):
+            self.MissingRequiredField("concept_identifier")
+        if not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.ontology_name):
+            self.MissingRequiredField("ontology_name")
+        if not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self._is_empty(self.ontology_version):
+            self.MissingRequiredField("ontology_version")
+        if not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -1352,21 +1562,25 @@ class Sample(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Sample
 
     id: Union[str, SampleId] = None
-    name: str = None
-    description: str = None
     alias: str = None
-    type: Optional[str] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    type: str = None
+    description: str = None
+    has_individual: Union[dict, "Individual"] = None
+    accession: str = None
+    ega_accession: str = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
     case_control_status: Optional[Union[str, "CaseControlStatusEnum"]] = None
     vital_status_at_sampling: Optional[Union[str, "VitalStatusEnum"]] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
-    has_individual: Optional[Union[dict, "Individual"]] = None
     has_anatomical_entity: Optional[Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]]] = empty_dict()
     has_biospecimen: Optional[Union[dict, Biospecimen]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1379,18 +1593,36 @@ class Sample(MaterialEntity):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
+
         if self._is_empty(self.description):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
+        if self._is_empty(self.has_individual):
+            self.MissingRequiredField("has_individual")
+        if not isinstance(self.has_individual, Individual):
+            self.has_individual = Individual(**as_dict(self.has_individual))
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
+
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         if self.case_control_status is not None and not isinstance(self.case_control_status, CaseControlStatusEnum):
             self.case_control_status = CaseControlStatusEnum(self.case_control_status)
@@ -1404,9 +1636,6 @@ class Sample(MaterialEntity):
         if self.storage is not None and not isinstance(self.storage, str):
             self.storage = str(self.storage)
 
-        if self.has_individual is not None and not isinstance(self.has_individual, Individual):
-            self.has_individual = Individual(**as_dict(self.has_individual))
-
         self._normalize_inlined_as_list(slot_name="has_anatomical_entity", slot_type=AnatomicalEntity, key_name="id", keyed=True)
 
         if self.has_biospecimen is not None and not isinstance(self.has_biospecimen, Biospecimen):
@@ -1415,16 +1644,6 @@ class Sample(MaterialEntity):
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
         self.xref = [v if isinstance(v, str) else str(v) for v in self.xref]
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
-
-        if not isinstance(self.has_attribute, list):
-            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
-        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1442,20 +1661,25 @@ class Individual(Person):
     class_model_uri: ClassVar[URIRef] = GHGA.Individual
 
     id: Union[str, IndividualId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     sex: Union[str, "BiologicalSexEnum"] = None
+    karyotype: str = None
     age: Union[str, "AgeRangeEnum"] = None
     vital_status: Union[str, "VitalStatusEnum"] = None
-    alias: str = None
-    karyotype: Optional[str] = None
+    has_disease: Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]] = empty_dict()
+    accession: str = None
+    ega_accession: str = None
     geographical_region: Optional[str] = None
     has_ancestry: Optional[Union[Dict[Union[str, AncestryId], Union[dict, "Ancestry"]], List[Union[dict, "Ancestry"]]]] = empty_dict()
     has_parent: Optional[Union[Dict[Union[str, IndividualId], Union[dict, "Individual"]], List[Union[dict, "Individual"]]]] = empty_dict()
     has_children: Optional[Union[Dict[Union[str, IndividualId], Union[dict, "Individual"]], List[Union[dict, "Individual"]]]] = empty_dict()
-    has_disease: Optional[Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]]] = empty_dict()
     has_phenotypic_feature: Optional[Union[Dict[Union[str, PhenotypicFeatureId], Union[dict, "PhenotypicFeature"]], List[Union[dict, "PhenotypicFeature"]]]] = empty_dict()
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]] = empty_dict()
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1468,6 +1692,11 @@ class Individual(Person):
         if not isinstance(self.sex, BiologicalSexEnum):
             self.sex = BiologicalSexEnum(self.sex)
 
+        if self._is_empty(self.karyotype):
+            self.MissingRequiredField("karyotype")
+        if not isinstance(self.karyotype, str):
+            self.karyotype = str(self.karyotype)
+
         if self._is_empty(self.age):
             self.MissingRequiredField("age")
         if not isinstance(self.age, AgeRangeEnum):
@@ -1478,13 +1707,19 @@ class Individual(Person):
         if not isinstance(self.vital_status, VitalStatusEnum):
             self.vital_status = VitalStatusEnum(self.vital_status)
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
+        if self._is_empty(self.has_disease):
+            self.MissingRequiredField("has_disease")
+        self._normalize_inlined_as_list(slot_name="has_disease", slot_type=Disease, key_name="id", keyed=True)
 
-        if self.karyotype is not None and not isinstance(self.karyotype, str):
-            self.karyotype = str(self.karyotype)
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
 
         if self.geographical_region is not None and not isinstance(self.geographical_region, str):
             self.geographical_region = str(self.geographical_region)
@@ -1495,17 +1730,9 @@ class Individual(Person):
 
         self._normalize_inlined_as_list(slot_name="has_children", slot_type=Individual, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="has_disease", slot_type=Disease, key_name="id", keyed=True)
-
         self._normalize_inlined_as_list(slot_name="has_phenotypic_feature", slot_type=PhenotypicFeature, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
 
         super().__post_init__(**kwargs)
 
@@ -1524,10 +1751,19 @@ class Donor(Individual):
     class_model_uri: ClassVar[URIRef] = GHGA.Donor
 
     id: Union[str, DonorId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     sex: Union[str, "BiologicalSexEnum"] = None
+    karyotype: str = None
     age: Union[str, "AgeRangeEnum"] = None
     vital_status: Union[str, "VitalStatusEnum"] = None
-    alias: str = None
+    has_disease: Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]] = empty_dict()
+    accession: str = None
+    ega_accession: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1552,10 +1788,18 @@ class Population(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Population
 
     id: Union[str, PopulationId] = None
-    name: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.name is not None and not isinstance(self.name, str):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
             self.name = str(self.name)
 
         super().__post_init__(**kwargs)
@@ -1575,9 +1819,16 @@ class Family(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.Family
 
     id: Union[str, FamilyId] = None
-    has_individual: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
-    has_proband: Optional[Union[dict, Individual]] = None
-    accession: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    has_individual: Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]] = empty_dict()
+    has_proband: Union[dict, Individual] = None
+    accession: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1585,12 +1836,18 @@ class Family(Population):
         if not isinstance(self.id, FamilyId):
             self.id = FamilyId(self.id)
 
+        if self._is_empty(self.has_individual):
+            self.MissingRequiredField("has_individual")
         self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
 
-        if self.has_proband is not None and not isinstance(self.has_proband, Individual):
+        if self._is_empty(self.has_proband):
+            self.MissingRequiredField("has_proband")
+        if not isinstance(self.has_proband, Individual):
             self.has_proband = Individual(**as_dict(self.has_proband))
 
-        if self.accession is not None and not isinstance(self.accession, str):
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
@@ -1610,8 +1867,15 @@ class Cohort(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.Cohort
 
     id: Union[str, CohortId] = None
-    has_individual: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
-    accession: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    has_individual: Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]] = empty_dict()
+    accession: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1619,9 +1883,13 @@ class Cohort(Population):
         if not isinstance(self.id, CohortId):
             self.id = CohortId(self.id)
 
+        if self._is_empty(self.has_individual):
+            self.MissingRequiredField("has_individual")
         self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
 
-        if self.accession is not None and not isinstance(self.accession, str):
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
@@ -1640,11 +1908,18 @@ class Ancestry(Population):
     class_model_uri: ClassVar[URIRef] = GHGA.Ancestry
 
     id: Union[str, AncestryId] = None
-    concept_identifier: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
     concept_name: Optional[str] = None
-    description: Optional[str] = None
-    ontology_name: Optional[str] = None
-    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1652,20 +1927,28 @@ class Ancestry(Population):
         if not isinstance(self.id, AncestryId):
             self.id = AncestryId(self.id)
 
-        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+        if self._is_empty(self.concept_identifier):
+            self.MissingRequiredField("concept_identifier")
+        if not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.ontology_name):
+            self.MissingRequiredField("ontology_name")
+        if not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self._is_empty(self.ontology_version):
+            self.MissingRequiredField("ontology_version")
+        if not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -1683,16 +1966,21 @@ class File(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.File
 
     id: Union[str, FileId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     name: str = None
     format: Union[str, "FileFormatEnum"] = None
     size: int = None
     checksum: str = None
     checksum_type: str = None
-    alias: str = None
+    accession: str = None
+    ega_accession: str = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
     drs_uri: Optional[str] = None
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1725,23 +2013,24 @@ class File(InformationContentEntity):
         if not isinstance(self.checksum_type, str):
             self.checksum_type = str(self.checksum_type)
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
-
-        if self.drs_uri is not None and not isinstance(self.drs_uri, str):
-            self.drs_uri = str(self.drs_uri)
-
-        if self.accession is not None and not isinstance(self.accession, str):
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
             self.ega_accession = str(self.ega_accession)
 
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
+
+        if self.drs_uri is not None and not isinstance(self.drs_uri, str):
+            self.drs_uri = str(self.drs_uri)
 
         super().__post_init__(**kwargs)
 
@@ -1760,24 +2049,35 @@ class Analysis(DataTransformation):
     class_model_uri: ClassVar[URIRef] = GHGA.Analysis
 
     id: Union[str, AnalysisId] = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    title: str = None
+    type: str = None
     reference_genome: str = None
     reference_chromosome: str = None
     has_input: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
+    has_study: Union[dict, Study] = None
     has_workflow: Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]] = empty_dict()
+    has_analysis_process: Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]] = empty_dict()
     has_output: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     alias: str = None
-    type: Optional[str] = None
-    has_study: Optional[Union[dict, Study]] = None
-    has_analysis_process: Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]] = empty_dict()
+    accession: str = None
+    ega_accession: str = None
     description: Optional[str] = None
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, AnalysisId):
             self.id = AnalysisId(self.id)
+
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if self._is_empty(self.reference_genome):
             self.MissingRequiredField("reference_genome")
@@ -1793,9 +2093,18 @@ class Analysis(DataTransformation):
             self.MissingRequiredField("has_input")
         self._normalize_inlined_as_list(slot_name="has_input", slot_type=File, key_name="id", keyed=True)
 
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, Study):
+            self.has_study = Study(**as_dict(self.has_study))
+
         if self._is_empty(self.has_workflow):
             self.MissingRequiredField("has_workflow")
         self._normalize_inlined_as_list(slot_name="has_workflow", slot_type=Workflow, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_analysis_process):
+            self.MissingRequiredField("has_analysis_process")
+        self._normalize_inlined_as_list(slot_name="has_analysis_process", slot_type=AnalysisProcess, key_name="id", keyed=True)
 
         if self._is_empty(self.has_output):
             self.MissingRequiredField("has_output")
@@ -1806,22 +2115,23 @@ class Analysis(DataTransformation):
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if self.has_study is not None and not isinstance(self.has_study, Study):
-            self.has_study = Study(**as_dict(self.has_study))
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
-        self._normalize_inlined_as_list(slot_name="has_analysis_process", slot_type=AnalysisProcess, key_name="id", keyed=True)
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
 
         super().__post_init__(**kwargs)
 
@@ -1841,7 +2151,13 @@ class AnalysisProcess(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = GHGA.AnalysisProcess
 
     id: Union[str, AnalysisProcessId] = None
-    title: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    title: str = None
     has_input: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
     has_workflow: Optional[Union[dict, Workflow]] = None
     has_agent: Optional[Union[dict, Agent]] = None
@@ -1853,7 +2169,9 @@ class AnalysisProcess(PlannedProcess):
         if not isinstance(self.id, AnalysisProcessId):
             self.id = AnalysisProcessId(self.id)
 
-        if self.title is not None and not isinstance(self.title, str):
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
             self.title = str(self.title)
 
         self._normalize_inlined_as_list(slot_name="has_input", slot_type=File, key_name="id", keyed=True)
@@ -1882,6 +2200,12 @@ class Dataset(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Dataset
 
     id: Union[str, DatasetId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     title: str = None
     description: str = None
     type: Union[str, List[str]] = None
@@ -1889,15 +2213,14 @@ class Dataset(InformationContentEntity):
     has_sample: Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]] = empty_dict()
     has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     has_data_access_policy: Union[dict, "DataAccessPolicy"] = None
-    alias: str = None
+    accession: str = None
+    ega_accession: str = None
+    release_date: str = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
     has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
     has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
     release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
-    release_date: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1938,10 +2261,26 @@ class Dataset(InformationContentEntity):
         if not isinstance(self.has_data_access_policy, DataAccessPolicy):
             self.has_data_access_policy = DataAccessPolicy(**as_dict(self.has_data_access_policy))
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
+
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
+
+        if self._is_empty(self.release_date):
+            self.MissingRequiredField("release_date")
+        if not isinstance(self.release_date, str):
+            self.release_date = str(self.release_date)
+
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
 
@@ -1951,19 +2290,6 @@ class Dataset(InformationContentEntity):
 
         if self.release_status is not None and not isinstance(self.release_status, ReleaseStatusEnum):
             self.release_status = ReleaseStatusEnum(self.release_status)
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
-
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
-
-        if not isinstance(self.has_attribute, list):
-            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
-        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -1981,6 +2307,12 @@ class DataUseCondition(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataUseCondition
 
     id: Union[str, DataUseConditionId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     has_data_use_permission: Union[dict, "DataUsePermission"] = None
     has_data_use_modifier: Optional[Union[dict, "DataUseModifier"]] = None
 
@@ -2015,23 +2347,38 @@ class DataAccessPolicy(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataAccessPolicy
 
     id: Union[str, DataAccessPolicyId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    name: str = None
+    description: str = None
     policy_text: str = None
     has_data_access_committee: Union[dict, "DataAccessCommittee"] = None
-    alias: str = None
-    name: Optional[str] = None
-    description: Optional[str] = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
+    accession: str = None
+    ega_accession: str = None
     policy_url: Optional[str] = None
     has_data_use_condition: Optional[Union[Dict[Union[str, DataUseConditionId], Union[dict, DataUseCondition]], List[Union[dict, DataUseCondition]]]] = empty_dict()
     data_request_form: Optional[str] = None
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, DataAccessPolicyId):
             self.id = DataAccessPolicyId(self.id)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
 
         if self._is_empty(self.policy_text):
             self.MissingRequiredField("policy_text")
@@ -2043,16 +2390,21 @@ class DataAccessPolicy(InformationContentEntity):
         if not isinstance(self.has_data_access_committee, DataAccessCommittee):
             self.has_data_access_committee = DataAccessCommittee(**as_dict(self.has_data_access_committee))
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
+        if not isinstance(self.has_attribute, list):
+            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
+        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
+            self.accession = str(self.accession)
 
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
+            self.ega_accession = str(self.ega_accession)
 
         if self.policy_url is not None and not isinstance(self.policy_url, str):
             self.policy_url = str(self.policy_url)
@@ -2061,16 +2413,6 @@ class DataAccessPolicy(InformationContentEntity):
 
         if self.data_request_form is not None and not isinstance(self.data_request_form, str):
             self.data_request_form = str(self.data_request_form)
-
-        if not isinstance(self.has_attribute, list):
-            self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
-        self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
-
-        if self.accession is not None and not isinstance(self.accession, str):
-            self.accession = str(self.accession)
-
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
-            self.ega_accession = str(self.ega_accession)
 
         super().__post_init__(**kwargs)
 
@@ -2089,14 +2431,19 @@ class DataAccessCommittee(Committee):
     class_model_uri: ClassVar[URIRef] = GHGA.DataAccessCommittee
 
     id: Union[str, DataAccessCommitteeId] = None
-    name: str = None
     alias: str = None
-    description: Optional[str] = None
-    main_contact: Optional[Union[dict, "Member"]] = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    description: str = None
+    main_contact: Union[dict, "Member"] = None
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
+    accession: str = None
+    ega_accession: str = None
+    name: Optional[str] = None
     has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]] = empty_dict()
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
-    accession: Optional[str] = None
-    ega_accession: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2104,33 +2451,41 @@ class DataAccessCommittee(Committee):
         if not isinstance(self.id, DataAccessCommitteeId):
             self.id = DataAccessCommitteeId(self.id)
 
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.main_contact):
+            self.MissingRequiredField("main_contact")
+        if not isinstance(self.main_contact, Member):
+            self.main_contact = Member(**as_dict(self.main_contact))
+
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.main_contact is not None and not isinstance(self.main_contact, Member):
-            self.main_contact = Member(**as_dict(self.main_contact))
-
-        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
-
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
-        if self.accession is not None and not isinstance(self.accession, str):
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
             self.ega_accession = str(self.ega_accession)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -2148,6 +2503,12 @@ class Member(Person):
     class_model_uri: ClassVar[URIRef] = GHGA.Member
 
     id: Union[str, MemberId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     email: str = None
     organization: str = None
     telephone: Optional[str] = None
@@ -2189,11 +2550,15 @@ class Publication(InformationContentEntity):
 
     id: Union[str, PublicationId] = None
     alias: str = None
-    title: Optional[str] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    title: str = None
+    author: str = None
+    year: int = None
+    journal: str = None
     abstract: Optional[str] = None
-    author: Optional[str] = None
-    year: Optional[int] = None
-    journal: Optional[str] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2202,25 +2567,28 @@ class Publication(InformationContentEntity):
         if not isinstance(self.id, PublicationId):
             self.id = PublicationId(self.id)
 
-        if self._is_empty(self.alias):
-            self.MissingRequiredField("alias")
-        if not isinstance(self.alias, str):
-            self.alias = str(self.alias)
-
-        if self.title is not None and not isinstance(self.title, str):
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
             self.title = str(self.title)
+
+        if self._is_empty(self.author):
+            self.MissingRequiredField("author")
+        if not isinstance(self.author, str):
+            self.author = str(self.author)
+
+        if self._is_empty(self.year):
+            self.MissingRequiredField("year")
+        if not isinstance(self.year, int):
+            self.year = int(self.year)
+
+        if self._is_empty(self.journal):
+            self.MissingRequiredField("journal")
+        if not isinstance(self.journal, str):
+            self.journal = str(self.journal)
 
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
-
-        if self.author is not None and not isinstance(self.author, str):
-            self.author = str(self.author)
-
-        if self.year is not None and not isinstance(self.year, int):
-            self.year = int(self.year)
-
-        if self.journal is not None and not isinstance(self.journal, str):
-            self.journal = str(self.journal)
 
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
@@ -2243,12 +2611,17 @@ class AnatomicalEntity(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.AnatomicalEntity
 
     id: Union[str, AnatomicalEntityId] = None
-    concept_identifier: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
     concept_name: Optional[str] = None
-    description: Optional[str] = None
-    ontology_name: Optional[str] = None
-    ontology_version: Optional[str] = None
-    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2256,23 +2629,28 @@ class AnatomicalEntity(MaterialEntity):
         if not isinstance(self.id, AnatomicalEntityId):
             self.id = AnatomicalEntityId(self.id)
 
-        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+        if self._is_empty(self.concept_identifier):
+            self.MissingRequiredField("concept_identifier")
+        if not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.ontology_name):
+            self.MissingRequiredField("ontology_name")
+        if not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self._is_empty(self.ontology_version):
+            self.MissingRequiredField("ontology_version")
+        if not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2291,6 +2669,12 @@ class CellLine(MaterialEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.CellLine
 
     id: Union[str, CellLineId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2315,6 +2699,16 @@ class Disease(DiseaseOrPhenotypicFeature):
     class_model_uri: ClassVar[URIRef] = GHGA.Disease
 
     id: Union[str, DiseaseId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2339,6 +2733,16 @@ class PhenotypicFeature(DiseaseOrPhenotypicFeature):
     class_model_uri: ClassVar[URIRef] = GHGA.PhenotypicFeature
 
     id: Union[str, PhenotypicFeatureId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2362,6 +2766,12 @@ class User(Person):
     class_model_uri: ClassVar[URIRef] = GHGA.User
 
     id: Union[str, UserId] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
     email: Optional[str] = None
     role: Optional[Union[str, "UserRoleEnum"]] = None
 
@@ -2394,8 +2804,15 @@ class Submission(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.Submission
 
     id: Union[str, SubmissionId] = None
-    affiliation: Optional[str] = None
-    has_study: Optional[Union[dict, Study]] = None
+    affiliation: str = None
+    has_study: Union[dict, Study] = None
+    has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
+    has_dataset: Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]] = empty_dict()
+    has_data_access_policy: Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]] = empty_dict()
+    has_data_access_committee: Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]] = empty_dict()
+    has_member: Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]] = empty_dict()
+    schema_type: str = None
+    schema_version: str = None
     has_project: Optional[Union[dict, Project]] = None
     has_sample: Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]] = empty_dict()
     has_biospecimen: Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]] = empty_dict()
@@ -2403,18 +2820,11 @@ class Submission(YAMLRoot):
     has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
     has_protocol: Optional[Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]]] = empty_dict()
     has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
-    has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
-    has_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]] = empty_dict()
-    has_data_access_policy: Optional[Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]]] = empty_dict()
-    has_data_access_committee: Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]] = empty_dict()
-    has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]] = empty_dict()
     submission_date: Optional[str] = None
     creation_date: Optional[str] = None
     update_date: Optional[str] = None
-    submission_status: Optional[Union[str, "SubmissionStatusEnum"]] = None
-    schema_type: Optional[str] = None
-    schema_version: Optional[str] = None
+    submission_status: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2422,11 +2832,45 @@ class Submission(YAMLRoot):
         if not isinstance(self.id, SubmissionId):
             self.id = SubmissionId(self.id)
 
-        if self.affiliation is not None and not isinstance(self.affiliation, str):
+        if self._is_empty(self.affiliation):
+            self.MissingRequiredField("affiliation")
+        if not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
 
-        if self.has_study is not None and not isinstance(self.has_study, Study):
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, Study):
             self.has_study = Study(**as_dict(self.has_study))
+
+        if self._is_empty(self.has_file):
+            self.MissingRequiredField("has_file")
+        self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_dataset):
+            self.MissingRequiredField("has_dataset")
+        self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_data_access_policy):
+            self.MissingRequiredField("has_data_access_policy")
+        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_data_access_committee):
+            self.MissingRequiredField("has_data_access_committee")
+        self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_member):
+            self.MissingRequiredField("has_member")
+        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
+
+        if self._is_empty(self.schema_type):
+            self.MissingRequiredField("schema_type")
+        if not isinstance(self.schema_type, str):
+            self.schema_type = str(self.schema_type)
+
+        if self._is_empty(self.schema_version):
+            self.MissingRequiredField("schema_version")
+        if not isinstance(self.schema_version, str):
+            self.schema_version = str(self.schema_version)
 
         if self.has_project is not None and not isinstance(self.has_project, Project):
             self.has_project = Project(**as_dict(self.has_project))
@@ -2443,16 +2887,6 @@ class Submission(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="has_analysis", slot_type=Analysis, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
-
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
         if self.submission_date is not None and not isinstance(self.submission_date, str):
@@ -2464,14 +2898,8 @@ class Submission(YAMLRoot):
         if self.update_date is not None and not isinstance(self.update_date, str):
             self.update_date = str(self.update_date)
 
-        if self.submission_status is not None and not isinstance(self.submission_status, SubmissionStatusEnum):
-            self.submission_status = SubmissionStatusEnum(self.submission_status)
-
-        if self.schema_type is not None and not isinstance(self.schema_type, str):
-            self.schema_type = str(self.schema_type)
-
-        if self.schema_version is not None and not isinstance(self.schema_version, str):
-            self.schema_version = str(self.schema_version)
+        if self.submission_status is not None and not isinstance(self.submission_status, str):
+            self.submission_status = str(self.submission_status)
 
         super().__post_init__(**kwargs)
 
@@ -2490,12 +2918,17 @@ class DataUsePermission(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataUsePermission
 
     id: Union[str, DataUsePermissionId] = None
-    concept_identifier: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
     concept_name: Optional[str] = None
-    description: Optional[str] = None
-    ontology_name: Optional[str] = None
-    ontology_version: Optional[str] = None
-    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2503,23 +2936,28 @@ class DataUsePermission(InformationContentEntity):
         if not isinstance(self.id, DataUsePermissionId):
             self.id = DataUsePermissionId(self.id)
 
-        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+        if self._is_empty(self.concept_identifier):
+            self.MissingRequiredField("concept_identifier")
+        if not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.ontology_name):
+            self.MissingRequiredField("ontology_name")
+        if not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self._is_empty(self.ontology_version):
+            self.MissingRequiredField("ontology_version")
+        if not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2537,12 +2975,17 @@ class DataUseModifier(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataUseModifier
 
     id: Union[str, DataUseModifierId] = None
-    concept_identifier: Optional[str] = None
+    alias: str = None
+    xref: Union[str, List[str]] = None
+    creation_date: str = None
+    update_date: str = None
+    schema_type: str = None
+    schema_version: str = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
     concept_name: Optional[str] = None
-    description: Optional[str] = None
-    ontology_name: Optional[str] = None
-    ontology_version: Optional[str] = None
-    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2550,23 +2993,28 @@ class DataUseModifier(InformationContentEntity):
         if not isinstance(self.id, DataUseModifierId):
             self.id = DataUseModifierId(self.id)
 
-        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+        if self._is_empty(self.concept_identifier):
+            self.MissingRequiredField("concept_identifier")
+        if not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.ontology_name):
+            self.MissingRequiredField("ontology_name")
+        if not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self._is_empty(self.ontology_version):
+            self.MissingRequiredField("ontology_version")
+        if not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2584,12 +3032,11 @@ class OntologyClassMixin(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.OntologyClassMixin
 
     id: Union[str, OntologyClassMixinId] = None
-    concept_identifier: Optional[str] = None
+    concept_identifier: str = None
+    description: str = None
+    ontology_name: str = None
+    ontology_version: str = None
     concept_name: Optional[str] = None
-    description: Optional[str] = None
-    ontology_name: Optional[str] = None
-    ontology_version: Optional[str] = None
-    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2597,23 +3044,28 @@ class OntologyClassMixin(YAMLRoot):
         if not isinstance(self.id, OntologyClassMixinId):
             self.id = OntologyClassMixinId(self.id)
 
-        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
+        if self._is_empty(self.concept_identifier):
+            self.MissingRequiredField("concept_identifier")
+        if not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self._is_empty(self.ontology_name):
+            self.MissingRequiredField("ontology_name")
+        if not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self._is_empty(self.ontology_version):
+            self.MissingRequiredField("ontology_version")
+        if not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -2630,14 +3082,18 @@ class MetadataMixin(YAMLRoot):
     class_name: ClassVar[str] = "metadata mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.MetadataMixin
 
-    schema_type: Optional[str] = None
-    schema_version: Optional[str] = None
+    schema_type: str = None
+    schema_version: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.schema_type is not None and not isinstance(self.schema_type, str):
+        if self._is_empty(self.schema_type):
+            self.MissingRequiredField("schema_type")
+        if not isinstance(self.schema_type, str):
             self.schema_type = str(self.schema_type)
 
-        if self.schema_version is not None and not isinstance(self.schema_version, str):
+        if self._is_empty(self.schema_version):
+            self.MissingRequiredField("schema_version")
+        if not isinstance(self.schema_version, str):
             self.schema_version = str(self.schema_version)
 
         super().__post_init__(**kwargs)
@@ -2655,10 +3111,12 @@ class AccessionMixin(YAMLRoot):
     class_name: ClassVar[str] = "accession mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.AccessionMixin
 
-    accession: Optional[str] = None
+    accession: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.accession is not None and not isinstance(self.accession, str):
+        if self._is_empty(self.accession):
+            self.MissingRequiredField("accession")
+        if not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
         super().__post_init__(**kwargs)
@@ -2676,10 +3134,12 @@ class EgaAccessionMixin(YAMLRoot):
     class_name: ClassVar[str] = "ega accession mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.EgaAccessionMixin
 
-    ega_accession: Optional[str] = None
+    ega_accession: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.ega_accession is not None and not isinstance(self.ega_accession, str):
+        if self._is_empty(self.ega_accession):
+            self.MissingRequiredField("ega_accession")
+        if not isinstance(self.ega_accession, str):
             self.ega_accession = str(self.ega_accession)
 
         super().__post_init__(**kwargs)
@@ -2697,9 +3157,11 @@ class AttributeMixin(YAMLRoot):
     class_name: ClassVar[str] = "attribute mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.AttributeMixin
 
-    has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
+    has_attribute: Union[Union[dict, Attribute], List[Union[dict, Attribute]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.has_attribute):
+            self.MissingRequiredField("has_attribute")
         if not isinstance(self.has_attribute, list):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
@@ -2719,10 +3181,12 @@ class PublicationMixin(YAMLRoot):
     class_name: ClassVar[str] = "publication mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.PublicationMixin
 
-    has_publication: Optional[Union[str, PublicationId]] = None
+    has_publication: Union[str, PublicationId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.has_publication is not None and not isinstance(self.has_publication, PublicationId):
+        if self._is_empty(self.has_publication):
+            self.MissingRequiredField("has_publication")
+        if not isinstance(self.has_publication, PublicationId):
             self.has_publication = PublicationId(self.has_publication)
 
         super().__post_init__(**kwargs)
@@ -2740,14 +3204,18 @@ class DeprecatedMixin(YAMLRoot):
     class_name: ClassVar[str] = "deprecated mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.DeprecatedMixin
 
-    replaced_by: Optional[Union[str, NamedThingId]] = None
-    deprecation_date: Optional[str] = None
+    replaced_by: Union[str, NamedThingId] = None
+    deprecation_date: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.replaced_by is not None and not isinstance(self.replaced_by, NamedThingId):
+        if self._is_empty(self.replaced_by):
+            self.MissingRequiredField("replaced_by")
+        if not isinstance(self.replaced_by, NamedThingId):
             self.replaced_by = NamedThingId(self.replaced_by)
 
-        if self.deprecation_date is not None and not isinstance(self.deprecation_date, str):
+        if self._is_empty(self.deprecation_date):
+            self.MissingRequiredField("deprecation_date")
+        if not isinstance(self.deprecation_date, str):
             self.deprecation_date = str(self.deprecation_date)
 
         super().__post_init__(**kwargs)
@@ -2765,14 +3233,18 @@ class ReleaseStatusMixin(YAMLRoot):
     class_name: ClassVar[str] = "release status mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.ReleaseStatusMixin
 
-    release_status: Optional[str] = None
-    release_date: Optional[str] = None
+    release_status: str = None
+    release_date: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.release_status is not None and not isinstance(self.release_status, str):
+        if self._is_empty(self.release_status):
+            self.MissingRequiredField("release_status")
+        if not isinstance(self.release_status, str):
             self.release_status = str(self.release_status)
 
-        if self.release_date is not None and not isinstance(self.release_date, str):
+        if self._is_empty(self.release_date):
+            self.MissingRequiredField("release_date")
+        if not isinstance(self.release_date, str):
             self.release_date = str(self.release_date)
 
         super().__post_init__(**kwargs)
@@ -3138,13 +3610,13 @@ slots.has_experiment = Slot(uri=GHGA.has_experiment, name="has experiment", curi
                    model_uri=GHGA.has_experiment, domain=None, range=Optional[Union[str, ExperimentId]])
 
 slots.has_analysis = Slot(uri=GHGA.has_analysis, name="has analysis", curie=GHGA.curie('has_analysis'),
-                   model_uri=GHGA.has_analysis, domain=None, range=Optional[str])
+                   model_uri=GHGA.has_analysis, domain=None, range=Optional[Union[str, AnalysisId]])
 
 slots.has_sequencing_protocol = Slot(uri=GHGA.has_sequencing_protocol, name="has sequencing protocol", curie=GHGA.curie('has_sequencing_protocol'),
-                   model_uri=GHGA.has_sequencing_protocol, domain=None, range=Optional[str])
+                   model_uri=GHGA.has_sequencing_protocol, domain=None, range=Optional[Union[str, SequencingProtocolId]])
 
 slots.has_library_preparation_protocol = Slot(uri=GHGA.has_library_preparation_protocol, name="has library preparation protocol", curie=GHGA.curie('has_library_preparation_protocol'),
-                   model_uri=GHGA.has_library_preparation_protocol, domain=None, range=Optional[str])
+                   model_uri=GHGA.has_library_preparation_protocol, domain=None, range=Optional[Union[str, LibraryPreparationProtocolId]])
 
 slots.has_technology = Slot(uri=GHGA.has_technology, name="has technology", curie=GHGA.curie('has_technology'),
                    model_uri=GHGA.has_technology, domain=None, range=Optional[Union[str, TechnologyId]])
@@ -3204,7 +3676,7 @@ slots.has_children = Slot(uri=GHGA.has_children, name="has children", curie=GHGA
                    model_uri=GHGA.has_children, domain=None, range=Optional[str])
 
 slots.has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="has data use condition", curie=GHGA.curie('has_data_use_condition'),
-                   model_uri=GHGA.has_data_use_condition, domain=None, range=Optional[str])
+                   model_uri=GHGA.has_data_use_condition, domain=None, range=Optional[Union[str, DataUseConditionId]])
 
 slots.role = Slot(uri=GHGA.role, name="role", curie=GHGA.curie('role'),
                    model_uri=GHGA.role, domain=None, range=Optional[Union[str, "UserRoleEnum"]])
@@ -3276,7 +3748,7 @@ slots.main_contact = Slot(uri=GHGA.main_contact, name="main contact", curie=GHGA
                    model_uri=GHGA.main_contact, domain=None, range=Optional[Union[str, MemberId]])
 
 slots.has_member = Slot(uri=GHGA.has_member, name="has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.has_member, domain=None, range=Optional[str])
+                   model_uri=GHGA.has_member, domain=None, range=Optional[Union[str, MemberId]])
 
 slots.telephone = Slot(uri=GHGA.telephone, name="telephone", curie=GHGA.curie('telephone'),
                    model_uri=GHGA.telephone, domain=None, range=Optional[str])
@@ -3447,16 +3919,16 @@ slots.named_thing_id = Slot(uri=GHGA.id, name="named thing_id", curie=GHGA.curie
                    model_uri=GHGA.named_thing_id, domain=NamedThing, range=Union[str, NamedThingId])
 
 slots.named_thing_alias = Slot(uri=GHGA.alias, name="named thing_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.named_thing_alias, domain=NamedThing, range=Optional[str])
+                   model_uri=GHGA.named_thing_alias, domain=NamedThing, range=str)
 
 slots.named_thing_xref = Slot(uri=GHGA.xref, name="named thing_xref", curie=GHGA.curie('xref'),
-                   model_uri=GHGA.named_thing_xref, domain=NamedThing, range=Optional[Union[str, List[str]]])
+                   model_uri=GHGA.named_thing_xref, domain=NamedThing, range=Union[str, List[str]])
 
 slots.named_thing_creation_date = Slot(uri=GHGA.creation_date, name="named thing_creation date", curie=GHGA.curie('creation_date'),
-                   model_uri=GHGA.named_thing_creation_date, domain=NamedThing, range=Optional[str])
+                   model_uri=GHGA.named_thing_creation_date, domain=NamedThing, range=str)
 
 slots.named_thing_update_date = Slot(uri=GHGA.update_date, name="named thing_update date", curie=GHGA.curie('update_date'),
-                   model_uri=GHGA.named_thing_update_date, domain=NamedThing, range=Optional[str])
+                   model_uri=GHGA.named_thing_update_date, domain=NamedThing, range=str)
 
 slots.attribute_key = Slot(uri=GHGA.key, name="attribute_key", curie=GHGA.curie('key'),
                    model_uri=GHGA.attribute_key, domain=Attribute, range=str)
@@ -3470,8 +3942,41 @@ slots.attribute_value = Slot(uri=GHGA.value, name="attribute_value", curie=GHGA.
 slots.attribute_value_type = Slot(uri=GHGA.value_type, name="attribute_value type", curie=GHGA.curie('value_type'),
                    model_uri=GHGA.attribute_value_type, domain=Attribute, range=Optional[str])
 
-slots.project_alias = Slot(uri=GHGA.alias, name="project_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.project_alias, domain=Project, range=str)
+slots.agent_name = Slot(uri=GHGA.name, name="agent_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.agent_name, domain=Agent, range=str)
+
+slots.agent_description = Slot(uri=GHGA.description, name="agent_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.agent_description, domain=Agent, range=str)
+
+slots.person_given_name = Slot(uri=GHGA.given_name, name="person_given name", curie=GHGA.curie('given_name'),
+                   model_uri=GHGA.person_given_name, domain=Person, range=Optional[str])
+
+slots.person_family_name = Slot(uri=GHGA.family_name, name="person_family name", curie=GHGA.curie('family_name'),
+                   model_uri=GHGA.person_family_name, domain=Person, range=Optional[str])
+
+slots.person_additional_name = Slot(uri=GHGA.additional_name, name="person_additional name", curie=GHGA.curie('additional_name'),
+                   model_uri=GHGA.person_additional_name, domain=Person, range=Optional[str])
+
+slots.committee_name = Slot(uri=GHGA.name, name="committee_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.committee_name, domain=Committee, range=str)
+
+slots.investigation_title = Slot(uri=GHGA.title, name="investigation_title", curie=GHGA.curie('title'),
+                   model_uri=GHGA.investigation_title, domain=Investigation, range=str)
+
+slots.investigation_description = Slot(uri=GHGA.description, name="investigation_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.investigation_description, domain=Investigation, range=str)
+
+slots.data_transformation_title = Slot(uri=GHGA.title, name="data transformation_title", curie=GHGA.curie('title'),
+                   model_uri=GHGA.data_transformation_title, domain=DataTransformation, range=str)
+
+slots.data_transformation_description = Slot(uri=GHGA.description, name="data transformation_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.data_transformation_description, domain=DataTransformation, range=str)
+
+slots.research_activity_title = Slot(uri=GHGA.title, name="research activity_title", curie=GHGA.curie('title'),
+                   model_uri=GHGA.research_activity_title, domain=ResearchActivity, range=str)
+
+slots.research_activity_description = Slot(uri=GHGA.description, name="research activity_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.research_activity_description, domain=ResearchActivity, range=str)
 
 slots.project_title = Slot(uri=GHGA.title, name="project_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.project_title, domain=Project, range=str)
@@ -3481,9 +3986,6 @@ slots.project_description = Slot(uri=GHGA.description, name="project_description
 
 slots.project_has_attribute = Slot(uri=GHGA.has_attribute, name="project_has attribute", curie=GHGA.curie('has_attribute'),
                    model_uri=GHGA.project_has_attribute, domain=Project, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
-
-slots.study_alias = Slot(uri=GHGA.alias, name="study_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.study_alias, domain=Study, range=str)
 
 slots.study_title = Slot(uri=GHGA.title, name="study_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.study_title, domain=Study, range=str)
@@ -3507,22 +4009,28 @@ slots.study_has_attribute = Slot(uri=GHGA.has_attribute, name="study_has attribu
                    model_uri=GHGA.study_has_attribute, domain=Study, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.study_release_status = Slot(uri=GHGA.release_status, name="study_release status", curie=GHGA.curie('release_status'),
-                   model_uri=GHGA.study_release_status, domain=Study, range=Optional[Union[str, "ReleaseStatusEnum"]])
+                   model_uri=GHGA.study_release_status, domain=Study, range=Union[str, "ReleaseStatusEnum"])
 
 slots.study_has_file = Slot(uri=GHGA.has_file, name="study_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.study_has_file, domain=Study, range=Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]])
 
-slots.experiment_alias = Slot(uri=GHGA.alias, name="experiment_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.experiment_alias, domain=Experiment, range=str)
-
 slots.experiment_title = Slot(uri=GHGA.title, name="experiment_title", curie=GHGA.curie('title'),
-                   model_uri=GHGA.experiment_title, domain=Experiment, range=Optional[str])
+                   model_uri=GHGA.experiment_title, domain=Experiment, range=str)
 
 slots.experiment_description = Slot(uri=GHGA.description, name="experiment_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.experiment_description, domain=Experiment, range=str)
 
 slots.experiment_type = Slot(uri=GHGA.type, name="experiment_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.experiment_type, domain=Experiment, range=Optional[str])
+                   model_uri=GHGA.experiment_type, domain=Experiment, range=str)
+
+slots.experiment_biological_replicates = Slot(uri=GHGA.biological_replicates, name="experiment_biological replicates", curie=GHGA.curie('biological_replicates'),
+                   model_uri=GHGA.experiment_biological_replicates, domain=Experiment, range=Optional[str])
+
+slots.experiment_technical_replicates = Slot(uri=GHGA.technical_replicates, name="experiment_technical replicates", curie=GHGA.curie('technical_replicates'),
+                   model_uri=GHGA.experiment_technical_replicates, domain=Experiment, range=Optional[str])
+
+slots.experiment_experimental_replicates = Slot(uri=GHGA.experimental_replicates, name="experiment_experimental replicates", curie=GHGA.curie('experimental_replicates'),
+                   model_uri=GHGA.experiment_experimental_replicates, domain=Experiment, range=Optional[str])
 
 slots.experiment_has_study = Slot(uri=GHGA.has_study, name="experiment_has study", curie=GHGA.curie('has_study'),
                    model_uri=GHGA.experiment_has_study, domain=Experiment, range=Union[dict, Study])
@@ -3537,49 +4045,49 @@ slots.experiment_has_protocol = Slot(uri=GHGA.has_protocol, name="experiment_has
                    model_uri=GHGA.experiment_has_protocol, domain=Experiment, range=Union[Dict[Union[str, ProtocolId], Union[dict, "Protocol"]], List[Union[dict, "Protocol"]]])
 
 slots.experiment_has_experiment_process = Slot(uri=GHGA.has_experiment_process, name="experiment_has experiment process", curie=GHGA.curie('has_experiment_process'),
-                   model_uri=GHGA.experiment_has_experiment_process, domain=Experiment, range=Optional[Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]]])
+                   model_uri=GHGA.experiment_has_experiment_process, domain=Experiment, range=Union[Dict[Union[str, ExperimentProcessId], Union[dict, "ExperimentProcess"]], List[Union[dict, "ExperimentProcess"]]])
 
 slots.experiment_process_type = Slot(uri=GHGA.type, name="experiment process_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.experiment_process_type, domain=ExperimentProcess, range=Optional[Union[str, "ExperimentProcessTypeEnum"]])
+                   model_uri=GHGA.experiment_process_type, domain=ExperimentProcess, range=Union[str, "ExperimentProcessTypeEnum"])
 
 slots.experiment_process_title = Slot(uri=GHGA.title, name="experiment process_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.experiment_process_title, domain=ExperimentProcess, range=Optional[str])
 
 slots.experiment_process_has_input = Slot(uri=GHGA.has_input, name="experiment process_has input", curie=GHGA.curie('has_input'),
-                   model_uri=GHGA.experiment_process_has_input, domain=ExperimentProcess, range=Optional[Union[dict, "Sample"]])
+                   model_uri=GHGA.experiment_process_has_input, domain=ExperimentProcess, range=Union[dict, "Sample"])
 
 slots.experiment_process_has_protocol = Slot(uri=GHGA.has_protocol, name="experiment process_has protocol", curie=GHGA.curie('has_protocol'),
-                   model_uri=GHGA.experiment_process_has_protocol, domain=ExperimentProcess, range=Optional[Union[dict, "Protocol"]])
+                   model_uri=GHGA.experiment_process_has_protocol, domain=ExperimentProcess, range=Union[dict, "Protocol"])
 
 slots.experiment_process_has_agent = Slot(uri=GHGA.has_agent, name="experiment process_has agent", curie=GHGA.curie('has_agent'),
-                   model_uri=GHGA.experiment_process_has_agent, domain=ExperimentProcess, range=Optional[Union[dict, Agent]])
+                   model_uri=GHGA.experiment_process_has_agent, domain=ExperimentProcess, range=Union[dict, Agent])
 
 slots.experiment_process_has_output = Slot(uri=GHGA.has_output, name="experiment process_has output", curie=GHGA.curie('has_output'),
-                   model_uri=GHGA.experiment_process_has_output, domain=ExperimentProcess, range=Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]])
+                   model_uri=GHGA.experiment_process_has_output, domain=ExperimentProcess, range=Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]])
 
 slots.protocol_alias = Slot(uri=GHGA.alias, name="protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.protocol_alias, domain=Protocol, range=str)
 
 slots.protocol_name = Slot(uri=GHGA.name, name="protocol_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.protocol_name, domain=Protocol, range=Optional[str])
+                   model_uri=GHGA.protocol_name, domain=Protocol, range=str)
 
 slots.protocol_type = Slot(uri=GHGA.type, name="protocol_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.protocol_type, domain=Protocol, range=Optional[str])
+                   model_uri=GHGA.protocol_type, domain=Protocol, range=str)
 
 slots.protocol_description = Slot(uri=GHGA.description, name="protocol_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.protocol_description, domain=Protocol, range=Optional[str])
+                   model_uri=GHGA.protocol_description, domain=Protocol, range=str)
 
 slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('url'),
-                   model_uri=GHGA.protocol_url, domain=Protocol, range=Optional[str])
+                   model_uri=GHGA.protocol_url, domain=Protocol, range=str)
 
 slots.protocol_has_file = Slot(uri=GHGA.has_file, name="protocol_has file", curie=GHGA.curie('has_file'),
-                   model_uri=GHGA.protocol_has_file, domain=Protocol, range=Optional[Union[str, FileId]])
+                   model_uri=GHGA.protocol_has_file, domain=Protocol, range=Union[str, FileId])
 
 slots.protocol_xref = Slot(uri=GHGA.xref, name="protocol_xref", curie=GHGA.curie('xref'),
-                   model_uri=GHGA.protocol_xref, domain=Protocol, range=Optional[Union[str, List[str]]])
+                   model_uri=GHGA.protocol_xref, domain=Protocol, range=Union[str, List[str]])
 
 slots.protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="protocol_has attribute", curie=GHGA.curie('has_attribute'),
-                   model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+                   model_uri=GHGA.protocol_has_attribute, domain=Protocol, range=Union[Union[dict, Attribute], List[Union[dict, Attribute]]])
 
 slots.library_preparation_protocol_alias = Slot(uri=GHGA.alias, name="library preparation protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.library_preparation_protocol_alias, domain=LibraryPreparationProtocol, range=str)
@@ -3608,11 +4116,20 @@ slots.library_preparation_protocol_library_preparation_kit_retail_name = Slot(ur
 slots.library_preparation_protocol_library_preparation_kit_manufacturer = Slot(uri=GHGA.library_preparation_kit_manufacturer, name="library preparation protocol_library preparation kit manufacturer", curie=GHGA.curie('library_preparation_kit_manufacturer'),
                    model_uri=GHGA.library_preparation_protocol_library_preparation_kit_manufacturer, domain=LibraryPreparationProtocol, range=Optional[str])
 
+slots.library_preparation_protocol_primer = Slot(uri=GHGA.primer, name="library preparation protocol_primer", curie=GHGA.curie('primer'),
+                   model_uri=GHGA.library_preparation_protocol_primer, domain=LibraryPreparationProtocol, range=Optional[str])
+
+slots.library_preparation_protocol_end_bias = Slot(uri=GHGA.end_bias, name="library preparation protocol_end bias", curie=GHGA.curie('end_bias'),
+                   model_uri=GHGA.library_preparation_protocol_end_bias, domain=LibraryPreparationProtocol, range=Optional[str])
+
 slots.library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="library preparation protocol_has attribute", curie=GHGA.curie('has_attribute'),
-                   model_uri=GHGA.library_preparation_protocol_has_attribute, domain=LibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+                   model_uri=GHGA.library_preparation_protocol_has_attribute, domain=LibraryPreparationProtocol, range=Union[Union[dict, Attribute], List[Union[dict, Attribute]]])
 
 slots.library_preparation_protocol_target_regions = Slot(uri=GHGA.target_regions, name="library preparation protocol_target regions", curie=GHGA.curie('target_regions'),
                    model_uri=GHGA.library_preparation_protocol_target_regions, domain=LibraryPreparationProtocol, range=str)
+
+slots.library_preparation_protocol_rnaseq_strandedness = Slot(uri=GHGA.rnaseq_strandedness, name="library preparation protocol_rnaseq strandedness", curie=GHGA.curie('rnaseq_strandedness'),
+                   model_uri=GHGA.library_preparation_protocol_rnaseq_strandedness, domain=LibraryPreparationProtocol, range=Optional[str])
 
 slots.sequencing_protocol_alias = Slot(uri=GHGA.alias, name="sequencing protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.sequencing_protocol_alias, domain=SequencingProtocol, range=str)
@@ -3621,13 +4138,61 @@ slots.sequencing_protocol_instrument_model = Slot(uri=GHGA.instrument_model, nam
                    model_uri=GHGA.sequencing_protocol_instrument_model, domain=SequencingProtocol, range=str)
 
 slots.sequencing_protocol_type = Slot(uri=GHGA.type, name="sequencing protocol_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.sequencing_protocol_type, domain=SequencingProtocol, range=Optional[str])
+                   model_uri=GHGA.sequencing_protocol_type, domain=SequencingProtocol, range=str)
 
 slots.sequencing_protocol_description = Slot(uri=GHGA.description, name="sequencing protocol_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.sequencing_protocol_description, domain=SequencingProtocol, range=str)
 
 slots.sequencing_protocol_has_attribute = Slot(uri=GHGA.has_attribute, name="sequencing protocol_has attribute", curie=GHGA.curie('has_attribute'),
-                   model_uri=GHGA.sequencing_protocol_has_attribute, domain=SequencingProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+                   model_uri=GHGA.sequencing_protocol_has_attribute, domain=SequencingProtocol, range=Union[Union[dict, Attribute], List[Union[dict, Attribute]]])
+
+slots.sequencing_protocol_sequencing_center = Slot(uri=GHGA.sequencing_center, name="sequencing protocol_sequencing center", curie=GHGA.curie('sequencing_center'),
+                   model_uri=GHGA.sequencing_protocol_sequencing_center, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_paired_or_single_end = Slot(uri=GHGA.paired_or_single_end, name="sequencing protocol_paired or single end", curie=GHGA.curie('paired_or_single_end'),
+                   model_uri=GHGA.sequencing_protocol_paired_or_single_end, domain=SequencingProtocol, range=Optional[Union[str, "PairedOrSingleEndEnum"]])
+
+slots.sequencing_protocol_forward_or_reverse = Slot(uri=GHGA.forward_or_reverse, name="sequencing protocol_forward or reverse", curie=GHGA.curie('forward_or_reverse'),
+                   model_uri=GHGA.sequencing_protocol_forward_or_reverse, domain=SequencingProtocol, range=Optional[Union[str, "ForwardOrReverseEnum"]])
+
+slots.sequencing_protocol_sequencing_read_length = Slot(uri=GHGA.sequencing_read_length, name="sequencing protocol_sequencing read length", curie=GHGA.curie('sequencing_read_length'),
+                   model_uri=GHGA.sequencing_protocol_sequencing_read_length, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_index_sequence = Slot(uri=GHGA.index_sequence, name="sequencing protocol_index sequence", curie=GHGA.curie('index_sequence'),
+                   model_uri=GHGA.sequencing_protocol_index_sequence, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_target_coverage = Slot(uri=GHGA.target_coverage, name="sequencing protocol_target coverage", curie=GHGA.curie('target_coverage'),
+                   model_uri=GHGA.sequencing_protocol_target_coverage, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_lane_number = Slot(uri=GHGA.lane_number, name="sequencing protocol_lane number", curie=GHGA.curie('lane_number'),
+                   model_uri=GHGA.sequencing_protocol_lane_number, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_flow_cell_id = Slot(uri=GHGA.flow_cell_id, name="sequencing protocol_flow cell id", curie=GHGA.curie('flow_cell_id'),
+                   model_uri=GHGA.sequencing_protocol_flow_cell_id, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_flow_cell_type = Slot(uri=GHGA.flow_cell_type, name="sequencing protocol_flow cell type", curie=GHGA.curie('flow_cell_type'),
+                   model_uri=GHGA.sequencing_protocol_flow_cell_type, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_umi_barcode_read = Slot(uri=GHGA.umi_barcode_read, name="sequencing protocol_umi barcode read", curie=GHGA.curie('umi_barcode_read'),
+                   model_uri=GHGA.sequencing_protocol_umi_barcode_read, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_umi_barcode_size = Slot(uri=GHGA.umi_barcode_size, name="sequencing protocol_umi barcode size", curie=GHGA.curie('umi_barcode_size'),
+                   model_uri=GHGA.sequencing_protocol_umi_barcode_size, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_umi_barcode_offset = Slot(uri=GHGA.umi_barcode_offset, name="sequencing protocol_umi barcode offset", curie=GHGA.curie('umi_barcode_offset'),
+                   model_uri=GHGA.sequencing_protocol_umi_barcode_offset, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_cell_barcode_read = Slot(uri=GHGA.cell_barcode_read, name="sequencing protocol_cell barcode read", curie=GHGA.curie('cell_barcode_read'),
+                   model_uri=GHGA.sequencing_protocol_cell_barcode_read, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_cell_barcode_size = Slot(uri=GHGA.cell_barcode_size, name="sequencing protocol_cell barcode size", curie=GHGA.curie('cell_barcode_size'),
+                   model_uri=GHGA.sequencing_protocol_cell_barcode_size, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_cell_barcode_offset = Slot(uri=GHGA.cell_barcode_offset, name="sequencing protocol_cell barcode offset", curie=GHGA.curie('cell_barcode_offset'),
+                   model_uri=GHGA.sequencing_protocol_cell_barcode_offset, domain=SequencingProtocol, range=Optional[str])
+
+slots.sequencing_protocol_sample_barcode_read = Slot(uri=GHGA.sample_barcode_read, name="sequencing protocol_sample barcode read", curie=GHGA.curie('sample_barcode_read'),
+                   model_uri=GHGA.sequencing_protocol_sample_barcode_read, domain=SequencingProtocol, range=Optional[str])
 
 slots.workflow_alias = Slot(uri=GHGA.alias, name="workflow_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.workflow_alias, domain=Workflow, range=str)
@@ -3636,40 +4201,52 @@ slots.workflow_name = Slot(uri=GHGA.name, name="workflow_name", curie=GHGA.curie
                    model_uri=GHGA.workflow_name, domain=Workflow, range=str)
 
 slots.workflow_has_workflow_step = Slot(uri=GHGA.has_workflow_step, name="workflow_has workflow step", curie=GHGA.curie('has_workflow_step'),
-                   model_uri=GHGA.workflow_has_workflow_step, domain=Workflow, range=Optional[Union[Dict[Union[str, WorkflowStepId], Union[dict, "WorkflowStep"]], List[Union[dict, "WorkflowStep"]]]])
+                   model_uri=GHGA.workflow_has_workflow_step, domain=Workflow, range=Union[Dict[Union[str, WorkflowStepId], Union[dict, "WorkflowStep"]], List[Union[dict, "WorkflowStep"]]])
 
 slots.workflow_step_has_workflow_parameter = Slot(uri=GHGA.has_workflow_parameter, name="workflow step_has workflow parameter", curie=GHGA.curie('has_workflow_parameter'),
                    model_uri=GHGA.workflow_step_has_workflow_parameter, domain=WorkflowStep, range=Optional[Union[Union[dict, "WorkflowParameter"], List[Union[dict, "WorkflowParameter"]]]])
 
 slots.workflow_parameter_key = Slot(uri=GHGA.key, name="workflow parameter_key", curie=GHGA.curie('key'),
-                   model_uri=GHGA.workflow_parameter_key, domain=WorkflowParameter, range=Optional[str])
+                   model_uri=GHGA.workflow_parameter_key, domain=WorkflowParameter, range=str)
 
 slots.workflow_parameter_value = Slot(uri=GHGA.value, name="workflow parameter_value", curie=GHGA.curie('value'),
-                   model_uri=GHGA.workflow_parameter_value, domain=WorkflowParameter, range=Optional[str])
+                   model_uri=GHGA.workflow_parameter_value, domain=WorkflowParameter, range=str)
 
-slots.biospecimen_alias = Slot(uri=GHGA.alias, name="biospecimen_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.biospecimen_alias, domain=Biospecimen, range=str)
+slots.biospecimen_name = Slot(uri=GHGA.name, name="biospecimen_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.biospecimen_name, domain=Biospecimen, range=str)
 
 slots.biospecimen_type = Slot(uri=GHGA.type, name="biospecimen_type", curie=GHGA.curie('type'),
                    model_uri=GHGA.biospecimen_type, domain=Biospecimen, range=Optional[str])
 
+slots.biospecimen_description = Slot(uri=GHGA.description, name="biospecimen_description", curie=GHGA.curie('description'),
+                   model_uri=GHGA.biospecimen_description, domain=Biospecimen, range=str)
+
+slots.biospecimen_isolation = Slot(uri=GHGA.isolation, name="biospecimen_isolation", curie=GHGA.curie('isolation'),
+                   model_uri=GHGA.biospecimen_isolation, domain=Biospecimen, range=Optional[str])
+
+slots.biospecimen_storage = Slot(uri=GHGA.storage, name="biospecimen_storage", curie=GHGA.curie('storage'),
+                   model_uri=GHGA.biospecimen_storage, domain=Biospecimen, range=Optional[str])
+
 slots.biospecimen_has_individual = Slot(uri=GHGA.has_individual, name="biospecimen_has individual", curie=GHGA.curie('has_individual'),
                    model_uri=GHGA.biospecimen_has_individual, domain=Biospecimen, range=Union[dict, "Individual"])
-
-slots.sample_alias = Slot(uri=GHGA.alias, name="sample_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.sample_alias, domain=Sample, range=str)
 
 slots.sample_name = Slot(uri=GHGA.name, name="sample_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.sample_name, domain=Sample, range=str)
 
 slots.sample_type = Slot(uri=GHGA.type, name="sample_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.sample_type, domain=Sample, range=Optional[str])
+                   model_uri=GHGA.sample_type, domain=Sample, range=str)
 
 slots.sample_description = Slot(uri=GHGA.description, name="sample_description", curie=GHGA.curie('description'),
                    model_uri=GHGA.sample_description, domain=Sample, range=str)
 
+slots.sample_vital_status_at_sampling = Slot(uri=GHGA.vital_status_at_sampling, name="sample_vital status at sampling", curie=GHGA.curie('vital_status_at_sampling'),
+                   model_uri=GHGA.sample_vital_status_at_sampling, domain=Sample, range=Optional[Union[str, "VitalStatusEnum"]])
+
+slots.sample_case_control_status = Slot(uri=GHGA.case_control_status, name="sample_case control status", curie=GHGA.curie('case_control_status'),
+                   model_uri=GHGA.sample_case_control_status, domain=Sample, range=Optional[Union[str, "CaseControlStatusEnum"]])
+
 slots.sample_has_individual = Slot(uri=GHGA.has_individual, name="sample_has individual", curie=GHGA.curie('has_individual'),
-                   model_uri=GHGA.sample_has_individual, domain=Sample, range=Optional[Union[dict, "Individual"]])
+                   model_uri=GHGA.sample_has_individual, domain=Sample, range=Union[dict, "Individual"])
 
 slots.sample_xref = Slot(uri=GHGA.xref, name="sample_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.sample_xref, domain=Sample, range=Optional[Union[str, List[str]]])
@@ -3680,17 +4257,29 @@ slots.sample_has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="sample_has b
 slots.sample_has_anatomical_entity = Slot(uri=GHGA.has_anatomical_entity, name="sample_has anatomical entity", curie=GHGA.curie('has_anatomical_entity'),
                    model_uri=GHGA.sample_has_anatomical_entity, domain=Sample, range=Optional[Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]]])
 
-slots.individual_alias = Slot(uri=GHGA.alias, name="individual_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.individual_alias, domain=Individual, range=str)
+slots.sample_isolation = Slot(uri=GHGA.isolation, name="sample_isolation", curie=GHGA.curie('isolation'),
+                   model_uri=GHGA.sample_isolation, domain=Sample, range=Optional[str])
+
+slots.sample_storage = Slot(uri=GHGA.storage, name="sample_storage", curie=GHGA.curie('storage'),
+                   model_uri=GHGA.sample_storage, domain=Sample, range=Optional[str])
 
 slots.individual_sex = Slot(uri=GHGA.sex, name="individual_sex", curie=GHGA.curie('sex'),
                    model_uri=GHGA.individual_sex, domain=Individual, range=Union[str, "BiologicalSexEnum"])
+
+slots.individual_karyotype = Slot(uri=GHGA.karyotype, name="individual_karyotype", curie=GHGA.curie('karyotype'),
+                   model_uri=GHGA.individual_karyotype, domain=Individual, range=str)
 
 slots.individual_age = Slot(uri=GHGA.age, name="individual_age", curie=GHGA.curie('age'),
                    model_uri=GHGA.individual_age, domain=Individual, range=Union[str, "AgeRangeEnum"])
 
 slots.individual_vital_status = Slot(uri=GHGA.vital_status, name="individual_vital status", curie=GHGA.curie('vital_status'),
                    model_uri=GHGA.individual_vital_status, domain=Individual, range=Union[str, "VitalStatusEnum"])
+
+slots.individual_geographical_region = Slot(uri=GHGA.geographical_region, name="individual_geographical region", curie=GHGA.curie('geographical_region'),
+                   model_uri=GHGA.individual_geographical_region, domain=Individual, range=Optional[str])
+
+slots.individual_has_ancestry = Slot(uri=GHGA.has_ancestry, name="individual_has ancestry", curie=GHGA.curie('has_ancestry'),
+                   model_uri=GHGA.individual_has_ancestry, domain=Individual, range=Optional[Union[Dict[Union[str, AncestryId], Union[dict, "Ancestry"]], List[Union[dict, "Ancestry"]]]])
 
 slots.individual_has_parent = Slot(uri=GHGA.has_parent, name="individual_has parent", curie=GHGA.curie('has_parent'),
                    model_uri=GHGA.individual_has_parent, domain=Individual, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, "Individual"]], List[Union[dict, "Individual"]]]])
@@ -3699,7 +4288,7 @@ slots.individual_has_children = Slot(uri=GHGA.has_children, name="individual_has
                    model_uri=GHGA.individual_has_children, domain=Individual, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, "Individual"]], List[Union[dict, "Individual"]]]])
 
 slots.individual_has_disease = Slot(uri=GHGA.has_disease, name="individual_has disease", curie=GHGA.curie('has_disease'),
-                   model_uri=GHGA.individual_has_disease, domain=Individual, range=Optional[Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]]])
+                   model_uri=GHGA.individual_has_disease, domain=Individual, range=Union[Dict[Union[str, DiseaseId], Union[dict, "Disease"]], List[Union[dict, "Disease"]]])
 
 slots.individual_has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_feature, name="individual_has phenotypic feature", curie=GHGA.curie('has_phenotypic_feature'),
                    model_uri=GHGA.individual_has_phenotypic_feature, domain=Individual, range=Optional[Union[Dict[Union[str, PhenotypicFeatureId], Union[dict, "PhenotypicFeature"]], List[Union[dict, "PhenotypicFeature"]]]])
@@ -3707,23 +4296,26 @@ slots.individual_has_phenotypic_feature = Slot(uri=GHGA.has_phenotypic_feature, 
 slots.individual_has_file = Slot(uri=GHGA.has_file, name="individual_has file", curie=GHGA.curie('has_file'),
                    model_uri=GHGA.individual_has_file, domain=Individual, range=Optional[Union[Dict[Union[str, FileId], Union[dict, "File"]], List[Union[dict, "File"]]]])
 
+slots.population_name = Slot(uri=GHGA.name, name="population_name", curie=GHGA.curie('name'),
+                   model_uri=GHGA.population_name, domain=Population, range=str)
+
 slots.family_has_individual = Slot(uri=GHGA.has_individual, name="family_has individual", curie=GHGA.curie('has_individual'),
-                   model_uri=GHGA.family_has_individual, domain=Family, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
+                   model_uri=GHGA.family_has_individual, domain=Family, range=Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]])
 
 slots.family_has_proband = Slot(uri=GHGA.has_proband, name="family_has proband", curie=GHGA.curie('has_proband'),
-                   model_uri=GHGA.family_has_proband, domain=Family, range=Optional[Union[dict, Individual]])
+                   model_uri=GHGA.family_has_proband, domain=Family, range=Union[dict, Individual])
 
 slots.cohort_has_individual = Slot(uri=GHGA.has_individual, name="cohort_has individual", curie=GHGA.curie('has_individual'),
-                   model_uri=GHGA.cohort_has_individual, domain=Cohort, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
-
-slots.file_alias = Slot(uri=GHGA.alias, name="file_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.file_alias, domain=File, range=str)
+                   model_uri=GHGA.cohort_has_individual, domain=Cohort, range=Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]])
 
 slots.file_name = Slot(uri=GHGA.name, name="file_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.file_name, domain=File, range=str)
 
 slots.file_format = Slot(uri=GHGA.format, name="file_format", curie=GHGA.curie('format'),
                    model_uri=GHGA.file_format, domain=File, range=Union[str, "FileFormatEnum"])
+
+slots.file_drs_uri = Slot(uri=GHGA.drs_uri, name="file_drs uri", curie=GHGA.curie('drs_uri'),
+                   model_uri=GHGA.file_drs_uri, domain=File, range=Optional[str])
 
 slots.file_checksum = Slot(uri=GHGA.checksum, name="file_checksum", curie=GHGA.curie('checksum'),
                    model_uri=GHGA.file_checksum, domain=File, range=str)
@@ -3738,10 +4330,10 @@ slots.analysis_alias = Slot(uri=GHGA.alias, name="analysis_alias", curie=GHGA.cu
                    model_uri=GHGA.analysis_alias, domain=Analysis, range=str)
 
 slots.analysis_type = Slot(uri=GHGA.type, name="analysis_type", curie=GHGA.curie('type'),
-                   model_uri=GHGA.analysis_type, domain=Analysis, range=Optional[str])
+                   model_uri=GHGA.analysis_type, domain=Analysis, range=str)
 
 slots.analysis_description = Slot(uri=GHGA.description, name="analysis_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.analysis_description, domain=Analysis, range=Optional[str])
+                   model_uri=GHGA.analysis_description, domain=Analysis, range=str)
 
 slots.analysis_reference_genome = Slot(uri=GHGA.reference_genome, name="analysis_reference genome", curie=GHGA.curie('reference_genome'),
                    model_uri=GHGA.analysis_reference_genome, domain=Analysis, range=str)
@@ -3753,13 +4345,13 @@ slots.analysis_has_input = Slot(uri=GHGA.has_input, name="analysis_has input", c
                    model_uri=GHGA.analysis_has_input, domain=Analysis, range=Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]])
 
 slots.analysis_has_study = Slot(uri=GHGA.has_study, name="analysis_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.analysis_has_study, domain=Analysis, range=Optional[Union[dict, Study]])
+                   model_uri=GHGA.analysis_has_study, domain=Analysis, range=Union[dict, Study])
 
 slots.analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis_has workflow", curie=GHGA.curie('has_workflow'),
                    model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]])
 
 slots.analysis_has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="analysis_has analysis process", curie=GHGA.curie('has_analysis_process'),
-                   model_uri=GHGA.analysis_has_analysis_process, domain=Analysis, range=Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]])
+                   model_uri=GHGA.analysis_has_analysis_process, domain=Analysis, range=Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]])
 
 slots.analysis_has_output = Slot(uri=GHGA.has_output, name="analysis_has output", curie=GHGA.curie('has_output'),
                    model_uri=GHGA.analysis_has_output, domain=Analysis, range=Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]])
@@ -3770,14 +4362,14 @@ slots.analysis_process_has_input = Slot(uri=GHGA.has_input, name="analysis proce
 slots.analysis_process_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis process_has workflow", curie=GHGA.curie('has_workflow'),
                    model_uri=GHGA.analysis_process_has_workflow, domain=AnalysisProcess, range=Optional[Union[dict, Workflow]])
 
+slots.analysis_process_title = Slot(uri=GHGA.title, name="analysis process_title", curie=GHGA.curie('title'),
+                   model_uri=GHGA.analysis_process_title, domain=AnalysisProcess, range=str)
+
 slots.analysis_process_has_agent = Slot(uri=GHGA.has_agent, name="analysis process_has agent", curie=GHGA.curie('has_agent'),
                    model_uri=GHGA.analysis_process_has_agent, domain=AnalysisProcess, range=Optional[Union[dict, Agent]])
 
 slots.analysis_process_has_output = Slot(uri=GHGA.has_output, name="analysis process_has output", curie=GHGA.curie('has_output'),
                    model_uri=GHGA.analysis_process_has_output, domain=AnalysisProcess, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
-
-slots.dataset_alias = Slot(uri=GHGA.alias, name="dataset_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.dataset_alias, domain=Dataset, range=str)
 
 slots.dataset_title = Slot(uri=GHGA.title, name="dataset_title", curie=GHGA.curie('title'),
                    model_uri=GHGA.dataset_title, domain=Dataset, range=str)
@@ -3818,14 +4410,11 @@ slots.data_use_condition_has_data_use_permission = Slot(uri=GHGA.has_data_use_pe
 slots.data_use_condition_has_data_use_modifier = Slot(uri=GHGA.has_data_use_modifier, name="data use condition_has data use modifier", curie=GHGA.curie('has_data_use_modifier'),
                    model_uri=GHGA.data_use_condition_has_data_use_modifier, domain=DataUseCondition, range=Optional[Union[dict, "DataUseModifier"]])
 
-slots.data_access_policy_alias = Slot(uri=GHGA.alias, name="data access policy_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.data_access_policy_alias, domain=DataAccessPolicy, range=str)
-
 slots.data_access_policy_name = Slot(uri=GHGA.name, name="data access policy_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.data_access_policy_name, domain=DataAccessPolicy, range=Optional[str])
+                   model_uri=GHGA.data_access_policy_name, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_description = Slot(uri=GHGA.description, name="data access policy_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.data_access_policy_description, domain=DataAccessPolicy, range=Optional[str])
+                   model_uri=GHGA.data_access_policy_description, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_policy_text = Slot(uri=GHGA.policy_text, name="data access policy_policy text", curie=GHGA.curie('policy_text'),
                    model_uri=GHGA.data_access_policy_policy_text, domain=DataAccessPolicy, range=str)
@@ -3842,17 +4431,14 @@ slots.data_access_policy_has_data_use_condition = Slot(uri=GHGA.has_data_use_con
 slots.data_access_policy_data_request_form = Slot(uri=GHGA.data_request_form, name="data access policy_data request form", curie=GHGA.curie('data_request_form'),
                    model_uri=GHGA.data_access_policy_data_request_form, domain=DataAccessPolicy, range=Optional[str])
 
-slots.data_access_committee_alias = Slot(uri=GHGA.alias, name="data access committee_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.data_access_committee_alias, domain=DataAccessCommittee, range=str)
-
 slots.data_access_committee_name = Slot(uri=GHGA.name, name="data access committee_name", curie=GHGA.curie('name'),
                    model_uri=GHGA.data_access_committee_name, domain=DataAccessCommittee, range=str)
 
 slots.data_access_committee_description = Slot(uri=GHGA.description, name="data access committee_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.data_access_committee_description, domain=DataAccessCommittee, range=Optional[str])
+                   model_uri=GHGA.data_access_committee_description, domain=DataAccessCommittee, range=str)
 
 slots.data_access_committee_main_contact = Slot(uri=GHGA.main_contact, name="data access committee_main contact", curie=GHGA.curie('main_contact'),
-                   model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Optional[Union[dict, "Member"]])
+                   model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Union[dict, "Member"])
 
 slots.data_access_committee_has_member = Slot(uri=GHGA.has_member, name="data access committee_has member", curie=GHGA.curie('has_member'),
                    model_uri=GHGA.data_access_committee_has_member, domain=DataAccessCommittee, range=Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]])
@@ -3866,20 +4452,26 @@ slots.member_telephone = Slot(uri=GHGA.telephone, name="member_telephone", curie
 slots.member_organization = Slot(uri=GHGA.organization, name="member_organization", curie=GHGA.curie('organization'),
                    model_uri=GHGA.member_organization, domain=Member, range=str)
 
-slots.publication_id = Slot(uri=GHGA.id, name="publication_id", curie=GHGA.curie('id'),
-                   model_uri=GHGA.publication_id, domain=Publication, range=Union[str, PublicationId])
-
-slots.publication_alias = Slot(uri=GHGA.alias, name="publication_alias", curie=GHGA.curie('alias'),
-                   model_uri=GHGA.publication_alias, domain=Publication, range=str)
-
 slots.publication_title = Slot(uri=GHGA.title, name="publication_title", curie=GHGA.curie('title'),
-                   model_uri=GHGA.publication_title, domain=Publication, range=Optional[str])
+                   model_uri=GHGA.publication_title, domain=Publication, range=str)
 
 slots.publication_abstract = Slot(uri=GHGA.abstract, name="publication_abstract", curie=GHGA.curie('abstract'),
                    model_uri=GHGA.publication_abstract, domain=Publication, range=Optional[str])
 
+slots.publication_author = Slot(uri=GHGA.author, name="publication_author", curie=GHGA.curie('author'),
+                   model_uri=GHGA.publication_author, domain=Publication, range=str)
+
+slots.publication_year = Slot(uri=GHGA.year, name="publication_year", curie=GHGA.curie('year'),
+                   model_uri=GHGA.publication_year, domain=Publication, range=int)
+
+slots.publication_journal = Slot(uri=GHGA.journal, name="publication_journal", curie=GHGA.curie('journal'),
+                   model_uri=GHGA.publication_journal, domain=Publication, range=str)
+
 slots.publication_xref = Slot(uri=GHGA.xref, name="publication_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.publication_xref, domain=Publication, range=Optional[Union[str, List[str]]])
+
+slots.user_email = Slot(uri=GHGA.email, name="user_email", curie=GHGA.curie('email'),
+                   model_uri=GHGA.user_email, domain=User, range=Optional[str])
 
 slots.user_role = Slot(uri=GHGA.role, name="user_role", curie=GHGA.curie('role'),
                    model_uri=GHGA.user_role, domain=User, range=Optional[Union[str, "UserRoleEnum"]])
@@ -3888,10 +4480,10 @@ slots.submission_id = Slot(uri=GHGA.id, name="submission_id", curie=GHGA.curie('
                    model_uri=GHGA.submission_id, domain=Submission, range=Union[str, SubmissionId])
 
 slots.submission_affiliation = Slot(uri=GHGA.affiliation, name="submission_affiliation", curie=GHGA.curie('affiliation'),
-                   model_uri=GHGA.submission_affiliation, domain=Submission, range=Optional[str])
+                   model_uri=GHGA.submission_affiliation, domain=Submission, range=str)
 
 slots.submission_has_study = Slot(uri=GHGA.has_study, name="submission_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[dict, Study]])
+                   model_uri=GHGA.submission_has_study, domain=Submission, range=Union[dict, Study])
 
 slots.submission_has_project = Slot(uri=GHGA.has_project, name="submission_has project", curie=GHGA.curie('has_project'),
                    model_uri=GHGA.submission_has_project, domain=Submission, range=Optional[Union[dict, Project]])
@@ -3915,19 +4507,19 @@ slots.submission_has_analysis = Slot(uri=GHGA.has_analysis, name="submission_has
                    model_uri=GHGA.submission_has_analysis, domain=Submission, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])
 
 slots.submission_has_file = Slot(uri=GHGA.has_file, name="submission_has file", curie=GHGA.curie('has_file'),
-                   model_uri=GHGA.submission_has_file, domain=Submission, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
+                   model_uri=GHGA.submission_has_file, domain=Submission, range=Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]])
 
 slots.submission_has_dataset = Slot(uri=GHGA.has_dataset, name="submission_has dataset", curie=GHGA.curie('has_dataset'),
-                   model_uri=GHGA.submission_has_dataset, domain=Submission, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]])
+                   model_uri=GHGA.submission_has_dataset, domain=Submission, range=Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]])
 
 slots.submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.submission_has_data_access_policy, domain=Submission, range=Optional[Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]]])
+                   model_uri=GHGA.submission_has_data_access_policy, domain=Submission, range=Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]])
 
 slots.submission_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="submission_has data access committee", curie=GHGA.curie('has_data_access_committee'),
-                   model_uri=GHGA.submission_has_data_access_committee, domain=Submission, range=Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]])
+                   model_uri=GHGA.submission_has_data_access_committee, domain=Submission, range=Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]])
 
 slots.submission_has_member = Slot(uri=GHGA.has_member, name="submission_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.submission_has_member, domain=Submission, range=Optional[Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]]])
+                   model_uri=GHGA.submission_has_member, domain=Submission, range=Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]])
 
 slots.submission_has_publication = Slot(uri=GHGA.has_publication, name="submission_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.submission_has_publication, domain=Submission, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]])
@@ -3939,13 +4531,52 @@ slots.submission_update_date = Slot(uri=GHGA.update_date, name="submission_updat
                    model_uri=GHGA.submission_update_date, domain=Submission, range=Optional[str])
 
 slots.submission_submission_status = Slot(uri=GHGA.submission_status, name="submission_submission status", curie=GHGA.curie('submission_status'),
-                   model_uri=GHGA.submission_submission_status, domain=Submission, range=Optional[Union[str, "SubmissionStatusEnum"]])
+                   model_uri=GHGA.submission_submission_status, domain=Submission, range=Optional[str])
+
+slots.ontology_class_mixin_id = Slot(uri=GHGA.id, name="ontology class mixin_id", curie=GHGA.curie('id'),
+                   model_uri=GHGA.ontology_class_mixin_id, domain=None, range=Union[str, OntologyClassMixinId])
 
 slots.ontology_class_mixin_concept_identifier = Slot(uri=GHGA.concept_identifier, name="ontology class mixin_concept identifier", curie=GHGA.curie('concept_identifier'),
-                   model_uri=GHGA.ontology_class_mixin_concept_identifier, domain=None, range=Optional[str])
+                   model_uri=GHGA.ontology_class_mixin_concept_identifier, domain=None, range=str)
 
-slots.ontology_class_mixin_name = Slot(uri=GHGA.name, name="ontology class mixin_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.ontology_class_mixin_name, domain=None, range=Optional[str])
+slots.ontology_class_mixin_concept_name = Slot(uri=GHGA.concept_name, name="ontology class mixin_concept name", curie=GHGA.curie('concept_name'),
+                   model_uri=GHGA.ontology_class_mixin_concept_name, domain=None, range=Optional[str])
+
+slots.ontology_class_mixin_ontology_name = Slot(uri=GHGA.ontology_name, name="ontology class mixin_ontology name", curie=GHGA.curie('ontology_name'),
+                   model_uri=GHGA.ontology_class_mixin_ontology_name, domain=None, range=str)
+
+slots.ontology_class_mixin_ontology_version = Slot(uri=GHGA.ontology_version, name="ontology class mixin_ontology version", curie=GHGA.curie('ontology_version'),
+                   model_uri=GHGA.ontology_class_mixin_ontology_version, domain=None, range=str)
 
 slots.ontology_class_mixin_description = Slot(uri=GHGA.description, name="ontology class mixin_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.ontology_class_mixin_description, domain=None, range=Optional[str])
+                   model_uri=GHGA.ontology_class_mixin_description, domain=None, range=str)
+
+slots.metadata_mixin_schema_type = Slot(uri=GHGA.schema_type, name="metadata mixin_schema type", curie=GHGA.curie('schema_type'),
+                   model_uri=GHGA.metadata_mixin_schema_type, domain=None, range=str)
+
+slots.metadata_mixin_schema_version = Slot(uri=GHGA.schema_version, name="metadata mixin_schema version", curie=GHGA.curie('schema_version'),
+                   model_uri=GHGA.metadata_mixin_schema_version, domain=None, range=str)
+
+slots.accession_mixin_accession = Slot(uri=GHGA.accession, name="accession mixin_accession", curie=GHGA.curie('accession'),
+                   model_uri=GHGA.accession_mixin_accession, domain=None, range=str)
+
+slots.ega_accession_mixin_ega_accession = Slot(uri=GHGA.ega_accession, name="ega accession mixin_ega accession", curie=GHGA.curie('ega_accession'),
+                   model_uri=GHGA.ega_accession_mixin_ega_accession, domain=None, range=str)
+
+slots.attribute_mixin_has_attribute = Slot(uri=GHGA.has_attribute, name="attribute mixin_has attribute", curie=GHGA.curie('has_attribute'),
+                   model_uri=GHGA.attribute_mixin_has_attribute, domain=None, range=Union[Union[dict, Attribute], List[Union[dict, Attribute]]])
+
+slots.publication_mixin_has_publication = Slot(uri=GHGA.has_publication, name="publication mixin_has publication", curie=GHGA.curie('has_publication'),
+                   model_uri=GHGA.publication_mixin_has_publication, domain=None, range=Union[str, PublicationId])
+
+slots.deprecated_mixin_replaced_by = Slot(uri=GHGA.replaced_by, name="deprecated mixin_replaced by", curie=GHGA.curie('replaced_by'),
+                   model_uri=GHGA.deprecated_mixin_replaced_by, domain=None, range=Union[str, NamedThingId])
+
+slots.deprecated_mixin_deprecation_date = Slot(uri=GHGA.deprecation_date, name="deprecated mixin_deprecation date", curie=GHGA.curie('deprecation_date'),
+                   model_uri=GHGA.deprecated_mixin_deprecation_date, domain=None, range=str)
+
+slots.release_status_mixin_release_status = Slot(uri=GHGA.release_status, name="release status mixin_release status", curie=GHGA.curie('release_status'),
+                   model_uri=GHGA.release_status_mixin_release_status, domain=None, range=str)
+
+slots.release_status_mixin_release_date = Slot(uri=GHGA.release_date, name="release status mixin_release date", curie=GHGA.curie('release_date'),
+                   model_uri=GHGA.release_status_mixin_release_date, domain=None, range=str)

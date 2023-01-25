@@ -26,6 +26,5 @@ URI: [GHGA:submission_has_analysis](https://w3id.org/GHGA/submission_has_analysi
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

@@ -21,11 +21,3 @@ URI: [GHGA:biospecimen_type](https://w3id.org/GHGA/biospecimen_type)
 ## Used by
 
  * [Biospecimen](Biospecimen.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

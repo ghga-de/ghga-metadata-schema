@@ -16,15 +16,7 @@ None &#8594;  <sub>0..1</sub> [case control status enum](case control status enu
 
 ## Children
 
+ *  [sample➞case control status](sample_case_control_status.md)
 
 ## Used by
-
- * [Sample](Sample.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 

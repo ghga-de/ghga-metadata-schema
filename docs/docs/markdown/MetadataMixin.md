@@ -7,7 +7,7 @@ Mixin for tracking schema specific metadata about an instance.
 URI: [GHGA:MetadataMixin](https://w3id.org/GHGA/MetadataMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission]uses%20-.->[MetadataMixin&#124;schema_type:string%20%3F;schema_version:string%20%3F],[NamedThing]uses%20-.->[MetadataMixin],[Submission],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission]uses%20-.->[MetadataMixin&#124;schema_type:string%20%3F;schema_version:string%20%3F],[NamedThing]uses%20-.->[MetadataMixin],[Submission],[NamedThing])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission]uses%20-.->[MetadataMixin&#124;schema_type:string;schema_version:string],[NamedThing]uses%20-.->[MetadataMixin],[Submission],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission]uses%20-.->[MetadataMixin&#124;schema_type:string;schema_version:string],[NamedThing]uses%20-.->[MetadataMixin],[Submission],[NamedThing])
 
 ## Mixin for
 
@@ -22,9 +22,9 @@ URI: [GHGA:MetadataMixin](https://w3id.org/GHGA/MetadataMixin)
 
 ### Own
 
- * [schema type](schema_type.md)  <sub>0..1</sub>
+ * [metadata mixin➞schema type](metadata_mixin_schema_type.md)  <sub>1..1</sub>
      * Description: The schema type an instance corresponds to.
      * Range: [String](types/String.md)
- * [schema version](schema_version.md)  <sub>0..1</sub>
+ * [metadata mixin➞schema version](metadata_mixin_schema_version.md)  <sub>1..1</sub>
      * Description: The version of the schema an instance corresponds to.
      * Range: [String](types/String.md)

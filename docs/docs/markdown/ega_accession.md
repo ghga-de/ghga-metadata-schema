@@ -16,17 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [ega accession mixin➞ega accession](ega_accession_mixin_ega_accession.md)
 
 ## Used by
 
- * [Analysis](Analysis.md)
- * [DataAccessCommittee](DataAccessCommittee.md)
- * [DataAccessPolicy](DataAccessPolicy.md)
- * [Dataset](Dataset.md)
- * [Donor](Donor.md)
- * [EgaAccessionMixin](EgaAccessionMixin.md)
- * [Experiment](Experiment.md)
- * [File](File.md)
- * [Individual](Individual.md)
- * [Sample](Sample.md)
- * [Study](Study.md)

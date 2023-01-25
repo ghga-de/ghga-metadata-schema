@@ -7,15 +7,16 @@ A key/value pair that further characterizes an entity.
 URI: [GHGA:Attribute](https://w3id.org/GHGA/Attribute)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[AttributeMixin]++-%20has%20attribute%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[LibraryPreparationProtocol]++-%20has%20attribute%200..*>[Attribute],[Project]++-%20has%20attribute%200..*>[Attribute],[Protocol]++-%20has%20attribute%200..*>[Attribute],[SequencingProtocol]++-%20has%20attribute%200..*>[Attribute],[Study]++-%20has%20attribute%200..*>[Attribute],[AttributeMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[AttributeMixin]++-%20has%20attribute%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[LibraryPreparationProtocol]++-%20has%20attribute%200..*>[Attribute],[Project]++-%20has%20attribute%200..*>[Attribute],[Protocol]++-%20has%20attribute%200..*>[Attribute],[SequencingProtocol]++-%20has%20attribute%200..*>[Attribute],[Study]++-%20has%20attribute%200..*>[Attribute],[AttributeMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[AttributeMixin],[AttributeMixin]++-%20has%20attribute%201..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[AttributeMixin]++-%20has%20attribute(i)%200..*>[Attribute],[LibraryPreparationProtocol]++-%20has%20attribute%201..*>[Attribute],[Project]++-%20has%20attribute%200..*>[Attribute],[Protocol]++-%20has%20attribute%201..*>[Attribute],[SequencingProtocol]++-%20has%20attribute%201..*>[Attribute],[Study]++-%20has%20attribute%200..*>[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[AttributeMixin],[AttributeMixin]++-%20has%20attribute%201..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[AttributeMixin]++-%20has%20attribute(i)%200..*>[Attribute],[LibraryPreparationProtocol]++-%20has%20attribute%201..*>[Attribute],[Project]++-%20has%20attribute%200..*>[Attribute],[Protocol]++-%20has%20attribute%201..*>[Attribute],[SequencingProtocol]++-%20has%20attribute%201..*>[Attribute],[Study]++-%20has%20attribute%200..*>[Attribute])
 
 ## Referenced by Class
 
+ *  **[AttributeMixin](AttributeMixin.md)** *[attribute mixin➞has attribute](attribute_mixin_has_attribute.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
  *  **None** *[has attribute](has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)** *[library preparation protocol➞has attribute](library_preparation_protocol_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)** *[library preparation protocol➞has attribute](library_preparation_protocol_has_attribute.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
  *  **[Project](Project.md)** *[project➞has attribute](project_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[Protocol](Protocol.md)** *[protocol➞has attribute](protocol_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[SequencingProtocol](SequencingProtocol.md)** *[sequencing protocol➞has attribute](sequencing_protocol_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[Protocol](Protocol.md)** *[protocol➞has attribute](protocol_has_attribute.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[SequencingProtocol](SequencingProtocol.md)** *[sequencing protocol➞has attribute](sequencing_protocol_has_attribute.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
  *  **[Study](Study.md)** *[study➞has attribute](study_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
 
 ## Attributes

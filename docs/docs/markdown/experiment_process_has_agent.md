@@ -9,7 +9,7 @@ URI: [GHGA:experiment_process_has_agent](https://w3id.org/GHGA/experiment_proces
 
 ## Domain and Range
 
-[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>0..1</sub> [Agent](Agent.md)
+[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>1..1</sub> [Agent](Agent.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:experiment_process_has_agent](https://w3id.org/GHGA/experiment_proces
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

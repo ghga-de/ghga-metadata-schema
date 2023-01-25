@@ -16,25 +16,13 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [analysis process➞title](analysis_process_title.md)
+ *  [data transformation➞title](data_transformation_title.md)
  *  [dataset➞title](dataset_title.md)
  *  [experiment process➞title](experiment_process_title.md)
- *  [experiment➞title](experiment_title.md)
- *  [project➞title](project_title.md)
+ *  [investigation➞title](investigation_title.md)
  *  [publication➞title](publication_title.md)
- *  [study➞title](study_title.md)
+ *  [research activity➞title](research_activity_title.md)
 
 ## Used by
-
- * [Analysis](Analysis.md)
- * [AnalysisProcess](AnalysisProcess.md)
- * [DataTransformation](DataTransformation.md)
- * [Investigation](Investigation.md)
- * [ResearchActivity](ResearchActivity.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 

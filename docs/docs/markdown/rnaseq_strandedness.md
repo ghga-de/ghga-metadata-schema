@@ -16,15 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [library preparation protocol➞rnaseq strandedness](library_preparation_protocol_rnaseq_strandedness.md)
 
 ## Used by
-
- * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 

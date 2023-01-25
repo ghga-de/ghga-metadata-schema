@@ -21,11 +21,3 @@ URI: [GHGA:file_format](https://w3id.org/GHGA/file_format)
 ## Used by
 
  * [File](File.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

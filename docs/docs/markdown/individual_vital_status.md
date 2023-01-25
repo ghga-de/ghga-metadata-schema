@@ -27,6 +27,5 @@ URI: [GHGA:individual_vital_status](https://w3id.org/GHGA/individual_vital_statu
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

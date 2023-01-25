@@ -26,6 +26,5 @@ URI: [GHGA:study_has_attribute](https://w3id.org/GHGA/study_has_attribute)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

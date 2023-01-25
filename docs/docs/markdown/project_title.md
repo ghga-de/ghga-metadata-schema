@@ -13,7 +13,7 @@ URI: [GHGA:project_title](https://w3id.org/GHGA/project_title)
 
 ## Parents
 
- *  is_a: [title](title.md)
+ *  is_a: [research activity➞title](research_activity_title.md)
 
 ## Children
 
@@ -21,11 +21,3 @@ URI: [GHGA:project_title](https://w3id.org/GHGA/project_title)
 ## Used by
 
  * [Project](Project.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

@@ -7,7 +7,7 @@ A material entity is a physical entity that is spatially extended, exists as a w
 URI: [GHGA:MaterialEntity](https://w3id.org/GHGA/MaterialEntity)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[NamedThing],[MaterialEntity&#124;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[CellLine],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[NamedThing]^-[MaterialEntity],[CellLine],[Biospecimen],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[NamedThing],[MaterialEntity&#124;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[CellLine],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[NamedThing]^-[MaterialEntity],[CellLine],[Biospecimen],[AnatomicalEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[NamedThing],[MaterialEntity&#124;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[CellLine],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[NamedThing]^-[MaterialEntity],[CellLine],[Biospecimen],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[NamedThing],[MaterialEntity&#124;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[CellLine],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[NamedThing]^-[MaterialEntity],[CellLine],[Biospecimen],[AnatomicalEntity])
 
 ## Parents
 
@@ -32,19 +32,18 @@ URI: [GHGA:MaterialEntity](https://w3id.org/GHGA/MaterialEntity)
  * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>0..1</sub>
+     * in subsets: (restricted)
+ * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+     * in subsets: (restricted)
+ * [named thing➞xref](named_thing_xref.md)  <sub>1..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (optional,public)
- * [named thing➞creation date](named_thing_creation_date.md)  <sub>0..1</sub>
+ * [named thing➞creation date](named_thing_creation_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was created.
      * Range: [String](types/String.md)
- * [named thing➞update date](named_thing_update_date.md)  <sub>0..1</sub>
+ * [named thing➞update date](named_thing_update_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was updated.
      * Range: [String](types/String.md)
 

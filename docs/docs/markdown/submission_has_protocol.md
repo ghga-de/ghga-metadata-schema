@@ -26,6 +26,5 @@ URI: [GHGA:submission_has_protocol](https://w3id.org/GHGA/submission_has_protoco
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

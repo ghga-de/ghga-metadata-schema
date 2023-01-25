@@ -9,7 +9,7 @@ URI: [GHGA:has_analysis](https://w3id.org/GHGA/has_analysis)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [Analysis](Analysis.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

@@ -21,11 +21,3 @@ URI: [GHGA:analysis_reference_genome](https://w3id.org/GHGA/analysis_reference_g
 ## Used by
 
  * [Analysis](Analysis.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

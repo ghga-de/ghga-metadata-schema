@@ -9,11 +9,11 @@ URI: [GHGA:analysis_description](https://w3id.org/GHGA/analysis_description)
 
 ## Domain and Range
 
-[Analysis](Analysis.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Analysis](Analysis.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
- *  is_a: [description](description.md)
+ *  is_a: [data transformation➞description](data_transformation_description.md)
 
 ## Children
 
@@ -26,7 +26,5 @@ URI: [GHGA:analysis_description](https://w3id.org/GHGA/analysis_description)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

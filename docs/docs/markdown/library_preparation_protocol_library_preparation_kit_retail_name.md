@@ -21,11 +21,3 @@ URI: [GHGA:library_preparation_protocol_library_preparation_kit_retail_name](htt
 ## Used by
 
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
-

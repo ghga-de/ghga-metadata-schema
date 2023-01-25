@@ -9,7 +9,7 @@ URI: [GHGA:individual_has_disease](https://w3id.org/GHGA/individual_has_disease)
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [Disease](Disease.md)
+[Individual](Individual.md) &#8594;  <sub>1..\*</sub> [Disease](Disease.md)
 
 ## Parents
 
@@ -22,11 +22,3 @@ URI: [GHGA:individual_has_disease](https://w3id.org/GHGA/individual_has_disease)
 
  * [Donor](Donor.md)
  * [Individual](Individual.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

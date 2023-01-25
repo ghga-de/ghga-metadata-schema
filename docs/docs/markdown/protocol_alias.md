@@ -28,6 +28,5 @@ URI: [GHGA:protocol_alias](https://w3id.org/GHGA/protocol_alias)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

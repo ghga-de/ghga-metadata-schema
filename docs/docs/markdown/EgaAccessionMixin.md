@@ -7,7 +7,7 @@ Mixin for entities that can be assigned an EGA accession, in addition to GHGA ac
 URI: [GHGA:EgaAccessionMixin](https://w3id.org/GHGA/EgaAccessionMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[EgaAccessionMixin&#124;ega_accession:string%20%3F],[Sample]uses%20-.->[EgaAccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[Experiment]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[DataAccessCommittee]uses%20-.->[EgaAccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[Study],[Sample],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[EgaAccessionMixin&#124;ega_accession:string%20%3F],[Sample]uses%20-.->[EgaAccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[Experiment]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[DataAccessCommittee]uses%20-.->[EgaAccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[Study],[Sample],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[EgaAccessionMixin&#124;ega_accession:string],[Sample]uses%20-.->[EgaAccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[Experiment]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[DataAccessCommittee]uses%20-.->[EgaAccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[Study],[Sample],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[EgaAccessionMixin&#124;ega_accession:string],[Sample]uses%20-.->[EgaAccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[Experiment]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[DataAccessCommittee]uses%20-.->[EgaAccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[Study],[Sample],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Analysis])
 
 ## Mixin for
 
@@ -29,6 +29,6 @@ URI: [GHGA:EgaAccessionMixin](https://w3id.org/GHGA/EgaAccessionMixin)
 
 ### Own
 
- * [ega accession](ega_accession.md)  <sub>0..1</sub>
+ * [ega accession mixin➞ega accession](ega_accession_mixin_ega_accession.md)  <sub>1..1</sub>
      * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
      * Range: [String](types/String.md)

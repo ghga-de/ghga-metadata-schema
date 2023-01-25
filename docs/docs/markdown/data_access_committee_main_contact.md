@@ -9,7 +9,7 @@ URI: [GHGA:data_access_committee_main_contact](https://w3id.org/GHGA/data_access
 
 ## Domain and Range
 
-[DataAccessCommittee](DataAccessCommittee.md) &#8594;  <sub>0..1</sub> [Member](Member.md)
+[DataAccessCommittee](DataAccessCommittee.md) &#8594;  <sub>1..1</sub> [Member](Member.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:data_access_committee_main_contact](https://w3id.org/GHGA/data_access
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

@@ -16,25 +16,17 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 
 ## Children
 
+ *  [attribute mixin➞has attribute](attribute_mixin_has_attribute.md)
  *  [project➞has attribute](project_has_attribute.md)
  *  [protocol➞has attribute](protocol_has_attribute.md)
  *  [study➞has attribute](study_has_attribute.md)
 
 ## Used by
 
- * [AttributeMixin](AttributeMixin.md)
- * [DataAccessCommittee](DataAccessCommittee.md)
- * [DataAccessPolicy](DataAccessPolicy.md)
- * [Dataset](Dataset.md)
- * [Experiment](Experiment.md)
- * [ExperimentProcess](ExperimentProcess.md)
- * [File](File.md)
- * [Sample](Sample.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

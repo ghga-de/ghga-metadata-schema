@@ -20,11 +20,3 @@ None &#8594;  <sub>0..1</sub> [Disease](Disease.md)
 
 ## Used by
 
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

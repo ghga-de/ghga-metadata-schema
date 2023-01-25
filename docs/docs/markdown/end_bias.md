@@ -16,16 +16,14 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [library preparation protocol➞end bias](library_preparation_protocol_end_bias.md)
 
 ## Used by
 
- * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 | **Exact Mappings:** | | EFO:0010187 |
 

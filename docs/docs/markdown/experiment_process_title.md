@@ -21,11 +21,3 @@ URI: [GHGA:experiment_process_title](https://w3id.org/GHGA/experiment_process_ti
 ## Used by
 
  * [ExperimentProcess](ExperimentProcess.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

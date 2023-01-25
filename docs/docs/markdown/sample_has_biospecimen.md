@@ -26,6 +26,5 @@ URI: [GHGA:sample_has_biospecimen](https://w3id.org/GHGA/sample_has_biospecimen)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

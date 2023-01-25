@@ -16,16 +16,14 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [sequencing protocol➞index sequence](sequencing_protocol_index_sequence.md)
 
 ## Used by
 
- * [SequencingProtocol](SequencingProtocol.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 | **Exact Mappings:** | | NCIT:C165443 |
 

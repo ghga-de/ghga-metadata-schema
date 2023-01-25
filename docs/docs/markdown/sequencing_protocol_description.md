@@ -26,7 +26,5 @@ URI: [GHGA:sequencing_protocol_description](https://w3id.org/GHGA/sequencing_pro
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

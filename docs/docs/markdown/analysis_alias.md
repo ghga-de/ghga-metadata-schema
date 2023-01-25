@@ -26,6 +26,5 @@ URI: [GHGA:analysis_alias](https://w3id.org/GHGA/analysis_alias)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

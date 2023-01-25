@@ -9,11 +9,11 @@ URI: [GHGA:experiment_title](https://w3id.org/GHGA/experiment_title)
 
 ## Domain and Range
 
-[Experiment](Experiment.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Experiment](Experiment.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
- *  is_a: [title](title.md)
+ *  is_a: [investigation➞title](investigation_title.md)
 
 ## Children
 
@@ -21,11 +21,3 @@ URI: [GHGA:experiment_title](https://w3id.org/GHGA/experiment_title)
 ## Used by
 
  * [Experiment](Experiment.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

@@ -26,6 +26,5 @@ URI: [GHGA:experiment_has_protocol](https://w3id.org/GHGA/experiment_has_protoco
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

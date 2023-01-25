@@ -26,7 +26,5 @@ URI: [GHGA:sample_description](https://w3id.org/GHGA/sample_description)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

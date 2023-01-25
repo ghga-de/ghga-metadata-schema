@@ -13,7 +13,7 @@ URI: [GHGA:study_title](https://w3id.org/GHGA/study_title)
 
 ## Parents
 
- *  is_a: [title](title.md)
+ *  is_a: [investigation➞title](investigation_title.md)
 
 ## Children
 
@@ -21,11 +21,3 @@ URI: [GHGA:study_title](https://w3id.org/GHGA/study_title)
 ## Used by
 
  * [Study](Study.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

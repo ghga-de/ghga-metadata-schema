@@ -21,11 +21,3 @@ URI: [GHGA:library_preparation_protocol_target_regions](https://w3id.org/GHGA/li
 ## Used by
 
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

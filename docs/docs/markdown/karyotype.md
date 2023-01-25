@@ -16,16 +16,14 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [individual➞karyotype](individual_karyotype.md)
 
 ## Used by
 
- * [Donor](Donor.md)
- * [Individual](Individual.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

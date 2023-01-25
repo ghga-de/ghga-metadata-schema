@@ -17,7 +17,6 @@ URI: [GHGA:named_thing_id](https://w3id.org/GHGA/named_thing_id)
 
 ## Children
 
- *  [publication➞id](publication_id.md)
 
 ## Used by
 
@@ -58,6 +57,7 @@ URI: [GHGA:named_thing_id](https://w3id.org/GHGA/named_thing_id)
  * [Population](Population.md)
  * [Project](Project.md)
  * [Protocol](Protocol.md)
+ * [Publication](Publication.md)
  * [ResearchActivity](ResearchActivity.md)
  * [Sample](Sample.md)
  * [SequencingProtocol](SequencingProtocol.md)
@@ -71,6 +71,5 @@ URI: [GHGA:named_thing_id](https://w3id.org/GHGA/named_thing_id)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

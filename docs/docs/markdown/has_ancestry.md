@@ -16,16 +16,14 @@ None &#8594;  <sub>0..\*</sub> [Ancestry](Ancestry.md)
 
 ## Children
 
+ *  [individual➞has ancestry](individual_has_ancestry.md)
 
 ## Used by
 
- * [Donor](Donor.md)
- * [Individual](Individual.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

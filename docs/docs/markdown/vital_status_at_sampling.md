@@ -16,15 +16,7 @@ None &#8594;  <sub>0..1</sub> [vital status enum](vital status enum.md)
 
 ## Children
 
+ *  [sample➞vital status at sampling](sample_vital_status_at_sampling.md)
 
 ## Used by
-
- * [Sample](Sample.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 

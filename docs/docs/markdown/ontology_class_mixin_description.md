@@ -9,7 +9,7 @@ URI: [GHGA:ontology_class_mixin_description](https://w3id.org/GHGA/ontology_clas
 
 ## Domain and Range
 
-[OntologyClassMixin](OntologyClassMixin.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[OntologyClassMixin](OntologyClassMixin.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -33,7 +33,5 @@ URI: [GHGA:ontology_class_mixin_description](https://w3id.org/GHGA/ontology_clas
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

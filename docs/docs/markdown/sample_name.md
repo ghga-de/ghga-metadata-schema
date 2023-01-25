@@ -21,11 +21,3 @@ URI: [GHGA:sample_name](https://w3id.org/GHGA/sample_name)
 ## Used by
 
  * [Sample](Sample.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

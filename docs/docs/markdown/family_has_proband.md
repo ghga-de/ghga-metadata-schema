@@ -9,7 +9,7 @@ URI: [GHGA:family_has_proband](https://w3id.org/GHGA/family_has_proband)
 
 ## Domain and Range
 
-[Family](Family.md) &#8594;  <sub>0..1</sub> [Individual](Individual.md)
+[Family](Family.md) &#8594;  <sub>1..1</sub> [Individual](Individual.md)
 
 ## Parents
 

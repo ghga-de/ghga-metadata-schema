@@ -16,15 +16,7 @@ None &#8594;  <sub>0..1</sub> [forward or reverse enum](forward or reverse enum.
 
 ## Children
 
+ *  [sequencing protocol➞forward or reverse](sequencing_protocol_forward_or_reverse.md)
 
 ## Used by
-
- * [SequencingProtocol](SequencingProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 

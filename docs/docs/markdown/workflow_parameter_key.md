@@ -9,7 +9,7 @@ URI: [GHGA:workflow_parameter_key](https://w3id.org/GHGA/workflow_parameter_key)
 
 ## Domain and Range
 
-[WorkflowParameter](WorkflowParameter.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[WorkflowParameter](WorkflowParameter.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

@@ -105,7 +105,12 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "name",
+            "description"
          ],
          "title": "CreateAgent",
          "type": "object"
@@ -123,7 +128,7 @@
                "type": "string"
             },
             "description": {
-               "description": "Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).",
+               "description": "Description of an entity.",
                "type": "string"
             },
             "ega_accession": {
@@ -230,12 +235,21 @@
             }
          },
          "required": [
+            "xref",
+            "schema_type",
+            "schema_version",
+            "title",
+            "type",
             "reference_genome",
             "reference_chromosome",
             "has_input",
+            "has_study",
             "has_workflow",
+            "has_analysis_process",
             "has_output",
-            "alias"
+            "alias",
+            "accession",
+            "ega_accession"
          ],
          "title": "CreateAnalysis",
          "type": "object"
@@ -319,7 +333,11 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "title"
          ],
          "title": "CreateAnalysisProcess",
          "type": "object"
@@ -344,12 +362,8 @@
                "description": "The description or definition of an ontology class.",
                "type": "string"
             },
-            "name": {
-               "description": "The name or label (rdfs:label) of an ontology class.",
-               "type": "string"
-            },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -373,7 +387,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreateAnatomicalEntity",
          "type": "object"
@@ -403,7 +424,7 @@
                "type": "string"
             },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -427,7 +448,15 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "name",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreateAncestry",
          "type": "object"
@@ -441,7 +470,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "description": {
@@ -495,8 +524,14 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "name",
+            "description",
             "has_individual",
-            "alias"
+            "accession"
          ],
          "title": "CreateBiospecimen",
          "type": "object"
@@ -526,7 +561,10 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version"
          ],
          "title": "CreateCellLine",
          "type": "object"
@@ -581,7 +619,13 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "name",
+            "has_individual",
+            "accession"
          ],
          "title": "CreateCohort",
          "type": "object"
@@ -595,7 +639,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "description": {
@@ -643,7 +687,7 @@
                "description": "The main contact for the Data Access Committee."
             },
             "name": {
-               "description": "The name for the Data Access Committee.",
+               "description": "The name for an entity.",
                "type": "string"
             },
             "schema_type": {
@@ -663,8 +707,15 @@
             }
          },
          "required": [
-            "name",
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "description",
+            "main_contact",
+            "has_attribute",
+            "accession",
+            "ega_accession"
          ],
          "title": "CreateDataAccessCommittee",
          "type": "object"
@@ -678,7 +729,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "data_request_form": {
@@ -755,9 +806,17 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "name",
+            "description",
             "policy_text",
             "has_data_access_committee",
-            "alias"
+            "has_attribute",
+            "accession",
+            "ega_accession"
          ],
          "title": "CreateDataAccessPolicy",
          "type": "object"
@@ -810,6 +869,9 @@
          },
          "required": [
             "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "has_data_use_permission"
          ],
          "title": "CreateDataUseCondition",
@@ -835,12 +897,8 @@
                "description": "The description or definition of an ontology class.",
                "type": "string"
             },
-            "name": {
-               "description": "The name or label (rdfs:label) of an ontology class.",
-               "type": "string"
-            },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -864,7 +922,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreateDataUseModifier",
          "type": "object"
@@ -889,12 +954,8 @@
                "description": "The description or definition of an ontology class.",
                "type": "string"
             },
-            "name": {
-               "description": "The name or label (rdfs:label) of an ontology class.",
-               "type": "string"
-            },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -918,7 +979,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreateDataUsePermission",
          "type": "object"
@@ -932,7 +1000,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "description": {
@@ -1085,12 +1153,19 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "title",
             "description",
             "type",
             "has_file",
             "has_data_access_policy",
-            "alias"
+            "accession",
+            "ega_accession",
+            "release_date",
+            "has_attribute"
          ],
          "title": "CreateDataset",
          "type": "object"
@@ -1115,12 +1190,8 @@
                "description": "The description or definition of an ontology class.",
                "type": "string"
             },
-            "name": {
-               "description": "The name or label (rdfs:label) of an ontology class.",
-               "type": "string"
-            },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -1144,7 +1215,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreateDisease",
          "type": "object"
@@ -1169,12 +1247,8 @@
                "description": "The description or definition of an ontology class.",
                "type": "string"
             },
-            "name": {
-               "description": "The name or label (rdfs:label) of an ontology class.",
-               "type": "string"
-            },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -1198,7 +1272,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreateDiseaseOrPhenotypicFeature",
          "type": "object"
@@ -1220,7 +1301,7 @@
                "description": "Age of an individual."
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "ega_accession": {
@@ -1358,10 +1439,17 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "sex",
+            "karyotype",
             "age",
             "vital_status",
-            "alias"
+            "has_disease",
+            "accession",
+            "ega_accession"
          ],
          "title": "CreateDonor",
          "type": "object"
@@ -1375,7 +1463,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "biological_replicates": {
@@ -1507,11 +1595,20 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "type",
             "has_study",
             "has_sample",
             "has_protocol",
-            "alias",
-            "description"
+            "has_experiment_process",
+            "title",
+            "description",
+            "has_attribute",
+            "accession",
+            "ega_accession"
          ],
          "title": "CreateExperiment",
          "type": "object"
@@ -1613,7 +1710,16 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "type",
+            "has_input",
+            "has_protocol",
+            "has_agent",
+            "has_output",
+            "has_attribute"
          ],
          "title": "CreateExperimentProcess",
          "type": "object"
@@ -1682,7 +1788,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "name",
+            "has_individual",
+            "has_proband",
+            "accession"
          ],
          "title": "CreateFamily",
          "type": "object"
@@ -1696,7 +1809,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "checksum": {
@@ -1755,12 +1868,18 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "name",
             "format",
             "size",
             "checksum",
             "checksum_type",
-            "alias"
+            "accession",
+            "ega_accession",
+            "has_attribute"
          ],
          "title": "CreateFile",
          "type": "object"
@@ -1782,7 +1901,7 @@
                "description": "Age of an individual."
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "ega_accession": {
@@ -1920,10 +2039,17 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "sex",
+            "karyotype",
             "age",
             "vital_status",
-            "alias"
+            "has_disease",
+            "accession",
+            "ega_accession"
          ],
          "title": "CreateIndividual",
          "type": "object"
@@ -2035,6 +2161,13 @@
             }
          },
          "required": [
+            "schema_type",
+            "schema_version",
+            "name",
+            "type",
+            "url",
+            "has_file",
+            "xref",
             "library_name",
             "library_layout",
             "library_type",
@@ -2042,7 +2175,8 @@
             "library_preparation",
             "target_regions",
             "alias",
-            "description"
+            "description",
+            "has_attribute"
          ],
          "title": "CreateLibraryPreparationProtocol",
          "type": "object"
@@ -2097,6 +2231,9 @@
          },
          "required": [
             "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "email",
             "organization"
          ],
@@ -2123,12 +2260,8 @@
                "description": "The description or definition of an ontology class.",
                "type": "string"
             },
-            "name": {
-               "description": "The name or label (rdfs:label) of an ontology class.",
-               "type": "string"
-            },
             "ontology_name": {
-               "description": "The name of the ontology from which this ontology class was chosen.",
+               "description": "The name or label (rdfs:label) of an ontology class.",
                "type": "string"
             },
             "ontology_version": {
@@ -2152,7 +2285,14 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
+            "concept_identifier",
+            "description",
+            "ontology_name",
+            "ontology_version"
          ],
          "title": "CreatePhenotypicFeature",
          "type": "object"
@@ -2166,7 +2306,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "description": {
@@ -2206,8 +2346,12 @@
          },
          "required": [
             "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "title",
-            "description"
+            "description",
+            "accession"
          ],
          "title": "CreateProject",
          "type": "object"
@@ -2275,7 +2419,16 @@
             }
          },
          "required": [
-            "alias"
+            "schema_type",
+            "schema_version",
+            "name",
+            "type",
+            "description",
+            "url",
+            "has_file",
+            "alias",
+            "xref",
+            "has_attribute"
          ],
          "title": "CreateProtocol",
          "type": "object"
@@ -2289,7 +2442,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "author": {
@@ -2325,7 +2478,13 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "schema_type",
+            "schema_version",
+            "title",
+            "author",
+            "year",
+            "journal"
          ],
          "title": "CreatePublication",
          "type": "object"
@@ -2339,7 +2498,7 @@
                "type": "string"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "case_control_status": {
@@ -2441,9 +2600,16 @@
             }
          },
          "required": [
+            "alias",
+            "schema_type",
+            "schema_version",
             "name",
+            "type",
             "description",
-            "alias"
+            "has_individual",
+            "accession",
+            "ega_accession",
+            "has_attribute"
          ],
          "title": "CreateSample",
          "type": "object"
@@ -2579,9 +2745,17 @@
             }
          },
          "required": [
+            "schema_type",
+            "schema_version",
+            "name",
+            "url",
+            "has_file",
+            "xref",
             "instrument_model",
             "alias",
-            "description"
+            "type",
+            "description",
+            "has_attribute"
          ],
          "title": "CreateSequencingProtocol",
          "type": "object"
@@ -2602,7 +2776,7 @@
                "type": "array"
             },
             "alias": {
-               "description": "The alias for an entity.",
+               "description": "The alias (alternate identifier) for an entity.",
                "type": "string"
             },
             "description": {
@@ -2696,11 +2870,18 @@
             }
          },
          "required": [
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version",
             "type",
             "affiliation",
-            "alias",
             "title",
-            "description"
+            "description",
+            "release_status",
+            "accession",
+            "ega_accession",
+            "release_date"
          ],
          "title": "CreateStudy",
          "type": "object"
@@ -2925,11 +3106,21 @@
                "type": "string"
             },
             "submission_status": {
-               "$ref": "#/$defs/SubmissionStatusEnum",
-               "description": "The status of a Submission."
+               "description": "The status of a Submission.",
+               "type": "string"
             }
          },
-         "required": [],
+         "required": [
+            "affiliation",
+            "has_study",
+            "has_file",
+            "has_dataset",
+            "has_data_access_policy",
+            "has_data_access_committee",
+            "has_member",
+            "schema_type",
+            "schema_version"
+         ],
          "title": "CreateSubmission",
          "type": "object"
       },
@@ -2958,7 +3149,10 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version"
          ],
          "title": "CreateTechnology",
          "type": "object"
@@ -3008,7 +3202,10 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version"
          ],
          "title": "CreateUser",
          "type": "object"
@@ -3056,7 +3253,11 @@
             }
          },
          "required": [
+            "xref",
+            "schema_type",
+            "schema_version",
             "name",
+            "has_workflow_step",
             "alias"
          ],
          "title": "CreateWorkflow",
@@ -3101,7 +3302,10 @@
             }
          },
          "required": [
-            "alias"
+            "alias",
+            "xref",
+            "schema_type",
+            "schema_version"
          ],
          "title": "CreateWorkflowStep",
          "type": "object"
@@ -3224,7 +3428,10 @@
                "type": "string"
             }
          },
-         "required": [],
+         "required": [
+            "key",
+            "value"
+         ],
          "title": "WorkflowParameter",
          "type": "object"
       }

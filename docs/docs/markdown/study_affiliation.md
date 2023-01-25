@@ -21,11 +21,3 @@ URI: [GHGA:study_affiliation](https://w3id.org/GHGA/study_affiliation)
 ## Used by
 
  * [Study](Study.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

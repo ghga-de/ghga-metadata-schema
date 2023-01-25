@@ -9,7 +9,7 @@ URI: [GHGA:experiment_process_type](https://w3id.org/GHGA/experiment_process_typ
 
 ## Domain and Range
 
-[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>0..1</sub> [experiment process type enum](experiment process type enum.md)
+[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>1..1</sub> [experiment process type enum](experiment process type enum.md)
 
 ## Parents
 
@@ -21,11 +21,3 @@ URI: [GHGA:experiment_process_type](https://w3id.org/GHGA/experiment_process_typ
 ## Used by
 
  * [ExperimentProcess](ExperimentProcess.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

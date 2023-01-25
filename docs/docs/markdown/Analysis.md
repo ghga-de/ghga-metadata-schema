@@ -7,7 +7,7 @@ An Analysis is a data transformation that transforms input data to output data. 
 URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]<has%20output%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;title(i):string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]<has%20analysis%20process%200..*-++[Analysis],[Workflow]<has%20workflow%201..*-++[Analysis],[Study]<has%20study%200..1-++[Analysis],[File]<has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*>[Analysis],[Submission]++-%20has%20analysis%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]<has%20output%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;title(i):string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]<has%20analysis%20process%200..*-++[Analysis],[Workflow]<has%20workflow%201..*-++[Analysis],[Study]<has%20study%200..1-++[Analysis],[File]<has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*>[Analysis],[Submission]++-%20has%20analysis%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]<has%20output%201..*-++[Analysis&#124;type:string;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string;accession:string;ega_accession:string;title(i):string;id(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[AnalysisProcess]<has%20analysis%20process%201..*-++[Analysis],[Workflow]<has%20workflow%201..*-++[Analysis],[Study]<has%20study%201..1-++[Analysis],[File]<has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*>[Analysis],[Dataset]-%20has%20analysis(i)%200..1>[Analysis],[Submission]-%20has%20analysis(i)%200..1>[Analysis],[Submission]++-%20has%20analysis%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Workflow],[Submission],[Study],[File],[EgaAccessionMixin],[Dataset],[DataTransformation],[AnalysisProcess],[File]<has%20output%201..*-++[Analysis&#124;type:string;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string;accession:string;ega_accession:string;title(i):string;id(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[AnalysisProcess]<has%20analysis%20process%201..*-++[Analysis],[Workflow]<has%20workflow%201..*-++[Analysis],[Study]<has%20study%201..1-++[Analysis],[File]<has%20input%201..*-++[Analysis],[Dataset]++-%20has%20analysis%200..*>[Analysis],[Dataset]-%20has%20analysis(i)%200..1>[Analysis],[Submission]-%20has%20analysis(i)%200..1>[Analysis],[Submission]++-%20has%20analysis%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])
 
 ## Parents
 
@@ -21,6 +21,7 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 ## Referenced by Class
 
  *  **[Dataset](Dataset.md)** *[dataset➞has analysis](dataset_has_analysis.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
+ *  **None** *[has analysis](has_analysis.md)*  <sub>0..1</sub>  **[Analysis](Analysis.md)**
  *  **[Submission](Submission.md)** *[submission➞has analysis](submission_has_analysis.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
 
 ## Attributes
@@ -28,75 +29,71 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 ### Own
 
- * [analysis➞type](analysis_type.md)  <sub>0..1</sub>
+ * [analysis➞type](analysis_type.md)  <sub>1..1</sub>
      * Description: The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
  * [analysis➞reference genome](analysis_reference_genome.md)  <sub>1..1</sub>
      * Description: A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
  * [analysis➞reference chromosome](analysis_reference_chromosome.md)  <sub>1..1</sub>
      * Description: The reference chromosome used for this Analysis.
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
  * [analysis➞has input](analysis_has_input.md)  <sub>1..\*</sub>
      * Description: The input data File entities used in the Analysis.
      * Range: [File](File.md)
-     * in subsets: (essential,restricted)
- * [analysis➞has study](analysis_has_study.md)  <sub>0..1</sub>
+     * in subsets: (restricted)
+ * [analysis➞has study](analysis_has_study.md)  <sub>1..1</sub>
      * Description: The Study entity associated with this Analysis.
      * Range: [Study](Study.md)
-     * in subsets: (essential,public)
  * [analysis➞has workflow](analysis_has_workflow.md)  <sub>1..\*</sub>
      * Description: One or more Workflow entities associated with this Analysis.
      * Range: [Workflow](Workflow.md)
- * [analysis➞has analysis process](analysis_has_analysis_process.md)  <sub>0..\*</sub>
+ * [analysis➞has analysis process](analysis_has_analysis_process.md)  <sub>1..\*</sub>
      * Description: One or more Analysis Process entities associated with this Analysis.
      * Range: [AnalysisProcess](AnalysisProcess.md)
  * [analysis➞has output](analysis_has_output.md)  <sub>1..\*</sub>
      * Description: The output data File entities generated by this Analysis.
      * Range: [File](File.md)
-     * in subsets: (optional,restricted)
- * [analysis➞description](analysis_description.md)  <sub>0..1</sub>
-     * Description: Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+     * in subsets: (restricted)
+ * [description](description.md)  <sub>0..1</sub>
+     * Description: Description of an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
  * [analysis➞alias](analysis_alias.md)  <sub>1..1</sub>
      * Description: An alias uniquely identifying this Analysis entitiy.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
+     * in subsets: (restricted)
+ * [analysis➞description](analysis_description.md)  <sub>1..1</sub>
+     * Description: Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+     * Range: [String](types/String.md)
 
 ### Inherited from data transformation:
 
  * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+     * in subsets: (restricted)
+ * [named thing➞xref](named_thing_xref.md)  <sub>1..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (optional,public)
- * [named thing➞creation date](named_thing_creation_date.md)  <sub>0..1</sub>
+ * [named thing➞creation date](named_thing_creation_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was created.
      * Range: [String](types/String.md)
- * [named thing➞update date](named_thing_update_date.md)  <sub>0..1</sub>
+ * [named thing➞update date](named_thing_update_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was updated.
      * Range: [String](types/String.md)
- * [title](title.md)  <sub>0..1</sub>
+ * [data transformation➞title](data_transformation_title.md)  <sub>1..1</sub>
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
 
 ### Mixed in from accession mixin:
 
- * [accession](accession.md)  <sub>0..1</sub>
+ * [accession mixin➞accession](accession_mixin_accession.md)  <sub>1..1</sub>
      * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * Range: [String](types/String.md)
 
 ### Mixed in from ega accession mixin:
 
- * [ega accession](ega_accession.md)  <sub>0..1</sub>
+ * [ega accession mixin➞ega accession](ega_accession_mixin_ega_accession.md)  <sub>1..1</sub>
      * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
      * Range: [String](types/String.md)
 

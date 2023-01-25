@@ -25,6 +25,5 @@ None &#8594;  <sub>0..1</sub> [DataUseModifier](DataUseModifier.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

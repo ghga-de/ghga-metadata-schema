@@ -16,14 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)
 
 ## Used by
 
- * [AnatomicalEntity](AnatomicalEntity.md)
- * [Ancestry](Ancestry.md)
- * [DataUseModifier](DataUseModifier.md)
- * [DataUsePermission](DataUsePermission.md)
- * [Disease](Disease.md)
- * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md)
- * [OntologyClassMixin](OntologyClassMixin.md)
- * [PhenotypicFeature](PhenotypicFeature.md)

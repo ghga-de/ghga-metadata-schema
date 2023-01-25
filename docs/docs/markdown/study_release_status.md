@@ -9,7 +9,7 @@ URI: [GHGA:study_release_status](https://w3id.org/GHGA/study_release_status)
 
 ## Domain and Range
 
-[Study](Study.md) &#8594;  <sub>0..1</sub> [release status enum](release status enum.md)
+[Study](Study.md) &#8594;  <sub>1..1</sub> [release status enum](release status enum.md)
 
 ## Parents
 

@@ -9,7 +9,7 @@ URI: [GHGA:sequencing_protocol_type](https://w3id.org/GHGA/sequencing_protocol_t
 
 ## Domain and Range
 
-[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -21,11 +21,3 @@ URI: [GHGA:sequencing_protocol_type](https://w3id.org/GHGA/sequencing_protocol_t
 ## Used by
 
  * [SequencingProtocol](SequencingProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

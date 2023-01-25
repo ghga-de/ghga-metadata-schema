@@ -9,7 +9,7 @@ URI: [GHGA:protocol_xref](https://w3id.org/GHGA/protocol_xref)
 
 ## Domain and Range
 
-[Protocol](Protocol.md) &#8594;  <sub>0..\*</sub> [String](types/String.md)
+[Protocol](Protocol.md) &#8594;  <sub>1..\*</sub> [String](types/String.md)
 
 ## Parents
 
@@ -23,11 +23,3 @@ URI: [GHGA:protocol_xref](https://w3id.org/GHGA/protocol_xref)
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Protocol](Protocol.md)
  * [SequencingProtocol](SequencingProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
-

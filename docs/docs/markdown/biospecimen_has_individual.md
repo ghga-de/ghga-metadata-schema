@@ -26,6 +26,5 @@ URI: [GHGA:biospecimen_has_individual](https://w3id.org/GHGA/biospecimen_has_ind
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

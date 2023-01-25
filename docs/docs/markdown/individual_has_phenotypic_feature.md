@@ -27,6 +27,5 @@ URI: [GHGA:individual_has_phenotypic_feature](https://w3id.org/GHGA/individual_h
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

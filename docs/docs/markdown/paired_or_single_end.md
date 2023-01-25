@@ -16,15 +16,7 @@ None &#8594;  <sub>0..1</sub> [paired or single end enum](paired or single end e
 
 ## Children
 
+ *  [sequencing protocol➞paired or single end](sequencing_protocol_paired_or_single_end.md)
 
 ## Used by
-
- * [SequencingProtocol](SequencingProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 

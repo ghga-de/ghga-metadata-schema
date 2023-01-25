@@ -9,7 +9,7 @@ URI: [GHGA:submission_affiliation](https://w3id.org/GHGA/submission_affiliation)
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Submission](Submission.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -21,11 +21,3 @@ URI: [GHGA:submission_affiliation](https://w3id.org/GHGA/submission_affiliation)
 ## Used by
 
  * [Submission](Submission.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

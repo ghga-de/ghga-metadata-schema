@@ -26,6 +26,5 @@ URI: [GHGA:library_preparation_protocol_alias](https://w3id.org/GHGA/library_pre
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

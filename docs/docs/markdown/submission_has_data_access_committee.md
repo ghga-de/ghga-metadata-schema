@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_data_access_committee](https://w3id.org/GHGA/submissio
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [DataAccessCommittee](DataAccessCommittee.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [DataAccessCommittee](DataAccessCommittee.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:submission_has_data_access_committee](https://w3id.org/GHGA/submissio
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 
