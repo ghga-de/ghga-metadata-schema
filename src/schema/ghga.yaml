@@ -511,7 +511,7 @@ classes:
         description: >-
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
-        required: true
+        required: false
 
   sequencing protocol:
     is_a: protocol
@@ -2135,7 +2135,7 @@ slots:
     description: >-
       Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
     in_subset:
-      - essential
+      - recommended
       - public
 
   rnaseq strandedness:
