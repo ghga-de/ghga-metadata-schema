@@ -157,11 +157,11 @@ class OntologyClassMixin(BaseModel):
     """
     Mixin for entities that represent an class/term/concept from an ontology.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies this ontology class.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies this ontology class.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""The description or definition of an ontology class.""")
-    ontology_name: str = Field(None, description="""The name or label (rdfs:label) of an ontology class.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""The description or definition of an ontology class.""")
+    ontology_name: Optional[str] = Field(None, description="""The name or label (rdfs:label) of an ontology class.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     
 
 
@@ -347,11 +347,11 @@ class CreateDiseaseOrPhenotypicFeature(BiologicalQuality):
     """
     Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Literal["CreateDiseaseOrPhenotypicFeature"]
@@ -375,11 +375,11 @@ class CreateAncestry(Population):
     """
     Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     name: str = Field(None, description="""The name for an entity.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
@@ -454,11 +454,11 @@ class CreateAnatomicalEntity(MaterialEntity):
     """
     Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Literal["CreateAnatomicalEntity"]
@@ -481,11 +481,11 @@ class CreateDisease(CreateDiseaseOrPhenotypicFeature):
     """
     A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Literal["CreateDisease"]
@@ -497,11 +497,11 @@ class CreatePhenotypicFeature(CreateDiseaseOrPhenotypicFeature):
     """
     The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Literal["CreatePhenotypicFeature"]
@@ -555,11 +555,11 @@ class CreateDataUsePermission(InformationContentEntity):
     """
     A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Literal["CreateDataUsePermission"]
@@ -571,11 +571,11 @@ class CreateDataUseModifier(InformationContentEntity):
     """
     Data use modifiers indicate additional conditions for use.
     """
-    concept_identifier: str = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
+    concept_identifier: Optional[str] = Field(None, description="""The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.""")
     concept_name: Optional[str] = Field(None, description="""The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.""")
-    description: str = Field(None, description="""Description of an entity.""")
-    ontology_name: str = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
-    ontology_version: str = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
+    description: Optional[str] = Field(None, description="""Description of an entity.""")
+    ontology_name: Optional[str] = Field(None, description="""The name of the ontology from which this ontology class was chosen.""")
+    ontology_version: Optional[str] = Field(None, description="""The version of the ontology from which this ontology class was chosen.""")
     alias: str = Field(None, description="""The alias for an entity.""")
     xref: List[str] = Field(None, description="""Database cross references for an entity.""")
     schema_type: Literal["CreateDataUseModifier"]

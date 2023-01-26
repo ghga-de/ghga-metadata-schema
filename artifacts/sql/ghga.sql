@@ -33,11 +33,11 @@ CREATE TABLE ancestry (
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
 	name TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -79,11 +79,11 @@ CREATE TABLE data_use_modifier (
 	update_date TEXT NOT NULL, 
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -94,11 +94,11 @@ CREATE TABLE data_use_permission (
 	update_date TEXT NOT NULL, 
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -109,11 +109,11 @@ CREATE TABLE disease (
 	update_date TEXT NOT NULL, 
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -124,11 +124,11 @@ CREATE TABLE disease_or_phenotypic_feature (
 	update_date TEXT NOT NULL, 
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -226,11 +226,11 @@ CREATE TABLE phenotypic_feature (
 	update_date TEXT NOT NULL, 
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -803,11 +803,11 @@ CREATE TABLE anatomical_entity (
 	update_date TEXT NOT NULL, 
 	schema_type TEXT NOT NULL, 
 	schema_version TEXT NOT NULL, 
-	concept_identifier TEXT NOT NULL, 
+	concept_identifier TEXT, 
 	concept_name TEXT, 
-	description TEXT NOT NULL, 
-	ontology_name TEXT NOT NULL, 
-	ontology_version TEXT NOT NULL, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
 	sample_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(sample_id) REFERENCES sample (id)

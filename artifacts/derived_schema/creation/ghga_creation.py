@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-25T18:59:50
+# Generation date: 2023-01-26T10:45:18
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1187,35 +1187,27 @@ class CreateDiseaseOrPhenotypicFeature(BiologicalQuality):
     xref: Union[str, List[str]] = None
     schema_type: str = None
     schema_version: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
+    concept_identifier: Optional[str] = None
     concept_name: Optional[str] = None
+    description: Optional[str] = None
+    ontology_name: Optional[str] = None
+    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.concept_identifier):
-            self.MissingRequiredField("concept_identifier")
-        if not isinstance(self.concept_identifier, str):
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self._is_empty(self.ontology_name):
-            self.MissingRequiredField("ontology_name")
-        if not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self._is_empty(self.ontology_version):
-            self.MissingRequiredField("ontology_version")
-        if not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -1555,35 +1547,27 @@ class CreateAncestry(Population):
     schema_type: str = None
     schema_version: str = None
     name: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
+    concept_identifier: Optional[str] = None
     concept_name: Optional[str] = None
+    description: Optional[str] = None
+    ontology_name: Optional[str] = None
+    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.concept_identifier):
-            self.MissingRequiredField("concept_identifier")
-        if not isinstance(self.concept_identifier, str):
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self._is_empty(self.ontology_name):
-            self.MissingRequiredField("ontology_name")
-        if not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self._is_empty(self.ontology_version):
-            self.MissingRequiredField("ontology_version")
-        if not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -2201,35 +2185,27 @@ class CreateAnatomicalEntity(MaterialEntity):
     xref: Union[str, List[str]] = None
     schema_type: str = None
     schema_version: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
+    concept_identifier: Optional[str] = None
     concept_name: Optional[str] = None
+    description: Optional[str] = None
+    ontology_name: Optional[str] = None
+    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.concept_identifier):
-            self.MissingRequiredField("concept_identifier")
-        if not isinstance(self.concept_identifier, str):
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self._is_empty(self.ontology_name):
-            self.MissingRequiredField("ontology_name")
-        if not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self._is_empty(self.ontology_version):
-            self.MissingRequiredField("ontology_version")
-        if not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -2269,10 +2245,6 @@ class CreateDisease(CreateDiseaseOrPhenotypicFeature):
     xref: Union[str, List[str]] = None
     schema_type: str = None
     schema_version: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
 
 @dataclass
 class CreatePhenotypicFeature(CreateDiseaseOrPhenotypicFeature):
@@ -2291,10 +2263,6 @@ class CreatePhenotypicFeature(CreateDiseaseOrPhenotypicFeature):
     xref: Union[str, List[str]] = None
     schema_type: str = None
     schema_version: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
 
 @dataclass
 class CreateUser(Person):
@@ -2466,35 +2434,27 @@ class CreateDataUsePermission(InformationContentEntity):
     xref: Union[str, List[str]] = None
     schema_type: str = None
     schema_version: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
+    concept_identifier: Optional[str] = None
     concept_name: Optional[str] = None
+    description: Optional[str] = None
+    ontology_name: Optional[str] = None
+    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.concept_identifier):
-            self.MissingRequiredField("concept_identifier")
-        if not isinstance(self.concept_identifier, str):
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self._is_empty(self.ontology_name):
-            self.MissingRequiredField("ontology_name")
-        if not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self._is_empty(self.ontology_version):
-            self.MissingRequiredField("ontology_version")
-        if not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -2515,35 +2475,27 @@ class CreateDataUseModifier(InformationContentEntity):
     xref: Union[str, List[str]] = None
     schema_type: str = None
     schema_version: str = None
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
+    concept_identifier: Optional[str] = None
     concept_name: Optional[str] = None
+    description: Optional[str] = None
+    ontology_name: Optional[str] = None
+    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.concept_identifier):
-            self.MissingRequiredField("concept_identifier")
-        if not isinstance(self.concept_identifier, str):
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self._is_empty(self.ontology_name):
-            self.MissingRequiredField("ontology_name")
-        if not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self._is_empty(self.ontology_version):
-            self.MissingRequiredField("ontology_version")
-        if not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -2560,35 +2512,27 @@ class OntologyClassMixin(YAMLRoot):
     class_name: ClassVar[str] = "ontology class mixin"
     class_model_uri: ClassVar[URIRef] = GHGA.OntologyClassMixin
 
-    concept_identifier: str = None
-    description: str = None
-    ontology_name: str = None
-    ontology_version: str = None
+    concept_identifier: Optional[str] = None
     concept_name: Optional[str] = None
+    description: Optional[str] = None
+    ontology_name: Optional[str] = None
+    ontology_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.concept_identifier):
-            self.MissingRequiredField("concept_identifier")
-        if not isinstance(self.concept_identifier, str):
+        if self.concept_identifier is not None and not isinstance(self.concept_identifier, str):
             self.concept_identifier = str(self.concept_identifier)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self._is_empty(self.ontology_name):
-            self.MissingRequiredField("ontology_name")
-        if not isinstance(self.ontology_name, str):
-            self.ontology_name = str(self.ontology_name)
-
-        if self._is_empty(self.ontology_version):
-            self.MissingRequiredField("ontology_version")
-        if not isinstance(self.ontology_version, str):
-            self.ontology_version = str(self.ontology_version)
 
         if self.concept_name is not None and not isinstance(self.concept_name, str):
             self.concept_name = str(self.concept_name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.ontology_name is not None and not isinstance(self.ontology_name, str):
+            self.ontology_name = str(self.ontology_name)
+
+        if self.ontology_version is not None and not isinstance(self.ontology_version, str):
+            self.ontology_version = str(self.ontology_version)
 
         super().__post_init__(**kwargs)
 
@@ -4030,19 +3974,19 @@ slots.create_submission_submission_status = Slot(uri=GHGA.submission_status, nam
                    model_uri=GHGA.create_submission_submission_status, domain=CreateSubmission, range=Optional[str])
 
 slots.ontology_class_mixin_concept_identifier = Slot(uri=GHGA.concept_identifier, name="ontology class mixin_concept identifier", curie=GHGA.curie('concept_identifier'),
-                   model_uri=GHGA.ontology_class_mixin_concept_identifier, domain=None, range=str)
+                   model_uri=GHGA.ontology_class_mixin_concept_identifier, domain=None, range=Optional[str])
 
 slots.ontology_class_mixin_concept_name = Slot(uri=GHGA.concept_name, name="ontology class mixin_concept name", curie=GHGA.curie('concept_name'),
                    model_uri=GHGA.ontology_class_mixin_concept_name, domain=None, range=Optional[str])
 
 slots.ontology_class_mixin_ontology_name = Slot(uri=GHGA.ontology_name, name="ontology class mixin_ontology name", curie=GHGA.curie('ontology_name'),
-                   model_uri=GHGA.ontology_class_mixin_ontology_name, domain=None, range=str)
+                   model_uri=GHGA.ontology_class_mixin_ontology_name, domain=None, range=Optional[str])
 
 slots.ontology_class_mixin_ontology_version = Slot(uri=GHGA.ontology_version, name="ontology class mixin_ontology version", curie=GHGA.curie('ontology_version'),
-                   model_uri=GHGA.ontology_class_mixin_ontology_version, domain=None, range=str)
+                   model_uri=GHGA.ontology_class_mixin_ontology_version, domain=None, range=Optional[str])
 
 slots.ontology_class_mixin_description = Slot(uri=GHGA.description, name="ontology class mixin_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.ontology_class_mixin_description, domain=None, range=str)
+                   model_uri=GHGA.ontology_class_mixin_description, domain=None, range=Optional[str])
 
 slots.metadata_mixin_schema_type = Slot(uri=GHGA.schema_type, name="metadata mixin_schema type", curie=GHGA.curie('schema_type'),
                    model_uri=GHGA.metadata_mixin_schema_type, domain=None, range=str)

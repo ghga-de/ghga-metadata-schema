@@ -403,11 +403,7 @@
             "creation_date",
             "update_date",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "AnatomicalEntity",
          "type": "object"
@@ -480,11 +476,7 @@
             "update_date",
             "schema_type",
             "schema_version",
-            "name",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "name"
          ],
          "title": "Ancestry",
          "type": "object"
@@ -1105,11 +1097,7 @@
             "creation_date",
             "update_date",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "DataUseModifier",
          "type": "object"
@@ -1177,11 +1165,7 @@
             "creation_date",
             "update_date",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "DataUsePermission",
          "type": "object"
@@ -1445,11 +1429,7 @@
             "creation_date",
             "update_date",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "Disease",
          "type": "object"
@@ -1517,11 +1497,7 @@
             "creation_date",
             "update_date",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "DiseaseOrPhenotypicFeature",
          "type": "object"
@@ -2794,11 +2770,7 @@
             "creation_date",
             "update_date",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "PhenotypicFeature",
          "type": "object"

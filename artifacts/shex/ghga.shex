@@ -94,11 +94,11 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <MaterialEntity> ] ? ;
           &<OntologyClassMixin_tes> ;
           rdf:type [ <OntologyClassMixin> ] ? ;
-          <concept_identifier> @linkml:String ;
+          <concept_identifier> @linkml:String ? ;
           <concept_name> @linkml:String ? ;
-          <description> @linkml:String ;
-          <ontology_name> @linkml:String ;
-          <ontology_version> @linkml:String
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <AnatomicalEntity> ]
     )
@@ -109,11 +109,11 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Population> ] ? ;
           &<OntologyClassMixin_tes> ;
           rdf:type [ <OntologyClassMixin> ] ? ;
-          <concept_identifier> @linkml:String ;
+          <concept_identifier> @linkml:String ? ;
           <concept_name> @linkml:String ? ;
-          <description> @linkml:String ;
-          <ontology_name> @linkml:String ;
-          <ontology_version> @linkml:String
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <Ancestry> ]
     )
@@ -265,11 +265,11 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <InformationContentEntity> ] ? ;
           &<OntologyClassMixin_tes> ;
           rdf:type [ <OntologyClassMixin> ] ? ;
-          <concept_identifier> @linkml:String ;
+          <concept_identifier> @linkml:String ? ;
           <concept_name> @linkml:String ? ;
-          <description> @linkml:String ;
-          <ontology_name> @linkml:String ;
-          <ontology_version> @linkml:String
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <DataUseModifier> ]
     )
@@ -280,11 +280,11 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <InformationContentEntity> ] ? ;
           &<OntologyClassMixin_tes> ;
           rdf:type [ <OntologyClassMixin> ] ? ;
-          <concept_identifier> @linkml:String ;
+          <concept_identifier> @linkml:String ? ;
           <concept_name> @linkml:String ? ;
-          <description> @linkml:String ;
-          <ontology_name> @linkml:String ;
-          <ontology_version> @linkml:String
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <DataUsePermission> ]
     )
@@ -343,11 +343,11 @@ linkml:Nodeidentifier NONLITERAL
              rdf:type [ <BiologicalQuality> ] ? ;
              &<OntologyClassMixin_tes> ;
              rdf:type [ <OntologyClassMixin> ] ? ;
-             <concept_identifier> @linkml:String ;
+             <concept_identifier> @linkml:String ? ;
              <concept_name> @linkml:String ? ;
-             <description> @linkml:String ;
-             <ontology_name> @linkml:String ;
-             <ontology_version> @linkml:String
+             <description> @linkml:String ? ;
+             <ontology_name> @linkml:String ? ;
+             <ontology_version> @linkml:String ?
           ) ;
           rdf:type [ <DiseaseOrPhenotypicFeature> ]
        )
@@ -576,11 +576,11 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <OntologyClassMixin> {
-    (  $<OntologyClassMixin_tes> (  <concept_identifier> @linkml:String ;
+    (  $<OntologyClassMixin_tes> (  <concept_identifier> @linkml:String ? ;
           <concept_name> @linkml:String ? ;
-          <description> @linkml:String ;
-          <ontology_name> @linkml:String ;
-          <ontology_version> @linkml:String
+          <description> @linkml:String ? ;
+          <ontology_name> @linkml:String ? ;
+          <ontology_version> @linkml:String ?
        ) ;
        rdf:type [ <OntologyClassMixin> ]
     )

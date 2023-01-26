@@ -9,7 +9,7 @@ URI: [GHGA:ontology_class_mixin_concept_identifier](https://w3id.org/GHGA/ontolo
 
 ## Domain and Range
 
-[OntologyClassMixin](OntologyClassMixin.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[OntologyClassMixin](OntologyClassMixin.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

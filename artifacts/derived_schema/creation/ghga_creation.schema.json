@@ -390,11 +390,7 @@
             "alias",
             "xref",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "CreateAnatomicalEntity",
          "type": "object"
@@ -452,11 +448,7 @@
             "xref",
             "schema_type",
             "schema_version",
-            "name",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "name"
          ],
          "title": "CreateAncestry",
          "type": "object"
@@ -925,11 +917,7 @@
             "alias",
             "xref",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "CreateDataUseModifier",
          "type": "object"
@@ -982,11 +970,7 @@
             "alias",
             "xref",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "CreateDataUsePermission",
          "type": "object"
@@ -1218,11 +1202,7 @@
             "alias",
             "xref",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "CreateDisease",
          "type": "object"
@@ -1275,11 +1255,7 @@
             "alias",
             "xref",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "CreateDiseaseOrPhenotypicFeature",
          "type": "object"
@@ -2288,11 +2264,7 @@
             "alias",
             "xref",
             "schema_type",
-            "schema_version",
-            "concept_identifier",
-            "description",
-            "ontology_name",
-            "ontology_version"
+            "schema_version"
          ],
          "title": "CreatePhenotypicFeature",
          "type": "object"

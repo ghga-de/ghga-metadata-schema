@@ -7,7 +7,7 @@ Population category defined using ancestry informative markers (AIMs) based on g
 URI: [GHGA:Ancestry](https://w3id.org/GHGA/Ancestry)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20has%20ancestry(i)%200..*>[Ancestry&#124;concept_identifier:string;concept_name:string%20%3F;description:string;ontology_name:string;ontology_version:string;name(i):string;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[Individual]++-%20has%20ancestry%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20has%20ancestry(i)%200..*>[Ancestry&#124;concept_identifier:string;concept_name:string%20%3F;description:string;ontology_name:string;ontology_version:string;name(i):string;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[Individual]++-%20has%20ancestry%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20has%20ancestry(i)%200..*>[Ancestry&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name(i):string;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[Individual]++-%20has%20ancestry%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20has%20ancestry(i)%200..*>[Ancestry&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name(i):string;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[Individual]++-%20has%20ancestry%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])
 
 ## Parents
 
@@ -50,7 +50,7 @@ URI: [GHGA:Ancestry](https://w3id.org/GHGA/Ancestry)
 
 ### Mixed in from ontology class mixin:
 
- * [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)  <sub>1..1</sub>
+ * [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)  <sub>0..1</sub>
      * Description: The Compact URI (CURIE) that uniquely identifies this ontology class.
      * Range: [String](types/String.md)
 
@@ -62,19 +62,19 @@ URI: [GHGA:Ancestry](https://w3id.org/GHGA/Ancestry)
 
 ### Mixed in from ontology class mixin:
 
- * [ontology class mixin➞description](ontology_class_mixin_description.md)  <sub>1..1</sub>
+ * [ontology class mixin➞description](ontology_class_mixin_description.md)  <sub>0..1</sub>
      * Description: The description or definition of an ontology class.
      * Range: [String](types/String.md)
 
 ### Mixed in from ontology class mixin:
 
- * [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)  <sub>1..1</sub>
+ * [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)  <sub>0..1</sub>
      * Description: The name or label (rdfs:label) of an ontology class.
      * Range: [String](types/String.md)
 
 ### Mixed in from ontology class mixin:
 
- * [ontology class mixin➞ontology version](ontology_class_mixin_ontology_version.md)  <sub>1..1</sub>
+ * [ontology class mixin➞ontology version](ontology_class_mixin_ontology_version.md)  <sub>0..1</sub>
      * Description: The version of the ontology from which this ontology class was chosen.
      * Range: [String](types/String.md)
 

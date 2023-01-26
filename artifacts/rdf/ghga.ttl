@@ -76,7 +76,7 @@
         "semweb_context" ;
     linkml:default_prefix "GHGA" ;
     linkml:default_range <https://w3id.org/GHGA/string> ;
-    linkml:generation_date "2023-01-25T18:58:50"^^xsd:dateTime ;
+    linkml:generation_date "2023-01-26T10:44:42"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
@@ -433,8 +433,8 @@
         <https://w3id.org/GHGA/xref>,
         <https://w3id.org/GHGA/year> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2023-01-25T18:58:27"^^xsd:dateTime ;
-    linkml:source_file_size 75484 ;
+    linkml:source_file_date "2023-01-26T10:44:12"^^xsd:dateTime ;
+    linkml:source_file_size 75468 ;
     linkml:subsets <https://w3id.org/GHGA/restricted> ;
     linkml:types <https://w3id.org/GHGA/boolean>,
         <https://w3id.org/GHGA/date>,
@@ -451,22 +451,22 @@
         <https://w3id.org/GHGA/time>,
         <https://w3id.org/GHGA/uri>,
         <https://w3id.org/GHGA/uriorcurie> ;
-    sh:declare [ sh:namespace <https://w3id.org/biolink/vocab/> ;
-            sh:prefix "biolink" ],
-        [ sh:namespace <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
-            sh:prefix "SNOMEDCT" ],
-        [ sh:namespace <http://purl.obolibrary.org/obo/GENEPIO_> ;
+    sh:declare [ sh:namespace <http://purl.obolibrary.org/obo/GENEPIO_> ;
             sh:prefix "GENEPIO" ],
-        [ sh:namespace <http://www.ebi.ac.uk/efo/EFO_> ;
-            sh:prefix "EFO" ],
         [ sh:namespace <http://semanticscience.org/resource/SIO_> ;
             sh:prefix "SIO" ],
-        [ sh:namespace <https://w3id.org/GHGA/> ;
-            sh:prefix "GHGA" ],
         [ sh:namespace <http://purl.obolibrary.org/obo/COB_> ;
             sh:prefix "COB" ],
         [ sh:namespace <http://purl.obolibrary.org/obo/HANCESTRO_> ;
             sh:prefix "HANCESTRO" ],
+        [ sh:namespace <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
+            sh:prefix "SNOMEDCT" ],
+        [ sh:namespace <https://w3id.org/GHGA/> ;
+            sh:prefix "GHGA" ],
+        [ sh:namespace <http://www.ebi.ac.uk/efo/EFO_> ;
+            sh:prefix "EFO" ],
+        [ sh:namespace <https://w3id.org/biolink/vocab/> ;
+            sh:prefix "biolink" ],
         [ sh:namespace linkml: ;
             sh:prefix "linkml" ] .
 
@@ -5299,7 +5299,6 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/OntologyClassMixin> ;
     linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/concept_identifier> ;
     linkml:usage_slot_name "concept identifier" .
 
@@ -5329,7 +5328,6 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/OntologyClassMixin> ;
     linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/description> ;
     linkml:usage_slot_name "description" .
 
@@ -5344,7 +5342,6 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/OntologyClassMixin> ;
     linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/ontology_name> ;
     linkml:usage_slot_name "ontology name" .
 
@@ -5359,7 +5356,6 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/OntologyClassMixin> ;
     linkml:range <https://w3id.org/GHGA/string> ;
-    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/ontology_version> ;
     linkml:usage_slot_name "ontology version" .
 

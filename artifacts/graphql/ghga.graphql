@@ -66,11 +66,11 @@ type AnatomicalEntity implements OntologyClassMixin
     updateDate: String!
     schemaType: String!
     schemaVersion: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Ancestry implements OntologyClassMixin
@@ -83,11 +83,11 @@ type Ancestry implements OntologyClassMixin
     schemaType: String!
     schemaVersion: String!
     name: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Attribute
@@ -243,11 +243,11 @@ type DataUseModifier implements OntologyClassMixin
     updateDate: String!
     schemaType: String!
     schemaVersion: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type DataUsePermission implements OntologyClassMixin
@@ -259,11 +259,11 @@ type DataUsePermission implements OntologyClassMixin
     updateDate: String!
     schemaType: String!
     schemaVersion: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Dataset implements AccessionMixin, EgaAccessionMixin, ReleaseStatusMixin, AttributeMixin
@@ -307,11 +307,11 @@ type Disease
     updateDate: String!
     schemaType: String!
     schemaVersion: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type DiseaseOrPhenotypicFeature implements OntologyClassMixin
@@ -323,11 +323,11 @@ type DiseaseOrPhenotypicFeature implements OntologyClassMixin
     updateDate: String!
     schemaType: String!
     schemaVersion: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 type Donor
@@ -567,11 +567,11 @@ type NamedThing implements MetadataMixin
 interface OntologyClassMixin
   {
     id: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 interface Person
@@ -597,11 +597,11 @@ type PhenotypicFeature
     updateDate: String!
     schemaType: String!
     schemaVersion: String!
-    conceptIdentifier: String!
+    conceptIdentifier: String
     conceptName: String
-    description: String!
-    ontologyName: String!
-    ontologyVersion: String!
+    description: String
+    ontologyName: String
+    ontologyVersion: String
   }
 
 interface PlannedProcess
