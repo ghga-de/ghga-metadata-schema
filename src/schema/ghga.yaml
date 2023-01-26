@@ -1625,19 +1625,19 @@ classes:
       id:
         required: true
       concept identifier:
-        required: true
+        required: false
         description: >-
           The Compact URI (CURIE) that uniquely identifies this ontology class.
       concept name:
         required: false
       ontology name:
-        required: true
+        required: false
         description: >-
           The name or label (rdfs:label) of an ontology class.
       ontology version:
-        required: true
+        required: false
       description:
-        required: true
+        required: false
         description: >-
           The description or definition of an ontology class.
 
