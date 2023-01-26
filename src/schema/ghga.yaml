@@ -951,7 +951,7 @@ classes:
         description: >-
           One or more Workflow entities associated with this Analysis.
         range: workflow
-        required: true
+        required: false
         multivalued: true
         inlined: true
         inlined_as_list: true
