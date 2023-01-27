@@ -1961,12 +1961,6 @@ slots:
     in_subset:
       - restricted
 
-  has data use condition:
-    description: Data Use Condition entities that are associated with an entity.
-    range: data use condition
-    in_subset:
-      - restricted
-
   role:
     description: The role that a user has within GHGA.
     range: user role enum
