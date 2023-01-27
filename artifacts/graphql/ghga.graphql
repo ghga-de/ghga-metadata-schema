@@ -32,7 +32,7 @@ type Analysis implements AccessionMixin, EgaAccessionMixin
     referenceChromosome: String!
     hasInput: [File]!
     hasStudy: Study
-    hasWorkflow: [Workflow]!
+    hasWorkflow: [Workflow]
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]!
     description: String
@@ -201,7 +201,8 @@ type DataAccessPolicy implements AttributeMixin, AccessionMixin, EgaAccessionMix
     policyText: String!
     policyUrl: String
     hasDataAccessCommittee: DataAccessCommittee!
-    hasDataUseCondition: [DataUseCondition]
+    hasDataUsePermission: DataUsePermission!
+    hasDataUseModifier: [DataUseModifier]
     dataRequestForm: String
     alias: String!
     hasAttribute: [Attribute]
@@ -220,19 +221,6 @@ interface DataTransformation
     schemaVersion: String
     title: String
     description: String
-  }
-
-type DataUseCondition
-  {
-    id: String!
-    alias: String
-    xref: [String]
-    creationDate: String
-    updateDate: String
-    schemaType: String
-    schemaVersion: String
-    hasDataUsePermission: DataUsePermission!
-    hasDataUseModifier: DataUseModifier
   }
 
 type DataUseModifier implements OntologyClassMixin
@@ -517,7 +505,7 @@ type LibraryPreparationProtocol
     libraryPreparationKitManufacturer: String
     primer: String
     endBias: String
-    targetRegions: String!
+    targetRegions: String
     rnaseqStrandedness: String
     alias: String!
     description: String!

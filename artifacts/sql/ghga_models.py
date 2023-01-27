@@ -158,22 +158,12 @@ tbl_data_access_policy = Table('data_access_policy', metadata,
     Column('policy_text', Text),
     Column('policy_url', Text),
     Column('has_data_access_committee', Text, ForeignKey('data_access_committee.id')),
+    Column('has_data_use_permission', Text, ForeignKey('data_use_permission.id')),
     Column('data_request_form', Text),
     Column('alias', Text),
     Column('has_attribute', Text),
     Column('accession', Text),
     Column('ega_accession', Text),
-)
-tbl_data_use_condition = Table('data_use_condition', metadata, 
-    Column('id', Text, primary_key=True),
-    Column('alias', Text),
-    Column('creation_date', Text),
-    Column('update_date', Text),
-    Column('schema_type', Text),
-    Column('schema_version', Text),
-    Column('has_data_use_permission', Text, ForeignKey('data_use_permission.id')),
-    Column('has_data_use_modifier', Text, ForeignKey('data_use_modifier.id')),
-    Column('data_access_policy_id', Text, ForeignKey('data_access_policy.id')),
 )
 tbl_data_use_modifier = Table('data_use_modifier', metadata, 
     Column('id', Text, primary_key=True),
@@ -188,6 +178,7 @@ tbl_data_use_modifier = Table('data_use_modifier', metadata,
     Column('ontology_name', Text),
     Column('ontology_version', Text),
     Column('name', Text),
+    Column('data_access_policy_id', Text, ForeignKey('data_access_policy.id')),
 )
 tbl_data_use_permission = Table('data_use_permission', metadata, 
     Column('id', Text, primary_key=True),
@@ -637,10 +628,6 @@ tbl_data_access_policy_xref = Table('data_access_policy_xref', metadata,
     Column('backref_id', Text, ForeignKey('data_access_policy.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
 )
-tbl_data_use_condition_xref = Table('data_use_condition_xref', metadata, 
-    Column('backref_id', Text, ForeignKey('data_use_condition.id'), primary_key=True),
-    Column('xref', Text, primary_key=True),
-)
 tbl_data_use_modifier_xref = Table('data_use_modifier_xref', metadata, 
     Column('backref_id', Text, ForeignKey('data_use_modifier.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
@@ -773,13 +760,11 @@ mapper_registry.map_imperatively(DataAccessCommittee, tbl_data_access_committee,
 })
 mapper_registry.map_imperatively(DataAccessPolicy, tbl_data_access_policy, properties={
 
-    'has_data_use_condition': 
-        relationship(DataUseCondition, 
-                      foreign_keys=tbl_data_use_condition.columns["data_access_policy_id"],
+    'has_data_use_modifier': 
+        relationship(DataUseModifier, 
+                      foreign_keys=tbl_data_use_modifier.columns["data_access_policy_id"],
                       backref='DataAccessPolicy'),
 
-})
-mapper_registry.map_imperatively(DataUseCondition, tbl_data_use_condition, properties={
 })
 mapper_registry.map_imperatively(DataUseModifier, tbl_data_use_modifier, properties={
 })

@@ -104,7 +104,6 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [library preparation protocol➞library preparation](library_preparation_protocol_library_preparation.md)
  * [library preparation protocol➞library selection](library_preparation_protocol_library_selection.md)
  * [library preparation protocol➞library type](library_preparation_protocol_library_type.md)
- * [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
  * [library selection](library_selection.md) - Whether any method was used to select for or against, enrich, or screen the material being sequenced. Library Selection method (e.g. random, PCA, cDNA, etc )
  * [library type](library_type.md) - Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
  * [main contact](main_contact.md) - The person who is the main contact for a committee.
@@ -154,7 +153,6 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [submission➞has sample](submission_has_sample.md) - Information about one or more Sample entities associated with this submission.
  * [submission➞has study](submission_has_study.md) - Information about a Study entities associated with this submission.
  * [submission➞id](submission_id.md) - A internal unique identifier for the Submission.
- * [target regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
  * [tissue](tissue.md) - An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.
  * [title](title.md) - The title that describes an entity.
  * [type](type.md) - The type of an entity.

@@ -33,7 +33,6 @@ URI: [GHGA:named_thing_update_date](https://w3id.org/GHGA/named_thing_update_dat
  * [DataAccessCommittee](DataAccessCommittee.md)
  * [DataAccessPolicy](DataAccessPolicy.md)
  * [DataTransformation](DataTransformation.md)
- * [DataUseCondition](DataUseCondition.md)
  * [DataUseModifier](DataUseModifier.md)
  * [DataUsePermission](DataUsePermission.md)
  * [Dataset](Dataset.md)

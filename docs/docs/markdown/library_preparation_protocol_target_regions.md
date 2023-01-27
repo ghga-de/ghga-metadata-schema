@@ -9,7 +9,7 @@ URI: [GHGA:library_preparation_protocol_target_regions](https://w3id.org/GHGA/li
 
 ## Domain and Range
 
-[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -26,6 +26,6 @@ URI: [GHGA:library_preparation_protocol_target_regions](https://w3id.org/GHGA/li
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
+| **In Subsets:** | | recommended |
 |  | | public |
 

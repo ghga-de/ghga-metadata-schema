@@ -64,7 +64,7 @@ linkml:Nodeidentifier NONLITERAL
           <reference_chromosome> @linkml:String ;
           <has_input> @<File> + ;
           <has_study> @<Study> ? ;
-          <has_workflow> @<Workflow> + ;
+          <has_workflow> @<Workflow> * ;
           <has_analysis_process> @<AnalysisProcess> * ;
           <has_output> @<File> + ;
           <description> @linkml:String ? ;
@@ -231,7 +231,8 @@ linkml:Nodeidentifier NONLITERAL
           <policy_text> @linkml:String ;
           <policy_url> @linkml:String ? ;
           <has_data_access_committee> @<DataAccessCommittee> ;
-          <has_data_use_condition> @<DataUseCondition> * ;
+          <has_data_use_permission> @<DataUsePermission> ;
+          <has_data_use_modifier> @<DataUseModifier> * ;
           <data_request_form> @linkml:String ? ;
           <alias> @linkml:String ;
           <has_attribute> @<Attribute> * ;
@@ -253,16 +254,6 @@ linkml:Nodeidentifier NONLITERAL
        )
     } OR @<Analysis>
 )
-
-<DataUseCondition> CLOSED {
-    (  $<DataUseCondition_tes> (  &<InformationContentEntity_tes> ;
-          rdf:type [ <InformationContentEntity> ] ? ;
-          <has_data_use_permission> @<DataUsePermission> ;
-          <has_data_use_modifier> @<DataUseModifier> ?
-       ) ;
-       rdf:type [ <DataUseCondition> ]
-    )
-}
 
 <DataUseModifier> CLOSED {
     (  $<DataUseModifier_tes> (  &<InformationContentEntity_tes> ;
@@ -490,8 +481,8 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <InformationContentEntity>  (
-    @<DataAccessPolicy> OR @<DataUseCondition> OR @<DataUseModifier> OR @<DataUsePermission> OR @<Dataset> OR @<File> OR
-    @<Protocol> OR @<Publication> OR @<Technology> OR @<Workflow> OR @<WorkflowStep>
+    @<DataAccessPolicy> OR @<DataUseModifier> OR @<DataUsePermission> OR @<Dataset> OR @<File> OR @<Protocol> OR @<Publication> OR
+    @<Technology> OR @<Workflow> OR @<WorkflowStep>
 )
 
 <InformationContentEntity_struct> {
@@ -528,7 +519,7 @@ linkml:Nodeidentifier NONLITERAL
           <library_preparation_kit_manufacturer> @linkml:String ? ;
           <primer> @linkml:String ? ;
           <end_bias> @linkml:String ? ;
-          <target_regions> @linkml:String ;
+          <target_regions> @linkml:String ? ;
           <rnaseq_strandedness> @linkml:String ? ;
           <alias> @linkml:String ;
           <description> @linkml:String ;

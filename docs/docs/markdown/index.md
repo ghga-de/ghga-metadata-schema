@@ -23,7 +23,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
          * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
      * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
          * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
-         * [DataUseCondition](DataUseCondition.md) - Data Use Condition represents the use conditions associated with a policy.
          * [DataUseModifier](DataUseModifier.md) - Data use modifiers indicate additional conditions for use.
          * [DataUsePermission](DataUsePermission.md) - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
          * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
@@ -177,12 +176,10 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has data access policy](has_data_access_policy.md) - Data Access Policy associated with an entity.
      * [dataset➞has data access policy](dataset_has_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
      * [submission➞has data access policy](submission_has_data_access_policy.md) - The Data Access Policy that applies to Dataset in this submission.
- * [has data use condition](has_data_use_condition.md) - Data Use Condition entities that are associated with an entity.
-     * [data access policy➞has data use condition](data_access_policy_has_data_use_condition.md) - Data Use Condition entities that are associated with the Data Access Policy.
  * [has data use modifier](has_data_use_modifier.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
-     * [data use condition➞has data use modifier](data_use_condition_has_data_use_modifier.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
+     * [data access policy➞has data use modifier](data_access_policy_has_data_use_modifier.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
  * [has data use permission](has_data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
-     * [data use condition➞has data use permission](data_use_condition_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
+     * [data access policy➞has data use permission](data_access_policy_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
  * [has dataset](has_dataset.md) - The Dataset associated with an entity.
      * [submission➞has dataset](submission_has_dataset.md) - One or more Dataset that are part of this submission.
  * [has disease](has_disease.md) - Disease concept that the entity is associated with.

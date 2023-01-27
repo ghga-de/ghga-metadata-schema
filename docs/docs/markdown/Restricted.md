@@ -31,11 +31,10 @@ URI: [GHGA:restricted](https://w3id.org/GHGA/restricted)
  * [data access committee➞main contact](data_access_committee_main_contact.md) - The main contact for the Data Access Committee.
  * [data access policy➞alias](data_access_policy_alias.md) - The alias for an entity.
  * [data access policy➞has data access committee](data_access_policy_has_data_access_committee.md) - The Data Access Committee linked to this policy.
- * [data access policy➞has data use condition](data_access_policy_has_data_use_condition.md) - Data Use Condition entities that are associated with the Data Access Policy.
+ * [data access policy➞has data use modifier](data_access_policy_has_data_use_modifier.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
+ * [data access policy➞has data use permission](data_access_policy_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
  * [data access policy➞policy text](data_access_policy_policy_text.md) - The terms of data use and policy verbiage should be captured here.
  * [data access policy➞policy url](data_access_policy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
- * [data use condition➞has data use modifier](data_use_condition_has_data_use_modifier.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
- * [data use condition➞has data use permission](data_use_condition_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
  * [dataset➞alias](dataset_alias.md) - The alias for an entity.
  * [dataset➞has analysis](dataset_has_analysis.md) - One or more Analysis entities that are referenced by this Dataset.
  * [dataset➞has data access policy](dataset_has_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
@@ -64,7 +63,6 @@ URI: [GHGA:restricted](https://w3id.org/GHGA/restricted)
  * [has children](has_children.md) - The children of an entity.
  * [has data access committee](has_data_access_committee.md) - Data Access Committee associated with an entity.
  * [has data access policy](has_data_access_policy.md) - Data Access Policy associated with an entity.
- * [has data use condition](has_data_use_condition.md) - Data Use Condition entities that are associated with an entity.
  * [has data use modifier](has_data_use_modifier.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
  * [has data use permission](has_data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
  * [has experiment](has_experiment.md) - The experiment associated with an entity.

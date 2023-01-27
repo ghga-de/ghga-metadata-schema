@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-22T11:32:23
+# Generation date: 2023-01-27T14:13:23
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -189,10 +189,6 @@ class AnalysisProcessId(PlannedProcessId):
 
 
 class DatasetId(InformationContentEntityId):
-    pass
-
-
-class DataUseConditionId(InformationContentEntityId):
     pass
 
 
@@ -915,13 +911,13 @@ class LibraryPreparationProtocol(Protocol):
     library_type: str = None
     library_selection: str = None
     library_preparation: str = None
-    target_regions: str = None
     alias: str = None
     description: str = None
     library_preparation_kit_retail_name: Optional[str] = None
     library_preparation_kit_manufacturer: Optional[str] = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
+    target_regions: Optional[str] = None
     rnaseq_strandedness: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -956,11 +952,6 @@ class LibraryPreparationProtocol(Protocol):
         if not isinstance(self.library_preparation, str):
             self.library_preparation = str(self.library_preparation)
 
-        if self._is_empty(self.target_regions):
-            self.MissingRequiredField("target_regions")
-        if not isinstance(self.target_regions, str):
-            self.target_regions = str(self.target_regions)
-
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -982,6 +973,9 @@ class LibraryPreparationProtocol(Protocol):
 
         if self.end_bias is not None and not isinstance(self.end_bias, str):
             self.end_bias = str(self.end_bias)
+
+        if self.target_regions is not None and not isinstance(self.target_regions, str):
+            self.target_regions = str(self.target_regions)
 
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
@@ -1763,11 +1757,11 @@ class Analysis(DataTransformation):
     reference_genome: str = None
     reference_chromosome: str = None
     has_input: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
-    has_workflow: Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]] = empty_dict()
     has_output: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     alias: str = None
     type: Optional[str] = None
     has_study: Optional[Union[dict, Study]] = None
+    has_workflow: Optional[Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]]] = empty_dict()
     has_analysis_process: Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]] = empty_dict()
     description: Optional[str] = None
     accession: Optional[str] = None
@@ -1793,10 +1787,6 @@ class Analysis(DataTransformation):
             self.MissingRequiredField("has_input")
         self._normalize_inlined_as_list(slot_name="has_input", slot_type=File, key_name="id", keyed=True)
 
-        if self._is_empty(self.has_workflow):
-            self.MissingRequiredField("has_workflow")
-        self._normalize_inlined_as_list(slot_name="has_workflow", slot_type=Workflow, key_name="id", keyed=True)
-
         if self._is_empty(self.has_output):
             self.MissingRequiredField("has_output")
         self._normalize_inlined_as_list(slot_name="has_output", slot_type=File, key_name="id", keyed=True)
@@ -1811,6 +1801,8 @@ class Analysis(DataTransformation):
 
         if self.has_study is not None and not isinstance(self.has_study, Study):
             self.has_study = Study(**as_dict(self.has_study))
+
+        self._normalize_inlined_as_list(slot_name="has_workflow", slot_type=Workflow, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_analysis_process", slot_type=AnalysisProcess, key_name="id", keyed=True)
 
@@ -1969,39 +1961,6 @@ class Dataset(InformationContentEntity):
 
 
 @dataclass
-class DataUseCondition(InformationContentEntity):
-    """
-    Data Use Condition represents the use conditions associated with a policy.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.DataUseCondition
-    class_class_curie: ClassVar[str] = "GHGA:DataUseCondition"
-    class_name: ClassVar[str] = "data use condition"
-    class_model_uri: ClassVar[URIRef] = GHGA.DataUseCondition
-
-    id: Union[str, DataUseConditionId] = None
-    has_data_use_permission: Union[dict, "DataUsePermission"] = None
-    has_data_use_modifier: Optional[Union[dict, "DataUseModifier"]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DataUseConditionId):
-            self.id = DataUseConditionId(self.id)
-
-        if self._is_empty(self.has_data_use_permission):
-            self.MissingRequiredField("has_data_use_permission")
-        if not isinstance(self.has_data_use_permission, DataUsePermission):
-            self.has_data_use_permission = DataUsePermission(**as_dict(self.has_data_use_permission))
-
-        if self.has_data_use_modifier is not None and not isinstance(self.has_data_use_modifier, DataUseModifier):
-            self.has_data_use_modifier = DataUseModifier(**as_dict(self.has_data_use_modifier))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class DataAccessPolicy(InformationContentEntity):
     """
     A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or
@@ -2017,11 +1976,12 @@ class DataAccessPolicy(InformationContentEntity):
     id: Union[str, DataAccessPolicyId] = None
     policy_text: str = None
     has_data_access_committee: Union[dict, "DataAccessCommittee"] = None
+    has_data_use_permission: Union[dict, "DataUsePermission"] = None
     alias: str = None
     name: Optional[str] = None
     description: Optional[str] = None
     policy_url: Optional[str] = None
-    has_data_use_condition: Optional[Union[Dict[Union[str, DataUseConditionId], Union[dict, DataUseCondition]], List[Union[dict, DataUseCondition]]]] = empty_dict()
+    has_data_use_modifier: Optional[Union[Dict[Union[str, DataUseModifierId], Union[dict, "DataUseModifier"]], List[Union[dict, "DataUseModifier"]]]] = empty_dict()
     data_request_form: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
@@ -2043,6 +2003,11 @@ class DataAccessPolicy(InformationContentEntity):
         if not isinstance(self.has_data_access_committee, DataAccessCommittee):
             self.has_data_access_committee = DataAccessCommittee(**as_dict(self.has_data_access_committee))
 
+        if self._is_empty(self.has_data_use_permission):
+            self.MissingRequiredField("has_data_use_permission")
+        if not isinstance(self.has_data_use_permission, DataUsePermission):
+            self.has_data_use_permission = DataUsePermission(**as_dict(self.has_data_use_permission))
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -2057,7 +2022,7 @@ class DataAccessPolicy(InformationContentEntity):
         if self.policy_url is not None and not isinstance(self.policy_url, str):
             self.policy_url = str(self.policy_url)
 
-        self._normalize_inlined_as_list(slot_name="has_data_use_condition", slot_type=DataUseCondition, key_name="id", keyed=True)
+        self._normalize_inlined_as_dict(slot_name="has_data_use_modifier", slot_type=DataUseModifier, key_name="id", keyed=True)
 
         if self.data_request_form is not None and not isinstance(self.data_request_form, str):
             self.data_request_form = str(self.data_request_form)
@@ -3203,9 +3168,6 @@ slots.has_parent = Slot(uri=GHGA.has_parent, name="has parent", curie=GHGA.curie
 slots.has_children = Slot(uri=GHGA.has_children, name="has children", curie=GHGA.curie('has_children'),
                    model_uri=GHGA.has_children, domain=None, range=Optional[str])
 
-slots.has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="has data use condition", curie=GHGA.curie('has_data_use_condition'),
-                   model_uri=GHGA.has_data_use_condition, domain=None, range=Optional[str])
-
 slots.role = Slot(uri=GHGA.role, name="role", curie=GHGA.curie('role'),
                    model_uri=GHGA.role, domain=None, range=Optional[Union[str, "UserRoleEnum"]])
 
@@ -3612,7 +3574,7 @@ slots.library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attribute, 
                    model_uri=GHGA.library_preparation_protocol_has_attribute, domain=LibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.library_preparation_protocol_target_regions = Slot(uri=GHGA.target_regions, name="library preparation protocol_target regions", curie=GHGA.curie('target_regions'),
-                   model_uri=GHGA.library_preparation_protocol_target_regions, domain=LibraryPreparationProtocol, range=str)
+                   model_uri=GHGA.library_preparation_protocol_target_regions, domain=LibraryPreparationProtocol, range=Optional[str])
 
 slots.sequencing_protocol_alias = Slot(uri=GHGA.alias, name="sequencing protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.sequencing_protocol_alias, domain=SequencingProtocol, range=str)
@@ -3756,7 +3718,7 @@ slots.analysis_has_study = Slot(uri=GHGA.has_study, name="analysis_has study", c
                    model_uri=GHGA.analysis_has_study, domain=Analysis, range=Optional[Union[dict, Study]])
 
 slots.analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis_has workflow", curie=GHGA.curie('has_workflow'),
-                   model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]])
+                   model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Optional[Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]]])
 
 slots.analysis_has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="analysis_has analysis process", curie=GHGA.curie('has_analysis_process'),
                    model_uri=GHGA.analysis_has_analysis_process, domain=Analysis, range=Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]])
@@ -3812,12 +3774,6 @@ slots.dataset_has_publication = Slot(uri=GHGA.has_publication, name="dataset_has
 slots.dataset_release_status = Slot(uri=GHGA.release_status, name="dataset_release status", curie=GHGA.curie('release_status'),
                    model_uri=GHGA.dataset_release_status, domain=Dataset, range=Optional[Union[str, "ReleaseStatusEnum"]])
 
-slots.data_use_condition_has_data_use_permission = Slot(uri=GHGA.has_data_use_permission, name="data use condition_has data use permission", curie=GHGA.curie('has_data_use_permission'),
-                   model_uri=GHGA.data_use_condition_has_data_use_permission, domain=DataUseCondition, range=Union[dict, "DataUsePermission"])
-
-slots.data_use_condition_has_data_use_modifier = Slot(uri=GHGA.has_data_use_modifier, name="data use condition_has data use modifier", curie=GHGA.curie('has_data_use_modifier'),
-                   model_uri=GHGA.data_use_condition_has_data_use_modifier, domain=DataUseCondition, range=Optional[Union[dict, "DataUseModifier"]])
-
 slots.data_access_policy_alias = Slot(uri=GHGA.alias, name="data access policy_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.data_access_policy_alias, domain=DataAccessPolicy, range=str)
 
@@ -3836,8 +3792,11 @@ slots.data_access_policy_policy_url = Slot(uri=GHGA.policy_url, name="data acces
 slots.data_access_policy_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="data access policy_has data access committee", curie=GHGA.curie('has_data_access_committee'),
                    model_uri=GHGA.data_access_policy_has_data_access_committee, domain=DataAccessPolicy, range=Union[dict, "DataAccessCommittee"])
 
-slots.data_access_policy_has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="data access policy_has data use condition", curie=GHGA.curie('has_data_use_condition'),
-                   model_uri=GHGA.data_access_policy_has_data_use_condition, domain=DataAccessPolicy, range=Optional[Union[Dict[Union[str, DataUseConditionId], Union[dict, DataUseCondition]], List[Union[dict, DataUseCondition]]]])
+slots.data_access_policy_has_data_use_permission = Slot(uri=GHGA.has_data_use_permission, name="data access policy_has data use permission", curie=GHGA.curie('has_data_use_permission'),
+                   model_uri=GHGA.data_access_policy_has_data_use_permission, domain=DataAccessPolicy, range=Union[dict, "DataUsePermission"])
+
+slots.data_access_policy_has_data_use_modifier = Slot(uri=GHGA.has_data_use_modifier, name="data access policy_has data use modifier", curie=GHGA.curie('has_data_use_modifier'),
+                   model_uri=GHGA.data_access_policy_has_data_use_modifier, domain=DataAccessPolicy, range=Optional[Union[Dict[Union[str, DataUseModifierId], Union[dict, "DataUseModifier"]], List[Union[dict, "DataUseModifier"]]]])
 
 slots.data_access_policy_data_request_form = Slot(uri=GHGA.data_request_form, name="data access policy_data request form", curie=GHGA.curie('data_request_form'),
                    model_uri=GHGA.data_access_policy_data_request_form, domain=DataAccessPolicy, range=Optional[str])
