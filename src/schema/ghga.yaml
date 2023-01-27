@@ -1223,27 +1223,6 @@ classes:
         required: false
         range: release status enum
 
-  data use condition:
-    is_a: information content entity
-    description: >-
-      Data Use Condition represents the use conditions associated with a policy.
-    slots:
-      - has data use permission
-      - has data use modifier
-    slot_usage:
-      has data use permission:
-        description: >-
-          Data use permission associated with a policy. Typically one or more terms from DUO
-          and should be descendants of 'DUO:0000001 data use permission'.
-        required: true
-        recommended: true
-      has data use modifier:
-        description: >-
-          Modifier for Data use permission associated with a policy.
-          Should be descendants of 'DUO:0000017 data use modifier'
-        required: false
-        recommended: true
-
   data access policy:
     is_a: information content entity
     mixins:
@@ -1259,7 +1238,8 @@ classes:
       - policy text
       - policy url
       - has data access committee
-      - has data use condition
+      - has data use permission
+      - has data use modifier
       - data request form
     slot_usage:
       name:
@@ -1286,14 +1266,19 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
-      has data use condition:
+      has data use permission:
         description: >-
-          Data Use Condition entities that are associated with the Data Access Policy.
+          Data use permission associated with a policy. Typically one or more terms from DUO
+          and should be descendants of 'DUO:0000001 data use permission'.
+        required: true
+        recommended: true
+      has data use modifier:
+        description: >-
+          Modifier for Data use permission associated with a policy.
+          Should be descendants of 'DUO:0000017 data use modifier'
         required: false
         recommended: true
         multivalued: true
-        inlined: true
-        inlined_as_list: true
       data request form:
         description: >-
           Data Request Form that is associated with this Data Access Policy.
