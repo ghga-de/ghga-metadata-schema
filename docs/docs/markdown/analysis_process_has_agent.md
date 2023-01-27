@@ -26,6 +26,5 @@ URI: [GHGA:analysis_process_has_agent](https://w3id.org/GHGA/analysis_process_ha
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

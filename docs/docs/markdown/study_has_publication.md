@@ -21,11 +21,3 @@ URI: [GHGA:study_has_publication](https://w3id.org/GHGA/study_has_publication)
 ## Used by
 
  * [Study](Study.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
-

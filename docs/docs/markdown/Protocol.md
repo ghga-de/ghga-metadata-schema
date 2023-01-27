@@ -7,7 +7,7 @@ A plan specification which has sufficient level of detail and quantitative infor
 URI: [GHGA:Protocol](https://w3id.org/GHGA/Protocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%200..*-++[Protocol&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;url:string%20%3F;alias:string;xref:string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[File]<has%20file%200..1-%20[Protocol],[ExperimentProcess]++-%20has%20protocol%200..1>[Protocol],[Experiment]++-%20has%20protocol%201..*>[Protocol],[Experiment]-%20has%20protocol(i)%200..1>[Protocol],[ExperimentProcess]-%20has%20protocol(i)%200..1>[Protocol],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[File],[ExperimentProcess],[Experiment],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%200..*-++[Protocol&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;url:string%20%3F;alias:string;xref:string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[File]<has%20file%200..1-%20[Protocol],[ExperimentProcess]++-%20has%20protocol%200..1>[Protocol],[Experiment]++-%20has%20protocol%201..*>[Protocol],[Experiment]-%20has%20protocol(i)%200..1>[Protocol],[ExperimentProcess]-%20has%20protocol(i)%200..1>[Protocol],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[File],[ExperimentProcess],[Experiment],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[File]<has%20file%201..1-%20[Protocol],[ExperimentProcess]++-%20has%20protocol%201..1>[Protocol],[Experiment]++-%20has%20protocol%201..*>[Protocol],[Experiment]-%20has%20protocol(i)%200..1>[Protocol],[ExperimentProcess]-%20has%20protocol(i)%200..1>[Protocol],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[File],[ExperimentProcess],[Experiment],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[File]<has%20file%201..1-%20[Protocol],[ExperimentProcess]++-%20has%20protocol%201..1>[Protocol],[Experiment]++-%20has%20protocol%201..*>[Protocol],[Experiment]-%20has%20protocol(i)%200..1>[Protocol],[ExperimentProcess]-%20has%20protocol(i)%200..1>[Protocol],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[File],[ExperimentProcess],[Experiment],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -24,7 +24,7 @@ URI: [GHGA:Protocol](https://w3id.org/GHGA/Protocol)
 
 ## Referenced by Class
 
- *  **[ExperimentProcess](ExperimentProcess.md)** *[experiment process➞has protocol](experiment_process_has_protocol.md)*  <sub>0..1</sub>  **[Protocol](Protocol.md)**
+ *  **[ExperimentProcess](ExperimentProcess.md)** *[experiment process➞has protocol](experiment_process_has_protocol.md)*  <sub>1..1</sub>  **[Protocol](Protocol.md)**
  *  **[Experiment](Experiment.md)** *[experiment➞has protocol](experiment_has_protocol.md)*  <sub>1..\*</sub>  **[Protocol](Protocol.md)**
  *  **None** *[has protocol](has_protocol.md)*  <sub>0..1</sub>  **[Protocol](Protocol.md)**
  *  **[Submission](Submission.md)** *[submission➞has protocol](submission_has_protocol.md)*  <sub>0..\*</sub>  **[Protocol](Protocol.md)**
@@ -34,48 +34,44 @@ URI: [GHGA:Protocol](https://w3id.org/GHGA/Protocol)
 
 ### Own
 
- * [protocol➞name](protocol_name.md)  <sub>0..1</sub>
+ * [protocol➞name](protocol_name.md)  <sub>1..1</sub>
      * Description: Name of the protocol (eg: Sample extraction_PCR amplification).
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
- * [protocol➞type](protocol_type.md)  <sub>0..1</sub>
+ * [protocol➞type](protocol_type.md)  <sub>1..1</sub>
      * Description: Type of the protocol (eg: Target enrichment).
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
- * [protocol➞description](protocol_description.md)  <sub>0..1</sub>
+ * [protocol➞description](protocol_description.md)  <sub>1..1</sub>
      * Description: Detailed description of the Protocol.
      * Range: [String](types/String.md)
-     * in subsets: (essential,public)
- * [protocol➞url](protocol_url.md)  <sub>0..1</sub>
+ * [protocol➞url](protocol_url.md)  <sub>1..1</sub>
      * Description: URL for the resource that describes this Protocol.
      * Range: [String](types/String.md)
- * [protocol➞has file](protocol_has_file.md)  <sub>0..1</sub>
+ * [protocol➞has file](protocol_has_file.md)  <sub>1..1</sub>
      * Description: A document that describes the Protocol.
      * Range: [File](File.md)
-     * in subsets: (essential,restricted)
+     * in subsets: (restricted)
  * [protocol➞alias](protocol_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [protocol➞xref](protocol_xref.md)  <sub>0..\*</sub>
+     * in subsets: (restricted)
+ * [protocol➞xref](protocol_xref.md)  <sub>1..\*</sub>
      * Description: One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * Range: [String](types/String.md)
-     * in subsets: (optional,public)
- * [protocol➞has attribute](protocol_has_attribute.md)  <sub>0..\*</sub>
+ * [protocol➞has attribute](protocol_has_attribute.md)  <sub>1..\*</sub>
      * Description: One or more attributes that further characterizes this Protocol.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (optional,restricted)
+     * in subsets: (restricted)
 
 ### Inherited from information content entity:
 
  * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞creation date](named_thing_creation_date.md)  <sub>0..1</sub>
+     * in subsets: (restricted)
+ * [named thing➞creation date](named_thing_creation_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was created.
      * Range: [String](types/String.md)
- * [named thing➞update date](named_thing_update_date.md)  <sub>0..1</sub>
+ * [named thing➞update date](named_thing_update_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was updated.
      * Range: [String](types/String.md)
 

@@ -27,6 +27,5 @@ URI: [GHGA:individual_sex](https://w3id.org/GHGA/individual_sex)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

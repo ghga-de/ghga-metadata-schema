@@ -9,7 +9,7 @@ URI: [GHGA:analysis_has_analysis_process](https://w3id.org/GHGA/analysis_has_ana
 
 ## Domain and Range
 
-[Analysis](Analysis.md) &#8594;  <sub>0..\*</sub> [AnalysisProcess](AnalysisProcess.md)
+[Analysis](Analysis.md) &#8594;  <sub>1..\*</sub> [AnalysisProcess](AnalysisProcess.md)
 
 ## Parents
 

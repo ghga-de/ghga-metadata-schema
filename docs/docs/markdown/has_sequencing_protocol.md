@@ -9,7 +9,7 @@ URI: [GHGA:has_sequencing_protocol](https://w3id.org/GHGA/has_sequencing_protoco
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [SequencingProtocol](SequencingProtocol.md)
 
 ## Parents
 

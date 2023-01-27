@@ -26,7 +26,5 @@ URI: [GHGA:file_checksum](https://w3id.org/GHGA/file_checksum)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | NCIT:C43522 |
 

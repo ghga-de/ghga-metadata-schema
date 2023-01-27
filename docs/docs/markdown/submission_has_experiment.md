@@ -26,6 +26,5 @@ URI: [GHGA:submission_has_experiment](https://w3id.org/GHGA/submission_has_exper
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

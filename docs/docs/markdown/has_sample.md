@@ -27,6 +27,5 @@ None &#8594;  <sub>0..1</sub> [Sample](Sample.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

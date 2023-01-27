@@ -21,11 +21,3 @@ URI: [GHGA:sample_has_anatomical_entity](https://w3id.org/GHGA/sample_has_anatom
 ## Used by
 
  * [Sample](Sample.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
-

@@ -16,16 +16,14 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [experiment➞experimental replicates](experiment_experimental_replicates.md)
 
 ## Used by
 
- * [Experiment](Experiment.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
 | **Exact Mappings:** | | NCIT:C178859 |
 

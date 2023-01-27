@@ -16,14 +16,10 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [person➞additional name](person_additional_name.md)
 
 ## Used by
 
- * [Donor](Donor.md)
- * [Individual](Individual.md)
- * [Member](Member.md)
- * [Person](Person.md)
- * [User](User.md)
 
 ## Other properties
 

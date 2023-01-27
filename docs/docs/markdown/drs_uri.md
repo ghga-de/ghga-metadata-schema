@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [file➞drs uri](file_drs_uri.md)
 
 ## Used by
 
- * [File](File.md)

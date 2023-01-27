@@ -27,6 +27,5 @@ URI: [GHGA:individual_age](https://w3id.org/GHGA/individual_age)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

@@ -26,6 +26,5 @@ URI: [GHGA:sequencing_protocol_alias](https://w3id.org/GHGA/sequencing_protocol_
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

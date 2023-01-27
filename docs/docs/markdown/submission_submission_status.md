@@ -9,7 +9,7 @@ URI: [GHGA:submission_submission_status](https://w3id.org/GHGA/submission_submis
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..1</sub> [submission status enum](submission status enum.md)
+[Submission](Submission.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

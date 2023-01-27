@@ -29,6 +29,5 @@ None &#8594;  <sub>0..1</sub> [Individual](Individual.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

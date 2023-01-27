@@ -9,7 +9,7 @@ URI: [GHGA:named_thing_alias](https://w3id.org/GHGA/named_thing_alias)
 
 ## Domain and Range
 
-[NamedThing](NamedThing.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[NamedThing](NamedThing.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -18,18 +18,7 @@ URI: [GHGA:named_thing_alias](https://w3id.org/GHGA/named_thing_alias)
 ## Children
 
  *  [analysis➞alias](analysis_alias.md)
- *  [biospecimen➞alias](biospecimen_alias.md)
- *  [data access committee➞alias](data_access_committee_alias.md)
- *  [data access policy➞alias](data_access_policy_alias.md)
- *  [dataset➞alias](dataset_alias.md)
- *  [experiment➞alias](experiment_alias.md)
- *  [file➞alias](file_alias.md)
- *  [individual➞alias](individual_alias.md)
- *  [project➞alias](project_alias.md)
  *  [protocol➞alias](protocol_alias.md)
- *  [publication➞alias](publication_alias.md)
- *  [sample➞alias](sample_alias.md)
- *  [study➞alias](study_alias.md)
  *  [workflow➞alias](workflow_alias.md)
 
 ## Used by
@@ -39,17 +28,25 @@ URI: [GHGA:named_thing_alias](https://w3id.org/GHGA/named_thing_alias)
  * [AnatomicalEntity](AnatomicalEntity.md)
  * [Ancestry](Ancestry.md)
  * [BiologicalQuality](BiologicalQuality.md)
+ * [Biospecimen](Biospecimen.md)
  * [CellLine](CellLine.md)
  * [Cohort](Cohort.md)
  * [Committee](Committee.md)
+ * [DataAccessCommittee](DataAccessCommittee.md)
+ * [DataAccessPolicy](DataAccessPolicy.md)
  * [DataTransformation](DataTransformation.md)
  * [DataUseCondition](DataUseCondition.md)
  * [DataUseModifier](DataUseModifier.md)
  * [DataUsePermission](DataUsePermission.md)
+ * [Dataset](Dataset.md)
  * [Disease](Disease.md)
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md)
+ * [Donor](Donor.md)
+ * [Experiment](Experiment.md)
  * [ExperimentProcess](ExperimentProcess.md)
  * [Family](Family.md)
+ * [File](File.md)
+ * [Individual](Individual.md)
  * [InformationContentEntity](InformationContentEntity.md)
  * [Investigation](Investigation.md)
  * [MaterialEntity](MaterialEntity.md)
@@ -59,7 +56,11 @@ URI: [GHGA:named_thing_alias](https://w3id.org/GHGA/named_thing_alias)
  * [PhenotypicFeature](PhenotypicFeature.md)
  * [PlannedProcess](PlannedProcess.md)
  * [Population](Population.md)
+ * [Project](Project.md)
+ * [Publication](Publication.md)
  * [ResearchActivity](ResearchActivity.md)
+ * [Sample](Sample.md)
+ * [Study](Study.md)
  * [Technology](Technology.md)
  * [User](User.md)
  * [WorkflowStep](WorkflowStep.md)
@@ -68,6 +69,5 @@ URI: [GHGA:named_thing_alias](https://w3id.org/GHGA/named_thing_alias)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

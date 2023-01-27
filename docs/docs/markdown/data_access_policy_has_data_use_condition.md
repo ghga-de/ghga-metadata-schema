@@ -26,6 +26,5 @@ URI: [GHGA:data_access_policy_has_data_use_condition](https://w3id.org/GHGA/data
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

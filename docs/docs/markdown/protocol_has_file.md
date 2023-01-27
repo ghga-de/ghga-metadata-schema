@@ -9,7 +9,7 @@ URI: [GHGA:protocol_has_file](https://w3id.org/GHGA/protocol_has_file)
 
 ## Domain and Range
 
-[Protocol](Protocol.md) &#8594;  <sub>0..1</sub> [File](File.md)
+[Protocol](Protocol.md) &#8594;  <sub>1..1</sub> [File](File.md)
 
 ## Parents
 
@@ -28,6 +28,5 @@ URI: [GHGA:protocol_has_file](https://w3id.org/GHGA/protocol_has_file)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

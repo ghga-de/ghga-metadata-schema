@@ -21,11 +21,3 @@ URI: [GHGA:workflow_name](https://w3id.org/GHGA/workflow_name)
 ## Used by
 
  * [Workflow](Workflow.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

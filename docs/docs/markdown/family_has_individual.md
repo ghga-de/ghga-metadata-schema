@@ -9,7 +9,7 @@ URI: [GHGA:family_has_individual](https://w3id.org/GHGA/family_has_individual)
 
 ## Domain and Range
 
-[Family](Family.md) &#8594;  <sub>0..\*</sub> [Individual](Individual.md)
+[Family](Family.md) &#8594;  <sub>1..\*</sub> [Individual](Individual.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:family_has_individual](https://w3id.org/GHGA/family_has_individual)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

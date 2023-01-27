@@ -7,7 +7,7 @@ A Workflow Step represents each individual step performed in a Workflow. If the 
 URI: [GHGA:WorkflowStep](https://w3id.org/GHGA/WorkflowStep)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowParameter]<has%20workflow%20parameter%200..*-++[WorkflowStep&#124;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Workflow]-%20has%20workflow%20step(i)%200..1>[WorkflowStep],[Workflow]++-%20has%20workflow%20step%200..*>[WorkflowStep],[InformationContentEntity]^-[WorkflowStep],[WorkflowParameter],[Workflow],[InformationContentEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowParameter]<has%20workflow%20parameter%200..*-++[WorkflowStep&#124;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Workflow]-%20has%20workflow%20step(i)%200..1>[WorkflowStep],[Workflow]++-%20has%20workflow%20step%200..*>[WorkflowStep],[InformationContentEntity]^-[WorkflowStep],[WorkflowParameter],[Workflow],[InformationContentEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowParameter]<has%20workflow%20parameter%200..*-++[WorkflowStep&#124;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[Workflow]-%20has%20workflow%20step(i)%200..1>[WorkflowStep],[Workflow]++-%20has%20workflow%20step%201..*>[WorkflowStep],[InformationContentEntity]^-[WorkflowStep],[WorkflowParameter],[Workflow],[InformationContentEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowParameter]<has%20workflow%20parameter%200..*-++[WorkflowStep&#124;id(i):string;alias(i):string;xref(i):string%20%2B;creation_date(i):string;update_date(i):string;schema_type(i):string;schema_version(i):string],[Workflow]-%20has%20workflow%20step(i)%200..1>[WorkflowStep],[Workflow]++-%20has%20workflow%20step%201..*>[WorkflowStep],[InformationContentEntity]^-[WorkflowStep],[WorkflowParameter],[Workflow],[InformationContentEntity])
 
 ## Parents
 
@@ -16,7 +16,7 @@ URI: [GHGA:WorkflowStep](https://w3id.org/GHGA/WorkflowStep)
 ## Referenced by Class
 
  *  **None** *[has workflow step](has_workflow_step.md)*  <sub>0..1</sub>  **[WorkflowStep](WorkflowStep.md)**
- *  **[Workflow](Workflow.md)** *[workflow➞has workflow step](workflow_has_workflow_step.md)*  <sub>0..\*</sub>  **[WorkflowStep](WorkflowStep.md)**
+ *  **[Workflow](Workflow.md)** *[workflow➞has workflow step](workflow_has_workflow_step.md)*  <sub>1..\*</sub>  **[WorkflowStep](WorkflowStep.md)**
 
 ## Attributes
 
@@ -32,18 +32,17 @@ URI: [GHGA:WorkflowStep](https://w3id.org/GHGA/WorkflowStep)
  * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>0..1</sub>
+     * in subsets: (restricted)
+ * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+     * in subsets: (restricted)
+ * [named thing➞xref](named_thing_xref.md)  <sub>1..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (optional,public)
- * [named thing➞creation date](named_thing_creation_date.md)  <sub>0..1</sub>
+ * [named thing➞creation date](named_thing_creation_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was created.
      * Range: [String](types/String.md)
- * [named thing➞update date](named_thing_update_date.md)  <sub>0..1</sub>
+ * [named thing➞update date](named_thing_update_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was updated.
      * Range: [String](types/String.md)

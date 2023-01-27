@@ -26,7 +26,5 @@ URI: [GHGA:library_preparation_protocol_library_layout](https://w3id.org/GHGA/li
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | NCIT:C175894 |
 

@@ -9,7 +9,7 @@ URI: [GHGA:named_thing_creation_date](https://w3id.org/GHGA/named_thing_creation
 
 ## Domain and Range
 
-[NamedThing](NamedThing.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[NamedThing](NamedThing.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

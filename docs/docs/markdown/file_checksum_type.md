@@ -21,11 +21,3 @@ URI: [GHGA:file_checksum_type](https://w3id.org/GHGA/file_checksum_type)
 ## Used by
 
  * [File](File.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

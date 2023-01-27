@@ -9,7 +9,7 @@ URI: [GHGA:sample_has_individual](https://w3id.org/GHGA/sample_has_individual)
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>0..1</sub> [Individual](Individual.md)
+[Sample](Sample.md) &#8594;  <sub>1..1</sub> [Individual](Individual.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:sample_has_individual](https://w3id.org/GHGA/sample_has_individual)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

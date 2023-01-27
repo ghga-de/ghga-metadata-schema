@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [deprecated mixin➞deprecation date](deprecated_mixin_deprecation_date.md)
 
 ## Used by
 
- * [DeprecatedMixin](DeprecatedMixin.md)

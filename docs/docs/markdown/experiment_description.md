@@ -13,7 +13,7 @@ URI: [GHGA:experiment_description](https://w3id.org/GHGA/experiment_description)
 
 ## Parents
 
- *  is_a: [description](description.md)
+ *  is_a: [investigation➞description](investigation_description.md)
 
 ## Children
 
@@ -26,7 +26,5 @@ URI: [GHGA:experiment_description](https://w3id.org/GHGA/experiment_description)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

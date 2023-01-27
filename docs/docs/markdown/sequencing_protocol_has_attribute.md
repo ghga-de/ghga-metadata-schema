@@ -9,7 +9,7 @@ URI: [GHGA:sequencing_protocol_has_attribute](https://w3id.org/GHGA/sequencing_p
 
 ## Domain and Range
 
-[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
+[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>1..\*</sub> [Attribute](Attribute.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:sequencing_protocol_has_attribute](https://w3id.org/GHGA/sequencing_p
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

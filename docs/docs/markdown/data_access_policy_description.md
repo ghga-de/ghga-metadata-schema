@@ -9,7 +9,7 @@ URI: [GHGA:data_access_policy_description](https://w3id.org/GHGA/data_access_pol
 
 ## Domain and Range
 
-[DataAccessPolicy](DataAccessPolicy.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[DataAccessPolicy](DataAccessPolicy.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -26,7 +26,5 @@ URI: [GHGA:data_access_policy_description](https://w3id.org/GHGA/data_access_pol
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

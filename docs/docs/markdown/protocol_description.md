@@ -9,7 +9,7 @@ URI: [GHGA:protocol_description](https://w3id.org/GHGA/protocol_description)
 
 ## Domain and Range
 
-[Protocol](Protocol.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Protocol](Protocol.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -28,7 +28,5 @@ URI: [GHGA:protocol_description](https://w3id.org/GHGA/protocol_description)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

@@ -21,11 +21,3 @@ URI: [GHGA:sequencing_protocol_sequencing_center](https://w3id.org/GHGA/sequenci
 ## Used by
 
  * [SequencingProtocol](SequencingProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
-

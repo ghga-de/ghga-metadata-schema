@@ -26,6 +26,5 @@ None &#8594;  <sub>0..1</sub> [Agent](Agent.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

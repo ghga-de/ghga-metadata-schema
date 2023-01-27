@@ -7,7 +7,7 @@ A databased entity, concept or class. This is a generic class that is the root o
 URI: [GHGA:NamedThing](https://w3id.org/GHGA/NamedThing)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Person],[DeprecatedMixin]-%20replaced%20by%200..1>[NamedThing&#124;id:string;alias:string%20%3F;xref:string%20*;creation_date:string%20%3F;update_date:string%20%3F;schema_type:string%20%3F;schema_version:string%20%3F],[NamedThing]uses%20-.->[MetadataMixin],[NamedThing]^-[PlannedProcess],[NamedThing]^-[Person],[NamedThing]^-[MaterialEntity],[NamedThing]^-[InformationContentEntity],[NamedThing]^-[Committee],[NamedThing]^-[BiologicalQuality],[NamedThing]^-[Agent],[MetadataMixin],[MaterialEntity],[InformationContentEntity],[DeprecatedMixin],[Committee],[BiologicalQuality],[Agent])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Person],[DeprecatedMixin]-%20replaced%20by%200..1>[NamedThing&#124;id:string;alias:string%20%3F;xref:string%20*;creation_date:string%20%3F;update_date:string%20%3F;schema_type:string%20%3F;schema_version:string%20%3F],[NamedThing]uses%20-.->[MetadataMixin],[NamedThing]^-[PlannedProcess],[NamedThing]^-[Person],[NamedThing]^-[MaterialEntity],[NamedThing]^-[InformationContentEntity],[NamedThing]^-[Committee],[NamedThing]^-[BiologicalQuality],[NamedThing]^-[Agent],[MetadataMixin],[MaterialEntity],[InformationContentEntity],[DeprecatedMixin],[Committee],[BiologicalQuality],[Agent])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Person],[DeprecatedMixin]-%20replaced%20by%201..1>[NamedThing&#124;id:string;alias:string;xref:string%20%2B;creation_date:string;update_date:string;schema_type:string;schema_version:string],[DeprecatedMixin]-%20replaced%20by(i)%200..1>[NamedThing],[NamedThing]uses%20-.->[MetadataMixin],[NamedThing]^-[PlannedProcess],[NamedThing]^-[Person],[NamedThing]^-[MaterialEntity],[NamedThing]^-[InformationContentEntity],[NamedThing]^-[Committee],[NamedThing]^-[BiologicalQuality],[NamedThing]^-[Agent],[MetadataMixin],[MaterialEntity],[InformationContentEntity],[DeprecatedMixin],[Committee],[BiologicalQuality],[Agent])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Person],[DeprecatedMixin]-%20replaced%20by%201..1>[NamedThing&#124;id:string;alias:string;xref:string%20%2B;creation_date:string;update_date:string;schema_type:string;schema_version:string],[DeprecatedMixin]-%20replaced%20by(i)%200..1>[NamedThing],[NamedThing]uses%20-.->[MetadataMixin],[NamedThing]^-[PlannedProcess],[NamedThing]^-[Person],[NamedThing]^-[MaterialEntity],[NamedThing]^-[InformationContentEntity],[NamedThing]^-[Committee],[NamedThing]^-[BiologicalQuality],[NamedThing]^-[Agent],[MetadataMixin],[MaterialEntity],[InformationContentEntity],[DeprecatedMixin],[Committee],[BiologicalQuality],[Agent])
 
 ## Uses Mixin
 
@@ -25,6 +25,7 @@ URI: [GHGA:NamedThing](https://w3id.org/GHGA/NamedThing)
 
 ## Referenced by Class
 
+ *  **[DeprecatedMixin](DeprecatedMixin.md)** *[deprecated mixin➞replaced by](deprecated_mixin_replaced_by.md)*  <sub>1..1</sub>  **[NamedThing](NamedThing.md)**
  *  **[NamedThing](NamedThing.md)** *[replaced by](replaced_by.md)*  <sub>0..1</sub>  **[NamedThing](NamedThing.md)**
  *  **[NamedThing](NamedThing.md)** *[replaces](replaces.md)*  <sub>0..1</sub>  **[NamedThing](NamedThing.md)**
 
@@ -36,31 +37,30 @@ URI: [GHGA:NamedThing](https://w3id.org/GHGA/NamedThing)
  * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>0..1</sub>
+     * in subsets: (restricted)
+ * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (essential,restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+     * in subsets: (restricted)
+ * [named thing➞xref](named_thing_xref.md)  <sub>1..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
-     * in subsets: (optional,public)
- * [named thing➞creation date](named_thing_creation_date.md)  <sub>0..1</sub>
+ * [named thing➞creation date](named_thing_creation_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was created.
      * Range: [String](types/String.md)
- * [named thing➞update date](named_thing_update_date.md)  <sub>0..1</sub>
+ * [named thing➞update date](named_thing_update_date.md)  <sub>1..1</sub>
      * Description: Timestamp (in ISO 8601 format) when the entity was updated.
      * Range: [String](types/String.md)
 
 ### Mixed in from metadata mixin:
 
- * [schema type](schema_type.md)  <sub>0..1</sub>
+ * [metadata mixin➞schema type](metadata_mixin_schema_type.md)  <sub>1..1</sub>
      * Description: The schema type an instance corresponds to.
      * Range: [String](types/String.md)
 
 ### Mixed in from metadata mixin:
 
- * [schema version](schema_version.md)  <sub>0..1</sub>
+ * [metadata mixin➞schema version](metadata_mixin_schema_version.md)  <sub>1..1</sub>
      * Description: The version of the schema an instance corresponds to.
      * Range: [String](types/String.md)
 

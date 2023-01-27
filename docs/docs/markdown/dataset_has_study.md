@@ -21,11 +21,3 @@ URI: [GHGA:dataset_has_study](https://w3id.org/GHGA/dataset_has_study)
 ## Used by
 
  * [Dataset](Dataset.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

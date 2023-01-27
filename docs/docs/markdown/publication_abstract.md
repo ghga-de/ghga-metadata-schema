@@ -21,11 +21,3 @@ URI: [GHGA:publication_abstract](https://w3id.org/GHGA/publication_abstract)
 ## Used by
 
  * [Publication](Publication.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
-

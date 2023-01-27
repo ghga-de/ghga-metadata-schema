@@ -16,16 +16,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [biospecimen➞isolation](biospecimen_isolation.md)
+ *  [sample➞isolation](sample_isolation.md)
 
 ## Used by
-
- * [Biospecimen](Biospecimen.md)
- * [Sample](Sample.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | recommended |
-|  | | public |
 

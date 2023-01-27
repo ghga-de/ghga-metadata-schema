@@ -27,6 +27,5 @@ URI: [GHGA:individual_has_children](https://w3id.org/GHGA/individual_has_childre
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

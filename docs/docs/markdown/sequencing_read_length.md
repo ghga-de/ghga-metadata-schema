@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [sequencing protocol➞sequencing read length](sequencing_protocol_sequencing_read_length.md)
 
 ## Used by
 
- * [SequencingProtocol](SequencingProtocol.md)

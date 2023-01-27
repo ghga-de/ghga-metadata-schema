@@ -27,6 +27,5 @@ URI: [GHGA:individual_has_parent](https://w3id.org/GHGA/individual_has_parent)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

@@ -9,7 +9,7 @@ URI: [GHGA:experiment_process_has_protocol](https://w3id.org/GHGA/experiment_pro
 
 ## Domain and Range
 
-[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>0..1</sub> [Protocol](Protocol.md)
+[ExperimentProcess](ExperimentProcess.md) &#8594;  <sub>1..1</sub> [Protocol](Protocol.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:experiment_process_has_protocol](https://w3id.org/GHGA/experiment_pro
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

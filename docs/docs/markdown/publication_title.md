@@ -9,7 +9,7 @@ URI: [GHGA:publication_title](https://w3id.org/GHGA/publication_title)
 
 ## Domain and Range
 
-[Publication](Publication.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Publication](Publication.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -21,11 +21,3 @@ URI: [GHGA:publication_title](https://w3id.org/GHGA/publication_title)
 ## Used by
 
  * [Publication](Publication.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

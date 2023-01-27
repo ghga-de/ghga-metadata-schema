@@ -9,7 +9,7 @@ URI: [GHGA:named_thing_xref](https://w3id.org/GHGA/named_thing_xref)
 
 ## Domain and Range
 
-[NamedThing](NamedThing.md) &#8594;  <sub>0..\*</sub> [String](types/String.md)
+[NamedThing](NamedThing.md) &#8594;  <sub>1..\*</sub> [String](types/String.md)
 
 ## Parents
 
@@ -64,11 +64,3 @@ URI: [GHGA:named_thing_xref](https://w3id.org/GHGA/named_thing_xref)
  * [User](User.md)
  * [Workflow](Workflow.md)
  * [WorkflowStep](WorkflowStep.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | optional |
-|  | | public |
-

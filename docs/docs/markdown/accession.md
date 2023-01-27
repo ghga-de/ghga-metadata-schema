@@ -16,21 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [accession mixin➞accession](accession_mixin_accession.md)
 
 ## Used by
 
- * [AccessionMixin](AccessionMixin.md)
- * [Analysis](Analysis.md)
- * [Biospecimen](Biospecimen.md)
- * [Cohort](Cohort.md)
- * [DataAccessCommittee](DataAccessCommittee.md)
- * [DataAccessPolicy](DataAccessPolicy.md)
- * [Dataset](Dataset.md)
- * [Donor](Donor.md)
- * [Experiment](Experiment.md)
- * [Family](Family.md)
- * [File](File.md)
- * [Individual](Individual.md)
- * [Project](Project.md)
- * [Sample](Sample.md)
- * [Study](Study.md)

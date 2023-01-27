@@ -1,0 +1,30 @@
+
+# Slot: primer
+
+
+The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
+
+URI: [GHGA:library_preparation_protocol_primer](https://w3id.org/GHGA/library_preparation_protocol_primer)
+
+
+## Domain and Range
+
+[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+
+## Parents
+
+ *  is_a: [primer](primer.md)
+
+## Children
+
+
+## Used by
+
+ * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | EFO:0010192 |
+

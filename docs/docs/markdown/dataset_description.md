@@ -26,7 +26,5 @@ URI: [GHGA:dataset_description](https://w3id.org/GHGA/dataset_description)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

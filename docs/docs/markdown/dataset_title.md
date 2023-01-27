@@ -21,11 +21,3 @@ URI: [GHGA:dataset_title](https://w3id.org/GHGA/dataset_title)
 ## Used by
 
  * [Dataset](Dataset.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_file](https://w3id.org/GHGA/submission_has_file)
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [File](File.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [File](File.md)
 
 ## Parents
 
@@ -26,6 +26,5 @@ URI: [GHGA:submission_has_file](https://w3id.org/GHGA/submission_has_file)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

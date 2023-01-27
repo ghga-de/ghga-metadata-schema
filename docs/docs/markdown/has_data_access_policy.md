@@ -26,6 +26,5 @@ None &#8594;  <sub>0..1</sub> [DataAccessPolicy](DataAccessPolicy.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

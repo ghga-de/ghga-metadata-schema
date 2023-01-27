@@ -13,7 +13,7 @@ URI: [GHGA:project_description](https://w3id.org/GHGA/project_description)
 
 ## Parents
 
- *  is_a: [description](description.md)
+ *  is_a: [research activity➞description](research_activity_description.md)
 
 ## Children
 
@@ -26,7 +26,5 @@ URI: [GHGA:project_description](https://w3id.org/GHGA/project_description)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

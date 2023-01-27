@@ -26,6 +26,5 @@ URI: [GHGA:experiment_has_sample](https://w3id.org/GHGA/experiment_has_sample)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

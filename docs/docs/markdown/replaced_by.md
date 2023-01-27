@@ -16,7 +16,7 @@ URI: [GHGA:replaced_by](https://w3id.org/GHGA/replaced_by)
 
 ## Children
 
+ *  [deprecated mixin➞replaced by](deprecated_mixin_replaced_by.md)
 
 ## Used by
 
- * [DeprecatedMixin](DeprecatedMixin.md)

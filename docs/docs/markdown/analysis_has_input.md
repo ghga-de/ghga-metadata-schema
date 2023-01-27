@@ -26,6 +26,5 @@ URI: [GHGA:analysis_has_input](https://w3id.org/GHGA/analysis_has_input)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

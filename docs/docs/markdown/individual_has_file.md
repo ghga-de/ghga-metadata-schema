@@ -27,6 +27,5 @@ URI: [GHGA:individual_has_file](https://w3id.org/GHGA/individual_has_file)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

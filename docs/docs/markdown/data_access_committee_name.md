@@ -13,7 +13,7 @@ URI: [GHGA:data_access_committee_name](https://w3id.org/GHGA/data_access_committ
 
 ## Parents
 
- *  is_a: [name](name.md)
+ *  is_a: [committee➞name](committee_name.md)
 
 ## Children
 
@@ -21,11 +21,3 @@ URI: [GHGA:data_access_committee_name](https://w3id.org/GHGA/data_access_committ
 ## Used by
 
  * [DataAccessCommittee](DataAccessCommittee.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
-

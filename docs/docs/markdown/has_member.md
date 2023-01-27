@@ -9,7 +9,7 @@ URI: [GHGA:has_member](https://w3id.org/GHGA/has_member)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [Member](Member.md)
 
 ## Parents
 

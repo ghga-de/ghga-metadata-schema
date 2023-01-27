@@ -26,6 +26,5 @@ URI: [GHGA:workflow_alias](https://w3id.org/GHGA/workflow_alias)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 

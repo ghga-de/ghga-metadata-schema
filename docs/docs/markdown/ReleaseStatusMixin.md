@@ -7,7 +7,7 @@ Mixin for entities that can be released at a later point in time.
 URI: [GHGA:ReleaseStatusMixin](https://w3id.org/GHGA/ReleaseStatusMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[ReleaseStatusMixin&#124;release_status:string%20%3F;release_date:string%20%3F],[Dataset]uses%20-.->[ReleaseStatusMixin],[Study],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[ReleaseStatusMixin&#124;release_status:string%20%3F;release_date:string%20%3F],[Dataset]uses%20-.->[ReleaseStatusMixin],[Study],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[ReleaseStatusMixin&#124;release_status:string;release_date:string],[Dataset]uses%20-.->[ReleaseStatusMixin],[Study],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]uses%20-.->[ReleaseStatusMixin&#124;release_status:string;release_date:string],[Dataset]uses%20-.->[ReleaseStatusMixin],[Study],[Dataset])
 
 ## Mixin for
 
@@ -22,9 +22,9 @@ URI: [GHGA:ReleaseStatusMixin](https://w3id.org/GHGA/ReleaseStatusMixin)
 
 ### Own
 
- * [release status](release_status.md)  <sub>0..1</sub>
+ * [release status mixin➞release status](release_status_mixin_release_status.md)  <sub>1..1</sub>
      * Description: The release status of an entity.
      * Range: [String](types/String.md)
- * [release date](release_date.md)  <sub>0..1</sub>
+ * [release status mixin➞release date](release_status_mixin_release_date.md)  <sub>1..1</sub>
      * Description: The timestamp (in ISO 8601 format) when the entity was released for public consumption.
      * Range: [String](types/String.md)

@@ -9,7 +9,7 @@ URI: [GHGA:workflow_has_workflow_step](https://w3id.org/GHGA/workflow_has_workfl
 
 ## Domain and Range
 
-[Workflow](Workflow.md) &#8594;  <sub>0..\*</sub> [WorkflowStep](WorkflowStep.md)
+[Workflow](Workflow.md) &#8594;  <sub>1..\*</sub> [WorkflowStep](WorkflowStep.md)
 
 ## Parents
 

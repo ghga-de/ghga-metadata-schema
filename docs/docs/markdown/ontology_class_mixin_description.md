@@ -33,7 +33,5 @@ URI: [GHGA:ontology_class_mixin_description](https://w3id.org/GHGA/ontology_clas
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | public |
 | **Exact Mappings:** | | SIO:000185 |
 

@@ -25,6 +25,5 @@ None &#8594;  <sub>0..1</sub> [PhenotypicFeature](PhenotypicFeature.md)
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
-|  | | restricted |
+| **In Subsets:** | | restricted |
 
