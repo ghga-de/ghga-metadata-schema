@@ -359,6 +359,15 @@ classes:
         inlined: true
         inlined_as_list: false
         required: true
+  anatomical entity:
+    is_a: material entity
+    mixins:
+      - ontology class mixin
+    description: >-
+      Biological entity that is either an individual member of a biological species or constitutes
+      the structural organization of an individual member of a biological species.
+    exact_mappings:
+      - UBERON:0001062
   disease or phenotypic feature:
     is_a: biological quality
     mixins:
@@ -372,6 +381,25 @@ classes:
       - phenotypic feature
     exact_mappings:
       - biolink:DiseaseOrPhenotypicFeature
+  disease:
+    is_a: disease or phenotypic feature
+    description: >-
+      A disease is a disposition to undergo pathological processes that exists in an organism
+      because of one or more disorders in that organism.
+    exact_mappings:
+      - EFO:0000408
+      - MONDO:0000001
+  phenotypic feature:
+    is_a: disease or phenotypic feature
+    description: >-
+      The observable form taken by some character (or group of characters) in an individual or
+      an organism, excluding pathology and disease. The detectable outward manifestations of a
+      specific genotype.
+    exact_mappings:
+      - HP:0000118
+      - EFO:0000651
+      - SIO:010056
+
   sample:
     is_a: material entity
     mixins:
