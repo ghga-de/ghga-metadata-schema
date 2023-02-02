@@ -1,0 +1,1085 @@
+id: https://w3id.org/GHGA-Metadata-Schema
+name: GHGA-Metadata-Schema
+description: >-
+  The base metadata schema for the German Human Genome-Phenome Archive (GHGA).
+version: 0.9.0
+imports:
+  - linkml:types
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  GHGA: https://w3id.org/GHGA/
+  SIO: http://semanticscience.org/resource/SIO_
+  biolink: https://w3id.org/biolink/vocab/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  COB: http://purl.obolibrary.org/obo/COB_
+  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
+  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
+  SNOMEDCT: http://purl.bioontology.org/ontology/SNOMEDCT/
+
+default_prefix: GHGA
+
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+
+subsets:
+  restricted:
+    description: >-
+      Subset of properties that are considered to be restricted.
+
+classes:
+  named thing:
+    mixins:
+      - metadata mixin
+    abstract: true
+    aliases: ["named entity", "entity", "object"]
+    description: >-
+      A databased entity, concept or class. This is a generic class that is the root
+      of all the other classes.
+    slots:
+      - id
+      - alias
+      - xref
+      - creation date
+      - update date
+    slot_usage:
+      id:
+        description: >-
+          The internal unique identifier for an entity.
+        required: true
+      alias:
+        description: >-
+          The alias (alternate identifier) for an entity.
+        required: true
+      xref:
+        description: >-
+          Holds one or more database cross references for an entity.
+        required: true
+      creation date:
+        description: >-
+          Timestamp (in ISO 8601 format) when the entity was created.
+        required: true
+      update date:
+        description: >-
+          Timestamp (in ISO 8601 format) when the entity was updated.
+        required: true
+
+  person:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A member of the species Homo sapiens.
+    slots:
+      - given name
+      - family name
+      - additional name
+    slot_usage:
+      given name:
+        required: false
+      family name:
+        required: false
+      additional name:
+        required: false
+    exact_mappings:
+      - NCIT:C25190
+      - SIO:000498
+      - prov:Person
+
+  committee:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A group of people organized for a specific purpose.
+    slots:
+      - name
+    slot_usage:
+      name:
+        required: true
+
+  material entity:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A material entity is a physical entity that is spatially extended, exists as a
+      whole at any point in time and has mass.
+    exact_mappings:
+      - SIO:000004
+
+  biological quality:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A biological quality is a quality held by a biological entity.
+    exact_mappings:
+      - SIO:000475
+
+  information content entity:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A generically dependent continuant that is about some thing.
+    exact_mappings:
+      - IAO:0000030
+
+  planned process:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A process is an entity that exists in time by occurring or happening, has temporal parts and
+      always involves and depends on some entity during the time it occurs.
+    exact_mappings:
+      - EFO:0004542
+      - OBI:0000011
+      - COB:0000082
+
+  investigation:
+    is_a: planned process
+    abstract: true
+    description: >-
+      Investigation is the process of carrying out a plan or procedure so as to discover fact
+      or information about the object of study.
+    slots:
+      - title
+      - description
+    exact_mappings:
+      - SIO:000747
+      - OBI:0000066
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+
+  data transformation:
+    is_a: planned process
+    abstract: true
+    description: >-
+      A data transformation technique used to analyze and interpret data to gain a better
+      understanding of it.
+    slots:
+      - title
+      - description
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+    exact_mappings:
+      - OBI:0200000
+
+  research activity:
+    is_a: planned process
+    abstract: true
+    description: >-
+      A planned process executed in the performance of scientific research wherein
+      systematic investigations are performed to establish facts and reach new conclusions
+      about phenomena in the world.
+    slots:
+      - title
+      - description
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+    exact_mappings:
+      - SEPIO:0000004
+
+  protocol:
+    is_a: information content entity
+    abstract: true
+    mixins:
+      - attribute mixin
+    description: >-
+      A plan specification which has sufficient level of detail and quantitative information
+      to communicate it between investigation agents, so that different investigation agents
+      will reliably be able to independently reproduce the process.
+    slots:
+      - name
+      - type
+      - description
+      - url
+      - has file
+    exact_mappings:
+      - OBI:0000272
+    slot_usage:
+      alias:
+        required: true
+      name:
+        description: >-
+          Name of the protocol (eg: Sample extraction_PCR amplification).
+        required: true
+      type:
+        description: >-
+          Type of the protocol (eg: Target enrichment).
+        required: true
+      description:
+        description: >-
+          Detailed description of the Protocol.
+        required: true
+      url:
+        description: >-
+          URL for the resource that describes this Protocol.
+        required: true
+      has file:
+        description: >-
+          A document that describes the Protocol.
+        required: true
+      xref:
+        description: >-
+          One or more cross-references for this Protocol. 
+          (Eg: manufacturer protocol, protocol from publication etc )
+        required: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Protocol.
+        required: true
+
+  library preparation protocol:
+    is_a: protocol
+    description: >-
+      Information about the library preparation of an Experiment.
+    slots:
+      - library name
+      - library layout
+      - library type
+      - library selection
+      - library preparation
+      - library preparation kit retail name
+      - library preparation kit manufacturer
+      - primer
+      - end bias
+      - target regions
+      - rnaseq strandedness
+    slot_usage:
+      alias:
+        required: true
+      description:
+        description: >-
+          Description about how a sequencing library was prepared (eg: Library construction method).
+        required: true
+      library name:
+        required: true
+      library layout:
+        required: true
+      library type:
+        required: true
+      library selection:
+        required: true
+      library preparation:
+        required: true
+      library preparation kit retail name:
+        required: false
+        recommended: true
+      library preparation kit manufacturer:
+        required: false
+        recommended: true
+      primer:
+        required: false
+        recommended: true
+      end bias:
+        required: false
+        recommended: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Library Preparation Protocol.
+      target regions:
+        required: true
+      rnaseq strandedness:
+        required: false
+        recommended: true
+
+  sequencing protocol:
+    is_a: protocol
+    description: >-
+      Information about the sequencing of a sample.
+    slots:
+      - sequencing center
+      - instrument model
+      - paired or single end
+      - forward or reverse
+      - sequencing read length
+      - index sequence
+      - target coverage
+      - lane number
+      - flow cell id
+      - flow cell type
+      - umi barcode read
+      - umi barcode size
+      - umi barcode offset
+      - cell barcode read
+      - cell barcode offset
+      - cell barcode size
+      - sample barcode read
+    slot_usage:
+      alias:
+        required: true
+      instrument model:
+        required: true
+      type:
+        description: >-
+          Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+      description:
+        description: >-
+          Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+        required: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Sequencing Protocol.
+      sequencing center:
+        required: false
+        recommended: true
+      paired or single end:
+        required: false
+        recommended: true
+      forward or reverse:
+        required: false
+        recommended: true
+      sequencing read length:
+        required: false
+      index sequence:
+        required: false
+        recommended: true
+      target coverage:
+        required: false
+      lane number:
+        required: false
+        recommended: true
+      flow cell id:
+        required: false
+        recommended: true
+      flow cell type:
+        required: false
+        recommended: true
+      umi barcode read:
+        required: false
+        recommended: true
+      umi barcode size:
+        required: false
+        recommended: true
+      umi barcode offset:
+        required: false
+        recommended: true
+      cell barcode read:
+        required: false
+        recommended: true
+      cell barcode size:
+        required: false
+        recommended: true
+      cell barcode offset:
+        required: false
+        recommended: true
+      sample barcode read:
+        required: false
+        recommended: true
+
+  workflow step:
+    is_a: information content entity
+    description: >-
+      A Workflow Step represents each individual step performed in a Workflow.
+      If the Workflow is a single-step workflow then the Workflow has just one Workflow Step entity.
+      If the Workflow is a multi-step workflow then the Workflow has a Workflow Step entity for each step.
+      All Workflow step specific attributes like parameters, and metadata about execution environment
+      are captured by the Workflow Step entity.
+    slots:
+      - has workflow parameter
+    slot_usage:
+      has workflow parameter:
+        description: >-
+          One or more parameters that are associated with this Workflow Step.
+        range: workflow parameter
+        required: false
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  workflow parameter:
+    description: >-
+      A key/value pair that represents a parameter used in a Workflow Step.
+    slots:
+      - key
+      - value
+    slot_usage:
+      key:
+        description: >-
+          Key that represents the parameter name.
+        required: true
+      value:
+        description: >-
+          Value corresponding to the the parameter key.
+        required: true
+
+  population:
+    is_a: material entity
+    abstract: true
+    description: >-
+      A population is a collection of individuals from the same taxonomic class living,
+      counted or sampled at a particular site or in a particular area.
+    slots:
+      - name
+    slot_usage:
+      name:
+        required: true
+
+  anatomical entity:
+    is_a: material entity
+    mixins:
+      - ontology class mixin
+    description: >-
+      Biological entity that is either an individual member of a biological species or constitutes
+      the structural organization of an individual member of a biological species.
+    exact_mappings:
+      - UBERON:0001062
+
+  disease:
+    is_a: disease or phenotypic feature
+    description: >-
+      A disease is a disposition to undergo pathological processes that exists in an organism
+      because of one or more disorders in that organism.
+    exact_mappings:
+      - EFO:0000408
+      - MONDO:0000001
+
+  phenotypic feature:
+    is_a: disease or phenotypic feature
+    description: >-
+      The observable form taken by some character (or group of characters) in an individual or
+      an organism, excluding pathology and disease. The detectable outward manifestations of a
+      specific genotype.
+    exact_mappings:
+      - HP:0000118
+      - EFO:0000651
+      - SIO:010056
+
+  ontology class mixin:
+    mixin: true
+    description: Mixin for entities that represent an class/term/concept from an ontology.
+    slots:
+      - id
+      - concept identifier
+      - concept name
+      - description
+      - ontology name
+      - ontology version
+    slot_usage:
+      id:
+        required: true
+      concept identifier:
+        required: false
+        description: >-
+          The Compact URI (CURIE) that uniquely identifies this ontology class.
+      concept name:
+        required: false
+      ontology name:
+        required: false
+        description: >-
+          The name or label (rdfs:label) of an ontology class.
+      ontology version:
+        required: false
+      description:
+        required: false
+        description: >-
+          The description or definition of an ontology class.
+
+  metadata mixin:
+    mixin: true
+    description: Mixin for tracking schema specific metadata about an instance.
+    slots:
+      - schema type
+      - schema version
+    slot_usage:
+      schema type:
+        required: true
+      schema version:
+        required: true
+
+  accession mixin:
+    mixin: true
+    description: Mixin for entities that can be assigned a GHGA accession.
+    slots:
+      - accession
+    slot_usage:
+      accession:
+        required: true
+
+  ega accession mixin:
+    mixin: true
+    description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
+    slots:
+      - ega accession
+    slot_usage:
+      ega accession:
+        required: true
+
+  attribute mixin:
+    mixin: true
+    description: Mixin for entities that can have one or more attributes.
+    slots:
+      - has attribute
+    slot_usage:
+      has attribute:
+        required: true
+
+  publication mixin:
+    mixin: true
+    description: >-
+      Mixin for entities that can have one or more publications.
+    slots:
+      - has publication
+    slot_usage:
+      has publication:
+        required: true
+
+  deprecated mixin:
+    mixin: true
+    description: Mixin for entities that can be deprecated.
+    slots:
+      - replaced by
+      - deprecation date
+    slot_usage:
+      replaced by:
+        required: true
+      deprecation date:
+        required: true
+
+  release status mixin:
+    mixin: true
+    description: Mixin for entities that can be released at a later point in time.
+    slots:
+      - release status
+      - release date
+    slot_usage:
+      release status:
+        required: true
+      release date:
+        required: true
+
+slots:
+  schema type:
+    description: The schema type an instance corresponds to.
+
+  schema version:
+    description: The version of the schema an instance corresponds to.
+
+  id:
+    description: An identifier that uniquely represents an entity.
+    identifier: true
+    in_subset:
+      - restricted
+
+  alias:
+    description: The alias for an entity.
+    in_subset:
+      - restricted
+
+  accession:
+    description: >-
+      A unique GHGA identifier assigned to an entity for the sole purpose of
+      referring to that entity in a global scope.
+
+  ega accession:
+    description: >-
+      A unique European Genome-Phenome Archive (EGA) identifier assigned to an
+      entity for the sole purpose of referring to that entity within the EGA
+      federated network.
+
+  given name:
+    description: First name.
+    in_subset:
+      - restricted
+
+  family name:
+    description: Last name.
+    in_subset:
+      - restricted
+
+  additional name:
+    description: Additional name(s).
+    in_subset:
+      - restricted
+
+  name:
+    description: The name for an entity.
+    in_subset:
+
+  type:
+    description: The type of an entity.
+    in_subset:
+      # Note: Not to be confused with rdf:type
+
+  title:
+    description: The title that describes an entity.
+    in_subset:
+
+  xref:
+    description: Database cross references for an entity.
+    multivalued: true
+    in_subset:
+
+  url:
+    description: A URL to a resource.
+
+  description:
+    description: Description of an entity.
+    in_subset:
+    exact_mappings:
+      - SIO:000185
+
+  has protocol:
+    description: The protocol associated with an entity.
+    range: protocol
+    in_subset:
+      - restricted
+
+  has sequencing protocol:
+    range: sequencing protocol
+    description: The sequencing protocol associated with an entity.
+
+  has library preparation protocol:
+    range: library preparation protocol
+    description: The Library Preparation Protocol associated with an entity.
+
+  has workflow step:
+    description: The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.
+    range: workflow step
+
+  has workflow parameter:
+    description: The parameter(s) associated with a Workflow Step entity.
+    range: workflow parameter
+
+  tissue:
+    description: >-
+      An anatomical structure consisting of similarly specialized cells and intercellular matrix,
+      aggregated according to genetically determined spatial relationships, performing a specific function.
+    in_subset:
+
+  category:
+    description: >-
+      The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
+
+  library name:
+    description: >-
+      A short name identifying the library to potential users.
+      The same name may refer to multiple versions of the same continually updated library.
+    in_subset:
+
+  library layout:
+    description: >-
+      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
+    exact_mappings:
+      - NCIT:C175894
+    in_subset:
+
+  library type:
+    description: >-
+      Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+    in_subset:
+
+  library selection:
+    description: >-
+      Whether any method was used to select for or against, enrich, or screen the material being sequenced.
+      Library Selection method (e.g. random, PCA, cDNA, etc )
+    in_subset:
+
+  library preparation:
+    description: >-
+      The general method for sequencing library preparation (e.g. KAPA PCR-free).
+    in_subset:
+
+  library preparation kit retail name:
+    description: >-
+      A unique identifier for the kit used to construct a genomic library.
+      This may include the vendor name, kit name and kit version 
+      (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+    in_subset:
+
+  library preparation kit manufacturer:
+    description: >-
+      Manufacturer of library preparation kit
+    in_subset:
+
+  primer:
+    description: >-
+      The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer.
+      This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
+    exact_mappings:
+      - EFO:0010192
+    in_subset:
+
+  end bias:
+    description: >-
+      The end of the cDNA molecule that is preferentially sequenced,
+      e.g. 3/5 prime tag or end, or the full-length transcript.
+    exact_mappings:
+      - EFO:0010187
+    in_subset:
+
+  target regions:
+    description: >-
+      Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
+    in_subset:
+
+  rnaseq strandedness:
+    description: >-
+      The strandedness of the library, whether reads come from both strands of the cDNA
+      or only from the first (antisense) or the second (sense) strand.
+    in_subset:
+
+  sequencing center:
+    required: false
+    description: >-
+      Center where sample was sequenced.
+    in_subset:
+
+  instrument model:
+    description: >-
+      The name and model of the technology platform used to perform sequencing.
+    in_subset:
+
+  sequencing read length:
+    description: >-
+      Length of sequencing reads (eg: Long or short or actual number of the read length etc).
+      The number of nucleotides successfully ordered from each side of a nucleic acid fragment
+      obtained after the completion of a sequencing process
+
+  index sequence:
+    description: >-
+      A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
+    in_subset:
+    exact_mappings:
+      - NCIT:C165443
+
+  paired or single end:
+    deprecated: true
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+      The number that identifies each read direction in a paired-end nucleotide sequencing replications.
+    range: paired or single end enum
+    in_subset:
+
+  forward or reverse:
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+      The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
+    range: forward or reverse enum
+    in_subset:
+
+  lane number:
+    description: >-
+      The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
+    in_subset:
+
+  target coverage:
+    description: >-
+      Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
+      The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+
+  flow cell id:
+    description: >-
+      Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
+      The barcode assigned to a flow cell used in nucleotide sequencing.
+    in_subset:
+
+  flow cell type:
+    description: >-
+      Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
+      Aparatus in the fluidic subsystem where the sheath and sample meet.
+      Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
+      The sample flows through the center of a fluid column of sheath fluid in the flow cell.
+    in_subset:
+
+  umi barcode read:
+    description: >-
+      The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+    in_subset:
+
+  umi barcode offset:
+    description: >-
+      The offset in sequence of the UMI identifying barcode. (E.g. '16').
+    in_subset:
+
+  umi barcode size:
+    description: >-
+      The size of the UMI identifying barcode (Eg. '10').
+    in_subset:
+
+  cell barcode read:
+    description: >-
+      The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+    in_subset:
+
+  cell barcode offset:
+    description: >-
+      The offset in sequence of the cell identifying barcode. (Eg. '0').
+    in_subset:
+
+  cell barcode size:
+    description: >-
+      The size of the cell identifying barcode (E.g. '16').
+    in_subset:
+
+  sample barcode read:
+    description: >-
+      The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+    in_subset:
+
+  release status:
+    description: >-
+      The release status of an entity.
+
+  release date:
+    description: >-
+      The timestamp (in ISO 8601 format) when the entity was released for public consumption.
+
+  deprecation date:
+    description: >-
+      The timestamp (in ISO 8601 format) when the entity was deprecated.
+
+  replaced by:
+    description: >-
+      Refers to the entity which replaces a currently deprecated entity.
+    domain: named thing
+    range: named thing
+
+  replaces:
+    inverse: replaced by
+    description: >-
+      Refers to a deprecated entity that is being replaced by the current entity.
+    domain: named thing
+    range: named thing
+
+  concept identifier:
+    description: >-
+      The Compact URI (CURIE) that uniquely identifies a concept from an ontology,
+      thesaurus, or terminology.
+
+  concept name:
+    description: >-
+      The name or label (typically, rdfs:label) of concept from an ontology, thesaurus,
+      or terminology.
+
+  ontology name:
+    description: >-
+      The name of the ontology from which this ontology class was chosen.
+
+  ontology version:
+    description: >-
+      The version of the ontology from which this ontology class was chosen.
+
+enums:
+  biological sex enum:
+    description: >-
+      The biological sex of an Individual as determined by their chromosomes.
+    permissible_values:
+      female:
+        description: Female
+      male:
+        description: Male
+      unknown:
+        description: unspecified
+
+  user role enum:
+    description: >-
+      Enum to capture the different roles a GHGA User can have.
+    permissible_values:
+      data_requester:
+        description: >-
+          Role of a Data Requester where the user requests access
+          to one or more Datasets.
+      data_steward:
+        description: >-
+          Role of a Data Steward where the user is responsible for
+          approving request from a user for one or more Datasets.
+
+  vital status enum:
+    description: >-
+      Enum to capture the vital status of an individual.
+    permissible_values:
+      alive:
+        description: >-
+          Showing characteristics of life; displaying signs of life.
+      deceased:
+        description: >-
+          The cessation of life.
+      unknown:
+        description: >-
+          Vital status is unknown.
+
+  study type enum:
+    description: >-
+      Enum to capture the type of a study.
+    permissible_values:
+      whole_genome_sequencing:
+        description: Whole Genome Sequencing
+      metagenomics:
+        description: Metagenomics
+      transcriptome_analysis:
+        description: Transcriptome Analysis
+      resequencing:
+        description: Resequencing
+      epigenetics:
+        description: Epigenetics
+      synthetic_genomics:
+        description: Sythetic Genomics
+      forensic_paleo_genomics:
+        description: Forensic or Paleo-genomics
+      gene_regulation:
+        description: Gene Regulation Study
+      cancer_genomics:
+        description: Cancer Genomics
+      population_genomics:
+        description: Population Genomics
+      rna_seq:
+        description: RNAseq
+      exome_sequencing:
+        description: Exome Sequencing
+      pooled_clone_sequencing:
+        description: Pooled Clone Sequencing
+      genome_wide_association_study:
+        description: Genome-wide Association Study
+      other:
+        description: Other study
+
+  file format enum:
+    description: >-
+      Enum to capture file types.
+    permissible_values:
+      bam:
+        description: BAM File
+      complete_genomics:
+        description: Complete Genomics File
+      cram:
+        description: CRAM File
+      fasta:
+        description: Fasta File
+      fastq:
+        description: FastQ File
+      pacbio_hdf5:
+        description: PacBio HDF5 File
+      sff:
+        description: >-
+          Standard flowgram format used to encode results
+          of pyrosequencing from the 454 Life Sciences platform.
+      srf:
+        description: >-
+          SRF is a generic format for DNA sequence data.
+      vcf:
+        description: >-
+          VCF file for storing gene sequence variations.
+      txt:
+        description: >-
+          Text file.
+      pxf:
+        description: >-
+          Phenopacket file.
+      other:
+        description: >-
+          Other format.
+
+  case control status enum:
+    description: >-
+      Enum to capture whether a Sample in a Study is to be considered as Case or Control.
+    permissible_values:
+      control:
+        description: The Sample is to be treated as Control
+      case:
+        description: The Sample is to be treated as Case
+
+  paired or single end enum:
+    deprecated: true
+    description: >-
+      Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
+    permissible_values:
+      paired:
+        description: The reads are Paired-end
+      single:
+        description: The reads are Single-end
+
+  forward or reverse enum:
+    description: >-
+      Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+    permissible_values:
+      forward:
+        description: The reads are forward (R1) reads
+      reverse:
+        description: The reads are reverse (R2) reads
+
+  submission status enum:
+    description: >-
+      Enum to capture the status of a Submission.
+    permissible_values:
+      in_progress:
+        description: Signifies that the Submission is in the process of being submitted.
+      completed:
+        description: Signifies that the Submission is completed.
+
+  release status enum:
+    description: >-
+      Enum to capture the release status of an entity.
+    permissible_values:
+      unreleased:
+        description: signifies that the entity has not yet been release for public consumption.
+      released:
+        description: signifies that the entity has been release for public consumption.
+
+  experiment process type enum:
+    description: >-
+      The different types of Experiment Processes.
+    permissible_values:
+      sample_preparation:
+        description: >-
+          An Experiment Process that represents the transformation of a Sample
+          in preparation for an assay.
+          When an Experiment Process is of type 'sample preparation', both the input and
+          output to the Experiment Process is a Sample.
+      assay:
+        description: >-
+          An Experiment Process that represents an assay which performs measurement on
+          a Sample to generate data.
+          When an Experiemnt Process is of type 'assay', the input is a Sample and the
+          output is a File.
+
+  age range enum:
+    description: >-
+      Enum to capture the age range that an Indiviudal belongs to.
+    permissible_values:
+      0-5:
+        description: Age between 0 to 5.
+      6-10:
+        description: Age between 6 to 10.
+      11-15:
+        description: Age between 11 to 15.
+      16-20:
+        description: Age between 16 to 20.
+      21-25:
+        description: Age between 21 to 25.
+      26-30:
+        description: Age between 26 to 30.
+      31-35:
+        description: Age between 31 to 35.
+      36-40:
+        description: Age between 36 to 40.
+      41-45:
+        description: Age between 41 to 45.
+      46-50:
+        description: Age between 46 to 50.
+      51-55:
+        description: Age between 51 to 55.
+      56-60:
+        description: Age between 56 to 60.
+      61-65:
+        description: Age between 61 to 65.
+      66-70:
+        description: Age between 66 to 70.
+      71-75:
+        description: Age between 71 to 75.
+      76-80:
+        description: Age between 76 to 80.
+      80+:
+        description: Age above 80.
+      unknown:
+        description: Age range unknown.
