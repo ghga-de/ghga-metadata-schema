@@ -1446,14 +1446,6 @@ enums:
         description: The reads are forward (R1) reads
       reverse:
         description: The reads are reverse (R2) reads
-  submission status enum:
-    description: >-
-      Enum to capture the status of a Submission.
-    permissible_values:
-      in_progress:
-        description: Signifies that the Submission is in the process of being submitted.
-      completed:
-        description: Signifies that the Submission is completed.
   release status enum:
     description: >-
       Enum to capture the release status of an entity.
