@@ -180,6 +180,144 @@ classes:
         inlined: true
         inlined_as_list: true
 
+  library preparation protocol:
+    is_a: protocol
+    description: >-
+      Information about the library preparation of an Experiment.
+    slots:
+      - library name
+      - library layout
+      - library type
+      - library selection
+      - library preparation
+      - library preparation kit retail name
+      - library preparation kit manufacturer
+      - primer
+      - end bias
+      - target regions
+      - rnaseq strandedness
+    slot_usage:
+      alias:
+        required: true
+      description:
+        description: >-
+          Description about how a sequencing library was prepared (eg: Library construction method).
+        required: true
+      library name:
+        required: true
+      library layout:
+        required: true
+      library type:
+        required: true
+      library selection:
+        required: true
+      library preparation:
+        required: true
+      library preparation kit retail name:
+        required: false
+        recommended: true
+      library preparation kit manufacturer:
+        required: false
+        recommended: true
+      primer:
+        required: false
+        recommended: true
+      end bias:
+        required: false
+        recommended: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Library Preparation Protocol.
+      target regions:
+        required: true
+      rnaseq strandedness:
+        required: false
+        recommended: true
+
+  sequencing protocol:
+    is_a: protocol
+    description: >-
+      Information about the sequencing of a sample.
+    slots:
+      - sequencing center
+      - instrument model
+      - paired or single end
+      - forward or reverse
+      - sequencing read length
+      - index sequence
+      - target coverage
+      - lane number
+      - flow cell id
+      - flow cell type
+      - umi barcode read
+      - umi barcode size
+      - umi barcode offset
+      - cell barcode read
+      - cell barcode offset
+      - cell barcode size
+      - sample barcode read
+    slot_usage:
+      alias:
+        required: true
+      instrument model:
+        required: true
+      type:
+        description: >-
+          Name of the library preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+      description:
+        description: >-
+          Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+        required: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Sequencing Protocol.
+      sequencing center:
+        required: false
+        recommended: true
+      paired or single end:
+        required: false
+        recommended: true
+      forward or reverse:
+        required: false
+        recommended: true
+      sequencing read length:
+        required: false
+      index sequence:
+        required: false
+        recommended: true
+      target coverage:
+        required: false
+      lane number:
+        required: false
+        recommended: true
+      flow cell id:
+        required: false
+        recommended: true
+      flow cell type:
+        required: false
+        recommended: true
+      umi barcode read:
+        required: false
+        recommended: true
+      umi barcode size:
+        required: false
+        recommended: true
+      umi barcode offset:
+        required: false
+        recommended: true
+      cell barcode read:
+        required: false
+        recommended: true
+      cell barcode size:
+        required: false
+        recommended: true
+      cell barcode offset:
+        required: false
+        recommended: true
+      sample barcode read:
+        required: false
+        recommended: true
+
   biospecimen:
     is_a: material entity
     mixins:
@@ -879,13 +1017,6 @@ slots:
     in_subset:
       - restricted
 
-  has file:
-    description: >-
-      The file associated with an entity.
-    range: file
-    in_subset:
-      - restricted
-
   has dataset:
     description: The Dataset associated with an entity.
     range: dataset
@@ -1022,6 +1153,172 @@ slots:
     in_subset:
     exact_mappings:
       - NCIT:C178859
+
+  library name:
+    description: >-
+      A short name identifying the library to potential users.
+      The same name may refer to multiple versions of the same continually updated library.
+    in_subset:
+
+  library layout:
+    description: >-
+      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
+    exact_mappings:
+      - NCIT:C175894
+    in_subset:
+
+  library type:
+    description: >-
+      Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+    in_subset:
+
+  library selection:
+    description: >-
+      Whether any method was used to select for or against, enrich, or screen the material being sequenced.
+      Library Selection method (e.g. random, PCA, cDNA, etc )
+    in_subset:
+
+  library preparation:
+    description: >-
+      The general method for sequencing library preparation (e.g. KAPA PCR-free).
+    in_subset:
+
+  library preparation kit retail name:
+    description: >-
+      A unique identifier for the kit used to construct a genomic library.
+      This may include the vendor name, kit name and kit version 
+      (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+    in_subset:
+
+  library preparation kit manufacturer:
+    description: >-
+      Manufacturer of library preparation kit
+    in_subset:
+
+  primer:
+    description: >-
+      The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer.
+      This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
+    exact_mappings:
+      - EFO:0010192
+    in_subset:
+
+  end bias:
+    description: >-
+      The end of the cDNA molecule that is preferentially sequenced,
+      e.g. 3/5 prime tag or end, or the full-length transcript.
+    exact_mappings:
+      - EFO:0010187
+    in_subset:
+
+  target regions:
+    description: >-
+      Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
+    in_subset:
+
+  rnaseq strandedness:
+    description: >-
+      The strandedness of the library, whether reads come from both strands of the cDNA
+      or only from the first (antisense) or the second (sense) strand.
+    in_subset:
+
+  sequencing center:
+    required: false
+    description: >-
+      Center where sample was sequenced.
+    in_subset:
+
+  instrument model:
+    description: >-
+      The name and model of the technology platform used to perform sequencing.
+    in_subset:
+
+  sequencing read length:
+    description: >-
+      Length of sequencing reads (eg: Long or short or actual number of the read length etc).
+      The number of nucleotides successfully ordered from each side of a nucleic acid fragment
+      obtained after the completion of a sequencing process
+
+  index sequence:
+    description: >-
+      A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
+    in_subset:
+    exact_mappings:
+      - NCIT:C165443
+
+  paired or single end:
+    deprecated: true
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+      The number that identifies each read direction in a paired-end nucleotide sequencing replications.
+    range: paired or single end enum
+    in_subset:
+
+  forward or reverse:
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+      The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
+    range: forward or reverse enum
+    in_subset:
+
+  lane number:
+    description: >-
+      The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
+    in_subset:
+
+  target coverage:
+    description: >-
+      Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
+      The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+
+  flow cell id:
+    description: >-
+      Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
+      The barcode assigned to a flow cell used in nucleotide sequencing.
+    in_subset:
+
+  flow cell type:
+    description: >-
+      Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
+      Aparatus in the fluidic subsystem where the sheath and sample meet.
+      Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
+      The sample flows through the center of a fluid column of sheath fluid in the flow cell.
+    in_subset:
+
+  umi barcode read:
+    description: >-
+      The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+    in_subset:
+
+  umi barcode offset:
+    description: >-
+      The offset in sequence of the UMI identifying barcode. (E.g. '16').
+    in_subset:
+
+  umi barcode size:
+    description: >-
+      The size of the UMI identifying barcode (Eg. '10').
+    in_subset:
+
+  cell barcode read:
+    description: >-
+      The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+    in_subset:
+
+  cell barcode offset:
+    description: >-
+      The offset in sequence of the cell identifying barcode. (Eg. '0').
+    in_subset:
+
+  cell barcode size:
+    description: >-
+      The size of the cell identifying barcode (E.g. '16').
+    in_subset:
+
+  sample barcode read:
+    description: >-
+      The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+    in_subset:
 
   isolation:
     description: >-

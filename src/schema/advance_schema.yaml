@@ -95,6 +95,42 @@ classes:
         inlined: true
         inlined_as_list: true
 
+  workflow step:
+    is_a: information content entity
+    description: >-
+      A Workflow Step represents each individual step performed in a Workflow.
+      If the Workflow is a single-step workflow then the Workflow has just one Workflow Step entity.
+      If the Workflow is a multi-step workflow then the Workflow has a Workflow Step entity for each step.
+      All Workflow step specific attributes like parameters, and metadata about execution environment
+      are captured by the Workflow Step entity.
+    slots:
+      - has workflow parameter
+    slot_usage:
+      has workflow parameter:
+        description: >-
+          One or more parameters that are associated with this Workflow Step.
+        range: workflow parameter
+        required: false
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  workflow parameter:
+    description: >-
+      A key/value pair that represents a parameter used in a Workflow Step.
+    slots:
+      - key
+      - value
+    slot_usage:
+      key:
+        description: >-
+          Key that represents the parameter name.
+        required: true
+      value:
+        description: >-
+          Value corresponding to the the parameter key.
+        required: true
+
   donor:
     is_a: individual
     aliases: ["participant"]
