@@ -401,10 +401,6 @@ slots:
   has library preparation protocol:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
-  tissue:
-    description: >-
-      An anatomical structure consisting of similarly specialized cells and intercellular matrix,
-      aggregated according to genetically determined spatial relationships, performing a specific function.
   category:
     description: >-
       The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
