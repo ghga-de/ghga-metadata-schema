@@ -403,23 +403,18 @@ slots:
       - restricted
   name:
     description: The name for an entity.
-    # in_subset:
   type:
     description: The type of an entity.
-    in_subset:
       # Note: Not to be confused with rdf:type
   title:
     description: The title that describes an entity.
-    in_subset:
   xref:
     description: Database cross references for an entity.
     multivalued: true
-    in_subset:
   url:
     description: A URL to a resource.
   description:
     description: Description of an entity.
-    in_subset:
     exact_mappings:
       - SIO:000185
   has protocol:
@@ -437,7 +432,6 @@ slots:
     description: >-
       An anatomical structure consisting of similarly specialized cells and intercellular matrix,
       aggregated according to genetically determined spatial relationships, performing a specific function.
-    in_subset:
   category:
     description: >-
       The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.

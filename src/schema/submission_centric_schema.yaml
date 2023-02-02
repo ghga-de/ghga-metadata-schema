@@ -976,15 +976,12 @@ slots:
   has study:
     description: The study associated with an entity.
     range: study
-    in_subset:
   has project:
     description: The project associated with an entity.
     range: project
-    in_subset:
   has publication:
     description: The Publication associated with an entity.
     range: publication
-    in_subset:
   has sample:
     description: The sample associated with an entity.
     range: sample
@@ -1016,7 +1013,6 @@ slots:
   has anatomical entity:
     description: Anatomical site associated with an entity.
     range: anatomical entity
-    in_subset:
   has phenotypic feature:
     description: Phenotypic feature concept that the entity is associated with.
     range: phenotypic feature
@@ -1025,7 +1021,6 @@ slots:
   has disease:
     description: Disease concept that the entity is associated with.
     range: disease
-    in_subset:
   has parent:
     description: The parent of an entity.
     in_subset:
@@ -1091,95 +1086,78 @@ slots:
   affiliation:
     description: >-
       The Institution(s) associated with an entity.
-    in_subset:
   technical replicates:
     description: >-
       A technical replicate is a replicate role where the same BioSample is use e.g.
       the same pool of RNA used to assess technical (as opposed to biological)
       variation within an experiment.
-    in_subset:
     exact_mappings:
       - EFO:0002090
   biological replicates:
     description: >-
       A biological replicate is a replicate role that consists of
       independent biological replicates made from different individual biosamples.
-    in_subset:
     exact_mappings:
       - EFO:0002091
   experimental replicates:
     description: >-
       The replicate number of the assay, i.e. the numeric iteration
       for the assay that was repeated.
-    in_subset:
     exact_mappings:
       - NCIT:C178859
   library name:
     description: >-
       A short name identifying the library to potential users.
       The same name may refer to multiple versions of the same continually updated library.
-    in_subset:
   library layout:
     description: >-
       Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
     exact_mappings:
       - NCIT:C175894
-    in_subset:
   library type:
     description: >-
       Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
-    in_subset:
   library selection:
     description: >-
       Whether any method was used to select for or against, enrich, or screen the material being sequenced.
       Library Selection method (e.g. random, PCA, cDNA, etc )
-    in_subset:
   library preparation:
     description: >-
       The general method for sequencing library preparation (e.g. KAPA PCR-free).
-    in_subset:
   library preparation kit retail name:
     description: >-
       A unique identifier for the kit used to construct a genomic library.
       This may include the vendor name, kit name and kit version 
       (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
-    in_subset:
   library preparation kit manufacturer:
     description: >-
       Manufacturer of library preparation kit
-    in_subset:
   primer:
     description: >-
       The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer.
       This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
     exact_mappings:
       - EFO:0010192
-    in_subset:
   end bias:
     description: >-
       The end of the cDNA molecule that is preferentially sequenced,
       e.g. 3/5 prime tag or end, or the full-length transcript.
     exact_mappings:
       - EFO:0010187
-    in_subset:
   target regions:
     description: >-
       Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
-    in_subset:
   rnaseq strandedness:
     description: >-
       The strandedness of the library, whether reads come from both strands of the cDNA
       or only from the first (antisense) or the second (sense) strand.
-    in_subset:
   sequencing center:
     required: false
     description: >-
       Center where sample was sequenced.
-    in_subset:
   instrument model:
     description: >-
       The name and model of the technology platform used to perform sequencing.
-    in_subset:
   sequencing read length:
     description: >-
       Length of sequencing reads (eg: Long or short or actual number of the read length etc).
@@ -1188,7 +1166,6 @@ slots:
   index sequence:
     description: >-
       A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
-    in_subset:
     exact_mappings:
       - NCIT:C165443
   paired or single end:
@@ -1197,17 +1174,14 @@ slots:
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
     range: paired or single end enum
-    in_subset:
   forward or reverse:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: forward or reverse enum
-    in_subset:
   lane number:
     description: >-
       The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-    in_subset:
   target coverage:
     description: >-
       Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
@@ -1216,61 +1190,48 @@ slots:
     description: >-
       Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
       The barcode assigned to a flow cell used in nucleotide sequencing.
-    in_subset:
   flow cell type:
     description: >-
       Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
       Aparatus in the fluidic subsystem where the sheath and sample meet.
       Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
       The sample flows through the center of a fluid column of sheath fluid in the flow cell.
-    in_subset:
   umi barcode read:
     description: >-
       The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
-    in_subset:
   umi barcode offset:
     description: >-
       The offset in sequence of the UMI identifying barcode. (E.g. '16').
-    in_subset:
   umi barcode size:
     description: >-
       The size of the UMI identifying barcode (Eg. '10').
-    in_subset:
   cell barcode read:
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
-    in_subset:
   cell barcode offset:
     description: >-
       The offset in sequence of the cell identifying barcode. (Eg. '0').
-    in_subset:
   cell barcode size:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
-    in_subset:
   sample barcode read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
-    in_subset:
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
-    in_subset:
   storage:
     description: >-
       Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
-    in_subset:
   case control status:
     description: >-
       Whether the sample is to be treated as Case or Control in a Study.
     range: case control status enum
-    in_subset:
   vital status at sampling:
     description: >-
       Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
     range: vital status enum
-    in_subset:
   geographical region:
     description: >-
       The geographical region where the Individual is located.
@@ -1304,7 +1265,6 @@ slots:
   format:
     description: >-
       The format of the file: BAM, SAM, CRAM, BAI, etc.
-    in_subset:
     range: file format enum
   size:
     description: The size of a file in bytes.
@@ -1316,25 +1276,21 @@ slots:
       The receiving system recomputes the checksum based upon the received data and compares this
       value with the one sent with the data. If the two values are the same, the receiver has some confidence
       that the data was received correctly.
-    in_subset:
     exact_mappings:
       - NCIT:C43522
   checksum type:
     description: >-
       The type of algorithm used to generate the checksum of a file.
-    in_subset:
   drs uri:
     description: >-
       GA4GH Data Repository Service (DRS) identifier URI for a file.
   reference chromosome:
     description: >-
       The reference chromosome used for this Analysis.
-    in_subset:
   reference genome:
     description: >-
       A published genetic sequence that is used as a reference sequence against which other sequences are compared.
       Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
-    in_subset:
   policy text:
     description: The complete text for the Data Access Policy.
     in_subset:
@@ -1355,7 +1311,6 @@ slots:
     description: >-
       The study abstract that describes the goals. 
       Can also hold abstract from a publication related to this study
-    in_subset:
   author:
     description: >-
       The individual who is responsible for the content of a document version.
@@ -1372,8 +1327,6 @@ slots:
   submission date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
-
-
 
 enums:
   biological sex enum:
@@ -1493,14 +1446,14 @@ enums:
         description: The reads are forward (R1) reads
       reverse:
         description: The reads are reverse (R2) reads
-  # submission status enum:
-  #   description: >-
-  #     Enum to capture the status of a Submission.
-  #   permissible_values:
-  #     in_progress:
-  #       description: Signifies that the Submission is in the process of being submitted.
-  #     completed:
-  #       description: Signifies that the Submission is completed.
+  submission status enum:
+    description: >-
+      Enum to capture the status of a Submission.
+    permissible_values:
+      in_progress:
+        description: Signifies that the Submission is in the process of being submitted.
+      completed:
+        description: Signifies that the Submission is completed.
   release status enum:
     description: >-
       Enum to capture the release status of an entity.
