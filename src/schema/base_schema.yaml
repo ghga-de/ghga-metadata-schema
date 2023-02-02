@@ -390,17 +390,6 @@ slots:
     description: Description of an entity.
     exact_mappings:
       - SIO:000185
-  has protocol:
-    description: The protocol associated with an entity.
-    range: protocol
-    in_subset:
-      - restricted
-  has sequencing protocol:
-    range: sequencing protocol
-    description: The sequencing protocol associated with an entity.
-  has library preparation protocol:
-    range: library preparation protocol
-    description: The Library Preparation Protocol associated with an entity.
   category:
     description: >-
       The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.

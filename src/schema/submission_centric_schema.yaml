@@ -180,6 +180,9 @@ classes:
       has protocol:
         description: >-
           One or more Protocol entities associated with this Experiment.
+        union_of:
+          - has sequencing protocol
+          - has library preparation protocol
         multivalued: true
         required: true
         inlined: true
@@ -1103,6 +1106,17 @@ slots:
     inlined: true
     in_subset:
       - restricted
+  has protocol:
+    description: The protocol associated with an entity.
+    range: protocol
+    in_subset:
+      - restricted
+  has sequencing protocol:
+    range: sequencing protocol
+    description: The sequencing protocol associated with an entity.
+  has library preparation protocol:
+    range: library preparation protocol
+    description: The Library Preparation Protocol associated with an entity.
   key:
     description: The key of an attribute.
   key type:
