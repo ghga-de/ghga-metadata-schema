@@ -399,7 +399,7 @@ slots:
       - restricted
   name:
     description: The name for an entity.
-    in_subset:
+    # in_subset:
   type:
     description: The type of an entity.
     in_subset:
