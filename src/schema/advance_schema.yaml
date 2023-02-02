@@ -270,6 +270,12 @@ slots:
   has workflow:
     description: The Workflow entity associated wtih a Planned Process entity.
     range: workflow
+  has workflow step:
+    description: The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.
+    range: workflow step
+  has workflow parameter:
+    description: The parameter(s) associated with a Workflow Step entity.
+    range: workflow parameter
   has agent:
     description: A person or an entity that is performing a Planned Process entity.
     range: agent

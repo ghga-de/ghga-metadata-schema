@@ -429,12 +429,6 @@ slots:
   has library preparation protocol:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
-  has workflow step:
-    description: The individual workflow step that with other workflow step(s) collectively defines a Workflow entity.
-    range: workflow step
-  has workflow parameter:
-    description: The parameter(s) associated with a Workflow Step entity.
-    range: workflow parameter
   tissue:
     description: >-
       An anatomical structure consisting of similarly specialized cells and intercellular matrix,
