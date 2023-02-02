@@ -15,7 +15,6 @@ classes:
         required: true
     exact_mappings:
       - prov:Agent
-
   technology:
     is_a: information content entity
     deprecated: true
@@ -24,7 +23,6 @@ classes:
       entity captures instrument-specific attributes that are relevant for an Experiment entity.
       The Technology entity may be further characterized by its children where each child has fields
       that are relevant to that particular technology.
-
   experiment process:
     is_a: experiment
     mixins:
@@ -72,7 +70,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: false
-
   workflow:
     is_a: information content entity
     description: >-
@@ -94,7 +91,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-
   workflow step:
     is_a: information content entity
     description: >-
@@ -114,7 +110,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-
   workflow parameter:
     description: >-
       A key/value pair that represents a parameter used in a Workflow Step.
@@ -130,7 +125,6 @@ classes:
         description: >-
           Value corresponding to the the parameter key.
         required: true
-
   donor:
     is_a: individual
     aliases: ["participant"]
@@ -138,7 +132,6 @@ classes:
       A Donor is an Individual that participates in a research Study by donating
       a Biospecimen. The use of the Biospecimen is restricted to the consent provided
       by the Donor.
-
   family:
     is_a: population
     mixins:
@@ -164,7 +157,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
-
   cohort:
     is_a: population
     mixins:
@@ -182,7 +174,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-
   member:
     is_a: person
     description: >-
@@ -204,7 +195,6 @@ classes:
         description: >-
           The organization that the Member is part of.
         required: true
-
   cell line:
     is_a: material entity
     description: >-
@@ -213,7 +203,6 @@ classes:
     exact_mappings:
       - CLO:0000031
       - SIO:010054
-
   user:
     is_a: person
     description: >-
@@ -229,7 +218,6 @@ classes:
           The role of the user
         range: user role enum
         required: false
-
   analysis process:
     is_a: analysis
     description: >-
@@ -251,48 +239,67 @@ classes:
         inlined_as_list: false
 
 slots:
-
   telephone:
     description: >-
       The telephone number associated with a person.
-
   organization:
     description: The organization associated with a person.
-
   email:
     description: >-
       Email of a person.
-
   role:
     description: The role that a user has within GHGA.
     range: user role enum
-
   has technology:
     deprecated: true
     range: technology
-  
   has experiment process:
     range: experiment process
     in_subset:
       - restricted
-
   has analysis process:
     range: analysis process
-
   has workflow:
     description: The Workflow entity associated wtih a Planned Process entity.
     range: workflow
-  
   has agent:
     description: A person or an entity that is performing a Planned Process entity.
     range: agent
     in_subset:
       - restricted
-
   has member:
     description: The members associated with a committee.
     range: member
-
   has proband:
     description: The Individual that is reported to have a disorder in a Family.
     range: individual
+
+enums:
+  experiment process type enum:
+    description: >-
+      The different types of Experiment Processes.
+    permissible_values:
+      sample_preparation:
+        description: >-
+          An Experiment Process that represents the transformation of a Sample
+          in preparation for an assay.
+          When an Experiment Process is of type 'sample preparation', both the input and
+          output to the Experiment Process is a Sample.
+      assay:
+        description: >-
+          An Experiment Process that represents an assay which performs measurement on
+          a Sample to generate data.
+          When an Experiemnt Process is of type 'assay', the input is a Sample and the
+          output is a File.
+  user role enum:
+    description: >-
+      Enum to capture the different roles a GHGA User can have.
+    permissible_values:
+      data_requester:
+        description: >-
+          Role of a Data Requester where the user requests access
+          to one or more Datasets.
+      data_steward:
+        description: >-
+          Role of a Data Steward where the user is responsible for
+          approving request from a user for one or more Datasets.
