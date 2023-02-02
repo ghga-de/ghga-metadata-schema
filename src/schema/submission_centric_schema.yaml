@@ -1,3 +1,11 @@
+id: https://w3id.org/GHGA-Submission-Metadata-Schema
+name: GHGA-Submission-Metadata-Schema
+description: >-
+  The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
+version: 0.9.0
+imports:
+  - linkml:base_schema
+
 classes:
   attribute:
     description: >-
