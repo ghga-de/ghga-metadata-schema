@@ -1372,10 +1372,8 @@ slots:
   submission date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
-  creation date:
-    description: Timestamp (in ISO 8601 format) when the entity was created.
-  update date:
-    description: Timestamp (in ISO 8601 format) when the entity was updated.
+
+
 
 enums:
   biological sex enum:

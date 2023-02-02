@@ -363,6 +363,10 @@ classes:
         required: true
 
 slots:
+  update date:
+    description: Timestamp (in ISO 8601 format) when the entity was updated.
+  creation date:
+    description: Timestamp (in ISO 8601 format) when the entity was created.
   schema type:
     description: The schema type an instance corresponds to.
   schema version:
