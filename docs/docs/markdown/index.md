@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 0.9.0
+**version:** 0.9.1
 
 
 The metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -401,6 +401,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
 #### Built in
 
  * **Bool**
+ * **Curie**
  * **Decimal**
  * **ElementIdentifier**
  * **NCName**
@@ -417,6 +418,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
 #### Defined
 
  * [Boolean](types/Boolean.md)  (**Bool**)  - A binary (true or false) value
+ * [Curie](types/Curie.md)  (**Curie**)  - a compact URI
  * [Date](types/Date.md)  (**XSDDate**)  - a date (year, month and day) in an idealized calendar
  * [DateOrDatetime](types/DateOrDatetime.md)  (**str**)  - Either a date or a datetime
  * [Datetime](types/Datetime.md)  (**XSDDateTime**)  - The combination of a date and time

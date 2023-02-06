@@ -5,7 +5,7 @@ from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 
 metamodel_version = "None"
-version = "0.9.0"
+version = "0.9.1"
 
 
 class BiologicalSexEnum(str, Enum):

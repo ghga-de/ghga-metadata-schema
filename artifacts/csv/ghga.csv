@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.9.0
+# version: 0.9.1
 id,mappings,description
 accession_mixin,,Mixin for entities that can be assigned a GHGA accession.
 agent,,"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. Agents include a Person, Organization, or Software that performs an activity."
