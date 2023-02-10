@@ -239,6 +239,17 @@ classes:
     slot_usage:
       name:
         required: true
+  disease or phenotypic feature:
+    is_a: biological quality
+    abstract: true
+    mixins:
+      - ontology class mixin
+    description: >-
+      Disease or Phenotypic Feature that the entity is associated with. This entity is a union
+      of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
+      are used interchangeably with Phenotype concepts or vice-versa.
+    exact_mappings:
+      - biolink:DiseaseOrPhenotypicFeature
   ontology class mixin:
     mixin: true
     description: Mixin for entities that represent an class/term/concept from an ontology.

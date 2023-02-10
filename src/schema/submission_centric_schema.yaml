@@ -371,19 +371,6 @@ classes:
       the structural organization of an individual member of a biological species.
     exact_mappings:
       - UBERON:0001062
-  disease or phenotypic feature:
-    is_a: biological quality
-    mixins:
-      - ontology class mixin
-    description: >-
-      Disease or Phenotypic Feature that the entity is associated with. This entity is a union
-      of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
-      are used interchangeably with Phenotype concepts or vice-versa.
-    union_of:
-      - disease
-      - phenotypic feature
-    exact_mappings:
-      - biolink:DiseaseOrPhenotypicFeature
   disease:
     is_a: disease or phenotypic feature
     description: >-
