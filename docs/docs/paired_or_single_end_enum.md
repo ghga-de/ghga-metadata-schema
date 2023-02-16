@@ -1,5 +1,5 @@
 
-# Enum: paired or single end enum
+# Enum: ~~paired or single end enum~~ _(deprecated)_
 
 
 Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.

@@ -16,15 +16,15 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
 
 ## Used by
 
- * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
 
 ## Other properties
 
 |  |  |  |
 | --- | --- | --- |
-| **In Subsets:** | | essential |
+| **In Subsets:** | | recommended |
 |  | | public |
 

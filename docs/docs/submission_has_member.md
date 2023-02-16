@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_member](https://w3id.org/GHGA/submission_has_member)
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Individual](Individual.md)
+[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Member](Member.md)
 
 ## Parents
 

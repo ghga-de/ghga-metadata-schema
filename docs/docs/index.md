@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 0.8.0
+**version:** 0.9.1
 
 
 The metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -23,7 +23,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
          * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
      * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
          * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
-         * [DataUseCondition](DataUseCondition.md) - Data Use Condition represents the use conditions associated with a policy.
          * [DataUseModifier](DataUseModifier.md) - Data use modifiers indicate additional conditions for use.
          * [DataUsePermission](DataUsePermission.md) - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
          * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
@@ -102,6 +101,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
          * [sample➞alias](sample_alias.md) - The alias for an entity.
          * [study➞alias](study_alias.md) - The alias for an entity.
          * [workflow➞alias](workflow_alias.md) - The alias for an entity.
+ * [author](author.md) - The individual who is responsible for the content of a document version.
  * [biological replicates](biological_replicates.md) - A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.
  * [case control status](case_control_status.md) - Whether the sample is to be treated as Case or Control in a Study.
  * [category](category.md) - The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
@@ -145,6 +145,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [flow cell type](flow_cell_type.md) - Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
  * [format](format.md) - The format of the file: BAM, SAM, CRAM, BAI, etc.
      * [file➞format](file_format.md)
+ * [forward or reverse](forward_or_reverse.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
  * [geographical region](geographical_region.md) - The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
  * [given name](given_name.md) - First name.
  * [has agent](has_agent.md) - A person or an entity that is performing a Planned Process entity.
@@ -156,7 +157,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has analysis process](has_analysis_process.md)
      * [analysis➞has analysis process](analysis_has_analysis_process.md) - One or more Analysis Process entities associated with this Analysis.
  * [has anatomical entity](has_anatomical_entity.md) - Anatomical site associated with an entity.
-     * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md) - The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.
      * [sample➞has anatomical entity](sample_has_anatomical_entity.md)
  * [has ancestry](has_ancestry.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
  * [has attribute](has_attribute.md) - Key/value pairs corresponding to an entity.
@@ -176,16 +176,13 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has data access policy](has_data_access_policy.md) - Data Access Policy associated with an entity.
      * [dataset➞has data access policy](dataset_has_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
      * [submission➞has data access policy](submission_has_data_access_policy.md) - The Data Access Policy that applies to Dataset in this submission.
- * [has data use condition](has_data_use_condition.md) - Data Use Condition entities that are associated with an entity.
-     * [data access policy➞has data use condition](data_access_policy_has_data_use_condition.md) - Data Use Condition entities that are associated with the Data Access Policy.
  * [has data use modifier](has_data_use_modifier.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
-     * [data use condition➞has data use modifier](data_use_condition_has_data_use_modifier.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
+     * [data access policy➞has data use modifier](data_access_policy_has_data_use_modifier.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
  * [has data use permission](has_data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
-     * [data use condition➞has data use permission](data_use_condition_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
+     * [data access policy➞has data use permission](data_access_policy_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
  * [has dataset](has_dataset.md) - The Dataset associated with an entity.
      * [submission➞has dataset](submission_has_dataset.md) - One or more Dataset that are part of this submission.
  * [has disease](has_disease.md) - Disease concept that the entity is associated with.
-     * [biospecimen➞has disease](biospecimen_has_disease.md) - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.
      * [individual➞has disease](individual_has_disease.md) - The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.
  * [has experiment](has_experiment.md) - The experiment associated with an entity.
      * [dataset➞has experiment](dataset_has_experiment.md) - One or more Experiment entities that are referenced by this Dataset.
@@ -201,6 +198,8 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
      * [submission➞has file](submission_has_file.md) - Information about one or more File entities associated with this submission.
  * [has individual](has_individual.md) - The subject/individual associated with an entity.
      * [biospecimen➞has individual](biospecimen_has_individual.md) - The Individual entity from which this Biospecimen was derived.
+     * [cohort➞has individual](cohort_has_individual.md) - One or more Individuals that collectively define this Cohort.
+     * [family➞has individual](family_has_individual.md) - One or more Individuals that collectively define this Family.
      * [sample➞has individual](sample_has_individual.md) - The Individual from which this Sample was derived from.
      * [submission➞has individual](submission_has_individual.md) - Information about one or more Individual entities associated with this submission.
  * [has input](has_input.md) - The input to a Planned Process.
@@ -209,9 +208,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
      * [experiment process➞has input](experiment_process_has_input.md) - The input to the Experiment Process. Usually a Sample entity.
  * [has library preparation protocol](has_library_preparation_protocol.md) - The Library Preparation Protocol associated with an entity.
  * [has member](has_member.md) - The members associated with a committee.
-     * [cohort➞has member](cohort_has_member.md) - One or more Individuals that collectively define this Cohort.
      * [data access committee➞has member](data_access_committee_has_member.md) - All the members that are part of this Data Access Committee.
-     * [family➞has member](family_has_member.md) - One or more Individuals that collectively define this Family.
      * [submission➞has member](submission_has_member.md) - One or more member that are part of the Data Access Committee referenced in this submission.
  * [has output](has_output.md) - The output of a Planned Process entity.
      * [analysis process➞has output](analysis_process_has_output.md) - The output data File entities generated by the Analysis Process.
@@ -220,7 +217,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [has parent](has_parent.md) - The parent of an entity.
      * [individual➞has parent](individual_has_parent.md) - One or more parent for this Individual.
  * [has phenotypic feature](has_phenotypic_feature.md) - Phenotypic feature concept that the entity is associated with.
-     * [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.
      * [individual➞has phenotypic feature](individual_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from which the Biospecimen was extracted from - exhibits 'Fibrosarcoma' as one of its phenotype.
  * [has proband](has_proband.md) - The Individual that is reported to have a disorder in a Family.
      * [family➞has proband](family_has_proband.md) - The Individual that is reported to have a disorder which results in the Family being brought into a Study.
@@ -233,7 +229,6 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
      * [submission➞has protocol](submission_has_protocol.md) - One or more Protocol entities associated with this Submission.
  * [has publication](has_publication.md) - The Publication associated with an entity.
      * [dataset➞has publication](dataset_has_publication.md) - One or more Publication entities associated with this Dataset.
-     * [project➞has publication](project_has_publication.md) - One or more Publication entities associated with this Project.
      * [study➞has publication](study_has_publication.md) - One or more Publication entities associated with this Study.
      * [submission➞has publication](submission_has_publication.md) - One or more Publication entities associated with this Submission.
  * [has sample](has_sample.md) - The sample associated with an entity.
@@ -262,6 +257,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [instrument model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [sequencing protocol➞instrument model](sequencing_protocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
+ * [journal](journal.md) - Name of the journal.
  * [karyotype](karyotype.md) - The karyotype of an individual if defined.
  * [key](key.md) - The key of an attribute.
      * [attribute➞key](attribute_key.md) - The key for an attribute.
@@ -331,6 +327,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
      * [submission➞submission status](submission_submission_status.md) - The status of a Submission.
  * [target coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
  * [target regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
+     * [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
  * [technical replicates](technical_replicates.md) - A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.
  * [telephone](telephone.md) - The telephone number associated with a person.
      * [member➞telephone](member_telephone.md) - The telephone number of the Member.
@@ -345,7 +342,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [type](type.md) - The type of an entity.
      * [analysis➞type](analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * [biospecimen➞type](biospecimen_type.md) - The type of Biospecimen.
-     * [dataset➞type](dataset_type.md)
+     * [dataset➞type](dataset_type.md) - The type of a dataset.
      * [experiment process➞type](experiment_process_type.md) - The type of experiment process.
      * [experiment➞type](experiment_type.md) - The type of Experiment.
      * [protocol➞type](protocol_type.md) - Type of the protocol (eg: Target enrichment).
@@ -373,6 +370,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
          * [protocol➞xref](protocol_xref.md) - One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )
          * [publication➞xref](publication_xref.md) - One or more cross-references for this Publication.
          * [sample➞xref](sample_xref.md) - One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
+ * [year](year.md) - Year in which the paper was published.
 
 ### Enums
 
@@ -381,6 +379,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
  * [case control status enum](case control status enum.md) - Enum to capture whether a Sample in a Study is to be considered as Case or Control.
  * [experiment process type enum](experiment process type enum.md) - The different types of Experiment Processes.
  * [file format enum](file format enum.md) - Enum to capture file types.
+ * [forward or reverse enum](forward or reverse enum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
  * [paired or single end enum](paired or single end enum.md) - Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
  * [release status enum](release status enum.md) - Enum to capture the release status of an entity.
  * [study type enum](study type enum.md) - Enum to capture the type of a study.
@@ -392,7 +391,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
 
  * [Essential](Essential.md) - Subset of properties that are considered to be essential for the functionality of GHGA.
  * [Optional](Optional.md) - Subset of properties that are considered to be optional.
- * [Public](Public.md) - Subset of properties that are considered to be public. 
+ * [Public](Public.md) - Subset of properties that are considered to be public.
  * [Recommended](Recommended.md) - Subset of properties that are considered to be of importance for FAIR data sharing.
  * [Restricted](Restricted.md) - Subset of properties that are considered to be restricted.
 
@@ -402,6 +401,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
 #### Built in
 
  * **Bool**
+ * **Curie**
  * **Decimal**
  * **ElementIdentifier**
  * **NCName**
@@ -418,6 +418,7 @@ The metadata schema for the German Human Genome-Phenome Archive (GHGA).
 #### Defined
 
  * [Boolean](types/Boolean.md)  (**Bool**)  - A binary (true or false) value
+ * [Curie](types/Curie.md)  (**Curie**)  - a compact URI
  * [Date](types/Date.md)  (**XSDDate**)  - a date (year, month and day) in an idealized calendar
  * [DateOrDatetime](types/DateOrDatetime.md)  (**str**)  - Either a date or a datetime
  * [Datetime](types/Datetime.md)  (**XSDDateTime**)  - The combination of a date and time

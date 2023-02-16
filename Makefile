@@ -5,7 +5,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = ghga
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = graphql jsonschema markdown shex owl csv graphql python pydantic rdf sql
+TGTS = graphql jsonschema markdown shex owl csv python pydantic rdf sql derived_schema
 
 # Optional arguments to supply to the generators
 #For example, GEN_OPTS = --no-mergeimports
@@ -21,6 +21,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 clean:
 	rm -rf target/
 	rm -rf docs/docs/
+	rm -rf artifacts
 
 # List all available artifact-specific targets
 echo:
@@ -88,7 +89,8 @@ target/pydantic/%_models.py: $(SCHEMA_DIR)/%.yaml  tdir-pydantic
 # GraphQL
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
+gen-graphql: $(patsubst %, target/graphql/%.graphql, $(SCHEMA_NAMES) )
+
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 	gen-graphql $(GEN_OPTS) $< > $@
 
@@ -151,8 +153,6 @@ target/derived_schema/creation/%_creation.yaml: $(SCHEMA_DIR)/%.yaml
 	mkdir -p target/derived_schema/creation
 	python scripts/generate_creation_schema.py --schema-yaml $< --output $@
 
-gen-creation-schema-artifacts: gen-creation-schema gen-creation-schema-python-classes gen-creation-schema-pydantic-models gen-creation-schema-jsonschema
-
 gen-creation-schema-python-classes: target/derived_schema/creation/$(SCHEMA_NAME)_creation.py
 target/derived_schema/creation/%_creation.py: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
 	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
@@ -164,3 +164,5 @@ target/derived_schema/creation/%_creation_models.py: target/derived_schema/creat
 gen-creation-schema-jsonschema: target/derived_schema/creation/$(SCHEMA_NAME)_creation.schema.json
 target/derived_schema/creation/%_creation.schema.json: target/derived_schema/creation/$(SCHEMA_NAME)_creation.yaml
 	python scripts/ghga_jsonschemagen.py --include-range-class-descendants $(GEN_OPTS) $< > $@
+
+gen-derived_schema: gen-creation-schema gen-creation-schema-python-classes gen-creation-schema-pydantic-models gen-creation-schema-jsonschema

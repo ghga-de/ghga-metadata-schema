@@ -7,7 +7,7 @@ A Biospecimen is any natural material taken from a biological entity (usually a 
 URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[PhenotypicFeature],[MaterialEntity],[Individual],[Disease],[PhenotypicFeature]<has%20phenotypic%20feature%200..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Disease]<has%20disease%200..*-++[Biospecimen],[AnatomicalEntity]<has%20anatomical%20entity%200..*-++[Biospecimen],[Individual]<has%20individual%200..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[PhenotypicFeature],[MaterialEntity],[Individual],[Disease],[PhenotypicFeature]<has%20phenotypic%20feature%200..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Disease]<has%20disease%200..*-++[Biospecimen],[AnatomicalEntity]<has%20anatomical%20entity%200..*-++[Biospecimen],[Individual]<has%20individual%200..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[Individual]<has%20individual%201..1-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[Individual]<has%20individual%201..1-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;alias:string;accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AccessionMixin])
 
 ## Parents
 
@@ -48,21 +48,9 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [String](types/String.md)
      * in subsets: (recommended,public)
- * [biospecimen➞has individual](biospecimen_has_individual.md)  <sub>0..1</sub>
+ * [biospecimen➞has individual](biospecimen_has_individual.md)  <sub>1..1</sub>
      * Description: The Individual entity from which this Biospecimen was derived.
      * Range: [Individual](Individual.md)
-     * in subsets: (essential,restricted)
- * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md)  <sub>0..\*</sub>
-     * Description: The Anatomical entity, that represents the site, from which the Biospecimen was retrieved. Typically, a concept from Uber-anatomy Ontology (UBERON). For example, 'UBERON:0008307' indicates that the Biospecimen was extracted from the 'Heart Endothelium' of an Individual.
-     * Range: [AnatomicalEntity](AnatomicalEntity.md)
-     * in subsets: (recommended,public)
- * [biospecimen➞has disease](biospecimen_has_disease.md)  <sub>0..\*</sub>
-     * Description: The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.
-     * Range: [Disease](Disease.md)
-     * in subsets: (essential,public)
- * [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md)  <sub>0..\*</sub>
-     * Description: The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.
-     * Range: [PhenotypicFeature](PhenotypicFeature.md)
      * in subsets: (essential,restricted)
  * [biospecimen➞alias](biospecimen_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity.

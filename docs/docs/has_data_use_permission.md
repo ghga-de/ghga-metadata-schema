@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [DataUsePermission](DataUsePermission.md)
 
 ## Children
 
- *  [data use condition➞has data use permission](data_use_condition_has_data_use_permission.md)
+ *  [data access policy➞has data use permission](data_access_policy_has_data_use_permission.md)
 
 ## Used by
 

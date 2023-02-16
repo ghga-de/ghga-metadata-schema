@@ -233,7 +233,6 @@
             "reference_genome",
             "reference_chromosome",
             "has_input",
-            "has_workflow",
             "has_output",
             "alias"
          ],
@@ -715,16 +714,30 @@
                ],
                "description": "The Data Access Committee linked to this policy."
             },
-            "has_data_use_condition": {
-               "description": "Data Use Condition entities that are associated with the Data Access Policy.",
+            "has_data_use_modifier": {
+               "description": "Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'",
                "items": {
-                  "oneOf": [
+                  "anyOf": [
                      {
-                        "$ref": "#/$defs/CreateDataUseCondition"
+                        "$ref": "#/$defs/CreateDataUseModifier"
+                     },
+                     {
+                        "type": "string"
                      }
                   ]
                },
                "type": "array"
+            },
+            "has_data_use_permission": {
+               "anyOf": [
+                  {
+                     "$ref": "#/$defs/CreateDataUsePermission"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ],
+               "description": "Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'."
             },
             "name": {
                "description": "A name for the Data Access Policy.",
@@ -757,62 +770,10 @@
          "required": [
             "policy_text",
             "has_data_access_committee",
+            "has_data_use_permission",
             "alias"
          ],
          "title": "CreateDataAccessPolicy",
-         "type": "object"
-      },
-      "CreateDataUseCondition": {
-         "additionalProperties": false,
-         "description": "Data Use Condition represents the use conditions associated with a policy.",
-         "properties": {
-            "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
-               "type": "string"
-            },
-            "has_data_use_modifier": {
-               "anyOf": [
-                  {
-                     "$ref": "#/$defs/CreateDataUseModifier"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ],
-               "description": "Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'"
-            },
-            "has_data_use_permission": {
-               "anyOf": [
-                  {
-                     "$ref": "#/$defs/CreateDataUsePermission"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ],
-               "description": "Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'."
-            },
-            "schema_type": {
-               "description": "The schema type an instance corresponds to.",
-               "type": "string"
-            },
-            "schema_version": {
-               "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "xref": {
-               "description": "Holds one or more database cross references for an entity.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [
-            "alias",
-            "has_data_use_permission"
-         ],
-         "title": "CreateDataUseCondition",
          "type": "object"
       },
       "CreateDataUseModifier": {
@@ -2040,7 +2001,6 @@
             "library_type",
             "library_selection",
             "library_preparation",
-            "target_regions",
             "alias",
             "description"
          ],
@@ -3237,6 +3197,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.9.0"
+   "version": "0.9.1"
 }
 

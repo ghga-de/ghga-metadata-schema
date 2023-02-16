@@ -7,7 +7,7 @@ A Workflow is an abstraction that represents the workflow used to perform an ana
 URI: [GHGA:Workflow](https://w3id.org/GHGA/Workflow)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowStep],[WorkflowStep]<has%20workflow%20step%200..*-++[Workflow&#124;name:string;alias:string;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]++-%20has%20workflow%200..1>[Workflow],[Analysis]++-%20has%20workflow%201..*>[Workflow],[Analysis]-%20has%20workflow(i)%200..1>[Workflow],[AnalysisProcess]-%20has%20workflow(i)%200..1>[Workflow],[InformationContentEntity]^-[Workflow],[InformationContentEntity],[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowStep],[WorkflowStep]<has%20workflow%20step%200..*-++[Workflow&#124;name:string;alias:string;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]++-%20has%20workflow%200..1>[Workflow],[Analysis]++-%20has%20workflow%201..*>[Workflow],[Analysis]-%20has%20workflow(i)%200..1>[Workflow],[AnalysisProcess]-%20has%20workflow(i)%200..1>[Workflow],[InformationContentEntity]^-[Workflow],[InformationContentEntity],[AnalysisProcess],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowStep],[WorkflowStep]<has%20workflow%20step%200..*-++[Workflow&#124;name:string;alias:string;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]++-%20has%20workflow%200..1>[Workflow],[Analysis]++-%20has%20workflow%200..*>[Workflow],[Analysis]-%20has%20workflow(i)%200..1>[Workflow],[AnalysisProcess]-%20has%20workflow(i)%200..1>[Workflow],[InformationContentEntity]^-[Workflow],[InformationContentEntity],[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowStep],[WorkflowStep]<has%20workflow%20step%200..*-++[Workflow&#124;name:string;alias:string;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[AnalysisProcess]++-%20has%20workflow%200..1>[Workflow],[Analysis]++-%20has%20workflow%200..*>[Workflow],[Analysis]-%20has%20workflow(i)%200..1>[Workflow],[AnalysisProcess]-%20has%20workflow(i)%200..1>[Workflow],[InformationContentEntity]^-[Workflow],[InformationContentEntity],[AnalysisProcess],[Analysis])
 
 ## Parents
 
@@ -16,7 +16,7 @@ URI: [GHGA:Workflow](https://w3id.org/GHGA/Workflow)
 ## Referenced by Class
 
  *  **[AnalysisProcess](AnalysisProcess.md)** *[analysis process➞has workflow](analysis_process_has_workflow.md)*  <sub>0..1</sub>  **[Workflow](Workflow.md)**
- *  **[Analysis](Analysis.md)** *[analysis➞has workflow](analysis_has_workflow.md)*  <sub>1..\*</sub>  **[Workflow](Workflow.md)**
+ *  **[Analysis](Analysis.md)** *[analysis➞has workflow](analysis_has_workflow.md)*  <sub>0..\*</sub>  **[Workflow](Workflow.md)**
  *  **None** *[has workflow](has_workflow.md)*  <sub>0..1</sub>  **[Workflow](Workflow.md)**
 
 ## Attributes

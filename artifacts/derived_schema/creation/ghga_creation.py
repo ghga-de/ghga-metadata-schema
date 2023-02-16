@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-22T11:33:54
+# Generation date: 2023-02-16T11:06:12
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -25,7 +25,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
-version = "0.9.0"
+version = "0.9.1"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -691,13 +691,13 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     library_type: str = None
     library_selection: str = None
     library_preparation: str = None
-    target_regions: str = None
     alias: str = None
     description: str = None
     library_preparation_kit_retail_name: Optional[str] = None
     library_preparation_kit_manufacturer: Optional[str] = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
+    target_regions: Optional[str] = None
     rnaseq_strandedness: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -727,11 +727,6 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
         if not isinstance(self.library_preparation, str):
             self.library_preparation = str(self.library_preparation)
 
-        if self._is_empty(self.target_regions):
-            self.MissingRequiredField("target_regions")
-        if not isinstance(self.target_regions, str):
-            self.target_regions = str(self.target_regions)
-
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -753,6 +748,9 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
 
         if self.end_bias is not None and not isinstance(self.end_bias, str):
             self.end_bias = str(self.end_bias)
+
+        if self.target_regions is not None and not isinstance(self.target_regions, str):
+            self.target_regions = str(self.target_regions)
 
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
@@ -1473,11 +1471,11 @@ class CreateAnalysis(DataTransformation):
     reference_genome: str = None
     reference_chromosome: str = None
     has_input: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
-    has_workflow: Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]] = None
     has_output: Union[Union[dict, CreateFile], List[Union[dict, CreateFile]]] = None
     alias: str = None
     type: Optional[str] = None
     has_study: Optional[Union[dict, CreateStudy]] = None
+    has_workflow: Optional[Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]]] = empty_list()
     has_analysis_process: Optional[Union[Union[dict, "CreateAnalysisProcess"], List[Union[dict, "CreateAnalysisProcess"]]]] = empty_list()
     description: Optional[str] = None
     accession: Optional[str] = None
@@ -1500,12 +1498,6 @@ class CreateAnalysis(DataTransformation):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, CreateFile) else CreateFile(**as_dict(v)) for v in self.has_input]
 
-        if self._is_empty(self.has_workflow):
-            self.MissingRequiredField("has_workflow")
-        if not isinstance(self.has_workflow, list):
-            self.has_workflow = [self.has_workflow] if self.has_workflow is not None else []
-        self.has_workflow = [v if isinstance(v, CreateWorkflow) else CreateWorkflow(**as_dict(v)) for v in self.has_workflow]
-
         if self._is_empty(self.has_output):
             self.MissingRequiredField("has_output")
         if not isinstance(self.has_output, list):
@@ -1522,6 +1514,10 @@ class CreateAnalysis(DataTransformation):
 
         if self.has_study is not None and not isinstance(self.has_study, CreateStudy):
             self.has_study = CreateStudy(**as_dict(self.has_study))
+
+        if not isinstance(self.has_workflow, list):
+            self.has_workflow = [self.has_workflow] if self.has_workflow is not None else []
+        self.has_workflow = [v if isinstance(v, CreateWorkflow) else CreateWorkflow(**as_dict(v)) for v in self.has_workflow]
 
         if not isinstance(self.has_analysis_process, list):
             self.has_analysis_process = [self.has_analysis_process] if self.has_analysis_process is not None else []
@@ -1683,34 +1679,6 @@ class CreateDataset(InformationContentEntity):
 
 
 @dataclass
-class CreateDataUseCondition(InformationContentEntity):
-    """
-    Data Use Condition represents the use conditions associated with a policy.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = GHGA.CreateDataUseCondition
-    class_class_curie: ClassVar[str] = "GHGA:CreateDataUseCondition"
-    class_name: ClassVar[str] = "create data use condition"
-    class_model_uri: ClassVar[URIRef] = GHGA.CreateDataUseCondition
-
-    alias: str = None
-    has_data_use_permission: Union[dict, "CreateDataUsePermission"] = None
-    has_data_use_modifier: Optional[Union[dict, "CreateDataUseModifier"]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.has_data_use_permission):
-            self.MissingRequiredField("has_data_use_permission")
-        if not isinstance(self.has_data_use_permission, CreateDataUsePermission):
-            self.has_data_use_permission = CreateDataUsePermission(**as_dict(self.has_data_use_permission))
-
-        if self.has_data_use_modifier is not None and not isinstance(self.has_data_use_modifier, CreateDataUseModifier):
-            self.has_data_use_modifier = CreateDataUseModifier(**as_dict(self.has_data_use_modifier))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class CreateDataAccessPolicy(InformationContentEntity):
     """
     A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or
@@ -1725,11 +1693,12 @@ class CreateDataAccessPolicy(InformationContentEntity):
 
     policy_text: str = None
     has_data_access_committee: Union[dict, "CreateDataAccessCommittee"] = None
+    has_data_use_permission: Union[dict, "CreateDataUsePermission"] = None
     alias: str = None
     name: Optional[str] = None
     description: Optional[str] = None
     policy_url: Optional[str] = None
-    has_data_use_condition: Optional[Union[Union[dict, CreateDataUseCondition], List[Union[dict, CreateDataUseCondition]]]] = empty_list()
+    has_data_use_modifier: Optional[Union[Union[dict, "CreateDataUseModifier"], List[Union[dict, "CreateDataUseModifier"]]]] = empty_list()
     data_request_form: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
@@ -1746,6 +1715,11 @@ class CreateDataAccessPolicy(InformationContentEntity):
         if not isinstance(self.has_data_access_committee, CreateDataAccessCommittee):
             self.has_data_access_committee = CreateDataAccessCommittee(**as_dict(self.has_data_access_committee))
 
+        if self._is_empty(self.has_data_use_permission):
+            self.MissingRequiredField("has_data_use_permission")
+        if not isinstance(self.has_data_use_permission, CreateDataUsePermission):
+            self.has_data_use_permission = CreateDataUsePermission(**as_dict(self.has_data_use_permission))
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -1760,9 +1734,7 @@ class CreateDataAccessPolicy(InformationContentEntity):
         if self.policy_url is not None and not isinstance(self.policy_url, str):
             self.policy_url = str(self.policy_url)
 
-        if not isinstance(self.has_data_use_condition, list):
-            self.has_data_use_condition = [self.has_data_use_condition] if self.has_data_use_condition is not None else []
-        self.has_data_use_condition = [v if isinstance(v, CreateDataUseCondition) else CreateDataUseCondition(**as_dict(v)) for v in self.has_data_use_condition]
+        self._normalize_inlined_as_dict(slot_name="has_data_use_modifier", slot_type=CreateDataUseModifier, key_name="alias", keyed=False)
 
         if self.data_request_form is not None and not isinstance(self.data_request_form, str):
             self.data_request_form = str(self.data_request_form)
@@ -2841,9 +2813,6 @@ slots.has_parent = Slot(uri=GHGA.has_parent, name="has parent", curie=GHGA.curie
 slots.has_children = Slot(uri=GHGA.has_children, name="has children", curie=GHGA.curie('has_children'),
                    model_uri=GHGA.has_children, domain=None, range=Optional[str])
 
-slots.has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="has data use condition", curie=GHGA.curie('has_data_use_condition'),
-                   model_uri=GHGA.has_data_use_condition, domain=None, range=Optional[str])
-
 slots.role = Slot(uri=GHGA.role, name="role", curie=GHGA.curie('role'),
                    model_uri=GHGA.role, domain=None, range=Optional[Union[str, "UserRoleEnum"]])
 
@@ -3241,7 +3210,7 @@ slots.create_library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attr
                    model_uri=GHGA.create_library_preparation_protocol_has_attribute, domain=CreateLibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.create_library_preparation_protocol_target_regions = Slot(uri=GHGA.target_regions, name="create library preparation protocol_target regions", curie=GHGA.curie('target_regions'),
-                   model_uri=GHGA.create_library_preparation_protocol_target_regions, domain=CreateLibraryPreparationProtocol, range=str)
+                   model_uri=GHGA.create_library_preparation_protocol_target_regions, domain=CreateLibraryPreparationProtocol, range=Optional[str])
 
 slots.create_sequencing_protocol_alias = Slot(uri=GHGA.alias, name="create sequencing protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_sequencing_protocol_alias, domain=CreateSequencingProtocol, range=str)
@@ -3385,7 +3354,7 @@ slots.create_analysis_has_study = Slot(uri=GHGA.has_study, name="create analysis
                    model_uri=GHGA.create_analysis_has_study, domain=CreateAnalysis, range=Optional[Union[dict, CreateStudy]])
 
 slots.create_analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="create analysis_has workflow", curie=GHGA.curie('has_workflow'),
-                   model_uri=GHGA.create_analysis_has_workflow, domain=CreateAnalysis, range=Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]])
+                   model_uri=GHGA.create_analysis_has_workflow, domain=CreateAnalysis, range=Optional[Union[Union[dict, CreateWorkflow], List[Union[dict, CreateWorkflow]]]])
 
 slots.create_analysis_has_analysis_process = Slot(uri=GHGA.has_analysis_process, name="create analysis_has analysis process", curie=GHGA.curie('has_analysis_process'),
                    model_uri=GHGA.create_analysis_has_analysis_process, domain=CreateAnalysis, range=Optional[Union[Union[dict, "CreateAnalysisProcess"], List[Union[dict, "CreateAnalysisProcess"]]]])
@@ -3441,12 +3410,6 @@ slots.create_dataset_has_publication = Slot(uri=GHGA.has_publication, name="crea
 slots.create_dataset_release_status = Slot(uri=GHGA.release_status, name="create dataset_release status", curie=GHGA.curie('release_status'),
                    model_uri=GHGA.create_dataset_release_status, domain=CreateDataset, range=Optional[Union[str, "ReleaseStatusEnum"]])
 
-slots.create_data_use_condition_has_data_use_permission = Slot(uri=GHGA.has_data_use_permission, name="create data use condition_has data use permission", curie=GHGA.curie('has_data_use_permission'),
-                   model_uri=GHGA.create_data_use_condition_has_data_use_permission, domain=CreateDataUseCondition, range=Union[dict, "CreateDataUsePermission"])
-
-slots.create_data_use_condition_has_data_use_modifier = Slot(uri=GHGA.has_data_use_modifier, name="create data use condition_has data use modifier", curie=GHGA.curie('has_data_use_modifier'),
-                   model_uri=GHGA.create_data_use_condition_has_data_use_modifier, domain=CreateDataUseCondition, range=Optional[Union[dict, "CreateDataUseModifier"]])
-
 slots.create_data_access_policy_alias = Slot(uri=GHGA.alias, name="create data access policy_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_data_access_policy_alias, domain=CreateDataAccessPolicy, range=str)
 
@@ -3465,8 +3428,11 @@ slots.create_data_access_policy_policy_url = Slot(uri=GHGA.policy_url, name="cre
 slots.create_data_access_policy_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="create data access policy_has data access committee", curie=GHGA.curie('has_data_access_committee'),
                    model_uri=GHGA.create_data_access_policy_has_data_access_committee, domain=CreateDataAccessPolicy, range=Union[dict, "CreateDataAccessCommittee"])
 
-slots.create_data_access_policy_has_data_use_condition = Slot(uri=GHGA.has_data_use_condition, name="create data access policy_has data use condition", curie=GHGA.curie('has_data_use_condition'),
-                   model_uri=GHGA.create_data_access_policy_has_data_use_condition, domain=CreateDataAccessPolicy, range=Optional[Union[Union[dict, CreateDataUseCondition], List[Union[dict, CreateDataUseCondition]]]])
+slots.create_data_access_policy_has_data_use_permission = Slot(uri=GHGA.has_data_use_permission, name="create data access policy_has data use permission", curie=GHGA.curie('has_data_use_permission'),
+                   model_uri=GHGA.create_data_access_policy_has_data_use_permission, domain=CreateDataAccessPolicy, range=Union[dict, "CreateDataUsePermission"])
+
+slots.create_data_access_policy_has_data_use_modifier = Slot(uri=GHGA.has_data_use_modifier, name="create data access policy_has data use modifier", curie=GHGA.curie('has_data_use_modifier'),
+                   model_uri=GHGA.create_data_access_policy_has_data_use_modifier, domain=CreateDataAccessPolicy, range=Optional[Union[Union[dict, "CreateDataUseModifier"], List[Union[dict, "CreateDataUseModifier"]]]])
 
 slots.create_data_access_policy_data_request_form = Slot(uri=GHGA.data_request_form, name="create data access policy_data request form", curie=GHGA.curie('data_request_form'),
                    model_uri=GHGA.create_data_access_policy_data_request_form, domain=CreateDataAccessPolicy, range=Optional[str])

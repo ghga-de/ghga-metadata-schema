@@ -1,5 +1,5 @@
 
-# Slot: paired or single end
+# Slot: ~~paired or single end~~ _(deprecated)_
 
 
 Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing replications.
