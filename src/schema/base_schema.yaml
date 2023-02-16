@@ -1,0 +1,446 @@
+id: https://w3id.org/GHGA-Base-Metadata-Schema
+name: GHGA-Base-Metadata-Schema
+description: >-
+  The base metadata schema for the German Human Genome-Phenome Archive (GHGA).
+version: 0.9.0
+imports:
+  - linkml:types
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  GHGA: https://w3id.org/GHGA/
+  SIO: http://semanticscience.org/resource/SIO_
+  biolink: https://w3id.org/biolink/vocab/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  COB: http://purl.obolibrary.org/obo/COB_
+  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
+  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
+  SNOMEDCT: http://purl.bioontology.org/ontology/SNOMEDCT/
+
+default_prefix: GHGA
+
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+
+subsets:
+  restricted:
+    description: >-
+      Subset of properties that are considered to be restricted.
+
+classes:
+  named thing:
+    mixins:
+      - metadata mixin
+    abstract: true
+    aliases: ["named entity", "entity", "object"]
+    description: >-
+      A databased entity, concept or class. This is a generic class that is the root
+      of all the other classes.
+    slots:
+      - id
+      - alias
+      - xref
+      - creation date
+      - update date
+    slot_usage:
+      id:
+        description: >-
+          The internal unique identifier for an entity.
+        required: true
+      alias:
+        description: >-
+          The alias (alternate identifier) for an entity.
+        required: true
+      xref:
+        description: >-
+          Holds one or more database cross references for an entity.
+        required: true
+      creation date:
+        description: >-
+          Timestamp (in ISO 8601 format) when the entity was created.
+        required: true
+      update date:
+        description: >-
+          Timestamp (in ISO 8601 format) when the entity was updated.
+        required: true
+  person:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A member of the species Homo sapiens.
+    slots:
+      - given name
+      - family name
+      - additional name
+    slot_usage:
+      given name:
+        required: false
+      family name:
+        required: false
+      additional name:
+        required: false
+    exact_mappings:
+      - NCIT:C25190
+      - SIO:000498
+      - prov:Person
+  committee:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A group of people organized for a specific purpose.
+    slots:
+      - name
+    slot_usage:
+      name:
+        required: true
+  material entity:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A material entity is a physical entity that is spatially extended, exists as a
+      whole at any point in time and has mass.
+    exact_mappings:
+      - SIO:000004
+  biological quality:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A biological quality is a quality held by a biological entity.
+    exact_mappings:
+      - SIO:000475
+  information content entity:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A generically dependent continuant that is about some thing.
+    exact_mappings:
+      - IAO:0000030
+  planned process:
+    is_a: named thing
+    abstract: true
+    description: >-
+      A process is an entity that exists in time by occurring or happening, has temporal parts and
+      always involves and depends on some entity during the time it occurs.
+    exact_mappings:
+      - EFO:0004542
+      - OBI:0000011
+      - COB:0000082
+  investigation:
+    is_a: planned process
+    abstract: true
+    description: >-
+      Investigation is the process of carrying out a plan or procedure so as to discover fact
+      or information about the object of study.
+    slots:
+      - title
+      - description
+    exact_mappings:
+      - SIO:000747
+      - OBI:0000066
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+  data transformation:
+    is_a: planned process
+    abstract: true
+    description: >-
+      A data transformation technique used to analyze and interpret data to gain a better
+      understanding of it.
+    slots:
+      - title
+      - description
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+    exact_mappings:
+      - OBI:0200000
+  research activity:
+    is_a: planned process
+    abstract: true
+    description: >-
+      A planned process executed in the performance of scientific research wherein
+      systematic investigations are performed to establish facts and reach new conclusions
+      about phenomena in the world.
+    slots:
+      - title
+      - description
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+    exact_mappings:
+      - SEPIO:0000004
+  protocol:
+    is_a: information content entity
+    abstract: true
+    mixins:
+      - attribute mixin
+    description: >-
+      A plan specification which has sufficient level of detail and quantitative information
+      to communicate it between investigation agents, so that different investigation agents
+      will reliably be able to independently reproduce the process.
+    slots:
+      - name
+      - type
+      - description
+      - url
+      - has file
+    exact_mappings:
+      - OBI:0000272
+    slot_usage:
+      alias:
+        required: true
+      name:
+        description: >-
+          Name of the protocol (eg: Sample extraction_PCR amplification).
+        required: true
+      type:
+        description: >-
+          Type of the protocol (eg: Target enrichment).
+        required: true
+      description:
+        description: >-
+          Detailed description of the Protocol.
+        required: true
+      url:
+        description: >-
+          URL for the resource that describes this Protocol.
+        required: true
+      has file:
+        description: >-
+          A document that describes the Protocol.
+        required: true
+      xref:
+        description: >-
+          One or more cross-references for this Protocol. 
+          (Eg: manufacturer protocol, protocol from publication etc )
+        required: true
+      has attribute:
+        description: >-
+          One or more attributes that further characterizes this Protocol.
+        required: true
+  population:
+    is_a: material entity
+    abstract: true
+    description: >-
+      A population is a collection of individuals from the same taxonomic class living,
+      counted or sampled at a particular site or in a particular area.
+    slots:
+      - name
+    slot_usage:
+      name:
+        required: true
+  disease or phenotypic feature:
+    is_a: biological quality
+    abstract: true
+    mixins:
+      - ontology class mixin
+    description: >-
+      Disease or Phenotypic Feature that the entity is associated with. This entity is a union
+      of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
+      are used interchangeably with Phenotype concepts or vice-versa.
+    exact_mappings:
+      - biolink:DiseaseOrPhenotypicFeature
+  ontology class mixin:
+    mixin: true
+    description: Mixin for entities that represent an class/term/concept from an ontology.
+    slots:
+      - id
+      - concept identifier
+      - concept name
+      - description
+      - ontology name
+      - ontology version
+    slot_usage:
+      id:
+        required: true
+      concept identifier:
+        required: false
+        description: >-
+          The Compact URI (CURIE) that uniquely identifies this ontology class.
+      concept name:
+        required: false
+      ontology name:
+        required: false
+        description: >-
+          The name or label (rdfs:label) of an ontology class.
+      ontology version:
+        required: false
+      description:
+        required: false
+        description: >-
+          The description or definition of an ontology class.
+  metadata mixin:
+    mixin: true
+    description: Mixin for tracking schema specific metadata about an instance.
+    slots:
+      - schema type
+      - schema version
+    slot_usage:
+      schema type:
+        required: true
+      schema version:
+        required: true
+  accession mixin:
+    mixin: true
+    description: Mixin for entities that can be assigned a GHGA accession.
+    slots:
+      - accession
+    slot_usage:
+      accession:
+        required: true
+  ega accession mixin:
+    mixin: true
+    description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
+    slots:
+      - ega accession
+    slot_usage:
+      ega accession:
+        required: true
+  attribute mixin:
+    mixin: true
+    description: Mixin for entities that can have one or more attributes.
+    slots:
+      - has attribute
+    slot_usage:
+      has attribute:
+        required: true
+  publication mixin:
+    mixin: true
+    description: >-
+      Mixin for entities that can have one or more publications.
+    slots:
+      - has publication
+    slot_usage:
+      has publication:
+        required: true
+  deprecated mixin:
+    mixin: true
+    description: Mixin for entities that can be deprecated.
+    slots:
+      - replaced by
+      - deprecation date
+    slot_usage:
+      replaced by:
+        required: true
+      deprecation date:
+        required: true
+  release status mixin:
+    mixin: true
+    description: Mixin for entities that can be released at a later point in time.
+    slots:
+      - release status
+      - release date
+    slot_usage:
+      release status:
+        required: true
+      release date:
+        required: true
+
+slots:
+  update date:
+    description: Timestamp (in ISO 8601 format) when the entity was updated.
+  creation date:
+    description: Timestamp (in ISO 8601 format) when the entity was created.
+  schema type:
+    description: The schema type an instance corresponds to.
+  schema version:
+    description: The version of the schema an instance corresponds to.
+  id:
+    description: An identifier that uniquely represents an entity.
+    identifier: true
+    in_subset:
+      - restricted
+  alias:
+    description: The alias for an entity.
+    in_subset:
+      - restricted
+  accession:
+    description: >-
+      A unique GHGA identifier assigned to an entity for the sole purpose of
+      referring to that entity in a global scope.
+  ega accession:
+    description: >-
+      A unique European Genome-Phenome Archive (EGA) identifier assigned to an
+      entity for the sole purpose of referring to that entity within the EGA
+      federated network.
+  given name:
+    description: First name.
+    in_subset:
+      - restricted
+  family name:
+    description: Last name.
+    in_subset:
+      - restricted
+  additional name:
+    description: Additional name(s).
+    in_subset:
+      - restricted
+  name:
+    description: The name for an entity.
+  type:
+    description: The type of an entity.
+      # Note: Not to be confused with rdf:type
+  title:
+    description: The title that describes an entity.
+  xref:
+    description: Database cross references for an entity.
+    multivalued: true
+  url:
+    description: A URL to a resource.
+  description:
+    description: Description of an entity.
+    exact_mappings:
+      - SIO:000185
+  category:
+    description: >-
+      The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
+  release status:
+    description: >-
+      The release status of an entity.
+  release date:
+    description: >-
+      The timestamp (in ISO 8601 format) when the entity was released for public consumption.
+  deprecation date:
+    description: >-
+      The timestamp (in ISO 8601 format) when the entity was deprecated.
+  replaced by:
+    description: >-
+      Refers to the entity which replaces a currently deprecated entity.
+    domain: named thing
+    range: named thing
+  replaces:
+    inverse: replaced by
+    description: >-
+      Refers to a deprecated entity that is being replaced by the current entity.
+    domain: named thing
+    range: named thing
+  concept identifier:
+    description: >-
+      The Compact URI (CURIE) that uniquely identifies a concept from an ontology,
+      thesaurus, or terminology.
+  concept name:
+    description: >-
+      The name or label (typically, rdfs:label) of concept from an ontology, thesaurus,
+      or terminology.
+  ontology name:
+    description: >-
+      The name of the ontology from which this ontology class was chosen.
+  ontology version:
+    description: >-
+      The version of the ontology from which this ontology class was chosen.
+  has file:
+    description: >-
+      The file associated with an entity.
+    range: file
+    in_subset:
+      - restricted
