@@ -1,5 +1,5 @@
 /* metamodel_version: 1.7.0 */
-/* version: 0.9.0 */
+/* version: 0.9.1 */
 
 CREATE TYPE "release status enum" AS ENUM ('unreleased', 'released');
 CREATE TYPE "biological sex enum" AS ENUM ('female', 'male', 'unknown');
@@ -70,22 +70,6 @@ CREATE TABLE cohort (
 	name TEXT, 
 	has_individual TEXT, 
 	accession TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE data_use_modifier (
-	id TEXT NOT NULL, 
-	alias TEXT, 
-	creation_date TEXT, 
-	update_date TEXT, 
-	schema_type TEXT, 
-	schema_version TEXT, 
-	concept_identifier TEXT, 
-	concept_name TEXT, 
-	description TEXT, 
-	ontology_name TEXT, 
-	ontology_version TEXT, 
-	name TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -375,7 +359,7 @@ CREATE TABLE library_preparation_protocol (
 	library_preparation_kit_manufacturer TEXT, 
 	primer TEXT, 
 	end_bias TEXT, 
-	target_regions TEXT NOT NULL, 
+	target_regions TEXT, 
 	rnaseq_strandedness TEXT, 
 	alias TEXT NOT NULL, 
 	description TEXT NOT NULL, 
@@ -497,13 +481,6 @@ CREATE TABLE cohort_xref (
 	FOREIGN KEY(backref_id) REFERENCES cohort (id)
 );
 
-CREATE TABLE data_use_modifier_xref (
-	backref_id TEXT, 
-	xref TEXT, 
-	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES data_use_modifier (id)
-);
-
 CREATE TABLE data_use_permission_xref (
 	backref_id TEXT, 
 	xref TEXT, 
@@ -607,7 +584,7 @@ CREATE TABLE analysis (
 	reference_chromosome TEXT NOT NULL, 
 	has_input TEXT NOT NULL, 
 	has_study TEXT, 
-	has_workflow TEXT NOT NULL, 
+	has_workflow TEXT, 
 	has_output TEXT NOT NULL, 
 	description TEXT, 
 	alias TEXT NOT NULL, 
@@ -628,13 +605,15 @@ CREATE TABLE data_access_policy (
 	policy_text TEXT NOT NULL, 
 	policy_url TEXT, 
 	has_data_access_committee TEXT NOT NULL, 
+	has_data_use_permission TEXT NOT NULL, 
 	data_request_form TEXT, 
 	alias TEXT NOT NULL, 
 	has_attribute TEXT, 
 	accession TEXT, 
 	ega_accession TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id)
+	FOREIGN KEY(has_data_access_committee) REFERENCES data_access_committee (id), 
+	FOREIGN KEY(has_data_use_permission) REFERENCES data_use_permission (id)
 );
 
 CREATE TABLE experiment (
@@ -820,19 +799,21 @@ CREATE TABLE anatomical_entity (
 	FOREIGN KEY(sample_id) REFERENCES sample (id)
 );
 
-CREATE TABLE data_use_condition (
+CREATE TABLE data_use_modifier (
 	id TEXT NOT NULL, 
 	alias TEXT, 
 	creation_date TEXT, 
 	update_date TEXT, 
 	schema_type TEXT, 
 	schema_version TEXT, 
-	has_data_use_permission TEXT NOT NULL, 
-	has_data_use_modifier TEXT, 
+	concept_identifier TEXT, 
+	concept_name TEXT, 
+	description TEXT, 
+	ontology_name TEXT, 
+	ontology_version TEXT, 
+	name TEXT, 
 	data_access_policy_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_data_use_permission) REFERENCES data_use_permission (id), 
-	FOREIGN KEY(has_data_use_modifier) REFERENCES data_use_modifier (id), 
 	FOREIGN KEY(data_access_policy_id) REFERENCES data_access_policy (id)
 );
 
@@ -927,11 +908,11 @@ CREATE TABLE anatomical_entity_xref (
 	FOREIGN KEY(backref_id) REFERENCES anatomical_entity (id)
 );
 
-CREATE TABLE data_use_condition_xref (
+CREATE TABLE data_use_modifier_xref (
 	backref_id TEXT, 
 	xref TEXT, 
 	PRIMARY KEY (backref_id, xref), 
-	FOREIGN KEY(backref_id) REFERENCES data_use_condition (id)
+	FOREIGN KEY(backref_id) REFERENCES data_use_modifier (id)
 );
 
 CREATE TABLE dataset_xref (

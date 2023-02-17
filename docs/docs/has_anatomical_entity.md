@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [AnatomicalEntity](AnatomicalEntity.md)
 
 ## Children
 
- *  [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md)
  *  [sample➞has anatomical entity](sample_has_anatomical_entity.md)
 
 ## Used by

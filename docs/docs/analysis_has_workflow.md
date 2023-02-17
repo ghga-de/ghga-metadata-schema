@@ -9,7 +9,7 @@ URI: [GHGA:analysis_has_workflow](https://w3id.org/GHGA/analysis_has_workflow)
 
 ## Domain and Range
 
-[Analysis](Analysis.md) &#8594;  <sub>1..\*</sub> [Workflow](Workflow.md)
+[Analysis](Analysis.md) &#8594;  <sub>0..\*</sub> [Workflow](Workflow.md)
 
 ## Parents
 

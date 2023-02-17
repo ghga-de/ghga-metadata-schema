@@ -40,7 +40,7 @@ URI: [GHGA:Dataset](https://w3id.org/GHGA/Dataset)
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
  * [dataset➞type](dataset_type.md)  <sub>1..\*</sub>
-     * Description: The type of an entity.
+     * Description: The type of a dataset.
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
  * [dataset➞has study](dataset_has_study.md)  <sub>1..\*</sub>

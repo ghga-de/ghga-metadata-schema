@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [DataUseModifier](DataUseModifier.md)
 
 ## Children
 
- *  [data use condition➞has data use modifier](data_use_condition_has_data_use_modifier.md)
+ *  [data access policy➞has data use modifier](data_access_policy_has_data_use_modifier.md)
 
 ## Used by
 

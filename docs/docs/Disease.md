@@ -7,7 +7,7 @@ A disease is a disposition to undergo pathological processes that exists in an o
 URI: [GHGA:Disease](https://w3id.org/GHGA/Disease)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Biospecimen]++-%20has%20disease%200..*>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Biospecimen]-%20has%20disease(i)%200..1>[Disease],[Individual]-%20has%20disease(i)%200..1>[Disease],[Individual]++-%20has%20disease%200..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease],[Biospecimen])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Biospecimen]++-%20has%20disease%200..*>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Biospecimen]-%20has%20disease(i)%200..1>[Disease],[Individual]-%20has%20disease(i)%200..1>[Disease],[Individual]++-%20has%20disease%200..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease],[Biospecimen])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Individual]-%20has%20disease(i)%200..1>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]++-%20has%20disease%200..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Individual]-%20has%20disease(i)%200..1>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]++-%20has%20disease%200..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease])
 
 ## Parents
 
@@ -15,7 +15,6 @@ URI: [GHGA:Disease](https://w3id.org/GHGA/Disease)
 
 ## Referenced by Class
 
- *  **[Biospecimen](Biospecimen.md)** *[biospecimen➞has disease](biospecimen_has_disease.md)*  <sub>0..\*</sub>  **[Disease](Disease.md)**
  *  **None** *[has disease](has_disease.md)*  <sub>0..1</sub>  **[Disease](Disease.md)**
  *  **[Individual](Individual.md)** *[individual➞has disease](individual_has_disease.md)*  <sub>0..\*</sub>  **[Disease](Disease.md)**
 

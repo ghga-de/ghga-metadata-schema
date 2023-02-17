@@ -1,10 +1,10 @@
 
-# Slot: library preparation kit manufacturer
+# Slot: target regions
 
 
-Manufacturer of library preparation kit
+Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
 
-URI: [GHGA:library_preparation_protocol_library_preparation_kit_manufacturer](https://w3id.org/GHGA/library_preparation_protocol_library_preparation_kit_manufacturer)
+URI: [GHGA:library_preparation_protocol_target_regions](https://w3id.org/GHGA/library_preparation_protocol_target_regions)
 
 
 ## Domain and Range
@@ -13,7 +13,7 @@ URI: [GHGA:library_preparation_protocol_library_preparation_kit_manufacturer](ht
 
 ## Parents
 
- *  is_a: [library preparation kit manufacturer](library_preparation_kit_manufacturer.md)
+ *  is_a: [target regions](target_regions.md)
 
 ## Children
 

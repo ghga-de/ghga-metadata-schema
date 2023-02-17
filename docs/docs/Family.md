@@ -7,7 +7,7 @@ A domestic group, or a number of domestic groups linked through descent (demonst
 URI: [GHGA:Family](https://w3id.org/GHGA/Family)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20proband%200..1-++[Family&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]<has%20member%200..*-++[Family],[Family]uses%20-.->[AccessionMixin],[Population]^-[Family],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20proband%200..1-++[Family&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]<has%20member%200..*-++[Family],[Family]uses%20-.->[AccessionMixin],[Population]^-[Family],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20proband%200..1-++[Family&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]<has%20individual%200..*-++[Family],[Family]uses%20-.->[AccessionMixin],[Population]^-[Family],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[Individual],[Individual]<has%20proband%200..1-++[Family&#124;accession:string%20%3F;name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Individual]<has%20individual%200..*-++[Family],[Family]uses%20-.->[AccessionMixin],[Population]^-[Family],[AccessionMixin])
 
 ## Parents
 
@@ -25,9 +25,10 @@ URI: [GHGA:Family](https://w3id.org/GHGA/Family)
 
 ### Own
 
- * [family➞has member](family_has_member.md)  <sub>0..\*</sub>
+ * [family➞has individual](family_has_individual.md)  <sub>0..\*</sub>
      * Description: One or more Individuals that collectively define this Family.
      * Range: [Individual](Individual.md)
+     * in subsets: (essential,restricted)
  * [family➞has proband](family_has_proband.md)  <sub>0..1</sub>
      * Description: The Individual that is reported to have a disorder which results in the Family being brought into a Study.
      * Range: [Individual](Individual.md)

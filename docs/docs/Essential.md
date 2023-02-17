@@ -27,12 +27,11 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [analysis➞reference genome](analysis_reference_genome.md)
  * [analysis➞type](analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
  * [biospecimen➞alias](biospecimen_alias.md) - The alias for an entity.
- * [biospecimen➞has disease](biospecimen_has_disease.md) - The Disease entity that is associated with the Individual. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0005267' indicates that the Individual suffers from 'Heart Disease'.
  * [biospecimen➞has individual](biospecimen_has_individual.md) - The Individual entity from which this Biospecimen was derived.
- * [biospecimen➞has phenotypic feature](biospecimen_has_phenotypic_feature.md) - The Phenotypic Feature entity that is associated with the Individual. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual exhibits 'Fibrosarcoma' as one of its phenotype.
  * [biospecimen➞type](biospecimen_type.md) - The type of Biospecimen.
  * [checksum](checksum.md) - A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.
  * [checksum type](checksum_type.md) - The type of algorithm used to generate the checksum of a file.
+ * [cohort➞has individual](cohort_has_individual.md) - One or more Individuals that collectively define this Cohort.
  * [data access committee➞alias](data_access_committee_alias.md) - The alias for an entity.
  * [data access committee➞description](data_access_committee_description.md) - A description for the Data Access Committee.
  * [data access committee➞main contact](data_access_committee_main_contact.md) - The main contact for the Data Access Committee.
@@ -51,7 +50,7 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [dataset➞has sample](dataset_has_sample.md) - One or more Sample entities that are referenced by this Dataset.
  * [dataset➞has study](dataset_has_study.md) - One or more Study entities that are referenced by this Dataset.
  * [dataset➞title](dataset_title.md) - A title for the submitted Dataset.
- * [dataset➞type](dataset_type.md)
+ * [dataset➞type](dataset_type.md) - The type of a dataset.
  * [description](description.md) - Description of an entity.
  * [experiment process➞has input](experiment_process_has_input.md) - The input to the Experiment Process. Usually a Sample entity.
  * [experiment process➞has protocol](experiment_process_has_protocol.md) - The Protocol entity used by this Experiment Process.
@@ -66,6 +65,7 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [experiment➞has study](experiment_has_study.md) - The Study entity associated with this Experiment.
  * [experiment➞title](experiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
  * [experiment➞type](experiment_type.md) - The type of Experiment.
+ * [family➞has individual](family_has_individual.md) - One or more Individuals that collectively define this Family.
  * [file➞alias](file_alias.md) - The alias for an entity.
  * [file➞checksum](file_checksum.md)
  * [file➞checksum type](file_checksum_type.md)
@@ -153,7 +153,6 @@ URI: [GHGA:essential](https://w3id.org/GHGA/essential)
  * [submission➞has sample](submission_has_sample.md) - Information about one or more Sample entities associated with this submission.
  * [submission➞has study](submission_has_study.md) - Information about a Study entities associated with this submission.
  * [submission➞id](submission_id.md) - A internal unique identifier for the Submission.
- * [target regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
  * [tissue](tissue.md) - An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.
  * [title](title.md) - The title that describes an entity.
  * [type](type.md) - The type of an entity.

@@ -2,7 +2,7 @@
 # Slot: type
 
 
-The type of an entity.
+The type of a dataset.
 
 URI: [GHGA:dataset_type](https://w3id.org/GHGA/dataset_type)
 

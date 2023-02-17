@@ -40,7 +40,6 @@ URI: [GHGA:optional](https://w3id.org/GHGA/optional)
  * [library preparation protocol➞has attribute](library_preparation_protocol_has_attribute.md) - One or more attributes that further characterizes this Library Preparation Protocol.
  * [named thing➞xref](named_thing_xref.md) - Holds one or more database cross references for an entity.
  * [project➞has attribute](project_has_attribute.md) - Custom attributes for the Project  (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)
- * [project➞has publication](project_has_publication.md) - One or more Publication entities associated with this Project.
  * [protocol➞has attribute](protocol_has_attribute.md) - One or more attributes that further characterizes this Protocol.
  * [protocol➞xref](protocol_xref.md) - One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )
  * [publication➞abstract](publication_abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this study.

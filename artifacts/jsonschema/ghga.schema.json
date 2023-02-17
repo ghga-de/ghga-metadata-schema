@@ -211,7 +211,6 @@
             "reference_genome",
             "reference_chromosome",
             "has_input",
-            "has_workflow",
             "has_output",
             "alias"
          ],
@@ -830,16 +829,22 @@
                ],
                "description": "The Data Access Committee linked to this policy."
             },
-            "has_data_use_condition": {
-               "description": "Data Use Condition entities that are associated with the Data Access Policy.",
-               "items": {
-                  "oneOf": [
-                     {
-                        "$ref": "#/$defs/DataUseCondition"
-                     }
-                  ]
+            "has_data_use_modifier": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/DataUseModifier__identifier_optional"
                },
-               "type": "array"
+               "description": "Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'"
+            },
+            "has_data_use_permission": {
+               "anyOf": [
+                  {
+                     "$ref": "#/$defs/DataUsePermission"
+                  },
+                  {
+                     "type": "string"
+                  }
+               ],
+               "description": "Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'."
             },
             "id": {
                "description": "The internal unique identifier for an entity.",
@@ -881,74 +886,10 @@
             "id",
             "policy_text",
             "has_data_access_committee",
+            "has_data_use_permission",
             "alias"
          ],
          "title": "DataAccessPolicy",
-         "type": "object"
-      },
-      "DataUseCondition": {
-         "additionalProperties": false,
-         "description": "Data Use Condition represents the use conditions associated with a policy.",
-         "properties": {
-            "alias": {
-               "description": "The alias (alternate identifier) for an entity.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
-               "type": "string"
-            },
-            "has_data_use_modifier": {
-               "anyOf": [
-                  {
-                     "$ref": "#/$defs/DataUseModifier"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ],
-               "description": "Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'"
-            },
-            "has_data_use_permission": {
-               "anyOf": [
-                  {
-                     "$ref": "#/$defs/DataUsePermission"
-                  },
-                  {
-                     "type": "string"
-                  }
-               ],
-               "description": "Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'."
-            },
-            "id": {
-               "description": "The internal unique identifier for an entity.",
-               "type": "string"
-            },
-            "schema_type": {
-               "description": "The schema type an instance corresponds to.",
-               "type": "string"
-            },
-            "schema_version": {
-               "description": "The version of the schema an instance corresponds to.",
-               "type": "string"
-            },
-            "update_date": {
-               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
-               "type": "string"
-            },
-            "xref": {
-               "description": "Holds one or more database cross references for an entity.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [
-            "id",
-            "has_data_use_permission"
-         ],
-         "title": "DataUseCondition",
          "type": "object"
       },
       "DataUseModifier": {
@@ -1014,6 +955,70 @@
          "required": [
             "id"
          ],
+         "title": "DataUseModifier",
+         "type": "object"
+      },
+      "DataUseModifier__identifier_optional": {
+         "additionalProperties": false,
+         "description": "Data use modifiers indicate additional conditions for use.",
+         "properties": {
+            "alias": {
+               "description": "The alias (alternate identifier) for an entity.",
+               "type": "string"
+            },
+            "concept_identifier": {
+               "description": "The Compact URI (CURIE) that uniquely identifies this ontology class.",
+               "type": "string"
+            },
+            "concept_name": {
+               "description": "The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was created.",
+               "type": "string"
+            },
+            "description": {
+               "description": "The description or definition of an ontology class.",
+               "type": "string"
+            },
+            "id": {
+               "description": "The internal unique identifier for an entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The name or label (rdfs:label) of an ontology class.",
+               "type": "string"
+            },
+            "ontology_name": {
+               "description": "The name of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "ontology_version": {
+               "description": "The version of the ontology from which this ontology class was chosen.",
+               "type": "string"
+            },
+            "schema_type": {
+               "description": "The schema type an instance corresponds to.",
+               "type": "string"
+            },
+            "schema_version": {
+               "description": "The version of the schema an instance corresponds to.",
+               "type": "string"
+            },
+            "update_date": {
+               "description": "Timestamp (in ISO 8601 format) when the entity was updated.",
+               "type": "string"
+            },
+            "xref": {
+               "description": "Holds one or more database cross references for an entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [],
          "title": "DataUseModifier",
          "type": "object"
       },
@@ -2440,7 +2445,6 @@
             "library_type",
             "library_selection",
             "library_preparation",
-            "target_regions",
             "alias",
             "description"
          ],
@@ -3751,6 +3755,6 @@
    "required": [],
    "title": "GHGA-Metadata-Schema",
    "type": "object",
-   "version": "0.9.0"
+   "version": "0.9.1"
 }
 
