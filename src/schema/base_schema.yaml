@@ -13,9 +13,6 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   EFO: http://www.ebi.ac.uk/efo/EFO_
   COB: http://purl.obolibrary.org/obo/COB_
-  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
-  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
-  SNOMEDCT: http://purl.bioontology.org/ontology/SNOMEDCT/
 
 default_prefix: GHGA
 
@@ -193,7 +190,6 @@ classes:
       - type
       - description
       - url
-      - has file
     exact_mappings:
       - OBI:0000272
     slot_usage:
@@ -214,10 +210,6 @@ classes:
       url:
         description: >-
           URL for the resource that describes this Protocol.
-        required: true
-      has file:
-        description: >-
-          A document that describes the Protocol.
         required: true
       xref:
         description: >-
@@ -279,6 +271,39 @@ classes:
         required: false
         description: >-
           The description or definition of an ontology class.
+   attribute:
+    description: >-
+      A key/value pair that further characterizes an entity.
+    slots:
+      - key
+      - key type
+      - value
+      - value type
+    exact_mappings:
+      - SIO:000614
+    slot_usage:
+      key:
+        description: >-
+          The key for an attribute.
+        required: true
+      key type:
+        description: >-
+          A semantic type that characterizes the attribute key. Usually this is a
+          term from an ontology.
+          For example, 'MAXO:0000616' indicates that the attribute is a measurement
+          of oxygen saturation in the blood.
+        required: false
+      value:
+        description: >-
+          The value for an attribute. Usually this is a numerical value (without the units).
+        required: true
+      value type:
+        description: >-
+          The value type that characterizes the attribute value. Usually this is a
+          term from an ontology that describes how to interpret the value.
+          For example, 'SIO:001413' indicates that the value is to be interpreted as
+          a percentage.
+        required: false
   metadata mixin:
     mixin: true
     description: Mixin for tracking schema specific metadata about an instance.
@@ -438,9 +463,11 @@ slots:
   ontology version:
     description: >-
       The version of the ontology from which this ontology class was chosen.
-  has file:
-    description: >-
-      The file associated with an entity.
-    range: file
+  has attribute:
+    description: Key/value pairs corresponding to an entity.
+    range: attribute
     in_subset:
       - restricted
+    multivalued: true
+    inlined: true
+    inlined_as_list: true

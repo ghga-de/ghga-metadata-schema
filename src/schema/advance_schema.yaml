@@ -4,7 +4,18 @@ description: >-
   The advance metadata schema for the German Human Genome-Phenome Archive (GHGA).
 version: 0.9.0
 imports:
-  - linkml:submission_centric_schema
+  - linkml:types
+  - submission_centric_schema
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  GHGA: https://w3id.org/GHGA/
+  SIO: http://semanticscience.org/resource/SIO_
+  biolink: https://w3id.org/biolink/vocab/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  COB: http://purl.obolibrary.org/obo/COB_
+  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
+
 
 classes:
   agent:

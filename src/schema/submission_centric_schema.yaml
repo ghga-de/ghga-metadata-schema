@@ -4,42 +4,19 @@ description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
 version: 0.9.0
 imports:
-  - linkml:base_schema
+  - linkml:types
+  - base_schema
+
+prefixes:
+  GHGA: https://w3id.org/GHGA/
+  SIO: http://semanticscience.org/resource/SIO_
+  biolink: https://w3id.org/biolink/vocab/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  COB: http://purl.obolibrary.org/obo/COB_
+  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
+
 
 classes:
-  attribute:
-    description: >-
-      A key/value pair that further characterizes an entity.
-    slots:
-      - key
-      - key type
-      - value
-      - value type
-    exact_mappings:
-      - SIO:000614
-    slot_usage:
-      key:
-        description: >-
-          The key for an attribute.
-        required: true
-      key type:
-        description: >-
-          A semantic type that characterizes the attribute key. Usually this is a
-          term from an ontology.
-          For example, 'MAXO:0000616' indicates that the attribute is a measurement
-          of oxygen saturation in the blood.
-        required: false
-      value:
-        description: >-
-          The value for an attribute. Usually this is a numerical value (without the units).
-        required: true
-      value type:
-        description: >-
-          The value type that characterizes the attribute value. Usually this is a
-          term from an ontology that describes how to interpret the value.
-          For example, 'SIO:001413' indicates that the value is to be interpreted as
-          a percentage.
-        required: false
   project:
     is_a: research activity
     mixins:
@@ -180,9 +157,9 @@ classes:
       has protocol:
         description: >-
           One or more Protocol entities associated with this Experiment.
-        union_of:
-          - has sequencing protocol
-          - has library preparation protocol
+        exactly_one_of:
+          - range: sequencing protocol
+          - range: library preparation protocol
         multivalued: true
         required: true
         inlined: true
@@ -983,14 +960,6 @@ classes:
           The status of a Submission.
         required: false
 slots:
-  has attribute:
-    description: Key/value pairs corresponding to an entity.
-    range: attribute
-    in_subset:
-      - restricted
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   has study:
     description: The study associated with an entity.
     range: study
@@ -1064,6 +1033,12 @@ slots:
       - restricted
   has output:
     description: The output of a Planned Process entity.
+    range: file
+    in_subset:
+      - restricted
+  has file:
+    description: >-
+      The file associated with an entity.
     range: file
     in_subset:
       - restricted
