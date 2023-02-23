@@ -36,6 +36,7 @@ classes:
         description: >-
           Custom attributes for the Project 
           (eg: Cancer - Colon cancer, prostrate cancer, blood cancer etc)
+
   study:
     is_a: investigation
     mixins:
@@ -96,6 +97,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+
   experiment:
     is_a: investigation
     mixins:
@@ -164,6 +166,7 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
+
   library preparation protocol:
     is_a: protocol
     description: >-
@@ -217,6 +220,7 @@ classes:
       rnaseq strandedness:
         required: false
         recommended: true
+
   sequencing protocol:
     is_a: protocol
     description: >-
@@ -300,6 +304,7 @@ classes:
       sample barcode read:
         required: false
         recommended: true
+
   biospecimen:
     is_a: material entity
     mixins:
@@ -339,6 +344,7 @@ classes:
         inlined: true
         inlined_as_list: false
         required: true
+
   anatomical entity:
     is_a: material entity
     mixins:
@@ -348,6 +354,7 @@ classes:
       the structural organization of an individual member of a biological species.
     exact_mappings:
       - UBERON:0001062
+
   disease:
     is_a: disease or phenotypic feature
     description: >-
@@ -356,6 +363,7 @@ classes:
     exact_mappings:
       - EFO:0000408
       - MONDO:0000001
+
   phenotypic feature:
     is_a: disease or phenotypic feature
     description: >-
@@ -442,6 +450,7 @@ classes:
       storage:
         required: false
         recommended: true
+
   individual:
     is_a: person
     mixins:
@@ -518,6 +527,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+
   ancestry:
     is_a: population
     mixins:
@@ -528,6 +538,7 @@ classes:
     aliases: ["ancestral group", "ancestry category"]
     exact_mappings:
       - HANCESTRO:0004
+
   file:
     is_a: information content entity
     mixins:
@@ -560,6 +571,7 @@ classes:
         required: true
       size:
         required: true
+
   analysis:
     is_a: data transformation
     mixins:
@@ -615,6 +627,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+
   dataset:
     is_a: information content entity
     mixins:
@@ -702,6 +715,7 @@ classes:
           The release status of a Dataset.
         required: false
         range: release status enum
+
   data access policy:
     is_a: information content entity
     mixins:
@@ -762,6 +776,7 @@ classes:
         description: >-
           Data Request Form that is associated with this Data Access Policy.
         required: false
+
   data access committee:
     is_a: committee
     mixins:
@@ -791,6 +806,7 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
+
   publication:
     is_a: information content entity
     description: >-
@@ -822,6 +838,7 @@ classes:
         description: >-
           One or more cross-references for this Publication.
         required: false
+
   submission:
     mixins:
       - metadata mixin
@@ -959,63 +976,88 @@ classes:
         description: >-
           The status of a Submission.
         required: false
+
+  publication mixin:
+    mixin: true
+    description: >-
+      Mixin for entities that can have one or more publications.
+    slots:
+      - has publication
+    slot_usage:
+      has publication:
+        required: true
+
 slots:
   has study:
     description: The study associated with an entity.
     range: study
+
   has project:
     description: The project associated with an entity.
     range: project
+
   has publication:
     description: The Publication associated with an entity.
     range: publication
+
   has sample:
     description: The sample associated with an entity.
     range: sample
     in_subset:
       - restricted
+
   has experiment:
     description: The experiment associated with an entity.
     range: experiment
     in_subset:
       - restricted
+
   has analysis:
     description: The analysis associated with an entity.
     range: analysis
     in_subset:
       - restricted
+
   has dataset:
     description: The Dataset associated with an entity.
     range: dataset
+
   has biospecimen:
     description: The biospecimen associated with an entity.
     range: biospecimen
     in_subset:
       - restricted
+
   has individual:
     description: The subject/individual associated with an entity.
     range: individual
     in_subset:
       - restricted
+
   has anatomical entity:
     description: Anatomical site associated with an entity.
     range: anatomical entity
+
   has phenotypic feature:
     description: Phenotypic feature concept that the entity is associated with.
     range: phenotypic feature
     in_subset:
       - restricted
+
   has disease:
     description: Disease concept that the entity is associated with.
     range: disease
+
   has parent:
     description: The parent of an entity.
     in_subset:
       - restricted
+
   has children:
     description: The children of an entity.
     in_subset:
       - restricted
+
   has ancestry:
     description: >-
       A person's descent or lineage, from a person or from a population.
@@ -1026,32 +1068,38 @@ slots:
     inlined_as_list: true
     in_subset:
       - restricted
+
   has input:
     description: The input to a Planned Process.
     range: file
     in_subset:
       - restricted
+
   has output:
     description: The output of a Planned Process entity.
     range: file
     in_subset:
       - restricted
+
   has file:
     description: >-
       The file associated with an entity.
     range: file
     in_subset:
       - restricted
+
   has data access policy:
     description: Data Access Policy associated with an entity.
     range: data access policy
     in_subset:
       - restricted
+
   has data access committee:
     description: Data Access Committee associated with an entity.
     range: data access committee
     in_subset:
       - restricted
+
   has data use permission:
     description: >-
       Data use permission associated with an entity. Typically one or more terms from DUO.
@@ -1060,6 +1108,7 @@ slots:
     inlined: true
     in_subset:
       - restricted
+
   has data use modifier:
     description: >-
       Modifier for Data use permission associated with an entity.
@@ -1068,28 +1117,25 @@ slots:
     inlined: true
     in_subset:
       - restricted
+
   has protocol:
     description: The protocol associated with an entity.
     range: protocol
     in_subset:
       - restricted
+
   has sequencing protocol:
     range: sequencing protocol
     description: The sequencing protocol associated with an entity.
+
   has library preparation protocol:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
-  key:
-    description: The key of an attribute.
-  key type:
-    description: The semantic type for the key of an attribute.
-  value:
-    description: The value of an attribute
-  value type:
-    description: The semantic type for the value of an attribute.
+
   affiliation:
     description: >-
       The Institution(s) associated with an entity.
+
   technical replicates:
     description: >-
       A technical replicate is a replicate role where the same BioSample is use e.g.
@@ -1097,151 +1143,188 @@ slots:
       variation within an experiment.
     exact_mappings:
       - EFO:0002090
+
+  
   biological replicates:
     description: >-
       A biological replicate is a replicate role that consists of
       independent biological replicates made from different individual biosamples.
     exact_mappings:
       - EFO:0002091
+
   experimental replicates:
     description: >-
       The replicate number of the assay, i.e. the numeric iteration
       for the assay that was repeated.
     exact_mappings:
       - NCIT:C178859
+
   library name:
     description: >-
       A short name identifying the library to potential users.
       The same name may refer to multiple versions of the same continually updated library.
+
   library layout:
     description: >-
       Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
     exact_mappings:
       - NCIT:C175894
+
   library type:
     description: >-
       Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+
   library selection:
     description: >-
       Whether any method was used to select for or against, enrich, or screen the material being sequenced.
       Library Selection method (e.g. random, PCA, cDNA, etc )
+
   library preparation:
     description: >-
       The general method for sequencing library preparation (e.g. KAPA PCR-free).
+
   library preparation kit retail name:
     description: >-
       A unique identifier for the kit used to construct a genomic library.
       This may include the vendor name, kit name and kit version 
       (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+
   library preparation kit manufacturer:
     description: >-
       Manufacturer of library preparation kit
+
   primer:
     description: >-
       The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer.
       This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
     exact_mappings:
       - EFO:0010192
+
   end bias:
     description: >-
       The end of the cDNA molecule that is preferentially sequenced,
       e.g. 3/5 prime tag or end, or the full-length transcript.
     exact_mappings:
       - EFO:0010187
+
   target regions:
     description: >-
       Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
+
   rnaseq strandedness:
     description: >-
       The strandedness of the library, whether reads come from both strands of the cDNA
       or only from the first (antisense) or the second (sense) strand.
+
   sequencing center:
     required: false
     description: >-
       Center where sample was sequenced.
+
   instrument model:
     description: >-
       The name and model of the technology platform used to perform sequencing.
+
   sequencing read length:
     description: >-
       Length of sequencing reads (eg: Long or short or actual number of the read length etc).
       The number of nucleotides successfully ordered from each side of a nucleic acid fragment
       obtained after the completion of a sequencing process
+
   index sequence:
     description: >-
       A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
     exact_mappings:
       - NCIT:C165443
+
   paired or single end:
     deprecated: true
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing replications.
     range: paired or single end enum
+
   forward or reverse:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: forward or reverse enum
+
   lane number:
     description: >-
       The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
+
   target coverage:
     description: >-
       Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
       The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+
   flow cell id:
     description: >-
       Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
       The barcode assigned to a flow cell used in nucleotide sequencing.
+
   flow cell type:
     description: >-
       Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
       Aparatus in the fluidic subsystem where the sheath and sample meet.
       Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
       The sample flows through the center of a fluid column of sheath fluid in the flow cell.
+
   umi barcode read:
     description: >-
       The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+
   umi barcode offset:
     description: >-
       The offset in sequence of the UMI identifying barcode. (E.g. '16').
+
   umi barcode size:
     description: >-
       The size of the UMI identifying barcode (Eg. '10').
+
   cell barcode read:
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+
   cell barcode offset:
     description: >-
       The offset in sequence of the cell identifying barcode. (Eg. '0').
+
   cell barcode size:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
+
   sample barcode read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
+
   storage:
     description: >-
       Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
+
   case control status:
     description: >-
       Whether the sample is to be treated as Case or Control in a Study.
     range: case control status enum
+
   vital status at sampling:
     description: >-
       Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
     range: vital status enum
+
   geographical region:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     in_subset:
       - restricted
+
   vital status:
     description: >-
       The state or condition of being living or deceased;
@@ -1249,6 +1332,7 @@ slots:
     range: vital status enum
     in_subset:
       - restricted
+
   sex:
     description: >-
       The assemblage of physical properties or qualities by which male is distinguished from female;
@@ -1256,23 +1340,28 @@ slots:
     range: biological sex enum
     in_subset:
       - restricted
+
   karyotype:
     description: >-
       The karyotype of an individual if defined.
     in_subset:
       - restricted
+
   age:
     description: Age of an individual.
     range: age range enum
     in_subset:
       - restricted
+
   format:
     description: >-
       The format of the file: BAM, SAM, CRAM, BAI, etc.
     range: file format enum
+
   size:
     description: The size of a file in bytes.
     range: integer
+
   checksum:
     description: >-
       A computed value which depends on the contents of a block of data and which is transmitted or
@@ -1282,52 +1371,66 @@ slots:
       that the data was received correctly.
     exact_mappings:
       - NCIT:C43522
+
   checksum type:
     description: >-
       The type of algorithm used to generate the checksum of a file.
+
   drs uri:
     description: >-
       GA4GH Data Repository Service (DRS) identifier URI for a file.
+
   reference chromosome:
     description: >-
       The reference chromosome used for this Analysis.
+
   reference genome:
     description: >-
       A published genetic sequence that is used as a reference sequence against which other sequences are compared.
       Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
+
   policy text:
     description: The complete text for the Data Access Policy.
     in_subset:
       - restricted
+
   policy url:
     description: Alternative to pasting the Data Access Policy text.
     in_subset:
       - restricted
+
   data request form:
     description: >-
       Data Request Form that is associated with a Data Access Policy.
+
   main contact:
     description: The person who is the main contact for a committee.
     range: member
     in_subset:
       - restricted
+
   abstract:
     description: >-
       The study abstract that describes the goals. 
       Can also hold abstract from a publication related to this study
+
   author:
     description: >-
       The individual who is responsible for the content of a document version.
+
   year:
     description: >-
       Year in which the paper was published.
     range: integer
+
   journal:
     description: >-
       Name of the journal.
+
   submission status:
     description: >-
       The status of a submission.
+
   submission date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
