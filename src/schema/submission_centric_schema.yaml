@@ -716,6 +716,25 @@ classes:
         required: false
         range: release status enum
 
+  data use permission:
+    is_a: information content entity
+    mixins:
+      - ontology class mixin
+    description: >-
+      A data item that is used to indicate consent permissions for datasets and/or materials
+      and relates to the purposes for which datasets and/or material might be removed, stored or used.
+    exact_mappings:
+      - DUO:0000001
+
+  data use modifier:
+    is_a: information content entity
+    mixins:
+      - ontology class mixin
+    description: >-
+      Data use modifiers indicate additional conditions for use.
+    exact_mappings:
+      - DUO:0000017
+
   data access policy:
     is_a: information content entity
     mixins:
