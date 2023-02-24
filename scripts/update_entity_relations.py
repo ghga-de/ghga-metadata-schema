@@ -106,9 +106,14 @@ def generate_doc(*, linkml_yaml: Path) -> str:
     """Returns a markdown-based erd diagram for the specified linkml yaml."""
 
     model_name = get_model_name(linkml_yaml=linkml_yaml)
+    detailed_erd_diagram = get_detailed_erd_diagram(linkml_yaml=linkml_yaml)
     basic_erd_diagram = get_basic_erd_diagram(linkml_yaml=linkml_yaml)
 
-    return f"## {model_name}\n\n" f"### Basic Diagram:\n\n{basic_erd_diagram}\n\n"
+    return (
+        f"## {model_name}\n\n"
+        f"### Basic Diagram:\n\n{basic_erd_diagram}\n\n"
+        f"### Detailed Diagram:\n\n{detailed_erd_diagram}"
+    )
 
 
 def generate_summary_doc() -> str:
@@ -145,14 +150,14 @@ def main(check: bool = False):
     if check:
         observed_summary_doc = read_summary_doc()
 
-        if expected_summary_doc == observed_summary_doc:
+        if expected_summary_doc.strip() == observed_summary_doc.strip():
             echo_success("Entity relationship diagrams are up to date.")
             return
 
         print(f"Observed file differs from the expected one:")
         for line in difflib.unified_diff(
-            observed_summary_doc.splitlines(keepends=True),
-            expected_summary_doc.splitlines(keepends=True),
+            observed_summary_doc.strip().splitlines(keepends=True),
+            expected_summary_doc.strip().splitlines(keepends=True),
             fromfile="observed",
             tofile="expected",
         ):
