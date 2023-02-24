@@ -150,16 +150,14 @@ def main(check: bool = False):
     if check:
         observed_summary_doc = read_summary_doc()
 
-        if "\n".join(expected_summary_doc.splitlines()) == "\n".join(
-            observed_summary_doc.splitlines()
-        ):
+        if expected_summary_doc == observed_summary_doc:
             echo_success("Entity relationship diagrams are up to date.")
             return
 
         print(f"Observed file differs from the expected one:")
         for line in difflib.unified_diff(
-            observed_summary_doc.strip().splitlines(keepends=True),
-            expected_summary_doc.strip().splitlines(keepends=True),
+            observed_summary_doc.splitlines(keepends=True),
+            expected_summary_doc.splitlines(keepends=True),
             fromfile="observed",
             tofile="expected",
         ):
