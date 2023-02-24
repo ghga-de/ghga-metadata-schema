@@ -127,6 +127,10 @@ def main(check: bool = False):
 
     if check:
         observed_summary_doc = read_summary_doc()
+
+        print("Expected: \n\n" + expected_summary_doc)
+        print("Observed:\n\n" + observed_summary_doc)
+
         if expected_summary_doc == observed_summary_doc:
             echo_success("Entity relationship diagrams are up to date.")
             return
