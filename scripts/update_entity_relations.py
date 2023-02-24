@@ -89,10 +89,7 @@ def generate_doc(*, linkml_yaml: Path) -> str:
     model_name = get_model_name(linkml_yaml=linkml_yaml)
     erd_diagram = get_erd_diagram(linkml_yaml=linkml_yaml)
 
-    return (
-        f"## {model_name}\n\nAn entity relationship diagram for the model found at:"
-        f" {linkml_yaml}.  \n\n" + erd_diagram
-    )
+    return f"## {model_name}\n\n{erd_diagram}"
 
 
 def generate_summary_doc() -> str:

@@ -2,8 +2,6 @@
 
 ## GHGA-Base-Metadata-Schema
 
-An entity relationship diagram for the model found at: /workspace/src/schema/base_schema.yaml.  
-
 ```mermaid
 erDiagram
 NamedThing {
@@ -186,8 +184,6 @@ DeprecatedMixin ||--|| NamedThing : "replaced by"
 
 
 ## GHGA-Submission-Metadata-Schema
-
-An entity relationship diagram for the model found at: /workspace/src/schema/submission_centric_schema.yaml.  
 
 ```mermaid
 erDiagram
@@ -767,8 +763,6 @@ DeprecatedMixin ||--|| NamedThing : "replaced by"
 
 
 ## GHGA-Advance-Metadata-Schema
-
-An entity relationship diagram for the model found at: /workspace/src/schema/advance_schema.yaml.  
 
 ```mermaid
 erDiagram
