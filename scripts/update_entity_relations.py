@@ -150,7 +150,9 @@ def main(check: bool = False):
     if check:
         observed_summary_doc = read_summary_doc()
 
-        if expected_summary_doc.strip() == observed_summary_doc.strip():
+        if "\n".join(expected_summary_doc.splitlines()) == "\n".join(
+            observed_summary_doc.splitlines()
+        ):
             echo_success("Entity relationship diagrams are up to date.")
             return
 
