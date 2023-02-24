@@ -15,6 +15,7 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
+
 classes:
   project:
     is_a: research activity
@@ -1162,6 +1163,7 @@ slots:
       variation within an experiment.
     exact_mappings:
       - EFO:0002090
+
 
   biological replicates:
     description: >-
