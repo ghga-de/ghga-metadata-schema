@@ -5,6 +5,7 @@
 import sys
 import os
 import subprocess
+import difflib
 from pathlib import Path
 
 import yaml
@@ -128,12 +129,19 @@ def main(check: bool = False):
     if check:
         observed_summary_doc = read_summary_doc()
 
-        print("Expected: \n\n" + expected_summary_doc)
-        print("Observed:\n\n" + observed_summary_doc)
-
         if expected_summary_doc == observed_summary_doc:
             echo_success("Entity relationship diagrams are up to date.")
             return
+
+        print(f"Observed file differs from the expected one:")
+        for line in difflib.unified_diff(
+            observed_summary_doc.splitlines(keepends=True),
+            expected_summary_doc.splitlines(keepends=True),
+            fromfile="observed",
+            tofile="expected",
+        ):
+            print("   ", line.rstrip())
+
         echo_failure("Entity relationship diagrams are not up to date.")
         sys.exit(1)
 
