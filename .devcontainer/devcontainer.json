@@ -7,63 +7,62 @@
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash",
-		"sqltools.connections": [
-			{
-				"name": "Container database",
-				"driver": "PostgreSQL",
-				"previewLimit": 50,
-				"server": "localhost",
-				"port": 5432,
-				"database": "postgres",
-				"username": "postgres",
-				"password": "postgres"
-			}
-		],
-		"python.pythonPath": "/usr/local/bin/python",
-		"python.languageServer": "Pylance",
-		"python.linting.enabled": true,
-		"python.linting.pylintEnabled": true,
-		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-		"python.formatting.provider": "black",
-		"editor.formatOnSave": true,
-		"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
-		"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest",
-		"python.testing.unittestEnabled": false,
-		"python.testing.pytestEnabled": true,
-		"editor.renderWhitespace": "all",
-		"editor.rulers": [
-			88
-		],
-		"licenser.license": "Custom",
-		"licenser.customHeaderFile": "/workspace/.devcontainer/license_header.txt"
+	"customizations": {
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				},
+				"python.pythonPath": "/usr/local/bin/python",
+				"python.languageServer": "Pylance",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+				"python.formatting.provider": "black",
+				"python.analysis.typeCheckingMode": "basic",
+				"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+				"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest",
+				"python.testing.unittestEnabled": false,
+				"python.testing.pytestEnabled": true,
+				"editor.formatOnSave": true,
+				"editor.renderWhitespace": "all",
+				"editor.rulers": [
+					88
+				],
+				"licenser.license": "Custom",
+				"licenser.customHeaderFile": "/workspace/.devcontainer/license_header.txt"
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"mikestead.dotenv",
+				"ms-azuretools.vscode-docker",
+				"ms-python.python",
+				"ms-python.isort",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter",
+				"njpwerner.autodocstring",
+				"redhat.vscode-yaml",
+				"42crunch.vscode-openapi",
+				"arjun.swagger-viewer",
+				"eamodio.gitlens",
+				"github.vscode-pull-request-github",
+				"streetsidesoftware.code-spell-checker",
+				"yzhang.markdown-all-in-one",
+				"visualstudioexptteam.vscodeintellicode",
+				"ymotongpoo.licenser",
+				"editorconfig.editorconfig"
+			]
+		}
 	},
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"ms-python.python",
-		"ms-python.vscode-pylance",
-		"mtxr.sqltools",
-		"mtxr.sqltools-driver-pg",
-		"42crunch.vscode-openapi",
-		"eamodio.gitlens",
-		"formulahendry.terminal",
-		"tyriar.terminal-tabs",
-		"alexcvzz.vscode-sqlite",
-		"njpwerner.autodocstring",
-		"arjun.swagger-viewer",
-		"ms-toolsai.jupyter",
-		"redhat.vscode-yaml",
-		"ymotongpoo.licenser",
-		"ms-azuretools.vscode-docker",
-		"EditorConfig.EditorConfig"
-	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [5000, 5432],
 	// Use 'postCreateCommand' to run commands after the container is created.

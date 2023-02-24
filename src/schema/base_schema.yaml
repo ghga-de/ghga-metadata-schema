@@ -13,9 +13,6 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   EFO: http://www.ebi.ac.uk/efo/EFO_
   COB: http://purl.obolibrary.org/obo/COB_
-  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
-  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
-  SNOMEDCT: http://purl.bioontology.org/ontology/SNOMEDCT/
 
 default_prefix: GHGA
 
@@ -67,6 +64,7 @@ classes:
         description: >-
           Timestamp (in ISO 8601 format) when the entity was updated.
         required: true
+
   person:
     is_a: named thing
     abstract: true
@@ -87,6 +85,7 @@ classes:
       - NCIT:C25190
       - SIO:000498
       - prov:Person
+
   committee:
     is_a: named thing
     abstract: true
@@ -97,6 +96,7 @@ classes:
     slot_usage:
       name:
         required: true
+
   material entity:
     is_a: named thing
     abstract: true
@@ -105,6 +105,7 @@ classes:
       whole at any point in time and has mass.
     exact_mappings:
       - SIO:000004
+
   biological quality:
     is_a: named thing
     abstract: true
@@ -112,6 +113,7 @@ classes:
       A biological quality is a quality held by a biological entity.
     exact_mappings:
       - SIO:000475
+
   information content entity:
     is_a: named thing
     abstract: true
@@ -119,6 +121,7 @@ classes:
       A generically dependent continuant that is about some thing.
     exact_mappings:
       - IAO:0000030
+
   planned process:
     is_a: named thing
     abstract: true
@@ -129,6 +132,7 @@ classes:
       - EFO:0004542
       - OBI:0000011
       - COB:0000082
+
   investigation:
     is_a: planned process
     abstract: true
@@ -146,6 +150,7 @@ classes:
         required: true
       description:
         required: true
+
   data transformation:
     is_a: planned process
     abstract: true
@@ -162,6 +167,7 @@ classes:
         required: true
     exact_mappings:
       - OBI:0200000
+
   research activity:
     is_a: planned process
     abstract: true
@@ -179,6 +185,7 @@ classes:
         required: true
     exact_mappings:
       - SEPIO:0000004
+
   protocol:
     is_a: information content entity
     abstract: true
@@ -193,7 +200,6 @@ classes:
       - type
       - description
       - url
-      - has file
     exact_mappings:
       - OBI:0000272
     slot_usage:
@@ -215,10 +221,6 @@ classes:
         description: >-
           URL for the resource that describes this Protocol.
         required: true
-      has file:
-        description: >-
-          A document that describes the Protocol.
-        required: true
       xref:
         description: >-
           One or more cross-references for this Protocol. 
@@ -228,6 +230,7 @@ classes:
         description: >-
           One or more attributes that further characterizes this Protocol.
         required: true
+
   population:
     is_a: material entity
     abstract: true
@@ -239,6 +242,7 @@ classes:
     slot_usage:
       name:
         required: true
+
   disease or phenotypic feature:
     is_a: biological quality
     abstract: true
@@ -250,6 +254,7 @@ classes:
       are used interchangeably with Phenotype concepts or vice-versa.
     exact_mappings:
       - biolink:DiseaseOrPhenotypicFeature
+
   ontology class mixin:
     mixin: true
     description: Mixin for entities that represent an class/term/concept from an ontology.
@@ -279,6 +284,41 @@ classes:
         required: false
         description: >-
           The description or definition of an ontology class.
+
+  attribute:
+    description: >-
+      A key/value pair that further characterizes an entity.
+    slots:
+      - key
+      - key type
+      - value
+      - value type
+    exact_mappings:
+      - SIO:000614
+    slot_usage:
+      key:
+        description: >-
+          The key for an attribute.
+        required: true
+      key type:
+        description: >-
+          A semantic type that characterizes the attribute key. Usually this is a
+          term from an ontology.
+          For example, 'MAXO:0000616' indicates that the attribute is a measurement
+          of oxygen saturation in the blood.
+        required: false
+      value:
+        description: >-
+          The value for an attribute. Usually this is a numerical value (without the units).
+        required: true
+      value type:
+        description: >-
+          The value type that characterizes the attribute value. Usually this is a
+          term from an ontology that describes how to interpret the value.
+          For example, 'SIO:001413' indicates that the value is to be interpreted as
+          a percentage.
+        required: false
+
   metadata mixin:
     mixin: true
     description: Mixin for tracking schema specific metadata about an instance.
@@ -290,6 +330,7 @@ classes:
         required: true
       schema version:
         required: true
+
   accession mixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
@@ -298,6 +339,7 @@ classes:
     slot_usage:
       accession:
         required: true
+
   ega accession mixin:
     mixin: true
     description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
@@ -306,6 +348,7 @@ classes:
     slot_usage:
       ega accession:
         required: true
+
   attribute mixin:
     mixin: true
     description: Mixin for entities that can have one or more attributes.
@@ -314,15 +357,7 @@ classes:
     slot_usage:
       has attribute:
         required: true
-  publication mixin:
-    mixin: true
-    description: >-
-      Mixin for entities that can have one or more publications.
-    slots:
-      - has publication
-    slot_usage:
-      has publication:
-        required: true
+
   deprecated mixin:
     mixin: true
     description: Mixin for entities that can be deprecated.
@@ -334,6 +369,7 @@ classes:
         required: true
       deprecation date:
         required: true
+
   release status mixin:
     mixin: true
     description: Mixin for entities that can be released at a later point in time.
@@ -349,98 +385,139 @@ classes:
 slots:
   update date:
     description: Timestamp (in ISO 8601 format) when the entity was updated.
+
   creation date:
     description: Timestamp (in ISO 8601 format) when the entity was created.
+
   schema type:
     description: The schema type an instance corresponds to.
+
   schema version:
     description: The version of the schema an instance corresponds to.
+
   id:
     description: An identifier that uniquely represents an entity.
     identifier: true
     in_subset:
       - restricted
+
   alias:
     description: The alias for an entity.
     in_subset:
       - restricted
+
   accession:
     description: >-
       A unique GHGA identifier assigned to an entity for the sole purpose of
       referring to that entity in a global scope.
+
   ega accession:
     description: >-
       A unique European Genome-Phenome Archive (EGA) identifier assigned to an
       entity for the sole purpose of referring to that entity within the EGA
       federated network.
+
   given name:
     description: First name.
     in_subset:
       - restricted
+
   family name:
     description: Last name.
     in_subset:
       - restricted
+
   additional name:
     description: Additional name(s).
     in_subset:
       - restricted
+
   name:
     description: The name for an entity.
+
   type:
     description: The type of an entity.
       # Note: Not to be confused with rdf:type
+
   title:
     description: The title that describes an entity.
+
   xref:
     description: Database cross references for an entity.
     multivalued: true
+
   url:
     description: A URL to a resource.
+
   description:
     description: Description of an entity.
     exact_mappings:
       - SIO:000185
+
   category:
     description: >-
       The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
+
   release status:
     description: >-
       The release status of an entity.
+
   release date:
     description: >-
       The timestamp (in ISO 8601 format) when the entity was released for public consumption.
+
   deprecation date:
     description: >-
       The timestamp (in ISO 8601 format) when the entity was deprecated.
+
   replaced by:
     description: >-
       Refers to the entity which replaces a currently deprecated entity.
     domain: named thing
     range: named thing
+
   replaces:
     inverse: replaced by
     description: >-
       Refers to a deprecated entity that is being replaced by the current entity.
     domain: named thing
     range: named thing
+
   concept identifier:
     description: >-
       The Compact URI (CURIE) that uniquely identifies a concept from an ontology,
       thesaurus, or terminology.
+
   concept name:
     description: >-
       The name or label (typically, rdfs:label) of concept from an ontology, thesaurus,
       or terminology.
+
   ontology name:
     description: >-
       The name of the ontology from which this ontology class was chosen.
+
   ontology version:
     description: >-
       The version of the ontology from which this ontology class was chosen.
-  has file:
-    description: >-
-      The file associated with an entity.
-    range: file
+
+  key:
+    description: The key of an attribute.
+
+  key type:
+    description: The semantic type for the key of an attribute.
+
+  value:
+    description: The value of an attribute
+
+  value type:
+    description: The semantic type for the value of an attribute.
+
+  has attribute:
+    description: Key/value pairs corresponding to an entity.
+    range: attribute
     in_subset:
       - restricted
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
