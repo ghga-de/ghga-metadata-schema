@@ -44,8 +44,8 @@ def fix_enum_problems(*, erd_diagram: str) -> str:
     )
 
 
-def get_erd_diagram(*, linkml_yaml: Path) -> str:
-    """Translates the provided model into a mermaid-based erd diagram."""
+def get_detailed_erd_diagram(*, linkml_yaml: Path) -> str:
+    """Get a detailed erd diagram for the provided model.."""
 
     with subprocess.Popen(
         ["gen-erdiagram", str(linkml_yaml)],
@@ -62,6 +62,25 @@ def get_erd_diagram(*, linkml_yaml: Path) -> str:
 
     erd_diagram = stdout.decode("utf-8")
     return fix_enum_problems(erd_diagram=erd_diagram)
+
+
+def get_basic_erd_diagram(*, linkml_yaml: Path) -> str:
+    """Get a basic erd diagram for the provided model."""
+
+    with subprocess.Popen(
+        ["gen-erdiagram", "--exclude-attributes", "--structural", str(linkml_yaml)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    ) as process:
+        stdout, stderr = process.communicate()
+
+        if process.wait() != 0:
+            raise RuntimeError(
+                f"Could not generate erd diagram for model '{linkml_yaml}',"
+                + f" the error was: {stderr.decode('utf-8')}"
+            )
+
+    return stdout.decode("utf-8")
 
 
 def get_model_name(*, linkml_yaml: Path) -> str:
@@ -87,9 +106,14 @@ def generate_doc(*, linkml_yaml: Path) -> str:
     """Returns a markdown-based erd diagram for the specified linkml yaml."""
 
     model_name = get_model_name(linkml_yaml=linkml_yaml)
-    erd_diagram = get_erd_diagram(linkml_yaml=linkml_yaml)
+    detailed_erd_diagram = get_detailed_erd_diagram(linkml_yaml=linkml_yaml)
+    basic_erd_diagram = get_basic_erd_diagram(linkml_yaml=linkml_yaml)
 
-    return f"## {model_name}\n\n{erd_diagram}"
+    return (
+        f"## {model_name}\n\n"
+        f"### Basic Diagram:\n\n{basic_erd_diagram}\n\n"
+        f"### Detailed Diagram:\n\n{detailed_erd_diagram}"
+    )
 
 
 def generate_summary_doc() -> str:

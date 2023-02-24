@@ -15,7 +15,6 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
-
 classes:
   project:
     is_a: research activity
@@ -859,6 +858,7 @@ classes:
         required: false
 
   submission:
+    tree_root: true
     mixins:
       - metadata mixin
     description: >-
@@ -1163,7 +1163,6 @@ slots:
     exact_mappings:
       - EFO:0002090
 
-  
   biological replicates:
     description: >-
       A biological replicate is a replicate role that consists of
