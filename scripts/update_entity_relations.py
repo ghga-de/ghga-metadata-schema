@@ -106,14 +106,9 @@ def generate_doc(*, linkml_yaml: Path) -> str:
     """Returns a markdown-based erd diagram for the specified linkml yaml."""
 
     model_name = get_model_name(linkml_yaml=linkml_yaml)
-    detailed_erd_diagram = get_detailed_erd_diagram(linkml_yaml=linkml_yaml)
     basic_erd_diagram = get_basic_erd_diagram(linkml_yaml=linkml_yaml)
 
-    return (
-        f"## {model_name}\n\n"
-        f"### Basic Diagram:\n\n{basic_erd_diagram}\n\n"
-        f"### Detailed Diagram:\n\n{detailed_erd_diagram}"
-    )
+    return f"## {model_name}\n\n" f"### Basic Diagram:\n\n{basic_erd_diagram}\n\n"
 
 
 def generate_summary_doc() -> str:
