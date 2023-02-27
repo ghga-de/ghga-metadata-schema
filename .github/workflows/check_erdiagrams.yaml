@@ -20,7 +20,7 @@ jobs:
 
       - name: update entity relationship diagrams
         run: >-
-          cp -t ./docs/entity_relations.md ./docs/entity_relations_backup.md
+          cp -T ./docs/entity_relations.md ./docs/entity_relations_backup.md
           ./scripts/update_entity_relations.py
 
       - name: Push potential changes
