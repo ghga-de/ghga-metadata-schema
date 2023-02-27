@@ -18,18 +18,6 @@ jobs:
         run: >-
           pip install -r requirements.txt
 
-      - name: update entity relationship diagrams
-        run: |
-          cp -T ./docs/entity_relations.md ./docs/entity_relations_backup.md
-          ./scripts/update_entity_relations.py
-
-      - name: Push potential changes
-        run: |
-          if [[ ! -z $(git status -s docs) ]]
-          then
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add docs
-            git commit -a -m 'Autogenerate entity relations'
-            git push
-          fi
+      - name: check entity relationship diagrams
+        run: >-
+          ./scripts/update_entity_relations.py --check

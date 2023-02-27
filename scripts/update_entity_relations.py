@@ -99,7 +99,7 @@ def get_schema_paths() -> list[Path]:
         SCHEMA_DIR / filename
         for filename in os.listdir(SCHEMA_DIR)
         if filename.endswith(".yaml")
-    ]
+    ].sort()
 
 
 def generate_doc(*, linkml_yaml: Path) -> str:
