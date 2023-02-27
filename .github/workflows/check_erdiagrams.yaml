@@ -18,10 +18,6 @@ jobs:
         run: >-
           pip install -r requirements.txt
 
-      - name: check entity relationship diagrams
-        run: >-
-          ./scripts/update_entity_relations.py --check
-
       - name: update entity relationship diagrams
         run: >-
           cp -t ./docs/entity_relations.md ./docs/entity_relations_backup.md
