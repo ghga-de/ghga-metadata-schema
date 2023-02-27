@@ -95,11 +95,13 @@ def get_model_name(*, linkml_yaml: Path) -> str:
 def get_schema_paths() -> list[Path]:
     """Returns a list of paths to the models."""
 
-    return [
+    paths = [
         SCHEMA_DIR / filename
         for filename in os.listdir(SCHEMA_DIR)
         if filename.endswith(".yaml")
-    ].sort()
+    ]
+
+    return sorted(paths)
 
 
 def generate_doc(*, linkml_yaml: Path) -> str:
