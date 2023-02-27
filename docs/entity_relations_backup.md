@@ -1,5 +1,266 @@
 # Entity Relationship Diagrams
 
+## GHGA-Base-Metadata-Schema
+
+### Basic Diagram:
+
+```mermaid
+erDiagram
+NamedThing {
+
+}
+Person {
+
+}
+Committee {
+
+}
+MaterialEntity {
+
+}
+BiologicalQuality {
+
+}
+InformationContentEntity {
+
+}
+PlannedProcess {
+
+}
+Investigation {
+
+}
+DataTransformation {
+
+}
+ResearchActivity {
+
+}
+Protocol {
+
+}
+Population {
+
+}
+DiseaseOrPhenotypicFeature {
+
+}
+OntologyClassMixin {
+
+}
+Attribute {
+
+}
+MetadataMixin {
+
+}
+AccessionMixin {
+
+}
+EgaAccessionMixin {
+
+}
+AttributeMixin {
+
+}
+DeprecatedMixin {
+
+}
+ReleaseStatusMixin {
+
+}
+
+Protocol ||--}| Attribute : "has attribute"
+AttributeMixin ||--}| Attribute : "has attribute"
+DeprecatedMixin ||--|| NamedThing : "replaced by"
+
+```
+
+
+
+### Detailed Diagram:
+
+```mermaid
+erDiagram
+NamedThing {
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+Person {
+    string given_name  
+    string family_name  
+    string additional_name  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+Committee {
+    string name  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+MaterialEntity {
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+BiologicalQuality {
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+InformationContentEntity {
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+PlannedProcess {
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+Investigation {
+    string title  
+    string description  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+DataTransformation {
+    string title  
+    string description  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+ResearchActivity {
+    string title  
+    string description  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+Protocol {
+    string name  
+    string type  
+    string description  
+    string url  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+Population {
+    string name  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+DiseaseOrPhenotypicFeature {
+    string id  
+    string concept_identifier  
+    string concept_name  
+    string description  
+    string ontology_name  
+    string ontology_version  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
+OntologyClassMixin {
+    string id  
+    string concept_identifier  
+    string concept_name  
+    string description  
+    string ontology_name  
+    string ontology_version  
+}
+Attribute {
+    string key  
+    string key_type  
+    string value  
+    string value_type  
+}
+MetadataMixin {
+    string schema_type  
+    string schema_version  
+}
+AccessionMixin {
+    string accession  
+}
+EgaAccessionMixin {
+    string ega_accession  
+}
+AttributeMixin {
+
+}
+DeprecatedMixin {
+    string deprecation_date  
+}
+ReleaseStatusMixin {
+    string release_status  
+    string release_date  
+}
+
+Protocol ||--}| Attribute : "has attribute"
+AttributeMixin ||--}| Attribute : "has attribute"
+DeprecatedMixin ||--|| NamedThing : "replaced by"
+
+```
+
+
 ## GHGA-Submission-Metadata-Schema
 
 ### Basic Diagram:
@@ -997,266 +1258,5 @@ Experiment ||--}o File : "has file"
 Experiment ||--}| Protocol : "has protocol"
 Experiment ||--}| Attribute : "has attribute"
 Protocol ||--}| Attribute : "has attribute"
-
-```
-
-
-## GHGA-Base-Metadata-Schema
-
-### Basic Diagram:
-
-```mermaid
-erDiagram
-NamedThing {
-
-}
-Person {
-
-}
-Committee {
-
-}
-MaterialEntity {
-
-}
-BiologicalQuality {
-
-}
-InformationContentEntity {
-
-}
-PlannedProcess {
-
-}
-Investigation {
-
-}
-DataTransformation {
-
-}
-ResearchActivity {
-
-}
-Protocol {
-
-}
-Population {
-
-}
-DiseaseOrPhenotypicFeature {
-
-}
-OntologyClassMixin {
-
-}
-Attribute {
-
-}
-MetadataMixin {
-
-}
-AccessionMixin {
-
-}
-EgaAccessionMixin {
-
-}
-AttributeMixin {
-
-}
-DeprecatedMixin {
-
-}
-ReleaseStatusMixin {
-
-}
-
-Protocol ||--}| Attribute : "has attribute"
-AttributeMixin ||--}| Attribute : "has attribute"
-DeprecatedMixin ||--|| NamedThing : "replaced by"
-
-```
-
-
-
-### Detailed Diagram:
-
-```mermaid
-erDiagram
-NamedThing {
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-Person {
-    string given_name  
-    string family_name  
-    string additional_name  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-Committee {
-    string name  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-MaterialEntity {
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-BiologicalQuality {
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-InformationContentEntity {
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-PlannedProcess {
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-Investigation {
-    string title  
-    string description  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-DataTransformation {
-    string title  
-    string description  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-ResearchActivity {
-    string title  
-    string description  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-Protocol {
-    string name  
-    string type  
-    string description  
-    string url  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-Population {
-    string name  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-DiseaseOrPhenotypicFeature {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
-}
-OntologyClassMixin {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-}
-Attribute {
-    string key  
-    string key_type  
-    string value  
-    string value_type  
-}
-MetadataMixin {
-    string schema_type  
-    string schema_version  
-}
-AccessionMixin {
-    string accession  
-}
-EgaAccessionMixin {
-    string ega_accession  
-}
-AttributeMixin {
-
-}
-DeprecatedMixin {
-    string deprecation_date  
-}
-ReleaseStatusMixin {
-    string release_status  
-    string release_date  
-}
-
-Protocol ||--}| Attribute : "has attribute"
-AttributeMixin ||--}| Attribute : "has attribute"
-DeprecatedMixin ||--|| NamedThing : "replaced by"
 
 ```
