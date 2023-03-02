@@ -887,6 +887,7 @@ classes:
         required: false
 
   submission:
+    tree_root: true
     mixins:
       - metadata mixin
     description: >-
