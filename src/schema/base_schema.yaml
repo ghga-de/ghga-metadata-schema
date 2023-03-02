@@ -55,7 +55,7 @@ classes:
       xref:
         description: >-
           Holds one or more database cross references for an entity.
-        required: true
+        required: false
       creation date:
         description: >-
           Timestamp (in ISO 8601 format) when the entity was created.
@@ -145,11 +145,6 @@ classes:
     exact_mappings:
       - SIO:000747
       - OBI:0000066
-    slot_usage:
-      title:
-        required: true
-      description:
-        required: true
 
   data transformation:
     is_a: planned process
@@ -160,11 +155,6 @@ classes:
     slots:
       - title
       - description
-    slot_usage:
-      title:
-        required: true
-      description:
-        required: true
     exact_mappings:
       - OBI:0200000
 
@@ -354,9 +344,6 @@ classes:
     description: Mixin for entities that can have one or more attributes.
     slots:
       - has attribute
-    slot_usage:
-      has attribute:
-        required: true
 
   deprecated mixin:
     mixin: true
@@ -436,7 +423,8 @@ slots:
     description: The name for an entity.
 
   type:
-    description: The type of an entity.
+    description:
+      The type of an entity.
       # Note: Not to be confused with rdf:type
 
   title:

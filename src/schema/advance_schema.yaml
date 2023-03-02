@@ -16,7 +16,6 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
-
 classes:
   agent:
     is_a: named thing
@@ -202,28 +201,6 @@ classes:
         inlined: true
         inlined_as_list: true
 
-  member:
-    is_a: person
-    description: >-
-      Member of an Organization or a Committee.
-    slots:
-      - email
-      - telephone
-      - organization
-    slot_usage:
-      email:
-        description: >-
-          The email of the Member.
-        required: true
-      telephone:
-        description: >-
-          The telephone number of the Member.
-        required: false
-      organization:
-        description: >-
-          The organization that the Member is part of.
-        required: true
-
   cell line:
     is_a: material entity
     description: >-
@@ -270,16 +247,6 @@ classes:
         inlined_as_list: false
 
 slots:
-  telephone:
-    description: >-
-      The telephone number associated with a person.
-
-  organization:
-    description: The organization associated with a person.
-  email:
-    description: >-
-      Email of a person.
-
   role:
     description: The role that a user has within GHGA.
     range: user role enum
@@ -313,10 +280,6 @@ slots:
     range: agent
     in_subset:
       - restricted
-
-  has member:
-    description: The members associated with a committee.
-    range: member
 
   has proband:
     description: The Individual that is reported to have a disorder in a Family.
