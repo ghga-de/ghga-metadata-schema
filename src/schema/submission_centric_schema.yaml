@@ -1175,6 +1175,14 @@ slots:
     in_subset:
       - restricted
 
+  has member:
+    description: >-
+      The members associated with a committee referenced in this submission
+    range: member
+    inlined: true
+    in_subset:
+      - restricted
+
   has protocol:
     description: The protocol associated with an entity.
     range: protocol

@@ -12,13 +12,13 @@ Submission {
 Publication {
 
 }
+Member {
+
+}
 DataAccessCommittee {
 
 }
 Attribute {
-
-}
-Member {
 
 }
 DataAccessPolicy {
@@ -85,33 +85,34 @@ Submission ||--}| File : "has file"
 Submission ||--}| Dataset : "has dataset"
 Submission ||--}| DataAccessPolicy : "has data access policy"
 Submission ||--}| DataAccessCommittee : "has data access committee"
+Submission ||--}| Member : "has member"
 Submission ||--}o Publication : "has publication"
 DataAccessCommittee ||--|| Member : "main contact"
-DataAccessCommittee ||--}| Attribute : "has attribute"
+DataAccessCommittee ||--}o Attribute : "has attribute"
 DataAccessPolicy ||--|| DataAccessCommittee : "has data access committee"
 DataAccessPolicy ||--|| DataUsePermission : "has data use permission"
 DataAccessPolicy ||--}o DataUseModifier : "has data use modifier"
-DataAccessPolicy ||--}| Attribute : "has attribute"
+DataAccessPolicy ||--}o Attribute : "has attribute"
 Dataset ||--}| Study : "has study"
-Dataset ||--}o Experiment : "has experiment"
+Dataset ||--}| Experiment : "has experiment"
 Dataset ||--}| Sample : "has sample"
 Dataset ||--}o Analysis : "has analysis"
 Dataset ||--}| File : "has file"
 Dataset ||--|| DataAccessPolicy : "has data access policy"
-Dataset ||--}| Attribute : "has attribute"
-File ||--}| Attribute : "has attribute"
+Dataset ||--}o Attribute : "has attribute"
+File ||--}o Attribute : "has attribute"
 Analysis ||--}| File : "has input"
 Analysis ||--|| Study : "has study"
 Analysis ||--}| File : "has output"
 Study ||--|o Project : "has project"
 Study ||--}o File : "has file"
 Study ||--}o Publication : "has publication"
-Study ||--}| Attribute : "has attribute"
-Project ||--}| Attribute : "has attribute"
+Study ||--}o Attribute : "has attribute"
+Project ||--}o Attribute : "has attribute"
 Sample ||--|| Individual : "has individual"
-Sample ||--}o AnatomicalEntity : "has anatomical entity"
+Sample ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--}| Attribute : "has attribute"
+Sample ||--}o Attribute : "has attribute"
 Biospecimen ||--|| Individual : "has individual"
 Individual ||--}o Ancestry : "has ancestry"
 Individual ||--}o Individual : "has parent"
@@ -121,9 +122,9 @@ Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
 Experiment ||--|| Study : "has study"
 Experiment ||--}| Sample : "has sample"
-Experiment ||--}o File : "has file"
+Experiment ||--}| File : "has file"
 Experiment ||--}| Protocol : "has protocol"
-Experiment ||--}| Attribute : "has attribute"
+Experiment ||--}o Attribute : "has attribute"
 Protocol ||--}| Attribute : "has attribute"
 
 ```
@@ -158,6 +159,21 @@ Publication {
     string schema_type  
     string schema_version  
 }
+Member {
+    string email  
+    string telephone  
+    string organization  
+    string given_name  
+    string family_name  
+    string additional_name  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
 DataAccessCommittee {
     string name  
     string description  
@@ -176,21 +192,6 @@ Attribute {
     string key_type  
     string value  
     string value_type  
-}
-Member {
-    string email  
-    string telephone  
-    string organization  
-    string given_name  
-    string family_name  
-    string additional_name  
-    string id  
-    string alias  
-    stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataAccessPolicy {
     string name  
@@ -466,33 +467,34 @@ Submission ||--}| File : "has file"
 Submission ||--}| Dataset : "has dataset"
 Submission ||--}| DataAccessPolicy : "has data access policy"
 Submission ||--}| DataAccessCommittee : "has data access committee"
+Submission ||--}| Member : "has member"
 Submission ||--}o Publication : "has publication"
 DataAccessCommittee ||--|| Member : "main contact"
-DataAccessCommittee ||--}| Attribute : "has attribute"
+DataAccessCommittee ||--}o Attribute : "has attribute"
 DataAccessPolicy ||--|| DataAccessCommittee : "has data access committee"
 DataAccessPolicy ||--|| DataUsePermission : "has data use permission"
 DataAccessPolicy ||--}o DataUseModifier : "has data use modifier"
-DataAccessPolicy ||--}| Attribute : "has attribute"
+DataAccessPolicy ||--}o Attribute : "has attribute"
 Dataset ||--}| Study : "has study"
-Dataset ||--}o Experiment : "has experiment"
+Dataset ||--}| Experiment : "has experiment"
 Dataset ||--}| Sample : "has sample"
 Dataset ||--}o Analysis : "has analysis"
 Dataset ||--}| File : "has file"
 Dataset ||--|| DataAccessPolicy : "has data access policy"
-Dataset ||--}| Attribute : "has attribute"
-File ||--}| Attribute : "has attribute"
+Dataset ||--}o Attribute : "has attribute"
+File ||--}o Attribute : "has attribute"
 Analysis ||--}| File : "has input"
 Analysis ||--|| Study : "has study"
 Analysis ||--}| File : "has output"
 Study ||--|o Project : "has project"
 Study ||--}o File : "has file"
 Study ||--}o Publication : "has publication"
-Study ||--}| Attribute : "has attribute"
-Project ||--}| Attribute : "has attribute"
+Study ||--}o Attribute : "has attribute"
+Project ||--}o Attribute : "has attribute"
 Sample ||--|| Individual : "has individual"
-Sample ||--}o AnatomicalEntity : "has anatomical entity"
+Sample ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--}| Attribute : "has attribute"
+Sample ||--}o Attribute : "has attribute"
 Biospecimen ||--|| Individual : "has individual"
 Individual ||--}o Ancestry : "has ancestry"
 Individual ||--}o Individual : "has parent"
@@ -502,9 +504,9 @@ Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
 Experiment ||--|| Study : "has study"
 Experiment ||--}| Sample : "has sample"
-Experiment ||--}o File : "has file"
+Experiment ||--}| File : "has file"
 Experiment ||--}| Protocol : "has protocol"
-Experiment ||--}| Attribute : "has attribute"
+Experiment ||--}o Attribute : "has attribute"
 Protocol ||--}| Attribute : "has attribute"
 
 ```
@@ -581,7 +583,7 @@ ReleaseStatusMixin {
 }
 
 Protocol ||--}| Attribute : "has attribute"
-AttributeMixin ||--}| Attribute : "has attribute"
+AttributeMixin ||--}o Attribute : "has attribute"
 DeprecatedMixin ||--|| NamedThing : "replaced by"
 
 ```
@@ -765,7 +767,7 @@ ReleaseStatusMixin {
 }
 
 Protocol ||--}| Attribute : "has attribute"
-AttributeMixin ||--}| Attribute : "has attribute"
+AttributeMixin ||--}o Attribute : "has attribute"
 DeprecatedMixin ||--|| NamedThing : "replaced by"
 
 ```
@@ -781,6 +783,9 @@ Submission {
 
 }
 Publication {
+
+}
+Member {
 
 }
 DataAccessCommittee {
@@ -853,32 +858,34 @@ Submission ||--}| File : "has file"
 Submission ||--}| Dataset : "has dataset"
 Submission ||--}| DataAccessPolicy : "has data access policy"
 Submission ||--}| DataAccessCommittee : "has data access committee"
+Submission ||--}| Member : "has member"
 Submission ||--}o Publication : "has publication"
-DataAccessCommittee ||--}| Attribute : "has attribute"
+DataAccessCommittee ||--|| Member : "main contact"
+DataAccessCommittee ||--}o Attribute : "has attribute"
 DataAccessPolicy ||--|| DataAccessCommittee : "has data access committee"
 DataAccessPolicy ||--|| DataUsePermission : "has data use permission"
 DataAccessPolicy ||--}o DataUseModifier : "has data use modifier"
-DataAccessPolicy ||--}| Attribute : "has attribute"
+DataAccessPolicy ||--}o Attribute : "has attribute"
 Dataset ||--}| Study : "has study"
-Dataset ||--}o Experiment : "has experiment"
+Dataset ||--}| Experiment : "has experiment"
 Dataset ||--}| Sample : "has sample"
 Dataset ||--}o Analysis : "has analysis"
 Dataset ||--}| File : "has file"
 Dataset ||--|| DataAccessPolicy : "has data access policy"
-Dataset ||--}| Attribute : "has attribute"
-File ||--}| Attribute : "has attribute"
+Dataset ||--}o Attribute : "has attribute"
+File ||--}o Attribute : "has attribute"
 Analysis ||--}| File : "has input"
 Analysis ||--|| Study : "has study"
 Analysis ||--}| File : "has output"
 Study ||--|o Project : "has project"
 Study ||--}o File : "has file"
 Study ||--}o Publication : "has publication"
-Study ||--}| Attribute : "has attribute"
-Project ||--}| Attribute : "has attribute"
+Study ||--}o Attribute : "has attribute"
+Project ||--}o Attribute : "has attribute"
 Sample ||--|| Individual : "has individual"
-Sample ||--}o AnatomicalEntity : "has anatomical entity"
+Sample ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--}| Attribute : "has attribute"
+Sample ||--}o Attribute : "has attribute"
 Biospecimen ||--|| Individual : "has individual"
 Individual ||--}o Ancestry : "has ancestry"
 Individual ||--}o Individual : "has parent"
@@ -888,9 +895,9 @@ Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
 Experiment ||--|| Study : "has study"
 Experiment ||--}| Sample : "has sample"
-Experiment ||--}o File : "has file"
+Experiment ||--}| File : "has file"
 Experiment ||--}| Protocol : "has protocol"
-Experiment ||--}| Attribute : "has attribute"
+Experiment ||--}o Attribute : "has attribute"
 Protocol ||--}| Attribute : "has attribute"
 
 ```
@@ -925,10 +932,24 @@ Publication {
     string schema_type  
     string schema_version  
 }
+Member {
+    string email  
+    string telephone  
+    string organization  
+    string given_name  
+    string family_name  
+    string additional_name  
+    string id  
+    string alias  
+    stringList xref  
+    string creation_date  
+    string update_date  
+    string schema_type  
+    string schema_version  
+}
 DataAccessCommittee {
     string name  
     string description  
-    member main_contact  
     string accession  
     string ega_accession  
     string id  
@@ -1219,32 +1240,34 @@ Submission ||--}| File : "has file"
 Submission ||--}| Dataset : "has dataset"
 Submission ||--}| DataAccessPolicy : "has data access policy"
 Submission ||--}| DataAccessCommittee : "has data access committee"
+Submission ||--}| Member : "has member"
 Submission ||--}o Publication : "has publication"
-DataAccessCommittee ||--}| Attribute : "has attribute"
+DataAccessCommittee ||--|| Member : "main contact"
+DataAccessCommittee ||--}o Attribute : "has attribute"
 DataAccessPolicy ||--|| DataAccessCommittee : "has data access committee"
 DataAccessPolicy ||--|| DataUsePermission : "has data use permission"
 DataAccessPolicy ||--}o DataUseModifier : "has data use modifier"
-DataAccessPolicy ||--}| Attribute : "has attribute"
+DataAccessPolicy ||--}o Attribute : "has attribute"
 Dataset ||--}| Study : "has study"
-Dataset ||--}o Experiment : "has experiment"
+Dataset ||--}| Experiment : "has experiment"
 Dataset ||--}| Sample : "has sample"
 Dataset ||--}o Analysis : "has analysis"
 Dataset ||--}| File : "has file"
 Dataset ||--|| DataAccessPolicy : "has data access policy"
-Dataset ||--}| Attribute : "has attribute"
-File ||--}| Attribute : "has attribute"
+Dataset ||--}o Attribute : "has attribute"
+File ||--}o Attribute : "has attribute"
 Analysis ||--}| File : "has input"
 Analysis ||--|| Study : "has study"
 Analysis ||--}| File : "has output"
 Study ||--|o Project : "has project"
 Study ||--}o File : "has file"
 Study ||--}o Publication : "has publication"
-Study ||--}| Attribute : "has attribute"
-Project ||--}| Attribute : "has attribute"
+Study ||--}o Attribute : "has attribute"
+Project ||--}o Attribute : "has attribute"
 Sample ||--|| Individual : "has individual"
-Sample ||--}o AnatomicalEntity : "has anatomical entity"
+Sample ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--}| Attribute : "has attribute"
+Sample ||--}o Attribute : "has attribute"
 Biospecimen ||--|| Individual : "has individual"
 Individual ||--}o Ancestry : "has ancestry"
 Individual ||--}o Individual : "has parent"
@@ -1254,9 +1277,9 @@ Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
 Experiment ||--|| Study : "has study"
 Experiment ||--}| Sample : "has sample"
-Experiment ||--}o File : "has file"
+Experiment ||--}| File : "has file"
 Experiment ||--}| Protocol : "has protocol"
-Experiment ||--}| Attribute : "has attribute"
+Experiment ||--}o Attribute : "has attribute"
 Protocol ||--}| Attribute : "has attribute"
 
 ```
