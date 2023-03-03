@@ -43,7 +43,6 @@ classes:
       - accession mixin
       - ega accession mixin
       - attribute mixin
-      - release status mixin
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
       detailed examination and analysis of a subject to learn more about the phenomenon
@@ -85,11 +84,6 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell, bulk etc)
-      release status:
-        description: >-
-          The release status of a Study.
-        range: release status enum
-        required: true
       has file:
         description: >-
           Additional/supplementary files associated with a Study.
@@ -114,7 +108,6 @@ classes:
       - type
       - biological replicates
       - technical replicates
-      - experimental replicates
       - has study
       - has sample
       - has file
@@ -134,8 +127,6 @@ classes:
       biological replicates:
         required: false
       technical replicates:
-        required: false
-      experimental replicates:
         required: false
       has study:
         description: >-
@@ -228,7 +219,6 @@ classes:
     slots:
       - sequencing center
       - instrument model
-      - paired or single end
       - forward or reverse
       - sequencing read length
       - index sequence
@@ -259,9 +249,6 @@ classes:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
       sequencing center:
-        required: false
-        recommended: true
-      paired or single end:
         required: false
         recommended: true
       forward or reverse:
@@ -550,7 +537,6 @@ classes:
       A file is an object that contains information generated from a process, either an
       Experiment or an Analysis.
     slots:
-      - drs uri
       - name
       - format
       - size
@@ -563,8 +549,6 @@ classes:
         required: true
       format:
         required: true
-      drs uri:
-        required: false
       checksum:
         required: true
       checksum type:
@@ -633,7 +617,6 @@ classes:
     mixins:
       - accession mixin
       - ega accession mixin
-      - release status mixin
       - attribute mixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
@@ -710,11 +693,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      release status:
-        description: >-
-          The release status of a Dataset.
-        required: false
-        range: release status enum
 
   data use permission:
     is_a: information content entity
@@ -838,6 +816,7 @@ classes:
       - author
       - year
       - journal
+      - doi
     slot_usage:
       title:
         description: >-
@@ -857,11 +836,13 @@ classes:
         description: >-
           One or more cross-references for this Publication.
         required: false
+      doi:
+        description:
+          DOI identifier of the Publication.
+        required: true
 
   submission:
     tree_root: true
-    mixins:
-      - metadata mixin
     description: >-
       A grouping entity that represents information about one or more entities.
       A submission can be considered as a set of inter-related (and inter-connected)
@@ -883,8 +864,6 @@ classes:
       - has data access committee
       - has publication
       - submission date
-      - creation date
-      - update date
       - submission status
     slot_usage:
       id:
@@ -984,14 +963,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      creation date:
-        description: >-
-          Timestamp (in ISO 8601 format) when the Submission was created.
-        required: false
-      update date:
-        description: >-
-          Timestamp (in ISO 8601 format) when the Submission was updated.
-        required: false
       submission status:
         description: >-
           The status of a Submission.
@@ -1164,20 +1135,12 @@ slots:
     exact_mappings:
       - EFO:0002090
 
-
   biological replicates:
     description: >-
       A biological replicate is a replicate role that consists of
       independent biological replicates made from different individual biosamples.
     exact_mappings:
       - EFO:0002091
-
-  experimental replicates:
-    description: >-
-      The replicate number of the assay, i.e. the numeric iteration
-      for the assay that was repeated.
-    exact_mappings:
-      - NCIT:C178859
 
   library name:
     description: >-
@@ -1256,13 +1219,6 @@ slots:
       A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
     exact_mappings:
       - NCIT:C165443
-
-  paired or single end:
-    deprecated: true
-    description: >-
-      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
-      The number that identifies each read direction in a paired-end nucleotide sequencing replications.
-    range: paired or single end enum
 
   forward or reverse:
     description: >-
@@ -1396,10 +1352,6 @@ slots:
     description: >-
       The type of algorithm used to generate the checksum of a file.
 
-  drs uri:
-    description: >-
-      GA4GH Data Repository Service (DRS) identifier URI for a file.
-
   reference chromosome:
     description: >-
       The reference chromosome used for this Analysis.
@@ -1454,6 +1406,10 @@ slots:
   submission date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
+
+  doi:
+    description: >-
+      DOI identifier of a publication.
 
 enums:
   biological sex enum:
@@ -1556,15 +1512,6 @@ enums:
         description: The Sample is to be treated as Control
       case:
         description: The Sample is to be treated as Case
-  paired or single end enum:
-    deprecated: true
-    description: >-
-      Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
-    permissible_values:
-      paired:
-        description: The reads are Paired-end
-      single:
-        description: The reads are Single-end
   forward or reverse enum:
     description: >-
       Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
@@ -1573,14 +1520,6 @@ enums:
         description: The reads are forward (R1) reads
       reverse:
         description: The reads are reverse (R2) reads
-  release status enum:
-    description: >-
-      Enum to capture the release status of an entity.
-    permissible_values:
-      unreleased:
-        description: signifies that the entity has not yet been release for public consumption.
-      released:
-        description: signifies that the entity has been release for public consumption.
   age range enum:
     description: >-
       Enum to capture the age range that an Indiviudal belongs to.
