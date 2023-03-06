@@ -512,6 +512,8 @@ classes:
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
         required: false
+        multivalued: true
+        inlined_as_list: true
 
   sequencing protocol:
     is_a: protocol
@@ -2469,10 +2471,20 @@ enums:
     description: >-
       Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     permissible_values:
-      control:
-        description: The Sample is to be treated as Control
-      case:
-        description: The Sample is to be treated as Case
+      neither case or control status:
+        description: The participant is neither a true case or true control for the phenotype under consideration
+      probable case status:
+        description: The participant is a probable case for the phenotype under consideration
+      probable control status:
+        description: The participant is a probable control for the phenotype under consideration
+      true case status:
+        description: The participant is a true case for the phenotype under consideration
+      true control status:
+        description: The participant is a true control for the phenotype under consideration
+      tumor:
+        description: The sample is a case for the cancer phenotype 
+      normal:
+        description: The sample is a control for the cancer phenotype
 
   paired or single end enum:
     deprecated: true
