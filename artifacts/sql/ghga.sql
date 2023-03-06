@@ -7,7 +7,7 @@ CREATE TYPE "age range enum" AS ENUM ('0-5', '6-10', '11-15', '16-20', '21-25', 
 CREATE TYPE "vital status enum" AS ENUM ('alive', 'deceased', 'unknown');
 CREATE TYPE "experiment process type enum" AS ENUM ('sample_preparation', 'assay');
 CREATE TYPE "file format enum" AS ENUM ('bam', 'complete_genomics', 'cram', 'fasta', 'fastq', 'pacbio_hdf5', 'sff', 'srf', 'vcf', 'txt', 'pxf', 'other');
-CREATE TYPE "case control status enum" AS ENUM ('neither case or control status', 'probable case status', 'probable control status', 'true case status', 'true control status', 'tumor', 'normal');
+CREATE TYPE "case control status enum" AS ENUM ('neither_case_or_control_status', 'probable_case_status', 'probable_control_status', 'true_case_status', 'true_control_status', 'tumor', 'healthy');
 CREATE TYPE "paired or single end enum" AS ENUM ('paired', 'single');
 CREATE TYPE "forward or reverse enum" AS ENUM ('forward', 'reverse');
 CREATE TYPE "study type enum" AS ENUM ('whole_genome_sequencing', 'metagenomics', 'transcriptome_analysis', 'resequencing', 'epigenetics', 'synthetic_genomics', 'forensic_paleo_genomics', 'gene_regulation', 'cancer_genomics', 'population_genomics', 'rna_seq', 'exome_sequencing', 'pooled_clone_sequencing', 'genome_wide_association_study', 'other');

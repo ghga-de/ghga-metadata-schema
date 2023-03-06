@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T15:32:36
+# Generation date: 2023-03-06T23:48:54
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -2869,33 +2869,25 @@ class CaseControlStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     """
+    neither_case_or_control_status = PermissibleValue(text="neither_case_or_control_status",
+                                                                                   description="The participant is neither a true case or true control for the phenotype under consideration")
+    probable_case_status = PermissibleValue(text="probable_case_status",
+                                                               description="The participant is a probable case for the phenotype under consideration")
+    probable_control_status = PermissibleValue(text="probable_control_status",
+                                                                     description="The participant is a probable control for the phenotype under consideration")
+    true_case_status = PermissibleValue(text="true_case_status",
+                                                       description="The participant is a true case for the phenotype under consideration")
+    true_control_status = PermissibleValue(text="true_control_status",
+                                                             description="The participant is a true control for the phenotype under consideration")
     tumor = PermissibleValue(text="tumor",
                                  description="The sample is a case for the cancer phenotype")
-    normal = PermissibleValue(text="normal",
-                                   description="The sample is a control for the cancer phenotype")
+    healthy = PermissibleValue(text="healthy",
+                                     description="The sample is a control for the cancer phenotype")
 
     _defn = EnumDefinition(
         name="CaseControlStatusEnum",
         description="Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "neither case or control status",
-                PermissibleValue(text="neither case or control status",
-                                 description="The participant is neither a true case or true control for the phenotype under consideration") )
-        setattr(cls, "probable case status",
-                PermissibleValue(text="probable case status",
-                                 description="The participant is a probable case for the phenotype under consideration") )
-        setattr(cls, "probable control status",
-                PermissibleValue(text="probable control status",
-                                 description="The participant is a probable control for the phenotype under consideration") )
-        setattr(cls, "true case status",
-                PermissibleValue(text="true case status",
-                                 description="The participant is a true case for the phenotype under consideration") )
-        setattr(cls, "true control status",
-                PermissibleValue(text="true control status",
-                                 description="The participant is a true control for the phenotype under consideration") )
 
 class PairedOrSingleEndEnum(EnumDefinitionImpl):
     """

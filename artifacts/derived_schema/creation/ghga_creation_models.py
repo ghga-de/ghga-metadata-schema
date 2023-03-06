@@ -70,13 +70,13 @@ class FileFormatEnum(str, Enum):
 
 class CaseControlStatusEnum(str, Enum):
     
-    neither_case_or_control_status = "neither case or control status"
-    probable_case_status = "probable case status"
-    probable_control_status = "probable control status"
-    true_case_status = "true case status"
-    true_control_status = "true control status"
+    neither_case_or_control_status = "neither_case_or_control_status"
+    probable_case_status = "probable_case_status"
+    probable_control_status = "probable_control_status"
+    true_case_status = "true_case_status"
+    true_control_status = "true_control_status"
     tumor = "tumor"
-    normal = "normal"
+    healthy = "healthy"
     
     
 

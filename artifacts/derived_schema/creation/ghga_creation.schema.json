@@ -66,13 +66,13 @@
       "CaseControlStatusEnum": {
          "description": "Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
          "enum": [
-            "neither case or control status",
-            "probable case status",
-            "probable control status",
-            "true case status",
-            "true control status",
+            "neither_case_or_control_status",
+            "probable_case_status",
+            "probable_control_status",
+            "true_case_status",
+            "true_control_status",
             "tumor",
-            "normal"
+            "healthy"
          ],
          "title": "CaseControlStatusEnum",
          "type": "string"

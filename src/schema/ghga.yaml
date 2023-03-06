@@ -2471,19 +2471,19 @@ enums:
     description: >-
       Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     permissible_values:
-      neither case or control status:
+      neither_case_or_control_status:
         description: The participant is neither a true case or true control for the phenotype under consideration
-      probable case status:
+      probable_case_status:
         description: The participant is a probable case for the phenotype under consideration
-      probable control status:
+      probable_control_status:
         description: The participant is a probable control for the phenotype under consideration
-      true case status:
+      true_case_status:
         description: The participant is a true case for the phenotype under consideration
-      true control status:
+      true_control_status:
         description: The participant is a true control for the phenotype under consideration
       tumor:
         description: The sample is a case for the cancer phenotype 
-      normal:
+      healthy:
         description: The sample is a control for the cancer phenotype
 
   paired or single end enum:
