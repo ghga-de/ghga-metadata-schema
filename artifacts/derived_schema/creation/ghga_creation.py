@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T23:49:03
+# Generation date: 2023-03-06T23:54:52
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -2523,6 +2523,8 @@ class CaseControlStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     """
+    unable_to_assess_case_or_control_status = PermissibleValue(text="unable_to_assess_case_or_control_status",
+                                                                                                     description="Unknown")
     neither_case_or_control_status = PermissibleValue(text="neither_case_or_control_status",
                                                                                    description="The participant is neither a true case or true control for the phenotype under consideration")
     probable_case_status = PermissibleValue(text="probable_case_status",

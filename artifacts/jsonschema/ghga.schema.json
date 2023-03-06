@@ -568,6 +568,7 @@
       "CaseControlStatusEnum": {
          "description": "Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
          "enum": [
+            "unable_to_assess_case_or_control_status",
             "neither_case_or_control_status",
             "probable_case_status",
             "probable_control_status",

@@ -70,6 +70,7 @@ class FileFormatEnum(str, Enum):
 
 class CaseControlStatusEnum(str, Enum):
     
+    unable_to_assess_case_or_control_status = "unable_to_assess_case_or_control_status"
     neither_case_or_control_status = "neither_case_or_control_status"
     probable_case_status = "probable_case_status"
     probable_control_status = "probable_control_status"

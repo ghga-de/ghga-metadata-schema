@@ -2471,6 +2471,8 @@ enums:
     description: >-
       Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     permissible_values:
+      unable_to_assess_case_or_control_status:
+        description: Unknown
       neither_case_or_control_status:
         description: The participant is neither a true case or true control for the phenotype under consideration
       probable_case_status:

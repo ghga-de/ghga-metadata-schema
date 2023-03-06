@@ -16,6 +16,7 @@ URI: [GHGA:case_control_status_enum](https://w3id.org/GHGA/case_control_status_e
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
+| unable_to_assess_case_or_control_status | Unknown |  |  |
 | neither_case_or_control_status | The participant is neither a true case or true control for the phenotype under consideration |  |  |
 | probable_case_status | The participant is a probable case for the phenotype under consideration |  |  |
 | probable_control_status | The participant is a probable control for the phenotype under consideration |  |  |
