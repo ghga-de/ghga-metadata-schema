@@ -30,8 +30,6 @@ subsets:
 
 classes:
   named thing:
-    mixins:
-      - metadata mixin
     abstract: true
     aliases: ["named entity", "entity", "object"]
     description: >-
@@ -41,8 +39,6 @@ classes:
       - id
       - alias
       - xref
-      - creation date
-      - update date
     slot_usage:
       id:
         description: >-
@@ -55,14 +51,6 @@ classes:
       xref:
         description: >-
           Holds one or more database cross references for an entity.
-        required: true
-      creation date:
-        description: >-
-          Timestamp (in ISO 8601 format) when the entity was created.
-        required: true
-      update date:
-        description: >-
-          Timestamp (in ISO 8601 format) when the entity was updated.
         required: true
 
   person:
@@ -319,18 +307,6 @@ classes:
           a percentage.
         required: false
 
-  metadata mixin:
-    mixin: true
-    description: Mixin for tracking schema specific metadata about an instance.
-    slots:
-      - schema type
-      - schema version
-    slot_usage:
-      schema type:
-        required: true
-      schema version:
-        required: true
-
   accession mixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
@@ -370,30 +346,7 @@ classes:
       deprecation date:
         required: true
 
-  release status mixin:
-    mixin: true
-    description: Mixin for entities that can be released at a later point in time.
-    slots:
-      - release status
-      - release date
-    slot_usage:
-      release status:
-        required: true
-      release date:
-        required: true
-
 slots:
-  update date:
-    description: Timestamp (in ISO 8601 format) when the entity was updated.
-
-  creation date:
-    description: Timestamp (in ISO 8601 format) when the entity was created.
-
-  schema type:
-    description: The schema type an instance corresponds to.
-
-  schema version:
-    description: The version of the schema an instance corresponds to.
 
   id:
     description: An identifier that uniquely represents an entity.
@@ -457,14 +410,6 @@ slots:
   category:
     description: >-
       The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
-
-  release status:
-    description: >-
-      The release status of an entity.
-
-  release date:
-    description: >-
-      The timestamp (in ISO 8601 format) when the entity was released for public consumption.
 
   deprecation date:
     description: >-
