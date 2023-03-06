@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-16T11:06:12
+# Generation date: 2023-03-06T15:32:48
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -697,7 +697,7 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     library_preparation_kit_manufacturer: Optional[str] = None
     primer: Optional[str] = None
     end_bias: Optional[str] = None
-    target_regions: Optional[str] = None
+    target_regions: Optional[Union[str, List[str]]] = empty_list()
     rnaseq_strandedness: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -749,8 +749,9 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
         if self.end_bias is not None and not isinstance(self.end_bias, str):
             self.end_bias = str(self.end_bias)
 
-        if self.target_regions is not None and not isinstance(self.target_regions, str):
-            self.target_regions = str(self.target_regions)
+        if not isinstance(self.target_regions, list):
+            self.target_regions = [self.target_regions] if self.target_regions is not None else []
+        self.target_regions = [v if isinstance(v, str) else str(v) for v in self.target_regions]
 
         if self.rnaseq_strandedness is not None and not isinstance(self.rnaseq_strandedness, str):
             self.rnaseq_strandedness = str(self.rnaseq_strandedness)
@@ -2522,15 +2523,33 @@ class CaseControlStatusEnum(EnumDefinitionImpl):
     """
     Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     """
-    control = PermissibleValue(text="control",
-                                     description="The Sample is to be treated as Control")
-    case = PermissibleValue(text="case",
-                               description="The Sample is to be treated as Case")
+    tumor = PermissibleValue(text="tumor",
+                                 description="The sample is a case for the cancer phenotype")
+    normal = PermissibleValue(text="normal",
+                                   description="The sample is a control for the cancer phenotype")
 
     _defn = EnumDefinition(
         name="CaseControlStatusEnum",
         description="Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
     )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "neither case or control status",
+                PermissibleValue(text="neither case or control status",
+                                 description="The participant is neither a true case or true control for the phenotype under consideration") )
+        setattr(cls, "probable case status",
+                PermissibleValue(text="probable case status",
+                                 description="The participant is a probable case for the phenotype under consideration") )
+        setattr(cls, "probable control status",
+                PermissibleValue(text="probable control status",
+                                 description="The participant is a probable control for the phenotype under consideration") )
+        setattr(cls, "true case status",
+                PermissibleValue(text="true case status",
+                                 description="The participant is a true case for the phenotype under consideration") )
+        setattr(cls, "true control status",
+                PermissibleValue(text="true control status",
+                                 description="The participant is a true control for the phenotype under consideration") )
 
 class PairedOrSingleEndEnum(EnumDefinitionImpl):
     """
@@ -3210,7 +3229,7 @@ slots.create_library_preparation_protocol_has_attribute = Slot(uri=GHGA.has_attr
                    model_uri=GHGA.create_library_preparation_protocol_has_attribute, domain=CreateLibraryPreparationProtocol, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
 slots.create_library_preparation_protocol_target_regions = Slot(uri=GHGA.target_regions, name="create library preparation protocol_target regions", curie=GHGA.curie('target_regions'),
-                   model_uri=GHGA.create_library_preparation_protocol_target_regions, domain=CreateLibraryPreparationProtocol, range=Optional[str])
+                   model_uri=GHGA.create_library_preparation_protocol_target_regions, domain=CreateLibraryPreparationProtocol, range=Optional[Union[str, List[str]]])
 
 slots.create_sequencing_protocol_alias = Slot(uri=GHGA.alias, name="create sequencing protocol_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.create_sequencing_protocol_alias, domain=CreateSequencingProtocol, range=str)

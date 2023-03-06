@@ -521,7 +521,7 @@ linkml:Nodeidentifier NONLITERAL
           <library_preparation_kit_manufacturer> @linkml:String ? ;
           <primer> @linkml:String ? ;
           <end_bias> @linkml:String ? ;
-          <target_regions> @linkml:String ? ;
+          <target_regions> @linkml:String * ;
           <rnaseq_strandedness> @linkml:String ? ;
           <alias> @linkml:String ;
           <description> @linkml:String ;

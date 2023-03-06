@@ -66,8 +66,13 @@
       "CaseControlStatusEnum": {
          "description": "Enum to capture whether a Sample in a Study is to be considered as Case or Control.",
          "enum": [
-            "control",
-            "case"
+            "neither case or control status",
+            "probable case status",
+            "probable control status",
+            "true case status",
+            "true control status",
+            "tumor",
+            "normal"
          ],
          "title": "CaseControlStatusEnum",
          "type": "string"
@@ -1977,7 +1982,10 @@
             },
             "target_regions": {
                "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.",
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "type": {
                "description": "Type of the protocol (eg: Target enrichment).",

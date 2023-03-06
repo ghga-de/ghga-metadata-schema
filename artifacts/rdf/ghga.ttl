@@ -15,24 +15,24 @@
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     pav:version "0.9.1" ;
     skos:definition "The metadata schema for the German Human Genome-Phenome Archive (GHGA)." ;
-    sh:declare [ sh:namespace linkml: ;
-            sh:prefix "linkml" ],
-        [ sh:namespace <https://w3id.org/biolink/vocab/> ;
-            sh:prefix "biolink" ],
-        [ sh:namespace <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
-            sh:prefix "SNOMEDCT" ],
-        [ sh:namespace <http://semanticscience.org/resource/SIO_> ;
-            sh:prefix "SIO" ],
+    sh:declare [ sh:namespace <http://purl.obolibrary.org/obo/HANCESTRO_> ;
+            sh:prefix "HANCESTRO" ],
         [ sh:namespace <http://www.ebi.ac.uk/efo/EFO_> ;
             sh:prefix "EFO" ],
-        [ sh:namespace <http://purl.obolibrary.org/obo/HANCESTRO_> ;
-            sh:prefix "HANCESTRO" ],
-        [ sh:namespace <https://w3id.org/GHGA/> ;
-            sh:prefix "GHGA" ],
         [ sh:namespace <http://purl.obolibrary.org/obo/COB_> ;
             sh:prefix "COB" ],
+        [ sh:namespace <http://semanticscience.org/resource/SIO_> ;
+            sh:prefix "SIO" ],
+        [ sh:namespace <https://w3id.org/biolink/vocab/> ;
+            sh:prefix "biolink" ],
+        [ sh:namespace linkml: ;
+            sh:prefix "linkml" ],
+        [ sh:namespace <https://w3id.org/GHGA/> ;
+            sh:prefix "GHGA" ],
         [ sh:namespace <http://purl.obolibrary.org/obo/GENEPIO_> ;
-            sh:prefix "GENEPIO" ] ;
+            sh:prefix "GENEPIO" ],
+        [ sh:namespace <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
+            sh:prefix "SNOMEDCT" ] ;
     linkml:classes <https://w3id.org/GHGA/AccessionMixin>,
         <https://w3id.org/GHGA/Agent>,
         <https://w3id.org/GHGA/Analysis>,
@@ -94,7 +94,7 @@
         "semweb_context" ;
     linkml:default_prefix "GHGA" ;
     linkml:default_range <https://w3id.org/GHGA/string> ;
-    linkml:generation_date "2023-02-16T11:06:05"^^xsd:dateTime ;
+    linkml:generation_date "2023-03-06T15:32:40"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
@@ -396,8 +396,8 @@
         <https://w3id.org/GHGA/xref>,
         <https://w3id.org/GHGA/year> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2023-02-12T13:51:19"^^xsd:dateTime ;
-    linkml:source_file_size 73399 ;
+    linkml:source_file_date "2023-03-06T15:18:20"^^xsd:dateTime ;
+    linkml:source_file_size 74112 ;
     linkml:subsets <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/optional>,
         <https://w3id.org/GHGA/public>,
@@ -1970,8 +1970,10 @@
     linkml:definition_uri <https://w3id.org/GHGA/target_regions> ;
     linkml:domain <https://w3id.org/GHGA/LibraryPreparationProtocol> ;
     linkml:domain_of <https://w3id.org/GHGA/LibraryPreparationProtocol> ;
+    linkml:inlined_as_list true ;
     linkml:is_a <https://w3id.org/GHGA/target_regions> ;
     linkml:is_usage_slot true ;
+    linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/LibraryPreparationProtocol> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/target_regions> ;
