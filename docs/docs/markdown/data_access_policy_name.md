@@ -9,7 +9,7 @@ URI: [GHGA:data_access_policy_name](https://w3id.org/GHGA/data_access_policy_nam
 
 ## Domain and Range
 
-[DataAccessPolicy](DataAccessPolicy.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[DataAccessPolicy](DataAccessPolicy.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

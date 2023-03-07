@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_dataset](https://w3id.org/GHGA/submission_has_dataset)
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Dataset](Dataset.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [Dataset](Dataset.md)
 
 ## Parents
 

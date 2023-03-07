@@ -462,6 +462,7 @@ classes:
       has file:
         description: >-
           A document that describes the Protocol.
+        required: true
       xref:
         description: >-
           One or more cross-references for this Protocol. 
@@ -469,8 +470,7 @@ classes:
       has attribute:
         description: >-
           One or more attributes that further characterizes this Protocol.
-      has file:
-        required: true
+
 
   library preparation protocol:
     is_a: protocol

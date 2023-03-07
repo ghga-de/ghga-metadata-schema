@@ -9,7 +9,7 @@ URI: [GHGA:dataset_has_experiment](https://w3id.org/GHGA/dataset_has_experiment)
 
 ## Domain and Range
 
-[Dataset](Dataset.md) &#8594;  <sub>0..\*</sub> [Experiment](Experiment.md)
+[Dataset](Dataset.md) &#8594;  <sub>1..\*</sub> [Experiment](Experiment.md)
 
 ## Parents
 

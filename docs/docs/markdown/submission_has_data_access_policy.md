@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_data_access_policy](https://w3id.org/GHGA/submission_h
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [DataAccessPolicy](DataAccessPolicy.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [DataAccessPolicy](DataAccessPolicy.md)
 
 ## Parents
 

@@ -7,7 +7,7 @@ A grouping entity that represents information about one or more entities. A subm
 URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication]<has%20publication%200..*-++[Submission&#124;id:string;affiliation:string%20%3F;submission_date:string%20%3F;creation_date:string%20%3F;update_date:string%20%3F;submission_status:submission_status_enum%20%3F;schema_type:string%20%3F;schema_version:string%20%3F],[Member]<has%20member%200..*-++[Submission],[DataAccessCommittee]<has%20data%20access%20committee%200..*-++[Submission],[DataAccessPolicy]<has%20data%20access%20policy%200..*-++[Submission],[Dataset]<has%20dataset%200..*-++[Submission],[File]<has%20file%200..*-++[Submission],[Analysis]<has%20analysis%200..*-++[Submission],[Protocol]<has%20protocol%200..*-++[Submission],[Experiment]<has%20experiment%200..*-++[Submission],[Individual]<has%20individual%200..*-++[Submission],[Biospecimen]<has%20biospecimen%200..*-++[Submission],[Sample]<has%20sample%200..*-++[Submission],[Project]<has%20project%200..1-++[Submission],[Study]<has%20study%200..1-++[Submission],[Submission]uses%20-.->[MetadataMixin],[Study],[Sample],[Publication],[Protocol],[Project],[MetadataMixin],[Member],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication]<has%20publication%200..*-++[Submission&#124;id:string;affiliation:string%20%3F;submission_date:string%20%3F;creation_date:string%20%3F;update_date:string%20%3F;submission_status:submission_status_enum%20%3F;schema_type:string%20%3F;schema_version:string%20%3F],[Member]<has%20member%200..*-++[Submission],[DataAccessCommittee]<has%20data%20access%20committee%200..*-++[Submission],[DataAccessPolicy]<has%20data%20access%20policy%200..*-++[Submission],[Dataset]<has%20dataset%200..*-++[Submission],[File]<has%20file%200..*-++[Submission],[Analysis]<has%20analysis%200..*-++[Submission],[Protocol]<has%20protocol%200..*-++[Submission],[Experiment]<has%20experiment%200..*-++[Submission],[Individual]<has%20individual%200..*-++[Submission],[Biospecimen]<has%20biospecimen%200..*-++[Submission],[Sample]<has%20sample%200..*-++[Submission],[Project]<has%20project%200..1-++[Submission],[Study]<has%20study%200..1-++[Submission],[Submission]uses%20-.->[MetadataMixin],[Study],[Sample],[Publication],[Protocol],[Project],[MetadataMixin],[Member],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication]<has%20publication%200..*-++[Submission&#124;id:string;affiliation:string%20%3F;submission_date:string%20%3F;creation_date:string%20%3F;update_date:string%20%3F;submission_status:submission_status_enum%20%3F;schema_type:string%20%3F;schema_version:string%20%3F],[Member]<has%20member%201..*-++[Submission],[DataAccessCommittee]<has%20data%20access%20committee%201..*-++[Submission],[DataAccessPolicy]<has%20data%20access%20policy%201..*-++[Submission],[Dataset]<has%20dataset%201..*-++[Submission],[File]<has%20file%200..*-++[Submission],[Analysis]<has%20analysis%200..*-++[Submission],[Protocol]<has%20protocol%201..*-++[Submission],[Experiment]<has%20experiment%201..*-++[Submission],[Individual]<has%20individual%201..*-++[Submission],[Biospecimen]<has%20biospecimen%200..*-++[Submission],[Sample]<has%20sample%201..*-++[Submission],[Project]<has%20project%200..1-++[Submission],[Study]<has%20study%201..1-++[Submission],[Submission]uses%20-.->[MetadataMixin],[Study],[Sample],[Publication],[Protocol],[Project],[MetadataMixin],[Member],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication]<has%20publication%200..*-++[Submission&#124;id:string;affiliation:string%20%3F;submission_date:string%20%3F;creation_date:string%20%3F;update_date:string%20%3F;submission_status:submission_status_enum%20%3F;schema_type:string%20%3F;schema_version:string%20%3F],[Member]<has%20member%201..*-++[Submission],[DataAccessCommittee]<has%20data%20access%20committee%201..*-++[Submission],[DataAccessPolicy]<has%20data%20access%20policy%201..*-++[Submission],[Dataset]<has%20dataset%201..*-++[Submission],[File]<has%20file%200..*-++[Submission],[Analysis]<has%20analysis%200..*-++[Submission],[Protocol]<has%20protocol%201..*-++[Submission],[Experiment]<has%20experiment%201..*-++[Submission],[Individual]<has%20individual%201..*-++[Submission],[Biospecimen]<has%20biospecimen%200..*-++[Submission],[Sample]<has%20sample%201..*-++[Submission],[Project]<has%20project%200..1-++[Submission],[Study]<has%20study%201..1-++[Submission],[Submission]uses%20-.->[MetadataMixin],[Study],[Sample],[Publication],[Protocol],[Project],[MetadataMixin],[Member],[Individual],[File],[Experiment],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[Analysis])
 
 ## Uses Mixin
 
@@ -29,7 +29,7 @@ URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
      * Description: Institution/Center/Data Hub that is providing this submission.
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
- * [submission➞has study](submission_has_study.md)  <sub>0..1</sub>
+ * [submission➞has study](submission_has_study.md)  <sub>1..1</sub>
      * Description: Information about a Study entities associated with this submission.
      * Range: [Study](Study.md)
      * in subsets: (essential,public)
@@ -37,7 +37,7 @@ URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
      * Description: Information about a Project entity associated with this submission.
      * Range: [Project](Project.md)
      * in subsets: (optional,public)
- * [submission➞has sample](submission_has_sample.md)  <sub>0..\*</sub>
+ * [submission➞has sample](submission_has_sample.md)  <sub>1..\*</sub>
      * Description: Information about one or more Sample entities associated with this submission.
      * Range: [Sample](Sample.md)
      * in subsets: (essential,restricted)
@@ -45,15 +45,15 @@ URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
      * Description: Information about one or more Biospecimen entities associated with this submission.
      * Range: [Biospecimen](Biospecimen.md)
      * in subsets: (optional,restricted)
- * [submission➞has individual](submission_has_individual.md)  <sub>0..\*</sub>
+ * [submission➞has individual](submission_has_individual.md)  <sub>1..\*</sub>
      * Description: Information about one or more Individual entities associated with this submission.
      * Range: [Individual](Individual.md)
      * in subsets: (essential,restricted)
- * [submission➞has experiment](submission_has_experiment.md)  <sub>0..\*</sub>
+ * [submission➞has experiment](submission_has_experiment.md)  <sub>1..\*</sub>
      * Description: Information about one or more Experiment entities associated with this submission.
      * Range: [Experiment](Experiment.md)
      * in subsets: (essential,restricted)
- * [submission➞has protocol](submission_has_protocol.md)  <sub>0..\*</sub>
+ * [submission➞has protocol](submission_has_protocol.md)  <sub>1..\*</sub>
      * Description: One or more Protocol entities associated with this Submission.
      * Range: [Protocol](Protocol.md)
      * in subsets: (essential,restricted)
@@ -65,18 +65,18 @@ URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
      * Description: Information about one or more File entities associated with this submission.
      * Range: [File](File.md)
      * in subsets: (essential,restricted)
- * [submission➞has dataset](submission_has_dataset.md)  <sub>0..\*</sub>
+ * [submission➞has dataset](submission_has_dataset.md)  <sub>1..\*</sub>
      * Description: One or more Dataset that are part of this submission.
      * Range: [Dataset](Dataset.md)
- * [submission➞has data access policy](submission_has_data_access_policy.md)  <sub>0..\*</sub>
+ * [submission➞has data access policy](submission_has_data_access_policy.md)  <sub>1..\*</sub>
      * Description: The Data Access Policy that applies to Dataset in this submission.
      * Range: [DataAccessPolicy](DataAccessPolicy.md)
      * in subsets: (essential,restricted)
- * [submission➞has data access committee](submission_has_data_access_committee.md)  <sub>0..\*</sub>
+ * [submission➞has data access committee](submission_has_data_access_committee.md)  <sub>1..\*</sub>
      * Description: The Data Access Committee that applies to Dataset in this submission.
      * Range: [DataAccessCommittee](DataAccessCommittee.md)
      * in subsets: (essential,restricted)
- * [submission➞has member](submission_has_member.md)  <sub>0..\*</sub>
+ * [submission➞has member](submission_has_member.md)  <sub>1..\*</sub>
      * Description: One or more member that are part of the Data Access Committee referenced in this submission.
      * Range: [Member](Member.md)
  * [submission➞has publication](submission_has_publication.md)  <sub>0..\*</sub>

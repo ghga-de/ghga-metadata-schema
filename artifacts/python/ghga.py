@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T23:54:43
+# Generation date: 2023-03-07T21:33:19
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -847,12 +847,12 @@ class Protocol(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.Protocol
 
     id: Union[str, ProtocolId] = None
+    has_file: Union[str, FileId] = None
     alias: str = None
     name: Optional[str] = None
     type: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
-    has_file: Optional[Union[str, FileId]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
 
@@ -861,6 +861,11 @@ class Protocol(InformationContentEntity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProtocolId):
             self.id = ProtocolId(self.id)
+
+        if self._is_empty(self.has_file):
+            self.MissingRequiredField("has_file")
+        if not isinstance(self.has_file, FileId):
+            self.has_file = FileId(self.has_file)
 
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
@@ -878,9 +883,6 @@ class Protocol(InformationContentEntity):
 
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
-
-        if self.has_file is not None and not isinstance(self.has_file, FileId):
-            self.has_file = FileId(self.has_file)
 
         if not isinstance(self.xref, list):
             self.xref = [self.xref] if self.xref is not None else []
@@ -906,6 +908,7 @@ class LibraryPreparationProtocol(Protocol):
     class_model_uri: ClassVar[URIRef] = GHGA.LibraryPreparationProtocol
 
     id: Union[str, LibraryPreparationProtocolId] = None
+    has_file: Union[str, FileId] = None
     library_name: str = None
     library_layout: str = None
     library_type: str = None
@@ -1001,6 +1004,7 @@ class SequencingProtocol(Protocol):
     class_model_uri: ClassVar[URIRef] = GHGA.SequencingProtocol
 
     id: Union[str, SequencingProtocolId] = None
+    has_file: Union[str, FileId] = None
     instrument_model: str = None
     alias: str = None
     description: str = None
@@ -1008,9 +1012,7 @@ class SequencingProtocol(Protocol):
     paired_or_single_end: Optional[Union[str, "PairedOrSingleEndEnum"]] = None
     forward_or_reverse: Optional[Union[str, "ForwardOrReverseEnum"]] = None
     sequencing_read_length: Optional[str] = None
-    index_sequence: Optional[str] = None
     target_coverage: Optional[str] = None
-    lane_number: Optional[str] = None
     flow_cell_id: Optional[str] = None
     flow_cell_type: Optional[str] = None
     umi_barcode_read: Optional[str] = None
@@ -1056,14 +1058,8 @@ class SequencingProtocol(Protocol):
         if self.sequencing_read_length is not None and not isinstance(self.sequencing_read_length, str):
             self.sequencing_read_length = str(self.sequencing_read_length)
 
-        if self.index_sequence is not None and not isinstance(self.index_sequence, str):
-            self.index_sequence = str(self.index_sequence)
-
         if self.target_coverage is not None and not isinstance(self.target_coverage, str):
             self.target_coverage = str(self.target_coverage)
-
-        if self.lane_number is not None and not isinstance(self.lane_number, str):
-            self.lane_number = str(self.lane_number)
 
         if self.flow_cell_id is not None and not isinstance(self.flow_cell_id, str):
             self.flow_cell_id = str(self.flow_cell_id)
@@ -1349,14 +1345,16 @@ class Sample(MaterialEntity):
     id: Union[str, SampleId] = None
     name: str = None
     description: str = None
+    has_anatomical_entity: Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]] = empty_dict()
     alias: str = None
     type: Optional[str] = None
     case_control_status: Optional[Union[str, "CaseControlStatusEnum"]] = None
     vital_status_at_sampling: Optional[Union[str, "VitalStatusEnum"]] = None
     isolation: Optional[str] = None
     storage: Optional[str] = None
+    index_sequence: Optional[str] = None
+    lane_number: Optional[str] = None
     has_individual: Optional[Union[dict, "Individual"]] = None
-    has_anatomical_entity: Optional[Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]]] = empty_dict()
     has_biospecimen: Optional[Union[dict, Biospecimen]] = None
     xref: Optional[Union[str, List[str]]] = empty_list()
     accession: Optional[str] = None
@@ -1379,6 +1377,10 @@ class Sample(MaterialEntity):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self._is_empty(self.has_anatomical_entity):
+            self.MissingRequiredField("has_anatomical_entity")
+        self._normalize_inlined_as_list(slot_name="has_anatomical_entity", slot_type=AnatomicalEntity, key_name="id", keyed=True)
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -1399,10 +1401,14 @@ class Sample(MaterialEntity):
         if self.storage is not None and not isinstance(self.storage, str):
             self.storage = str(self.storage)
 
+        if self.index_sequence is not None and not isinstance(self.index_sequence, str):
+            self.index_sequence = str(self.index_sequence)
+
+        if self.lane_number is not None and not isinstance(self.lane_number, str):
+            self.lane_number = str(self.lane_number)
+
         if self.has_individual is not None and not isinstance(self.has_individual, Individual):
             self.has_individual = Individual(**as_dict(self.has_individual))
-
-        self._normalize_inlined_as_list(slot_name="has_anatomical_entity", slot_type=AnatomicalEntity, key_name="id", keyed=True)
 
         if self.has_biospecimen is not None and not isinstance(self.has_biospecimen, Biospecimen):
             self.has_biospecimen = Biospecimen(**as_dict(self.has_biospecimen))
@@ -1758,10 +1764,10 @@ class Analysis(DataTransformation):
     reference_genome: str = None
     reference_chromosome: str = None
     has_input: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
+    has_study: Union[dict, Study] = None
     has_output: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     alias: str = None
     type: Optional[str] = None
-    has_study: Optional[Union[dict, Study]] = None
     has_workflow: Optional[Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]]] = empty_dict()
     has_analysis_process: Optional[Union[Dict[Union[str, AnalysisProcessId], Union[dict, "AnalysisProcess"]], List[Union[dict, "AnalysisProcess"]]]] = empty_dict()
     description: Optional[str] = None
@@ -1788,6 +1794,11 @@ class Analysis(DataTransformation):
             self.MissingRequiredField("has_input")
         self._normalize_inlined_as_list(slot_name="has_input", slot_type=File, key_name="id", keyed=True)
 
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, Study):
+            self.has_study = Study(**as_dict(self.has_study))
+
         if self._is_empty(self.has_output):
             self.MissingRequiredField("has_output")
         self._normalize_inlined_as_list(slot_name="has_output", slot_type=File, key_name="id", keyed=True)
@@ -1799,9 +1810,6 @@ class Analysis(DataTransformation):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
-
-        if self.has_study is not None and not isinstance(self.has_study, Study):
-            self.has_study = Study(**as_dict(self.has_study))
 
         self._normalize_inlined_as_list(slot_name="has_workflow", slot_type=Workflow, key_name="id", keyed=True)
 
@@ -1879,11 +1887,11 @@ class Dataset(InformationContentEntity):
     description: str = None
     type: Union[str, List[str]] = None
     has_study: Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]] = empty_dict()
+    has_experiment: Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]] = empty_dict()
     has_sample: Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]] = empty_dict()
     has_file: Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]] = empty_dict()
     has_data_access_policy: Union[dict, "DataAccessPolicy"] = None
     alias: str = None
-    has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
     has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, "Publication"]], List[Union[dict, "Publication"]]]] = empty_dict()
     release_status: Optional[Union[str, "ReleaseStatusEnum"]] = None
@@ -1918,6 +1926,10 @@ class Dataset(InformationContentEntity):
             self.MissingRequiredField("has_study")
         self._normalize_inlined_as_list(slot_name="has_study", slot_type=Study, key_name="id", keyed=True)
 
+        if self._is_empty(self.has_experiment):
+            self.MissingRequiredField("has_experiment")
+        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
+
         if self._is_empty(self.has_sample):
             self.MissingRequiredField("has_sample")
         self._normalize_inlined_as_list(slot_name="has_sample", slot_type=Sample, key_name="id", keyed=True)
@@ -1935,8 +1947,6 @@ class Dataset(InformationContentEntity):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
-
-        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_analysis", slot_type=Analysis, key_name="id", keyed=True)
 
@@ -1975,13 +1985,13 @@ class DataAccessPolicy(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = GHGA.DataAccessPolicy
 
     id: Union[str, DataAccessPolicyId] = None
+    name: str = None
+    description: str = None
     policy_text: str = None
+    policy_url: str = None
     has_data_access_committee: Union[dict, "DataAccessCommittee"] = None
     has_data_use_permission: Union[dict, "DataUsePermission"] = None
     alias: str = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-    policy_url: Optional[str] = None
     has_data_use_modifier: Optional[Union[Dict[Union[str, DataUseModifierId], Union[dict, "DataUseModifier"]], List[Union[dict, "DataUseModifier"]]]] = empty_dict()
     data_request_form: Optional[str] = None
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
@@ -1994,10 +2004,25 @@ class DataAccessPolicy(InformationContentEntity):
         if not isinstance(self.id, DataAccessPolicyId):
             self.id = DataAccessPolicyId(self.id)
 
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
+
         if self._is_empty(self.policy_text):
             self.MissingRequiredField("policy_text")
         if not isinstance(self.policy_text, str):
             self.policy_text = str(self.policy_text)
+
+        if self._is_empty(self.policy_url):
+            self.MissingRequiredField("policy_url")
+        if not isinstance(self.policy_url, str):
+            self.policy_url = str(self.policy_url)
 
         if self._is_empty(self.has_data_access_committee):
             self.MissingRequiredField("has_data_access_committee")
@@ -2013,15 +2038,6 @@ class DataAccessPolicy(InformationContentEntity):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
             self.alias = str(self.alias)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.policy_url is not None and not isinstance(self.policy_url, str):
-            self.policy_url = str(self.policy_url)
 
         self._normalize_inlined_as_dict(slot_name="has_data_use_modifier", slot_type=DataUseModifier, key_name="id", keyed=True)
 
@@ -2360,20 +2376,20 @@ class Submission(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = GHGA.Submission
 
     id: Union[str, SubmissionId] = None
+    has_study: Union[dict, Study] = None
+    has_sample: Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]] = empty_dict()
+    has_individual: Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]] = empty_dict()
+    has_experiment: Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]] = empty_dict()
+    has_protocol: Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]] = empty_dict()
+    has_dataset: Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]] = empty_dict()
+    has_data_access_policy: Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]] = empty_dict()
+    has_data_access_committee: Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]] = empty_dict()
+    has_member: Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]] = empty_dict()
     affiliation: Optional[str] = None
-    has_study: Optional[Union[dict, Study]] = None
     has_project: Optional[Union[dict, Project]] = None
-    has_sample: Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]] = empty_dict()
     has_biospecimen: Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]] = empty_dict()
-    has_individual: Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]] = empty_dict()
-    has_experiment: Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]] = empty_dict()
-    has_protocol: Optional[Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]]] = empty_dict()
     has_analysis: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]] = empty_dict()
     has_file: Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]] = empty_dict()
-    has_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]] = empty_dict()
-    has_data_access_policy: Optional[Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]]] = empty_dict()
-    has_data_access_committee: Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]] = empty_dict()
-    has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]]] = empty_dict()
     has_publication: Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]] = empty_dict()
     submission_date: Optional[str] = None
     creation_date: Optional[str] = None
@@ -2388,36 +2404,54 @@ class Submission(YAMLRoot):
         if not isinstance(self.id, SubmissionId):
             self.id = SubmissionId(self.id)
 
+        if self._is_empty(self.has_study):
+            self.MissingRequiredField("has_study")
+        if not isinstance(self.has_study, Study):
+            self.has_study = Study(**as_dict(self.has_study))
+
+        if self._is_empty(self.has_sample):
+            self.MissingRequiredField("has_sample")
+        self._normalize_inlined_as_list(slot_name="has_sample", slot_type=Sample, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_individual):
+            self.MissingRequiredField("has_individual")
+        self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_experiment):
+            self.MissingRequiredField("has_experiment")
+        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_protocol):
+            self.MissingRequiredField("has_protocol")
+        self._normalize_inlined_as_list(slot_name="has_protocol", slot_type=Protocol, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_dataset):
+            self.MissingRequiredField("has_dataset")
+        self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_data_access_policy):
+            self.MissingRequiredField("has_data_access_policy")
+        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_data_access_committee):
+            self.MissingRequiredField("has_data_access_committee")
+        self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
+
+        if self._is_empty(self.has_member):
+            self.MissingRequiredField("has_member")
+        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
+
         if self.affiliation is not None and not isinstance(self.affiliation, str):
             self.affiliation = str(self.affiliation)
-
-        if self.has_study is not None and not isinstance(self.has_study, Study):
-            self.has_study = Study(**as_dict(self.has_study))
 
         if self.has_project is not None and not isinstance(self.has_project, Project):
             self.has_project = Project(**as_dict(self.has_project))
 
-        self._normalize_inlined_as_list(slot_name="has_sample", slot_type=Sample, key_name="id", keyed=True)
-
         self._normalize_inlined_as_list(slot_name="has_biospecimen", slot_type=Biospecimen, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_individual", slot_type=Individual, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_experiment", slot_type=Experiment, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_protocol", slot_type=Protocol, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_analysis", slot_type=Analysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_file", slot_type=File, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_data_access_policy", slot_type=DataAccessPolicy, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_data_access_committee", slot_type=DataAccessCommittee, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="has_publication", slot_type=Publication, key_name="id", keyed=True)
 
@@ -3548,7 +3582,7 @@ slots.protocol_url = Slot(uri=GHGA.url, name="protocol_url", curie=GHGA.curie('u
                    model_uri=GHGA.protocol_url, domain=Protocol, range=Optional[str])
 
 slots.protocol_has_file = Slot(uri=GHGA.has_file, name="protocol_has file", curie=GHGA.curie('has_file'),
-                   model_uri=GHGA.protocol_has_file, domain=Protocol, range=Optional[Union[str, FileId]])
+                   model_uri=GHGA.protocol_has_file, domain=Protocol, range=Union[str, FileId])
 
 slots.protocol_xref = Slot(uri=GHGA.xref, name="protocol_xref", curie=GHGA.curie('xref'),
                    model_uri=GHGA.protocol_xref, domain=Protocol, range=Optional[Union[str, List[str]]])
@@ -3653,7 +3687,7 @@ slots.sample_has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="sample_has b
                    model_uri=GHGA.sample_has_biospecimen, domain=Sample, range=Optional[Union[dict, Biospecimen]])
 
 slots.sample_has_anatomical_entity = Slot(uri=GHGA.has_anatomical_entity, name="sample_has anatomical entity", curie=GHGA.curie('has_anatomical_entity'),
-                   model_uri=GHGA.sample_has_anatomical_entity, domain=Sample, range=Optional[Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]]])
+                   model_uri=GHGA.sample_has_anatomical_entity, domain=Sample, range=Union[Dict[Union[str, AnatomicalEntityId], Union[dict, "AnatomicalEntity"]], List[Union[dict, "AnatomicalEntity"]]])
 
 slots.individual_alias = Slot(uri=GHGA.alias, name="individual_alias", curie=GHGA.curie('alias'),
                    model_uri=GHGA.individual_alias, domain=Individual, range=str)
@@ -3728,7 +3762,7 @@ slots.analysis_has_input = Slot(uri=GHGA.has_input, name="analysis_has input", c
                    model_uri=GHGA.analysis_has_input, domain=Analysis, range=Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]])
 
 slots.analysis_has_study = Slot(uri=GHGA.has_study, name="analysis_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.analysis_has_study, domain=Analysis, range=Optional[Union[dict, Study]])
+                   model_uri=GHGA.analysis_has_study, domain=Analysis, range=Union[dict, Study])
 
 slots.analysis_has_workflow = Slot(uri=GHGA.has_workflow, name="analysis_has workflow", curie=GHGA.curie('has_workflow'),
                    model_uri=GHGA.analysis_has_workflow, domain=Analysis, range=Optional[Union[Dict[Union[str, WorkflowId], Union[dict, Workflow]], List[Union[dict, Workflow]]]])
@@ -3767,7 +3801,7 @@ slots.dataset_has_study = Slot(uri=GHGA.has_study, name="dataset_has study", cur
                    model_uri=GHGA.dataset_has_study, domain=Dataset, range=Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]])
 
 slots.dataset_has_experiment = Slot(uri=GHGA.has_experiment, name="dataset_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.dataset_has_experiment, domain=Dataset, range=Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]])
+                   model_uri=GHGA.dataset_has_experiment, domain=Dataset, range=Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]])
 
 slots.dataset_has_sample = Slot(uri=GHGA.has_sample, name="dataset_has sample", curie=GHGA.curie('has_sample'),
                    model_uri=GHGA.dataset_has_sample, domain=Dataset, range=Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]])
@@ -3791,16 +3825,16 @@ slots.data_access_policy_alias = Slot(uri=GHGA.alias, name="data access policy_a
                    model_uri=GHGA.data_access_policy_alias, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_name = Slot(uri=GHGA.name, name="data access policy_name", curie=GHGA.curie('name'),
-                   model_uri=GHGA.data_access_policy_name, domain=DataAccessPolicy, range=Optional[str])
+                   model_uri=GHGA.data_access_policy_name, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_description = Slot(uri=GHGA.description, name="data access policy_description", curie=GHGA.curie('description'),
-                   model_uri=GHGA.data_access_policy_description, domain=DataAccessPolicy, range=Optional[str])
+                   model_uri=GHGA.data_access_policy_description, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_policy_text = Slot(uri=GHGA.policy_text, name="data access policy_policy text", curie=GHGA.curie('policy_text'),
                    model_uri=GHGA.data_access_policy_policy_text, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_policy_url = Slot(uri=GHGA.policy_url, name="data access policy_policy url", curie=GHGA.curie('policy_url'),
-                   model_uri=GHGA.data_access_policy_policy_url, domain=DataAccessPolicy, range=Optional[str])
+                   model_uri=GHGA.data_access_policy_policy_url, domain=DataAccessPolicy, range=str)
 
 slots.data_access_policy_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="data access policy_has data access committee", curie=GHGA.curie('has_data_access_committee'),
                    model_uri=GHGA.data_access_policy_has_data_access_committee, domain=DataAccessPolicy, range=Union[dict, "DataAccessCommittee"])
@@ -3863,25 +3897,25 @@ slots.submission_affiliation = Slot(uri=GHGA.affiliation, name="submission_affil
                    model_uri=GHGA.submission_affiliation, domain=Submission, range=Optional[str])
 
 slots.submission_has_study = Slot(uri=GHGA.has_study, name="submission_has study", curie=GHGA.curie('has_study'),
-                   model_uri=GHGA.submission_has_study, domain=Submission, range=Optional[Union[dict, Study]])
+                   model_uri=GHGA.submission_has_study, domain=Submission, range=Union[dict, Study])
 
 slots.submission_has_project = Slot(uri=GHGA.has_project, name="submission_has project", curie=GHGA.curie('has_project'),
                    model_uri=GHGA.submission_has_project, domain=Submission, range=Optional[Union[dict, Project]])
 
 slots.submission_has_sample = Slot(uri=GHGA.has_sample, name="submission_has sample", curie=GHGA.curie('has_sample'),
-                   model_uri=GHGA.submission_has_sample, domain=Submission, range=Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]])
+                   model_uri=GHGA.submission_has_sample, domain=Submission, range=Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]])
 
 slots.submission_has_biospecimen = Slot(uri=GHGA.has_biospecimen, name="submission_has biospecimen", curie=GHGA.curie('has_biospecimen'),
                    model_uri=GHGA.submission_has_biospecimen, domain=Submission, range=Optional[Union[Dict[Union[str, BiospecimenId], Union[dict, Biospecimen]], List[Union[dict, Biospecimen]]]])
 
 slots.submission_has_individual = Slot(uri=GHGA.has_individual, name="submission_has individual", curie=GHGA.curie('has_individual'),
-                   model_uri=GHGA.submission_has_individual, domain=Submission, range=Optional[Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]]])
+                   model_uri=GHGA.submission_has_individual, domain=Submission, range=Union[Dict[Union[str, IndividualId], Union[dict, Individual]], List[Union[dict, Individual]]])
 
 slots.submission_has_experiment = Slot(uri=GHGA.has_experiment, name="submission_has experiment", curie=GHGA.curie('has_experiment'),
-                   model_uri=GHGA.submission_has_experiment, domain=Submission, range=Optional[Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]]])
+                   model_uri=GHGA.submission_has_experiment, domain=Submission, range=Union[Dict[Union[str, ExperimentId], Union[dict, Experiment]], List[Union[dict, Experiment]]])
 
 slots.submission_has_protocol = Slot(uri=GHGA.has_protocol, name="submission_has protocol", curie=GHGA.curie('has_protocol'),
-                   model_uri=GHGA.submission_has_protocol, domain=Submission, range=Optional[Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]]])
+                   model_uri=GHGA.submission_has_protocol, domain=Submission, range=Union[Dict[Union[str, ProtocolId], Union[dict, Protocol]], List[Union[dict, Protocol]]])
 
 slots.submission_has_analysis = Slot(uri=GHGA.has_analysis, name="submission_has analysis", curie=GHGA.curie('has_analysis'),
                    model_uri=GHGA.submission_has_analysis, domain=Submission, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])
@@ -3890,16 +3924,16 @@ slots.submission_has_file = Slot(uri=GHGA.has_file, name="submission_has file", 
                    model_uri=GHGA.submission_has_file, domain=Submission, range=Optional[Union[Dict[Union[str, FileId], Union[dict, File]], List[Union[dict, File]]]])
 
 slots.submission_has_dataset = Slot(uri=GHGA.has_dataset, name="submission_has dataset", curie=GHGA.curie('has_dataset'),
-                   model_uri=GHGA.submission_has_dataset, domain=Submission, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]])
+                   model_uri=GHGA.submission_has_dataset, domain=Submission, range=Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]])
 
 slots.submission_has_data_access_policy = Slot(uri=GHGA.has_data_access_policy, name="submission_has data access policy", curie=GHGA.curie('has_data_access_policy'),
-                   model_uri=GHGA.submission_has_data_access_policy, domain=Submission, range=Optional[Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]]])
+                   model_uri=GHGA.submission_has_data_access_policy, domain=Submission, range=Union[Dict[Union[str, DataAccessPolicyId], Union[dict, DataAccessPolicy]], List[Union[dict, DataAccessPolicy]]])
 
 slots.submission_has_data_access_committee = Slot(uri=GHGA.has_data_access_committee, name="submission_has data access committee", curie=GHGA.curie('has_data_access_committee'),
-                   model_uri=GHGA.submission_has_data_access_committee, domain=Submission, range=Optional[Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]]])
+                   model_uri=GHGA.submission_has_data_access_committee, domain=Submission, range=Union[Dict[Union[str, DataAccessCommitteeId], Union[dict, DataAccessCommittee]], List[Union[dict, DataAccessCommittee]]])
 
 slots.submission_has_member = Slot(uri=GHGA.has_member, name="submission_has member", curie=GHGA.curie('has_member'),
-                   model_uri=GHGA.submission_has_member, domain=Submission, range=Optional[Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]]])
+                   model_uri=GHGA.submission_has_member, domain=Submission, range=Union[Dict[Union[str, MemberId], Union[dict, Member]], List[Union[dict, Member]]])
 
 slots.submission_has_publication = Slot(uri=GHGA.has_publication, name="submission_has publication", curie=GHGA.curie('has_publication'),
                    model_uri=GHGA.submission_has_publication, domain=Submission, range=Optional[Union[Dict[Union[str, PublicationId], Union[dict, Publication]], List[Union[dict, Publication]]]])
