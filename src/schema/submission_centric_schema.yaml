@@ -219,7 +219,6 @@ classes:
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
         required: false
-        recommended: true
       rnaseq strandedness:
         required: false
         recommended: true
@@ -336,7 +335,6 @@ classes:
         recommended: true
       description:
         required: false
-        recommended: true
       isolation:
         required: false
         recommended: true
@@ -815,6 +813,7 @@ classes:
       - name
       - description
       - main contact
+      - has member
     slot_usage:
       name:
         description: >-
@@ -831,6 +830,13 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
+      has member:
+        description: >-
+          All the members that are part of this Data Access Committee.
+        range: member
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   member:
     is_a: person
@@ -1177,7 +1183,7 @@ slots:
 
   has member:
     description: >-
-      The members associated with a committee referenced in this submission
+      The members associated with a committee.
     range: member
     inlined: true
     in_subset:
