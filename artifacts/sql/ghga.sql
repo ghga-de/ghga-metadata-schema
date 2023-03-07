@@ -315,7 +315,7 @@ CREATE TABLE data_access_committee (
 	schema_version TEXT, 
 	name TEXT NOT NULL, 
 	description TEXT, 
-	main_contact TEXT, 
+	main_contact TEXT NOT NULL, 
 	has_member TEXT, 
 	alias TEXT NOT NULL, 
 	has_attribute TEXT, 

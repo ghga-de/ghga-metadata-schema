@@ -1206,6 +1206,7 @@ classes:
         range: member
         inlined: true
         inlined_as_list: false
+        required: true
       has member:
         description: >-
           All the members that are part of this Data Access Committee.

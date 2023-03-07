@@ -180,7 +180,7 @@ type DataAccessCommittee implements AttributeMixin, AccessionMixin, EgaAccession
     schemaVersion: String
     name: String!
     description: String
-    mainContact: Member
+    mainContact: Member!
     hasMember: [Member]
     alias: String!
     hasAttribute: [Attribute]

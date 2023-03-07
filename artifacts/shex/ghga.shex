@@ -208,7 +208,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <EgaAccessionMixin> ] ? ;
           <name> @linkml:String ;
           <description> @linkml:String ? ;
-          <main_contact> @<Member> ? ;
+          <main_contact> @<Member> ;
           <has_member> @<Member> * ;
           <alias> @linkml:String ;
           <has_attribute> @<Attribute> * ;

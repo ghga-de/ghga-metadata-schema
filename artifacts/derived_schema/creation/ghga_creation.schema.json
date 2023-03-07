@@ -670,6 +670,7 @@
          },
          "required": [
             "name",
+            "main_contact",
             "alias"
          ],
          "title": "CreateDataAccessCommittee",

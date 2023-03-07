@@ -1,5 +1,5 @@
 # Auto generated from ghga.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-07T21:33:19
+# Generation date: 2023-03-07T21:46:55
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -2072,9 +2072,9 @@ class DataAccessCommittee(Committee):
 
     id: Union[str, DataAccessCommitteeId] = None
     name: str = None
+    main_contact: Union[dict, "Member"] = None
     alias: str = None
     description: Optional[str] = None
-    main_contact: Optional[Union[dict, "Member"]] = None
     has_member: Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]] = empty_dict()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
@@ -2091,6 +2091,11 @@ class DataAccessCommittee(Committee):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.main_contact):
+            self.MissingRequiredField("main_contact")
+        if not isinstance(self.main_contact, Member):
+            self.main_contact = Member(**as_dict(self.main_contact))
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -2098,9 +2103,6 @@ class DataAccessCommittee(Committee):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.main_contact is not None and not isinstance(self.main_contact, Member):
-            self.main_contact = Member(**as_dict(self.main_contact))
 
         self._normalize_inlined_as_list(slot_name="has_member", slot_type=Member, key_name="id", keyed=True)
 
@@ -3858,7 +3860,7 @@ slots.data_access_committee_description = Slot(uri=GHGA.description, name="data 
                    model_uri=GHGA.data_access_committee_description, domain=DataAccessCommittee, range=Optional[str])
 
 slots.data_access_committee_main_contact = Slot(uri=GHGA.main_contact, name="data access committee_main contact", curie=GHGA.curie('main_contact'),
-                   model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Optional[Union[dict, "Member"]])
+                   model_uri=GHGA.data_access_committee_main_contact, domain=DataAccessCommittee, range=Union[dict, "Member"])
 
 slots.data_access_committee_has_member = Slot(uri=GHGA.has_member, name="data access committee_has member", curie=GHGA.curie('has_member'),
                    model_uri=GHGA.data_access_committee_has_member, domain=DataAccessCommittee, range=Optional[Union[Dict[Union[str, MemberId], Union[dict, "Member"]], List[Union[dict, "Member"]]]])

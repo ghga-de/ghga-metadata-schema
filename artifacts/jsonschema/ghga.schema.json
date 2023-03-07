@@ -781,6 +781,7 @@
          "required": [
             "id",
             "name",
+            "main_contact",
             "alias"
          ],
          "title": "DataAccessCommittee",

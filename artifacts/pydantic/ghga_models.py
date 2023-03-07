@@ -1063,7 +1063,7 @@ class DataAccessCommittee(Committee):
     """
     name: str = Field(None, description="""The name for the Data Access Committee.""")
     description: Optional[str] = Field(None, description="""A description for the Data Access Committee.""")
-    main_contact: Optional[Union[Member, str]] = Field(None, description="""The main contact for the Data Access Committee.""")
+    main_contact: Union[Member, str] = Field(None, description="""The main contact for the Data Access Committee.""")
     has_member: Optional[Union[List[Member], List[str]]] = Field(None, description="""All the members that are part of this Data Access Committee.""")
     has_attribute: Optional[List[Attribute]] = Field(None, description="""Key/value pairs corresponding to an entity.""")
     accession: Optional[str] = Field(None, description="""A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.""")

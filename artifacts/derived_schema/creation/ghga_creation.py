@@ -1,5 +1,5 @@
 # Auto generated from ghga_creation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-07T21:33:31
+# Generation date: 2023-03-07T21:47:08
 # Schema: GHGA-Metadata-Schema
 #
 # id: https://w3id.org/GHGA-Metadata-Schema
@@ -1781,9 +1781,9 @@ class CreateDataAccessCommittee(Committee):
     class_model_uri: ClassVar[URIRef] = GHGA.CreateDataAccessCommittee
 
     name: str = None
+    main_contact: Union[dict, "CreateMember"] = None
     alias: str = None
     description: Optional[str] = None
-    main_contact: Optional[Union[dict, "CreateMember"]] = None
     has_member: Optional[Union[Union[dict, "CreateMember"], List[Union[dict, "CreateMember"]]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]] = empty_list()
     accession: Optional[str] = None
@@ -1795,6 +1795,11 @@ class CreateDataAccessCommittee(Committee):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self._is_empty(self.main_contact):
+            self.MissingRequiredField("main_contact")
+        if not isinstance(self.main_contact, CreateMember):
+            self.main_contact = CreateMember(**as_dict(self.main_contact))
+
         if self._is_empty(self.alias):
             self.MissingRequiredField("alias")
         if not isinstance(self.alias, str):
@@ -1802,9 +1807,6 @@ class CreateDataAccessCommittee(Committee):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.main_contact is not None and not isinstance(self.main_contact, CreateMember):
-            self.main_contact = CreateMember(**as_dict(self.main_contact))
 
         if not isinstance(self.has_member, list):
             self.has_member = [self.has_member] if self.has_member is not None else []
@@ -3492,7 +3494,7 @@ slots.create_data_access_committee_description = Slot(uri=GHGA.description, name
                    model_uri=GHGA.create_data_access_committee_description, domain=CreateDataAccessCommittee, range=Optional[str])
 
 slots.create_data_access_committee_main_contact = Slot(uri=GHGA.main_contact, name="create data access committee_main contact", curie=GHGA.curie('main_contact'),
-                   model_uri=GHGA.create_data_access_committee_main_contact, domain=CreateDataAccessCommittee, range=Optional[Union[dict, "CreateMember"]])
+                   model_uri=GHGA.create_data_access_committee_main_contact, domain=CreateDataAccessCommittee, range=Union[dict, "CreateMember"])
 
 slots.create_data_access_committee_has_member = Slot(uri=GHGA.has_member, name="create data access committee_has member", curie=GHGA.curie('has_member'),
                    model_uri=GHGA.create_data_access_committee_has_member, domain=CreateDataAccessCommittee, range=Optional[Union[Union[dict, "CreateMember"], List[Union[dict, "CreateMember"]]]])
