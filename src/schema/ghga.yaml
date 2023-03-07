@@ -469,6 +469,8 @@ classes:
       has attribute:
         description: >-
           One or more attributes that further characterizes this Protocol.
+      has file:
+        required: true
 
   library preparation protocol:
     is_a: protocol
@@ -525,9 +527,7 @@ classes:
       - paired or single end
       - forward or reverse
       - sequencing read length
-      - index sequence
       - target coverage
-      - lane number
       - flow cell id
       - flow cell type
       - umi barcode read
@@ -683,6 +683,8 @@ classes:
       - vital status at sampling
       - isolation
       - storage
+      - index sequence
+      - lane number
       - has individual
       - has anatomical entity
       - has biospecimen
@@ -724,6 +726,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
 
   individual:
     is_a: person
@@ -949,6 +952,7 @@ classes:
         range: study
         inlined: true
         inlined_as_list: false
+        required: true
       has workflow:
         description: >-
           One or more Workflow entities associated with this Analysis.
@@ -1066,6 +1070,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has sample:
         description: >-
           One or more Sample entities that are referenced by this Dataset.
@@ -1132,9 +1137,11 @@ classes:
       name:
         description: >-
           A name for the Data Access Policy.
+        required: true
       description:
         description: >-
           A short description for the Data Access Policy.
+        required: true
       policy text:
         description: >-
           The terms of data use and policy verbiage should be captured here.
@@ -1143,6 +1150,7 @@ classes:
         description: >-
           URL for the policy, if available. This is useful if the terms of the policy is
           made available online at a resolvable URL.
+        required: true
       has data access committee:
         description: >-
           The Data Access Committee linked to this policy.
@@ -1347,6 +1355,7 @@ classes:
         range: study
         inlined: true
         inlined_as_list: false
+        required: true
       has project:
         description: >-
           Information about a Project entity associated with this submission.
@@ -1360,6 +1369,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has biospecimen:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
@@ -1374,6 +1384,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has experiment:
         description: >-
           Information about one or more Experiment entities associated with this submission.
@@ -1381,6 +1392,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has protocol:
         description: >-
           One or more Protocol entities associated with this Submission.
@@ -1388,6 +1400,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has analysis:
         description: >-
           Information about one or more Analysis entities associated with this submission.
@@ -1409,6 +1422,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has data access policy:
         description: >-
           The Data Access Policy that applies to Dataset in this submission.
@@ -1416,6 +1430,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has data access committee:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
@@ -1423,6 +1438,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has member:
         description: >-
           One or more member that are part of the Data Access Committee referenced in this submission.
@@ -1430,6 +1446,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        required: true
       has publication:
         description: >-
           One or more Publication entities associated with this Submission.
