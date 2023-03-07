@@ -140,11 +140,7 @@ Submission {
     string id  
     string affiliation  
     string submission_date  
-    string creation_date  
-    string update_date  
     string submission_status  
-    string schema_type  
-    string schema_version  
 }
 Publication {
     string title  
@@ -152,13 +148,10 @@ Publication {
     string author  
     integer year  
     string journal  
+    string doi  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Member {
     string email  
@@ -170,10 +163,6 @@ Member {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataAccessCommittee {
     string name  
@@ -183,10 +172,6 @@ DataAccessCommittee {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Attribute {
     string key  
@@ -205,10 +190,6 @@ DataAccessPolicy {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataUseModifier {
     string id  
@@ -219,10 +200,6 @@ DataUseModifier {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataUsePermission {
     string id  
@@ -233,10 +210,6 @@ DataUsePermission {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Dataset {
     string title  
@@ -244,18 +217,11 @@ Dataset {
     stringList type  
     string accession  
     string ega_accession  
-    string release_status
-    string release_date  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 File {
-    string drs_uri  
     string name  
     string file_format
     integer size  
@@ -266,10 +232,6 @@ File {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Analysis {
     string type  
@@ -282,27 +244,17 @@ Analysis {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Study {
     string study_type
     stringList affiliation  
     string accession  
     string ega_accession  
-    string release_status
-    string release_date  
     string title  
     string description  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Project {
     string accession  
@@ -311,10 +263,6 @@ Project {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Sample {
     string name  
@@ -329,10 +277,6 @@ Sample {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Biospecimen {
     string name  
@@ -344,10 +288,6 @@ Biospecimen {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Individual {
     string biological_sex
@@ -363,10 +303,6 @@ Individual {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 PhenotypicFeature {
     string id  
@@ -377,10 +313,6 @@ PhenotypicFeature {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Disease {
     string id  
@@ -391,10 +323,6 @@ Disease {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Ancestry {
     string id  
@@ -406,10 +334,6 @@ Ancestry {
     string name  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 AnatomicalEntity {
     string id  
@@ -420,16 +344,11 @@ AnatomicalEntity {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Experiment {
     string type  
     string biological_replicates  
     string technical_replicates  
-    string experimental_replicates  
     string accession  
     string ega_accession  
     string title  
@@ -437,10 +356,6 @@ Experiment {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Protocol {
     string name  
@@ -450,10 +365,6 @@ Protocol {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 
 Submission ||--|| Study : "has study"
@@ -565,9 +476,6 @@ OntologyClassMixin {
 Attribute {
 
 }
-MetadataMixin {
-
-}
 AccessionMixin {
 
 }
@@ -578,9 +486,6 @@ AttributeMixin {
 
 }
 DeprecatedMixin {
-
-}
-ReleaseStatusMixin {
 
 }
 
@@ -600,10 +505,6 @@ NamedThing {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Person {
     string given_name  
@@ -612,56 +513,32 @@ Person {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Committee {
     string name  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 MaterialEntity {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 BiologicalQuality {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 InformationContentEntity {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 PlannedProcess {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Investigation {
     string title  
@@ -669,10 +546,6 @@ Investigation {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataTransformation {
     string title  
@@ -680,10 +553,6 @@ DataTransformation {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 ResearchActivity {
     string title  
@@ -691,10 +560,6 @@ ResearchActivity {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Protocol {
     string name  
@@ -704,20 +569,12 @@ Protocol {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Population {
     string name  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DiseaseOrPhenotypicFeature {
     string id  
@@ -728,10 +585,6 @@ DiseaseOrPhenotypicFeature {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 OntologyClassMixin {
     string id  
@@ -747,10 +600,6 @@ Attribute {
     string value  
     string value_type  
 }
-MetadataMixin {
-    string schema_type  
-    string schema_version  
-}
 AccessionMixin {
     string accession  
 }
@@ -762,10 +611,6 @@ AttributeMixin {
 }
 DeprecatedMixin {
     string deprecation_date  
-}
-ReleaseStatusMixin {
-    string release_status  
-    string release_date  
 }
 
 Protocol ||--}| Attribute : "has attribute"
@@ -915,11 +760,7 @@ Submission {
     string id  
     string affiliation  
     string submission_date  
-    string creation_date  
-    string update_date  
     string submission_status  
-    string schema_type  
-    string schema_version  
 }
 Publication {
     string title  
@@ -927,13 +768,10 @@ Publication {
     string author  
     integer year  
     string journal  
+    string doi  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Member {
     string email  
@@ -945,10 +783,6 @@ Member {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataAccessCommittee {
     string name  
@@ -958,10 +792,6 @@ DataAccessCommittee {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Attribute {
     string key  
@@ -980,10 +810,6 @@ DataAccessPolicy {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataUseModifier {
     string id  
@@ -994,10 +820,6 @@ DataUseModifier {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 DataUsePermission {
     string id  
@@ -1008,10 +830,6 @@ DataUsePermission {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Dataset {
     string title  
@@ -1019,18 +837,11 @@ Dataset {
     stringList type  
     string accession  
     string ega_accession  
-    string release_status
-    string release_date  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 File {
-    string drs_uri  
     string name  
     string file_format
     integer size  
@@ -1041,10 +852,6 @@ File {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Analysis {
     string type  
@@ -1057,27 +864,17 @@ Analysis {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Study {
     string study_type
     stringList affiliation  
     string accession  
     string ega_accession  
-    string release_status
-    string release_date  
     string title  
     string description  
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Project {
     string accession  
@@ -1086,10 +883,6 @@ Project {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Sample {
     string name  
@@ -1104,10 +897,6 @@ Sample {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Biospecimen {
     string name  
@@ -1119,10 +908,6 @@ Biospecimen {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Individual {
     string biological_sex
@@ -1138,10 +923,6 @@ Individual {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 PhenotypicFeature {
     string id  
@@ -1152,10 +933,6 @@ PhenotypicFeature {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Disease {
     string id  
@@ -1166,10 +943,6 @@ Disease {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Ancestry {
     string id  
@@ -1181,10 +954,6 @@ Ancestry {
     string name  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 AnatomicalEntity {
     string id  
@@ -1195,16 +964,11 @@ AnatomicalEntity {
     string ontology_version  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Experiment {
     string type  
     string biological_replicates  
     string technical_replicates  
-    string experimental_replicates  
     string accession  
     string ega_accession  
     string title  
@@ -1212,10 +976,6 @@ Experiment {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 Protocol {
     string name  
@@ -1225,10 +985,6 @@ Protocol {
     string id  
     string alias  
     stringList xref  
-    string creation_date  
-    string update_date  
-    string schema_type  
-    string schema_version  
 }
 
 Submission ||--|| Study : "has study"

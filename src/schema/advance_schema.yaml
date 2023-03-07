@@ -34,15 +34,6 @@ classes:
     exact_mappings:
       - prov:Agent
 
-  technology:
-    is_a: information content entity
-    deprecated: true
-    description: >-
-      A Technology is an abstraction that represents the instrument used for an assay. The Technology
-      entity captures instrument-specific attributes that are relevant for an Experiment entity.
-      The Technology entity may be further characterized by its children where each child has fields
-      that are relevant to that particular technology.
-
   experiment process:
     is_a: experiment
     mixins:
@@ -250,10 +241,6 @@ slots:
   role:
     description: The role that a user has within GHGA.
     range: user role enum
-
-  has technology:
-    deprecated: true
-    range: technology
 
   has experiment process:
     range: experiment process
