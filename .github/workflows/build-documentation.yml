@@ -5,12 +5,10 @@ name: Build Documentation
 # Controls when the workflow will run
 on:
   workflow_run:
-    workflows: ["Build and update artifacts"]
-    branches: [main]
+    workflows: ["Build and update docs"]
     types: 
       - completed
   push:
-    branches: [ main ]
     paths:
     - docs/*
 
@@ -46,4 +44,5 @@ jobs:
           git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          make gh-deploy
+        # TODO 
+
