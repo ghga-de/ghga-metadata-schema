@@ -156,10 +156,24 @@ enums:
     description: >-
       Enum to capture whether a Sample in a Study is to be considered as Case or Control.
     permissible_values:
-      control:
-        description: The Sample is to be treated as Control
-      case:
-        description: The Sample is to be treated as Case
+      unable_to_assess_case_or_control_status:
+        description: Unknown
+      neither_case_or_control_status:
+        description: The participant is neither a true case or true control for the
+          phenotype under consideration
+      probable_case_status:
+        description: The participant is a probable case for the phenotype under consideration
+      probable_control_status:
+        description: The participant is a probable control for the phenotype under
+          consideration
+      true_case_status:
+        description: The participant is a true case for the phenotype under consideration
+      true_control_status:
+        description: The participant is a true control for the phenotype under consideration
+      tumor:
+        description: The sample is a case for the cancer phenotype
+      healthy:
+        description: The sample is a control for the cancer phenotype
 
   paired or single end enum:
     deprecated: true
@@ -1575,6 +1589,8 @@ classes:
           Protocol.
       target regions:
         required: false
+        multivalued: true
+        inlined_as_list: true
 
   create sequencing protocol:
     is_a: create protocol

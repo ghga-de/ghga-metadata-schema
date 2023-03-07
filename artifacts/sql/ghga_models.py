@@ -378,7 +378,6 @@ tbl_library_preparation_protocol = Table('library_preparation_protocol', metadat
     Column('library_preparation_kit_manufacturer', Text),
     Column('primer', Text),
     Column('end_bias', Text),
-    Column('target_regions', Text),
     Column('rnaseq_strandedness', Text),
     Column('alias', Text),
     Column('description', Text),
@@ -679,6 +678,10 @@ tbl_individual_xref = Table('individual_xref', metadata,
 tbl_library_preparation_protocol_xref = Table('library_preparation_protocol_xref', metadata, 
     Column('backref_id', Text, ForeignKey('library_preparation_protocol.id'), primary_key=True),
     Column('xref', Text, primary_key=True),
+)
+tbl_library_preparation_protocol_target_regions = Table('library_preparation_protocol_target_regions', metadata, 
+    Column('backref_id', Text, ForeignKey('library_preparation_protocol.id'), primary_key=True),
+    Column('target_regions', Text, primary_key=True),
 )
 tbl_member_xref = Table('member_xref', metadata, 
     Column('backref_id', Text, ForeignKey('member.id'), primary_key=True),

@@ -70,8 +70,14 @@ class FileFormatEnum(str, Enum):
 
 class CaseControlStatusEnum(str, Enum):
     
-    control = "control"
-    case = "case"
+    unable_to_assess_case_or_control_status = "unable_to_assess_case_or_control_status"
+    neither_case_or_control_status = "neither_case_or_control_status"
+    probable_case_status = "probable_case_status"
+    probable_control_status = "probable_control_status"
+    true_case_status = "true_case_status"
+    true_control_status = "true_control_status"
+    tumor = "tumor"
+    healthy = "healthy"
     
     
 
@@ -806,7 +812,7 @@ class CreateLibraryPreparationProtocol(CreateProtocol):
     library_preparation_kit_manufacturer: Optional[str] = Field(None, description="""Manufacturer of library preparation kit""")
     primer: Optional[str] = Field(None, description="""The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.""")
     end_bias: Optional[str] = Field(None, description="""The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.""")
-    target_regions: Optional[str] = Field(None, description="""Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.""")
+    target_regions: Optional[List[str]] = Field(None, description="""Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.""")
     rnaseq_strandedness: Optional[str] = Field(None, description="""The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.""")
     name: Optional[str] = Field(None, description="""The name for an entity.""")
     type: Optional[str] = Field(None, description="""The type of an entity.""")

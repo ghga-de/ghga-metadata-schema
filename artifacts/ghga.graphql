@@ -505,7 +505,7 @@ type LibraryPreparationProtocol
     libraryPreparationKitManufacturer: String
     primer: String
     endBias: String
-    targetRegions: String
+    targetRegions: [String]
     rnaseqStrandedness: String
     alias: String!
     description: String!
