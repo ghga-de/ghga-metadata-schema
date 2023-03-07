@@ -15,7 +15,6 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
-
 classes:
   project:
     is_a: research activity
@@ -57,9 +56,11 @@ classes:
       title:
         description: >-
           A comprehensive title for the study.
+        required: true
       description:
         description: >-
           A detailed description (abstract) that describes the goals of this Study.
+        required: true
       type:
         description: >-
           The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
@@ -123,7 +124,7 @@ classes:
       type:
         description: >-
           The type of Experiment.
-        required: true
+        required: false
       biological replicates:
         required: false
       technical replicates:
@@ -145,6 +146,7 @@ classes:
         description: >-
           One or more Files entities that are generated as output of this Experiment.
         multivalued: true
+        required: true
         inlined: true
         inlined_as_list: true
       has protocol:
@@ -207,7 +209,7 @@ classes:
         description: >-
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
-        required: true
+        required: false
       rnaseq strandedness:
         required: false
         recommended: true
@@ -311,13 +313,15 @@ classes:
       - has individual
     slot_usage:
       name:
-        required: true
+        required: false
+        recommended: true
       type:
         description: >-
           The type of Biospecimen.
         required: false
+        recommended: true
       description:
-        required: true
+        required: false
       isolation:
         required: false
         recommended: true
@@ -394,7 +398,7 @@ classes:
       type:
         description: >-
           The type of sample.
-        required: true
+        required: false
       description:
         description: >-
           Short textual description of the sample
@@ -426,8 +430,7 @@ classes:
         inlined: true
         inlined_as_list: false
       has anatomical entity:
-        required: false
-        recommended: true
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -462,7 +465,7 @@ classes:
       sex:
         required: true
       karyotype:
-        required: true
+        required: false
       age:
         required: true
       vital status:
@@ -580,11 +583,11 @@ classes:
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
-        required: true
+        required: false
       description:
         description: >-
           Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
-        required: true
+        required: false
       reference genome:
         required: true
       reference chromosome:
@@ -655,7 +658,7 @@ classes:
       has experiment:
         description: >-
           One or more Experiment entities that are referenced by this Dataset.
-        required: false
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -788,6 +791,7 @@ classes:
       - name
       - description
       - main contact
+      - has member
     slot_usage:
       name:
         description: >-
@@ -796,13 +800,43 @@ classes:
       description:
         description: >-
           A description for the Data Access Committee.
-        required: true
+        required: false
       main contact:
         description: >-
           The main contact for the Data Access Committee.
+        range: member
         required: true
         inlined: true
         inlined_as_list: false
+      has member:
+        description: >-
+          All the members that are part of this Data Access Committee.
+        range: member
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  member:
+    is_a: person
+    description: >-
+      Member of an Organization or a Committee.
+    slots:
+      - email
+      - telephone
+      - organization
+    slot_usage:
+      email:
+        description: >-
+          The email of the Member.
+        required: true
+      telephone:
+        description: >-
+          The telephone number of the Member.
+        required: false
+      organization:
+        description: >-
+          The organization that the Member is part of.
+        required: true
 
   publication:
     is_a: information content entity
@@ -821,17 +855,17 @@ classes:
       title:
         description: >-
           The title for the Publication.
-        required: true
+        required: false
       abstract:
         description: >-
           The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
         required: false
       author:
-        required: true
+        required: false
       year:
-        required: true
+        required: false
       journal:
-        required: true
+        required: false
       xref:
         description: >-
           One or more cross-references for this Publication.
@@ -862,6 +896,7 @@ classes:
       - has dataset
       - has data access policy
       - has data access committee
+      - has member
       - has publication
       - submission date
       - submission status
@@ -953,6 +988,14 @@ classes:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
         required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      has member:
+        description: >-
+          The members associated with a committee referenced in this submission
+        required: true
+        range: member
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -1109,6 +1152,14 @@ slots:
     in_subset:
       - restricted
 
+  has member:
+    description: >-
+      The members associated with a committee.
+    range: member
+    inlined: true
+    in_subset:
+      - restricted
+
   has protocol:
     description: The protocol associated with an entity.
     range: protocol
@@ -1122,6 +1173,17 @@ slots:
   has library preparation protocol:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
+
+  telephone:
+    description: >-
+      The telephone number associated with a person.
+
+  organization:
+    description: The organization associated with a person.
+
+  email:
+    description: >-
+      Email of a person.
 
   affiliation:
     description: >-
