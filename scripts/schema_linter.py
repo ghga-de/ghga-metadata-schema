@@ -11,10 +11,6 @@ SCHEMA_DIR = HERE.parent / "src" / "schema"
 LINTING_DOC = HERE.parent / "docs" / "linkml_linter.md"
 
 
-class LinkmlLinterError(Exception):
-    """Classifying errors under Linter"""
-
-
 def run_linter(linkml_yaml: Path, report: Path):
     """Function to call linkml-linter"""
     return subprocess.run(
