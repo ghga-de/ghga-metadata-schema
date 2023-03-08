@@ -16,7 +16,7 @@ class LinkmlLinterError(Exception):
     pass
 
 
-def run_linter(linkml_yaml: Path, report: Path):
+def run_linter(linkml_yaml: Path, report: Path) -> Path:
     """Function to call linkml-linter"""
     with subprocess.Popen(
         [
@@ -39,4 +39,4 @@ def run_linter(linkml_yaml: Path, report: Path):
 
 
 if __name__ == "__main__":
-    print(run_linter(SCHEMA_DIR, LINTING_DOC))
+    run_linter(SCHEMA_DIR, LINTING_DOC)
