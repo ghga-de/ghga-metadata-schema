@@ -216,7 +216,9 @@ classes:
         description: >-
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
-        required: true
+        required: false
+        multivalued: true
+        inlined_as_list: true
       rnaseq strandedness:
         required: false
         recommended: true
