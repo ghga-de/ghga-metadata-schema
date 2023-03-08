@@ -11,9 +11,13 @@ SCHEMA_DIR = HERE.parent / "src" / "schema"
 LINTING_DOC = HERE.parent / "docs" / "linkml_linter.md"
 
 
-def run_linter(linkml_yaml: Path, report: Path):
+class LinkmlLinterError(Exception):
+    """Classifying errors under Linter"""
+
+
+def run_linter(linkml_yaml: Path, report: Path) -> Path:
     """Function to call linkml-linter"""
-    return subprocess.run(
+    with subprocess.Popen(
         [
             "linkml-lint",
             "--config",
@@ -24,8 +28,13 @@ def run_linter(linkml_yaml: Path, report: Path):
             str(report),
             str(linkml_yaml),
         ],
-        check=True,
-    )
+        stderr=subprocess.PIPE,
+    ) as process:
+        _, stderr = process.communicate()
+
+        if stderr:
+            raise LinkmlLinterError(f"Linkml linter error, {stderr.decode('utf-8')}")
+    return report
 
 
 if __name__ == "__main__":

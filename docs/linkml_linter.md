@@ -6,8 +6,8 @@
 | Schemas Checked      | 3 |
 | Schemas with Error   | 3 |
 | Schemas with Warning | 3 |
-| Total Errors         | 197 |
-| Total Warnings       | 190 |
+| Total Errors         | 183 |
+| Total Warnings       | 174 |
 
 
 ## Problems per Schema
@@ -15,7 +15,6 @@
 ### /workspace/src/schema/advance_schema.yaml
 #### Errors
 * no_empty_title: Class 'agent' has no title
-* no_empty_title: Class 'technology' has no title
 * no_empty_title: Class 'experiment process' has no title
 * no_empty_title: Class 'workflow' has no title
 * no_empty_title: Class 'workflow step' has no title
@@ -23,31 +22,23 @@
 * no_empty_title: Class 'donor' has no title
 * no_empty_title: Class 'family' has no title
 * no_empty_title: Class 'cohort' has no title
-* no_empty_title: Class 'member' has no title
 * no_empty_title: Class 'cell line' has no title
 * no_empty_title: Class 'user' has no title
 * no_empty_title: Class 'analysis process' has no title
-* no_empty_title: Slot 'telephone' has no title
-* no_empty_title: Slot 'organization' has no title
-* no_empty_title: Slot 'email' has no title
 * no_empty_title: Slot 'role' has no title
-* no_empty_title: Slot 'has technology' has no title
 * no_empty_title: Slot 'has experiment process' has no title
 * no_empty_title: Slot 'has analysis process' has no title
 * no_empty_title: Slot 'has workflow' has no title
 * no_empty_title: Slot 'has workflow step' has no title
 * no_empty_title: Slot 'has workflow parameter' has no title
 * no_empty_title: Slot 'has agent' has no title
-* no_empty_title: Slot 'has member' has no title
 * no_empty_title: Slot 'has proband' has no title
 * no_empty_title: Enum 'experiment process type enum' has no title
 * no_empty_title: Enum 'user role enum' has no title
 #### Warnings
-* recommended: Slot 'has technology' does not have recommended slot 'description'
 * recommended: Slot 'has experiment process' does not have recommended slot 'description'
 * recommended: Slot 'has analysis process' does not have recommended slot 'description'
 * standard_naming: Class has name 'agent'
-* standard_naming: Class has name 'technology'
 * standard_naming: Class has name 'experiment process'
 * standard_naming: Class has name 'workflow'
 * standard_naming: Class has name 'workflow step'
@@ -55,18 +46,15 @@
 * standard_naming: Class has name 'donor'
 * standard_naming: Class has name 'family'
 * standard_naming: Class has name 'cohort'
-* standard_naming: Class has name 'member'
 * standard_naming: Class has name 'cell line'
 * standard_naming: Class has name 'user'
 * standard_naming: Class has name 'analysis process'
-* standard_naming: Slot has name 'has technology'
 * standard_naming: Slot has name 'has experiment process'
 * standard_naming: Slot has name 'has analysis process'
 * standard_naming: Slot has name 'has workflow'
 * standard_naming: Slot has name 'has workflow step'
 * standard_naming: Slot has name 'has workflow parameter'
 * standard_naming: Slot has name 'has agent'
-* standard_naming: Slot has name 'has member'
 * standard_naming: Slot has name 'has proband'
 * standard_naming: Enum has name 'experiment process type enum'
 * standard_naming: Enum has name 'user role enum'
@@ -90,16 +78,10 @@
 * no_empty_title: Class 'disease or phenotypic feature' has no title
 * no_empty_title: Class 'ontology class mixin' has no title
 * no_empty_title: Class 'attribute' has no title
-* no_empty_title: Class 'metadata mixin' has no title
 * no_empty_title: Class 'accession mixin' has no title
 * no_empty_title: Class 'ega accession mixin' has no title
 * no_empty_title: Class 'attribute mixin' has no title
 * no_empty_title: Class 'deprecated mixin' has no title
-* no_empty_title: Class 'release status mixin' has no title
-* no_empty_title: Slot 'update date' has no title
-* no_empty_title: Slot 'creation date' has no title
-* no_empty_title: Slot 'schema type' has no title
-* no_empty_title: Slot 'schema version' has no title
 * no_empty_title: Slot 'id' has no title
 * no_empty_title: Slot 'alias' has no title
 * no_empty_title: Slot 'accession' has no title
@@ -114,8 +96,6 @@
 * no_empty_title: Slot 'url' has no title
 * no_empty_title: Slot 'description' has no title
 * no_empty_title: Slot 'category' has no title
-* no_empty_title: Slot 'release status' has no title
-* no_empty_title: Slot 'release date' has no title
 * no_empty_title: Slot 'deprecation date' has no title
 * no_empty_title: Slot 'replaced by' has no title
 * no_empty_title: Slot 'replaces' has no title
@@ -145,22 +125,14 @@
 * standard_naming: Class has name 'disease or phenotypic feature'
 * standard_naming: Class has name 'ontology class mixin'
 * standard_naming: Class has name 'attribute'
-* standard_naming: Class has name 'metadata mixin'
 * standard_naming: Class has name 'accession mixin'
 * standard_naming: Class has name 'ega accession mixin'
 * standard_naming: Class has name 'attribute mixin'
 * standard_naming: Class has name 'deprecated mixin'
-* standard_naming: Class has name 'release status mixin'
-* standard_naming: Slot has name 'update date'
-* standard_naming: Slot has name 'creation date'
-* standard_naming: Slot has name 'schema type'
-* standard_naming: Slot has name 'schema version'
 * standard_naming: Slot has name 'ega accession'
 * standard_naming: Slot has name 'given name'
 * standard_naming: Slot has name 'family name'
 * standard_naming: Slot has name 'additional name'
-* standard_naming: Slot has name 'release status'
-* standard_naming: Slot has name 'release date'
 * standard_naming: Slot has name 'deprecation date'
 * standard_naming: Slot has name 'replaced by'
 * standard_naming: Slot has name 'concept identifier'
@@ -194,6 +166,7 @@
 * no_empty_title: Class 'data use modifier' has no title
 * no_empty_title: Class 'data access policy' has no title
 * no_empty_title: Class 'data access committee' has no title
+* no_empty_title: Class 'member' has no title
 * no_empty_title: Class 'publication' has no title
 * no_empty_title: Class 'submission' has no title
 * no_empty_title: Class 'publication mixin' has no title
@@ -219,13 +192,16 @@
 * no_empty_title: Slot 'has data access committee' has no title
 * no_empty_title: Slot 'has data use permission' has no title
 * no_empty_title: Slot 'has data use modifier' has no title
+* no_empty_title: Slot 'has member' has no title
 * no_empty_title: Slot 'has protocol' has no title
 * no_empty_title: Slot 'has sequencing protocol' has no title
 * no_empty_title: Slot 'has library preparation protocol' has no title
+* no_empty_title: Slot 'telephone' has no title
+* no_empty_title: Slot 'organization' has no title
+* no_empty_title: Slot 'email' has no title
 * no_empty_title: Slot 'affiliation' has no title
 * no_empty_title: Slot 'technical replicates' has no title
 * no_empty_title: Slot 'biological replicates' has no title
-* no_empty_title: Slot 'experimental replicates' has no title
 * no_empty_title: Slot 'library name' has no title
 * no_empty_title: Slot 'library layout' has no title
 * no_empty_title: Slot 'library type' has no title
@@ -241,7 +217,6 @@
 * no_empty_title: Slot 'instrument model' has no title
 * no_empty_title: Slot 'sequencing read length' has no title
 * no_empty_title: Slot 'index sequence' has no title
-* no_empty_title: Slot 'paired or single end' has no title
 * no_empty_title: Slot 'forward or reverse' has no title
 * no_empty_title: Slot 'lane number' has no title
 * no_empty_title: Slot 'target coverage' has no title
@@ -267,7 +242,6 @@
 * no_empty_title: Slot 'size' has no title
 * no_empty_title: Slot 'checksum' has no title
 * no_empty_title: Slot 'checksum type' has no title
-* no_empty_title: Slot 'drs uri' has no title
 * no_empty_title: Slot 'reference chromosome' has no title
 * no_empty_title: Slot 'reference genome' has no title
 * no_empty_title: Slot 'policy text' has no title
@@ -280,14 +254,13 @@
 * no_empty_title: Slot 'journal' has no title
 * no_empty_title: Slot 'submission status' has no title
 * no_empty_title: Slot 'submission date' has no title
+* no_empty_title: Slot 'doi' has no title
 * no_empty_title: Enum 'biological sex enum' has no title
 * no_empty_title: Enum 'vital status enum' has no title
 * no_empty_title: Enum 'study type enum' has no title
 * no_empty_title: Enum 'file format enum' has no title
 * no_empty_title: Enum 'case control status enum' has no title
-* no_empty_title: Enum 'paired or single end enum' has no title
 * no_empty_title: Enum 'forward or reverse enum' has no title
-* no_empty_title: Enum 'release status enum' has no title
 * no_empty_title: Enum 'age range enum' has no title
 * no_invalid_slot_usage: Slot 'has publication' not found on class 'dataset'
 #### Warnings
@@ -310,6 +283,7 @@
 * standard_naming: Class has name 'data use modifier'
 * standard_naming: Class has name 'data access policy'
 * standard_naming: Class has name 'data access committee'
+* standard_naming: Class has name 'member'
 * standard_naming: Class has name 'publication'
 * standard_naming: Class has name 'submission'
 * standard_naming: Class has name 'publication mixin'
@@ -335,12 +309,12 @@
 * standard_naming: Slot has name 'has data access committee'
 * standard_naming: Slot has name 'has data use permission'
 * standard_naming: Slot has name 'has data use modifier'
+* standard_naming: Slot has name 'has member'
 * standard_naming: Slot has name 'has protocol'
 * standard_naming: Slot has name 'has sequencing protocol'
 * standard_naming: Slot has name 'has library preparation protocol'
 * standard_naming: Slot has name 'technical replicates'
 * standard_naming: Slot has name 'biological replicates'
-* standard_naming: Slot has name 'experimental replicates'
 * standard_naming: Slot has name 'library name'
 * standard_naming: Slot has name 'library layout'
 * standard_naming: Slot has name 'library type'
@@ -355,7 +329,6 @@
 * standard_naming: Slot has name 'instrument model'
 * standard_naming: Slot has name 'sequencing read length'
 * standard_naming: Slot has name 'index sequence'
-* standard_naming: Slot has name 'paired or single end'
 * standard_naming: Slot has name 'forward or reverse'
 * standard_naming: Slot has name 'lane number'
 * standard_naming: Slot has name 'target coverage'
@@ -373,7 +346,6 @@
 * standard_naming: Slot has name 'geographical region'
 * standard_naming: Slot has name 'vital status'
 * standard_naming: Slot has name 'checksum type'
-* standard_naming: Slot has name 'drs uri'
 * standard_naming: Slot has name 'reference chromosome'
 * standard_naming: Slot has name 'reference genome'
 * standard_naming: Slot has name 'policy text'
@@ -387,9 +359,7 @@
 * standard_naming: Enum has name 'study type enum'
 * standard_naming: Enum has name 'file format enum'
 * standard_naming: Enum has name 'case control status enum'
-* standard_naming: Enum has name 'paired or single end enum'
 * standard_naming: Enum has name 'forward or reverse enum'
-* standard_naming: Enum has name 'release status enum'
 * standard_naming: Enum has name 'age range enum'
 * standard_naming: Permissible value of Enum 'age range enum' has name '0-5'
 * standard_naming: Permissible value of Enum 'age range enum' has name '6-10'
