@@ -15,9 +15,9 @@ class LinkmlLinterError(Exception):
     """Classifying errors under Linter"""
 
 
-def run_linter(linkml_yaml: Path, report: Path) -> Path:
+def run_linter(linkml_yaml: Path, report: Path):
     """Function to call linkml-linter"""
-    with subprocess.Popen(
+    return subprocess.Popen(
         [
             "linkml-lint",
             "--config",
@@ -27,14 +27,8 @@ def run_linter(linkml_yaml: Path, report: Path) -> Path:
             "--output",
             str(report),
             str(linkml_yaml),
-        ],
-        stderr=subprocess.PIPE,
-    ) as process:
-        _, stderr = process.communicate()
-
-        if stderr:
-            raise LinkmlLinterError(f"Linkml linter error, {stderr.decode('utf-8')}")
-    return report
+        ]
+    )
 
 
 if __name__ == "__main__":
