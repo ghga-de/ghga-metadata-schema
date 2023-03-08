@@ -20,4 +20,4 @@ jobs:
 
       - name: Check schema
         run: >-
-          ./scripts/schema_linter.py --check
+          ./scripts/schema_linter.py
