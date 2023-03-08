@@ -15,24 +15,24 @@
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     pav:version "0.9.1" ;
     skos:definition "The metadata schema for the German Human Genome-Phenome Archive (GHGA)." ;
-    sh:declare [ sh:namespace linkml: ;
-            sh:prefix "linkml" ],
-        [ sh:namespace <http://semanticscience.org/resource/SIO_> ;
-            sh:prefix "SIO" ],
-        [ sh:namespace <http://purl.obolibrary.org/obo/GENEPIO_> ;
-            sh:prefix "GENEPIO" ],
-        [ sh:namespace <https://w3id.org/GHGA/> ;
-            sh:prefix "GHGA" ],
-        [ sh:namespace <https://w3id.org/biolink/vocab/> ;
-            sh:prefix "biolink" ],
-        [ sh:namespace <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
-            sh:prefix "SNOMEDCT" ],
-        [ sh:namespace <http://www.ebi.ac.uk/efo/EFO_> ;
-            sh:prefix "EFO" ],
+    sh:declare [ sh:namespace <http://purl.obolibrary.org/obo/COB_> ;
+            sh:prefix "COB" ],
         [ sh:namespace <http://purl.obolibrary.org/obo/HANCESTRO_> ;
             sh:prefix "HANCESTRO" ],
-        [ sh:namespace <http://purl.obolibrary.org/obo/COB_> ;
-            sh:prefix "COB" ] ;
+        [ sh:namespace <https://w3id.org/biolink/vocab/> ;
+            sh:prefix "biolink" ],
+        [ sh:namespace <http://purl.obolibrary.org/obo/GENEPIO_> ;
+            sh:prefix "GENEPIO" ],
+        [ sh:namespace <http://www.ebi.ac.uk/efo/EFO_> ;
+            sh:prefix "EFO" ],
+        [ sh:namespace <http://semanticscience.org/resource/SIO_> ;
+            sh:prefix "SIO" ],
+        [ sh:namespace <https://w3id.org/GHGA/> ;
+            sh:prefix "GHGA" ],
+        [ sh:namespace linkml: ;
+            sh:prefix "linkml" ],
+        [ sh:namespace <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
+            sh:prefix "SNOMEDCT" ] ;
     linkml:classes <https://w3id.org/GHGA/AccessionMixin>,
         <https://w3id.org/GHGA/Agent>,
         <https://w3id.org/GHGA/Analysis>,
@@ -94,7 +94,7 @@
         "semweb_context" ;
     linkml:default_prefix "GHGA" ;
     linkml:default_range <https://w3id.org/GHGA/string> ;
-    linkml:generation_date "2023-03-06T23:54:46"^^xsd:dateTime ;
+    linkml:generation_date "2023-03-07T21:46:59"^^xsd:dateTime ;
     linkml:id <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:imports linkml:types ;
     linkml:metamodel_version "1.7.0" ;
@@ -396,8 +396,8 @@
         <https://w3id.org/GHGA/xref>,
         <https://w3id.org/GHGA/year> ;
     linkml:source_file "ghga.yaml" ;
-    linkml:source_file_date "2023-03-06T23:54:10"^^xsd:dateTime ;
-    linkml:source_file_size 74189 ;
+    linkml:source_file_date "2023-03-07T21:46:12"^^xsd:dateTime ;
+    linkml:source_file_size 74581 ;
     linkml:subsets <https://w3id.org/GHGA/essential>,
         <https://w3id.org/GHGA/optional>,
         <https://w3id.org/GHGA/public>,
@@ -664,6 +664,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/Analysis> ;
     linkml:range <https://w3id.org/GHGA/Study> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_study> ;
     linkml:usage_slot_name "has study" .
 
@@ -997,6 +998,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/DataAccessCommittee> ;
     linkml:range <https://w3id.org/GHGA/Member> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/main_contact> ;
     linkml:usage_slot_name "main contact" .
 
@@ -1062,6 +1064,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
     linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/description> ;
     linkml:usage_slot_name "description" .
 
@@ -1134,6 +1137,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
     linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/name> ;
     linkml:usage_slot_name "name" .
 
@@ -1167,6 +1171,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/DataAccessPolicy> ;
     linkml:range <https://w3id.org/GHGA/string> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/policy_url> ;
     linkml:usage_slot_name "policy url" .
 
@@ -1258,6 +1263,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Dataset> ;
     linkml:range <https://w3id.org/GHGA/Experiment> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_experiment> ;
     linkml:usage_slot_name "has experiment" .
 
@@ -2229,6 +2235,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Sample> ;
     linkml:range <https://w3id.org/GHGA/AnatomicalEntity> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_anatomical_entity> ;
     linkml:usage_slot_name "has anatomical entity" .
 
@@ -2662,6 +2669,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/DataAccessCommittee> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_data_access_committee> ;
     linkml:usage_slot_name "has data access committee" .
 
@@ -2681,6 +2689,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/DataAccessPolicy> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_data_access_policy> ;
     linkml:usage_slot_name "has data access policy" .
 
@@ -2698,6 +2707,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Dataset> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_dataset> ;
     linkml:usage_slot_name "has dataset" .
 
@@ -2717,6 +2727,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Experiment> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_experiment> ;
     linkml:usage_slot_name "has experiment" .
 
@@ -2755,6 +2766,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Individual> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_individual> ;
     linkml:usage_slot_name "has individual" .
 
@@ -2772,6 +2784,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Member> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_member> ;
     linkml:usage_slot_name "has member" .
 
@@ -2808,6 +2821,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Protocol> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_protocol> ;
     linkml:usage_slot_name "has protocol" .
 
@@ -2846,6 +2860,7 @@
     linkml:multivalued true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Sample> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_sample> ;
     linkml:usage_slot_name "has sample" .
 
@@ -2863,6 +2878,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/Submission> ;
     linkml:range <https://w3id.org/GHGA/Study> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_study> ;
     linkml:usage_slot_name "has study" .
 
@@ -3476,8 +3492,8 @@
     skos:exactMatch <http://purl.obolibrary.org/obo/NCIT_C165443> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:definition_uri <https://w3id.org/GHGA/index_sequence> ;
-    linkml:domain_of <https://w3id.org/GHGA/SequencingProtocol> ;
-    linkml:owner <https://w3id.org/GHGA/SequencingProtocol> ;
+    linkml:domain_of <https://w3id.org/GHGA/Sample> ;
+    linkml:owner <https://w3id.org/GHGA/Sample> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/index_sequence> .
 
@@ -3505,8 +3521,8 @@
     skos:definition "The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
     linkml:definition_uri <https://w3id.org/GHGA/lane_number> ;
-    linkml:domain_of <https://w3id.org/GHGA/SequencingProtocol> ;
-    linkml:owner <https://w3id.org/GHGA/SequencingProtocol> ;
+    linkml:domain_of <https://w3id.org/GHGA/Sample> ;
+    linkml:owner <https://w3id.org/GHGA/Sample> ;
     linkml:range <https://w3id.org/GHGA/string> ;
     linkml:slot_uri <https://w3id.org/GHGA/lane_number> .
 
@@ -3600,6 +3616,7 @@
     linkml:is_usage_slot true ;
     linkml:owner <https://w3id.org/GHGA/Protocol> ;
     linkml:range <https://w3id.org/GHGA/File> ;
+    linkml:required true ;
     linkml:slot_uri <https://w3id.org/GHGA/has_file> ;
     linkml:usage_slot_name "has file" .
 
@@ -5831,38 +5848,41 @@
         <https://w3id.org/GHGA/schema_version>,
         <https://w3id.org/GHGA/title> .
 
-<https://w3id.org/GHGA/Sample> a linkml:ClassDefinition ;
-    skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)." ;
-    skos:exactMatch <biolink:MaterialSample>,
-        <sio:001050> ;
+<https://w3id.org/GHGA/SequencingProtocol> a linkml:ClassDefinition ;
+    skos:definition "Information about the sequencing of a sample." ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/Sample> ;
-    linkml:definition_uri <https://w3id.org/GHGA/Sample> ;
-    linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
-    linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
-        <https://w3id.org/GHGA/AttributeMixin>,
-        <https://w3id.org/GHGA/EgaAccessionMixin> ;
+    linkml:class_uri <https://w3id.org/GHGA/SequencingProtocol> ;
+    linkml:definition_uri <https://w3id.org/GHGA/SequencingProtocol> ;
+    linkml:is_a <https://w3id.org/GHGA/Protocol> ;
     linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/accession>,
-        <https://w3id.org/GHGA/case_control_status>,
-        <https://w3id.org/GHGA/ega_accession>,
-        <https://w3id.org/GHGA/has_attribute>,
-        <https://w3id.org/GHGA/isolation>,
+    linkml:slots <https://w3id.org/GHGA/cell_barcode_offset>,
+        <https://w3id.org/GHGA/cell_barcode_read>,
+        <https://w3id.org/GHGA/cell_barcode_size>,
+        <https://w3id.org/GHGA/flow_cell_id>,
+        <https://w3id.org/GHGA/flow_cell_type>,
+        <https://w3id.org/GHGA/forward_or_reverse>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/sample_alias>,
-        <https://w3id.org/GHGA/sample_description>,
-        <https://w3id.org/GHGA/sample_has_anatomical_entity>,
-        <https://w3id.org/GHGA/sample_has_biospecimen>,
-        <https://w3id.org/GHGA/sample_has_individual>,
-        <https://w3id.org/GHGA/sample_name>,
-        <https://w3id.org/GHGA/sample_type>,
-        <https://w3id.org/GHGA/sample_xref>,
+        <https://w3id.org/GHGA/paired_or_single_end>,
+        <https://w3id.org/GHGA/protocol_has_file>,
+        <https://w3id.org/GHGA/protocol_name>,
+        <https://w3id.org/GHGA/protocol_url>,
+        <https://w3id.org/GHGA/protocol_xref>,
+        <https://w3id.org/GHGA/sample_barcode_read>,
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version>,
-        <https://w3id.org/GHGA/storage>,
-        <https://w3id.org/GHGA/vital_status_at_sampling> .
+        <https://w3id.org/GHGA/sequencing_center>,
+        <https://w3id.org/GHGA/sequencing_protocol_alias>,
+        <https://w3id.org/GHGA/sequencing_protocol_description>,
+        <https://w3id.org/GHGA/sequencing_protocol_has_attribute>,
+        <https://w3id.org/GHGA/sequencing_protocol_instrument_model>,
+        <https://w3id.org/GHGA/sequencing_protocol_type>,
+        <https://w3id.org/GHGA/sequencing_read_length>,
+        <https://w3id.org/GHGA/target_coverage>,
+        <https://w3id.org/GHGA/umi_barcode_offset>,
+        <https://w3id.org/GHGA/umi_barcode_read>,
+        <https://w3id.org/GHGA/umi_barcode_size> .
 
 <https://w3id.org/GHGA/schema_type> a linkml:SlotDefinition ;
     skos:definition "The schema type an instance corresponds to." ;
@@ -5918,43 +5938,40 @@
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version> .
 
-<https://w3id.org/GHGA/SequencingProtocol> a linkml:ClassDefinition ;
-    skos:definition "Information about the sequencing of a sample." ;
+<https://w3id.org/GHGA/Sample> a linkml:ClassDefinition ;
+    skos:definition "A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue)." ;
+    skos:exactMatch <biolink:MaterialSample>,
+        <sio:001050> ;
     skos:inScheme <https://w3id.org/GHGA-Metadata-Schema> ;
-    linkml:class_uri <https://w3id.org/GHGA/SequencingProtocol> ;
-    linkml:definition_uri <https://w3id.org/GHGA/SequencingProtocol> ;
-    linkml:is_a <https://w3id.org/GHGA/Protocol> ;
+    linkml:class_uri <https://w3id.org/GHGA/Sample> ;
+    linkml:definition_uri <https://w3id.org/GHGA/Sample> ;
+    linkml:is_a <https://w3id.org/GHGA/MaterialEntity> ;
+    linkml:mixins <https://w3id.org/GHGA/AccessionMixin>,
+        <https://w3id.org/GHGA/AttributeMixin>,
+        <https://w3id.org/GHGA/EgaAccessionMixin> ;
     linkml:slot_usage [ ] ;
-    linkml:slots <https://w3id.org/GHGA/cell_barcode_offset>,
-        <https://w3id.org/GHGA/cell_barcode_read>,
-        <https://w3id.org/GHGA/cell_barcode_size>,
-        <https://w3id.org/GHGA/flow_cell_id>,
-        <https://w3id.org/GHGA/flow_cell_type>,
-        <https://w3id.org/GHGA/forward_or_reverse>,
+    linkml:slots <https://w3id.org/GHGA/accession>,
+        <https://w3id.org/GHGA/case_control_status>,
+        <https://w3id.org/GHGA/ega_accession>,
+        <https://w3id.org/GHGA/has_attribute>,
         <https://w3id.org/GHGA/index_sequence>,
+        <https://w3id.org/GHGA/isolation>,
         <https://w3id.org/GHGA/lane_number>,
         <https://w3id.org/GHGA/named_thing_creation_date>,
         <https://w3id.org/GHGA/named_thing_id>,
         <https://w3id.org/GHGA/named_thing_update_date>,
-        <https://w3id.org/GHGA/paired_or_single_end>,
-        <https://w3id.org/GHGA/protocol_has_file>,
-        <https://w3id.org/GHGA/protocol_name>,
-        <https://w3id.org/GHGA/protocol_url>,
-        <https://w3id.org/GHGA/protocol_xref>,
-        <https://w3id.org/GHGA/sample_barcode_read>,
+        <https://w3id.org/GHGA/sample_alias>,
+        <https://w3id.org/GHGA/sample_description>,
+        <https://w3id.org/GHGA/sample_has_anatomical_entity>,
+        <https://w3id.org/GHGA/sample_has_biospecimen>,
+        <https://w3id.org/GHGA/sample_has_individual>,
+        <https://w3id.org/GHGA/sample_name>,
+        <https://w3id.org/GHGA/sample_type>,
+        <https://w3id.org/GHGA/sample_xref>,
         <https://w3id.org/GHGA/schema_type>,
         <https://w3id.org/GHGA/schema_version>,
-        <https://w3id.org/GHGA/sequencing_center>,
-        <https://w3id.org/GHGA/sequencing_protocol_alias>,
-        <https://w3id.org/GHGA/sequencing_protocol_description>,
-        <https://w3id.org/GHGA/sequencing_protocol_has_attribute>,
-        <https://w3id.org/GHGA/sequencing_protocol_instrument_model>,
-        <https://w3id.org/GHGA/sequencing_protocol_type>,
-        <https://w3id.org/GHGA/sequencing_read_length>,
-        <https://w3id.org/GHGA/target_coverage>,
-        <https://w3id.org/GHGA/umi_barcode_offset>,
-        <https://w3id.org/GHGA/umi_barcode_read>,
-        <https://w3id.org/GHGA/umi_barcode_size> .
+        <https://w3id.org/GHGA/storage>,
+        <https://w3id.org/GHGA/vital_status_at_sampling> .
 
 <https://w3id.org/GHGA/LibraryPreparationProtocol> a linkml:ClassDefinition ;
     skos:definition "Information about the library preparation of an Experiment." ;

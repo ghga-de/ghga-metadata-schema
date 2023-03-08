@@ -7,7 +7,7 @@ Member of an Organization or a Committee.
 URI: [GHGA:Member](https://w3id.org/GHGA/Member)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has%20member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataAccessCommittee]++-%20main%20contact%200..1>[Member],[DataAccessCommittee]-%20main%20contact(i)%200..1>[Member],[Submission]++-%20has%20member%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has%20member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataAccessCommittee]++-%20main%20contact%200..1>[Member],[DataAccessCommittee]-%20main%20contact(i)%200..1>[Member],[Submission]++-%20has%20member%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has%20member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataAccessCommittee]++-%20main%20contact%201..1>[Member],[DataAccessCommittee]-%20main%20contact(i)%200..1>[Member],[Submission]++-%20has%20member%201..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has%20member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string%20%3F;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataAccessCommittee]++-%20main%20contact%201..1>[Member],[DataAccessCommittee]-%20main%20contact(i)%200..1>[Member],[Submission]++-%20has%20member%201..*>[Member],[Person]^-[Member],[DataAccessCommittee])
 
 ## Parents
 
@@ -16,9 +16,9 @@ URI: [GHGA:Member](https://w3id.org/GHGA/Member)
 ## Referenced by Class
 
  *  **[DataAccessCommittee](DataAccessCommittee.md)** *[data access committee➞has member](data_access_committee_has_member.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
- *  **[DataAccessCommittee](DataAccessCommittee.md)** *[data access committee➞main contact](data_access_committee_main_contact.md)*  <sub>0..1</sub>  **[Member](Member.md)**
+ *  **[DataAccessCommittee](DataAccessCommittee.md)** *[data access committee➞main contact](data_access_committee_main_contact.md)*  <sub>1..1</sub>  **[Member](Member.md)**
  *  **None** *[main contact](main_contact.md)*  <sub>0..1</sub>  **[Member](Member.md)**
- *  **[Submission](Submission.md)** *[submission➞has member](submission_has_member.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
+ *  **[Submission](Submission.md)** *[submission➞has member](submission_has_member.md)*  <sub>1..\*</sub>  **[Member](Member.md)**
 
 ## Attributes
 

@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_sample](https://w3id.org/GHGA/submission_has_sample)
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Sample](Sample.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [Sample](Sample.md)
 
 ## Parents
 

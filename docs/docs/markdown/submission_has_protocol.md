@@ -9,7 +9,7 @@ URI: [GHGA:submission_has_protocol](https://w3id.org/GHGA/submission_has_protoco
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Protocol](Protocol.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [Protocol](Protocol.md)
 
 ## Parents
 

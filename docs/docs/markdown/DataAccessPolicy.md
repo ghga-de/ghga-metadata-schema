@@ -7,7 +7,7 @@ A Data Access Policy specifies under which circumstances, legal or otherwise, a 
 URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<has%20data%20use%20modifier%200..*-++[DataAccessPolicy&#124;name:string%20%3F;description:string%20%3F;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataUsePermission]<has%20data%20use%20permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<has%20data%20access%20committee%201..1-++[DataAccessPolicy],[Dataset]++-%20has%20data%20access%20policy%201..1>[DataAccessPolicy],[Dataset]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]++-%20has%20data%20access%20policy%200..*>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<has%20data%20use%20modifier%200..*-++[DataAccessPolicy&#124;name:string%20%3F;description:string%20%3F;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataUsePermission]<has%20data%20use%20permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<has%20data%20access%20committee%201..1-++[DataAccessPolicy],[Dataset]++-%20has%20data%20access%20policy%201..1>[DataAccessPolicy],[Dataset]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]++-%20has%20data%20access%20policy%200..*>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<has%20data%20use%20modifier%200..*-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string;data_request_form:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataUsePermission]<has%20data%20use%20permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<has%20data%20access%20committee%201..1-++[DataAccessPolicy],[Dataset]++-%20has%20data%20access%20policy%201..1>[DataAccessPolicy],[Dataset]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]++-%20has%20data%20access%20policy%201..*>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<has%20data%20use%20modifier%200..*-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string;data_request_form:string%20%3F;alias:string;accession:string%20%3F;ega_accession:string%20%3F;id(i):string;xref(i):string%20*;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[DataUsePermission]<has%20data%20use%20permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<has%20data%20access%20committee%201..1-++[DataAccessPolicy],[Dataset]++-%20has%20data%20access%20policy%201..1>[DataAccessPolicy],[Dataset]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]-%20has%20data%20access%20policy(i)%200..1>[DataAccessPolicy],[Submission]++-%20has%20data%20access%20policy%201..*>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -23,18 +23,18 @@ URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
 
  *  **[Dataset](Dataset.md)** *[dataset➞has data access policy](dataset_has_data_access_policy.md)*  <sub>1..1</sub>  **[DataAccessPolicy](DataAccessPolicy.md)**
  *  **None** *[has data access policy](has_data_access_policy.md)*  <sub>0..1</sub>  **[DataAccessPolicy](DataAccessPolicy.md)**
- *  **[Submission](Submission.md)** *[submission➞has data access policy](submission_has_data_access_policy.md)*  <sub>0..\*</sub>  **[DataAccessPolicy](DataAccessPolicy.md)**
+ *  **[Submission](Submission.md)** *[submission➞has data access policy](submission_has_data_access_policy.md)*  <sub>1..\*</sub>  **[DataAccessPolicy](DataAccessPolicy.md)**
 
 ## Attributes
 
 
 ### Own
 
- * [data access policy➞name](data_access_policy_name.md)  <sub>0..1</sub>
+ * [data access policy➞name](data_access_policy_name.md)  <sub>1..1</sub>
      * Description: A name for the Data Access Policy.
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
- * [data access policy➞description](data_access_policy_description.md)  <sub>0..1</sub>
+ * [data access policy➞description](data_access_policy_description.md)  <sub>1..1</sub>
      * Description: A short description for the Data Access Policy.
      * Range: [String](types/String.md)
      * in subsets: (essential,public)
@@ -42,7 +42,7 @@ URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
      * Description: The terms of data use and policy verbiage should be captured here.
      * Range: [String](types/String.md)
      * in subsets: (essential,restricted)
- * [data access policy➞policy url](data_access_policy_policy_url.md)  <sub>0..1</sub>
+ * [data access policy➞policy url](data_access_policy_policy_url.md)  <sub>1..1</sub>
      * Description: URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
      * Range: [String](types/String.md)
      * in subsets: (recommended,restricted)

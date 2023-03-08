@@ -211,6 +211,7 @@
             "reference_genome",
             "reference_chromosome",
             "has_input",
+            "has_study",
             "has_output",
             "alias"
          ],
@@ -780,6 +781,7 @@
          "required": [
             "id",
             "name",
+            "main_contact",
             "alias"
          ],
          "title": "DataAccessCommittee",
@@ -890,7 +892,10 @@
          },
          "required": [
             "id",
+            "name",
+            "description",
             "policy_text",
+            "policy_url",
             "has_data_access_committee",
             "has_data_use_permission",
             "alias"
@@ -1273,6 +1278,7 @@
             "description",
             "type",
             "has_study",
+            "has_experiment",
             "has_sample",
             "has_file",
             "has_data_access_policy",
@@ -2449,6 +2455,7 @@
          },
          "required": [
             "id",
+            "has_file",
             "library_name",
             "library_layout",
             "library_type",
@@ -2740,6 +2747,7 @@
          },
          "required": [
             "id",
+            "has_file",
             "alias"
          ],
          "title": "Protocol",
@@ -2899,8 +2907,16 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
+            "index_sequence": {
+               "description": "A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.",
+               "type": "string"
+            },
             "isolation": {
                "description": "Method or device employed for collecting/isolating a biospecimen or a sample.",
+               "type": "string"
+            },
+            "lane_number": {
+               "description": "The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.",
                "type": "string"
             },
             "name": {
@@ -2943,6 +2959,7 @@
             "id",
             "name",
             "description",
+            "has_anatomical_entity",
             "alias"
          ],
          "title": "Sample",
@@ -3007,16 +3024,8 @@
                "description": "The internal unique identifier for an entity.",
                "type": "string"
             },
-            "index_sequence": {
-               "description": "A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.",
-               "type": "string"
-            },
             "instrument_model": {
                "description": "The name and model of the technology platform used to perform sequencing.",
-               "type": "string"
-            },
-            "lane_number": {
-               "description": "The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.",
                "type": "string"
             },
             "name": {
@@ -3085,6 +3094,7 @@
          },
          "required": [
             "id",
+            "has_file",
             "instrument_model",
             "alias",
             "description"
@@ -3483,7 +3493,16 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "has_study",
+            "has_sample",
+            "has_individual",
+            "has_experiment",
+            "has_protocol",
+            "has_dataset",
+            "has_data_access_policy",
+            "has_data_access_committee",
+            "has_member"
          ],
          "title": "Submission",
          "type": "object"

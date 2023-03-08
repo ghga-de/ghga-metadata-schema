@@ -48,4 +48,3 @@ jobs:
       - name: Build the schema
         run: |
           make all
-          make gen-creation-schema-artifacts stage-derived-schemas

@@ -40,10 +40,6 @@ jobs:
         run: |
           make all
 
-      - name: Generate derived schemas
-        run: |
-          make gen-creation-schema-artifacts stage-derived-schemas
-
       - name: Push artifacts
         run: |
           make all

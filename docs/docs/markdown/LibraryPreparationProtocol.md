@@ -101,7 +101,7 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
  * [protocol➞url](protocol_url.md)  <sub>0..1</sub>
      * Description: URL for the resource that describes this Protocol.
      * Range: [String](types/String.md)
- * [protocol➞has file](protocol_has_file.md)  <sub>0..1</sub>
+ * [protocol➞has file](protocol_has_file.md)  <sub>1..1</sub>
      * Description: A document that describes the Protocol.
      * Range: [File](File.md)
      * in subsets: (essential,restricted)

@@ -31,7 +31,7 @@ type Analysis implements AccessionMixin, EgaAccessionMixin
     referenceGenome: String!
     referenceChromosome: String!
     hasInput: [File]!
-    hasStudy: Study
+    hasStudy: Study!
     hasWorkflow: [Workflow]
     hasAnalysisProcess: [AnalysisProcess]
     hasOutput: [File]!
@@ -180,7 +180,7 @@ type DataAccessCommittee implements AttributeMixin, AccessionMixin, EgaAccession
     schemaVersion: String
     name: String!
     description: String
-    mainContact: Member
+    mainContact: Member!
     hasMember: [Member]
     alias: String!
     hasAttribute: [Attribute]
@@ -196,10 +196,10 @@ type DataAccessPolicy implements AttributeMixin, AccessionMixin, EgaAccessionMix
     updateDate: String
     schemaType: String
     schemaVersion: String
-    name: String
-    description: String
+    name: String!
+    description: String!
     policyText: String!
-    policyUrl: String
+    policyUrl: String!
     hasDataAccessCommittee: DataAccessCommittee!
     hasDataUsePermission: DataUsePermission!
     hasDataUseModifier: [DataUseModifier]
@@ -269,7 +269,7 @@ type Dataset implements AccessionMixin, EgaAccessionMixin, PublicationMixin, Rel
     description: String!
     type: [String]!
     hasStudy: [Study]!
-    hasExperiment: [Experiment]
+    hasExperiment: [Experiment]!
     hasSample: [Sample]!
     hasAnalysis: [Analysis]
     hasFile: [File]!
@@ -494,7 +494,7 @@ type LibraryPreparationProtocol
     name: String
     type: String
     url: String
-    hasFile: File
+    hasFile: File!
     xref: [String]
     libraryName: String!
     libraryLayout: String!
@@ -648,7 +648,7 @@ type Protocol implements AttributeMixin
     type: String
     description: String
     url: String
-    hasFile: File
+    hasFile: File!
     alias: String!
     xref: [String]
     hasAttribute: [Attribute]
@@ -708,8 +708,10 @@ type Sample implements AccessionMixin, EgaAccessionMixin, AttributeMixin
     vitalStatusAtSampling: VitalStatusEnum
     isolation: String
     storage: String
+    indexSequence: String
+    laneNumber: String
     hasIndividual: Individual
-    hasAnatomicalEntity: [AnatomicalEntity]
+    hasAnatomicalEntity: [AnatomicalEntity]!
     hasBiospecimen: Biospecimen
     alias: String!
     xref: [String]
@@ -727,16 +729,14 @@ type SequencingProtocol
     schemaVersion: String
     name: String
     url: String
-    hasFile: File
+    hasFile: File!
     xref: [String]
     sequencingCenter: String
     instrumentModel: String!
     pairedOrSingleEnd: PairedOrSingleEndEnum
     forwardOrReverse: ForwardOrReverseEnum
     sequencingReadLength: String
-    indexSequence: String
     targetCoverage: String
-    laneNumber: String
     flowCellId: String
     flowCellType: String
     umiBarcodeRead: String
@@ -779,19 +779,19 @@ type Submission implements MetadataMixin
   {
     id: String!
     affiliation: String
-    hasStudy: Study
+    hasStudy: Study!
     hasProject: Project
-    hasSample: [Sample]
+    hasSample: [Sample]!
     hasBiospecimen: [Biospecimen]
-    hasIndividual: [Individual]
-    hasExperiment: [Experiment]
-    hasProtocol: [Protocol]
+    hasIndividual: [Individual]!
+    hasExperiment: [Experiment]!
+    hasProtocol: [Protocol]!
     hasAnalysis: [Analysis]
     hasFile: [File]
-    hasDataset: [Dataset]
-    hasDataAccessPolicy: [DataAccessPolicy]
-    hasDataAccessCommittee: [DataAccessCommittee]
-    hasMember: [Member]
+    hasDataset: [Dataset]!
+    hasDataAccessPolicy: [DataAccessPolicy]!
+    hasDataAccessCommittee: [DataAccessCommittee]!
+    hasMember: [Member]!
     hasPublication: [Publication]
     submissionDate: String
     creationDate: String

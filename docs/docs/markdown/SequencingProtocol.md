@@ -7,7 +7,7 @@ Information about the sequencing of a sample.
 URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has%20attribute%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;paired_or_single_end:paired_or_single_end_enum%20%3F;forward_or_reverse:forward_or_reverse_enum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[SequencingProtocol],[Protocol],[File],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has%20attribute%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;paired_or_single_end:paired_or_single_end_enum%20%3F;forward_or_reverse:forward_or_reverse_enum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[SequencingProtocol],[Protocol],[File],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has%20attribute%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;paired_or_single_end:paired_or_single_end_enum%20%3F;forward_or_reverse:forward_or_reverse_enum%20%3F;sequencing_read_length:string%20%3F;target_coverage:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[SequencingProtocol],[Protocol],[File],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has%20attribute%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;paired_or_single_end:paired_or_single_end_enum%20%3F;forward_or_reverse:forward_or_reverse_enum%20%3F;sequencing_read_length:string%20%3F;target_coverage:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string%20%3F;url(i):string%20%3F;xref(i):string%20*;id(i):string;creation_date(i):string%20%3F;update_date(i):string%20%3F;schema_type(i):string%20%3F;schema_version(i):string%20%3F],[Protocol]^-[SequencingProtocol],[Protocol],[File],[Attribute])
 
 ## Parents
 
@@ -40,17 +40,9 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
  * [sequencing read length](sequencing_read_length.md)  <sub>0..1</sub>
      * Description: Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process
      * Range: [String](types/String.md)
- * [index sequence](index_sequence.md)  <sub>0..1</sub>
-     * Description: A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
-     * Range: [String](types/String.md)
-     * in subsets: (recommended,public)
  * [target coverage](target_coverage.md)  <sub>0..1</sub>
      * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
      * Range: [String](types/String.md)
- * [lane number](lane_number.md)  <sub>0..1</sub>
-     * Description: The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-     * Range: [String](types/String.md)
-     * in subsets: (recommended,public)
  * [flow cell id](flow_cell_id.md)  <sub>0..1</sub>
      * Description: Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
      * Range: [String](types/String.md)
@@ -123,7 +115,7 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
  * [protocol➞url](protocol_url.md)  <sub>0..1</sub>
      * Description: URL for the resource that describes this Protocol.
      * Range: [String](types/String.md)
- * [protocol➞has file](protocol_has_file.md)  <sub>0..1</sub>
+ * [protocol➞has file](protocol_has_file.md)  <sub>1..1</sub>
      * Description: A document that describes the Protocol.
      * Range: [File](File.md)
      * in subsets: (essential,restricted)

@@ -9,7 +9,7 @@ URI: [GHGA:sample_has_anatomical_entity](https://w3id.org/GHGA/sample_has_anatom
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>0..\*</sub> [AnatomicalEntity](AnatomicalEntity.md)
+[Sample](Sample.md) &#8594;  <sub>1..\*</sub> [AnatomicalEntity](AnatomicalEntity.md)
 
 ## Parents
 
