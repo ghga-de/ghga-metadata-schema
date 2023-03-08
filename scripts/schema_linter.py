@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+"""Script to employ linkml-linter"""
 import subprocess
 from pathlib import Path
 
@@ -12,8 +13,6 @@ LINTING_DOC = HERE.parent / "docs" / "linkml_linter.md"
 
 class LinkmlLinterError(Exception):
     """Classifying errors under Linter"""
-
-    pass
 
 
 def run_linter(linkml_yaml: Path, report: Path) -> Path:

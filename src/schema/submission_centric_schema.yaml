@@ -4,7 +4,6 @@ description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
 version: 0.9.0
 imports:
-  - linkml:types
   - base_schema
 
 prefixes:
