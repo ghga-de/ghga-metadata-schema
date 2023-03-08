@@ -16,7 +16,6 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
-
 classes:
   agent:
     is_a: named thing
@@ -34,15 +33,6 @@ classes:
         required: true
     exact_mappings:
       - prov:Agent
-
-  technology:
-    is_a: information content entity
-    deprecated: true
-    description: >-
-      A Technology is an abstraction that represents the instrument used for an assay. The Technology
-      entity captures instrument-specific attributes that are relevant for an Experiment entity.
-      The Technology entity may be further characterized by its children where each child has fields
-      that are relevant to that particular technology.
 
   experiment process:
     is_a: experiment
@@ -202,28 +192,6 @@ classes:
         inlined: true
         inlined_as_list: true
 
-  member:
-    is_a: person
-    description: >-
-      Member of an Organization or a Committee.
-    slots:
-      - email
-      - telephone
-      - organization
-    slot_usage:
-      email:
-        description: >-
-          The email of the Member.
-        required: true
-      telephone:
-        description: >-
-          The telephone number of the Member.
-        required: false
-      organization:
-        description: >-
-          The organization that the Member is part of.
-        required: true
-
   cell line:
     is_a: material entity
     description: >-
@@ -270,23 +238,9 @@ classes:
         inlined_as_list: false
 
 slots:
-  telephone:
-    description: >-
-      The telephone number associated with a person.
-
-  organization:
-    description: The organization associated with a person.
-  email:
-    description: >-
-      Email of a person.
-
   role:
     description: The role that a user has within GHGA.
     range: user role enum
-
-  has technology:
-    deprecated: true
-    range: technology
 
   has experiment process:
     range: experiment process
@@ -313,10 +267,6 @@ slots:
     range: agent
     in_subset:
       - restricted
-
-  has member:
-    description: The members associated with a committee.
-    range: member
 
   has proband:
     description: The Individual that is reported to have a disorder in a Family.

@@ -15,7 +15,6 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
-
 classes:
   project:
     is_a: research activity
@@ -43,7 +42,6 @@ classes:
       - accession mixin
       - ega accession mixin
       - attribute mixin
-      - release status mixin
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
       detailed examination and analysis of a subject to learn more about the phenomenon
@@ -58,9 +56,11 @@ classes:
       title:
         description: >-
           A comprehensive title for the study.
+        required: true
       description:
         description: >-
           A detailed description (abstract) that describes the goals of this Study.
+        required: true
       type:
         description: >-
           The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
@@ -85,11 +85,6 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell, bulk etc)
-      release status:
-        description: >-
-          The release status of a Study.
-        range: release status enum
-        required: true
       has file:
         description: >-
           Additional/supplementary files associated with a Study.
@@ -114,7 +109,6 @@ classes:
       - type
       - biological replicates
       - technical replicates
-      - experimental replicates
       - has study
       - has sample
       - has file
@@ -130,12 +124,10 @@ classes:
       type:
         description: >-
           The type of Experiment.
-        required: true
+        required: false
       biological replicates:
         required: false
       technical replicates:
-        required: false
-      experimental replicates:
         required: false
       has study:
         description: >-
@@ -154,6 +146,7 @@ classes:
         description: >-
           One or more Files entities that are generated as output of this Experiment.
         multivalued: true
+        required: true
         inlined: true
         inlined_as_list: true
       has protocol:
@@ -230,7 +223,6 @@ classes:
     slots:
       - sequencing center
       - instrument model
-      - paired or single end
       - forward or reverse
       - sequencing read length
       - index sequence
@@ -261,9 +253,6 @@ classes:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
       sequencing center:
-        required: false
-        recommended: true
-      paired or single end:
         required: false
         recommended: true
       forward or reverse:
@@ -326,13 +315,15 @@ classes:
       - has individual
     slot_usage:
       name:
-        required: true
+        required: false
+        recommended: true
       type:
         description: >-
           The type of Biospecimen.
         required: false
+        recommended: true
       description:
-        required: true
+        required: false
       isolation:
         required: false
         recommended: true
@@ -409,7 +400,7 @@ classes:
       type:
         description: >-
           The type of sample.
-        required: true
+        required: false
       description:
         description: >-
           Short textual description of the sample
@@ -441,8 +432,7 @@ classes:
         inlined: true
         inlined_as_list: false
       has anatomical entity:
-        required: false
-        recommended: true
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -477,7 +467,7 @@ classes:
       sex:
         required: true
       karyotype:
-        required: true
+        required: false
       age:
         required: true
       vital status:
@@ -552,7 +542,6 @@ classes:
       A file is an object that contains information generated from a process, either an
       Experiment or an Analysis.
     slots:
-      - drs uri
       - name
       - format
       - size
@@ -565,8 +554,6 @@ classes:
         required: true
       format:
         required: true
-      drs uri:
-        required: false
       checksum:
         required: true
       checksum type:
@@ -598,11 +585,11 @@ classes:
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
-        required: true
+        required: false
       description:
         description: >-
           Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
-        required: true
+        required: false
       reference genome:
         required: true
       reference chromosome:
@@ -635,7 +622,6 @@ classes:
     mixins:
       - accession mixin
       - ega accession mixin
-      - release status mixin
       - attribute mixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
@@ -674,7 +660,7 @@ classes:
       has experiment:
         description: >-
           One or more Experiment entities that are referenced by this Dataset.
-        required: false
+        required: true
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -712,11 +698,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      release status:
-        description: >-
-          The release status of a Dataset.
-        required: false
-        range: release status enum
 
   data use permission:
     is_a: information content entity
@@ -812,6 +793,7 @@ classes:
       - name
       - description
       - main contact
+      - has member
     slot_usage:
       name:
         description: >-
@@ -820,13 +802,43 @@ classes:
       description:
         description: >-
           A description for the Data Access Committee.
-        required: true
+        required: false
       main contact:
         description: >-
           The main contact for the Data Access Committee.
+        range: member
         required: true
         inlined: true
         inlined_as_list: false
+      has member:
+        description: >-
+          All the members that are part of this Data Access Committee.
+        range: member
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  member:
+    is_a: person
+    description: >-
+      Member of an Organization or a Committee.
+    slots:
+      - email
+      - telephone
+      - organization
+    slot_usage:
+      email:
+        description: >-
+          The email of the Member.
+        required: true
+      telephone:
+        description: >-
+          The telephone number of the Member.
+        required: false
+      organization:
+        description: >-
+          The organization that the Member is part of.
+        required: true
 
   publication:
     is_a: information content entity
@@ -840,30 +852,33 @@ classes:
       - author
       - year
       - journal
+      - doi
     slot_usage:
       title:
         description: >-
           The title for the Publication.
-        required: true
+        required: false
       abstract:
         description: >-
           The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
         required: false
       author:
-        required: true
+        required: false
       year:
-        required: true
+        required: false
       journal:
-        required: true
+        required: false
       xref:
         description: >-
           One or more cross-references for this Publication.
         required: false
+      doi:
+        description:
+          DOI identifier of the Publication.
+        required: true
 
   submission:
     tree_root: true
-    mixins:
-      - metadata mixin
     description: >-
       A grouping entity that represents information about one or more entities.
       A submission can be considered as a set of inter-related (and inter-connected)
@@ -883,10 +898,9 @@ classes:
       - has dataset
       - has data access policy
       - has data access committee
+      - has member
       - has publication
       - submission date
-      - creation date
-      - update date
       - submission status
     slot_usage:
       id:
@@ -979,6 +993,14 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      has member:
+        description: >-
+          The members associated with a committee referenced in this submission
+        required: true
+        range: member
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       has publication:
         description: >-
           One or more Publication entities associated with this Submission.
@@ -986,14 +1008,6 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      creation date:
-        description: >-
-          Timestamp (in ISO 8601 format) when the Submission was created.
-        required: false
-      update date:
-        description: >-
-          Timestamp (in ISO 8601 format) when the Submission was updated.
-        required: false
       submission status:
         description: >-
           The status of a Submission.
@@ -1140,6 +1154,14 @@ slots:
     in_subset:
       - restricted
 
+  has member:
+    description: >-
+      The members associated with a committee.
+    range: member
+    inlined: true
+    in_subset:
+      - restricted
+
   has protocol:
     description: The protocol associated with an entity.
     range: protocol
@@ -1154,6 +1176,17 @@ slots:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
 
+  telephone:
+    description: >-
+      The telephone number associated with a person.
+
+  organization:
+    description: The organization associated with a person.
+
+  email:
+    description: >-
+      Email of a person.
+
   affiliation:
     description: >-
       The Institution(s) associated with an entity.
@@ -1166,20 +1199,12 @@ slots:
     exact_mappings:
       - EFO:0002090
 
-
   biological replicates:
     description: >-
       A biological replicate is a replicate role that consists of
       independent biological replicates made from different individual biosamples.
     exact_mappings:
       - EFO:0002091
-
-  experimental replicates:
-    description: >-
-      The replicate number of the assay, i.e. the numeric iteration
-      for the assay that was repeated.
-    exact_mappings:
-      - NCIT:C178859
 
   library name:
     description: >-
@@ -1258,13 +1283,6 @@ slots:
       A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
     exact_mappings:
       - NCIT:C165443
-
-  paired or single end:
-    deprecated: true
-    description: >-
-      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
-      The number that identifies each read direction in a paired-end nucleotide sequencing replications.
-    range: paired or single end enum
 
   forward or reverse:
     description: >-
@@ -1398,10 +1416,6 @@ slots:
     description: >-
       The type of algorithm used to generate the checksum of a file.
 
-  drs uri:
-    description: >-
-      GA4GH Data Repository Service (DRS) identifier URI for a file.
-
   reference chromosome:
     description: >-
       The reference chromosome used for this Analysis.
@@ -1456,6 +1470,10 @@ slots:
   submission date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
+
+  doi:
+    description: >-
+      DOI identifier of a publication.
 
 enums:
   biological sex enum:
@@ -1558,15 +1576,6 @@ enums:
         description: The Sample is to be treated as Control
       case:
         description: The Sample is to be treated as Case
-  paired or single end enum:
-    deprecated: true
-    description: >-
-      Enum to capture whether a sequencing experiment generates reads that are Paired-end or Single-end.
-    permissible_values:
-      paired:
-        description: The reads are Paired-end
-      single:
-        description: The reads are Single-end
   forward or reverse enum:
     description: >-
       Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
@@ -1575,14 +1584,6 @@ enums:
         description: The reads are forward (R1) reads
       reverse:
         description: The reads are reverse (R2) reads
-  release status enum:
-    description: >-
-      Enum to capture the release status of an entity.
-    permissible_values:
-      unreleased:
-        description: signifies that the entity has not yet been release for public consumption.
-      released:
-        description: signifies that the entity has been release for public consumption.
   age range enum:
     description: >-
       Enum to capture the age range that an Indiviudal belongs to.
