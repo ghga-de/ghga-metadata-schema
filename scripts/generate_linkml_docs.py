@@ -33,3 +33,5 @@ def generate_docs(linkml_yaml: Path, docs_dir: Path):
             raise LinkmlDocumentationError(
                 f"Linkml documentation error, {stderr.decode('utf-8')}"
             )
+if __name__ == "__main__":
+    generate_docs("/workspace/src/schema/advance_schema.yaml", DOCS_DIR)
