@@ -14,6 +14,8 @@ prefixes:
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
 
+default_range: string
+
 classes:
   project:
     is_a: research activity
