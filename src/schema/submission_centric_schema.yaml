@@ -4,7 +4,6 @@ description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
 version: 0.9.0
 imports:
-  - linkml:types
   - base_schema
 
 prefixes:
@@ -14,6 +13,8 @@ prefixes:
   EFO: http://www.ebi.ac.uk/efo/EFO_
   COB: http://purl.obolibrary.org/obo/COB_
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
+
+default_range: string
 
 classes:
   project:
@@ -210,6 +211,9 @@ classes:
           One or more attributes that further characterizes this Library Preparation Protocol.
       target regions:
         required: false
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       rnaseq strandedness:
         required: false
         recommended: true
