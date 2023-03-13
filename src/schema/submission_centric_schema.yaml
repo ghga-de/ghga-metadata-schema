@@ -212,6 +212,7 @@ classes:
       target regions:
         required: false
         multivalued: true
+        inlined: true
         inlined_as_list: true
       rnaseq strandedness:
         required: false
