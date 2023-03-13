@@ -6,13 +6,9 @@ from pathlib import Path
 
 
 HERE = Path(__file__).parent.resolve()
-LINTER_CONFIG = HERE.parent / "src" / "linter_config.yaml"
+LINTER_CONFIG = HERE.parent / ".linkml_linter.yaml"
 SCHEMA_DIR = HERE.parent / "src" / "schema"
 LINTING_DOC = HERE.parent / "docs" / "linkml_linter.md"
-
-
-class LinkmlLinterError(Exception):
-    """Classifying errors under Linter"""
 
 
 def run_linter(linkml_yaml: Path, report: Path):
