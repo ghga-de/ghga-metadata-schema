@@ -30,7 +30,7 @@ def compare_folders(expected: str, observed: str):
             check=True,
         )
     except subprocess.CalledProcessError as exc:
-        print("Status : FAIL", exc.returncode, exc.stderr)
+        print("Status : FAIL", exc.returncode, exc.stdout)
         sys.exit(1)
 
 
