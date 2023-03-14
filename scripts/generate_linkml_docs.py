@@ -20,11 +20,11 @@ def generate_linkml_markdown(docs_dir: Path):
     )
 
 
-def compare_folders(expected: str, observed: str):
+def compare_folders(expected: Path, observed: Path):
     """Function to check equality of contents of two folders"""
     try:
         subprocess.run(
-            ["diff", "-arq", expected, observed],
+            ["diff", "-arq", str(expected), str(observed)],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             check=True,
@@ -40,7 +40,7 @@ def main(check: bool = False):
         with TemporaryDirectory() as tmpdirname:
             generate_linkml_markdown(tmpdirname)
 
-            compare_folders(str(DOCS_DIR), tmpdirname)
+            compare_folders(DOCS_DIR, tmpdirname)
     else:
         generate_linkml_markdown(DOCS_DIR)
 
