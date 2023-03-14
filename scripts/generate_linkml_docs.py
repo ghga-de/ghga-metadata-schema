@@ -43,7 +43,7 @@ def main(check: bool = False):
         with TemporaryDirectory() as tmpdirname:
             generate_linkml_markdown(tmpdirname)
 
-        compare_folders(str(DOCS_DIR), tmpdirname)
+            compare_folders(str(DOCS_DIR), tmpdirname)
 
 
 if __name__ == "__main__":
