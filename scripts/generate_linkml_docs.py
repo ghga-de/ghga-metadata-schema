@@ -21,35 +21,41 @@ def generate_linkml_markdown(docs_dir: Path):
     )
 
 
+class ContentDifference(Exception):
+    """Custom exception to raise non-equality of the compared folders"""
+
+    pass
+
+
 def compare_folders(expected: Path, observed: Path):
     """Function to check equality of contents of two folders"""
-    try:
-        process = subprocess.run(
-            ["diff", "-arq", str(expected), str(observed)],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        return process.returncode, process.stdout
-    except subprocess.CalledProcessError as exc:
-        return exc.returncode, exc.stdout
+
+    with subprocess.Popen(
+        ["diff", "-arq", str(expected), str(observed)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        encoding="utf-8",
+    ) as process:
+        stdout, _ = process.communicate()
+
+        if process.returncode != 0:
+            raise ContentDifference(f"Documentations are outdated. {stdout}")
 
 
 def main(check: bool = False):
-    """Update or check the current entity relationship diagram."""
+    """Update or check the current documentation folder."""
     if check:
         with TemporaryDirectory() as tmpdirname:
             tmp_docs_dir = Path(tmpdirname)
 
             generate_linkml_markdown(tmp_docs_dir)
 
-            code, out = compare_folders(DOCS_DIR, tmp_docs_dir)
-            if code != 0:
-                echo_failure("Checks failed on the linkml schema")
-                print(out)
-                sys.exit(1)
-            else:
-                echo_success("All checks passes on the linkml schema")
+            try:
+                compare_folders(DOCS_DIR, tmp_docs_dir)
+                echo_success("Documents are up-to-date")
+            except ContentDifference:
+                echo_failure("Documents are not up-to-date")
+                raise
     else:
         generate_linkml_markdown(DOCS_DIR)
         echo_success("Documents are successfully generated.")
