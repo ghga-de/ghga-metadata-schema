@@ -36,13 +36,13 @@ def compare_folders(expected: str, observed: str):
 
 def main(check: bool = False):
     """Update or check the current entity relationship diagram."""
-    # generate_linkml_markdown(DOCS_DIR)
-
     if check:
         with TemporaryDirectory() as tmpdirname:
             generate_linkml_markdown(tmpdirname)
 
             compare_folders(str(DOCS_DIR), tmpdirname)
+    else:
+        generate_linkml_markdown(DOCS_DIR)
 
 
 if __name__ == "__main__":
