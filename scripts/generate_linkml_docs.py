@@ -29,7 +29,6 @@ def compare_folders(expected: str, observed: str):
             stderr=subprocess.PIPE,
             check=True,
         )
-        return "Schema documents are up to date"
     except subprocess.CalledProcessError as exc:
         print("Status : FAIL", exc.returncode, exc.stderr)
         sys.exit(1)
