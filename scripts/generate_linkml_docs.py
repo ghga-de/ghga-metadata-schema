@@ -13,7 +13,7 @@ LINKML_YAML = HERE.parent / "src" / "schema" / "submission_centric_schema.yaml"
 DOCS_DIR = HERE.parent / "docs" / "schema_markdown"
 
 
-def generate_linkml_markdown(docs_dir):
+def generate_linkml_markdown(docs_dir: Path):
     """Function to generate markdown documentations of a given schema"""
     return MarkdownGenerator(schema=str(LINKML_YAML), directory_output=True).serialize(
         directory=docs_dir
