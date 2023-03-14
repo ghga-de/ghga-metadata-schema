@@ -639,6 +639,7 @@ classes:
       - has sample
       - has analysis
       - has file
+      - has publication
       - has data access policy
     slot_usage:
       title:
