@@ -24,7 +24,7 @@ def compare_folders(expected: str, observed: str):
     """Function to check equality of contents of two folders"""
     try:
         subprocess.run(
-            ["diff", "-arg", expected, observed],
+            ["diff", "-arq", expected, observed],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             check=True,
