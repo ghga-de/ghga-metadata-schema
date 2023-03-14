@@ -4,7 +4,7 @@
 import subprocess
 import sys
 from pathlib import Path
-
+from script_utils.cli import echo_failure, echo_success
 
 HERE = Path(__file__).parent.resolve()
 LINTER_CONFIG = HERE.parent / ".linkml_linter.yaml"
@@ -14,7 +14,7 @@ SCHEMA_DIR = HERE.parent / "src" / "schema"
 def run_linter(schema_yaml: Path):
     """Function to call linkml-linter"""
     try:
-        subprocess.run(
+        process = subprocess.run(
             [
                 "linkml-lint",
                 "--config",
@@ -26,10 +26,16 @@ def run_linter(schema_yaml: Path):
             encoding="utf-8",
             check=True,
         )
+        return process.returncode, process.stdout
     except subprocess.CalledProcessError as exc:
-        print(f"Status : FAIL, {exc.returncode}, {exc.stdout}")
-        sys.exit(1)
+        return exc.returncode, exc.stdout
 
 
 if __name__ == "__main__":
-    run_linter(SCHEMA_DIR)
+    code, out = run_linter(SCHEMA_DIR)
+    if code != 0:
+        echo_failure("Checks failed on the linkml schema")
+        print(out)
+        sys.exit(1)
+    else:
+        echo_success("All checks passes on the linkml schema")
