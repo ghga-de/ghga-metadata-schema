@@ -39,9 +39,11 @@ def main(check: bool = False):
     """Update or check the current entity relationship diagram."""
     if check:
         with TemporaryDirectory() as tmpdirname:
-            generate_linkml_markdown(Path(tmpdirname))
+            tmp_docs_dir = Path(tmpdirname)
 
-            code, out = compare_folders(DOCS_DIR, Path(tmpdirname))
+            generate_linkml_markdown(tmp_docs_dir)
+
+            code, out = compare_folders(DOCS_DIR, tmp_docs_dir)
             if code != 0:
                 echo_failure("Checks failed on the linkml schema")
                 print(out)
