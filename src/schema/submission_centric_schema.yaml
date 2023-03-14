@@ -51,8 +51,6 @@ classes:
       - type
       - affiliation
       - has project
-      - has file
-      - has publication
     slot_usage:
       title:
         description: >-
@@ -70,13 +68,6 @@ classes:
       affiliation:
         required: true
         multivalued: true
-      has publication:
-        description: >-
-          One or more Publication entities associated with this Study.
-        required: false
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
       has project:
         description: The project associated with this Study.
         required: false
@@ -86,13 +77,6 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell, bulk etc)
-      has file:
-        description: >-
-          Additional/supplementary files associated with a Study.
-        required: false
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
 
   experiment:
     is_a: investigation
@@ -634,10 +618,6 @@ classes:
       - title
       - description
       - type
-      - has study
-      - has experiment
-      - has sample
-      - has analysis
       - has file
       - has data access policy
     slot_usage:
@@ -652,34 +632,6 @@ classes:
           The type of a dataset.
         required: true
         multivalued: true
-      has study:
-        description: >-
-          One or more Study entities that are referenced by this Dataset.
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
-      has experiment:
-        description: >-
-          One or more Experiment entities that are referenced by this Dataset.
-        required: true
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      has sample:
-        description: >-
-          One or more Sample entities that are referenced by this Dataset.
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
-      has analysis:
-        description: >-
-          One or more Analysis entities that are referenced by this Dataset.
-        required: false
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
       has file:
         description: >-
           One or more File entities that collectively are part of this Dataset.
@@ -693,13 +645,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
-      has publication:
-        description: >-
-          One or more Publication entities associated with this Dataset.
-        required: false
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
 
   data use permission:
     is_a: information content entity
@@ -855,6 +800,7 @@ classes:
       - year
       - journal
       - doi
+      - has study
     slot_usage:
       title:
         description: >-
@@ -878,6 +824,13 @@ classes:
         description:
           DOI identifier of the Publication.
         required: true
+      has study:
+        description: >-
+          The Study entity associated with this Publication.
+        range: study
+        required: true
+        inlined: true
+        inlined_as_list: true
 
   submission:
     tree_root: true
