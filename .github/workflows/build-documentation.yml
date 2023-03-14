@@ -20,4 +20,4 @@ jobs:
 
       - name: Build docs
         run: >-
-          ./scripts/generate_linkml_docs.py src/schema/submission_centric_schema.yaml 
+          ./scripts/generate_linkml_docs.py --check
