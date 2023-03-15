@@ -1,8 +1,8 @@
 # Entity Relationship Diagrams
 
-## GHGA-Advance-Metadata-Schema
+## Global Overview
 
-### Basic Diagram:
+An overview of the entire submission schema.  
 
 ```mermaid
 erDiagram
@@ -127,7 +127,9 @@ Individual ||--}o File : "has file"
 
 
 
-### Detailed Diagram:
+## Sample, Biospecimen, & Individual
+
+Focusses on the relation between Sample, Biospecimen, and Individual.  
 
 ```mermaid
 erDiagram
@@ -306,60 +308,7 @@ Biospecimen {
     stringList xref  
 }
 Individual {
-    string biological_sex
-    string karyotype  
-    string age_range
-    string vital_status
-    string geographical_region  
-    string accession  
-    string ega_accession  
-    string given_name  
-    string family_name  
-    string additional_name  
-    string id  
-    string alias  
-    stringList xref  
-}
-PhenotypicFeature {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-    string alias  
-    stringList xref  
-}
-Disease {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-    string alias  
-    stringList xref  
-}
-Ancestry {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-    string name  
-    string alias  
-    stringList xref  
-}
-AnatomicalEntity {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-    string alias  
-    stringList xref  
+
 }
 
 Submission ||--|| Study : "has study"
@@ -411,7 +360,6 @@ Individual ||--}o Individual : "has children"
 Individual ||--}| Disease : "has disease"
 Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
-
 ```
 
 
@@ -487,132 +435,9 @@ DeprecatedMixin ||--|| NamedThing : "replaced by"
 
 
 
-### Detailed Diagram:
+## Experiment, Sample, & File
 
-```mermaid
-erDiagram
-NamedThing {
-    string id  
-    string alias  
-    stringList xref  
-}
-Person {
-    string given_name  
-    string family_name  
-    string additional_name  
-    string id  
-    string alias  
-    stringList xref  
-}
-Committee {
-    string name  
-    string id  
-    string alias  
-    stringList xref  
-}
-MaterialEntity {
-    string id  
-    string alias  
-    stringList xref  
-}
-BiologicalQuality {
-    string id  
-    string alias  
-    stringList xref  
-}
-InformationContentEntity {
-    string id  
-    string alias  
-    stringList xref  
-}
-PlannedProcess {
-    string id  
-    string alias  
-    stringList xref  
-}
-Investigation {
-    string title  
-    string description  
-    string id  
-    string alias  
-    stringList xref  
-}
-DataTransformation {
-    string title  
-    string description  
-    string id  
-    string alias  
-    stringList xref  
-}
-ResearchActivity {
-    string title  
-    string description  
-    string id  
-    string alias  
-    stringList xref  
-}
-Protocol {
-    string name  
-    string type  
-    string description  
-    string url  
-    string id  
-    string alias  
-    stringList xref  
-}
-Population {
-    string name  
-    string id  
-    string alias  
-    stringList xref  
-}
-DiseaseOrPhenotypicFeature {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-    string alias  
-    stringList xref  
-}
-OntologyClassMixin {
-    string id  
-    string concept_identifier  
-    string concept_name  
-    string description  
-    string ontology_name  
-    string ontology_version  
-}
-Attribute {
-    string key  
-    string key_type  
-    string value  
-    string value_type  
-}
-AccessionMixin {
-    string accession  
-}
-EgaAccessionMixin {
-    string ega_accession  
-}
-AttributeMixin {
-
-}
-DeprecatedMixin {
-    string deprecation_date  
-}
-
-Protocol ||--}| Attribute : "has attribute"
-AttributeMixin ||--}o Attribute : "has attribute"
-DeprecatedMixin ||--|| NamedThing : "replaced by"
-
-```
-
-
-## GHGA-Submission-Metadata-Schema
-
-### Basic Diagram:
+Focusses on the relation between Experiment, Sample, and File.  
 
 ```mermaid
 erDiagram
