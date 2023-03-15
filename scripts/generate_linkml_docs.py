@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Script to generate linkml markdown documents"""
-
 from pathlib import Path
-import sys
+from filecmp import dircmp
 import subprocess
 from tempfile import TemporaryDirectory
 from typer import run
@@ -25,20 +24,16 @@ class ContentDifference(RuntimeError):
     """Custom exception to raise non-equality of the compared folders"""
 
 
-
 def compare_folders(expected: Path, observed: Path):
     """Function to check equality of contents of two folders"""
 
-    with subprocess.Popen(
-        ["diff", "-arq", str(expected), str(observed)],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        encoding="utf-8",
-    ) as process:
-        stdout, _ = process.communicate()
-
-        if process.returncode != 0:
-            raise ContentDifference(f"Documentations are outdated. {stdout}")
+    diff = dircmp(expected, observed)
+    if diff.diff_files:
+        raise ContentDifference(f"Contents do not match for files: {diff.diff_files}")
+    if diff.right_only:
+        raise ContentDifference(f"Missing files in {observed}: {diff.right_only}")
+    if diff.left_only:
+        raise ContentDifference(f"Missing files in {expected}: {diff.left_only}")
 
 
 def main(check: bool = False):
