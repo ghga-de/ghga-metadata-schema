@@ -24,7 +24,6 @@ def generate_linkml_markdown(docs_dir: Path):
 class ContentDifference(Exception):
     """Custom exception to raise non-equality of the compared folders"""
 
-    pass
 
 
 def compare_folders(expected: Path, observed: Path):
