@@ -2,30 +2,44 @@
 
 """Script to employ linkml-linter"""
 import subprocess
+import sys
 from pathlib import Path
-
+from script_utils.cli import echo_failure, echo_success
 
 HERE = Path(__file__).parent.resolve()
 LINTER_CONFIG = HERE.parent / ".linkml_linter.yaml"
 SCHEMA_DIR = HERE.parent / "src" / "schema"
-LINTING_DOC = HERE.parent / "docs" / "linkml_linter.md"
 
 
-def run_linter(linkml_yaml: Path, report: Path):
+class SchemaLinterError(Exception):
+    """Custom exception to raise the errors and the warning of the schema linter"""
+
+    pass
+
+
+def run_linter(schema_yaml: Path):
     """Function to call linkml-linter"""
-    return subprocess.Popen(
+
+    with subprocess.Popen(
         [
             "linkml-lint",
             "--config",
             LINTER_CONFIG,
-            "--format",
-            "markdown",
-            "--output",
-            str(report),
-            str(linkml_yaml),
-        ]
-    )
+            str(schema_yaml),
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        encoding="utf-8",
+    ) as process:
+        stdout, _ = process.communicate()
+        if process.returncode != 0:
+            raise SchemaLinterError(f"Checks failed on the linkml schema. {stdout}")
 
 
 if __name__ == "__main__":
-    run_linter(SCHEMA_DIR, LINTING_DOC)
+    try:
+        run_linter(SCHEMA_DIR)
+        echo_success("All checks passes on the linkml schema")
+    except SchemaLinterError:
+        echo_failure("Checks failed on the linkml schema")
+        raise
