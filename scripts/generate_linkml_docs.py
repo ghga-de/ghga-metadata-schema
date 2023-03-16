@@ -2,7 +2,7 @@
 """Script to generate linkml markdown documents"""
 from pathlib import Path
 from filecmp import dircmp
-import subprocess
+import shutil
 from tempfile import TemporaryDirectory
 from typer import run
 from linkml.generators.markdowngen import MarkdownGenerator
@@ -15,6 +15,8 @@ DOCS_DIR = HERE.parent / "docs" / "schema_markdown"
 
 def generate_linkml_markdown(docs_dir: Path):
     """Function to generate markdown documentations of a given schema"""
+    shutil.rmtree(docs_dir)
+    docs_dir.mkdir()
     return MarkdownGenerator(schema=str(LINKML_YAML), directory_output=True).serialize(
         directory=docs_dir
     )

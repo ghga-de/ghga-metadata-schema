@@ -7,7 +7,7 @@ Studies are experimental investigations of a particular phenomenon. It involves 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/GHGA-Submission-Metadata-Schema/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<has%20attribute%200..*-++[Study&#124;type:study_type_enum;affiliation:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Publication]<has%20publication%200..*-++[Study],[File]<has%20file%200..*-++[Study],[Project]<has%20project%200..1-++[Study],[Analysis]++-%20has%20study%201..1>[Study],[Dataset]++-%20has%20study%201..*>[Study],[Experiment]++-%20has%20study%201..1>[Study],[Experiment]-%20has%20study(i)%200..1>[Study],[Analysis]-%20has%20study(i)%200..1>[Study],[Dataset]-%20has%20study(i)%200..1>[Study],[Submission]-%20has%20study(i)%200..1>[Study],[Submission]++-%20has%20study%201..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[File],[Experiment],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<has%20attribute%200..*-++[Study&#124;type:study_type_enum;affiliation:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Publication]<has%20publication%200..*-++[Study],[File]<has%20file%200..*-++[Study],[Project]<has%20project%200..1-++[Study],[Analysis]++-%20has%20study%201..1>[Study],[Dataset]++-%20has%20study%201..*>[Study],[Experiment]++-%20has%20study%201..1>[Study],[Experiment]-%20has%20study(i)%200..1>[Study],[Analysis]-%20has%20study(i)%200..1>[Study],[Dataset]-%20has%20study(i)%200..1>[Study],[Submission]-%20has%20study(i)%200..1>[Study],[Submission]++-%20has%20study%201..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[File],[Experiment],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<has%20attribute%200..*-++[Study&#124;type:study_type_enum;affiliation:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Project]<has%20project%200..1-++[Study],[Analysis]++-%20has%20study%201..1>[Study],[Experiment]++-%20has%20study%201..1>[Study],[Experiment]-%20has%20study(i)%200..1>[Study],[Analysis]-%20has%20study(i)%200..1>[Study],[Publication]-%20has%20study(i)%200..1>[Study],[Submission]-%20has%20study(i)%200..1>[Study],[Publication]++-%20has%20study%201..1>[Study],[Submission]++-%20has%20study%201..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[Experiment],[EgaAccessionMixin],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<has%20attribute%200..*-++[Study&#124;type:study_type_enum;affiliation:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Project]<has%20project%200..1-++[Study],[Analysis]++-%20has%20study%201..1>[Study],[Experiment]++-%20has%20study%201..1>[Study],[Experiment]-%20has%20study(i)%200..1>[Study],[Analysis]-%20has%20study(i)%200..1>[Study],[Publication]-%20has%20study(i)%200..1>[Study],[Submission]-%20has%20study(i)%200..1>[Study],[Publication]++-%20has%20study%201..1>[Study],[Submission]++-%20has%20study%201..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[Experiment],[EgaAccessionMixin],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
 
 ## Parents
 
@@ -22,9 +22,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
 ## Referenced by Class
 
  *  **[Analysis](Analysis.md)** *[analysis➞has study](analysis_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
- *  **[Dataset](Dataset.md)** *[dataset➞has study](dataset_has_study.md)*  <sub>1..\*</sub>  **[Study](Study.md)**
  *  **[Experiment](Experiment.md)** *[experiment➞has study](experiment_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
  *  **None** *[has study](has_study.md)*  <sub>0..1</sub>  **[Study](Study.md)**
+ *  **[Publication](Publication.md)** *[publication➞has study](publication_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
  *  **[Submission](Submission.md)** *[submission➞has study](submission_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
 
 ## Attributes
@@ -41,13 +41,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [study➞has project](study_has_project.md)  <sub>0..1</sub>
      * Description: The project associated with this Study.
      * Range: [Project](Project.md)
- * [study➞has file](study_has_file.md)  <sub>0..\*</sub>
-     * Description: Additional/supplementary files associated with a Study.
-     * Range: [File](File.md)
-     * in subsets: (restricted)
- * [study➞has publication](study_has_publication.md)  <sub>0..\*</sub>
-     * Description: One or more Publication entities associated with this Study.
-     * Range: [Publication](Publication.md)
  * [study➞title](study_title.md)  <sub>1..1</sub>
      * Description: A comprehensive title for the study.
      * Range: [String](types/String.md)

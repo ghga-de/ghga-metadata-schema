@@ -19,7 +19,6 @@ None &#8594;  <sub>0..1</sub> [File](File.md)
  *  [dataset➞has file](dataset_has_file.md)
  *  [experiment➞has file](experiment_has_file.md)
  *  [individual➞has file](individual_has_file.md)
- *  [study➞has file](study_has_file.md)
  *  [submission➞has file](submission_has_file.md)
 
 ## Used by

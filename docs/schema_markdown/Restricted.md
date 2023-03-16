@@ -29,11 +29,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [data access policy➞has data use permission](data_access_policy_has_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
  * [data access policy➞policy text](data_access_policy_policy_text.md) - The terms of data use and policy verbiage should be captured here.
  * [data access policy➞policy url](data_access_policy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
- * [dataset➞has analysis](dataset_has_analysis.md) - One or more Analysis entities that are referenced by this Dataset.
  * [dataset➞has data access policy](dataset_has_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
- * [dataset➞has experiment](dataset_has_experiment.md) - One or more Experiment entities that are referenced by this Dataset.
  * [dataset➞has file](dataset_has_file.md) - One or more File entities that collectively are part of this Dataset.
- * [dataset➞has sample](dataset_has_sample.md) - One or more Sample entities that are referenced by this Dataset.
  * [experiment➞has file](experiment_has_file.md) - One or more Files entities that are generated as output of this Experiment.
  * [experiment➞has protocol](experiment_has_protocol.md) - One or more Protocol entities associated with this Experiment.
  * [experiment➞has sample](experiment_has_sample.md) - The Sample entity associated with this Experiment.
@@ -91,7 +88,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [sequencing protocol➞has attribute](sequencing_protocol_has_attribute.md) - One or more attributes that further characterizes this Sequencing Protocol.
  * [sex](sex.md) - The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
  * [study➞has attribute](study_has_attribute.md) - Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)
- * [study➞has file](study_has_file.md) - Additional/supplementary files associated with a Study.
  * [submission➞has analysis](submission_has_analysis.md) - Information about one or more Analysis entities associated with this submission.
  * [submission➞has biospecimen](submission_has_biospecimen.md) - Information about one or more Biospecimen entities associated with this submission.
  * [submission➞has data access committee](submission_has_data_access_committee.md) - The Data Access Committee that applies to Dataset in this submission.
