@@ -140,7 +140,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [given name](given_name.md) - First name.
      * [person➞given name](person_given_name.md)
  * [has analysis](has_analysis.md) - The analysis associated with an entity.
-     * [dataset➞has analysis](dataset_has_analysis.md) - One or more Analysis entities that are referenced by this Dataset.
      * [submission➞has analysis](submission_has_analysis.md) - Information about one or more Analysis entities associated with this submission.
  * [has anatomical entity](has_anatomical_entity.md) - Anatomical site associated with an entity.
      * [sample➞has anatomical entity](sample_has_anatomical_entity.md)
@@ -172,13 +171,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [has disease](has_disease.md) - Disease concept that the entity is associated with.
      * [individual➞has disease](individual_has_disease.md) - The Disease entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Mondo Disease Ontology. For example, 'MONDO:0003742' indicates that the Individual - from which the Biospecimen was extracted from - suffers from 'Heart Fibrosarcoma'.
  * [has experiment](has_experiment.md) - The experiment associated with an entity.
-     * [dataset➞has experiment](dataset_has_experiment.md) - One or more Experiment entities that are referenced by this Dataset.
      * [submission➞has experiment](submission_has_experiment.md) - Information about one or more Experiment entities associated with this submission.
  * [has file](has_file.md) - The file associated with an entity.
      * [dataset➞has file](dataset_has_file.md) - One or more File entities that collectively are part of this Dataset.
      * [experiment➞has file](experiment_has_file.md) - One or more Files entities that are generated as output of this Experiment.
      * [individual➞has file](individual_has_file.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
-     * [study➞has file](study_has_file.md) - Additional/supplementary files associated with a Study.
      * [submission➞has file](submission_has_file.md) - Information about one or more File entities associated with this submission.
  * [has individual](has_individual.md) - The subject/individual associated with an entity.
      * [biospecimen➞has individual](biospecimen_has_individual.md) - The Individual entity from which this Biospecimen was derived.
@@ -203,19 +200,16 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [experiment➞has protocol](experiment_has_protocol.md) - One or more Protocol entities associated with this Experiment.
      * [submission➞has protocol](submission_has_protocol.md) - One or more Protocol entities associated with this Submission.
  * [has publication](has_publication.md) - The Publication associated with an entity.
-     * [dataset➞has publication](dataset_has_publication.md) - One or more Publication entities associated with this Dataset.
      * [publication mixin➞has publication](publication_mixin_has_publication.md)
-     * [study➞has publication](study_has_publication.md) - One or more Publication entities associated with this Study.
      * [submission➞has publication](submission_has_publication.md) - One or more Publication entities associated with this Submission.
  * [has sample](has_sample.md) - The sample associated with an entity.
-     * [dataset➞has sample](dataset_has_sample.md) - One or more Sample entities that are referenced by this Dataset.
      * [experiment➞has sample](experiment_has_sample.md) - The Sample entity associated with this Experiment.
      * [submission➞has sample](submission_has_sample.md) - Information about one or more Sample entities associated with this submission.
  * [has sequencing protocol](has_sequencing_protocol.md) - The sequencing protocol associated with an entity.
  * [has study](has_study.md) - The study associated with an entity.
      * [analysis➞has study](analysis_has_study.md) - The Study entity associated with this Analysis.
-     * [dataset➞has study](dataset_has_study.md) - One or more Study entities that are referenced by this Dataset.
      * [experiment➞has study](experiment_has_study.md) - The Study entity associated with this Experiment.
+     * [publication➞has study](publication_has_study.md) - The Study entity associated with this Publication.
      * [submission➞has study](submission_has_study.md) - Information about a Study entities associated with this submission.
  * [id](id.md) - An identifier that uniquely represents an entity.
      * [named thing➞id](named_thing_id.md) - The internal unique identifier for an entity.
