@@ -93,8 +93,6 @@ classes:
     slots:
       - type
       - has study
-      - has sample
-      - has file
       - has sequencing protocol
       - has library preparation protocol
     slot_usage:
