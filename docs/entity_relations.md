@@ -57,15 +57,6 @@ LibraryPreparationProtocol {
 SequencingProtocol {
 
 }
-Sample {
-
-}
-Biospecimen {
-
-}
-AnatomicalEntity {
-
-}
 Individual {
 
 }
@@ -76,6 +67,15 @@ Disease {
 
 }
 Ancestry {
+
+}
+Biospecimen {
+
+}
+AnatomicalEntity {
+
+}
+Sample {
 
 }
 
@@ -114,23 +114,21 @@ Analysis ||--|| Study : "has study"
 Analysis ||--}| File : "has output"
 Protocol ||--}| Attribute : "has attribute"
 SequencingExperiment ||--|| Study : "has study"
-SequencingExperiment ||--|o Sample : "has sample"
-SequencingExperiment ||--|o File : "has file"
 SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
 SequencingExperiment ||--}o Attribute : "has attribute"
 LibraryPreparationProtocol ||--}| Attribute : "has attribute"
 SequencingProtocol ||--}| Attribute : "has attribute"
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--}o Attribute : "has attribute"
-Biospecimen ||--|| Individual : "has individual"
-Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Individual ||--}o Ancestry : "has ancestry"
 Individual ||--}o Individual : "has parent"
 Individual ||--}o Individual : "has children"
 Individual ||--}| Disease : "has disease"
 Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
+Biospecimen ||--|| Individual : "has individual"
+Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
+Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--}o Attribute : "has attribute"
 
 ```
 
@@ -197,8 +195,6 @@ File ||--}o Attribute : "has attribute"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--}o Attribute : "has attribute"
 SequencingExperiment ||--|| Study : "has study"
-SequencingExperiment ||--|o Sample : "has sample"
-SequencingExperiment ||--|o File : "has file"
 SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
 SequencingExperiment ||--}o Attribute : "has attribute"
