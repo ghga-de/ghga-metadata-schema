@@ -48,13 +48,22 @@ Analysis {
 Protocol {
 
 }
-Experiment {
+SequencingExperiment {
+
+}
+LibraryPreparationProtocol {
+
+}
+SequencingProtocol {
 
 }
 Sample {
 
 }
 Biospecimen {
+
+}
+AnatomicalEntity {
 
 }
 Individual {
@@ -69,16 +78,13 @@ Disease {
 Ancestry {
 
 }
-AnatomicalEntity {
-
-}
 
 Submission ||--|| Study : "has study"
 Submission ||--|o Project : "has project"
 Submission ||--}o Sample : "has sample"
 Submission ||--}o Biospecimen : "has biospecimen"
 Submission ||--}o Individual : "has individual"
-Submission ||--}o Experiment : "has experiment"
+Submission ||--}o SequencingExperiment : "has sequencing experiment"
 Submission ||--}o Protocol : "has protocol"
 Submission ||--}o Analysis : "has analysis"
 Submission ||--}| File : "has file"
@@ -107,16 +113,18 @@ Analysis ||--}| File : "has input"
 Analysis ||--|| Study : "has study"
 Analysis ||--}| File : "has output"
 Protocol ||--}| Attribute : "has attribute"
-Experiment ||--|| Study : "has study"
-Experiment ||--}| Sample : "has sample"
-Experiment ||--}| File : "has file"
-Experiment ||--}| Protocol : "has protocol"
-Experiment ||--}o Attribute : "has attribute"
-Sample ||--|| Individual : "has individual"
-Sample ||--}| AnatomicalEntity : "has anatomical entity"
+SequencingExperiment ||--|| Study : "has study"
+SequencingExperiment ||--|o Sample : "has sample"
+SequencingExperiment ||--|o File : "has file"
+SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
+SequencingExperiment ||--}o Attribute : "has attribute"
+LibraryPreparationProtocol ||--}| Attribute : "has attribute"
+SequencingProtocol ||--}| Attribute : "has attribute"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--}o Attribute : "has attribute"
 Biospecimen ||--|| Individual : "has individual"
+Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Individual ||--}o Ancestry : "has ancestry"
 Individual ||--}o Individual : "has parent"
 Individual ||--}o Individual : "has children"
@@ -151,8 +159,7 @@ Individual ||--}| Disease : "has disease"
 Individual ||--}o PhenotypicFeature : "has phenotypic feature"
 Individual ||--}o File : "has file"
 Biospecimen ||--|| Individual : "has individual"
-Sample ||--|| Individual : "has individual"
-Sample ||--}| AnatomicalEntity : "has anatomical entity"
+Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--}o Attribute : "has attribute"
 
@@ -166,26 +173,35 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
+SequencingReplicate {
+
+}
+SequencingProcess {
+
+}
 File {
 
 }
 Sample {
 
 }
-Experiment {
+SequencingExperiment {
 
 }
 
+SequencingReplicate ||--}| File : "has file"
+SequencingReplicate ||--|| SequencingProcess : "has sequencing process"
+SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
+SequencingProcess ||--|| Sample : "has sample"
 File ||--}o Attribute : "has attribute"
-Sample ||--|| Individual : "has individual"
-Sample ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--}o Attribute : "has attribute"
-Experiment ||--|| Study : "has study"
-Experiment ||--}| Sample : "has sample"
-Experiment ||--}| File : "has file"
-Experiment ||--}| Protocol : "has protocol"
-Experiment ||--}o Attribute : "has attribute"
+SequencingExperiment ||--|| Study : "has study"
+SequencingExperiment ||--|o Sample : "has sample"
+SequencingExperiment ||--|o File : "has file"
+SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
+SequencingExperiment ||--}o Attribute : "has attribute"
 
 ```
 

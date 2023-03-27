@@ -78,26 +78,25 @@ classes:
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell, bulk etc)
 
-  experiment:
+  sequencing experiment:
     is_a: investigation
     mixins:
       - attribute mixin
       - accession mixin
       - ega accession mixin
     description: >-
-      An experiment is an investigation that consists of a coordinated set of
+      An sequencing experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
       falsifying, or establishing the validity of a hypothesis.
     exact_mappings:
       - SIO:000994
     slots:
       - type
-      - biological replicates
-      - technical replicates
       - has study
       - has sample
       - has file
-      - has protocol
+      - has sequencing protocol
+      - has library preparation protocol
     slot_usage:
       title:
         description: >-
@@ -108,11 +107,7 @@ classes:
         required: true
       type:
         description: >-
-          The type of Experiment.
-        required: false
-      biological replicates:
-        required: false
-      technical replicates:
+          The type of sequencing experiment.
         required: false
       has study:
         description: >-
@@ -120,35 +115,17 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      has sample:
-        description: >-
-          The Sample entity associated with this Experiment.
-        multivalued: true
+      has sequencing protocol:
         required: true
-        inlined: true
-        inlined_as_list: true
-      has file:
-        description: >-
-          One or more Files entities that are generated as output of this Experiment.
-        multivalued: true
+        inlined: false
+      has library preparation protocol:
         required: true
-        inlined: true
-        inlined_as_list: true
-      has protocol:
-        description: >-
-          One or more Protocol entities associated with this Experiment.
-        exactly_one_of:
-          - range: sequencing protocol
-          - range: library preparation protocol
-        multivalued: true
-        required: true
-        inlined: true
-        inlined_as_list: true
+        inlined: false
 
   library preparation protocol:
     is_a: protocol
     description: >-
-      Information about the library preparation of an Experiment.
+      Information about the library preparation of an sequencing experiment.
     slots:
       - library name
       - library layout
@@ -282,6 +259,45 @@ classes:
         required: false
         recommended: true
 
+  sequencing process:
+    is_a: investigation
+    mixins:
+      - accession mixin
+    description: >-
+      A sequencing process linking a sample to sequencing output.
+    slots:
+      - has sequencing experiment
+      - has sample
+    slot_usage:
+      has sequencing experiment:
+        required: true
+        inlined: false
+      has sample:
+        required: true
+        inlined: false
+
+  sequencing replicate:
+    is_a: investigation
+    mixins:
+      - accession mixin
+    slots:
+      - name
+      - description
+      - has file
+      - has sequencing process
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
+      has file:
+        required: true
+        multivalued: true
+        inlined: false
+      has sequencing process:
+        required: true
+        inlined: false
+
   biospecimen:
     is_a: material entity
     mixins:
@@ -299,6 +315,8 @@ classes:
       - isolation
       - storage
       - has individual
+      - vital status at sampling
+      - has anatomical entity
     slot_usage:
       name:
         required: false
@@ -323,6 +341,14 @@ classes:
         inlined: true
         inlined_as_list: false
         required: true
+      vital status at sampling:
+        required: false
+        recommended: true
+      has anatomical entity:
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 
   anatomical entity:
     is_a: material entity
@@ -371,12 +397,8 @@ classes:
       - name
       - type
       - description
-      - case control status
-      - vital status at sampling
       - isolation
       - storage
-      - has individual
-      - has anatomical entity
       - has biospecimen
     slot_usage:
       name:
@@ -393,18 +415,6 @@ classes:
           (How the sample was collected, sample source,
           protocol followed for processing the sample etc).
         required: true
-      vital status at sampling:
-        required: false
-        recommended: true
-      case control status:
-        required: false
-        recommended: true
-      has individual:
-        description: >-
-          The Individual from which this Sample was derived from.
-        required: true
-        inlined: true
-        inlined_as_list: false
       xref:
         description: >-
           One or more cross-references for this Sample. For example, this Sample
@@ -417,14 +427,6 @@ classes:
         required: false
         inlined: true
         inlined_as_list: false
-      has anatomical entity:
-        required: true
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      isolation:
-        required: false
-        recommended: true
       storage:
         required: false
         recommended: true
@@ -822,8 +824,7 @@ classes:
           One or more cross-references for this Publication.
         required: false
       doi:
-        description:
-          DOI identifier of the Publication.
+        description: DOI identifier of the Publication.
         required: true
       has study:
         description: >-
@@ -847,7 +848,7 @@ classes:
       - has sample
       - has biospecimen
       - has individual
-      - has experiment
+      - has sequencing experiment
       - has protocol
       - has analysis
       - has file
@@ -900,7 +901,7 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      has experiment:
+      has sequencing experiment:
         description: >-
           Information about one or more Experiment entities associated with this submission.
         required: false
@@ -998,9 +999,9 @@ slots:
     in_subset:
       - restricted
 
-  has experiment:
-    description: The experiment associated with an entity.
-    range: experiment
+  has sequencing experiment:
+    description: The sequencing experiment associated with an entity.
+    range: sequencing experiment
     in_subset:
       - restricted
 
@@ -1132,6 +1133,14 @@ slots:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
 
+  has sequencing process:
+    range: sequencing process
+    description: The sequencing process associated with an entity.
+
+  has sequencing replicate:
+    range: sequencing replicate
+    description: The sequencing replicate associated with an entity.
+
   telephone:
     description: >-
       The telephone number associated with a person.
@@ -1151,7 +1160,7 @@ slots:
     description: >-
       A technical replicate is a replicate role where the same BioSample is use e.g.
       the same pool of RNA used to assess technical (as opposed to biological)
-      variation within an experiment.
+      variation within an sequencing experiment.
     exact_mappings:
       - EFO:0002090
 

@@ -13,6 +13,13 @@
 - title: Experiment, Sample, & File
   description: Focusses on the relation between Experiment, Sample, and File.
   model: submission_centric_schema.yaml
-  classes: ["experiment", "sample", "file"]
+  classes:
+    [
+      "sequencing experiment",
+      "sample",
+      "file",
+      "sequencing process",
+      "sequencing replicate",
+    ]
   tree_root: false
   include_attributes: false
