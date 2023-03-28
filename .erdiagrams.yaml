@@ -23,3 +23,34 @@
     ]
   tree_root: false
   include_attributes: false
+- title: Study Design, Condition, & Sample
+  description: Focusses on the relation between Study Design, Condition, and Sample.
+  model: submission_centric_schema.yaml
+  classes: ["study design", "condition", "sample"]
+  tree_root: false
+  include_attributes: false
+- title: Sample, Biospecimen, & Individual (with attributes)
+  description: Focusses on the details of the relation between Sample, Biospecimen, and Individual.
+  model: submission_centric_schema.yaml
+  classes: ["sample", "biospecimen", "individual"]
+  tree_root: false
+  include_attributes: true
+- title: Experiment, Sample, & File (with attributes)
+  description: Focusses on the relation between Experiment, Sample, and File.
+  model: submission_centric_schema.yaml
+  classes:
+    [
+      "sequencing experiment",
+      "sample",
+      "file",
+      "sequencing process",
+      "sequencing replicate",
+    ]
+  tree_root: false
+  include_attributes: true
+- title: Study Design, Condition, & Sample (with attributes)
+  description: Focusses on the relation between Study Design, Condition, and Sample.
+  model: submission_centric_schema.yaml
+  classes: ["study design", "condition", "sample"]
+  tree_root: false
+  include_attributes: true

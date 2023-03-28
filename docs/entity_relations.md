@@ -78,6 +78,9 @@ AnatomicalEntity {
 Sample {
 
 }
+Condition {
+
+}
 
 Submission ||--|| Study : "has study"
 Submission ||--|o Project : "has project"
@@ -128,6 +131,7 @@ Individual ||--}o File : "has file"
 Biospecimen ||--|| Individual : "has individual"
 Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
 
 ```
@@ -159,6 +163,7 @@ Individual ||--}o File : "has file"
 Biospecimen ||--|| Individual : "has individual"
 Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
 
 ```
@@ -193,6 +198,7 @@ SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
 SequencingProcess ||--|| Sample : "has sample"
 File ||--}o Attribute : "has attribute"
 Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
 SequencingExperiment ||--|| Study : "has study"
 SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
@@ -201,3 +207,215 @@ SequencingExperiment ||--}o Attribute : "has attribute"
 
 ```
 
+
+
+## Study Design, Condition, & Sample
+
+Focusses on the relation between Study Design, Condition, and Sample.  
+
+```mermaid
+erDiagram
+Sample {
+
+}
+Condition {
+
+}
+StudyDesign {
+
+}
+
+Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
+Sample ||--}o Attribute : "has attribute"
+StudyDesign ||--|| Study : "has study"
+StudyDesign ||--}| Condition : "has condition"
+
+```
+
+
+
+## Sample, Biospecimen, & Individual (with attributes)
+
+Focusses on the details of the relation between Sample, Biospecimen, and Individual.  
+
+```mermaid
+erDiagram
+Individual {
+    string biological_sex
+    string karyotype  
+    string age_range
+    string vital_status
+    string geographical_region  
+    string accession  
+    string ega_accession  
+    string given_name  
+    string family_name  
+    string additional_name  
+    string id  
+    string alias  
+    stringList xref  
+}
+Biospecimen {
+    string name  
+    string type  
+    string description  
+    string isolation  
+    string storage  
+    string vital_status
+    string accession  
+    string id  
+    string alias  
+    stringList xref  
+}
+Sample {
+    string name  
+    string type  
+    string description  
+    string isolation  
+    string storage  
+    string accession  
+    string ega_accession  
+    string id  
+    string alias  
+    stringList xref  
+}
+
+Individual ||--}o Ancestry : "has ancestry"
+Individual ||--}o Individual : "has parent"
+Individual ||--}o Individual : "has children"
+Individual ||--}| Disease : "has disease"
+Individual ||--}o PhenotypicFeature : "has phenotypic feature"
+Individual ||--}o File : "has file"
+Biospecimen ||--|| Individual : "has individual"
+Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
+Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
+Sample ||--}o Attribute : "has attribute"
+
+```
+
+
+## Experiment, Sample, & File (with attributes)
+
+Focusses on the relation between Experiment, Sample, and File.  
+
+```mermaid
+erDiagram
+SequencingReplicate {
+    string name  
+    string description  
+    string sequencing_run_id  
+    string sequencing_lane_id  
+    string sequencing_machine_id  
+    string accession  
+    string title  
+    string id  
+    string alias  
+    stringList xref  
+}
+SequencingProcess {
+    string accession  
+    string title  
+    string description  
+    string id  
+    string alias  
+    stringList xref  
+}
+File {
+    string name  
+    string file_format
+    integer size  
+    string checksum  
+    string checksum_type  
+    string accession  
+    string ega_accession  
+    string id  
+    string alias  
+    stringList xref  
+}
+Sample {
+    string name  
+    string type  
+    string description  
+    string isolation  
+    string storage  
+    string accession  
+    string ega_accession  
+    string id  
+    string alias  
+    stringList xref  
+}
+SequencingExperiment {
+    string type  
+    string accession  
+    string ega_accession  
+    string title  
+    string description  
+    string id  
+    string alias  
+    stringList xref  
+}
+
+SequencingReplicate ||--}| File : "has file"
+SequencingReplicate ||--|| SequencingProcess : "has sequencing process"
+SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
+SequencingProcess ||--|| Sample : "has sample"
+File ||--}o Attribute : "has attribute"
+Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
+Sample ||--}o Attribute : "has attribute"
+SequencingExperiment ||--|| Study : "has study"
+SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
+SequencingExperiment ||--}o Attribute : "has attribute"
+
+```
+
+
+## Study Design, Condition, & Sample (with attributes)
+
+Focusses on the relation between Study Design, Condition, and Sample.  
+
+```mermaid
+erDiagram
+Sample {
+    string name  
+    string type  
+    string description  
+    string isolation  
+    string storage  
+    string accession  
+    string ega_accession  
+    string id  
+    string alias  
+    stringList xref  
+}
+Condition {
+    string name  
+    string description  
+    string disease_or_healthy
+    string treatment_or_control
+    string mutant_or_wildtype
+    string accession  
+    string title  
+    string id  
+    string alias  
+    stringList xref  
+}
+StudyDesign {
+    string description  
+    string accession  
+    string title  
+    string id  
+    string alias  
+    stringList xref  
+}
+
+Sample ||--|o Biospecimen : "has biospecimen"
+Sample ||--|| Condition : "has condition"
+Sample ||--}o Attribute : "has attribute"
+StudyDesign ||--|| Study : "has study"
+StudyDesign ||--}| Condition : "has condition"
+
+```

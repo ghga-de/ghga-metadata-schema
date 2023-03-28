@@ -120,6 +120,51 @@ classes:
         required: true
         inlined: false
 
+  study design:
+    is_a: investigation
+    mixins:
+      - accession mixin
+    description: >-
+      The design of the study that defines all conditions that are compared.
+    slots:
+      - description
+      - has study
+      - has condition
+    slot_usage:
+      description:
+        required: true
+      has study:
+        required: true
+        inlined: false
+      has condition:
+        required: true
+        multivalued: true
+        inlined: false
+
+  condition:
+    is_a: investigation
+    mixins:
+      - accession mixin
+    description: >-
+      An condition that is linked to comparable samples.
+    slots:
+      - name
+      - description
+      - disease or healthy
+      - treatment or control
+      - mutant or wildtype
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
+      disease or healthy:
+        required: true
+      treatment or control:
+        required: true
+      mutant or wildtype:
+        required: true
+
   library preparation protocol:
     is_a: protocol
     description: >-
@@ -278,9 +323,15 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+    description: >-
+      A technical sequencing replicate. E.g. the same sample sequenced across multiple
+      lanes.
     slots:
       - name
       - description
+      - sequencing run id
+      - sequencing lane id
+      - sequencing machine id
       - has file
       - has sequencing process
     slot_usage:
@@ -288,6 +339,18 @@ classes:
         required: true
       description:
         required: true
+      sequencing run id:
+        description: >-
+          Identifier of the sequencing run. Used for batch correction.
+        required: false
+      sequencing lane id:
+        description: >-
+          Identifier of the sequencing lane. Used for batch correction.
+        required: false
+      sequencing machine id:
+        description: >-
+          Identifier of the sequencing machine. Used for batch correction.
+        required: false
       has file:
         required: true
         multivalued: true
@@ -398,6 +461,7 @@ classes:
       - isolation
       - storage
       - has biospecimen
+      - has condition
     slot_usage:
       name:
         description: >-
@@ -413,6 +477,9 @@ classes:
           (How the sample was collected, sample source,
           protocol followed for processing the sample etc).
         required: true
+      storage:
+        required: false
+        recommended: true
       xref:
         description: >-
           One or more cross-references for this Sample. For example, this Sample
@@ -425,9 +492,8 @@ classes:
         required: false
         inlined: true
         inlined_as_list: false
-      storage:
-        required: false
-        recommended: true
+      has condition:
+        required: true
 
   individual:
     is_a: person
@@ -1127,6 +1193,10 @@ slots:
     range: sequencing protocol
     description: The sequencing protocol associated with an entity.
 
+  has condition:
+    range: condition
+    description: The condition associated with an entity.
+
   has library preparation protocol:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
@@ -1247,6 +1317,18 @@ slots:
     exact_mappings:
       - NCIT:C165443
 
+  sequencing run id:
+    description: >-
+      The identifier of a sequencing run.
+
+  sequencing lane id:
+    description: >-
+      The identifier of a sequencing lane.
+
+  sequencing machine id:
+    description: >-
+      The identifier of a sequencing machine.
+
   forward or reverse:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
@@ -1311,10 +1393,20 @@ slots:
       Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
 
-  case control status:
+  disease or healthy:
     description: >-
-      Whether the sample is to be treated as Case or Control in a Study.
-    range: case control status enum
+      Whether a condition corresponds to a disease or a healthy state.
+    range: disease or healthy enum
+
+  treatment or control:
+    description: >-
+      Whether a condition corresponds to a treatment or a control.
+    range: treatment or control enum
+
+  mutant or wildtype:
+    description: >-
+      Whether a condition corresponds to a mutant or a wildtype.
+    range: mutant or wildtype enum
 
   vital status at sampling:
     description: >-
@@ -1531,14 +1623,36 @@ enums:
       other:
         description: >-
           Other format.
-  case control status enum:
+  disease or healthy enum:
     description: >-
-      Enum to capture whether a Sample in a Study is to be considered as Case or Control.
+      Enum to capture whether a condition corresponds to a disease or a healthy state.
     permissible_values:
+      disease:
+        description: Disease state.
+      healthy:
+        description: Healthy state.
+      not applicable:
+        description: The distinction is not applicaple.
+  treatment or control enum:
+    description: >-
+      Enum to capture whether a condition corresponds to a treatment or a control.
+    permissible_values:
+      treatment:
+        description: Treatment state.
       control:
-        description: The Sample is to be treated as Control
-      case:
-        description: The Sample is to be treated as Case
+        description: Control state.
+      not applicable:
+        description: The distinction is not applicaple.
+  mutant or wildtype enum:
+    description: >-
+      Enum to capture whether a condition corresponds to a mutant or a wildtype.
+    permissible_values:
+      mutant:
+        description: Mutant state.
+      wildtype:
+        description: Wildtype state.
+      not applicable:
+        description: The distinction is not applicaple.
   forward or reverse enum:
     description: >-
       Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
