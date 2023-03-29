@@ -7,7 +7,7 @@ An condition that is linked to comparable samples.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyDesign],[Sample],[Investigation],[StudyDesign]-%20has%20condition(i)%200..1>[Condition&#124;name:string;description:string;disease_or_healthy:disease_or_healthy_enum;treatment_or_control:treatment_or_control_enum;mutant_or_wildtype:mutant_or_wildtype_enum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20condition(i)%200..1>[Condition],[Sample]-%20has%20condition%201..1>[Condition],[StudyDesign]-%20has%20condition%201..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Investigation]^-[Condition],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyDesign],[Sample],[Investigation],[StudyDesign]-%20has%20condition(i)%200..1>[Condition&#124;name:string;description:string;disease_or_healthy:disease_or_healthy_enum;treatment_or_control:treatment_or_control_enum;mutant_or_wildtype:mutant_or_wildtype_enum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20condition(i)%200..1>[Condition],[Sample]-%20has%20condition%201..1>[Condition],[StudyDesign]-%20has%20condition%201..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Investigation]^-[Condition],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyDesign],[Sample],[Investigation],[StudyDesign]-%20has%20condition(i)%200..1>[Condition&#124;name:string;description:string;disease_or_healthy:disease_or_healthy_enum;treatment_or_control:treatment_or_control_enum;mutant_or_wildtype:mutant_or_wildtype_enum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20condition(i)%200..1>[Condition],[Sample]-%20has%20condition%201..1>[Condition],[StudyDesign]-%20has%20condition%201..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyDesign],[Sample],[Investigation],[StudyDesign]-%20has%20condition(i)%200..1>[Condition&#124;name:string;description:string;disease_or_healthy:disease_or_healthy_enum;treatment_or_control:treatment_or_control_enum;mutant_or_wildtype:mutant_or_wildtype_enum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20condition(i)%200..1>[Condition],[Sample]-%20has%20condition%201..1>[Condition],[StudyDesign]-%20has%20condition%201..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -16,6 +16,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
 ## Uses Mixin
 
  *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
+ *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
 
 ## Referenced by Class
 
@@ -66,3 +67,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
  * [accession mixin➞accession](accession_mixin_accession.md)  <sub>1..1</sub>
      * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * Range: [String](types/String.md)
+
+### Mixed in from attribute mixin:
+
+ * [has attribute](has_attribute.md)  <sub>0..\*</sub>
+     * Description: Key/value pairs corresponding to an entity.
+     * Range: [Attribute](Attribute.md)
+     * in subsets: (restricted)

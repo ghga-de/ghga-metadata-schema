@@ -124,6 +124,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - attribute mixin
     description: >-
       The design of the study that defines all conditions that are compared.
     slots:
@@ -145,6 +146,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - attribute mixin
     description: >-
       An condition that is linked to comparable samples.
     slots:
@@ -306,6 +308,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - attribute mixin
     description: >-
       A sequencing process linking a sample to sequencing output.
     slots:
@@ -323,6 +326,7 @@ classes:
     is_a: investigation
     mixins:
       - accession mixin
+      - attribute mixin
     description: >-
       A technical sequencing replicate. E.g. the same sample sequenced across multiple
       lanes.

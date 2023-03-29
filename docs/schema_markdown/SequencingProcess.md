@@ -7,7 +7,7 @@ A sequencing process linking a sample to sequencing output.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingReplicate],[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;accession:string;title(i):string%20%3F;description(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process(i)%200..1>[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process%201..1>[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingReplicate],[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;accession:string;title(i):string%20%3F;description(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process(i)%200..1>[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process%201..1>[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingReplicate],[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;accession:string;title(i):string%20%3F;description(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process(i)%200..1>[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process%201..1>[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingReplicate],[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;accession:string;title(i):string%20%3F;description(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process(i)%200..1>[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process%201..1>[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -16,6 +16,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
 ## Uses Mixin
 
  *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
+ *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
 
 ## Referenced by Class
 
@@ -61,3 +62,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
  * [accession mixin➞accession](accession_mixin_accession.md)  <sub>1..1</sub>
      * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * Range: [String](types/String.md)
+
+### Mixed in from attribute mixin:
+
+ * [has attribute](has_attribute.md)  <sub>0..\*</sub>
+     * Description: Key/value pairs corresponding to an entity.
+     * Range: [Attribute](Attribute.md)
+     * in subsets: (restricted)

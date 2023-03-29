@@ -133,6 +133,7 @@ Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
+Condition ||--}o Attribute : "has attribute"
 
 ```
 
@@ -194,8 +195,10 @@ SequencingExperiment {
 
 SequencingReplicate ||--}| File : "has file"
 SequencingReplicate ||--|| SequencingProcess : "has sequencing process"
+SequencingReplicate ||--}o Attribute : "has attribute"
 SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
 SequencingProcess ||--|| Sample : "has sample"
+SequencingProcess ||--}o Attribute : "has attribute"
 File ||--}o Attribute : "has attribute"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
@@ -228,8 +231,10 @@ StudyDesign {
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
+Condition ||--}o Attribute : "has attribute"
 StudyDesign ||--|| Study : "has study"
 StudyDesign ||--}| Condition : "has condition"
+StudyDesign ||--}o Attribute : "has attribute"
 
 ```
 
@@ -359,8 +364,10 @@ SequencingExperiment {
 
 SequencingReplicate ||--}| File : "has file"
 SequencingReplicate ||--|| SequencingProcess : "has sequencing process"
+SequencingReplicate ||--}o Attribute : "has attribute"
 SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
 SequencingProcess ||--|| Sample : "has sample"
+SequencingProcess ||--}o Attribute : "has attribute"
 File ||--}o Attribute : "has attribute"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
@@ -415,7 +422,9 @@ StudyDesign {
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
+Condition ||--}o Attribute : "has attribute"
 StudyDesign ||--|| Study : "has study"
 StudyDesign ||--}| Condition : "has condition"
+StudyDesign ||--}o Attribute : "has attribute"
 
 ```
