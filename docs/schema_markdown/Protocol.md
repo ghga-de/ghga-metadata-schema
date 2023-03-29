@@ -7,7 +7,7 @@ A plan specification which has sufficient level of detail and quantitative infor
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Experiment]++-%20has%20protocol%201..*>[Protocol],[Experiment]-%20has%20protocol(i)%200..1>[Protocol],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[Experiment],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Experiment]++-%20has%20protocol%201..*>[Protocol],[Experiment]-%20has%20protocol(i)%200..1>[Protocol],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[Experiment],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has%20attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Submission]-%20has%20protocol(i)%200..1>[Protocol],[Submission]++-%20has%20protocol%200..*>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -19,12 +19,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.or
 
 ## Children
 
- * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library preparation of an Experiment.
+ * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library preparation of an sequencing experiment.
  * [SequencingProtocol](SequencingProtocol.md) - Information about the sequencing of a sample.
 
 ## Referenced by Class
 
- *  **[Experiment](Experiment.md)** *[experiment➞has protocol](experiment_has_protocol.md)*  <sub>1..\*</sub>  **[Protocol](Protocol.md)**
  *  **None** *[has protocol](has_protocol.md)*  <sub>0..1</sub>  **[Protocol](Protocol.md)**
  *  **[Submission](Submission.md)** *[submission➞has protocol](submission_has_protocol.md)*  <sub>0..\*</sub>  **[Protocol](Protocol.md)**
 

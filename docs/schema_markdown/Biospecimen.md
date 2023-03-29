@@ -7,7 +7,7 @@ A Biospecimen is any natural material taken from a biological entity (usually a 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[Individual]<has%20individual%201..1-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[Individual]<has%20individual%201..1-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<has%20anatomical%20entity%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:vital_status_enum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<has%20individual%201..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<has%20anatomical%20entity%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:vital_status_enum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<has%20individual%201..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])
 
 ## Parents
 
@@ -47,6 +47,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id
      * Description: The Individual entity from which this Biospecimen was derived.
      * Range: [Individual](Individual.md)
      * in subsets: (restricted)
+ * [biospecimen➞vital status at sampling](biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
+     * Description: Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+     * Range: [vital status enum](vital status enum.md)
+ * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md)  <sub>1..\*</sub>
+     * Description: Anatomical site associated with an entity.
+     * Range: [AnatomicalEntity](AnatomicalEntity.md)
 
 ### Inherited from material entity:
 

@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [SequencingProtocol](SequencingProtocol.md)
 
 ## Children
 
+ *  [sequencing experiment➞has sequencing protocol](sequencing_experiment_has_sequencing_protocol.md)
 
 ## Used by
 

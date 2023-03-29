@@ -28,9 +28,9 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
  * [DataAccessCommittee](DataAccessCommittee.md)
  * [DataAccessPolicy](DataAccessPolicy.md)
  * [Dataset](Dataset.md)
- * [Experiment](Experiment.md)
  * [File](File.md)
  * [Sample](Sample.md)
+ * [SequencingExperiment](SequencingExperiment.md)
 
 ## Other properties
 

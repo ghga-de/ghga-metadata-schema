@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [experiment➞biological replicates](experiment_biological_replicates.md)
 
 ## Used by
 

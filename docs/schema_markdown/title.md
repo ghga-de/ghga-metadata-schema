@@ -17,14 +17,18 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Children
 
  *  [dataset➞title](dataset_title.md)
- *  [experiment➞title](experiment_title.md)
  *  [project➞title](project_title.md)
  *  [publication➞title](publication_title.md)
  *  [research activity➞title](research_activity_title.md)
+ *  [sequencing experiment➞title](sequencing_experiment_title.md)
  *  [study➞title](study_title.md)
 
 ## Used by
 
  * [Analysis](Analysis.md)
+ * [Condition](Condition.md)
  * [DataTransformation](DataTransformation.md)
  * [Investigation](Investigation.md)
+ * [SequencingProcess](SequencingProcess.md)
+ * [SequencingReplicate](SequencingReplicate.md)
+ * [StudyDesign](StudyDesign.md)

@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [Protocol](Protocol.md)
 
 ## Children
 
- *  [experiment➞has protocol](experiment_has_protocol.md)
  *  [submission➞has protocol](submission_has_protocol.md)
 
 ## Used by
