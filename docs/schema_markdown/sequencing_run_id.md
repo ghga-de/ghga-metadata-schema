@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing replicate➞sequencing run id](sequencing_replicate_sequencing_run_id.md)
+ *  [sequencing process➞sequencing run id](sequencing_process_sequencing_run_id.md)
 
 ## Used by
 

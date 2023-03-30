@@ -51,6 +51,7 @@ classes:
       - type
       - affiliation
       - has project
+      - has condition
     slot_usage:
       title:
         description: >-
@@ -77,6 +78,10 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell, bulk etc)
+      has condition:
+        required: true
+        multivalued: true
+        inlined: false
 
   sequencing experiment:
     is_a: investigation
@@ -118,28 +123,6 @@ classes:
         inlined: false
       has library preparation protocol:
         required: true
-        inlined: false
-
-  study design:
-    is_a: investigation
-    mixins:
-      - accession mixin
-      - attribute mixin
-    description: >-
-      The design of the study that defines all conditions that are compared.
-    slots:
-      - description
-      - has study
-      - has condition
-    slot_usage:
-      description:
-        required: true
-      has study:
-        required: true
-        inlined: false
-      has condition:
-        required: true
-        multivalued: true
         inlined: false
 
   condition:
@@ -312,32 +295,14 @@ classes:
     description: >-
       A sequencing process linking a sample to sequencing output.
     slots:
-      - has sequencing experiment
-      - has sample
-    slot_usage:
-      has sequencing experiment:
-        required: true
-        inlined: false
-      has sample:
-        required: true
-        inlined: false
-
-  sequencing replicate:
-    is_a: investigation
-    mixins:
-      - accession mixin
-      - attribute mixin
-    description: >-
-      A technical sequencing replicate. E.g. the same sample sequenced across multiple
-      lanes.
-    slots:
       - name
       - description
       - sequencing run id
       - sequencing lane id
       - sequencing machine id
       - has file
-      - has sequencing process
+      - has sequencing experiment
+      - has sample
     slot_usage:
       name:
         required: true
@@ -359,7 +324,10 @@ classes:
         required: true
         multivalued: true
         inlined: false
-      has sequencing process:
+      has sequencing experiment:
+        required: true
+        inlined: false
+      has sample:
         required: true
         inlined: false
 
@@ -1204,14 +1172,6 @@ slots:
   has library preparation protocol:
     range: library preparation protocol
     description: The Library Preparation Protocol associated with an entity.
-
-  has sequencing process:
-    range: sequencing process
-    description: The sequencing process associated with an entity.
-
-  has sequencing replicate:
-    range: sequencing replicate
-    description: The sequencing replicate associated with an entity.
 
   telephone:
     description: >-

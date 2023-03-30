@@ -80,11 +80,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [protocol➞alias](protocol_alias.md) - The alias for an entity.
  * [protocol➞has attribute](protocol_has_attribute.md) - One or more attributes that further characterizes this Protocol.
  * [sample➞has biospecimen](sample_has_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
+ * [sequencing process➞has file](sequencing_process_has_file.md)
  * [sequencing process➞has sample](sequencing_process_has_sample.md)
  * [sequencing process➞has sequencing experiment](sequencing_process_has_sequencing_experiment.md)
  * [sequencing protocol➞alias](sequencing_protocol_alias.md)
  * [sequencing protocol➞has attribute](sequencing_protocol_has_attribute.md) - One or more attributes that further characterizes this Sequencing Protocol.
- * [sequencing replicate➞has file](sequencing_replicate_has_file.md)
  * [sex](sex.md) - The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
  * [study➞has attribute](study_has_attribute.md) - Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell, bulk etc)
  * [submission➞has analysis](submission_has_analysis.md) - Information about one or more Analysis entities associated with this submission.

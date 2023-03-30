@@ -18,6 +18,9 @@ Study {
 Attribute {
 
 }
+Condition {
+
+}
 Project {
 
 }
@@ -78,9 +81,6 @@ AnatomicalEntity {
 Sample {
 
 }
-Condition {
-
-}
 
 Submission ||--|| Study : "has study"
 Submission ||--|o Project : "has project"
@@ -98,7 +98,9 @@ Submission ||--}| Member : "has member"
 Submission ||--}o Publication : "has publication"
 Publication ||--|| Study : "has study"
 Study ||--|o Project : "has project"
+Study ||--}| Condition : "has condition"
 Study ||--}o Attribute : "has attribute"
+Condition ||--}o Attribute : "has attribute"
 Project ||--}o Attribute : "has attribute"
 DataAccessCommittee ||--|| Member : "main contact"
 DataAccessCommittee ||--}o Member : "has member"
@@ -133,7 +135,6 @@ Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
 Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
-Condition ||--}o Attribute : "has attribute"
 
 ```
 
@@ -177,9 +178,6 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
-SequencingReplicate {
-
-}
 SequencingProcess {
 
 }
@@ -193,9 +191,7 @@ SequencingExperiment {
 
 }
 
-SequencingReplicate ||--}| File : "has file"
-SequencingReplicate ||--|| SequencingProcess : "has sequencing process"
-SequencingReplicate ||--}o Attribute : "has attribute"
+SequencingProcess ||--}| File : "has file"
 SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
 SequencingProcess ||--|| Sample : "has sample"
 SequencingProcess ||--}o Attribute : "has attribute"
@@ -212,9 +208,9 @@ SequencingExperiment ||--}o Attribute : "has attribute"
 
 
 
-## Study Design, Condition, & Sample
+## Study, Condition, & Sample
 
-Focusses on the relation between Study Design, Condition, and Sample.  
+Focusses on the relation between Study, Condition, and Sample.  
 
 ```mermaid
 erDiagram
@@ -224,7 +220,7 @@ Sample {
 Condition {
 
 }
-StudyDesign {
+Study {
 
 }
 
@@ -232,9 +228,9 @@ Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
 Condition ||--}o Attribute : "has attribute"
-StudyDesign ||--|| Study : "has study"
-StudyDesign ||--}| Condition : "has condition"
-StudyDesign ||--}o Attribute : "has attribute"
+Study ||--|o Project : "has project"
+Study ||--}| Condition : "has condition"
+Study ||--}o Attribute : "has attribute"
 
 ```
 
@@ -307,7 +303,7 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
-SequencingReplicate {
+SequencingProcess {
     string name  
     string description  
     string sequencing_run_id  
@@ -315,14 +311,6 @@ SequencingReplicate {
     string sequencing_machine_id  
     string accession  
     string title  
-    string id  
-    string alias  
-    stringList xref  
-}
-SequencingProcess {
-    string accession  
-    string title  
-    string description  
     string id  
     string alias  
     stringList xref  
@@ -362,9 +350,7 @@ SequencingExperiment {
     stringList xref  
 }
 
-SequencingReplicate ||--}| File : "has file"
-SequencingReplicate ||--|| SequencingProcess : "has sequencing process"
-SequencingReplicate ||--}o Attribute : "has attribute"
+SequencingProcess ||--}| File : "has file"
 SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
 SequencingProcess ||--|| Sample : "has sample"
 SequencingProcess ||--}o Attribute : "has attribute"
@@ -380,9 +366,9 @@ SequencingExperiment ||--}o Attribute : "has attribute"
 ```
 
 
-## Study Design, Condition, & Sample (with attributes)
+## Study, Condition, & Sample (with attributes)
 
-Focusses on the relation between Study Design, Condition, and Sample.  
+Focusses on the relation between Study, Condition, and Sample.  
 
 ```mermaid
 erDiagram
@@ -410,10 +396,13 @@ Condition {
     string alias  
     stringList xref  
 }
-StudyDesign {
-    string description  
+Study {
+    string study_type
+    stringList affiliation  
     string accession  
+    string ega_accession  
     string title  
+    string description  
     string id  
     string alias  
     stringList xref  
@@ -423,8 +412,8 @@ Sample ||--|o Biospecimen : "has biospecimen"
 Sample ||--|| Condition : "has condition"
 Sample ||--}o Attribute : "has attribute"
 Condition ||--}o Attribute : "has attribute"
-StudyDesign ||--|| Study : "has study"
-StudyDesign ||--}| Condition : "has condition"
-StudyDesign ||--}o Attribute : "has attribute"
+Study ||--|o Project : "has project"
+Study ||--}| Condition : "has condition"
+Study ||--}o Attribute : "has attribute"
 
 ```

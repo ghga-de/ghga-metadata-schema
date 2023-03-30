@@ -46,9 +46,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
              * [Condition](Condition.md) - An condition that is linked to comparable samples.
              * [SequencingExperiment](SequencingExperiment.md) - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
              * [SequencingProcess](SequencingProcess.md) - A sequencing process linking a sample to sequencing output.
-             * [SequencingReplicate](SequencingReplicate.md) - A technical sequencing replicate. E.g. the same sample sequenced across multiple lanes.
              * [Study](Study.md) - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
-             * [StudyDesign](StudyDesign.md) - The design of the study that defines all conditions that are compared.
          * [ResearchActivity](ResearchActivity.md) - A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.
              * [Project](Project.md) - A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
@@ -117,9 +115,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [research activity➞description](research_activity_description.md)
      * [sample➞description](sample_description.md) - Short textual description of the sample (How the sample was collected, sample source, protocol followed for processing the sample etc).
      * [sequencing experiment➞description](sequencing_experiment_description.md) - A detailed description of the Experiment.
+     * [sequencing process➞description](sequencing_process_description.md)
      * [sequencing protocol➞description](sequencing_protocol_description.md) - Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
-     * [sequencing replicate➞description](sequencing_replicate_description.md)
-     * [study design➞description](study_design_description.md)
      * [study➞description](study_description.md) - A detailed description (abstract) that describes the goals of this Study.
  * [disease or healthy](disease_or_healthy.md) - Whether a condition corresponds to a disease or a healthy state.
      * [condition➞disease or healthy](condition_disease_or_healthy.md)
@@ -164,7 +161,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [individual➞has children](individual_has_children.md) - One or more children for this Individual.
  * [has condition](has_condition.md) - The condition associated with an entity.
      * [sample➞has condition](sample_has_condition.md)
-     * [study design➞has condition](study_design_has_condition.md)
+     * [study➞has condition](study_has_condition.md)
  * [has data access committee](has_data_access_committee.md) - Data Access Committee associated with an entity.
      * [data access policy➞has data access committee](data_access_policy_has_data_access_committee.md) - The Data Access Committee linked to this policy.
      * [submission➞has data access committee](submission_has_data_access_committee.md) - The Data Access Committee that applies to Dataset in this submission.
@@ -182,7 +179,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [has file](has_file.md) - The file associated with an entity.
      * [dataset➞has file](dataset_has_file.md) - One or more File entities that collectively are part of this Dataset.
      * [individual➞has file](individual_has_file.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
-     * [sequencing replicate➞has file](sequencing_replicate_has_file.md)
+     * [sequencing process➞has file](sequencing_process_has_file.md)
      * [submission➞has file](submission_has_file.md) - Information about one or more File entities associated with this submission.
  * [has individual](has_individual.md) - The subject/individual associated with an entity.
      * [biospecimen➞has individual](biospecimen_has_individual.md) - The Individual entity from which this Biospecimen was derived.
@@ -214,16 +211,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [has sequencing experiment](has_sequencing_experiment.md) - The sequencing experiment associated with an entity.
      * [sequencing process➞has sequencing experiment](sequencing_process_has_sequencing_experiment.md)
      * [submission➞has sequencing experiment](submission_has_sequencing_experiment.md) - Information about one or more Experiment entities associated with this submission.
- * [has sequencing process](has_sequencing_process.md) - The sequencing process associated with an entity.
-     * [sequencing replicate➞has sequencing process](sequencing_replicate_has_sequencing_process.md)
  * [has sequencing protocol](has_sequencing_protocol.md) - The sequencing protocol associated with an entity.
      * [sequencing experiment➞has sequencing protocol](sequencing_experiment_has_sequencing_protocol.md)
- * [has sequencing replicate](has_sequencing_replicate.md) - The sequencing replicate associated with an entity.
  * [has study](has_study.md) - The study associated with an entity.
      * [analysis➞has study](analysis_has_study.md) - The Study entity associated with this Analysis.
      * [publication➞has study](publication_has_study.md) - The Study entity associated with this Publication.
      * [sequencing experiment➞has study](sequencing_experiment_has_study.md) - The Study entity associated with this Experiment.
-     * [study design➞has study](study_design_has_study.md)
      * [submission➞has study](submission_has_study.md) - Information about a Study entities associated with this submission.
  * [id](id.md) - An identifier that uniquely represents an entity.
      * [named thing➞id](named_thing_id.md) - The internal unique identifier for an entity.
@@ -273,7 +266,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [population➞name](population_name.md)
      * [protocol➞name](protocol_name.md) - Name of the protocol (eg: Sample extraction_PCR amplification).
      * [sample➞name](sample_name.md) - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
-     * [sequencing replicate➞name](sequencing_replicate_name.md)
+     * [sequencing process➞name](sequencing_process_name.md)
  * [ontology name](ontology_name.md) - The name of the ontology from which this ontology class was chosen.
      * [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md) - The name or label (rdfs:label) of an ontology class.
  * [ontology version](ontology_version.md) - The version of the ontology from which this ontology class was chosen.
@@ -300,13 +293,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [sequencing center](sequencing_center.md) - Center where sample was sequenced.
      * [sequencing protocol➞sequencing center](sequencing_protocol_sequencing_center.md)
  * [sequencing lane id](sequencing_lane_id.md) - The identifier of a sequencing lane.
-     * [sequencing replicate➞sequencing lane id](sequencing_replicate_sequencing_lane_id.md) - Identifier of the sequencing lane. Used for batch correction.
+     * [sequencing process➞sequencing lane id](sequencing_process_sequencing_lane_id.md) - Identifier of the sequencing lane. Used for batch correction.
  * [sequencing machine id](sequencing_machine_id.md) - The identifier of a sequencing machine.
-     * [sequencing replicate➞sequencing machine id](sequencing_replicate_sequencing_machine_id.md) - Identifier of the sequencing machine. Used for batch correction.
+     * [sequencing process➞sequencing machine id](sequencing_process_sequencing_machine_id.md) - Identifier of the sequencing machine. Used for batch correction.
  * [sequencing read length](sequencing_read_length.md) - Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process
      * [sequencing protocol➞sequencing read length](sequencing_protocol_sequencing_read_length.md)
  * [sequencing run id](sequencing_run_id.md) - The identifier of a sequencing run.
-     * [sequencing replicate➞sequencing run id](sequencing_replicate_sequencing_run_id.md) - Identifier of the sequencing run. Used for batch correction.
+     * [sequencing process➞sequencing run id](sequencing_process_sequencing_run_id.md) - Identifier of the sequencing run. Used for batch correction.
  * [sex](sex.md) - The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
      * [individual➞sex](individual_sex.md)
  * [size](size.md) - The size of a file in bytes.

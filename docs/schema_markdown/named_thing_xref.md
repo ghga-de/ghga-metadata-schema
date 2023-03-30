@@ -51,6 +51,4 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/named_thing_xref](https:/
  * [ResearchActivity](ResearchActivity.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
- * [SequencingReplicate](SequencingReplicate.md)
  * [Study](Study.md)
- * [StudyDesign](StudyDesign.md)

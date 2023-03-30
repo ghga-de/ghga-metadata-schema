@@ -33,8 +33,6 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
  * [Sample](Sample.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
- * [SequencingReplicate](SequencingReplicate.md)
- * [StudyDesign](StudyDesign.md)
 
 ## Other properties
 

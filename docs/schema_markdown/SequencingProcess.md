@@ -7,7 +7,7 @@ A sequencing process linking a sample to sequencing output.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingReplicate],[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;accession:string;title(i):string%20%3F;description(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process(i)%200..1>[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process%201..1>[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingReplicate],[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;accession:string;title(i):string%20%3F;description(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process(i)%200..1>[SequencingProcess],[SequencingReplicate]-%20has%20sequencing%20process%201..1>[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[File]<has%20file%201..*-%20[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[File],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<has%20sample%201..1-%20[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has%20sequencing%20experiment%201..1-%20[SequencingProcess],[File]<has%20file%201..*-%20[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[File],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -20,14 +20,31 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
 
 ## Referenced by Class
 
- *  **None** *[has sequencing process](has_sequencing_process.md)*  <sub>0..1</sub>  **[SequencingProcess](SequencingProcess.md)**
- *  **[SequencingReplicate](SequencingReplicate.md)** *[sequencing replicate➞has sequencing process](sequencing_replicate_has_sequencing_process.md)*  <sub>1..1</sub>  **[SequencingProcess](SequencingProcess.md)**
 
 ## Attributes
 
 
 ### Own
 
+ * [sequencing process➞name](sequencing_process_name.md)  <sub>1..1</sub>
+     * Description: The name for an entity.
+     * Range: [String](types/String.md)
+ * [sequencing process➞description](sequencing_process_description.md)  <sub>1..1</sub>
+     * Description: Description of an entity.
+     * Range: [String](types/String.md)
+ * [sequencing process➞sequencing run id](sequencing_process_sequencing_run_id.md)  <sub>0..1</sub>
+     * Description: Identifier of the sequencing run. Used for batch correction.
+     * Range: [String](types/String.md)
+ * [sequencing process➞sequencing lane id](sequencing_process_sequencing_lane_id.md)  <sub>0..1</sub>
+     * Description: Identifier of the sequencing lane. Used for batch correction.
+     * Range: [String](types/String.md)
+ * [sequencing process➞sequencing machine id](sequencing_process_sequencing_machine_id.md)  <sub>0..1</sub>
+     * Description: Identifier of the sequencing machine. Used for batch correction.
+     * Range: [String](types/String.md)
+ * [sequencing process➞has file](sequencing_process_has_file.md)  <sub>1..\*</sub>
+     * Description: The file associated with an entity.
+     * Range: [File](File.md)
+     * in subsets: (restricted)
  * [sequencing process➞has sequencing experiment](sequencing_process_has_sequencing_experiment.md)  <sub>1..1</sub>
      * Description: The sequencing experiment associated with an entity.
      * Range: [SequencingExperiment](SequencingExperiment.md)
@@ -52,9 +69,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
      * Range: [String](types/String.md)
  * [title](title.md)  <sub>0..1</sub>
      * Description: The title that describes an entity.
-     * Range: [String](types/String.md)
- * [description](description.md)  <sub>0..1</sub>
-     * Description: Description of an entity.
      * Range: [String](types/String.md)
 
 ### Mixed in from accession mixin:

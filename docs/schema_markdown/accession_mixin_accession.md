@@ -33,6 +33,4 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/accession_mixin_accession
  * [Sample](Sample.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
- * [SequencingReplicate](SequencingReplicate.md)
  * [Study](Study.md)
- * [StudyDesign](StudyDesign.md)

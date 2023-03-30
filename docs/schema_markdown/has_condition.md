@@ -17,7 +17,7 @@ None &#8594;  <sub>0..1</sub> [Condition](Condition.md)
 ## Children
 
  *  [sample➞has condition](sample_has_condition.md)
- *  [study design➞has condition](study_design_has_condition.md)
+ *  [study➞has condition](study_has_condition.md)
 
 ## Used by
 

@@ -29,16 +29,14 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
  *  [research activity➞description](research_activity_description.md)
  *  [sample➞description](sample_description.md)
  *  [sequencing experiment➞description](sequencing_experiment_description.md)
+ *  [sequencing process➞description](sequencing_process_description.md)
  *  [sequencing protocol➞description](sequencing_protocol_description.md)
- *  [sequencing replicate➞description](sequencing_replicate_description.md)
- *  [study design➞description](study_design_description.md)
  *  [study➞description](study_description.md)
 
 ## Used by
 
  * [DataTransformation](DataTransformation.md)
  * [Investigation](Investigation.md)
- * [SequencingProcess](SequencingProcess.md)
 
 ## Other properties
 

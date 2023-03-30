@@ -18,7 +18,7 @@ None &#8594;  <sub>0..1</sub> [File](File.md)
 
  *  [dataset➞has file](dataset_has_file.md)
  *  [individual➞has file](individual_has_file.md)
- *  [sequencing replicate➞has file](sequencing_replicate_has_file.md)
+ *  [sequencing process➞has file](sequencing_process_has_file.md)
  *  [submission➞has file](submission_has_file.md)
 
 ## Used by

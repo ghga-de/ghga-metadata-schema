@@ -25,7 +25,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
  *  [population➞name](population_name.md)
  *  [protocol➞name](protocol_name.md)
  *  [sample➞name](sample_name.md)
- *  [sequencing replicate➞name](sequencing_replicate_name.md)
+ *  [sequencing process➞name](sequencing_process_name.md)
 
 ## Used by
 
