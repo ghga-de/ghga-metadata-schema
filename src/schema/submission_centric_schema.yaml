@@ -97,7 +97,6 @@ classes:
       - SIO:000994
     slots:
       - type
-      - has study
       - has sequencing protocol
       - has library preparation protocol
     slot_usage:
@@ -112,12 +111,6 @@ classes:
         description: >-
           The type of sequencing experiment.
         required: false
-      has study:
-        description: >-
-          The Study entity associated with this Experiment.
-        required: true
-        inlined: true
-        inlined_as_list: true
       has sequencing protocol:
         required: true
         inlined: false
