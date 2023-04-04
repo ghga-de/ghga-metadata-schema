@@ -31,9 +31,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [data access policy➞policy url](data_access_policy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
  * [dataset➞has data access policy](dataset_has_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
  * [dataset➞has file](dataset_has_file.md) - One or more File entities that collectively are part of this Dataset.
- * [experiment➞has file](experiment_has_file.md) - One or more Files entities that are generated as output of this Experiment.
- * [experiment➞has protocol](experiment_has_protocol.md) - One or more Protocol entities associated with this Experiment.
- * [experiment➞has sample](experiment_has_sample.md) - The Sample entity associated with this Experiment.
  * [family name](family_name.md) - Last name.
  * [geographical region](geographical_region.md) - The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
  * [given name](given_name.md) - First name.
@@ -46,7 +43,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [has data access policy](has_data_access_policy.md) - Data Access Policy associated with an entity.
  * [has data use modifier](has_data_use_modifier.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
  * [has data use permission](has_data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
- * [has experiment](has_experiment.md) - The experiment associated with an entity.
  * [has file](has_file.md) - The file associated with an entity.
  * [has individual](has_individual.md) - The subject/individual associated with an entity.
  * [has input](has_input.md) - The input to a Planned Process.
@@ -56,6 +52,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [has phenotypic feature](has_phenotypic_feature.md) - Phenotypic feature concept that the entity is associated with.
  * [has protocol](has_protocol.md) - The protocol associated with an entity.
  * [has sample](has_sample.md) - The sample associated with an entity.
+ * [has sequencing experiment](has_sequencing_experiment.md) - The sequencing experiment associated with an entity.
  * [id](id.md) - An identifier that uniquely represents an entity.
  * [individual➞age](individual_age.md)
  * [individual➞geographical region](individual_geographical_region.md)
@@ -83,7 +80,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [protocol➞alias](protocol_alias.md) - The alias for an entity.
  * [protocol➞has attribute](protocol_has_attribute.md) - One or more attributes that further characterizes this Protocol.
  * [sample➞has biospecimen](sample_has_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
- * [sample➞has individual](sample_has_individual.md) - The Individual from which this Sample was derived from.
+ * [sequencing process➞has file](sequencing_process_has_file.md)
+ * [sequencing process➞has sample](sequencing_process_has_sample.md)
+ * [sequencing process➞has sequencing experiment](sequencing_process_has_sequencing_experiment.md)
  * [sequencing protocol➞alias](sequencing_protocol_alias.md)
  * [sequencing protocol➞has attribute](sequencing_protocol_has_attribute.md) - One or more attributes that further characterizes this Sequencing Protocol.
  * [sex](sex.md) - The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
@@ -92,12 +91,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [submission➞has biospecimen](submission_has_biospecimen.md) - Information about one or more Biospecimen entities associated with this submission.
  * [submission➞has data access committee](submission_has_data_access_committee.md) - The Data Access Committee that applies to Dataset in this submission.
  * [submission➞has data access policy](submission_has_data_access_policy.md) - The Data Access Policy that applies to Dataset in this submission.
- * [submission➞has experiment](submission_has_experiment.md) - Information about one or more Experiment entities associated with this submission.
  * [submission➞has file](submission_has_file.md) - Information about one or more File entities associated with this submission.
  * [submission➞has individual](submission_has_individual.md) - Information about one or more Individual entities associated with this submission.
  * [submission➞has member](submission_has_member.md) - The members associated with a committee referenced in this submission
  * [submission➞has protocol](submission_has_protocol.md) - One or more Protocol entities associated with this Submission.
  * [submission➞has sample](submission_has_sample.md) - Information about one or more Sample entities associated with this submission.
+ * [submission➞has sequencing experiment](submission_has_sequencing_experiment.md) - Information about one or more Experiment entities associated with this submission.
  * [submission➞id](submission_id.md) - A internal unique identifier for the Submission.
  * [vital status](vital_status.md) - The state or condition of being living or deceased; also includes the case where the vital status is unknown.
 

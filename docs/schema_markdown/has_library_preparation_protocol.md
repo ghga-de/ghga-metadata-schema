@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [LibraryPreparationProtocol](LibraryPreparationPro
 
 ## Children
 
+ *  [sequencing experiment➞has library preparation protocol](sequencing_experiment_has_library_preparation_protocol.md)
 
 ## Used by
 

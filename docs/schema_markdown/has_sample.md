@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Sample](Sample.md)
 
 ## Children
 
- *  [experiment➞has sample](experiment_has_sample.md)
+ *  [sequencing process➞has sample](sequencing_process_has_sample.md)
  *  [submission➞has sample](submission_has_sample.md)
 
 ## Used by

@@ -2,7 +2,7 @@
 # Slot: technical replicates
 
 
-A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.
+A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an sequencing experiment.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/technical_replicates](https://w3id.org/GHGA-Submission-Metadata-Schema/technical_replicates)
 
@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [experiment➞technical replicates](experiment_technical_replicates.md)
 
 ## Used by
 

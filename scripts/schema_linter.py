@@ -14,8 +14,6 @@ SCHEMA_DIR = HERE.parent / "src" / "schema"
 class SchemaLinterError(Exception):
     """Custom exception to raise the errors and the warning of the schema linter"""
 
-    pass
-
 
 def run_linter(schema_yaml: Path):
     """Function to call linkml-linter"""
@@ -31,9 +29,9 @@ def run_linter(schema_yaml: Path):
         stderr=subprocess.PIPE,
         encoding="utf-8",
     ) as process:
-        stdout, _ = process.communicate()
+        _, stderr = process.communicate()
         if process.returncode != 0:
-            raise SchemaLinterError(f"Checks failed on the linkml schema. {stdout}")
+            raise SchemaLinterError(f"Checks failed on the linkml schema. {stderr}")
 
 
 if __name__ == "__main__":

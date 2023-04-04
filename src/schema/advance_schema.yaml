@@ -35,7 +35,7 @@ classes:
       - prov:Agent
 
   experiment process:
-    is_a: experiment
+    is_a: sequencing experiment
     mixins:
       - attribute mixin
     description: >-

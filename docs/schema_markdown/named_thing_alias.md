@@ -26,6 +26,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/named_thing_alias](https:
  * [BiologicalQuality](BiologicalQuality.md)
  * [Biospecimen](Biospecimen.md)
  * [Committee](Committee.md)
+ * [Condition](Condition.md)
  * [DataAccessCommittee](DataAccessCommittee.md)
  * [DataAccessPolicy](DataAccessPolicy.md)
  * [DataTransformation](DataTransformation.md)
@@ -34,7 +35,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/named_thing_alias](https:
  * [Dataset](Dataset.md)
  * [Disease](Disease.md)
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md)
- * [Experiment](Experiment.md)
  * [File](File.md)
  * [Individual](Individual.md)
  * [InformationContentEntity](InformationContentEntity.md)
@@ -50,6 +50,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/named_thing_alias](https:
  * [Publication](Publication.md)
  * [ResearchActivity](ResearchActivity.md)
  * [Sample](Sample.md)
+ * [SequencingExperiment](SequencingExperiment.md)
+ * [SequencingProcess](SequencingProcess.md)
  * [Study](Study.md)
 
 ## Other properties

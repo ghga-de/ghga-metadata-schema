@@ -25,12 +25,14 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 ## Used by
 
  * [AttributeMixin](AttributeMixin.md)
+ * [Condition](Condition.md)
  * [DataAccessCommittee](DataAccessCommittee.md)
  * [DataAccessPolicy](DataAccessPolicy.md)
  * [Dataset](Dataset.md)
- * [Experiment](Experiment.md)
  * [File](File.md)
  * [Sample](Sample.md)
+ * [SequencingExperiment](SequencingExperiment.md)
+ * [SequencingProcess](SequencingProcess.md)
 
 ## Other properties
 

@@ -17,7 +17,6 @@ None &#8594;  <sub>0..1</sub> [Study](Study.md)
 ## Children
 
  *  [analysis➞has study](analysis_has_study.md)
- *  [experiment➞has study](experiment_has_study.md)
  *  [publication➞has study](publication_has_study.md)
  *  [submission➞has study](submission_has_study.md)
 
