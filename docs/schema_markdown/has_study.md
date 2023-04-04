@@ -18,7 +18,6 @@ None &#8594;  <sub>0..1</sub> [Study](Study.md)
 
  *  [analysis➞has study](analysis_has_study.md)
  *  [publication➞has study](publication_has_study.md)
- *  [sequencing experiment➞has study](sequencing_experiment_has_study.md)
  *  [submission➞has study](submission_has_study.md)
 
 ## Used by

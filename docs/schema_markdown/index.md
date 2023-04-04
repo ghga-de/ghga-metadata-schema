@@ -216,7 +216,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [has study](has_study.md) - The study associated with an entity.
      * [analysis➞has study](analysis_has_study.md) - The Study entity associated with this Analysis.
      * [publication➞has study](publication_has_study.md) - The Study entity associated with this Publication.
-     * [sequencing experiment➞has study](sequencing_experiment_has_study.md) - The Study entity associated with this Experiment.
      * [submission➞has study](submission_has_study.md) - Information about a Study entities associated with this submission.
  * [id](id.md) - An identifier that uniquely represents an entity.
      * [named thing➞id](named_thing_id.md) - The internal unique identifier for an entity.
