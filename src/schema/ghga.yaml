@@ -1874,7 +1874,7 @@ slots:
     inlined: true
     in_subset:
       - recommended
-      - restricted
+      - public
 
   has data use modifier:
     description: >-
@@ -1884,7 +1884,7 @@ slots:
     inlined: true
     in_subset:
       - recommended
-      - restricted
+      - public
 
   sex:
     description: >-
@@ -1998,26 +1998,26 @@ slots:
     range: data access policy
     in_subset:
       - essential
-      - restricted
+      - public
 
   policy text:
     description: The complete text for the Data Access Policy.
     in_subset:
       - essential
-      - restricted
+      - public
 
   policy url:
     description: Alternative to pasting the Data Access Policy text.
     in_subset:
       - recommended
-      - restricted
+      - public
 
   has data access committee:
     description: Data Access Committee associated with an entity.
     range: data access committee
     in_subset:
       - essential
-      - restricted
+      - public
 
   main contact:
     description: The person who is the main contact for a committee.
