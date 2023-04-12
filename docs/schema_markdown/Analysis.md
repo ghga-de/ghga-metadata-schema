@@ -58,11 +58,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
 
 ### Inherited from data transformation:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
  * [title](title.md)  <sub>0..1</sub>
@@ -83,7 +83,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Aliases:** | | data analysis |
+|              |     |               |
+| ------------ | --- | ------------- |
+| **Aliases:** |     | data analysis |
 

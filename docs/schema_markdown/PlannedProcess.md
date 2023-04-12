@@ -25,25 +25,25 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PlannedProcess](https://w
 ## Attributes
 
 
-### Inherited from named thing:
+### Inherited from NamedThing:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | EFO:0004542 |
-|  | | OBI:0000011 |
-|  | | COB:0000082 |
+|                     |     |             |
+| ------------------- | --- | ----------- |
+| **Exact Mappings:** |     | EFO:0004542 |
+|                     |     | OBI:0000011 |
+|                     |     | COB:0000082 |
 

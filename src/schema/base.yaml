@@ -29,7 +29,7 @@ subsets:
       Subset of properties that are considered to be restricted.
 
 classes:
-  named thing:
+  NamedThing:
     abstract: true
     aliases: ["named entity", "entity", "object"]
     description: >-
@@ -53,29 +53,29 @@ classes:
           Holds one or more database cross references for an entity.
         required: false
 
-  person:
-    is_a: named thing
+  Person:
+    is_a: NamedThing
     abstract: true
     description: >-
       A member of the species Homo sapiens.
     slots:
-      - given name
-      - family name
-      - additional name
+      - given_name
+      - family_name
+      - additional_name
     slot_usage:
-      given name:
+      given_name:
         required: false
-      family name:
+      family_name:
         required: false
-      additional name:
+      additional_name:
         required: false
     exact_mappings:
       - NCIT:C25190
       - SIO:000498
       - prov:Person
 
-  committee:
-    is_a: named thing
+  Committee:
+    is_a: NamedThing
     abstract: true
     description: >-
       A group of people organized for a specific purpose.
@@ -85,33 +85,33 @@ classes:
       name:
         required: true
 
-  material entity:
-    is_a: named thing
+  MaterialEntity:
+    is_a: NamedThing
     abstract: true
     description: >-
-      A material entity is a physical entity that is spatially extended, exists as a
+      A MaterialEntity is a physical entity that is spatially extended, exists as a
       whole at any point in time and has mass.
     exact_mappings:
       - SIO:000004
 
-  biological quality:
-    is_a: named thing
+  BiologicalQuality:
+    is_a: NamedThing
     abstract: true
     description: >-
-      A biological quality is a quality held by a biological entity.
+      A BiologicalQuality is a quality held by a biological entity.
     exact_mappings:
       - SIO:000475
 
-  information content entity:
-    is_a: named thing
+  InformationContentEntity:
+    is_a: NamedThing
     abstract: true
     description: >-
       A generically dependent continuant that is about some thing.
     exact_mappings:
       - IAO:0000030
 
-  planned process:
-    is_a: named thing
+  PlannedProcess:
+    is_a: NamedThing
     abstract: true
     description: >-
       A process is an entity that exists in time by occurring or happening, has temporal parts and
@@ -121,8 +121,8 @@ classes:
       - OBI:0000011
       - COB:0000082
 
-  investigation:
-    is_a: planned process
+  Investigation:
+    is_a: PlannedProcess
     abstract: true
     description: >-
       Investigation is the process of carrying out a plan or procedure so as to discover fact
@@ -134,11 +134,11 @@ classes:
       - SIO:000747
       - OBI:0000066
 
-  data transformation:
-    is_a: planned process
+  DataTransformation:
+    is_a: PlannedProcess
     abstract: true
     description: >-
-      A data transformation technique used to analyze and interpret data to gain a better
+      A DataTransformation technique used to analyze and interpret data to gain a better
       understanding of it.
     slots:
       - title
@@ -146,12 +146,12 @@ classes:
     exact_mappings:
       - OBI:0200000
 
-  research activity:
-    is_a: planned process
+  ResearchActivity:
+    is_a: PlannedProcess
     abstract: true
     description: >-
-      A planned process executed in the performance of scientific research wherein
-      systematic investigations are performed to establish facts and reach new conclusions
+      A PlannedProcess executed in the performance of scientific research wherein
+      systematic Investigations are performed to establish facts and reach new conclusions
       about phenomena in the world.
     slots:
       - title
@@ -164,14 +164,14 @@ classes:
     exact_mappings:
       - SEPIO:0000004
 
-  protocol:
-    is_a: information content entity
+  Protocol:
+    is_a: InformationContentEntity
     abstract: true
     mixins:
-      - attribute mixin
+      - attribute_mixin
     description: >-
       A plan specification which has sufficient level of detail and quantitative information
-      to communicate it between investigation agents, so that different investigation agents
+      to communicate it between Investigation agents, so that different Investigation agents
       will reliably be able to independently reproduce the process.
     slots:
       - name
@@ -204,16 +204,16 @@ classes:
           One or more cross-references for this Protocol. 
           (Eg: manufacturer protocol, protocol from publication etc )
         required: true
-      has attribute:
+      has_attribute:
         description: >-
           One or more attributes that further characterizes this Protocol.
         required: true
 
-  population:
-    is_a: material entity
+  Population:
+    is_a: MaterialEntity
     abstract: true
     description: >-
-      A population is a collection of individuals from the same taxonomic class living,
+      A Population is a collection of individuals from the same taxonomic class living,
       counted or sampled at a particular site or in a particular area.
     slots:
       - name
@@ -221,11 +221,11 @@ classes:
       name:
         required: true
 
-  disease or phenotypic feature:
-    is_a: biological quality
+  DiseaseOrPhenotypicFeature:
+    is_a: BiologicalQuality
     abstract: true
     mixins:
-      - ontology class mixin
+      - OntologyClassMixin
     description: >-
       Disease or Phenotypic Feature that the entity is associated with. This entity is a union
       of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts
@@ -233,30 +233,30 @@ classes:
     exact_mappings:
       - biolink:DiseaseOrPhenotypicFeature
 
-  ontology class mixin:
+  OntologyClassMixin:
     mixin: true
     description: Mixin for entities that represent an class/term/concept from an ontology.
     slots:
       - id
-      - concept identifier
-      - concept name
+      - concept_identifier
+      - concept_name
       - description
-      - ontology name
-      - ontology version
+      - ontology_name
+      - ontology_version
     slot_usage:
       id:
         required: true
-      concept identifier:
+      concept_identifier:
         required: false
         description: >-
           The Compact URI (CURIE) that uniquely identifies this ontology class.
-      concept name:
+      concept_name:
         required: false
-      ontology name:
+      ontology_name:
         required: false
         description: >-
           The name or label (rdfs:label) of an ontology class.
-      ontology version:
+      ontology_version:
         required: false
       description:
         required: false
@@ -268,9 +268,9 @@ classes:
       A key/value pair that further characterizes an entity.
     slots:
       - key
-      - key type
+      - key_type
       - value
-      - value type
+      - value_type
     exact_mappings:
       - SIO:000614
     slot_usage:
@@ -278,7 +278,7 @@ classes:
         description: >-
           The key for an attribute.
         required: true
-      key type:
+      key_type:
         description: >-
           A semantic type that characterizes the attribute key. Usually this is a
           term from an ontology.
@@ -289,15 +289,15 @@ classes:
         description: >-
           The value for an attribute. Usually this is a numerical value (without the units).
         required: true
-      value type:
+      value_type:
         description: >-
-          The value type that characterizes the attribute value. Usually this is a
+          The value_type that characterizes the attribute value. Usually this is a
           term from an ontology that describes how to interpret the value.
           For example, 'SIO:001413' indicates that the value is to be interpreted as
           a percentage.
         required: false
 
-  accession mixin:
+  accession_mixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
     slots:
@@ -306,31 +306,31 @@ classes:
       accession:
         required: true
 
-  ega accession mixin:
+  ega_accession_mixin:
     mixin: true
-    description: Mixin for entities that can be assigned an EGA accession, in addition to GHGA accession.
+    description: Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
     slots:
-      - ega accession
+      - ega_accession
     slot_usage:
-      ega accession:
+      ega_accession:
         required: true
 
-  attribute mixin:
+  attribute_mixin:
     mixin: true
     description: Mixin for entities that can have one or more attributes.
     slots:
-      - has attribute
+      - has_attribute
 
-  deprecated mixin:
+  deprecated_mixin:
     mixin: true
     description: Mixin for entities that can be deprecated.
     slots:
-      - replaced by
-      - deprecation date
+      - replaced_by
+      - deprecation_date
     slot_usage:
-      replaced by:
+      replaced_by:
         required: true
-      deprecation date:
+      deprecation_date:
         required: true
 
 slots:
@@ -350,24 +350,24 @@ slots:
       A unique GHGA identifier assigned to an entity for the sole purpose of
       referring to that entity in a global scope.
 
-  ega accession:
+  ega_accession:
     description: >-
       A unique European Genome-Phenome Archive (EGA) identifier assigned to an
       entity for the sole purpose of referring to that entity within the EGA
       federated network.
 
-  given name:
+  given_name:
     description: First name.
     in_subset:
       - restricted
 
-  family name:
+  family_name:
     description: Last name.
     in_subset:
       - restricted
 
-  additional name:
-    description: Additional name(s).
+  additional_name:
+    description: additional_name(s).
     in_subset:
       - restricted
 
@@ -398,54 +398,54 @@ slots:
     description: >-
       The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
 
-  deprecation date:
+  deprecation_date:
     description: >-
       The timestamp (in ISO 8601 format) when the entity was deprecated.
 
-  replaced by:
+  replaced_by:
     description: >-
       Refers to the entity which replaces a currently deprecated entity.
-    domain: named thing
-    range: named thing
+    domain: NamedThing
+    range: NamedThing
 
   replaces:
-    inverse: replaced by
+    inverse: replaced_by
     description: >-
-      Refers to a deprecated entity that is being replaced by the current entity.
-    domain: named thing
-    range: named thing
+      Refers to a deprecated entity that is being replaced_by the current entity.
+    domain: NamedThing
+    range: NamedThing
 
-  concept identifier:
+  concept_identifier:
     description: >-
       The Compact URI (CURIE) that uniquely identifies a concept from an ontology,
       thesaurus, or terminology.
 
-  concept name:
+  concept_name:
     description: >-
       The name or label (typically, rdfs:label) of concept from an ontology, thesaurus,
       or terminology.
 
-  ontology name:
+  ontology_name:
     description: >-
       The name of the ontology from which this ontology class was chosen.
 
-  ontology version:
+  ontology_version:
     description: >-
       The version of the ontology from which this ontology class was chosen.
 
   key:
     description: The key of an attribute.
 
-  key type:
+  key_type:
     description: The semantic type for the key of an attribute.
 
   value:
     description: The value of an attribute
 
-  value type:
+  value_type:
     description: The semantic type for the value of an attribute.
 
-  has attribute:
+  has_attribute:
     description: Key/value pairs corresponding to an entity.
     range: attribute
     in_subset:

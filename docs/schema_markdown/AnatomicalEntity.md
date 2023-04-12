@@ -27,15 +27,15 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnatomicalEntity](https:/
 
 ### Inherited from material entity:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
@@ -71,7 +71,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnatomicalEntity](https:/
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | UBERON:0001062 |
+|                     |     |                |
+| ------------------- | --- | -------------- |
+| **Exact Mappings:** |     | UBERON:0001062 |
 

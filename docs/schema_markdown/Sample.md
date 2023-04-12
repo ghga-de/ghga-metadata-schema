@@ -58,11 +58,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
 
 ### Inherited from material entity:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
@@ -88,8 +88,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | SIO:001050 |
-|  | | biolink:MaterialSample |
+|                     |     |                        |
+| ------------------- | --- | ---------------------- |
+| **Exact Mappings:** |     | SIO:001050             |
+|                     |     | biolink:MaterialSample |
 

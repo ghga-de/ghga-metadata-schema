@@ -1,5 +1,5 @@
 
-# Class: named thing
+# Class: NamedThing
 
 
 A database entity, concept or class. This is a generic class that is the root of all the other classes.
@@ -29,23 +29,23 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/NamedThing](https://w3id.
 
 ### Own
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Aliases:** | | named entity |
-|  | | entity |
-|  | | object |
+|              |     |              |
+| ------------ | --- | ------------ |
+| **Aliases:** |     | named entity |
+|              |     | entity       |
+|              |     | object       |
 

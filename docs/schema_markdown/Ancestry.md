@@ -27,15 +27,15 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Ancestry](https://w3id.or
 
 ### Inherited from population:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
  * [population➞name](population_name.md)  <sub>1..1</sub>
@@ -74,9 +74,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Ancestry](https://w3id.or
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Aliases:** | | ancestral group |
-|  | | ancestry category |
-| **Exact Mappings:** | | HANCESTRO:0004 |
+|                     |     |                   |
+| ------------------- | --- | ----------------- |
+| **Aliases:**        |     | ancestral group   |
+|                     |     | ancestry category |
+| **Exact Mappings:** |     | HANCESTRO:0004    |
 

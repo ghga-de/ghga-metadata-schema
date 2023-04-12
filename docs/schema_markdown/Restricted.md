@@ -68,8 +68,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [library preparation protocol➞alias](library_preparation_protocol_alias.md)
  * [library preparation protocol➞has attribute](library_preparation_protocol_has_attribute.md) - One or more attributes that further characterizes this Library Preparation Protocol.
  * [main contact](main_contact.md) - The person who is the main contact for a committee.
- * [named thing➞alias](named_thing_alias.md) - The alias (alternate identifier) for an entity.
- * [named thing➞id](named_thing_id.md) - The internal unique identifier for an entity.
+ * [NamedThing➞alias](named_thing_alias.md) - The alias (alternate identifier) for an entity.
+ * [NamedThing➞id](named_thing_id.md) - The internal unique identifier for an entity.
  * [ontology class mixin➞id](ontology_class_mixin_id.md)
  * [person➞additional name](person_additional_name.md)
  * [person➞family name](person_family_name.md)

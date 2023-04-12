@@ -23,23 +23,23 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PhenotypicFeature](https:
 
 ### Inherited from disease or phenotypic feature:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | HP:0000118 |
-|  | | EFO:0000651 |
-|  | | SIO:010056 |
+|                     |     |             |
+| ------------------- | --- | ----------- |
+| **Exact Mappings:** |     | HP:0000118  |
+|                     |     | EFO:0000651 |
+|                     |     | SIO:010056  |
 

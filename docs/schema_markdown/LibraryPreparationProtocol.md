@@ -70,7 +70,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
 
 ### Inherited from protocol:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)

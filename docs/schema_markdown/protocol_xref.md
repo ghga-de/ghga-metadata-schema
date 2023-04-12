@@ -13,7 +13,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/protocol_xref](https://w3
 
 ## Parents
 
- *  is_a: [named thing➞xref](named_thing_xref.md)
+ *  is_a: [NamedThing➞xref](named_thing_xref.md)
 
 ## Children
 

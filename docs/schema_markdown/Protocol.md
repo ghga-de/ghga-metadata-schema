@@ -58,14 +58,14 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.or
 
 ### Inherited from information content entity:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | OBI:0000272 |
+|                     |     |             |
+| ------------------- | --- | ----------- |
+| **Exact Mappings:** |     | OBI:0000272 |
 

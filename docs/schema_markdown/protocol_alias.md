@@ -13,7 +13,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/protocol_alias](https://w
 
 ## Parents
 
- *  is_a: [named thing➞alias](named_thing_alias.md)
+ *  is_a: [NamedThing➞alias](named_thing_alias.md)
 
 ## Children
 
@@ -24,7 +24,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/protocol_alias](https://w
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
+|                 |     |            |
+| --------------- | --- | ---------- |
+| **In Subsets:** |     | restricted |
 

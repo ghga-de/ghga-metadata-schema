@@ -76,7 +76,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [alias](alias.md) - The alias for an entity.
      * [analysis➞alias](analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
      * [library preparation protocol➞alias](library_preparation_protocol_alias.md)
-     * [named thing➞alias](named_thing_alias.md) - The alias (alternate identifier) for an entity.
+     * [NamedThing➞alias](named_thing_alias.md) - The alias (alternate identifier) for an entity.
          * [protocol➞alias](protocol_alias.md) - The alias for an entity.
      * [sequencing protocol➞alias](sequencing_protocol_alias.md)
  * [author](author.md) - The individual who is responsible for the content of a document version.
@@ -218,7 +218,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [publication➞has study](publication_has_study.md) - The Study entity associated with this Publication.
      * [submission➞has study](submission_has_study.md) - Information about a Study entities associated with this submission.
  * [id](id.md) - An identifier that uniquely represents an entity.
-     * [named thing➞id](named_thing_id.md) - The internal unique identifier for an entity.
+     * [NamedThing➞id](named_thing_id.md) - The internal unique identifier for an entity.
      * [ontology class mixin➞id](ontology_class_mixin_id.md)
      * [submission➞id](submission_id.md) - A internal unique identifier for the Submission.
  * [index sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
@@ -351,7 +351,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [vital status at sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * [biospecimen➞vital status at sampling](biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
-     * [named thing➞xref](named_thing_xref.md) - Holds one or more database cross references for an entity.
+     * [NamedThing➞xref](named_thing_xref.md) - Holds one or more database cross references for an entity.
          * [protocol➞xref](protocol_xref.md) - One or more cross-references for this Protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * [publication➞xref](publication_xref.md) - One or more cross-references for this Publication.
      * [sample➞xref](sample_xref.md) - One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
