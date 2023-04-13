@@ -2,12 +2,12 @@
 # Class: Ancestry
 
 
-Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
+Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Ancestry](https://w3id.org/GHGA-Submission-Metadata-Schema/Ancestry)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20has_ancestry%200..*>[Ancestry&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]++-%20has_ancestry(i)%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20has_ancestry%200..*>[Ancestry&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]++-%20has_ancestry(i)%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20ancestries%200..*>[Ancestry&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]++-%20ancestries(i)%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population],[OntologyClassMixin],[Individual],[Individual]++-%20ancestries%200..*>[Ancestry&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;name(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]++-%20ancestries(i)%200..*>[Ancestry],[Ancestry]uses%20-.->[OntologyClassMixin],[Population]^-[Ancestry])
 
 ## Parents
 
@@ -19,8 +19,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Ancestry](https://w3id.or
 
 ## Referenced by Class
 
- *  **[Individual](Individual.md)** *[Individual➞has_ancestry](Individual_has_ancestry.md)*  <sub>0..\*</sub>  **[Ancestry](Ancestry.md)**
- *  **None** *[has_ancestry](has_ancestry.md)*  <sub>0..\*</sub>  **[Ancestry](Ancestry.md)**
+ *  **[Individual](Individual.md)** *[Individual➞ancestries](Individual_ancestries.md)*  <sub>0..\*</sub>  **[Ancestry](Ancestry.md)**
+ *  **None** *[ancestries](ancestries.md)*  <sub>0..\*</sub>  **[Ancestry](Ancestry.md)**
 
 ## Attributes
 
@@ -77,6 +77,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Ancestry](https://w3id.or
 |  |  |  |
 | --- | --- | --- |
 | **Aliases:** | | ancestral group |
-|  | | ancestry category |
+|  | | ancestries category |
 | **Exact Mappings:** | | HANCESTRO:0004 |
 

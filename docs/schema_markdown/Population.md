@@ -15,7 +15,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Population](https://w3id.
 
 ## Children
 
- * [Ancestry](Ancestry.md) - Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
+ * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
 
 ## Referenced by Class
 

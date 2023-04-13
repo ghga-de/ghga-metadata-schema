@@ -7,7 +7,7 @@ Biological entity that is either an individual member of a biological species or
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnatomicalEntity](https://w3id.org/GHGA-Submission-Metadata-Schema/AnatomicalEntity)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[MaterialEntity],[Biospecimen],[Biospecimen]++-%20has_anatomical_entity%201..*>[AnatomicalEntity&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Biospecimen]-%20has_anatomical_entity(i)%200..1>[AnatomicalEntity],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[MaterialEntity]^-[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[MaterialEntity],[Biospecimen],[Biospecimen]++-%20has_anatomical_entity%201..*>[AnatomicalEntity&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Biospecimen]-%20has_anatomical_entity(i)%200..1>[AnatomicalEntity],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[MaterialEntity]^-[AnatomicalEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[MaterialEntity],[Biospecimen],[Biospecimen]++-%20anatomical_entities%201..*>[AnatomicalEntity&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Biospecimen]-%20anatomical_entities(i)%200..*>[AnatomicalEntity],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[MaterialEntity]^-[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[MaterialEntity],[Biospecimen],[Biospecimen]++-%20anatomical_entities%201..*>[AnatomicalEntity&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Biospecimen]-%20anatomical_entities(i)%200..*>[AnatomicalEntity],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[MaterialEntity]^-[AnatomicalEntity])
 
 ## Parents
 
@@ -19,8 +19,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnatomicalEntity](https:/
 
 ## Referenced by Class
 
- *  **[Biospecimen](Biospecimen.md)** *[Biospecimen➞has_anatomical_entity](Biospecimen_has_anatomical_entity.md)*  <sub>1..\*</sub>  **[AnatomicalEntity](AnatomicalEntity.md)**
- *  **None** *[has_anatomical_entity](has_anatomical_entity.md)*  <sub>0..1</sub>  **[AnatomicalEntity](AnatomicalEntity.md)**
+ *  **[Biospecimen](Biospecimen.md)** *[Biospecimen➞anatomical_entities](Biospecimen_anatomical_entities.md)*  <sub>1..\*</sub>  **[AnatomicalEntity](AnatomicalEntity.md)**
+ *  **None** *[anatomical_entities](anatomical_entities.md)*  <sub>0..\*</sub>  **[AnatomicalEntity](AnatomicalEntity.md)**
 
 ## Attributes
 

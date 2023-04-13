@@ -7,7 +7,7 @@ A data item that is used to indicate consent permissions for datasets and/or mat
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataUsePermission](https://w3id.org/GHGA-Submission-Metadata-Schema/DataUsePermission)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20has_data_use_permission%201..1>[DataUsePermission&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessPolicy]++-%20has_data_use_permission(i)%200..1>[DataUsePermission],[DataUsePermission]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUsePermission],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20has_data_use_permission%201..1>[DataUsePermission&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessPolicy]++-%20has_data_use_permission(i)%200..1>[DataUsePermission],[DataUsePermission]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUsePermission],[DataAccessPolicy])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20data_use_permission%201..1>[DataUsePermission&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessPolicy]++-%20data_use_permission(i)%200..1>[DataUsePermission],[DataUsePermission]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUsePermission],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20data_use_permission%201..1>[DataUsePermission&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessPolicy]++-%20data_use_permission(i)%200..1>[DataUsePermission],[DataUsePermission]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUsePermission],[DataAccessPolicy])
 
 ## Parents
 
@@ -19,8 +19,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataUsePermission](https:
 
 ## Referenced by Class
 
- *  **[DataAccessPolicy](DataAccessPolicy.md)** *[DataAccessPolicy➞has_data_use_permission](DataAccessPolicy_has_data_use_permission.md)*  <sub>1..1</sub>  **[DataUsePermission](DataUsePermission.md)**
- *  **None** *[has_data_use_permission](has_data_use_permission.md)*  <sub>0..1</sub>  **[DataUsePermission](DataUsePermission.md)**
+ *  **[DataAccessPolicy](DataAccessPolicy.md)** *[DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md)*  <sub>1..1</sub>  **[DataUsePermission](DataUsePermission.md)**
+ *  **None** *[data_use_permission](data_use_permission.md)*  <sub>0..1</sub>  **[DataUsePermission](DataUsePermission.md)**
+ *  **None** *[data_use_permissions](data_use_permissions.md)*  <sub>0..\*</sub>  **[DataUsePermission](DataUsePermission.md)**
 
 ## Attributes
 

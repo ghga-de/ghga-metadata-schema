@@ -7,7 +7,7 @@ A sample is a limited quantity of something to be used for testing, analysis, in
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[Condition]<has_condition%201..1-%20[Sample&#124;name:string;type:string%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;accession:string;ega_accession:string;id(i):string;alias(i):string],[Biospecimen]<has_biospecimen%200..1-++[Sample],[SequencingProcess]-%20has_sample%201..1>[Sample],[Submission]++-%20has_sample%200..*>[Sample],[SequencingProcess]-%20has_sample(i)%200..1>[Sample],[Submission]-%20has_sample(i)%200..1>[Sample],[Sample]uses%20-.->[AccessionMixin],[Sample]uses%20-.->[EgaAccessionMixin],[Sample]uses%20-.->[AttributeMixin],[MaterialEntity]^-[Sample],[MaterialEntity],[EgaAccessionMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[Condition]<has_condition%201..1-%20[Sample&#124;name:string;type:string%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;accession:string;ega_accession:string;id(i):string;alias(i):string],[Biospecimen]<has_biospecimen%200..1-++[Sample],[SequencingProcess]-%20has_sample%201..1>[Sample],[Submission]++-%20has_sample%200..*>[Sample],[SequencingProcess]-%20has_sample(i)%200..1>[Sample],[Submission]-%20has_sample(i)%200..1>[Sample],[Sample]uses%20-.->[AccessionMixin],[Sample]uses%20-.->[EgaAccessionMixin],[Sample]uses%20-.->[AttributeMixin],[MaterialEntity]^-[Sample],[MaterialEntity],[EgaAccessionMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:string%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;accession:string;ega_accession:string;id(i):string;alias(i):string],[Biospecimen]<biospecimen%200..1-++[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[AccessionMixin],[Sample]uses%20-.->[EgaAccessionMixin],[Sample]uses%20-.->[AttributeMixin],[MaterialEntity]^-[Sample],[MaterialEntity],[EgaAccessionMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:string%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;accession:string;ega_accession:string;id(i):string;alias(i):string],[Biospecimen]<biospecimen%200..1-++[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[AccessionMixin],[Sample]uses%20-.->[EgaAccessionMixin],[Sample]uses%20-.->[AttributeMixin],[MaterialEntity]^-[Sample],[MaterialEntity],[EgaAccessionMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -21,9 +21,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
 
 ## Referenced by Class
 
- *  **[SequencingProcess](SequencingProcess.md)** *[SequencingProcess➞has_sample](SequencingProcess_has_sample.md)*  <sub>1..1</sub>  **[Sample](Sample.md)**
- *  **[Submission](Submission.md)** *[Submission➞has_sample](Submission_has_sample.md)*  <sub>0..\*</sub>  **[Sample](Sample.md)**
- *  **None** *[has_sample](has_sample.md)*  <sub>0..1</sub>  **[Sample](Sample.md)**
+ *  **[SequencingProcess](SequencingProcess.md)** *[SequencingProcess➞sample](SequencingProcess_sample.md)*  <sub>1..1</sub>  **[Sample](Sample.md)**
+ *  **[Submission](Submission.md)** *[Submission➞samples](Submission_samples.md)*  <sub>0..\*</sub>  **[Sample](Sample.md)**
+ *  **None** *[sample](sample.md)*  <sub>0..1</sub>  **[Sample](Sample.md)**
+ *  **None** *[samples](samples.md)*  <sub>0..\*</sub>  **[Sample](Sample.md)**
 
 ## Attributes
 
@@ -45,11 +46,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
  * [Sample➞storage](Sample_storage.md)  <sub>0..1</sub>
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [String](types/String.md)
- * [Sample➞has_biospecimen](Sample_has_biospecimen.md)  <sub>0..1</sub>
+ * [Sample➞biospecimen](Sample_biospecimen.md)  <sub>0..1</sub>
      * Description: The Biospecimen from which this Sample was prepared from.
      * Range: [Biospecimen](Biospecimen.md)
      * in subsets: (restricted)
- * [Sample➞has_condition](Sample_has_condition.md)  <sub>1..1</sub>
+ * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
      * Description: The condition associated with an entity.
      * Range: [Condition](Condition.md)
  * [Sample➞xref](Sample_xref.md)  <sub>0..\*</sub>
@@ -81,7 +82,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
 
 ### Mixed in from AttributeMixin:
 
- * [has_attribute](has_attribute.md)  <sub>0..\*</sub>
+ * [attributes](attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

@@ -7,7 +7,7 @@ An condition that is linked to comparable samples.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Sample]-%20has_condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Study]-%20has_condition%201..*>[Condition],[Study]-%20has_condition(i)%200..1>[Condition],[Sample]-%20has_condition(i)%200..1>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Sample]-%20has_condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Study]-%20has_condition%201..*>[Condition],[Study]-%20has_condition(i)%200..1>[Condition],[Sample]-%20has_condition(i)%200..1>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -20,9 +20,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
 
 ## Referenced by Class
 
- *  **[Sample](Sample.md)** *[Sample➞has_condition](Sample_has_condition.md)*  <sub>1..1</sub>  **[Condition](Condition.md)**
- *  **[Study](Study.md)** *[Study➞has_condition](Study_has_condition.md)*  <sub>1..\*</sub>  **[Condition](Condition.md)**
- *  **None** *[has_condition](has_condition.md)*  <sub>0..1</sub>  **[Condition](Condition.md)**
+ *  **[Sample](Sample.md)** *[Sample➞condition](Sample_condition.md)*  <sub>1..1</sub>  **[Condition](Condition.md)**
+ *  **[Study](Study.md)** *[Study➞conditions](Study_conditions.md)*  <sub>1..\*</sub>  **[Condition](Condition.md)**
+ *  **None** *[condition](condition.md)*  <sub>0..1</sub>  **[Condition](Condition.md)**
+ *  **None** *[conditions](conditions.md)*  <sub>0..\*</sub>  **[Condition](Condition.md)**
 
 ## Attributes
 
@@ -70,7 +71,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
 
 ### Mixed in from AttributeMixin:
 
- * [has_attribute](has_attribute.md)  <sub>0..\*</sub>
+ * [attributes](attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

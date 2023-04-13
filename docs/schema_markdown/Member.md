@@ -7,7 +7,7 @@ Member of an Organization or a Committee.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Member](https://w3id.org/GHGA-Submission-Metadata-Schema/Member)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has_member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20main_contact%201..1>[Member],[Submission]++-%20has_member%201..*>[Member],[DataAccessCommittee]++-%20has_member(i)%200..1>[Member],[Submission]++-%20has_member(i)%200..1>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has_member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20main_contact%201..1>[Member],[Submission]++-%20has_member%201..*>[Member],[DataAccessCommittee]++-%20has_member(i)%200..1>[Member],[Submission]++-%20has_member(i)%200..1>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[Person]^-[Member],[DataAccessCommittee])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])
 
 ## Parents
 
@@ -15,11 +15,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Member](https://w3id.org/
 
 ## Referenced by Class
 
- *  **[DataAccessCommittee](DataAccessCommittee.md)** *[DataAccessCommittee➞has_member](DataAccessCommittee_has_member.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
  *  **[DataAccessCommittee](DataAccessCommittee.md)** *[DataAccessCommittee➞main_contact](DataAccessCommittee_main_contact.md)*  <sub>1..1</sub>  **[Member](Member.md)**
- *  **[Submission](Submission.md)** *[Submission➞has_member](Submission_has_member.md)*  <sub>1..\*</sub>  **[Member](Member.md)**
- *  **None** *[has_member](has_member.md)*  <sub>0..1</sub>  **[Member](Member.md)**
+ *  **[DataAccessCommittee](DataAccessCommittee.md)** *[DataAccessCommittee➞members](DataAccessCommittee_members.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
+ *  **[Submission](Submission.md)** *[Submission➞members](Submission_members.md)*  <sub>1..\*</sub>  **[Member](Member.md)**
  *  **None** *[main_contact](main_contact.md)*  <sub>0..1</sub>  **[Member](Member.md)**
+ *  **None** *[members](members.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
 
 ## Attributes
 

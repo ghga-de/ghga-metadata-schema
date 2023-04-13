@@ -7,7 +7,7 @@ The observable form taken by some character (or group of characters) in an indiv
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PhenotypicFeature](https://w3id.org/GHGA-Submission-Metadata-Schema/PhenotypicFeature)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]++-%20has_phenotypic_feature%200..*>[PhenotypicFeature&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]-%20has_phenotypic_feature(i)%200..1>[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[Individual],[DiseaseOrPhenotypicFeature])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]++-%20has_phenotypic_feature%200..*>[PhenotypicFeature&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]-%20has_phenotypic_feature(i)%200..1>[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[Individual],[DiseaseOrPhenotypicFeature])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]++-%20phenotypic_features%200..*>[PhenotypicFeature&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]-%20phenotypic_features(i)%200..*>[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[Individual],[DiseaseOrPhenotypicFeature])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]++-%20phenotypic_features%200..*>[PhenotypicFeature&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]-%20phenotypic_features(i)%200..*>[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[Individual],[DiseaseOrPhenotypicFeature])
 
 ## Parents
 
@@ -15,8 +15,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PhenotypicFeature](https:
 
 ## Referenced by Class
 
- *  **[Individual](Individual.md)** *[Individual➞has_phenotypic_feature](Individual_has_phenotypic_feature.md)*  <sub>0..\*</sub>  **[PhenotypicFeature](PhenotypicFeature.md)**
- *  **None** *[has_phenotypic_feature](has_phenotypic_feature.md)*  <sub>0..1</sub>  **[PhenotypicFeature](PhenotypicFeature.md)**
+ *  **[Individual](Individual.md)** *[Individual➞phenotypic_features](Individual_phenotypic_features.md)*  <sub>0..\*</sub>  **[PhenotypicFeature](PhenotypicFeature.md)**
+ *  **None** *[phenotypic_features](phenotypic_features.md)*  <sub>0..\*</sub>  **[PhenotypicFeature](PhenotypicFeature.md)**
 
 ## Attributes
 

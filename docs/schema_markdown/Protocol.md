@@ -7,7 +7,7 @@ A plan specification which has sufficient level of detail and quantitative infor
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has_attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Submission]++-%20has_protocol%200..*>[Protocol],[Submission]-%20has_protocol(i)%200..1>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[Attribute]<has_attribute%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Submission]++-%20has_protocol%200..*>[Protocol],[Submission]-%20has_protocol(i)%200..1>[Protocol],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProtocol],[Attribute]<attributes%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProtocol],[Attribute]<attributes%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B;id(i):string],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -24,8 +24,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.or
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞has_protocol](Submission_has_protocol.md)*  <sub>0..\*</sub>  **[Protocol](Protocol.md)**
- *  **None** *[has_protocol](has_protocol.md)*  <sub>0..1</sub>  **[Protocol](Protocol.md)**
+ *  **None** *[protocol](protocol.md)*  <sub>0..1</sub>  **[Protocol](Protocol.md)**
 
 ## Attributes
 
@@ -51,7 +50,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.or
  * [Protocol➞xref](Protocol_xref.md)  <sub>1..\*</sub>
      * Description: One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * Range: [String](types/String.md)
- * [Protocol➞has_attribute](Protocol_has_attribute.md)  <sub>1..\*</sub>
+ * [Protocol➞attributes](Protocol_attributes.md)  <sub>1..\*</sub>
      * Description: One or more attributes that further characterizes this protocol.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

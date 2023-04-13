@@ -12,7 +12,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin](https
 ## Mixin for
 
  * [AnatomicalEntity](AnatomicalEntity.md) (mixin)  - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
- * [Ancestry](Ancestry.md) (mixin)  - Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data.
+ * [Ancestry](Ancestry.md) (mixin)  - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
  * [DataUseModifier](DataUseModifier.md) (mixin)  - Data use modifiers indicate additional conditions for use.
  * [DataUsePermission](DataUsePermission.md) (mixin)  - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) (mixin)  - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.

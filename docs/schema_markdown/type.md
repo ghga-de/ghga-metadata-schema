@@ -2,7 +2,7 @@
 # Slot: type
 
 
-The type of an entity.
+The type of an entity. Note: Not to be confused with rdf:type
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/type](https://w3id.org/GHGA-Submission-Metadata-Schema/type)
 
@@ -18,7 +18,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  *  [Analysis➞type](Analysis_type.md)
  *  [Biospecimen➞type](Biospecimen_type.md)
- *  [Dataset➞type](Dataset_type.md)
  *  [Protocol➞type](Protocol_type.md)
  *  [Sample➞type](Sample_type.md)
  *  [SequencingExperiment➞type](SequencingExperiment_type.md)

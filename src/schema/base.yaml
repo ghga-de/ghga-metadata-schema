@@ -204,7 +204,7 @@ classes:
           One or more cross-references for this protocol. 
           (Eg: manufacturer protocol, protocol from publication etc )
         required: true
-      has_attribute:
+      attributes:
         description: >-
           One or more attributes that further characterizes this protocol.
         required: true
@@ -319,7 +319,7 @@ classes:
     mixin: true
     description: Mixin for entities that can have one or more attributes.
     slots:
-      - has_attribute
+      - attributes
 
   DeprecatedMixin:
     mixin: true
@@ -375,9 +375,15 @@ slots:
     description: The name for an entity.
 
   type:
-    description:
+    description: >-
       The type of an entity.
-      # Note: Not to be confused with rdf:type
+      Note: Not to be confused with rdf:type
+
+  types:
+    description: >-
+      The types of an entity.
+      Note: Not to be confused with rdf:type
+    multivalued: True
 
   title:
     description: The title that describes an entity.
@@ -445,7 +451,7 @@ slots:
   value_type:
     description: The semantic type for the value of an attribute.
 
-  has_attribute:
+  attributes:
     description: Key/value pairs corresponding to an entity.
     range: Attribute
     in_subset:

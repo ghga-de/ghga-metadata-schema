@@ -7,7 +7,7 @@ Studies are experimental investigations of a particular phenomenon. It involves 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/GHGA-Submission-Metadata-Schema/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<has_attribute%200..*-++[Study&#124;type:StudyTypeEnum;affiliation:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Condition]<has_condition%201..*-%20[Study],[Project]<has_project%200..1-++[Study],[Analysis]++-%20has_study%201..1>[Study],[Publication]++-%20has_study%201..1>[Study],[Submission]++-%20has_study%201..1>[Study],[Analysis]-%20has_study(i)%200..1>[Study],[Publication]-%20has_study(i)%200..1>[Study],[Submission]-%20has_study(i)%200..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[EgaAccessionMixin],[Condition],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<has_attribute%200..*-++[Study&#124;type:StudyTypeEnum;affiliation:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Condition]<has_condition%201..*-%20[Study],[Project]<has_project%200..1-++[Study],[Analysis]++-%20has_study%201..1>[Study],[Publication]++-%20has_study%201..1>[Study],[Submission]++-%20has_study%201..1>[Study],[Analysis]-%20has_study(i)%200..1>[Study],[Publication]-%20has_study(i)%200..1>[Study],[Submission]-%20has_study(i)%200..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[EgaAccessionMixin],[Condition],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Condition]<conditions%201..*-%20[Study],[Project]<project%200..1-++[Study],[Analysis]++-%20study%201..1>[Study],[Publication]++-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[EgaAccessionMixin],[Condition],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Condition]<conditions%201..*-%20[Study],[Project]<project%200..1-++[Study],[Analysis]++-%20study%201..1>[Study],[Publication]++-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Project],[Investigation],[EgaAccessionMixin],[Condition],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
 
 ## Parents
 
@@ -21,10 +21,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
 
 ## Referenced by Class
 
- *  **[Analysis](Analysis.md)** *[Analysis➞has_study](Analysis_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
- *  **[Publication](Publication.md)** *[Publication➞has_study](Publication_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
- *  **[Submission](Submission.md)** *[Submission➞has_study](Submission_has_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
- *  **None** *[has_study](has_study.md)*  <sub>0..1</sub>  **[Study](Study.md)**
+ *  **[Analysis](Analysis.md)** *[Analysis➞study](Analysis_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
+ *  **[Publication](Publication.md)** *[Publication➞study](Publication_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
+ *  **[Submission](Submission.md)** *[Submission➞studies](Submission_studies.md)*  <sub>1..\*</sub>  **[Study](Study.md)**
+ *  **None** *[studies](studies.md)*  <sub>0..\*</sub>  **[Study](Study.md)**
+ *  **None** *[study](study.md)*  <sub>0..1</sub>  **[Study](Study.md)**
 
 ## Attributes
 
@@ -34,13 +35,13 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [Study➞type](Study_type.md)  <sub>1..1</sub>
      * Description: The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
- * [Study➞affiliation](Study_affiliation.md)  <sub>1..\*</sub>
+ * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
      * Description: The Institution(s) associated with an entity.
      * Range: [String](types/String.md)
- * [Study➞has_project](Study_has_project.md)  <sub>0..1</sub>
+ * [Study➞project](Study_project.md)  <sub>0..1</sub>
      * Description: The project associated with this Study.
      * Range: [Project](Project.md)
- * [Study➞has_condition](Study_has_condition.md)  <sub>1..\*</sub>
+ * [Study➞conditions](Study_conditions.md)  <sub>1..\*</sub>
      * Description: The condition associated with an entity.
      * Range: [Condition](Condition.md)
  * [Study➞title](Study_title.md)  <sub>1..1</sub>
@@ -49,7 +50,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [Study➞description](Study_description.md)  <sub>1..1</sub>
      * Description: A detailed description (abstract) that describes the goals of this Study.
      * Range: [String](types/String.md)
- * [Study➞has_attribute](Study_has_attribute.md)  <sub>0..\*</sub>
+ * [Study➞attributes](Study_attributes.md)  <sub>0..\*</sub>
      * Description: Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

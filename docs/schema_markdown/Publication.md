@@ -7,7 +7,7 @@ The Publication entity represents a publication. While a publication can be any 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[PublicationMixin],[Study]<has_study%201..1-++[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;id(i):string;alias(i):string],[PublicationMixin]-%20has_publication%201..1>[Publication],[Submission]++-%20has_publication%200..*>[Publication],[Dataset]-%20has_publication%200..1>[Publication],[Submission]-%20has_publication(i)%200..1>[Publication],[PublicationMixin]-%20has_publication(i)%200..1>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[PublicationMixin],[Study]<has_study%201..1-++[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;id(i):string;alias(i):string],[PublicationMixin]-%20has_publication%201..1>[Publication],[Submission]++-%20has_publication%200..*>[Publication],[Dataset]-%20has_publication%200..1>[Publication],[Submission]-%20has_publication(i)%200..1>[Publication],[PublicationMixin]-%20has_publication(i)%200..1>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-++[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;id(i):string;alias(i):string],[Submission]++-%20publications%200..1>[Publication],[Submission]-%20publications(i)%200..1>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-++[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;id(i):string;alias(i):string],[Submission]++-%20publications%200..1>[Publication],[Submission]-%20publications(i)%200..1>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity])
 
 ## Parents
 
@@ -15,9 +15,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication](https://w3id
 
 ## Referenced by Class
 
- *  **[PublicationMixin](PublicationMixin.md)** *[PublicationMixin➞has_publication](PublicationMixin_has_publication.md)*  <sub>1..1</sub>  **[Publication](Publication.md)**
- *  **[Submission](Submission.md)** *[Submission➞has_publication](Submission_has_publication.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
- *  **None** *[has_publication](has_publication.md)*  <sub>0..1</sub>  **[Publication](Publication.md)**
+ *  **[Submission](Submission.md)** *[Submission➞publications](Submission_publications.md)*  <sub>0..1</sub>  **[Publication](Publication.md)**
+ *  **None** *[publications](publications.md)*  <sub>0..1</sub>  **[Publication](Publication.md)**
 
 ## Attributes
 
@@ -42,7 +41,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication](https://w3id
  * [Publication➞doi](Publication_doi.md)  <sub>1..1</sub>
      * Description: DOI identifier of the Publication.
      * Range: [String](types/String.md)
- * [Publication➞has_study](Publication_has_study.md)  <sub>1..1</sub>
+ * [Publication➞study](Publication_study.md)  <sub>1..1</sub>
      * Description: The Study entity associated with this Publication.
      * Range: [Study](Study.md)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>

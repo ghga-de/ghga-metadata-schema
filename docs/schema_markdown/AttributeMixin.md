@@ -7,7 +7,7 @@ Mixin for entities that can have one or more attributes.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AttributeMixin](https://w3id.org/GHGA-Submission-Metadata-Schema/AttributeMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has_attribute%200..*-++[AttributeMixin],[Study]uses%20-.->[AttributeMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Sample]uses%20-.->[AttributeMixin],[Protocol]uses%20-.->[AttributeMixin],[Project]uses%20-.->[AttributeMixin],[File]uses%20-.->[AttributeMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[AttributeMixin],[Condition]uses%20-.->[AttributeMixin],[Study],[SequencingProcess],[SequencingExperiment],[Sample],[Protocol],[Project],[File],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Condition],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has_attribute%200..*-++[AttributeMixin],[Study]uses%20-.->[AttributeMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Sample]uses%20-.->[AttributeMixin],[Protocol]uses%20-.->[AttributeMixin],[Project]uses%20-.->[AttributeMixin],[File]uses%20-.->[AttributeMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[AttributeMixin],[Condition]uses%20-.->[AttributeMixin],[Study],[SequencingProcess],[SequencingExperiment],[Sample],[Protocol],[Project],[File],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Condition],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<attributes%200..*-++[AttributeMixin],[Study]uses%20-.->[AttributeMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Sample]uses%20-.->[AttributeMixin],[Protocol]uses%20-.->[AttributeMixin],[Project]uses%20-.->[AttributeMixin],[File]uses%20-.->[AttributeMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[AttributeMixin],[Condition]uses%20-.->[AttributeMixin],[Study],[SequencingProcess],[SequencingExperiment],[Sample],[Protocol],[Project],[File],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Condition],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<attributes%200..*-++[AttributeMixin],[Study]uses%20-.->[AttributeMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Sample]uses%20-.->[AttributeMixin],[Protocol]uses%20-.->[AttributeMixin],[Project]uses%20-.->[AttributeMixin],[File]uses%20-.->[AttributeMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[AttributeMixin],[Condition]uses%20-.->[AttributeMixin],[Study],[SequencingProcess],[SequencingExperiment],[Sample],[Protocol],[Project],[File],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Condition],[Attribute])
 
 ## Mixin for
 
@@ -31,7 +31,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AttributeMixin](https://w
 
 ### Own
 
- * [has_attribute](has_attribute.md)  <sub>0..\*</sub>
+ * [attributes](attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

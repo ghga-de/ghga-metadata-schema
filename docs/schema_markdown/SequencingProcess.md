@@ -7,7 +7,7 @@ A sequencing process linking a sample to sequencing output.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<has_sample%201..1-%20[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has_sequencing_experiment%201..1-%20[SequencingProcess],[File]<has_file%201..*-%20[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[File],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<has_sample%201..1-%20[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<has_sequencing_experiment%201..1-%20[SequencingProcess],[File]<has_file%201..*-%20[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[File],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<sample%201..1-%20[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[File]<files%201..*-%20[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[File],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<sample%201..1-%20[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[File]<files%201..*-%20[SequencingProcess],[SequencingProcess]uses%20-.->[AccessionMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[File],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -41,15 +41,15 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
  * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md)  <sub>0..1</sub>
      * Description: Identifier of the sequencing machine. Used for batch correction.
      * Range: [String](types/String.md)
- * [SequencingProcess➞has_file](SequencingProcess_has_file.md)  <sub>1..\*</sub>
-     * Description: The file associated with an entity.
+ * [SequencingProcess➞files](SequencingProcess_files.md)  <sub>1..\*</sub>
+     * Description: The files associated with an entity.
      * Range: [File](File.md)
      * in subsets: (restricted)
- * [SequencingProcess➞has_sequencing_experiment](SequencingProcess_has_sequencing_experiment.md)  <sub>1..1</sub>
+ * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)  <sub>1..1</sub>
      * Description: The sequencing experiment associated with an entity.
      * Range: [SequencingExperiment](SequencingExperiment.md)
      * in subsets: (restricted)
- * [SequencingProcess➞has_sample](SequencingProcess_has_sample.md)  <sub>1..1</sub>
+ * [SequencingProcess➞sample](SequencingProcess_sample.md)  <sub>1..1</sub>
      * Description: The sample associated with an entity.
      * Range: [Sample](Sample.md)
      * in subsets: (restricted)
@@ -79,7 +79,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
 
 ### Mixed in from AttributeMixin:
 
- * [has_attribute](has_attribute.md)  <sub>0..\*</sub>
+ * [attributes](attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

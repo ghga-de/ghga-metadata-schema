@@ -7,7 +7,7 @@ A Dataset is a collection of Files that is prepared for distribution and is tied
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Publication],[InformationContentEntity],[File],[EgaAccessionMixin],[DataAccessPolicy]<has_data_access_policy%201..1-++[Dataset&#124;title:string;description:string;type:string%20%2B;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Publication]<has_publication%200..1-%20[Dataset],[File]<has_file%201..*-++[Dataset],[Submission]++-%20has_dataset%201..*>[Dataset],[Submission]-%20has_dataset(i)%200..1>[Dataset],[Dataset]uses%20-.->[AccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[Dataset],[DataAccessPolicy],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Publication],[InformationContentEntity],[File],[EgaAccessionMixin],[DataAccessPolicy]<has_data_access_policy%201..1-++[Dataset&#124;title:string;description:string;type:string%20%2B;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Publication]<has_publication%200..1-%20[Dataset],[File]<has_file%201..*-++[Dataset],[Submission]++-%20has_dataset%201..*>[Dataset],[Submission]-%20has_dataset(i)%200..1>[Dataset],[Dataset]uses%20-.->[AccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[Dataset],[DataAccessPolicy],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[File],[EgaAccessionMixin],[DataAccessPolicy]<data_access_policy%201..1-++[Dataset&#124;title:string;description:string;types:string%20%2B;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[File]<files%201..*-++[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[AccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[Dataset],[DataAccessPolicy],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[File],[EgaAccessionMixin],[DataAccessPolicy]<data_access_policy%201..1-++[Dataset&#124;title:string;description:string;types:string%20%2B;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[File]<files%201..*-++[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[AccessionMixin],[Dataset]uses%20-.->[EgaAccessionMixin],[Dataset]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[Dataset],[DataAccessPolicy],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -21,8 +21,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞has_dataset](Submission_has_dataset.md)*  <sub>1..\*</sub>  **[Dataset](Dataset.md)**
- *  **None** *[has_dataset](has_dataset.md)*  <sub>0..1</sub>  **[Dataset](Dataset.md)**
+ *  **[Submission](Submission.md)** *[Submission➞datasets](Submission_datasets.md)*  <sub>1..\*</sub>  **[Dataset](Dataset.md)**
+ *  **None** *[datasets](datasets.md)*  <sub>0..\*</sub>  **[Dataset](Dataset.md)**
 
 ## Attributes
 
@@ -35,17 +35,14 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org
  * [Dataset➞description](Dataset_description.md)  <sub>1..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
- * [Dataset➞type](Dataset_type.md)  <sub>1..\*</sub>
+ * [Dataset➞types](Dataset_types.md)  <sub>1..\*</sub>
      * Description: The type of a dataset.
      * Range: [String](types/String.md)
- * [Dataset➞has_file](Dataset_has_file.md)  <sub>1..\*</sub>
+ * [Dataset➞files](Dataset_files.md)  <sub>1..\*</sub>
      * Description: One or more File entities that collectively are part of this Dataset.
      * Range: [File](File.md)
      * in subsets: (restricted)
- * [has_publication](has_publication.md)  <sub>0..1</sub>
-     * Description: The Publication associated with an entity.
-     * Range: [Publication](Publication.md)
- * [Dataset➞has_data_access_policy](Dataset_has_data_access_policy.md)  <sub>1..1</sub>
+ * [Dataset➞data_access_policy](Dataset_data_access_policy.md)  <sub>1..1</sub>
      * Description: The Data Access Policy that applies to this Dataset.
      * Range: [DataAccessPolicy](DataAccessPolicy.md)
      * in subsets: (restricted)
@@ -78,7 +75,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org
 
 ### Mixed in from AttributeMixin:
 
- * [has_attribute](has_attribute.md)  <sub>0..\*</sub>
+ * [attributes](attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

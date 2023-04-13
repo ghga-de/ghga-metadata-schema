@@ -48,16 +48,13 @@ File {
 Analysis {
 
 }
-Protocol {
-
-}
-SequencingExperiment {
-
-}
 LibraryPreparationProtocol {
 
 }
 SequencingProtocol {
+
+}
+SequencingExperiment {
 
 }
 Individual {
@@ -82,58 +79,56 @@ Sample {
 
 }
 
-Submission ||--|| Study : "has_study"
-Submission ||--|o Project : "has_project"
-Submission ||--}o Sample : "has_sample"
-Submission ||--}o Biospecimen : "has_biospecimen"
-Submission ||--}o Individual : "has_individual"
-Submission ||--}o SequencingExperiment : "has_sequencing_experiment"
-Submission ||--}o Protocol : "has_protocol"
-Submission ||--}o Analysis : "has_analysis"
-Submission ||--}| File : "has_file"
-Submission ||--}| Dataset : "has_dataset"
-Submission ||--}| DataAccessPolicy : "has_data_access_policy"
-Submission ||--}| DataAccessCommittee : "has_data_access_committee"
-Submission ||--}| Member : "has_member"
-Submission ||--}o Publication : "has_publication"
-Publication ||--|| Study : "has_study"
-Study ||--|o Project : "has_project"
-Study ||--}| Condition : "has_condition"
-Study ||--}o Attribute : "has_attribute"
-Condition ||--}o Attribute : "has_attribute"
-Project ||--}o Attribute : "has_attribute"
+Submission ||--}| Study : "studies"
+Submission ||--}o Project : "projects"
+Submission ||--}o Sample : "samples"
+Submission ||--}o Biospecimen : "biospecimens"
+Submission ||--}o Individual : "individuals"
+Submission ||--}o SequencingExperiment : "sequencing_experiments"
+Submission ||--}o SequencingProtocol : "sequencing_protocols"
+Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
+Submission ||--}o Analysis : "analyses"
+Submission ||--}| File : "files"
+Submission ||--}| Dataset : "datasets"
+Submission ||--}| DataAccessPolicy : "data_access_policies"
+Submission ||--}| DataAccessCommittee : "data_access_committees"
+Submission ||--}| Member : "members"
+Submission ||--|o Publication : "publications"
+Publication ||--|| Study : "study"
+Study ||--|o Project : "project"
+Study ||--}| Condition : "conditions"
+Study ||--}o Attribute : "attributes"
+Condition ||--}o Attribute : "attributes"
+Project ||--}o Attribute : "attributes"
 DataAccessCommittee ||--|| Member : "main_contact"
-DataAccessCommittee ||--}o Member : "has_member"
-DataAccessCommittee ||--}o Attribute : "has_attribute"
-DataAccessPolicy ||--|| DataAccessCommittee : "has_data_access_committee"
-DataAccessPolicy ||--|| DataUsePermission : "has_data_use_permission"
-DataAccessPolicy ||--}o DataUseModifier : "has_data_use_modifier"
-DataAccessPolicy ||--}o Attribute : "has_attribute"
-Dataset ||--}| File : "has_file"
-Dataset ||--|o Publication : "has_publication"
-Dataset ||--|| DataAccessPolicy : "has_data_access_policy"
-Dataset ||--}o Attribute : "has_attribute"
-File ||--}o Attribute : "has_attribute"
-Analysis ||--}| File : "has_input"
-Analysis ||--|| Study : "has_study"
-Analysis ||--}| File : "has_output"
-Protocol ||--}| Attribute : "has_attribute"
-SequencingExperiment ||--|| SequencingProtocol : "has_sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "has_library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "has_attribute"
-LibraryPreparationProtocol ||--}| Attribute : "has_attribute"
-SequencingProtocol ||--}| Attribute : "has_attribute"
-Individual ||--}o Ancestry : "has_ancestry"
-Individual ||--}o Individual : "has_parent"
-Individual ||--}o Individual : "has_children"
-Individual ||--}| Disease : "has_disease"
-Individual ||--}o PhenotypicFeature : "has_phenotypic_feature"
-Individual ||--}o File : "has_file"
-Biospecimen ||--|| Individual : "has_individual"
-Biospecimen ||--}| AnatomicalEntity : "has_anatomical_entity"
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
+DataAccessCommittee ||--}o Member : "members"
+DataAccessCommittee ||--}o Attribute : "attributes"
+DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
+DataAccessPolicy ||--|| DataUsePermission : "data_use_permission"
+DataAccessPolicy ||--|o DataUseModifier : "data_use_modifiers"
+DataAccessPolicy ||--}o Attribute : "attributes"
+Dataset ||--}| File : "files"
+Dataset ||--|| DataAccessPolicy : "data_access_policy"
+Dataset ||--}o Attribute : "attributes"
+File ||--}o Attribute : "attributes"
+Analysis ||--}| File : "inputs"
+Analysis ||--|| Study : "study"
+Analysis ||--}| File : "outputs"
+LibraryPreparationProtocol ||--}| Attribute : "attributes"
+SequencingProtocol ||--}| Attribute : "attributes"
+SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "attributes"
+Individual ||--}o Ancestry : "ancestries"
+Individual ||--}o Individual : "parents"
+Individual ||--}| Disease : "diseases"
+Individual ||--}o PhenotypicFeature : "phenotypic_features"
+Individual ||--}o File : "files"
+Biospecimen ||--|| Individual : "individual"
+Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
 
 ```
 
@@ -155,17 +150,16 @@ Sample {
 
 }
 
-Individual ||--}o Ancestry : "has_ancestry"
-Individual ||--}o Individual : "has_parent"
-Individual ||--}o Individual : "has_children"
-Individual ||--}| Disease : "has_disease"
-Individual ||--}o PhenotypicFeature : "has_phenotypic_feature"
-Individual ||--}o File : "has_file"
-Biospecimen ||--|| Individual : "has_individual"
-Biospecimen ||--}| AnatomicalEntity : "has_anatomical_entity"
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
+Individual ||--}o Ancestry : "ancestries"
+Individual ||--}o Individual : "parents"
+Individual ||--}| Disease : "diseases"
+Individual ||--}o PhenotypicFeature : "phenotypic_features"
+Individual ||--}o File : "files"
+Biospecimen ||--|| Individual : "individual"
+Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
 
 ```
 
@@ -190,17 +184,17 @@ SequencingExperiment {
 
 }
 
-SequencingProcess ||--}| File : "has_file"
-SequencingProcess ||--|| SequencingExperiment : "has_sequencing_experiment"
-SequencingProcess ||--|| Sample : "has_sample"
-SequencingProcess ||--}o Attribute : "has_attribute"
-File ||--}o Attribute : "has_attribute"
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
-SequencingExperiment ||--|| SequencingProtocol : "has_sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "has_library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "has_attribute"
+SequencingProcess ||--}| File : "files"
+SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
+SequencingProcess ||--|| Sample : "sample"
+SequencingProcess ||--}o Attribute : "attributes"
+File ||--}o Attribute : "attributes"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
+SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "attributes"
 
 ```
 
@@ -222,13 +216,13 @@ Study {
 
 }
 
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
-Condition ||--}o Attribute : "has_attribute"
-Study ||--|o Project : "has_project"
-Study ||--}| Condition : "has_condition"
-Study ||--}o Attribute : "has_attribute"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
+Condition ||--}o Attribute : "attributes"
+Study ||--|o Project : "project"
+Study ||--}| Condition : "conditions"
+Study ||--}o Attribute : "attributes"
 
 ```
 
@@ -246,6 +240,7 @@ Individual {
     AgeRangeEnum age  
     VitalStatusEnum vital_status  
     string geographical_region  
+    stringList children  
     string accession  
     string ega_accession  
     string given_name  
@@ -280,17 +275,16 @@ Sample {
     stringList xref  
 }
 
-Individual ||--}o Ancestry : "has_ancestry"
-Individual ||--}o Individual : "has_parent"
-Individual ||--}o Individual : "has_children"
-Individual ||--}| Disease : "has_disease"
-Individual ||--}o PhenotypicFeature : "has_phenotypic_feature"
-Individual ||--}o File : "has_file"
-Biospecimen ||--|| Individual : "has_individual"
-Biospecimen ||--}| AnatomicalEntity : "has_anatomical_entity"
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
+Individual ||--}o Ancestry : "ancestries"
+Individual ||--}o Individual : "parents"
+Individual ||--}| Disease : "diseases"
+Individual ||--}o PhenotypicFeature : "phenotypic_features"
+Individual ||--}o File : "files"
+Biospecimen ||--|| Individual : "individual"
+Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
 
 ```
 
@@ -349,17 +343,17 @@ SequencingExperiment {
     stringList xref  
 }
 
-SequencingProcess ||--}| File : "has_file"
-SequencingProcess ||--|| SequencingExperiment : "has_sequencing_experiment"
-SequencingProcess ||--|| Sample : "has_sample"
-SequencingProcess ||--}o Attribute : "has_attribute"
-File ||--}o Attribute : "has_attribute"
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
-SequencingExperiment ||--|| SequencingProtocol : "has_sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "has_library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "has_attribute"
+SequencingProcess ||--}| File : "files"
+SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
+SequencingProcess ||--|| Sample : "sample"
+SequencingProcess ||--}o Attribute : "attributes"
+File ||--}o Attribute : "attributes"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
+SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "attributes"
 
 ```
 
@@ -397,7 +391,7 @@ Condition {
 }
 Study {
     StudyTypeEnum type  
-    stringList affiliation  
+    stringList affiliations  
     string accession  
     string ega_accession  
     string title  
@@ -407,13 +401,13 @@ Study {
     stringList xref  
 }
 
-Sample ||--|o Biospecimen : "has_biospecimen"
-Sample ||--|| Condition : "has_condition"
-Sample ||--}o Attribute : "has_attribute"
-Condition ||--}o Attribute : "has_attribute"
-Study ||--|o Project : "has_project"
-Study ||--}| Condition : "has_condition"
-Study ||--}o Attribute : "has_attribute"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
+Condition ||--}o Attribute : "attributes"
+Study ||--|o Project : "project"
+Study ||--}| Condition : "conditions"
+Study ||--}o Attribute : "attributes"
 
 ```
 

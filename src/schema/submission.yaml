@@ -32,7 +32,7 @@ classes:
       description:
         description: >-
           Short textual description of the project.
-      has_attribute:
+      attributes:
         description: >-
           Custom attributes for the Project 
           (eg: Cancer - Colon_cancer,_prostrate_cancer,_blood_cancer_etc)
@@ -49,9 +49,9 @@ classes:
       being studied.
     slots:
       - type
-      - affiliation
-      - has_project
-      - has_condition
+      - affiliations
+      - project
+      - conditions
     slot_usage:
       title:
         description: >-
@@ -66,21 +66,19 @@ classes:
           The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
         range: StudyTypeEnum
         required: true
-      affiliation:
+      affiliations:
         required: true
-        multivalued: true
-      has_project:
+      project:
         description: The project associated with this Study.
         required: false
         inlined: true
         inlined_as_list: false
-      has_attribute:
+      attributes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell,_bulk_etc)
-      has_condition:
+      conditions:
         required: true
-        multivalued: true
         inlined: false
 
   SequencingExperiment:
@@ -97,8 +95,8 @@ classes:
       - SIO:000994
     slots:
       - type
-      - has_sequencing_protocol
-      - has_library_preparation_protocol
+      - sequencing_protocol
+      - library_preparation_protocol
     slot_usage:
       title:
         description: >-
@@ -111,10 +109,10 @@ classes:
         description: >-
           The type of sequencing experiment.
         required: false
-      has_sequencing_protocol:
+      sequencing_protocol:
         required: true
         inlined: false
-      has_library_preparation_protocol:
+      library_preparation_protocol:
         required: true
         inlined: false
 
@@ -188,12 +186,11 @@ classes:
       end_bias:
         required: false
         recommended: true
-      has_attribute:
+      attributes:
         description: >-
           One or more attributes that further characterizes this library_preparation Protocol.
       target_regions:
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
       rnaseq_strandedness:
@@ -233,7 +230,7 @@ classes:
         description: >-
           Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
         required: true
-      has_attribute:
+      attributes:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
       sequencing_center:
@@ -293,9 +290,9 @@ classes:
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
-      - has_file
-      - has_sequencing_experiment
-      - has_sample
+      - files
+      - sequencing_experiment
+      - sample
     slot_usage:
       name:
         required: true
@@ -313,14 +310,13 @@ classes:
         description: >-
           Identifier of the sequencing machine. Used for batch correction.
         required: false
-      has_file:
-        required: true
-        multivalued: true
-        inlined: false
-      has_sequencing_experiment:
+      files:
         required: true
         inlined: false
-      has_sample:
+      sequencing_experiment:
+        required: true
+        inlined: false
+      sample:
         required: true
         inlined: false
 
@@ -340,9 +336,9 @@ classes:
       - description
       - isolation
       - storage
-      - has_individual
+      - individual
       - vital_status_at_sampling
-      - has_anatomical_entity
+      - anatomical_entities
     slot_usage:
       name:
         required: false
@@ -360,7 +356,7 @@ classes:
       storage:
         required: false
         recommended: true
-      has_individual:
+      individual:
         description: >-
           The Individual entity from which this Biospecimen was derived.
         range: Individual
@@ -370,9 +366,8 @@ classes:
       vital_status_at_sampling:
         required: false
         recommended: true
-      has_anatomical_entity:
+      anatomical_entities:
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
 
@@ -425,8 +420,8 @@ classes:
       - description
       - isolation
       - storage
-      - has_biospecimen
-      - has_condition
+      - biospecimen
+      - condition
     slot_usage:
       name:
         description: >-
@@ -450,14 +445,13 @@ classes:
           One or more cross-references for this Sample. For example, this Sample
           may have an EBI BioSamples accession or an EGA Sample accession.
         required: false
-        multivalued: true
-      has_biospecimen:
+      biospecimen:
         description: >-
           The Biospecimen from which this Sample was prepared from.
         required: false
         inlined: true
         inlined_as_list: false
-      has_condition:
+      condition:
         required: true
 
   Individual:
@@ -474,12 +468,12 @@ classes:
       - age
       - vital_status
       - geographical_region
-      - has_ancestry
-      - has_parent
-      - has_children
-      - has_disease
-      - has_phenotypic_feature
-      - has_file
+      - ancestries
+      - parents
+      - children
+      - diseases
+      - phenotypic_features
+      - files
     slot_usage:
       sex:
         required: true
@@ -492,48 +486,39 @@ classes:
         required: true
       geographical_region:
         required: false
-      has_ancestry:
+      ancestries:
         required: false
-      has_parent:
-        description: One or more parent for this Individual.
-        range: Individual
+      parents:
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_children:
-        description: One or more children for this Individual.
-        range: Individual
+      children:
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_disease:
+      diseases:
         description: >-
           The Disease entity that is associated with this Biospecimen at the time of retrieval
           from the organism. Typically, a concept from Mondo Disease Ontology.
           For example, 'MONDO:0003742' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - suffers_from_'Heart_Fibrosarcoma'.
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_phenotypic_feature:
+      phenotypic_features:
         description: >-
           The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
           from the organism. Typically, a concept from Human Phenotype Ontology.
           For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_file:
+      files:
         description: >-
           Additional/supplementary files associated with an Individual.
           Typically, a phenopacket or pedigree file.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
 
@@ -542,9 +527,9 @@ classes:
     mixins:
       - OntologyClassMixin
     description: >-
-      Population category defined using ancestry informative markers (AIMs) based
+      Population category defined using ancestries informative markers (AIMs) based
       on genetic/genomic data.
-    aliases: ["ancestral group", "ancestry category"]
+    aliases: ["ancestral group", "ancestries category"]
     exact_mappings:
       - HANCESTRO:0004
 
@@ -591,9 +576,9 @@ classes:
       - type
       - reference_genome
       - reference_chromosome
-      - has_input
-      - has_study
-      - has_output
+      - inputs
+      - study
+      - outputs
       - description
     slot_usage:
       alias:
@@ -611,26 +596,24 @@ classes:
         required: true
       reference_chromosome:
         required: true
-      has_input:
+      inputs:
         description: >-
           The input data File entities used in the Analysis.
         range: File
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_study:
+      study:
         description: >-
           The Study entity associated with this Analysis.
         required: true
         inlined: true
         inlined_as_list: false
-      has_output:
+      outputs:
         description: >-
           The output data File entities generated by this Analysis.
         range: File
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
 
@@ -648,10 +631,9 @@ classes:
     slots:
       - title
       - description
-      - type
-      - has_file
-      - has_publication
-      - has_data_access_policy
+      - types
+      - files
+      - data_access_policy
     slot_usage:
       title:
         description: >-
@@ -659,19 +641,17 @@ classes:
         required: true
       description:
         required: true
-      type:
+      types:
         description: >-
           The type of a dataset.
         required: true
-        multivalued: true
-      has_file:
+      files:
         description: >-
           One or more File entities that collectively are part of this Dataset.
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_data_access_policy:
+      data_access_policy:
         description: >-
           The Data Access Policy that applies to this Dataset.
         required: true
@@ -711,9 +691,9 @@ classes:
       - description
       - policy_text
       - policy_url
-      - has_data_access_committee
-      - has_data_use_permission
-      - has_data_use_modifier
+      - data_access_committee
+      - data_use_permission
+      - data_use_modifiers
       - data_request_form
     slot_usage:
       name:
@@ -734,25 +714,24 @@ classes:
           made available online at a resolvable URL.
         required: false
         recommended: true
-      has_data_access_committee:
+      data_access_committee:
         description: >-
           The Data Access Committee linked to this policy.
         required: true
         inlined: true
         inlined_as_list: false
-      has_data_use_permission:
+      data_use_permission:
         description: >-
           Data use permission associated with a policy. Typically one or more terms from DUO
           and should be descendants of 'DUO:0000001 data use permission'.
         required: true
         recommended: true
-      has_data_use_modifier:
+      data_use_modifiers:
         description: >-
           Modifier for Data use permission associated with a policy.
           Should be descendants of 'DUO:0000017 data use modifier'
         required: false
         recommended: true
-        multivalued: true
       data_request_form:
         description: >-
           Data Request Form that is associated with this Data Access Policy.
@@ -772,7 +751,7 @@ classes:
       - name
       - description
       - main_contact
-      - has_member
+      - members
     slot_usage:
       name:
         description: >-
@@ -789,11 +768,10 @@ classes:
         required: true
         inlined: true
         inlined_as_list: false
-      has_member:
+      members:
         description: >-
           All the members that are part of this Data Access Committee.
         range: Member
-        multivalued: true
         inlined: true
         inlined_as_list: true
 
@@ -832,7 +810,7 @@ classes:
       - year
       - journal
       - doi
-      - has_study
+      - study
     slot_usage:
       title:
         description: >-
@@ -855,7 +833,7 @@ classes:
       doi:
         description: DOI identifier of the Publication.
         required: true
-      has_study:
+      study:
         description: >-
           The Study entity associated with this Publication.
         range: Study
@@ -871,21 +849,22 @@ classes:
       entities that represent a data submission to GHGA.
     slots:
       - id
-      - affiliation
-      - has_study
-      - has_project
-      - has_sample
-      - has_biospecimen
-      - has_individual
-      - has_sequencing_experiment
-      - has_protocol
-      - has_analysis
-      - has_file
-      - has_dataset
-      - has_data_access_policy
-      - has_data_access_committee
-      - has_member
-      - has_publication
+      - affiliations
+      - studies
+      - projects
+      - samples
+      - biospecimens
+      - individuals
+      - sequencing_experiments
+      - sequencing_protocols
+      - library_preparation_protocols
+      - analyses
+      - files
+      - datasets
+      - data_access_policies
+      - data_access_committees
+      - members
+      - publications
       - submission_date
       - submission_status
     slot_usage:
@@ -893,105 +872,99 @@ classes:
         description: >-
           A internal unique identifier for the Submission.
         required: true
-      affiliation:
+      affiliations:
         description: >-
           Institution/Center/Data Hub that is providing this submission.
         required: true
-      has_study:
+      studies:
         description: >-
           Information about a Study entities associated with this submission.
         required: true
         inlined: true
         inlined_as_list: false
-      has_project:
+      projects:
         description: >-
           Information about a Project entity associated with this submission.
         required: false
         inlined: true
         inlined_as_list: false
-      has_sample:
+      samples:
         description: >-
           Information about one or more Sample entities associated with this submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_biospecimen:
+      biospecimens:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_individual:
+      individuals:
         description: >-
           Information about one or more Individual entities associated with this submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_sequencing_experiment:
+      sequencing_experiments:
         description: >-
           Information about one or more Experiment entities associated with this submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_protocol:
+      sequencing_protocols:
         description: >-
-          One or more Protocol entities associated with this Submission.
+          One or more sequencing protocol entities associated with this Submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_analysis:
+      library_preparation_protocols:
+        description: >-
+          One or more library preparation protocol entities associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      analyses:
         description: >-
           Information about one or more Analysis entities associated with this submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_file:
+      files:
         description: >-
           Information about one or more File entities associated with this submission.
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_dataset:
+      datasets:
         description: >-
           One or more Dataset that are part of this submission.
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_data_access_policy:
+      data_access_policies:
         description: >-
           The Data Access Policy that applies to Dataset in this submission.
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_data_access_committee:
+      data_access_committees:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
         required: true
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_member:
+      members:
         description: >-
           The members associated with a committee referenced in this submission
         required: true
         range: Member
-        multivalued: true
         inlined: true
         inlined_as_list: true
-      has_publication:
+      publications:
         description: >-
           One or more Publication entities associated with this Submission.
         required: false
-        multivalued: true
         inlined: true
         inlined_as_list: true
       submission_status:
@@ -999,88 +972,124 @@ classes:
           The status of a Submission.
         required: false
 
-  PublicationMixin:
-    mixin: true
-    description: >-
-      Mixin for entities that can have one or more publications.
-    slots:
-      - has_publication
-    slot_usage:
-      has_publication:
-        required: true
-
 slots:
-  has_study:
+  study:
     description: The study associated with an entity.
     range: Study
 
-  has_project:
+  studies:
+    description: The study associated with an entity.
+    range: Study
+    multivalued: True
+
+  project:
     description: The project associated with an entity.
     range: Project
 
-  has_publication:
+  projects:
+    description: The project associated with an entity.
+    range: Project
+    multivalued: True
+
+  publications:
     description: The Publication associated with an entity.
     range: Publication
 
-  has_sample:
+  sample:
     description: The sample associated with an entity.
     range: Sample
     in_subset:
       - restricted
 
-  has_sequencing_experiment:
+  samples:
+    description: The samples associated with an entity.
+    range: Sample
+    multivalued: true
+    in_subset:
+      - restricted
+
+  sequencing_experiment:
     description: The sequencing experiment associated with an entity.
     range: SequencingExperiment
     in_subset:
       - restricted
 
-  has_analysis:
-    description: The analysis associated with an entity.
-    range: Analysis
+  sequencing_experiments:
+    description: The sequencing experiments associated with an entity.
+    range: SequencingExperiment
+    multivalued: true
     in_subset:
       - restricted
 
-  has_dataset:
-    description: The Dataset associated with an entity.
+  analyses:
+    description: The analyses associated with an entity.
+    range: Analysis
+    multivalued: true
+    in_subset:
+      - restricted
+
+  datasets:
+    description: The Datasets associated with an entity.
+    multivalued: true
     range: Dataset
 
-  has_biospecimen:
+  biospecimen:
     description: The biospecimen associated with an entity.
     range: Biospecimen
     in_subset:
       - restricted
 
-  has_individual:
+  biospecimens:
+    description: The biospecimens associated with an entity.
+    range: Biospecimen
+    multivalued: true
+    in_subset:
+      - restricted
+
+  individual:
     description: The subject/individual associated with an entity.
     range: Individual
     in_subset:
       - restricted
 
-  has_anatomical_entity:
-    description: Anatomical site associated with an entity.
+  individuals:
+    description: The subjects/individuals associated with an entity.
+    range: Individual
+    multivalued: true
+    in_subset:
+      - restricted
+
+  anatomical_entities:
+    description: Anatomical sites associated with an entity.
+    multivalued: true
     range: AnatomicalEntity
 
-  has_phenotypic_feature:
-    description: Phenotypic feature concept that the entity is associated with.
+  phenotypic_features:
+    description: Phenotypic feature concepts that the entity is associated with.
     range: PhenotypicFeature
+    multivalued: true
     in_subset:
       - restricted
 
-  has_disease:
-    description: Disease concept that the entity is associated with.
+  diseases:
+    description: Diseases concept that the entity is associated with.
+    multivalued: true
     range: Disease
 
-  has_parent:
-    description: The parent of an entity.
+  parents:
+    description: One or more parent for an Individual.
+    multivalued: true
+    range: Individual
     in_subset:
       - restricted
 
-  has_children:
-    description: The children of an entity.
+  children:
+    description: One or more children for an Individual.
+    multivalued: true
     in_subset:
       - restricted
 
-  has_ancestry:
+  ancestries:
     description: >-
       A person's descent or lineage, from a person or from a population.
       Typically this is a value from HANCESTRO (Human Ancestry Ontology).
@@ -1091,38 +1100,55 @@ slots:
     in_subset:
       - restricted
 
-  has_input:
-    description: The input to a Planned Process.
+  inputs:
+    description: The inputs to a Planned Process.
     range: File
+    multivalued: True
     in_subset:
       - restricted
 
-  has_output:
-    description: The output of a Planned Process entity.
+  outputs:
+    description: The outputs of a Planned Process entity.
     range: File
+    multivalued: True
     in_subset:
       - restricted
 
-  has_file:
+  files:
     description: >-
-      The file associated with an entity.
+      The files associated with an entity.
     range: File
+    multivalued: True
     in_subset:
       - restricted
 
-  has_data_access_policy:
+  data_access_policy:
     description: Data Access Policy associated with an entity.
     range: DataAccessPolicy
     in_subset:
       - restricted
 
-  has_data_access_committee:
+  data_access_policies:
+    description: Data Access Policies associated with an entity.
+    range: DataAccessPolicy
+    multivalued: True
+    in_subset:
+      - restricted
+
+  data_access_committee:
     description: Data Access Committee associated with an entity.
     range: DataAccessCommittee
     in_subset:
       - restricted
 
-  has_data_use_permission:
+  data_access_committees:
+    description: Data Access Committees associated with an entity.
+    range: DataAccessCommittee
+    multivalued: True
+    in_subset:
+      - restricted
+
+  data_use_permission:
     description: >-
       Data use permission associated with an entity. Typically one or more terms from DUO.
       Should be descendants of 'DUO:0000001 data use permission'.
@@ -1131,7 +1157,17 @@ slots:
     in_subset:
       - restricted
 
-  has_data_use_modifier:
+  data_use_permissions:
+    description: >-
+      Data use permissions associated with an entity. Typically one or more terms from DUO.
+      Should be descendants of 'DUO:0000001 data use permission'.
+    range: DataUsePermission
+    multivalued: True
+    inlined: true
+    in_subset:
+      - restricted
+
+  data_use_modifiers:
     description: >-
       Modifier for Data use permission associated with an entity.
       Should be descendants of 'DUO:0000017 data use modifier'
@@ -1140,30 +1176,46 @@ slots:
     in_subset:
       - restricted
 
-  has_member:
+  members:
     description: >-
       The members associated with a committee.
     range: Member
+    multivalued: True
     inlined: true
     in_subset:
       - restricted
 
-  has_protocol:
+  protocol:
     description: The protocol associated with an entity.
     range: Protocol
     in_subset:
       - restricted
 
-  has_sequencing_protocol:
+  sequencing_protocol:
     range: SequencingProtocol
     description: The sequencing protocol associated with an entity.
 
-  has_condition:
+  condition:
     range: Condition
     description: The condition associated with an entity.
 
-  has_library_preparation_protocol:
+  library_preparation_protocol:
     range: LibraryPreparationProtocol
+    description: The library_preparation Protocol associated with an entity.
+
+  sequencing_protocols:
+    range: SequencingProtocol
+    multivalued: True
+    description: The sequencing protocol associated with an entity.
+
+  conditions:
+    range: Condition
+    multivalued: True
+    description: The condition associated with an entity.
+
+  library_preparation_protocols:
+    range: LibraryPreparationProtocol
+    multivalued: True
     description: The library_preparation Protocol associated with an entity.
 
   telephone:
@@ -1180,6 +1232,11 @@ slots:
   affiliation:
     description: >-
       The Institution(s) associated with an entity.
+
+  affiliations:
+    description: >-
+      The Institution(s) associated with an entity.
+    multivalued: True
 
   technical_replicates:
     description: >-
@@ -1245,6 +1302,7 @@ slots:
       - EFO:0010187
 
   target_regions:
+    multivalued: True
     description: >-
       Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
 

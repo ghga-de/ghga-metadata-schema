@@ -7,16 +7,16 @@ A key/value pair that further characterizes an entity.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute](https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[LibraryPreparationProtocol]++-%20has_attribute%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[Project]++-%20has_attribute%200..*>[Attribute],[Protocol]++-%20has_attribute%201..*>[Attribute],[SequencingProtocol]++-%20has_attribute%200..*>[Attribute],[Study]++-%20has_attribute%200..*>[Attribute],[AttributeMixin]++-%20has_attribute%200..*>[Attribute],[AttributeMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[LibraryPreparationProtocol]++-%20has_attribute%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[Project]++-%20has_attribute%200..*>[Attribute],[Protocol]++-%20has_attribute%201..*>[Attribute],[SequencingProtocol]++-%20has_attribute%200..*>[Attribute],[Study]++-%20has_attribute%200..*>[Attribute],[AttributeMixin]++-%20has_attribute%200..*>[Attribute],[AttributeMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[Project]++-%20attributes%200..*>[Attribute],[Protocol]++-%20attributes%201..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes%200..*>[Attribute],[AttributeMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[Project],[LibraryPreparationProtocol],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[Project]++-%20attributes%200..*>[Attribute],[Protocol]++-%20attributes%201..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes%200..*>[Attribute],[AttributeMixin])
 
 ## Referenced by Class
 
- *  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)** *[LibraryPreparationProtocol➞has_attribute](LibraryPreparationProtocol_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[Project](Project.md)** *[Project➞has_attribute](Project_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[Protocol](Protocol.md)** *[Protocol➞has_attribute](Protocol_has_attribute.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
- *  **[SequencingProtocol](SequencingProtocol.md)** *[SequencingProtocol➞has_attribute](SequencingProtocol_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[Study](Study.md)** *[Study➞has_attribute](Study_has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **None** *[has_attribute](has_attribute.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)** *[LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[Project](Project.md)** *[Project➞attributes](Project_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[Protocol](Protocol.md)** *[Protocol➞attributes](Protocol_attributes.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[SequencingProtocol](SequencingProtocol.md)** *[SequencingProtocol➞attributes](SequencingProtocol_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[Study](Study.md)** *[Study➞attributes](Study_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **None** *[attributes](attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
 
 ## Attributes
 

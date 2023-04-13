@@ -7,7 +7,7 @@ Information about the sequencing of a sample.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has_attribute%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20has_sequencing_protocol%201..1>[SequencingProtocol],[SequencingExperiment]-%20has_sequencing_protocol(i)%200..1>[SequencingProtocol],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Attribute]<has_attribute%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20has_sequencing_protocol%201..1>[SequencingProtocol],[SequencingExperiment]-%20has_sequencing_protocol(i)%200..1>[SequencingProtocol],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[Attribute])
 
 ## Parents
 
@@ -15,8 +15,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
 
 ## Referenced by Class
 
- *  **[SequencingExperiment](SequencingExperiment.md)** *[SequencingExperiment➞has_sequencing_protocol](SequencingExperiment_has_sequencing_protocol.md)*  <sub>1..1</sub>  **[SequencingProtocol](SequencingProtocol.md)**
- *  **None** *[has_sequencing_protocol](has_sequencing_protocol.md)*  <sub>0..1</sub>  **[SequencingProtocol](SequencingProtocol.md)**
+ *  **[SequencingExperiment](SequencingExperiment.md)** *[SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)*  <sub>1..1</sub>  **[SequencingProtocol](SequencingProtocol.md)**
+ *  **[Submission](Submission.md)** *[Submission➞sequencing_protocols](Submission_sequencing_protocols.md)*  <sub>0..\*</sub>  **[SequencingProtocol](SequencingProtocol.md)**
+ *  **None** *[sequencing_protocol](sequencing_protocol.md)*  <sub>0..1</sub>  **[SequencingProtocol](SequencingProtocol.md)**
+ *  **None** *[sequencing_protocols](sequencing_protocols.md)*  <sub>0..\*</sub>  **[SequencingProtocol](SequencingProtocol.md)**
 
 ## Attributes
 
@@ -81,7 +83,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
  * [SequencingProtocol➞description](SequencingProtocol_description.md)  <sub>1..1</sub>
      * Description: Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
      * Range: [String](types/String.md)
- * [SequencingProtocol➞has_attribute](SequencingProtocol_has_attribute.md)  <sub>0..\*</sub>
+ * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterizes this Sequencing Protocol.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

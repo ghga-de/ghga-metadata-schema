@@ -7,7 +7,7 @@ Information about the library_preparation of an sequencing experiment.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingExperiment],[Protocol],[Attribute]<has_attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20has_library_preparation_protocol%201..1>[LibraryPreparationProtocol],[SequencingExperiment]-%20has_library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Protocol]^-[LibraryPreparationProtocol],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingExperiment],[Protocol],[Attribute]<has_attribute%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20has_library_preparation_protocol%201..1>[LibraryPreparationProtocol],[SequencingExperiment]-%20has_library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Protocol]^-[LibraryPreparationProtocol],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[Protocol]^-[LibraryPreparationProtocol],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[Protocol]^-[LibraryPreparationProtocol],[Attribute])
 
 ## Parents
 
@@ -15,8 +15,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
 
 ## Referenced by Class
 
- *  **[SequencingExperiment](SequencingExperiment.md)** *[SequencingExperiment➞has_library_preparation_protocol](SequencingExperiment_has_library_preparation_protocol.md)*  <sub>1..1</sub>  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)**
- *  **None** *[has_library_preparation_protocol](has_library_preparation_protocol.md)*  <sub>0..1</sub>  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)**
+ *  **[SequencingExperiment](SequencingExperiment.md)** *[SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md)*  <sub>1..1</sub>  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)**
+ *  **[Submission](Submission.md)** *[Submission➞library_preparation_protocols](Submission_library_preparation_protocols.md)*  <sub>0..\*</sub>  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)**
+ *  **None** *[library_preparation_protocol](library_preparation_protocol.md)*  <sub>0..1</sub>  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)**
+ *  **None** *[library_preparation_protocols](library_preparation_protocols.md)*  <sub>0..\*</sub>  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)**
 
 ## Attributes
 
@@ -63,7 +65,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
  * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)  <sub>1..1</sub>
      * Description: Description about how a sequencing library was prepared (eg: Library construction method).
      * Range: [String](types/String.md)
- * [LibraryPreparationProtocol➞has_attribute](LibraryPreparationProtocol_has_attribute.md)  <sub>0..\*</sub>
+ * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterizes this library_preparation Protocol.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

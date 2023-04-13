@@ -16,8 +16,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [Study➞affiliation](Study_affiliation.md)
- *  [Submission➞affiliation](Submission_affiliation.md)
 
 ## Used by
 

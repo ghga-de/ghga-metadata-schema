@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/target_regions](https://w
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Parents
 
