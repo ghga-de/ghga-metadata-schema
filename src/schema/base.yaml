@@ -263,7 +263,7 @@ classes:
         description: >-
           The description or definition of an ontology class.
 
-  attribute:
+  Attribute:
     description: >-
       A key/value pair that further characterizes an entity.
     slots:
@@ -297,7 +297,7 @@ classes:
           a percentage.
         required: false
 
-  accession_mixin:
+  AccessionMixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
     slots:
@@ -306,7 +306,7 @@ classes:
       accession:
         required: true
 
-  ega_accession_mixin:
+  EgaAccessionMixin:
     mixin: true
     description: Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
     slots:
@@ -315,13 +315,13 @@ classes:
       ega_accession:
         required: true
 
-  attribute_mixin:
+  AttributeMixin:
     mixin: true
     description: Mixin for entities that can have one or more attributes.
     slots:
       - has_attribute
 
-  deprecated_mixin:
+  DeprecatedMixin:
     mixin: true
     description: Mixin for entities that can be deprecated.
     slots:
@@ -447,7 +447,7 @@ slots:
 
   has_attribute:
     description: Key/value pairs corresponding to an entity.
-    range: attribute
+    range: Attribute
     in_subset:
       - restricted
     multivalued: true
