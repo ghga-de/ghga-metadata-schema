@@ -59,7 +59,8 @@
 				"yzhang.markdown-all-in-one",
 				"visualstudioexptteam.vscodeintellicode",
 				"ymotongpoo.licenser",
-				"editorconfig.editorconfig"
+				"editorconfig.editorconfig",
+				"bierner.markdown-mermaid"
 			]
 		}
 	},
