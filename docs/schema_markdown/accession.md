@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [accession mixin➞accession](accession_mixin_accession.md)
+ *  [AccessionMixin➞accession](AccessionMixin_accession.md)
 
 ## Used by
 

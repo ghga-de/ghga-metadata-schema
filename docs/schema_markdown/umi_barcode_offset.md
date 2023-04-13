@@ -1,5 +1,5 @@
 
-# Slot: umi barcode offset
+# Slot: umi_barcode_offset
 
 
 The offset in sequence of the UMI identifying barcode. (E.g. '16').
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞umi barcode offset](sequencing_protocol_umi_barcode_offset.md)
+ *  [SequencingProtocol➞umi_barcode_offset](SequencingProtocol_umi_barcode_offset.md)
 
 ## Used by
 

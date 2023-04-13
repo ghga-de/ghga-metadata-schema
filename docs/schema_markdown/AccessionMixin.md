@@ -1,5 +1,5 @@
 
-# Class: accession mixin
+# Class: AccessionMixin
 
 
 Mixin for entities that can be assigned a GHGA accession.
@@ -33,6 +33,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin](https://w
 
 ### Own
 
- * [accession mixin➞accession](accession_mixin_accession.md)  <sub>1..1</sub>
+ * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
      * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * Range: [String](types/String.md)

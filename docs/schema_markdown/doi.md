@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [publication➞doi](publication_doi.md)
+ *  [Publication➞doi](Publication_doi.md)
 
 ## Used by
 

@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [protocol➞url](protocol_url.md)
+ *  [Protocol➞url](Protocol_url.md)
 
 ## Used by
 

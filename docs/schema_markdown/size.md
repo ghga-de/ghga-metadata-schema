@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 
 ## Children
 
- *  [file➞size](file_size.md)
+ *  [File➞size](File_size.md)
 
 ## Used by
 

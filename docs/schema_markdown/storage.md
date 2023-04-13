@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [biospecimen➞storage](biospecimen_storage.md)
- *  [sample➞storage](sample_storage.md)
+ *  [Biospecimen➞storage](Biospecimen_storage.md)
+ *  [Sample➞storage](Sample_storage.md)
 
 ## Used by
 

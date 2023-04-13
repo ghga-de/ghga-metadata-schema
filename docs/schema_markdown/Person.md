@@ -1,5 +1,5 @@
 
-# Class: person
+# Class: Person
 
 
 A member of the species Homo sapiens.
@@ -26,38 +26,38 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Person](https://w3id.org/
 
 ### Own
 
- * [person➞given name](person_given_name.md)  <sub>0..1</sub>
+ * [Person➞given_name](Person_given_name.md)  <sub>0..1</sub>
      * Description: First name.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [person➞family name](person_family_name.md)  <sub>0..1</sub>
+ * [Person➞family_name](Person_family_name.md)  <sub>0..1</sub>
      * Description: Last name.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [person➞additional name](person_additional_name.md)  <sub>0..1</sub>
-     * Description: Additional name(s).
+ * [Person➞additional_name](Person_additional_name.md)  <sub>0..1</sub>
+     * Description: additional_name(s).
      * Range: [String](types/String.md)
      * in subsets: (restricted)
 
 ### Inherited from NamedThing:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | NCIT:C25190 |
-|                     |     | SIO:000498  |
-|                     |     | prov:Person |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | NCIT:C25190 |
+|  | | SIO:000498 |
+|  | | prov:Person |
 

@@ -1,5 +1,5 @@
 
-# Class: ontology class mixin
+# Class: OntologyClassMixin
 
 
 Mixin for entities that represent an class/term/concept from an ontology.
@@ -25,22 +25,22 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin](https
 
 ### Own
 
- * [ontology class mixin➞id](ontology_class_mixin_id.md)  <sub>1..1</sub>
+ * [OntologyClassMixin➞id](OntologyClassMixin_id.md)  <sub>1..1</sub>
      * Description: An identifier that uniquely represents an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞concept_identifier](OntologyClassMixin_concept_identifier.md)  <sub>0..1</sub>
      * Description: The Compact URI (CURIE) that uniquely identifies this ontology class.
      * Range: [String](types/String.md)
- * [ontology class mixin➞concept name](ontology_class_mixin_concept_name.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞concept_name](OntologyClassMixin_concept_name.md)  <sub>0..1</sub>
      * Description: The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.
      * Range: [String](types/String.md)
- * [ontology class mixin➞description](ontology_class_mixin_description.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞description](OntologyClassMixin_description.md)  <sub>0..1</sub>
      * Description: The description or definition of an ontology class.
      * Range: [String](types/String.md)
- * [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞ontology_name](OntologyClassMixin_ontology_name.md)  <sub>0..1</sub>
      * Description: The name or label (rdfs:label) of an ontology class.
      * Range: [String](types/String.md)
- * [ontology class mixin➞ontology version](ontology_class_mixin_ontology_version.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞ontology_version](OntologyClassMixin_ontology_version.md)  <sub>0..1</sub>
      * Description: The version of the ontology from which this ontology class was chosen.
      * Range: [String](types/String.md)

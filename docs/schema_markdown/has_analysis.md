@@ -1,5 +1,5 @@
 
-# Slot: has analysis
+# Slot: has_analysis
 
 
 The analysis associated with an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Analysis](Analysis.md)
 
 ## Children
 
- *  [submission➞has analysis](submission_has_analysis.md)
+ *  [Submission➞has_analysis](Submission_has_analysis.md)
 
 ## Used by
 

@@ -1,8 +1,8 @@
 
-# Slot: additional name
+# Slot: additional_name
 
 
-Additional name(s).
+additional_name(s).
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/additional_name](https://w3id.org/GHGA-Submission-Metadata-Schema/additional_name)
 
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [person➞additional name](person_additional_name.md)
+ *  [Person➞additional_name](Person_additional_name.md)
 
 ## Used by
 

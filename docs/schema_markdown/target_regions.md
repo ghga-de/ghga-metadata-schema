@@ -1,5 +1,5 @@
 
-# Slot: target regions
+# Slot: target_regions
 
 
 Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [library preparation protocol➞target regions](library_preparation_protocol_target_regions.md)
+ *  [LibraryPreparationProtocol➞target_regions](LibraryPreparationProtocol_target_regions.md)
 
 ## Used by
 

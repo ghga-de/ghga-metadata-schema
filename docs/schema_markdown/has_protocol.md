@@ -1,5 +1,5 @@
 
-# Slot: has protocol
+# Slot: has_protocol
 
 
 The protocol associated with an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Protocol](Protocol.md)
 
 ## Children
 
- *  [submission➞has protocol](submission_has_protocol.md)
+ *  [Submission➞has_protocol](Submission_has_protocol.md)
 
 ## Used by
 

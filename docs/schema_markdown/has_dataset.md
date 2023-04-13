@@ -1,5 +1,5 @@
 
-# Slot: has dataset
+# Slot: has_dataset
 
 
 The Dataset associated with an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Dataset](Dataset.md)
 
 ## Children
 
- *  [submission➞has dataset](submission_has_dataset.md)
+ *  [Submission➞has_dataset](Submission_has_dataset.md)
 
 ## Used by
 

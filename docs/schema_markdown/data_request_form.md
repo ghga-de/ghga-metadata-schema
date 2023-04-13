@@ -1,5 +1,5 @@
 
-# Slot: data request form
+# Slot: data_request_form
 
 
 Data Request Form that is associated with a Data Access Policy.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [data access policy➞data request form](data_access_policy_data_request_form.md)
+ *  [DataAccessPolicy➞data_request_form](DataAccessPolicy_data_request_form.md)
 
 ## Used by
 

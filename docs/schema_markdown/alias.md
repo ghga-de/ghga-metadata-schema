@@ -16,17 +16,17 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [analysis➞alias](analysis_alias.md)
- *  [library preparation protocol➞alias](library_preparation_protocol_alias.md)
- *  [NamedThing➞alias](named_thing_alias.md)
- *  [sequencing protocol➞alias](sequencing_protocol_alias.md)
+ *  [Analysis➞alias](Analysis_alias.md)
+ *  [LibraryPreparationProtocol➞alias](LibraryPreparationProtocol_alias.md)
+ *  [NamedThing➞alias](NamedThing_alias.md)
+ *  [SequencingProtocol➞alias](SequencingProtocol_alias.md)
 
 ## Used by
 
 
 ## Other properties
 
-|                 |     |            |
-| --------------- | --- | ---------- |
-| **In Subsets:** |     | restricted |
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | restricted |
 

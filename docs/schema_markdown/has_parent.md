@@ -1,5 +1,5 @@
 
-# Slot: has parent
+# Slot: has_parent
 
 
 The parent of an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [individual➞has parent](individual_has_parent.md)
+ *  [Individual➞has_parent](Individual_has_parent.md)
 
 ## Used by
 

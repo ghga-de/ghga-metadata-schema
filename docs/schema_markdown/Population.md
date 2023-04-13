@@ -1,8 +1,8 @@
 
-# Class: population
+# Class: Population
 
 
-A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
+A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Population](https://w3id.org/GHGA-Submission-Metadata-Schema/Population)
 
@@ -11,7 +11,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Population](https://w3id.
 
 ## Parents
 
- *  is_a: [MaterialEntity](MaterialEntity.md) - A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+ *  is_a: [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
 
 ## Children
 
@@ -25,20 +25,20 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Population](https://w3id.
 
 ### Own
 
- * [population➞name](population_name.md)  <sub>1..1</sub>
+ * [Population➞name](Population_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
 
-### Inherited from material entity:
+### Inherited from MaterialEntity:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)

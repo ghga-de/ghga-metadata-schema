@@ -1,5 +1,5 @@
 
-# Slot: has disease
+# Slot: has_disease
 
 
 Disease concept that the entity is associated with.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Disease](Disease.md)
 
 ## Children
 
- *  [individual➞has disease](individual_has_disease.md)
+ *  [Individual➞has_disease](Individual_has_disease.md)
 
 ## Used by
 

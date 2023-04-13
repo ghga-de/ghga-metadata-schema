@@ -4,7 +4,7 @@ description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
 version: 0.9.0
 imports:
-  - base_schema
+  - base
 
 prefixes:
   GHGA: https://w3id.org/GHGA/
@@ -20,8 +20,8 @@ classes:
   Project:
     is_a: ResearchActivity
     mixins:
-      - accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - AttributeMixin
     description: >-
       A high level organization for a collection of studies based on a
       research proposal that aims to achieve certain goals.
@@ -40,9 +40,9 @@ classes:
   Study:
     is_a: Investigation
     mixins:
-      - accession_mixin
-      - ega_accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
       detailed examination and analysis of a subject to learn more about the phenomenon
@@ -86,9 +86,9 @@ classes:
   SequencingExperiment:
     is_a: Investigation
     mixins:
-      - attribute_mixin
-      - accession_mixin
-      - ega_accession_mixin
+      - AttributeMixin
+      - AccessionMixin
+      - EgaAccessionMixin
     description: >-
       An sequencing experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
@@ -121,8 +121,8 @@ classes:
   Condition:
     is_a: Investigation
     mixins:
-      - accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - AttributeMixin
     description: >-
       An condition that is linked to comparable samples.
     slots:
@@ -144,7 +144,7 @@ classes:
         required: true
 
   LibraryPreparationProtocol:
-    is_a: protocol
+    is_a: Protocol
     description: >-
       Information about the library_preparation of an sequencing experiment.
     slots:
@@ -201,7 +201,7 @@ classes:
         recommended: true
 
   SequencingProtocol:
-    is_a: protocol
+    is_a: Protocol
     description: >-
       Information about the sequencing of a sample.
     slots:
@@ -228,10 +228,10 @@ classes:
         required: true
       type:
         description: >-
-          Name of the library_preparation protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+          Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
       description:
         description: >-
-          Description about the sequencing protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+          Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
         required: true
       has_attribute:
         description: >-
@@ -283,8 +283,8 @@ classes:
   SequencingProcess:
     is_a: Investigation
     mixins:
-      - accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - AttributeMixin
     description: >-
       A sequencing process linking a sample to sequencing output.
     slots:
@@ -325,9 +325,9 @@ classes:
         inlined: false
 
   Biospecimen:
-    is_a: material entity
+    is_a: MaterialEntity
     mixins:
-      - accession_mixin
+      - AccessionMixin
     description: >-
       A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
       diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
@@ -377,7 +377,7 @@ classes:
         inlined_as_list: true
 
   AnatomicalEntity:
-    is_a: material entity
+    is_a: MaterialEntity
     mixins:
       - OntologyClassMixin
     description: >-
@@ -387,7 +387,7 @@ classes:
       - UBERON:0001062
 
   Disease:
-    is_a: disease or phenotypic feature
+    is_a: DiseaseOrPhenotypicFeature
     description: >-
       A disease is a disposition to undergo pathological processes that exists in an organism
       because of one or more disorders in that organism.
@@ -396,7 +396,7 @@ classes:
       - MONDO:0000001
 
   PhenotypicFeature:
-    is_a: disease or phenotypic feature
+    is_a: DiseaseOrPhenotypicFeature
     description: >-
       The observable form taken by some character (or group of characters) in an individual or
       an organism, excluding pathology and disease. The detectable outward manifestations of a
@@ -407,11 +407,11 @@ classes:
       - SIO:010056
 
   Sample:
-    is_a: material entity
+    is_a: MaterialEntity
     mixins:
-      - accession_mixin
-      - ega_accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
       inspection, investigation, demonstration, or trial use. A sample is prepared from
@@ -440,7 +440,7 @@ classes:
         description: >-
           Short textual description of the sample
           (How the sample was collected, sample source,
-          protocol followed for processing the sample etc).
+          Protocol followed for processing the sample etc).
         required: true
       storage:
         required: false
@@ -461,10 +461,10 @@ classes:
         required: true
 
   Individual:
-    is_a: person
+    is_a: Person
     mixins:
-      - accession_mixin
-      - ega_accession_mixin
+      - AccessionMixin
+      - EgaAccessionMixin
     aliases: ["subject", "patient"]
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -538,7 +538,7 @@ classes:
         inlined_as_list: true
 
   Ancestry:
-    is_a: population
+    is_a: Population
     mixins:
       - OntologyClassMixin
     description: >-
@@ -549,11 +549,11 @@ classes:
       - HANCESTRO:0004
 
   File:
-    is_a: information content entity
+    is_a: InformationContentEntity
     mixins:
-      - accession_mixin
-      - ega_accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
     aliases: ["file object"]
     description: >-
       A file is an object that contains information generated from a process, either an
@@ -579,10 +579,10 @@ classes:
         required: true
 
   Analysis:
-    is_a: data transformation
+    is_a: DataTransformation
     mixins:
-      - accession_mixin
-      - ega_accession_mixin
+      - AccessionMixin
+      - EgaAccessionMixin
     aliases: ["data analysis"]
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -635,11 +635,11 @@ classes:
         inlined_as_list: true
 
   Dataset:
-    is_a: information content entity
+    is_a: InformationContentEntity
     mixins:
-      - accession_mixin
-      - ega_accession_mixin
-      - attribute_mixin
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
       and is tied to a Data Access Policy.
@@ -679,7 +679,7 @@ classes:
         inlined_as_list: false
 
   DataUsePermission:
-    is_a: information content entity
+    is_a: InformationContentEntity
     mixins:
       - OntologyClassMixin
     description: >-
@@ -689,7 +689,7 @@ classes:
       - DUO:0000001
 
   DataUseModifier:
-    is_a: information content entity
+    is_a: InformationContentEntity
     mixins:
       - OntologyClassMixin
     description: >-
@@ -698,11 +698,11 @@ classes:
       - DUO:0000017
 
   DataAccessPolicy:
-    is_a: information content entity
+    is_a: InformationContentEntity
     mixins:
-      - attribute_mixin
-      - accession_mixin
-      - ega_accession_mixin
+      - AttributeMixin
+      - AccessionMixin
+      - EgaAccessionMixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -759,11 +759,11 @@ classes:
         required: false
 
   DataAccessCommittee:
-    is_a: committee
+    is_a: Committee
     mixins:
-      - attribute_mixin
-      - accession_mixin
-      - ega_accession_mixin
+      - AttributeMixin
+      - AccessionMixin
+      - EgaAccessionMixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
@@ -798,7 +798,7 @@ classes:
         inlined_as_list: true
 
   Member:
-    is_a: person
+    is_a: Person
     description: >-
       Member of an Organization or a Committee.
     slots:
@@ -820,7 +820,7 @@ classes:
         required: true
 
   Publication:
-    is_a: information content entity
+    is_a: InformationContentEntity
     description: >-
       The Publication entity represents a publication. While a publication can be any
       article that is published, the minimum expectation is that the publication has a
@@ -1412,7 +1412,7 @@ slots:
 
   size:
     description: The size of a file in bytes.
-    range: Integer
+    range: integer
 
   checksum:
     description: >-
@@ -1469,7 +1469,7 @@ slots:
   year:
     description: >-
       Year in which the paper was published.
-    range: Integer
+    range: integer
 
   journal:
     description: >-

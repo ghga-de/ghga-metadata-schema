@@ -1,5 +1,5 @@
 
-# Slot: replaced by
+# Slot: replaced_by
 
 
 Refers to the entity which replaces a currently deprecated entity.
@@ -16,7 +16,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/replaced_by](https://w3id
 
 ## Children
 
- *  [deprecated mixin➞replaced by](deprecated_mixin_replaced_by.md)
+ *  [DeprecatedMixin➞replaced_by](DeprecatedMixin_replaced_by.md)
 
 ## Used by
 

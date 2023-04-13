@@ -1,5 +1,5 @@
 
-# Slot: has anatomical entity
+# Slot: has_anatomical_entity
 
 
 Anatomical site associated with an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [AnatomicalEntity](AnatomicalEntity.md)
 
 ## Children
 
- *  [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md)
+ *  [Biospecimen➞has_anatomical_entity](Biospecimen_has_anatomical_entity.md)
 
 ## Used by
 

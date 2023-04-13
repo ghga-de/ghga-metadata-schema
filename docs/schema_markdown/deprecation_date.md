@@ -1,5 +1,5 @@
 
-# Slot: deprecation date
+# Slot: deprecation_date
 
 
 The timestamp (in ISO 8601 format) when the entity was deprecated.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [deprecated mixin➞deprecation date](deprecated_mixin_deprecation_date.md)
+ *  [DeprecatedMixin➞deprecation_date](DeprecatedMixin_deprecation_date.md)
 
 ## Used by
 

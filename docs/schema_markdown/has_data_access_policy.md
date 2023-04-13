@@ -1,5 +1,5 @@
 
-# Slot: has data access policy
+# Slot: has_data_access_policy
 
 
 Data Access Policy associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [DataAccessPolicy](DataAccessPolicy.md)
 
 ## Children
 
- *  [dataset➞has data access policy](dataset_has_data_access_policy.md)
- *  [submission➞has data access policy](submission_has_data_access_policy.md)
+ *  [Dataset➞has_data_access_policy](Dataset_has_data_access_policy.md)
+ *  [Submission➞has_data_access_policy](Submission_has_data_access_policy.md)
 
 ## Used by
 

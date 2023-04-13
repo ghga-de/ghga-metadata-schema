@@ -1,5 +1,5 @@
 
-# Slot: has sample
+# Slot: has_sample
 
 
 The sample associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Sample](Sample.md)
 
 ## Children
 
- *  [sequencing process➞has sample](sequencing_process_has_sample.md)
- *  [submission➞has sample](submission_has_sample.md)
+ *  [SequencingProcess➞has_sample](SequencingProcess_has_sample.md)
+ *  [Submission➞has_sample](Submission_has_sample.md)
 
 ## Used by
 

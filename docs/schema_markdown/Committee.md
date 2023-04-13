@@ -1,5 +1,5 @@
 
-# Class: committee
+# Class: Committee
 
 
 A group of people organized for a specific purpose.
@@ -25,20 +25,20 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Committee](https://w3id.o
 
 ### Own
 
- * [committee➞name](committee_name.md)  <sub>1..1</sub>
+ * [Committee➞name](Committee_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
 
 ### Inherited from NamedThing:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)

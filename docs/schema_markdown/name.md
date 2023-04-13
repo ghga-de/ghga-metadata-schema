@@ -16,16 +16,16 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [biospecimen➞name](biospecimen_name.md)
- *  [committee➞name](committee_name.md)
- *  [condition➞name](condition_name.md)
- *  [data access committee➞name](data_access_committee_name.md)
- *  [data access policy➞name](data_access_policy_name.md)
- *  [file➞name](file_name.md)
- *  [population➞name](population_name.md)
- *  [protocol➞name](protocol_name.md)
- *  [sample➞name](sample_name.md)
- *  [sequencing process➞name](sequencing_process_name.md)
+ *  [Biospecimen➞name](Biospecimen_name.md)
+ *  [Committee➞name](Committee_name.md)
+ *  [Condition➞name](Condition_name.md)
+ *  [DataAccessCommittee➞name](DataAccessCommittee_name.md)
+ *  [DataAccessPolicy➞name](DataAccessPolicy_name.md)
+ *  [File➞name](File_name.md)
+ *  [Population➞name](Population_name.md)
+ *  [Protocol➞name](Protocol_name.md)
+ *  [Sample➞name](Sample_name.md)
+ *  [SequencingProcess➞name](SequencingProcess_name.md)
 
 ## Used by
 

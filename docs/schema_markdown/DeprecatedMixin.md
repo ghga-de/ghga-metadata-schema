@@ -1,5 +1,5 @@
 
-# Class: deprecated mixin
+# Class: DeprecatedMixin
 
 
 Mixin for entities that can be deprecated.
@@ -7,7 +7,7 @@ Mixin for entities that can be deprecated.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DeprecatedMixin](https://w3id.org/GHGA-Submission-Metadata-Schema/DeprecatedMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced%20by%201..1-%20[DeprecatedMixin&#124;deprecation_date:string])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced%20by%201..1-%20[DeprecatedMixin&#124;deprecation_date:string])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced_by%201..1-%20[DeprecatedMixin&#124;deprecation_date:string])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced_by%201..1-%20[DeprecatedMixin&#124;deprecation_date:string])
 
 ## Referenced by Class
 
@@ -17,9 +17,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DeprecatedMixin](https://
 
 ### Own
 
- * [deprecated mixin➞replaced by](deprecated_mixin_replaced_by.md)  <sub>1..1</sub>
+ * [DeprecatedMixin➞replaced_by](DeprecatedMixin_replaced_by.md)  <sub>1..1</sub>
      * Description: Refers to the entity which replaces a currently deprecated entity.
      * Range: [NamedThing](NamedThing.md)
- * [deprecated mixin➞deprecation date](deprecated_mixin_deprecation_date.md)  <sub>1..1</sub>
+ * [DeprecatedMixin➞deprecation_date](DeprecatedMixin_deprecation_date.md)  <sub>1..1</sub>
      * Description: The timestamp (in ISO 8601 format) when the entity was deprecated.
      * Range: [String](types/String.md)

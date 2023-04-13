@@ -1,5 +1,5 @@
 
-# Slot: has member
+# Slot: has_member
 
 
 The members associated with a committee.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Member](Member.md)
 
 ## Children
 
- *  [data access committee➞has member](data_access_committee_has_member.md)
- *  [submission➞has member](submission_has_member.md)
+ *  [DataAccessCommittee➞has_member](DataAccessCommittee_has_member.md)
+ *  [Submission➞has_member](Submission_has_member.md)
 
 ## Used by
 

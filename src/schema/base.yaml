@@ -168,7 +168,7 @@ classes:
     is_a: InformationContentEntity
     abstract: true
     mixins:
-      - attribute_mixin
+      - AttributeMixin
     description: >-
       A plan specification which has sufficient level of detail and quantitative information
       to communicate it between Investigation agents, so that different Investigation agents
@@ -185,7 +185,7 @@ classes:
         required: true
       name:
         description: >-
-          Name of the protocol (eg: Sample extraction_PCR amplification).
+          Name of the Protocol (eg: Sample extraction_PCR amplification).
         required: true
       type:
         description: >-
@@ -193,20 +193,20 @@ classes:
         required: true
       description:
         description: >-
-          Detailed description of the Protocol.
+          Detailed description of the protocol.
         required: true
       url:
         description: >-
-          URL for the resource that describes this Protocol.
+          URL for the resource that describes this protocol.
         required: true
       xref:
         description: >-
-          One or more cross-references for this Protocol. 
+          One or more cross-references for this protocol. 
           (Eg: manufacturer protocol, protocol from publication etc )
         required: true
       has_attribute:
         description: >-
-          One or more attributes that further characterizes this Protocol.
+          One or more attributes that further characterizes this protocol.
         required: true
 
   Population:

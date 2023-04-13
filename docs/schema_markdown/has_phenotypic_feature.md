@@ -1,5 +1,5 @@
 
-# Slot: has phenotypic feature
+# Slot: has_phenotypic_feature
 
 
 Phenotypic feature concept that the entity is associated with.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [PhenotypicFeature](PhenotypicFeature.md)
 
 ## Children
 
- *  [individual➞has phenotypic feature](individual_has_phenotypic_feature.md)
+ *  [Individual➞has_phenotypic_feature](Individual_has_phenotypic_feature.md)
 
 ## Used by
 

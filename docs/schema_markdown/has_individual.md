@@ -1,5 +1,5 @@
 
-# Slot: has individual
+# Slot: has_individual
 
 
 The subject/individual associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Individual](Individual.md)
 
 ## Children
 
- *  [biospecimen➞has individual](biospecimen_has_individual.md)
- *  [submission➞has individual](submission_has_individual.md)
+ *  [Biospecimen➞has_individual](Biospecimen_has_individual.md)
+ *  [Submission➞has_individual](Submission_has_individual.md)
 
 ## Used by
 

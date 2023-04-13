@@ -1,5 +1,5 @@
 
-# Slot: has file
+# Slot: has_file
 
 
 The file associated with an entity.
@@ -16,10 +16,10 @@ None &#8594;  <sub>0..1</sub> [File](File.md)
 
 ## Children
 
- *  [dataset➞has file](dataset_has_file.md)
- *  [individual➞has file](individual_has_file.md)
- *  [sequencing process➞has file](sequencing_process_has_file.md)
- *  [submission➞has file](submission_has_file.md)
+ *  [Dataset➞has_file](Dataset_has_file.md)
+ *  [Individual➞has_file](Individual_has_file.md)
+ *  [SequencingProcess➞has_file](SequencingProcess_has_file.md)
+ *  [Submission➞has_file](Submission_has_file.md)
 
 ## Used by
 

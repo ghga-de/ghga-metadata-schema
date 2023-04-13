@@ -1,5 +1,5 @@
 
-# Slot: reference chromosome
+# Slot: reference_chromosome
 
 
 The reference chromosome used for this Analysis.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [analysis➞reference chromosome](analysis_reference_chromosome.md)
+ *  [Analysis➞reference_chromosome](Analysis_reference_chromosome.md)
 
 ## Used by
 

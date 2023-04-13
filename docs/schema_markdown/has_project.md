@@ -1,5 +1,5 @@
 
-# Slot: has project
+# Slot: has_project
 
 
 The project associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Project](Project.md)
 
 ## Children
 
- *  [study➞has project](study_has_project.md)
- *  [submission➞has project](submission_has_project.md)
+ *  [Study➞has_project](Study_has_project.md)
+ *  [Submission➞has_project](Submission_has_project.md)
 
 ## Used by
 

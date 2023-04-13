@@ -1,5 +1,5 @@
 
-# Slot: has attribute
+# Slot: has_attribute
 
 
 Key/value pairs corresponding to an entity.
@@ -16,11 +16,11 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 
 ## Children
 
- *  [library preparation protocol➞has attribute](library_preparation_protocol_has_attribute.md)
- *  [project➞has attribute](project_has_attribute.md)
- *  [protocol➞has attribute](protocol_has_attribute.md)
- *  [sequencing protocol➞has attribute](sequencing_protocol_has_attribute.md)
- *  [study➞has attribute](study_has_attribute.md)
+ *  [LibraryPreparationProtocol➞has_attribute](LibraryPreparationProtocol_has_attribute.md)
+ *  [Project➞has_attribute](Project_has_attribute.md)
+ *  [Protocol➞has_attribute](Protocol_has_attribute.md)
+ *  [SequencingProtocol➞has_attribute](SequencingProtocol_has_attribute.md)
+ *  [Study➞has_attribute](Study_has_attribute.md)
 
 ## Used by
 

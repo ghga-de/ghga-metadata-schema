@@ -1,8 +1,8 @@
 
-# Class: data transformation
+# Class: DataTransformation
 
 
-A data transformation technique used to analyze and interpret data to gain a better understanding of it.
+A DataTransformation technique used to analyze and interpret data to gain a better understanding of it.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataTransformation](https://w3id.org/GHGA-Submission-Metadata-Schema/DataTransformation)
 
@@ -32,23 +32,23 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataTransformation](https
      * Description: Description of an entity.
      * Range: [String](types/String.md)
 
-### Inherited from planned process:
+### Inherited from PlannedProcess:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | OBI:0200000 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | OBI:0200000 |
 

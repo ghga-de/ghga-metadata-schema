@@ -82,58 +82,58 @@ Sample {
 
 }
 
-Submission ||--|| Study : "has study"
-Submission ||--|o Project : "has project"
-Submission ||--}o Sample : "has sample"
-Submission ||--}o Biospecimen : "has biospecimen"
-Submission ||--}o Individual : "has individual"
-Submission ||--}o SequencingExperiment : "has sequencing experiment"
-Submission ||--}o Protocol : "has protocol"
-Submission ||--}o Analysis : "has analysis"
-Submission ||--}| File : "has file"
-Submission ||--}| Dataset : "has dataset"
-Submission ||--}| DataAccessPolicy : "has data access policy"
-Submission ||--}| DataAccessCommittee : "has data access committee"
-Submission ||--}| Member : "has member"
-Submission ||--}o Publication : "has publication"
-Publication ||--|| Study : "has study"
-Study ||--|o Project : "has project"
-Study ||--}| Condition : "has condition"
-Study ||--}o Attribute : "has attribute"
-Condition ||--}o Attribute : "has attribute"
-Project ||--}o Attribute : "has attribute"
-DataAccessCommittee ||--|| Member : "main contact"
-DataAccessCommittee ||--}o Member : "has member"
-DataAccessCommittee ||--}o Attribute : "has attribute"
-DataAccessPolicy ||--|| DataAccessCommittee : "has data access committee"
-DataAccessPolicy ||--|| DataUsePermission : "has data use permission"
-DataAccessPolicy ||--}o DataUseModifier : "has data use modifier"
-DataAccessPolicy ||--}o Attribute : "has attribute"
-Dataset ||--}| File : "has file"
-Dataset ||--|o Publication : "has publication"
-Dataset ||--|| DataAccessPolicy : "has data access policy"
-Dataset ||--}o Attribute : "has attribute"
-File ||--}o Attribute : "has attribute"
-Analysis ||--}| File : "has input"
-Analysis ||--|| Study : "has study"
-Analysis ||--}| File : "has output"
-Protocol ||--}| Attribute : "has attribute"
-SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
-SequencingExperiment ||--}o Attribute : "has attribute"
-LibraryPreparationProtocol ||--}| Attribute : "has attribute"
-SequencingProtocol ||--}| Attribute : "has attribute"
-Individual ||--}o Ancestry : "has ancestry"
-Individual ||--}o Individual : "has parent"
-Individual ||--}o Individual : "has children"
-Individual ||--}| Disease : "has disease"
-Individual ||--}o PhenotypicFeature : "has phenotypic feature"
-Individual ||--}o File : "has file"
-Biospecimen ||--|| Individual : "has individual"
-Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
+Submission ||--|| Study : "has_study"
+Submission ||--|o Project : "has_project"
+Submission ||--}o Sample : "has_sample"
+Submission ||--}o Biospecimen : "has_biospecimen"
+Submission ||--}o Individual : "has_individual"
+Submission ||--}o SequencingExperiment : "has_sequencing_experiment"
+Submission ||--}o Protocol : "has_protocol"
+Submission ||--}o Analysis : "has_analysis"
+Submission ||--}| File : "has_file"
+Submission ||--}| Dataset : "has_dataset"
+Submission ||--}| DataAccessPolicy : "has_data_access_policy"
+Submission ||--}| DataAccessCommittee : "has_data_access_committee"
+Submission ||--}| Member : "has_member"
+Submission ||--}o Publication : "has_publication"
+Publication ||--|| Study : "has_study"
+Study ||--|o Project : "has_project"
+Study ||--}| Condition : "has_condition"
+Study ||--}o Attribute : "has_attribute"
+Condition ||--}o Attribute : "has_attribute"
+Project ||--}o Attribute : "has_attribute"
+DataAccessCommittee ||--|| Member : "main_contact"
+DataAccessCommittee ||--}o Member : "has_member"
+DataAccessCommittee ||--}o Attribute : "has_attribute"
+DataAccessPolicy ||--|| DataAccessCommittee : "has_data_access_committee"
+DataAccessPolicy ||--|| DataUsePermission : "has_data_use_permission"
+DataAccessPolicy ||--}o DataUseModifier : "has_data_use_modifier"
+DataAccessPolicy ||--}o Attribute : "has_attribute"
+Dataset ||--}| File : "has_file"
+Dataset ||--|o Publication : "has_publication"
+Dataset ||--|| DataAccessPolicy : "has_data_access_policy"
+Dataset ||--}o Attribute : "has_attribute"
+File ||--}o Attribute : "has_attribute"
+Analysis ||--}| File : "has_input"
+Analysis ||--|| Study : "has_study"
+Analysis ||--}| File : "has_output"
+Protocol ||--}| Attribute : "has_attribute"
+SequencingExperiment ||--|| SequencingProtocol : "has_sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "has_library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "has_attribute"
+LibraryPreparationProtocol ||--}| Attribute : "has_attribute"
+SequencingProtocol ||--}| Attribute : "has_attribute"
+Individual ||--}o Ancestry : "has_ancestry"
+Individual ||--}o Individual : "has_parent"
+Individual ||--}o Individual : "has_children"
+Individual ||--}| Disease : "has_disease"
+Individual ||--}o PhenotypicFeature : "has_phenotypic_feature"
+Individual ||--}o File : "has_file"
+Biospecimen ||--|| Individual : "has_individual"
+Biospecimen ||--}| AnatomicalEntity : "has_anatomical_entity"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
 
 ```
 
@@ -155,17 +155,17 @@ Sample {
 
 }
 
-Individual ||--}o Ancestry : "has ancestry"
-Individual ||--}o Individual : "has parent"
-Individual ||--}o Individual : "has children"
-Individual ||--}| Disease : "has disease"
-Individual ||--}o PhenotypicFeature : "has phenotypic feature"
-Individual ||--}o File : "has file"
-Biospecimen ||--|| Individual : "has individual"
-Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
+Individual ||--}o Ancestry : "has_ancestry"
+Individual ||--}o Individual : "has_parent"
+Individual ||--}o Individual : "has_children"
+Individual ||--}| Disease : "has_disease"
+Individual ||--}o PhenotypicFeature : "has_phenotypic_feature"
+Individual ||--}o File : "has_file"
+Biospecimen ||--|| Individual : "has_individual"
+Biospecimen ||--}| AnatomicalEntity : "has_anatomical_entity"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
 
 ```
 
@@ -190,17 +190,17 @@ SequencingExperiment {
 
 }
 
-SequencingProcess ||--}| File : "has file"
-SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
-SequencingProcess ||--|| Sample : "has sample"
-SequencingProcess ||--}o Attribute : "has attribute"
-File ||--}o Attribute : "has attribute"
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
-SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
-SequencingExperiment ||--}o Attribute : "has attribute"
+SequencingProcess ||--}| File : "has_file"
+SequencingProcess ||--|| SequencingExperiment : "has_sequencing_experiment"
+SequencingProcess ||--|| Sample : "has_sample"
+SequencingProcess ||--}o Attribute : "has_attribute"
+File ||--}o Attribute : "has_attribute"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
+SequencingExperiment ||--|| SequencingProtocol : "has_sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "has_library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "has_attribute"
 
 ```
 
@@ -222,13 +222,13 @@ Study {
 
 }
 
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
-Condition ||--}o Attribute : "has attribute"
-Study ||--|o Project : "has project"
-Study ||--}| Condition : "has condition"
-Study ||--}o Attribute : "has attribute"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
+Condition ||--}o Attribute : "has_attribute"
+Study ||--|o Project : "has_project"
+Study ||--}| Condition : "has_condition"
+Study ||--}o Attribute : "has_attribute"
 
 ```
 
@@ -241,10 +241,10 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 ```mermaid
 erDiagram
 Individual {
-    string biological_sex
+    BiologicalSexEnum sex  
     string karyotype  
-    string age_range
-    string vital_status
+    AgeRangeEnum age  
+    VitalStatusEnum vital_status  
     string geographical_region  
     string accession  
     string ega_accession  
@@ -261,7 +261,7 @@ Biospecimen {
     string description  
     string isolation  
     string storage  
-    string vital_status
+    VitalStatusEnum vital_status_at_sampling  
     string accession  
     string id  
     string alias  
@@ -280,17 +280,17 @@ Sample {
     stringList xref  
 }
 
-Individual ||--}o Ancestry : "has ancestry"
-Individual ||--}o Individual : "has parent"
-Individual ||--}o Individual : "has children"
-Individual ||--}| Disease : "has disease"
-Individual ||--}o PhenotypicFeature : "has phenotypic feature"
-Individual ||--}o File : "has file"
-Biospecimen ||--|| Individual : "has individual"
-Biospecimen ||--}| AnatomicalEntity : "has anatomical entity"
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
+Individual ||--}o Ancestry : "has_ancestry"
+Individual ||--}o Individual : "has_parent"
+Individual ||--}o Individual : "has_children"
+Individual ||--}| Disease : "has_disease"
+Individual ||--}o PhenotypicFeature : "has_phenotypic_feature"
+Individual ||--}o File : "has_file"
+Biospecimen ||--|| Individual : "has_individual"
+Biospecimen ||--}| AnatomicalEntity : "has_anatomical_entity"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
 
 ```
 
@@ -315,7 +315,7 @@ SequencingProcess {
 }
 File {
     string name  
-    string file_format
+    FileFormatEnum format  
     integer size  
     string checksum  
     string checksum_type  
@@ -348,17 +348,17 @@ SequencingExperiment {
     stringList xref  
 }
 
-SequencingProcess ||--}| File : "has file"
-SequencingProcess ||--|| SequencingExperiment : "has sequencing experiment"
-SequencingProcess ||--|| Sample : "has sample"
-SequencingProcess ||--}o Attribute : "has attribute"
-File ||--}o Attribute : "has attribute"
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
-SequencingExperiment ||--|| SequencingProtocol : "has sequencing protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "has library preparation protocol"
-SequencingExperiment ||--}o Attribute : "has attribute"
+SequencingProcess ||--}| File : "has_file"
+SequencingProcess ||--|| SequencingExperiment : "has_sequencing_experiment"
+SequencingProcess ||--|| Sample : "has_sample"
+SequencingProcess ||--}o Attribute : "has_attribute"
+File ||--}o Attribute : "has_attribute"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
+SequencingExperiment ||--|| SequencingProtocol : "has_sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "has_library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "has_attribute"
 
 ```
 
@@ -384,9 +384,9 @@ Sample {
 Condition {
     string name  
     string description  
-    string disease_or_healthy
-    string treatment_or_control
-    string mutant_or_wildtype
+    DiseaseOrHealthyEnum disease_or_healthy  
+    TreatmentOrControlEnum treatment_or_control  
+    MutantOrWildtypeEnum mutant_or_wildtype  
     string accession  
     string title  
     string id  
@@ -394,7 +394,7 @@ Condition {
     stringList xref  
 }
 Study {
-    string study_type
+    StudyTypeEnum type  
     stringList affiliation  
     string accession  
     string ega_accession  
@@ -405,12 +405,12 @@ Study {
     stringList xref  
 }
 
-Sample ||--|o Biospecimen : "has biospecimen"
-Sample ||--|| Condition : "has condition"
-Sample ||--}o Attribute : "has attribute"
-Condition ||--}o Attribute : "has attribute"
-Study ||--|o Project : "has project"
-Study ||--}| Condition : "has condition"
-Study ||--}o Attribute : "has attribute"
+Sample ||--|o Biospecimen : "has_biospecimen"
+Sample ||--|| Condition : "has_condition"
+Sample ||--}o Attribute : "has_attribute"
+Condition ||--}o Attribute : "has_attribute"
+Study ||--|o Project : "has_project"
+Study ||--}| Condition : "has_condition"
+Study ||--}o Attribute : "has_attribute"
 
 ```

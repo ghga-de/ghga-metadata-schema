@@ -1,5 +1,5 @@
 
-# Slot: has sequencing experiment
+# Slot: has_sequencing_experiment
 
 
 The sequencing experiment associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [SequencingExperiment](SequencingExperiment.md)
 
 ## Children
 
- *  [sequencing process➞has sequencing experiment](sequencing_process_has_sequencing_experiment.md)
- *  [submission➞has sequencing experiment](submission_has_sequencing_experiment.md)
+ *  [SequencingProcess➞has_sequencing_experiment](SequencingProcess_has_sequencing_experiment.md)
+ *  [Submission➞has_sequencing_experiment](Submission_has_sequencing_experiment.md)
 
 ## Used by
 

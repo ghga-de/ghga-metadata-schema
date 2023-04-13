@@ -1,5 +1,5 @@
 
-# Slot: has ancestry
+# Slot: has_ancestry
 
 
 A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..\*</sub> [Ancestry](Ancestry.md)
 
 ## Children
 
- *  [individual➞has ancestry](individual_has_ancestry.md)
+ *  [Individual➞has_ancestry](Individual_has_ancestry.md)
 
 ## Used by
 

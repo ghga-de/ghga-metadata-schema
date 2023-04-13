@@ -2,7 +2,7 @@
 # Slot: replaces
 
 
-Refers to a deprecated entity that is being replaced by the current entity.
+Refers to a deprecated entity that is being replaced_by the current entity.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/replaces](https://w3id.org/GHGA-Submission-Metadata-Schema/replaces)
 

@@ -1,5 +1,5 @@
 
-# Class: information content entity
+# Class: InformationContentEntity
 
 
 A generically dependent continuant that is about some thing.
@@ -20,7 +20,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/InformationContentEntity]
  * [DataUsePermission](DataUsePermission.md) - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
  * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
  * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
- * [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.
+ * [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
  * [Publication](Publication.md) - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
 
 ## Referenced by Class
@@ -31,21 +31,21 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/InformationContentEntity]
 
 ### Inherited from NamedThing:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | IAO:0000030 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | IAO:0000030 |
 

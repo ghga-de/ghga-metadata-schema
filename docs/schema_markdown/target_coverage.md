@@ -1,5 +1,5 @@
 
-# Slot: target coverage
+# Slot: target_coverage
 
 
 Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞target coverage](sequencing_protocol_target_coverage.md)
+ *  [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)
 
 ## Used by
 

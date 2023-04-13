@@ -1,5 +1,5 @@
 
-# Slot: library type
+# Slot: library_type
 
 
 Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [library preparation protocol➞library type](library_preparation_protocol_library_type.md)
+ *  [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)
 
 ## Used by
 

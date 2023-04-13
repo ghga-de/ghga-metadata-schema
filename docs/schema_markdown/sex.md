@@ -9,14 +9,14 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sex](https://w3id.org/GHG
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [biological sex enum](biological sex enum.md)
+None &#8594;  <sub>0..1</sub> [BiologicalSexEnum](BiologicalSexEnum.md)
 
 ## Parents
 
 
 ## Children
 
- *  [individual➞sex](individual_sex.md)
+ *  [Individual➞sex](Individual_sex.md)
 
 ## Used by
 

@@ -1,5 +1,5 @@
 
-# Slot: has data use modifier
+# Slot: has_data_use_modifier
 
 
 Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [DataUseModifier](DataUseModifier.md)
 
 ## Children
 
- *  [data access policy➞has data use modifier](data_access_policy_has_data_use_modifier.md)
+ *  [DataAccessPolicy➞has_data_use_modifier](DataAccessPolicy_has_data_use_modifier.md)
 
 ## Used by
 

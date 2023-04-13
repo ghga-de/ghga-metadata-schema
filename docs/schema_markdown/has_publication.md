@@ -1,5 +1,5 @@
 
-# Slot: has publication
+# Slot: has_publication
 
 
 The Publication associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Publication](Publication.md)
 
 ## Children
 
- *  [publication mixin➞has publication](publication_mixin_has_publication.md)
- *  [submission➞has publication](submission_has_publication.md)
+ *  [PublicationMixin➞has_publication](PublicationMixin_has_publication.md)
+ *  [Submission➞has_publication](Submission_has_publication.md)
 
 ## Used by
 

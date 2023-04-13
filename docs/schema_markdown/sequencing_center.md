@@ -1,5 +1,5 @@
 
-# Slot: sequencing center
+# Slot: sequencing_center
 
 
 Center where sample was sequenced.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞sequencing center](sequencing_protocol_sequencing_center.md)
+ *  [SequencingProtocol➞sequencing_center](SequencingProtocol_sequencing_center.md)
 
 ## Used by
 

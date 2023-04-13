@@ -1,5 +1,5 @@
 
-# Slot: policy url
+# Slot: policy_url
 
 
 Alternative to pasting the Data Access Policy text.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [data access policy➞policy url](data_access_policy_policy_url.md)
+ *  [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md)
 
 ## Used by
 

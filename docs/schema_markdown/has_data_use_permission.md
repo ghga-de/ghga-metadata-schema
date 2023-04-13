@@ -1,5 +1,5 @@
 
-# Slot: has data use permission
+# Slot: has_data_use_permission
 
 
 Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [DataUsePermission](DataUsePermission.md)
 
 ## Children
 
- *  [data access policy➞has data use permission](data_access_policy_has_data_use_permission.md)
+ *  [DataAccessPolicy➞has_data_use_permission](DataAccessPolicy_has_data_use_permission.md)
 
 ## Used by
 

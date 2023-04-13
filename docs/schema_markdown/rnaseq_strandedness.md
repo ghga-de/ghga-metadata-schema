@@ -1,5 +1,5 @@
 
-# Slot: rnaseq strandedness
+# Slot: rnaseq_strandedness
 
 
 The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [library preparation protocol➞rnaseq strandedness](library_preparation_protocol_rnaseq_strandedness.md)
+ *  [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)
 
 ## Used by
 

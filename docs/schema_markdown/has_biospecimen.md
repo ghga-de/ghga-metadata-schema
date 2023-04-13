@@ -1,5 +1,5 @@
 
-# Slot: has biospecimen
+# Slot: has_biospecimen
 
 
 The biospecimen associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Biospecimen](Biospecimen.md)
 
 ## Children
 
- *  [sample➞has biospecimen](sample_has_biospecimen.md)
- *  [submission➞has biospecimen](submission_has_biospecimen.md)
+ *  [Sample➞has_biospecimen](Sample_has_biospecimen.md)
+ *  [Submission➞has_biospecimen](Submission_has_biospecimen.md)
 
 ## Used by
 

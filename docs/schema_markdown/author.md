@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [publication➞author](publication_author.md)
+ *  [Publication➞author](Publication_author.md)
 
 ## Used by
 

@@ -1,8 +1,8 @@
 
-# Class: material entity
+# Class: MaterialEntity
 
 
-A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity](https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity)
 
@@ -17,7 +17,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity](https://w
 
  * [AnatomicalEntity](AnatomicalEntity.md) - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
  * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
- * [Population](Population.md) - A population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
+ * [Population](Population.md) - A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
  * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
 
 ## Referenced by Class
@@ -28,21 +28,21 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity](https://w
 
 ### Inherited from NamedThing:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|                     |     |            |
-| ------------------- | --- | ---------- |
-| **Exact Mappings:** |     | SIO:000004 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | SIO:000004 |
 

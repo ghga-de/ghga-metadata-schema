@@ -1,5 +1,5 @@
 
-# Slot: has data access committee
+# Slot: has_data_access_committee
 
 
 Data Access Committee associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [DataAccessCommittee](DataAccessCommittee.md)
 
 ## Children
 
- *  [data access policy➞has data access committee](data_access_policy_has_data_access_committee.md)
- *  [submission➞has data access committee](submission_has_data_access_committee.md)
+ *  [DataAccessPolicy➞has_data_access_committee](DataAccessPolicy_has_data_access_committee.md)
+ *  [Submission➞has_data_access_committee](Submission_has_data_access_committee.md)
 
 ## Used by
 

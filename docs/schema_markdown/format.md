@@ -9,14 +9,14 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/format](https://w3id.org/
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [file format enum](file format enum.md)
+None &#8594;  <sub>0..1</sub> [FileFormatEnum](FileFormatEnum.md)
 
 ## Parents
 
 
 ## Children
 
- *  [file➞format](file_format.md)
+ *  [File➞format](File_format.md)
 
 ## Used by
 

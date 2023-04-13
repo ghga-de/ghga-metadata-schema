@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [member➞email](member_email.md)
+ *  [Member➞email](Member_email.md)
 
 ## Used by
 

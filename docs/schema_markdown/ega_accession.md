@@ -1,5 +1,5 @@
 
-# Slot: ega accession
+# Slot: ega_accession
 
 
 A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [ega accession mixin➞ega accession](ega_accession_mixin_ega_accession.md)
+ *  [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)
 
 ## Used by
 

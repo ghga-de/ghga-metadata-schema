@@ -1,5 +1,5 @@
 
-# Slot: has output
+# Slot: has_output
 
 
 The output of a Planned Process entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [File](File.md)
 
 ## Children
 
- *  [analysis➞has output](analysis_has_output.md)
+ *  [Analysis➞has_output](Analysis_has_output.md)
 
 ## Used by
 

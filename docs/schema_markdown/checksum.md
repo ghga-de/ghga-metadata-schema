@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [file➞checksum](file_checksum.md)
+ *  [File➞checksum](File_checksum.md)
 
 ## Used by
 

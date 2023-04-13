@@ -1,5 +1,5 @@
 
-# Slot: has condition
+# Slot: has_condition
 
 
 The condition associated with an entity.
@@ -16,8 +16,8 @@ None &#8594;  <sub>0..1</sub> [Condition](Condition.md)
 
 ## Children
 
- *  [sample➞has condition](sample_has_condition.md)
- *  [study➞has condition](study_has_condition.md)
+ *  [Sample➞has_condition](Sample_has_condition.md)
+ *  [Study➞has_condition](Study_has_condition.md)
 
 ## Used by
 

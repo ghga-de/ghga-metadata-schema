@@ -1,5 +1,5 @@
 
-# Slot: has study
+# Slot: has_study
 
 
 The study associated with an entity.
@@ -16,9 +16,9 @@ None &#8594;  <sub>0..1</sub> [Study](Study.md)
 
 ## Children
 
- *  [analysis➞has study](analysis_has_study.md)
- *  [publication➞has study](publication_has_study.md)
- *  [submission➞has study](submission_has_study.md)
+ *  [Analysis➞has_study](Analysis_has_study.md)
+ *  [Publication➞has_study](Publication_has_study.md)
+ *  [Submission➞has_study](Submission_has_study.md)
 
 ## Used by
 

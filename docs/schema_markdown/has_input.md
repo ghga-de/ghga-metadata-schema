@@ -1,5 +1,5 @@
 
-# Slot: has input
+# Slot: has_input
 
 
 The input to a Planned Process.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [File](File.md)
 
 ## Children
 
- *  [analysis➞has input](analysis_has_input.md)
+ *  [Analysis➞has_input](Analysis_has_input.md)
 
 ## Used by
 

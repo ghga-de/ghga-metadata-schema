@@ -1,5 +1,5 @@
 
-# Slot: sequencing run id
+# Slot: sequencing_run_id
 
 
 The identifier of a sequencing run.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing process➞sequencing run id](sequencing_process_sequencing_run_id.md)
+ *  [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)
 
 ## Used by
 

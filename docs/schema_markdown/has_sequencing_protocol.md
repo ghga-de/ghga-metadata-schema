@@ -1,5 +1,5 @@
 
-# Slot: has sequencing protocol
+# Slot: has_sequencing_protocol
 
 
 The sequencing protocol associated with an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [SequencingProtocol](SequencingProtocol.md)
 
 ## Children
 
- *  [sequencing experiment➞has sequencing protocol](sequencing_experiment_has_sequencing_protocol.md)
+ *  [SequencingExperiment➞has_sequencing_protocol](SequencingExperiment_has_sequencing_protocol.md)
 
 ## Used by
 

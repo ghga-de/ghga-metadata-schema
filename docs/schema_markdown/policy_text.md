@@ -1,5 +1,5 @@
 
-# Slot: policy text
+# Slot: policy_text
 
 
 The complete text for the Data Access Policy.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [data access policy➞policy text](data_access_policy_policy_text.md)
+ *  [DataAccessPolicy➞policy_text](DataAccessPolicy_policy_text.md)
 
 ## Used by
 

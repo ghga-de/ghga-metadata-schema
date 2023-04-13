@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [member➞telephone](member_telephone.md)
+ *  [Member➞telephone](Member_telephone.md)
 
 ## Used by
 

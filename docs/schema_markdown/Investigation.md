@@ -1,5 +1,5 @@
 
-# Class: investigation
+# Class: Investigation
 
 
 Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
@@ -35,24 +35,24 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Investigation](https://w3
      * Description: Description of an entity.
      * Range: [String](types/String.md)
 
-### Inherited from planned process:
+### Inherited from PlannedProcess:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | SIO:000747  |
-|                     |     | OBI:0000066 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | SIO:000747 |
+|  | | OBI:0000066 |
 

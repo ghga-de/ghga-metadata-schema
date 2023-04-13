@@ -1,5 +1,5 @@
 
-# Slot: cell barcode size
+# Slot: cell_barcode_size
 
 
 The size of the cell identifying barcode (E.g. '16').
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞cell barcode size](sequencing_protocol_cell_barcode_size.md)
+ *  [SequencingProtocol➞cell_barcode_size](SequencingProtocol_cell_barcode_size.md)
 
 ## Used by
 

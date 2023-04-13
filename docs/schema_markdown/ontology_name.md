@@ -1,5 +1,5 @@
 
-# Slot: ontology name
+# Slot: ontology_name
 
 
 The name of the ontology from which this ontology class was chosen.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)
+ *  [OntologyClassMixin➞ontology_name](OntologyClassMixin_ontology_name.md)
 
 ## Used by
 

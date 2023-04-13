@@ -1,5 +1,5 @@
 
-# Class: condition
+# Class: Condition
 
 
 An condition that is linked to comparable samples.
@@ -7,7 +7,7 @@ An condition that is linked to comparable samples.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Study]-%20has%20condition(i)%200..1>[Condition&#124;name:string;description:string;disease_or_healthy:disease_or_healthy_enum;treatment_or_control:treatment_or_control_enum;mutant_or_wildtype:mutant_or_wildtype_enum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20condition(i)%200..1>[Condition],[Sample]-%20has%20condition%201..1>[Condition],[Study]-%20has%20condition%201..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Study]-%20has%20condition(i)%200..1>[Condition&#124;name:string;description:string;disease_or_healthy:disease_or_healthy_enum;treatment_or_control:treatment_or_control_enum;mutant_or_wildtype:mutant_or_wildtype_enum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Sample]-%20has%20condition(i)%200..1>[Condition],[Sample]-%20has%20condition%201..1>[Condition],[Study]-%20has%20condition%201..*>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Sample]-%20has_condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Study]-%20has_condition%201..*>[Condition],[Study]-%20has_condition(i)%200..1>[Condition],[Sample]-%20has_condition(i)%200..1>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[Sample]-%20has_condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;accession:string;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Study]-%20has_condition%201..*>[Condition],[Study]-%20has_condition(i)%200..1>[Condition],[Sample]-%20has_condition(i)%200..1>[Condition],[Condition]uses%20-.->[AccessionMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -20,57 +20,57 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
 
 ## Referenced by Class
 
- *  **None** *[has condition](has_condition.md)*  <sub>0..1</sub>  **[Condition](Condition.md)**
- *  **[Sample](Sample.md)** *[sample➞has condition](sample_has_condition.md)*  <sub>1..1</sub>  **[Condition](Condition.md)**
- *  **[Study](Study.md)** *[study➞has condition](study_has_condition.md)*  <sub>1..\*</sub>  **[Condition](Condition.md)**
+ *  **[Sample](Sample.md)** *[Sample➞has_condition](Sample_has_condition.md)*  <sub>1..1</sub>  **[Condition](Condition.md)**
+ *  **[Study](Study.md)** *[Study➞has_condition](Study_has_condition.md)*  <sub>1..\*</sub>  **[Condition](Condition.md)**
+ *  **None** *[has_condition](has_condition.md)*  <sub>0..1</sub>  **[Condition](Condition.md)**
 
 ## Attributes
 
 
 ### Own
 
- * [condition➞name](condition_name.md)  <sub>1..1</sub>
+ * [Condition➞name](Condition_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
- * [condition➞description](condition_description.md)  <sub>1..1</sub>
+ * [Condition➞description](Condition_description.md)  <sub>1..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
- * [condition➞disease or healthy](condition_disease_or_healthy.md)  <sub>1..1</sub>
+ * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a disease or a healthy state.
-     * Range: [disease or healthy enum](disease or healthy enum.md)
- * [condition➞treatment or control](condition_treatment_or_control.md)  <sub>1..1</sub>
+     * Range: [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)
+ * [Condition➞treatment_or_control](Condition_treatment_or_control.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a treatment or a control.
-     * Range: [treatment or control enum](treatment or control enum.md)
- * [condition➞mutant or wildtype](condition_mutant_or_wildtype.md)  <sub>1..1</sub>
+     * Range: [TreatmentOrControlEnum](TreatmentOrControlEnum.md)
+ * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a mutant or a wildtype.
-     * Range: [mutant or wildtype enum](mutant or wildtype enum.md)
+     * Range: [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md)
 
-### Inherited from investigation:
+### Inherited from Investigation:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
  * [title](title.md)  <sub>0..1</sub>
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
 
-### Mixed in from accession mixin:
+### Mixed in from AccessionMixin:
 
- * [accession mixin➞accession](accession_mixin_accession.md)  <sub>1..1</sub>
+ * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
      * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * Range: [String](types/String.md)
 
-### Mixed in from attribute mixin:
+### Mixed in from AttributeMixin:
 
- * [has attribute](has_attribute.md)  <sub>0..\*</sub>
+ * [has_attribute](has_attribute.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)

@@ -1,8 +1,8 @@
 
-# Slot: has library preparation protocol
+# Slot: has_library_preparation_protocol
 
 
-The Library Preparation Protocol associated with an entity.
+The library_preparation Protocol associated with an entity.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/has_library_preparation_protocol](https://w3id.org/GHGA-Submission-Metadata-Schema/has_library_preparation_protocol)
 
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [LibraryPreparationProtocol](LibraryPreparationPro
 
 ## Children
 
- *  [sequencing experiment➞has library preparation protocol](sequencing_experiment_has_library_preparation_protocol.md)
+ *  [SequencingExperiment➞has_library_preparation_protocol](SequencingExperiment_has_library_preparation_protocol.md)
 
 ## Used by
 

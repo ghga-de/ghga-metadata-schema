@@ -1,5 +1,5 @@
 
-# Class: biospecimen
+# Class: Biospecimen
 
 
 A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
@@ -7,11 +7,11 @@ A Biospecimen is any natural material taken from a biological entity (usually a 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<has%20anatomical%20entity%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:vital_status_enum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<has%20individual%201..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<has%20anatomical%20entity%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:vital_status_enum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<has%20individual%201..1-++[Biospecimen],[Sample]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has%20biospecimen(i)%200..1>[Biospecimen],[Sample]++-%20has%20biospecimen%200..1>[Biospecimen],[Submission]++-%20has%20biospecimen%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<has_anatomical_entity%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<has_individual%201..1-++[Biospecimen],[Sample]++-%20has_biospecimen%200..1>[Biospecimen],[Submission]++-%20has_biospecimen%200..*>[Biospecimen],[Sample]-%20has_biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has_biospecimen(i)%200..1>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<has_anatomical_entity%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<has_individual%201..1-++[Biospecimen],[Sample]++-%20has_biospecimen%200..1>[Biospecimen],[Submission]++-%20has_biospecimen%200..*>[Biospecimen],[Sample]-%20has_biospecimen(i)%200..1>[Biospecimen],[Submission]-%20has_biospecimen(i)%200..1>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])
 
 ## Parents
 
- *  is_a: [MaterialEntity](MaterialEntity.md) - A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+ *  is_a: [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
 
 ## Uses Mixin
 
@@ -19,64 +19,64 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id
 
 ## Referenced by Class
 
- *  **None** *[has biospecimen](has_biospecimen.md)*  <sub>0..1</sub>  **[Biospecimen](Biospecimen.md)**
- *  **[Sample](Sample.md)** *[sample➞has biospecimen](sample_has_biospecimen.md)*  <sub>0..1</sub>  **[Biospecimen](Biospecimen.md)**
- *  **[Submission](Submission.md)** *[submission➞has biospecimen](submission_has_biospecimen.md)*  <sub>0..\*</sub>  **[Biospecimen](Biospecimen.md)**
+ *  **[Sample](Sample.md)** *[Sample➞has_biospecimen](Sample_has_biospecimen.md)*  <sub>0..1</sub>  **[Biospecimen](Biospecimen.md)**
+ *  **[Submission](Submission.md)** *[Submission➞has_biospecimen](Submission_has_biospecimen.md)*  <sub>0..\*</sub>  **[Biospecimen](Biospecimen.md)**
+ *  **None** *[has_biospecimen](has_biospecimen.md)*  <sub>0..1</sub>  **[Biospecimen](Biospecimen.md)**
 
 ## Attributes
 
 
 ### Own
 
- * [biospecimen➞name](biospecimen_name.md)  <sub>0..1</sub>
+ * [Biospecimen➞name](Biospecimen_name.md)  <sub>0..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
- * [biospecimen➞type](biospecimen_type.md)  <sub>0..1</sub>
+ * [Biospecimen➞type](Biospecimen_type.md)  <sub>0..1</sub>
      * Description: The type of Biospecimen.
      * Range: [String](types/String.md)
- * [biospecimen➞description](biospecimen_description.md)  <sub>0..1</sub>
+ * [Biospecimen➞description](Biospecimen_description.md)  <sub>0..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
- * [biospecimen➞isolation](biospecimen_isolation.md)  <sub>0..1</sub>
+ * [Biospecimen➞isolation](Biospecimen_isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
      * Range: [String](types/String.md)
- * [biospecimen➞storage](biospecimen_storage.md)  <sub>0..1</sub>
+ * [Biospecimen➞storage](Biospecimen_storage.md)  <sub>0..1</sub>
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [String](types/String.md)
- * [biospecimen➞has individual](biospecimen_has_individual.md)  <sub>1..1</sub>
+ * [Biospecimen➞has_individual](Biospecimen_has_individual.md)  <sub>1..1</sub>
      * Description: The Individual entity from which this Biospecimen was derived.
      * Range: [Individual](Individual.md)
      * in subsets: (restricted)
- * [biospecimen➞vital status at sampling](biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
+ * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
      * Description: Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
-     * Range: [vital status enum](vital status enum.md)
- * [biospecimen➞has anatomical entity](biospecimen_has_anatomical_entity.md)  <sub>1..\*</sub>
+     * Range: [VitalStatusEnum](VitalStatusEnum.md)
+ * [Biospecimen➞has_anatomical_entity](Biospecimen_has_anatomical_entity.md)  <sub>1..\*</sub>
      * Description: Anatomical site associated with an entity.
      * Range: [AnatomicalEntity](AnatomicalEntity.md)
 
-### Inherited from material entity:
+### Inherited from MaterialEntity:
 
- * [NamedThing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
-### Mixed in from accession mixin:
+### Mixed in from AccessionMixin:
 
- * [accession mixin➞accession](accession_mixin_accession.md)  <sub>1..1</sub>
+ * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
      * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * Range: [String](types/String.md)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | OBI:0100051 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | OBI:0100051 |
 

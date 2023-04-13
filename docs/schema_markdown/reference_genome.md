@@ -1,5 +1,5 @@
 
-# Slot: reference genome
+# Slot: reference_genome
 
 
 A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [analysis➞reference genome](analysis_reference_genome.md)
+ *  [Analysis➞reference_genome](Analysis_reference_genome.md)
 
 ## Used by
 

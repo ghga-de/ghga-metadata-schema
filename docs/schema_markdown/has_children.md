@@ -1,5 +1,5 @@
 
-# Slot: has children
+# Slot: has_children
 
 
 The children of an entity.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [individual➞has children](individual_has_children.md)
+ *  [Individual➞has_children](Individual_has_children.md)
 
 ## Used by
 

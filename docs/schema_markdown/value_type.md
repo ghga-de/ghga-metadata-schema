@@ -1,5 +1,5 @@
 
-# Slot: value type
+# Slot: value_type
 
 
 The semantic type for the value of an attribute.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [attribute➞value type](attribute_value_type.md)
+ *  [Attribute➞value_type](Attribute_value_type.md)
 
 ## Used by
 

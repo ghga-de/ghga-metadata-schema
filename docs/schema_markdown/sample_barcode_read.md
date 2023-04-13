@@ -1,5 +1,5 @@
 
-# Slot: sample barcode read
+# Slot: sample_barcode_read
 
 
 The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞sample barcode read](sequencing_protocol_sample_barcode_read.md)
+ *  [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)
 
 ## Used by
 
