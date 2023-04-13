@@ -295,6 +295,7 @@ Sample ||--}o Attribute : "has_attribute"
 ```
 
 
+
 ## Experiment, Sample, & File (with attributes)
 
 Focusses on the relation between Experiment, Sample, and File.  
@@ -363,6 +364,7 @@ SequencingExperiment ||--}o Attribute : "has_attribute"
 ```
 
 
+
 ## Study, Condition, & Sample (with attributes)
 
 Focusses on the relation between Study, Condition, and Sample.  
@@ -414,3 +416,4 @@ Study ||--}| Condition : "has_condition"
 Study ||--}o Attribute : "has_attribute"
 
 ```
+

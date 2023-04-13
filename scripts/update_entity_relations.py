@@ -44,25 +44,6 @@ class ErDiagramJob(BaseModel):
     )
 
 
-def fix_enum_line(line: str):
-    """Fix problem with enum line."""
-
-    slot, _, target = line.partition(" enum ")
-    fixed_slot = slot.strip().replace(" ", "_")
-    return f"    string {fixed_slot}"
-
-
-def fix_enum_problems(*, erd_diagram: str) -> str:
-    """Names of enum slots are not in snake case causing problems. This fixes that."""
-
-    return "\n".join(
-        [
-            fix_enum_line(line) if " enum " in line else line
-            for line in erd_diagram.splitlines()
-        ]
-    )
-
-
 def get_erd_command(*, job: ErDiagramJob) -> list[str]:
     """Get a command line to generate an ERD using the specified job."""
 
@@ -108,9 +89,6 @@ def get_erd_diagram(*, job: ErDiagramJob) -> str:
             )
 
     erd_diagram = stdout.decode("utf-8")
-
-    if job.include_attributes:
-        erd_diagram = fix_enum_problems(erd_diagram=erd_diagram)
 
     return erd_diagram
 
