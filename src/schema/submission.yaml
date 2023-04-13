@@ -224,7 +224,7 @@ classes:
     slot_usage:
       alias:
         required: true
-      instrument model:
+      instrument_model:
         required: true
       type:
         description: >-
@@ -236,51 +236,51 @@ classes:
       has_attribute:
         description: >-
           One or more attributes that further characterizes this Sequencing Protocol.
-      sequencing center:
+      sequencing_center:
         required: false
         recommended: true
-      forward or reverse:
+      forward_or_reverse:
         required: false
         recommended: true
-      sequencing read length:
+      sequencing_read_length:
         required: false
-      index sequence:
-        required: false
-        recommended: true
-      target coverage:
-        required: false
-      lane number:
+      index_sequence:
         required: false
         recommended: true
-      flow cell id:
+      target_coverage:
+        required: false
+      lane_number:
         required: false
         recommended: true
-      flow cell type:
+      flow_cell_id:
         required: false
         recommended: true
-      umi barcode read:
+      flow_cell_type:
         required: false
         recommended: true
-      umi barcode size:
+      umi_barcode_read:
         required: false
         recommended: true
-      umi barcode offset:
+      umi_barcode_size:
         required: false
         recommended: true
-      cell barcode read:
+      umi_barcode_offset:
         required: false
         recommended: true
-      cell barcode size:
+      cell_barcode_read:
         required: false
         recommended: true
-      cell barcode offset:
+      cell_barcode_size:
         required: false
         recommended: true
-      sample barcode read:
+      cell_barcode_offset:
+        required: false
+        recommended: true
+      sample_barcode_read:
         required: false
         recommended: true
 
-  sequencing process:
+  sequencing_process:
     is_a: Investigation
     mixins:
       - accession_mixin
@@ -301,15 +301,15 @@ classes:
         required: true
       description:
         required: true
-      sequencing run id:
+      sequencing_run_id:
         description: >-
           Identifier of the sequencing run. Used for batch correction.
         required: false
-      sequencing lane id:
+      sequencing_lane_id:
         description: >-
           Identifier of the sequencing lane. Used for batch correction.
         required: false
-      sequencing machine id:
+      sequencing_machine_id:
         description: >-
           Identifier of the sequencing machine. Used for batch correction.
         required: false
@@ -367,7 +367,7 @@ classes:
         inlined: true
         inlined_as_list: false
         required: true
-      vital status at sampling:
+      vital_status_at_sampling:
         required: false
         recommended: true
       has_anatomical_entity:
@@ -376,7 +376,7 @@ classes:
         inlined: true
         inlined_as_list: true
 
-  anatomical entity:
+  anatomical_entity:
     is_a: material entity
     mixins:
       - OntologyClassMixin
@@ -395,7 +395,7 @@ classes:
       - EFO:0000408
       - MONDO:0000001
 
-  phenotypic feature:
+  phenotypic_feature:
     is_a: disease or phenotypic feature
     description: >-
       The observable form taken by some character (or group of characters) in an individual or
@@ -487,10 +487,10 @@ classes:
         required: false
       age:
         required: true
-      vital status:
+      vital_status:
         description: Last known Vital Status of an Individual.
         required: true
-      geographical region:
+      geographical_region:
         required: false
       has_ancestry:
         required: false
@@ -573,7 +573,7 @@ classes:
         required: true
       checksum:
         required: true
-      checksum type:
+      checksum_type:
         required: true
       size:
         required: true
@@ -607,9 +607,9 @@ classes:
         description: >-
           Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
         required: false
-      reference genome:
+      reference_genome:
         required: true
-      reference chromosome:
+      reference_chromosome:
         required: true
       has_input:
         description: >-
@@ -678,7 +678,7 @@ classes:
         inlined: true
         inlined_as_list: false
 
-  data use permission:
+  data_use_permission:
     is_a: information content entity
     mixins:
       - OntologyClassMixin
@@ -688,7 +688,7 @@ classes:
     exact_mappings:
       - DUO:0000001
 
-  data use modifier:
+  data_use_modifier:
     is_a: information content entity
     mixins:
       - OntologyClassMixin
@@ -697,7 +697,7 @@ classes:
     exact_mappings:
       - DUO:0000017
 
-  data access policy:
+  data_access_policy:
     is_a: information content entity
     mixins:
       - attribute_mixin
@@ -724,11 +724,11 @@ classes:
         description: >-
           A short description for the Data Access Policy.
         required: true
-      policy text:
+      policy_text:
         description: >-
           The terms of data use and policy verbiage should be captured here.
         required: true
-      policy url:
+      policy_url:
         description: >-
           URL for the policy, if available. This is useful if the terms of the policy is
           made available online at a resolvable URL.
@@ -753,12 +753,12 @@ classes:
         required: false
         recommended: true
         multivalued: true
-      data request form:
+      data_request_form:
         description: >-
           Data Request Form that is associated with this Data Access Policy.
         required: false
 
-  data access committee:
+  data_access_committee:
     is_a: committee
     mixins:
       - attribute_mixin
@@ -782,7 +782,7 @@ classes:
         description: >-
           A description for the Data Access Committee.
         required: false
-      main contact:
+      main_contact:
         description: >-
           The main contact for the Data Access Committee.
         range: member
@@ -994,12 +994,12 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
-      submission status:
+      submission_status:
         description: >-
           The status of a Submission.
         required: false
 
-  publication mixin:
+  publication_mixin:
     mixin: true
     description: >-
       Mixin for entities that can have one or more publications.
@@ -1181,7 +1181,7 @@ slots:
     description: >-
       The Institution(s) associated with an entity.
 
-  technical replicates:
+  technical_replicates:
     description: >-
       A technical replicate is a replicate role where the same BioSample is use e.g.
       the same pool of RNA used to assess technical (as opposed to biological)
@@ -1189,7 +1189,7 @@ slots:
     exact_mappings:
       - EFO:0002090
 
-  biological replicates:
+  biological_replicates:
     description: >-
       A biological replicate is a replicate role that consists of
       independent biological replicates made from different individual biosamples.
@@ -1253,91 +1253,91 @@ slots:
       The strandedness of the library, whether reads come from both strands of the cDNA
       or only from the first (antisense) or the second (sense) strand.
 
-  sequencing center:
+  sequencing_center:
     required: false
     description: >-
       Center where sample was sequenced.
 
-  instrument model:
+  instrument_model:
     description: >-
       The name and model of the technology platform used to perform sequencing.
 
-  sequencing read length:
+  sequencing_read_length:
     description: >-
       Length of sequencing reads (eg: Long or short or actual number of the read length etc).
       The number of nucleotides successfully ordered from each side of a nucleic acid fragment
       obtained after the completion of a sequencing process
 
-  index sequence:
+  index_sequence:
     description: >-
       A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
     exact_mappings:
       - NCIT:C165443
 
-  sequencing run id:
+  sequencing_run_id:
     description: >-
       The identifier of a sequencing run.
 
-  sequencing lane id:
+  sequencing_lane_id:
     description: >-
       The identifier of a sequencing lane.
 
-  sequencing machine id:
+  sequencing_machine_id:
     description: >-
       The identifier of a sequencing machine.
 
-  forward or reverse:
+  forward_or_reverse:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: forward or reverse enum
 
-  lane number:
+  lane_number:
     description: >-
       The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
 
-  target coverage:
+  target_coverage:
     description: >-
       Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
       The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
 
-  flow cell id:
+  flow_cell_id:
     description: >-
       Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
       The barcode assigned to a flow cell used in nucleotide sequencing.
 
-  flow cell type:
+  flow_cell_type:
     description: >-
       Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
       Aparatus in the fluidic subsystem where the sheath and sample meet.
       Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
       The sample flows through the center of a fluid column of sheath fluid in the flow cell.
 
-  umi barcode read:
+  umi_barcode_read:
     description: >-
       The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
 
-  umi barcode offset:
+  umi_barcode_offset:
     description: >-
       The offset in sequence of the UMI identifying barcode. (E.g. '16').
 
-  umi barcode size:
+  umi_barcode_size:
     description: >-
       The size of the UMI identifying barcode (Eg. '10').
 
-  cell barcode read:
+  cell_barcode_read:
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
 
-  cell barcode offset:
+  cell_barcode_offset:
     description: >-
       The offset in sequence of the cell identifying barcode. (Eg. '0').
 
-  cell barcode size:
+  cell_barcode_size:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
 
-  sample barcode read:
+  sample_barcode_read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
 
@@ -1365,19 +1365,19 @@ slots:
       Whether a condition corresponds to a mutant or a wildtype.
     range: mutant_or_wildtype enum
 
-  vital status at sampling:
+  vital_status_at_sampling:
     description: >-
       Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
     range: vital status enum
 
-  geographical region:
+  geographical_region:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     in_subset:
       - restricted
 
-  vital status:
+  vital_status:
     description: >-
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
@@ -1424,34 +1424,34 @@ slots:
     exact_mappings:
       - NCIT:C43522
 
-  checksum type:
+  checksum_type:
     description: >-
       The type of algorithm used to generate the checksum of a file.
 
-  reference chromosome:
+  reference_chromosome:
     description: >-
       The reference chromosome used for this Analysis.
 
-  reference genome:
+  reference_genome:
     description: >-
       A published genetic sequence that is used as a reference sequence against which other sequences are compared.
       Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
 
-  policy text:
+  policy_text:
     description: The complete text for the Data Access Policy.
     in_subset:
       - restricted
 
-  policy url:
+  policy_url:
     description: Alternative to pasting the Data Access Policy text.
     in_subset:
       - restricted
 
-  data request form:
+  data_request_form:
     description: >-
       Data Request Form that is associated with a Data Access Policy.
 
-  main contact:
+  main_contact:
     description: The person who is the main contact for a committee.
     range: member
     in_subset:
@@ -1475,11 +1475,11 @@ slots:
     description: >-
       Name of the journal.
 
-  submission status:
+  submission_status:
     description: >-
       The status of a submission.
 
-  submission date:
+  submission_date:
     description: >-
       The timestamp (in ISO 8601 format) when submission was marked completed.
 
@@ -1488,7 +1488,7 @@ slots:
       DOI identifier of a publication.
 
 enums:
-  biological sex enum:
+  biological_sex_enum:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
     permissible_values:
@@ -1498,7 +1498,7 @@ enums:
         description: Male
       unknown:
         description: unspecified
-  vital status enum:
+  vital_status_enum:
     description: >-
       Enum to capture the vital status of an individual.
     permissible_values:
@@ -1511,7 +1511,7 @@ enums:
       unknown:
         description: >-
           Vital status is unknown.
-  study type enum:
+  study_type_enum:
     description: >-
       Enum to capture the type of a study.
     permissible_values:
@@ -1545,7 +1545,7 @@ enums:
         description: Genome-wide Association Study
       other:
         description: Other study
-  file format enum:
+  file_format_enum:
     description: >-
       Enum to capture file types.
     permissible_values:
@@ -1580,7 +1580,7 @@ enums:
       other:
         description: >-
           Other format.
-  disease_or_healthy enum:
+  disease_or_healthy_enum:
     description: >-
       Enum to capture whether a condition corresponds to a disease or a healthy state.
     permissible_values:
@@ -1588,9 +1588,9 @@ enums:
         description: Disease state.
       healthy:
         description: Healthy state.
-      not applicable:
+      not_applicable:
         description: The distinction is not applicaple.
-  treatment_or_control enum:
+  treatment_or_control_enum:
     description: >-
       Enum to capture whether a condition corresponds to a treatment or a control.
     permissible_values:
@@ -1598,9 +1598,9 @@ enums:
         description: Treatment state.
       control:
         description: Control state.
-      not applicable:
+      not_applicable:
         description: The distinction is not applicaple.
-  mutant_or_wildtype enum:
+  mutant_or_wildtype_enum:
     description: >-
       Enum to capture whether a condition corresponds to a mutant or a wildtype.
     permissible_values:
@@ -1608,9 +1608,9 @@ enums:
         description: Mutant state.
       wildtype:
         description: Wildtype state.
-      not applicable:
+      not_applicable:
         description: The distinction is not applicaple.
-  forward or reverse enum:
+  forward_or_reverse_enum:
     description: >-
       Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
     permissible_values:
@@ -1618,7 +1618,7 @@ enums:
         description: The reads are forward (R1) reads
       reverse:
         description: The reads are reverse (R2) reads
-  age range enum:
+  age_range_enum:
     description: >-
       Enum to capture the age range that an Indiviudal belongs to.
     permissible_values:
