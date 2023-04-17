@@ -1,5 +1,5 @@
 
-# Slot: concept identifier
+# Slot: concept_identifier
 
 
 The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)
+ *  [OntologyClassMixin➞concept_identifier](OntologyClassMixin_concept_identifier.md)
 
 ## Used by
 

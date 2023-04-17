@@ -1,5 +1,5 @@
 
-# Slot: flow cell id
+# Slot: flow_cell_id
 
 
 Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞flow cell id](sequencing_protocol_flow_cell_id.md)
+ *  [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)
 
 ## Used by
 

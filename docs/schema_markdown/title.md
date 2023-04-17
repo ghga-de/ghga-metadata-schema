@@ -16,12 +16,12 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [dataset➞title](dataset_title.md)
- *  [project➞title](project_title.md)
- *  [publication➞title](publication_title.md)
- *  [research activity➞title](research_activity_title.md)
- *  [sequencing experiment➞title](sequencing_experiment_title.md)
- *  [study➞title](study_title.md)
+ *  [Dataset➞title](Dataset_title.md)
+ *  [Project➞title](Project_title.md)
+ *  [Publication➞title](Publication_title.md)
+ *  [ResearchActivity➞title](ResearchActivity_title.md)
+ *  [SequencingExperiment➞title](SequencingExperiment_title.md)
+ *  [Study➞title](Study_title.md)
 
 ## Used by
 

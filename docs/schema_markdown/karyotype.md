@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [individual➞karyotype](individual_karyotype.md)
+ *  [Individual➞karyotype](Individual_karyotype.md)
 
 ## Used by
 

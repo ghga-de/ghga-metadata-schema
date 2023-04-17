@@ -1,8 +1,8 @@
 
-# Slot: library preparation kit manufacturer
+# Slot: library_preparation_kit_manufacturer
 
 
-Manufacturer of library preparation kit
+Manufacturer of library_preparation kit
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_kit_manufacturer](https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_kit_manufacturer)
 
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [library preparation protocol➞library preparation kit manufacturer](library_preparation_protocol_library_preparation_kit_manufacturer.md)
+ *  [LibraryPreparationProtocol➞library_preparation_kit_manufacturer](LibraryPreparationProtocol_library_preparation_kit_manufacturer.md)
 
 ## Used by
 

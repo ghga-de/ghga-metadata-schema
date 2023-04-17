@@ -9,7 +9,7 @@ from linkml.generators.markdowngen import MarkdownGenerator
 from script_utils.cli import echo_failure, echo_success
 
 HERE = Path(__file__).parent.resolve()
-LINKML_YAML = HERE.parent / "src" / "schema" / "submission_centric_schema.yaml"
+LINKML_YAML = HERE.parent / "src" / "schema" / "submission.yaml"
 DOCS_DIR = HERE.parent / "docs" / "schema_markdown"
 
 

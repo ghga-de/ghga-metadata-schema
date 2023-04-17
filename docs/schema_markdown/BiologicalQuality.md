@@ -1,8 +1,8 @@
 
-# Class: biological quality
+# Class: BiologicalQuality
 
 
-A biological quality is a quality held by a biological entity.
+A BiologicalQuality is a quality held by a biological entity.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/BiologicalQuality](https://w3id.org/GHGA-Submission-Metadata-Schema/BiologicalQuality)
 
@@ -23,17 +23,17 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/BiologicalQuality](https:
 ## Attributes
 
 
-### Inherited from named thing:
+### Inherited from NamedThing:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 

@@ -1,5 +1,5 @@
 
-# Slot: lane number
+# Slot: lane_number
 
 
 The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞lane number](sequencing_protocol_lane_number.md)
+ *  [SequencingProtocol➞lane_number](SequencingProtocol_lane_number.md)
 
 ## Used by
 

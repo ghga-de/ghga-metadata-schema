@@ -1,5 +1,5 @@
 
-# Slot: end bias
+# Slot: end_bias
 
 
 The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [library preparation protocol➞end bias](library_preparation_protocol_end_bias.md)
+ *  [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)
 
 ## Used by
 

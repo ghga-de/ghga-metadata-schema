@@ -1,5 +1,5 @@
 
-# Slot: sequencing lane id
+# Slot: sequencing_lane_id
 
 
 The identifier of a sequencing lane.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing process➞sequencing lane id](sequencing_process_sequencing_lane_id.md)
+ *  [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md)
 
 ## Used by
 

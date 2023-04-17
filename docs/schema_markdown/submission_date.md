@@ -1,5 +1,5 @@
 
-# Slot: submission date
+# Slot: submission_date
 
 
 The timestamp (in ISO 8601 format) when submission was marked completed.

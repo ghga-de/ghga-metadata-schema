@@ -1,5 +1,5 @@
 
-# Slot: treatment or control
+# Slot: treatment_or_control
 
 
 Whether a condition corresponds to a treatment or a control.
@@ -9,14 +9,14 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/treatment_or_control](htt
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [treatment or control enum](treatment or control enum.md)
+None &#8594;  <sub>0..1</sub> [TreatmentOrControlEnum](TreatmentOrControlEnum.md)
 
 ## Parents
 
 
 ## Children
 
- *  [condition➞treatment or control](condition_treatment_or_control.md)
+ *  [Condition➞treatment_or_control](Condition_treatment_or_control.md)
 
 ## Used by
 

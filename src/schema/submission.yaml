@@ -1,0 +1,1718 @@
+id: https://w3id.org/GHGA-Submission-Metadata-Schema
+name: GHGA-Submission-Metadata-Schema
+description: >-
+  The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
+version: 0.9.0
+imports:
+  - base
+
+prefixes:
+  GHGA: https://w3id.org/GHGA/
+  SIO: http://semanticscience.org/resource/SIO_
+  biolink: https://w3id.org/biolink/vocab/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  COB: http://purl.obolibrary.org/obo/COB_
+  HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
+
+default_range: string
+
+classes:
+  Project:
+    is_a: ResearchActivity
+    mixins:
+      - AccessionMixin
+      - AttributeMixin
+    description: >-
+      A high level organization for a collection of studies based on a
+      research proposal that aims to achieve certain goals.
+    slot_usage:
+      title:
+        description: >-
+          Comprehensive title for the project.
+      description:
+        description: >-
+          Short textual description of the project.
+      attributes:
+        description: >-
+          Custom attributes for the Project 
+          (eg: Cancer - Colon_cancer,_prostrate_cancer,_blood_cancer_etc)
+
+  Study:
+    is_a: Investigation
+    mixins:
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
+    description: >-
+      Studies are experimental investigations of a particular phenomenon. It involves a
+      detailed examination and analysis of a subject to learn more about the phenomenon
+      being studied.
+    slots:
+      - type
+      - affiliations
+      - project
+      - conditions
+    slot_usage:
+      title:
+        description: >-
+          A comprehensive title for the study.
+        required: true
+      description:
+        description: >-
+          A detailed description (abstract) that describes the goals of this Study.
+        required: true
+      type:
+        description: >-
+          The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
+        range: StudyTypeEnum
+        required: true
+      affiliations:
+        required: true
+      project:
+        description: The project associated with this Study.
+        required: false
+        inlined: true
+        inlined_as_list: false
+      attributes:
+        description: >-
+          Custom key/value pairs that further characterizes the Study.
+          (e.g.: approaches - single-cell,_bulk_etc)
+      conditions:
+        required: true
+        inlined: false
+
+  SequencingExperiment:
+    is_a: Investigation
+    mixins:
+      - AttributeMixin
+      - AccessionMixin
+      - EgaAccessionMixin
+    description: >-
+      An sequencing experiment is an investigation that consists of a coordinated set of
+      actions and observations designed to generate data with the goal of verifying,
+      falsifying, or establishing the validity of a hypothesis.
+    exact_mappings:
+      - SIO:000994
+    slots:
+      - type
+      - sequencing_protocol
+      - library_preparation_protocol
+    slot_usage:
+      title:
+        description: >-
+          Name for the experiment (eg: GHGAE_PBMC_RNAseq).
+      description:
+        description: >-
+          A detailed description of the Experiment.
+        required: true
+      type:
+        description: >-
+          The type of sequencing experiment.
+        required: false
+      sequencing_protocol:
+        required: true
+        inlined: false
+      library_preparation_protocol:
+        required: true
+        inlined: false
+
+  Condition:
+    is_a: Investigation
+    mixins:
+      - AccessionMixin
+      - AttributeMixin
+    description: >-
+      An condition that is linked to comparable samples.
+    slots:
+      - name
+      - description
+      - disease_or_healthy
+      - treatment_or_control
+      - mutant_or_wildtype
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
+      disease_or_healthy:
+        required: true
+      treatment_or_control:
+        required: true
+      mutant_or_wildtype:
+        required: true
+
+  LibraryPreparationProtocol:
+    is_a: Protocol
+    description: >-
+      Information about the library_preparation of an sequencing experiment.
+    slots:
+      - library_name
+      - library_layout
+      - library_type
+      - library_selection
+      - library_preparation
+      - library_preparation_kit_retail_name
+      - library_preparation_kit_manufacturer
+      - primer
+      - end_bias
+      - target_regions
+      - rnaseq_strandedness
+    slot_usage:
+      alias:
+        required: true
+      description:
+        description: >-
+          Description about how a sequencing library was prepared (eg: Library construction method).
+        required: true
+      library_name:
+        required: true
+      library_layout:
+        required: true
+      library_type:
+        required: true
+      library_selection:
+        required: true
+      library_preparation:
+        required: true
+      library_preparation_kit_retail_name:
+        required: false
+        recommended: true
+      library_preparation_kit_manufacturer:
+        required: false
+        recommended: true
+      primer:
+        required: false
+        recommended: true
+      end_bias:
+        required: false
+        recommended: true
+      attributes:
+        description: >-
+          One or more attributes that further characterizes this library_preparation Protocol.
+      target_regions:
+        required: false
+        inlined: true
+        inlined_as_list: true
+      rnaseq_strandedness:
+        required: false
+        recommended: true
+
+  SequencingProtocol:
+    is_a: Protocol
+    description: >-
+      Information about the sequencing of a sample.
+    slots:
+      - sequencing_center
+      - instrument_model
+      - forward_or_reverse
+      - sequencing_read_length
+      - index_sequence
+      - target_coverage
+      - lane_number
+      - flow_cell_id
+      - flow_cell_type
+      - umi_barcode_read
+      - umi_barcode_size
+      - umi_barcode_offset
+      - cell_barcode_read
+      - cell_barcode_offset
+      - cell_barcode_size
+      - sample_barcode_read
+    slot_usage:
+      alias:
+        required: true
+      instrument_model:
+        required: true
+      type:
+        description: >-
+          Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+      description:
+        description: >-
+          Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+        required: true
+      attributes:
+        description: >-
+          One or more attributes that further characterizes this Sequencing Protocol.
+      sequencing_center:
+        required: false
+        recommended: true
+      forward_or_reverse:
+        required: false
+        recommended: true
+      sequencing_read_length:
+        required: false
+      index_sequence:
+        required: false
+        recommended: true
+      target_coverage:
+        required: false
+      lane_number:
+        required: false
+        recommended: true
+      flow_cell_id:
+        required: false
+        recommended: true
+      flow_cell_type:
+        required: false
+        recommended: true
+      umi_barcode_read:
+        required: false
+        recommended: true
+      umi_barcode_size:
+        required: false
+        recommended: true
+      umi_barcode_offset:
+        required: false
+        recommended: true
+      cell_barcode_read:
+        required: false
+        recommended: true
+      cell_barcode_size:
+        required: false
+        recommended: true
+      cell_barcode_offset:
+        required: false
+        recommended: true
+      sample_barcode_read:
+        required: false
+        recommended: true
+
+  SequencingProcess:
+    is_a: Investigation
+    mixins:
+      - AccessionMixin
+      - AttributeMixin
+    description: >-
+      A sequencing process linking a sample to sequencing output.
+    slots:
+      - name
+      - description
+      - sequencing_run_id
+      - sequencing_lane_id
+      - sequencing_machine_id
+      - files
+      - sequencing_experiment
+      - sample
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
+      sequencing_run_id:
+        description: >-
+          Identifier of the sequencing run. Used for batch correction.
+        required: false
+      sequencing_lane_id:
+        description: >-
+          Identifier of the sequencing lane. Used for batch correction.
+        required: false
+      sequencing_machine_id:
+        description: >-
+          Identifier of the sequencing machine. Used for batch correction.
+        required: false
+      files:
+        required: true
+        inlined: false
+      sequencing_experiment:
+        required: true
+        inlined: false
+      sample:
+        required: true
+        inlined: false
+
+  Biospecimen:
+    is_a: MaterialEntity
+    mixins:
+      - AccessionMixin
+    description: >-
+      A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
+      diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
+      the Biospecimen is derived.
+    exact_mappings:
+      - OBI:0100051
+    slots:
+      - name
+      - type
+      - description
+      - isolation
+      - storage
+      - individual
+      - vital_status_at_sampling
+      - anatomical_entities
+    slot_usage:
+      name:
+        required: false
+        recommended: true
+      type:
+        description: >-
+          The type of Biospecimen.
+        required: false
+        recommended: true
+      description:
+        required: false
+      isolation:
+        required: false
+        recommended: true
+      storage:
+        required: false
+        recommended: true
+      individual:
+        description: >-
+          The Individual entity from which this Biospecimen was derived.
+        range: Individual
+        inlined: true
+        inlined_as_list: false
+        required: true
+      vital_status_at_sampling:
+        required: false
+        recommended: true
+      anatomical_entities:
+        required: true
+        inlined: true
+        inlined_as_list: true
+
+  AnatomicalEntity:
+    is_a: MaterialEntity
+    mixins:
+      - OntologyClassMixin
+    description: >-
+      Biological entity that is either an individual member of a biological species or constitutes
+      the structural organization of an individual member of a biological species.
+    exact_mappings:
+      - UBERON:0001062
+
+  Disease:
+    is_a: DiseaseOrPhenotypicFeature
+    description: >-
+      A disease is a disposition to undergo pathological processes that exists in an organism
+      because of one or more disorders in that organism.
+    exact_mappings:
+      - EFO:0000408
+      - MONDO:0000001
+
+  PhenotypicFeature:
+    is_a: DiseaseOrPhenotypicFeature
+    description: >-
+      The observable form taken by some character (or group of characters) in an individual or
+      an organism, excluding pathology and disease. The detectable outward manifestations of a
+      specific genotype.
+    exact_mappings:
+      - HP:0000118
+      - EFO:0000651
+      - SIO:010056
+
+  Sample:
+    is_a: MaterialEntity
+    mixins:
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
+    description: >-
+      A sample is a limited quantity of something to be used for testing, analysis,
+      inspection, investigation, demonstration, or trial use. A sample is prepared from
+      a Biospecimen (isolate or tissue).
+    exact_mappings:
+      - SIO:001050
+      - biolink:MaterialSample
+    slots:
+      - name
+      - type
+      - description
+      - isolation
+      - storage
+      - biospecimen
+      - condition
+    slot_usage:
+      name:
+        description: >-
+          Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+        required: true
+      type:
+        description: >-
+          The type of sample.
+        required: false
+      description:
+        description: >-
+          Short textual description of the sample
+          (How the sample was collected, sample source,
+          Protocol followed for processing the sample etc).
+        required: true
+      storage:
+        required: false
+        recommended: true
+      xref:
+        description: >-
+          One or more cross-references for this Sample. For example, this Sample
+          may have an EBI BioSamples accession or an EGA Sample accession.
+        required: false
+      biospecimen:
+        description: >-
+          The Biospecimen from which this Sample was prepared from.
+        required: false
+        inlined: true
+        inlined_as_list: false
+      condition:
+        required: true
+
+  Individual:
+    is_a: Person
+    mixins:
+      - AccessionMixin
+      - EgaAccessionMixin
+    aliases: ["subject", "patient"]
+    description: >-
+      An Individual is a Person who is participating in a Study.
+    slots:
+      - sex
+      - karyotype
+      - age
+      - vital_status
+      - geographical_region
+      - ancestries
+      - parents
+      - children
+      - diseases
+      - phenotypic_features
+      - files
+    slot_usage:
+      sex:
+        required: true
+      karyotype:
+        required: false
+      age:
+        required: true
+      vital_status:
+        description: Last known Vital Status of an Individual.
+        required: true
+      geographical_region:
+        required: false
+      ancestries:
+        required: false
+      parents:
+        required: false
+        inlined: true
+        inlined_as_list: true
+      children:
+        required: false
+        inlined: true
+        inlined_as_list: true
+      diseases:
+        description: >-
+          The Disease entity that is associated with this Biospecimen at the time of retrieval
+          from the organism. Typically, a concept from Mondo Disease Ontology.
+          For example, 'MONDO:0003742' indicates that the Individual - from_which_the_Biospecimen
+          was extracted from - suffers_from_'Heart_Fibrosarcoma'.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      phenotypic_features:
+        description: >-
+          The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
+          from the organism. Typically, a concept from Human Phenotype Ontology.
+          For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
+          was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      files:
+        description: >-
+          Additional/supplementary files associated with an Individual.
+          Typically, a phenopacket or pedigree file.
+        required: false
+        inlined: true
+        inlined_as_list: true
+
+  Ancestry:
+    is_a: Population
+    mixins:
+      - OntologyClassMixin
+    description: >-
+      Population category defined using ancestries informative markers (AIMs) based
+      on genetic/genomic data.
+    aliases: ["ancestral group", "ancestries category"]
+    exact_mappings:
+      - HANCESTRO:0004
+
+  File:
+    is_a: InformationContentEntity
+    mixins:
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
+    aliases: ["file object"]
+    description: >-
+      A file is an object that contains information generated from a process, either an
+      Experiment or an Analysis.
+    slots:
+      - name
+      - format
+      - size
+      - checksum
+      - checksum_type
+    slot_usage:
+      name:
+        description: >-
+          The given filename.
+        required: true
+      format:
+        required: true
+      checksum:
+        required: true
+      checksum_type:
+        required: true
+      size:
+        required: true
+
+  Analysis:
+    is_a: DataTransformation
+    mixins:
+      - AccessionMixin
+      - EgaAccessionMixin
+    aliases: ["data analysis"]
+    description: >-
+      An Analysis is a data transformation that transforms input data to output data.
+      The workflow used to achieve this transformation and the individual steps are also captured.
+    slots:
+      - type
+      - reference_genome
+      - reference_chromosome
+      - inputs
+      - study
+      - outputs
+      - description
+    slot_usage:
+      alias:
+        description: >-
+          An alias uniquely identifying this Analysis entitiy.
+      type:
+        description: >-
+          The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
+        required: false
+      description:
+        description: >-
+          Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+        required: false
+      reference_genome:
+        required: true
+      reference_chromosome:
+        required: true
+      inputs:
+        description: >-
+          The input data File entities used in the Analysis.
+        range: File
+        required: true
+        inlined: true
+        inlined_as_list: true
+      study:
+        description: >-
+          The Study entity associated with this Analysis.
+        required: true
+        inlined: true
+        inlined_as_list: false
+      outputs:
+        description: >-
+          The output data File entities generated by this Analysis.
+        range: File
+        required: true
+        inlined: true
+        inlined_as_list: true
+
+  Dataset:
+    is_a: InformationContentEntity
+    mixins:
+      - AccessionMixin
+      - EgaAccessionMixin
+      - AttributeMixin
+    description: >-
+      A Dataset is a collection of Files that is prepared for distribution
+      and is tied to a Data Access Policy.
+    exact_mappings:
+      - SIO:000089
+    slots:
+      - title
+      - description
+      - types
+      - files
+      - data_access_policy
+    slot_usage:
+      title:
+        description: >-
+          A title for the submitted Dataset.
+        required: true
+      description:
+        required: true
+      types:
+        description: >-
+          The type of a dataset.
+        required: true
+      files:
+        description: >-
+          One or more File entities that collectively are part of this Dataset.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      data_access_policy:
+        description: >-
+          The Data Access Policy that applies to this Dataset.
+        required: true
+        inlined: true
+        inlined_as_list: false
+
+  DataUsePermission:
+    is_a: InformationContentEntity
+    mixins:
+      - OntologyClassMixin
+    description: >-
+      A data item that is used to indicate consent permissions for datasets and/or materials
+      and relates to the purposes for which datasets and/or material might be removed, stored or used.
+    exact_mappings:
+      - DUO:0000001
+
+  DataUseModifier:
+    is_a: InformationContentEntity
+    mixins:
+      - OntologyClassMixin
+    description: >-
+      Data use modifiers indicate additional conditions for use.
+    exact_mappings:
+      - DUO:0000017
+
+  DataAccessPolicy:
+    is_a: InformationContentEntity
+    mixins:
+      - AttributeMixin
+      - AccessionMixin
+      - EgaAccessionMixin
+    description: >-
+      A Data Access Policy specifies under which circumstances, legal or otherwise,
+      a user can have access to one or more Datasets belonging to one or more Studies.
+    slots:
+      - name
+      - description
+      - policy_text
+      - policy_url
+      - data_access_committee
+      - data_use_permission
+      - data_use_modifiers
+      - data_request_form
+    slot_usage:
+      name:
+        description: >-
+          A name for the Data Access Policy.
+        required: true
+      description:
+        description: >-
+          A short description for the Data Access Policy.
+        required: true
+      policy_text:
+        description: >-
+          The terms of data use and policy verbiage should be captured here.
+        required: true
+      policy_url:
+        description: >-
+          URL for the policy, if available. This is useful if the terms of the policy is
+          made available online at a resolvable URL.
+        required: false
+        recommended: true
+      data_access_committee:
+        description: >-
+          The Data Access Committee linked to this policy.
+        required: true
+        inlined: true
+        inlined_as_list: false
+      data_use_permission:
+        description: >-
+          Data use permission associated with a policy. Typically one or more terms from DUO
+          and should be descendants of 'DUO:0000001 data use permission'.
+        required: true
+        recommended: true
+      data_use_modifiers:
+        description: >-
+          Modifier for Data use permission associated with a policy.
+          Should be descendants of 'DUO:0000017 data use modifier'
+        required: false
+        recommended: true
+      data_request_form:
+        description: >-
+          Data Request Form that is associated with this Data Access Policy.
+        required: false
+
+  DataAccessCommittee:
+    is_a: Committee
+    mixins:
+      - AttributeMixin
+      - AccessionMixin
+      - EgaAccessionMixin
+    description: >-
+      A group of members that are delegated to grant access to one or more datasets
+      after ensuring the minimum criteria for data sharing has been met, and request
+      for data use does not raise ethical and/or legal concerns.
+    slots:
+      - name
+      - description
+      - main_contact
+      - members
+    slot_usage:
+      name:
+        description: >-
+          The name for the Data Access Committee.
+        required: true
+      description:
+        description: >-
+          A description for the Data Access Committee.
+        required: false
+      main_contact:
+        description: >-
+          The main contact for the Data Access Committee.
+        range: Member
+        required: true
+        inlined: true
+        inlined_as_list: false
+      members:
+        description: >-
+          All the members that are part of this Data Access Committee.
+        range: Member
+        inlined: true
+        inlined_as_list: true
+
+  Member:
+    is_a: Person
+    description: >-
+      Member of an Organization or a Committee.
+    slots:
+      - email
+      - telephone
+      - organization
+    slot_usage:
+      email:
+        description: >-
+          The email of the Member.
+        required: true
+      telephone:
+        description: >-
+          The telephone number of the Member.
+        required: false
+      organization:
+        description: >-
+          The organization that the Member is part of.
+        required: true
+
+  Publication:
+    is_a: InformationContentEntity
+    description: >-
+      The Publication entity represents a publication. While a publication can be any
+      article that is published, the minimum expectation is that the publication has a
+      valid DOI.
+    slots:
+      - title
+      - abstract
+      - author
+      - year
+      - journal
+      - doi
+      - study
+    slot_usage:
+      title:
+        description: >-
+          The title for the Publication.
+        required: false
+      abstract:
+        description: >-
+          The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
+        required: false
+      author:
+        required: false
+      year:
+        required: false
+      journal:
+        required: false
+      xref:
+        description: >-
+          One or more cross-references for this Publication.
+        required: false
+      doi:
+        description: DOI identifier of the Publication.
+        required: true
+      study:
+        description: >-
+          The Study entity associated with this Publication.
+        range: Study
+        required: true
+        inlined: true
+        inlined_as_list: true
+
+  Submission:
+    tree_root: true
+    description: >-
+      A grouping entity that represents information about one or more entities.
+      A submission can be considered as a set of inter-related (and inter-connected)
+      entities that represent a data submission to GHGA.
+    slots:
+      - id
+      - affiliations
+      - studies
+      - projects
+      - samples
+      - biospecimens
+      - individuals
+      - sequencing_experiments
+      - sequencing_protocols
+      - library_preparation_protocols
+      - analyses
+      - files
+      - datasets
+      - data_access_policies
+      - data_access_committees
+      - members
+      - publications
+      - submission_date
+      - submission_status
+    slot_usage:
+      id:
+        description: >-
+          A internal unique identifier for the Submission.
+        required: true
+      affiliations:
+        description: >-
+          Institution/Center/Data Hub that is providing this submission.
+        required: true
+      studies:
+        description: >-
+          Information about a Study entities associated with this submission.
+        required: true
+        inlined: true
+        inlined_as_list: false
+      projects:
+        description: >-
+          Information about a Project entity associated with this submission.
+        required: false
+        inlined: true
+        inlined_as_list: false
+      samples:
+        description: >-
+          Information about one or more Sample entities associated with this submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      biospecimens:
+        description: >-
+          Information about one or more Biospecimen entities associated with this submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      individuals:
+        description: >-
+          Information about one or more Individual entities associated with this submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      sequencing_experiments:
+        description: >-
+          Information about one or more Experiment entities associated with this submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      sequencing_protocols:
+        description: >-
+          One or more sequencing protocol entities associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      library_preparation_protocols:
+        description: >-
+          One or more library preparation protocol entities associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      analyses:
+        description: >-
+          Information about one or more Analysis entities associated with this submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      files:
+        description: >-
+          Information about one or more File entities associated with this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      datasets:
+        description: >-
+          One or more Dataset that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      data_access_policies:
+        description: >-
+          The Data Access Policy that applies to Dataset in this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      data_access_committees:
+        description: >-
+          The Data Access Committee that applies to Dataset in this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      members:
+        description: >-
+          The members associated with a committee referenced in this submission
+        required: true
+        range: Member
+        inlined: true
+        inlined_as_list: true
+      publications:
+        description: >-
+          One or more Publication entities associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      submission_status:
+        description: >-
+          The status of a Submission.
+        required: false
+
+slots:
+  study:
+    description: The study associated with an entity.
+    range: Study
+
+  studies:
+    description: The study associated with an entity.
+    range: Study
+    multivalued: True
+
+  project:
+    description: The project associated with an entity.
+    range: Project
+
+  projects:
+    description: The project associated with an entity.
+    range: Project
+    multivalued: True
+
+  publications:
+    description: The Publication associated with an entity.
+    range: Publication
+
+  sample:
+    description: The sample associated with an entity.
+    range: Sample
+    in_subset:
+      - restricted
+
+  samples:
+    description: The samples associated with an entity.
+    range: Sample
+    multivalued: true
+    in_subset:
+      - restricted
+
+  sequencing_experiment:
+    description: The sequencing experiment associated with an entity.
+    range: SequencingExperiment
+    in_subset:
+      - restricted
+
+  sequencing_experiments:
+    description: The sequencing experiments associated with an entity.
+    range: SequencingExperiment
+    multivalued: true
+    in_subset:
+      - restricted
+
+  analyses:
+    description: The analyses associated with an entity.
+    range: Analysis
+    multivalued: true
+    in_subset:
+      - restricted
+
+  datasets:
+    description: The Datasets associated with an entity.
+    multivalued: true
+    range: Dataset
+
+  biospecimen:
+    description: The biospecimen associated with an entity.
+    range: Biospecimen
+    in_subset:
+      - restricted
+
+  biospecimens:
+    description: The biospecimens associated with an entity.
+    range: Biospecimen
+    multivalued: true
+    in_subset:
+      - restricted
+
+  individual:
+    description: The subject/individual associated with an entity.
+    range: Individual
+    in_subset:
+      - restricted
+
+  individuals:
+    description: The subjects/individuals associated with an entity.
+    range: Individual
+    multivalued: true
+    in_subset:
+      - restricted
+
+  anatomical_entities:
+    description: Anatomical sites associated with an entity.
+    multivalued: true
+    range: AnatomicalEntity
+
+  phenotypic_features:
+    description: Phenotypic feature concepts that the entity is associated with.
+    range: PhenotypicFeature
+    multivalued: true
+    in_subset:
+      - restricted
+
+  diseases:
+    description: Diseases concept that the entity is associated with.
+    multivalued: true
+    range: Disease
+
+  parents:
+    description: One or more parent for an Individual.
+    multivalued: true
+    range: Individual
+    in_subset:
+      - restricted
+
+  children:
+    description: One or more children for an Individual.
+    multivalued: true
+    in_subset:
+      - restricted
+
+  ancestries:
+    description: >-
+      A person's descent or lineage, from a person or from a population.
+      Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+    range: Ancestry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    in_subset:
+      - restricted
+
+  inputs:
+    description: The inputs to a Planned Process.
+    range: File
+    multivalued: True
+    in_subset:
+      - restricted
+
+  outputs:
+    description: The outputs of a Planned Process entity.
+    range: File
+    multivalued: True
+    in_subset:
+      - restricted
+
+  files:
+    description: >-
+      The files associated with an entity.
+    range: File
+    multivalued: True
+    in_subset:
+      - restricted
+
+  data_access_policy:
+    description: Data Access Policy associated with an entity.
+    range: DataAccessPolicy
+    in_subset:
+      - restricted
+
+  data_access_policies:
+    description: Data Access Policies associated with an entity.
+    range: DataAccessPolicy
+    multivalued: True
+    in_subset:
+      - restricted
+
+  data_access_committee:
+    description: Data Access Committee associated with an entity.
+    range: DataAccessCommittee
+    in_subset:
+      - restricted
+
+  data_access_committees:
+    description: Data Access Committees associated with an entity.
+    range: DataAccessCommittee
+    multivalued: True
+    in_subset:
+      - restricted
+
+  data_use_permission:
+    description: >-
+      Data use permission associated with an entity. Typically one or more terms from DUO.
+      Should be descendants of 'DUO:0000001 data use permission'.
+    range: DataUsePermission
+    inlined: true
+    in_subset:
+      - restricted
+
+  data_use_permissions:
+    description: >-
+      Data use permissions associated with an entity. Typically one or more terms from DUO.
+      Should be descendants of 'DUO:0000001 data use permission'.
+    range: DataUsePermission
+    multivalued: True
+    inlined: true
+    in_subset:
+      - restricted
+
+  data_use_modifiers:
+    description: >-
+      Modifier for Data use permission associated with an entity.
+      Should be descendants of 'DUO:0000017 data use modifier'
+    range: DataUseModifier
+    inlined: true
+    in_subset:
+      - restricted
+
+  members:
+    description: >-
+      The members associated with a committee.
+    range: Member
+    multivalued: True
+    inlined: true
+    in_subset:
+      - restricted
+
+  protocol:
+    description: The protocol associated with an entity.
+    range: Protocol
+    in_subset:
+      - restricted
+
+  sequencing_protocol:
+    range: SequencingProtocol
+    description: The sequencing protocol associated with an entity.
+
+  condition:
+    range: Condition
+    description: The condition associated with an entity.
+
+  library_preparation_protocol:
+    range: LibraryPreparationProtocol
+    description: The library_preparation Protocol associated with an entity.
+
+  sequencing_protocols:
+    range: SequencingProtocol
+    multivalued: True
+    description: The sequencing protocol associated with an entity.
+
+  conditions:
+    range: Condition
+    multivalued: True
+    description: The condition associated with an entity.
+
+  library_preparation_protocols:
+    range: LibraryPreparationProtocol
+    multivalued: True
+    description: The library_preparation Protocol associated with an entity.
+
+  telephone:
+    description: >-
+      The telephone number associated with a person.
+
+  organization:
+    description: The organization associated with a person.
+
+  email:
+    description: >-
+      Email of a person.
+
+  affiliation:
+    description: >-
+      The Institution(s) associated with an entity.
+
+  affiliations:
+    description: >-
+      The Institution(s) associated with an entity.
+    multivalued: True
+
+  technical_replicates:
+    description: >-
+      A technical replicate is a replicate role where the same BioSample is use e.g.
+      the same pool of RNA used to assess technical (as opposed to biological)
+      variation within an sequencing experiment.
+    exact_mappings:
+      - EFO:0002090
+
+  biological_replicates:
+    description: >-
+      A biological replicate is a replicate role that consists of
+      independent biological replicates made from different individual biosamples.
+    exact_mappings:
+      - EFO:0002091
+
+  library_name:
+    description: >-
+      A short name identifying the library to potential users.
+      The same name may refer to multiple versions of the same continually updated library.
+
+  library_layout:
+    description: >-
+      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
+    exact_mappings:
+      - NCIT:C175894
+
+  library_type:
+    description: >-
+      Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+
+  library_selection:
+    description: >-
+      Whether any method was used to select for or against, enrich, or screen the material being sequenced.
+      library_selection method (e.g. random, PCA, cDNA, etc )
+
+  library_preparation:
+    description: >-
+      The general method for sequencing library_preparation (e.g. KAPA PCR-free).
+
+  library_preparation_kit_retail_name:
+    description: >-
+      A unique identifier for the kit used to construct a genomic library.
+      This may include the vendor name, kit name and kit version 
+      (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+
+  library_preparation_kit_manufacturer:
+    description: >-
+      Manufacturer of library_preparation kit
+
+  primer:
+    description: >-
+      The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer.
+      This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
+    exact_mappings:
+      - EFO:0010192
+
+  end_bias:
+    description: >-
+      The end of the cDNA molecule that is preferentially sequenced,
+      e.g. 3/5 prime tag or end, or the full-length transcript.
+    exact_mappings:
+      - EFO:0010187
+
+  target_regions:
+    multivalued: True
+    description: >-
+      Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
+
+  rnaseq_strandedness:
+    description: >-
+      The strandedness of the library, whether reads come from both strands of the cDNA
+      or only from the first (antisense) or the second (sense) strand.
+
+  sequencing_center:
+    required: false
+    description: >-
+      Center where sample was sequenced.
+
+  instrument_model:
+    description: >-
+      The name and model of the technology platform used to perform sequencing.
+
+  sequencing_read_length:
+    description: >-
+      Length of sequencing reads (eg: Long or short or actual number of the read length etc).
+      The number of nucleotides successfully ordered from each side of a nucleic acid fragment
+      obtained after the completion of a sequencing process
+
+  index_sequence:
+    description: >-
+      A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
+    exact_mappings:
+      - NCIT:C165443
+
+  sequencing_run_id:
+    description: >-
+      The identifier of a sequencing run.
+
+  sequencing_lane_id:
+    description: >-
+      The identifier of a sequencing lane.
+
+  sequencing_machine_id:
+    description: >-
+      The identifier of a sequencing machine.
+
+  forward_or_reverse:
+    description: >-
+      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+      The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
+    range: ForwardOrReverseEnum
+
+  lane_number:
+    description: >-
+      The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
+
+  target_coverage:
+    description: >-
+      Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
+      The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+
+  flow_cell_id:
+    description: >-
+      Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
+      The barcode assigned to a flow cell used in nucleotide sequencing.
+
+  flow_cell_type:
+    description: >-
+      Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
+      Aparatus in the fluidic subsystem where the sheath and sample meet.
+      Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
+      The sample flows through the center of a fluid column of sheath fluid in the flow cell.
+
+  umi_barcode_read:
+    description: >-
+      The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+
+  umi_barcode_offset:
+    description: >-
+      The offset in sequence of the UMI identifying barcode. (E.g. '16').
+
+  umi_barcode_size:
+    description: >-
+      The size of the UMI identifying barcode (Eg. '10').
+
+  cell_barcode_read:
+    description: >-
+      The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+
+  cell_barcode_offset:
+    description: >-
+      The offset in sequence of the cell identifying barcode. (Eg. '0').
+
+  cell_barcode_size:
+    description: >-
+      The size of the cell identifying barcode (E.g. '16').
+
+  sample_barcode_read:
+    description: >-
+      The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+
+  isolation:
+    description: >-
+      Method or device employed for collecting/isolating a biospecimen or a sample.
+
+  storage:
+    description: >-
+      Methods by which a biospecimen or a sample is stored
+      (e.g. frozen in liquid nitrogen).
+
+  disease_or_healthy:
+    description: >-
+      Whether a condition corresponds to a disease or a healthy state.
+    range: DiseaseOrHealthyEnum
+
+  treatment_or_control:
+    description: >-
+      Whether a condition corresponds to a treatment or a control.
+    range: TreatmentOrControlEnum
+
+  mutant_or_wildtype:
+    description: >-
+      Whether a condition corresponds to a mutant or a wildtype.
+    range: MutantOrWildtypeEnum
+
+  vital_status_at_sampling:
+    description: >-
+      Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+    range: VitalStatusEnum
+
+  geographical_region:
+    description: >-
+      The geographical region where the Individual is located.
+      Any demarcated area of the Earth; may be determined by both natural and human boundaries.
+    in_subset:
+      - restricted
+
+  vital_status:
+    description: >-
+      The state or condition of being living or deceased;
+      also includes the case where the vital status is unknown.
+    range: VitalStatusEnum
+    in_subset:
+      - restricted
+
+  sex:
+    description: >-
+      The assemblage of physical properties or qualities by which male is distinguished from female;
+      the physical difference between male and female; the distinguishing peculiarity of male or female.
+    range: BiologicalSexEnum
+    in_subset:
+      - restricted
+
+  karyotype:
+    description: >-
+      The karyotype of an individual if defined.
+    in_subset:
+      - restricted
+
+  age:
+    description: Age of an individual.
+    range: AgeRangeEnum
+    in_subset:
+      - restricted
+
+  format:
+    description: >-
+      The format of the file: BAM, SAM, CRAM, BAI, etc.
+    range: FileFormatEnum
+
+  size:
+    description: The size of a file in bytes.
+    range: integer
+
+  checksum:
+    description: >-
+      A computed value which depends on the contents of a block of data and which is transmitted or
+      stored along with the data in order to detect corruption of the data.
+      The receiving system recomputes the checksum based upon the received data and compares this
+      value with the one sent with the data. If the two values are the same, the receiver has some confidence
+      that the data was received correctly.
+    exact_mappings:
+      - NCIT:C43522
+
+  checksum_type:
+    description: >-
+      The type of algorithm used to generate the checksum of a file.
+
+  reference_chromosome:
+    description: >-
+      The reference chromosome used for this Analysis.
+
+  reference_genome:
+    description: >-
+      A published genetic sequence that is used as a reference sequence against which other sequences are compared.
+      Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
+
+  policy_text:
+    description: The complete text for the Data Access Policy.
+    in_subset:
+      - restricted
+
+  policy_url:
+    description: Alternative to pasting the Data Access Policy text.
+    in_subset:
+      - restricted
+
+  data_request_form:
+    description: >-
+      Data Request Form that is associated with a Data Access Policy.
+
+  main_contact:
+    description: The person who is the main contact for a committee.
+    range: Member
+    in_subset:
+      - restricted
+
+  abstract:
+    description: >-
+      The study abstract that describes the goals. 
+      Can also hold abstract from a publication related to this study
+
+  author:
+    description: >-
+      The individual who is responsible for the content of a document version.
+
+  year:
+    description: >-
+      Year in which the paper was published.
+    range: integer
+
+  journal:
+    description: >-
+      Name of the journal.
+
+  submission_status:
+    description: >-
+      The status of a submission.
+
+  submission_date:
+    description: >-
+      The timestamp (in ISO 8601 format) when submission was marked completed.
+
+  doi:
+    description: >-
+      DOI identifier of a publication.
+
+enums:
+  BiologicalSexEnum:
+    description: >-
+      The biological sex of an Individual as determined by their chromosomes.
+    permissible_values:
+      female:
+        description: Female
+      male:
+        description: Male
+      unknown:
+        description: unspecified
+  VitalStatusEnum:
+    description: >-
+      Enum to capture the vital status of an individual.
+    permissible_values:
+      alive:
+        description: >-
+          Showing characteristics of life; displaying signs of life.
+      deceased:
+        description: >-
+          The cessation of life.
+      unknown:
+        description: >-
+          Vital status is unknown.
+  StudyTypeEnum:
+    description: >-
+      Enum to capture the type of a study.
+    permissible_values:
+      whole_genome_sequencing:
+        description: Whole Genome Sequencing
+      metagenomics:
+        description: Metagenomics
+      transcriptome_analysis:
+        description: Transcriptome Analysis
+      resequencing:
+        description: Resequencing
+      epigenetics:
+        description: Epigenetics
+      synthetic_genomics:
+        description: Sythetic Genomics
+      forensic_paleo_genomics:
+        description: Forensic or Paleo-genomics
+      gene_regulation:
+        description: Gene Regulation Study
+      cancer_genomics:
+        description: Cancer Genomics
+      population_genomics:
+        description: Population Genomics
+      rna_seq:
+        description: RNAseq
+      exome_sequencing:
+        description: Exome Sequencing
+      pooled_clone_sequencing:
+        description: Pooled Clone Sequencing
+      genome_wide_association_study:
+        description: Genome-wide Association Study
+      other:
+        description: Other study
+  FileFormatEnum:
+    description: >-
+      Enum to capture file types.
+    permissible_values:
+      bam:
+        description: BAM File
+      complete_genomics:
+        description: Complete Genomics File
+      cram:
+        description: CRAM File
+      fasta:
+        description: Fasta File
+      fastq:
+        description: FastQ File
+      pacbio_hdf5:
+        description: PacBio HDF5 File
+      sff:
+        description: >-
+          Standard flowgram format used to encode results
+          of pyrosequencing from the 454 Life Sciences platform.
+      srf:
+        description: >-
+          SRF is a generic format for DNA sequence data.
+      vcf:
+        description: >-
+          VCF file for storing gene sequence variations.
+      txt:
+        description: >-
+          Text file.
+      pxf:
+        description: >-
+          Phenopacket file.
+      other:
+        description: >-
+          Other format.
+  DiseaseOrHealthyEnum:
+    description: >-
+      Enum to capture whether a condition corresponds to a disease or a healthy state.
+    permissible_values:
+      disease:
+        description: Disease state.
+      healthy:
+        description: Healthy state.
+      not_applicable:
+        description: The distinction is not applicaple.
+  TreatmentOrControlEnum:
+    description: >-
+      Enum to capture whether a condition corresponds to a treatment or a control.
+    permissible_values:
+      treatment:
+        description: Treatment state.
+      control:
+        description: Control state.
+      not_applicable:
+        description: The distinction is not applicaple.
+  MutantOrWildtypeEnum:
+    description: >-
+      Enum to capture whether a condition corresponds to a mutant or a wildtype.
+    permissible_values:
+      mutant:
+        description: Mutant state.
+      wildtype:
+        description: Wildtype state.
+      not_applicable:
+        description: The distinction is not applicaple.
+  ForwardOrReverseEnum:
+    description: >-
+      Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+    permissible_values:
+      forward:
+        description: The reads are forward (R1) reads
+      reverse:
+        description: The reads are reverse (R2) reads
+  AgeRangeEnum:
+    description: >-
+      Enum to capture the age range that an Indiviudal belongs to.
+    permissible_values:
+      0-5:
+        description: Age between 0 to 5.
+      6-10:
+        description: Age between 6 to 10.
+      11-15:
+        description: Age between 11 to 15.
+      16-20:
+        description: Age between 16 to 20.
+      21-25:
+        description: Age between 21 to 25.
+      26-30:
+        description: Age between 26 to 30.
+      31-35:
+        description: Age between 31 to 35.
+      36-40:
+        description: Age between 36 to 40.
+      41-45:
+        description: Age between 41 to 45.
+      46-50:
+        description: Age between 46 to 50.
+      51-55:
+        description: Age between 51 to 55.
+      56-60:
+        description: Age between 56 to 60.
+      61-65:
+        description: Age between 61 to 65.
+      66-70:
+        description: Age between 66 to 70.
+      71-75:
+        description: Age between 71 to 75.
+      76-80:
+        description: Age between 76 to 80.
+      80+:
+        description: Age above 80.
+      unknown:
+        description: Age range unknown.

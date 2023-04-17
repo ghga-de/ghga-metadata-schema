@@ -1,5 +1,5 @@
 
-# Slot: family name
+# Slot: family_name
 
 
 Last name.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [person➞family name](person_family_name.md)
+ *  [Person➞family_name](Person_family_name.md)
 
 ## Used by
 

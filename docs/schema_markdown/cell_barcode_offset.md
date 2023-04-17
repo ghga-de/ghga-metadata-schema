@@ -1,5 +1,5 @@
 
-# Slot: cell barcode offset
+# Slot: cell_barcode_offset
 
 
 The offset in sequence of the cell identifying barcode. (Eg. '0').
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞cell barcode offset](sequencing_protocol_cell_barcode_offset.md)
+ *  [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
 
 ## Used by
 

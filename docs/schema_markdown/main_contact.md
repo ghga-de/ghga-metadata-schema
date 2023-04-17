@@ -1,5 +1,5 @@
 
-# Slot: main contact
+# Slot: main_contact
 
 
 The person who is the main contact for a committee.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Member](Member.md)
 
 ## Children
 
- *  [data access committee➞main contact](data_access_committee_main_contact.md)
+ *  [DataAccessCommittee➞main_contact](DataAccessCommittee_main_contact.md)
 
 ## Used by
 

@@ -1,5 +1,5 @@
 
-# Slot: key type
+# Slot: key_type
 
 
 The semantic type for the key of an attribute.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [attribute➞key type](attribute_key_type.md)
+ *  [Attribute➞key_type](Attribute_key_type.md)
 
 ## Used by
 

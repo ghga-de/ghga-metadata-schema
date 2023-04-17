@@ -1,8 +1,8 @@
 
-# Slot: index sequence
+# Slot: index_sequence
 
 
-A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the sample.
+A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/index_sequence](https://w3id.org/GHGA-Submission-Metadata-Schema/index_sequence)
 
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞index sequence](sequencing_protocol_index_sequence.md)
+ *  [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
 
 ## Used by
 

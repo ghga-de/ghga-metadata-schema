@@ -1,8 +1,8 @@
 
-# Class: research activity
+# Class: ResearchActivity
 
 
-A planned process executed in the performance of scientific research wherein systematic investigations are performed to establish facts and reach new conclusions about phenomena in the world.
+A PlannedProcess executed in the performance of scientific research wherein systematic Investigations are performed to establish facts and reach new conclusions about phenomena in the world.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity](https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity)
 
@@ -25,24 +25,24 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity](https:/
 
 ### Own
 
- * [research activity➞title](research_activity_title.md)  <sub>1..1</sub>
+ * [ResearchActivity➞title](ResearchActivity_title.md)  <sub>1..1</sub>
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
- * [research activity➞description](research_activity_description.md)  <sub>1..1</sub>
+ * [ResearchActivity➞description](ResearchActivity_description.md)  <sub>1..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
 
-### Inherited from planned process:
+### Inherited from PlannedProcess:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 

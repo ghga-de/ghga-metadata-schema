@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [attribute➞key](attribute_key.md)
+ *  [Attribute➞key](Attribute_key.md)
 
 ## Used by
 

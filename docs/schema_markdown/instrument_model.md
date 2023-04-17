@@ -1,5 +1,5 @@
 
-# Slot: instrument model
+# Slot: instrument_model
 
 
 The name and model of the technology platform used to perform sequencing.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞instrument model](sequencing_protocol_instrument_model.md)
+ *  [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
 
 ## Used by
 

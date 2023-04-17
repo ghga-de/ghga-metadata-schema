@@ -16,9 +16,9 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Children
 
- *  [named thing➞xref](named_thing_xref.md)
- *  [publication➞xref](publication_xref.md)
- *  [sample➞xref](sample_xref.md)
+ *  [NamedThing➞xref](NamedThing_xref.md)
+ *  [Publication➞xref](Publication_xref.md)
+ *  [Sample➞xref](Sample_xref.md)
 
 ## Used by
 

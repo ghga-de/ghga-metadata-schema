@@ -1,5 +1,5 @@
 
-# Slot: umi barcode read
+# Slot: umi_barcode_read
 
 
 The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞umi barcode read](sequencing_protocol_umi_barcode_read.md)
+ *  [SequencingProtocol➞umi_barcode_read](SequencingProtocol_umi_barcode_read.md)
 
 ## Used by
 

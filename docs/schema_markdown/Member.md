@@ -1,5 +1,5 @@
 
-# Class: member
+# Class: Member
 
 
 Member of an Organization or a Committee.
@@ -7,7 +7,7 @@ Member of an Organization or a Committee.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Member](https://w3id.org/GHGA-Submission-Metadata-Schema/Member)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has%20member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20main%20contact%201..1>[Member],[DataAccessCommittee]++-%20has%20member(i)%200..1>[Member],[Submission]++-%20has%20member(i)%200..1>[Member],[DataAccessCommittee]-%20main%20contact(i)%200..1>[Member],[Submission]++-%20has%20member%201..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20has%20member%200..*>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20main%20contact%201..1>[Member],[DataAccessCommittee]++-%20has%20member(i)%200..1>[Member],[Submission]++-%20has%20member(i)%200..1>[Member],[DataAccessCommittee]-%20main%20contact(i)%200..1>[Member],[Submission]++-%20has%20member%201..*>[Member],[Person]^-[Member],[DataAccessCommittee])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])
 
 ## Parents
 
@@ -15,49 +15,49 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Member](https://w3id.org/
 
 ## Referenced by Class
 
- *  **[DataAccessCommittee](DataAccessCommittee.md)** *[data access committee➞has member](data_access_committee_has_member.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
- *  **[DataAccessCommittee](DataAccessCommittee.md)** *[data access committee➞main contact](data_access_committee_main_contact.md)*  <sub>1..1</sub>  **[Member](Member.md)**
- *  **None** *[has member](has_member.md)*  <sub>0..1</sub>  **[Member](Member.md)**
- *  **None** *[main contact](main_contact.md)*  <sub>0..1</sub>  **[Member](Member.md)**
- *  **[Submission](Submission.md)** *[submission➞has member](submission_has_member.md)*  <sub>1..\*</sub>  **[Member](Member.md)**
+ *  **[DataAccessCommittee](DataAccessCommittee.md)** *[DataAccessCommittee➞main_contact](DataAccessCommittee_main_contact.md)*  <sub>1..1</sub>  **[Member](Member.md)**
+ *  **[DataAccessCommittee](DataAccessCommittee.md)** *[DataAccessCommittee➞members](DataAccessCommittee_members.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
+ *  **[Submission](Submission.md)** *[Submission➞members](Submission_members.md)*  <sub>1..\*</sub>  **[Member](Member.md)**
+ *  **None** *[main_contact](main_contact.md)*  <sub>0..1</sub>  **[Member](Member.md)**
+ *  **None** *[members](members.md)*  <sub>0..\*</sub>  **[Member](Member.md)**
 
 ## Attributes
 
 
 ### Own
 
- * [member➞email](member_email.md)  <sub>1..1</sub>
+ * [Member➞email](Member_email.md)  <sub>1..1</sub>
      * Description: The email of the Member.
      * Range: [String](types/String.md)
- * [member➞telephone](member_telephone.md)  <sub>0..1</sub>
+ * [Member➞telephone](Member_telephone.md)  <sub>0..1</sub>
      * Description: The telephone number of the Member.
      * Range: [String](types/String.md)
- * [member➞organization](member_organization.md)  <sub>1..1</sub>
+ * [Member➞organization](Member_organization.md)  <sub>1..1</sub>
      * Description: The organization that the Member is part of.
      * Range: [String](types/String.md)
 
-### Inherited from person:
+### Inherited from Person:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
- * [person➞given name](person_given_name.md)  <sub>0..1</sub>
+ * [Person➞given_name](Person_given_name.md)  <sub>0..1</sub>
      * Description: First name.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [person➞family name](person_family_name.md)  <sub>0..1</sub>
+ * [Person➞family_name](Person_family_name.md)  <sub>0..1</sub>
      * Description: Last name.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [person➞additional name](person_additional_name.md)  <sub>0..1</sub>
-     * Description: Additional name(s).
+ * [Person➞additional_name](Person_additional_name.md)  <sub>0..1</sub>
+     * Description: additional_name(s).
      * Range: [String](types/String.md)
      * in subsets: (restricted)

@@ -1,5 +1,5 @@
 
-# Slot: biological replicates
+# Slot: biological_replicates
 
 
 A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.

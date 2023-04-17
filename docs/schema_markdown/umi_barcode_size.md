@@ -1,5 +1,5 @@
 
-# Slot: umi barcode size
+# Slot: umi_barcode_size
 
 
 The size of the UMI identifying barcode (Eg. '10').
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞umi barcode size](sequencing_protocol_umi_barcode_size.md)
+ *  [SequencingProtocol➞umi_barcode_size](SequencingProtocol_umi_barcode_size.md)
 
 ## Used by
 

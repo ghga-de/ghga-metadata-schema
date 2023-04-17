@@ -1,5 +1,5 @@
 
-# Slot: checksum type
+# Slot: checksum_type
 
 
 The type of algorithm used to generate the checksum of a file.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [file➞checksum type](file_checksum_type.md)
+ *  [File➞checksum_type](File_checksum_type.md)
 
 ## Used by
 

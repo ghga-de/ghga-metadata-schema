@@ -1,5 +1,5 @@
 
-# Slot: technical replicates
+# Slot: technical_replicates
 
 
 A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an sequencing experiment.

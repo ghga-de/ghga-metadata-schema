@@ -81,7 +81,7 @@
   many of the entities
 - Moved 'accession' slot to an 'accession mixin' that can be applied to only
   those entities that are likely to be assigned an accession
-- Removed 'accession' slot from 'named thing' entity to avoid it being inherited
+- Removed 'accession' slot from 'NamedThing' entity to avoid it being inherited
   by all of its descendant
 - Created an 'ontology class mixin' to entities that are a proxy for ontology
   terms/concepts like anatomical entity, disease, phenotypic feature

@@ -1,5 +1,5 @@
 
-# Slot: cell barcode read
+# Slot: cell_barcode_read
 
 
 The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing protocol➞cell barcode read](sequencing_protocol_cell_barcode_read.md)
+ *  [SequencingProtocol➞cell_barcode_read](SequencingProtocol_cell_barcode_read.md)
 
 ## Used by
 

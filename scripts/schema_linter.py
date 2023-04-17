@@ -26,12 +26,12 @@ def run_linter(schema_yaml: Path):
             str(schema_yaml),
         ],
         stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
         encoding="utf-8",
     ) as process:
-        _, stderr = process.communicate()
+        stdout, _ = process.communicate()
         if process.returncode != 0:
-            raise SchemaLinterError(f"Checks failed on the linkml schema. {stderr}")
+            raise SchemaLinterError(f"Checks failed on the linkml schema. {stdout}")
 
 
 if __name__ == "__main__":

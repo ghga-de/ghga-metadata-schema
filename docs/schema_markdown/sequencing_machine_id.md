@@ -1,5 +1,5 @@
 
-# Slot: sequencing machine id
+# Slot: sequencing_machine_id
 
 
 The identifier of a sequencing machine.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [sequencing process➞sequencing machine id](sequencing_process_sequencing_machine_id.md)
+ *  [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md)
 
 ## Used by
 

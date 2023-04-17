@@ -1,5 +1,5 @@
 
-# Class: disease or phenotypic feature
+# Class: DiseaseOrPhenotypicFeature
 
 
 Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
@@ -11,7 +11,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeatur
 
 ## Parents
 
- *  is_a: [BiologicalQuality](BiologicalQuality.md) - A biological quality is a quality held by a biological entity.
+ *  is_a: [BiologicalQuality](BiologicalQuality.md) - A BiologicalQuality is a quality held by a biological entity.
 
 ## Uses Mixin
 
@@ -28,47 +28,47 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeatur
 ## Attributes
 
 
-### Inherited from biological quality:
+### Inherited from BiologicalQuality:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
-### Mixed in from ontology class mixin:
+### Mixed in from OntologyClassMixin:
 
- * [ontology class mixin➞concept identifier](ontology_class_mixin_concept_identifier.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞concept_identifier](OntologyClassMixin_concept_identifier.md)  <sub>0..1</sub>
      * Description: The Compact URI (CURIE) that uniquely identifies this ontology class.
      * Range: [String](types/String.md)
 
-### Mixed in from ontology class mixin:
+### Mixed in from OntologyClassMixin:
 
- * [ontology class mixin➞concept name](ontology_class_mixin_concept_name.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞concept_name](OntologyClassMixin_concept_name.md)  <sub>0..1</sub>
      * Description: The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.
      * Range: [String](types/String.md)
 
-### Mixed in from ontology class mixin:
+### Mixed in from OntologyClassMixin:
 
- * [ontology class mixin➞description](ontology_class_mixin_description.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞description](OntologyClassMixin_description.md)  <sub>0..1</sub>
      * Description: The description or definition of an ontology class.
      * Range: [String](types/String.md)
 
-### Mixed in from ontology class mixin:
+### Mixed in from OntologyClassMixin:
 
- * [ontology class mixin➞ontology name](ontology_class_mixin_ontology_name.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞ontology_name](OntologyClassMixin_ontology_name.md)  <sub>0..1</sub>
      * Description: The name or label (rdfs:label) of an ontology class.
      * Range: [String](types/String.md)
 
-### Mixed in from ontology class mixin:
+### Mixed in from OntologyClassMixin:
 
- * [ontology class mixin➞ontology version](ontology_class_mixin_ontology_version.md)  <sub>0..1</sub>
+ * [OntologyClassMixin➞ontology_version](OntologyClassMixin_ontology_version.md)  <sub>0..1</sub>
      * Description: The version of the ontology from which this ontology class was chosen.
      * Range: [String](types/String.md)
 

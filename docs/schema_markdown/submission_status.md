@@ -1,5 +1,5 @@
 
-# Slot: submission status
+# Slot: submission_status
 
 
 The status of a submission.
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [submission➞submission status](submission_submission_status.md)
+ *  [Submission➞submission_status](Submission_submission_status.md)
 
 ## Used by
 

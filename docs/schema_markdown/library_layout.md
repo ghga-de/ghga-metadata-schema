@@ -1,5 +1,5 @@
 
-# Slot: library layout
+# Slot: library_layout
 
 
 Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [library preparation protocol➞library layout](library_preparation_protocol_library_layout.md)
+ *  [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
 
 ## Used by
 

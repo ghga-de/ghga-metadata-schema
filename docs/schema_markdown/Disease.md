@@ -1,5 +1,5 @@
 
-# Class: disease
+# Class: Disease
 
 
 A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
@@ -7,7 +7,7 @@ A disease is a disposition to undergo pathological processes that exists in an o
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Disease](https://w3id.org/GHGA-Submission-Metadata-Schema/Disease)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Individual]-%20has%20disease(i)%200..1>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]++-%20has%20disease%201..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Individual]-%20has%20disease(i)%200..1>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]++-%20has%20disease%201..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Individual]++-%20diseases%201..*>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]-%20diseases(i)%200..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual],[DiseaseOrPhenotypicFeature],[Individual]++-%20diseases%201..*>[Disease&#124;concept_identifier(i):string%20%3F;concept_name(i):string%20%3F;description(i):string%20%3F;ontology_name(i):string%20%3F;ontology_version(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[Individual]-%20diseases(i)%200..*>[Disease],[DiseaseOrPhenotypicFeature]^-[Disease])
 
 ## Parents
 
@@ -15,23 +15,23 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Disease](https://w3id.org
 
 ## Referenced by Class
 
- *  **None** *[has disease](has_disease.md)*  <sub>0..1</sub>  **[Disease](Disease.md)**
- *  **[Individual](Individual.md)** *[individual➞has disease](individual_has_disease.md)*  <sub>1..\*</sub>  **[Disease](Disease.md)**
+ *  **[Individual](Individual.md)** *[Individual➞diseases](Individual_diseases.md)*  <sub>1..\*</sub>  **[Disease](Disease.md)**
+ *  **None** *[diseases](diseases.md)*  <sub>0..\*</sub>  **[Disease](Disease.md)**
 
 ## Attributes
 
 
-### Inherited from disease or phenotypic feature:
+### Inherited from DiseaseOrPhenotypicFeature:
 
- * [named thing➞id](named_thing_id.md)  <sub>1..1</sub>
+ * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
      * Description: The internal unique identifier for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞alias](named_thing_alias.md)  <sub>1..1</sub>
+ * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
      * Description: The alias (alternate identifier) for an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [named thing➞xref](named_thing_xref.md)  <sub>0..\*</sub>
+ * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
      * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
