@@ -93,7 +93,7 @@ Submission ||--}| Dataset : "datasets"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| Member : "members"
-Submission ||--|o Publication : "publications"
+Submission ||--}o Publication : "publications"
 Publication ||--|| Study : "study"
 Study ||--|o Project : "project"
 Study ||--}| Condition : "conditions"
@@ -121,6 +121,7 @@ SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_pr
 SequencingExperiment ||--}o Attribute : "attributes"
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
+Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -152,6 +153,7 @@ Sample {
 
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
+Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -240,7 +242,6 @@ Individual {
     AgeRangeEnum age  
     VitalStatusEnum vital_status  
     string geographical_region  
-    stringList children  
     string accession  
     string ega_accession  
     string given_name  
@@ -277,6 +278,7 @@ Sample {
 
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
+Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
