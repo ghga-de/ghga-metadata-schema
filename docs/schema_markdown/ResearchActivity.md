@@ -7,15 +7,11 @@ A PlannedProcess executed in the performance of scientific research wherein syst
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity](https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchActivity&#124;title:string;description:string;id(i):string;alias(i):string;xref(i):string%20*]^-[Project],[PlannedProcess]^-[ResearchActivity],[Project],[PlannedProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchActivity&#124;title:string;description:string;id(i):string;alias(i):string;xref(i):string%20*]^-[Project],[PlannedProcess]^-[ResearchActivity],[Project],[PlannedProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]^-[ResearchActivity&#124;title:string;description:string;id(i):string;alias(i):string;xref(i):string%20*],[PlannedProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]^-[ResearchActivity&#124;title:string;description:string;id(i):string;alias(i):string;xref(i):string%20*],[PlannedProcess])
 
 ## Parents
 
  *  is_a: [PlannedProcess](PlannedProcess.md) - A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.
-
-## Children
-
- * [Project](Project.md) - A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.
 
 ## Referenced by Class
 

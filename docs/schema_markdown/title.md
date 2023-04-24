@@ -17,7 +17,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Children
 
  *  [Dataset➞title](Dataset_title.md)
- *  [Project➞title](Project_title.md)
  *  [Publication➞title](Publication_title.md)
  *  [ResearchActivity➞title](ResearchActivity_title.md)
  *  [SequencingExperiment➞title](SequencingExperiment_title.md)
