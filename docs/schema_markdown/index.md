@@ -48,7 +48,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
              * [SequencingProcess](SequencingProcess.md) - A sequencing process linking a sample to sequencing output.
              * [Study](Study.md) - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
          * [ResearchActivity](ResearchActivity.md) - A PlannedProcess executed in the performance of scientific research wherein systematic Investigations are performed to establish facts and reach new conclusions about phenomena in the world.
-             * [Project](Project.md) - A high level organization for a collection of studies based on a research proposal that aims to achieve certain goals.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
 
 ### Mixins
@@ -87,7 +86,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
-     * [Project➞attributes](Project_attributes.md) - Custom attributes for the Project  (eg: Cancer - Colon_cancer,_prostrate_cancer,_blood_cancer_etc)
      * [Protocol➞attributes](Protocol_attributes.md) - One or more attributes that further characterizes this protocol.
      * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md) - One or more attributes that further characterizes this Sequencing Protocol.
      * [Study➞attributes](Study_attributes.md) - Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
@@ -147,7 +145,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Dataset➞description](Dataset_description.md)
      * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md) - Description about how a sequencing library was prepared (eg: Library construction method).
      * [OntologyClassMixin➞description](OntologyClassMixin_description.md) - The description or definition of an ontology class.
-     * [Project➞description](Project_description.md) - Short textual description of the project.
      * [Protocol➞description](Protocol_description.md) - Detailed description of the protocol.
      * [ResearchActivity➞description](ResearchActivity_description.md)
      * [Sample➞description](Sample_description.md) - Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
@@ -266,10 +263,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
  * [primer](primer.md) - The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
      * [LibraryPreparationProtocol➞primer](LibraryPreparationProtocol_primer.md)
- * [project](project.md) - The project associated with an entity.
-     * [Study➞project](Study_project.md) - The project associated with this Study.
- * [projects](projects.md) - The project associated with an entity.
-     * [Submission➞projects](Submission_projects.md) - Information about a Project entity associated with this submission.
  * [protocol](protocol.md) - The protocol associated with an entity.
  * [publications](publications.md) - The Publication associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
@@ -330,7 +323,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Member➞telephone](Member_telephone.md) - The telephone number of the Member.
  * [title](title.md) - The title that describes an entity.
      * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
-     * [Project➞title](Project_title.md) - Comprehensive title for the project.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [ResearchActivity➞title](ResearchActivity_title.md)
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).

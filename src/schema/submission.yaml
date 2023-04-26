@@ -17,26 +17,6 @@ prefixes:
 default_range: string
 
 classes:
-  Project:
-    is_a: ResearchActivity
-    mixins:
-      - AccessionMixin
-      - AttributeMixin
-    description: >-
-      A high level organization for a collection of studies based on a
-      research proposal that aims to achieve certain goals.
-    slot_usage:
-      title:
-        description: >-
-          Comprehensive title for the project.
-      description:
-        description: >-
-          Short textual description of the project.
-      attributes:
-        description: >-
-          Custom attributes for the Project 
-          (eg: Cancer - Colon_cancer,_prostrate_cancer,_blood_cancer_etc)
-
   Study:
     is_a: Investigation
     mixins:
@@ -50,7 +30,6 @@ classes:
     slots:
       - type
       - affiliations
-      - project
       - conditions
     slot_usage:
       title:
@@ -68,11 +47,6 @@ classes:
         required: true
       affiliations:
         required: true
-      project:
-        description: The project associated with this Study.
-        required: false
-        inlined: true
-        inlined_as_list: false
       attributes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
@@ -851,7 +825,6 @@ classes:
       - id
       - affiliations
       - studies
-      - projects
       - samples
       - biospecimens
       - individuals
@@ -880,12 +853,6 @@ classes:
         description: >-
           Information about a Study entities associated with this submission.
         required: true
-        inlined: true
-        inlined_as_list: false
-      projects:
-        description: >-
-          Information about a Project entity associated with this submission.
-        required: false
         inlined: true
         inlined_as_list: false
       samples:
@@ -980,15 +947,6 @@ slots:
   studies:
     description: The study associated with an entity.
     range: Study
-    multivalued: True
-
-  project:
-    description: The project associated with an entity.
-    range: Project
-
-  projects:
-    description: The project associated with an entity.
-    range: Project
     multivalued: True
 
   publications:
