@@ -378,8 +378,7 @@ classes:
   Sample:
     is_a: MaterialEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
@@ -431,8 +430,7 @@ classes:
   Individual:
     is_a: Person
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     aliases: ["subject", "patient"]
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -510,8 +508,7 @@ classes:
   File:
     is_a: InformationContentEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     aliases: ["file object"]
     description: >-
@@ -540,8 +537,7 @@ classes:
   Analysis:
     is_a: DataTransformation
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     aliases: ["data analysis"]
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -594,8 +590,7 @@ classes:
   Dataset:
     is_a: InformationContentEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
@@ -655,8 +650,7 @@ classes:
     is_a: InformationContentEntity
     mixins:
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -715,8 +709,7 @@ classes:
     is_a: Committee
     mixins:
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
