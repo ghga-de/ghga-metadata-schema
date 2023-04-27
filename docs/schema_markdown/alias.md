@@ -18,7 +18,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  *  [AliasMixin➞alias](AliasMixin_alias.md)
  *  [Analysis➞alias](Analysis_alias.md)
- *  [Protocol➞alias](Protocol_alias.md)
  *  [Study➞alias](Study_alias.md)
 
 ## Used by

@@ -45,7 +45,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Person➞additional_name](Person_additional_name.md)
  * [Person➞family_name](Person_family_name.md)
  * [Person➞given_name](Person_given_name.md)
- * [Protocol➞alias](Protocol_alias.md)
  * [Protocol➞attributes](Protocol_attributes.md) - One or more attributes that further characterizes this protocol.
  * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
  * [SequencingProcess➞files](SequencingProcess_files.md)

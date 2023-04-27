@@ -77,7 +77,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AliasMixin➞alias](AliasMixin_alias.md)
          * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
      * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
-     * [Protocol➞alias](Protocol_alias.md)
      * [Study➞alias](Study_alias.md)
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.

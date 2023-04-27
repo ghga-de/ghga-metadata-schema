@@ -7,7 +7,7 @@ A plan specification which has sufficient level of detail and quantitative infor
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProtocol],[Attribute]<attributes%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProtocol],[Attribute]<attributes%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;alias:string;xref:string%20%2B],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProtocol],[Attribute]<attributes%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;xref:string%20%2B],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProtocol],[Attribute]<attributes%201..*-++[Protocol&#124;name:string;type:string;description:string;url:string;xref:string%20%2B],[Protocol]uses%20-.->[AttributeMixin],[Protocol]^-[SequencingProtocol],[Protocol]^-[LibraryPreparationProtocol],[InformationContentEntity]^-[Protocol],[LibraryPreparationProtocol],[InformationContentEntity],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -43,10 +43,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol](https://w3id.or
  * [Protocol➞url](Protocol_url.md)  <sub>1..1</sub>
      * Description: URL for the resource that describes this protocol.
      * Range: [String](types/String.md)
- * [Protocol➞alias](Protocol_alias.md)  <sub>1..1</sub>
-     * Description: The alias for an entity at the time of submission.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
  * [Protocol➞xref](Protocol_xref.md)  <sub>1..\*</sub>
      * Description: One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * Range: [String](types/String.md)

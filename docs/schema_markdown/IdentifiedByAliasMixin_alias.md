@@ -28,9 +28,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
  * [File](File.md)
  * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [Individual](Individual.md)
+ * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Sample](Sample.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
+ * [SequencingProtocol](SequencingProtocol.md)
 
 ## Other properties
 
