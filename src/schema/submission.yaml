@@ -1161,7 +1161,6 @@ slots:
       The members associated with a committee.
     range: Member
     multivalued: True
-    inlined: false
     in_subset:
       - restricted
 
