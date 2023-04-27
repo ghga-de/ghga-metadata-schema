@@ -28,5 +28,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/EgaAccessionMixin_ega_acc
  * [File](File.md)
  * [Individual](Individual.md)
  * [Sample](Sample.md)
- * [SequencingExperiment](SequencingExperiment.md)
- * [Study](Study.md)

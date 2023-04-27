@@ -53,9 +53,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 ### Mixins
 
  * [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
+ * [AliasMixin](AliasMixin.md) - Mixin for entities that can be assigned an alias at the time of metadata submission.
+     * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
  * [DeprecatedMixin](DeprecatedMixin.md) - Mixin for entities that can be deprecated.
  * [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [OntologyClassMixin](OntologyClassMixin.md) - Mixin for entities that represent an class/term/concept from an ontology.
 
 ### Slots
@@ -73,11 +76,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [age](age.md) - Age of an individual.
      * [Individual➞age](Individual_age.md)
  * [alias](alias.md) - The alias for an entity.
+     * [AliasMixin➞alias](AliasMixin_alias.md)
+         * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
      * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
-     * [LibraryPreparationProtocol➞alias](LibraryPreparationProtocol_alias.md)
      * [NamedThing➞alias](NamedThing_alias.md) - The alias (alternate identifier) for an entity.
          * [Protocol➞alias](Protocol_alias.md) - The alias for an entity.
-     * [SequencingProtocol➞alias](SequencingProtocol_alias.md)
+     * [Study➞alias](Study_alias.md)
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
  * [anatomical_entities](anatomical_entities.md) - Anatomical sites associated with an entity.
@@ -186,7 +190,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [id](id.md) - An identifier that uniquely represents an entity.
      * [NamedThing➞id](NamedThing_id.md) - The internal unique identifier for an entity.
      * [OntologyClassMixin➞id](OntologyClassMixin_id.md)
-     * [Submission➞id](Submission_id.md) - A internal unique identifier for the Submission.
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
      * [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
  * [individual](individual.md) - The subject/individual associated with an entity.

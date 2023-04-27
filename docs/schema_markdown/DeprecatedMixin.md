@@ -7,7 +7,7 @@ Mixin for entities that can be deprecated.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DeprecatedMixin](https://w3id.org/GHGA-Submission-Metadata-Schema/DeprecatedMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced_by%201..1-%20[DeprecatedMixin&#124;deprecation_date:string])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced_by%201..1-%20[DeprecatedMixin&#124;deprecation_date:string])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced_by%201..1-++[DeprecatedMixin&#124;deprecation_date:string])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[NamedThing]<replaced_by%201..1-++[DeprecatedMixin&#124;deprecation_date:string])
 
 ## Referenced by Class
 

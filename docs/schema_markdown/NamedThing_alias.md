@@ -51,7 +51,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/NamedThing_alias](https:/
  * [Sample](Sample.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
- * [Study](Study.md)
 
 ## Other properties
 

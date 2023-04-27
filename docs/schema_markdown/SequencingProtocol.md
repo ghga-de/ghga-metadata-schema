@@ -7,11 +7,15 @@ Information about the sequencing of a sample.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;alias:string;type:string%20%3F;description:string;name(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;type:string%20%3F;description:string;name(i):string;url(i):string;alias(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]++-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]++-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;type:string%20%3F;description:string;name(i):string;url(i):string;alias(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]++-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]++-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[IdentifiedByAliasMixin],[Attribute])
 
 ## Parents
 
  *  is_a: [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
+
+## Uses Mixin
+
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -73,10 +77,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
  * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)  <sub>0..1</sub>
      * Description: The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
      * Range: [String](types/String.md)
- * [SequencingProtocol➞alias](SequencingProtocol_alias.md)  <sub>1..1</sub>
-     * Description: The alias for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
  * [SequencingProtocol➞type](SequencingProtocol_type.md)  <sub>0..1</sub>
      * Description: Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
      * Range: [String](types/String.md)
@@ -100,6 +100,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
  * [Protocol➞url](Protocol_url.md)  <sub>1..1</sub>
      * Description: URL for the resource that describes this protocol.
      * Range: [String](types/String.md)
+ * [Protocol➞alias](Protocol_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity.
+     * Range: [String](types/String.md)
+     * in subsets: (restricted)
  * [Protocol➞xref](Protocol_xref.md)  <sub>1..\*</sub>
      * Description: One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * Range: [String](types/String.md)

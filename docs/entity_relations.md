@@ -250,7 +250,6 @@ Biospecimen {
     string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    string accession  
     string id  
     string alias  
     stringList xref  
@@ -295,7 +294,6 @@ SequencingProcess {
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
-    string accession  
     string title  
     string id  
     string alias  
@@ -327,8 +325,6 @@ Sample {
 }
 SequencingExperiment {
     string type  
-    string accession  
-    string ega_accession  
     string title  
     string description  
     string id  
@@ -376,7 +372,6 @@ Condition {
     DiseaseOrHealthyEnum disease_or_healthy  
     TreatmentOrControlEnum treatment_or_control  
     MutantOrWildtypeEnum mutant_or_wildtype  
-    string accession  
     string title  
     string id  
     string alias  
@@ -385,8 +380,6 @@ Condition {
 Study {
     StudyTypeEnum type  
     stringList affiliations  
-    string accession  
-    string ega_accession  
     string title  
     string description  
     string id  

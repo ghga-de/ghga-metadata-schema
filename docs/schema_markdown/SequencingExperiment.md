@@ -7,7 +7,7 @@ An sequencing experiment is an investigation that consists of a coordinated set 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[AttributeMixin],[SequencingExperiment]uses%20-.->[AccessionMixin],[SequencingExperiment]uses%20-.->[EgaAccessionMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[EgaAccessionMixin],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[AttributeMixin],[SequencingExperiment]uses%20-.->[AccessionMixin],[SequencingExperiment]uses%20-.->[EgaAccessionMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[EgaAccessionMixin],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-++[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;id(i):string;alias(i):string;xref(i):string%20*],[SequencingProtocol]<sequencing_protocol%201..1-++[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-++[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;id(i):string;alias(i):string;xref(i):string%20*],[SequencingProtocol]<sequencing_protocol%201..1-++[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -15,9 +15,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](htt
 
 ## Uses Mixin
 
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
- *  mixin: [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
 
 ## Referenced by Class
 
@@ -67,18 +66,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](htt
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)
-
-### Mixed in from AccessionMixin:
-
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
-     * Range: [String](types/String.md)
-
-### Mixed in from EgaAccessionMixin:
-
- * [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)  <sub>1..1</sub>
-     * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
-     * Range: [String](types/String.md)
 
 ## Other properties
 

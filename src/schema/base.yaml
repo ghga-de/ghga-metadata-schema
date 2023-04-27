@@ -297,6 +297,24 @@ classes:
           a percentage.
         required: false
 
+  AliasMixin:
+    mixin: true
+    abstract: true
+    description: Mixin for entities that can be assigned an alias at the time of metadata submission.
+    slots:
+      - alias
+    slot_usage:
+      alias:
+        required: true
+
+  IdentifiedByAliasMixin:
+    mixin: true
+    abstract: true
+    is_a: AliasMixin
+    slot_usage:
+      alias:
+        identifier: true
+
   AccessionMixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
@@ -336,7 +354,6 @@ classes:
 slots:
   id:
     description: An identifier that uniquely represents an entity.
-    identifier: true
     in_subset:
       - restricted
 

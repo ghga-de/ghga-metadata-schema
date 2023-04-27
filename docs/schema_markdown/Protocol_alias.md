@@ -20,7 +20,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol_alias](https://w
 
 ## Used by
 
+ * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Protocol](Protocol.md)
+ * [SequencingProtocol](SequencingProtocol.md)
 
 ## Other properties
 

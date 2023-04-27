@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/id](https://w3id.org/GHGA
 
 ## Domain and Range
 
-None &#8594;  <sub>1..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -18,7 +18,6 @@ None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
  *  [NamedThing➞id](NamedThing_id.md)
  *  [OntologyClassMixin➞id](OntologyClassMixin_id.md)
- *  [Submission➞id](Submission_id.md)
 
 ## Used by
 

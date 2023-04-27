@@ -7,11 +7,15 @@ Information about the library_preparation of an sequencing experiment.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[Protocol]^-[LibraryPreparationProtocol],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;alias:string;description:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[Protocol]^-[LibraryPreparationProtocol],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;description:string;name(i):string;type(i):string;url(i):string;alias(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]++-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]++-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;description:string;name(i):string;type(i):string;url(i):string;alias(i):string;xref(i):string%20%2B;id(i):string],[SequencingExperiment]++-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]++-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])
 
 ## Parents
 
  *  is_a: [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
+
+## Uses Mixin
+
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -58,10 +62,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
  * [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)  <sub>0..1</sub>
      * Description: The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * Range: [String](types/String.md)
- * [LibraryPreparationProtocol➞alias](LibraryPreparationProtocol_alias.md)  <sub>1..1</sub>
-     * Description: The alias for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
  * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)  <sub>1..1</sub>
      * Description: Description about how a sequencing library was prepared (eg: Library construction method).
      * Range: [String](types/String.md)
@@ -85,6 +85,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
  * [Protocol➞url](Protocol_url.md)  <sub>1..1</sub>
      * Description: URL for the resource that describes this protocol.
      * Range: [String](types/String.md)
+ * [Protocol➞alias](Protocol_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity.
+     * Range: [String](types/String.md)
+     * in subsets: (restricted)
  * [Protocol➞xref](Protocol_xref.md)  <sub>1..\*</sub>
      * Description: One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * Range: [String](types/String.md)

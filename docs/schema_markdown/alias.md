@@ -16,10 +16,10 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [AliasMixin➞alias](AliasMixin_alias.md)
  *  [Analysis➞alias](Analysis_alias.md)
- *  [LibraryPreparationProtocol➞alias](LibraryPreparationProtocol_alias.md)
  *  [NamedThing➞alias](NamedThing_alias.md)
- *  [SequencingProtocol➞alias](SequencingProtocol_alias.md)
+ *  [Study➞alias](Study_alias.md)
 
 ## Used by
 
