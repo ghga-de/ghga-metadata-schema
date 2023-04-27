@@ -309,18 +309,6 @@ classes:
     slots:
       - attributes
 
-  DeprecatedMixin:
-    mixin: true
-    description: Mixin for entities that can be deprecated.
-    slots:
-      - replaced_by
-      - deprecation_date
-    slot_usage:
-      replaced_by:
-        required: true
-      deprecation_date:
-        required: true
-
 slots:
   id:
     description: An identifier that uniquely represents an entity.
