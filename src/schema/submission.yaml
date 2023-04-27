@@ -395,6 +395,7 @@ classes:
       - storage
       - biospecimen
       - condition
+      - xref
     slot_usage:
       name:
         description: >-
@@ -778,6 +779,7 @@ classes:
       - journal
       - doi
       - study
+      - xref
     slot_usage:
       title:
         description: >-
@@ -1490,6 +1492,11 @@ slots:
   doi:
     description: >-
       DOI identifier of a publication.
+
+  xref:
+    description: >-
+      Holds one or more database cross references for an entity.
+    required: false
 
 enums:
   BiologicalSexEnum:
