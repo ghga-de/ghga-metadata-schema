@@ -47,7 +47,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/NamedThing_xref](https://
  * [PhenotypicFeature](PhenotypicFeature.md)
  * [PlannedProcess](PlannedProcess.md)
  * [Population](Population.md)
- * [Project](Project.md)
  * [ResearchActivity](ResearchActivity.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)

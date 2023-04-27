@@ -17,7 +17,6 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 ## Children
 
  *  [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)
- *  [Project➞attributes](Project_attributes.md)
  *  [Protocol➞attributes](Protocol_attributes.md)
  *  [SequencingProtocol➞attributes](SequencingProtocol_attributes.md)
  *  [Study➞attributes](Study_attributes.md)

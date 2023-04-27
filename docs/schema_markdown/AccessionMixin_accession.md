@@ -29,7 +29,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin_accession]
  * [Dataset](Dataset.md)
  * [File](File.md)
  * [Individual](Individual.md)
- * [Project](Project.md)
  * [Sample](Sample.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)

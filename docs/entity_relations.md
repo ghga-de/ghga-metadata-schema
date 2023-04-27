@@ -21,9 +21,6 @@ Attribute {
 Condition {
 
 }
-Project {
-
-}
 Member {
 
 }
@@ -80,7 +77,6 @@ Sample {
 }
 
 Submission ||--}| Study : "studies"
-Submission ||--}o Project : "projects"
 Submission ||--}o Sample : "samples"
 Submission ||--}o Biospecimen : "biospecimens"
 Submission ||--}o Individual : "individuals"
@@ -95,11 +91,9 @@ Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| Member : "members"
 Submission ||--}o Publication : "publications"
 Publication ||--|| Study : "study"
-Study ||--|o Project : "project"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 Condition ||--}o Attribute : "attributes"
-Project ||--}o Attribute : "attributes"
 DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
@@ -222,7 +216,6 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Condition ||--}o Attribute : "attributes"
-Study ||--|o Project : "project"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 
@@ -407,7 +400,6 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Condition ||--}o Attribute : "attributes"
-Study ||--|o Project : "project"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 
