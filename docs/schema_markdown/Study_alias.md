@@ -2,7 +2,7 @@
 # Slot: alias
 
 
-The alias for an entity.
+The alias for an entity at the time of submission.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study_alias](https://w3id.org/GHGA-Submission-Metadata-Schema/Study_alias)
 

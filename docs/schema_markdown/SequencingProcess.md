@@ -7,7 +7,7 @@ A sequencing process linking a sample to sequencing output.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<sample%201..1-++[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<sequencing_experiment%201..1-++[SequencingProcess],[File]<files%201..*-++[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[IdentifiedByAliasMixin],[File],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<sample%201..1-++[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;title(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[SequencingExperiment]<sequencing_experiment%201..1-++[SequencingProcess],[File]<files%201..*-++[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[IdentifiedByAliasMixin],[File],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<sample%201..1-++[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;alias:string;title(i):string%20%3F],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[File]<files%201..*-++[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[IdentifiedByAliasMixin],[File],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]<sample%201..1-++[SequencingProcess&#124;name:string;description:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;alias:string;title(i):string%20%3F],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[File]<files%201..*-++[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingProcess],[SequencingExperiment],[Sample],[Investigation],[IdentifiedByAliasMixin],[File],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -56,20 +56,16 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess](https:
 
 ### Inherited from Investigation:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [title](title.md)  <sub>0..1</sub>
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
+
+### Mixed in from IdentifiedByAliasMixin:
+
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
+     * Range: [String](types/String.md)
+     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 

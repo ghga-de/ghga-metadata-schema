@@ -7,7 +7,7 @@ Studies are experimental investigations of a particular phenomenon. It involves 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/GHGA-Submission-Metadata-Schema/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string;id(i):string;xref(i):string%20*],[Condition]<conditions%201..*-++[Study],[Analysis]++-%20study%201..1>[Study],[Publication]++-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string;id(i):string;xref(i):string%20*],[Condition]<conditions%201..*-++[Study],[Analysis]++-%20study%201..1>[Study],[Publication]++-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string],[Condition]<conditions%201..*-%20[Study],[Analysis]++-%20study%201..1>[Study],[Publication]++-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string],[Condition]<conditions%201..*-%20[Study],[Analysis]++-%20study%201..1>[Study],[Publication]++-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])
 
 ## Parents
 
@@ -41,7 +41,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
      * Description: The condition associated with an entity.
      * Range: [Condition](Condition.md)
  * [Study➞alias](Study_alias.md)  <sub>1..1</sub>
-     * Description: The alias for an entity.
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
  * [Study➞title](Study_title.md)  <sub>1..1</sub>
@@ -54,13 +54,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
      * Description: Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)
-
-### Inherited from Investigation:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)

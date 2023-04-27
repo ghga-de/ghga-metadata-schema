@@ -2,7 +2,7 @@
 # Slot: alias
 
 
-The alias for an entity.
+The alias for an entity at the time of submission.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol_alias](https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol_alias)
 
@@ -13,7 +13,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Protocol_alias](https://w
 
 ## Parents
 
- *  is_a: [NamedThing➞alias](NamedThing_alias.md)
+ *  is_a: [alias](alias.md)
 
 ## Children
 

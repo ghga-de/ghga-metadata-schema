@@ -7,7 +7,7 @@ Disease or Phenotypic Feature that the entity is associated with. This entity is
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeature](https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeature)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypicFeature],[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])](https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypicFeature],[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypicFeature],[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])](https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypicFeature],[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])
 
 ## Parents
 
@@ -28,19 +28,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeatur
 ## Attributes
 
 
-### Inherited from BiologicalQuality:
+### Mixed in from OntologyClassMixin:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
+ * [OntologyClassMixin➞id](OntologyClassMixin_id.md)  <sub>1..1</sub>
+     * Description: An identifier that uniquely represents an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
 
 ### Mixed in from OntologyClassMixin:
 

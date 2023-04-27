@@ -239,9 +239,6 @@ Individual {
     string given_name  
     string family_name  
     string additional_name  
-    string id  
-    string alias  
-    stringList xref  
 }
 Biospecimen {
     string name  
@@ -250,9 +247,7 @@ Biospecimen {
     string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    string id  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
@@ -262,9 +257,6 @@ Sample {
     string storage  
     string accession  
     string ega_accession  
-    string id  
-    string alias  
-    stringList xref  
 }
 
 Individual ||--}o Ancestry : "ancestries"
@@ -295,9 +287,7 @@ SequencingProcess {
     string sequencing_lane_id  
     string sequencing_machine_id  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 File {
     string name  
@@ -307,9 +297,6 @@ File {
     string checksum_type  
     string accession  
     string ega_accession  
-    string id  
-    string alias  
-    stringList xref  
 }
 Sample {
     string name  
@@ -319,17 +306,12 @@ Sample {
     string storage  
     string accession  
     string ega_accession  
-    string id  
-    string alias  
-    stringList xref  
 }
 SequencingExperiment {
     string type  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 SequencingProcess ||--}| File : "files"
@@ -362,9 +344,6 @@ Sample {
     string storage  
     string accession  
     string ega_accession  
-    string id  
-    string alias  
-    stringList xref  
 }
 Condition {
     string name  
@@ -373,18 +352,14 @@ Condition {
     TreatmentOrControlEnum treatment_or_control  
     MutantOrWildtypeEnum mutant_or_wildtype  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 Study {
     StudyTypeEnum type  
     stringList affiliations  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 Sample ||--|o Biospecimen : "biospecimen"

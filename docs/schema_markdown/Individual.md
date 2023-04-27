@@ -7,7 +7,7 @@ An Individual is a Person who is participating in a Study.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[PhenotypicFeature],[Person],[File]<files%200..*-++[Individual&#124;sex:BiologicalSexEnum;karyotype:string%20%3F;age:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;children:string%20*;accession:string;ega_accession:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[PhenotypicFeature]<phenotypic_features%200..*-++[Individual],[Disease]<diseases%201..*-++[Individual],[Individual]<parents%200..*-++[Individual],[Ancestry]<ancestries%200..*-++[Individual],[Biospecimen]++-%20individual%201..1>[Individual],[Submission]++-%20individuals%200..*>[Individual],[Biospecimen]++-%20individual(i)%200..1>[Individual],[Submission]++-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[AccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[Person]^-[Individual],[File],[EgaAccessionMixin],[Disease],[Biospecimen],[Ancestry],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[PhenotypicFeature],[Person],[File]<files%200..*-++[Individual&#124;sex:BiologicalSexEnum;karyotype:string%20%3F;age:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;children:string%20*;accession:string;ega_accession:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[PhenotypicFeature]<phenotypic_features%200..*-++[Individual],[Disease]<diseases%201..*-++[Individual],[Individual]<parents%200..*-++[Individual],[Ancestry]<ancestries%200..*-++[Individual],[Biospecimen]++-%20individual%201..1>[Individual],[Submission]++-%20individuals%200..*>[Individual],[Biospecimen]++-%20individual(i)%200..1>[Individual],[Submission]++-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[AccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[Person]^-[Individual],[File],[EgaAccessionMixin],[Disease],[Biospecimen],[Ancestry],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[PhenotypicFeature],[Person],[File]<files%200..*-++[Individual&#124;sex:BiologicalSexEnum;karyotype:string%20%3F;age:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;children:string%20*;accession:string;ega_accession:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F],[PhenotypicFeature]<phenotypic_features%200..*-++[Individual],[Disease]<diseases%201..*-++[Individual],[Individual]<parents%200..*-++[Individual],[Ancestry]<ancestries%200..*-++[Individual],[Biospecimen]++-%20individual%201..1>[Individual],[Submission]++-%20individuals%200..*>[Individual],[Biospecimen]++-%20individual(i)%200..1>[Individual],[Submission]++-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[AccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[Person]^-[Individual],[File],[EgaAccessionMixin],[Disease],[Biospecimen],[Ancestry],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[PhenotypicFeature],[Person],[File]<files%200..*-++[Individual&#124;sex:BiologicalSexEnum;karyotype:string%20%3F;age:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;children:string%20*;accession:string;ega_accession:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F],[PhenotypicFeature]<phenotypic_features%200..*-++[Individual],[Disease]<diseases%201..*-++[Individual],[Individual]<parents%200..*-++[Individual],[Ancestry]<ancestries%200..*-++[Individual],[Biospecimen]++-%20individual%201..1>[Individual],[Submission]++-%20individuals%200..*>[Individual],[Biospecimen]++-%20individual(i)%200..1>[Individual],[Submission]++-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[AccessionMixin],[Individual]uses%20-.->[EgaAccessionMixin],[Person]^-[Individual],[File],[EgaAccessionMixin],[Disease],[Biospecimen],[Ancestry],[AccessionMixin])
 
 ## Parents
 
@@ -78,17 +78,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual](https://w3id.
 
 ### Inherited from Person:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [Person➞given_name](Person_given_name.md)  <sub>0..1</sub>
      * Description: First name.
      * Range: [String](types/String.md)

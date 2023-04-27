@@ -41,13 +41,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Individual➞sex](Individual_sex.md)
  * [Individual➞vital_status](Individual_vital_status.md) - Last known Vital Status of an Individual.
  * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
- * [NamedThing➞alias](NamedThing_alias.md) - The alias (alternate identifier) for an entity.
- * [NamedThing➞id](NamedThing_id.md) - The internal unique identifier for an entity.
  * [OntologyClassMixin➞id](OntologyClassMixin_id.md)
  * [Person➞additional_name](Person_additional_name.md)
  * [Person➞family_name](Person_family_name.md)
  * [Person➞given_name](Person_given_name.md)
- * [Protocol➞alias](Protocol_alias.md) - The alias for an entity.
+ * [Protocol➞alias](Protocol_alias.md)
  * [Protocol➞attributes](Protocol_attributes.md) - One or more attributes that further characterizes this protocol.
  * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
  * [SequencingProcess➞files](SequencingProcess_files.md)
@@ -67,7 +65,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md) - Information about one or more Experiment entities associated with this submission.
  * [additional_name](additional_name.md) - additional_name(s).
  * [age](age.md) - Age of an individual.
- * [alias](alias.md) - The alias for an entity.
+ * [alias](alias.md) - The alias for an entity at the time of submission.
  * [analyses](analyses.md) - The analyses associated with an entity.
  * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.

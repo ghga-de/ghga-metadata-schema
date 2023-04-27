@@ -7,7 +7,7 @@ A Data Access Policy specifies under which circumstances, legal or otherwise, a 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-++[DataAccessPolicy],[Dataset]++-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]++-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]++-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-++[DataAccessPolicy],[Dataset]++-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]++-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]++-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;accession:string;ega_accession:string],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-++[DataAccessPolicy],[Dataset]++-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]++-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]++-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;accession:string;ega_accession:string],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-++[DataAccessPolicy],[Dataset]++-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]++-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]++-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])
 
 ## Parents
 
@@ -59,20 +59,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy](https:/
      * in subsets: (restricted)
  * [DataAccessPolicy➞data_request_form](DataAccessPolicy_data_request_form.md)  <sub>0..1</sub>
      * Description: Data Request Form that is associated with this Data Access Policy.
-     * Range: [String](types/String.md)
-
-### Inherited from InformationContentEntity:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ### Mixed in from AttributeMixin:

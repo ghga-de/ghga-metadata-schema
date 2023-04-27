@@ -2,7 +2,7 @@
 # Slot: alias
 
 
-The alias for an entity.
+The alias for an entity at the time of submission.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_alias](https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_alias)
 
@@ -20,7 +20,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
 
 ## Used by
 
+ * [Biospecimen](Biospecimen.md)
+ * [Condition](Condition.md)
  * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
+ * [SequencingExperiment](SequencingExperiment.md)
+ * [SequencingProcess](SequencingProcess.md)
 
 ## Other properties
 

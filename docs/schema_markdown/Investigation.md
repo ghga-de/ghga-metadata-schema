@@ -7,7 +7,7 @@ Investigation is the process of carrying out a plan or procedure so as to discov
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Investigation](https://w3id.org/GHGA-Submission-Metadata-Schema/Investigation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProcess],[SequencingExperiment],[PlannedProcess],[Investigation&#124;title:string%20%3F;description:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*]^-[Study],[Investigation]^-[SequencingProcess],[Investigation]^-[SequencingExperiment],[Investigation]^-[Condition],[PlannedProcess]^-[Investigation],[Condition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProcess],[SequencingExperiment],[PlannedProcess],[Investigation&#124;title:string%20%3F;description:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*]^-[Study],[Investigation]^-[SequencingProcess],[Investigation]^-[SequencingExperiment],[Investigation]^-[Condition],[PlannedProcess]^-[Investigation],[Condition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProcess],[SequencingExperiment],[PlannedProcess],[Investigation&#124;title:string%20%3F;description:string%20%3F]^-[Study],[Investigation]^-[SequencingProcess],[Investigation]^-[SequencingExperiment],[Investigation]^-[Condition],[PlannedProcess]^-[Investigation],[Condition])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProcess],[SequencingExperiment],[PlannedProcess],[Investigation&#124;title:string%20%3F;description:string%20%3F]^-[Study],[Investigation]^-[SequencingProcess],[Investigation]^-[SequencingExperiment],[Investigation]^-[Condition],[PlannedProcess]^-[Investigation],[Condition])
 
 ## Parents
 
@@ -33,20 +33,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Investigation](https://w3
      * Range: [String](types/String.md)
  * [description](description.md)  <sub>0..1</sub>
      * Description: Description of an entity.
-     * Range: [String](types/String.md)
-
-### Inherited from PlannedProcess:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties

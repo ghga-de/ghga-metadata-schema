@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GHGA-Submission-Metadata-Schema/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[Analysis]++-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Analysis]++-%20outputs%201..*>[File],[Dataset]++-%20files%201..*>[File],[Individual]++-%20files%200..*>[File],[SequencingProcess]++-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]++-%20files(i)%200..*>[File],[Individual]++-%20files(i)%200..*>[File],[Dataset]++-%20files(i)%200..*>[File],[Submission]++-%20files(i)%200..*>[File],[Analysis]++-%20inputs(i)%200..*>[File],[Analysis]++-%20outputs(i)%200..*>[File],[File]uses%20-.->[AccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[Analysis]++-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Analysis]++-%20outputs%201..*>[File],[Dataset]++-%20files%201..*>[File],[Individual]++-%20files%200..*>[File],[SequencingProcess]++-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]++-%20files(i)%200..*>[File],[Individual]++-%20files(i)%200..*>[File],[Dataset]++-%20files(i)%200..*>[File],[Submission]++-%20files(i)%200..*>[File],[Analysis]++-%20inputs(i)%200..*>[File],[Analysis]++-%20outputs(i)%200..*>[File],[File]uses%20-.->[AccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[Analysis]++-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;accession:string;ega_accession:string],[Analysis]++-%20outputs%201..*>[File],[Dataset]++-%20files%201..*>[File],[Individual]++-%20files%200..*>[File],[SequencingProcess]++-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]++-%20files(i)%200..*>[File],[Individual]++-%20files(i)%200..*>[File],[Dataset]++-%20files(i)%200..*>[File],[Submission]++-%20files(i)%200..*>[File],[Analysis]++-%20inputs(i)%200..*>[File],[Analysis]++-%20outputs(i)%200..*>[File],[File]uses%20-.->[AccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[Analysis]++-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;accession:string;ega_accession:string],[Analysis]++-%20outputs%201..*>[File],[Dataset]++-%20files%201..*>[File],[Individual]++-%20files%200..*>[File],[SequencingProcess]++-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]++-%20files(i)%200..*>[File],[Individual]++-%20files(i)%200..*>[File],[Dataset]++-%20files(i)%200..*>[File],[Submission]++-%20files(i)%200..*>[File],[Analysis]++-%20inputs(i)%200..*>[File],[Analysis]++-%20outputs(i)%200..*>[File],[File]uses%20-.->[AccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
 
 ## Parents
 
@@ -50,20 +50,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GH
      * Range: [String](types/String.md)
  * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
      * Description: The type of algorithm used to generate the checksum of a file.
-     * Range: [String](types/String.md)
-
-### Inherited from InformationContentEntity:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ### Mixed in from AccessionMixin:

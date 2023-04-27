@@ -7,7 +7,7 @@ An sequencing experiment is an investigation that consists of a coordinated set 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-++[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;id(i):string;alias(i):string;xref(i):string%20*],[SequencingProtocol]<sequencing_protocol%201..1-++[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-++[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;id(i):string;alias(i):string;xref(i):string%20*],[SequencingProtocol]<sequencing_protocol%201..1-++[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]++-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-++[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-++[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-++[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-++[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -46,19 +46,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](htt
      * Description: A detailed description of the Experiment.
      * Range: [String](types/String.md)
 
-### Inherited from Investigation:
+### Mixed in from IdentifiedByAliasMixin:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
 
 ### Mixed in from AttributeMixin:
 

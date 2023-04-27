@@ -7,11 +7,7 @@ A generically dependent continuant that is about some thing.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/InformationContentEntity](https://w3id.org/GHGA-Submission-Metadata-Schema/InformationContentEntity)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication],[Protocol],[NamedThing],[InformationContentEntity&#124;id(i):string;alias(i):string;xref(i):string%20*]^-[Publication],[InformationContentEntity]^-[Protocol],[InformationContentEntity]^-[File],[InformationContentEntity]^-[Dataset],[InformationContentEntity]^-[DataUsePermission],[InformationContentEntity]^-[DataUseModifier],[InformationContentEntity]^-[DataAccessPolicy],[NamedThing]^-[InformationContentEntity],[File],[Dataset],[DataUsePermission],[DataUseModifier],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication],[Protocol],[NamedThing],[InformationContentEntity&#124;id(i):string;alias(i):string;xref(i):string%20*]^-[Publication],[InformationContentEntity]^-[Protocol],[InformationContentEntity]^-[File],[InformationContentEntity]^-[Dataset],[InformationContentEntity]^-[DataUsePermission],[InformationContentEntity]^-[DataUseModifier],[InformationContentEntity]^-[DataAccessPolicy],[NamedThing]^-[InformationContentEntity],[File],[Dataset],[DataUsePermission],[DataUseModifier],[DataAccessPolicy])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A database entity, concept or class. This is a generic class that is the root of all the other classes.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication],[Protocol],[InformationContentEntity]^-[Publication],[InformationContentEntity]^-[Protocol],[InformationContentEntity]^-[File],[InformationContentEntity]^-[Dataset],[InformationContentEntity]^-[DataUsePermission],[InformationContentEntity]^-[DataUseModifier],[InformationContentEntity]^-[DataAccessPolicy],[File],[Dataset],[DataUsePermission],[DataUseModifier],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication],[Protocol],[InformationContentEntity]^-[Publication],[InformationContentEntity]^-[Protocol],[InformationContentEntity]^-[File],[InformationContentEntity]^-[Dataset],[InformationContentEntity]^-[DataUsePermission],[InformationContentEntity]^-[DataUseModifier],[InformationContentEntity]^-[DataAccessPolicy],[File],[Dataset],[DataUsePermission],[DataUseModifier],[DataAccessPolicy])
 
 ## Children
 
@@ -28,20 +24,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/InformationContentEntity]
 
 ## Attributes
 
-
-### Inherited from NamedThing:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
 
 ## Other properties
 
