@@ -148,11 +148,10 @@ classes:
       - type
       - description
       - url
+      - xref
     exact_mappings:
       - OBI:0000272
     slot_usage:
-      alias:
-        required: true
       name:
         description: >-
           Name of the Protocol (eg: Sample extraction_PCR amplification).
