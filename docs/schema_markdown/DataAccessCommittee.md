@@ -7,7 +7,7 @@ A group of members that are delegated to grant access to one or more datasets af
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[EgaAccessionMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;accession:string;ega_accession:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]++-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]++-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]++-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[AccessionMixin],[DataAccessCommittee]uses%20-.->[EgaAccessionMixin],[Committee]^-[DataAccessCommittee],[Committee],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[EgaAccessionMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;accession:string;ega_accession:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]++-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]++-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]++-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[AccessionMixin],[DataAccessCommittee]uses%20-.->[EgaAccessionMixin],[Committee]^-[DataAccessCommittee],[Committee],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]++-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[Committee]^-[DataAccessCommittee],[Committee],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]++-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[Committee]^-[DataAccessCommittee],[Committee],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -16,8 +16,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](http
 ## Uses Mixin
 
  *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
- *  mixin: [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -53,14 +52,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](http
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)
 
-### Mixed in from AccessionMixin:
+### Mixed in from IdentifiedByAliasMixin:
 
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-
-### Mixed in from EgaAccessionMixin:
-
- * [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)  <sub>1..1</sub>
-     * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
-     * Range: [String](types/String.md)
+     * in subsets: (restricted)

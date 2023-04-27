@@ -22,7 +22,13 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
 
  * [Biospecimen](Biospecimen.md)
  * [Condition](Condition.md)
+ * [DataAccessCommittee](DataAccessCommittee.md)
+ * [DataAccessPolicy](DataAccessPolicy.md)
+ * [Dataset](Dataset.md)
+ * [File](File.md)
  * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
+ * [Individual](Individual.md)
+ * [Sample](Sample.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
 

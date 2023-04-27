@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin_accession]
 ## Used by
 
  * [AccessionMixin](AccessionMixin.md)
- * [Analysis](Analysis.md)
- * [DataAccessCommittee](DataAccessCommittee.md)
- * [DataAccessPolicy](DataAccessPolicy.md)
- * [Dataset](Dataset.md)
- * [File](File.md)
- * [Individual](Individual.md)
- * [Sample](Sample.md)

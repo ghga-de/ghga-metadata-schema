@@ -234,11 +234,10 @@ Individual {
     VitalStatusEnum vital_status  
     string geographical_region  
     stringList children  
-    string accession  
-    string ega_accession  
     string given_name  
     string family_name  
     string additional_name  
+    string alias  
 }
 Biospecimen {
     string name  
@@ -255,8 +254,7 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
+    string alias  
 }
 
 Individual ||--}o Ancestry : "ancestries"
@@ -295,8 +293,7 @@ File {
     integer size  
     string checksum  
     string checksum_type  
-    string accession  
-    string ega_accession  
+    string alias  
 }
 Sample {
     string name  
@@ -304,8 +301,7 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
+    string alias  
 }
 SequencingExperiment {
     string type  
@@ -342,8 +338,7 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
+    string alias  
 }
 Condition {
     string name  
