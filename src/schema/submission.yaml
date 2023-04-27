@@ -1493,11 +1493,6 @@ slots:
     description: >-
       DOI identifier of a publication.
 
-  xref:
-    description: >-
-      Holds one or more database cross references for an entity.
-    required: false
-
 enums:
   BiologicalSexEnum:
     description: >-
