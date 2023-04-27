@@ -254,6 +254,7 @@ Sample {
     string description  
     string isolation  
     string storage  
+    stringList xref  
     string alias  
 }
 
@@ -301,6 +302,7 @@ Sample {
     string description  
     string isolation  
     string storage  
+    stringList xref  
     string alias  
 }
 SequencingExperiment {
@@ -338,6 +340,7 @@ Sample {
     string description  
     string isolation  
     string storage  
+    stringList xref  
     string alias  
 }
 Condition {
