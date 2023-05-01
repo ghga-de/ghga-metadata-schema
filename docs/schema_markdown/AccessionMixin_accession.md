@@ -22,6 +22,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin_accession]
 
  * [AccessionMixin](AccessionMixin.md)
  * [Analysis](Analysis.md)
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [Biospecimen](Biospecimen.md)
  * [Condition](Condition.md)
  * [DataAccessCommittee](DataAccessCommittee.md)
@@ -30,6 +31,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin_accession]
  * [File](File.md)
  * [Individual](Individual.md)
  * [Sample](Sample.md)
+ * [SampleFile](SampleFile.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
+ * [SequencingProcessFile](SequencingProcessFile.md)
  * [Study](Study.md)
+ * [StudyFile](StudyFile.md)

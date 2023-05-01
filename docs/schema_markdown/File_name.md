@@ -20,4 +20,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File_name](https://w3id.o
 
 ## Used by
 
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [File](File.md)
+ * [SampleFile](SampleFile.md)
+ * [SequencingProcessFile](SequencingProcessFile.md)
+ * [StudyFile](StudyFile.md)

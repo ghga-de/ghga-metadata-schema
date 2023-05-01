@@ -7,7 +7,7 @@ An Analysis is a data transformation that transforms input data to output data. 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[File],[EgaAccessionMixin],[DataTransformation],[File]<outputs%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;accession:string;ega_accession:string;title(i):string%20%3F;id(i):string;xref(i):string%20*],[Study]<study%201..1-++[Analysis],[File]<inputs%201..*-++[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[File],[EgaAccessionMixin],[DataTransformation],[File]<outputs%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;accession:string;ega_accession:string;title(i):string%20%3F;id(i):string;xref(i):string%20*],[Study]<study%201..1-++[Analysis],[File]<inputs%201..*-++[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[File],[EgaAccessionMixin],[DataTransformation],[AnalysisProcess],[File]<outputs%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;accession:string;ega_accession:string;title(i):string%20%3F;id(i):string;xref(i):string%20*],[Study]<study%201..1-++[Analysis],[File]<inputs%201..*-++[Analysis],[AnalysisProcess]-%20analysis%201..1>[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[File],[EgaAccessionMixin],[DataTransformation],[AnalysisProcess],[File]<outputs%201..*-++[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;accession:string;ega_accession:string;title(i):string%20%3F;id(i):string;xref(i):string%20*],[Study]<study%201..1-++[Analysis],[File]<inputs%201..*-++[Analysis],[AnalysisProcess]-%20analysis%201..1>[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])
 
 ## Parents
 
@@ -20,8 +20,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
 
 ## Referenced by Class
 
+ *  **[AnalysisProcess](AnalysisProcess.md)** *[AnalysisProcess➞analysis](AnalysisProcess_analysis.md)*  <sub>1..1</sub>  **[Analysis](Analysis.md)**
  *  **[Submission](Submission.md)** *[Submission➞analyses](Submission_analyses.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
  *  **None** *[analyses](analyses.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
+ *  **None** *[analysis](analysis.md)*  <sub>0..1</sub>  **[Analysis](Analysis.md)**
 
 ## Attributes
 

@@ -48,8 +48,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Person➞given_name](Person_given_name.md)
  * [Protocol➞alias](Protocol_alias.md) - The alias for an entity.
  * [Protocol➞attributes](Protocol_attributes.md) - One or more attributes that further characterizes this protocol.
+ * [SampleFile➞sample](SampleFile_sample.md)
  * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
- * [SequencingProcess➞files](SequencingProcess_files.md)
  * [SequencingProcess➞sample](SequencingProcess_sample.md)
  * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)
  * [SequencingProtocol➞alias](SequencingProtocol_alias.md)
@@ -59,7 +59,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
  * [Submission➞data_access_committees](Submission_data_access_committees.md) - The Data Access Committee that applies to Dataset in this submission.
  * [Submission➞data_access_policies](Submission_data_access_policies.md) - The Data Access Policy that applies to Dataset in this submission.
- * [Submission➞files](Submission_files.md) - Information about one or more File entities associated with this submission.
  * [Submission➞id](Submission_id.md) - A internal unique identifier for the Submission.
  * [Submission➞individuals](Submission_individuals.md) - Information about one or more Individual entities associated with this submission.
  * [Submission➞members](Submission_members.md) - The members associated with a committee referenced in this submission

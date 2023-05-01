@@ -18,8 +18,6 @@ None &#8594;  <sub>0..\*</sub> [File](File.md)
 
  *  [Dataset➞files](Dataset_files.md)
  *  [Individual➞files](Individual_files.md)
- *  [SequencingProcess➞files](SequencingProcess_files.md)
- *  [Submission➞files](Submission_files.md)
 
 ## Used by
 

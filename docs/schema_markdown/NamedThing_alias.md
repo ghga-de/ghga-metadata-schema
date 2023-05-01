@@ -21,6 +21,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/NamedThing_alias](https:/
 
 ## Used by
 
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [AnatomicalEntity](AnatomicalEntity.md)
  * [Ancestry](Ancestry.md)
  * [BiologicalQuality](BiologicalQuality.md)
@@ -49,9 +50,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/NamedThing_alias](https:/
  * [Publication](Publication.md)
  * [ResearchActivity](ResearchActivity.md)
  * [Sample](Sample.md)
+ * [SampleFile](SampleFile.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
+ * [SequencingProcessFile](SequencingProcessFile.md)
  * [Study](Study.md)
+ * [StudyFile](StudyFile.md)
 
 ## Other properties
 
