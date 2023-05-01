@@ -443,8 +443,6 @@ classes:
       - vital_status
       - geographical_region
       - ancestries
-      - parents
-      - children
       - diseases
       - phenotypic_features
       - files
@@ -462,14 +460,6 @@ classes:
         required: false
       ancestries:
         required: false
-      parents:
-        required: false
-        inlined: true
-        inlined_as_list: true
-      children:
-        required: false
-        inlined: true
-        inlined_as_list: true
       diseases:
         description: >-
           The Disease entity that is associated with this Biospecimen at the time of retrieval
@@ -495,6 +485,24 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
+
+  Trio:
+    description: >-
+      A trio is defined by three individuals representing an individual and their parents.
+    slots:
+      - mother
+      - father
+      - child
+    slot_usage:
+      mother:
+        required: true
+        inlined: false
+      father:
+        required: true
+        inlined: false
+      child:
+        required: true
+        inlined: false
 
   Ancestry:
     is_a: Population
@@ -1034,18 +1042,17 @@ slots:
     multivalued: true
     range: Disease
 
-  parents:
-    description: One or more parent for an Individual.
-    multivalued: true
+  mother:
+    description: The mother of an individual.
     range: Individual
-    in_subset:
-      - restricted
 
-  children:
-    description: One or more children for an Individual.
-    multivalued: true
-    in_subset:
-      - restricted
+  father:
+    description: The father of an individual.
+    range: Individual
+
+  child:
+    description: The child of two individuals.
+    range: Individual
 
   ancestries:
     description: >-
