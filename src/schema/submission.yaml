@@ -264,7 +264,6 @@ classes:
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
-      - files
       - sequencing_experiment
       - sample
     slot_usage:
@@ -284,9 +283,6 @@ classes:
         description: >-
           Identifier of the sequencing machine. Used for batch correction.
         required: false
-      files:
-        required: true
-        inlined: false
       sequencing_experiment:
         required: true
         inlined: false
@@ -537,6 +533,50 @@ classes:
       size:
         required: true
 
+  StudyFile:
+    is_a: File
+    description: >-
+      A StudyFile is a File that is associated with a Study.
+    slots:
+      - study
+    slot_usage:
+      study:
+        inlined: false
+        required: true
+
+  SampleFile:
+    is_a: File
+    description: >-
+      A SampleFile is a File that is associated with a Sample.
+    slots:
+      - sample
+    slot_usage:
+      sample:
+        inlined: false
+        required: true
+
+  SequencingProcessFile:
+    is_a: File
+    description: >-
+      A SequencingProcessFile is a File that is associated with a SequencingProcess.
+    slots:
+      - sequencing_process
+    slot_usage:
+      sequencing_process:
+        inlined: false
+        required: true
+
+  AnalysisProcessOutputFile:
+    is_a: File
+    description: >-
+      A AnalysisProcessOutputFile is a File that is associated as an output file with an AnalysisProcess.
+    slots:
+      - analysis_process
+    slot_usage:
+      analysis_process:
+        inlined: false
+        required: true
+
   Analysis:
     is_a: DataTransformation
     mixins:
@@ -590,6 +630,20 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
+
+  AnalysisProcess:
+    slots:
+      - analysis
+      - sequencing_process_files
+    slot_usage:
+      analysis:
+        inlined: false
+        description: >-
+          The Analysis the AnalysisProcess was part of
+        required: true
+      sequencing_process_files:
+        inlined: false
+        required: true
 
   Dataset:
     is_a: InformationContentEntity
@@ -832,7 +886,10 @@ classes:
       - sequencing_protocols
       - library_preparation_protocols
       - analyses
-      - files
+      - study_files
+      - sample_files
+      - sequencing_process_files
+      - analysis_process_output_files
       - datasets
       - data_access_policies
       - data_access_committees
@@ -897,12 +954,26 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
-      files:
-        description: >-
-          Information about one or more File entities associated with this submission.
+      study_files:
+        description: The StudyFiles that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
+      sample_files:
+        description: The SampleFiles that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: false
+      sequencing_process_files:
+        description: The SequencingProcessFiles that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: false
+      analysis_process_output_files:
+        description: The AnalysisProcessOutputFiles that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: false
       datasets:
         description: >-
           One or more Dataset that are part of this submission.
@@ -979,12 +1050,24 @@ slots:
     in_subset:
       - restricted
 
+  sequencing_process:
+    description: The SequencingProcess associated with an entity.
+    range: SequencingProcess
+
   analyses:
     description: The analyses associated with an entity.
     range: Analysis
     multivalued: true
     in_subset:
       - restricted
+
+  analysis:
+    description: The Analysis associated with an entity
+    range: Analysis
+
+  analysis_process:
+    description: The AnalysisProcess associated with an entity.
+    range: AnalysisProcess
 
   datasets:
     description: The Datasets associated with an entity.
@@ -1079,6 +1162,30 @@ slots:
     multivalued: True
     in_subset:
       - restricted
+
+  study_files:
+    description: >-
+      The StudyFiles associated with an entity.
+    range: StudyFile
+    multivalued: True
+
+  sample_files:
+    description: >-
+      The SampleFiles associated with an entity.
+    range: SampleFile
+    multivalued: True
+
+  sequencing_process_files:
+    description: >-
+      The SequencingProcessFiles associated with an entity.
+    range: SequencingProcessFile
+    multivalued: True
+
+  analysis_process_output_files:
+    description: >-
+      The AnalysisProcessOutputFiles associated with an entity.
+    range: AnalysisProcessOutputFile
+    multivalued: True
 
   data_access_policy:
     description: Data Access Policy associated with an entity.
