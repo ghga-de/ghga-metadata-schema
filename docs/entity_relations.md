@@ -114,7 +114,6 @@ SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
 Individual ||--}o Ancestry : "ancestries"
-Individual ||--}o Individual : "parents"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -145,7 +144,6 @@ Sample {
 }
 
 Individual ||--}o Ancestry : "ancestries"
-Individual ||--}o Individual : "parents"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -233,7 +231,6 @@ Individual {
     AgeRangeEnum age  
     VitalStatusEnum vital_status  
     string geographical_region  
-    stringList children  
     string accession  
     string ega_accession  
     string given_name  
@@ -269,7 +266,6 @@ Sample {
 }
 
 Individual ||--}o Ancestry : "ancestries"
-Individual ||--}o Individual : "parents"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"

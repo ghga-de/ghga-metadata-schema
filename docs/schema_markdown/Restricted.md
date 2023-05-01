@@ -30,11 +30,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Dataset➞files](Dataset_files.md) - One or more File entities that collectively are part of this Dataset.
  * [Individual➞age](Individual_age.md)
  * [Individual➞ancestries](Individual_ancestries.md)
- * [Individual➞children](Individual_children.md)
  * [Individual➞files](Individual_files.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
  * [Individual➞geographical_region](Individual_geographical_region.md)
  * [Individual➞karyotype](Individual_karyotype.md)
- * [Individual➞parents](Individual_parents.md)
  * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [Individual➞sex](Individual_sex.md)
  * [Individual➞vital_status](Individual_vital_status.md) - Last known Vital Status of an Individual.
@@ -73,7 +71,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
  * [biospecimen](biospecimen.md) - The biospecimen associated with an entity.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.
- * [children](children.md) - One or more children for an Individual.
  * [data_access_committee](data_access_committee.md) - Data Access Committee associated with an entity.
  * [data_access_committees](data_access_committees.md) - Data Access Committees associated with an entity.
  * [data_access_policies](data_access_policies.md) - Data Access Policies associated with an entity.
@@ -93,7 +90,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [main_contact](main_contact.md) - The person who is the main contact for a committee.
  * [members](members.md) - The members associated with a committee.
  * [outputs](outputs.md) - The outputs of a Planned Process entity.
- * [parents](parents.md) - One or more parent for an Individual.
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
  * [policy_url](policy_url.md) - Alternative to pasting the Data Access Policy text.
