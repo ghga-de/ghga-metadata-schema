@@ -69,7 +69,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [affiliation](affiliation.md) - The Institution(s) associated with an entity.
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
-     * [Submission➞affiliations](Submission_affiliations.md) - Institution/Center/Data Hub that is providing this submission.
  * [age](age.md) - Age of an individual.
      * [Individual➞age](Individual_age.md)
  * [alias](alias.md) - The alias for an entity.
