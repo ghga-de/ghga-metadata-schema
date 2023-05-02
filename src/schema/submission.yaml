@@ -801,7 +801,6 @@ classes:
       A submission can be considered as a set of inter-related (and inter-connected)
       entities that represent a data submission to GHGA.
     slots:
-      - id
       - studies
       - samples
       - biospecimens
@@ -816,13 +815,7 @@ classes:
       - data_access_committees
       - members
       - publications
-      - submission_date
-      - submission_status
     slot_usage:
-      id:
-        description: >-
-          A internal unique identifier for the Submission.
-        required: true
       studies:
         description: >-
           Information about a Study entities associated with this submission.
@@ -908,10 +901,6 @@ classes:
         required: false
         inlined: true
         inlined_as_list: false
-      submission_status:
-        description: >-
-          The status of a Submission.
-        required: false
 
 slots:
   study:
