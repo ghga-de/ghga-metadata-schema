@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_children](http
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [String](types/String.md)
+[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [Individual](Individual.md)
 
 ## Parents
 

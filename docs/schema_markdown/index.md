@@ -70,7 +70,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [affiliation](affiliation.md) - The Institution(s) associated with an entity.
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
-     * [Submission➞affiliations](Submission_affiliations.md) - Institution/Center/Data Hub that is providing this submission.
  * [age](age.md) - Age of an individual.
      * [Individual➞age](Individual_age.md)
  * [alias](alias.md) - The alias for an entity at the time of submission.
@@ -184,6 +183,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Person➞given_name](Person_given_name.md)
  * [id](id.md) - An identifier that uniquely represents an entity.
      * [OntologyClassMixin➞id](OntologyClassMixin_id.md)
+     * [Submission➞id](Submission_id.md) - A internal unique identifier for the Submission.
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
      * [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
  * [individual](individual.md) - The subject/individual associated with an entity.
