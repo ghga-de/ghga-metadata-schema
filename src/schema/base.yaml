@@ -268,7 +268,6 @@ classes:
 
   AliasMixin:
     mixin: true
-    abstract: true
     description: Mixin for entities that can be assigned an alias at the time of metadata submission.
     slots:
       - alias
