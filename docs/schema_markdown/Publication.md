@@ -7,7 +7,7 @@ The Publication entity represents a publication. While a publication can be any 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;id(i):string;alias(i):string],[Submission]++-%20publications%200..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;id(i):string;alias(i):string],[Submission]++-%20publications%200..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*],[Submission]++-%20publications%200..*>[Publication],[Submission]++-%20publications(i)%200..*>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*],[Submission]++-%20publications%200..*>[Publication],[Submission]++-%20publications(i)%200..*>[Publication],[InformationContentEntity]^-[Publication],[InformationContentEntity])
 
 ## Parents
 
@@ -47,14 +47,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication](https://w3id
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Publication.
      * Range: [String](types/String.md)
-
-### Inherited from InformationContentEntity:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)

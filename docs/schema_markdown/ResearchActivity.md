@@ -7,7 +7,7 @@ A PlannedProcess executed in the performance of scientific research wherein syst
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity](https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]^-[ResearchActivity&#124;title:string;description:string;id(i):string;alias(i):string;xref(i):string%20*],[PlannedProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]^-[ResearchActivity&#124;title:string;description:string;id(i):string;alias(i):string;xref(i):string%20*],[PlannedProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]^-[ResearchActivity&#124;title:string;description:string],[PlannedProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]^-[ResearchActivity&#124;title:string;description:string],[PlannedProcess])
 
 ## Parents
 
@@ -26,20 +26,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/ResearchActivity](https:/
      * Range: [String](types/String.md)
  * [ResearchActivity➞description](ResearchActivity_description.md)  <sub>1..1</sub>
      * Description: Description of an entity.
-     * Range: [String](types/String.md)
-
-### Inherited from PlannedProcess:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties

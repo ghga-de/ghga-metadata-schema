@@ -7,7 +7,7 @@ A Data Access Policy specifies under which circumstances, legal or otherwise, a 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[EgaAccessionMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[AccessionMixin],[DataAccessPolicy]uses%20-.->[EgaAccessionMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[IdentifiedByAliasMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;alias:string],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[IdentifiedByAliasMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[IdentifiedByAliasMixin],[Dataset],[DataUsePermission],[DataUseModifier],[DataUseModifier]<data_use_modifiers%200..1-++[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_request_form:string%20%3F;alias:string],[DataUsePermission]<data_use_permission%201..1-++[DataAccessPolicy],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[IdentifiedByAliasMixin],[InformationContentEntity]^-[DataAccessPolicy],[DataAccessCommittee],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -16,8 +16,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy](https:/
 ## Uses Mixin
 
  *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
- *  mixin: [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -61,20 +60,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy](https:/
      * Description: Data Request Form that is associated with this Data Access Policy.
      * Range: [String](types/String.md)
 
-### Inherited from InformationContentEntity:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
-
 ### Mixed in from AttributeMixin:
 
  * [attributes](attributes.md)  <sub>0..\*</sub>
@@ -82,14 +67,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy](https:/
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)
 
-### Mixed in from AccessionMixin:
+### Mixed in from IdentifiedByAliasMixin:
 
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-
-### Mixed in from EgaAccessionMixin:
-
- * [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)  <sub>1..1</sub>
-     * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
-     * Range: [String](types/String.md)
+     * in subsets: (restricted)

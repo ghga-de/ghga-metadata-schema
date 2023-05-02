@@ -7,7 +7,7 @@ A DataTransformation technique used to analyze and interpret data to gain a bett
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataTransformation](https://w3id.org/GHGA-Submission-Metadata-Schema/DataTransformation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[DataTransformation&#124;title:string%20%3F;description:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*]^-[Analysis],[PlannedProcess]^-[DataTransformation],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[DataTransformation&#124;title:string%20%3F;description:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*]^-[Analysis],[PlannedProcess]^-[DataTransformation],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[DataTransformation&#124;title:string%20%3F;description:string%20%3F]^-[Analysis],[PlannedProcess]^-[DataTransformation],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[DataTransformation&#124;title:string%20%3F;description:string%20%3F]^-[Analysis],[PlannedProcess]^-[DataTransformation],[Analysis])
 
 ## Parents
 
@@ -30,20 +30,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataTransformation](https
      * Range: [String](types/String.md)
  * [description](description.md)  <sub>0..1</sub>
      * Description: Description of an entity.
-     * Range: [String](types/String.md)
-
-### Inherited from PlannedProcess:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)
 
 ## Other properties

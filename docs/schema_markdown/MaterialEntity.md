@@ -7,11 +7,7 @@ A MaterialEntity is a physical entity that is spatially extended, exists as a wh
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity](https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[NamedThing],[MaterialEntity&#124;id(i):string;alias(i):string;xref(i):string%20*]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[NamedThing]^-[MaterialEntity],[Biospecimen],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[NamedThing],[MaterialEntity&#124;id(i):string;alias(i):string;xref(i):string%20*]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[NamedThing]^-[MaterialEntity],[Biospecimen],[AnatomicalEntity])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A database entity, concept or class. This is a generic class that is the root of all the other classes.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[MaterialEntity]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[Biospecimen],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample],[Population],[MaterialEntity]^-[Sample],[MaterialEntity]^-[Population],[MaterialEntity]^-[Biospecimen],[MaterialEntity]^-[AnatomicalEntity],[Biospecimen],[AnatomicalEntity])
 
 ## Children
 
@@ -25,20 +21,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/MaterialEntity](https://w
 
 ## Attributes
 
-
-### Inherited from NamedThing:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
 
 ## Other properties
 

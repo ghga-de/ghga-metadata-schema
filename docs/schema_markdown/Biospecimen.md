@@ -7,7 +7,7 @@ A Biospecimen is any natural material taken from a biological entity (usually a 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<anatomical_entities%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<individual%201..1-%20[Biospecimen],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[AnatomicalEntity]<anatomical_entities%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Individual]<individual%201..1-%20[Biospecimen],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[AccessionMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[IdentifiedByAliasMixin],[AnatomicalEntity]<anatomical_entities%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;alias:string],[Individual]<individual%201..1-%20[Biospecimen],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[IdentifiedByAliasMixin],[AnatomicalEntity]<anatomical_entities%201..*-++[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:string%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;alias:string],[Individual]<individual%201..1-%20[Biospecimen],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin],[MaterialEntity]^-[Biospecimen],[AnatomicalEntity])
 
 ## Parents
 
@@ -15,7 +15,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id
 
 ## Uses Mixin
 
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -55,25 +55,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id
      * Description: Anatomical sites associated with an entity.
      * Range: [AnatomicalEntity](AnatomicalEntity.md)
 
-### Inherited from MaterialEntity:
+### Mixed in from IdentifiedByAliasMixin:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
-
-### Mixed in from AccessionMixin:
-
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
-     * Range: [String](types/String.md)
 
 ## Other properties
 

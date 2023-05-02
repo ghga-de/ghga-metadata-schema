@@ -235,14 +235,10 @@ Individual {
     AgeRangeEnum age  
     VitalStatusEnum vital_status  
     string geographical_region  
-    string accession  
-    string ega_accession  
     string given_name  
     string family_name  
     string additional_name  
-    string id  
     string alias  
-    stringList xref  
 }
 Biospecimen {
     string name  
@@ -251,10 +247,7 @@ Biospecimen {
     string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    string accession  
-    string id  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
@@ -262,11 +255,8 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 
 Individual ||--}o Ancestry : "ancestries"
@@ -297,11 +287,8 @@ SequencingProcess {
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
-    string accession  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 File {
     string name  
@@ -309,11 +296,7 @@ File {
     integer size  
     string checksum  
     string checksum_type  
-    string accession  
-    string ega_accession  
-    string id  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
@@ -321,21 +304,14 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 SequencingExperiment {
     string type  
-    string accession  
-    string ega_accession  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 SequencingProcess ||--}| File : "files"
@@ -366,11 +342,8 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 Condition {
     string name  
@@ -378,22 +351,15 @@ Condition {
     DiseaseOrHealthyEnum disease_or_healthy  
     TreatmentOrControlEnum treatment_or_control  
     MutantOrWildtypeEnum mutant_or_wildtype  
-    string accession  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 Study {
     StudyTypeEnum type  
     stringList affiliations  
-    string accession  
-    string ega_accession  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 Sample ||--|o Biospecimen : "biospecimen"

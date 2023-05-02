@@ -7,11 +7,7 @@ A process is an entity that exists in time by occurring or happening, has tempor
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PlannedProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/PlannedProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchActivity],[PlannedProcess&#124;id(i):string;alias(i):string;xref(i):string%20*]^-[ResearchActivity],[PlannedProcess]^-[Investigation],[PlannedProcess]^-[DataTransformation],[NamedThing]^-[PlannedProcess],[NamedThing],[Investigation],[DataTransformation])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchActivity],[PlannedProcess&#124;id(i):string;alias(i):string;xref(i):string%20*]^-[ResearchActivity],[PlannedProcess]^-[Investigation],[PlannedProcess]^-[DataTransformation],[NamedThing]^-[PlannedProcess],[NamedThing],[Investigation],[DataTransformation])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A database entity, concept or class. This is a generic class that is the root of all the other classes.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchActivity],[PlannedProcess]^-[ResearchActivity],[PlannedProcess]^-[Investigation],[PlannedProcess]^-[DataTransformation],[Investigation],[DataTransformation])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchActivity],[PlannedProcess]^-[ResearchActivity],[PlannedProcess]^-[Investigation],[PlannedProcess]^-[DataTransformation],[Investigation],[DataTransformation])
 
 ## Children
 
@@ -24,20 +20,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PlannedProcess](https://w
 
 ## Attributes
 
-
-### Inherited from NamedThing:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
 
 ## Other properties
 

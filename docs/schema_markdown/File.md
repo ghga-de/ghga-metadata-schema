@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GHGA-Submission-Metadata-Schema/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[Analysis]-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Analysis]-%20outputs%201..*>[File],[Dataset]-%20files%201..*>[File],[Individual]-%20files%200..*>[File],[SequencingProcess]-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]-%20files(i)%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Dataset]-%20files(i)%200..*>[File],[Submission]-%20files(i)%200..*>[File],[Analysis]-%20inputs(i)%200..*>[File],[Analysis]-%20outputs(i)%200..*>[File],[File]uses%20-.->[AccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[Analysis]-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Analysis]-%20outputs%201..*>[File],[Dataset]-%20files%201..*>[File],[Individual]-%20files%200..*>[File],[SequencingProcess]-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]-%20files(i)%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Dataset]-%20files(i)%200..*>[File],[Submission]-%20files(i)%200..*>[File],[Analysis]-%20inputs(i)%200..*>[File],[Analysis]-%20outputs(i)%200..*>[File],[File]uses%20-.->[AccessionMixin],[File]uses%20-.->[EgaAccessionMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[EgaAccessionMixin],[Dataset],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[IdentifiedByAliasMixin],[Analysis]-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Analysis]-%20outputs%201..*>[File],[Dataset]-%20files%201..*>[File],[Individual]-%20files%200..*>[File],[SequencingProcess]-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]-%20files(i)%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Dataset]-%20files(i)%200..*>[File],[Submission]-%20files(i)%200..*>[File],[Analysis]-%20inputs(i)%200..*>[File],[Analysis]-%20outputs(i)%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[Dataset],[AttributeMixin],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[InformationContentEntity],[Individual],[IdentifiedByAliasMixin],[Analysis]-%20inputs%201..*>[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Analysis]-%20outputs%201..*>[File],[Dataset]-%20files%201..*>[File],[Individual]-%20files%200..*>[File],[SequencingProcess]-%20files%201..*>[File],[Submission]++-%20files%201..*>[File],[SequencingProcess]-%20files(i)%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Dataset]-%20files(i)%200..*>[File],[Submission]-%20files(i)%200..*>[File],[Analysis]-%20inputs(i)%200..*>[File],[Analysis]-%20outputs(i)%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[File],[Dataset],[AttributeMixin],[Attribute],[Analysis])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GH
 
 ## Uses Mixin
 
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
- *  mixin: [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
 
 ## Referenced by Class
@@ -52,31 +51,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GH
      * Description: The type of algorithm used to generate the checksum of a file.
      * Range: [String](types/String.md)
 
-### Inherited from InformationContentEntity:
+### Mixed in from IdentifiedByAliasMixin:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
-
-### Mixed in from AccessionMixin:
-
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
-     * Range: [String](types/String.md)
-
-### Mixed in from EgaAccessionMixin:
-
- * [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)  <sub>1..1</sub>
-     * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
-     * Range: [String](types/String.md)
 
 ### Mixed in from AttributeMixin:
 

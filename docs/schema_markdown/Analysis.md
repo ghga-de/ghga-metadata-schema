@@ -7,7 +7,7 @@ An Analysis is a data transformation that transforms input data to output data. 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[File],[EgaAccessionMixin],[DataTransformation],[File]<outputs%201..*-%20[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;accession:string;ega_accession:string;title(i):string%20%3F;id(i):string;xref(i):string%20*],[Study]<study%201..1-%20[Analysis],[File]<inputs%201..*-%20[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[File],[EgaAccessionMixin],[DataTransformation],[File]<outputs%201..*-%20[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;accession:string;ega_accession:string;title(i):string%20%3F;id(i):string;xref(i):string%20*],[Study]<study%201..1-%20[Analysis],[File]<inputs%201..*-%20[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[AccessionMixin],[Analysis]uses%20-.->[EgaAccessionMixin],[DataTransformation]^-[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[DataTransformation],[File]<outputs%201..*-%20[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;title(i):string%20%3F],[Study]<study%201..1-%20[Analysis],[File]<inputs%201..*-%20[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]++-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin],[DataTransformation]^-[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[DataTransformation],[File]<outputs%201..*-%20[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;title(i):string%20%3F],[Study]<study%201..1-%20[Analysis],[File]<inputs%201..*-%20[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]++-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin],[DataTransformation]^-[Analysis])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
 
 ## Uses Mixin
 
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
- *  mixin: [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -58,27 +57,8 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
 
 ### Inherited from DataTransformation:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [title](title.md)  <sub>0..1</sub>
      * Description: The title that describes an entity.
-     * Range: [String](types/String.md)
-
-### Mixed in from AccessionMixin:
-
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
-     * Range: [String](types/String.md)
-
-### Mixed in from EgaAccessionMixin:
-
- * [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)  <sub>1..1</sub>
-     * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
      * Range: [String](types/String.md)
 
 ## Other properties

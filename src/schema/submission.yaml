@@ -20,8 +20,7 @@ classes:
   Study:
     is_a: Investigation
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
@@ -32,6 +31,8 @@ classes:
       - affiliations
       - conditions
     slot_usage:
+      alias:
+        identifier: true
       title:
         description: >-
           A comprehensive title for the study.
@@ -58,9 +59,8 @@ classes:
   SequencingExperiment:
     is_a: Investigation
     mixins:
+      - IdentifiedByAliasMixin
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
     description: >-
       An sequencing experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
@@ -93,7 +93,7 @@ classes:
   Condition:
     is_a: Investigation
     mixins:
-      - AccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       An condition that is linked to comparable samples.
@@ -117,6 +117,8 @@ classes:
 
   LibraryPreparationProtocol:
     is_a: Protocol
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       Information about the library_preparation of an sequencing experiment.
     slots:
@@ -132,8 +134,6 @@ classes:
       - target_regions
       - rnaseq_strandedness
     slot_usage:
-      alias:
-        required: true
       description:
         description: >-
           Description about how a sequencing library was prepared (eg: Library construction method).
@@ -171,6 +171,8 @@ classes:
 
   SequencingProtocol:
     is_a: Protocol
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       Information about the sequencing of a sample.
     slots:
@@ -191,8 +193,6 @@ classes:
       - cell_barcode_size
       - sample_barcode_read
     slot_usage:
-      alias:
-        required: true
       instrument_model:
         required: true
       type:
@@ -252,7 +252,7 @@ classes:
   SequencingProcess:
     is_a: Investigation
     mixins:
-      - AccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A sequencing process linking a sample to sequencing output.
@@ -295,7 +295,7 @@ classes:
   Biospecimen:
     is_a: MaterialEntity
     mixins:
-      - AccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
       diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
@@ -375,8 +375,7 @@ classes:
   Sample:
     is_a: MaterialEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
@@ -393,6 +392,7 @@ classes:
       - storage
       - biospecimen
       - condition
+      - xref
     slot_usage:
       name:
         description: >-
@@ -427,8 +427,7 @@ classes:
   Individual:
     is_a: Person
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     aliases: ["subject", "patient"]
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -503,8 +502,7 @@ classes:
   File:
     is_a: InformationContentEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     aliases: ["file object"]
     description: >-
@@ -533,8 +531,7 @@ classes:
   Analysis:
     is_a: DataTransformation
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     aliases: ["data analysis"]
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -584,8 +581,7 @@ classes:
   Dataset:
     is_a: InformationContentEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
@@ -643,8 +639,7 @@ classes:
     is_a: InformationContentEntity
     mixins:
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -702,8 +697,7 @@ classes:
     is_a: Committee
     mixins:
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
@@ -770,6 +764,7 @@ classes:
       - journal
       - doi
       - study
+      - xref
     slot_usage:
       title:
         description: >-
@@ -806,7 +801,6 @@ classes:
       A submission can be considered as a set of inter-related (and inter-connected)
       entities that represent a data submission to GHGA.
     slots:
-      - id
       - studies
       - samples
       - biospecimens
@@ -821,13 +815,7 @@ classes:
       - data_access_committees
       - members
       - publications
-      - submission_date
-      - submission_status
     slot_usage:
-      id:
-        description: >-
-          A internal unique identifier for the Submission.
-        required: true
       studies:
         description: >-
           Information about a Study entities associated with this submission.
@@ -913,10 +901,6 @@ classes:
         required: false
         inlined: true
         inlined_as_list: false
-      submission_status:
-        description: >-
-          The status of a Submission.
-        required: false
 
 slots:
   study:

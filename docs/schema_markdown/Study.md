@@ -7,7 +7,7 @@ Studies are experimental investigations of a particular phenomenon. It involves 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/GHGA-Submission-Metadata-Schema/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[EgaAccessionMixin],[Condition],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;title:string;description:string;accession:string;ega_accession:string;id(i):string;alias(i):string;xref(i):string%20*],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[AccessionMixin],[Study]uses%20-.->[EgaAccessionMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[EgaAccessionMixin],[Condition],[AttributeMixin],[Attribute],[Analysis],[AccessionMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
 
 ## Uses Mixin
 
- *  mixin: [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
- *  mixin: [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
 
 ## Referenced by Class
@@ -41,6 +40,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [Study➞conditions](Study_conditions.md)  <sub>1..\*</sub>
      * Description: The condition associated with an entity.
      * Range: [Condition](Condition.md)
+ * [Study➞alias](Study_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
+     * Range: [String](types/String.md)
+     * in subsets: (restricted)
  * [Study➞title](Study_title.md)  <sub>1..1</sub>
      * Description: A comprehensive title for the study.
      * Range: [String](types/String.md)
@@ -51,29 +54,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
      * Description: Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
      * Range: [Attribute](Attribute.md)
      * in subsets: (restricted)
-
-### Inherited from Investigation:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
-
-### Mixed in from AccessionMixin:
-
- * [AccessionMixin➞accession](AccessionMixin_accession.md)  <sub>1..1</sub>
-     * Description: A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
-     * Range: [String](types/String.md)
-
-### Mixed in from EgaAccessionMixin:
-
- * [EgaAccessionMixin➞ega_accession](EgaAccessionMixin_ega_accession.md)  <sub>1..1</sub>
-     * Description: A unique European Genome-Phenome Archive (EGA) identifier assigned to an entity for the sole purpose of referring to that entity within the EGA federated network.
-     * Range: [String](types/String.md)
