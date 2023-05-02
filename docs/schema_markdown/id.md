@@ -17,7 +17,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Children
 
  *  [OntologyClassMixin➞id](OntologyClassMixin_id.md)
- *  [Submission➞id](Submission_id.md)
 
 ## Used by
 

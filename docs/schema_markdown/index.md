@@ -183,7 +183,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Person➞given_name](Person_given_name.md)
  * [id](id.md) - An identifier that uniquely represents an entity.
      * [OntologyClassMixin➞id](OntologyClassMixin_id.md)
-     * [Submission➞id](Submission_id.md) - A internal unique identifier for the Submission.
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
      * [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
  * [individual](individual.md) - The subject/individual associated with an entity.
@@ -307,7 +306,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
  * [submission_date](submission_date.md) - The timestamp (in ISO 8601 format) when submission was marked completed.
  * [submission_status](submission_status.md) - The status of a submission.
-     * [Submission➞submission_status](Submission_submission_status.md) - The status of a Submission.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
      * [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)
  * [target_regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.

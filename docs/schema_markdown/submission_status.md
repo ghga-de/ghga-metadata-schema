@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [Submission➞submission_status](Submission_submission_status.md)
 
 ## Used by
 

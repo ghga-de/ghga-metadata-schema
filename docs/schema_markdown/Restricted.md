@@ -58,7 +58,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Submission➞data_access_committees](Submission_data_access_committees.md) - The Data Access Committee that applies to Dataset in this submission.
  * [Submission➞data_access_policies](Submission_data_access_policies.md) - The Data Access Policy that applies to Dataset in this submission.
  * [Submission➞files](Submission_files.md) - Information about one or more File entities associated with this submission.
- * [Submission➞id](Submission_id.md) - A internal unique identifier for the Submission.
  * [Submission➞individuals](Submission_individuals.md) - Information about one or more Individual entities associated with this submission.
  * [Submission➞members](Submission_members.md) - The members associated with a committee referenced in this submission
  * [Submission➞samples](Submission_samples.md) - Information about one or more Sample entities associated with this submission.
