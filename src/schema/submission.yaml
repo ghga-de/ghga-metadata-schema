@@ -525,6 +525,7 @@ classes:
       size:
         required: true
       dataset:
+        inlined: false
         required: true
 
   StudyFile:
