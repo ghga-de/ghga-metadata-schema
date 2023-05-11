@@ -609,7 +609,9 @@ classes:
   AnalysisProcess:
     slots:
       - analysis
-      - sequencing_process_files
+      - study_input_files
+      - sample_input_files
+      - sequencing_process_input_files
     slot_usage:
       analysis:
         inlined: false
