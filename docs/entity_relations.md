@@ -39,9 +39,6 @@ DataUsePermission {
 Dataset {
 
 }
-File {
-
-}
 AnalysisProcessOutputFile {
 
 }
@@ -64,6 +61,9 @@ AnatomicalEntity {
 
 }
 Individual {
+
+}
+File {
 
 }
 PhenotypicFeature {
@@ -122,17 +122,17 @@ DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
 DataAccessPolicy ||--|| DataUsePermission : "data_use_permission"
 DataAccessPolicy ||--|o DataUseModifier : "data_use_modifiers"
 DataAccessPolicy ||--}o Attribute : "attributes"
-Dataset ||--}| File : "files"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
-File ||--}o Attribute : "attributes"
 AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
+AnalysisProcessOutputFile ||--|| Dataset : "dataset"
 AnalysisProcessOutputFile ||--}o Attribute : "attributes"
 AnalysisProcess ||--|| Analysis : "analysis"
 AnalysisProcess ||--}| StudyFile : "study_input_files"
 AnalysisProcess ||--}| SampleFile : "sample_input_files"
 AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
 SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
+SequencingProcessFile ||--|| Dataset : "dataset"
 SequencingProcessFile ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
@@ -148,14 +148,18 @@ Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
+File ||--|| Dataset : "dataset"
+File ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
 LibraryPreparationProtocol ||--}| Attribute : "attributes"
 SequencingProtocol ||--}| Attribute : "attributes"
 SampleFile ||--|| Sample : "sample"
+SampleFile ||--|| Dataset : "dataset"
 SampleFile ||--}o Attribute : "attributes"
 StudyFile ||--|| Study : "study"
+StudyFile ||--|| Dataset : "dataset"
 StudyFile ||--}o Attribute : "attributes"
 Analysis ||--}o File : "inputs"
 Analysis ||--|| Study : "study"
@@ -219,6 +223,7 @@ SequencingExperiment {
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
+File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
@@ -352,6 +357,7 @@ SequencingExperiment {
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
+File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"

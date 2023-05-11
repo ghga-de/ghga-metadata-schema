@@ -142,6 +142,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
      * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
  * [data_use_permissions](data_use_permissions.md) - Data use permissions associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
+ * [dataset](dataset.md) - The Dataset associated with an entity.
+     * [File➞dataset](File_dataset.md)
  * [datasets](datasets.md) - The Datasets associated with an entity.
      * [Submission➞datasets](Submission_datasets.md) - One or more Dataset that are part of this submission.
  * [deprecation_date](deprecation_date.md) - The timestamp (in ISO 8601 format) when the entity was deprecated.
@@ -176,7 +178,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [family_name](family_name.md) - Last name.
      * [Person➞family_name](Person_family_name.md)
  * [files](files.md) - The files associated with an entity.
-     * [Dataset➞files](Dataset_files.md) - One or more File entities that collectively are part of this Dataset.
      * [Individual➞files](Individual_files.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
  * [flow_cell_id](flow_cell_id.md) - Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
      * [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)
