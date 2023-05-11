@@ -616,7 +616,13 @@ classes:
         description: >-
           The Analysis the AnalysisProcess was part of
         required: true
-      sequencing_process_files:
+      study_input_files:
+        inlined: false
+        required: true
+      sample_input_files:
+        inlined: false
+        required: true
+      sequencing_process_input_files:
         inlined: false
         required: true
 
@@ -1131,6 +1137,24 @@ slots:
   sequencing_process_files:
     description: >-
       The SequencingProcessFiles associated with an entity.
+    range: SequencingProcessFile
+    multivalued: True
+
+  study_input_files:
+    description: >-
+      The StudyFile associated used as an input for an entity.
+    range: StudyFile
+    multivalued: True
+
+  sample_input_files:
+    description: >-
+      The SampleFile associated used as an input for an entity.
+    range: SampleFile
+    multivalued: True
+
+  sequencing_process_input_files:
+    description: >-
+      The SequencingProcessFile associated used as an input for an entity.
     range: SequencingProcessFile
     multivalued: True
 
