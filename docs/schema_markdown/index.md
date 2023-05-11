@@ -12,6 +12,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Classes
 
+ * [AnalysisProcess](AnalysisProcess.md)
  * [Attribute](Attribute.md) - A key/value pair that further characterizes an entity.
  * [BiologicalQuality](BiologicalQuality.md) - A BiologicalQuality is a quality held by a biological entity.
      * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
@@ -25,6 +26,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataUsePermission](DataUsePermission.md) - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
      * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
      * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+         * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A AnalysisProcessOutputFile is a File that is associated as an output file with an AnalysisProcess.
+         * [SampleFile](SampleFile.md) - A SampleFile is a File that is associated with a Sample.
+         * [SequencingProcessFile](SequencingProcessFile.md) - A SequencingProcessFile is a File that is associated with a SequencingProcess.
+         * [StudyFile](StudyFile.md) - A StudyFile is a File that is associated with a Study.
      * [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
          * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library_preparation of an sequencing experiment.
          * [SequencingProtocol](SequencingProtocol.md) - Information about the sequencing of a sample.
@@ -79,6 +84,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Study➞alias](Study_alias.md)
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
+ * [analysis](analysis.md) - The Analysis associated with an entity
+     * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md) - The Analysis the AnalysisProcess was part of
+ * [analysis_process](analysis_process.md) - The AnalysisProcess associated with an entity.
+     * [AnalysisProcessOutputFile➞analysis_process](AnalysisProcessOutputFile_analysis_process.md)
+ * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
+     * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md) - The AnalysisProcessOutputFiles that are part of this submission.
  * [anatomical_entities](anatomical_entities.md) - Anatomical sites associated with an entity.
      * [Biospecimen➞anatomical_entities](Biospecimen_anatomical_entities.md)
  * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
@@ -167,8 +178,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [files](files.md) - The files associated with an entity.
      * [Dataset➞files](Dataset_files.md) - One or more File entities that collectively are part of this Dataset.
      * [Individual➞files](Individual_files.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
-     * [SequencingProcess➞files](SequencingProcess_files.md)
-     * [Submission➞files](Submission_files.md) - Information about one or more File entities associated with this submission.
  * [flow_cell_id](flow_cell_id.md) - Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
      * [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)
  * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
@@ -190,7 +199,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [individuals](individuals.md) - The subjects/individuals associated with an entity.
      * [Submission➞individuals](Submission_individuals.md) - Information about one or more Individual entities associated with this submission.
  * [inputs](inputs.md) - The inputs to a Planned Process.
-     * [Analysis➞inputs](Analysis_inputs.md) - The input data File entities used in the Analysis.
  * [instrument_model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
@@ -248,7 +256,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [organization](organization.md) - The organization associated with a person.
      * [Member➞organization](Member_organization.md) - The organization that the Member is part of.
  * [outputs](outputs.md) - The outputs of a Planned Process entity.
-     * [Analysis➞outputs](Analysis_outputs.md) - The output data File entities generated by this Analysis.
  * [parents](parents.md) - One or more parent for an Individual.
      * [Individual➞parents](Individual_parents.md)
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
@@ -269,9 +276,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)
  * [sample](sample.md) - The sample associated with an entity.
+     * [SampleFile➞sample](SampleFile_sample.md)
      * [SequencingProcess➞sample](SequencingProcess_sample.md)
  * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
      * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)
+ * [sample_files](sample_files.md) - The SampleFiles associated with an entity.
+     * [Submission➞sample_files](Submission_sample_files.md) - The SampleFiles that are part of this submission.
+ * [sample_input_files](sample_input_files.md) - The SampleFile associated used as an input for an entity.
+     * [AnalysisProcess➞sample_input_files](AnalysisProcess_sample_input_files.md)
  * [samples](samples.md) - The samples associated with an entity.
      * [Submission➞samples](Submission_samples.md) - Information about one or more Sample entities associated with this submission.
  * [sequencing_center](sequencing_center.md) - Center where sample was sequenced.
@@ -284,6 +296,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md) - Identifier of the sequencing lane. Used for batch correction.
  * [sequencing_machine_id](sequencing_machine_id.md) - The identifier of a sequencing machine.
      * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md) - Identifier of the sequencing machine. Used for batch correction.
+ * [sequencing_process](sequencing_process.md) - The SequencingProcess associated with an entity.
+     * [SequencingProcessFile➞sequencing_process](SequencingProcessFile_sequencing_process.md)
+ * [sequencing_process_files](sequencing_process_files.md) - The SequencingProcessFiles associated with an entity.
+     * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md) - The SequencingProcessFiles that are part of this submission.
+ * [sequencing_process_input_files](sequencing_process_input_files.md) - The SequencingProcessFile associated used as an input for an entity.
+     * [AnalysisProcess➞sequencing_process_input_files](AnalysisProcess_sequencing_process_input_files.md)
  * [sequencing_protocol](sequencing_protocol.md) - The sequencing protocol associated with an entity.
      * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)
  * [sequencing_protocols](sequencing_protocols.md) - The sequencing protocol associated with an entity.
@@ -304,6 +322,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [study](study.md) - The study associated with an entity.
      * [Analysis➞study](Analysis_study.md) - The Study entity associated with this Analysis.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
+     * [StudyFile➞study](StudyFile_study.md)
+ * [study_files](study_files.md) - The StudyFiles associated with an entity.
+     * [Submission➞study_files](Submission_study_files.md) - The StudyFiles that are part of this submission.
+ * [study_input_files](study_input_files.md) - The StudyFile associated used as an input for an entity.
+     * [AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)
  * [submission_date](submission_date.md) - The timestamp (in ISO 8601 format) when submission was marked completed.
  * [submission_status](submission_status.md) - The status of a submission.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.

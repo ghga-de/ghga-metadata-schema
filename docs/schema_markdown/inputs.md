@@ -16,10 +16,10 @@ None &#8594;  <sub>0..\*</sub> [File](File.md)
 
 ## Children
 
- *  [Analysis➞inputs](Analysis_inputs.md)
 
 ## Used by
 
+ * [Analysis](Analysis.md)
 
 ## Other properties
 

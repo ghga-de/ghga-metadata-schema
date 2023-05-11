@@ -20,7 +20,11 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File_checksum](https://w3
 
 ## Used by
 
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [File](File.md)
+ * [SampleFile](SampleFile.md)
+ * [SequencingProcessFile](SequencingProcessFile.md)
+ * [StudyFile](StudyFile.md)
 
 ## Other properties
 

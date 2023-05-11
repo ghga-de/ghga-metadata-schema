@@ -42,16 +42,25 @@ Dataset {
 File {
 
 }
-Analysis {
+AnalysisProcessOutputFile {
 
 }
-LibraryPreparationProtocol {
+AnalysisProcess {
 
 }
-SequencingProtocol {
+SequencingProcessFile {
 
 }
-SequencingExperiment {
+SequencingProcess {
+
+}
+Sample {
+
+}
+Biospecimen {
+
+}
+AnatomicalEntity {
 
 }
 Individual {
@@ -66,13 +75,22 @@ Disease {
 Ancestry {
 
 }
-Biospecimen {
+SequencingExperiment {
 
 }
-AnatomicalEntity {
+LibraryPreparationProtocol {
 
 }
-Sample {
+SequencingProtocol {
+
+}
+SampleFile {
+
+}
+StudyFile {
+
+}
+Analysis {
 
 }
 
@@ -84,7 +102,10 @@ Submission ||--}o SequencingExperiment : "sequencing_experiments"
 Submission ||--}o SequencingProtocol : "sequencing_protocols"
 Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
 Submission ||--}o Analysis : "analyses"
-Submission ||--}| File : "files"
+Submission ||--}| StudyFile : "study_files"
+Submission ||--}| SampleFile : "sample_files"
+Submission ||--}| SequencingProcessFile : "sequencing_process_files"
+Submission ||--}| AnalysisProcessOutputFile : "analysis_process_output_files"
 Submission ||--}| Dataset : "datasets"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
@@ -105,25 +126,40 @@ Dataset ||--}| File : "files"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
 File ||--}o Attribute : "attributes"
-Analysis ||--}| File : "inputs"
-Analysis ||--|| Study : "study"
-Analysis ||--}| File : "outputs"
-LibraryPreparationProtocol ||--}| Attribute : "attributes"
-SequencingProtocol ||--}| Attribute : "attributes"
-SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "attributes"
+AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
+AnalysisProcessOutputFile ||--}o Attribute : "attributes"
+AnalysisProcess ||--|| Analysis : "analysis"
+AnalysisProcess ||--}| StudyFile : "study_input_files"
+AnalysisProcess ||--}| SampleFile : "sample_input_files"
+AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
+SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
+SequencingProcessFile ||--}o Attribute : "attributes"
+SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
+SequencingProcess ||--|| Sample : "sample"
+SequencingProcess ||--}o Attribute : "attributes"
+Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
+Sample ||--}o Attribute : "attributes"
+Biospecimen ||--|| Individual : "individual"
+Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
-Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
-Sample ||--}o Attribute : "attributes"
+SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "attributes"
+LibraryPreparationProtocol ||--}| Attribute : "attributes"
+SequencingProtocol ||--}| Attribute : "attributes"
+SampleFile ||--|| Sample : "sample"
+SampleFile ||--}o Attribute : "attributes"
+StudyFile ||--|| Study : "study"
+StudyFile ||--}o Attribute : "attributes"
+Analysis ||--}o File : "inputs"
+Analysis ||--|| Study : "study"
+Analysis ||--}o File : "outputs"
 
 ```
 
@@ -180,7 +216,6 @@ SequencingExperiment {
 
 }
 
-SequencingProcess ||--}| File : "files"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
@@ -314,7 +349,6 @@ SequencingExperiment {
     string alias  
 }
 
-SequencingProcess ||--}| File : "files"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"

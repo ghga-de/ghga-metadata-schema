@@ -20,6 +20,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
 
 ## Used by
 
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [Biospecimen](Biospecimen.md)
  * [Condition](Condition.md)
  * [DataAccessCommittee](DataAccessCommittee.md)
@@ -30,9 +31,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
  * [Individual](Individual.md)
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Sample](Sample.md)
+ * [SampleFile](SampleFile.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
+ * [SequencingProcessFile](SequencingProcessFile.md)
  * [SequencingProtocol](SequencingProtocol.md)
+ * [StudyFile](StudyFile.md)
 
 ## Other properties
 

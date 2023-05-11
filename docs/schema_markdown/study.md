@@ -18,6 +18,7 @@ None &#8594;  <sub>0..1</sub> [Study](Study.md)
 
  *  [Analysis➞study](Analysis_study.md)
  *  [Publication➞study](Publication_study.md)
+ *  [StudyFile➞study](StudyFile_study.md)
 
 ## Used by
 
