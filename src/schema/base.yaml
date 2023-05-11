@@ -29,32 +29,7 @@ subsets:
       Subset of properties that are considered to be restricted.
 
 classes:
-  NamedThing:
-    abstract: true
-    aliases: ["named entity", "entity", "object"]
-    description: >-
-      A database entity, concept or class. This is a generic class that is the root
-      of all the other classes.
-    slots:
-      - id
-      - alias
-      - xref
-    slot_usage:
-      id:
-        description: >-
-          The internal unique identifier for an entity.
-        required: true
-      alias:
-        description: >-
-          The alias (alternate identifier) for an entity.
-        required: true
-      xref:
-        description: >-
-          Holds one or more database cross references for an entity.
-        required: false
-
   Person:
-    is_a: NamedThing
     abstract: true
     description: >-
       A member of the species Homo sapiens.
@@ -75,7 +50,6 @@ classes:
       - prov:Person
 
   Committee:
-    is_a: NamedThing
     abstract: true
     description: >-
       A group of people organized for a specific purpose.
@@ -86,7 +60,6 @@ classes:
         required: true
 
   MaterialEntity:
-    is_a: NamedThing
     abstract: true
     description: >-
       A MaterialEntity is a physical entity that is spatially extended, exists as a
@@ -95,7 +68,6 @@ classes:
       - SIO:000004
 
   BiologicalQuality:
-    is_a: NamedThing
     abstract: true
     description: >-
       A BiologicalQuality is a quality held by a biological entity.
@@ -103,7 +75,6 @@ classes:
       - SIO:000475
 
   InformationContentEntity:
-    is_a: NamedThing
     abstract: true
     description: >-
       A generically dependent continuant that is about some thing.
@@ -111,7 +82,6 @@ classes:
       - IAO:0000030
 
   PlannedProcess:
-    is_a: NamedThing
     abstract: true
     description: >-
       A process is an entity that exists in time by occurring or happening, has temporal parts and
@@ -178,11 +148,10 @@ classes:
       - type
       - description
       - url
+      - xref
     exact_mappings:
       - OBI:0000272
     slot_usage:
-      alias:
-        required: true
       name:
         description: >-
           Name of the Protocol (eg: Sample extraction_PCR amplification).
@@ -297,6 +266,23 @@ classes:
           a percentage.
         required: false
 
+  AliasMixin:
+    mixin: true
+    description: Mixin for entities that can be assigned an alias at the time of metadata submission.
+    slots:
+      - alias
+    slot_usage:
+      alias:
+        required: true
+
+  IdentifiedByAliasMixin:
+    mixin: true
+    abstract: true
+    is_a: AliasMixin
+    slot_usage:
+      alias:
+        identifier: true
+
   AccessionMixin:
     mixin: true
     description: Mixin for entities that can be assigned a GHGA accession.
@@ -321,27 +307,14 @@ classes:
     slots:
       - attributes
 
-  DeprecatedMixin:
-    mixin: true
-    description: Mixin for entities that can be deprecated.
-    slots:
-      - replaced_by
-      - deprecation_date
-    slot_usage:
-      replaced_by:
-        required: true
-      deprecation_date:
-        required: true
-
 slots:
   id:
     description: An identifier that uniquely represents an entity.
-    identifier: true
     in_subset:
       - restricted
 
   alias:
-    description: The alias for an entity.
+    description: The alias for an entity at the time of submission.
     in_subset:
       - restricted
 
@@ -407,19 +380,6 @@ slots:
   deprecation_date:
     description: >-
       The timestamp (in ISO 8601 format) when the entity was deprecated.
-
-  replaced_by:
-    description: >-
-      Refers to the entity which replaces a currently deprecated entity.
-    domain: NamedThing
-    range: NamedThing
-
-  replaces:
-    inverse: replaced_by
-    description: >-
-      Refers to a deprecated entity that is being replaced_by the current entity.
-    domain: NamedThing
-    range: NamedThing
 
   concept_identifier:
     description: >-

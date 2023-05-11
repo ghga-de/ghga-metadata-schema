@@ -7,7 +7,7 @@
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProcessFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProcessFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProcessFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-++[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[SequencingProcessFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-++[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])
 
 ## Referenced by Class
 

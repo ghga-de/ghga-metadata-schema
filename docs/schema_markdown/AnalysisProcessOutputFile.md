@@ -7,7 +7,7 @@ A AnalysisProcessOutputFile is a File that is associated as an output file with 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcessOutputFile](https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcessOutputFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Attribute],[AnalysisProcess]<analysis_process%201..1-++[AnalysisProcessOutputFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;accession(i):string;ega_accession(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Submission]++-%20analysis_process_output_files%201..*>[AnalysisProcessOutputFile],[Submission]-%20analysis_process_output_files(i)%200..*>[AnalysisProcessOutputFile],[File]^-[AnalysisProcessOutputFile],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Attribute],[AnalysisProcess]<analysis_process%201..1-++[AnalysisProcessOutputFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;accession(i):string;ega_accession(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Submission]++-%20analysis_process_output_files%201..*>[AnalysisProcessOutputFile],[Submission]-%20analysis_process_output_files(i)%200..*>[AnalysisProcessOutputFile],[File]^-[AnalysisProcessOutputFile],[AnalysisProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Attribute],[AnalysisProcess]<analysis_process%201..1-++[AnalysisProcessOutputFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20analysis_process_output_files%201..*>[AnalysisProcessOutputFile],[Submission]-%20analysis_process_output_files(i)%200..*>[AnalysisProcessOutputFile],[File]^-[AnalysisProcessOutputFile],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Attribute],[AnalysisProcess]<analysis_process%201..1-++[AnalysisProcessOutputFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20analysis_process_output_files%201..*>[AnalysisProcessOutputFile],[Submission]-%20analysis_process_output_files(i)%200..*>[AnalysisProcessOutputFile],[File]^-[AnalysisProcessOutputFile],[AnalysisProcess])
 
 ## Parents
 
@@ -29,17 +29,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcessOutputFile
 
 ### Inherited from File:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)

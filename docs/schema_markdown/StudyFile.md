@@ -7,7 +7,7 @@ A StudyFile is a File that is associated with a Study.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/StudyFile](https://w3id.org/GHGA-Submission-Metadata-Schema/StudyFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;accession(i):string;ega_accession(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;accession(i):string;ega_accession(i):string;id(i):string;alias(i):string;xref(i):string%20*],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Attribute])
 
 ## Parents
 
@@ -29,17 +29,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/StudyFile](https://w3id.o
 
 ### Inherited from File:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)

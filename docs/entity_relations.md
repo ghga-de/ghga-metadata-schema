@@ -110,7 +110,7 @@ Submission ||--}| Dataset : "datasets"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| Member : "members"
-Submission ||--|o Publication : "publications"
+Submission ||--}o Publication : "publications"
 Publication ||--|| Study : "study"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
@@ -142,6 +142,7 @@ Biospecimen ||--|| Individual : "individual"
 Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
+Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -150,9 +151,9 @@ SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_pr
 SequencingExperiment ||--}o Attribute : "attributes"
 LibraryPreparationProtocol ||--}| Attribute : "attributes"
 SequencingProtocol ||--}| Attribute : "attributes"
-Analysis ||--}| File : "inputs"
+Analysis ||--}o File : "inputs"
 Analysis ||--|| Study : "study"
-Analysis ||--}| File : "outputs"
+Analysis ||--}o File : "outputs"
 SampleFile ||--|| Sample : "sample"
 SampleFile ||--}o Attribute : "attributes"
 StudyFile ||--|| Study : "study"
@@ -180,6 +181,7 @@ Sample {
 
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
+Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -266,15 +268,10 @@ Individual {
     AgeRangeEnum age  
     VitalStatusEnum vital_status  
     string geographical_region  
-    stringList children  
-    string accession  
-    string ega_accession  
     string given_name  
     string family_name  
     string additional_name  
-    string id  
     string alias  
-    stringList xref  
 }
 Biospecimen {
     string name  
@@ -283,10 +280,7 @@ Biospecimen {
     string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    string accession  
-    string id  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
@@ -294,15 +288,13 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
+Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
@@ -328,11 +320,8 @@ SequencingProcess {
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
-    string accession  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 File {
     string name  
@@ -340,11 +329,7 @@ File {
     integer size  
     string checksum  
     string checksum_type  
-    string accession  
-    string ega_accession  
-    string id  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
@@ -352,21 +337,14 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 SequencingExperiment {
     string type  
-    string accession  
-    string ega_accession  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
@@ -396,11 +374,8 @@ Sample {
     string description  
     string isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 Condition {
     string name  
@@ -408,22 +383,15 @@ Condition {
     DiseaseOrHealthyEnum disease_or_healthy  
     TreatmentOrControlEnum treatment_or_control  
     MutantOrWildtypeEnum mutant_or_wildtype  
-    string accession  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 Study {
     StudyTypeEnum type  
     stringList affiliations  
-    string accession  
-    string ega_accession  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 Sample ||--|o Biospecimen : "biospecimen"

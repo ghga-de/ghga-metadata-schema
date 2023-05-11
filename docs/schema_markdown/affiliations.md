@@ -17,7 +17,6 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 ## Children
 
  *  [Study➞affiliations](Study_affiliations.md)
- *  [Submission➞affiliations](Submission_affiliations.md)
 
 ## Used by
 

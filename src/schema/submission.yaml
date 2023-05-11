@@ -20,8 +20,7 @@ classes:
   Study:
     is_a: Investigation
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       Studies are experimental investigations of a particular phenomenon. It involves a
@@ -32,6 +31,8 @@ classes:
       - affiliations
       - conditions
     slot_usage:
+      alias:
+        identifier: true
       title:
         description: >-
           A comprehensive title for the study.
@@ -58,9 +59,8 @@ classes:
   SequencingExperiment:
     is_a: Investigation
     mixins:
+      - IdentifiedByAliasMixin
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
     description: >-
       An sequencing experiment is an investigation that consists of a coordinated set of
       actions and observations designed to generate data with the goal of verifying,
@@ -93,7 +93,7 @@ classes:
   Condition:
     is_a: Investigation
     mixins:
-      - AccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       An condition that is linked to comparable samples.
@@ -117,6 +117,8 @@ classes:
 
   LibraryPreparationProtocol:
     is_a: Protocol
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       Information about the library_preparation of an sequencing experiment.
     slots:
@@ -132,8 +134,6 @@ classes:
       - target_regions
       - rnaseq_strandedness
     slot_usage:
-      alias:
-        required: true
       description:
         description: >-
           Description about how a sequencing library was prepared (eg: Library construction method).
@@ -165,14 +165,14 @@ classes:
           One or more attributes that further characterizes this library_preparation Protocol.
       target_regions:
         required: false
-        inlined: true
-        inlined_as_list: true
       rnaseq_strandedness:
         required: false
         recommended: true
 
   SequencingProtocol:
     is_a: Protocol
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       Information about the sequencing of a sample.
     slots:
@@ -193,8 +193,6 @@ classes:
       - cell_barcode_size
       - sample_barcode_read
     slot_usage:
-      alias:
-        required: true
       instrument_model:
         required: true
       type:
@@ -254,7 +252,7 @@ classes:
   SequencingProcess:
     is_a: Investigation
     mixins:
-      - AccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A sequencing process linking a sample to sequencing output.
@@ -293,7 +291,7 @@ classes:
   Biospecimen:
     is_a: MaterialEntity
     mixins:
-      - AccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
       diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
@@ -330,8 +328,7 @@ classes:
         description: >-
           The Individual entity from which this Biospecimen was derived.
         range: Individual
-        inlined: true
-        inlined_as_list: false
+        inlined: false
         required: true
       vital_status_at_sampling:
         required: false
@@ -374,8 +371,7 @@ classes:
   Sample:
     is_a: MaterialEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A sample is a limited quantity of something to be used for testing, analysis,
@@ -392,6 +388,7 @@ classes:
       - storage
       - biospecimen
       - condition
+      - xref
     slot_usage:
       name:
         description: >-
@@ -419,16 +416,14 @@ classes:
         description: >-
           The Biospecimen from which this Sample was prepared from.
         required: false
-        inlined: true
-        inlined_as_list: false
+        inlined: false
       condition:
         required: true
 
   Individual:
     is_a: Person
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     aliases: ["subject", "patient"]
     description: >-
       An Individual is a Person who is participating in a Study.
@@ -460,12 +455,10 @@ classes:
         required: false
       parents:
         required: false
-        inlined: true
-        inlined_as_list: true
+        inlined: false
       children:
         required: false
-        inlined: true
-        inlined_as_list: true
+        inlined: false
       diseases:
         description: >-
           The Disease entity that is associated with this Biospecimen at the time of retrieval
@@ -489,8 +482,7 @@ classes:
           Additional/supplementary files associated with an Individual.
           Typically, a phenopacket or pedigree file.
         required: false
-        inlined: true
-        inlined_as_list: true
+        inlined: false
 
   Ancestry:
     is_a: Population
@@ -506,8 +498,7 @@ classes:
   File:
     is_a: InformationContentEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     aliases: ["file object"]
     description: >-
@@ -580,8 +571,7 @@ classes:
   Analysis:
     is_a: DataTransformation
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     aliases: ["data analysis"]
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
@@ -610,26 +600,11 @@ classes:
         required: true
       reference_chromosome:
         required: true
-      inputs:
-        description: >-
-          The input data File entities used in the Analysis.
-        range: File
-        required: true
-        inlined: true
-        inlined_as_list: true
       study:
         description: >-
           The Study entity associated with this Analysis.
         required: true
-        inlined: true
-        inlined_as_list: false
-      outputs:
-        description: >-
-          The output data File entities generated by this Analysis.
-        range: File
-        required: true
-        inlined: true
-        inlined_as_list: true
+        inlined: false
 
   AnalysisProcess:
     slots:
@@ -648,8 +623,7 @@ classes:
   Dataset:
     is_a: InformationContentEntity
     mixins:
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
@@ -677,14 +651,12 @@ classes:
         description: >-
           One or more File entities that collectively are part of this Dataset.
         required: true
-        inlined: true
-        inlined_as_list: true
+        inlined: false
       data_access_policy:
         description: >-
           The Data Access Policy that applies to this Dataset.
         required: true
-        inlined: true
-        inlined_as_list: false
+        inlined: false
 
   DataUsePermission:
     is_a: InformationContentEntity
@@ -709,8 +681,7 @@ classes:
     is_a: InformationContentEntity
     mixins:
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
       a user can have access to one or more Datasets belonging to one or more Studies.
@@ -746,8 +717,7 @@ classes:
         description: >-
           The Data Access Committee linked to this policy.
         required: true
-        inlined: true
-        inlined_as_list: false
+        inlined: false
       data_use_permission:
         description: >-
           Data use permission associated with a policy. Typically one or more terms from DUO
@@ -769,8 +739,7 @@ classes:
     is_a: Committee
     mixins:
       - AttributeMixin
-      - AccessionMixin
-      - EgaAccessionMixin
+      - IdentifiedByAliasMixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
@@ -794,14 +763,12 @@ classes:
           The main contact for the Data Access Committee.
         range: Member
         required: true
-        inlined: true
-        inlined_as_list: false
+        inlined: false
       members:
         description: >-
           All the members that are part of this Data Access Committee.
         range: Member
-        inlined: true
-        inlined_as_list: true
+        inlined: false
 
   Member:
     is_a: Person
@@ -839,6 +806,7 @@ classes:
       - journal
       - doi
       - study
+      - xref
     slot_usage:
       title:
         description: >-
@@ -866,8 +834,7 @@ classes:
           The Study entity associated with this Publication.
         range: Study
         required: true
-        inlined: true
-        inlined_as_list: true
+        inlined: false
 
   Submission:
     tree_root: true
@@ -876,8 +843,6 @@ classes:
       A submission can be considered as a set of inter-related (and inter-connected)
       entities that represent a data submission to GHGA.
     slots:
-      - id
-      - affiliations
       - studies
       - samples
       - biospecimens
@@ -895,17 +860,7 @@ classes:
       - data_access_committees
       - members
       - publications
-      - submission_date
-      - submission_status
     slot_usage:
-      id:
-        description: >-
-          A internal unique identifier for the Submission.
-        required: true
-      affiliations:
-        description: >-
-          Institution/Center/Data Hub that is providing this submission.
-        required: true
       studies:
         description: >-
           Information about a Study entities associated with this submission.
@@ -917,37 +872,37 @@ classes:
           Information about one or more Sample entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       biospecimens:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       individuals:
         description: >-
           Information about one or more Individual entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       sequencing_experiments:
         description: >-
           Information about one or more Experiment entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       sequencing_protocols:
         description: >-
           One or more sequencing protocol entities associated with this Submission.
         required: false
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       library_preparation_protocols:
         description: >-
           One or more library preparation protocol entities associated with this Submission.
         required: false
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       analyses:
         description: >-
           Information about one or more Analysis entities associated with this submission.
@@ -979,36 +934,32 @@ classes:
           One or more Dataset that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       data_access_policies:
         description: >-
           The Data Access Policy that applies to Dataset in this submission.
         required: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       data_access_committees:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
         required: true
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       members:
         description: >-
           The members associated with a committee referenced in this submission
         required: true
         range: Member
         inlined: true
-        inlined_as_list: true
+        inlined_as_list: false
       publications:
         description: >-
           One or more Publication entities associated with this Submission.
         required: false
         inlined: true
-        inlined_as_list: true
-      submission_status:
-        description: >-
-          The status of a Submission.
-        required: false
+        inlined_as_list: false
 
 slots:
   study:
@@ -1023,6 +974,7 @@ slots:
   publications:
     description: The Publication associated with an entity.
     range: Publication
+    multivalued: True
 
   sample:
     description: The sample associated with an entity.
@@ -1127,6 +1079,7 @@ slots:
   children:
     description: One or more children for an Individual.
     multivalued: true
+    range: Individual
     in_subset:
       - restricted
 
@@ -1246,7 +1199,6 @@ slots:
       The members associated with a committee.
     range: Member
     multivalued: True
-    inlined: true
     in_subset:
       - restricted
 

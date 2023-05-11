@@ -7,7 +7,7 @@ A SequencingProcessFile is a File that is associated with a SequencingProcess.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcessFile](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcessFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess]<sequencing_process%201..1-%20[SequencingProcessFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;accession(i):string;ega_accession(i):string;id(i):string;alias(i):string;xref(i):string%20*],[AnalysisProcess]-%20sequencing_process_files%201..*>[SequencingProcessFile],[Submission]++-%20sequencing_process_files%201..*>[SequencingProcessFile],[AnalysisProcess]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[Submission]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[File]^-[SequencingProcessFile],[SequencingProcess],[File],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess]<sequencing_process%201..1-%20[SequencingProcessFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;accession(i):string;ega_accession(i):string;id(i):string;alias(i):string;xref(i):string%20*],[AnalysisProcess]-%20sequencing_process_files%201..*>[SequencingProcessFile],[Submission]++-%20sequencing_process_files%201..*>[SequencingProcessFile],[AnalysisProcess]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[Submission]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[File]^-[SequencingProcessFile],[SequencingProcess],[File],[Attribute],[AnalysisProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess]<sequencing_process%201..1-%20[SequencingProcessFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sequencing_process_files%201..*>[SequencingProcessFile],[Submission]++-%20sequencing_process_files%201..*>[SequencingProcessFile],[AnalysisProcess]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[Submission]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[File]^-[SequencingProcessFile],[SequencingProcess],[File],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess]<sequencing_process%201..1-%20[SequencingProcessFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sequencing_process_files%201..*>[SequencingProcessFile],[Submission]++-%20sequencing_process_files%201..*>[SequencingProcessFile],[AnalysisProcess]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[Submission]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[File]^-[SequencingProcessFile],[SequencingProcess],[File],[Attribute],[AnalysisProcess])
 
 ## Parents
 
@@ -30,17 +30,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcessFile](ht
 
 ### Inherited from File:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)

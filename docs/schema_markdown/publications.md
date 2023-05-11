@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/publications](https://w3i
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Publication](Publication.md)
+None &#8594;  <sub>0..\*</sub> [Publication](Publication.md)
 
 ## Parents
 

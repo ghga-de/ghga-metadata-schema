@@ -7,7 +7,7 @@ Data use modifiers indicate additional conditions for use.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataUseModifier](https://w3id.org/GHGA-Submission-Metadata-Schema/DataUseModifier)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20data_use_modifiers%200..1>[DataUseModifier&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessPolicy]++-%20data_use_modifiers(i)%200..1>[DataUseModifier],[DataUseModifier]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUseModifier],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20data_use_modifiers%200..1>[DataUseModifier&#124;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessPolicy]++-%20data_use_modifiers(i)%200..1>[DataUseModifier],[DataUseModifier]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUseModifier],[DataAccessPolicy])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20data_use_modifiers%200..1>[DataUseModifier&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F],[DataAccessPolicy]++-%20data_use_modifiers(i)%200..1>[DataUseModifier],[DataUseModifier]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUseModifier],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[InformationContentEntity],[DataAccessPolicy]++-%20data_use_modifiers%200..1>[DataUseModifier&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F],[DataAccessPolicy]++-%20data_use_modifiers(i)%200..1>[DataUseModifier],[DataUseModifier]uses%20-.->[OntologyClassMixin],[InformationContentEntity]^-[DataUseModifier],[DataAccessPolicy])
 
 ## Parents
 
@@ -25,19 +25,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataUseModifier](https://
 ## Attributes
 
 
-### Inherited from InformationContentEntity:
+### Mixed in from OntologyClassMixin:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
+ * [OntologyClassMixin➞id](OntologyClassMixin_id.md)  <sub>1..1</sub>
+     * Description: An identifier that uniquely represents an entity.
      * Range: [String](types/String.md)
      * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
 
 ### Mixed in from OntologyClassMixin:
 

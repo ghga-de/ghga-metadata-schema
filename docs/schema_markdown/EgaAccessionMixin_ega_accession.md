@@ -20,17 +20,4 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/EgaAccessionMixin_ega_acc
 
 ## Used by
 
- * [Analysis](Analysis.md)
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
- * [DataAccessCommittee](DataAccessCommittee.md)
- * [DataAccessPolicy](DataAccessPolicy.md)
- * [Dataset](Dataset.md)
  * [EgaAccessionMixin](EgaAccessionMixin.md)
- * [File](File.md)
- * [Individual](Individual.md)
- * [Sample](Sample.md)
- * [SampleFile](SampleFile.md)
- * [SequencingExperiment](SequencingExperiment.md)
- * [SequencingProcessFile](SequencingProcessFile.md)
- * [Study](Study.md)
- * [StudyFile](StudyFile.md)
