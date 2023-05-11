@@ -510,6 +510,7 @@ classes:
       - size
       - checksum
       - checksum_type
+      - dataset
     slot_usage:
       name:
         description: >-
@@ -522,6 +523,9 @@ classes:
       checksum_type:
         required: true
       size:
+        required: true
+      dataset:
+        inlined: false
         required: true
 
   StudyFile:
@@ -642,7 +646,6 @@ classes:
       - title
       - description
       - types
-      - files
       - data_access_policy
     slot_usage:
       title:
@@ -655,11 +658,6 @@ classes:
         description: >-
           The type of a dataset.
         required: true
-      files:
-        description: >-
-          One or more File entities that collectively are part of this Dataset.
-        required: true
-        inlined: false
       data_access_policy:
         description: >-
           The Data Access Policy that applies to this Dataset.
@@ -1028,6 +1026,10 @@ slots:
   analysis_process:
     description: The AnalysisProcess associated with an entity.
     range: AnalysisProcess
+
+  dataset:
+    description: The Dataset associated with an entity.
+    range: Dataset
 
   datasets:
     description: The Datasets associated with an entity.

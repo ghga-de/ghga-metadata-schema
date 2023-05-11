@@ -7,7 +7,7 @@ A StudyFile is a File that is associated with a Study.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/StudyFile](https://w3id.org/GHGA-Submission-Metadata-Schema/StudyFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%201..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%201..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Attribute],[AnalysisProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%201..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Dataset],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%201..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Dataset],[Attribute],[AnalysisProcess])
 
 ## Parents
 
@@ -46,3 +46,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/StudyFile](https://w3id.o
  * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
      * Description: The type of algorithm used to generate the checksum of a file.
      * Range: [String](types/String.md)
+ * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
+     * Description: The Dataset associated with an entity.
+     * Range: [Dataset](Dataset.md)

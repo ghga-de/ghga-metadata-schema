@@ -26,7 +26,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [DataAccessPolicy➞policy_text](DataAccessPolicy_policy_text.md) - The terms of data use and policy verbiage should be captured here.
  * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
  * [Dataset➞data_access_policy](Dataset_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
- * [Dataset➞files](Dataset_files.md) - One or more File entities that collectively are part of this Dataset.
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
  * [Individual➞age](Individual_age.md)
  * [Individual➞ancestries](Individual_ancestries.md)

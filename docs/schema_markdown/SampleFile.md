@@ -7,7 +7,7 @@ A SampleFile is a File that is associated with a Sample.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SampleFile](https://w3id.org/GHGA-Submission-Metadata-Schema/SampleFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%201..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%201..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Attribute],[AnalysisProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%201..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Dataset],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%201..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Dataset],[Attribute],[AnalysisProcess])
 
 ## Parents
 
@@ -47,3 +47,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SampleFile](https://w3id.
  * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
      * Description: The type of algorithm used to generate the checksum of a file.
      * Range: [String](types/String.md)
+ * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
+     * Description: The Dataset associated with an entity.
+     * Range: [Dataset](Dataset.md)

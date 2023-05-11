@@ -16,7 +16,6 @@ None &#8594;  <sub>0..\*</sub> [File](File.md)
 
 ## Children
 
- *  [Dataset➞files](Dataset_files.md)
  *  [Individual➞files](Individual_files.md)
 
 ## Used by
