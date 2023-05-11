@@ -282,6 +282,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)
  * [sample_files](sample_files.md) - The SampleFiles associated with an entity.
      * [Submission➞sample_files](Submission_sample_files.md) - The SampleFiles that are part of this submission.
+ * [sample_input_files](sample_input_files.md) - The SampleFile associated used as an input for an entity.
+     * [AnalysisProcess➞sample_input_files](AnalysisProcess_sample_input_files.md)
  * [samples](samples.md) - The samples associated with an entity.
      * [Submission➞samples](Submission_samples.md) - Information about one or more Sample entities associated with this submission.
  * [sequencing_center](sequencing_center.md) - Center where sample was sequenced.
@@ -297,8 +299,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [sequencing_process](sequencing_process.md) - The SequencingProcess associated with an entity.
      * [SequencingProcessFile➞sequencing_process](SequencingProcessFile_sequencing_process.md)
  * [sequencing_process_files](sequencing_process_files.md) - The SequencingProcessFiles associated with an entity.
-     * [AnalysisProcess➞sequencing_process_files](AnalysisProcess_sequencing_process_files.md)
      * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md) - The SequencingProcessFiles that are part of this submission.
+ * [sequencing_process_input_files](sequencing_process_input_files.md) - The SequencingProcessFile associated used as an input for an entity.
+     * [AnalysisProcess➞sequencing_process_input_files](AnalysisProcess_sequencing_process_input_files.md)
  * [sequencing_protocol](sequencing_protocol.md) - The sequencing protocol associated with an entity.
      * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)
  * [sequencing_protocols](sequencing_protocols.md) - The sequencing protocol associated with an entity.
@@ -322,6 +325,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [StudyFile➞study](StudyFile_study.md)
  * [study_files](study_files.md) - The StudyFiles associated with an entity.
      * [Submission➞study_files](Submission_study_files.md) - The StudyFiles that are part of this submission.
+ * [study_input_files](study_input_files.md) - The StudyFile associated used as an input for an entity.
+     * [AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)
  * [submission_date](submission_date.md) - The timestamp (in ISO 8601 format) when submission was marked completed.
  * [submission_status](submission_status.md) - The status of a submission.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.

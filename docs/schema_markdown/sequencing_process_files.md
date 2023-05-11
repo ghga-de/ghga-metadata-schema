@@ -16,8 +16,8 @@ None &#8594;  <sub>0..\*</sub> [SequencingProcessFile](SequencingProcessFile.md)
 
 ## Children
 
- *  [AnalysisProcess➞sequencing_process_files](AnalysisProcess_sequencing_process_files.md)
  *  [Submission➞sequencing_process_files](Submission_sequencing_process_files.md)
 
 ## Used by
 
+ * [AnalysisProcess](AnalysisProcess.md)
