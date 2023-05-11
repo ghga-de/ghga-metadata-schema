@@ -84,13 +84,13 @@ LibraryPreparationProtocol {
 SequencingProtocol {
 
 }
-Analysis {
-
-}
 SampleFile {
 
 }
 StudyFile {
+
+}
+Analysis {
 
 }
 
@@ -129,7 +129,9 @@ File ||--}o Attribute : "attributes"
 AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
 AnalysisProcessOutputFile ||--}o Attribute : "attributes"
 AnalysisProcess ||--|| Analysis : "analysis"
-AnalysisProcess ||--}o SequencingProcessFile : "sequencing_process_files"
+AnalysisProcess ||--}| StudyFile : "study_input_files"
+AnalysisProcess ||--}| SampleFile : "sample_input_files"
+AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
 SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
 SequencingProcessFile ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
@@ -151,13 +153,13 @@ SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_pr
 SequencingExperiment ||--}o Attribute : "attributes"
 LibraryPreparationProtocol ||--}| Attribute : "attributes"
 SequencingProtocol ||--}| Attribute : "attributes"
-Analysis ||--}o File : "inputs"
-Analysis ||--|| Study : "study"
-Analysis ||--}o File : "outputs"
 SampleFile ||--|| Sample : "sample"
 SampleFile ||--}o Attribute : "attributes"
 StudyFile ||--|| Study : "study"
 StudyFile ||--}o Attribute : "attributes"
+Analysis ||--}o File : "inputs"
+Analysis ||--|| Study : "study"
+Analysis ||--}o File : "outputs"
 
 ```
 

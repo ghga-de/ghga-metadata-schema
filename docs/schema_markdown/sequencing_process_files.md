@@ -20,4 +20,3 @@ None &#8594;  <sub>0..\*</sub> [SequencingProcessFile](SequencingProcessFile.md)
 
 ## Used by
 
- * [AnalysisProcess](AnalysisProcess.md)

@@ -7,7 +7,7 @@
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcess](https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[SequencingProcessFile]<sequencing_process_files%200..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-++[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[SequencingProcessFile]<sequencing_process_files%200..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-++[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-++[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-++[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Analysis])
 
 ## Referenced by Class
 
@@ -22,9 +22,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcess](https://
  * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md)  <sub>1..1</sub>
      * Description: The Analysis the AnalysisProcess was part of
      * Range: [Analysis](Analysis.md)
- * [sequencing_process_files](sequencing_process_files.md)  <sub>0..\*</sub>
-     * Description: The SequencingProcessFiles associated with an entity.
-     * Range: [SequencingProcessFile](SequencingProcessFile.md)
  * [AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)  <sub>1..\*</sub>
      * Description: The StudyFile associated used as an input for an entity.
      * Range: [StudyFile](StudyFile.md)
