@@ -1618,36 +1618,23 @@ enums:
     description: >-
       Enum to capture the type of a study.
     permissible_values:
-      whole_genome_sequencing:
-        description: Whole Genome Sequencing
-      metagenomics:
-        description: Metagenomics
-      transcriptome_analysis:
-        description: Transcriptome Analysis
-      resequencing:
-        description: Resequencing
-      epigenetics:
-        description: Epigenetics
-      synthetic_genomics:
-        description: Sythetic Genomics
-      forensic_paleo_genomics:
-        description: Forensic or Paleo-genomics
-      gene_regulation:
-        description: Gene Regulation Study
-      cancer_genomics:
-        description: Cancer Genomics
-      population_genomics:
-        description: Population Genomics
-      rna_seq:
-        description: RNAseq
-      exome_sequencing:
-        description: Exome Sequencing
-      pooled_clone_sequencing:
-        description: Pooled Clone Sequencing
-      genome_wide_association_study:
-        description: Genome-wide Association Study
-      other:
-        description: Other study
+      CANCER_GENOMICS:
+      EPIGENETICS:
+      EXOME_SEQUENCING:
+      FORENSIC_GENETICS:
+      PALEO_GENOMICS:
+      GENE_REGULATION_STUDY:
+      METAGENOMICS:
+      OTHER:
+      POOLED_CLONE_SEQUENCING:
+      POPULATION_GENOMICS:
+      RNASEQ:
+      RESEQUENCING:
+      SYNTHETIC_GENOMICS:
+      TRANSCRIPTOME_ANALYSIS:
+      WHOLE_GENOME_SEQUENCING:
+      GWAS:
+
   FileFormatEnum:
     description: >-
       Enum to capture file types.
