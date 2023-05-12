@@ -386,6 +386,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias
  * [FileFormatEnum](FileFormatEnum.md) - Enum to capture file types.
  * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+ * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
  * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library
  * [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md) - Permitted vocabulary for library selections
