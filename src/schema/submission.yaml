@@ -1313,6 +1313,7 @@ slots:
   library_type:
     description: >-
       Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+    range: LibraryPreparationLibraryTypeEnum
 
   library_selection:
     description: >-
@@ -1673,6 +1674,21 @@ enums:
     permissible_values:
       SE:
       PE:
+
+  LibraryPreparationLibraryTypeEnum:
+    description: >-
+      The type of the library
+    permissible_values:
+      WGS:
+      WXS:
+      WCS:
+      TOTAL_RNA:
+      M_RNA:
+      MI_RNA:
+      NC_RNA:
+      ATAC:
+      METHYLATION:
+      CHROMOSOME_CONFORMATION_CAPTURE:
 
   DiseaseOrHealthyEnum:
     description: >-
