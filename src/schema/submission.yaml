@@ -1350,6 +1350,7 @@ slots:
       e.g. 3/5 prime tag or end, or the full-length transcript.
     exact_mappings:
       - EFO:0010187
+    range: EndBiasEnum
 
   target_regions:
     multivalued: True
@@ -1824,6 +1825,14 @@ enums:
       RANDOM:
       GENE_SPECIFIC:
       OTHER:
+
+  EndBiasEnum:
+    description: >-
+      Permitted values for end bias
+    permissible_values:
+      3_PRIME_END:
+      5_PRIME_END:
+      FULL_LENGTH:
 
   DiseaseOrHealthyEnum:
     description: >-
