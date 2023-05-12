@@ -1423,6 +1423,7 @@ slots:
       Aparatus in the fluidic subsystem where the sheath and sample meet.
       Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two.
       The sample flows through the center of a fluid column of sheath fluid in the flow cell.
+    range: FlowCellTypeEnum
 
   umi_barcode_read:
     description: >-
@@ -1881,6 +1882,18 @@ enums:
       DNBSEQ_G400:
       DNBSEQ_G400_FAST:
       ULTIMA_UG_100:
+      OTHER:
+
+  FlowCellTypeEnum:
+    description: >-
+      Permitted values for flow cell type
+    permissible_values:
+      ILLUMINA_NOVA_SEQ_S2:
+      ILLUMINA_NOVA_SEQ_S4:
+      PROMETH_ION:
+      FLONGLE:
+      MIN_ION:
+      GRID_ION:
       OTHER:
 
   DiseaseOrHealthyEnum:
