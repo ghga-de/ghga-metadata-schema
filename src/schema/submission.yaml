@@ -1342,6 +1342,7 @@ slots:
       This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
     exact_mappings:
       - EFO:0010192
+    range: PrimerEnum
 
   end_bias:
     description: >-
@@ -1814,6 +1815,15 @@ enums:
       SENSE:
       ANTISENSE:
       BOTH:
+
+  PrimerEnum:
+    description: >-
+      Permitted values for primer
+    permissible_values:
+      OLIGO_D_T:
+      RANDOM:
+      GENE_SPECIFIC:
+      OTHER:
 
   DiseaseOrHealthyEnum:
     description: >-
