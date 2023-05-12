@@ -1306,6 +1306,7 @@ slots:
   library_layout:
     description: >-
       Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
+    range: LibraryPreparationLibraryLayoutEnum
     exact_mappings:
       - NCIT:C175894
 
@@ -1665,6 +1666,13 @@ enums:
       TXT:
       VCF:
       WIG:
+
+  LibraryPreparationLibraryLayoutEnum:
+    description: >-
+      Single-end vs paired-end library
+    permissible_values:
+      SE:
+      PE:
 
   DiseaseOrHealthyEnum:
     description: >-
