@@ -1639,37 +1639,33 @@ enums:
     description: >-
       Enum to capture file types.
     permissible_values:
-      bam:
-        description: BAM File
-      complete_genomics:
-        description: Complete Genomics File
-      cram:
-        description: CRAM File
-      fasta:
-        description: Fasta File
-      fastq:
-        description: FastQ File
-      pacbio_hdf5:
-        description: PacBio HDF5 File
-      sff:
-        description: >-
-          Standard flowgram format used to encode results
-          of pyrosequencing from the 454 Life Sciences platform.
-      srf:
-        description: >-
-          SRF is a generic format for DNA sequence data.
-      vcf:
-        description: >-
-          VCF file for storing gene sequence variations.
-      txt:
-        description: >-
-          Text file.
-      pxf:
-        description: >-
-          Phenopacket file.
-      other:
-        description: >-
-          Other format.
+      AGP:
+      BAI:
+      BAM:
+      BCF:
+      BED:
+      CRAI:
+      CRAM:
+      CSV:
+      FASTA:
+      FASTQ:
+      GFF:
+      HDF5:
+      INFO:
+      JSON:
+      MD:
+      OTHER:
+      PED:
+      SAM:
+      SFF:
+      SRF:
+      TAB:
+      TABIX:
+      TSV:
+      TXT:
+      VCF:
+      WIG:
+
   DiseaseOrHealthyEnum:
     description: >-
       Enum to capture whether a condition corresponds to a disease or a healthy state.
