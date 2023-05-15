@@ -872,43 +872,43 @@ classes:
           Information about a Study entities associated with this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       samples:
         description: >-
           Information about one or more Sample entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       biospecimens:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       individuals:
         description: >-
           Information about one or more Individual entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       sequencing_experiments:
         description: >-
           Information about one or more Experiment entities associated with this submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       sequencing_protocols:
         description: >-
           One or more sequencing protocol entities associated with this Submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       library_preparation_protocols:
         description: >-
           One or more library preparation protocol entities associated with this Submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       analyses:
         description: >-
           Information about one or more Analysis entities associated with this submission.
@@ -919,53 +919,53 @@ classes:
         description: The StudyFiles that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       sample_files:
         description: The SampleFiles that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       sequencing_process_files:
         description: The SequencingProcessFiles that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       analysis_process_output_files:
         description: The AnalysisProcessOutputFiles that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       datasets:
         description: >-
           One or more Dataset that are part of this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       data_access_policies:
         description: >-
           The Data Access Policy that applies to Dataset in this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       data_access_committees:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
         required: true
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       members:
         description: >-
           The members associated with a committee referenced in this submission
         required: true
         range: Member
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
       publications:
         description: >-
           One or more Publication entities associated with this Submission.
         required: false
         inlined: true
-        inlined_as_list: false
+        inlined_as_list: true
 
 slots:
   study:
