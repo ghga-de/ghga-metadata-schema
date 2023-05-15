@@ -387,6 +387,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [FileFormatEnum](FileFormatEnum.md) - Enum to capture file types.
  * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type
  * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+ * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
  * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library

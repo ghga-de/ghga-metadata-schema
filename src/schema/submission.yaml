@@ -1428,6 +1428,7 @@ slots:
   umi_barcode_read:
     description: >-
       The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+    range: IndexReadEnum
 
   umi_barcode_offset:
     description: >-
@@ -1440,6 +1441,7 @@ slots:
   cell_barcode_read:
     description: >-
       The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+    range: IndexReadEnum
 
   cell_barcode_offset:
     description: >-
@@ -1895,6 +1897,15 @@ enums:
       MIN_ION:
       GRID_ION:
       OTHER:
+
+  IndexReadEnum:
+    description: >-
+      Permitted Values to indicate the location of a sequence component in a read or index
+    permissible_values:
+      INDEX1:
+      INDEX2:
+      READ1:
+      READ2:
 
   DiseaseOrHealthyEnum:
     description: >-
