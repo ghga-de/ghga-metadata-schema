@@ -1454,6 +1454,7 @@ slots:
   sample_barcode_read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+    range: SampleBarcodeReadEnum
 
   isolation:
     description: >-
@@ -1906,6 +1907,14 @@ enums:
       INDEX2:
       READ1:
       READ2:
+
+  SampleBarcodeReadEnum:
+    description: >-
+      Permitted values for sample barcode read
+    permissible_values:
+      INDEX1:
+      INDEX1_AND_INDEX2:
+      OTHER:
 
   DiseaseOrHealthyEnum:
     description: >-

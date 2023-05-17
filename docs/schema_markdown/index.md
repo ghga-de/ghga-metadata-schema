@@ -396,6 +396,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md) - Permitted values for library preparation RNASeq strandedness
  * [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md) - Enum to capture whether a condition corresponds to a mutant or a wildtype.
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
+ * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
  * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
