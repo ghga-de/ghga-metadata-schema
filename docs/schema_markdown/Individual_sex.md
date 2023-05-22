@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_sex](https://w
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>1..1</sub> [BiologicalSexEnum](BiologicalSexEnum.md)
+[Individual](Individual.md) &#8594;  <sub>1..1</sub> [IndividualSexEnum](IndividualSexEnum.md)
 
 ## Parents
 

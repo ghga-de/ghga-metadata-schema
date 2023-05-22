@@ -265,7 +265,7 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 ```mermaid
 erDiagram
 Individual {
-    BiologicalSexEnum sex  
+    IndividualSexEnum sex  
     string karyotype  
     AgeRangeEnum age  
     VitalStatusEnum vital_status  

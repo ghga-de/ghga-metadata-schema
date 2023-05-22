@@ -382,7 +382,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 ### Enums
 
  * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
- * [BiologicalSexEnum](BiologicalSexEnum.md) - The biological sex of an Individual as determined by their chromosomes.
  * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
  * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias
@@ -390,6 +389,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type
  * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
  * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
+ * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
  * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name

@@ -1504,7 +1504,7 @@ slots:
     description: >-
       The assemblage of physical properties or qualities by which male is distinguished from female;
       the physical difference between male and female; the distinguishing peculiarity of male or female.
-    range: BiologicalSexEnum
+    range: IndividualSexEnum
     in_subset:
       - restricted
 
@@ -1637,16 +1637,21 @@ enums:
     reachable_from:
       source_ontology: obo:bto
 
-  BiologicalSexEnum:
+  IndividualSexEnum:
     description: >-
-      The biological sex of an Individual as determined by their chromosomes.
+      The sex of an Individual as as defined in a specific medical and clinical context.
+    reachable_from:
+      source_ontology: obo:gsso
+      source_nodes:
+        - GSSO:009428
+      include_self: false
     permissible_values:
-      female:
-        description: Female
-      male:
-        description: Male
-      unknown:
-        description: unspecified
+      FEMALE_SEX_FOR_CLINICAL_USE:
+      IMAGING_SEX:
+      MALE_SEX_FOR_CLINICAL_USE:
+      SPECIFIED_SEX_FOR_CLINICAL_USE:
+      UNKNOWN_SEX_FOR_CLINICAL_USE:
+
   VitalStatusEnum:
     description: >-
       Enum to capture the vital status of an individual.
