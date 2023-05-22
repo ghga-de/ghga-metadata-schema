@@ -1458,6 +1458,7 @@ slots:
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
+    range: IsolationEnum
 
   storage:
     description: >-
@@ -1605,6 +1606,14 @@ slots:
     range: TissueEnum
 
 enums:
+  IsolationEnum:
+    description: Describes how biomaterial was isolated.
+    reachable_from:
+      source_ontology: obo:snomed
+      source_nodes:
+        - SNOMED:118292001
+      include_self: false
+
   SampleTypeEnum:
     description: >-
       The type of a sample

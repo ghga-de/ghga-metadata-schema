@@ -279,7 +279,7 @@ Biospecimen {
     string name  
     string type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
     TissueEnum tissue  
@@ -289,7 +289,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     stringList xref  
     string alias  
@@ -337,7 +337,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     stringList xref  
     string alias  
@@ -375,7 +375,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     stringList xref  
     string alias  

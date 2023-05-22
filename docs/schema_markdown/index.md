@@ -391,6 +391,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
  * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
+ * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
  * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library
  * [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md) - Permitted vocabulary for library selections
