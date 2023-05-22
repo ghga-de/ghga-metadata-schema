@@ -384,7 +384,7 @@ Condition {
     string name  
     string description  
     DiseaseOrHealthyEnum disease_or_healthy  
-    TreatmentOrControlEnum treatment_or_control  
+    CaseControlStatusEnum case_control_status  
     MutantOrWildtypeEnum mutant_or_wildtype  
     string title  
     string alias  

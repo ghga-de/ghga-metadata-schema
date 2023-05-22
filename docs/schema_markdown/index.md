@@ -105,6 +105,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.
      * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
+ * [case_control_status](case_control_status.md) - Whether a condition corresponds to a treatment or a control.
+     * [Condition➞case_control_status](Condition_case_control_status.md)
  * [category](category.md) - The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
  * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
      * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
@@ -344,8 +346,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ResearchActivity➞title](ResearchActivity_title.md)
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
      * [Study➞title](Study_title.md) - A comprehensive title for the study.
- * [treatment_or_control](treatment_or_control.md) - Whether a condition corresponds to a treatment or a control.
-     * [Condition➞treatment_or_control](Condition_treatment_or_control.md)
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type
      * [Analysis➞type](Analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.
@@ -383,6 +383,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
  * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
  * [BiologicalSexEnum](BiologicalSexEnum.md) - The biological sex of an Individual as determined by their chromosomes.
+ * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
  * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias
  * [FileFormatEnum](FileFormatEnum.md) - Enum to capture file types.
@@ -401,7 +402,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
  * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
- * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
 
 ### Subsets

@@ -7,7 +7,7 @@ An condition that is linked to comparable samples.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string;title(i):string%20%3F],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;treatment_or_control:TreatmentOrControlEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string;title(i):string%20%3F],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string;title(i):string%20%3F],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string;title(i):string%20%3F],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute])
 
 ## Parents
 
@@ -39,9 +39,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
  * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a disease or a healthy state.
      * Range: [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)
- * [Condition➞treatment_or_control](Condition_treatment_or_control.md)  <sub>1..1</sub>
+ * [Condition➞case_control_status](Condition_case_control_status.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a treatment or a control.
-     * Range: [TreatmentOrControlEnum](TreatmentOrControlEnum.md)
+     * Range: [CaseControlStatusEnum](CaseControlStatusEnum.md)
  * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a mutant or a wildtype.
      * Range: [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md)

@@ -101,7 +101,7 @@ classes:
       - name
       - description
       - disease_or_healthy
-      - treatment_or_control
+      - case_control_status
       - mutant_or_wildtype
     slot_usage:
       name:
@@ -110,7 +110,7 @@ classes:
         required: true
       disease_or_healthy:
         required: true
-      treatment_or_control:
+      case_control_status:
         required: true
       mutant_or_wildtype:
         required: true
@@ -1469,10 +1469,10 @@ slots:
       Whether a condition corresponds to a disease or a healthy state.
     range: DiseaseOrHealthyEnum
 
-  treatment_or_control:
+  case_control_status:
     description: >-
       Whether a condition corresponds to a treatment or a control.
-    range: TreatmentOrControlEnum
+    range: CaseControlStatusEnum
 
   mutant_or_wildtype:
     description: >-
@@ -1951,16 +1951,24 @@ enums:
         description: Healthy state.
       not_applicable:
         description: The distinction is not applicaple.
-  TreatmentOrControlEnum:
+
+  CaseControlStatusEnum:
     description: >-
-      Enum to capture whether a condition corresponds to a treatment or a control.
+      Enum to capture whether a condition corresponds to a case or a control condition.
+    reachable_from:
+      source_ontology: obo:ncit
+      source_nodes:
+        - NCIT:C99268
+      include_self: false
     permissible_values:
-      treatment:
-        description: Treatment state.
-      control:
-        description: Control state.
-      not_applicable:
-        description: The distinction is not applicaple.
+      NEITHER_CASE_OR_CONTROL_STATUS:
+      PROBABLE_CASE_STATUS:
+      PROBABLE_CONTROL_STATUS:
+      TRUE_CASE_STATUS:
+      TRUE_CONTROL_STATUS:
+      UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS:
+      BOTH:
+
   MutantOrWildtypeEnum:
     description: >-
       Enum to capture whether a condition corresponds to a mutant or a wildtype.
