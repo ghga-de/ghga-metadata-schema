@@ -395,6 +395,7 @@ classes:
       type:
         description: >-
           The type of sample.
+        range: SampleTypeEnum
         required: false
       description:
         description: >-
@@ -1604,6 +1605,23 @@ slots:
     range: TissueEnum
 
 enums:
+  SampleTypeEnum:
+    description: >-
+      The type of a sample
+    permissible_values:
+      CF_DNA:
+      DEPLETED_RNA:
+      DS_DNA_CH_IP:
+      FFPE_DNA:
+      FFPE_TOTAL_RNA:
+      GENOMIC_DNA:
+      PCR_PRODUCTS:
+      POLY_A_RNA:
+      SINGLE_CELL_DNA:
+      SINGLE_CELL_RNA:
+      SMALL_RNA:
+      TOTAL_RNA:
+
   TissueEnum:
     description: >-
       A tissue as described in the BRENDA ontology.

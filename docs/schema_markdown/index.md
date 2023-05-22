@@ -398,6 +398,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md) - Enum to capture whether a condition corresponds to a mutant or a wildtype.
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
+ * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
  * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.

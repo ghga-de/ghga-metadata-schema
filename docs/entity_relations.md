@@ -287,7 +287,7 @@ Biospecimen {
 }
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
     string isolation  
     string storage  
@@ -335,7 +335,7 @@ File {
 }
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
     string isolation  
     string storage  
@@ -373,7 +373,7 @@ Focusses on the relation between Study, Condition, and Sample.
 erDiagram
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
     string isolation  
     string storage  
