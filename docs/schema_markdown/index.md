@@ -399,7 +399,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
- * [TissueEnum](TissueEnum.md)
+ * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
 
