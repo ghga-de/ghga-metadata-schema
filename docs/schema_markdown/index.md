@@ -91,7 +91,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
      * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md) - The AnalysisProcessOutputFiles that are part of this submission.
  * [anatomical_entities](anatomical_entities.md) - Anatomical sites associated with an entity.
-     * [Biospecimen➞anatomical_entities](Biospecimen_anatomical_entities.md)
  * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
@@ -337,6 +336,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [technical_replicates](technical_replicates.md) - A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an sequencing experiment.
  * [telephone](telephone.md) - The telephone number associated with a person.
      * [Member➞telephone](Member_telephone.md) - The telephone number of the Member.
+ * [tissue](tissue.md)
+     * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
      * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
@@ -398,6 +399,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
+ * [TissueEnum](TissueEnum.md)
  * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
 

@@ -57,9 +57,6 @@ Sample {
 Biospecimen {
 
 }
-AnatomicalEntity {
-
-}
 Individual {
 
 }
@@ -141,7 +138,6 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
@@ -192,7 +188,6 @@ Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
@@ -287,6 +282,7 @@ Biospecimen {
     string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
+    TissueEnum tissue  
     string alias  
 }
 Sample {
@@ -306,7 +302,6 @@ Individual ||--}| Disease : "diseases"
 Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"

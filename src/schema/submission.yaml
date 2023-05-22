@@ -306,7 +306,7 @@ classes:
       - storage
       - individual
       - vital_status_at_sampling
-      - anatomical_entities
+      - tissue
     slot_usage:
       name:
         required: false
@@ -333,10 +333,8 @@ classes:
       vital_status_at_sampling:
         required: false
         recommended: true
-      anatomical_entities:
+      tissue:
         required: true
-        inlined: true
-        inlined_as_list: true
 
   AnatomicalEntity:
     is_a: MaterialEntity
@@ -1602,7 +1600,16 @@ slots:
     description: >-
       DOI identifier of a publication.
 
+  tissue:
+    range: TissueEnum
+
 enums:
+  TissueEnum:
+    description: >-
+      A tissue as described in the BRENDA ontology.
+    reachable_from:
+      source_ontology: obo:bto
+
   BiologicalSexEnum:
     description: >-
       The biological sex of an Individual as determined by their chromosomes.
