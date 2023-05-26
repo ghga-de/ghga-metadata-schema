@@ -391,6 +391,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
  * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
+ * [KaryotypeEnum](KaryotypeEnum.md) - Permitted values for karyotype
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
  * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library
  * [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md) - Permitted vocabulary for library selections

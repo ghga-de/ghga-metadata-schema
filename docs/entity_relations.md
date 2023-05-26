@@ -261,7 +261,7 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 erDiagram
 Individual {
     IndividualSexEnum sex  
-    string karyotype  
+    KaryotypeEnum karyotype  
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
     string geographical_region  

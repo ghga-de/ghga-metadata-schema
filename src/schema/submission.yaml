@@ -1500,6 +1500,7 @@ slots:
       The karyotype of an individual if defined.
     in_subset:
       - restricted
+    range: KaryotypeEnum
 
   age_at_sampling:
     description: Age of an individual.
@@ -1593,6 +1594,13 @@ slots:
     range: TissueEnum
 
 enums:
+  KaryotypeEnum:
+    description: Permitted values for karyotype
+    permissible_values:
+      46_XY:
+      46_XX:
+      OTHER:
+
   PhenotypicFeaturesEnum:
     description: An enum describing permissible phenotype descriptors
     include:
