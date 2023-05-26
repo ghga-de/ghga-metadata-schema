@@ -21,7 +21,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
  * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
      * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
-     * [DataUseModifier](DataUseModifier.md) - Data use modifiers indicate additional conditions for use.
      * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
      * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
          * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A AnalysisProcessOutputFile is a File that is associated as an output file with an AnalysisProcess.
@@ -380,6 +379,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
  * [AncestryEnum](AncestryEnum.md) - Permitted values for ancestry
  * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
+ * [DataUseModifierEnum](DataUseModifierEnum.md) - Permitted values for data use modifier
  * [DataUsePermissionEnum](DataUsePermissionEnum.md) - Permitted values for data use permission
  * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias

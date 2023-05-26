@@ -30,9 +30,6 @@ DataAccessCommittee {
 DataAccessPolicy {
 
 }
-DataUseModifier {
-
-}
 Dataset {
 
 }
@@ -107,7 +104,6 @@ DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
-DataAccessPolicy ||--|o DataUseModifier : "data_use_modifiers"
 DataAccessPolicy ||--}o Attribute : "attributes"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"

@@ -7,12 +7,11 @@ Mixin for entities that represent an class/term/concept from an ontology.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin](https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F],[DataUseModifier]uses%20-.->[OntologyClassMixin],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[DataUseModifier],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F],[DataUseModifier]uses%20-.->[OntologyClassMixin],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[DataUseModifier],[AnatomicalEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[AnatomicalEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[DiseaseOrPhenotypicFeature]uses%20-.->[OntologyClassMixin&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F],[AnatomicalEntity]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature],[AnatomicalEntity])
 
 ## Mixin for
 
  * [AnatomicalEntity](AnatomicalEntity.md) (mixin)  - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
- * [DataUseModifier](DataUseModifier.md) (mixin)  - Data use modifiers indicate additional conditions for use.
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) (mixin)  - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
 
 ## Referenced by Class

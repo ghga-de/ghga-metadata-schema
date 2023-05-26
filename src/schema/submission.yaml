@@ -639,15 +639,6 @@ classes:
         required: true
         inlined: false
 
-  DataUseModifier:
-    is_a: InformationContentEntity
-    mixins:
-      - OntologyClassMixin
-    description: >-
-      Data use modifiers indicate additional conditions for use.
-    exact_mappings:
-      - DUO:0000017
-
   DataAccessPolicy:
     is_a: InformationContentEntity
     mixins:
@@ -1168,8 +1159,7 @@ slots:
     description: >-
       Modifier for Data use permission associated with an entity.
       Should be descendants of 'DUO:0000017 data use modifier'
-    range: DataUseModifier
-    inlined: true
+    range: DataUseModifierEnum
     in_subset:
       - restricted
 
@@ -1560,6 +1550,13 @@ slots:
     range: TissueEnum
 
 enums:
+  DataUseModifierEnum:
+    description: Permitted values for data use modifier
+    reachable_from:
+      source_ontology: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
+      source_nodes: DUO:0000017
+      include_self: false
+
   DataUsePermissionEnum:
     description: Permitted values for data use permission
     reachable_from:

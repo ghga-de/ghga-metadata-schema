@@ -21,7 +21,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin_descri
 ## Used by
 
  * [AnatomicalEntity](AnatomicalEntity.md)
- * [DataUseModifier](DataUseModifier.md)
  * [Disease](Disease.md)
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md)
  * [OntologyClassMixin](OntologyClassMixin.md)
