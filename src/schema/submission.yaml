@@ -470,17 +470,6 @@ classes:
         required: false
         inlined: false
 
-  Ancestry:
-    is_a: Population
-    mixins:
-      - OntologyClassMixin
-    description: >-
-      Population category defined using ancestries informative markers (AIMs) based
-      on genetic/genomic data.
-    aliases: ["ancestral group", "ancestries category"]
-    exact_mappings:
-      - HANCESTRO:0004
-
   File:
     is_a: InformationContentEntity
     mixins:
@@ -1082,11 +1071,8 @@ slots:
   ancestries:
     description: >-
       A person's descent or lineage, from a person or from a population.
-      Typically this is a value from HANCESTRO (Human Ancestry Ontology).
-    range: Ancestry
+    range: AncestryEnum
     multivalued: true
-    inlined: true
-    inlined_as_list: true
     in_subset:
       - restricted
 
@@ -1595,6 +1581,12 @@ slots:
     range: TissueEnum
 
 enums:
+  AncestryEnum:
+    reachable_from:
+      source_ontology: http://purl.obolibrary.org/obo/hancestro/releases/2022-05-12/hancestro.owl
+      source_nodes: HANCESTRO:0004
+      include_self: false
+
   GeographicalRegionEnum:
     description: Permitted values for geographical region
     reachable_from:

@@ -37,7 +37,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AnatomicalEntity](AnatomicalEntity.md) - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
      * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
      * [Population](Population.md) - A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
-         * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
      * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
  * [Person](Person.md) - A member of the species Homo sapiens.
      * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
@@ -90,7 +89,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
      * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md) - The AnalysisProcessOutputFiles that are part of this submission.
  * [anatomical_entities](anatomical_entities.md) - Anatomical sites associated with an entity.
- * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+ * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
@@ -381,6 +380,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 ### Enums
 
  * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
+ * [AncestryEnum](AncestryEnum.md)
  * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
  * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias

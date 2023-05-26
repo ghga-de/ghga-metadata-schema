@@ -66,9 +66,6 @@ File {
 Disease {
 
 }
-Ancestry {
-
-}
 SequencingExperiment {
 
 }
@@ -135,7 +132,6 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
@@ -177,7 +173,6 @@ Sample {
 
 }
 
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
@@ -265,6 +260,7 @@ Individual {
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
     GeographicalRegionEnum geographical_region  
+    AncestryEnumList ancestries  
     PhenotypicFeaturesEnumList phenotypic_features  
     string given_name  
     string family_name  
@@ -291,7 +287,6 @@ Sample {
     string alias  
 }
 
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"

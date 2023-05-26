@@ -62,7 +62,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [age_at_sampling](age_at_sampling.md) - Age of an individual.
  * [alias](alias.md) - The alias for an entity at the time of submission.
  * [analyses](analyses.md) - The analyses associated with an entity.
- * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+ * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population.
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
  * [biospecimen](biospecimen.md) - The biospecimen associated with an entity.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.

@@ -2,14 +2,14 @@
 # Slot: ancestries
 
 
-A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+A person's descent or lineage, from a person or from a population.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_ancestries](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_ancestries)
 
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [Ancestry](Ancestry.md)
+[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [AncestryEnum](AncestryEnum.md)
 
 ## Parents
 
