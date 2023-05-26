@@ -639,16 +639,6 @@ classes:
         required: true
         inlined: false
 
-  DataUsePermission:
-    is_a: InformationContentEntity
-    mixins:
-      - OntologyClassMixin
-    description: >-
-      A data item that is used to indicate consent permissions for datasets and/or materials
-      and relates to the purposes for which datasets and/or material might be removed, stored or used.
-    exact_mappings:
-      - DUO:0000001
-
   DataUseModifier:
     is_a: InformationContentEntity
     mixins:
@@ -1170,18 +1160,7 @@ slots:
     description: >-
       Data use permission associated with an entity. Typically one or more terms from DUO.
       Should be descendants of 'DUO:0000001 data use permission'.
-    range: DataUsePermission
-    inlined: true
-    in_subset:
-      - restricted
-
-  data_use_permissions:
-    description: >-
-      Data use permissions associated with an entity. Typically one or more terms from DUO.
-      Should be descendants of 'DUO:0000001 data use permission'.
-    range: DataUsePermission
-    multivalued: True
-    inlined: true
+    range: DataUsePermissionEnum
     in_subset:
       - restricted
 
@@ -1581,7 +1560,15 @@ slots:
     range: TissueEnum
 
 enums:
+  DataUsePermissionEnum:
+    description: Permitted values for data use permission
+    reachable_from:
+      source_ontology: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
+      source_nodes: DUO:0000001
+      include_self: false
+
   AncestryEnum:
+    description: Permitted values for ancestry
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/hancestro/releases/2022-05-12/hancestro.owl
       source_nodes: HANCESTRO:0004

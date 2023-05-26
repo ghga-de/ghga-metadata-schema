@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/data_use_permission](http
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [DataUsePermission](DataUsePermission.md)
+None &#8594;  <sub>0..1</sub> [DataUsePermissionEnum](DataUsePermissionEnum.md)
 
 ## Parents
 
