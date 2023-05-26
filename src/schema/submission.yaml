@@ -355,17 +355,6 @@ classes:
       - EFO:0000408
       - MONDO:0000001
 
-  PhenotypicFeature:
-    is_a: DiseaseOrPhenotypicFeature
-    description: >-
-      The observable form taken by some character (or group of characters) in an individual or
-      an organism, excluding pathology and disease. The detectable outward manifestations of a
-      specific genotype.
-    exact_mappings:
-      - HP:0000118
-      - EFO:0000651
-      - SIO:010056
-
   Sample:
     is_a: MaterialEntity
     mixins:
@@ -474,8 +463,6 @@ classes:
           For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
-        inlined: true
-        inlined_as_list: true
       files:
         description: >-
           Additional/supplementary files associated with an Individual.
@@ -1068,7 +1055,7 @@ slots:
 
   phenotypic_features:
     description: Phenotypic feature concepts that the entity is associated with.
-    range: PhenotypicFeature
+    range: PhenotypicFeaturesEnum
     multivalued: true
     in_subset:
       - restricted
@@ -1606,6 +1593,27 @@ slots:
     range: TissueEnum
 
 enums:
+  PhenotypicFeaturesEnum:
+    description: An enum describing permissible phenotype descriptors
+    include:
+      - reachable_from:
+          source_ontology: http://www.ebi.ac.uk/efo/releases/v3.49.0/efo.owl
+          include_self: false
+      - reachable_from:
+          source_ontology: http://www.orpha.net/version4.1
+          include_self: false
+      - reachable_from:
+          source_ontology: obo:snomed
+          source_nodes:
+            - http://snomed.info/id/404684003
+          include_self: false
+      - reachable_from:
+          source_ontology: http://purl.obolibrary.org/obo/mondo/releases/2022-12-01/mondo.owl
+          include_self: false
+      - reachable_from:
+          source_ontology: obo:hp
+          include_self: false
+
   IsolationEnum:
     description: Describes how biomaterial was isolated.
     reachable_from:

@@ -17,7 +17,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [BiologicalQuality](BiologicalQuality.md) - A BiologicalQuality is a quality held by a biological entity.
      * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
          * [Disease](Disease.md) - A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
-         * [PhenotypicFeature](PhenotypicFeature.md) - The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
  * [Committee](Committee.md) - A group of people organized for a specific purpose.
      * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
  * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
@@ -398,6 +397,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md) - The type of the library
  * [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md) - Permitted values for library preparation RNASeq strandedness
  * [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md) - Enum to capture whether a condition corresponds to a mutant or a wildtype.
+ * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample

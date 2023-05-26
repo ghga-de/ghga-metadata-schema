@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/phenotypic_features](http
 
 ## Domain and Range
 
-None &#8594;  <sub>0..\*</sub> [PhenotypicFeature](PhenotypicFeature.md)
+None &#8594;  <sub>0..\*</sub> [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md)
 
 ## Parents
 

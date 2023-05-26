@@ -63,9 +63,6 @@ Individual {
 File {
 
 }
-PhenotypicFeature {
-
-}
 Disease {
 
 }
@@ -142,7 +139,6 @@ Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
@@ -185,7 +181,6 @@ Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"
@@ -270,6 +265,7 @@ Individual {
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
     string geographical_region  
+    PhenotypicFeaturesEnumList phenotypic_features  
     string given_name  
     string family_name  
     string additional_name  
@@ -299,7 +295,6 @@ Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"

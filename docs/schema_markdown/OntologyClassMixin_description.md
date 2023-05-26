@@ -27,7 +27,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin_descri
  * [Disease](Disease.md)
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md)
  * [OntologyClassMixin](OntologyClassMixin.md)
- * [PhenotypicFeature](PhenotypicFeature.md)
 
 ## Other properties
 

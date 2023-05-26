@@ -7,7 +7,7 @@ Disease or Phenotypic Feature that the entity is associated with. This entity is
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeature](https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeature)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypicFeature],[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])](https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypicFeature],[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[PhenotypicFeature],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClassMixin],[DiseaseOrPhenotypicFeature&#124;id:string;concept_identifier:string%20%3F;concept_name:string%20%3F;description:string%20%3F;ontology_name:string%20%3F;ontology_version:string%20%3F]uses%20-.->[OntologyClassMixin],[DiseaseOrPhenotypicFeature]^-[Disease],[BiologicalQuality]^-[DiseaseOrPhenotypicFeature],[Disease],[BiologicalQuality])
 
 ## Parents
 
@@ -20,7 +20,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrPhenotypicFeatur
 ## Children
 
  * [Disease](Disease.md) - A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
- * [PhenotypicFeature](PhenotypicFeature.md) - The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
 
 ## Referenced by Class
 
