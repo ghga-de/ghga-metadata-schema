@@ -1478,6 +1478,7 @@ slots:
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     in_subset:
       - restricted
+    range: GeographicalRegionEnum
 
   vital_status:
     description: >-
@@ -1594,6 +1595,13 @@ slots:
     range: TissueEnum
 
 enums:
+  GeographicalRegionEnum:
+    description: Permitted values for geographical region
+    reachable_from:
+      source_ontology: http://purl.obolibrary.org/obo/hancestro/releases/2022-05-12/hancestro.owl
+      source_nodes: HANCESTRO:0002
+      include_self: false
+
   KaryotypeEnum:
     description: Permitted values for karyotype
     permissible_values:

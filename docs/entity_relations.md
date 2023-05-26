@@ -264,7 +264,7 @@ Individual {
     KaryotypeEnum karyotype  
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
-    string geographical_region  
+    GeographicalRegionEnum geographical_region  
     PhenotypicFeaturesEnumList phenotypic_features  
     string given_name  
     string family_name  
