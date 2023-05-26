@@ -267,7 +267,7 @@ erDiagram
 Individual {
     IndividualSexEnum sex  
     string karyotype  
-    AgeRangeEnum age  
+    AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
     string geographical_region  
     string given_name  

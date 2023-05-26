@@ -429,7 +429,7 @@ classes:
     slots:
       - sex
       - karyotype
-      - age
+      - age_at_sampling
       - vital_status
       - geographical_region
       - ancestries
@@ -443,7 +443,7 @@ classes:
         required: true
       karyotype:
         required: false
-      age:
+      age_at_sampling:
         required: true
       vital_status:
         description: Last known Vital Status of an Individual.
@@ -1514,7 +1514,7 @@ slots:
     in_subset:
       - restricted
 
-  age:
+  age_at_sampling:
     description: Age of an individual.
     range: AgeRangeEnum
     in_subset:
@@ -2005,39 +2005,39 @@ enums:
     description: >-
       Enum to capture the age range that an Indiviudal belongs to.
     permissible_values:
-      0-5:
+      0_TO_5:
         description: Age between 0 to 5.
-      6-10:
+      6_TO_10:
         description: Age between 6 to 10.
-      11-15:
+      11_TO_15:
         description: Age between 11 to 15.
-      16-20:
+      16_TO_20:
         description: Age between 16 to 20.
-      21-25:
+      21_TO_25:
         description: Age between 21 to 25.
-      26-30:
+      26_TO_30:
         description: Age between 26 to 30.
-      31-35:
+      31_TO_35:
         description: Age between 31 to 35.
-      36-40:
+      36_TO_40:
         description: Age between 36 to 40.
-      41-45:
+      41_TO_45:
         description: Age between 41 to 45.
-      46-50:
+      46_TO_50:
         description: Age between 46 to 50.
-      51-55:
+      51_TO_55:
         description: Age between 51 to 55.
-      56-60:
+      56_TO_60:
         description: Age between 56 to 60.
-      61-65:
+      61_TO_65:
         description: Age between 61 to 65.
-      66-70:
+      66_TO_70:
         description: Age between 66 to 70.
-      71-75:
+      71_TO_75:
         description: Age between 71 to 75.
-      76-80:
+      76_TO_80:
         description: Age between 76 to 80.
-      80+:
+      81_OR_OLDER:
         description: Age above 80.
-      unknown:
+      UNKNOWN:
         description: Age range unknown.
