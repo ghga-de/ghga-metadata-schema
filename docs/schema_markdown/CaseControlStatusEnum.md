@@ -16,11 +16,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/CaseControlStatusEnum](ht
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| NEITHER_CASE_OR_CONTROL_STATUS |  |  |  |
-| PROBABLE_CASE_STATUS |  |  |  |
-| PROBABLE_CONTROL_STATUS |  |  |  |
-| TRUE_CASE_STATUS |  |  |  |
-| TRUE_CONTROL_STATUS |  |  |  |
-| UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS |  |  |  |
-| BOTH |  |  |  |
+| NEITHER_CASE_OR_CONTROL_STATUS |  | NCIT:C99273 |  |
+| PROBABLE_CASE_STATUS |  | NCIT:C99271 |  |
+| PROBABLE_CONTROL_STATUS |  | NCIT:C99272 |  |
+| TRUE_CASE_STATUS |  | NCIT:C99269 |  |
+| TRUE_CONTROL_STATUS |  | NCIT:C99270 |  |
+| UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS |  | NCIT:C99274 |  |
 

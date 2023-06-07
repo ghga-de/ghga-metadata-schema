@@ -1655,11 +1655,16 @@ enums:
         - GSSO:009428
       include_self: false
     permissible_values:
-      GSSO:011317:
-      GSSO:009318:
-      GSSO:011318:
-      GSSO:011319:
-      GSSO:011320:
+      FEMALE_SEX_FOR_CLINICAL_USE:
+        meaning: GSSO:011317
+      IMAGING_SEX:
+        meaning: GSSO:009318
+      MALE_SEX_FOR_CLINICAL_USE:
+        meaning: GSSO:011318
+      SPECIFIED_SEX_FOR_CLINICAL_USE:
+        meaning: GSSO:011319
+      UNKNOWN_SEX_FOR_CLINICAL_USE:
+        meaning: GSSO:011320
 
   VitalStatusEnum:
     description: >-
@@ -1984,12 +1989,18 @@ enums:
         - NCIT:C99268
       include_self: false
     permissible_values:
-      NCIT:C99273:
-      NCIT:C99271:
-      NCIT:C99272:
-      NCIT:C99269:
-      NCIT:C99270:
-      NCIT:C99274:
+      NEITHER_CASE_OR_CONTROL_STATUS:
+        meaning: NCIT:C99273
+      PROBABLE_CASE_STATUS:
+        meaning: NCIT:C99271
+      PROBABLE_CONTROL_STATUS:
+        meaning: NCIT:C99272
+      TRUE_CASE_STATUS:
+        meaning: NCIT:C99269
+      TRUE_CONTROL_STATUS:
+        meaning: NCIT:C99270
+      UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS:
+        meaning: NCIT:C99274
 
   MutantOrWildtypeEnum:
     description: >-
