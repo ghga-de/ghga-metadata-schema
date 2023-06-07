@@ -1053,6 +1053,7 @@ slots:
     description: >-
       A person's descent or lineage, from a person or from a population.
     range: AncestryEnum
+    pattern: "^HANCESTRO:[0-9]{4}$"
     multivalued: true
     in_subset:
       - restricted
@@ -1152,6 +1153,7 @@ slots:
       Data use permission associated with an entity. Typically one or more terms from DUO.
       Should be descendants of 'DUO:0000001 data use permission'.
     range: DataUsePermissionEnum
+    pattern: "^DUO:[0-9]{7}$"
     in_subset:
       - restricted
 
@@ -1160,6 +1162,7 @@ slots:
       Modifier for Data use permission associated with an entity.
       Should be descendants of 'DUO:0000017 data use modifier'
     range: DataUseModifierEnum
+    pattern: "DUO:[0-9]{7}"
     in_subset:
       - restricted
 
@@ -1401,6 +1404,7 @@ slots:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
     range: IsolationEnum
+    pattern: "^SNOMED:[0-9]*$"
 
   storage:
     description: >-
@@ -1434,6 +1438,7 @@ slots:
     in_subset:
       - restricted
     range: GeographicalRegionEnum
+    pattern: "^HANCESTRO:[0-9]{4}$"
 
   vital_status:
     description: >-
@@ -1593,29 +1598,29 @@ enums:
     description: An enum describing permissible phenotype descriptors
     include:
       - reachable_from:
-          source_ontology: http://www.ebi.ac.uk/efo/releases/v3.49.0/efo.owl
+          source_ontology: http://www.ebi.ac.uk/efo/releases/v3.54.0/efo.owl
           include_self: false
       - reachable_from:
-          source_ontology: http://www.orpha.net/version4.1
+          source_ontology: https://www.orphadata.com/data/ontologies/ordo/last_version/ORDO_en_4.2.owl
           include_self: false
       - reachable_from:
-          source_ontology: obo:snomed
+          source_ontology: http://snomed.info/sct/900000000000207008/version/20200131
           source_nodes:
-            - http://snomed.info/id/404684003
+            - SNOMED:404684003
           include_self: false
       - reachable_from:
           source_ontology: http://purl.obolibrary.org/obo/mondo/releases/2022-12-01/mondo.owl
           include_self: false
       - reachable_from:
-          source_ontology: obo:hp
+          source_ontology: http://purl.obolibrary.org/obo/hp/releases/2023-04-05/hp-international.owl
           include_self: false
 
   IsolationEnum:
     description: Describes how biomaterial was isolated.
     reachable_from:
-      source_ontology: obo:snomed
+      source_ontology: http://snomed.info/sct/900000000000207008/version/20200131
       source_nodes:
-        - http://snomed.info/id/118292001
+        - SNOMED:118292001
       include_self: false
 
   SampleTypeEnum:
@@ -1639,7 +1644,7 @@ enums:
     description: >-
       A tissue as described in the BRENDA ontology.
     reachable_from:
-      source_ontology: obo:bto
+      source_ontology: http://purl.obolibrary.org/obo/bto/releases/2021-10-26/bto.owl
 
   IndividualSexEnum:
     description: >-
@@ -1650,11 +1655,11 @@ enums:
         - GSSO:009428
       include_self: false
     permissible_values:
-      FEMALE_SEX_FOR_CLINICAL_USE:
-      IMAGING_SEX:
-      MALE_SEX_FOR_CLINICAL_USE:
-      SPECIFIED_SEX_FOR_CLINICAL_USE:
-      UNKNOWN_SEX_FOR_CLINICAL_USE:
+      GSSO:011317:
+      GSSO:009318:
+      GSSO:011318:
+      GSSO:011319:
+      GSSO:011320:
 
   VitalStatusEnum:
     description: >-
@@ -1974,18 +1979,17 @@ enums:
     description: >-
       Enum to capture whether a condition corresponds to a case or a control condition.
     reachable_from:
-      source_ontology: obo:ncit
+      source_ontology: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
       source_nodes:
         - NCIT:C99268
       include_self: false
     permissible_values:
-      NEITHER_CASE_OR_CONTROL_STATUS:
-      PROBABLE_CASE_STATUS:
-      PROBABLE_CONTROL_STATUS:
-      TRUE_CASE_STATUS:
-      TRUE_CONTROL_STATUS:
-      UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS:
-      BOTH:
+      NCIT:C99273:
+      NCIT:C99271:
+      NCIT:C99272:
+      NCIT:C99269:
+      NCIT:C99270:
+      NCIT:C99274:
 
   MutantOrWildtypeEnum:
     description: >-
