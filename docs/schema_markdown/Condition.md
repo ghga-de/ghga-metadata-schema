@@ -7,11 +7,7 @@ An condition that is linked to comparable samples.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string;title(i):string%20%3F],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[Investigation],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;name:string;description:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string;title(i):string%20%3F],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[Investigation]^-[Condition],[AttributeMixin],[Attribute])
-
-## Parents
-
- *  is_a: [Investigation](Investigation.md) - Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;title:string%20%3F;description:string;name:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[Sample],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;title:string%20%3F;description:string;name:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string],[Study]-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -30,10 +26,16 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
 
 ### Own
 
+ * [title](title.md)  <sub>0..1</sub>
+     * Description: The title that describes an entity.
+     * Range: [String](types/String.md)
+ * [Condition➞description](Condition_description.md)  <sub>1..1</sub>
+     * Description: Description of an entity.
+     * Range: [String](types/String.md)
  * [Condition➞name](Condition_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
- * [Condition➞description](Condition_description.md)  <sub>1..1</sub>
+ * [description](description.md)  <sub>0..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
  * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)  <sub>1..1</sub>
@@ -46,22 +48,14 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
      * Description: Whether a condition corresponds to a mutant or a wildtype.
      * Range: [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md)
 
-### Inherited from Investigation:
-
- * [title](title.md)  <sub>0..1</sub>
-     * Description: The title that describes an entity.
-     * Range: [String](types/String.md)
-
 ### Mixed in from IdentifiedByAliasMixin:
 
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 
- * [attributes](attributes.md)  <sub>0..\*</sub>
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)

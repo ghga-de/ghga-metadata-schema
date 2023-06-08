@@ -24,4 +24,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AliasMixin](https://w3id.
  * [AliasMixin➞alias](AliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)

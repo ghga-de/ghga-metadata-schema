@@ -20,10 +20,3 @@ None &#8594;  <sub>0..\*</sub> [File](File.md)
 ## Used by
 
  * [Analysis](Analysis.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

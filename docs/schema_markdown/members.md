@@ -21,10 +21,3 @@ None &#8594;  <sub>0..\*</sub> [Member](Member.md)
 
 ## Used by
 
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

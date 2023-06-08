@@ -7,11 +7,7 @@ Studies are experimental investigations of a particular phenomenon. It involves 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/GHGA-Submission-Metadata-Schema/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;type:StudyTypeEnum;affiliations:string%20%2B;alias:string;title:string;description:string],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Investigation]^-[Study],[Publication],[Investigation],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])
-
-## Parents
-
- *  is_a: [Investigation](Investigation.md) - Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]<conditions%201..*-%20[Study],[Analysis]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Analysis]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute],[Analysis])
 
 ## Uses Mixin
 
@@ -32,6 +28,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
 
 ### Own
 
+ * [Study➞title](Study_title.md)  <sub>1..1</sub>
+     * Description: A comprehensive title for the study.
+     * Range: [String](types/String.md)
+ * [Study➞description](Study_description.md)  <sub>1..1</sub>
+     * Description: A detailed description (abstract) that describes the goals of this Study.
+     * Range: [String](types/String.md)
  * [Study➞type](Study_type.md)  <sub>1..1</sub>
      * Description: The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
@@ -44,14 +46,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [Study➞alias](Study_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [Study➞title](Study_title.md)  <sub>1..1</sub>
-     * Description: A comprehensive title for the study.
-     * Range: [String](types/String.md)
- * [Study➞description](Study_description.md)  <sub>1..1</sub>
-     * Description: A detailed description (abstract) that describes the goals of this Study.
-     * Range: [String](types/String.md)
  * [Study➞attributes](Study_attributes.md)  <sub>0..\*</sub>
      * Description: Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)

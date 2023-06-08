@@ -18,7 +18,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  *  [Dataset➞title](Dataset_title.md)
  *  [Publication➞title](Publication_title.md)
- *  [ResearchActivity➞title](ResearchActivity_title.md)
  *  [SequencingExperiment➞title](SequencingExperiment_title.md)
  *  [Study➞title](Study_title.md)
 
@@ -26,6 +25,4 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  * [Analysis](Analysis.md)
  * [Condition](Condition.md)
- * [DataTransformation](DataTransformation.md)
- * [Investigation](Investigation.md)
  * [SequencingProcess](SequencingProcess.md)

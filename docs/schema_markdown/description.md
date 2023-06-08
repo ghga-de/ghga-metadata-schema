@@ -23,9 +23,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
  *  [DataAccessPolicy➞description](DataAccessPolicy_description.md)
  *  [Dataset➞description](Dataset_description.md)
  *  [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)
- *  [OntologyClassMixin➞description](OntologyClassMixin_description.md)
- *  [Protocol➞description](Protocol_description.md)
- *  [ResearchActivity➞description](ResearchActivity_description.md)
  *  [Sample➞description](Sample_description.md)
  *  [SequencingExperiment➞description](SequencingExperiment_description.md)
  *  [SequencingProcess➞description](SequencingProcess_description.md)
@@ -34,8 +31,9 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Used by
 
- * [DataTransformation](DataTransformation.md)
- * [Investigation](Investigation.md)
+ * [Analysis](Analysis.md)
+ * [Condition](Condition.md)
+ * [SequencingProcess](SequencingProcess.md)
 
 ## Other properties
 

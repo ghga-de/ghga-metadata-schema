@@ -7,11 +7,7 @@ A group of members that are delegated to grant access to one or more datasets af
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[Committee]^-[DataAccessCommittee],[Committee],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[Committee]^-[DataAccessCommittee],[Committee],[AttributeMixin],[Attribute])
-
-## Parents
-
- *  is_a: [Committee](Committee.md) - A group of people organized for a specific purpose.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -39,22 +35,18 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](http
  * [DataAccessCommittee➞main_contact](DataAccessCommittee_main_contact.md)  <sub>1..1</sub>
      * Description: The main contact for the Data Access Committee.
      * Range: [Member](Member.md)
-     * in subsets: (restricted)
  * [DataAccessCommittee➞members](DataAccessCommittee_members.md)  <sub>0..\*</sub>
      * Description: All the members that are part of this Data Access Committee.
      * Range: [Member](Member.md)
-     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 
- * [attributes](attributes.md)  <sub>0..\*</sub>
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)

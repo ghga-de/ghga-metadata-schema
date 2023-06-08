@@ -20,10 +20,3 @@ None &#8594;  <sub>0..\*</sub> [DataAccessCommittee](DataAccessCommittee.md)
 
 ## Used by
 
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

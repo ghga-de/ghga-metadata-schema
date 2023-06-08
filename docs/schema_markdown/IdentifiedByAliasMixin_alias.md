@@ -37,10 +37,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
  * [SequencingProcessFile](SequencingProcessFile.md)
  * [SequencingProtocol](SequencingProtocol.md)
  * [StudyFile](StudyFile.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

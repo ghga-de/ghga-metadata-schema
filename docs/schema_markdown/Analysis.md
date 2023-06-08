@@ -7,11 +7,7 @@ An Analysis is a data transformation that transforms input data to output data. 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[DataTransformation],[AnalysisProcess],[File]<outputs%200..*-%20[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;title(i):string%20%3F],[Study]<study%201..1-%20[Analysis],[File]<inputs%200..*-%20[Analysis],[AnalysisProcess]++-%20analysis%201..1>[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]++-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]++-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin],[DataTransformation]^-[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[DataTransformation],[AnalysisProcess],[File]<outputs%200..*-%20[Analysis&#124;type:string%20%3F;reference_genome:string;reference_chromosome:string;description:string%20%3F;alias:string%20%3F;title(i):string%20%3F],[Study]<study%201..1-%20[Analysis],[File]<inputs%200..*-%20[Analysis],[AnalysisProcess]++-%20analysis%201..1>[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]++-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]++-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin],[DataTransformation]^-[Analysis])
-
-## Parents
-
- *  is_a: [DataTransformation](DataTransformation.md) - A DataTransformation technique used to analyze and interpret data to gain a better understanding of it.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[AnalysisProcess],[File]<outputs%200..*-%20[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string%20%3F],[Study]<study%201..1-%20[Analysis],[File]<inputs%200..*-%20[Analysis],[AnalysisProcess]++-%20analysis%201..1>[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]++-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]++-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[AnalysisProcess],[File]<outputs%200..*-%20[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string%20%3F],[Study]<study%201..1-%20[Analysis],[File]<inputs%200..*-%20[Analysis],[AnalysisProcess]++-%20analysis%201..1>[Analysis],[Submission]++-%20analyses%200..*>[Analysis],[Submission]++-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]++-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -29,6 +25,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
 
 ### Own
 
+ * [title](title.md)  <sub>0..1</sub>
+     * Description: The title that describes an entity.
+     * Range: [String](types/String.md)
+ * [Analysis➞description](Analysis_description.md)  <sub>0..1</sub>
+     * Description: Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+     * Range: [String](types/String.md)
  * [Analysis➞type](Analysis_type.md)  <sub>0..1</sub>
      * Description: The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * Range: [String](types/String.md)
@@ -41,26 +43,17 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis](https://w3id.or
  * [inputs](inputs.md)  <sub>0..\*</sub>
      * Description: The inputs to a Planned Process.
      * Range: [File](File.md)
-     * in subsets: (restricted)
  * [Analysis➞study](Analysis_study.md)  <sub>1..1</sub>
      * Description: The Study entity associated with this Analysis.
      * Range: [Study](Study.md)
  * [outputs](outputs.md)  <sub>0..\*</sub>
      * Description: The outputs of a Planned Process entity.
      * Range: [File](File.md)
-     * in subsets: (restricted)
- * [Analysis➞description](Analysis_description.md)  <sub>0..1</sub>
-     * Description: Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+ * [description](description.md)  <sub>0..1</sub>
+     * Description: Description of an entity.
      * Range: [String](types/String.md)
  * [Analysis➞alias](Analysis_alias.md)  <sub>0..1</sub>
      * Description: An alias uniquely identifying this Analysis entitiy.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
-
-### Inherited from DataTransformation:
-
- * [title](title.md)  <sub>0..1</sub>
-     * Description: The title that describes an entity.
      * Range: [String](types/String.md)
 
 ## Other properties

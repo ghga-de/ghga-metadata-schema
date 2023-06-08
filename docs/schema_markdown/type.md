@@ -18,7 +18,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  *  [Analysis➞type](Analysis_type.md)
  *  [Biospecimen➞type](Biospecimen_type.md)
- *  [Protocol➞type](Protocol_type.md)
  *  [Sample➞type](Sample_type.md)
  *  [SequencingExperiment➞type](SequencingExperiment_type.md)
  *  [SequencingProtocol➞type](SequencingProtocol_type.md)

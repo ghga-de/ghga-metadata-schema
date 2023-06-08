@@ -20,10 +20,3 @@ None &#8594;  <sub>0..1</sub> [DataUsePermissionEnum](DataUsePermissionEnum.md)
 
 ## Used by
 
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-
