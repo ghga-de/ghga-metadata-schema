@@ -1,10 +1,10 @@
 
-# Slot: age
+# Slot: age_at_sampling
 
 
 Age of an individual.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_age](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_age)
+URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_age_at_sampling](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_age_at_sampling)
 
 
 ## Domain and Range
@@ -13,7 +13,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_age](https://w
 
 ## Parents
 
- *  is_a: [age](age.md)
+ *  is_a: [age_at_sampling](age_at_sampling.md)
 
 ## Children
 

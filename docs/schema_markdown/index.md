@@ -17,13 +17,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [BiologicalQuality](BiologicalQuality.md) - A BiologicalQuality is a quality held by a biological entity.
      * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
          * [Disease](Disease.md) - A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
-         * [PhenotypicFeature](PhenotypicFeature.md) - The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
  * [Committee](Committee.md) - A group of people organized for a specific purpose.
      * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
  * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
      * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
-     * [DataUseModifier](DataUseModifier.md) - Data use modifiers indicate additional conditions for use.
-     * [DataUsePermission](DataUsePermission.md) - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
      * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
      * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
          * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A AnalysisProcessOutputFile is a File that is associated as an output file with an AnalysisProcess.
@@ -38,7 +35,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AnatomicalEntity](AnatomicalEntity.md) - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
      * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
      * [Population](Population.md) - A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
-         * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
      * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
  * [Person](Person.md) - A member of the species Homo sapiens.
      * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
@@ -75,8 +71,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [affiliation](affiliation.md) - The Institution(s) associated with an entity.
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
- * [age](age.md) - Age of an individual.
-     * [Individual➞age](Individual_age.md)
+ * [age_at_sampling](age_at_sampling.md) - Age of an individual.
+     * [Individual➞age_at_sampling](Individual_age_at_sampling.md)
  * [alias](alias.md) - The alias for an entity at the time of submission.
      * [AliasMixin➞alias](AliasMixin_alias.md)
          * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
@@ -91,8 +87,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
      * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md) - The AnalysisProcessOutputFiles that are part of this submission.
  * [anatomical_entities](anatomical_entities.md) - Anatomical sites associated with an entity.
-     * [Biospecimen➞anatomical_entities](Biospecimen_anatomical_entities.md)
- * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+ * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
@@ -106,6 +101,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.
      * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
+ * [case_control_status](case_control_status.md) - Whether a condition corresponds to a treatment or a control.
+     * [Condition➞case_control_status](Condition_case_control_status.md)
  * [category](category.md) - The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
  * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
      * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
@@ -141,7 +138,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
  * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
      * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
- * [data_use_permissions](data_use_permissions.md) - Data use permissions associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
  * [dataset](dataset.md) - The Dataset associated with an entity.
      * [File➞dataset](File_dataset.md)
  * [datasets](datasets.md) - The Datasets associated with an entity.
@@ -337,14 +333,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [technical_replicates](technical_replicates.md) - A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an sequencing experiment.
  * [telephone](telephone.md) - The telephone number associated with a person.
      * [Member➞telephone](Member_telephone.md) - The telephone number of the Member.
+ * [tissue](tissue.md)
+     * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
      * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [ResearchActivity➞title](ResearchActivity_title.md)
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
      * [Study➞title](Study_title.md) - A comprehensive title for the study.
- * [treatment_or_control](treatment_or_control.md) - Whether a condition corresponds to a treatment or a control.
-     * [Condition➞treatment_or_control](Condition_treatment_or_control.md)
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type
      * [Analysis➞type](Analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.
@@ -381,13 +377,33 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 ### Enums
 
  * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
- * [BiologicalSexEnum](BiologicalSexEnum.md) - The biological sex of an Individual as determined by their chromosomes.
+ * [AncestryEnum](AncestryEnum.md) - Permitted values for ancestry
+ * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
+ * [DataUseModifierEnum](DataUseModifierEnum.md) - Permitted values for data use modifier
+ * [DataUsePermissionEnum](DataUsePermissionEnum.md) - Permitted values for data use permission
  * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
+ * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias
  * [FileFormatEnum](FileFormatEnum.md) - Enum to capture file types.
+ * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type
  * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+ * [GeographicalRegionEnum](GeographicalRegionEnum.md) - Permitted values for geographical region
+ * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
+ * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
+ * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
+ * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
+ * [KaryotypeEnum](KaryotypeEnum.md) - Permitted values for karyotype
+ * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
+ * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library
+ * [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md) - Permitted vocabulary for library selections
+ * [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md) - The type of the library
+ * [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md) - Permitted values for library preparation RNASeq strandedness
  * [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md) - Enum to capture whether a condition corresponds to a mutant or a wildtype.
+ * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors
+ * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
+ * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
+ * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
- * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.
+ * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
 
 ### Subsets

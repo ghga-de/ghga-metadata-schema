@@ -30,12 +30,6 @@ DataAccessCommittee {
 DataAccessPolicy {
 
 }
-DataUseModifier {
-
-}
-DataUsePermission {
-
-}
 Dataset {
 
 }
@@ -57,22 +51,13 @@ Sample {
 Biospecimen {
 
 }
-AnatomicalEntity {
-
-}
 Individual {
 
 }
 File {
 
 }
-PhenotypicFeature {
-
-}
 Disease {
-
-}
-Ancestry {
 
 }
 SequencingExperiment {
@@ -119,8 +104,6 @@ DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
-DataAccessPolicy ||--|| DataUsePermission : "data_use_permission"
-DataAccessPolicy ||--|o DataUseModifier : "data_use_modifiers"
 DataAccessPolicy ||--}o Attribute : "attributes"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
@@ -141,12 +124,9 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
@@ -185,14 +165,11 @@ Sample {
 
 }
 
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
@@ -270,11 +247,13 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 ```mermaid
 erDiagram
 Individual {
-    BiologicalSexEnum sex  
-    string karyotype  
-    AgeRangeEnum age  
+    IndividualSexEnum sex  
+    KaryotypeEnum karyotype  
+    AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
-    string geographical_region  
+    GeographicalRegionEnum geographical_region  
+    AncestryEnumList ancestries  
+    PhenotypicFeaturesEnumList phenotypic_features  
     string given_name  
     string family_name  
     string additional_name  
@@ -284,29 +263,27 @@ Biospecimen {
     string name  
     string type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
+    TissueEnum tissue  
     string alias  
 }
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     stringList xref  
     string alias  
 }
 
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}o Individual : "parents"
 Individual ||--}o Individual : "children"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
@@ -340,9 +317,9 @@ File {
 }
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     stringList xref  
     string alias  
@@ -378,9 +355,9 @@ Focusses on the relation between Study, Condition, and Sample.
 erDiagram
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     stringList xref  
     string alias  
@@ -389,7 +366,7 @@ Condition {
     string name  
     string description  
     DiseaseOrHealthyEnum disease_or_healthy  
-    TreatmentOrControlEnum treatment_or_control  
+    CaseControlStatusEnum case_control_status  
     MutantOrWildtypeEnum mutant_or_wildtype  
     string title  
     string alias  

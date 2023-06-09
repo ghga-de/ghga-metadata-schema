@@ -7,7 +7,7 @@ Information about the sequencing of a sample.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;type:string%20%3F;description:string;alias:string;name(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:string;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:string%20%3F;umi_barcode_read:string%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:string%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:string%20%3F;type:string%20%3F;description:string;alias:string;name(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[IdentifiedByAliasMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:InstrumentModelEnum;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:FlowCellTypeEnum%20%3F;umi_barcode_read:IndexReadEnum%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:IndexReadEnum%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:SampleBarcodeReadEnum%20%3F;type:string%20%3F;description:string;alias:string;name(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;sequencing_center:string%20%3F;instrument_model:InstrumentModelEnum;forward_or_reverse:ForwardOrReverseEnum%20%3F;sequencing_read_length:string%20%3F;index_sequence:string%20%3F;target_coverage:string%20%3F;lane_number:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:FlowCellTypeEnum%20%3F;umi_barcode_read:IndexReadEnum%20%3F;umi_barcode_size:string%20%3F;umi_barcode_offset:string%20%3F;cell_barcode_read:IndexReadEnum%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:SampleBarcodeReadEnum%20%3F;type:string%20%3F;description:string;alias:string;name(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%200..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[SequencingProtocol],[SequencingExperiment],[Protocol],[IdentifiedByAliasMixin],[Attribute])
 
 ## Parents
 
@@ -34,7 +34,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
      * Range: [String](types/String.md)
  * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)  <sub>1..1</sub>
      * Description: The name and model of the technology platform used to perform sequencing.
-     * Range: [String](types/String.md)
+     * Range: [InstrumentModelEnum](InstrumentModelEnum.md)
  * [SequencingProtocol➞forward_or_reverse](SequencingProtocol_forward_or_reverse.md)  <sub>0..1</sub>
      * Description: Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
      * Range: [ForwardOrReverseEnum](ForwardOrReverseEnum.md)
@@ -55,10 +55,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
      * Range: [String](types/String.md)
  * [SequencingProtocol➞flow_cell_type](SequencingProtocol_flow_cell_type.md)  <sub>0..1</sub>
      * Description: Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
-     * Range: [String](types/String.md)
+     * Range: [FlowCellTypeEnum](FlowCellTypeEnum.md)
  * [SequencingProtocol➞umi_barcode_read](SequencingProtocol_umi_barcode_read.md)  <sub>0..1</sub>
      * Description: The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
-     * Range: [String](types/String.md)
+     * Range: [IndexReadEnum](IndexReadEnum.md)
  * [SequencingProtocol➞umi_barcode_size](SequencingProtocol_umi_barcode_size.md)  <sub>0..1</sub>
      * Description: The size of the UMI identifying barcode (Eg. '10').
      * Range: [String](types/String.md)
@@ -67,7 +67,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
      * Range: [String](types/String.md)
  * [SequencingProtocol➞cell_barcode_read](SequencingProtocol_cell_barcode_read.md)  <sub>0..1</sub>
      * Description: The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
-     * Range: [String](types/String.md)
+     * Range: [IndexReadEnum](IndexReadEnum.md)
  * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)  <sub>0..1</sub>
      * Description: The offset in sequence of the cell identifying barcode. (Eg. '0').
      * Range: [String](types/String.md)
@@ -76,7 +76,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol](https
      * Range: [String](types/String.md)
  * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)  <sub>0..1</sub>
      * Description: The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
-     * Range: [String](types/String.md)
+     * Range: [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md)
  * [SequencingProtocol➞type](SequencingProtocol_type.md)  <sub>0..1</sub>
      * Description: Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
      * Range: [String](types/String.md)

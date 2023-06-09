@@ -27,7 +27,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
  * [Dataset➞data_access_policy](Dataset_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
- * [Individual➞age](Individual_age.md)
+ * [Individual➞age_at_sampling](Individual_age_at_sampling.md)
  * [Individual➞ancestries](Individual_ancestries.md)
  * [Individual➞children](Individual_children.md)
  * [Individual➞files](Individual_files.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
@@ -59,10 +59,10 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [Submission➞samples](Submission_samples.md) - Information about one or more Sample entities associated with this submission.
  * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md) - Information about one or more Experiment entities associated with this submission.
  * [additional_name](additional_name.md) - additional_name(s).
- * [age](age.md) - Age of an individual.
+ * [age_at_sampling](age_at_sampling.md) - Age of an individual.
  * [alias](alias.md) - The alias for an entity at the time of submission.
  * [analyses](analyses.md) - The analyses associated with an entity.
- * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+ * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population.
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
  * [biospecimen](biospecimen.md) - The biospecimen associated with an entity.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.
@@ -73,7 +73,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/restricted](https://w3id.
  * [data_access_policy](data_access_policy.md) - Data Access Policy associated with an entity.
  * [data_use_modifiers](data_use_modifiers.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
  * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
- * [data_use_permissions](data_use_permissions.md) - Data use permissions associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
  * [family_name](family_name.md) - Last name.
  * [files](files.md) - The files associated with an entity.
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.

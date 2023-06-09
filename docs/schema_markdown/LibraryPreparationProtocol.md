@@ -7,7 +7,7 @@ Information about the library_preparation of an sequencing experiment.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;description:string;alias:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:string;library_type:string;library_selection:string;library_preparation:string;library_preparation_kit_retail_name:string%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:string%20%3F;end_bias:string%20%3F;target_regions:string%20*;rnaseq_strandedness:string%20%3F;description:string;alias:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:LibraryPreparationLibraryLayoutEnum;library_type:LibraryPreparationLibraryTypeEnum;library_selection:LibraryPreparationLibrarySelectionEnum;library_preparation:string;library_preparation_kit_retail_name:LibraryPreparationKitRetailNameEnum%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:PrimerEnum%20%3F;end_bias:EndBiasEnum%20%3F;target_regions:string%20*;rnaseq_strandedness:LibraryPreparationRNASeqStrandednessEnum%20%3F;description:string;alias:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:LibraryPreparationLibraryLayoutEnum;library_type:LibraryPreparationLibraryTypeEnum;library_selection:LibraryPreparationLibrarySelectionEnum;library_preparation:string;library_preparation_kit_retail_name:LibraryPreparationKitRetailNameEnum%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:PrimerEnum%20%3F;end_bias:EndBiasEnum%20%3F;target_regions:string%20*;rnaseq_strandedness:LibraryPreparationRNASeqStrandednessEnum%20%3F;description:string;alias:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])
 
 ## Parents
 
@@ -34,34 +34,34 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)  <sub>1..1</sub>
      * Description: Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
-     * Range: [String](types/String.md)
+     * Range: [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md)
  * [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)  <sub>1..1</sub>
      * Description: Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
-     * Range: [String](types/String.md)
+     * Range: [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md)
  * [LibraryPreparationProtocol➞library_selection](LibraryPreparationProtocol_library_selection.md)  <sub>1..1</sub>
      * Description: Whether any method was used to select for or against, enrich, or screen the material being sequenced. library_selection method (e.g. random, PCA, cDNA, etc )
-     * Range: [String](types/String.md)
+     * Range: [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md)
  * [LibraryPreparationProtocol➞library_preparation](LibraryPreparationProtocol_library_preparation.md)  <sub>1..1</sub>
      * Description: The general method for sequencing library_preparation (e.g. KAPA PCR-free).
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞library_preparation_kit_retail_name](LibraryPreparationProtocol_library_preparation_kit_retail_name.md)  <sub>0..1</sub>
      * Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
-     * Range: [String](types/String.md)
+     * Range: [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md)
  * [LibraryPreparationProtocol➞library_preparation_kit_manufacturer](LibraryPreparationProtocol_library_preparation_kit_manufacturer.md)  <sub>0..1</sub>
      * Description: Manufacturer of library_preparation kit
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞primer](LibraryPreparationProtocol_primer.md)  <sub>0..1</sub>
      * Description: The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
-     * Range: [String](types/String.md)
+     * Range: [PrimerEnum](PrimerEnum.md)
  * [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)  <sub>0..1</sub>
      * Description: The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
-     * Range: [String](types/String.md)
+     * Range: [EndBiasEnum](EndBiasEnum.md)
  * [LibraryPreparationProtocol➞target_regions](LibraryPreparationProtocol_target_regions.md)  <sub>0..\*</sub>
      * Description: Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)  <sub>0..1</sub>
      * Description: The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
-     * Range: [String](types/String.md)
+     * Range: [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md)
  * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)  <sub>1..1</sub>
      * Description: Description about how a sequencing library was prepared (eg: Library construction method).
      * Range: [String](types/String.md)

@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_flow_c
 
 ## Domain and Range
 
-[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>0..1</sub> [FlowCellTypeEnum](FlowCellTypeEnum.md)
 
 ## Parents
 

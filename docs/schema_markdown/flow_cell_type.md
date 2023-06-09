@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/flow_cell_type](https://w
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [FlowCellTypeEnum](FlowCellTypeEnum.md)
 
 ## Parents
 
