@@ -16,19 +16,20 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/StudyTypeEnum](https://w3
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| whole_genome_sequencing | Whole Genome Sequencing |  |  |
-| metagenomics | Metagenomics |  |  |
-| transcriptome_analysis | Transcriptome Analysis |  |  |
-| resequencing | Resequencing |  |  |
-| epigenetics | Epigenetics |  |  |
-| synthetic_genomics | Sythetic Genomics |  |  |
-| forensic_paleo_genomics | Forensic or Paleo-genomics |  |  |
-| gene_regulation | Gene Regulation Study |  |  |
-| cancer_genomics | Cancer Genomics |  |  |
-| population_genomics | Population Genomics |  |  |
-| rna_seq | RNAseq |  |  |
-| exome_sequencing | Exome Sequencing |  |  |
-| pooled_clone_sequencing | Pooled Clone Sequencing |  |  |
-| genome_wide_association_study | Genome-wide Association Study |  |  |
-| other | Other study |  |  |
+| CANCER_GENOMICS |  |  |  |
+| EPIGENETICS |  |  |  |
+| EXOME_SEQUENCING |  |  |  |
+| FORENSIC_GENETICS |  |  |  |
+| PALEO_GENOMICS |  |  |  |
+| GENE_REGULATION_STUDY |  |  |  |
+| METAGENOMICS |  |  |  |
+| OTHER |  |  |  |
+| POOLED_CLONE_SEQUENCING |  |  |  |
+| POPULATION_GENOMICS |  |  |  |
+| RNASEQ |  |  |  |
+| RESEQUENCING |  |  |  |
+| SYNTHETIC_GENOMICS |  |  |  |
+| TRANSCRIPTOME_ANALYSIS |  |  |  |
+| WHOLE_GENOME_SEQUENCING |  |  |  |
+| GWAS |  |  |  |
 

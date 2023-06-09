@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/data_use_modifiers](https
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [DataUseModifier](DataUseModifier.md)
+None &#8594;  <sub>0..1</sub> [DataUseModifierEnum](DataUseModifierEnum.md)
 
 ## Parents
 

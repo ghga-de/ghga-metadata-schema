@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_instru
 
 ## Domain and Range
 
-[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[SequencingProtocol](SequencingProtocol.md) &#8594;  <sub>1..1</sub> [InstrumentModelEnum](InstrumentModelEnum.md)
 
 ## Parents
 

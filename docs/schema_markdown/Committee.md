@@ -7,11 +7,7 @@ A group of people organized for a specific purpose.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Committee](https://w3id.org/GHGA-Submission-Metadata-Schema/Committee)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[DataAccessCommittee],[Committee&#124;name:string;id(i):string;alias(i):string;xref(i):string%20*]^-[DataAccessCommittee],[NamedThing]^-[Committee])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[DataAccessCommittee],[Committee&#124;name:string;id(i):string;alias(i):string;xref(i):string%20*]^-[DataAccessCommittee],[NamedThing]^-[Committee])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A database entity, concept or class. This is a generic class that is the root of all the other classes.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DataAccessCommittee],[Committee&#124;name:string]^-[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[DataAccessCommittee],[Committee&#124;name:string]^-[DataAccessCommittee])
 
 ## Children
 
@@ -27,18 +23,4 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Committee](https://w3id.o
 
  * [Committee➞name](Committee_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
-     * Range: [String](types/String.md)
-
-### Inherited from NamedThing:
-
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
      * Range: [String](types/String.md)

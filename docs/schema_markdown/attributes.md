@@ -23,6 +23,7 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 
 ## Used by
 
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [AttributeMixin](AttributeMixin.md)
  * [Condition](Condition.md)
  * [DataAccessCommittee](DataAccessCommittee.md)
@@ -30,8 +31,11 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
  * [Dataset](Dataset.md)
  * [File](File.md)
  * [Sample](Sample.md)
+ * [SampleFile](SampleFile.md)
  * [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess](SequencingProcess.md)
+ * [SequencingProcessFile](SequencingProcessFile.md)
+ * [StudyFile](StudyFile.md)
 
 ## Other properties
 

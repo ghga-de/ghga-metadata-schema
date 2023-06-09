@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_type](https://w3i
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md)
 
 ## Parents
 

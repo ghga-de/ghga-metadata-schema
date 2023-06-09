@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_karyotype](htt
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Individual](Individual.md) &#8594;  <sub>0..1</sub> [KaryotypeEnum](KaryotypeEnum.md)
 
 ## Parents
 

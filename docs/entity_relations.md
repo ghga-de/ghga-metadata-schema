@@ -30,19 +30,37 @@ DataAccessCommittee {
 DataAccessPolicy {
 
 }
-DataUseModifier {
-
-}
-DataUsePermission {
-
-}
 Dataset {
+
+}
+AnalysisProcessOutputFile {
+
+}
+AnalysisProcess {
+
+}
+SequencingProcessFile {
+
+}
+SequencingProcess {
+
+}
+Sample {
+
+}
+Biospecimen {
+
+}
+Individual {
 
 }
 File {
 
 }
-Analysis {
+Disease {
+
+}
+SequencingExperiment {
 
 }
 LibraryPreparationProtocol {
@@ -51,28 +69,13 @@ LibraryPreparationProtocol {
 SequencingProtocol {
 
 }
-SequencingExperiment {
+SampleFile {
 
 }
-Individual {
+StudyFile {
 
 }
-PhenotypicFeature {
-
-}
-Disease {
-
-}
-Ancestry {
-
-}
-Biospecimen {
-
-}
-AnatomicalEntity {
-
-}
-Sample {
+Analysis {
 
 }
 
@@ -84,12 +87,15 @@ Submission ||--}o SequencingExperiment : "sequencing_experiments"
 Submission ||--}o SequencingProtocol : "sequencing_protocols"
 Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
 Submission ||--}o Analysis : "analyses"
-Submission ||--}| File : "files"
+Submission ||--}| StudyFile : "study_files"
+Submission ||--}| SampleFile : "sample_files"
+Submission ||--}| SequencingProcessFile : "sequencing_process_files"
+Submission ||--}| AnalysisProcessOutputFile : "analysis_process_output_files"
 Submission ||--}| Dataset : "datasets"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| Member : "members"
-Submission ||--|o Publication : "publications"
+Submission ||--}o Publication : "publications"
 Publication ||--|| Study : "study"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
@@ -98,30 +104,44 @@ DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
-DataAccessPolicy ||--|| DataUsePermission : "data_use_permission"
-DataAccessPolicy ||--|o DataUseModifier : "data_use_modifiers"
 DataAccessPolicy ||--}o Attribute : "attributes"
-Dataset ||--}| File : "files"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
-File ||--}o Attribute : "attributes"
-Analysis ||--}| File : "inputs"
-Analysis ||--|| Study : "study"
-Analysis ||--}| File : "outputs"
-LibraryPreparationProtocol ||--}| Attribute : "attributes"
-SequencingProtocol ||--}| Attribute : "attributes"
-SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "attributes"
-Individual ||--}o Ancestry : "ancestries"
-Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
-Individual ||--}o File : "files"
-Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
+AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
+AnalysisProcessOutputFile ||--|| Dataset : "dataset"
+AnalysisProcessOutputFile ||--}o Attribute : "attributes"
+AnalysisProcess ||--|| Analysis : "analysis"
+AnalysisProcess ||--}| StudyFile : "study_input_files"
+AnalysisProcess ||--}| SampleFile : "sample_input_files"
+AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
+SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
+SequencingProcessFile ||--|| Dataset : "dataset"
+SequencingProcessFile ||--}o Attribute : "attributes"
+SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
+SequencingProcess ||--|| Sample : "sample"
+SequencingProcess ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
+Biospecimen ||--|| Individual : "individual"
+Individual ||--}| Disease : "diseases"
+Individual ||--}o File : "files"
+File ||--|| Dataset : "dataset"
+File ||--}o Attribute : "attributes"
+SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
+SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
+SequencingExperiment ||--}o Attribute : "attributes"
+LibraryPreparationProtocol ||--}| Attribute : "attributes"
+SequencingProtocol ||--}| Attribute : "attributes"
+SampleFile ||--|| Sample : "sample"
+SampleFile ||--|| Dataset : "dataset"
+SampleFile ||--}o Attribute : "attributes"
+StudyFile ||--|| Study : "study"
+StudyFile ||--|| Dataset : "dataset"
+StudyFile ||--}o Attribute : "attributes"
+Analysis ||--}o File : "inputs"
+Analysis ||--|| Study : "study"
+Analysis ||--}o File : "outputs"
 
 ```
 
@@ -143,12 +163,9 @@ Sample {
 
 }
 
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
@@ -176,10 +193,10 @@ SequencingExperiment {
 
 }
 
-SequencingProcess ||--}| File : "files"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
+File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
@@ -226,51 +243,41 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 ```mermaid
 erDiagram
 Individual {
-    BiologicalSexEnum sex  
-    string karyotype  
-    AgeRangeEnum age  
+    IndividualSexEnum sex  
+    KaryotypeEnum karyotype  
+    AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
-    string geographical_region  
-    string accession  
-    string ega_accession  
+    GeographicalRegionEnum geographical_region  
+    AncestryEnumList ancestries  
+    PhenotypicFeaturesEnumList phenotypic_features  
     string given_name  
     string family_name  
     string additional_name  
-    string id  
     string alias  
-    stringList xref  
 }
 Biospecimen {
     string name  
     string type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    string accession  
-    string id  
+    TissueEnum tissue  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 
-Individual ||--}o Ancestry : "ancestries"
 Individual ||--}| Disease : "diseases"
-Individual ||--}o PhenotypicFeature : "phenotypic_features"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
-Biospecimen ||--}| AnatomicalEntity : "anatomical_entities"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
@@ -291,11 +298,8 @@ SequencingProcess {
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
-    string accession  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 File {
     string name  
@@ -303,39 +307,28 @@ File {
     integer size  
     string checksum  
     string checksum_type  
-    string accession  
-    string ega_accession  
-    string id  
     string alias  
-    stringList xref  
 }
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 SequencingExperiment {
     string type  
-    string accession  
-    string ega_accession  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
-SequencingProcess ||--}| File : "files"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
+File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
@@ -356,38 +349,28 @@ Focusses on the relation between Study, Condition, and Sample.
 erDiagram
 Sample {
     string name  
-    string type  
+    SampleTypeEnum type  
     string description  
-    string isolation  
+    IsolationEnum isolation  
     string storage  
-    string accession  
-    string ega_accession  
-    string id  
-    string alias  
     stringList xref  
+    string alias  
 }
 Condition {
     string name  
     string description  
     DiseaseOrHealthyEnum disease_or_healthy  
-    TreatmentOrControlEnum treatment_or_control  
+    CaseControlStatusEnum case_control_status  
     MutantOrWildtypeEnum mutant_or_wildtype  
-    string accession  
     string title  
-    string id  
     string alias  
-    stringList xref  
 }
 Study {
     StudyTypeEnum type  
     stringList affiliations  
-    string accession  
-    string ega_accession  
     string title  
     string description  
-    string id  
     string alias  
-    stringList xref  
 }
 
 Sample ||--|o Biospecimen : "biospecimen"

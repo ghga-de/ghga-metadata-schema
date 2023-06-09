@@ -12,51 +12,54 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Classes
 
+ * [AnalysisProcess](AnalysisProcess.md)
  * [Attribute](Attribute.md) - A key/value pair that further characterizes an entity.
- * [NamedThing](NamedThing.md) - A database entity, concept or class. This is a generic class that is the root of all the other classes.
-     * [BiologicalQuality](BiologicalQuality.md) - A BiologicalQuality is a quality held by a biological entity.
-         * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
-             * [Disease](Disease.md) - A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
-             * [PhenotypicFeature](PhenotypicFeature.md) - The observable form taken by some character (or group of characters) in an individual or an organism, excluding pathology and disease. The detectable outward manifestations of a specific genotype.
-     * [Committee](Committee.md) - A group of people organized for a specific purpose.
-         * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
-     * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
-         * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
-         * [DataUseModifier](DataUseModifier.md) - Data use modifiers indicate additional conditions for use.
-         * [DataUsePermission](DataUsePermission.md) - A data item that is used to indicate consent permissions for datasets and/or materials and relates to the purposes for which datasets and/or material might be removed, stored or used.
-         * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
-         * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
-         * [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
-             * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library_preparation of an sequencing experiment.
-             * [SequencingProtocol](SequencingProtocol.md) - Information about the sequencing of a sample.
-         * [Publication](Publication.md) - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
-     * [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
-         * [AnatomicalEntity](AnatomicalEntity.md) - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
-         * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
-         * [Population](Population.md) - A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
-             * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
-         * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
-     * [Person](Person.md) - A member of the species Homo sapiens.
-         * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
-         * [Member](Member.md) - Member of an Organization or a Committee.
-     * [PlannedProcess](PlannedProcess.md) - A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.
-         * [DataTransformation](DataTransformation.md) - A DataTransformation technique used to analyze and interpret data to gain a better understanding of it.
-             * [Analysis](Analysis.md) - An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
-         * [Investigation](Investigation.md) - Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
-             * [Condition](Condition.md) - An condition that is linked to comparable samples.
-             * [SequencingExperiment](SequencingExperiment.md) - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
-             * [SequencingProcess](SequencingProcess.md) - A sequencing process linking a sample to sequencing output.
-             * [Study](Study.md) - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
-         * [ResearchActivity](ResearchActivity.md) - A PlannedProcess executed in the performance of scientific research wherein systematic Investigations are performed to establish facts and reach new conclusions about phenomena in the world.
+ * [BiologicalQuality](BiologicalQuality.md) - A BiologicalQuality is a quality held by a biological entity.
+     * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md) - Disease or Phenotypic Feature that the entity is associated with. This entity is a union of Disease and Phenotypic Feature and exists to accommodate situations where Disease concepts are used interchangeably with Phenotype concepts or vice-versa.
+         * [Disease](Disease.md) - A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.
+ * [Committee](Committee.md) - A group of people organized for a specific purpose.
+     * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
+ * [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
+     * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
+     * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
+     * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+         * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A AnalysisProcessOutputFile is a File that is associated as an output file with an AnalysisProcess.
+         * [SampleFile](SampleFile.md) - A SampleFile is a File that is associated with a Sample.
+         * [SequencingProcessFile](SequencingProcessFile.md) - A SequencingProcessFile is a File that is associated with a SequencingProcess.
+         * [StudyFile](StudyFile.md) - A StudyFile is a File that is associated with a Study.
+     * [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
+         * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library_preparation of an sequencing experiment.
+         * [SequencingProtocol](SequencingProtocol.md) - Information about the sequencing of a sample.
+     * [Publication](Publication.md) - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
+ * [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+     * [AnatomicalEntity](AnatomicalEntity.md) - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
+     * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
+     * [Population](Population.md) - A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
+         * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
+     * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
+ * [Person](Person.md) - A member of the species Homo sapiens.
+     * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
+     * [Member](Member.md) - Member of an Organization or a Committee.
+ * [PlannedProcess](PlannedProcess.md) - A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.
+     * [DataTransformation](DataTransformation.md) - A DataTransformation technique used to analyze and interpret data to gain a better understanding of it.
+         * [Analysis](Analysis.md) - An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
+     * [Investigation](Investigation.md) - Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
+         * [Condition](Condition.md) - An condition that is linked to comparable samples.
+         * [SequencingExperiment](SequencingExperiment.md) - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+         * [SequencingProcess](SequencingProcess.md) - A sequencing process linking a sample to sequencing output.
+         * [Study](Study.md) - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
+     * [ResearchActivity](ResearchActivity.md) - A PlannedProcess executed in the performance of scientific research wherein systematic Investigations are performed to establish facts and reach new conclusions about phenomena in the world.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
  * [Trio](Trio.md) - A trio is defined by three individuals representing an individual and their parents.
 
 ### Mixins
 
  * [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
+ * [AliasMixin](AliasMixin.md) - Mixin for entities that can be assigned an alias at the time of metadata submission.
+     * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
- * [DeprecatedMixin](DeprecatedMixin.md) - Mixin for entities that can be deprecated.
  * [EgaAccessionMixin](EgaAccessionMixin.md) - Mixin for entities that can be assigned an ega_accession, in addition to GHGA accession.
+ * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [OntologyClassMixin](OntologyClassMixin.md) - Mixin for entities that represent an class/term/concept from an ontology.
 
 ### Slots
@@ -70,20 +73,23 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [affiliation](affiliation.md) - The Institution(s) associated with an entity.
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
-     * [Submission➞affiliations](Submission_affiliations.md) - Institution/Center/Data Hub that is providing this submission.
- * [age](age.md) - Age of an individual.
-     * [Individual➞age](Individual_age.md)
- * [alias](alias.md) - The alias for an entity.
+ * [age_at_sampling](age_at_sampling.md) - Age of an individual.
+     * [Individual➞age_at_sampling](Individual_age_at_sampling.md)
+ * [alias](alias.md) - The alias for an entity at the time of submission.
+     * [AliasMixin➞alias](AliasMixin_alias.md)
+         * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
      * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
-     * [LibraryPreparationProtocol➞alias](LibraryPreparationProtocol_alias.md)
-     * [NamedThing➞alias](NamedThing_alias.md) - The alias (alternate identifier) for an entity.
-         * [Protocol➞alias](Protocol_alias.md) - The alias for an entity.
-     * [SequencingProtocol➞alias](SequencingProtocol_alias.md)
+     * [Study➞alias](Study_alias.md)
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
+ * [analysis](analysis.md) - The Analysis associated with an entity
+     * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md) - The Analysis the AnalysisProcess was part of
+ * [analysis_process](analysis_process.md) - The AnalysisProcess associated with an entity.
+     * [AnalysisProcessOutputFile➞analysis_process](AnalysisProcessOutputFile_analysis_process.md)
+ * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
+     * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md) - The AnalysisProcessOutputFiles that are part of this submission.
  * [anatomical_entities](anatomical_entities.md) - Anatomical sites associated with an entity.
-     * [Biospecimen➞anatomical_entities](Biospecimen_anatomical_entities.md)
- * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population. Typically this is a value from HANCESTRO (Human Ancestry Ontology).
+ * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
@@ -97,6 +103,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.
      * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
+ * [case_control_status](case_control_status.md) - Whether a condition corresponds to a treatment or a control.
+     * [Condition➞case_control_status](Condition_case_control_status.md)
  * [category](category.md) - The category for this file: Whole Genome Sequencing, Whole Exome Sequencing, etc.
  * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
      * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
@@ -132,11 +140,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
  * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
      * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
- * [data_use_permissions](data_use_permissions.md) - Data use permissions associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
+ * [dataset](dataset.md) - The Dataset associated with an entity.
+     * [File➞dataset](File_dataset.md)
  * [datasets](datasets.md) - The Datasets associated with an entity.
      * [Submission➞datasets](Submission_datasets.md) - One or more Dataset that are part of this submission.
  * [deprecation_date](deprecation_date.md) - The timestamp (in ISO 8601 format) when the entity was deprecated.
-     * [DeprecatedMixin➞deprecation_date](DeprecatedMixin_deprecation_date.md)
  * [description](description.md) - Description of an entity.
      * [Analysis➞description](Analysis_description.md) - Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
      * [Biospecimen➞description](Biospecimen_description.md)
@@ -170,10 +178,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [father](father.md) - The father of an individual.
      * [Trio➞father](Trio_father.md)
  * [files](files.md) - The files associated with an entity.
-     * [Dataset➞files](Dataset_files.md) - One or more File entities that collectively are part of this Dataset.
      * [Individual➞files](Individual_files.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
-     * [SequencingProcess➞files](SequencingProcess_files.md)
-     * [Submission➞files](Submission_files.md) - Information about one or more File entities associated with this submission.
  * [flow_cell_id](flow_cell_id.md) - Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
      * [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)
  * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
@@ -187,9 +192,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [given_name](given_name.md) - First name.
      * [Person➞given_name](Person_given_name.md)
  * [id](id.md) - An identifier that uniquely represents an entity.
-     * [NamedThing➞id](NamedThing_id.md) - The internal unique identifier for an entity.
      * [OntologyClassMixin➞id](OntologyClassMixin_id.md)
-     * [Submission➞id](Submission_id.md) - A internal unique identifier for the Submission.
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
      * [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
  * [individual](individual.md) - The subject/individual associated with an entity.
@@ -197,7 +200,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [individuals](individuals.md) - The subjects/individuals associated with an entity.
      * [Submission➞individuals](Submission_individuals.md) - Information about one or more Individual entities associated with this submission.
  * [inputs](inputs.md) - The inputs to a Planned Process.
-     * [Analysis➞inputs](Analysis_inputs.md) - The input data File entities used in the Analysis.
  * [instrument_model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
@@ -257,7 +259,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [organization](organization.md) - The organization associated with a person.
      * [Member➞organization](Member_organization.md) - The organization that the Member is part of.
  * [outputs](outputs.md) - The outputs of a Planned Process entity.
-     * [Analysis➞outputs](Analysis_outputs.md) - The output data File entities generated by this Analysis.
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
@@ -273,15 +274,17 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Analysis➞reference_chromosome](Analysis_reference_chromosome.md)
  * [reference_genome](reference_genome.md) - A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
      * [Analysis➞reference_genome](Analysis_reference_genome.md)
- * [replaced_by](replaced_by.md) - Refers to the entity which replaces a currently deprecated entity.
-     * [DeprecatedMixin➞replaced_by](DeprecatedMixin_replaced_by.md)
- * [replaces](replaces.md) - Refers to a deprecated entity that is being replaced_by the current entity.
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)
  * [sample](sample.md) - The sample associated with an entity.
+     * [SampleFile➞sample](SampleFile_sample.md)
      * [SequencingProcess➞sample](SequencingProcess_sample.md)
  * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
      * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)
+ * [sample_files](sample_files.md) - The SampleFiles associated with an entity.
+     * [Submission➞sample_files](Submission_sample_files.md) - The SampleFiles that are part of this submission.
+ * [sample_input_files](sample_input_files.md) - The SampleFile associated used as an input for an entity.
+     * [AnalysisProcess➞sample_input_files](AnalysisProcess_sample_input_files.md)
  * [samples](samples.md) - The samples associated with an entity.
      * [Submission➞samples](Submission_samples.md) - Information about one or more Sample entities associated with this submission.
  * [sequencing_center](sequencing_center.md) - Center where sample was sequenced.
@@ -294,6 +297,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md) - Identifier of the sequencing lane. Used for batch correction.
  * [sequencing_machine_id](sequencing_machine_id.md) - The identifier of a sequencing machine.
      * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md) - Identifier of the sequencing machine. Used for batch correction.
+ * [sequencing_process](sequencing_process.md) - The SequencingProcess associated with an entity.
+     * [SequencingProcessFile➞sequencing_process](SequencingProcessFile_sequencing_process.md)
+ * [sequencing_process_files](sequencing_process_files.md) - The SequencingProcessFiles associated with an entity.
+     * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md) - The SequencingProcessFiles that are part of this submission.
+ * [sequencing_process_input_files](sequencing_process_input_files.md) - The SequencingProcessFile associated used as an input for an entity.
+     * [AnalysisProcess➞sequencing_process_input_files](AnalysisProcess_sequencing_process_input_files.md)
  * [sequencing_protocol](sequencing_protocol.md) - The sequencing protocol associated with an entity.
      * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)
  * [sequencing_protocols](sequencing_protocols.md) - The sequencing protocol associated with an entity.
@@ -314,9 +323,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [study](study.md) - The study associated with an entity.
      * [Analysis➞study](Analysis_study.md) - The Study entity associated with this Analysis.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
+     * [StudyFile➞study](StudyFile_study.md)
+ * [study_files](study_files.md) - The StudyFiles associated with an entity.
+     * [Submission➞study_files](Submission_study_files.md) - The StudyFiles that are part of this submission.
+ * [study_input_files](study_input_files.md) - The StudyFile associated used as an input for an entity.
+     * [AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)
  * [submission_date](submission_date.md) - The timestamp (in ISO 8601 format) when submission was marked completed.
  * [submission_status](submission_status.md) - The status of a submission.
-     * [Submission➞submission_status](Submission_submission_status.md) - The status of a Submission.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
      * [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)
  * [target_regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
@@ -324,14 +337,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [technical_replicates](technical_replicates.md) - A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an sequencing experiment.
  * [telephone](telephone.md) - The telephone number associated with a person.
      * [Member➞telephone](Member_telephone.md) - The telephone number of the Member.
+ * [tissue](tissue.md)
+     * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
      * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [ResearchActivity➞title](ResearchActivity_title.md)
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
      * [Study➞title](Study_title.md) - A comprehensive title for the study.
- * [treatment_or_control](treatment_or_control.md) - Whether a condition corresponds to a treatment or a control.
-     * [Condition➞treatment_or_control](Condition_treatment_or_control.md)
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type
      * [Analysis➞type](Analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.
@@ -359,8 +372,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
-     * [NamedThing➞xref](NamedThing_xref.md) - Holds one or more database cross references for an entity.
-         * [Protocol➞xref](Protocol_xref.md) - One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
+     * [Protocol➞xref](Protocol_xref.md) - One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
      * [Publication➞xref](Publication_xref.md) - One or more cross-references for this Publication.
      * [Sample➞xref](Sample_xref.md) - One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
  * [year](year.md) - Year in which the paper was published.
@@ -369,13 +381,33 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 ### Enums
 
  * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
- * [BiologicalSexEnum](BiologicalSexEnum.md) - The biological sex of an Individual as determined by their chromosomes.
+ * [AncestryEnum](AncestryEnum.md) - Permitted values for ancestry
+ * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
+ * [DataUseModifierEnum](DataUseModifierEnum.md) - Permitted values for data use modifier
+ * [DataUsePermissionEnum](DataUsePermissionEnum.md) - Permitted values for data use permission
  * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
+ * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias
  * [FileFormatEnum](FileFormatEnum.md) - Enum to capture file types.
+ * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type
  * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
+ * [GeographicalRegionEnum](GeographicalRegionEnum.md) - Permitted values for geographical region
+ * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
+ * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
+ * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
+ * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
+ * [KaryotypeEnum](KaryotypeEnum.md) - Permitted values for karyotype
+ * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
+ * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library
+ * [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md) - Permitted vocabulary for library selections
+ * [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md) - The type of the library
+ * [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md) - Permitted values for library preparation RNASeq strandedness
  * [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md) - Enum to capture whether a condition corresponds to a mutant or a wildtype.
+ * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors
+ * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
+ * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
+ * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
- * [TreatmentOrControlEnum](TreatmentOrControlEnum.md) - Enum to capture whether a condition corresponds to a treatment or a control.
+ * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
 
 ### Subsets

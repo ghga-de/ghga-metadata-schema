@@ -7,7 +7,7 @@ Member of an Organization or a Committee.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Member](https://w3id.org/GHGA-Submission-Metadata-Schema/Member)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F;id(i):string;alias(i):string;xref(i):string%20*],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]++-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Person],[DataAccessCommittee]++-%20main_contact%201..1>[Member&#124;email:string;telephone:string%20%3F;organization:string;given_name(i):string%20%3F;family_name(i):string%20%3F;additional_name(i):string%20%3F],[DataAccessCommittee]++-%20members%200..*>[Member],[Submission]++-%20members%201..*>[Member],[DataAccessCommittee]++-%20main_contact(i)%200..1>[Member],[DataAccessCommittee]++-%20members(i)%200..*>[Member],[Submission]++-%20members(i)%200..*>[Member],[Person]^-[Member],[DataAccessCommittee])
 
 ## Parents
 
@@ -38,17 +38,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Member](https://w3id.org/
 
 ### Inherited from Person:
 
- * [NamedThing➞id](NamedThing_id.md)  <sub>1..1</sub>
-     * Description: The internal unique identifier for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞alias](NamedThing_alias.md)  <sub>1..1</sub>
-     * Description: The alias (alternate identifier) for an entity.
-     * Range: [String](types/String.md)
-     * in subsets: (restricted)
- * [NamedThing➞xref](NamedThing_xref.md)  <sub>0..\*</sub>
-     * Description: Holds one or more database cross references for an entity.
-     * Range: [String](types/String.md)
  * [Person➞given_name](Person_given_name.md)  <sub>0..1</sub>
      * Description: First name.
      * Range: [String](types/String.md)

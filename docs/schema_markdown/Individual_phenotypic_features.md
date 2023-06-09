@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_phenotypic_fea
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [PhenotypicFeature](PhenotypicFeature.md)
+[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md)
 
 ## Parents
 

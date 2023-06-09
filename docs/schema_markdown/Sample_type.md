@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_type](https://w3id
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Sample](Sample.md) &#8594;  <sub>0..1</sub> [SampleTypeEnum](SampleTypeEnum.md)
 
 ## Parents
 

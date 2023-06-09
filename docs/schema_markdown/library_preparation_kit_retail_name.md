@@ -9,7 +9,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_kit_r
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md)
 
 ## Parents
 
