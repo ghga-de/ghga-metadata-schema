@@ -18,7 +18,6 @@ default_range: string
 
 classes:
   Study:
-    is_a: Investigation
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
@@ -27,6 +26,8 @@ classes:
       detailed examination and analysis of a subject to learn more about the phenomenon
       being studied.
     slots:
+      - title
+      - description
       - type
       - affiliations
       - conditions
@@ -57,7 +58,6 @@ classes:
         inlined: false
 
   SequencingExperiment:
-    is_a: Investigation
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
@@ -68,6 +68,8 @@ classes:
     exact_mappings:
       - SIO:000994
     slots:
+      - title
+      - description
       - type
       - sequencing_protocol
       - library_preparation_protocol
@@ -91,13 +93,14 @@ classes:
         inlined: false
 
   Condition:
-    is_a: Investigation
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       An condition that is linked to comparable samples.
     slots:
+      - title
+      - description
       - name
       - description
       - disease_or_healthy
@@ -116,12 +119,13 @@ classes:
         required: true
 
   LibraryPreparationProtocol:
-    is_a: Protocol
     mixins:
       - IdentifiedByAliasMixin
+      - AttributeMixin
     description: >-
       Information about the library_preparation of an sequencing experiment.
     slots:
+      - description
       - library_name
       - library_layout
       - library_type
@@ -170,28 +174,30 @@ classes:
         recommended: true
 
   SequencingProtocol:
-    is_a: Protocol
     mixins:
       - IdentifiedByAliasMixin
+      - AttributeMixin
     description: >-
       Information about the sequencing of a sample.
     slots:
-      - sequencing_center
+      - description
+      - type
       - instrument_model
-      - forward_or_reverse
+      - sequencing_center
       - sequencing_read_length
-      - index_sequence
+      - forward_or_reverse
       - target_coverage
-      - lane_number
       - flow_cell_id
       - flow_cell_type
       - umi_barcode_read
-      - umi_barcode_size
       - umi_barcode_offset
+      - umi_barcode_size
       - cell_barcode_read
       - cell_barcode_offset
       - cell_barcode_size
       - sample_barcode_read
+      - index_sequence
+      - lane_number
     slot_usage:
       instrument_model:
         required: true
@@ -250,13 +256,14 @@ classes:
         recommended: true
 
   SequencingProcess:
-    is_a: Investigation
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
       A sequencing process linking a sample to sequencing output.
     slots:
+      - title
+      - description
       - name
       - description
       - sequencing_run_id
@@ -289,7 +296,6 @@ classes:
         inlined: false
 
   Biospecimen:
-    is_a: MaterialEntity
     mixins:
       - IdentifiedByAliasMixin
     description: >-
@@ -336,27 +342,7 @@ classes:
       tissue:
         required: true
 
-  AnatomicalEntity:
-    is_a: MaterialEntity
-    mixins:
-      - OntologyClassMixin
-    description: >-
-      Biological entity that is either an individual member of a biological species or constitutes
-      the structural organization of an individual member of a biological species.
-    exact_mappings:
-      - UBERON:0001062
-
-  Disease:
-    is_a: DiseaseOrPhenotypicFeature
-    description: >-
-      A disease is a disposition to undergo pathological processes that exists in an organism
-      because of one or more disorders in that organism.
-    exact_mappings:
-      - EFO:0000408
-      - MONDO:0000001
-
   Sample:
-    is_a: MaterialEntity
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
@@ -409,7 +395,6 @@ classes:
         required: true
 
   Individual:
-    is_a: Person
     mixins:
       - IdentifiedByAliasMixin
     aliases: ["subject", "patient"]
@@ -422,7 +407,6 @@ classes:
       - vital_status
       - geographical_region
       - ancestries
-      - diseases
       - phenotypic_features
       - files
     slot_usage:
@@ -439,15 +423,6 @@ classes:
         required: false
       ancestries:
         required: false
-      diseases:
-        description: >-
-          The Disease entity that is associated with this Biospecimen at the time of retrieval
-          from the organism. Typically, a concept from Mondo Disease Ontology.
-          For example, 'MONDO:0003742' indicates that the Individual - from_which_the_Biospecimen
-          was extracted from - suffers_from_'Heart_Fibrosarcoma'.
-        required: true
-        inlined: true
-        inlined_as_list: true
       phenotypic_features:
         description: >-
           The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
@@ -480,19 +455,7 @@ classes:
         required: true
         inlined: false
 
-  Ancestry:
-    is_a: Population
-    mixins:
-      - OntologyClassMixin
-    description: >-
-      Population category defined using ancestries informative markers (AIMs) based
-      on genetic/genomic data.
-    aliases: ["ancestral group", "ancestries category"]
-    exact_mappings:
-      - HANCESTRO:0004
-
   File:
-    is_a: InformationContentEntity
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
@@ -569,7 +532,6 @@ classes:
         required: true
 
   Analysis:
-    is_a: DataTransformation
     mixins:
       - IdentifiedByAliasMixin
     aliases: ["data analysis"]
@@ -577,6 +539,8 @@ classes:
       An Analysis is a data transformation that transforms input data to output data.
       The workflow used to achieve this transformation and the individual steps are also captured.
     slots:
+      - title
+      - description
       - type
       - reference_genome
       - reference_chromosome
@@ -629,7 +593,6 @@ classes:
         required: true
 
   Dataset:
-    is_a: InformationContentEntity
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
@@ -661,7 +624,6 @@ classes:
         inlined: false
 
   DataAccessPolicy:
-    is_a: InformationContentEntity
     mixins:
       - AttributeMixin
       - IdentifiedByAliasMixin
@@ -676,7 +638,6 @@ classes:
       - data_access_committee
       - data_use_permission
       - data_use_modifiers
-      - data_request_form
     slot_usage:
       name:
         description: >-
@@ -713,13 +674,8 @@ classes:
           Should be descendants of 'DUO:0000017 data use modifier'
         required: false
         recommended: true
-      data_request_form:
-        description: >-
-          Data Request Form that is associated with this Data Access Policy.
-        required: false
 
   DataAccessCommittee:
-    is_a: Committee
     mixins:
       - AttributeMixin
       - IdentifiedByAliasMixin
@@ -754,29 +710,22 @@ classes:
         inlined: false
 
   Member:
-    is_a: Person
     description: >-
       Member of an Organization or a Committee.
     slots:
       - email
-      - telephone
       - organization
     slot_usage:
       email:
         description: >-
           The email of the Member.
         required: true
-      telephone:
-        description: >-
-          The telephone number of the Member.
-        required: false
       organization:
         description: >-
           The organization that the Member is part of.
         required: true
 
   Publication:
-    is_a: InformationContentEntity
     description: >-
       The Publication entity represents a publication. While a publication can be any
       article that is published, the minimum expectation is that the publication has a
@@ -945,6 +894,27 @@ classes:
         inlined_as_list: true
 
 slots:
+  type:
+    description: >-
+      The type of an entity.
+      Note: Not to be confused with rdf:type
+
+  types:
+    description: >-
+      The types of an entity.
+      Note: Not to be confused with rdf:type
+    multivalued: True
+
+  name:
+    description: The name for an entity.
+
+  title:
+    description: The title that describes an entity.
+
+  xref:
+    description: Database cross references for an entity.
+    multivalued: true
+
   study:
     description: The study associated with an entity.
     range: Study
@@ -962,28 +932,20 @@ slots:
   sample:
     description: The sample associated with an entity.
     range: Sample
-    in_subset:
-      - restricted
 
   samples:
     description: The samples associated with an entity.
     range: Sample
     multivalued: true
-    in_subset:
-      - restricted
 
   sequencing_experiment:
     description: The sequencing experiment associated with an entity.
     range: SequencingExperiment
-    in_subset:
-      - restricted
 
   sequencing_experiments:
     description: The sequencing experiments associated with an entity.
     range: SequencingExperiment
     multivalued: true
-    in_subset:
-      - restricted
 
   sequencing_process:
     description: The SequencingProcess associated with an entity.
@@ -993,8 +955,6 @@ slots:
     description: The analyses associated with an entity.
     range: Analysis
     multivalued: true
-    in_subset:
-      - restricted
 
   analysis:
     description: The Analysis associated with an entity
@@ -1016,45 +976,25 @@ slots:
   biospecimen:
     description: The biospecimen associated with an entity.
     range: Biospecimen
-    in_subset:
-      - restricted
 
   biospecimens:
     description: The biospecimens associated with an entity.
     range: Biospecimen
     multivalued: true
-    in_subset:
-      - restricted
 
   individual:
     description: The subject/individual associated with an entity.
     range: Individual
-    in_subset:
-      - restricted
 
   individuals:
     description: The subjects/individuals associated with an entity.
     range: Individual
     multivalued: true
-    in_subset:
-      - restricted
-
-  anatomical_entities:
-    description: Anatomical sites associated with an entity.
-    multivalued: true
-    range: AnatomicalEntity
 
   phenotypic_features:
     description: Phenotypic feature concepts that the entity is associated with.
     range: PhenotypicFeaturesEnum
     multivalued: true
-    in_subset:
-      - restricted
-
-  diseases:
-    description: Diseases concept that the entity is associated with.
-    multivalued: true
-    range: Disease
 
   mother:
     description: The mother of an individual.
@@ -1074,30 +1014,22 @@ slots:
     range: AncestryEnum
     pattern: "^HANCESTRO:[0-9]{4}$"
     multivalued: true
-    in_subset:
-      - restricted
 
   inputs:
     description: The inputs to a Planned Process.
     range: File
     multivalued: True
-    in_subset:
-      - restricted
 
   outputs:
     description: The outputs of a Planned Process entity.
     range: File
     multivalued: True
-    in_subset:
-      - restricted
 
   files:
     description: >-
       The files associated with an entity.
     range: File
     multivalued: True
-    in_subset:
-      - restricted
 
   study_files:
     description: >-
@@ -1144,28 +1076,20 @@ slots:
   data_access_policy:
     description: Data Access Policy associated with an entity.
     range: DataAccessPolicy
-    in_subset:
-      - restricted
 
   data_access_policies:
     description: Data Access Policies associated with an entity.
     range: DataAccessPolicy
     multivalued: True
-    in_subset:
-      - restricted
 
   data_access_committee:
     description: Data Access Committee associated with an entity.
     range: DataAccessCommittee
-    in_subset:
-      - restricted
 
   data_access_committees:
     description: Data Access Committees associated with an entity.
     range: DataAccessCommittee
     multivalued: True
-    in_subset:
-      - restricted
 
   data_use_permission:
     description: >-
@@ -1173,8 +1097,6 @@ slots:
       Should be descendants of 'DUO:0000001 data use permission'.
     range: DataUsePermissionEnum
     pattern: "^DUO:[0-9]{7}$"
-    in_subset:
-      - restricted
 
   data_use_modifiers:
     description: >-
@@ -1182,22 +1104,12 @@ slots:
       Should be descendants of 'DUO:0000017 data use modifier'
     range: DataUseModifierEnum
     pattern: "DUO:[0-9]{7}"
-    in_subset:
-      - restricted
 
   members:
     description: >-
       The members associated with a committee.
     range: Member
     multivalued: True
-    in_subset:
-      - restricted
-
-  protocol:
-    description: The protocol associated with an entity.
-    range: Protocol
-    in_subset:
-      - restricted
 
   sequencing_protocol:
     range: SequencingProtocol
@@ -1226,10 +1138,6 @@ slots:
     multivalued: True
     description: The library_preparation Protocol associated with an entity.
 
-  telephone:
-    description: >-
-      The telephone number associated with a person.
-
   organization:
     description: The organization associated with a person.
 
@@ -1245,21 +1153,6 @@ slots:
     description: >-
       The Institution(s) associated with an entity.
     multivalued: True
-
-  technical_replicates:
-    description: >-
-      A technical replicate is a replicate role where the same BioSample is use e.g.
-      the same pool of RNA used to assess technical (as opposed to biological)
-      variation within an sequencing experiment.
-    exact_mappings:
-      - EFO:0002090
-
-  biological_replicates:
-    description: >-
-      A biological replicate is a replicate role that consists of
-      independent biological replicates made from different individual biosamples.
-    exact_mappings:
-      - EFO:0002091
 
   library_name:
     description: >-
@@ -1454,8 +1347,6 @@ slots:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
-    in_subset:
-      - restricted
     range: GeographicalRegionEnum
     pattern: "^HANCESTRO:[0-9]{4}$"
 
@@ -1464,29 +1355,21 @@ slots:
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
     range: VitalStatusEnum
-    in_subset:
-      - restricted
 
   sex:
     description: >-
       The assemblage of physical properties or qualities by which male is distinguished from female;
       the physical difference between male and female; the distinguishing peculiarity of male or female.
     range: IndividualSexEnum
-    in_subset:
-      - restricted
 
   karyotype:
     description: >-
       The karyotype of an individual if defined.
-    in_subset:
-      - restricted
     range: KaryotypeEnum
 
   age_at_sampling:
     description: Age of an individual.
     range: AgeRangeEnum
-    in_subset:
-      - restricted
 
   format:
     description: >-
@@ -1522,23 +1405,13 @@ slots:
 
   policy_text:
     description: The complete text for the Data Access Policy.
-    in_subset:
-      - restricted
 
   policy_url:
     description: Alternative to pasting the Data Access Policy text.
-    in_subset:
-      - restricted
-
-  data_request_form:
-    description: >-
-      Data Request Form that is associated with a Data Access Policy.
 
   main_contact:
     description: The person who is the main contact for a committee.
     range: Member
-    in_subset:
-      - restricted
 
   abstract:
     description: >-
@@ -1557,14 +1430,6 @@ slots:
   journal:
     description: >-
       Name of the journal.
-
-  submission_status:
-    description: >-
-      The status of a submission.
-
-  submission_date:
-    description: >-
-      The timestamp (in ISO 8601 format) when submission was marked completed.
 
   doi:
     description: >-
@@ -2031,6 +1896,7 @@ enums:
         description: Wildtype state.
       not_applicable:
         description: The distinction is not applicaple.
+
   ForwardOrReverseEnum:
     description: >-
       Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
@@ -2039,6 +1905,7 @@ enums:
         description: The reads are forward (R1) reads
       reverse:
         description: The reads are reverse (R2) reads
+
   AgeRangeEnum:
     description: >-
       Enum to capture the age range that an Indiviudal belongs to.

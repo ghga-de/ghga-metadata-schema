@@ -28,7 +28,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SampleFile](https://w3id.
  * [SampleFile➞sample](SampleFile_sample.md)  <sub>1..1</sub>
      * Description: The sample associated with an entity.
      * Range: [Sample](Sample.md)
-     * in subsets: (restricted)
 
 ### Inherited from File:
 

@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SampleFile_sample](https:
 ## Used by
 
  * [SampleFile](SampleFile.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

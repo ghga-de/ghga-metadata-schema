@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_samples](https
 ## Used by
 
  * [Submission](Submission.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

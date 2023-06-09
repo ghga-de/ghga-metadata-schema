@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee_membe
 ## Used by
 
  * [DataAccessCommittee](DataAccessCommittee.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

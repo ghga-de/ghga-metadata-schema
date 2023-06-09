@@ -23,19 +23,15 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission](https://w3id.
  * [Submission➞samples](Submission_samples.md)  <sub>0..\*</sub>
      * Description: Information about one or more Sample entities associated with this submission.
      * Range: [Sample](Sample.md)
-     * in subsets: (restricted)
  * [Submission➞biospecimens](Submission_biospecimens.md)  <sub>0..\*</sub>
      * Description: Information about one or more Biospecimen entities associated with this submission.
      * Range: [Biospecimen](Biospecimen.md)
-     * in subsets: (restricted)
  * [Submission➞individuals](Submission_individuals.md)  <sub>0..\*</sub>
      * Description: Information about one or more Individual entities associated with this submission.
      * Range: [Individual](Individual.md)
-     * in subsets: (restricted)
  * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md)  <sub>0..\*</sub>
      * Description: Information about one or more Experiment entities associated with this submission.
      * Range: [SequencingExperiment](SequencingExperiment.md)
-     * in subsets: (restricted)
  * [Submission➞sequencing_protocols](Submission_sequencing_protocols.md)  <sub>0..\*</sub>
      * Description: One or more sequencing protocol entities associated with this Submission.
      * Range: [SequencingProtocol](SequencingProtocol.md)
@@ -45,7 +41,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission](https://w3id.
  * [Submission➞analyses](Submission_analyses.md)  <sub>0..\*</sub>
      * Description: Information about one or more Analysis entities associated with this submission.
      * Range: [Analysis](Analysis.md)
-     * in subsets: (restricted)
  * [Submission➞study_files](Submission_study_files.md)  <sub>1..\*</sub>
      * Description: The StudyFiles that are part of this submission.
      * Range: [StudyFile](StudyFile.md)
@@ -64,15 +59,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission](https://w3id.
  * [Submission➞data_access_policies](Submission_data_access_policies.md)  <sub>1..\*</sub>
      * Description: The Data Access Policy that applies to Dataset in this submission.
      * Range: [DataAccessPolicy](DataAccessPolicy.md)
-     * in subsets: (restricted)
  * [Submission➞data_access_committees](Submission_data_access_committees.md)  <sub>1..\*</sub>
      * Description: The Data Access Committee that applies to Dataset in this submission.
      * Range: [DataAccessCommittee](DataAccessCommittee.md)
-     * in subsets: (restricted)
  * [Submission➞members](Submission_members.md)  <sub>1..\*</sub>
      * Description: The members associated with a committee referenced in this submission
      * Range: [Member](Member.md)
-     * in subsets: (restricted)
  * [Submission➞publications](Submission_publications.md)  <sub>0..\*</sub>
      * Description: One or more Publication entities associated with this Submission.
      * Range: [Publication](Publication.md)

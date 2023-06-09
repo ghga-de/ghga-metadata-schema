@@ -22,10 +22,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AliasMixin_alias](https:/
 ## Used by
 
  * [AliasMixin](AliasMixin.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

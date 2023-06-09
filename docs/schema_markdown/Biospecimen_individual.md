@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_individual](h
 ## Used by
 
  * [Biospecimen](Biospecimen.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

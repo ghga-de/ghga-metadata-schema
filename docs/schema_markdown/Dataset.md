@@ -7,11 +7,7 @@ A Dataset is a collection of Files that is prepared for distribution and is tied
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[Dataset]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[Dataset],[DataAccessPolicy],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[InformationContentEntity],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[Dataset]uses%20-.->[AttributeMixin],[InformationContentEntity]^-[Dataset],[DataAccessPolicy],[AttributeMixin],[Attribute])
-
-## Parents
-
- *  is_a: [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -42,21 +38,18 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org
  * [Dataset➞data_access_policy](Dataset_data_access_policy.md)  <sub>1..1</sub>
      * Description: The Data Access Policy that applies to this Dataset.
      * Range: [DataAccessPolicy](DataAccessPolicy.md)
-     * in subsets: (restricted)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 
- * [attributes](attributes.md)  <sub>0..\*</sub>
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)
 
 ## Other properties
 

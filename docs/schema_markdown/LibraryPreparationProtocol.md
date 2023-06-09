@@ -7,15 +7,12 @@ Information about the library_preparation of an sequencing experiment.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:LibraryPreparationLibraryLayoutEnum;library_type:LibraryPreparationLibraryTypeEnum;library_selection:LibraryPreparationLibrarySelectionEnum;library_preparation:string;library_preparation_kit_retail_name:LibraryPreparationKitRetailNameEnum%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:PrimerEnum%20%3F;end_bias:EndBiasEnum%20%3F;target_regions:string%20*;rnaseq_strandedness:LibraryPreparationRNASeqStrandednessEnum%20%3F;description:string;alias:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Protocol],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;library_name:string;library_layout:LibraryPreparationLibraryLayoutEnum;library_type:LibraryPreparationLibraryTypeEnum;library_selection:LibraryPreparationLibrarySelectionEnum;library_preparation:string;library_preparation_kit_retail_name:LibraryPreparationKitRetailNameEnum%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:PrimerEnum%20%3F;end_bias:EndBiasEnum%20%3F;target_regions:string%20*;rnaseq_strandedness:LibraryPreparationRNASeqStrandednessEnum%20%3F;description:string;alias:string;name(i):string;type(i):string;url(i):string;xref(i):string%20%2B],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[Protocol]^-[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[Attribute])
-
-## Parents
-
- *  is_a: [Protocol](Protocol.md) - A plan specification which has sufficient level of detail and quantitative information to communicate it between Investigation agents, so that different Investigation agents will reliably be able to independently reproduce the process.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;description:string;library_name:string;library_layout:LibraryPreparationLibraryLayoutEnum;library_type:LibraryPreparationLibraryTypeEnum;library_selection:LibraryPreparationLibrarySelectionEnum;library_preparation:string;library_preparation_kit_retail_name:LibraryPreparationKitRetailNameEnum%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:PrimerEnum%20%3F;end_bias:EndBiasEnum%20%3F;target_regions:string%20*;rnaseq_strandedness:LibraryPreparationRNASeqStrandednessEnum%20%3F;alias:string],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[LibraryPreparationProtocol]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingExperiment],[Attribute]<attributes%200..*-++[LibraryPreparationProtocol&#124;description:string;library_name:string;library_layout:LibraryPreparationLibraryLayoutEnum;library_type:LibraryPreparationLibraryTypeEnum;library_selection:LibraryPreparationLibrarySelectionEnum;library_preparation:string;library_preparation_kit_retail_name:LibraryPreparationKitRetailNameEnum%20%3F;library_preparation_kit_manufacturer:string%20%3F;primer:PrimerEnum%20%3F;end_bias:EndBiasEnum%20%3F;target_regions:string%20*;rnaseq_strandedness:LibraryPreparationRNASeqStrandednessEnum%20%3F;alias:string],[SequencingExperiment]-%20library_preparation_protocol%201..1>[LibraryPreparationProtocol],[Submission]++-%20library_preparation_protocols%200..*>[LibraryPreparationProtocol],[SequencingExperiment]-%20library_preparation_protocol(i)%200..1>[LibraryPreparationProtocol],[Submission]-%20library_preparation_protocols(i)%200..*>[LibraryPreparationProtocol],[LibraryPreparationProtocol]uses%20-.->[IdentifiedByAliasMixin],[LibraryPreparationProtocol]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
  *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
+ *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
 
 ## Referenced by Class
 
@@ -29,6 +26,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
 
 ### Own
 
+ * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)  <sub>1..1</sub>
+     * Description: Description about how a sequencing library was prepared (eg: Library construction method).
+     * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞library_name](LibraryPreparationProtocol_library_name.md)  <sub>1..1</sub>
      * Description: A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
      * Range: [String](types/String.md)
@@ -62,32 +62,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
  * [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)  <sub>0..1</sub>
      * Description: The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * Range: [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md)
- * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)  <sub>1..1</sub>
-     * Description: Description about how a sequencing library was prepared (eg: Library construction method).
-     * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterizes this library_preparation Protocol.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)
-
-### Inherited from Protocol:
-
- * [Protocol➞name](Protocol_name.md)  <sub>1..1</sub>
-     * Description: Name of the Protocol (eg: Sample extraction_PCR amplification).
-     * Range: [String](types/String.md)
- * [Protocol➞type](Protocol_type.md)  <sub>1..1</sub>
-     * Description: Type of the protocol (eg: Target enrichment).
-     * Range: [String](types/String.md)
- * [Protocol➞url](Protocol_url.md)  <sub>1..1</sub>
-     * Description: URL for the resource that describes this protocol.
-     * Range: [String](types/String.md)
- * [Protocol➞xref](Protocol_xref.md)  <sub>1..\*</sub>
-     * Description: One or more cross-references for this protocol.  (Eg: manufacturer protocol, protocol from publication etc )
-     * Range: [String](types/String.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)

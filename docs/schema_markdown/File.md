@@ -7,11 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GHGA-Submission-Metadata-Schema/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[InformationContentEntity],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Analysis]-%20inputs%200..*>[File],[Analysis]-%20outputs%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[InformationContentEntity]^-[File],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[InformationContentEntity],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Analysis]-%20inputs%200..*>[File],[Analysis]-%20outputs%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[InformationContentEntity]^-[File],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile],[Analysis])
-
-## Parents
-
- *  is_a: [InformationContentEntity](InformationContentEntity.md) - A generically dependent continuant that is about some thing.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Analysis]-%20inputs%200..*>[File],[Analysis]-%20outputs%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Analysis]-%20inputs%200..*>[File],[Analysis]-%20outputs%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile],[Analysis])
 
 ## Uses Mixin
 
@@ -61,14 +57,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GH
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 
- * [attributes](attributes.md)  <sub>0..\*</sub>
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)
 
 ## Other properties
 

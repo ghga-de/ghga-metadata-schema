@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_data_acc
 ## Used by
 
  * [DataAccessPolicy](DataAccessPolicy.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

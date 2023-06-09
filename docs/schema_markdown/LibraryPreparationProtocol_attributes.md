@@ -21,10 +21,3 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
 ## Used by
 
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | restricted |
-

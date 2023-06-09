@@ -7,11 +7,7 @@ A Biospecimen is any natural material taken from a biological entity (usually a 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin],[MaterialEntity]^-[Biospecimen])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[MaterialEntity],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin],[MaterialEntity]^-[Biospecimen])
-
-## Parents
-
- *  is_a: [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -47,7 +43,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id
  * [Biospecimen➞individual](Biospecimen_individual.md)  <sub>1..1</sub>
      * Description: The Individual entity from which this Biospecimen was derived.
      * Range: [Individual](Individual.md)
-     * in subsets: (restricted)
  * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
      * Description: Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
@@ -59,7 +54,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
 
 ## Other properties
 

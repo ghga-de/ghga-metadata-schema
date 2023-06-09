@@ -7,11 +7,7 @@ A sample is a limited quantity of something to be used for testing, analysis, in
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:IsolationEnum%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[MaterialEntity]^-[Sample],[MaterialEntity],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:IsolationEnum%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[MaterialEntity]^-[Sample],[MaterialEntity],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
-
-## Parents
-
- *  is_a: [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:IsolationEnum%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:IsolationEnum%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -49,7 +45,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
  * [Sample➞biospecimen](Sample_biospecimen.md)  <sub>0..1</sub>
      * Description: The Biospecimen from which this Sample was prepared from.
      * Range: [Biospecimen](Biospecimen.md)
-     * in subsets: (restricted)
  * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
      * Description: The condition associated with an entity.
      * Range: [Condition](Condition.md)
@@ -62,14 +57,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample](https://w3id.org/
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 
- * [attributes](attributes.md)  <sub>0..\*</sub>
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)
 
 ## Other properties
 

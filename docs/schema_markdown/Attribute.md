@@ -7,12 +7,12 @@ A key/value pair that further characterizes an entity.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute](https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[LibraryPreparationProtocol],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[Protocol]++-%20attributes%201..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes%200..*>[Attribute],[AttributeMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[Protocol],[LibraryPreparationProtocol],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[Protocol]++-%20attributes%201..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes%200..*>[Attribute],[AttributeMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[LibraryPreparationProtocol],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[LibraryPreparationProtocol],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute])
 
 ## Referenced by Class
 
+ *  **[AttributeMixin](AttributeMixin.md)** *[AttributeMixin➞attributes](AttributeMixin_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
  *  **[LibraryPreparationProtocol](LibraryPreparationProtocol.md)** *[LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[Protocol](Protocol.md)** *[Protocol➞attributes](Protocol_attributes.md)*  <sub>1..\*</sub>  **[Attribute](Attribute.md)**
  *  **[SequencingProtocol](SequencingProtocol.md)** *[SequencingProtocol➞attributes](SequencingProtocol_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
  *  **[Study](Study.md)** *[Study➞attributes](Study_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
  *  **None** *[attributes](attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**

@@ -57,9 +57,6 @@ Individual {
 File {
 
 }
-Disease {
-
-}
 SequencingExperiment {
 
 }
@@ -124,15 +121,14 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
-Individual ||--}| Disease : "diseases"
 Individual ||--}o File : "files"
 File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
-LibraryPreparationProtocol ||--}| Attribute : "attributes"
-SequencingProtocol ||--}| Attribute : "attributes"
+LibraryPreparationProtocol ||--}o Attribute : "attributes"
+SequencingProtocol ||--}o Attribute : "attributes"
 SampleFile ||--|| Sample : "sample"
 SampleFile ||--|| Dataset : "dataset"
 SampleFile ||--}o Attribute : "attributes"
@@ -163,7 +159,6 @@ Sample {
 
 }
 
-Individual ||--}| Disease : "diseases"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"
@@ -250,9 +245,6 @@ Individual {
     GeographicalRegionEnum geographical_region  
     AncestryEnumList ancestries  
     PhenotypicFeaturesEnumList phenotypic_features  
-    string given_name  
-    string family_name  
-    string additional_name  
     string alias  
 }
 Biospecimen {
@@ -275,7 +267,6 @@ Sample {
     string alias  
 }
 
-Individual ||--}| Disease : "diseases"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"
@@ -293,12 +284,12 @@ Focusses on the relation between Experiment, Sample, and File.
 ```mermaid
 erDiagram
 SequencingProcess {
-    string name  
+    string title  
     string description  
+    string name  
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
-    string title  
     string alias  
 }
 File {
@@ -319,9 +310,9 @@ Sample {
     string alias  
 }
 SequencingExperiment {
-    string type  
     string title  
     string description  
+    string type  
     string alias  
 }
 
@@ -357,19 +348,19 @@ Sample {
     string alias  
 }
 Condition {
-    string name  
+    string title  
     string description  
+    string name  
     DiseaseOrHealthyEnum disease_or_healthy  
     CaseControlStatusEnum case_control_status  
     MutantOrWildtypeEnum mutant_or_wildtype  
-    string title  
     string alias  
 }
 Study {
-    StudyTypeEnum type  
-    stringList affiliations  
     string title  
     string description  
+    StudyTypeEnum type  
+    stringList affiliations  
     string alias  
 }
 

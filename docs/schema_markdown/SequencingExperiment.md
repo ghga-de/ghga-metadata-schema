@@ -7,11 +7,7 @@ An sequencing experiment is an investigation that consists of a coordinated set 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;type:string%20%3F;title:string%20%3F;description:string;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[Investigation]^-[SequencingExperiment],[LibraryPreparationProtocol],[Investigation],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
-
-## Parents
-
- *  is_a: [Investigation](Investigation.md) - Investigation is the process of carrying out a plan or procedure so as to discover fact or information about the object of study.
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;title:string%20%3F;description:string;type:string%20%3F;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;title:string%20%3F;description:string;type:string%20%3F;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%200..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -30,6 +26,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](htt
 
 ### Own
 
+ * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>0..1</sub>
+     * Description: Name for the experiment (eg: GHGAE_PBMC_RNAseq).
+     * Range: [String](types/String.md)
+ * [SequencingExperiment➞description](SequencingExperiment_description.md)  <sub>1..1</sub>
+     * Description: A detailed description of the Experiment.
+     * Range: [String](types/String.md)
  * [SequencingExperiment➞type](SequencingExperiment_type.md)  <sub>0..1</sub>
      * Description: The type of sequencing experiment.
      * Range: [String](types/String.md)
@@ -39,26 +41,18 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment](htt
  * [SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md)  <sub>1..1</sub>
      * Description: The library_preparation Protocol associated with an entity.
      * Range: [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
- * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>0..1</sub>
-     * Description: Name for the experiment (eg: GHGAE_PBMC_RNAseq).
-     * Range: [String](types/String.md)
- * [SequencingExperiment➞description](SequencingExperiment_description.md)  <sub>1..1</sub>
-     * Description: A detailed description of the Experiment.
-     * Range: [String](types/String.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
-     * in subsets: (restricted)
 
 ### Mixed in from AttributeMixin:
 
- * [attributes](attributes.md)  <sub>0..\*</sub>
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
-     * in subsets: (restricted)
 
 ## Other properties
 
