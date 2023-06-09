@@ -121,8 +121,6 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
-Individual ||--}o Individual : "parents"
-Individual ||--}o Individual : "children"
 Individual ||--}o File : "files"
 File ||--|| Dataset : "dataset"
 File ||--}o Attribute : "attributes"
@@ -161,8 +159,6 @@ Sample {
 
 }
 
-Individual ||--}o Individual : "parents"
-Individual ||--}o Individual : "children"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"
@@ -271,8 +267,6 @@ Sample {
     string alias  
 }
 
-Individual ||--}o Individual : "parents"
-Individual ||--}o Individual : "children"
 Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"

@@ -407,8 +407,6 @@ classes:
       - vital_status
       - geographical_region
       - ancestries
-      - parents
-      - children
       - phenotypic_features
       - files
     slot_usage:
@@ -425,12 +423,6 @@ classes:
         required: false
       ancestries:
         required: false
-      parents:
-        required: false
-        inlined: false
-      children:
-        required: false
-        inlined: false
       phenotypic_features:
         description: >-
           The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
@@ -443,6 +435,24 @@ classes:
           Additional/supplementary files associated with an Individual.
           Typically, a phenopacket or pedigree file.
         required: false
+        inlined: false
+
+  Trio:
+    description: >-
+      A trio is defined by three individuals representing an individual and their parents.
+    slots:
+      - mother
+      - father
+      - child
+    slot_usage:
+      mother:
+        required: true
+        inlined: false
+      father:
+        required: true
+        inlined: false
+      child:
+        required: true
         inlined: false
 
   File:
@@ -986,14 +996,16 @@ slots:
     range: PhenotypicFeaturesEnum
     multivalued: true
 
-  parents:
-    description: One or more parent for an Individual.
-    multivalued: true
+  mother:
+    description: The mother of an individual.
     range: Individual
 
-  children:
-    description: One or more children for an Individual.
-    multivalued: true
+  father:
+    description: The father of an individual.
+    range: Individual
+
+  child:
+    description: The child of two individuals.
     range: Individual
 
   ancestries:
