@@ -35,6 +35,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AnatomicalEntity](AnatomicalEntity.md) - Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.
      * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
      * [Population](Population.md) - A Population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area.
+         * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
      * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
  * [Person](Person.md) - A member of the species Homo sapiens.
      * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
@@ -49,6 +50,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
          * [Study](Study.md) - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
      * [ResearchActivity](ResearchActivity.md) - A PlannedProcess executed in the performance of scientific research wherein systematic Investigations are performed to establish facts and reach new conclusions about phenomena in the world.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
+ * [Trio](Trio.md) - A trio is defined by three individuals representing an individual and their parents.
 
 ### Mixins
 
@@ -114,8 +116,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [File➞checksum](File_checksum.md)
  * [checksum_type](checksum_type.md) - The type of algorithm used to generate the checksum of a file.
      * [File➞checksum_type](File_checksum_type.md)
- * [children](children.md) - One or more children for an Individual.
-     * [Individual➞children](Individual_children.md)
+ * [child](child.md) - The child of two individuals.
+     * [Trio➞child](Trio_child.md)
  * [concept_identifier](concept_identifier.md) - The Compact URI (CURIE) that uniquely identifies a concept from an ontology, thesaurus, or terminology.
      * [OntologyClassMixin➞concept_identifier](OntologyClassMixin_concept_identifier.md) - The Compact URI (CURIE) that uniquely identifies this ontology class.
  * [concept_name](concept_name.md) - The name or label (typically, rdfs:label) of concept from an ontology, thesaurus, or terminology.
@@ -173,6 +175,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)
  * [family_name](family_name.md) - Last name.
      * [Person➞family_name](Person_family_name.md)
+ * [father](father.md) - The father of an individual.
+     * [Trio➞father](Trio_father.md)
  * [files](files.md) - The files associated with an entity.
      * [Individual➞files](Individual_files.md) - Additional/supplementary files associated with an Individual. Typically, a phenopacket or pedigree file.
  * [flow_cell_id](flow_cell_id.md) - Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
@@ -233,6 +237,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [members](members.md) - The members associated with a committee.
      * [DataAccessCommittee➞members](DataAccessCommittee_members.md) - All the members that are part of this Data Access Committee.
      * [Submission➞members](Submission_members.md) - The members associated with a committee referenced in this submission
+ * [mother](mother.md) - The mother of an individual.
+     * [Trio➞mother](Trio_mother.md)
  * [mutant_or_wildtype](mutant_or_wildtype.md) - Whether a condition corresponds to a mutant or a wildtype.
      * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)
  * [name](name.md) - The name for an entity.
@@ -253,8 +259,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [organization](organization.md) - The organization associated with a person.
      * [Member➞organization](Member_organization.md) - The organization that the Member is part of.
  * [outputs](outputs.md) - The outputs of a Planned Process entity.
- * [parents](parents.md) - One or more parent for an Individual.
-     * [Individual➞parents](Individual_parents.md)
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.

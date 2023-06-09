@@ -20,4 +20,5 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Population_name](https://
 
 ## Used by
 
+ * [Ancestry](Ancestry.md)
  * [Population](Population.md)

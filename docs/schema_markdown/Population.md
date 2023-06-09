@@ -7,11 +7,15 @@ A Population is a collection of individuals from the same taxonomic class living
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Population](https://w3id.org/GHGA-Submission-Metadata-Schema/Population)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[MaterialEntity]^-[Population&#124;name:string],[MaterialEntity])](https://yuml.me/diagram/nofunky;dir:TB/class/[MaterialEntity]^-[Population&#124;name:string],[MaterialEntity])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Population&#124;name:string]^-[Ancestry],[MaterialEntity]^-[Population],[MaterialEntity],[Ancestry])](https://yuml.me/diagram/nofunky;dir:TB/class/[Population&#124;name:string]^-[Ancestry],[MaterialEntity]^-[Population],[MaterialEntity],[Ancestry])
 
 ## Parents
 
  *  is_a: [MaterialEntity](MaterialEntity.md) - A MaterialEntity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.
+
+## Children
+
+ * [Ancestry](Ancestry.md) - Population category defined using ancestries informative markers (AIMs) based on genetic/genomic data.
 
 ## Referenced by Class
 

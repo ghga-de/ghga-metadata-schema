@@ -21,6 +21,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/OntologyClassMixin_ontolo
 ## Used by
 
  * [AnatomicalEntity](AnatomicalEntity.md)
+ * [Ancestry](Ancestry.md)
  * [Disease](Disease.md)
  * [DiseaseOrPhenotypicFeature](DiseaseOrPhenotypicFeature.md)
  * [OntologyClassMixin](OntologyClassMixin.md)
