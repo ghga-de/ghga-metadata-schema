@@ -752,7 +752,6 @@ classes:
       study:
         description: >-
           The Study entity associated with this Publication.
-        range: Study
         required: true
         inlined: false
 
