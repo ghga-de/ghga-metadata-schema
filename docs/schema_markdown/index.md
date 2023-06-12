@@ -160,7 +160,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Biospecimen➞individual](Biospecimen_individual.md) - The Individual entity from which this Biospecimen was derived.
  * [individuals](individuals.md) - The subjects/individuals associated with an entity.
      * [Submission➞individuals](Submission_individuals.md) - Information about one or more Individual entities associated with this submission.
- * [inputs](inputs.md) - The inputs to a Planned Process.
  * [instrument_model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
@@ -212,7 +211,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProcess➞name](SequencingProcess_name.md)
  * [organization](organization.md) - The organization associated with a person.
      * [Member➞organization](Member_organization.md) - The organization that the Member is part of.
- * [outputs](outputs.md) - The outputs of a Planned Process entity.
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
@@ -276,7 +274,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [studies](studies.md) - The study associated with an entity.
      * [Submission➞studies](Submission_studies.md) - Information about a Study entities associated with this submission.
  * [study](study.md) - The study associated with an entity.
-     * [Analysis➞study](Analysis_study.md) - The Study entity associated with this Analysis.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
      * [StudyFile➞study](StudyFile_study.md)
  * [study_files](study_files.md) - The StudyFiles associated with an entity.

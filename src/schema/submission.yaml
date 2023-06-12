@@ -544,10 +544,6 @@ classes:
       - type
       - reference_genome
       - reference_chromosome
-      - inputs
-      - study
-      - outputs
-      - description
     slot_usage:
       alias:
         description: >-
@@ -564,11 +560,6 @@ classes:
         required: true
       reference_chromosome:
         required: true
-      study:
-        description: >-
-          The Study entity associated with this Analysis.
-        required: true
-        inlined: false
 
   AnalysisProcess:
     slots:
@@ -1043,16 +1034,6 @@ slots:
     range: AncestryEnum
     pattern: "^HANCESTRO:[0-9]{4}$"
     multivalued: true
-
-  inputs:
-    description: The inputs to a Planned Process.
-    range: File
-    multivalued: True
-
-  outputs:
-    description: The outputs of a Planned Process entity.
-    range: File
-    multivalued: True
 
   files:
     description: >-

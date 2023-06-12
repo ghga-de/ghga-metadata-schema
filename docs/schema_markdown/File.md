@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GHGA-Submission-Metadata-Schema/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Analysis]-%20inputs%200..*>[File],[Analysis]-%20outputs%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[Analysis]-%20inputs%200..*>[File],[Analysis]-%20outputs%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[Individual],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[Individual]-%20files%200..*>[File],[Individual]-%20files(i)%200..*>[File],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile])
 
 ## Uses Mixin
 
@@ -25,8 +25,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GH
 
  *  **[Individual](Individual.md)** *[Individual➞files](Individual_files.md)*  <sub>0..\*</sub>  **[File](File.md)**
  *  **None** *[files](files.md)*  <sub>0..\*</sub>  **[File](File.md)**
- *  **None** *[inputs](inputs.md)*  <sub>0..\*</sub>  **[File](File.md)**
- *  **None** *[outputs](outputs.md)*  <sub>0..\*</sub>  **[File](File.md)**
 
 ## Attributes
 
