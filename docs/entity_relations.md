@@ -36,9 +36,6 @@ Condition {
 SequencingProtocol {
 
 }
-SequencingProcessFile {
-
-}
 SequencingProcess {
 
 }
@@ -58,6 +55,9 @@ SequencingExperiment {
 
 }
 LibraryPreparationProtocol {
+
+}
+SequencingProcessFile {
 
 }
 SampleFile {
@@ -91,6 +91,7 @@ Submission ||--}| SampleFile : "sample_files"
 Submission ||--}o Sample : "samples"
 Submission ||--}o SequencingExperiment : "sequencing_experiments"
 Submission ||--}| SequencingProcessFile : "sequencing_process_files"
+Submission ||--}| SequencingProcess : "sequencing_processes"
 Submission ||--}o SequencingProtocol : "sequencing_protocols"
 Submission ||--}| Study : "studies"
 Submission ||--}| StudyFile : "study_files"
@@ -108,9 +109,6 @@ Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 Condition ||--}o Attribute : "attributes"
 SequencingProtocol ||--}o Attribute : "attributes"
-SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
-SequencingProcessFile ||--|| Dataset : "dataset"
-SequencingProcessFile ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
@@ -125,6 +123,9 @@ SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
 LibraryPreparationProtocol ||--}o Attribute : "attributes"
+SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
+SequencingProcessFile ||--|| Dataset : "dataset"
+SequencingProcessFile ||--}o Attribute : "attributes"
 SampleFile ||--|| Sample : "sample"
 SampleFile ||--|| Dataset : "dataset"
 SampleFile ||--}o Attribute : "attributes"

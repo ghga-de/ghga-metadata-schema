@@ -255,6 +255,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md) - The SequencingProcessFiles that are part of this submission.
  * [sequencing_process_input_files](sequencing_process_input_files.md) - The SequencingProcessFile associated used as an input for an entity.
      * [AnalysisProcess➞sequencing_process_input_files](AnalysisProcess_sequencing_process_input_files.md)
+ * [sequencing_processes](sequencing_processes.md) - The SequencingProcesses associated with an entity.
+     * [Submission➞sequencing_processes](Submission_sequencing_processes.md) - The SequencingProcesses that are part of this submission.
  * [sequencing_protocol](sequencing_protocol.md) - The sequencing protocol associated with an entity.
      * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)
  * [sequencing_protocols](sequencing_protocols.md) - The sequencing protocol associated with an entity.

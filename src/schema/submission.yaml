@@ -790,6 +790,7 @@ classes:
       - samples
       - sequencing_experiments
       - sequencing_process_files
+      - sequencing_processes
       - sequencing_protocols
       - studies
       - study_files
@@ -854,6 +855,11 @@ classes:
         inlined_as_list: true
       sequencing_process_files:
         description: The SequencingProcessFiles that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      sequencing_processes:
+        description: The SequencingProcesses that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
@@ -1059,6 +1065,11 @@ slots:
       The SequencingProcessFiles associated with an entity.
     range: SequencingProcessFile
     multivalued: True
+
+  sequencing_processes:
+    description: The SequencingProcesses associated with an entity.
+    range: SequencingProcess
+    multivalued: true
 
   study_input_files:
     description: >-
