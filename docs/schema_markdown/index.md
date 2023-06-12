@@ -69,6 +69,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AnalysisProcessOutputFile➞analysis_process](AnalysisProcessOutputFile_analysis_process.md)
  * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
      * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md) - The AnalysisProcessOutputFiles that are part of this submission.
+ * [analysis_processes](analysis_processes.md) - The AnalysisProcess associated with an entity.
+     * [Submission➞analysis_processes](Submission_analysis_processes.md) - The AnalysisProcesses that are part of this submission.
  * [ancestries](ancestries.md) - A person's descent or lineage, from a person or from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.

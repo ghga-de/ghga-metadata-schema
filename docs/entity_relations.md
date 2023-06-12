@@ -66,18 +66,19 @@ SampleFile {
 Publication {
 
 }
-AnalysisProcessOutputFile {
-
-}
 AnalysisProcess {
 
 }
 Analysis {
 
 }
+AnalysisProcessOutputFile {
+
+}
 
 Submission ||--}o Analysis : "analyses"
 Submission ||--}| AnalysisProcessOutputFile : "analysis_process_output_files"
+Submission ||--}| AnalysisProcess : "analysis_processes"
 Submission ||--}o Biospecimen : "biospecimens"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
@@ -128,9 +129,6 @@ SampleFile ||--|| Sample : "sample"
 SampleFile ||--|| Dataset : "dataset"
 SampleFile ||--}o Attribute : "attributes"
 Publication ||--|| Study : "study"
-AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
-AnalysisProcessOutputFile ||--|| Dataset : "dataset"
-AnalysisProcessOutputFile ||--}o Attribute : "attributes"
 AnalysisProcess ||--|| Analysis : "analysis"
 AnalysisProcess ||--}| StudyFile : "study_input_files"
 AnalysisProcess ||--}| SampleFile : "sample_input_files"
@@ -138,6 +136,9 @@ AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
 Analysis ||--}o File : "inputs"
 Analysis ||--|| Study : "study"
 Analysis ||--}o File : "outputs"
+AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
+AnalysisProcessOutputFile ||--|| Dataset : "dataset"
+AnalysisProcessOutputFile ||--}o Attribute : "attributes"
 
 ```
 

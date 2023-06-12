@@ -777,6 +777,7 @@ classes:
     slots:
       - analyses
       - analysis_process_output_files
+      - analysis_processes
       - biospecimens
       - data_access_committees
       - data_access_policies
@@ -853,6 +854,11 @@ classes:
         inlined_as_list: true
       sequencing_process_files:
         description: The SequencingProcessFiles that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      analysis_processes:
+        description: The AnalysisProcesses that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
@@ -963,6 +969,11 @@ slots:
   analysis_process:
     description: The AnalysisProcess associated with an entity.
     range: AnalysisProcess
+
+  analysis_processes:
+    description: The AnalysisProcess associated with an entity.
+    range: AnalysisProcess
+    multivalued: true
 
   dataset:
     description: The Dataset associated with an entity.
