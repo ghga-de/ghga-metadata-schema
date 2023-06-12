@@ -7,7 +7,7 @@ A grouping entity that represents information about one or more entities. A subm
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication]<publications%200..*-++[Submission],[Member]<members%201..*-++[Submission],[DataAccessCommittee]<data_access_committees%201..*-++[Submission],[DataAccessPolicy]<data_access_policies%201..*-++[Submission],[Dataset]<datasets%201..*-++[Submission],[AnalysisProcessOutputFile]<analysis_process_output_files%201..*-++[Submission],[SequencingProcessFile]<sequencing_process_files%201..*-++[Submission],[SampleFile]<sample_files%201..*-++[Submission],[StudyFile]<study_files%201..*-++[Submission],[Analysis]<analyses%200..*-++[Submission],[LibraryPreparationProtocol]<library_preparation_protocols%200..*-++[Submission],[SequencingProtocol]<sequencing_protocols%200..*-++[Submission],[SequencingExperiment]<sequencing_experiments%200..*-++[Submission],[Individual]<individuals%200..*-++[Submission],[Biospecimen]<biospecimens%200..*-++[Submission],[Sample]<samples%200..*-++[Submission],[Study]<studies%201..*-++[Submission],[StudyFile],[Study],[SequencingProtocol],[SequencingProcessFile],[SequencingExperiment],[SampleFile],[Sample],[Publication],[Member],[LibraryPreparationProtocol],[Individual],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[AnalysisProcessOutputFile],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Publication]<publications%200..*-++[Submission],[Member]<members%201..*-++[Submission],[DataAccessCommittee]<data_access_committees%201..*-++[Submission],[DataAccessPolicy]<data_access_policies%201..*-++[Submission],[Dataset]<datasets%201..*-++[Submission],[AnalysisProcessOutputFile]<analysis_process_output_files%201..*-++[Submission],[SequencingProcessFile]<sequencing_process_files%201..*-++[Submission],[SampleFile]<sample_files%201..*-++[Submission],[StudyFile]<study_files%201..*-++[Submission],[Analysis]<analyses%200..*-++[Submission],[LibraryPreparationProtocol]<library_preparation_protocols%200..*-++[Submission],[SequencingProtocol]<sequencing_protocols%200..*-++[Submission],[SequencingExperiment]<sequencing_experiments%200..*-++[Submission],[Individual]<individuals%200..*-++[Submission],[Biospecimen]<biospecimens%200..*-++[Submission],[Sample]<samples%200..*-++[Submission],[Study]<studies%201..*-++[Submission],[StudyFile],[Study],[SequencingProtocol],[SequencingProcessFile],[SequencingExperiment],[SampleFile],[Sample],[Publication],[Member],[LibraryPreparationProtocol],[Individual],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[AnalysisProcessOutputFile],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile]<study_files%201..*-++[Submission],[Study]<studies%201..*-++[Submission],[SequencingProtocol]<sequencing_protocols%200..*-++[Submission],[SequencingProcessFile]<sequencing_process_files%201..*-++[Submission],[SequencingExperiment]<sequencing_experiments%200..*-++[Submission],[Sample]<samples%200..*-++[Submission],[SampleFile]<sample_files%201..*-++[Submission],[Publication]<publications%200..*-++[Submission],[Member]<members%201..*-++[Submission],[LibraryPreparationProtocol]<library_preparation_protocols%200..*-++[Submission],[Individual]<individuals%200..*-++[Submission],[Dataset]<datasets%201..*-++[Submission],[DataAccessPolicy]<data_access_policies%201..*-++[Submission],[DataAccessCommittee]<data_access_committees%201..*-++[Submission],[Biospecimen]<biospecimens%200..*-++[Submission],[AnalysisProcessOutputFile]<analysis_process_output_files%201..*-++[Submission],[Analysis]<analyses%200..*-++[Submission],[StudyFile],[Study],[SequencingProtocol],[SequencingProcessFile],[SequencingExperiment],[SampleFile],[Sample],[Publication],[Member],[LibraryPreparationProtocol],[Individual],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[AnalysisProcessOutputFile],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile]<study_files%201..*-++[Submission],[Study]<studies%201..*-++[Submission],[SequencingProtocol]<sequencing_protocols%200..*-++[Submission],[SequencingProcessFile]<sequencing_process_files%201..*-++[Submission],[SequencingExperiment]<sequencing_experiments%200..*-++[Submission],[Sample]<samples%200..*-++[Submission],[SampleFile]<sample_files%201..*-++[Submission],[Publication]<publications%200..*-++[Submission],[Member]<members%201..*-++[Submission],[LibraryPreparationProtocol]<library_preparation_protocols%200..*-++[Submission],[Individual]<individuals%200..*-++[Submission],[Dataset]<datasets%201..*-++[Submission],[DataAccessPolicy]<data_access_policies%201..*-++[Submission],[DataAccessCommittee]<data_access_committees%201..*-++[Submission],[Biospecimen]<biospecimens%200..*-++[Submission],[AnalysisProcessOutputFile]<analysis_process_output_files%201..*-++[Submission],[Analysis]<analyses%200..*-++[Submission],[StudyFile],[Study],[SequencingProtocol],[SequencingProcessFile],[SequencingExperiment],[SampleFile],[Sample],[Publication],[Member],[LibraryPreparationProtocol],[Individual],[Dataset],[DataAccessPolicy],[DataAccessCommittee],[Biospecimen],[AnalysisProcessOutputFile],[Analysis])
 
 ## Referenced by Class
 
@@ -17,54 +17,54 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission](https://w3id.
 
 ### Own
 
- * [Submission➞studies](Submission_studies.md)  <sub>1..\*</sub>
-     * Description: Information about a Study entities associated with this submission.
-     * Range: [Study](Study.md)
- * [Submission➞samples](Submission_samples.md)  <sub>0..\*</sub>
-     * Description: Information about one or more Sample entities associated with this submission.
-     * Range: [Sample](Sample.md)
- * [Submission➞biospecimens](Submission_biospecimens.md)  <sub>0..\*</sub>
-     * Description: Information about one or more Biospecimen entities associated with this submission.
-     * Range: [Biospecimen](Biospecimen.md)
- * [Submission➞individuals](Submission_individuals.md)  <sub>0..\*</sub>
-     * Description: Information about one or more Individual entities associated with this submission.
-     * Range: [Individual](Individual.md)
- * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md)  <sub>0..\*</sub>
-     * Description: Information about one or more Experiment entities associated with this submission.
-     * Range: [SequencingExperiment](SequencingExperiment.md)
- * [Submission➞sequencing_protocols](Submission_sequencing_protocols.md)  <sub>0..\*</sub>
-     * Description: One or more sequencing protocol entities associated with this Submission.
-     * Range: [SequencingProtocol](SequencingProtocol.md)
- * [Submission➞library_preparation_protocols](Submission_library_preparation_protocols.md)  <sub>0..\*</sub>
-     * Description: One or more library preparation protocol entities associated with this Submission.
-     * Range: [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Submission➞analyses](Submission_analyses.md)  <sub>0..\*</sub>
      * Description: Information about one or more Analysis entities associated with this submission.
      * Range: [Analysis](Analysis.md)
- * [Submission➞study_files](Submission_study_files.md)  <sub>1..\*</sub>
-     * Description: The StudyFiles that are part of this submission.
-     * Range: [StudyFile](StudyFile.md)
- * [Submission➞sample_files](Submission_sample_files.md)  <sub>1..\*</sub>
-     * Description: The SampleFiles that are part of this submission.
-     * Range: [SampleFile](SampleFile.md)
- * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md)  <sub>1..\*</sub>
-     * Description: The SequencingProcessFiles that are part of this submission.
-     * Range: [SequencingProcessFile](SequencingProcessFile.md)
  * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md)  <sub>1..\*</sub>
      * Description: The AnalysisProcessOutputFiles that are part of this submission.
      * Range: [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
- * [Submission➞datasets](Submission_datasets.md)  <sub>1..\*</sub>
-     * Description: One or more Dataset that are part of this submission.
-     * Range: [Dataset](Dataset.md)
- * [Submission➞data_access_policies](Submission_data_access_policies.md)  <sub>1..\*</sub>
-     * Description: The Data Access Policy that applies to Dataset in this submission.
-     * Range: [DataAccessPolicy](DataAccessPolicy.md)
+ * [Submission➞biospecimens](Submission_biospecimens.md)  <sub>0..\*</sub>
+     * Description: Information about one or more Biospecimen entities associated with this submission.
+     * Range: [Biospecimen](Biospecimen.md)
  * [Submission➞data_access_committees](Submission_data_access_committees.md)  <sub>1..\*</sub>
      * Description: The Data Access Committee that applies to Dataset in this submission.
      * Range: [DataAccessCommittee](DataAccessCommittee.md)
+ * [Submission➞data_access_policies](Submission_data_access_policies.md)  <sub>1..\*</sub>
+     * Description: The Data Access Policy that applies to Dataset in this submission.
+     * Range: [DataAccessPolicy](DataAccessPolicy.md)
+ * [Submission➞datasets](Submission_datasets.md)  <sub>1..\*</sub>
+     * Description: One or more Dataset that are part of this submission.
+     * Range: [Dataset](Dataset.md)
+ * [Submission➞individuals](Submission_individuals.md)  <sub>0..\*</sub>
+     * Description: Information about one or more Individual entities associated with this submission.
+     * Range: [Individual](Individual.md)
+ * [Submission➞library_preparation_protocols](Submission_library_preparation_protocols.md)  <sub>0..\*</sub>
+     * Description: One or more library preparation protocol entities associated with this Submission.
+     * Range: [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Submission➞members](Submission_members.md)  <sub>1..\*</sub>
      * Description: The members associated with a committee referenced in this submission
      * Range: [Member](Member.md)
  * [Submission➞publications](Submission_publications.md)  <sub>0..\*</sub>
      * Description: One or more Publication entities associated with this Submission.
      * Range: [Publication](Publication.md)
+ * [Submission➞sample_files](Submission_sample_files.md)  <sub>1..\*</sub>
+     * Description: The SampleFiles that are part of this submission.
+     * Range: [SampleFile](SampleFile.md)
+ * [Submission➞samples](Submission_samples.md)  <sub>0..\*</sub>
+     * Description: Information about one or more Sample entities associated with this submission.
+     * Range: [Sample](Sample.md)
+ * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md)  <sub>0..\*</sub>
+     * Description: Information about one or more Experiment entities associated with this submission.
+     * Range: [SequencingExperiment](SequencingExperiment.md)
+ * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md)  <sub>1..\*</sub>
+     * Description: The SequencingProcessFiles that are part of this submission.
+     * Range: [SequencingProcessFile](SequencingProcessFile.md)
+ * [Submission➞sequencing_protocols](Submission_sequencing_protocols.md)  <sub>0..\*</sub>
+     * Description: One or more sequencing protocol entities associated with this Submission.
+     * Range: [SequencingProtocol](SequencingProtocol.md)
+ * [Submission➞studies](Submission_studies.md)  <sub>1..\*</sub>
+     * Description: Information about a Study entities associated with this submission.
+     * Range: [Study](Study.md)
+ * [Submission➞study_files](Submission_study_files.md)  <sub>1..\*</sub>
+     * Description: The StudyFiles that are part of this submission.
+     * Range: [StudyFile](StudyFile.md)

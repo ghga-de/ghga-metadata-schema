@@ -775,23 +775,23 @@ classes:
       A submission can be considered as a set of inter-related (and inter-connected)
       entities that represent a data submission to GHGA.
     slots:
-      - studies
-      - samples
-      - biospecimens
-      - individuals
-      - sequencing_experiments
-      - sequencing_protocols
-      - library_preparation_protocols
       - analyses
-      - study_files
-      - sample_files
-      - sequencing_process_files
       - analysis_process_output_files
-      - datasets
-      - data_access_policies
+      - biospecimens
       - data_access_committees
+      - data_access_policies
+      - datasets
+      - individuals
+      - library_preparation_protocols
       - members
       - publications
+      - sample_files
+      - samples
+      - sequencing_experiments
+      - sequencing_process_files
+      - sequencing_protocols
+      - studies
+      - study_files
     slot_usage:
       studies:
         description: >-

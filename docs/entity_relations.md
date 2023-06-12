@@ -9,34 +9,31 @@ erDiagram
 Submission {
 
 }
-Publication {
-
-}
-Study {
+StudyFile {
 
 }
 Attribute {
 
 }
-Condition {
-
-}
-Member {
-
-}
-DataAccessCommittee {
+Dataset {
 
 }
 DataAccessPolicy {
 
 }
-Dataset {
+DataAccessCommittee {
 
 }
-AnalysisProcessOutputFile {
+Member {
 
 }
-AnalysisProcess {
+Study {
+
+}
+Condition {
+
+}
+SequencingProtocol {
 
 }
 SequencingProcessFile {
@@ -63,54 +60,53 @@ SequencingExperiment {
 LibraryPreparationProtocol {
 
 }
-SequencingProtocol {
-
-}
 SampleFile {
 
 }
-StudyFile {
+Publication {
+
+}
+AnalysisProcessOutputFile {
+
+}
+AnalysisProcess {
 
 }
 Analysis {
 
 }
 
-Submission ||--}| Study : "studies"
-Submission ||--}o Sample : "samples"
-Submission ||--}o Biospecimen : "biospecimens"
-Submission ||--}o Individual : "individuals"
-Submission ||--}o SequencingExperiment : "sequencing_experiments"
-Submission ||--}o SequencingProtocol : "sequencing_protocols"
-Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
 Submission ||--}o Analysis : "analyses"
-Submission ||--}| StudyFile : "study_files"
-Submission ||--}| SampleFile : "sample_files"
-Submission ||--}| SequencingProcessFile : "sequencing_process_files"
 Submission ||--}| AnalysisProcessOutputFile : "analysis_process_output_files"
-Submission ||--}| Dataset : "datasets"
-Submission ||--}| DataAccessPolicy : "data_access_policies"
+Submission ||--}o Biospecimen : "biospecimens"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
+Submission ||--}| DataAccessPolicy : "data_access_policies"
+Submission ||--}| Dataset : "datasets"
+Submission ||--}o Individual : "individuals"
+Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
 Submission ||--}| Member : "members"
 Submission ||--}o Publication : "publications"
-Publication ||--|| Study : "study"
-Study ||--}| Condition : "conditions"
-Study ||--}o Attribute : "attributes"
-Condition ||--}o Attribute : "attributes"
+Submission ||--}| SampleFile : "sample_files"
+Submission ||--}o Sample : "samples"
+Submission ||--}o SequencingExperiment : "sequencing_experiments"
+Submission ||--}| SequencingProcessFile : "sequencing_process_files"
+Submission ||--}o SequencingProtocol : "sequencing_protocols"
+Submission ||--}| Study : "studies"
+Submission ||--}| StudyFile : "study_files"
+StudyFile ||--|| Study : "study"
+StudyFile ||--|| Dataset : "dataset"
+StudyFile ||--}o Attribute : "attributes"
+Dataset ||--|| DataAccessPolicy : "data_access_policy"
+Dataset ||--}o Attribute : "attributes"
+DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
+DataAccessPolicy ||--}o Attribute : "attributes"
 DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
-DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
-DataAccessPolicy ||--}o Attribute : "attributes"
-Dataset ||--|| DataAccessPolicy : "data_access_policy"
-Dataset ||--}o Attribute : "attributes"
-AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
-AnalysisProcessOutputFile ||--|| Dataset : "dataset"
-AnalysisProcessOutputFile ||--}o Attribute : "attributes"
-AnalysisProcess ||--|| Analysis : "analysis"
-AnalysisProcess ||--}| StudyFile : "study_input_files"
-AnalysisProcess ||--}| SampleFile : "sample_input_files"
-AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
+Study ||--}| Condition : "conditions"
+Study ||--}o Attribute : "attributes"
+Condition ||--}o Attribute : "attributes"
+SequencingProtocol ||--}o Attribute : "attributes"
 SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
 SequencingProcessFile ||--|| Dataset : "dataset"
 SequencingProcessFile ||--}o Attribute : "attributes"
@@ -128,13 +124,17 @@ SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
 LibraryPreparationProtocol ||--}o Attribute : "attributes"
-SequencingProtocol ||--}o Attribute : "attributes"
 SampleFile ||--|| Sample : "sample"
 SampleFile ||--|| Dataset : "dataset"
 SampleFile ||--}o Attribute : "attributes"
-StudyFile ||--|| Study : "study"
-StudyFile ||--|| Dataset : "dataset"
-StudyFile ||--}o Attribute : "attributes"
+Publication ||--|| Study : "study"
+AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
+AnalysisProcessOutputFile ||--|| Dataset : "dataset"
+AnalysisProcessOutputFile ||--}o Attribute : "attributes"
+AnalysisProcess ||--|| Analysis : "analysis"
+AnalysisProcess ||--}| StudyFile : "study_input_files"
+AnalysisProcess ||--}| SampleFile : "sample_input_files"
+AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
 Analysis ||--}o File : "inputs"
 Analysis ||--|| Study : "study"
 Analysis ||--}o File : "outputs"
