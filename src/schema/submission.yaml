@@ -412,7 +412,6 @@ classes:
       - geographical_region
       - ancestries
       - phenotypic_features
-      - files
     slot_usage:
       sex:
         required: true
@@ -434,12 +433,6 @@ classes:
           For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
-      files:
-        description: >-
-          Additional/supplementary files associated with an Individual.
-          Typically, a phenopacket or pedigree file.
-        required: false
-        inlined: false
 
   Trio:
     description: >-
@@ -1038,12 +1031,6 @@ slots:
     range: AncestryEnum
     pattern: "^HANCESTRO:[0-9]{4}$"
     multivalued: true
-
-  files:
-    description: >-
-      The files associated with an entity.
-    range: File
-    multivalued: True
 
   study_files:
     description: >-

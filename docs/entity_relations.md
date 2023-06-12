@@ -15,7 +15,7 @@ Trio {
 Individual {
 
 }
-File {
+StudyFile {
 
 }
 Attribute {
@@ -31,9 +31,6 @@ DataAccessCommittee {
 
 }
 Member {
-
-}
-StudyFile {
 
 }
 Study {
@@ -103,9 +100,9 @@ Submission ||--}| Trio : "trios"
 Trio ||--|| Individual : "mother"
 Trio ||--|| Individual : "father"
 Trio ||--|| Individual : "child"
-Individual ||--}o File : "files"
-File ||--|| Dataset : "dataset"
-File ||--}o Attribute : "attributes"
+StudyFile ||--|| Study : "study"
+StudyFile ||--|| Dataset : "dataset"
+StudyFile ||--}o Attribute : "attributes"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
@@ -113,9 +110,6 @@ DataAccessPolicy ||--}o Attribute : "attributes"
 DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
-StudyFile ||--|| Study : "study"
-StudyFile ||--|| Dataset : "dataset"
-StudyFile ||--}o Attribute : "attributes"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
@@ -167,7 +161,6 @@ Sample {
 
 }
 
-Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
@@ -276,7 +269,6 @@ Sample {
     string alias  
 }
 
-Individual ||--}o File : "files"
 Biospecimen ||--|| Individual : "individual"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
