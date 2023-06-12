@@ -41,7 +41,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
      * Description: The Institution(s) associated with an entity.
      * Range: [String](types/String.md)
  * [Study➞conditions](Study_conditions.md)  <sub>1..\*</sub>
-     * Description: The condition associated with an entity.
+     * Description: The Conditions associated with an entity.
      * Range: [Condition](Condition.md)
  * [Study➞alias](Study_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.

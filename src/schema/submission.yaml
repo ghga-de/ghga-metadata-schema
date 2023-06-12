@@ -779,6 +779,7 @@ classes:
       - analysis_process_output_files
       - analysis_processes
       - biospecimens
+      - conditions
       - data_access_committees
       - data_access_policies
       - datasets
@@ -811,6 +812,11 @@ classes:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
         required: false
+        inlined: true
+        inlined_as_list: true
+      conditions:
+        description: The Conditions associated with this Submission.
+        required: true
         inlined: true
         inlined_as_list: true
       individuals:
@@ -1153,7 +1159,7 @@ slots:
   conditions:
     range: Condition
     multivalued: True
-    description: The condition associated with an entity.
+    description: The Conditions associated with an entity.
 
   library_preparation_protocols:
     range: LibraryPreparationProtocol

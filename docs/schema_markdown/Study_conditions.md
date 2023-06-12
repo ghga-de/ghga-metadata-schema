@@ -2,7 +2,7 @@
 # Slot: conditions
 
 
-The condition associated with an entity.
+The Conditions associated with an entity.
 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study_conditions](https://w3id.org/GHGA-Submission-Metadata-Schema/Study_conditions)
 

@@ -100,8 +100,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Trio➞child](Trio_child.md)
  * [condition](condition.md) - The condition associated with an entity.
      * [Sample➞condition](Sample_condition.md)
- * [conditions](conditions.md) - The condition associated with an entity.
+ * [conditions](conditions.md) - The Conditions associated with an entity.
      * [Study➞conditions](Study_conditions.md)
+     * [Submission➞conditions](Submission_conditions.md) - The Conditions associated with this Submission.
  * [data_access_committee](data_access_committee.md) - Data Access Committee associated with an entity.
      * [DataAccessPolicy➞data_access_committee](DataAccessPolicy_data_access_committee.md) - The Data Access Committee linked to this policy.
  * [data_access_committees](data_access_committees.md) - Data Access Committees associated with an entity.
