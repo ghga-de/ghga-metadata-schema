@@ -31,8 +31,6 @@ classes:
       - type
       - affiliations
     slot_usage:
-      alias:
-        identifier: true
       title:
         description: >-
           A comprehensive title for the study.

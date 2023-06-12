@@ -40,9 +40,12 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
      * Description: The Institution(s) associated with an entity.
      * Range: [String](types/String.md)
- * [Study➞alias](Study_alias.md)  <sub>1..1</sub>
-     * Description: The alias for an entity at the time of submission.
-     * Range: [String](types/String.md)
  * [Study➞attributes](Study_attributes.md)  <sub>0..\*</sub>
      * Description: Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
      * Range: [Attribute](Attribute.md)
+
+### Mixed in from IdentifiedByAliasMixin:
+
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
+     * Range: [String](types/String.md)

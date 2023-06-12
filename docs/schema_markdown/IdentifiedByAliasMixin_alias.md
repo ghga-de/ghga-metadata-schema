@@ -36,4 +36,5 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IdentifiedByAliasMixin_al
  * [SequencingProcess](SequencingProcess.md)
  * [SequencingProcessFile](SequencingProcessFile.md)
  * [SequencingProtocol](SequencingProtocol.md)
+ * [Study](Study.md)
  * [StudyFile](StudyFile.md)
