@@ -294,6 +294,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
      * [Study➞title](Study_title.md) - A comprehensive title for the study.
+ * [trios](trios.md) - The Trios associated with an entity.
+     * [Submission➞trios](Submission_trios.md) - The Trios associated with this Submission.
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type
      * [Analysis➞type](Analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.

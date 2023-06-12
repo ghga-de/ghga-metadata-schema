@@ -795,6 +795,7 @@ classes:
       - sequencing_protocols
       - studies
       - study_files
+      - trios
     slot_usage:
       studies:
         description: >-
@@ -908,6 +909,11 @@ classes:
         description: >-
           One or more Publication entities associated with this Submission.
         required: false
+        inlined: true
+        inlined_as_list: true
+      trios:
+        description: The Trios associated with this Submission.
+        required: true
         inlined: true
         inlined_as_list: true
 
@@ -1465,6 +1471,11 @@ slots:
 
   tissue:
     range: TissueEnum
+
+  trios:
+    description: The Trios associated with an entity.
+    range: Trio
+    multivalued: true
 
 enums:
   DataUseModifierEnum:

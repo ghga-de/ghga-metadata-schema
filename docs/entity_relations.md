@@ -9,7 +9,13 @@ erDiagram
 Submission {
 
 }
-StudyFile {
+Trio {
+
+}
+Individual {
+
+}
+File {
 
 }
 Attribute {
@@ -25,6 +31,9 @@ DataAccessCommittee {
 
 }
 Member {
+
+}
+StudyFile {
 
 }
 Study {
@@ -43,12 +52,6 @@ Sample {
 
 }
 Biospecimen {
-
-}
-Individual {
-
-}
-File {
 
 }
 SequencingExperiment {
@@ -96,9 +99,13 @@ Submission ||--}| SequencingProcess : "sequencing_processes"
 Submission ||--}o SequencingProtocol : "sequencing_protocols"
 Submission ||--}| Study : "studies"
 Submission ||--}| StudyFile : "study_files"
-StudyFile ||--|| Study : "study"
-StudyFile ||--|| Dataset : "dataset"
-StudyFile ||--}o Attribute : "attributes"
+Submission ||--}| Trio : "trios"
+Trio ||--|| Individual : "mother"
+Trio ||--|| Individual : "father"
+Trio ||--|| Individual : "child"
+Individual ||--}o File : "files"
+File ||--|| Dataset : "dataset"
+File ||--}o Attribute : "attributes"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
@@ -106,6 +113,9 @@ DataAccessPolicy ||--}o Attribute : "attributes"
 DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
+StudyFile ||--|| Study : "study"
+StudyFile ||--|| Dataset : "dataset"
+StudyFile ||--}o Attribute : "attributes"
 Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 Condition ||--}o Attribute : "attributes"
@@ -117,9 +127,6 @@ Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
-Individual ||--}o File : "files"
-File ||--|| Dataset : "dataset"
-File ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"

@@ -7,10 +7,12 @@ A trio is defined by three individuals representing an individual and their pare
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Trio](https://w3id.org/GHGA-Submission-Metadata-Schema/Trio)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]<child%201..1-%20[Trio],[Individual]<father%201..1-%20[Trio],[Individual]<mother%201..1-%20[Trio],[Individual])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]<child%201..1-%20[Trio],[Individual]<father%201..1-%20[Trio],[Individual]<mother%201..1-%20[Trio],[Individual])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]<child%201..1-%20[Trio],[Individual]<father%201..1-%20[Trio],[Individual]<mother%201..1-%20[Trio],[Submission]++-%20trios%201..*>[Trio],[Submission]++-%20trios(i)%200..*>[Trio],[Submission],[Individual])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]<child%201..1-%20[Trio],[Individual]<father%201..1-%20[Trio],[Individual]<mother%201..1-%20[Trio],[Submission]++-%20trios%201..*>[Trio],[Submission]++-%20trios(i)%200..*>[Trio],[Submission],[Individual])
 
 ## Referenced by Class
 
+ *  **[Submission](Submission.md)** *[Submission➞trios](Submission_trios.md)*  <sub>1..\*</sub>  **[Trio](Trio.md)**
+ *  **None** *[trios](trios.md)*  <sub>0..\*</sub>  **[Trio](Trio.md)**
 
 ## Attributes
 
