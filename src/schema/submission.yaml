@@ -106,6 +106,7 @@ classes:
       - disease_or_healthy
       - case_control_status
       - mutant_or_wildtype
+      - study
     slot_usage:
       name:
         required: true
@@ -117,6 +118,9 @@ classes:
         required: true
       mutant_or_wildtype:
         required: true
+      study:
+        required: true
+        inlined: false
 
   LibraryPreparationProtocol:
     mixins:

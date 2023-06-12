@@ -7,7 +7,7 @@ An condition that is linked to comparable samples.
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Sample],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;title:string%20%3F;description:string;name:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string],[Study]-%20conditions%201..*>[Condition],[Submission]++-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Submission]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Sample],[IdentifiedByAliasMixin],[Sample]-%20condition%201..1>[Condition&#124;title:string%20%3F;description:string;name:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string],[Study]-%20conditions%201..*>[Condition],[Submission]++-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Submission]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Sample],[IdentifiedByAliasMixin],[Study]<study%201..1-%20[Condition&#124;title:string%20%3F;description:string;name:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string],[Sample]-%20condition%201..1>[Condition],[Study]-%20conditions%201..*>[Condition],[Submission]++-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Submission]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Sample],[IdentifiedByAliasMixin],[Study]<study%201..1-%20[Condition&#124;title:string%20%3F;description:string;name:string;disease_or_healthy:DiseaseOrHealthyEnum;case_control_status:CaseControlStatusEnum;mutant_or_wildtype:MutantOrWildtypeEnum;alias:string],[Sample]-%20condition%201..1>[Condition],[Study]-%20conditions%201..*>[Condition],[Submission]++-%20conditions%201..*>[Condition],[Sample]-%20condition(i)%200..1>[Condition],[Study]-%20conditions(i)%200..*>[Condition],[Submission]-%20conditions(i)%200..*>[Condition],[Condition]uses%20-.->[IdentifiedByAliasMixin],[Condition]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -48,6 +48,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition](https://w3id.o
  * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a mutant or a wildtype.
      * Range: [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md)
+ * [Condition➞study](Condition_study.md)  <sub>1..1</sub>
+     * Description: The study associated with an entity.
+     * Range: [Study](Study.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

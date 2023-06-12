@@ -274,6 +274,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [studies](studies.md) - The study associated with an entity.
      * [Submission➞studies](Submission_studies.md) - Information about a Study entities associated with this submission.
  * [study](study.md) - The study associated with an entity.
+     * [Condition➞study](Condition_study.md)
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
      * [StudyFile➞study](StudyFile_study.md)
  * [study_files](study_files.md) - The StudyFiles associated with an entity.
