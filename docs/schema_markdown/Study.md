@@ -7,7 +7,7 @@ Studies are experimental investigations of a particular phenomenon. It involves 
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/GHGA-Submission-Metadata-Schema/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]<conditions%201..*-%20[Study],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]<conditions%201..*-%20[Study],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -40,9 +40,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study](https://w3id.org/G
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
      * Description: The Institution(s) associated with an entity.
      * Range: [String](types/String.md)
- * [Study➞conditions](Study_conditions.md)  <sub>1..\*</sub>
-     * Description: The Conditions associated with an entity.
-     * Range: [Condition](Condition.md)
  * [Study➞alias](Study_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)

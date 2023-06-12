@@ -30,7 +30,6 @@ classes:
       - description
       - type
       - affiliations
-      - conditions
     slot_usage:
       alias:
         identifier: true
@@ -53,9 +52,6 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell,_bulk_etc)
-      conditions:
-        required: true
-        inlined: false
 
   SequencingExperiment:
     mixins:

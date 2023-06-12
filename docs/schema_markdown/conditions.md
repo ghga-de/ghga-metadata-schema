@@ -16,7 +16,6 @@ None &#8594;  <sub>0..\*</sub> [Condition](Condition.md)
 
 ## Children
 
- *  [Study➞conditions](Study_conditions.md)
  *  [Submission➞conditions](Submission_conditions.md)
 
 ## Used by

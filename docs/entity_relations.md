@@ -36,9 +36,6 @@ Member {
 Study {
 
 }
-Condition {
-
-}
 SequencingProtocol {
 
 }
@@ -46,6 +43,9 @@ SequencingProcess {
 
 }
 Sample {
+
+}
+Condition {
 
 }
 Biospecimen {
@@ -110,10 +110,7 @@ DataAccessPolicy ||--}o Attribute : "attributes"
 DataAccessCommittee ||--|| Member : "main_contact"
 DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
-Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
-Condition ||--|| Study : "study"
-Condition ||--}o Attribute : "attributes"
 SequencingProtocol ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
@@ -121,6 +118,8 @@ SequencingProcess ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
+Condition ||--|| Study : "study"
+Condition ||--}o Attribute : "attributes"
 Biospecimen ||--|| Individual : "individual"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
@@ -226,7 +225,6 @@ Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"
-Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 
 ```
@@ -370,7 +368,6 @@ Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"
-Study ||--}| Condition : "conditions"
 Study ||--}o Attribute : "attributes"
 
 ```
