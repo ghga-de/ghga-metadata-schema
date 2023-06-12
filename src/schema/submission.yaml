@@ -333,7 +333,6 @@ classes:
       individual:
         description: >-
           The Individual entity from which this Biospecimen was derived.
-        range: Individual
         inlined: false
         required: true
       vital_status_at_sampling:
