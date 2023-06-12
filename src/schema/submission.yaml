@@ -670,8 +670,6 @@ classes:
     slots:
       - name
       - description
-      - main_contact
-      - members
     slot_usage:
       name:
         description: >-
@@ -681,33 +679,6 @@ classes:
         description: >-
           A description for the Data Access Committee.
         required: false
-      main_contact:
-        description: >-
-          The main contact for the Data Access Committee.
-        range: Member
-        required: true
-        inlined: false
-      members:
-        description: >-
-          All the members that are part of this Data Access Committee.
-        range: Member
-        inlined: false
-
-  Member:
-    description: >-
-      Member of an Organization or a Committee.
-    slots:
-      - email
-      - organization
-    slot_usage:
-      email:
-        description: >-
-          The email of the Member.
-        required: true
-      organization:
-        description: >-
-          The organization that the Member is part of.
-        required: true
 
   Publication:
     description: >-
@@ -768,7 +739,6 @@ classes:
       - datasets
       - individuals
       - library_preparation_protocols
-      - members
       - publications
       - sample_files
       - samples
@@ -879,13 +849,6 @@ classes:
         description: >-
           The Data Access Committee that applies to Dataset in this submission.
         required: true
-        inlined: true
-        inlined_as_list: true
-      members:
-        description: >-
-          The members associated with a committee referenced in this submission
-        required: true
-        range: Member
         inlined: true
         inlined_as_list: true
       publications:
@@ -1105,12 +1068,6 @@ slots:
       Should be descendants of 'DUO:0000017 data use modifier'
     range: DataUseModifierEnum
     pattern: "DUO:[0-9]{7}"
-
-  members:
-    description: >-
-      The members associated with a committee.
-    range: Member
-    multivalued: True
 
   sequencing_protocol:
     range: SequencingProtocol
@@ -1409,10 +1366,6 @@ slots:
 
   policy_url:
     description: Alternative to pasting the Data Access Policy text.
-
-  main_contact:
-    description: The person who is the main contact for a committee.
-    range: Member
 
   abstract:
     description: >-

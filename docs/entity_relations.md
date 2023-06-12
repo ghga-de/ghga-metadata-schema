@@ -30,9 +30,6 @@ DataAccessPolicy {
 DataAccessCommittee {
 
 }
-Member {
-
-}
 Study {
 
 }
@@ -86,7 +83,6 @@ Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| Dataset : "datasets"
 Submission ||--}o Individual : "individuals"
 Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
-Submission ||--}| Member : "members"
 Submission ||--}o Publication : "publications"
 Submission ||--}| SampleFile : "sample_files"
 Submission ||--}o Sample : "samples"
@@ -107,8 +103,6 @@ Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
 DataAccessPolicy ||--}o Attribute : "attributes"
-DataAccessCommittee ||--|| Member : "main_contact"
-DataAccessCommittee ||--}o Member : "members"
 DataAccessCommittee ||--}o Attribute : "attributes"
 Study ||--}o Attribute : "attributes"
 SequencingProtocol ||--}o Attribute : "attributes"

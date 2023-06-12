@@ -27,7 +27,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [StudyFile](StudyFile.md) - A StudyFile is a File that is associated with a Study.
  * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library_preparation of an sequencing experiment.
- * [Member](Member.md) - Member of an Organization or a Committee.
  * [Publication](Publication.md) - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
  * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
  * [SequencingExperiment](SequencingExperiment.md) - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
@@ -136,7 +135,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [doi](doi.md) - DOI identifier of a publication.
      * [Publication➞doi](Publication_doi.md) - DOI identifier of the Publication.
  * [email](email.md) - Email of a person.
-     * [Member➞email](Member_email.md) - The email of the Member.
  * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
      * [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)
  * [father](father.md) - The father of an individual.
@@ -189,11 +187,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [LibraryPreparationProtocol➞library_selection](LibraryPreparationProtocol_library_selection.md)
  * [library_type](library_type.md) - Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
      * [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)
- * [main_contact](main_contact.md) - The person who is the main contact for a committee.
-     * [DataAccessCommittee➞main_contact](DataAccessCommittee_main_contact.md) - The main contact for the Data Access Committee.
- * [members](members.md) - The members associated with a committee.
-     * [DataAccessCommittee➞members](DataAccessCommittee_members.md) - All the members that are part of this Data Access Committee.
-     * [Submission➞members](Submission_members.md) - The members associated with a committee referenced in this submission
  * [mother](mother.md) - The mother of an individual.
      * [Trio➞mother](Trio_mother.md)
  * [mutant_or_wildtype](mutant_or_wildtype.md) - Whether a condition corresponds to a mutant or a wildtype.
@@ -207,7 +200,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞name](Sample_name.md) - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
      * [SequencingProcess➞name](SequencingProcess_name.md)
  * [organization](organization.md) - The organization associated with a person.
-     * [Member➞organization](Member_organization.md) - The organization that the Member is part of.
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.

@@ -7,7 +7,7 @@ A group of members that are delegated to grant access to one or more datasets af
 URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Member],[IdentifiedByAliasMixin],[DataAccessPolicy],[Member]<members%200..*-++[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Member]<main_contact%201..1-++[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -32,12 +32,6 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee](http
  * [DataAccessCommittee➞description](DataAccessCommittee_description.md)  <sub>0..1</sub>
      * Description: A description for the Data Access Committee.
      * Range: [String](types/String.md)
- * [DataAccessCommittee➞main_contact](DataAccessCommittee_main_contact.md)  <sub>1..1</sub>
-     * Description: The main contact for the Data Access Committee.
-     * Range: [Member](Member.md)
- * [DataAccessCommittee➞members](DataAccessCommittee_members.md)  <sub>0..\*</sub>
-     * Description: All the members that are part of this Data Access Committee.
-     * Range: [Member](Member.md)
 
 ### Mixed in from AttributeMixin:
 
