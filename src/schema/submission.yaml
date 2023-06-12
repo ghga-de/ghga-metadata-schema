@@ -396,6 +396,7 @@ classes:
         inlined: false
       condition:
         required: true
+        inlined: false
 
   Individual:
     mixins:
