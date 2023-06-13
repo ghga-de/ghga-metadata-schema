@@ -1101,10 +1101,6 @@ slots:
     description: >-
       Email of a person.
 
-  affiliation:
-    description: >-
-      The Institution(s) associated with an entity.
-
   affiliations:
     description: >-
       The Institution(s) associated with an entity.
