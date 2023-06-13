@@ -30,10 +30,7 @@ classes:
       - description
       - type
       - affiliations
-      - conditions
     slot_usage:
-      alias:
-        identifier: true
       title:
         description: >-
           A comprehensive title for the study.
@@ -53,9 +50,6 @@ classes:
         description: >-
           Custom key/value pairs that further characterizes the Study.
           (e.g.: approaches - single-cell,_bulk_etc)
-      conditions:
-        required: true
-        inlined: false
 
   SequencingExperiment:
     mixins:
@@ -106,6 +100,7 @@ classes:
       - disease_or_healthy
       - case_control_status
       - mutant_or_wildtype
+      - study
     slot_usage:
       name:
         required: true
@@ -117,6 +112,9 @@ classes:
         required: true
       mutant_or_wildtype:
         required: true
+      study:
+        required: true
+        inlined: false
 
   LibraryPreparationProtocol:
     mixins:
@@ -333,7 +331,6 @@ classes:
       individual:
         description: >-
           The Individual entity from which this Biospecimen was derived.
-        range: Individual
         inlined: false
         required: true
       vital_status_at_sampling:
@@ -393,6 +390,7 @@ classes:
         inlined: false
       condition:
         required: true
+        inlined: false
 
   Individual:
     mixins:
@@ -408,7 +406,6 @@ classes:
       - geographical_region
       - ancestries
       - phenotypic_features
-      - files
     slot_usage:
       sex:
         required: true
@@ -430,12 +427,6 @@ classes:
           For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
-      files:
-        description: >-
-          Additional/supplementary files associated with an Individual.
-          Typically, a phenopacket or pedigree file.
-        required: false
-        inlined: false
 
   Trio:
     description: >-
@@ -544,10 +535,6 @@ classes:
       - type
       - reference_genome
       - reference_chromosome
-      - inputs
-      - study
-      - outputs
-      - description
     slot_usage:
       alias:
         description: >-
@@ -564,11 +551,6 @@ classes:
         required: true
       reference_chromosome:
         required: true
-      study:
-        description: >-
-          The Study entity associated with this Analysis.
-        required: true
-        inlined: false
 
   AnalysisProcess:
     slots:
@@ -686,8 +668,6 @@ classes:
     slots:
       - name
       - description
-      - main_contact
-      - members
     slot_usage:
       name:
         description: >-
@@ -697,33 +677,6 @@ classes:
         description: >-
           A description for the Data Access Committee.
         required: false
-      main_contact:
-        description: >-
-          The main contact for the Data Access Committee.
-        range: Member
-        required: true
-        inlined: false
-      members:
-        description: >-
-          All the members that are part of this Data Access Committee.
-        range: Member
-        inlined: false
-
-  Member:
-    description: >-
-      Member of an Organization or a Committee.
-    slots:
-      - email
-      - organization
-    slot_usage:
-      email:
-        description: >-
-          The email of the Member.
-        required: true
-      organization:
-        description: >-
-          The organization that the Member is part of.
-        required: true
 
   Publication:
     description: >-
@@ -764,7 +717,6 @@ classes:
       study:
         description: >-
           The Study entity associated with this Publication.
-        range: Study
         required: true
         inlined: false
 
@@ -775,23 +727,26 @@ classes:
       A submission can be considered as a set of inter-related (and inter-connected)
       entities that represent a data submission to GHGA.
     slots:
-      - studies
-      - samples
-      - biospecimens
-      - individuals
-      - sequencing_experiments
-      - sequencing_protocols
-      - library_preparation_protocols
       - analyses
-      - study_files
-      - sample_files
-      - sequencing_process_files
       - analysis_process_output_files
-      - datasets
-      - data_access_policies
+      - analysis_processes
+      - biospecimens
+      - conditions
       - data_access_committees
-      - members
+      - data_access_policies
+      - datasets
+      - individuals
+      - library_preparation_protocols
       - publications
+      - sample_files
+      - samples
+      - sequencing_experiments
+      - sequencing_process_files
+      - sequencing_processes
+      - sequencing_protocols
+      - studies
+      - study_files
+      - trios
     slot_usage:
       studies:
         description: >-
@@ -809,6 +764,11 @@ classes:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
         required: false
+        inlined: true
+        inlined_as_list: true
+      conditions:
+        description: The Conditions associated with this Submission.
+        required: true
         inlined: true
         inlined_as_list: true
       individuals:
@@ -856,6 +816,16 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
+      sequencing_processes:
+        description: The SequencingProcesses that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      analysis_processes:
+        description: The AnalysisProcesses that are part of this submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
       analysis_process_output_files:
         description: The AnalysisProcessOutputFiles that are part of this submission.
         required: true
@@ -879,17 +849,15 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      members:
-        description: >-
-          The members associated with a committee referenced in this submission
-        required: true
-        range: Member
-        inlined: true
-        inlined_as_list: true
       publications:
         description: >-
           One or more Publication entities associated with this Submission.
         required: false
+        inlined: true
+        inlined_as_list: true
+      trios:
+        description: The Trios associated with this Submission.
+        required: true
         inlined: true
         inlined_as_list: true
 
@@ -964,6 +932,11 @@ slots:
     description: The AnalysisProcess associated with an entity.
     range: AnalysisProcess
 
+  analysis_processes:
+    description: The AnalysisProcess associated with an entity.
+    range: AnalysisProcess
+    multivalued: true
+
   dataset:
     description: The Dataset associated with an entity.
     range: Dataset
@@ -1015,22 +988,6 @@ slots:
     pattern: "^HANCESTRO:[0-9]{4}$"
     multivalued: true
 
-  inputs:
-    description: The inputs to a Planned Process.
-    range: File
-    multivalued: True
-
-  outputs:
-    description: The outputs of a Planned Process entity.
-    range: File
-    multivalued: True
-
-  files:
-    description: >-
-      The files associated with an entity.
-    range: File
-    multivalued: True
-
   study_files:
     description: >-
       The StudyFiles associated with an entity.
@@ -1048,6 +1005,11 @@ slots:
       The SequencingProcessFiles associated with an entity.
     range: SequencingProcessFile
     multivalued: True
+
+  sequencing_processes:
+    description: The SequencingProcesses associated with an entity.
+    range: SequencingProcess
+    multivalued: true
 
   study_input_files:
     description: >-
@@ -1105,12 +1067,6 @@ slots:
     range: DataUseModifierEnum
     pattern: "DUO:[0-9]{7}"
 
-  members:
-    description: >-
-      The members associated with a committee.
-    range: Member
-    multivalued: True
-
   sequencing_protocol:
     range: SequencingProtocol
     description: The sequencing protocol associated with an entity.
@@ -1131,7 +1087,7 @@ slots:
   conditions:
     range: Condition
     multivalued: True
-    description: The condition associated with an entity.
+    description: The Conditions associated with an entity.
 
   library_preparation_protocols:
     range: LibraryPreparationProtocol
@@ -1409,10 +1365,6 @@ slots:
   policy_url:
     description: Alternative to pasting the Data Access Policy text.
 
-  main_contact:
-    description: The person who is the main contact for a committee.
-    range: Member
-
   abstract:
     description: >-
       The study abstract that describes the goals. 
@@ -1437,6 +1389,11 @@ slots:
 
   tissue:
     range: TissueEnum
+
+  trios:
+    description: The Trios associated with an entity.
+    range: Trio
+    multivalued: true
 
 enums:
   DataUseModifierEnum:
