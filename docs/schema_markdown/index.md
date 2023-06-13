@@ -50,7 +50,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Publication➞abstract](Publication_abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
  * [accession](accession.md) - A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * [AccessionMixin➞accession](AccessionMixin_accession.md)
- * [affiliation](affiliation.md) - The Institution(s) associated with an entity.
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
  * [age_at_sampling](age_at_sampling.md) - Age of an individual.
