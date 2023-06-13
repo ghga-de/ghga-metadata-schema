@@ -985,7 +985,6 @@ slots:
     description: >-
       A person's descent or lineage, from a person or from a population.
     range: AncestryEnum
-    pattern: "^HANCESTRO:[0-9]{4}$"
     multivalued: true
 
   study_files:
@@ -1058,14 +1057,12 @@ slots:
       Data use permission associated with an entity. Typically one or more terms from DUO.
       Should be descendants of 'DUO:0000001 data use permission'.
     range: DataUsePermissionEnum
-    pattern: "^DUO:[0-9]{7}$"
 
   data_use_modifiers:
     description: >-
       Modifier for Data use permission associated with an entity.
       Should be descendants of 'DUO:0000017 data use modifier'
     range: DataUseModifierEnum
-    pattern: "DUO:[0-9]{7}"
 
   sequencing_protocol:
     range: SequencingProtocol
@@ -1268,7 +1265,6 @@ slots:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
     range: IsolationEnum
-    pattern: "^SNOMED:[0-9]*$"
 
   storage:
     description: >-
@@ -1300,7 +1296,6 @@ slots:
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     range: GeographicalRegionEnum
-    pattern: "^HANCESTRO:[0-9]{4}$"
 
   vital_status:
     description: >-
