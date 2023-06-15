@@ -4,7 +4,7 @@
 
 The mother of an individual.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Trio_mother](https://w3id.org/GHGA-Submission-Metadata-Schema/Trio_mother)
+URI: [GHGA:Trio_mother](https://w3id.org/GHGA/Trio_mother)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The analyses associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/analyses](https://w3id.org/GHGA-Submission-Metadata-Schema/analyses)
+URI: [GHGA:analyses](https://w3id.org/GHGA/analyses)
 
 
 ## Domain and Range

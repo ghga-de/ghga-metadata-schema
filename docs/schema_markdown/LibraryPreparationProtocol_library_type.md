@@ -4,7 +4,7 @@
 
 Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_type](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_type)
+URI: [GHGA:LibraryPreparationProtocol_library_type](https://w3id.org/GHGA/LibraryPreparationProtocol_library_type)
 
 
 ## Domain and Range

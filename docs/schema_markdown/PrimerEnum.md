@@ -4,7 +4,7 @@
 
 Permitted values for primer
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PrimerEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/PrimerEnum)
+URI: [GHGA:PrimerEnum](https://w3id.org/GHGA/PrimerEnum)
 
 
 ## Other properties

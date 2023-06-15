@@ -4,7 +4,7 @@
 
 The SequencingProcesses associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_processes](https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_processes)
+URI: [GHGA:sequencing_processes](https://w3id.org/GHGA/sequencing_processes)
 
 
 ## Domain and Range

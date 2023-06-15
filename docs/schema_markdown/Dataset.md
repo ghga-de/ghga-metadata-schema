@@ -4,7 +4,7 @@
 
 A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset](https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset)
+URI: [GHGA:Dataset](https://w3id.org/GHGA/Dataset)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[Dataset]uses%20-.->[AttributeMixin],[DataAccessPolicy],[AttributeMixin],[Attribute])

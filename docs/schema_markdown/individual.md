@@ -4,7 +4,7 @@
 
 The subject/individual associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/individual](https://w3id.org/GHGA-Submission-Metadata-Schema/individual)
+URI: [GHGA:individual](https://w3id.org/GHGA/individual)
 
 
 ## Domain and Range

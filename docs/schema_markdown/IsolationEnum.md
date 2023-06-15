@@ -4,7 +4,7 @@
 
 Describes how biomaterial was isolated.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IsolationEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/IsolationEnum)
+URI: [GHGA:IsolationEnum](https://w3id.org/GHGA/IsolationEnum)
 
 
 ## Other properties

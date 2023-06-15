@@ -4,7 +4,7 @@
 
 Name of the journal.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/journal](https://w3id.org/GHGA-Submission-Metadata-Schema/journal)
+URI: [GHGA:journal](https://w3id.org/GHGA/journal)
 
 
 ## Domain and Range

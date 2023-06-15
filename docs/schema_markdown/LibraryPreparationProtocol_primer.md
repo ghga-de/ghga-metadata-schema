@@ -4,7 +4,7 @@
 
 The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_primer](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_primer)
+URI: [GHGA:LibraryPreparationProtocol_primer](https://w3id.org/GHGA/LibraryPreparationProtocol_primer)
 
 
 ## Domain and Range

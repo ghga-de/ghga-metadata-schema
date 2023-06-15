@@ -4,7 +4,7 @@
 
 A short description for the Data Access Policy.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_description](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_description)
+URI: [GHGA:DataAccessPolicy_description](https://w3id.org/GHGA/DataAccessPolicy_description)
 
 
 ## Domain and Range

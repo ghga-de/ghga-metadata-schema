@@ -4,7 +4,7 @@
 
 The child of two individuals.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Trio_child](https://w3id.org/GHGA-Submission-Metadata-Schema/Trio_child)
+URI: [GHGA:Trio_child](https://w3id.org/GHGA/Trio_child)
 
 
 ## Domain and Range

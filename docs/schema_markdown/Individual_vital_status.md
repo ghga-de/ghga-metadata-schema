@@ -4,7 +4,7 @@
 
 Last known Vital Status of an Individual.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_vital_status](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_vital_status)
+URI: [GHGA:Individual_vital_status](https://w3id.org/GHGA/Individual_vital_status)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Description about how a sequencing library was prepared (eg: Library construction method).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_description](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_description)
+URI: [GHGA:LibraryPreparationProtocol_description](https://w3id.org/GHGA/LibraryPreparationProtocol_description)
 
 
 ## Domain and Range

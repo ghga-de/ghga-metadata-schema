@@ -4,7 +4,7 @@
 
 A person's descent or lineage, from a person or from a population.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_ancestries](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_ancestries)
+URI: [GHGA:Individual_ancestries](https://w3id.org/GHGA/Individual_ancestries)
 
 
 ## Domain and Range

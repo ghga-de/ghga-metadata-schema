@@ -4,7 +4,7 @@
 
 Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_storage](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_storage)
+URI: [GHGA:Sample_storage](https://w3id.org/GHGA/Sample_storage)
 
 
 ## Domain and Range

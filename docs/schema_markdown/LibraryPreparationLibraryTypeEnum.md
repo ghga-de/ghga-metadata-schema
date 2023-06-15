@@ -4,7 +4,7 @@
 
 The type of the library
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationLibraryTypeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationLibraryTypeEnum)
+URI: [GHGA:LibraryPreparationLibraryTypeEnum](https://w3id.org/GHGA/LibraryPreparationLibraryTypeEnum)
 
 
 ## Other properties

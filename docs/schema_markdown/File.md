@@ -4,7 +4,7 @@
 
 A file is an object that contains information generated from a process, either an Experiment or an Analysis.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File](https://w3id.org/GHGA-Submission-Metadata-Schema/File)
+URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisProcessOutputFile])

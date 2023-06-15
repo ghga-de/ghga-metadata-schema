@@ -4,7 +4,7 @@
 
 The name for an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_name](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_name)
+URI: [GHGA:Biospecimen_name](https://w3id.org/GHGA/Biospecimen_name)
 
 
 ## Domain and Range

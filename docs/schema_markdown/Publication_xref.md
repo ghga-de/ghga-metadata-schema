@@ -4,7 +4,7 @@
 
 One or more cross-references for this Publication.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_xref](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_xref)
+URI: [GHGA:Publication_xref](https://w3id.org/GHGA/Publication_xref)
 
 
 ## Domain and Range

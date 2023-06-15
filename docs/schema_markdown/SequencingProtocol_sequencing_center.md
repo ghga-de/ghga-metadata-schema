@@ -4,7 +4,7 @@
 
 Center where sample was sequenced.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_sequencing_center](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_sequencing_center)
+URI: [GHGA:SequencingProtocol_sequencing_center](https://w3id.org/GHGA/SequencingProtocol_sequencing_center)
 
 
 ## Domain and Range

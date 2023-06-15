@@ -4,7 +4,7 @@
 
 URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_policy_url](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_policy_url)
+URI: [GHGA:DataAccessPolicy_policy_url](https://w3id.org/GHGA/DataAccessPolicy_policy_url)
 
 
 ## Domain and Range

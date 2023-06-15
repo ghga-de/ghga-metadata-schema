@@ -4,7 +4,7 @@
 
 The SequencingProcesses that are part of this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sequencing_processes](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sequencing_processes)
+URI: [GHGA:Submission_sequencing_processes](https://w3id.org/GHGA/Submission_sequencing_processes)
 
 
 ## Domain and Range

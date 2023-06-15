@@ -4,7 +4,7 @@
 
 The identifier of a sequencing lane.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_lane_id](https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_lane_id)
+URI: [GHGA:sequencing_lane_id](https://w3id.org/GHGA/sequencing_lane_id)
 
 
 ## Domain and Range

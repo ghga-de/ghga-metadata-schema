@@ -4,7 +4,7 @@
 
 A detailed description (abstract) that describes the goals of this Study.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study_description](https://w3id.org/GHGA-Submission-Metadata-Schema/Study_description)
+URI: [GHGA:Study_description](https://w3id.org/GHGA/Study_description)
 
 
 ## Domain and Range

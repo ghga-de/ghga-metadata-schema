@@ -4,7 +4,7 @@
 
 Description of an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_description](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_description)
+URI: [GHGA:Biospecimen_description](https://w3id.org/GHGA/Biospecimen_description)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The complete text for the Data Access Policy.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/policy_text](https://w3id.org/GHGA-Submission-Metadata-Schema/policy_text)
+URI: [GHGA:policy_text](https://w3id.org/GHGA/policy_text)
 
 
 ## Domain and Range

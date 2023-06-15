@@ -4,7 +4,7 @@
 
 Method or device employed for collecting/isolating a biospecimen or a sample.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_isolation](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_isolation)
+URI: [GHGA:Biospecimen_isolation](https://w3id.org/GHGA/Biospecimen_isolation)
 
 
 ## Domain and Range

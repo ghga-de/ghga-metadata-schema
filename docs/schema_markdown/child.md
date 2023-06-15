@@ -4,7 +4,7 @@
 
 The child of two individuals.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/child](https://w3id.org/GHGA-Submission-Metadata-Schema/child)
+URI: [GHGA:child](https://w3id.org/GHGA/child)
 
 
 ## Domain and Range

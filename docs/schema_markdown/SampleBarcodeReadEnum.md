@@ -4,7 +4,7 @@
 
 Permitted values for sample barcode read
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SampleBarcodeReadEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/SampleBarcodeReadEnum)
+URI: [GHGA:SampleBarcodeReadEnum](https://w3id.org/GHGA/SampleBarcodeReadEnum)
 
 
 ## Other properties

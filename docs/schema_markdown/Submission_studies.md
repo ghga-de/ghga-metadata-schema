@@ -4,7 +4,7 @@
 
 Information about a Study entities associated with this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_studies](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_studies)
+URI: [GHGA:Submission_studies](https://w3id.org/GHGA/Submission_studies)
 
 
 ## Domain and Range

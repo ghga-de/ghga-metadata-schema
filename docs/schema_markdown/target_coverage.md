@@ -4,7 +4,7 @@
 
 Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/target_coverage](https://w3id.org/GHGA-Submission-Metadata-Schema/target_coverage)
+URI: [GHGA:target_coverage](https://w3id.org/GHGA/target_coverage)
 
 
 ## Domain and Range

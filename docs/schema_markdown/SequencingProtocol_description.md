@@ -4,7 +4,7 @@
 
 Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_description](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_description)
+URI: [GHGA:SequencingProtocol_description](https://w3id.org/GHGA/SequencingProtocol_description)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The given filename.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File_name](https://w3id.org/GHGA-Submission-Metadata-Schema/File_name)
+URI: [GHGA:File_name](https://w3id.org/GHGA/File_name)
 
 
 ## Domain and Range

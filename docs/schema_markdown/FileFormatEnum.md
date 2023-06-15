@@ -4,7 +4,7 @@
 
 Enum to capture file types.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/FileFormatEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/FileFormatEnum)
+URI: [GHGA:FileFormatEnum](https://w3id.org/GHGA/FileFormatEnum)
 
 
 ## Other properties

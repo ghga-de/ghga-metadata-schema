@@ -4,7 +4,7 @@
 
 Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_type](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_type)
+URI: [GHGA:SequencingProtocol_type](https://w3id.org/GHGA/SequencingProtocol_type)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Data Access Policy associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/data_access_policy](https://w3id.org/GHGA-Submission-Metadata-Schema/data_access_policy)
+URI: [GHGA:data_access_policy](https://w3id.org/GHGA/data_access_policy)
 
 
 ## Domain and Range

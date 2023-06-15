@@ -4,7 +4,7 @@
 
 The title that describes an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/title](https://w3id.org/GHGA-Submission-Metadata-Schema/title)
+URI: [GHGA:title](https://w3id.org/GHGA/title)
 
 
 ## Domain and Range

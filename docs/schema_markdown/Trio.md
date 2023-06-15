@@ -4,7 +4,7 @@
 
 A trio is defined by three individuals representing an individual and their parents.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Trio](https://w3id.org/GHGA-Submission-Metadata-Schema/Trio)
+URI: [GHGA:Trio](https://w3id.org/GHGA/Trio)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]<child%201..1-%20[Trio],[Individual]<father%201..1-%20[Trio],[Individual]<mother%201..1-%20[Trio],[Submission]++-%20trios%201..*>[Trio],[Submission]++-%20trios(i)%200..*>[Trio],[Submission],[Individual])](https://yuml.me/diagram/nofunky;dir:TB/class/[Individual]<child%201..1-%20[Trio],[Individual]<father%201..1-%20[Trio],[Individual]<mother%201..1-%20[Trio],[Submission]++-%20trios%201..*>[Trio],[Submission]++-%20trios(i)%200..*>[Trio],[Submission],[Individual])

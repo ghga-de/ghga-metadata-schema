@@ -4,7 +4,7 @@
 
 The Data Access Committee linked to this policy.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_data_access_committee](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_data_access_committee)
+URI: [GHGA:DataAccessPolicy_data_access_committee](https://w3id.org/GHGA/DataAccessPolicy_data_access_committee)
 
 
 ## Domain and Range

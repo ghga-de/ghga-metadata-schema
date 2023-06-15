@@ -4,7 +4,7 @@
 
 Year in which the paper was published.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_year](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_year)
+URI: [GHGA:Publication_year](https://w3id.org/GHGA/Publication_year)
 
 
 ## Domain and Range

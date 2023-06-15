@@ -4,7 +4,7 @@
 
 A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin_accession](https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin_accession)
+URI: [GHGA:AccessionMixin_accession](https://w3id.org/GHGA/AccessionMixin_accession)
 
 
 ## Domain and Range

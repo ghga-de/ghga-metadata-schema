@@ -4,7 +4,7 @@
 
 Enum to capture the vital status of an individual.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/VitalStatusEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/VitalStatusEnum)
+URI: [GHGA:VitalStatusEnum](https://w3id.org/GHGA/VitalStatusEnum)
 
 
 ## Other properties

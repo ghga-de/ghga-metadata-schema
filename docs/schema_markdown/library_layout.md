@@ -4,7 +4,7 @@
 
 Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_layout](https://w3id.org/GHGA-Submission-Metadata-Schema/library_layout)
+URI: [GHGA:library_layout](https://w3id.org/GHGA/library_layout)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The sex of an Individual as as defined in a specific medical and clinical context.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IndividualSexEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/IndividualSexEnum)
+URI: [GHGA:IndividualSexEnum](https://w3id.org/GHGA/IndividualSexEnum)
 
 
 ## Other properties

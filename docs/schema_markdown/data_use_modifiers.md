@@ -4,7 +4,7 @@
 
 Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/data_use_modifiers](https://w3id.org/GHGA-Submission-Metadata-Schema/data_use_modifiers)
+URI: [GHGA:data_use_modifiers](https://w3id.org/GHGA/data_use_modifiers)
 
 
 ## Domain and Range

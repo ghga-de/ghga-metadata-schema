@@ -4,7 +4,7 @@
 
 The organization associated with a person.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/organization](https://w3id.org/GHGA-Submission-Metadata-Schema/organization)
+URI: [GHGA:organization](https://w3id.org/GHGA/organization)
 
 
 ## Domain and Range

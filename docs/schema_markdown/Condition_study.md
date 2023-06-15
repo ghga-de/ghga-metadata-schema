@@ -4,7 +4,7 @@
 
 The study associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_study](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_study)
+URI: [GHGA:Condition_study](https://w3id.org/GHGA/Condition_study)
 
 
 ## Domain and Range

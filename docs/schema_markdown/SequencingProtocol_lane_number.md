@@ -4,7 +4,7 @@
 
 The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_lane_number](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_lane_number)
+URI: [GHGA:SequencingProtocol_lane_number](https://w3id.org/GHGA/SequencingProtocol_lane_number)
 
 
 ## Domain and Range

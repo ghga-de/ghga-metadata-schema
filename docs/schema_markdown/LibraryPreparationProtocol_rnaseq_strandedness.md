@@ -4,7 +4,7 @@
 
 The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_rnaseq_strandedness](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_rnaseq_strandedness)
+URI: [GHGA:LibraryPreparationProtocol_rnaseq_strandedness](https://w3id.org/GHGA/LibraryPreparationProtocol_rnaseq_strandedness)
 
 
 ## Domain and Range

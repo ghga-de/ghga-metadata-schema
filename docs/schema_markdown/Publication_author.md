@@ -4,7 +4,7 @@
 
 The individual who is responsible for the content of a document version.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_author](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_author)
+URI: [GHGA:Publication_author](https://w3id.org/GHGA/Publication_author)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Information about one or more Experiment entities associated with this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sequencing_experiments](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sequencing_experiments)
+URI: [GHGA:Submission_sequencing_experiments](https://w3id.org/GHGA/Submission_sequencing_experiments)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Description of an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset_description](https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset_description)
+URI: [GHGA:Dataset_description](https://w3id.org/GHGA/Dataset_description)
 
 
 ## Domain and Range

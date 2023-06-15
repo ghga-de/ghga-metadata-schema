@@ -4,7 +4,7 @@
 
 The alias for an entity at the time of submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/alias](https://w3id.org/GHGA-Submission-Metadata-Schema/alias)
+URI: [GHGA:alias](https://w3id.org/GHGA/alias)
 
 
 ## Domain and Range
@@ -17,7 +17,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Children
 
  *  [AliasMixin➞alias](AliasMixin_alias.md)
- *  [Analysis➞alias](Analysis_alias.md)
 
 ## Used by
 

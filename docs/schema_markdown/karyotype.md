@@ -4,7 +4,7 @@
 
 The karyotype of an individual if defined.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/karyotype](https://w3id.org/GHGA-Submission-Metadata-Schema/karyotype)
+URI: [GHGA:karyotype](https://w3id.org/GHGA/karyotype)
 
 
 ## Domain and Range

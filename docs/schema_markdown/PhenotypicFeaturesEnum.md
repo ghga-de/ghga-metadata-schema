@@ -4,7 +4,7 @@
 
 An enum describing permissible phenotype descriptors
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/PhenotypicFeaturesEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/PhenotypicFeaturesEnum)
+URI: [GHGA:PhenotypicFeaturesEnum](https://w3id.org/GHGA/PhenotypicFeaturesEnum)
 
 
 ## Other properties

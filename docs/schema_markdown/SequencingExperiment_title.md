@@ -4,7 +4,7 @@
 
 Name for the experiment (eg: GHGAE_PBMC_RNAseq).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_title](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_title)
+URI: [GHGA:SequencingExperiment_title](https://w3id.org/GHGA/SequencingExperiment_title)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The sequencing protocol associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_sequencing_protocol](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_sequencing_protocol)
+URI: [GHGA:SequencingExperiment_sequencing_protocol](https://w3id.org/GHGA/SequencingExperiment_sequencing_protocol)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_description](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_description)
+URI: [GHGA:Sample_description](https://w3id.org/GHGA/Sample_description)
 
 
 ## Domain and Range

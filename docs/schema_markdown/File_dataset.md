@@ -4,7 +4,7 @@
 
 The Dataset associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File_dataset](https://w3id.org/GHGA-Submission-Metadata-Schema/File_dataset)
+URI: [GHGA:File_dataset](https://w3id.org/GHGA/File_dataset)
 
 
 ## Domain and Range

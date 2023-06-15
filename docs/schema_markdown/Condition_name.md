@@ -4,7 +4,7 @@
 
 The name for an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_name](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_name)
+URI: [GHGA:Condition_name](https://w3id.org/GHGA/Condition_name)
 
 
 ## Domain and Range

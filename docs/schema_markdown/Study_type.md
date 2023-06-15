@@ -4,7 +4,7 @@
 
 The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study_type](https://w3id.org/GHGA-Submission-Metadata-Schema/Study_type)
+URI: [GHGA:Study_type](https://w3id.org/GHGA/Study_type)
 
 
 ## Domain and Range

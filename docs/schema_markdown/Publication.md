@@ -4,7 +4,7 @@
 
 The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication)
+URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*],[Submission]++-%20publications%200..*>[Publication],[Submission]++-%20publications(i)%200..*>[Publication])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*],[Submission]++-%20publications%200..*>[Publication],[Submission]++-%20publications(i)%200..*>[Publication])

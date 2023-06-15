@@ -4,7 +4,7 @@
 
 Enum to capture whether a condition corresponds to a case or a control condition.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/CaseControlStatusEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/CaseControlStatusEnum)
+URI: [GHGA:CaseControlStatusEnum](https://w3id.org/GHGA/CaseControlStatusEnum)
 
 
 ## Other properties

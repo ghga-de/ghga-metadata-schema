@@ -4,7 +4,7 @@
 
 The reference chromosome used for this Analysis.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/reference_chromosome](https://w3id.org/GHGA-Submission-Metadata-Schema/reference_chromosome)
+URI: [GHGA:reference_chromosome](https://w3id.org/GHGA/reference_chromosome)
 
 
 ## Domain and Range

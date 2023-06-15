@@ -4,7 +4,7 @@
 
 The father of an individual.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Trio_father](https://w3id.org/GHGA-Submission-Metadata-Schema/Trio_father)
+URI: [GHGA:Trio_father](https://w3id.org/GHGA/Trio_father)
 
 
 ## Domain and Range

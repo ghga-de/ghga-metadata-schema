@@ -4,7 +4,7 @@
 
 One or more sequencing protocol entities associated with this Submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sequencing_protocols](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sequencing_protocols)
+URI: [GHGA:Submission_sequencing_protocols](https://w3id.org/GHGA/Submission_sequencing_protocols)
 
 
 ## Domain and Range

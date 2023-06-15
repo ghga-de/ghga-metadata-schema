@@ -4,7 +4,7 @@
 
 Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/vital_status_at_sampling](https://w3id.org/GHGA-Submission-Metadata-Schema/vital_status_at_sampling)
+URI: [GHGA:vital_status_at_sampling](https://w3id.org/GHGA/vital_status_at_sampling)
 
 
 ## Domain and Range

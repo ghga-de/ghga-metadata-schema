@@ -4,7 +4,7 @@
 
 The value for an attribute. Usually this is a numerical value (without the units).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute_value](https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute_value)
+URI: [GHGA:Attribute_value](https://w3id.org/GHGA/Attribute_value)
 
 
 ## Domain and Range

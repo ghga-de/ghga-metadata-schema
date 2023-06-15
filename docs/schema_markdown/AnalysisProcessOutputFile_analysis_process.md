@@ -4,7 +4,7 @@
 
 The AnalysisProcess associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcessOutputFile_analysis_process](https://w3id.org/GHGA-Submission-Metadata-Schema/AnalysisProcessOutputFile_analysis_process)
+URI: [GHGA:AnalysisProcessOutputFile_analysis_process](https://w3id.org/GHGA/AnalysisProcessOutputFile_analysis_process)
 
 
 ## Domain and Range

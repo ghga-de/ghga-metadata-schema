@@ -4,7 +4,7 @@
 
 Description of an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_description](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_description)
+URI: [GHGA:Condition_description](https://w3id.org/GHGA/Condition_description)
 
 
 ## Domain and Range

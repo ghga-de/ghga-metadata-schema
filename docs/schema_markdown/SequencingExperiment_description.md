@@ -4,7 +4,7 @@
 
 A detailed description of the Experiment.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_description](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_description)
+URI: [GHGA:SequencingExperiment_description](https://w3id.org/GHGA/SequencingExperiment_description)
 
 
 ## Domain and Range

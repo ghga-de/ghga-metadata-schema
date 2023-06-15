@@ -4,7 +4,7 @@
 
 Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_data_use_modifiers](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_data_use_modifiers)
+URI: [GHGA:DataAccessPolicy_data_use_modifiers](https://w3id.org/GHGA/DataAccessPolicy_data_use_modifiers)
 
 
 ## Domain and Range

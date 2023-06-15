@@ -4,7 +4,7 @@
 
 A tissue as described in the BRENDA ontology.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/TissueEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/TissueEnum)
+URI: [GHGA:TissueEnum](https://w3id.org/GHGA/TissueEnum)
 
 
 ## Other properties

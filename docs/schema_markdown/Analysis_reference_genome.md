@@ -4,7 +4,7 @@
 
 A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis_reference_genome](https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis_reference_genome)
+URI: [GHGA:Analysis_reference_genome](https://w3id.org/GHGA/Analysis_reference_genome)
 
 
 ## Domain and Range

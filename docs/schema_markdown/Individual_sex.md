@@ -4,7 +4,7 @@
 
 The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_sex](https://w3id.org/GHGA-Submission-Metadata-Schema/Individual_sex)
+URI: [GHGA:Individual_sex](https://w3id.org/GHGA/Individual_sex)
 
 
 ## Domain and Range

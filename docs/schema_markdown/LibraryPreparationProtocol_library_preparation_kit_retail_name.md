@@ -4,7 +4,7 @@
 
 A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_preparation_kit_retail_name](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_preparation_kit_retail_name)
+URI: [GHGA:LibraryPreparationProtocol_library_preparation_kit_retail_name](https://w3id.org/GHGA/LibraryPreparationProtocol_library_preparation_kit_retail_name)
 
 
 ## Domain and Range

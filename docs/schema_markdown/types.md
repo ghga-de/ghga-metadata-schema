@@ -4,7 +4,7 @@
 
 The types of an entity. Note: Not to be confused with rdf:type
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/types](https://w3id.org/GHGA-Submission-Metadata-Schema/types)
+URI: [GHGA:types](https://w3id.org/GHGA/types)
 
 
 ## Domain and Range

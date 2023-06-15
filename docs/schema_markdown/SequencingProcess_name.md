@@ -4,7 +4,7 @@
 
 The name for an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_name](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_name)
+URI: [GHGA:SequencingProcess_name](https://w3id.org/GHGA/SequencingProcess_name)
 
 
 ## Domain and Range

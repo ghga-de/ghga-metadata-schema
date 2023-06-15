@@ -4,7 +4,7 @@
 
 Permitted values for instrument model
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/InstrumentModelEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/InstrumentModelEnum)
+URI: [GHGA:InstrumentModelEnum](https://w3id.org/GHGA/InstrumentModelEnum)
 
 
 ## Other properties

@@ -4,7 +4,7 @@
 
 Whether a condition corresponds to a disease or a healthy state.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_disease_or_healthy](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_disease_or_healthy)
+URI: [GHGA:Condition_disease_or_healthy](https://w3id.org/GHGA/Condition_disease_or_healthy)
 
 
 ## Domain and Range

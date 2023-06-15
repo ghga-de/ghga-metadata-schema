@@ -4,7 +4,7 @@
 
 One or more library preparation protocol entities associated with this Submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_library_preparation_protocols](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_library_preparation_protocols)
+URI: [GHGA:Submission_library_preparation_protocols](https://w3id.org/GHGA/Submission_library_preparation_protocols)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Permitted values for karyotype
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/KaryotypeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/KaryotypeEnum)
+URI: [GHGA:KaryotypeEnum](https://w3id.org/GHGA/KaryotypeEnum)
 
 
 ## Other properties

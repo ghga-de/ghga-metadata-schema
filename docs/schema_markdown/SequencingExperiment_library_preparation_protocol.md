@@ -4,7 +4,7 @@
 
 The library_preparation Protocol associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_library_preparation_protocol](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_library_preparation_protocol)
+URI: [GHGA:SequencingExperiment_library_preparation_protocol](https://w3id.org/GHGA/SequencingExperiment_library_preparation_protocol)
 
 
 ## Domain and Range

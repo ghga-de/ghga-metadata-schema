@@ -4,7 +4,7 @@
 
 Whether any method was used to select for or against, enrich, or screen the material being sequenced. library_selection method (e.g. random, PCA, cDNA, etc )
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_selection](https://w3id.org/GHGA-Submission-Metadata-Schema/library_selection)
+URI: [GHGA:library_selection](https://w3id.org/GHGA/library_selection)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Data Access Committees associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/data_access_committees](https://w3id.org/GHGA-Submission-Metadata-Schema/data_access_committees)
+URI: [GHGA:data_access_committees](https://w3id.org/GHGA/data_access_committees)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The sample associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_sample](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_sample)
+URI: [GHGA:SequencingProcess_sample](https://w3id.org/GHGA/SequencingProcess_sample)
 
 
 ## Domain and Range

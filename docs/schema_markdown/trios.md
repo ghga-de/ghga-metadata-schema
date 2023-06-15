@@ -4,7 +4,7 @@
 
 The Trios associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/trios](https://w3id.org/GHGA-Submission-Metadata-Schema/trios)
+URI: [GHGA:trios](https://w3id.org/GHGA/trios)
 
 
 ## Domain and Range

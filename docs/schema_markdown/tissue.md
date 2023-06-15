@@ -4,7 +4,7 @@
 
 
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/tissue](https://w3id.org/GHGA-Submission-Metadata-Schema/tissue)
+URI: [GHGA:tissue](https://w3id.org/GHGA/tissue)
 
 
 ## Domain and Range

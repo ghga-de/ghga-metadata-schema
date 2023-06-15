@@ -4,7 +4,7 @@
 
 Phenotypic feature concepts that the entity is associated with.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/phenotypic_features](https://w3id.org/GHGA-Submission-Metadata-Schema/phenotypic_features)
+URI: [GHGA:phenotypic_features](https://w3id.org/GHGA/phenotypic_features)
 
 
 ## Domain and Range

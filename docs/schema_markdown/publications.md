@@ -4,7 +4,7 @@
 
 The Publication associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/publications](https://w3id.org/GHGA-Submission-Metadata-Schema/publications)
+URI: [GHGA:publications](https://w3id.org/GHGA/publications)
 
 
 ## Domain and Range
