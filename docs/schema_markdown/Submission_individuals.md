@@ -4,7 +4,7 @@
 
 Information about one or more Individual entities associated with this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_individuals](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_individuals)
+URI: [GHGA:Submission_individuals](https://w3id.org/GHGA/Submission_individuals)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 A key/value pair that further characterizes an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute](https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute)
+URI: [GHGA:Attribute](https://w3id.org/GHGA/Attribute)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[LibraryPreparationProtocol],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[SequencingProtocol],[LibraryPreparationProtocol],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[LibraryPreparationProtocol]++-%20attributes%200..*>[Attribute],[SequencingProtocol]++-%20attributes%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute])

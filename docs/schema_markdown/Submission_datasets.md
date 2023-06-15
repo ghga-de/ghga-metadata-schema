@@ -4,7 +4,7 @@
 
 One or more Dataset that are part of this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_datasets](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_datasets)
+URI: [GHGA:Submission_datasets](https://w3id.org/GHGA/Submission_datasets)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_tissue](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_tissue)
+URI: [GHGA:Biospecimen_tissue](https://w3id.org/GHGA/Biospecimen_tissue)
 
 
 ## Domain and Range

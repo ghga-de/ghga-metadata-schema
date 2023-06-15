@@ -4,7 +4,7 @@
 
 The type of Biospecimen.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_type](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_type)
+URI: [GHGA:Biospecimen_type](https://w3id.org/GHGA/Biospecimen_type)
 
 
 ## Domain and Range

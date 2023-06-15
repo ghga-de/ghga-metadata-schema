@@ -4,7 +4,7 @@
 
 One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_xref](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_xref)
+URI: [GHGA:Sample_xref](https://w3id.org/GHGA/Sample_xref)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 DOI identifier of a publication.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/doi](https://w3id.org/GHGA-Submission-Metadata-Schema/doi)
+URI: [GHGA:doi](https://w3id.org/GHGA/doi)
 
 
 ## Domain and Range

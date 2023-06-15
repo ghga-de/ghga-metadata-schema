@@ -4,7 +4,7 @@
 
 Permitted values for data use modifier
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataUseModifierEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/DataUseModifierEnum)
+URI: [GHGA:DataUseModifierEnum](https://w3id.org/GHGA/DataUseModifierEnum)
 
 
 ## Other properties

@@ -4,7 +4,7 @@
 
 The Conditions associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/conditions](https://w3id.org/GHGA-Submission-Metadata-Schema/conditions)
+URI: [GHGA:conditions](https://w3id.org/GHGA/conditions)
 
 
 ## Domain and Range

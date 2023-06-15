@@ -4,7 +4,7 @@
 
 The study abstract that describes the goals.  Can also hold abstract from a publication related to this study
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/abstract](https://w3id.org/GHGA-Submission-Metadata-Schema/abstract)
+URI: [GHGA:abstract](https://w3id.org/GHGA/abstract)
 
 
 ## Domain and Range

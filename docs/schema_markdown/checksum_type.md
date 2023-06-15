@@ -4,7 +4,7 @@
 
 The type of algorithm used to generate the checksum of a file.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/checksum_type](https://w3id.org/GHGA-Submission-Metadata-Schema/checksum_type)
+URI: [GHGA:checksum_type](https://w3id.org/GHGA/checksum_type)
 
 
 ## Domain and Range

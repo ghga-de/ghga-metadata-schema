@@ -4,7 +4,7 @@
 
 The StudyFiles that are part of this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_study_files](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_study_files)
+URI: [GHGA:Submission_study_files](https://w3id.org/GHGA/Submission_study_files)
 
 
 ## Domain and Range

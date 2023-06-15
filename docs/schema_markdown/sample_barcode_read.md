@@ -4,7 +4,7 @@
 
 The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sample_barcode_read](https://w3id.org/GHGA-Submission-Metadata-Schema/sample_barcode_read)
+URI: [GHGA:sample_barcode_read](https://w3id.org/GHGA/sample_barcode_read)
 
 
 ## Domain and Range

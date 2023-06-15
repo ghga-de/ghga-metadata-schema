@@ -4,7 +4,7 @@
 
 The AnalysisProcessOutputFiles that are part of this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_analysis_process_output_files](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_analysis_process_output_files)
+URI: [GHGA:Submission_analysis_process_output_files](https://w3id.org/GHGA/Submission_analysis_process_output_files)
 
 
 ## Domain and Range

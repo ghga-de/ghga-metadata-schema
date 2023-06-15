@@ -4,7 +4,7 @@
 
 Information about one or more Sample entities associated with this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_samples](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_samples)
+URI: [GHGA:Submission_samples](https://w3id.org/GHGA/Submission_samples)
 
 
 ## Domain and Range

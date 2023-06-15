@@ -4,7 +4,7 @@
 
 The terms of data use and policy verbiage should be captured here.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_policy_text](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessPolicy_policy_text)
+URI: [GHGA:DataAccessPolicy_policy_text](https://w3id.org/GHGA/DataAccessPolicy_policy_text)
 
 
 ## Domain and Range

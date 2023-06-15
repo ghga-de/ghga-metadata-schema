@@ -4,7 +4,7 @@
 
 The Individual entity from which this Biospecimen was derived.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_individual](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_individual)
+URI: [GHGA:Biospecimen_individual](https://w3id.org/GHGA/Biospecimen_individual)
 
 
 ## Domain and Range

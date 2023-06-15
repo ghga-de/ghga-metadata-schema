@@ -4,7 +4,7 @@
 
 The samples associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/samples](https://w3id.org/GHGA-Submission-Metadata-Schema/samples)
+URI: [GHGA:samples](https://w3id.org/GHGA/samples)
 
 
 ## Domain and Range

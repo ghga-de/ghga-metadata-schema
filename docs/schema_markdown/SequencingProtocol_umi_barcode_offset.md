@@ -4,7 +4,7 @@
 
 The offset in sequence of the UMI identifying barcode. (E.g. '16').
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_umi_barcode_offset](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_umi_barcode_offset)
+URI: [GHGA:SequencingProtocol_umi_barcode_offset](https://w3id.org/GHGA/SequencingProtocol_umi_barcode_offset)
 
 
 ## Domain and Range

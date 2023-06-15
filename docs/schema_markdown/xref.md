@@ -4,7 +4,7 @@
 
 Database cross references for an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/xref](https://w3id.org/GHGA-Submission-Metadata-Schema/xref)
+URI: [GHGA:xref](https://w3id.org/GHGA/xref)
 
 
 ## Domain and Range

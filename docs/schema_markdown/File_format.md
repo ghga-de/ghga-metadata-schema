@@ -4,7 +4,7 @@
 
 The format of the file: BAM, SAM, CRAM, BAI, etc.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File_format](https://w3id.org/GHGA-Submission-Metadata-Schema/File_format)
+URI: [GHGA:File_format](https://w3id.org/GHGA/File_format)
 
 
 ## Domain and Range

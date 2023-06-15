@@ -4,7 +4,7 @@
 
 The sequencing experiment associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_experiment](https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_experiment)
+URI: [GHGA:sequencing_experiment](https://w3id.org/GHGA/sequencing_experiment)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The Conditions associated with this Submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_conditions](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_conditions)
+URI: [GHGA:Submission_conditions](https://w3id.org/GHGA/Submission_conditions)
 
 
 ## Domain and Range

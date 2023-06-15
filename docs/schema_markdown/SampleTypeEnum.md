@@ -4,7 +4,7 @@
 
 The type of a sample
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SampleTypeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/SampleTypeEnum)
+URI: [GHGA:SampleTypeEnum](https://w3id.org/GHGA/SampleTypeEnum)
 
 
 ## Other properties

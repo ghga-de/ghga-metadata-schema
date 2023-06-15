@@ -4,7 +4,7 @@
 
 A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute_key_type](https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute_key_type)
+URI: [GHGA:Attribute_key_type](https://w3id.org/GHGA/Attribute_key_type)
 
 
 ## Domain and Range

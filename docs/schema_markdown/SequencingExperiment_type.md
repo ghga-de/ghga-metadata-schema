@@ -4,7 +4,7 @@
 
 The type of sequencing experiment.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_type](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingExperiment_type)
+URI: [GHGA:SequencingExperiment_type](https://w3id.org/GHGA/SequencingExperiment_type)
 
 
 ## Domain and Range

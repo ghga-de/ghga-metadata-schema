@@ -4,7 +4,7 @@
 
 The Study entity associated with this Publication.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_study](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_study)
+URI: [GHGA:Publication_study](https://w3id.org/GHGA/Publication_study)
 
 
 ## Domain and Range

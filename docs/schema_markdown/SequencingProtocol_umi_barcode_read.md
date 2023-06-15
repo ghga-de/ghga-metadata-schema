@@ -4,7 +4,7 @@
 
 The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_umi_barcode_read](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_umi_barcode_read)
+URI: [GHGA:SequencingProtocol_umi_barcode_read](https://w3id.org/GHGA/SequencingProtocol_umi_barcode_read)
 
 
 ## Domain and Range

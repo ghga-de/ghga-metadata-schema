@@ -4,7 +4,7 @@
 
 The AnalysisProcesses that are part of this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_analysis_processes](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_analysis_processes)
+URI: [GHGA:Submission_analysis_processes](https://w3id.org/GHGA/Submission_analysis_processes)
 
 
 ## Domain and Range

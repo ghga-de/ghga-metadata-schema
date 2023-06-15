@@ -4,7 +4,7 @@
 
 Mixin for entities that can be assigned an alias at the time of metadata submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AliasMixin](https://w3id.org/GHGA-Submission-Metadata-Schema/AliasMixin)
+URI: [GHGA:AliasMixin](https://w3id.org/GHGA/AliasMixin)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[IdentifiedByAliasMixin],[AliasMixin&#124;alias:string]^-[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[IdentifiedByAliasMixin],[AliasMixin&#124;alias:string]^-[IdentifiedByAliasMixin])

@@ -4,7 +4,7 @@
 
 A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen)
+URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])

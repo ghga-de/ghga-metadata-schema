@@ -4,7 +4,7 @@
 
 Permitted values for library preparation kit retail name
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationKitRetailNameEnum)
+URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPreparationKitRetailNameEnum)
 
 
 ## Other properties

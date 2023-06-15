@@ -4,7 +4,7 @@
 
 Age of an individual.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/age_at_sampling](https://w3id.org/GHGA-Submission-Metadata-Schema/age_at_sampling)
+URI: [GHGA:age_at_sampling](https://w3id.org/GHGA/age_at_sampling)
 
 
 ## Domain and Range

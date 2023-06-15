@@ -4,7 +4,7 @@
 
 The Data Access Policy that applies to Dataset in this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_data_access_policies](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_data_access_policies)
+URI: [GHGA:Submission_data_access_policies](https://w3id.org/GHGA/Submission_data_access_policies)
 
 
 ## Domain and Range

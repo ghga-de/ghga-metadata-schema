@@ -4,7 +4,7 @@
 
 Information about one or more Analysis entities associated with this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_analyses](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_analyses)
+URI: [GHGA:Submission_analyses](https://w3id.org/GHGA/Submission_analyses)
 
 
 ## Domain and Range

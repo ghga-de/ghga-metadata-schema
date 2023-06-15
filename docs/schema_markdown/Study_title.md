@@ -4,7 +4,7 @@
 
 A comprehensive title for the study.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Study_title](https://w3id.org/GHGA-Submission-Metadata-Schema/Study_title)
+URI: [GHGA:Study_title](https://w3id.org/GHGA/Study_title)
 
 
 ## Domain and Range

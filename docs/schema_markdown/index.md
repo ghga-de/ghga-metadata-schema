@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 0.9.0
+**version:** 0.10.0
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -57,7 +57,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [alias](alias.md) - The alias for an entity at the time of submission.
      * [AliasMixin➞alias](AliasMixin_alias.md)
          * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
-     * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
+             * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
  * [analysis](analysis.md) - The Analysis associated with an entity
@@ -72,9 +72,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
-     * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
-     * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md) - One or more attributes that further characterizes this Sequencing Protocol.
-     * [Study➞attributes](Study_attributes.md) - Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
+         * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
+         * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md) - One or more attributes that further characterizes this Sequencing Protocol.
+         * [Study➞attributes](Study_attributes.md) - Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
  * [author](author.md) - The individual who is responsible for the content of a document version.
      * [Publication➞author](Publication_author.md)
  * [biospecimen](biospecimen.md) - The biospecimen associated with an entity.

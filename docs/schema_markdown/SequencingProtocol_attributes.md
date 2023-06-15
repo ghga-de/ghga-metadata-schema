@@ -4,7 +4,7 @@
 
 One or more attributes that further characterizes this Sequencing Protocol.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_attributes](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_attributes)
+URI: [GHGA:SequencingProtocol_attributes](https://w3id.org/GHGA/SequencingProtocol_attributes)
 
 
 ## Domain and Range
@@ -13,7 +13,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_attrib
 
 ## Parents
 
- *  is_a: [attributes](attributes.md)
+ *  is_a: [AttributeMixin➞attributes](AttributeMixin_attributes.md)
 
 ## Children
 

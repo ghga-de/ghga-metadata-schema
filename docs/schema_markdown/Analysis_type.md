@@ -4,7 +4,7 @@
 
 The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis_type](https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis_type)
+URI: [GHGA:Analysis_type](https://w3id.org/GHGA/Analysis_type)
 
 
 ## Domain and Range

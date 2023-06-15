@@ -4,7 +4,7 @@
 
 Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis_description](https://w3id.org/GHGA-Submission-Metadata-Schema/Analysis_description)
+URI: [GHGA:Analysis_description](https://w3id.org/GHGA/Analysis_description)
 
 
 ## Domain and Range

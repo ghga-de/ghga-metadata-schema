@@ -4,7 +4,7 @@
 
 The Data Access Committee that applies to Dataset in this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_data_access_committees](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_data_access_committees)
+URI: [GHGA:Submission_data_access_committees](https://w3id.org/GHGA/Submission_data_access_committees)
 
 
 ## Domain and Range

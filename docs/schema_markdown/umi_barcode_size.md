@@ -4,7 +4,7 @@
 
 The size of the UMI identifying barcode (Eg. '10').
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/umi_barcode_size](https://w3id.org/GHGA-Submission-Metadata-Schema/umi_barcode_size)
+URI: [GHGA:umi_barcode_size](https://w3id.org/GHGA/umi_barcode_size)
 
 
 ## Domain and Range

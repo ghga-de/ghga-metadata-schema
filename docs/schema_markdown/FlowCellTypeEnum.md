@@ -4,7 +4,7 @@
 
 Permitted values for flow cell type
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/FlowCellTypeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/FlowCellTypeEnum)
+URI: [GHGA:FlowCellTypeEnum](https://w3id.org/GHGA/FlowCellTypeEnum)
 
 
 ## Other properties

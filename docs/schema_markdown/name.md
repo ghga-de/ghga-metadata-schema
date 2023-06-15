@@ -4,7 +4,7 @@
 
 The name for an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/name](https://w3id.org/GHGA-Submission-Metadata-Schema/name)
+URI: [GHGA:name](https://w3id.org/GHGA/name)
 
 
 ## Domain and Range

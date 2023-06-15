@@ -4,7 +4,7 @@
 
 Enum to capture whether a condition corresponds to a mutant or a wildtype.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/MutantOrWildtypeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/MutantOrWildtypeEnum)
+URI: [GHGA:MutantOrWildtypeEnum](https://w3id.org/GHGA/MutantOrWildtypeEnum)
 
 
 ## Other properties

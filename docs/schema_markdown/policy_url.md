@@ -4,7 +4,7 @@
 
 Alternative to pasting the Data Access Policy text.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/policy_url](https://w3id.org/GHGA-Submission-Metadata-Schema/policy_url)
+URI: [GHGA:policy_url](https://w3id.org/GHGA/policy_url)
 
 
 ## Domain and Range

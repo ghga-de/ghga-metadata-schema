@@ -4,7 +4,7 @@
 
 The SampleFile associated used as an input for an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sample_input_files](https://w3id.org/GHGA-Submission-Metadata-Schema/sample_input_files)
+URI: [GHGA:sample_input_files](https://w3id.org/GHGA/sample_input_files)
 
 
 ## Domain and Range

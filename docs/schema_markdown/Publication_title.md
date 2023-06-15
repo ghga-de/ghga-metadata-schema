@@ -4,7 +4,7 @@
 
 The title for the Publication.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_title](https://w3id.org/GHGA-Submission-Metadata-Schema/Publication_title)
+URI: [GHGA:Publication_title](https://w3id.org/GHGA/Publication_title)
 
 
 ## Domain and Range

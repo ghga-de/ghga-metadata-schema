@@ -4,7 +4,7 @@
 
 The name for the Data Access Committee.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee_name](https://w3id.org/GHGA-Submission-Metadata-Schema/DataAccessCommittee_name)
+URI: [GHGA:DataAccessCommittee_name](https://w3id.org/GHGA/DataAccessCommittee_name)
 
 
 ## Domain and Range

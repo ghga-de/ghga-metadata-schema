@@ -4,7 +4,7 @@
 
 Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/data_use_permission](https://w3id.org/GHGA-Submission-Metadata-Schema/data_use_permission)
+URI: [GHGA:data_use_permission](https://w3id.org/GHGA/data_use_permission)
 
 
 ## Domain and Range

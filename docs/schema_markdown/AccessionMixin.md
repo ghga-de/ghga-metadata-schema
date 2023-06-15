@@ -4,7 +4,7 @@
 
 Mixin for entities that can be assigned a GHGA accession.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin](https://w3id.org/GHGA-Submission-Metadata-Schema/AccessionMixin)
+URI: [GHGA:AccessionMixin](https://w3id.org/GHGA/AccessionMixin)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[AccessionMixin&#124;accession:string])](https://yuml.me/diagram/nofunky;dir:TB/class/[AccessionMixin&#124;accession:string])

@@ -4,7 +4,7 @@
 
 Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/ForwardOrReverseEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/ForwardOrReverseEnum)
+URI: [GHGA:ForwardOrReverseEnum](https://w3id.org/GHGA/ForwardOrReverseEnum)
 
 
 ## Other properties

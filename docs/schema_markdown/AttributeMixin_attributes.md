@@ -4,7 +4,7 @@
 
 Key/value pairs corresponding to an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AttributeMixin_attributes](https://w3id.org/GHGA-Submission-Metadata-Schema/AttributeMixin_attributes)
+URI: [GHGA:AttributeMixin_attributes](https://w3id.org/GHGA/AttributeMixin_attributes)
 
 
 ## Domain and Range
@@ -17,6 +17,9 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AttributeMixin_attributes
 
 ## Children
 
+ *  [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)
+ *  [SequencingProtocol➞attributes](SequencingProtocol_attributes.md)
+ *  [Study➞attributes](Study_attributes.md)
 
 ## Used by
 

@@ -4,7 +4,7 @@
 
 Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/target_regions](https://w3id.org/GHGA-Submission-Metadata-Schema/target_regions)
+URI: [GHGA:target_regions](https://w3id.org/GHGA/target_regions)
 
 
 ## Domain and Range

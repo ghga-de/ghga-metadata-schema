@@ -4,7 +4,7 @@
 
 Permitted vocabulary for library selections
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationLibrarySelectionEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationLibrarySelectionEnum)
+URI: [GHGA:LibraryPreparationLibrarySelectionEnum](https://w3id.org/GHGA/LibraryPreparationLibrarySelectionEnum)
 
 
 ## Other properties

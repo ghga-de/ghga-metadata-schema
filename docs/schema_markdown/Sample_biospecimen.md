@@ -4,7 +4,7 @@
 
 The Biospecimen from which this Sample was prepared from.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_biospecimen](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_biospecimen)
+URI: [GHGA:Sample_biospecimen](https://w3id.org/GHGA/Sample_biospecimen)
 
 
 ## Domain and Range

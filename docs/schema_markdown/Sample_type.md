@@ -4,7 +4,7 @@
 
 The type of sample.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_type](https://w3id.org/GHGA-Submission-Metadata-Schema/Sample_type)
+URI: [GHGA:Sample_type](https://w3id.org/GHGA/Sample_type)
 
 
 ## Domain and Range

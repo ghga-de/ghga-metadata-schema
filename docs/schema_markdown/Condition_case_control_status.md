@@ -4,7 +4,7 @@
 
 Whether a condition corresponds to a treatment or a control.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_case_control_status](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_case_control_status)
+URI: [GHGA:Condition_case_control_status](https://w3id.org/GHGA/Condition_case_control_status)
 
 
 ## Domain and Range

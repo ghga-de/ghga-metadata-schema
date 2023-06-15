@@ -4,7 +4,7 @@
 
 Permitted Values to indicate the location of a sequence component in a read or index
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/IndexReadEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/IndexReadEnum)
+URI: [GHGA:IndexReadEnum](https://w3id.org/GHGA/IndexReadEnum)
 
 
 ## Other properties

@@ -4,7 +4,7 @@
 
 The study associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/studies](https://w3id.org/GHGA-Submission-Metadata-Schema/studies)
+URI: [GHGA:studies](https://w3id.org/GHGA/studies)
 
 
 ## Domain and Range

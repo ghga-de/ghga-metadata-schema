@@ -4,7 +4,7 @@
 
 Enum to capture whether a condition corresponds to a disease or a healthy state.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrHealthyEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/DiseaseOrHealthyEnum)
+URI: [GHGA:DiseaseOrHealthyEnum](https://w3id.org/GHGA/DiseaseOrHealthyEnum)
 
 
 ## Other properties

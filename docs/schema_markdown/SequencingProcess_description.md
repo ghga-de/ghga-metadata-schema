@@ -4,7 +4,7 @@
 
 Description of an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_description](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_description)
+URI: [GHGA:SequencingProcess_description](https://w3id.org/GHGA/SequencingProcess_description)
 
 
 ## Domain and Range

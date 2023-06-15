@@ -4,7 +4,7 @@
 
 Permitted values for ancestry
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AncestryEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/AncestryEnum)
+URI: [GHGA:AncestryEnum](https://w3id.org/GHGA/AncestryEnum)
 
 
 ## Other properties

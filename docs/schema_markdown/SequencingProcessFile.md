@@ -4,7 +4,7 @@
 
 A SequencingProcessFile is a File that is associated with a SequencingProcess.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcessFile](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcessFile)
+URI: [GHGA:SequencingProcessFile](https://w3id.org/GHGA/SequencingProcessFile)
 
 
 [![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess]<sequencing_process%201..1-%20[SequencingProcessFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sequencing_process_input_files%201..*>[SequencingProcessFile],[Submission]++-%20sequencing_process_files%201..*>[SequencingProcessFile],[Submission]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[AnalysisProcess]-%20sequencing_process_input_files(i)%200..*>[SequencingProcessFile],[File]^-[SequencingProcessFile],[SequencingProcess],[File],[Dataset],[Attribute],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess]<sequencing_process%201..1-%20[SequencingProcessFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sequencing_process_input_files%201..*>[SequencingProcessFile],[Submission]++-%20sequencing_process_files%201..*>[SequencingProcessFile],[Submission]-%20sequencing_process_files(i)%200..*>[SequencingProcessFile],[AnalysisProcess]-%20sequencing_process_input_files(i)%200..*>[SequencingProcessFile],[File]^-[SequencingProcessFile],[SequencingProcess],[File],[Dataset],[Attribute],[AnalysisProcess])

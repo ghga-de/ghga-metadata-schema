@@ -4,7 +4,7 @@
 
 The type of a dataset.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset_types](https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset_types)
+URI: [GHGA:Dataset_types](https://w3id.org/GHGA/Dataset_types)
 
 
 ## Domain and Range

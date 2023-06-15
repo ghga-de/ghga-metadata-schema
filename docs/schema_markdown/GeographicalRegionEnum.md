@@ -4,7 +4,7 @@
 
 Permitted values for geographical region
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/GeographicalRegionEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/GeographicalRegionEnum)
+URI: [GHGA:GeographicalRegionEnum](https://w3id.org/GHGA/GeographicalRegionEnum)
 
 
 ## Other properties

@@ -4,7 +4,7 @@
 
 A title for the submitted Dataset.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset_title](https://w3id.org/GHGA-Submission-Metadata-Schema/Dataset_title)
+URI: [GHGA:Dataset_title](https://w3id.org/GHGA/Dataset_title)
 
 
 ## Domain and Range

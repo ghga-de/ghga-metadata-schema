@@ -4,7 +4,7 @@
 
 Enum to capture the type of a study.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/StudyTypeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/StudyTypeEnum)
+URI: [GHGA:StudyTypeEnum](https://w3id.org/GHGA/StudyTypeEnum)
 
 
 ## Other properties

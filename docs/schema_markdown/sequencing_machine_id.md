@@ -4,7 +4,7 @@
 
 The identifier of a sequencing machine.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_machine_id](https://w3id.org/GHGA-Submission-Metadata-Schema/sequencing_machine_id)
+URI: [GHGA:sequencing_machine_id](https://w3id.org/GHGA/sequencing_machine_id)
 
 
 ## Domain and Range

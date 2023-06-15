@@ -4,7 +4,7 @@
 
 The Trios associated with this Submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_trios](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_trios)
+URI: [GHGA:Submission_trios](https://w3id.org/GHGA/Submission_trios)
 
 
 ## Domain and Range

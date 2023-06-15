@@ -4,7 +4,7 @@
 
 Permitted values for library preparation RNASeq strandedness
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationRNASeqStrandednessEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationRNASeqStrandednessEnum)
+URI: [GHGA:LibraryPreparationRNASeqStrandednessEnum](https://w3id.org/GHGA/LibraryPreparationRNASeqStrandednessEnum)
 
 
 ## Other properties

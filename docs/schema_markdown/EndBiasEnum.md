@@ -4,7 +4,7 @@
 
 Permitted values for end bias
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/EndBiasEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/EndBiasEnum)
+URI: [GHGA:EndBiasEnum](https://w3id.org/GHGA/EndBiasEnum)
 
 
 ## Other properties

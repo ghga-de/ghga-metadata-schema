@@ -4,7 +4,7 @@
 
 The key for an attribute.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute_key](https://w3id.org/GHGA-Submission-Metadata-Schema/Attribute_key)
+URI: [GHGA:Attribute_key](https://w3id.org/GHGA/Attribute_key)
 
 
 ## Domain and Range

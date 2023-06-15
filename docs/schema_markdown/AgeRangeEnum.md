@@ -4,7 +4,7 @@
 
 Enum to capture the age range that an Indiviudal belongs to.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/AgeRangeEnum](https://w3id.org/GHGA-Submission-Metadata-Schema/AgeRangeEnum)
+URI: [GHGA:AgeRangeEnum](https://w3id.org/GHGA/AgeRangeEnum)
 
 
 ## Other properties

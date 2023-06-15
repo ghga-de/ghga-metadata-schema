@@ -4,7 +4,7 @@
 
 Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_vital_status_at_sampling](https://w3id.org/GHGA-Submission-Metadata-Schema/Biospecimen_vital_status_at_sampling)
+URI: [GHGA:Biospecimen_vital_status_at_sampling](https://w3id.org/GHGA/Biospecimen_vital_status_at_sampling)
 
 
 ## Domain and Range

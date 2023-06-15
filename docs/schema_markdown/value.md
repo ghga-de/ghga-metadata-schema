@@ -4,7 +4,7 @@
 
 The value of an attribute
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/value](https://w3id.org/GHGA-Submission-Metadata-Schema/value)
+URI: [GHGA:value](https://w3id.org/GHGA/value)
 
 
 ## Domain and Range

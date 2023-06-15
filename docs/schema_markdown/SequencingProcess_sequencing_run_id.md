@@ -4,7 +4,7 @@
 
 Identifier of the sequencing run. Used for batch correction.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_sequencing_run_id](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_sequencing_run_id)
+URI: [GHGA:SequencingProcess_sequencing_run_id](https://w3id.org/GHGA/SequencingProcess_sequencing_run_id)
 
 
 ## Domain and Range

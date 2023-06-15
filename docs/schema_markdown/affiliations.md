@@ -4,7 +4,7 @@
 
 The Institution(s) associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/affiliations](https://w3id.org/GHGA-Submission-Metadata-Schema/affiliations)
+URI: [GHGA:affiliations](https://w3id.org/GHGA/affiliations)
 
 
 ## Domain and Range

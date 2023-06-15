@@ -4,7 +4,7 @@
 
 The SampleFiles that are part of this submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sample_files](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_sample_files)
+URI: [GHGA:Submission_sample_files](https://w3id.org/GHGA/Submission_sample_files)
 
 
 ## Domain and Range

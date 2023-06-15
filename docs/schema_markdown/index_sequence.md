@@ -4,7 +4,7 @@
 
 A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/index_sequence](https://w3id.org/GHGA-Submission-Metadata-Schema/index_sequence)
+URI: [GHGA:index_sequence](https://w3id.org/GHGA/index_sequence)
 
 
 ## Domain and Range

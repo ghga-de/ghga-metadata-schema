@@ -4,7 +4,7 @@
 
 The semantic type for the value of an attribute.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/value_type](https://w3id.org/GHGA-Submission-Metadata-Schema/value_type)
+URI: [GHGA:value_type](https://w3id.org/GHGA/value_type)
 
 
 ## Domain and Range

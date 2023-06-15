@@ -4,7 +4,7 @@
 
 The biospecimens associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/biospecimens](https://w3id.org/GHGA-Submission-Metadata-Schema/biospecimens)
+URI: [GHGA:biospecimens](https://w3id.org/GHGA/biospecimens)
 
 
 ## Domain and Range

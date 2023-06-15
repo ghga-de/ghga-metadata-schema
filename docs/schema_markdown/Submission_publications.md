@@ -4,7 +4,7 @@
 
 One or more Publication entities associated with this Submission.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_publications](https://w3id.org/GHGA-Submission-Metadata-Schema/Submission_publications)
+URI: [GHGA:Submission_publications](https://w3id.org/GHGA/Submission_publications)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_name](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_name)
+URI: [GHGA:LibraryPreparationProtocol_library_name](https://w3id.org/GHGA/LibraryPreparationProtocol_library_name)
 
 
 ## Domain and Range

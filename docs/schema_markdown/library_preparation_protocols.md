@@ -4,7 +4,7 @@
 
 The library_preparation Protocol associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_protocols](https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_protocols)
+URI: [GHGA:library_preparation_protocols](https://w3id.org/GHGA/library_preparation_protocols)
 
 
 ## Domain and Range

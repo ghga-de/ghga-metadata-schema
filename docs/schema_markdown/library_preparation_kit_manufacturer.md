@@ -4,7 +4,7 @@
 
 Manufacturer of library_preparation kit
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_kit_manufacturer](https://w3id.org/GHGA-Submission-Metadata-Schema/library_preparation_kit_manufacturer)
+URI: [GHGA:library_preparation_kit_manufacturer](https://w3id.org/GHGA/library_preparation_kit_manufacturer)
 
 
 ## Domain and Range

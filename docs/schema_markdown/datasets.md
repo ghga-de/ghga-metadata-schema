@@ -4,7 +4,7 @@
 
 The Datasets associated with an entity.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/datasets](https://w3id.org/GHGA-Submission-Metadata-Schema/datasets)
+URI: [GHGA:datasets](https://w3id.org/GHGA/datasets)
 
 
 ## Domain and Range

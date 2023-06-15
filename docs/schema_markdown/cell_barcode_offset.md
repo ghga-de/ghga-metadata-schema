@@ -4,7 +4,7 @@
 
 The offset in sequence of the cell identifying barcode. (Eg. '0').
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/cell_barcode_offset](https://w3id.org/GHGA-Submission-Metadata-Schema/cell_barcode_offset)
+URI: [GHGA:cell_barcode_offset](https://w3id.org/GHGA/cell_barcode_offset)
 
 
 ## Domain and Range

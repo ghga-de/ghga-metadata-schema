@@ -4,7 +4,7 @@
 
 The name and model of the technology platform used to perform sequencing.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_instrument_model](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProtocol_instrument_model)
+URI: [GHGA:SequencingProtocol_instrument_model](https://w3id.org/GHGA/SequencingProtocol_instrument_model)
 
 
 ## Domain and Range

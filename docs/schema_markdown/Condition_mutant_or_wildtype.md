@@ -4,7 +4,7 @@
 
 Whether a condition corresponds to a mutant or a wildtype.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_mutant_or_wildtype](https://w3id.org/GHGA-Submission-Metadata-Schema/Condition_mutant_or_wildtype)
+URI: [GHGA:Condition_mutant_or_wildtype](https://w3id.org/GHGA/Condition_mutant_or_wildtype)
 
 
 ## Domain and Range

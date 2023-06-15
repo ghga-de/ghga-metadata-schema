@@ -4,7 +4,7 @@
 
 Identifier of the sequencing lane. Used for batch correction.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_sequencing_lane_id](https://w3id.org/GHGA-Submission-Metadata-Schema/SequencingProcess_sequencing_lane_id)
+URI: [GHGA:SequencingProcess_sequencing_lane_id](https://w3id.org/GHGA/SequencingProcess_sequencing_lane_id)
 
 
 ## Domain and Range

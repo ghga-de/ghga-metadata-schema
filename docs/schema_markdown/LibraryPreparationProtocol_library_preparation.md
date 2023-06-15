@@ -4,7 +4,7 @@
 
 The general method for sequencing library_preparation (e.g. KAPA PCR-free).
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_preparation](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_library_preparation)
+URI: [GHGA:LibraryPreparationProtocol_library_preparation](https://w3id.org/GHGA/LibraryPreparationProtocol_library_preparation)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/forward_or_reverse](https://w3id.org/GHGA-Submission-Metadata-Schema/forward_or_reverse)
+URI: [GHGA:forward_or_reverse](https://w3id.org/GHGA/forward_or_reverse)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 The size of a file in bytes.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/File_size](https://w3id.org/GHGA-Submission-Metadata-Schema/File_size)
+URI: [GHGA:File_size](https://w3id.org/GHGA/File_size)
 
 
 ## Domain and Range

@@ -4,7 +4,7 @@
 
 One or more attributes that further characterizes this library_preparation Protocol.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_attributes](https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtocol_attributes)
+URI: [GHGA:LibraryPreparationProtocol_attributes](https://w3id.org/GHGA/LibraryPreparationProtocol_attributes)
 
 
 ## Domain and Range
@@ -13,7 +13,7 @@ URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/LibraryPreparationProtoco
 
 ## Parents
 
- *  is_a: [attributes](attributes.md)
+ *  is_a: [AttributeMixin➞attributes](AttributeMixin_attributes.md)
 
 ## Children
 

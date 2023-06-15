@@ -4,7 +4,7 @@
 
 Email of a person.
 
-URI: [https://w3id.org/GHGA-Submission-Metadata-Schema/email](https://w3id.org/GHGA-Submission-Metadata-Schema/email)
+URI: [GHGA:email](https://w3id.org/GHGA/email)
 
 
 ## Domain and Range
