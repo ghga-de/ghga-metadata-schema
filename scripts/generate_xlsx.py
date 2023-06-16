@@ -52,6 +52,20 @@ def _get_ghga_schema_version(schema: SchemaView) -> str:
     return schema_def[0].version
 
 
+THIN_BORDER = Border(
+    left=Side(border_style=BORDER_THIN, color="00000000"),
+    right=Side(border_style=BORDER_THIN, color="00000000"),
+    top=Side(border_style=BORDER_THIN, color="00000000"),
+    bottom=Side(border_style=BORDER_THIN, color="00000000"),
+)
+THIN_BORDER_GRAY = Border(
+    left=Side(border_style=BORDER_THIN, color="808080"),
+    right=Side(border_style=BORDER_THIN, color="808080"),
+    top=Side(border_style=BORDER_THIN, color="808080"),
+    bottom=Side(border_style=BORDER_THIN, color="808080"),
+)
+
+
 def create_xlsx_files(config_path: Path, out_dir: Path):
     with open(config_path, "r", encoding="utf8") as config_file:
         config = Config.parse_obj(yaml.safe_load(config_file))
@@ -145,7 +159,7 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
         # Add worksheets as specified in config
         for ws_config in wb_config.worksheets:
             ws = wb.create_sheet(ws_config.class_name)
-
+            content_fill = PatternFill("solid", ws_config.content_color)
             header_cells = []
             slots = _get_ordered_slots(
                 cls_name=ws_config.class_name, prefix_map=prefix_map
@@ -180,19 +194,6 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
 
                 ws.column_dimensions[get_column_letter(column)].width = 35
 
-            thin_border = Border(
-                left=Side(border_style=BORDER_THIN, color="00000000"),
-                right=Side(border_style=BORDER_THIN, color="00000000"),
-                top=Side(border_style=BORDER_THIN, color="00000000"),
-                bottom=Side(border_style=BORDER_THIN, color="00000000"),
-            )
-            thin_border_gray = Border(
-                left=Side(border_style=BORDER_THIN, color="808080"),
-                right=Side(border_style=BORDER_THIN, color="808080"),
-                top=Side(border_style=BORDER_THIN, color="808080"),
-                bottom=Side(border_style=BORDER_THIN, color="808080"),
-            )
-
             # Color the header and sheet tab
             if ws_config.header_color:
                 header_fill = PatternFill("solid", ws_config.header_color)
@@ -201,17 +202,17 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
                     for column in range(1, len(slots) + 1):
                         cell = ws.cell(row=row, column=column)
                         cell.fill = header_fill
-                        cell.border = thin_border
+                        cell.border = THIN_BORDER
 
             # Color the value fields
             if ws_config.content_color:
                 for row in range(ws.max_row + 1, ws.max_row + 1001):
                     for column in range(1, len(slots) + 1):
                         cell = ws.cell(row=row, column=column)
-                        cell.fill = PatternFill("solid", ws_config.content_color)
-                        cell.border = thin_border_gray
+                        cell.fill = content_fill
+                        cell.border = THIN_BORDER_GRAY
 
-            ws.cell(row=3, column=2).border = thin_border
+            ws.cell(row=3, column=2).border = THIN_BORDER
 
         # Encode metadata model version in the workbook
         ws = wb.create_sheet("__properties")
