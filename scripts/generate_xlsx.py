@@ -116,11 +116,13 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
         ]
         unordered = [slot for slot in slots if slot.name not in config.slot_order]
         all_slots = ordered + unordered
-        # We ignore slots which have a class range when the target class is not included in this workbook
+        # We ignore slots which have a class range when the target class is not included in this workbook.
         ignored_slots = [
             slot
             for slot in all_slots
-            if slot.range in schema.all_classes() and slot.range not in prefix_map
+            if slot.range in schema.all_classes()
+            and slot.range not in prefix_map
+            and schema.get_identifier_slot(slot.range)
         ]
         # If one of those is mandatory, we raise an error
         for ignored_slot in ignored_slots:
