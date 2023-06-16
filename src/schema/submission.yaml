@@ -1171,6 +1171,7 @@ slots:
       Modifier for Data use permission associated with an entity.
       Should be descendants of 'DUO:0000017 data use modifier'
     range: DataUseModifierEnum
+    multivalued: true
 
   sequencing_protocol:
     range: SequencingProtocol

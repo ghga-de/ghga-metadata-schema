@@ -9,7 +9,7 @@ URI: [GHGA:DataAccessPolicy_data_use_modifiers](https://w3id.org/GHGA/DataAccess
 
 ## Domain and Range
 
-[DataAccessPolicy](DataAccessPolicy.md) &#8594;  <sub>0..1</sub> [DataUseModifierEnum](DataUseModifierEnum.md)
+[DataAccessPolicy](DataAccessPolicy.md) &#8594;  <sub>0..\*</sub> [DataUseModifierEnum](DataUseModifierEnum.md)
 
 ## Parents
 
