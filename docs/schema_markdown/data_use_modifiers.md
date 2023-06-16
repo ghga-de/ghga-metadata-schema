@@ -9,7 +9,7 @@ URI: [GHGA:data_use_modifiers](https://w3id.org/GHGA/data_use_modifiers)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [DataUseModifierEnum](DataUseModifierEnum.md)
+None &#8594;  <sub>0..\*</sub> [DataUseModifierEnum](DataUseModifierEnum.md)
 
 ## Parents
 
