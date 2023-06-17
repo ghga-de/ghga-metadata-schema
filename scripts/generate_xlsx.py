@@ -233,6 +233,9 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
             rows.append([Cell(ws, value=col_meta.type_help) for col_meta in col_metas])
             rows.append([Cell(ws, value=col_meta.mv_help) for col_meta in col_metas])
             rows.append(
+                [Cell(ws, value=col_meta.restriction_help) for col_meta in col_metas]
+            )
+            rows.append(
                 [Cell(ws, value=col_meta.required_help) for col_meta in col_metas]
             )
 
