@@ -334,6 +334,7 @@ def main(check: bool = False):
             except ContentDifference as err:
                 echo_failure("Documents are not up-to-date")
                 echo_failure(str(err))
+                sys.exit(1)
     else:
         create_xlsx_files(config_path=CONF_PATH, out_dir=XLSX_DIR)
 
