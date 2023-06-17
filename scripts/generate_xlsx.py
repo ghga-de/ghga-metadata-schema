@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 """Script to generate XLSX spreadsheets for metadata entry"""
 from contextlib import contextmanager
-from filecmp import dircmp
 import glob
 import os
 from pathlib import Path
-from sys import argv, stderr
+from sys import stderr
 import sys
 from tempfile import TemporaryDirectory
 from typing import Generator, Optional
 from linkml_runtime.utils.schemaview import SchemaView
-from linkml_runtime.linkml_model.meta import SlotDefinition, SchemaDefinition
+from linkml_runtime.linkml_model.meta import SlotDefinition
 from openpyxl import Workbook, load_workbook
 from openpyxl.cell import Cell
 from openpyxl.styles import Alignment, PatternFill, Font
@@ -27,6 +26,8 @@ XLSX_DIR = HERE.parent / "spreadsheets"
 
 
 class WorksheetConfig(BaseModel):
+    """A worksheet configuration"""
+
     class_name: str
     prefix: str = ""
     header_color: Optional[str]
@@ -34,11 +35,15 @@ class WorksheetConfig(BaseModel):
 
 
 class WorkbookConfig(BaseModel):
+    """A workbook configuration"""
+
     file_name: str
     worksheets: list[WorksheetConfig]
 
 
 class Config(BaseModel):
+    """A XLSX generator config"""
+
     slot_order: list[str]
     workbooks: list[WorkbookConfig]
 
@@ -72,14 +77,17 @@ ALIGN_HEADER = Alignment(wrapText=True, horizontal="center", vertical="top")
 class ColumnMeta:
     @property
     def type_help(self) -> str:
+        """The type help text"""
         return "type: " + (self.type_name if self.type_name else "string")
 
     @property
     def mv_help(self) -> str:
+        """The multiple values help text"""
         return "multiple values" if self.slot_def.multivalued else "single value"
 
     @property
     def restriction_help(self) -> str:
+        """The restriction help text"""
         if self.enum_name:
             return "controlled vocabulary"
         elif self.cls_name:
@@ -99,6 +107,7 @@ class ColumnMeta:
 
     @property
     def required_help(self) -> str:
+        """The required / recommended / optional help text"""
         if self.slot_def.required:
             return "required"
         elif self.slot_def.recommended:
@@ -107,10 +116,12 @@ class ColumnMeta:
 
     @property
     def name(self) -> str:
+        """The name of the column"""
         return self.slot_def.name
 
     @property
     def description(self) -> str:
+        """The description text"""
         return self.slot_def.description if self.slot_def.description else ""
 
     def __init__(
@@ -119,6 +130,7 @@ class ColumnMeta:
         slot_def: SlotDefinition,
         prefix_map: dict[str, str],
     ):
+        """Creates a new ColumnMeta object"""
         self.slot_def = slot_def
         self.schema = schema
         self.prefix_map = prefix_map
@@ -129,6 +141,7 @@ class ColumnMeta:
 
 
 def _make_value_cell(ws, fill_content):
+    """Creates a new cell for the value area of the worksheet"""
     value_cell = Cell(ws)
     if fill_content:
         value_cell.fill = fill_content
@@ -136,50 +149,58 @@ def _make_value_cell(ws, fill_content):
     return value_cell
 
 
+def _build_prefix_map(wb_config: WorkbookConfig) -> dict[str, str]:
+    """Builds a dictionary mapping every class to the configured column header prefix"""
+    return {
+        ws_config.class_name: ws_config.prefix for ws_config in wb_config.worksheets
+    }
+
+
+def _get_ordered_slots(
+    schema: SchemaView,
+    slot_order: list[str],
+    cls_name: str,
+    prefix_map: dict[str, str],
+) -> list[SlotDefinition]:
+    """Given a class, generates a list of slots that must be rendered. Slots
+    that are listed in the slot_order config parameter are at the top of the
+    list in their respective order. Slots that are referencing other classes
+    which are not part of this workbook are omitted."""
+    slots = schema.class_induced_slots(cls_name)
+    slot_names = {slot.name: idx for idx, slot in enumerate(slots)}
+    ordered = [
+        slots[slot_names[slot_name]]
+        for slot_name in slot_order
+        if slot_name in slot_names
+    ]
+    unordered = [slot for slot in slots if slot.name not in slot_order]
+    all_slots = ordered + unordered
+    # We ignore slots which have a class range when the target class is not included in this workbook.
+    ignored_slots = [
+        slot
+        for slot in all_slots
+        if slot.range in schema.all_classes()
+        and slot.range not in prefix_map
+        and schema.get_identifier_slot(slot.range)
+    ]
+    # If one of those is mandatory, we raise an error
+    for ignored_slot in ignored_slots:
+        if ignored_slot.required:
+            raise RuntimeError(
+                f"Slot '{cls_name}.{ignored_slot.name}' is mandatory, but target class is not included in the workbook!"
+            )
+    slots = [slot for slot in all_slots if slot not in ignored_slots]
+    return slots
+
+
 def create_xlsx_files(config_path: Path, out_dir: Path):
+    """Creates the XLSX workbooks as configured in the provided configuration
+    and writes them to the specified output path"""
     with open(config_path, "r", encoding="utf8") as config_file:
         config = Config.parse_obj(yaml.safe_load(config_file))
 
     # Read schema
     schema = SchemaView(str(SCHEMA_PATH))
-
-    def _build_prefix_map(wb_config: WorkbookConfig) -> dict[str, str]:
-        return {
-            ws_config.class_name: ws_config.prefix for ws_config in wb_config.worksheets
-        }
-
-    def _get_ordered_slots(
-        cls_name: str, prefix_map: dict[str, str]
-    ) -> list[SlotDefinition]:
-        """Given a class, generates a list of slots that must be rendered. Slots
-        that are listed in the slot_order config parameter are at the top of the
-        list in their respective order. Slots that are referencing other classes
-        which are not part of this workbook are omitted."""
-        slots = schema.class_induced_slots(cls_name)
-        slot_names = {slot.name: idx for idx, slot in enumerate(slots)}
-        ordered = [
-            slots[slot_names[slot_name]]
-            for slot_name in config.slot_order
-            if slot_name in slot_names
-        ]
-        unordered = [slot for slot in slots if slot.name not in config.slot_order]
-        all_slots = ordered + unordered
-        # We ignore slots which have a class range when the target class is not included in this workbook.
-        ignored_slots = [
-            slot
-            for slot in all_slots
-            if slot.range in schema.all_classes()
-            and slot.range not in prefix_map
-            and schema.get_identifier_slot(slot.range)
-        ]
-        # If one of those is mandatory, we raise an error
-        for ignored_slot in ignored_slots:
-            if ignored_slot.required:
-                raise RuntimeError(
-                    f"Slot '{cls_name}.{ignored_slot.name}' is mandatory, but target class is not included in the workbook!"
-                )
-        slots = [slot for slot in all_slots if slot not in ignored_slots]
-        return slots
 
     # Create the workbooks
     for wb_config in config.workbooks:
@@ -196,7 +217,10 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
             col_metas = [
                 ColumnMeta(schema, slot_def, prefix_map)
                 for slot_def in _get_ordered_slots(
-                    cls_name=ws_config.class_name, prefix_map=prefix_map
+                    schema=schema,
+                    slot_order=config.slot_order,
+                    cls_name=ws_config.class_name,
+                    prefix_map=prefix_map,
                 )
             ]
 
@@ -266,16 +290,19 @@ class ContentDifference(RuntimeError):
 
 
 @contextmanager
-def working_directory(dir: Path) -> Generator[None, None, None]:
+def working_directory(working_dir: Path) -> Generator[None, None, None]:
+    """Temporarily changes the working directory to the specified directory"""
     cwd = Path.cwd()
     try:
-        os.chdir(dir)
+        os.chdir(working_dir)
         yield
     finally:
         os.chdir(cwd)
 
 
 def compare_xls(expected: Workbook, observed: Workbook):
+    """Compares two workbooks and raises a ContentDifference error if
+    differences are detected."""
     if expected.sheetnames != observed.sheetnames:
         raise ContentDifference(
             f"Sheets differ. expected={expected.sheetnames}. observed={observed.sheetnames}"
@@ -322,6 +349,7 @@ def compare_folders(expected: Path, observed: Path):
 
 
 def main(check: bool = False):
+    """The main routine."""
     if check:
         with TemporaryDirectory() as tmpdirname:
             tmp_docs_dir = Path(tmpdirname)
