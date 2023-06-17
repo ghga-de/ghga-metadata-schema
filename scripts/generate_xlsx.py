@@ -6,11 +6,13 @@ import glob
 import os
 from pathlib import Path
 from sys import argv, stderr
+import sys
 from tempfile import TemporaryDirectory
 from typing import Generator, Optional
 from linkml_runtime.utils.schemaview import SchemaView
 from linkml_runtime.linkml_model.meta import SlotDefinition, SchemaDefinition
 from openpyxl import Workbook, load_workbook
+from openpyxl.cell import Cell
 from openpyxl.styles import Alignment, PatternFill, Font
 from openpyxl.styles.borders import Border, Side, BORDER_THIN
 from openpyxl.utils import get_column_letter
@@ -47,7 +49,7 @@ def _get_ghga_schema_version(schema: SchemaView) -> str:
         for sdef in schema.all_schema()
         if sdef.name == "GHGA-Submission-Metadata-Schema"
     ]
-    if len(schema_def) != 1:
+    if len(schema_def) != 1 or schema_def[0].version is None:
         raise RuntimeError("Unable to identify GHGA Model version.")
     return schema_def[0].version
 
@@ -64,6 +66,74 @@ THIN_BORDER_GRAY = Border(
     top=Side(border_style=BORDER_THIN, color="808080"),
     bottom=Side(border_style=BORDER_THIN, color="808080"),
 )
+ALIGN_HEADER = Alignment(wrapText=True, horizontal="center", vertical="top")
+
+
+class ColumnMeta:
+    @property
+    def type_help(self) -> str:
+        return "type: " + (self.type_name if self.type_name else "string")
+
+    @property
+    def mv_help(self) -> str:
+        return "multiple values" if self.slot_def.multivalued else "single value"
+
+    @property
+    def restriction_help(self) -> str:
+        if self.enum_name:
+            return "controlled vocabulary"
+        elif self.cls_name:
+            id_slot = self.schema.get_identifier_slot(self.cls_name)
+            if id_slot:
+                id_slot_name = id_slot.name
+                try:
+                    target_prefix = self.prefix_map[self.cls_name]
+                except KeyError:
+                    print(
+                        f"Class '{self.cls_name}' is referenced, but not included in the workbook!",
+                        file=stderr,
+                    )
+                    sys.exit(2)
+                return f"restriction: value from {self.cls_name}.{target_prefix}{id_slot_name}"
+        return "unrestricted"
+
+    @property
+    def required_help(self) -> str:
+        if self.slot_def.required:
+            return "required"
+        elif self.slot_def.recommended:
+            return "recommended"
+        return "optional"
+
+    @property
+    def name(self) -> str:
+        return self.slot_def.name
+
+    @property
+    def description(self) -> str:
+        return self.slot_def.description if self.slot_def.description else ""
+
+    def __init__(
+        self,
+        schema: SchemaView,
+        slot_def: SlotDefinition,
+        prefix_map: dict[str, str],
+    ):
+        self.slot_def = slot_def
+        self.schema = schema
+        self.prefix_map = prefix_map
+        self.range = slot_def.range if slot_def.range else "string"
+        self.cls_name = str(range) if range in schema.all_classes() else None
+        self.enum_name = str(range) if range in schema.all_enums() else None
+        self.type_name = str(range) if range in schema.all_types() else None
+
+
+def _make_value_cell(ws, fill_content):
+    value_cell = Cell(ws)
+    if fill_content:
+        value_cell.fill = fill_content
+    value_cell.border = THIN_BORDER_GRAY
+    return value_cell
 
 
 def create_xlsx_files(config_path: Path, out_dir: Path):
@@ -77,42 +147,6 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
         return {
             ws_config.class_name: ws_config.prefix for ws_config in wb_config.worksheets
         }
-
-    def _generate_type_help(
-        slot_def: SlotDefinition, prefix_map: dict[str, str]
-    ) -> tuple[str, str, str]:
-        """Generates a type help text given a slot definition"""
-        range = slot_def.range if slot_def.range else "string"
-        cls_name = range if range in schema.all_classes() else None
-        enum_name = range if range in schema.all_enums() else None
-        type_name = range if range in schema.all_types() else None
-
-        help = []
-
-        # Type help
-        type_help = "type: " + (type_name if type_name else "string")
-
-        # Multivalue help
-        mv_help = "multiple values" if slot_def.multivalued else "single value"
-
-        # Restriction help
-        if enum_name:
-            restr_help = "controlled vocabulary"
-        elif cls_name and schema.get_identifier_slot(cls_name):
-            id_slot = schema.get_identifier_slot(cls_name).name
-            try:
-                target_prefix = prefix_map[cls_name]
-            except KeyError:
-                print(
-                    f"Class '{cls_name}' is referenced, but not included in the workbook!",
-                    file=stderr,
-                )
-                exit(2)
-            restr_help = f"restriction: value from {cls_name}.{target_prefix}{id_slot}"
-        else:
-            restr_help = "unrestricted"
-
-        return type_help, mv_help, restr_help
 
     def _get_ordered_slots(
         cls_name: str, prefix_map: dict[str, str]
@@ -159,60 +193,63 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
         # Add worksheets as specified in config
         for ws_config in wb_config.worksheets:
             ws = wb.create_sheet(ws_config.class_name)
-            content_fill = PatternFill("solid", ws_config.content_color)
-            header_cells = []
-            slots = _get_ordered_slots(
-                cls_name=ws_config.class_name, prefix_map=prefix_map
+            col_metas = [
+                ColumnMeta(schema, slot_def, prefix_map)
+                for slot_def in _get_ordered_slots(
+                    cls_name=ws_config.class_name, prefix_map=prefix_map
+                )
+            ]
+
+            # Generate the header rows
+            rows = []
+            rows.append([Cell(ws, value=col_meta.name) for col_meta in col_metas])
+            rows.append(
+                [Cell(ws, value=col_meta.description) for col_meta in col_metas]
             )
-            for column, slot_def in enumerate(slots, 1):
-                # Header
-                name_cell = ws.cell(
-                    row=1, column=column, value=ws_config.prefix + slot_def.name
-                )
-                name_cell.alignment = Alignment(horizontal="center")
-                name_cell.font = Font(bold=True)
-                # Description
-                desc = slot_def.description if slot_def.description else ""
-                desc_cell = ws.cell(row=2, column=column, value=desc)
-                desc_cell.alignment = Alignment(
-                    wrapText=True, horizontal="center", vertical="top"
-                )
-                # Help content
-                type_help, mv_help, restr_help = _generate_type_help(
-                    slot_def=slot_def, prefix_map=prefix_map
-                )
-                # Type Help
-                type_help_cell = ws.cell(row=3, column=column, value=type_help)
-                type_help_cell.alignment = Alignment(wrapText=True, horizontal="center")
-                # Multi-valued help
-                mv_help_cell = ws.cell(row=4, column=column, value=mv_help)
-                mv_help_cell.alignment = Alignment(wrapText=True, horizontal="center")
-                # Restriction help
-                ws.cell(row=5, column=column, value=restr_help).alignment = Alignment(
-                    wrapText=True, horizontal="center"
-                )
+            rows.append([Cell(ws, value=col_meta.type_help) for col_meta in col_metas])
+            rows.append([Cell(ws, value=col_meta.mv_help) for col_meta in col_metas])
+            rows.append(
+                [Cell(ws, value=col_meta.required_help) for col_meta in col_metas]
+            )
 
-                ws.column_dimensions[get_column_letter(column)].width = 35
+            # Format the header rows
+            font_bold = Font(bold=True)
+            fill_header = (
+                PatternFill("solid", fgColor=ws_config.header_color)
+                if ws_config.header_color
+                else None
+            )
+            for cell in rows[0]:
+                cell.font = font_bold
+            for row in rows:
+                for cell in row:
+                    cell.alignment = ALIGN_HEADER
+                    if fill_header:
+                        cell.fill = fill_header
+                    cell.border = THIN_BORDER
 
-            # Color the header and sheet tab
+            # Format the sheet tab color
             if ws_config.header_color:
-                header_fill = PatternFill("solid", ws_config.header_color)
                 ws.sheet_properties.tabColor = ws_config.header_color
-                for row in range(1, 6):
-                    for column in range(1, len(slots) + 1):
-                        cell = ws.cell(row=row, column=column)
-                        cell.fill = header_fill
-                        cell.border = THIN_BORDER
 
             # Color the value fields
-            if ws_config.content_color:
-                for row in range(ws.max_row + 1, ws.max_row + 1001):
-                    for column in range(1, len(slots) + 1):
-                        cell = ws.cell(row=row, column=column)
-                        cell.fill = content_fill
-                        cell.border = THIN_BORDER_GRAY
+            fill_content = (
+                PatternFill("solid", fgColor=ws_config.content_color)
+                if ws_config.content_color
+                else None
+            )
 
-            ws.cell(row=3, column=2).border = THIN_BORDER
+            for _ in range(1000):
+                rows.append(
+                    [_make_value_cell(ws, fill_content) for _ in range(len(col_metas))]
+                )
+
+            for row in rows:
+                ws.append(row)
+
+            # Format column width
+            for column in range(1, ws.max_column + 1):
+                ws.column_dimensions[get_column_letter(column)].width = 35
 
         # Encode metadata model version in the workbook
         ws = wb.create_sheet("__properties")
