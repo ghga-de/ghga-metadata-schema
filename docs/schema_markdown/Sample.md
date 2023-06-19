@@ -7,7 +7,7 @@ A sample is a limited quantity of something to be used for testing, analysis, in
 URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:IsolationEnum%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:IsolationEnum%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%200..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -18,7 +18,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
  *  **[SampleFile](SampleFile.md)** *[SampleFile➞sample](SampleFile_sample.md)*  <sub>1..1</sub>  **[Sample](Sample.md)**
  *  **[SequencingProcess](SequencingProcess.md)** *[SequencingProcess➞sample](SequencingProcess_sample.md)*  <sub>1..1</sub>  **[Sample](Sample.md)**
- *  **[Submission](Submission.md)** *[Submission➞samples](Submission_samples.md)*  <sub>0..\*</sub>  **[Sample](Sample.md)**
+ *  **[Submission](Submission.md)** *[Submission➞samples](Submission_samples.md)*  <sub>1..\*</sub>  **[Sample](Sample.md)**
  *  **None** *[sample](sample.md)*  <sub>0..1</sub>  **[Sample](Sample.md)**
  *  **None** *[samples](samples.md)*  <sub>0..\*</sub>  **[Sample](Sample.md)**
 
@@ -38,7 +38,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * Range: [String](types/String.md)
  * [isolation](isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
-     * Range: [IsolationEnum](IsolationEnum.md)
+     * Range: [String](types/String.md)
  * [Sample➞storage](Sample_storage.md)  <sub>0..1</sub>
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [String](types/String.md)

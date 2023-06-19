@@ -9,7 +9,7 @@ URI: [GHGA:Individual_geographical_region](https://w3id.org/GHGA/Individual_geog
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..1</sub> [GeographicalRegionEnum](GeographicalRegionEnum.md)
+[Individual](Individual.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

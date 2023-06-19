@@ -9,7 +9,7 @@ URI: [GHGA:Submission_biospecimens](https://w3id.org/GHGA/Submission_biospecimen
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Biospecimen](Biospecimen.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [Biospecimen](Biospecimen.md)
 
 ## Parents
 

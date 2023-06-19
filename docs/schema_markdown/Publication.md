@@ -7,11 +7,15 @@ The Publication entity represents a publication. While a publication can be any 
 URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*],[Submission]++-%20publications%200..*>[Publication],[Submission]++-%20publications(i)%200..*>[Publication])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*],[Submission]++-%20publications%200..*>[Publication],[Submission]++-%20publications(i)%200..*>[Publication])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;alias:string],[Submission]++-%20publications%201..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[Publication]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;alias:string],[Submission]++-%20publications%201..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[Publication]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
+
+## Uses Mixin
+
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞publications](Submission_publications.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
+ *  **[Submission](Submission.md)** *[Submission➞publications](Submission_publications.md)*  <sub>1..\*</sub>  **[Publication](Publication.md)**
  *  **None** *[publications](publications.md)*  <sub>0..\*</sub>  **[Publication](Publication.md)**
 
 ## Attributes
@@ -42,4 +46,10 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
      * Range: [Study](Study.md)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Publication.
+     * Range: [String](types/String.md)
+
+### Mixed in from IdentifiedByAliasMixin:
+
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)

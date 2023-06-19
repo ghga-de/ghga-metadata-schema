@@ -507,6 +507,8 @@ classes:
         required: false
 
   Trio:
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       A trio is defined by three individuals representing an individual and their parents.
     slots:
@@ -629,6 +631,8 @@ classes:
         required: true
 
   AnalysisProcess:
+    mixins:
+      - IdentifiedByAliasMixin
     slots:
       - analysis
       - study_input_files
@@ -748,6 +752,8 @@ classes:
         required: true
 
   Publication:
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       The Publication entity represents a publication. While a publication can be any
       article that is published, the minimum expectation is that the publication has a
@@ -826,13 +832,13 @@ classes:
       samples:
         description: >-
           Information about one or more Sample entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       biospecimens:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       conditions:
@@ -843,31 +849,31 @@ classes:
       individuals:
         description: >-
           Information about one or more Individual entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       sequencing_experiments:
         description: >-
           Information about one or more Experiment entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       sequencing_protocols:
         description: >-
           One or more sequencing protocol entities associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       library_preparation_protocols:
         description: >-
           One or more library preparation protocol entities associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       analyses:
         description: >-
           Information about one or more Analysis entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       study_files:
@@ -921,7 +927,7 @@ classes:
       publications:
         description: >-
           One or more Publication entities associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       trios:
@@ -1065,7 +1071,8 @@ slots:
 
   phenotypic_features:
     description: Phenotypic feature concepts that the entity is associated with.
-    range: PhenotypicFeaturesEnum
+    pattern: .*
+    # range: PhenotypicFeaturesEnum
     multivalued: true
 
   mother:
@@ -1083,7 +1090,8 @@ slots:
   ancestries:
     description: >-
       A person's descent or lineage, from a person or from a population.
-    range: AncestryEnum
+    pattern: HANCESTRO:.*
+    # range: AncestryEnum
     multivalued: true
 
   study_files:
@@ -1233,7 +1241,7 @@ slots:
   library_preparation_kit_retail_name:
     description: >-
       A unique identifier for the kit used to construct a genomic library.
-      This may include the vendor name, kit name and kit version 
+      This may include the vendor name, kit name and kit version
       (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
     range: LibraryPreparationKitRetailNameEnum
 
@@ -1363,7 +1371,8 @@ slots:
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
-    range: IsolationEnum
+    pattern: SNOMED:.*
+    # range: IsolationEnum
 
   storage:
     description: >-
@@ -1394,7 +1403,8 @@ slots:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
-    range: GeographicalRegionEnum
+    pattern: HANCESTRO:.*
+    # range: GeographicalRegionEnum
 
   vital_status:
     description: >-
@@ -1457,7 +1467,7 @@ slots:
 
   abstract:
     description: >-
-      The study abstract that describes the goals. 
+      The study abstract that describes the goals.
       Can also hold abstract from a publication related to this study
 
   author:
@@ -1478,7 +1488,8 @@ slots:
       DOI identifier of a publication.
 
   tissue:
-    range: TissueEnum
+    pattern: BTO:.*
+    # range: TissueEnum
 
   trios:
     description: The Trios associated with an entity.
@@ -1493,6 +1504,43 @@ enums:
       source_nodes:
         - DUO:0000017
       include_self: false
+    permissible_values:
+      clinical care use:
+        meaning: DUO:0000043
+      return to database or resource:
+        meaning: DUO:0000029
+      institution specific restriction:
+        meaning: DUO:0000028
+      project specific restriction:
+        meaning: DUO:0000027
+      user specific restriction:
+        meaning: DUO:0000026
+      time limit on use:
+        meaning: DUO:0000025
+      publication moratorium:
+        meaning: DUO:0000024
+      geographical restriction:
+        meaning: DUO:0000022
+      ethics approval required:
+        meaning: DUO:0000021
+      collaboration required:
+        meaning: DUO:0000020
+      publication required:
+        meaning: DUO:0000019
+      not for profit, non commercial use only:
+        meaning: DUO:0000018
+      non-commercial use only:
+        meaning: DUO:0000046
+      not for profit organisation use only:
+        meaning: DUO:0000045
+      genetic studies only:
+        meaning: DUO:0000016
+      no general methods research:
+        meaning: DUO:0000015
+      research specific restrictions:
+        meaning: DUO:0000012
+      population origins or ancestry research prohibited:
+        meaning: DUO:00000044
 
   DataUsePermissionEnum:
     description: Permitted values for data use permission
@@ -1501,6 +1549,17 @@ enums:
       source_nodes:
         - DUO:0000001
       include_self: false
+    permissible_values:
+      general research use:
+        meaning: DUO:0000042
+      health or medical or biomedical research:
+        meaning: DUO:0000006
+      disease specific research:
+        meaning: DUO:0000007
+      no restriction:
+        meaning: DUO:0000004
+      population origins or ancestry research only:
+        meaning: DUO:0000011
 
   AncestryEnum:
     description: Permitted values for ancestry
@@ -1581,7 +1640,7 @@ enums:
     description: >-
       The sex of an Individual as as defined in a specific medical and clinical context.
     reachable_from:
-      source_ontology: obo:gsso
+      source_ontology: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
       source_nodes:
         - GSSO:009428
       include_self: false

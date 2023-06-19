@@ -9,7 +9,7 @@ URI: [GHGA:Biospecimen_isolation](https://w3id.org/GHGA/Biospecimen_isolation)
 
 ## Domain and Range
 
-[Biospecimen](Biospecimen.md) &#8594;  <sub>0..1</sub> [IsolationEnum](IsolationEnum.md)
+[Biospecimen](Biospecimen.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

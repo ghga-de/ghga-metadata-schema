@@ -73,23 +73,23 @@ AnalysisProcessOutputFile {
 
 }
 
-Submission ||--}o Analysis : "analyses"
+Submission ||--}| Analysis : "analyses"
 Submission ||--}| AnalysisProcessOutputFile : "analysis_process_output_files"
 Submission ||--}| AnalysisProcess : "analysis_processes"
-Submission ||--}o Biospecimen : "biospecimens"
+Submission ||--}| Biospecimen : "biospecimens"
 Submission ||--}| Condition : "conditions"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| Dataset : "datasets"
-Submission ||--}o Individual : "individuals"
-Submission ||--}o LibraryPreparationProtocol : "library_preparation_protocols"
-Submission ||--}o Publication : "publications"
+Submission ||--}| Individual : "individuals"
+Submission ||--}| LibraryPreparationProtocol : "library_preparation_protocols"
+Submission ||--}| Publication : "publications"
 Submission ||--}| SampleFile : "sample_files"
-Submission ||--}o Sample : "samples"
-Submission ||--}o SequencingExperiment : "sequencing_experiments"
+Submission ||--}| Sample : "samples"
+Submission ||--}| SequencingExperiment : "sequencing_experiments"
 Submission ||--}| SequencingProcessFile : "sequencing_process_files"
 Submission ||--}| SequencingProcess : "sequencing_processes"
-Submission ||--}o SequencingProtocol : "sequencing_protocols"
+Submission ||--}| SequencingProtocol : "sequencing_protocols"
 Submission ||--}| Study : "studies"
 Submission ||--}| StudyFile : "study_files"
 Submission ||--}| Trio : "trios"
@@ -228,26 +228,26 @@ Individual {
     KaryotypeEnum karyotype  
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
-    GeographicalRegionEnum geographical_region  
-    AncestryEnumList ancestries  
-    PhenotypicFeaturesEnumList phenotypic_features  
+    string geographical_region  
+    stringList ancestries  
+    stringList phenotypic_features  
     string alias  
 }
 Biospecimen {
     string name  
     string type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    TissueEnum tissue  
+    string tissue  
     string alias  
 }
 Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     stringList xref  
     string alias  
@@ -289,7 +289,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     stringList xref  
     string alias  
@@ -326,7 +326,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     stringList xref  
     string alias  

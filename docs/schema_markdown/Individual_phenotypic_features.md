@@ -9,7 +9,7 @@ URI: [GHGA:Individual_phenotypic_features](https://w3id.org/GHGA/Individual_phen
 
 ## Domain and Range
 
-[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md)
+[Individual](Individual.md) &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Parents
 
