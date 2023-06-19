@@ -141,9 +141,9 @@ class ColumnMeta:
         self.schema = schema
         self.wb_classes = wb_classes
         self.range = slot_def.range if slot_def.range else "string"
-        self.cls_name = str(range) if range in schema.all_classes() else None
-        self.enum_name = str(range) if range in schema.all_enums() else None
-        self.type_name = str(range) if range in schema.all_types() else None
+        self.cls_name = str(self.range) if self.range in schema.all_classes() else None
+        self.enum_name = str(self.range) if self.range in schema.all_enums() else None
+        self.type_name = str(self.range) if self.range in schema.all_types() else None
 
 
 def _make_value_cell(ws, fill_content):
