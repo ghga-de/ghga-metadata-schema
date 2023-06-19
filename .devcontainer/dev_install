@@ -1,0 +1,9 @@
+#!/bin/bash
+# install service in dev container
+
+cd /workspace
+
+# install in edit mode with testing dependencies
+pip install \
+    -r \
+    requirements.txt

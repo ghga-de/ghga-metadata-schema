@@ -1,0 +1,30 @@
+
+# Slot: description
+
+
+Description of an entity.
+
+URI: [GHGA:Biospecimen_description](https://w3id.org/GHGA/Biospecimen_description)
+
+
+## Domain and Range
+
+[Biospecimen](Biospecimen.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+
+## Parents
+
+ *  is_a: [description](description.md)
+
+## Children
+
+
+## Used by
+
+ * [Biospecimen](Biospecimen.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | SIO:000185 |
+
