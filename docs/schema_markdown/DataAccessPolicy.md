@@ -7,11 +7,10 @@ A Data Access Policy specifies under which circumstances, legal or otherwise, a 
 URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Dataset],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_use_permission:DataUsePermissionEnum;data_use_modifiers:DataUseModifierEnum%20*;alias:string],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[IdentifiedByAliasMixin],[DataAccessCommittee],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Dataset],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_use_permission:DataUsePermissionEnum;data_use_modifiers:DataUseModifierEnum%20*;alias:string],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[AttributeMixin],[DataAccessPolicy]uses%20-.->[IdentifiedByAliasMixin],[DataAccessCommittee],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Dataset],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_use_permission:DataUsePermissionEnum;data_use_modifiers:DataUseModifierEnum%20*;alias:string],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[IdentifiedByAliasMixin],[DataAccessCommittee])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Dataset],[DataAccessCommittee]<data_access_committee%201..1-%20[DataAccessPolicy&#124;name:string;description:string;policy_text:string;policy_url:string%20%3F;data_use_permission:DataUsePermissionEnum;data_use_modifiers:DataUseModifierEnum%20*;alias:string],[Dataset]-%20data_access_policy%201..1>[DataAccessPolicy],[Submission]++-%20data_access_policies%201..*>[DataAccessPolicy],[Submission]-%20data_access_policies(i)%200..*>[DataAccessPolicy],[Dataset]-%20data_access_policy(i)%200..1>[DataAccessPolicy],[DataAccessPolicy]uses%20-.->[IdentifiedByAliasMixin],[DataAccessCommittee])
 
 ## Uses Mixin
 
- *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
  *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
@@ -47,12 +46,6 @@ URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
  * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md)  <sub>0..\*</sub>
      * Description: Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
      * Range: [DataUseModifierEnum](DataUseModifierEnum.md)
-
-### Mixed in from AttributeMixin:
-
- * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
-     * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

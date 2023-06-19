@@ -16,7 +16,7 @@ URI: [GHGA:MutantOrWildtypeEnum](https://w3id.org/GHGA/MutantOrWildtypeEnum)
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| mutant | Mutant state. |  |  |
-| wildtype | Wildtype state. |  |  |
-| not_applicable | The distinction is not applicaple. |  |  |
+| MUTANT | Mutant state. |  |  |
+| WILDTYPE | Wildtype state. |  |  |
+| NOT_APPLICABLE | The distinction is not applicaple. |  |  |
 

@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [DataAccessCommittee➞email](DataAccessCommittee_email.md)
 
 ## Used by
 

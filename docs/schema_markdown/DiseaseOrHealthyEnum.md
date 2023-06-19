@@ -16,7 +16,7 @@ URI: [GHGA:DiseaseOrHealthyEnum](https://w3id.org/GHGA/DiseaseOrHealthyEnum)
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| disease | Disease state. |  |  |
-| healthy | Healthy state. |  |  |
-| not_applicable | The distinction is not applicaple. |  |  |
+| DISEASE | Disease state. |  |  |
+| HEALTHY | Healthy state. |  |  |
+| NOT_APPLICABLE | The distinction is not applicaple. |  |  |
 
