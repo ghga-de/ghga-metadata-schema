@@ -1080,7 +1080,8 @@ slots:
 
   phenotypic_features:
     description: Phenotypic feature concepts that the entity is associated with.
-    range: PhenotypicFeaturesEnum
+    pattern: .*
+    # range: PhenotypicFeaturesEnum
     multivalued: true
 
   mother:
@@ -1098,7 +1099,8 @@ slots:
   ancestries:
     description: >-
       A person's descent or lineage, from a person or from a population.
-    range: AncestryEnum
+    pattern: HANCESTRO:.*
+    # range: AncestryEnum
     multivalued: true
 
   study_files:
@@ -1379,7 +1381,8 @@ slots:
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
-    range: IsolationEnum
+    pattern: SNOMED:.*
+    # range: IsolationEnum
 
   storage:
     description: >-
@@ -1410,7 +1413,8 @@ slots:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
-    range: GeographicalRegionEnum
+    pattern: HANCESTRO:.*
+    # range: GeographicalRegionEnum
 
   vital_status:
     description: >-
@@ -1494,7 +1498,8 @@ slots:
       DOI identifier of a publication.
 
   tissue:
-    range: TissueEnum
+    pattern: BTO:.*
+    # range: TissueEnum
 
   trios:
     description: The Trios associated with an entity.
@@ -1509,6 +1514,43 @@ enums:
       source_nodes:
         - DUO:0000017
       include_self: false
+    permissible_values:
+      clinical care use:
+        meaning: DUO:0000043
+      return to database or resource:
+        meaning: DUO:0000029
+      institution specific restriction:
+        meaning: DUO:0000028
+      project specific restriction:
+        meaning: DUO:0000027
+      user specific restriction:
+        meaning: DUO:0000026
+      time limit on use:
+        meaning: DUO:0000025
+      publication moratorium:
+        meaning: DUO:0000024
+      geographical restriction:
+        meaning: DUO:0000022
+      ethics approval required:
+        meaning: DUO:0000021
+      collaboration required:
+        meaning: DUO:0000020
+      publication required:
+        meaning: DUO:0000019
+      not for profit, non commercial use only:
+        meaning: DUO:0000018
+      non-commercial use only:
+        meaning: DUO:0000046
+      not for profit organisation use only:
+        meaning: DUO:0000045
+      genetic studies only:
+        meaning: DUO:0000016
+      no general methods research:
+        meaning: DUO:0000015
+      research specific restrictions:
+        meaning: DUO:0000012
+      population origins or ancestry research prohibited:
+        meaning: DUO:00000044
 
   DataUsePermissionEnum:
     description: Permitted values for data use permission
@@ -1517,6 +1559,17 @@ enums:
       source_nodes:
         - DUO:0000001
       include_self: false
+    permissible_values:
+      general research use:
+        meaning: DUO:0000042
+      health or medical or biomedical research:
+        meaning: DUO:0000006
+      disease specific research:
+        meaning: DUO:0000007
+      no restriction:
+        meaning: DUO:0000004
+      population origins or ancestry research only:
+        meaning: DUO:0000011
 
   AncestryEnum:
     description: Permitted values for ancestry
