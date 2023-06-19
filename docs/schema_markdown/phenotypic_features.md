@@ -9,7 +9,7 @@ URI: [GHGA:phenotypic_features](https://w3id.org/GHGA/phenotypic_features)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..\*</sub> [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md)
+None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Parents
 

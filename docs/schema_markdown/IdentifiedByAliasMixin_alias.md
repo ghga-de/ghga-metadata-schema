@@ -21,6 +21,7 @@ URI: [GHGA:IdentifiedByAliasMixin_alias](https://w3id.org/GHGA/IdentifiedByAlias
 
 ## Used by
 
+ * [AnalysisProcess](AnalysisProcess.md)
  * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [Biospecimen](Biospecimen.md)
  * [Condition](Condition.md)
@@ -31,6 +32,7 @@ URI: [GHGA:IdentifiedByAliasMixin_alias](https://w3id.org/GHGA/IdentifiedByAlias
  * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [Individual](Individual.md)
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
+ * [Publication](Publication.md)
  * [Sample](Sample.md)
  * [SampleFile](SampleFile.md)
  * [SequencingExperiment](SequencingExperiment.md)
@@ -39,3 +41,4 @@ URI: [GHGA:IdentifiedByAliasMixin_alias](https://w3id.org/GHGA/IdentifiedByAlias
  * [SequencingProtocol](SequencingProtocol.md)
  * [Study](Study.md)
  * [StudyFile](StudyFile.md)
+ * [Trio](Trio.md)

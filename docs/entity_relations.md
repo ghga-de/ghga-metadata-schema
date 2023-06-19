@@ -236,26 +236,26 @@ Individual {
     KaryotypeEnum karyotype  
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status  
-    GeographicalRegionEnum geographical_region  
-    AncestryEnumList ancestries  
-    PhenotypicFeaturesEnumList phenotypic_features  
+    string geographical_region  
+    stringList ancestries  
+    stringList phenotypic_features  
     string alias  
 }
 Biospecimen {
     string name  
     string type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     VitalStatusEnum vital_status_at_sampling  
-    TissueEnum tissue  
+    string tissue  
     string alias  
 }
 Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     stringList xref  
     string alias  
@@ -297,7 +297,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     stringList xref  
     string alias  
@@ -335,7 +335,7 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    IsolationEnum isolation  
+    string isolation  
     string storage  
     stringList xref  
     string alias  

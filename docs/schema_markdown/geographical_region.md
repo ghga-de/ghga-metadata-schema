@@ -9,7 +9,7 @@ URI: [GHGA:geographical_region](https://w3id.org/GHGA/geographical_region)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [GeographicalRegionEnum](GeographicalRegionEnum.md)
+None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 

@@ -7,7 +7,7 @@ An Individual is a Person who is participating in a Study.
 URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;age_at_sampling:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:GeographicalRegionEnum%20%3F;ancestries:AncestryEnum%20*;phenotypic_features:PhenotypicFeaturesEnum%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;age_at_sampling:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:GeographicalRegionEnum%20%3F;ancestries:AncestryEnum%20*;phenotypic_features:PhenotypicFeaturesEnum%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;age_at_sampling:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;ancestries:string%20*;phenotypic_features:string%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;age_at_sampling:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;ancestries:string%20*;phenotypic_features:string%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])
 
 ## Uses Mixin
 
@@ -45,13 +45,13 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
  * [Individual➞geographical_region](Individual_geographical_region.md)  <sub>0..1</sub>
      * Description: The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
-     * Range: [GeographicalRegionEnum](GeographicalRegionEnum.md)
+     * Range: [String](types/String.md)
  * [Individual➞ancestries](Individual_ancestries.md)  <sub>0..\*</sub>
      * Description: A person's descent or lineage, from a person or from a population.
-     * Range: [AncestryEnum](AncestryEnum.md)
+     * Range: [String](types/String.md)
  * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
      * Description: The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
-     * Range: [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md)
+     * Range: [String](types/String.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

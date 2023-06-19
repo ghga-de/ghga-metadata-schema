@@ -46,7 +46,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Slots
 
- * [abstract](abstract.md) - The study abstract that describes the goals.  Can also hold abstract from a publication related to this study
+ * [abstract](abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this study
      * [Publication➞abstract](Publication_abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
  * [accession](accession.md) - A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
      * [AccessionMixin➞accession](AccessionMixin_accession.md)
@@ -175,7 +175,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [LibraryPreparationProtocol➞library_preparation](LibraryPreparationProtocol_library_preparation.md)
  * [library_preparation_kit_manufacturer](library_preparation_kit_manufacturer.md) - Manufacturer of library_preparation kit
      * [LibraryPreparationProtocol➞library_preparation_kit_manufacturer](LibraryPreparationProtocol_library_preparation_kit_manufacturer.md)
- * [library_preparation_kit_retail_name](library_preparation_kit_retail_name.md) - A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+ * [library_preparation_kit_retail_name](library_preparation_kit_retail_name.md) - A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
      * [LibraryPreparationProtocol➞library_preparation_kit_retail_name](LibraryPreparationProtocol_library_preparation_kit_retail_name.md)
  * [library_preparation_protocol](library_preparation_protocol.md) - The library_preparation Protocol associated with an entity.
      * [SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md)

@@ -7,7 +7,11 @@
 URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]++-%20analysis_processes(i)%200..*>[AnalysisProcess],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]++-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]++-%20analysis_processes(i)%200..*>[AnalysisProcess],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess&#124;alias:string],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]-%20analysis_processes(i)%200..*>[AnalysisProcess],[AnalysisProcess]uses%20-.->[IdentifiedByAliasMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%201..*-%20[AnalysisProcess&#124;alias:string],[SampleFile]<sample_input_files%201..*-%20[AnalysisProcess],[StudyFile]<study_input_files%201..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]-%20analysis_processes(i)%200..*>[AnalysisProcess],[AnalysisProcess]uses%20-.->[IdentifiedByAliasMixin],[Analysis])
+
+## Uses Mixin
+
+ *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
 
@@ -33,3 +37,9 @@ URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
  * [AnalysisProcess➞sequencing_process_input_files](AnalysisProcess_sequencing_process_input_files.md)  <sub>1..\*</sub>
      * Description: The SequencingProcessFile associated used as an input for an entity.
      * Range: [SequencingProcessFile](SequencingProcessFile.md)
+
+### Mixed in from IdentifiedByAliasMixin:
+
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
+     * Range: [String](types/String.md)

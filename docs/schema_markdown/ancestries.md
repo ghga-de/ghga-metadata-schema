@@ -9,7 +9,7 @@ URI: [GHGA:ancestries](https://w3id.org/GHGA/ancestries)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..\*</sub> [AncestryEnum](AncestryEnum.md)
+None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Parents
 

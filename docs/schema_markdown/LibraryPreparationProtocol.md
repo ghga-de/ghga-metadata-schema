@@ -45,7 +45,7 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
      * Description: The general method for sequencing library_preparation (e.g. KAPA PCR-free).
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞library_preparation_kit_retail_name](LibraryPreparationProtocol_library_preparation_kit_retail_name.md)  <sub>0..1</sub>
-     * Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version  (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+     * Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
      * Range: [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md)
  * [LibraryPreparationProtocol➞library_preparation_kit_manufacturer](LibraryPreparationProtocol_library_preparation_kit_manufacturer.md)  <sub>0..1</sub>
      * Description: Manufacturer of library_preparation kit
