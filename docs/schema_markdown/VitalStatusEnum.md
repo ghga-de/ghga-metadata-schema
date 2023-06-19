@@ -16,7 +16,7 @@ URI: [GHGA:VitalStatusEnum](https://w3id.org/GHGA/VitalStatusEnum)
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| alive | Showing characteristics of life; displaying signs of life. |  |  |
-| deceased | The cessation of life. |  |  |
-| unknown | Vital status is unknown. |  |  |
+| ALIVE | Showing characteristics of life; displaying signs of life. |  |  |
+| DECEASED | The cessation of life. |  |  |
+| UNKNOWN | Vital status is unknown. |  |  |
 

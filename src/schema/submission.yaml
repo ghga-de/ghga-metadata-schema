@@ -527,8 +527,6 @@ classes:
   File:
     mixins:
       - IdentifiedByAliasMixin
-      - AttributeMixin
-    aliases: ["file object"]
     description: >-
       A file is an object that contains information generated from a process, either an
       Experiment or an Analysis.
@@ -655,7 +653,6 @@ classes:
   Dataset:
     mixins:
       - IdentifiedByAliasMixin
-      - AttributeMixin
     description: >-
       A Dataset is a collection of Files that is prepared for distribution
       and is tied to a Data Access Policy.
@@ -685,7 +682,6 @@ classes:
 
   DataAccessPolicy:
     mixins:
-      - AttributeMixin
       - IdentifiedByAliasMixin
     description: >-
       A Data Access Policy specifies under which circumstances, legal or otherwise,
@@ -737,24 +733,19 @@ classes:
 
   DataAccessCommittee:
     mixins:
-      - AttributeMixin
       - IdentifiedByAliasMixin
     description: >-
       A group of members that are delegated to grant access to one or more datasets
       after ensuring the minimum criteria for data sharing has been met, and request
       for data use does not raise ethical and/or legal concerns.
     slots:
-      - name
-      - description
+      - email
+      - institute
     slot_usage:
-      name:
-        description: >-
-          The name for the Data Access Committee.
+      email:
         required: true
-      description:
-        description: >-
-          A description for the Data Access Committee.
-        required: false
+      institute:
+        required: true
 
   Publication:
     description: >-
@@ -1200,8 +1191,8 @@ slots:
     multivalued: True
     description: The library_preparation Protocol associated with an entity.
 
-  organization:
-    description: The organization associated with a person.
+  institute:
+    description: The institute a person is affiliated with.
 
   email:
     description: >-
@@ -1278,7 +1269,6 @@ slots:
     range: LibraryPreparationRNASeqStrandednessEnum
 
   sequencing_center:
-    required: false
     description: >-
       Center where sample was sequenced.
 
@@ -1611,15 +1601,16 @@ enums:
     description: >-
       Enum to capture the vital status of an individual.
     permissible_values:
-      alive:
+      ALIVE:
         description: >-
           Showing characteristics of life; displaying signs of life.
-      deceased:
+      DECEASED:
         description: >-
           The cessation of life.
-      unknown:
+      UNKNOWN:
         description: >-
           Vital status is unknown.
+
   StudyTypeEnum:
     description: >-
       Enum to capture the type of a study.
@@ -1914,11 +1905,11 @@ enums:
     description: >-
       Enum to capture whether a condition corresponds to a disease or a healthy state.
     permissible_values:
-      disease:
+      DISEASE:
         description: Disease state.
-      healthy:
+      HEALTHY:
         description: Healthy state.
-      not_applicable:
+      NOT_APPLICABLE:
         description: The distinction is not applicaple.
 
   CaseControlStatusEnum:
@@ -1947,20 +1938,20 @@ enums:
     description: >-
       Enum to capture whether a condition corresponds to a mutant or a wildtype.
     permissible_values:
-      mutant:
+      MUTANT:
         description: Mutant state.
-      wildtype:
+      WILDTYPE:
         description: Wildtype state.
-      not_applicable:
+      NOT_APPLICABLE:
         description: The distinction is not applicaple.
 
   ForwardOrReverseEnum:
     description: >-
       Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
     permissible_values:
-      forward:
+      FORWARD:
         description: The reads are forward (R1) reads
-      reverse:
+      REVERSE:
         description: The reads are reverse (R2) reads
 
   AgeRangeEnum:

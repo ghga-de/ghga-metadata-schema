@@ -16,6 +16,6 @@ URI: [GHGA:ForwardOrReverseEnum](https://w3id.org/GHGA/ForwardOrReverseEnum)
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| forward | The reads are forward (R1) reads |  |  |
-| reverse | The reads are reverse (R2) reads |  |  |
+| FORWARD | The reads are forward (R1) reads |  |  |
+| REVERSE | The reads are reverse (R2) reads |  |  |
 

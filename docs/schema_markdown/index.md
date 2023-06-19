@@ -119,7 +119,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Analysis➞description](Analysis_description.md) - Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
      * [Biospecimen➞description](Biospecimen_description.md)
      * [Condition➞description](Condition_description.md)
-     * [DataAccessCommittee➞description](DataAccessCommittee_description.md) - A description for the Data Access Committee.
      * [DataAccessPolicy➞description](DataAccessPolicy_description.md) - A short description for the Data Access Policy.
      * [Dataset➞description](Dataset_description.md)
      * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md) - Description about how a sequencing library was prepared (eg: Library construction method).
@@ -133,6 +132,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [doi](doi.md) - DOI identifier of a publication.
      * [Publication➞doi](Publication_doi.md) - DOI identifier of the Publication.
  * [email](email.md) - Email of a person.
+     * [DataAccessCommittee➞email](DataAccessCommittee_email.md)
  * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
      * [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)
  * [father](father.md) - The father of an individual.
@@ -153,6 +153,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Biospecimen➞individual](Biospecimen_individual.md) - The Individual entity from which this Biospecimen was derived.
  * [individuals](individuals.md) - The subjects/individuals associated with an entity.
      * [Submission➞individuals](Submission_individuals.md) - Information about one or more Individual entities associated with this submission.
+ * [institute](institute.md) - The institute a person is affiliated with.
+     * [DataAccessCommittee➞institute](DataAccessCommittee_institute.md)
  * [instrument_model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
@@ -192,12 +194,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [name](name.md) - The name for an entity.
      * [Biospecimen➞name](Biospecimen_name.md)
      * [Condition➞name](Condition_name.md)
-     * [DataAccessCommittee➞name](DataAccessCommittee_name.md) - The name for the Data Access Committee.
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for the Data Access Policy.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
      * [SequencingProcess➞name](SequencingProcess_name.md)
- * [organization](organization.md) - The organization associated with a person.
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
