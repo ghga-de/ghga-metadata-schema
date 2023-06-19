@@ -1,10 +1,10 @@
 
-# Slot: name
+# Slot: email
 
 
-The name for the Data Access Committee.
+Email of a person.
 
-URI: [GHGA:DataAccessCommittee_name](https://w3id.org/GHGA/DataAccessCommittee_name)
+URI: [GHGA:DataAccessCommittee_email](https://w3id.org/GHGA/DataAccessCommittee_email)
 
 
 ## Domain and Range
@@ -13,7 +13,7 @@ URI: [GHGA:DataAccessCommittee_name](https://w3id.org/GHGA/DataAccessCommittee_n
 
 ## Parents
 
- *  is_a: [name](name.md)
+ *  is_a: [email](email.md)
 
 ## Children
 

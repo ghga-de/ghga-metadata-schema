@@ -7,11 +7,10 @@ A group of members that are delegated to grant access to one or more datasets af
 URI: [GHGA:DataAccessCommittee](https://w3id.org/GHGA/DataAccessCommittee)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;name:string;description:string%20%3F;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[AttributeMixin],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;email:string;institute:string;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;email:string;institute:string;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
- *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
  *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
 
 ## Referenced by Class
@@ -26,18 +25,12 @@ URI: [GHGA:DataAccessCommittee](https://w3id.org/GHGA/DataAccessCommittee)
 
 ### Own
 
- * [DataAccessCommittee➞name](DataAccessCommittee_name.md)  <sub>1..1</sub>
-     * Description: The name for the Data Access Committee.
+ * [DataAccessCommittee➞email](DataAccessCommittee_email.md)  <sub>1..1</sub>
+     * Description: Email of a person.
      * Range: [String](types/String.md)
- * [DataAccessCommittee➞description](DataAccessCommittee_description.md)  <sub>0..1</sub>
-     * Description: A description for the Data Access Committee.
+ * [DataAccessCommittee➞institute](DataAccessCommittee_institute.md)  <sub>1..1</sub>
+     * Description: The institute a person is affiliated with.
      * Range: [String](types/String.md)
-
-### Mixed in from AttributeMixin:
-
- * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
-     * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

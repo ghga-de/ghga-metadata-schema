@@ -18,9 +18,6 @@ Individual {
 StudyFile {
 
 }
-Attribute {
-
-}
 Dataset {
 
 }
@@ -31,6 +28,9 @@ DataAccessCommittee {
 
 }
 Study {
+
+}
+Attribute {
 
 }
 SequencingProtocol {
@@ -98,12 +98,8 @@ Trio ||--|| Individual : "father"
 Trio ||--|| Individual : "child"
 StudyFile ||--|| Study : "study"
 StudyFile ||--|| Dataset : "dataset"
-StudyFile ||--}o Attribute : "attributes"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
-Dataset ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
-DataAccessPolicy ||--}o Attribute : "attributes"
-DataAccessCommittee ||--}o Attribute : "attributes"
 Study ||--}o Attribute : "attributes"
 SequencingProtocol ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
@@ -121,10 +117,8 @@ SequencingExperiment ||--}o Attribute : "attributes"
 LibraryPreparationProtocol ||--}o Attribute : "attributes"
 SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
 SequencingProcessFile ||--|| Dataset : "dataset"
-SequencingProcessFile ||--}o Attribute : "attributes"
 SampleFile ||--|| Sample : "sample"
 SampleFile ||--|| Dataset : "dataset"
-SampleFile ||--}o Attribute : "attributes"
 Publication ||--|| Study : "study"
 AnalysisProcess ||--|| Analysis : "analysis"
 AnalysisProcess ||--}| StudyFile : "study_input_files"
@@ -132,7 +126,6 @@ AnalysisProcess ||--}| SampleFile : "sample_input_files"
 AnalysisProcess ||--}| SequencingProcessFile : "sequencing_process_input_files"
 AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
 AnalysisProcessOutputFile ||--|| Dataset : "dataset"
-AnalysisProcessOutputFile ||--}o Attribute : "attributes"
 
 ```
 
@@ -186,7 +179,6 @@ SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
 File ||--|| Dataset : "dataset"
-File ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
@@ -313,7 +305,6 @@ SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
 File ||--|| Dataset : "dataset"
-File ||--}o Attribute : "attributes"
 Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
