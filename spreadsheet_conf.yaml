@@ -3,207 +3,141 @@ slot_order:
 workbooks:
   - file_name: ghga_submission_full.xlsx
     worksheets:
-      - class_name: Study
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: StudyFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Sample
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: SampleFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Condition
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: Biospecimen
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: Individual
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Trio
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: LibraryPreparationProtocol
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: SequencingProtocol
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: SequencingExperiment
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: SequencingProcess
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: SequencingProcessFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Analysis
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: AnalysisProcess
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: AnalysisProcessOutputFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Dataset
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: DataAccessPolicy
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: DataAccessCommittee
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Publication
-        header_color: C0504D
-        content_color: F2DCDB
+      - Study
+      - StudyFile
+      - Sample
+      - SampleFile
+      - Condition
+      - Biospecimen
+      - Individual
+      - Trio
+      - LibraryPreparationProtocol
+      - SequencingProtocol
+      - SequencingExperiment
+      - SequencingProcess
+      - SequencingProcessFile
+      - Analysis
+      - AnalysisProcess
+      - AnalysisProcessOutputFile
+      - Dataset
+      - DataAccessPolicy
+      - DataAccessCommittee
+      - Publication
 
   - file_name: ghga_submission_minimal.xlsx
     worksheets:
-      - class_name: Study
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: StudyFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Dataset
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: DataAccessPolicy
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: DataAccessCommittee
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Publication
-        header_color: C0504D
-        content_color: F2DCDB
+      - Study
+      - StudyFile
+      - Dataset
+      - DataAccessPolicy
+      - DataAccessCommittee
+      - Publication
 
   - file_name: ghga_submission_sample.xlsx
     worksheets:
-      - class_name: Study
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: StudyFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Sample
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: SampleFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Condition
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: Dataset
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: DataAccessPolicy
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: DataAccessCommittee
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Publication
-        header_color: C0504D
-        content_color: F2DCDB
+      - Study
+      - StudyFile
+      - Sample
+      - SampleFile
+      - Condition
+      - Dataset
+      - DataAccessPolicy
+      - DataAccessCommittee
+      - Publication
 
   - file_name: ghga_submission_individual.xlsx
     worksheets:
-      - class_name: Study
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: StudyFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Sample
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: SampleFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Condition
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: Biospecimen
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: Individual
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Trio
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: Dataset
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: DataAccessPolicy
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: DataAccessCommittee
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Publication
-        header_color: C0504D
-        content_color: F2DCDB
+      - Study
+      - StudyFile
+      - Sample
+      - SampleFile
+      - Condition
+      - Biospecimen
+      - Individual
+      - Trio
+      - Dataset
+      - DataAccessPolicy
+      - DataAccessCommittee
+      - Publication
 
   - file_name: ghga_submission_seq.xlsx
     worksheets:
-      - class_name: Study
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: StudyFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Sample
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: SampleFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Condition
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: Biospecimen
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: Individual
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Trio
-        header_color: C0504D
-        content_color: F2DCDB
-      - class_name: LibraryPreparationProtocol
-        header_color: 4BACC6
-        content_color: DAEEF3
-      - class_name: SequencingProtocol
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: SequencingExperiment
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: SequencingProcess
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: SequencingProcessFile
-        header_color: 9BBB59
-        content_color: EBF1DE
-      - class_name: Dataset
-        header_color: F79646
-        content_color: FDE9D9
-      - class_name: DataAccessPolicy
-        header_color: 8064A2
-        content_color: E4DFEC
-      - class_name: DataAccessCommittee
-        header_color: 4F81BD
-        content_color: DCE6F1
-      - class_name: Publication
-        header_color: C0504D
-        content_color: F2DCDB
+      - Study
+      - StudyFile
+      - Sample
+      - SampleFile
+      - Condition
+      - Biospecimen
+      - Individual
+      - Trio
+      - LibraryPreparationProtocol
+      - SequencingProtocol
+      - SequencingExperiment
+      - SequencingProcess
+      - SequencingProcessFile
+      - Dataset
+      - DataAccessPolicy
+      - DataAccessCommittee
+      - Publication
+
+styles:
+  Study:
+    header_color: C0504D
+    content_color: F2DCDB
+  StudyFile:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  Sample:
+    header_color: 4BACC6
+    content_color: DAEEF3
+  SampleFile:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  Condition:
+    header_color: F79646
+    content_color: FDE9D9
+  Biospecimen:
+    header_color: 8064A2
+    content_color: E4DFEC
+  Individual:
+    header_color: 4F81BD
+    content_color: DCE6F1
+  Trio:
+    header_color: C0504D
+    content_color: F2DCDB
+  LibraryPreparationProtocol:
+    header_color: 4BACC6
+    content_color: DAEEF3
+  SequencingProtocol:
+    header_color: F79646
+    content_color: FDE9D9
+  SequencingExperiment:
+    header_color: 8064A2
+    content_color: E4DFEC
+  SequencingProcess:
+    header_color: 4F81BD
+    content_color: DCE6F1
+  SequencingProcessFile:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  Analysis:
+    header_color: C0504D
+    content_color: F2DCDB
+  AnalysisProcess:
+    header_color: 4BACC6
+    content_color: DAEEF3
+  AnalysisProcessOutputFile:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  Dataset:
+    header_color: F79646
+    content_color: FDE9D9
+  DataAccessPolicy:
+    header_color: 8064A2
+    content_color: E4DFEC
+  DataAccessCommittee:
+    header_color: 4F81BD
+    content_color: DCE6F1
+  Publication:
+    header_color: C0504D
+    content_color: F2DCDB

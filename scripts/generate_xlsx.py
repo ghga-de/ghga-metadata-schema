@@ -15,7 +15,7 @@ from openpyxl.cell import Cell
 from openpyxl.styles import Alignment, PatternFill, Font
 from openpyxl.styles.borders import Border, Side, BORDER_THIN
 from openpyxl.utils import get_column_letter
-from pydantic import BaseModel
+from pydantic import BaseModel, root_validator
 import yaml
 from script_utils.cli import echo_failure, echo_success, run
 
@@ -25,20 +25,18 @@ CONF_PATH = HERE.parent / "spreadsheet_conf.yaml"
 XLSX_DIR = HERE.parent / "spreadsheets"
 
 
-class WorksheetConfig(BaseModel):
-    """A worksheet configuration"""
+class WorksheetStyle(BaseModel):
+    """Style for a worksheet"""
 
-    class_name: str
-    prefix: str = ""
-    header_color: Optional[str]
-    content_color: Optional[str]
+    header_color: Optional[str] = None
+    content_color: Optional[str] = None
 
 
 class WorkbookConfig(BaseModel):
     """A workbook configuration"""
 
     file_name: str
-    worksheets: list[WorksheetConfig]
+    worksheets: list[str]
 
 
 class Config(BaseModel):
@@ -46,6 +44,18 @@ class Config(BaseModel):
 
     slot_order: list[str]
     workbooks: list[WorkbookConfig]
+    styles: dict[str, WorksheetStyle] = dict()
+
+    @root_validator
+    # pylint: disable=no-self-argument
+    def _default_styles(cls, values):
+        used_sheet_names = {
+            ws for wb_config in values["workbooks"] for ws in wb_config.worksheets
+        }
+        for sheet in used_sheet_names:
+            if sheet not in values["styles"]:
+                values["styles"]["sheet"] = WorksheetStyle()
+        return values
 
 
 def _get_ghga_schema_version(schema: SchemaView) -> str:
@@ -94,15 +104,11 @@ class ColumnMeta:
             id_slot = self.schema.get_identifier_slot(self.cls_name)
             if id_slot:
                 id_slot_name = id_slot.name
-                try:
-                    target_prefix = self.prefix_map[self.cls_name]
-                except KeyError:
-                    print(
+                if self.cls_name not in self.wb_classes:
+                    raise RuntimeError(
                         f"Class '{self.cls_name}' is referenced, but not included in the workbook!",
-                        file=stderr,
                     )
-                    sys.exit(2)
-                return f"restriction: value from {self.cls_name}.{target_prefix}{id_slot_name}"
+                return f"restriction: value from {self.cls_name}.{id_slot_name}"
         return "unrestricted"
 
     @property
@@ -128,12 +134,12 @@ class ColumnMeta:
         self,
         schema: SchemaView,
         slot_def: SlotDefinition,
-        prefix_map: dict[str, str],
+        wb_classes: set[str],
     ):
         """Creates a new ColumnMeta object"""
         self.slot_def = slot_def
         self.schema = schema
-        self.prefix_map = prefix_map
+        self.wb_classes = wb_classes
         self.range = slot_def.range if slot_def.range else "string"
         self.cls_name = str(range) if range in schema.all_classes() else None
         self.enum_name = str(range) if range in schema.all_enums() else None
@@ -149,18 +155,11 @@ def _make_value_cell(ws, fill_content):
     return value_cell
 
 
-def _build_prefix_map(wb_config: WorkbookConfig) -> dict[str, str]:
-    """Builds a dictionary mapping every class to the configured column header prefix"""
-    return {
-        ws_config.class_name: ws_config.prefix for ws_config in wb_config.worksheets
-    }
-
-
 def _get_ordered_slots(
     schema: SchemaView,
     slot_order: list[str],
     cls_name: str,
-    prefix_map: dict[str, str],
+    wb_classes: set[str],
 ) -> list[SlotDefinition]:
     """Given a class, generates a list of slots that must be rendered. Slots
     that are listed in the slot_order config parameter are at the top of the
@@ -180,7 +179,7 @@ def _get_ordered_slots(
         slot
         for slot in all_slots
         if slot.range in schema.all_classes()
-        and slot.range not in prefix_map
+        and slot.range not in wb_classes
         and schema.get_identifier_slot(slot.range)
     ]
     # If one of those is mandatory, we raise an error
@@ -209,18 +208,18 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
         wb = Workbook()
         # Remove the default worksheet
         wb.remove(wb.worksheets[0])
-        # Get all prefixes per class
-        prefix_map = _build_prefix_map(wb_config=wb_config)
+        # All classes configured in this workbook
+        wb_classes = set(wb_config.worksheets)
         # Add worksheets as specified in config
-        for ws_config in wb_config.worksheets:
-            ws = wb.create_sheet(ws_config.class_name)
+        for ws_name in wb_config.worksheets:
+            ws = wb.create_sheet(ws_name)
             col_metas = [
-                ColumnMeta(schema, slot_def, prefix_map)
+                ColumnMeta(schema, slot_def, wb_classes)
                 for slot_def in _get_ordered_slots(
                     schema=schema,
                     slot_order=config.slot_order,
-                    cls_name=ws_config.class_name,
-                    prefix_map=prefix_map,
+                    cls_name=ws_name,
+                    wb_classes=wb_classes,
                 )
             ]
 
@@ -241,10 +240,10 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
 
             # Format the header rows
             font_bold = Font(bold=True)
+
+            header_color = config.styles[ws_name].header_color
             fill_header = (
-                PatternFill("solid", fgColor=ws_config.header_color)
-                if ws_config.header_color
-                else None
+                PatternFill("solid", fgColor=header_color) if header_color else None
             )
             for cell in rows[0]:
                 cell.font = font_bold
@@ -256,14 +255,13 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
                     cell.border = THIN_BORDER
 
             # Format the sheet tab color
-            if ws_config.header_color:
-                ws.sheet_properties.tabColor = ws_config.header_color
+            if header_color:
+                ws.sheet_properties.tabColor = header_color
 
             # Color the value fields
+            content_color = config.styles[ws_name].content_color
             fill_content = (
-                PatternFill("solid", fgColor=ws_config.content_color)
-                if ws_config.content_color
-                else None
+                PatternFill("solid", fgColor=content_color) if content_color else None
             )
 
             for _ in range(1000):
