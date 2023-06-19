@@ -7,7 +7,7 @@ An Analysis is a data transformation that transforms input data to output data. 
 URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%200..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -16,7 +16,7 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 ## Referenced by Class
 
  *  **[AnalysisProcess](AnalysisProcess.md)** *[AnalysisProcess➞analysis](AnalysisProcess_analysis.md)*  <sub>1..1</sub>  **[Analysis](Analysis.md)**
- *  **[Submission](Submission.md)** *[Submission➞analyses](Submission_analyses.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
+ *  **[Submission](Submission.md)** *[Submission➞analyses](Submission_analyses.md)*  <sub>1..\*</sub>  **[Analysis](Analysis.md)**
  *  **None** *[analyses](analyses.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
  *  **None** *[analysis](analysis.md)*  <sub>0..1</sub>  **[Analysis](Analysis.md)**
 

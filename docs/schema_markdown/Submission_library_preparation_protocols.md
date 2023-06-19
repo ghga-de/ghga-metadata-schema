@@ -9,7 +9,7 @@ URI: [GHGA:Submission_library_preparation_protocols](https://w3id.org/GHGA/Submi
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
 
 ## Parents
 

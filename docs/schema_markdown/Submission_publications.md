@@ -9,7 +9,7 @@ URI: [GHGA:Submission_publications](https://w3id.org/GHGA/Submission_publication
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Publication](Publication.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [Publication](Publication.md)
 
 ## Parents
 

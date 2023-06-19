@@ -9,7 +9,7 @@ URI: [GHGA:Submission_sequencing_experiments](https://w3id.org/GHGA/Submission_s
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [SequencingExperiment](SequencingExperiment.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [SequencingExperiment](SequencingExperiment.md)
 
 ## Parents
 

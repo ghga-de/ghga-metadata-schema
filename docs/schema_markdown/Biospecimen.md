@@ -7,7 +7,7 @@ A Biospecimen is any natural material taken from a biological entity (usually a 
 URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%200..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%201..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[Individual],[IdentifiedByAliasMixin],[Individual]<individual%201..1-%20[Biospecimen&#124;name:string%20%3F;type:string%20%3F;description:string%20%3F;isolation:IsolationEnum%20%3F;storage:string%20%3F;vital_status_at_sampling:VitalStatusEnum%20%3F;tissue:TissueEnum;alias:string],[Sample]-%20biospecimen%200..1>[Biospecimen],[Submission]++-%20biospecimens%201..*>[Biospecimen],[Sample]-%20biospecimen(i)%200..1>[Biospecimen],[Submission]-%20biospecimens(i)%200..*>[Biospecimen],[Biospecimen]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -16,7 +16,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 ## Referenced by Class
 
  *  **[Sample](Sample.md)** *[Sample➞biospecimen](Sample_biospecimen.md)*  <sub>0..1</sub>  **[Biospecimen](Biospecimen.md)**
- *  **[Submission](Submission.md)** *[Submission➞biospecimens](Submission_biospecimens.md)*  <sub>0..\*</sub>  **[Biospecimen](Biospecimen.md)**
+ *  **[Submission](Submission.md)** *[Submission➞biospecimens](Submission_biospecimens.md)*  <sub>1..\*</sub>  **[Biospecimen](Biospecimen.md)**
  *  **None** *[biospecimen](biospecimen.md)*  <sub>0..1</sub>  **[Biospecimen](Biospecimen.md)**
  *  **None** *[biospecimens](biospecimens.md)*  <sub>0..\*</sub>  **[Biospecimen](Biospecimen.md)**
 

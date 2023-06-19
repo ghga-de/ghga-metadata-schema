@@ -9,7 +9,7 @@ URI: [GHGA:Submission_sequencing_protocols](https://w3id.org/GHGA/Submission_seq
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [SequencingProtocol](SequencingProtocol.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [SequencingProtocol](SequencingProtocol.md)
 
 ## Parents
 

@@ -835,13 +835,13 @@ classes:
       samples:
         description: >-
           Information about one or more Sample entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       biospecimens:
         description: >-
           Information about one or more Biospecimen entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       conditions:
@@ -852,31 +852,31 @@ classes:
       individuals:
         description: >-
           Information about one or more Individual entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       sequencing_experiments:
         description: >-
           Information about one or more Experiment entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       sequencing_protocols:
         description: >-
           One or more sequencing protocol entities associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       library_preparation_protocols:
         description: >-
           One or more library preparation protocol entities associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       analyses:
         description: >-
           Information about one or more Analysis entities associated with this submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       study_files:
@@ -930,7 +930,7 @@ classes:
       publications:
         description: >-
           One or more Publication entities associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       trios:

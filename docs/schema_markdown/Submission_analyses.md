@@ -9,7 +9,7 @@ URI: [GHGA:Submission_analyses](https://w3id.org/GHGA/Submission_analyses)
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [Analysis](Analysis.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [Analysis](Analysis.md)
 
 ## Parents
 
