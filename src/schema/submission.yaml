@@ -507,6 +507,8 @@ classes:
         required: false
 
   Trio:
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       A trio is defined by three individuals representing an individual and their parents.
     slots:
@@ -631,6 +633,8 @@ classes:
         required: true
 
   AnalysisProcess:
+    mixins:
+      - IdentifiedByAliasMixin
     slots:
       - analysis
       - study_input_files
@@ -757,6 +761,8 @@ classes:
         required: false
 
   Publication:
+    mixins:
+      - IdentifiedByAliasMixin
     description: >-
       The Publication entity represents a publication. While a publication can be any
       article that is published, the minimum expectation is that the publication has a
@@ -1242,7 +1248,7 @@ slots:
   library_preparation_kit_retail_name:
     description: >-
       A unique identifier for the kit used to construct a genomic library.
-      This may include the vendor name, kit name and kit version 
+      This may include the vendor name, kit name and kit version
       (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
     range: LibraryPreparationKitRetailNameEnum
 
@@ -1467,7 +1473,7 @@ slots:
 
   abstract:
     description: >-
-      The study abstract that describes the goals. 
+      The study abstract that describes the goals.
       Can also hold abstract from a publication related to this study
 
   author:
@@ -1591,7 +1597,7 @@ enums:
     description: >-
       The sex of an Individual as as defined in a specific medical and clinical context.
     reachable_from:
-      source_ontology: obo:gsso
+      source_ontology: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
       source_nodes:
         - GSSO:009428
       include_self: false
