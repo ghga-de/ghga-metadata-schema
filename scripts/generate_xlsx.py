@@ -98,7 +98,7 @@ class ColumnMeta:
     @property
     def restriction_help(self) -> str:
         """The restriction help text"""
-        if self.enum_name:
+        if self.enum_name or self.slot_def.pattern:
             return "controlled vocabulary"
         elif self.cls_name:
             id_slot = self.schema.get_identifier_slot(self.cls_name)
