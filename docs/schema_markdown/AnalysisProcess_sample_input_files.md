@@ -9,7 +9,7 @@ URI: [GHGA:AnalysisProcess_sample_input_files](https://w3id.org/GHGA/AnalysisPro
 
 ## Domain and Range
 
-[AnalysisProcess](AnalysisProcess.md) &#8594;  <sub>1..\*</sub> [SampleFile](SampleFile.md)
+[AnalysisProcess](AnalysisProcess.md) &#8594;  <sub>0..\*</sub> [SampleFile](SampleFile.md)
 
 ## Parents
 

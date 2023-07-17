@@ -646,10 +646,10 @@ classes:
         required: true
       study_input_files:
         inlined: false
-        required: true
+        required: false
       sample_input_files:
         inlined: false
-        required: true
+        required: false
       sequencing_process_input_files:
         inlined: false
         required: true

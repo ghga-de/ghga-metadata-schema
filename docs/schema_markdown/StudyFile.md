@@ -7,7 +7,7 @@ A StudyFile is a File that is associated with a Study.
 URI: [GHGA:StudyFile](https://w3id.org/GHGA/StudyFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%201..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Dataset],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%201..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Dataset],[AnalysisProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%200..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Dataset],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study]<study%201..1-%20[StudyFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20study_input_files%200..*>[StudyFile],[Submission]++-%20study_files%201..*>[StudyFile],[Submission]-%20study_files(i)%200..*>[StudyFile],[AnalysisProcess]-%20study_input_files(i)%200..*>[StudyFile],[File]^-[StudyFile],[Study],[File],[Dataset],[AnalysisProcess])
 
 ## Parents
 
@@ -15,7 +15,7 @@ URI: [GHGA:StudyFile](https://w3id.org/GHGA/StudyFile)
 
 ## Referenced by Class
 
- *  **[AnalysisProcess](AnalysisProcess.md)** *[AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)*  <sub>1..\*</sub>  **[StudyFile](StudyFile.md)**
+ *  **[AnalysisProcess](AnalysisProcess.md)** *[AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)*  <sub>0..\*</sub>  **[StudyFile](StudyFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞study_files](Submission_study_files.md)*  <sub>1..\*</sub>  **[StudyFile](StudyFile.md)**
  *  **None** *[study_files](study_files.md)*  <sub>0..\*</sub>  **[StudyFile](StudyFile.md)**
  *  **None** *[study_input_files](study_input_files.md)*  <sub>0..\*</sub>  **[StudyFile](StudyFile.md)**
