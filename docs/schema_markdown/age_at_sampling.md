@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [AgeRangeEnum](AgeRangeEnum.md)
 
 ## Children
 
- *  [Individual➞age_at_sampling](Individual_age_at_sampling.md)
+ *  [Biospecimen➞age_at_sampling](Biospecimen_age_at_sampling.md)
 
 ## Used by
 

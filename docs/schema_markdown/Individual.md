@@ -7,7 +7,7 @@ An Individual is a Person who is participating in a Study.
 URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;age_at_sampling:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;ancestries:string%20*;phenotypic_features:string%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;age_at_sampling:AgeRangeEnum;vital_status:VitalStatusEnum;geographical_region:string%20%3F;ancestries:string%20*;phenotypic_features:string%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;geographical_region:string%20%3F;ancestries:string%20*;phenotypic_features:string%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])](https://yuml.me/diagram/nofunky;dir:TB/class/[Trio],[Submission],[Biospecimen]-%20individual%201..1>[Individual&#124;sex:IndividualSexEnum;karyotype:KaryotypeEnum%20%3F;geographical_region:string%20%3F;ancestries:string%20*;phenotypic_features:string%20*;alias:string],[Submission]++-%20individuals%201..*>[Individual],[Trio]-%20child%201..1>[Individual],[Trio]-%20father%201..1>[Individual],[Trio]-%20mother%201..1>[Individual],[Trio]-%20child(i)%200..1>[Individual],[Trio]-%20father(i)%200..1>[Individual],[Biospecimen]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Trio]-%20mother(i)%200..1>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin],[Biospecimen])
 
 ## Uses Mixin
 
@@ -37,12 +37,6 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
  * [Individual➞karyotype](Individual_karyotype.md)  <sub>0..1</sub>
      * Description: The karyotype of an individual if defined.
      * Range: [KaryotypeEnum](KaryotypeEnum.md)
- * [Individual➞age_at_sampling](Individual_age_at_sampling.md)  <sub>1..1</sub>
-     * Description: Age of an individual.
-     * Range: [AgeRangeEnum](AgeRangeEnum.md)
- * [Individual➞vital_status](Individual_vital_status.md)  <sub>1..1</sub>
-     * Description: Last known Vital Status of an Individual.
-     * Range: [VitalStatusEnum](VitalStatusEnum.md)
  * [Individual➞geographical_region](Individual_geographical_region.md)  <sub>0..1</sub>
      * Description: The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
      * Range: [String](types/String.md)

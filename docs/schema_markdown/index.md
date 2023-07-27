@@ -53,7 +53,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
  * [age_at_sampling](age_at_sampling.md) - Age of an individual.
-     * [Individual➞age_at_sampling](Individual_age_at_sampling.md)
+     * [Biospecimen➞age_at_sampling](Biospecimen_age_at_sampling.md)
  * [alias](alias.md) - The alias for an entity at the time of submission.
      * [AliasMixin➞alias](AliasMixin_alias.md)
          * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
@@ -301,7 +301,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [value_type](value_type.md) - The semantic type for the value of an attribute.
      * [Attribute➞value_type](Attribute_value_type.md) - The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
  * [vital_status](vital_status.md) - The state or condition of being living or deceased; also includes the case where the vital status is unknown.
-     * [Individual➞vital_status](Individual_vital_status.md) - Last known Vital Status of an Individual.
  * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
