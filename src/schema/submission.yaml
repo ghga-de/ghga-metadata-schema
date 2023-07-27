@@ -387,6 +387,7 @@ classes:
       - isolation
       - storage
       - individual
+      - age_at_sampling
       - vital_status_at_sampling
       - tissue
     slot_usage:
@@ -410,6 +411,8 @@ classes:
         description: >-
           The Individual entity from which this Biospecimen was derived.
         inlined: false
+        required: true
+      age_at_sampling:
         required: true
       vital_status_at_sampling:
         required: false
@@ -479,8 +482,6 @@ classes:
     slots:
       - sex
       - karyotype
-      - age_at_sampling
-      - vital_status
       - geographical_region
       - ancestries
       - phenotypic_features
@@ -489,11 +490,6 @@ classes:
         required: true
       karyotype:
         required: false
-      age_at_sampling:
-        required: true
-      vital_status:
-        description: Last known Vital Status of an Individual.
-        required: true
       geographical_region:
         required: false
       ancestries:
