@@ -226,8 +226,6 @@ erDiagram
 Individual {
     IndividualSexEnum sex  
     KaryotypeEnum karyotype  
-    AgeRangeEnum age_at_sampling  
-    VitalStatusEnum vital_status  
     string geographical_region  
     stringList ancestries  
     stringList phenotypic_features  
@@ -239,6 +237,7 @@ Biospecimen {
     string description  
     string isolation  
     string storage  
+    AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status_at_sampling  
     string tissue  
     string alias  

@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [VitalStatusEnum](VitalStatusEnum.md)
 
 ## Children
 
- *  [Individual➞vital_status](Individual_vital_status.md)
 
 ## Used by
 
