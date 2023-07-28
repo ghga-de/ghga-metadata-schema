@@ -261,7 +261,6 @@ classes:
       - instrument_model
       - sequencing_center
       - sequencing_read_length
-      - forward_or_reverse
       - target_coverage
       - flow_cell_id
       - flow_cell_type
@@ -272,8 +271,6 @@ classes:
       - cell_barcode_offset
       - cell_barcode_size
       - sample_barcode_read
-      - index_sequence
-      - lane_number
     slot_usage:
       instrument_model:
         required: true
@@ -290,19 +287,10 @@ classes:
       sequencing_center:
         required: false
         recommended: true
-      forward_or_reverse:
-        required: false
-        recommended: true
       sequencing_read_length:
         required: false
-      index_sequence:
-        required: false
-        recommended: true
       target_coverage:
         required: false
-      lane_number:
-        required: false
-        recommended: true
       flow_cell_id:
         required: false
         recommended: true
@@ -346,6 +334,8 @@ classes:
       - sequencing_lane_id
       - sequencing_machine_id
       - sequencing_experiment
+      - index_sequence
+      - lane_number
       - sample
     slot_usage:
       name:
@@ -367,6 +357,13 @@ classes:
       sequencing_experiment:
         required: true
         inlined: false
+      lane_number:
+        required: false
+        recommended: true
+      index_sequence:
+        required: false
+        recommended: true
+
       sample:
         required: true
         inlined: false
@@ -533,6 +530,7 @@ classes:
       - format
       - size
       - checksum
+      - forward_or_reverse
       - checksum_type
       - dataset
     slot_usage:
@@ -551,6 +549,9 @@ classes:
       dataset:
         inlined: false
         required: true
+      forward_or_reverse:
+        required: false
+        recommended: true
 
   StudyFile:
     is_a: File
