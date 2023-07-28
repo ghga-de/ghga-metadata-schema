@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
+ *  [SequencingProcess➞index_sequence](SequencingProcess_index_sequence.md)
 
 ## Used by
 

@@ -144,11 +144,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [format](format.md) - The format of the file: BAM, SAM, CRAM, BAI, etc.
      * [File➞format](File_format.md)
  * [forward_or_reverse](forward_or_reverse.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
-     * [SequencingProtocol➞forward_or_reverse](SequencingProtocol_forward_or_reverse.md)
+     * [File➞forward_or_reverse](File_forward_or_reverse.md)
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
      * [Individual➞geographical_region](Individual_geographical_region.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
-     * [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
+     * [SequencingProcess➞index_sequence](SequencingProcess_index_sequence.md)
  * [individual](individual.md) - The subject/individual associated with an entity.
      * [Biospecimen➞individual](Biospecimen_individual.md) - The Individual entity from which this Biospecimen was derived.
  * [individuals](individuals.md) - The subjects/individuals associated with an entity.
@@ -168,7 +168,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [key_type](key_type.md) - The semantic type for the key of an attribute.
      * [Attribute➞key_type](Attribute_key_type.md) - A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
  * [lane_number](lane_number.md) - The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-     * [SequencingProtocol➞lane_number](SequencingProtocol_lane_number.md)
+     * [SequencingProcess➞lane_number](SequencingProcess_lane_number.md)
  * [library_layout](library_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
      * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
  * [library_name](library_name.md) - A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
