@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [ForwardOrReverseEnum](ForwardOrReverseEnum.md)
 
 ## Children
 
- *  [SequencingProtocol➞forward_or_reverse](SequencingProtocol_forward_or_reverse.md)
+ *  [File➞forward_or_reverse](File_forward_or_reverse.md)
 
 ## Used by
 
