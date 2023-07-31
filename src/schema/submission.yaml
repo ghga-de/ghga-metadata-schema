@@ -174,7 +174,6 @@ classes:
       - title
       - description
       - name
-      - description
       - disease_or_healthy
       - case_control_status
       - mutant_or_wildtype
@@ -276,10 +275,10 @@ classes:
         required: true
       type:
         description: >-
-          Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+          Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
       description:
         description: >-
-          Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+          Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
         required: true
       attributes:
         description: >-
@@ -329,7 +328,6 @@ classes:
       - title
       - description
       - name
-      - description
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
@@ -454,6 +452,9 @@ classes:
           Protocol followed for processing the sample etc).
         required: true
       storage:
+        required: false
+        recommended: true
+      isolation:
         required: false
         recommended: true
       xref:
@@ -611,9 +612,6 @@ classes:
       - reference_genome
       - reference_chromosome
     slot_usage:
-      alias:
-        description: >-
-          An alias uniquely identifying this Analysis entitiy.
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
@@ -1408,6 +1406,7 @@ slots:
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
     range: VitalStatusEnum
+    deprecated: redundant, solved by use of vital_status_at_sampling at the Biospecimen level
 
   sex:
     description: >-
