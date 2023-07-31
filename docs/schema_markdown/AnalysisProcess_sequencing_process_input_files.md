@@ -9,7 +9,7 @@ URI: [GHGA:AnalysisProcess_sequencing_process_input_files](https://w3id.org/GHGA
 
 ## Domain and Range
 
-[AnalysisProcess](AnalysisProcess.md) &#8594;  <sub>1..\*</sub> [SequencingProcessFile](SequencingProcessFile.md)
+[AnalysisProcess](AnalysisProcess.md) &#8594;  <sub>0..\*</sub> [SequencingProcessFile](SequencingProcessFile.md)
 
 ## Parents
 

@@ -7,7 +7,7 @@ A SampleFile is a File that is associated with a Sample.
 URI: [GHGA:SampleFile](https://w3id.org/GHGA/SampleFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;forward_or_reverse(i):ForwardOrReverseEnum%20%3F;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%201..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Dataset],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;forward_or_reverse(i):ForwardOrReverseEnum%20%3F;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%201..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Dataset],[AnalysisProcess])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;forward_or_reverse(i):ForwardOrReverseEnum%20%3F;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%200..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Dataset],[AnalysisProcess])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample]<sample%201..1-%20[SampleFile&#124;name(i):string;format(i):FileFormatEnum;size(i):integer;checksum(i):string;forward_or_reverse(i):ForwardOrReverseEnum%20%3F;checksum_type(i):string;alias(i):string],[AnalysisProcess]-%20sample_input_files%200..*>[SampleFile],[Submission]++-%20sample_files%201..*>[SampleFile],[Submission]-%20sample_files(i)%200..*>[SampleFile],[AnalysisProcess]-%20sample_input_files(i)%200..*>[SampleFile],[File]^-[SampleFile],[Sample],[File],[Dataset],[AnalysisProcess])
 
 ## Parents
 
@@ -15,7 +15,7 @@ URI: [GHGA:SampleFile](https://w3id.org/GHGA/SampleFile)
 
 ## Referenced by Class
 
- *  **[AnalysisProcess](AnalysisProcess.md)** *[AnalysisProcess➞sample_input_files](AnalysisProcess_sample_input_files.md)*  <sub>1..\*</sub>  **[SampleFile](SampleFile.md)**
+ *  **[AnalysisProcess](AnalysisProcess.md)** *[AnalysisProcess➞sample_input_files](AnalysisProcess_sample_input_files.md)*  <sub>0..\*</sub>  **[SampleFile](SampleFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞sample_files](Submission_sample_files.md)*  <sub>1..\*</sub>  **[SampleFile](SampleFile.md)**
  *  **None** *[sample_files](sample_files.md)*  <sub>0..\*</sub>  **[SampleFile](SampleFile.md)**
  *  **None** *[sample_input_files](sample_input_files.md)*  <sub>0..\*</sub>  **[SampleFile](SampleFile.md)**
