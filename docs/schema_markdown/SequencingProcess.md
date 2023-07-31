@@ -7,7 +7,7 @@ A sequencing process linking a sample to sequencing output.
 URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcessFile],[Sample]<sample%201..1-%20[SequencingProcess&#124;title:string%20%3F;description:string;name:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;alias:string],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[SequencingProcessFile]-%20sequencing_process%201..1>[SequencingProcess],[Submission]++-%20sequencing_processes%201..*>[SequencingProcess],[SequencingProcessFile]-%20sequencing_process(i)%200..1>[SequencingProcess],[Submission]-%20sequencing_processes(i)%200..*>[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment],[Sample],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcessFile],[Sample]<sample%201..1-%20[SequencingProcess&#124;title:string%20%3F;description:string;name:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;alias:string],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[SequencingProcessFile]-%20sequencing_process%201..1>[SequencingProcess],[Submission]++-%20sequencing_processes%201..*>[SequencingProcess],[SequencingProcessFile]-%20sequencing_process(i)%200..1>[SequencingProcess],[Submission]-%20sequencing_processes(i)%200..*>[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment],[Sample],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcessFile],[Sample]<sample%201..1-%20[SequencingProcess&#124;title:string%20%3F;description:string;name:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;index_sequence:string%20%3F;lane_number:string%20%3F;alias:string],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[SequencingProcessFile]-%20sequencing_process%201..1>[SequencingProcess],[Submission]++-%20sequencing_processes%201..*>[SequencingProcess],[SequencingProcessFile]-%20sequencing_process(i)%200..1>[SequencingProcess],[Submission]-%20sequencing_processes(i)%200..*>[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment],[Sample],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcessFile],[Sample]<sample%201..1-%20[SequencingProcess&#124;title:string%20%3F;description:string;name:string;sequencing_run_id:string%20%3F;sequencing_lane_id:string%20%3F;sequencing_machine_id:string%20%3F;index_sequence:string%20%3F;lane_number:string%20%3F;alias:string],[SequencingExperiment]<sequencing_experiment%201..1-%20[SequencingProcess],[SequencingProcessFile]-%20sequencing_process%201..1>[SequencingProcess],[Submission]++-%20sequencing_processes%201..*>[SequencingProcess],[SequencingProcessFile]-%20sequencing_process(i)%200..1>[SequencingProcess],[Submission]-%20sequencing_processes(i)%200..*>[SequencingProcess],[SequencingProcess]uses%20-.->[IdentifiedByAliasMixin],[SequencingProcess]uses%20-.->[AttributeMixin],[SequencingExperiment],[Sample],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -35,9 +35,6 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
  * [SequencingProcess➞name](SequencingProcess_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
- * [description](description.md)  <sub>0..1</sub>
-     * Description: Description of an entity.
-     * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)  <sub>0..1</sub>
      * Description: Identifier of the sequencing run. Used for batch correction.
      * Range: [String](types/String.md)
@@ -50,6 +47,12 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
  * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)  <sub>1..1</sub>
      * Description: The sequencing experiment associated with an entity.
      * Range: [SequencingExperiment](SequencingExperiment.md)
+ * [SequencingProcess➞index_sequence](SequencingProcess_index_sequence.md)  <sub>0..1</sub>
+     * Description: A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
+     * Range: [String](types/String.md)
+ * [SequencingProcess➞lane_number](SequencingProcess_lane_number.md)  <sub>0..1</sub>
+     * Description: The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
+     * Range: [String](types/String.md)
  * [SequencingProcess➞sample](SequencingProcess_sample.md)  <sub>1..1</sub>
      * Description: The sample associated with an entity.
      * Range: [Sample](Sample.md)

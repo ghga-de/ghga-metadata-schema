@@ -17,10 +17,10 @@ URI: [GHGA:IdentifiedByAliasMixin_alias](https://w3id.org/GHGA/IdentifiedByAlias
 
 ## Children
 
- *  [Analysis➞alias](Analysis_alias.md)
 
 ## Used by
 
+ * [Analysis](Analysis.md)
  * [AnalysisProcess](AnalysisProcess.md)
  * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [Biospecimen](Biospecimen.md)

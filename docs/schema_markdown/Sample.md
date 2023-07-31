@@ -36,7 +36,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
  * [Sample➞description](Sample_description.md)  <sub>1..1</sub>
      * Description: Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
      * Range: [String](types/String.md)
- * [isolation](isolation.md)  <sub>0..1</sub>
+ * [Sample➞isolation](Sample_isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
      * Range: [String](types/String.md)
  * [Sample➞storage](Sample_storage.md)  <sub>0..1</sub>

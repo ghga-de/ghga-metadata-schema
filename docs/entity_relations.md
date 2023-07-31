@@ -226,8 +226,6 @@ erDiagram
 Individual {
     IndividualSexEnum sex  
     KaryotypeEnum karyotype  
-    AgeRangeEnum age_at_sampling  
-    VitalStatusEnum vital_status  
     string geographical_region  
     stringList ancestries  
     stringList phenotypic_features  
@@ -239,6 +237,7 @@ Biospecimen {
     string description  
     string isolation  
     string storage  
+    AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status_at_sampling  
     string tissue  
     string alias  
@@ -275,6 +274,8 @@ SequencingProcess {
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
+    string index_sequence  
+    string lane_number  
     string alias  
 }
 File {
@@ -282,6 +283,7 @@ File {
     FileFormatEnum format  
     integer size  
     string checksum  
+    ForwardOrReverseEnum forward_or_reverse  
     string checksum_type  
     string alias  
 }

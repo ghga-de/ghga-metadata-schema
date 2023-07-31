@@ -174,7 +174,6 @@ classes:
       - title
       - description
       - name
-      - description
       - disease_or_healthy
       - case_control_status
       - mutant_or_wildtype
@@ -261,7 +260,6 @@ classes:
       - instrument_model
       - sequencing_center
       - sequencing_read_length
-      - forward_or_reverse
       - target_coverage
       - flow_cell_id
       - flow_cell_type
@@ -272,17 +270,15 @@ classes:
       - cell_barcode_offset
       - cell_barcode_size
       - sample_barcode_read
-      - index_sequence
-      - lane_number
     slot_usage:
       instrument_model:
         required: true
       type:
         description: >-
-          Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+          Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
       description:
         description: >-
-          Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+          Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
         required: true
       attributes:
         description: >-
@@ -290,19 +286,10 @@ classes:
       sequencing_center:
         required: false
         recommended: true
-      forward_or_reverse:
-        required: false
-        recommended: true
       sequencing_read_length:
         required: false
-      index_sequence:
-        required: false
-        recommended: true
       target_coverage:
         required: false
-      lane_number:
-        required: false
-        recommended: true
       flow_cell_id:
         required: false
         recommended: true
@@ -341,11 +328,12 @@ classes:
       - title
       - description
       - name
-      - description
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
       - sequencing_experiment
+      - index_sequence
+      - lane_number
       - sample
     slot_usage:
       name:
@@ -367,6 +355,13 @@ classes:
       sequencing_experiment:
         required: true
         inlined: false
+      lane_number:
+        required: false
+        recommended: true
+      index_sequence:
+        required: false
+        recommended: true
+
       sample:
         required: true
         inlined: false
@@ -387,6 +382,7 @@ classes:
       - isolation
       - storage
       - individual
+      - age_at_sampling
       - vital_status_at_sampling
       - tissue
     slot_usage:
@@ -410,6 +406,8 @@ classes:
         description: >-
           The Individual entity from which this Biospecimen was derived.
         inlined: false
+        required: true
+      age_at_sampling:
         required: true
       vital_status_at_sampling:
         required: false
@@ -456,6 +454,9 @@ classes:
       storage:
         required: false
         recommended: true
+      isolation:
+        required: false
+        recommended: true
       xref:
         description: >-
           One or more cross-references for this Sample. For example, this Sample
@@ -479,8 +480,6 @@ classes:
     slots:
       - sex
       - karyotype
-      - age_at_sampling
-      - vital_status
       - geographical_region
       - ancestries
       - phenotypic_features
@@ -489,11 +488,6 @@ classes:
         required: true
       karyotype:
         required: false
-      age_at_sampling:
-        required: true
-      vital_status:
-        description: Last known Vital Status of an Individual.
-        required: true
       geographical_region:
         required: false
       ancestries:
@@ -537,6 +531,7 @@ classes:
       - format
       - size
       - checksum
+      - forward_or_reverse
       - checksum_type
       - dataset
     slot_usage:
@@ -555,6 +550,9 @@ classes:
       dataset:
         inlined: false
         required: true
+      forward_or_reverse:
+        required: false
+        recommended: true
 
   StudyFile:
     is_a: File
@@ -614,9 +612,6 @@ classes:
       - reference_genome
       - reference_chromosome
     slot_usage:
-      alias:
-        description: >-
-          An alias uniquely identifying this Analysis entitiy.
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
@@ -1411,6 +1406,7 @@ slots:
       The state or condition of being living or deceased;
       also includes the case where the vital status is unknown.
     range: VitalStatusEnum
+    deprecated: redundant, solved by use of vital_status_at_sampling at the Biospecimen level
 
   sex:
     description: >-

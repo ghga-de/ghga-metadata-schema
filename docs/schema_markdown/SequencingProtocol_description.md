@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
 
 URI: [GHGA:SequencingProtocol_description](https://w3id.org/GHGA/SequencingProtocol_description)
 

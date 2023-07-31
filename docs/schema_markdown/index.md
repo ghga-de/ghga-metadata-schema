@@ -53,11 +53,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
  * [age_at_sampling](age_at_sampling.md) - Age of an individual.
-     * [Individual➞age_at_sampling](Individual_age_at_sampling.md)
+     * [Biospecimen➞age_at_sampling](Biospecimen_age_at_sampling.md)
  * [alias](alias.md) - The alias for an entity at the time of submission.
      * [AliasMixin➞alias](AliasMixin_alias.md)
          * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
-             * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
  * [analysis](analysis.md) - The Analysis associated with an entity
@@ -125,7 +124,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞description](Sample_description.md) - Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
      * [SequencingExperiment➞description](SequencingExperiment_description.md) - A detailed description of the Experiment.
      * [SequencingProcess➞description](SequencingProcess_description.md)
-     * [SequencingProtocol➞description](SequencingProtocol_description.md) - Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+     * [SequencingProtocol➞description](SequencingProtocol_description.md) - Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
  * [disease_or_healthy](disease_or_healthy.md) - Whether a condition corresponds to a disease or a healthy state.
      * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)
@@ -144,11 +143,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [format](format.md) - The format of the file: BAM, SAM, CRAM, BAI, etc.
      * [File➞format](File_format.md)
  * [forward_or_reverse](forward_or_reverse.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
-     * [SequencingProtocol➞forward_or_reverse](SequencingProtocol_forward_or_reverse.md)
+     * [File➞forward_or_reverse](File_forward_or_reverse.md)
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
      * [Individual➞geographical_region](Individual_geographical_region.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
-     * [SequencingProtocol➞index_sequence](SequencingProtocol_index_sequence.md)
+     * [SequencingProcess➞index_sequence](SequencingProcess_index_sequence.md)
  * [individual](individual.md) - The subject/individual associated with an entity.
      * [Biospecimen➞individual](Biospecimen_individual.md) - The Individual entity from which this Biospecimen was derived.
  * [individuals](individuals.md) - The subjects/individuals associated with an entity.
@@ -159,6 +158,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
      * [Biospecimen➞isolation](Biospecimen_isolation.md)
+     * [Sample➞isolation](Sample_isolation.md)
  * [journal](journal.md) - Name of the journal.
      * [Publication➞journal](Publication_journal.md)
  * [karyotype](karyotype.md) - The karyotype of an individual if defined.
@@ -168,7 +168,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [key_type](key_type.md) - The semantic type for the key of an attribute.
      * [Attribute➞key_type](Attribute_key_type.md) - A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
  * [lane_number](lane_number.md) - The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-     * [SequencingProtocol➞lane_number](SequencingProtocol_lane_number.md)
+     * [SequencingProcess➞lane_number](SequencingProcess_lane_number.md)
  * [library_layout](library_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
      * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
  * [library_name](library_name.md) - A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
@@ -286,7 +286,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.
      * [Sample➞type](Sample_type.md) - The type of sample.
      * [SequencingExperiment➞type](SequencingExperiment_type.md) - The type of sequencing experiment.
-     * [SequencingProtocol➞type](SequencingProtocol_type.md) - Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+     * [SequencingProtocol➞type](SequencingProtocol_type.md) - Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
      * [Study➞type](Study_type.md) - The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type
      * [Dataset➞types](Dataset_types.md) - The type of a dataset.
@@ -301,7 +301,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [value_type](value_type.md) - The semantic type for the value of an attribute.
      * [Attribute➞value_type](Attribute_value_type.md) - The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
  * [vital_status](vital_status.md) - The state or condition of being living or deceased; also includes the case where the vital status is unknown.
-     * [Individual➞vital_status](Individual_vital_status.md) - Last known Vital Status of an Individual.
  * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
