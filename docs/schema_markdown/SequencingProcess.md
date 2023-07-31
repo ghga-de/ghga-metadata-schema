@@ -35,9 +35,6 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
  * [SequencingProcess➞name](SequencingProcess_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
- * [description](description.md)  <sub>0..1</sub>
-     * Description: Description of an entity.
-     * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)  <sub>0..1</sub>
      * Description: Identifier of the sequencing run. Used for batch correction.
      * Range: [String](types/String.md)

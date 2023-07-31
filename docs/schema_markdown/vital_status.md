@@ -1,5 +1,5 @@
 
-# Slot: vital_status
+# Slot: ~~vital_status~~ _(deprecated)_
 
 
 The state or condition of being living or deceased; also includes the case where the vital status is unknown.

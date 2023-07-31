@@ -27,10 +27,10 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 ### Own
 
  * [SequencingProtocol➞description](SequencingProtocol_description.md)  <sub>1..1</sub>
-     * Description: Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+     * Description: Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞type](SequencingProtocol_type.md)  <sub>0..1</sub>
-     * Description: Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+     * Description: Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)  <sub>1..1</sub>
      * Description: The name and model of the technology platform used to perform sequencing.

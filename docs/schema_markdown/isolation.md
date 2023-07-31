@@ -17,7 +17,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Children
 
  *  [Biospecimen➞isolation](Biospecimen_isolation.md)
+ *  [Sample➞isolation](Sample_isolation.md)
 
 ## Used by
 
- * [Sample](Sample.md)
