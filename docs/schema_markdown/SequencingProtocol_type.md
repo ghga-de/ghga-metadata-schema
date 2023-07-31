@@ -2,7 +2,7 @@
 # Slot: type
 
 
-Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
 
 URI: [GHGA:SequencingProtocol_type](https://w3id.org/GHGA/SequencingProtocol_type)
 

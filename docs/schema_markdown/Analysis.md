@@ -40,8 +40,11 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
  * [Analysis➞reference_chromosome](Analysis_reference_chromosome.md)  <sub>1..1</sub>
      * Description: The reference chromosome used for this Analysis.
      * Range: [String](types/String.md)
- * [Analysis➞alias](Analysis_alias.md)  <sub>1..1</sub>
-     * Description: An alias uniquely identifying this Analysis entitiy.
+
+### Mixed in from IdentifiedByAliasMixin:
+
+ * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
+     * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
 
 ## Other properties

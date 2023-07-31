@@ -35,9 +35,6 @@ URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
  * [Condition➞name](Condition_name.md)  <sub>1..1</sub>
      * Description: The name for an entity.
      * Range: [String](types/String.md)
- * [description](description.md)  <sub>0..1</sub>
-     * Description: Description of an entity.
-     * Range: [String](types/String.md)
  * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a disease or a healthy state.
      * Range: [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)

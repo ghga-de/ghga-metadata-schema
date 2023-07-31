@@ -57,7 +57,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [alias](alias.md) - The alias for an entity at the time of submission.
      * [AliasMixin➞alias](AliasMixin_alias.md)
          * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)
-             * [Analysis➞alias](Analysis_alias.md) - An alias uniquely identifying this Analysis entitiy.
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
  * [analysis](analysis.md) - The Analysis associated with an entity
@@ -125,7 +124,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞description](Sample_description.md) - Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
      * [SequencingExperiment➞description](SequencingExperiment_description.md) - A detailed description of the Experiment.
      * [SequencingProcess➞description](SequencingProcess_description.md)
-     * [SequencingProtocol➞description](SequencingProtocol_description.md) - Description about the sequencing Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+     * [SequencingProtocol➞description](SequencingProtocol_description.md) - Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
  * [disease_or_healthy](disease_or_healthy.md) - Whether a condition corresponds to a disease or a healthy state.
      * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)
@@ -159,6 +158,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a biospecimen or a sample.
      * [Biospecimen➞isolation](Biospecimen_isolation.md)
+     * [Sample➞isolation](Sample_isolation.md)
  * [journal](journal.md) - Name of the journal.
      * [Publication➞journal](Publication_journal.md)
  * [karyotype](karyotype.md) - The karyotype of an individual if defined.
@@ -286,7 +286,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.
      * [Sample➞type](Sample_type.md) - The type of sample.
      * [SequencingExperiment➞type](SequencingExperiment_type.md) - The type of sequencing experiment.
-     * [SequencingProtocol➞type](SequencingProtocol_type.md) - Name of the library_preparation Protocol (eg: mRNA-seq,Whole exome long-read sequencing etc).
+     * [SequencingProtocol➞type](SequencingProtocol_type.md) - Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
      * [Study➞type](Study_type.md) - The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type
      * [Dataset➞types](Dataset_types.md) - The type of a dataset.
