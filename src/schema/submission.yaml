@@ -171,9 +171,8 @@ classes:
     description: >-
       An condition that is linked to comparable samples.
     slots:
-      - title
-      - description
       - name
+      - description
       - disease_or_healthy
       - case_control_status
       - mutant_or_wildtype
@@ -276,6 +275,7 @@ classes:
       type:
         description: >-
           Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+        required: false
       description:
         description: >-
           Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
@@ -325,9 +325,8 @@ classes:
     description: >-
       A sequencing process linking a sample to sequencing output.
     slots:
-      - title
-      - description
       - name
+      - description
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
@@ -361,7 +360,6 @@ classes:
       index_sequence:
         required: false
         recommended: true
-
       sample:
         required: true
         inlined: false
@@ -465,7 +463,7 @@ classes:
       biospecimen:
         description: >-
           The Biospecimen from which this Sample was prepared from.
-        required: false
+        required: true
         inlined: false
       condition:
         required: true
@@ -499,6 +497,7 @@ classes:
           For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
+        recommended: true
 
   Trio:
     mixins:
