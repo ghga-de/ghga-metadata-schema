@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 1.0.0
+**version:** 1.0.1
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -38,7 +38,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Mixins
 
- * [AccessionMixin](AccessionMixin.md) - Mixin for entities that can be assigned a GHGA accession.
  * [AliasMixin](AliasMixin.md) - Mixin for entities that can be assigned an alias at the time of metadata submission.
      * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
@@ -48,8 +47,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
  * [abstract](abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this study
      * [Publication➞abstract](Publication_abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
- * [accession](accession.md) - A unique GHGA identifier assigned to an entity for the sole purpose of referring to that entity in a global scope.
-     * [AccessionMixin➞accession](AccessionMixin_accession.md)
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md)
  * [age_at_sampling](age_at_sampling.md) - Age of an individual.
