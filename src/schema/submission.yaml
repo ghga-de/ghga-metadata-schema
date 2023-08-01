@@ -721,7 +721,6 @@ classes:
           Data use permission associated with a policy. Typically one or more terms from DUO
           and should be descendants of 'DUO:0000001 data use permission'.
         required: true
-        recommended: true
       data_use_modifiers:
         description: >-
           Modifier for Data use permission associated with a policy.
