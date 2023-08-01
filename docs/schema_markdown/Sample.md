@@ -33,12 +33,14 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
  * [Sample➞type](Sample_type.md)  <sub>0..1</sub>
      * Description: The type of sample.
      * Range: [SampleTypeEnum](SampleTypeEnum.md)
+     * in subsets: (ontology)
  * [Sample➞description](Sample_description.md)  <sub>1..1</sub>
      * Description: Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
      * Range: [String](types/String.md)
  * [Sample➞isolation](Sample_isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
  * [Sample➞storage](Sample_storage.md)  <sub>0..1</sub>
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [String](types/String.md)

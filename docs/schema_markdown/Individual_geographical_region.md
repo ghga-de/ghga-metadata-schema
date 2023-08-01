@@ -21,3 +21,10 @@ URI: [GHGA:Individual_geographical_region](https://w3id.org/GHGA/Individual_geog
 ## Used by
 
  * [Individual](Individual.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+

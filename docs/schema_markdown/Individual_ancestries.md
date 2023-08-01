@@ -21,3 +21,10 @@ URI: [GHGA:Individual_ancestries](https://w3id.org/GHGA/Individual_ancestries)
 ## Used by
 
  * [Individual](Individual.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+

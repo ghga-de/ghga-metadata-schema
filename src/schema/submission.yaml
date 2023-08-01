@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 1.0.1
+version: 1.1.0
 imports:
   - linkml:types
 
@@ -437,6 +437,8 @@ classes:
         description: >-
           The type of sample.
         range: SampleTypeEnum
+        in_subset:
+          - ontology
         required: false
       description:
         description: >-
@@ -1053,7 +1055,8 @@ slots:
 
   phenotypic_features:
     description: Phenotypic feature concepts that the entity is associated with.
-    pattern: .*
+    in_subset:
+      - ontology
     # range: PhenotypicFeaturesEnum
     multivalued: true
 
@@ -1072,7 +1075,8 @@ slots:
   ancestries:
     description: >-
       A person's descent or lineage, from a person or from a population.
-    pattern: HANCESTRO:.*
+    in_subset:
+      - ontology
     # range: AncestryEnum
     multivalued: true
 
@@ -1353,7 +1357,8 @@ slots:
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
-    pattern: SNOMED:.*
+    in_subset:
+      - ontology
     # range: IsolationEnum
 
   storage:
@@ -1385,7 +1390,8 @@ slots:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
-    pattern: HANCESTRO:.*
+    in_subset:
+      - ontology
     # range: GeographicalRegionEnum
 
   vital_status:
@@ -1471,13 +1477,20 @@ slots:
       DOI identifier of a publication.
 
   tissue:
-    pattern: BTO:.*
+    in_subset:
+      - ontology
     # range: TissueEnum
 
   trios:
     description: The Trios associated with an entity.
     range: Trio
     multivalued: true
+
+subsets:
+  ontology:
+    description: >-
+      This slot is part of an ontology which is currently not otherwise encoded
+      in the schema.
 
 enums:
   DataUseModifierEnum:

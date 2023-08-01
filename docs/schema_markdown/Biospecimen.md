@@ -37,6 +37,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
  * [Biospecimen➞isolation](Biospecimen_isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
  * [Biospecimen➞storage](Biospecimen_storage.md)  <sub>0..1</sub>
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [String](types/String.md)
@@ -51,6 +52,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
  * [Biospecimen➞tissue](Biospecimen_tissue.md)  <sub>1..1</sub>
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
