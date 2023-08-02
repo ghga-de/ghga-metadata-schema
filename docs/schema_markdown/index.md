@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 1.0.1
+**version:** 1.1.0
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -340,6 +340,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Subsets
 
+ * [Ontology](Ontology.md) - This slot is part of an ontology which is currently not otherwise encoded in the schema.
 
 ### Types
 

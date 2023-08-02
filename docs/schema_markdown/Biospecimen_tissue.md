@@ -21,3 +21,10 @@ URI: [GHGA:Biospecimen_tissue](https://w3id.org/GHGA/Biospecimen_tissue)
 ## Used by
 
  * [Biospecimen](Biospecimen.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+
