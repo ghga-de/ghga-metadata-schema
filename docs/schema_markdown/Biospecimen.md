@@ -34,16 +34,6 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
  * [Biospecimen➞description](Biospecimen_description.md)  <sub>0..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
- * [Biospecimen➞isolation](Biospecimen_isolation.md)  <sub>0..1</sub>
-     * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
-     * Range: [String](types/String.md)
-     * in subsets: (ontology)
- * [Biospecimen➞storage](Biospecimen_storage.md)  <sub>0..1</sub>
-     * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
-     * Range: [String](types/String.md)
- * [Biospecimen➞individual](Biospecimen_individual.md)  <sub>1..1</sub>
-     * Description: The Individual entity from which this Biospecimen was derived.
-     * Range: [Individual](Individual.md)
  * [Biospecimen➞age_at_sampling](Biospecimen_age_at_sampling.md)  <sub>1..1</sub>
      * Description: Age of an individual.
      * Range: [AgeRangeEnum](AgeRangeEnum.md)
@@ -53,6 +43,16 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
  * [Biospecimen➞tissue](Biospecimen_tissue.md)  <sub>1..1</sub>
      * Range: [String](types/String.md)
      * in subsets: (ontology)
+ * [Biospecimen➞isolation](Biospecimen_isolation.md)  <sub>0..1</sub>
+     * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
+     * Range: [String](types/String.md)
+     * in subsets: (ontology)
+ * [Biospecimen➞storage](Biospecimen_storage.md)  <sub>0..1</sub>
+     * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
+     * Range: [StorageEnum](StorageEnum.md)
+ * [Biospecimen➞individual](Biospecimen_individual.md)  <sub>1..1</sub>
+     * Description: The Individual entity from which this Biospecimen was derived.
+     * Range: [Individual](Individual.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
@@ -62,7 +62,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | OBI:0100051 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | OBI:0100051 |
 

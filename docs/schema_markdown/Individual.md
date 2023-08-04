@@ -34,6 +34,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
  * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
      * Description: The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>
      * Description: The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
      * Range: [IndividualSexEnum](IndividualSexEnum.md)
@@ -48,10 +49,6 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Description: A person's descent or lineage, from a person or from a population.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
- * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
-     * Description: The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
-     * Range: [String](types/String.md)
-     * in subsets: (ontology)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
@@ -61,8 +58,8 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 ## Other properties
 
-|              |     |         |
-| ------------ | --- | ------- |
-| **Aliases:** |     | subject |
-|              |     | patient |
+|  |  |  |
+| --- | --- | --- |
+| **Aliases:** | | subject |
+|  | | patient |
 
