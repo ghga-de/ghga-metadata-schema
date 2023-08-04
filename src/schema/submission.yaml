@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 1.0.0
+version: 1.1.0
 imports:
   - linkml:types
 
@@ -14,6 +14,8 @@ prefixes:
   SIO: http://semanticscience.org/resource/SIO_
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
+  GSSO: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
+  DUO: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
 
 default_prefix: GHGA
 default_range: string
@@ -74,15 +76,6 @@ classes:
     slot_usage:
       alias:
         identifier: true
-
-  AccessionMixin:
-    mixin: true
-    description: Mixin for entities that can be assigned a GHGA accession.
-    slots:
-      - accession
-    slot_usage:
-      accession:
-        required: true
 
   AttributeMixin:
     mixin: true
@@ -450,6 +443,8 @@ classes:
         description: >-
           The type of sample.
         range: SampleTypeEnum
+        in_subset:
+          - ontology
         required: false
       description:
         description: >-
@@ -943,11 +938,6 @@ slots:
   alias:
     description: The alias for an entity at the time of submission.
 
-  accession:
-    description: >-
-      A unique GHGA identifier assigned to an entity for the sole purpose of
-      referring to that entity in a global scope.
-
   description:
     description: Description of an entity.
     exact_mappings:
@@ -1074,7 +1064,8 @@ slots:
 
   phenotypic_features:
     description: Phenotypic feature concepts that the entity is associated with.
-    pattern: .*
+    in_subset:
+      - ontology
     # range: PhenotypicFeaturesEnum
     multivalued: true
 
@@ -1093,7 +1084,8 @@ slots:
   ancestries:
     description: >-
       A person's descent or lineage, from a person or from a population.
-    pattern: HANCESTRO:.*
+    in_subset:
+      - ontology
     # range: AncestryEnum
     multivalued: true
 
@@ -1383,7 +1375,8 @@ slots:
   isolation:
     description: >-
       Method or device employed for collecting/isolating a biospecimen or a sample.
-    pattern: SNOMED:.*
+    in_subset:
+      - ontology
     # range: IsolationEnum
 
   storage:
@@ -1416,7 +1409,8 @@ slots:
     description: >-
       The geographical region where the Individual is located.
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
-    pattern: HANCESTRO:.*
+    in_subset:
+      - ontology
     # range: GeographicalRegionEnum
 
   sex:
@@ -1495,13 +1489,20 @@ slots:
       DOI identifier of a publication.
 
   tissue:
-    pattern: BTO:.*
+    in_subset:
+      - ontology
     # range: TissueEnum
 
   trios:
     description: The Trios associated with an entity.
     range: Trio
     multivalued: true
+
+subsets:
+  ontology:
+    description: >-
+      This slot is part of an ontology which is currently not otherwise encoded
+      in the schema.
 
 enums:
   DataUseModifierEnum:

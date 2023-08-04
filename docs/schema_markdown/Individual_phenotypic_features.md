@@ -21,3 +21,10 @@ URI: [GHGA:Individual_phenotypic_features](https://w3id.org/GHGA/Individual_phen
 ## Used by
 
  * [Individual](Individual.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+

@@ -21,3 +21,10 @@ URI: [GHGA:Sample_type](https://w3id.org/GHGA/Sample_type)
 ## Used by
 
  * [Sample](Sample.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+

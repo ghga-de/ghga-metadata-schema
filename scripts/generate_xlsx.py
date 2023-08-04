@@ -95,10 +95,24 @@ class ColumnMeta:
         """The multiple values help text"""
         return "multiple values" if self.slot_def.multivalued else "single value"
 
+    def in_ontology_subset(self, slot_def: SlotDefinition) -> bool:
+        """Returns a bool indicating whether or not the given slot is marked as
+        non-implemented ontology slot."""
+        SUBSET_NAME="ontology"
+        in_subset_usage = slot_def.in_subset
+        in_subset_root = self.schema.get_slot(slot_def.name).in_subset
+        return (
+            isinstance(in_subset_usage, list) and SUBSET_NAME in in_subset_usage or 
+            isinstance(in_subset_root, list) and SUBSET_NAME in in_subset_root or 
+            in_subset_usage == SUBSET_NAME or
+            in_subset_root == SUBSET_NAME
+        )
+        
+
     @property
     def restriction_help(self) -> str:
         """The restriction help text"""
-        if self.enum_name or self.slot_def.pattern:
+        if self.enum_name or self.slot_def.pattern or self.in_ontology_subset(self.slot_def):
             return "controlled vocabulary"
         elif self.cls_name:
             id_slot = self.schema.get_identifier_slot(self.cls_name)

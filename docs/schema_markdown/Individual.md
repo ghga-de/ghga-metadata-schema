@@ -43,9 +43,15 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
  * [Individual➞geographical_region](Individual_geographical_region.md)  <sub>0..1</sub>
      * Description: The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
  * [Individual➞ancestries](Individual_ancestries.md)  <sub>0..\*</sub>
      * Description: A person's descent or lineage, from a person or from a population.
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
+ * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
+     * Description: The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
+     * Range: [String](types/String.md)
+     * in subsets: (ontology)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
@@ -55,8 +61,8 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Aliases:** | | subject |
-|  | | patient |
+|              |     |         |
+| ------------ | --- | ------- |
+| **Aliases:** |     | subject |
+|              |     | patient |
 

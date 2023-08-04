@@ -21,3 +21,10 @@ URI: [GHGA:Biospecimen_isolation](https://w3id.org/GHGA/Biospecimen_isolation)
 ## Used by
 
  * [Biospecimen](Biospecimen.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+
