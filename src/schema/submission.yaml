@@ -268,6 +268,9 @@ classes:
       - cell_barcode_read
       - cell_barcode_offset
       - cell_barcode_size
+      - cdna_read
+      - cdna_read_offset
+      - cdna_read_size
       - sample_barcode_read
     slot_usage:
       instrument_model:
@@ -314,6 +317,15 @@ classes:
       cell_barcode_offset:
         required: false
         recommended: true
+      cdna_read:
+        required: false
+        recommended: true
+      cdna_read_size:
+        required: false
+        recommended: true
+      cdna_read_offset:
+        required: false
+        recommended: true
       sample_barcode_read:
         required: false
         recommended: true
@@ -332,7 +344,6 @@ classes:
       - sequencing_machine_id
       - sequencing_experiment
       - index_sequence
-      - lane_number
       - sample
     slot_usage:
       name:
@@ -354,9 +365,6 @@ classes:
       sequencing_experiment:
         required: true
         inlined: false
-      lane_number:
-        required: false
-        recommended: true
       index_sequence:
         required: false
         recommended: true
@@ -377,12 +385,12 @@ classes:
       - name
       - type
       - description
-      - isolation
-      - storage
-      - individual
       - age_at_sampling
       - vital_status_at_sampling
       - tissue
+      - isolation
+      - storage
+      - individual
     slot_usage:
       name:
         required: false
@@ -430,9 +438,9 @@ classes:
       - description
       - isolation
       - storage
-      - biospecimen
-      - condition
       - xref
+      - condition
+      - biospecimen
     slot_usage:
       name:
         description: >-
@@ -463,7 +471,8 @@ classes:
       biospecimen:
         description: >-
           The Biospecimen from which this Sample was prepared from.
-        required: true
+        required: false
+        recommended: true
         inlined: false
       condition:
         required: true
@@ -476,11 +485,11 @@ classes:
     description: >-
       An Individual is a Person who is participating in a Study.
     slots:
+      - phenotypic_features
       - sex
       - karyotype
       - geographical_region
       - ancestries
-      - phenotypic_features
     slot_usage:
       sex:
         required: true
@@ -530,8 +539,8 @@ classes:
       - format
       - size
       - checksum
-      - forward_or_reverse
       - checksum_type
+      - forward_or_reverse
       - dataset
     slot_usage:
       name:
@@ -689,9 +698,9 @@ classes:
       - description
       - policy_text
       - policy_url
-      - data_access_committee
       - data_use_permission
       - data_use_modifiers
+      - data_access_committee
     slot_usage:
       name:
         description: >-
@@ -759,8 +768,8 @@ classes:
       - year
       - journal
       - doi
-      - study
       - xref
+      - study
     slot_usage:
       title:
         description: >-
@@ -1309,10 +1318,6 @@ slots:
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: ForwardOrReverseEnum
 
-  lane_number:
-    description: >-
-      The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-
   target_coverage:
     description: >-
       Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
@@ -1357,6 +1362,19 @@ slots:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
 
+  cdna_read:
+    description: >-
+      The type of read that contains the cDNA barcode (Eg: index1/index2/read1/read2).
+    range: IndexReadEnum
+
+  cdna_read_offset:
+    description: >-
+      The offset in sequence of the cDNA read. (E.g. '0').
+
+  cdna_read_size:
+    description: >-
+      The size of the cDNA read (Eg. '98').
+
   sample_barcode_read:
     description: >-
       The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
@@ -1372,6 +1390,7 @@ slots:
     description: >-
       Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
+    range: StorageEnum
 
   disease_or_healthy:
     description: >-
@@ -1399,13 +1418,6 @@ slots:
       Any demarcated area of the Earth; may be determined by both natural and human boundaries.
     pattern: HANCESTRO:.*
     # range: GeographicalRegionEnum
-
-  vital_status:
-    description: >-
-      The state or condition of being living or deceased;
-      also includes the case where the vital status is unknown.
-    range: VitalStatusEnum
-    deprecated: redundant, solved by use of vital_status_at_sampling at the Biospecimen level
 
   sex:
     description: >-
@@ -1607,6 +1619,23 @@ enums:
       source_nodes:
         - SNOMED:118292001
       include_self: false
+
+  StorageEnum:
+    description: >-
+      Enum to capture how a Sample or Biospecimen was stored.
+    permissible_values:
+      REFRIGERATOR:
+        description: >-
+          The sample / bioscpemien was stored in a refrigerator at 2°C to 5°C.
+      FREEZER:
+        description: >-
+          The sample / bioscpemien was stored in a freezer at -20°C.
+      ULTRA_LOW_FREEZER:
+        description: >-
+          The sample / bioscpemien was stored in a ultra-low freezer at -80°C.
+      CRYOGENIC_FREEZER:
+        description: >-
+          The sample / bioscpemien was stored in a cryogenic freezer at -150°C to -190°C.
 
   SampleTypeEnum:
     description: >-

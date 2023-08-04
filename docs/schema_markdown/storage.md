@@ -9,7 +9,7 @@ URI: [GHGA:storage](https://w3id.org/GHGA/storage)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [StorageEnum](StorageEnum.md)
 
 ## Parents
 

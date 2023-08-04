@@ -82,6 +82,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
  * [case_control_status](case_control_status.md) - Whether a condition corresponds to a treatment or a control.
      * [Condition➞case_control_status](Condition_case_control_status.md)
+ * [cdna_read](cdna_read.md) - The type of read that contains the cDNA barcode (Eg: index1/index2/read1/read2).
+     * [SequencingProtocol➞cdna_read](SequencingProtocol_cdna_read.md)
+ * [cdna_read_offset](cdna_read_offset.md) - The offset in sequence of the cDNA read. (E.g. '0').
+     * [SequencingProtocol➞cdna_read_offset](SequencingProtocol_cdna_read_offset.md)
+ * [cdna_read_size](cdna_read_size.md) - The size of the cDNA read (Eg. '98').
+     * [SequencingProtocol➞cdna_read_size](SequencingProtocol_cdna_read_size.md)
  * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
      * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
  * [cell_barcode_read](cell_barcode_read.md) - The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
@@ -109,7 +115,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [data_use_modifiers](data_use_modifiers.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
      * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
  * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
-     * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
+     * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000026' if no other permission applies.
  * [dataset](dataset.md) - The Dataset associated with an entity.
      * [File➞dataset](File_dataset.md)
  * [datasets](datasets.md) - The Datasets associated with an entity.
@@ -167,8 +173,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Attribute➞key](Attribute_key.md) - The key for an attribute.
  * [key_type](key_type.md) - The semantic type for the key of an attribute.
      * [Attribute➞key_type](Attribute_key_type.md) - A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
- * [lane_number](lane_number.md) - The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-     * [SequencingProcess➞lane_number](SequencingProcess_lane_number.md)
  * [library_layout](library_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
      * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
  * [library_name](library_name.md) - A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
@@ -300,7 +304,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Attribute➞value](Attribute_value.md) - The value for an attribute. Usually this is a numerical value (without the units).
  * [value_type](value_type.md) - The semantic type for the value of an attribute.
      * [Attribute➞value_type](Attribute_value_type.md) - The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
- * [vital_status](vital_status.md) - The state or condition of being living or deceased; also includes the case where the vital status is unknown.
  * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
@@ -337,6 +340,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
+ * [StorageEnum](StorageEnum.md) - Enum to capture how a Sample or Biospecimen was stored.
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
  * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.
