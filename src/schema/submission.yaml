@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 1.1.0
+version: 1.1.1
 imports:
   - linkml:types
 
@@ -16,6 +16,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   GSSO: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
   DUO: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
+  NCIT: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
 
 default_prefix: GHGA
 default_range: string

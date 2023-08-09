@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 1.1.0
+**version:** 1.1.1
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
