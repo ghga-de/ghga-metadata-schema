@@ -39,26 +39,12 @@ classes:
       - SIO:000614
     slot_usage:
       key:
-        description: >-
-          The key for an attribute.
         required: true
       key_type:
-        description: >-
-          A semantic type that characterizes the attribute key. Usually this is a
-          term from an ontology.
-          For example, 'MAXO:0000616' indicates that the attribute is a measurement
-          of oxygen saturation in the blood.
         required: false
       value:
-        description: >-
-          The value for an attribute. Usually this is a numerical value (without the units).
         required: true
       value_type:
-        description: >-
-          The value_type that characterizes the attribute value. Usually this is a
-          term from an ontology that describes how to interpret the value.
-          For example, 'SIO:001413' indicates that the value is to be interpreted as
-          a percentage.
         required: false
 
   AliasMixin:
@@ -94,9 +80,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      Studies are experimental investigations of a particular phenomenon. It involves a
-      detailed examination and analysis of a subject to learn more about the phenomenon
-      being studied.
+      A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
     slots:
       - title
       - description
@@ -105,7 +89,7 @@ classes:
     slot_usage:
       title:
         description: >-
-          A comprehensive title for the study.
+          A comprehensive title for the Study.
         required: true
       description:
         description: >-
@@ -113,24 +97,21 @@ classes:
         required: true
       type:
         description: >-
-          The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
+          The type of Study, e.g. 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
         range: StudyTypeEnum
         required: true
       affiliations:
         required: true
       attributes:
         description: >-
-          Custom key/value pairs that further characterizes the Study.
-          (e.g.: approaches - single-cell,_bulk_etc)
+          One or more attributes that further characterize this Study.
 
   SequencingExperiment:
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      An sequencing experiment is an investigation that consists of a coordinated set of
-      actions and observations designed to generate data with the goal of verifying,
-      falsifying, or establishing the validity of a hypothesis.
+      An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
     exact_mappings:
       - SIO:000994
     slots:
@@ -142,14 +123,14 @@ classes:
     slot_usage:
       title:
         description: >-
-          Name for the experiment (eg: GHGAE_PBMC_RNAseq).
+          Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
       description:
         description: >-
-          A detailed description of the Experiment.
+          A detailed description of the Sequencing Experiment.
         required: true
       type:
         description: >-
-          The type of sequencing experiment.
+          The type of Sequencing Experiment.
         required: false
       sequencing_protocol:
         required: true
@@ -163,7 +144,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      An condition that is linked to comparable samples.
+      The Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples.
     slots:
       - name
       - description
@@ -173,8 +154,12 @@ classes:
       - study
     slot_usage:
       name:
+        description: >-
+          The name of the Condition.
         required: true
       description:
+        description: >-
+          A concise description of the applied Condition.
         required: true
       disease_or_healthy:
         required: true
@@ -191,7 +176,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      Information about the library_preparation of an sequencing experiment.
+      The Library Preparation Protocol captures information about the Library Preparation of an Sequencing Experiment.
     slots:
       - description
       - library_name
@@ -208,7 +193,7 @@ classes:
     slot_usage:
       description:
         description: >-
-          Description about how a sequencing library was prepared (eg: Library construction method).
+          Description summarizing how a sequencing library was prepared.
         required: true
       library_name:
         required: true
@@ -234,7 +219,7 @@ classes:
         recommended: true
       attributes:
         description: >-
-          One or more attributes that further characterizes this library_preparation Protocol.
+          One or more attributes that further characterize this Library Preparation Protocol.
       target_regions:
         required: false
       rnaseq_strandedness:
@@ -246,7 +231,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      Information about the sequencing of a sample.
+      The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
     slots:
       - description
       - type
@@ -271,15 +256,15 @@ classes:
         required: true
       type:
         description: >-
-          Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+          Type of the Sequencing Protocol (e.g.: mRNA-seq, Whole exome long-read sequencing).
         required: false
       description:
         description: >-
-          Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+          A description summarizing the Sequencing Protocol.
         required: true
       attributes:
         description: >-
-          One or more attributes that further characterizes this Sequencing Protocol.
+          One or more attributes that further characterize this Sequencing Protocol.
       sequencing_center:
         required: false
         recommended: true
@@ -329,7 +314,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      A sequencing process linking a sample to sequencing output.
+      The Sequencing Process captures the technical parameters that were used to produce sequencing output from a Sample. It links a Sample to sequencing output.
     slots:
       - name
       - description
@@ -345,16 +330,10 @@ classes:
       description:
         required: true
       sequencing_run_id:
-        description: >-
-          Identifier of the sequencing run. Used for batch correction.
         required: false
       sequencing_lane_id:
-        description: >-
-          Identifier of the sequencing lane. Used for batch correction.
         required: false
       sequencing_machine_id:
-        description: >-
-          Identifier of the sequencing machine. Used for batch correction.
         required: false
       sequencing_experiment:
         required: true
@@ -370,9 +349,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A Biospecimen is any natural material taken from a biological entity (usually a human) for testing,
-      diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which
-      the Biospecimen is derived.
+      A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
     exact_mappings:
       - OBI:0100051
     slots:
@@ -420,9 +397,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      A sample is a limited quantity of something to be used for testing, analysis,
-      inspection, investigation, demonstration, or trial use. A sample is prepared from
-      a Biospecimen (isolate or tissue).
+      A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
     exact_mappings:
       - SIO:001050
       - biolink:MaterialSample
@@ -438,20 +413,18 @@ classes:
     slot_usage:
       name:
         description: >-
-          Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+          A descriptive name of the Sample (e.g. GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
         required: true
       type:
         description: >-
-          The type of sample.
+          The type of the Sample.
         range: SampleTypeEnum
         in_subset:
           - ontology
         required: false
       description:
         description: >-
-          Short textual description of the sample
-          (How the sample was collected, sample source,
-          Protocol followed for processing the sample etc).
+          A concise description about the Sample source, the collection method, and the protocol which was followed to process the Sample.
         required: true
       storage:
         required: false
@@ -461,12 +434,11 @@ classes:
         recommended: true
       xref:
         description: >-
-          One or more cross-references for this Sample. For example, this Sample
-          may have an EBI BioSamples accession or an EGA Sample accession.
+          One or more cross-references for this Sample, e.g., this Sample may have an EBI BioSamples accession or an EGA Sample accession.
         required: false
       biospecimen:
         description: >-
-          The Biospecimen from which this Sample was prepared from.
+          The Biospecimen which this Sample was prepared from.
         required: false
         recommended: true
         inlined: false
@@ -496,11 +468,6 @@ classes:
       ancestries:
         required: false
       phenotypic_features:
-        description: >-
-          The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval
-          from the organism. Typically, a concept from Human Phenotype Ontology.
-          For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
-          was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
         recommended: true
 
@@ -508,7 +475,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A trio is defined by three individuals representing an individual and their parents.
+      A trio is a study design that involves the genetic analysis of three individuals within a family unit. It consists of a child and their biological parents.
     slots:
       - mother
       - father
@@ -608,7 +575,6 @@ classes:
     aliases: ["data analysis"]
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
-      The workflow used to achieve this transformation and the individual steps are also captured.
     slots:
       - title
       - description
@@ -618,11 +584,11 @@ classes:
     slot_usage:
       type:
         description: >-
-          The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
+          The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
         required: false
       description:
         description: >-
-          Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+          A description summarizing how an Analysis was carried out, e.g.: computational tools, pipelines, workflows.
         required: false
       reference_genome:
         required: true
@@ -632,6 +598,8 @@ classes:
   AnalysisProcess:
     mixins:
       - IdentifiedByAliasMixin
+    description: >-
+      An analysis process captures the workflow steps that were performed to analyze data obtained from sequencing experiments.
     slots:
       - analysis
       - study_input_files
@@ -641,7 +609,7 @@ classes:
       analysis:
         inlined: false
         description: >-
-          The Analysis the AnalysisProcess was part of
+          The Analysis the Analysis Process is part of.
         required: true
       study_input_files:
         inlined: false
@@ -657,8 +625,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A Dataset is a collection of Files that is prepared for distribution
-      and is tied to a Data Access Policy.
+      A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
     exact_mappings:
       - SIO:000089
     slots:
@@ -669,13 +636,13 @@ classes:
     slot_usage:
       title:
         description: >-
-          A title for the submitted Dataset.
+          A title for the Dataset.
         required: true
       description:
         required: true
       types:
         description: >-
-          The type of a dataset.
+          The type of the Dataset.
         required: true
       data_access_policy:
         description: >-
@@ -687,8 +654,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A Data Access Policy specifies under which circumstances, legal or otherwise,
-      a user can have access to one or more Datasets belonging to one or more Studies.
+      A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
     slots:
       - name
       - description
@@ -707,13 +673,8 @@ classes:
           A short description for the Data Access Policy.
         required: true
       policy_text:
-        description: >-
-          The terms of data use and policy verbiage should be captured here.
         required: true
       policy_url:
-        description: >-
-          URL for the policy, if available. This is useful if the terms of the policy is
-          made available online at a resolvable URL.
         required: false
         recommended: true
       data_access_committee:
@@ -722,15 +683,8 @@ classes:
         required: true
         inlined: false
       data_use_permission:
-        description: >-
-          Data use permission associated with a policy. Typically one or more terms from DUO
-          and should be descendants of 'DUO:0000001 data use permission'.
-          Please use 'DUO:0000026' if no other permission applies.
         required: true
       data_use_modifiers:
-        description: >-
-          Modifier for Data use permission associated with a policy.
-          Should be descendants of 'DUO:0000017 data use modifier'
         required: false
         recommended: true
 
@@ -738,9 +692,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A group of members that are delegated to grant access to one or more datasets
-      after ensuring the minimum criteria for data sharing has been met, and request
-      for data use does not raise ethical and/or legal concerns.
+      A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
     slots:
       - email
       - institute
@@ -754,9 +706,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      The Publication entity represents a publication. While a publication can be any
-      article that is published, the minimum expectation is that the publication has a
-      valid DOI.
+      The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
     slots:
       - title
       - abstract
@@ -786,7 +736,6 @@ classes:
           One or more cross-references for this Publication.
         required: false
       doi:
-        description: DOI identifier of the Publication.
         required: true
       study:
         description: >-
@@ -841,7 +790,8 @@ classes:
         inlined: true
         inlined_as_list: true
       conditions:
-        description: The Conditions associated with this Submission.
+        description: >-
+          The Conditions associated with this Submission.
         required: true
         inlined: true
         inlined_as_list: true
@@ -876,32 +826,38 @@ classes:
         inlined: true
         inlined_as_list: true
       study_files:
-        description: The StudyFiles that are part of this submission.
+        description: >-
+          The StudyFiles that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
       sample_files:
-        description: The SampleFiles that are part of this submission.
+        description: >-
+          The SampleFiles that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
       sequencing_process_files:
-        description: The SequencingProcessFiles that are part of this submission.
+        description: >-
+          The SequencingProcessFiles that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
       sequencing_processes:
-        description: The SequencingProcesses that are part of this submission.
+        description: >-
+          The SequencingProcesses that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
       analysis_processes:
-        description: The AnalysisProcesses that are part of this submission.
+        description: >-
+          The AnalysisProcesses that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
       analysis_process_output_files:
-        description: The AnalysisProcessOutputFiles that are part of this submission.
+        description: >-
+          The AnalysisProcessOutputFiles that are part of this submission.
         required: true
         inlined: true
         inlined_as_list: true
@@ -930,7 +886,8 @@ classes:
         inlined: true
         inlined_as_list: true
       trios:
-        description: The Trios associated with this Submission.
+        description: >-
+          The Trios associated with this Submission.
         required: true
         inlined: true
         inlined_as_list: true
@@ -948,13 +905,13 @@ slots:
     description: The key of an attribute.
 
   key_type:
-    description: The semantic type for the key of an attribute.
+    description: A semantic type that characterizes the attribute key. Usually this is a term from an ontology, e.g. 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
 
   value:
-    description: The value of an attribute
+    description: The value for an attribute. Usually this is a numerical value (without the units).
 
   value_type:
-    description: The semantic type for the value of an attribute.
+    description: The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value, e.g. 'SIO:001413' indicates that the value is to be interpreted as a percentage.
 
   attributes:
     description: Key/value pairs corresponding to an entity.
@@ -1064,7 +1021,9 @@ slots:
     multivalued: true
 
   phenotypic_features:
-    description: Phenotypic feature concepts that the entity is associated with.
+    description:
+      The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. Typically, the phenotypic feature is captured using a concept from Human Phenotype Ontology.
+      E.g., 'HP:0100244' indicates that the Individual the Biospecimen was extracted from exhibits 'Fibrosarcoma' as one of its phenotype.
     in_subset:
       - ontology
     # range: PhenotypicFeaturesEnum
@@ -1158,7 +1117,8 @@ slots:
   data_use_permission:
     description: >-
       Data use permission associated with an entity. Typically one or more terms from DUO.
-      Should be descendants of 'DUO:0000001 data use permission'.
+      Should be descendants of 'DUO:0000001 data use permission'. 
+      Please use 'DUO:0000026' if no other permission applies.
     range: DataUsePermissionEnum
 
   data_use_modifiers:
@@ -1221,13 +1181,13 @@ slots:
 
   library_type:
     description: >-
-      Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+      Describe the level of omics analysis (e.g. metagenome, transcriptome)
     range: LibraryPreparationLibraryTypeEnum
 
   library_selection:
     description: >-
       Whether any method was used to select for or against, enrich, or screen the material being sequenced.
-      library_selection method (e.g. random, PCA, cDNA, etc )
+      library_selection method (e.g. random, PCA, cDNA)
     range: LibraryPreparationLibrarySelectionEnum
 
   library_preparation:
@@ -1236,9 +1196,7 @@ slots:
 
   library_preparation_kit_retail_name:
     description: >-
-      A unique identifier for the kit used to construct a genomic library.
-      This may include the vendor name, kit name and kit version
-      (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+      A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome).
     range: LibraryPreparationKitRetailNameEnum
 
   library_preparation_kit_manufacturer:
@@ -1283,9 +1241,7 @@ slots:
 
   sequencing_read_length:
     description: >-
-      Length of sequencing reads (eg: Long or short or actual number of the read length etc).
-      The number of nucleotides successfully ordered from each side of a nucleic acid fragment
-      obtained after the completion of a sequencing process
+      Length of sequencing reads, e.g. long or short or actual number of the read length. The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process.
 
   index_sequence:
     description: >-
@@ -1318,7 +1274,7 @@ slots:
 
   flow_cell_id:
     description: >-
-      Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1).
+      Flow Cell ID (e.g. Experiment ID_Cell 1_Lane_1).
       The barcode assigned to a flow cell used in nucleotide sequencing.
 
   flow_cell_type:
@@ -1331,46 +1287,46 @@ slots:
 
   umi_barcode_read:
     description: >-
-      The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+      The type of read that contains the UMI barcode (e.g. index1/index2/read1/read2).
     range: IndexReadEnum
 
   umi_barcode_offset:
     description: >-
-      The offset in sequence of the UMI identifying barcode. (E.g. '16').
+      The offset in sequence of the UMI identifying barcode (e.g. '16').
 
   umi_barcode_size:
     description: >-
-      The size of the UMI identifying barcode (Eg. '10').
+      The size of the UMI identifying barcode (e.g. '10').
 
   cell_barcode_read:
     description: >-
-      The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+      The type of read that contains the cell barcode (e.g. index1/index2/read1/read2).
     range: IndexReadEnum
 
   cell_barcode_offset:
     description: >-
-      The offset in sequence of the cell identifying barcode. (Eg. '0').
+      The offset in sequence of the cell identifying barcode (e.g. '0').
 
   cell_barcode_size:
     description: >-
-      The size of the cell identifying barcode (E.g. '16').
+      The size of the cell identifying barcode (e.g. '16').
 
   cdna_read:
     description: >-
-      The type of read that contains the cDNA barcode (Eg: index1/index2/read1/read2).
+      The type of read that contains the cDNA barcode (e.g. index1/index2/read1/read2).
     range: IndexReadEnum
 
   cdna_read_offset:
     description: >-
-      The offset in sequence of the cDNA read. (E.g. '0').
+      The offset in sequence of the cDNA read (e.g. '0').
 
   cdna_read_size:
     description: >-
-      The size of the cDNA read (Eg. '98').
+      The size of the cDNA read (e.g. '98').
 
   sample_barcode_read:
     description: >-
-      The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+      The type of read that contains the sample barcode (e.g. index1/index2/read1/read2).
     range: SampleBarcodeReadEnum
 
   isolation:
@@ -1403,7 +1359,7 @@ slots:
 
   vital_status_at_sampling:
     description: >-
-      Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+      Vital Status of an Individual at the point of sampling, e.g. 'Alive' or 'Deceased'.
     range: VitalStatusEnum
 
   geographical_region:
@@ -1431,7 +1387,7 @@ slots:
 
   format:
     description: >-
-      The format of the file: BAM, SAM, CRAM, BAI, etc.
+      The format of the file, e.g. BAM, SAM, CRAM, BAI.
     range: FileFormatEnum
 
   size:
@@ -1459,13 +1415,13 @@ slots:
   reference_genome:
     description: >-
       A published genetic sequence that is used as a reference sequence against which other sequences are compared.
-      Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
+      Reference genome(s) or annotation(s) used for prior analyses, e.g. GRCh38.p13.
 
   policy_text:
     description: The complete text for the Data Access Policy.
 
   policy_url:
-    description: Alternative to pasting the Data Access Policy text.
+    description: An alternative to pasting the Data Access Policy text is to provide the URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
 
   abstract:
     description: >-
@@ -1516,40 +1472,77 @@ enums:
     permissible_values:
       clinical care use:
         meaning: DUO:0000043
+        description: >-
+          This data use modifier indicates that use is allowed for clinical use and care. 
+          Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making.
       return to database or resource:
         meaning: DUO:0000029
+        description: >-
+          This data use modifier indicates that the requestor must return derived/enriched data to the database/resource.
       institution specific restriction:
         meaning: DUO:0000028
+        description: >-
+          This data use modifier indicates that use is limited to use within an approved institution.
       project specific restriction:
         meaning: DUO:0000027
+        description: >-
+          This data use modifier indicates that use is limited to use within an approved project.
       user specific restriction:
         meaning: DUO:0000026
+        description: >-
+          This data use modifier indicates that use is limited to use by approved users.
       time limit on use:
         meaning: DUO:0000025
+        description: >-
+          This data use modifier indicates that use is approved for a specific number of months. This should be coupled with an integer value indicating the number of months.
       publication moratorium:
         meaning: DUO:0000024
+        description: >-
+          This data use modifier indicates that requestor agrees not to publish results of studies until a specific date. This should be coupled with a date specified as ISO8601.
       geographical restriction:
         meaning: DUO:0000022
+        description: >-
+          This data use modifier indicates that use is limited to within a specific geographic region. This should be coupled with an ontology term describing the geographical location the restriction applies to.
       ethics approval required:
         meaning: DUO:0000021
+        description: >-
+          This data use modifier indicates that the requestor must provide documentation of local IRB/ERB approval.
       collaboration required:
         meaning: DUO:0000020
+        description: >-
+          This data use modifier indicates that the requestor must agree to collaboration with the primary study investigator(s). This could be coupled with a string describing the primary study investigator(s).
       publication required:
         meaning: DUO:0000019
+        description: >-
+          This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.
       not for profit, non commercial use only:
         meaning: DUO:0000018
+        description: >-
+          This data use modifier indicates that use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use.
       non-commercial use only:
         meaning: DUO:0000046
+        description: >-
+          This data use modifier indicates that use of the data is limited to not-for-profit use. This indicates that data can be used by commercial organisations for research purposes, but not commercial purposes.
       not for profit organisation use only:
         meaning: DUO:0000045
+        description: >-
+          This data use modifier indicates that use of the data is limited to not-for-profit organizations.
       genetic studies only:
         meaning: DUO:0000016
+        description: >-
+          This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively).
       no general methods research:
         meaning: DUO:0000015
+        description: >-
+          This data use modifier indicates that use does not allow methods development research (e.g., development of software or algorithms).
       research specific restrictions:
         meaning: DUO:0000012
+        description: >-
+          This data use modifier indicates that use is limited to studies of a certain research type.
       population origins or ancestry research prohibited:
         meaning: DUO:00000044
+        description: >-
+          This data use modifier indicates use for purposes of population, origin, or ancestry research is prohibited.
 
   DataUsePermissionEnum:
     description: Permitted values for data use permission
@@ -1561,14 +1554,24 @@ enums:
     permissible_values:
       general research use:
         meaning: DUO:0000042
+        description: >-
+          This data use permission indicates that use is allowed for general research use for any research purpose.
       health or medical or biomedical research:
         meaning: DUO:0000006
+        description: >-
+          This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry.
       disease specific research:
         meaning: DUO:0000007
+        description: >-
+          This data use permission indicates that use is allowed provided it is related to the specified disease.
       no restriction:
         meaning: DUO:0000004
+        description: >-
+          This data use permission indicates there is no restriction on use.
       population origins or ancestry research only:
         meaning: DUO:0000011
+        description: >-
+          This data use permission indicates that use of the data is limited to the study of population origins or ancestry.
 
   AncestryEnum:
     description: Permitted values for ancestry
