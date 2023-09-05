@@ -17,6 +17,9 @@ prefixes:
   GSSO: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
   DUO: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
   NCIT: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
+  topic: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
+  format: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
+  GENEPIO: http://purl.obolibrary.org/obo/genepio/releases/2023-08-19/genepio.owl
 
 default_prefix: GHGA
 default_range: string
@@ -1593,8 +1596,16 @@ enums:
     description: Permitted values for karyotype
     permissible_values:
       46_XY:
+        meaning: GSSO:009560
+        description: >-
+          A karyotype in which every cell has one X chromosome and one Y chromosome.
       46_XX:
+        meaning: GSSO:009558
+        description: >-
+          A karyotype in which every cell has two X chromosomes.
       OTHER:
+        description: >-
+          A karyotype that differs from 46XY or 46XX.
 
   PhenotypicFeaturesEnum:
     description: An enum describing permissible phenotype descriptors
@@ -1647,17 +1658,41 @@ enums:
       The type of a sample
     permissible_values:
       CF_DNA:
+        description: >-
+          Cell Free (CF), circulating DNA was used for sequencing.
       DEPLETED_RNA:
-      DS_DNA_CH_IP:
+        description: >-
+          Depleted RNA was used for sequencing.
+      DS_DNA_CHIP:
+        description: >-
+          Double-stranded DNA was used for sequencing.
       FFPE_DNA:
+        description: >-
+          Formalin-fixed, paraffin-embedded DNA was used for sequencing.
       FFPE_TOTAL_RNA:
+        description: >-
+          Formalin-fixed, paraffin-embedded total DNA was used for sequencing.
       GENOMIC_DNA:
+        description: >-
+          Genomic DNA was used for sequencing.
       PCR_PRODUCTS:
+        description: >-
+          PCR products were used for sequencing.
       POLY_A_RNA:
+        description: >-
+          Polyadenylated (polyA) RNA was used for sequencing.
       SINGLE_CELL_DNA:
+        description: >-
+          DNA originating from single cells was used for sequencing.
       SINGLE_CELL_RNA:
+        description: >-
+          RNA originating from single cells was used for sequencing.
       SMALL_RNA:
+        description: >-
+          Small RNA was used for sequencing.
       TOTAL_RNA:
+        description: >-
+          Total RNA was used for sequencing.
 
   TissueEnum:
     description: >-
@@ -1676,14 +1711,24 @@ enums:
     permissible_values:
       FEMALE_SEX_FOR_CLINICAL_USE:
         meaning: GSSO:011317
+        description: >-
+          A sex for clinical use value in which stereotypically or statistically "female" values apply to an individual in a given medical context, such as for a procedure, process, algorithm, hormone level, genetic composition, organ inventory.
       IMAGING_SEX:
         meaning: GSSO:009318
+        description: >-
+          Sex as observed from any of various types of clinical imaging, such as x-rays or ultrasounds. Note that this can be unclear depending on the vagueness of the criteria outlined and/or the type of imaging utilized.
       MALE_SEX_FOR_CLINICAL_USE:
         meaning: GSSO:011318
+        description: >-
+          A sex for clinical use value in which stereotypically or statistically "male" values apply to an individual in a given medical context, such as for a procedure, process, algorithm, hormone level, genetic composition, organ inventory.
       SPECIFIED_SEX_FOR_CLINICAL_USE:
         meaning: GSSO:011319
+        description: >-
+          A sex for clinical use value which contains some specified value or values that apply to an individual in a given medical context, such as for a procedure, process, algorithm, hormone level, genetic composition, organ inventory.
       UNKNOWN_SEX_FOR_CLINICAL_USE:
         meaning: GSSO:011320
+        description: >-
+          A sex for clinical use value in which the stereotypical or statistical known values do not apply, cannot be determined, or are not sufficient for determination of a another value.
 
   VitalStatusEnum:
     description: >-
@@ -1702,112 +1747,325 @@ enums:
   StudyTypeEnum:
     description: >-
       Enum to capture the type of a study.
+    reachable_from:
+      source_ontology: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
+      source_nodes:
+        - topic:3391
+      include_self: false
     permissible_values:
-      CANCER_GENOMICS:
-      EPIGENETICS:
-      EXOME_SEQUENCING:
-      FORENSIC_GENETICS:
-      PALEO_GENOMICS:
-      GENE_REGULATION_STUDY:
+      FLUXOMICS:
+        meaning: topic:3955
+        description: >-
+          Experimental approaches to determine the rates of metabolic reactions - the metabolic fluxes - within a biological entity. The "fluxome" is the complete set of metabolic fluxes in a cell, and is a dynamic aspect of phenotype.
+      GENOMICS:
+        meaning: topic:0622
+        description: >-
+          Whole genomes of one or more organisms, or genomes in general, such as meta-information on genomes, genome projects, gene names.
+      COMPARATIVE_GENOMICS:
+        meaning: topic:0797
+        description: >-
+          The study (typically comparison) of the sequence, structure or function of multiple genomes.
+      EPIGENOMICS:
+        meaning: topic:3173
+        description: >-
+          The study of the epigenetic modifications of a whole cell, tissue, organism. Epigenetics concerns the heritable changes in gene expression owing to mechanisms other than DNA sequence variation.
+      EPISTASIS:
+        meaning: topic:3974
+        description: >-
+          The study of the epigenetic modifications of a whole cell, tissue, organism. The study of the phenomena whereby the effects of one locus mask the allelic effects of another, such as how dominant alleles mask the effects of the recessive alleles at the same locus.
+      FUNCTIONAL_GENOMICS:
+        meaning: topic:0085
+        description: >-
+          The study of gene or protein functions and their interactions in totality in a given organism, tissue, cell.
       METAGENOMICS:
-      OTHER:
-      POOLED_CLONE_SEQUENCING:
+        meaning: topic:3174
+        description: The study of genetic material recovered from environmental samples, and associated environmental data.
+      PALEOGENOMICS:
+        meaning: topic:3943
+        description: >-
+          The reconstruction and analysis of genomic information in extinct species.
+      PHARMACOGENOMICS:
+        meaning: topic:0208
+        description: >-
+          The influence of genotype on drug response, for example by correlating gene expression or single-nucleotide polymorphisms with drug efficacy or toxicity.
+      PHYLOGENOMICS:
+        meaning: topic:0194
+        description: >-
+          The integrated study of evolutionary relationships and whole genome data, for example, in the analysis of species trees, horizontal gene transfer and evolutionary reconstruction.
       POPULATION_GENOMICS:
-      RNASEQ:
-      RESEQUENCING:
-      SYNTHETIC_GENOMICS:
-      TRANSCRIPTOME_ANALYSIS:
-      WHOLE_GENOME_SEQUENCING:
-      GWAS:
+        meaning: topic:3796
+        description: >-
+          Large-scale study (typically comparison) of DNA sequences of populations.
+      PROTEOGENOMICS:
+        meaning: topic:3922
+        description: >-
+          A field of biological research focused on the discovery and identification of peptides, typically by comparing mass spectra against a protein database.
+      STRUCTURAL_GENOMICS:
+        meaning: topic:0122
+        description: >-
+          The elucidation of the three dimensional structure for all (available) proteins in a given organism.
+      TRANSCRIPTOMICS:
+        meaning: topic:3308
+        description: >-
+          The analysis of transcriptomes, or a set of all the RNA molecules in a specific cell, tissue.
+      METATRANSCRIPTOMICS:
+        meaning: topic:3941
+        description: The study of microbe gene expression within natural environments (i.e. the metatranscriptome). Metatranscriptomics methods can be used for whole gene expression profiling of complex microbial communities.
+      IMMUNOMICS:
+        meaning: topic:3967
+        description: >-
+          The study of immune system as a whole, its regulation and response to pathogens using genome-wide approaches.
+      METABOLOMICS:
+        meaning: topic:3172
+        description: >-
+          The systematic study of metabolites, the chemical processes they are involved, and the chemical fingerprints of specific cellular processes in a whole cell, tissue, organ or organism.
+      MOLECULAR_EVOLUTION:
+        meaning: topic:3945
+        description: >-
+          The study of the process and mechanism of change of biomolecules such as DNA, RNA, and proteins across generations.
+      PHENOMICS:
+        meaning: topic:3298
+        description: >-
+          Phenomes, or the study of the change in phenotype (the physical and biochemical traits of organisms) in response to genetic and environmental factors.
+      PROTEOMICS:
+        meaning: topic:0121
+        description: >-
+          Protein and peptide identification, especially in the study of whole proteomes of organisms. Includes metaproteomics: proteomics analysis of an environmental sample. 
+          Proteomics includes any methods (especially high-throughput) that separate, characterize and identify expressed proteins such as mass spectrometry, two-dimensional gel electrophoresis and protein microarrays, as well as in-silico methods that perform proteolytic or mass calculations on a protein sequence and other analyses of protein production data, for example in different cells or tissues.
+      OTHER:
+        description: >-
+          A study type not captured by the above mentioned.
 
   FileFormatEnum:
     description: >-
       Enum to capture file types.
+    reachable_from:
+      source_ontology: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
+      source_nodes:
+        - format:1915
+      include_self: false
     permissible_values:
       AGP:
+        meaning: format_3693
+        description: >-
+          AGP is a tabular format for a sequence assembly (a contig, a scaffold/supercontig, or a chromosome).
       BAI:
+        meaning: format:3327
+        description: >-
+          BAM indexing format
       BAM:
+        meaning: format:2572
+        description: >-
+          BAM format, the binary, BGZF-formatted compressed version of SAM format for alignment of nucleotide sequences (e.g. sequencing reads) to (a) reference sequence(s). 
+          May contain base-call and alignment qualities and other data.
       BCF:
+        meaning: format:3020
+        description: >-
+          BCF, the binary version of Variant Call Format (VCF) for sequence variation (indels, polymorphisms, structural variation).
       BED:
-      CRAI:
+        meaning: format:3003
+        description: >-
+          Browser Extensible Data (BED) format of sequence annotation track, typically to be displayed in a genome browser.
+          BED detail format includes 2 additional columns (http://genome.ucsc.edu/FAQ/FAQformat#format1.7) and BED 15 includes 3 additional columns for experiment scores (http://genomewiki.ucsc.edu/index.php/Microarray_track).
       CRAM:
+        meaning: format:3462
+        description: >-
+          Reference-based compression of alignment format.
       CSV:
+        meaning: format:3752
+        description: >-
+          Tabular data represented as comma-separated values in a text file.
       FASTA:
+        meaning: format:1929
+        description: >-
+          FASTA format including NCBI-style IDs.
       FASTQ:
+        meaning: format:1930
+        description: >-
+          FASTQ short read format ignoring quality scores.
       GFF:
+        meaning: format:2305
+        description: >-
+          GFF feature format (of indeterminate version).
       HDF5:
-      INFO:
+        meaning: format:3590
+        description: >-
+          HDF5 is a data model, library, and file format for storing and managing data, based on Hierarchical Data Format (HDF). 
+          An HDF5 file appears to the user as a directed graph. The nodes of this graph are the higher-level HDF5 objects that are exposed by the HDF5 APIs: Groups, Datasets, Named datatypes. Currently supported by the Python MDTraj package.
+          HDF5 is the new version, according to the HDF group, a completely different technology (https://support.hdfgroup.org/products/hdf4/ compared to HDF.
       JSON:
-      MD:
-      OTHER:
+        meaning: format:3464
+        description: >-
+          JavaScript Object Notation format; a lightweight, text-based format to represent tree-structured data using key-value pairs.
       PED:
+        meaning: format:3286
+        description: >-
+          The PED file describes individuals and genetic data and is used by the Plink package.
       SAM:
+        meaning: format:2573
+        description: >-
+          Sequence Alignment/Map (SAM) format for alignment of nucleotide sequences (e.g. sequencing reads) to (a) reference sequence(s). May contain base-call and alignment qualities and other data.
+          The format supports short and long reads (up to 128Mbp) produced by different sequencing platforms and is used to hold mapped data within the GATK and across the Broad Institute, the Sanger Centre, and throughout the 1000 Genomes project.
       SFF:
+        meaning: format:3284
+        description: >-
+          Standard flowgram format (SFF) is a binary file format used to encode results of pyrosequencing from the 454 Life Sciences platform for high-throughput sequencing.
       SRF:
-      TAB:
+        meaning: format:3017
+        description: >-
+          Sequence Read Format (SRF) of sequence trace data. Supports submission to the NCBI Short Read Archive.
       TABIX:
+        meaning: format:3616
+        description: >-
+          TAB-delimited genome position file index format.
       TSV:
+        meaning: format:3475
+        description: >-
+          Tabular data represented as tab-separated values in a text file.
       TXT:
+        meaning: format:2330
+        description: >-
+          Textual format. Data in text format can be compressed into binary format, or can be a value of an XML element or attribute. Markup formats are not considered textual (or more precisely, not plain-textual).
       VCF:
+        meaning: format:3016
+        description: >-
+          Variant Call Format (VCF) for sequence variation (indels, polymorphisms, structural variation).
       WIG:
+        meaning: format:3005
+        description: >-
+          Wiggle format (WIG) of a sequence annotation track that consists of a value for each sequence position. Typically to be displayed in a genome browser.
+      OTHER:
+        description: >-
+          A file format not captured by the controlled vocabulary.
 
   LibraryPreparationLibraryLayoutEnum:
     description: >-
       Single-end vs paired-end library
     permissible_values:
       SE:
+        description: >-
+          Single end libary preparation.
       PE:
+        description: >-
+          Paired end library preparation.
 
   LibraryPreparationLibraryTypeEnum:
     description: >-
       The type of the library
-    permissible_values:
-      WGS:
-      WXS:
-      WCS:
-      TOTAL_RNA:
-      M_RNA:
-      MI_RNA:
-      NC_RNA:
-      ATAC:
-      METHYLATION:
-      CHROMOSOME_CONFORMATION_CAPTURE:
+    reachable_from:
+      source_ontology: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
+      source_nodes:
+        - NCIT:C18881
+      include_self: false
 
   LibraryPreparationLibrarySelectionEnum:
     description: >-
       Permitted vocabulary for library selections
+    reachable_from:
+      source_ontology: http://purl.obolibrary.org/obo/genepio/releases/2023-08-19/genepio.owl
+      source_nodes:
+        - GENEPIO:0001940
+      include_self: false
     permissible_values:
       5_METHYLCYTIDINE_ANTIBODY_METHOD:
+        meaning: GENEPIO:0001941
+        description: >-
+          Selection of methylated DNA fragments using an antibody raised against 5-methylcytosine or 5-methylcytidine (m5C).
       CAGE_METHOD:
+        meaning: GENEPIO:0001942
+        description: >-
+          Cap-analysis gene expression.
       C_DNA_METHOD:
+        meaning: GENEPIO:0001962
+        description: >-
+          PolyA selection or enrichment for messenger RNA (mRNA). complementary DNA.
       CF_H_METHOD:
+        meaning: GENEPIO:0001943
+        description: >-
+          Cot-filtered highly repetitive genomic DNA.
       CF_M_METHOD:
+        meaning: GENEPIO:1944
+        description: >-
+          Cot-filtered moderately repetitive genomic DNA.
       CF_S_METHOD:
+        meaning: GENEPIO:0001945
+        description: >-
+          Cot-filtered single/low-copy genomic DNA.
       CF_T_METHOD:
-      CH_IP_SEQ_METHOD:
+        meaning: GENEPIO:1946
+        description: >-
+          Cot-filtered theoretical single-copy genomic DNA.
+      CHIP_SEQ_METHOD:
+        meaning: GENEPIO:0001947
+        description: >-
+          Chromatin immunoprecipitation.
       D_NASE_METHOD:
+        meaning: GENEPIO:0001948
+        description: >-
+          Deoxyribonuclease (MNase) digestion.
       HMPR_METHOD:
+        meaning: GENEPIO:0001949
+        description: >-
+          Hypo-methylated partial restriction digest.
       HYBRID_SELECTION_METHOD:
-      INVERSE_R_RNA:
+        meaning: GENEPIO:0001950
+        description: >-
+          Selection by hybridization in array or solution.
       MBD2_PROTEIN_METHYL_CP_G_BINDING_DOMAIN_METHOD:
-      MDA:
+        meaning: GENEPIO:0001951
+        description: >-
+          Enrichment by methyl-CpG binding domain.
       MF_METHOD:
+        meaning: GENEPIO:0001952
+        description: >-
+          Methyl Filtrated
       M_NASE_METHOD:
+        meaning: GENEPIO:0001953
+        description: >-
+          Micrococcal Nuclease (MNase) digestion.
       MSLL_METHOD:
-      OLIGO_D_T:
-      PADLOCK_PROBES_CAPTURE_METHOD:
+        meaning: GENEPIO:0001954
+        description: >-
+          Methylation Spanning Linking Library.
       PCR_METHOD:
-      POLY_A:
+        meaning: GENEPIO:0001955
+        description: >-
+          Source material was selected by designed primers.
       RACE_METHOD:
+        meaning: GENEPIO:0001956
+        description: >-
+          Rapid Amplification of cDNA Ends.
       RANDOM_PCR_METHOD:
+        meaning: GENEPIO:0001957
+        description: >-
+          Source material was selected by randomly generated primers.
       RANDOM_METHOD:
+        meaning: GENEPIO:0001958
+        description: >-
+          Random selection by shearing or other method.
       RT_PCR_METHOD:
+        meaning: GENEPIO:0001959
+        description: >-
+          Source material was selected by reverse transcription PCR.
       REDUCED_REPRESENTATION_METHOD:
-      REPEAT_FRACTIONATION:
+        meaning: GENEPIO:0001960
+        description: >-
+          Reproducible genomic subsets, often generated by restriction fragment size selection, containing a manageable number of loci to facilitate re-sampling.
       RESTRICTION_DIGEST_METHOD:
+        meaning: GENEPIO:0001961
+        description: >-
+          DNA fractionation using restriction enzymes.
       SIZE_FRACTIONATION_METHOD:
+        meaning: GENEPIO:0001963
+        description: >-
+          Physical selection of size appropriate targets.
       UNSPECIFIED:
+        description: >-
+          The library selection cannot be specified.
       OTHER:
+        meaning: GENEPIO:0001964
+        description: >-
+          Other library enrichment, screening, or selection process.
 
   LibraryPreparationKitRetailNameEnum:
     description: >-
@@ -1892,72 +2150,116 @@ enums:
       Permitted values for library preparation RNASeq strandedness
     permissible_values:
       SENSE:
+        meaning: NCIT:C63550
+        description: >-
+          Having a DNA sequence identical to that of a messenger RNA molecule; the coding strand in double-stranded DNA.
       ANTISENSE:
-      BOTH:
+        meaning: NCIT:C63551
+        description: >-
+          Having a DNA sequence complementary to that of a messenger RNA molecule; the non-coding strand in double-stranded DNA.
 
   PrimerEnum:
     description: >-
       Permitted values for primer
     permissible_values:
       OLIGO_D_T:
+        meaning: EFO:0010215
+        description: >-
+          An oligonucleotide primer consisting of thymidine bases only. It is used to target messenger RNA molecules with poly-adenosine 3' end.
       RANDOM:
+        meaning: EFO:0010216
+        description: >-
+          An oligonucleotide primer with random sequence.
       GENE_SPECIFIC:
+        description: >-
+          Ready-to-use, usually commercially prepared primers that are used to detect specific genes.
       OTHER:
+        description: >-
+          A primer not captured by the controlled vocabulary.
 
   EndBiasEnum:
     description: >-
       Permitted values for end bias
     permissible_values:
       3_PRIME_END:
+        description: >-
+          The sequencing method preferentially captures the nucleic acids towards the 3 prime end of the targeted molecule.
       5_PRIME_END:
+        description: >-
+          The sequencing method preferentially captures the nucleic acids towards the 5 prime end of the targeted molecule.
       FULL_LENGTH:
+        description: >-
+          Captures the full length of the targeted molecule.
 
   InstrumentModelEnum:
     description: >-
-      Permitted values for instrument model
+      Permitted values for the instrument model
     permissible_values:
-      ILLUMINA_HI_SCAN:
-      ILLUMINA_HI_SEQ_1000:
-      ILLUMINA_HI_SEQ_1500:
-      ILLUMINA_HI_SEQ_2000:
-      ILLUMINA_HI_SEQ_2500:
-      ILLUMINA_HI_SEQ_3000:
-      ILLUMINA_HI_SEQ_4000:
-      ILLUMINA_HI_SEQ_X_FIVE:
-      ILLUMINA_HI_SEQ_X_TEN:
-      ILLUMINA_HI_SEQ_X:
-      ILLUMINA_I_SCAN:
-      ILLUMINA_I_SEQ_100:
-      ILLUMINA_MINI_SEQ:
-      ILLUMINA_MI_SEQ:
-      ILLUMINA_MI_SEQ_DX:
-      ILLUMINA_MI_SEQ_DX_RESEARCH_MODE:
-      ILLUMINA_NEXT_SEQ_500:
-      ILLUMINA_NEXT_SEQ_550:
-      ILLUMINA_NEXT_SEQ_550_DX:
-      ILLUMINA_NEXT_SEQ_550_DX_RESEARCH_MODE:
-      ILLUMINA_NEXT_SEQ_1000:
-      ILLUMINA_NEXT_SEQ_2000:
-      ILLUMINA_NOVA_SEQ_6000:
+      454_GS:
+      454_GS_20:
+      454_GS_FLX:
+      454_GS_FLX_TITANIUM:
+      454_GS_FLX+:
+      454_GS_JUNIOR:
+      AB_310_GENETIC_ANALYZER:
+      AB_3130_GENETIC_ANALYZER:
+      AB_3130XL_GENETIC_ANALYZER:
+      AB_3500_GENETIC_ANALYZER:
+      AB_3500XL_GENETIC_ANALYZER:
+      AB_3730_GENETIC_ANALYZER:
+      AB_3730XL_GENETIC_ANALYZER:
+      AB_5500_GENETIC_ANALYZER:
+      AB_5500XL_GENETIC_ANALYZER:
+      AB_5500XL-W_GENETIC_ANALYSIS_SYSTEM:
+      BGISEQ-50:
+      BGISEQ-500:
+      DNBSEQ-G400:
+      DNBSEQ-G400_FAST:
+      DNBSEQ-G50:
+      DNBSEQ-T7:
+      ELEMENT_AVITI:
+      GRIDION:
+      HELICOS_HELISCOPE:
+      HISEQ_X_FIVE:
+      HISEQ_X_TEN:
       ILLUMINA_GENOME_ANALYZER:
       ILLUMINA_GENOME_ANALYZER_II:
       ILLUMINA_GENOME_ANALYZER_IIX:
-      ILLUMINA_HI_SCAN_SQ:
-      PAC_BIO_REVIO:
-      PAC_BIO_ONSO:
-      PAC_BIO_SEQUEL_IIE:
-      PAC_BIO_SEQUEL_II:
-      PAC_BIO_SEQUEL:
-      PAC_BIO_RS:
-      PAC_BIO_RS_II:
-      ONT_MIN_ION:
-      ONT_GRID_ION:
-      ONT_PROMETH_ION:
-      DNBSEQ_G50:
-      DNBSEQ_T7:
-      DNBSEQ_G400:
-      DNBSEQ_G400_FAST:
-      ULTIMA_UG_100:
+      ILLUMINA_HISCANSQ:
+      ILLUMINA_HISEQ_1000:
+      ILLUMINA_HISEQ_1500:
+      ILLUMINA_HISEQ_2000:
+      ILLUMINA_HISEQ_2500:
+      ILLUMINA_HISEQ_3000:
+      ILLUMINA_HISEQ_4000:
+      ILLUMINA_HISEQ_X:
+      ILLUMINA_MISEQ:
+      ILLUMINA_MINISEQ:
+      ILLUMINA_NOVASEQ_6000:
+      ILLUMINA_NOVASEQ_X:
+      ILLUMINA_ISEQ_100:
+      ION_GENESTUDIO_S5:
+      ION_GENESTUDIO_S5_PLUS:
+      ION_GENESTUDIO_S5_PRIME:
+      ION_TORRENT_GENEXUS:
+      ION_TORRENT_PGM:
+      ION_TORRENT_PROTON:
+      ION_TORRENT_S5:
+      ION_TORRENT_S5_XL:
+      MGISEQ-2000RS:
+      MINION:
+      NEXTSEQ_1000:
+      NEXTSEQ_2000:
+      NEXTSEQ_500:
+      NEXTSEQ_550:
+      PACBIO_RS:
+      PACBIO_RS_II:
+      PROMETHION:
+      SEQUEL:
+      SEQUEL_II:
+      SEQUEL_IIE:
+      UG_100:
+      UNSPECIFIED:
       OTHER:
 
   FlowCellTypeEnum:
@@ -1965,29 +2267,57 @@ enums:
       Permitted values for flow cell type
     permissible_values:
       ILLUMINA_NOVA_SEQ_S2:
+        description: >-
+          Usage of Illumina NovaSeq S2 flow cell
       ILLUMINA_NOVA_SEQ_S4:
-      PROMETH_ION:
+        description: >-
+          Usage of Illumina NovaSeq S4 flow cell
+      PROMETHION:
+        description: >-
+          Usage of PromethION flow cell
       FLONGLE:
-      MIN_ION:
-      GRID_ION:
+        description: >-
+          Usage of Flongle flow cell
+      MINION:
+        description: >-
+          Usage of MinION flow cell
+      GRIDION:
+        description: >-
+          Usage of GridION flow cell
       OTHER:
+        description: >-
+          Usage of a flow cell not captured by the controlled vocabulary.
 
   IndexReadEnum:
     description: >-
       Permitted Values to indicate the location of a sequence component in a read or index
     permissible_values:
       INDEX1:
+        description: >-
+          Location is in Index 1
       INDEX2:
+        description: >-
+          Location is in Index 2
       READ1:
+        description: >-
+          Location is in Read 1
       READ2:
+        description: >-
+          Location is in Read 2
 
   SampleBarcodeReadEnum:
     description: >-
       Permitted values for sample barcode read
     permissible_values:
       INDEX1:
+        description: >-
+          Sample barcode read location is in Index 1
       INDEX1_AND_INDEX2:
+        description: >-
+          Sample barcode read location is in Index 1 and Index 2
       OTHER:
+        description: >-
+          Sample barcode read is neither in Index 1 or Index 1 and Index 2
 
   DiseaseOrHealthyEnum:
     description: >-
@@ -2011,17 +2341,28 @@ enums:
     permissible_values:
       NEITHER_CASE_OR_CONTROL_STATUS:
         meaning: NCIT:C99273
+        description: >-
+          The participant is neither a true case or true control for the phenotype under consideration.
       PROBABLE_CASE_STATUS:
         meaning: NCIT:C99271
+        description: >-
+          The participant is a probable case for the phenotype under consideration.
       PROBABLE_CONTROL_STATUS:
         meaning: NCIT:C99272
+        description: >-
+          The participant is a probable control for the phenotype under consideration.
       TRUE_CASE_STATUS:
         meaning: NCIT:C99269
+        description: >-
+          The participant is a true case for the phenotype under consideration.
       TRUE_CONTROL_STATUS:
         meaning: NCIT:C99270
+        description: >-
+          The participant is a true control for the phenotype under consideration.
       UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS:
         meaning: NCIT:C99274
-
+        description: >-
+          The participant's case/control status could not be assessed.
   MutantOrWildtypeEnum:
     description: >-
       Enum to capture whether a condition corresponds to a mutant or a wildtype.
