@@ -2,7 +2,7 @@
 # Slot: type
 
 
-The type of sample.
+The type of the Sample.
 
 URI: [GHGA:Sample_type](https://w3id.org/GHGA/Sample_type)
 

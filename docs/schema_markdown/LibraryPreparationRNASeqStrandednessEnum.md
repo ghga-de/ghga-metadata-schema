@@ -16,7 +16,6 @@ URI: [GHGA:LibraryPreparationRNASeqStrandednessEnum](https://w3id.org/GHGA/Libra
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| SENSE |  |  |  |
-| ANTISENSE |  |  |  |
-| BOTH |  |  |  |
+| SENSE | Having a DNA sequence identical to that of a messenger RNA molecule; the coding strand in double-stranded DNA. | NCIT:C63550 |  |
+| ANTISENSE | Having a DNA sequence complementary to that of a messenger RNA molecule; the non-coding strand in double-stranded DNA. | NCIT:C63551 |  |
 

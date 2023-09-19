@@ -2,7 +2,7 @@
 # Slot: sequencing_run_id
 
 
-Identifier of the sequencing run. Used for batch correction.
+The identifier of a sequencing run.
 
 URI: [GHGA:SequencingProcess_sequencing_run_id](https://w3id.org/GHGA/SequencingProcess_sequencing_run_id)
 

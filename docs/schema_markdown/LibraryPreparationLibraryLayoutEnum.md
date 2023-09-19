@@ -16,6 +16,6 @@ URI: [GHGA:LibraryPreparationLibraryLayoutEnum](https://w3id.org/GHGA/LibraryPre
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| SE |  |  |  |
-| PE |  |  |  |
+| SE | Single end libary preparation. |  |  |
+| PE | Paired end library preparation. |  |  |
 

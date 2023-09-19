@@ -2,7 +2,7 @@
 # Class: Condition
 
 
-An condition that is linked to comparable samples.
+The Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples.
 
 URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
 
@@ -27,10 +27,10 @@ URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
 ### Own
 
  * [Condition➞name](Condition_name.md)  <sub>1..1</sub>
-     * Description: The name for an entity.
+     * Description: The name of the Condition.
      * Range: [String](types/String.md)
  * [Condition➞description](Condition_description.md)  <sub>1..1</sub>
-     * Description: Description of an entity.
+     * Description: A concise description of the applied Condition.
      * Range: [String](types/String.md)
  * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)  <sub>1..1</sub>
      * Description: Whether a condition corresponds to a disease or a healthy state.

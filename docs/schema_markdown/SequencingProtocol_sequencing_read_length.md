@@ -2,7 +2,7 @@
 # Slot: sequencing_read_length
 
 
-Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process
+Length of sequencing reads, e.g. long or short or actual number of the read length. The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process.
 
 URI: [GHGA:SequencingProtocol_sequencing_read_length](https://w3id.org/GHGA/SequencingProtocol_sequencing_read_length)
 

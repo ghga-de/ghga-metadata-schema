@@ -2,7 +2,7 @@
 # Slot: sequencing_machine_id
 
 
-Identifier of the sequencing machine. Used for batch correction.
+The identifier of a sequencing machine.
 
 URI: [GHGA:SequencingProcess_sequencing_machine_id](https://w3id.org/GHGA/SequencingProcess_sequencing_machine_id)
 

@@ -16,14 +16,4 @@ URI: [GHGA:LibraryPreparationLibraryTypeEnum](https://w3id.org/GHGA/LibraryPrepa
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| WGS |  |  |  |
-| WXS |  |  |  |
-| WCS |  |  |  |
-| TOTAL_RNA |  |  |  |
-| M_RNA |  |  |  |
-| MI_RNA |  |  |  |
-| NC_RNA |  |  |  |
-| ATAC |  |  |  |
-| METHYLATION |  |  |  |
-| CHROMOSOME_CONFORMATION_CAPTURE |  |  |  |
 

@@ -38,7 +38,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
      * Description: Age of an individual.
      * Range: [AgeRangeEnum](AgeRangeEnum.md)
  * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
-     * Description: Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+     * Description: Vital Status of an Individual at the point of sampling, e.g. 'Alive' or 'Deceased'.
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
  * [Biospecimen➞tissue](Biospecimen_tissue.md)  <sub>1..1</sub>
      * Range: [String](types/String.md)

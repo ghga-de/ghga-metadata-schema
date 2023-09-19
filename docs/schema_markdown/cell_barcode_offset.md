@@ -2,7 +2,7 @@
 # Slot: cell_barcode_offset
 
 
-The offset in sequence of the cell identifying barcode. (Eg. '0').
+The offset in sequence of the cell identifying barcode (e.g. '0').
 
 URI: [GHGA:cell_barcode_offset](https://w3id.org/GHGA/cell_barcode_offset)
 

@@ -2,7 +2,7 @@
 # Slot: data_use_modifiers
 
 
-Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
+Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
 
 URI: [GHGA:DataAccessPolicy_data_use_modifiers](https://w3id.org/GHGA/DataAccessPolicy_data_use_modifiers)
 

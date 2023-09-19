@@ -2,7 +2,7 @@
 # Slot: title
 
 
-A title for the submitted Dataset.
+A title for the Dataset.
 
 URI: [GHGA:Dataset_title](https://w3id.org/GHGA/Dataset_title)
 

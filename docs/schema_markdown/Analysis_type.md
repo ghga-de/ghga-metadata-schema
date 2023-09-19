@@ -2,7 +2,7 @@
 # Slot: type
 
 
-The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
+The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
 
 URI: [GHGA:Analysis_type](https://w3id.org/GHGA/Analysis_type)
 

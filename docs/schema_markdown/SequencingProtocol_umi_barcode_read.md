@@ -2,7 +2,7 @@
 # Slot: umi_barcode_read
 
 
-The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+The type of read that contains the UMI barcode (e.g. index1/index2/read1/read2).
 
 URI: [GHGA:SequencingProtocol_umi_barcode_read](https://w3id.org/GHGA/SequencingProtocol_umi_barcode_read)
 

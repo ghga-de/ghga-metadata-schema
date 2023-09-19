@@ -27,13 +27,13 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 ### Own
 
  * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>0..1</sub>
-     * Description: Name for the experiment (eg: GHGAE_PBMC_RNAseq).
+     * Description: Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
      * Range: [String](types/String.md)
  * [SequencingExperiment➞description](SequencingExperiment_description.md)  <sub>1..1</sub>
-     * Description: A detailed description of the Experiment.
+     * Description: A detailed description of the Sequencing Experiment.
      * Range: [String](types/String.md)
  * [SequencingExperiment➞type](SequencingExperiment_type.md)  <sub>0..1</sub>
-     * Description: The type of sequencing experiment.
+     * Description: The type of Sequencing Experiment.
      * Range: [String](types/String.md)
  * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)  <sub>1..1</sub>
      * Description: The sequencing protocol associated with an entity.

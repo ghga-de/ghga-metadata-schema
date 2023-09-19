@@ -2,7 +2,7 @@
 # Slot: attributes
 
 
-One or more attributes that further characterizes this library_preparation Protocol.
+One or more attributes that further characterize this Library Preparation Protocol.
 
 URI: [GHGA:LibraryPreparationProtocol_attributes](https://w3id.org/GHGA/LibraryPreparationProtocol_attributes)
 

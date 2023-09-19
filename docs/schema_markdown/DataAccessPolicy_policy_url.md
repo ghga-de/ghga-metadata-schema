@@ -2,7 +2,7 @@
 # Slot: policy_url
 
 
-URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
+An alternative to pasting the Data Access Policy text is to provide the URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
 
 URI: [GHGA:DataAccessPolicy_policy_url](https://w3id.org/GHGA/DataAccessPolicy_policy_url)
 

@@ -32,7 +32,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 ### Own
 
  * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
-     * Description: The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
+     * Description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. Typically, the phenotypic feature is captured using a concept from Human Phenotype Ontology. E.g., 'HP:0100244' indicates that the Individual the Biospecimen was extracted from exhibits 'Fibrosarcoma' as one of its phenotype.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>

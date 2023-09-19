@@ -32,7 +32,7 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
      * Description: The given filename.
      * Range: [String](types/String.md)
  * [File➞format](File_format.md)  <sub>1..1</sub>
-     * Description: The format of the file: BAM, SAM, CRAM, BAI, etc.
+     * Description: The format of the file, e.g. BAM, SAM, CRAM, BAI.
      * Range: [FileFormatEnum](FileFormatEnum.md)
  * [File➞size](File_size.md)  <sub>1..1</sub>
      * Description: The size of a file in bytes.

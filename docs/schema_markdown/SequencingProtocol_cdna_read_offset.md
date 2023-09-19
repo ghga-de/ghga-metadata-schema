@@ -2,7 +2,7 @@
 # Slot: cdna_read_offset
 
 
-The offset in sequence of the cDNA read. (E.g. '0').
+The offset in sequence of the cDNA read (e.g. '0').
 
 URI: [GHGA:SequencingProtocol_cdna_read_offset](https://w3id.org/GHGA/SequencingProtocol_cdna_read_offset)
 

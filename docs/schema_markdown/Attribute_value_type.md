@@ -2,7 +2,7 @@
 # Slot: value_type
 
 
-The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
+The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value, e.g. 'SIO:001413' indicates that the value is to be interpreted as a percentage.
 
 URI: [GHGA:Attribute_value_type](https://w3id.org/GHGA/Attribute_value_type)
 

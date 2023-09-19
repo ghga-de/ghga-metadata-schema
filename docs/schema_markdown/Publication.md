@@ -39,7 +39,7 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
      * Description: Name of the journal.
      * Range: [String](types/String.md)
  * [Publication➞doi](Publication_doi.md)  <sub>1..1</sub>
-     * Description: DOI identifier of the Publication.
+     * Description: DOI identifier of a publication.
      * Range: [String](types/String.md)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Publication.

@@ -23,16 +23,16 @@ URI: [GHGA:Attribute](https://w3id.org/GHGA/Attribute)
 ### Own
 
  * [Attribute➞key](Attribute_key.md)  <sub>1..1</sub>
-     * Description: The key for an attribute.
+     * Description: The key of an attribute.
      * Range: [String](types/String.md)
  * [Attribute➞key_type](Attribute_key_type.md)  <sub>0..1</sub>
-     * Description: A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
+     * Description: A semantic type that characterizes the attribute key. Usually this is a term from an ontology, e.g. 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
      * Range: [String](types/String.md)
  * [Attribute➞value](Attribute_value.md)  <sub>1..1</sub>
      * Description: The value for an attribute. Usually this is a numerical value (without the units).
      * Range: [String](types/String.md)
  * [Attribute➞value_type](Attribute_value_type.md)  <sub>0..1</sub>
-     * Description: The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
+     * Description: The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value, e.g. 'SIO:001413' indicates that the value is to be interpreted as a percentage.
      * Range: [String](types/String.md)
 
 ## Other properties

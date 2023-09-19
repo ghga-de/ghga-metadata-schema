@@ -2,7 +2,7 @@
 # Slot: cdna_read_size
 
 
-The size of the cDNA read (Eg. '98').
+The size of the cDNA read (e.g. '98').
 
 URI: [GHGA:cdna_read_size](https://w3id.org/GHGA/cdna_read_size)
 

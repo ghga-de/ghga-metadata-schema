@@ -12,11 +12,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Classes
 
- * [Analysis](Analysis.md) - An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
- * [AnalysisProcess](AnalysisProcess.md)
+ * [Analysis](Analysis.md) - An Analysis is a data transformation that transforms input data to output data.
+ * [AnalysisProcess](AnalysisProcess.md) - An analysis process captures the workflow steps that were performed to analyze data obtained from sequencing experiments.
  * [Attribute](Attribute.md) - A key/value pair that further characterizes an entity.
  * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
- * [Condition](Condition.md) - An condition that is linked to comparable samples.
+ * [Condition](Condition.md) - The Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples.
  * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
  * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
  * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
@@ -26,15 +26,15 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProcessFile](SequencingProcessFile.md) - A SequencingProcessFile is a File that is associated with a SequencingProcess.
      * [StudyFile](StudyFile.md) - A StudyFile is a File that is associated with a Study.
  * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
- * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - Information about the library_preparation of an sequencing experiment.
+ * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) - The Library Preparation Protocol captures information about the Library Preparation of an Sequencing Experiment.
  * [Publication](Publication.md) - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
  * [Sample](Sample.md) - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
  * [SequencingExperiment](SequencingExperiment.md) - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
- * [SequencingProcess](SequencingProcess.md) - A sequencing process linking a sample to sequencing output.
- * [SequencingProtocol](SequencingProtocol.md) - Information about the sequencing of a sample.
- * [Study](Study.md) - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
+ * [SequencingProcess](SequencingProcess.md) - The Sequencing Process captures the technical parameters that were used to produce sequencing output from a Sample. It links a Sample to sequencing output.
+ * [SequencingProtocol](SequencingProtocol.md) - The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
+ * [Study](Study.md) - A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
- * [Trio](Trio.md) - A trio is defined by three individuals representing an individual and their parents.
+ * [Trio](Trio.md) - A trio is a study design that involves the genetic analysis of three individuals within a family unit. It consists of a child and their biological parents.
 
 ### Mixins
 
@@ -57,7 +57,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [analyses](analyses.md) - The analyses associated with an entity.
      * [Submission➞analyses](Submission_analyses.md) - Information about one or more Analysis entities associated with this submission.
  * [analysis](analysis.md) - The Analysis associated with an entity
-     * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md) - The Analysis the AnalysisProcess was part of
+     * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md) - The Analysis the Analysis Process is part of.
  * [analysis_process](analysis_process.md) - The AnalysisProcess associated with an entity.
      * [AnalysisProcessOutputFile➞analysis_process](AnalysisProcessOutputFile_analysis_process.md)
  * [analysis_process_output_files](analysis_process_output_files.md) - The AnalysisProcessOutputFiles associated with an entity.
@@ -68,28 +68,28 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞ancestries](Individual_ancestries.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
-         * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterizes this library_preparation Protocol.
-         * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md) - One or more attributes that further characterizes this Sequencing Protocol.
-         * [Study➞attributes](Study_attributes.md) - Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
+         * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md) - One or more attributes that further characterize this Library Preparation Protocol.
+         * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md) - One or more attributes that further characterize this Sequencing Protocol.
+         * [Study➞attributes](Study_attributes.md) - One or more attributes that further characterize this Study.
  * [author](author.md) - The individual who is responsible for the content of a document version.
      * [Publication➞author](Publication_author.md)
  * [biospecimen](biospecimen.md) - The biospecimen associated with an entity.
-     * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen from which this Sample was prepared from.
+     * [Sample➞biospecimen](Sample_biospecimen.md) - The Biospecimen which this Sample was prepared from.
  * [biospecimens](biospecimens.md) - The biospecimens associated with an entity.
      * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
  * [case_control_status](case_control_status.md) - Whether a condition corresponds to a treatment or a control.
      * [Condition➞case_control_status](Condition_case_control_status.md)
- * [cdna_read](cdna_read.md) - The type of read that contains the cDNA barcode (Eg: index1/index2/read1/read2).
+ * [cdna_read](cdna_read.md) - The type of read that contains the cDNA barcode (e.g. index1/index2/read1/read2).
      * [SequencingProtocol➞cdna_read](SequencingProtocol_cdna_read.md)
- * [cdna_read_offset](cdna_read_offset.md) - The offset in sequence of the cDNA read. (E.g. '0').
+ * [cdna_read_offset](cdna_read_offset.md) - The offset in sequence of the cDNA read (e.g. '0').
      * [SequencingProtocol➞cdna_read_offset](SequencingProtocol_cdna_read_offset.md)
- * [cdna_read_size](cdna_read_size.md) - The size of the cDNA read (Eg. '98').
+ * [cdna_read_size](cdna_read_size.md) - The size of the cDNA read (e.g. '98').
      * [SequencingProtocol➞cdna_read_size](SequencingProtocol_cdna_read_size.md)
- * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
+ * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode (e.g. '0').
      * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
- * [cell_barcode_read](cell_barcode_read.md) - The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+ * [cell_barcode_read](cell_barcode_read.md) - The type of read that contains the cell barcode (e.g. index1/index2/read1/read2).
      * [SequencingProtocol➞cell_barcode_read](SequencingProtocol_cell_barcode_read.md)
- * [cell_barcode_size](cell_barcode_size.md) - The size of the cell identifying barcode (E.g. '16').
+ * [cell_barcode_size](cell_barcode_size.md) - The size of the cell identifying barcode (e.g. '16').
      * [SequencingProtocol➞cell_barcode_size](SequencingProtocol_cell_barcode_size.md)
  * [checksum](checksum.md) - A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.
      * [File➞checksum](File_checksum.md)
@@ -110,40 +110,40 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [data_access_policy](data_access_policy.md) - Data Access Policy associated with an entity.
      * [Dataset➞data_access_policy](Dataset_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
  * [data_use_modifiers](data_use_modifiers.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
-     * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
- * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
-     * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000026' if no other permission applies.
+     * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md)
+ * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.  Please use 'DUO:0000026' if no other permission applies.
+     * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md)
  * [dataset](dataset.md) - The Dataset associated with an entity.
      * [File➞dataset](File_dataset.md)
  * [datasets](datasets.md) - The Datasets associated with an entity.
      * [Submission➞datasets](Submission_datasets.md) - One or more Dataset that are part of this submission.
  * [description](description.md) - Description of an entity.
-     * [Analysis➞description](Analysis_description.md) - Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+     * [Analysis➞description](Analysis_description.md) - A description summarizing how an Analysis was carried out, e.g.: computational tools, pipelines, workflows.
      * [Biospecimen➞description](Biospecimen_description.md)
-     * [Condition➞description](Condition_description.md)
+     * [Condition➞description](Condition_description.md) - A concise description of the applied Condition.
      * [DataAccessPolicy➞description](DataAccessPolicy_description.md) - A short description for the Data Access Policy.
      * [Dataset➞description](Dataset_description.md)
-     * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md) - Description about how a sequencing library was prepared (eg: Library construction method).
-     * [Sample➞description](Sample_description.md) - Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
-     * [SequencingExperiment➞description](SequencingExperiment_description.md) - A detailed description of the Experiment.
+     * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md) - Description summarizing how a sequencing library was prepared.
+     * [Sample➞description](Sample_description.md) - A concise description about the Sample source, the collection method, and the protocol which was followed to process the Sample.
+     * [SequencingExperiment➞description](SequencingExperiment_description.md) - A detailed description of the Sequencing Experiment.
      * [SequencingProcess➞description](SequencingProcess_description.md)
-     * [SequencingProtocol➞description](SequencingProtocol_description.md) - Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+     * [SequencingProtocol➞description](SequencingProtocol_description.md) - A description summarizing the Sequencing Protocol.
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
  * [disease_or_healthy](disease_or_healthy.md) - Whether a condition corresponds to a disease or a healthy state.
      * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)
  * [doi](doi.md) - DOI identifier of a publication.
-     * [Publication➞doi](Publication_doi.md) - DOI identifier of the Publication.
+     * [Publication➞doi](Publication_doi.md)
  * [email](email.md) - Email of a person.
      * [DataAccessCommittee➞email](DataAccessCommittee_email.md)
  * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
      * [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)
  * [father](father.md) - The father of an individual.
      * [Trio➞father](Trio_father.md)
- * [flow_cell_id](flow_cell_id.md) - Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
+ * [flow_cell_id](flow_cell_id.md) - Flow Cell ID (e.g. Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
      * [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)
  * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
      * [SequencingProtocol➞flow_cell_type](SequencingProtocol_flow_cell_type.md)
- * [format](format.md) - The format of the file: BAM, SAM, CRAM, BAI, etc.
+ * [format](format.md) - The format of the file, e.g. BAM, SAM, CRAM, BAI.
      * [File➞format](File_format.md)
  * [forward_or_reverse](forward_or_reverse.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
      * [File➞forward_or_reverse](File_forward_or_reverse.md)
@@ -167,9 +167,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [karyotype](karyotype.md) - The karyotype of an individual if defined.
      * [Individual➞karyotype](Individual_karyotype.md)
  * [key](key.md) - The key of an attribute.
-     * [Attribute➞key](Attribute_key.md) - The key for an attribute.
- * [key_type](key_type.md) - The semantic type for the key of an attribute.
-     * [Attribute➞key_type](Attribute_key_type.md) - A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
+     * [Attribute➞key](Attribute_key.md)
+ * [key_type](key_type.md) - A semantic type that characterizes the attribute key. Usually this is a term from an ontology, e.g. 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
+     * [Attribute➞key_type](Attribute_key_type.md)
  * [library_layout](library_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
      * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
  * [library_name](library_name.md) - A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
@@ -178,15 +178,15 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [LibraryPreparationProtocol➞library_preparation](LibraryPreparationProtocol_library_preparation.md)
  * [library_preparation_kit_manufacturer](library_preparation_kit_manufacturer.md) - Manufacturer of library_preparation kit
      * [LibraryPreparationProtocol➞library_preparation_kit_manufacturer](LibraryPreparationProtocol_library_preparation_kit_manufacturer.md)
- * [library_preparation_kit_retail_name](library_preparation_kit_retail_name.md) - A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+ * [library_preparation_kit_retail_name](library_preparation_kit_retail_name.md) - A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome).
      * [LibraryPreparationProtocol➞library_preparation_kit_retail_name](LibraryPreparationProtocol_library_preparation_kit_retail_name.md)
  * [library_preparation_protocol](library_preparation_protocol.md) - The library_preparation Protocol associated with an entity.
      * [SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md)
  * [library_preparation_protocols](library_preparation_protocols.md) - The library_preparation Protocol associated with an entity.
      * [Submission➞library_preparation_protocols](Submission_library_preparation_protocols.md) - One or more library preparation protocol entities associated with this Submission.
- * [library_selection](library_selection.md) - Whether any method was used to select for or against, enrich, or screen the material being sequenced. library_selection method (e.g. random, PCA, cDNA, etc )
+ * [library_selection](library_selection.md) - Whether any method was used to select for or against, enrich, or screen the material being sequenced. library_selection method (e.g. random, PCA, cDNA)
      * [LibraryPreparationProtocol➞library_selection](LibraryPreparationProtocol_library_selection.md)
- * [library_type](library_type.md) - Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+ * [library_type](library_type.md) - Describe the level of omics analysis (e.g. metagenome, transcriptome)
      * [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)
  * [mother](mother.md) - The mother of an individual.
      * [Trio➞mother](Trio_mother.md)
@@ -194,31 +194,31 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)
  * [name](name.md) - The name for an entity.
      * [Biospecimen➞name](Biospecimen_name.md)
-     * [Condition➞name](Condition_name.md)
+     * [Condition➞name](Condition_name.md) - The name of the Condition.
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for the Data Access Policy.
      * [File➞name](File_name.md) - The given filename.
-     * [Sample➞name](Sample_name.md) - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+     * [Sample➞name](Sample_name.md) - A descriptive name of the Sample (e.g. GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
      * [SequencingProcess➞name](SequencingProcess_name.md)
- * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
-     * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
+ * [phenotypic_features](phenotypic_features.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. Typically, the phenotypic feature is captured using a concept from Human Phenotype Ontology. E.g., 'HP:0100244' indicates that the Individual the Biospecimen was extracted from exhibits 'Fibrosarcoma' as one of its phenotype.
+     * [Individual➞phenotypic_features](Individual_phenotypic_features.md)
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
-     * [DataAccessPolicy➞policy_text](DataAccessPolicy_policy_text.md) - The terms of data use and policy verbiage should be captured here.
- * [policy_url](policy_url.md) - Alternative to pasting the Data Access Policy text.
-     * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md) - URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
+     * [DataAccessPolicy➞policy_text](DataAccessPolicy_policy_text.md)
+ * [policy_url](policy_url.md) - An alternative to pasting the Data Access Policy text is to provide the URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
+     * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md)
  * [primer](primer.md) - The type of primer used for reverse transcription, e.g. 'oligo-dT' or 'random' primer. This allows users to identify content of the cDNA library input e.g. enriched for mRNA.
      * [LibraryPreparationProtocol➞primer](LibraryPreparationProtocol_primer.md)
  * [publications](publications.md) - The Publication associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
  * [reference_chromosome](reference_chromosome.md) - The reference chromosome used for this Analysis.
      * [Analysis➞reference_chromosome](Analysis_reference_chromosome.md)
- * [reference_genome](reference_genome.md) - A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
+ * [reference_genome](reference_genome.md) - A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses, e.g. GRCh38.p13.
      * [Analysis➞reference_genome](Analysis_reference_genome.md)
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)
  * [sample](sample.md) - The sample associated with an entity.
      * [SampleFile➞sample](SampleFile_sample.md)
      * [SequencingProcess➞sample](SequencingProcess_sample.md)
- * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+ * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g. index1/index2/read1/read2).
      * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)
  * [sample_files](sample_files.md) - The SampleFiles associated with an entity.
      * [Submission➞sample_files](Submission_sample_files.md) - The SampleFiles that are part of this submission.
@@ -233,9 +233,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [sequencing_experiments](sequencing_experiments.md) - The sequencing experiments associated with an entity.
      * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md) - Information about one or more Experiment entities associated with this submission.
  * [sequencing_lane_id](sequencing_lane_id.md) - The identifier of a sequencing lane.
-     * [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md) - Identifier of the sequencing lane. Used for batch correction.
+     * [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md)
  * [sequencing_machine_id](sequencing_machine_id.md) - The identifier of a sequencing machine.
-     * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md) - Identifier of the sequencing machine. Used for batch correction.
+     * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md)
  * [sequencing_process](sequencing_process.md) - The SequencingProcess associated with an entity.
      * [SequencingProcessFile➞sequencing_process](SequencingProcessFile_sequencing_process.md)
  * [sequencing_process_files](sequencing_process_files.md) - The SequencingProcessFiles associated with an entity.
@@ -248,10 +248,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)
  * [sequencing_protocols](sequencing_protocols.md) - The sequencing protocol associated with an entity.
      * [Submission➞sequencing_protocols](Submission_sequencing_protocols.md) - One or more sequencing protocol entities associated with this Submission.
- * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process
+ * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads, e.g. long or short or actual number of the read length. The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process.
      * [SequencingProtocol➞sequencing_read_length](SequencingProtocol_sequencing_read_length.md)
  * [sequencing_run_id](sequencing_run_id.md) - The identifier of a sequencing run.
-     * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md) - Identifier of the sequencing run. Used for batch correction.
+     * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)
  * [sex](sex.md) - The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
      * [Individual➞sex](Individual_sex.md)
  * [size](size.md) - The size of a file in bytes.
@@ -276,36 +276,36 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [tissue](tissue.md)
      * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
-     * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
+     * [Dataset➞title](Dataset_title.md) - A title for the Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
-     * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
-     * [Study➞title](Study_title.md) - A comprehensive title for the study.
+     * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
+     * [Study➞title](Study_title.md) - A comprehensive title for the Study.
  * [trios](trios.md) - The Trios associated with an entity.
      * [Submission➞trios](Submission_trios.md) - The Trios associated with this Submission.
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type
-     * [Analysis➞type](Analysis_type.md) - The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
+     * [Analysis➞type](Analysis_type.md) - The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
      * [Biospecimen➞type](Biospecimen_type.md) - The type of Biospecimen.
-     * [Sample➞type](Sample_type.md) - The type of sample.
-     * [SequencingExperiment➞type](SequencingExperiment_type.md) - The type of sequencing experiment.
-     * [SequencingProtocol➞type](SequencingProtocol_type.md) - Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
-     * [Study➞type](Study_type.md) - The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
+     * [Sample➞type](Sample_type.md) - The type of the Sample.
+     * [SequencingExperiment➞type](SequencingExperiment_type.md) - The type of Sequencing Experiment.
+     * [SequencingProtocol➞type](SequencingProtocol_type.md) - Type of the Sequencing Protocol (e.g.: mRNA-seq, Whole exome long-read sequencing).
+     * [Study➞type](Study_type.md) - The type of Study, e.g. 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type
-     * [Dataset➞types](Dataset_types.md) - The type of a dataset.
- * [umi_barcode_offset](umi_barcode_offset.md) - The offset in sequence of the UMI identifying barcode. (E.g. '16').
+     * [Dataset➞types](Dataset_types.md) - The type of the Dataset.
+ * [umi_barcode_offset](umi_barcode_offset.md) - The offset in sequence of the UMI identifying barcode (e.g. '16').
      * [SequencingProtocol➞umi_barcode_offset](SequencingProtocol_umi_barcode_offset.md)
- * [umi_barcode_read](umi_barcode_read.md) - The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+ * [umi_barcode_read](umi_barcode_read.md) - The type of read that contains the UMI barcode (e.g. index1/index2/read1/read2).
      * [SequencingProtocol➞umi_barcode_read](SequencingProtocol_umi_barcode_read.md)
- * [umi_barcode_size](umi_barcode_size.md) - The size of the UMI identifying barcode (Eg. '10').
+ * [umi_barcode_size](umi_barcode_size.md) - The size of the UMI identifying barcode (e.g. '10').
      * [SequencingProtocol➞umi_barcode_size](SequencingProtocol_umi_barcode_size.md)
- * [value](value.md) - The value of an attribute
-     * [Attribute➞value](Attribute_value.md) - The value for an attribute. Usually this is a numerical value (without the units).
- * [value_type](value_type.md) - The semantic type for the value of an attribute.
-     * [Attribute➞value_type](Attribute_value_type.md) - The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
- * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+ * [value](value.md) - The value for an attribute. Usually this is a numerical value (without the units).
+     * [Attribute➞value](Attribute_value.md)
+ * [value_type](value_type.md) - The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value, e.g. 'SIO:001413' indicates that the value is to be interpreted as a percentage.
+     * [Attribute➞value_type](Attribute_value_type.md)
+ * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling, e.g. 'Alive' or 'Deceased'.
      * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
      * [Publication➞xref](Publication_xref.md) - One or more cross-references for this Publication.
-     * [Sample➞xref](Sample_xref.md) - One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
+     * [Sample➞xref](Sample_xref.md) - One or more cross-references for this Sample, e.g., this Sample may have an EBI BioSamples accession or an EGA Sample accession.
  * [year](year.md) - Year in which the paper was published.
      * [Publication➞year](Publication_year.md)
 
@@ -324,7 +324,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [GeographicalRegionEnum](GeographicalRegionEnum.md) - Permitted values for geographical region
  * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
  * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
- * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for instrument model
+ * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for the instrument model
  * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
  * [KaryotypeEnum](KaryotypeEnum.md) - Permitted values for karyotype
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name

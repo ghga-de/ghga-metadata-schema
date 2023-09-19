@@ -2,7 +2,7 @@
 # Class: LibraryPreparationProtocol
 
 
-Information about the library_preparation of an sequencing experiment.
+The Library Preparation Protocol captures information about the Library Preparation of an Sequencing Experiment.
 
 URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationProtocol)
 
@@ -27,7 +27,7 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
 ### Own
 
  * [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)  <sub>1..1</sub>
-     * Description: Description about how a sequencing library was prepared (eg: Library construction method).
+     * Description: Description summarizing how a sequencing library was prepared.
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞library_name](LibraryPreparationProtocol_library_name.md)  <sub>1..1</sub>
      * Description: A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
@@ -36,16 +36,16 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
      * Description: Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
      * Range: [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md)
  * [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)  <sub>1..1</sub>
-     * Description: Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+     * Description: Describe the level of omics analysis (e.g. metagenome, transcriptome)
      * Range: [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md)
  * [LibraryPreparationProtocol➞library_selection](LibraryPreparationProtocol_library_selection.md)  <sub>1..1</sub>
-     * Description: Whether any method was used to select for or against, enrich, or screen the material being sequenced. library_selection method (e.g. random, PCA, cDNA, etc )
+     * Description: Whether any method was used to select for or against, enrich, or screen the material being sequenced. library_selection method (e.g. random, PCA, cDNA)
      * Range: [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md)
  * [LibraryPreparationProtocol➞library_preparation](LibraryPreparationProtocol_library_preparation.md)  <sub>1..1</sub>
      * Description: The general method for sequencing library_preparation (e.g. KAPA PCR-free).
      * Range: [String](types/String.md)
  * [LibraryPreparationProtocol➞library_preparation_kit_retail_name](LibraryPreparationProtocol_library_preparation_kit_retail_name.md)  <sub>0..1</sub>
-     * Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome, etc.)
+     * Description: A unique identifier for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g. Agilent sure select Human Exome V8, Twist RefSeq Exome).
      * Range: [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md)
  * [LibraryPreparationProtocol➞library_preparation_kit_manufacturer](LibraryPreparationProtocol_library_preparation_kit_manufacturer.md)  <sub>0..1</sub>
      * Description: Manufacturer of library_preparation kit
@@ -63,7 +63,7 @@ URI: [GHGA:LibraryPreparationProtocol](https://w3id.org/GHGA/LibraryPreparationP
      * Description: The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * Range: [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md)
  * [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)  <sub>0..\*</sub>
-     * Description: One or more attributes that further characterizes this library_preparation Protocol.
+     * Description: One or more attributes that further characterize this Library Preparation Protocol.
      * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

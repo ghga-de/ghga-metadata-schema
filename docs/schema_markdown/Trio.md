@@ -2,7 +2,7 @@
 # Class: Trio
 
 
-A trio is defined by three individuals representing an individual and their parents.
+A trio is a study design that involves the genetic analysis of three individuals within a family unit. It consists of a child and their biological parents.
 
 URI: [GHGA:Trio](https://w3id.org/GHGA/Trio)
 

@@ -2,7 +2,7 @@
 # Slot: cell_barcode_size
 
 
-The size of the cell identifying barcode (E.g. '16').
+The size of the cell identifying barcode (e.g. '16').
 
 URI: [GHGA:SequencingProtocol_cell_barcode_size](https://w3id.org/GHGA/SequencingProtocol_cell_barcode_size)
 

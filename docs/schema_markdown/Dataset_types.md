@@ -2,7 +2,7 @@
 # Slot: types
 
 
-The type of a dataset.
+The type of the Dataset.
 
 URI: [GHGA:Dataset_types](https://w3id.org/GHGA/Dataset_types)
 

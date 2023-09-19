@@ -2,7 +2,7 @@
 # Class: SequencingProcess
 
 
-A sequencing process linking a sample to sequencing output.
+The Sequencing Process captures the technical parameters that were used to produce sequencing output from a Sample. It links a Sample to sequencing output.
 
 URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
 
@@ -33,13 +33,13 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
      * Description: Description of an entity.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)  <sub>0..1</sub>
-     * Description: Identifier of the sequencing run. Used for batch correction.
+     * Description: The identifier of a sequencing run.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md)  <sub>0..1</sub>
-     * Description: Identifier of the sequencing lane. Used for batch correction.
+     * Description: The identifier of a sequencing lane.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md)  <sub>0..1</sub>
-     * Description: Identifier of the sequencing machine. Used for batch correction.
+     * Description: The identifier of a sequencing machine.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)  <sub>1..1</sub>
      * Description: The sequencing experiment associated with an entity.

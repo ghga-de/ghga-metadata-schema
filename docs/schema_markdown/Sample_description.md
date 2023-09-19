@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Short textual description of the sample (How the sample was collected, sample source, Protocol followed for processing the sample etc).
+A concise description about the Sample source, the collection method, and the protocol which was followed to process the Sample.
 
 URI: [GHGA:Sample_description](https://w3id.org/GHGA/Sample_description)
 

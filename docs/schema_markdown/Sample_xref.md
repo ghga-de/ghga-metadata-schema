@@ -2,7 +2,7 @@
 # Slot: xref
 
 
-One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
+One or more cross-references for this Sample, e.g., this Sample may have an EBI BioSamples accession or an EGA Sample accession.
 
 URI: [GHGA:Sample_xref](https://w3id.org/GHGA/Sample_xref)
 

@@ -2,7 +2,7 @@
 # Slot: value
 
 
-The value of an attribute
+The value for an attribute. Usually this is a numerical value (without the units).
 
 URI: [GHGA:value](https://w3id.org/GHGA/value)
 
