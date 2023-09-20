@@ -2356,14 +2356,14 @@ enums:
       KAPA_M_RNA_HYPER_PREP_KIT:
         description: >-
           KAPA RNA HyperPrep Kit
-      ? NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_HUMAN_MOUSE_RAT_WITH_RNA_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_GLOBIN_R_RNA_DEPLETION_HU_MO_RAT_RNA_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext Globin & rRNA Depletion Kit (Human/Mouse/Rat) with RNA Sample Purification Beads
       NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_HUMAN_MOUSE_RAT:
         description: >-
           NEBNext Globin & rRNA Depletion Kit (Human/Mouse/Rat)
-      ? NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_V2_HUMAN_MOUSE_RAT_WITH_RNA_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_GLOBIN_R_RNA_DEPLET_V2_HU_MO_RAT_RNA_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext Globin & rRNA Depletion Kit v2 (Human/Mouse/Rat) with RNA Sample Purification Beads
       NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_V2_HUMAN_MOUSE_RAT:
         description: >-
@@ -2371,8 +2371,8 @@ enums:
       NEB_NEXT_RNA_DEPLETION_CORE_REAGENT_SET:
         description: >-
           NEBNext RNA Depletion Core Reagent Set
-      ? NEB_NEXT_RNA_DEPLETION_CORE_REAGENT_SET_WITH_RNA_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_RNA_DEPLETION_CORE_REAGENT_SET_RNA_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext RNA Depletion Core Reagent Set with RNA Sample Purification Beads
       NEB_NEXT_POLY_A_M_RNA_MAGNETIC_ISOLATION_MODULE:
         description: >-
@@ -2404,8 +2404,8 @@ enums:
       NEB_NEXT_ULTRA_II_DNA_LIBRARY_PREP_KIT_FOR_ILLUMINA:
         description: >-
           NEBNext Ultra II DNA Library Prep Kit for Illumina
-      ? NEB_NEXT_ULTRA_II_DNA_LIBRARY_PREP_FOR_ILLUMINA_WITH_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_ULTRA_II_DNA_ILLUMINA_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext Ultra II DNA Library Prep for Illumina with Sample Purification Beads
       NEB_NEXT_ULTRA_II_DIRECTIONAL_RNA_LIBRARY_PREP_KIT_FOR_ILLUMINA:
         description: >-
@@ -2419,14 +2419,14 @@ enums:
       NEB_NEXT_ULTRA_II_FS_DNA_LIBRARY_PREP_KIT_FOR_ILLUMINA:
         description: >-
           NEBNext Ultra II FS DNA Library Prep Kit for Illumina
-      ? NEB_NEXT_ULTRA_II_FS_DNA_LIBRARY_PREP_FOR_ILLUMINA_WITH_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_ULTRA_II_FS_DNA_ILLUMINA_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext Ultra II FS DNA Library Prep for Illumina with Sample Purification Beads
-      ? NEB_NEXT_ULTRA_II_DNA_PCR_FREE_LIBRARY_PREP_WITH_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_ULTRA_II_DNA_PCR_FREE_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext Ultra II DNA PCR-free Library Prep with Sample Purification Beads
-      ? NEB_NEXT_ULTRA_II_FS_DNA_PCR_FREE_LIBRARY_PREP_WITH_SAMPLE_PURIFICATION_BEADS
-      : description: >-
+      NEB_NEXT_ULTRA_II_FS_DNA_PCR_FREE_SAMPLE_PURIFICATION_BEADS:
+        description: >-
           NEBNext Ultra II FS DNA PCR-free Library Prep with Sample Purification Beads
       NEB_NEXT_ULTRA_II_DNA_PCR_FREE_LIBRARY_PREP_KIT_FOR_ILLUMINA:
         description: >-
@@ -2455,8 +2455,8 @@ enums:
       NEB_NEXT_ULTRA_SHEAR_FFPE_DNA_LIBRARY_PREP_KIT:
         description: >-
           NEBNext UltraShear FFPE DNA Library Prep Kit
-      ? NEB_NEXT_COMPANION_MODULE_FOR_OXFORD_NANOPORE_TECHNOLOGIES_LIGATION_SEQUENCING
-      : description: >-
+      NEB_NEXT_COMPANION_MODULE_ONT_LIGATION_SEQUENCING:
+        description: >-
           NEBNext Companion Module for Oxford Nanopore Technologies Ligation Sequencing
       NEB_NEXT_FAST_DNA_FRAGMENTATION_AND_LIBRARY_PREP_SET_FOR_ION_TORRENT:
         description: >-

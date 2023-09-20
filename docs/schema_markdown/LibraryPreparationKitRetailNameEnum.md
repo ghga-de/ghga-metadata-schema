@@ -111,12 +111,12 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | KAPA_HYPER_PREP_PCR_FREE_KIT | KAPA HyperPrep Kit (PCR-free) |  |  |
 | KAPA_HYPER_PLUS_KIT | KAPA HyperPlus Kit |  |  |
 | KAPA_M_RNA_HYPER_PREP_KIT | KAPA RNA HyperPrep Kit |  |  |
-| NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_HUMAN_MOUSE_RAT_WITH_RNA_SAMPLE_PURIFICATION_BEADS | NEBNext Globin & rRNA Depletion Kit (Human/Mouse/Rat) with RNA Sample Purification Beads |  |  |
+| NEB_NEXT_GLOBIN_R_RNA_DEPLETION_HU_MO_RAT_RNA_SAMPLE_PURIFICATION_BEADS | NEBNext Globin & rRNA Depletion Kit (Human/Mouse/Rat) with RNA Sample Purification Beads |  |  |
 | NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_HUMAN_MOUSE_RAT | NEBNext Globin & rRNA Depletion Kit (Human/Mouse/Rat) |  |  |
-| NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_V2_HUMAN_MOUSE_RAT_WITH_RNA_SAMPLE_PURIFICATION_BEADS | NEBNext Globin & rRNA Depletion Kit v2 (Human/Mouse/Rat) with RNA Sample Purification Beads |  |  |
+| NEB_NEXT_GLOBIN_R_RNA_DEPLET_V2_HU_MO_RAT_RNA_SAMPLE_PURIFICATION_BEADS | NEBNext Globin & rRNA Depletion Kit v2 (Human/Mouse/Rat) with RNA Sample Purification Beads |  |  |
 | NEB_NEXT_GLOBIN_R_RNA_DEPLETION_KIT_V2_HUMAN_MOUSE_RAT | NEBNext Globin & rRNA Depletion Kit v2 (Human/Mouse/Rat) |  |  |
 | NEB_NEXT_RNA_DEPLETION_CORE_REAGENT_SET | NEBNext RNA Depletion Core Reagent Set |  |  |
-| NEB_NEXT_RNA_DEPLETION_CORE_REAGENT_SET_WITH_RNA_SAMPLE_PURIFICATION_BEADS | NEBNext RNA Depletion Core Reagent Set with RNA Sample Purification Beads |  |  |
+| NEB_NEXT_RNA_DEPLETION_CORE_REAGENT_SET_RNA_SAMPLE_PURIFICATION_BEADS | NEBNext RNA Depletion Core Reagent Set with RNA Sample Purification Beads |  |  |
 | NEB_NEXT_POLY_A_M_RNA_MAGNETIC_ISOLATION_MODULE | NEBNext Poly(A) mRNA Magnetic Isolation Module |  |  |
 | NEB_NEXT_SINGLE_CELL_LOW_INPUT_CDNA_SYNTHESIS_AND_AMPLIFICATION_MODULE | NEBNext Single Cell / Low Input cDNA Synthesis and Amplification Module |  |  |
 | NEB_NEXT_SINGLE_CELL_LOW_INPUT_RNA_LIBRARY_KIT_FOR_ILLUMINA | NEBNext Single Cell / Low Input RNA Library Kit for Illumina |  |  |
@@ -127,14 +127,14 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | NEB_NEXT_ULTRA_II_DIRECTIONAL_RNA_SECOND_STRAND_SYNTHESIS_MODULE | NEBNext Ultra II Directional RNA Second Strand Synthesis Module |  |  |
 | NEB_NEXT_ULTRA_DNA | NEBNext Ultra DNA Library Prep for Illumina |  |  |
 | NEB_NEXT_ULTRA_II_DNA_LIBRARY_PREP_KIT_FOR_ILLUMINA | NEBNext Ultra II DNA Library Prep Kit for Illumina |  |  |
-| NEB_NEXT_ULTRA_II_DNA_LIBRARY_PREP_FOR_ILLUMINA_WITH_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II DNA Library Prep for Illumina with Sample Purification Beads |  |  |
+| NEB_NEXT_ULTRA_II_DNA_ILLUMINA_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II DNA Library Prep for Illumina with Sample Purification Beads |  |  |
 | NEB_NEXT_ULTRA_II_DIRECTIONAL_RNA_LIBRARY_PREP_KIT_FOR_ILLUMINA | NEBNext Ultra II Directional RNA Library Prep Kit for Illumina |  |  |
 | NEB_NEXT_ULTRA_II_FS_DNA_MODULE | NEBNext Ultra II FS DNA Module |  |  |
 | NEB_NEXT_ULTRA_II_END_REPAIR_DA_TAILING_MODULE | NEBNext Ultra II End Repair/dA-Tailing Module |  |  |
 | NEB_NEXT_ULTRA_II_FS_DNA_LIBRARY_PREP_KIT_FOR_ILLUMINA | NEBNext Ultra II FS DNA Library Prep Kit for Illumina |  |  |
-| NEB_NEXT_ULTRA_II_FS_DNA_LIBRARY_PREP_FOR_ILLUMINA_WITH_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II FS DNA Library Prep for Illumina with Sample Purification Beads |  |  |
-| NEB_NEXT_ULTRA_II_DNA_PCR_FREE_LIBRARY_PREP_WITH_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II DNA PCR-free Library Prep with Sample Purification Beads |  |  |
-| NEB_NEXT_ULTRA_II_FS_DNA_PCR_FREE_LIBRARY_PREP_WITH_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II FS DNA PCR-free Library Prep with Sample Purification Beads |  |  |
+| NEB_NEXT_ULTRA_II_FS_DNA_ILLUMINA_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II FS DNA Library Prep for Illumina with Sample Purification Beads |  |  |
+| NEB_NEXT_ULTRA_II_DNA_PCR_FREE_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II DNA PCR-free Library Prep with Sample Purification Beads |  |  |
+| NEB_NEXT_ULTRA_II_FS_DNA_PCR_FREE_SAMPLE_PURIFICATION_BEADS | NEBNext Ultra II FS DNA PCR-free Library Prep with Sample Purification Beads |  |  |
 | NEB_NEXT_ULTRA_II_DNA_PCR_FREE_LIBRARY_PREP_KIT_FOR_ILLUMINA | NEBNext Ultra II DNA PCR-free Library Prep Kit for Illumina |  |  |
 | NEB_NEXT_ULTRA_II_FS_DNA_PCR_FREE_LIBRARY_PREP_KIT_FOR_ILLUMINA | NEBNext Ultra II FS DNA PCR-free Library Prep Kit for Illumina |  |  |
 | NEB_NEXT_ULTRA_II_LIGATION_MODULE | NEBNext Ultra II Ligation Module |  |  |
@@ -144,7 +144,7 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | NEB_NEXT_LIBRARY_PCR_MASTER_MIX | NEBNext Library PCR Master Mix |  |  |
 | NEB_NEXT_ULTRA_SHEAR | NEBNext UltraShear |  |  |
 | NEB_NEXT_ULTRA_SHEAR_FFPE_DNA_LIBRARY_PREP_KIT | NEBNext UltraShear FFPE DNA Library Prep Kit |  |  |
-| NEB_NEXT_COMPANION_MODULE_FOR_OXFORD_NANOPORE_TECHNOLOGIES_LIGATION_SEQUENCING | NEBNext Companion Module for Oxford Nanopore Technologies Ligation Sequencing |  |  |
+| NEB_NEXT_COMPANION_MODULE_ONT_LIGATION_SEQUENCING | NEBNext Companion Module for Oxford Nanopore Technologies Ligation Sequencing |  |  |
 | NEB_NEXT_FAST_DNA_FRAGMENTATION_AND_LIBRARY_PREP_SET_FOR_ION_TORRENT | NEBNext Fast DNA Fragmentation and Library Prep Set for Ion Torrent |  |  |
 | NEB_NEXT_FAST_DNA_LIBRARY_PREP_SET_FOR_ION_TORRENT | NEBNext Fast DNA Library Prep Set for Ion Torrent |  |  |
 | NEB_NEXT_FFPE_DNA_LIBRARY_PREP_KIT | NEBNext FFPE DNA Library Prep Kit |  |  |
