@@ -262,9 +262,6 @@ classes:
       - cell_barcode_read
       - cell_barcode_offset
       - cell_barcode_size
-      - cdna_read
-      - cdna_read_offset
-      - cdna_read_size
       - sample_barcode_read
     slot_usage:
       instrument_model:
@@ -309,15 +306,6 @@ classes:
         required: false
         recommended: true
       cell_barcode_offset:
-        required: false
-        recommended: true
-      cdna_read:
-        required: false
-        recommended: true
-      cdna_read_size:
-        required: false
-        recommended: true
-      cdna_read_offset:
         required: false
         recommended: true
       sample_barcode_read:
@@ -1354,19 +1342,6 @@ slots:
   cell_barcode_size:
     description: >-
       The size of the cell identifying barcode (E.g. '16').
-
-  cdna_read:
-    description: >-
-      The type of read that contains the cDNA barcode (Eg: index1/index2/read1/read2).
-    range: IndexReadEnum
-
-  cdna_read_offset:
-    description: >-
-      The offset in sequence of the cDNA read. (E.g. '0').
-
-  cdna_read_size:
-    description: >-
-      The size of the cDNA read (Eg. '98').
 
   sample_barcode_read:
     description: >-

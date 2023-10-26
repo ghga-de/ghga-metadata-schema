@@ -79,12 +79,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞biospecimens](Submission_biospecimens.md) - Information about one or more Biospecimen entities associated with this submission.
  * [case_control_status](case_control_status.md) - Whether a condition corresponds to a treatment or a control.
      * [Condition➞case_control_status](Condition_case_control_status.md)
- * [cdna_read](cdna_read.md) - The type of read that contains the cDNA barcode (Eg: index1/index2/read1/read2).
-     * [SequencingProtocol➞cdna_read](SequencingProtocol_cdna_read.md)
- * [cdna_read_offset](cdna_read_offset.md) - The offset in sequence of the cDNA read. (E.g. '0').
-     * [SequencingProtocol➞cdna_read_offset](SequencingProtocol_cdna_read_offset.md)
- * [cdna_read_size](cdna_read_size.md) - The size of the cDNA read (Eg. '98').
-     * [SequencingProtocol➞cdna_read_size](SequencingProtocol_cdna_read_size.md)
  * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode. (Eg. '0').
      * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
  * [cell_barcode_read](cell_barcode_read.md) - The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
