@@ -9,7 +9,7 @@ URI: [GHGA:SequencingExperiment_title](https://w3id.org/GHGA/SequencingExperimen
 
 ## Domain and Range
 
-[SequencingExperiment](SequencingExperiment.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[SequencingExperiment](SequencingExperiment.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 

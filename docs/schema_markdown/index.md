@@ -187,12 +187,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [mutant_or_wildtype](mutant_or_wildtype.md) - Whether a condition corresponds to a mutant or a wildtype.
      * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)
  * [name](name.md) - The name for an entity.
+     * [AnalysisProcess➞name](AnalysisProcess_name.md)
      * [Biospecimen➞name](Biospecimen_name.md)
      * [Condition➞name](Condition_name.md)
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for the Data Access Policy.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
      * [SequencingProcess➞name](SequencingProcess_name.md)
+     * [SequencingProtocol➞name](SequencingProtocol_name.md)
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
@@ -270,6 +272,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [tissue](tissue.md)
      * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
+     * [Analysis➞title](Analysis_title.md)
      * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).

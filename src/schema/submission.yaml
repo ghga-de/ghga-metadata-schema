@@ -143,6 +143,7 @@ classes:
       title:
         description: >-
           Name for the experiment (eg: GHGAE_PBMC_RNAseq).
+        required: true
       description:
         description: >-
           A detailed description of the Experiment.
@@ -248,6 +249,7 @@ classes:
     description: >-
       Information about the sequencing of a sample.
     slots:
+      - name
       - description
       - type
       - instrument_model
@@ -264,6 +266,8 @@ classes:
       - cell_barcode_size
       - sample_barcode_read
     slot_usage:
+      name:
+        required: true
       instrument_model:
         required: true
       type:
@@ -604,6 +608,8 @@ classes:
       - reference_genome
       - reference_chromosome
     slot_usage:
+      title:
+        required: true
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
@@ -621,11 +627,14 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     slots:
+      - name
       - analysis
       - study_input_files
       - sample_input_files
       - sequencing_process_input_files
     slot_usage:
+      name:
+        required: true
       analysis:
         inlined: false
         description: >-
