@@ -7,7 +7,7 @@ A sample is a limited quantity of something to be used for testing, analysis, in
 URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:string%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Biospecimen]<biospecimen%200..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:StorageEnum%20%3F;xref:string%20*;alias:string],[Condition]<condition%201..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Biospecimen]<biospecimen%200..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:StorageEnum%20%3F;xref:string%20*;alias:string],[Condition]<condition%201..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -43,16 +43,16 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * in subsets: (ontology)
  * [Sample➞storage](Sample_storage.md)  <sub>0..1</sub>
      * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
-     * Range: [String](types/String.md)
- * [Sample➞biospecimen](Sample_biospecimen.md)  <sub>0..1</sub>
-     * Description: The Biospecimen from which this Sample was prepared from.
-     * Range: [Biospecimen](Biospecimen.md)
- * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
-     * Description: The condition associated with an entity.
-     * Range: [Condition](Condition.md)
+     * Range: [StorageEnum](StorageEnum.md)
  * [Sample➞xref](Sample_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Sample. For example, this Sample may have an EBI BioSamples accession or an EGA Sample accession.
      * Range: [String](types/String.md)
+ * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
+     * Description: The condition associated with an entity.
+     * Range: [Condition](Condition.md)
+ * [Sample➞biospecimen](Sample_biospecimen.md)  <sub>0..1</sub>
+     * Description: The Biospecimen from which this Sample was prepared from.
+     * Range: [Biospecimen](Biospecimen.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

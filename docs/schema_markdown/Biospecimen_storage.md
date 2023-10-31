@@ -9,7 +9,7 @@ URI: [GHGA:Biospecimen_storage](https://w3id.org/GHGA/Biospecimen_storage)
 
 ## Domain and Range
 
-[Biospecimen](Biospecimen.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Biospecimen](Biospecimen.md) &#8594;  <sub>0..1</sub> [StorageEnum](StorageEnum.md)
 
 ## Parents
 

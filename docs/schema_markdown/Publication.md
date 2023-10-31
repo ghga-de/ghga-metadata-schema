@@ -41,12 +41,12 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
  * [Publication➞doi](Publication_doi.md)  <sub>1..1</sub>
      * Description: DOI identifier of the Publication.
      * Range: [String](types/String.md)
- * [Publication➞study](Publication_study.md)  <sub>1..1</sub>
-     * Description: The Study entity associated with this Publication.
-     * Range: [Study](Study.md)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Publication.
      * Range: [String](types/String.md)
+ * [Publication➞study](Publication_study.md)  <sub>1..1</sub>
+     * Description: The Study entity associated with this Publication.
+     * Range: [Study](Study.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

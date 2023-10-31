@@ -42,10 +42,10 @@ SequencingProcess {
 Sample {
 
 }
-Condition {
+Biospecimen {
 
 }
-Biospecimen {
+Condition {
 
 }
 SequencingExperiment {
@@ -105,12 +105,12 @@ SequencingProtocol ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
+Biospecimen ||--|| Individual : "individual"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"
-Biospecimen ||--|| Individual : "individual"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
@@ -148,8 +148,8 @@ Sample {
 }
 
 Biospecimen ||--|| Individual : "individual"
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
 
 ```
@@ -179,8 +179,8 @@ SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
 File ||--|| Dataset : "dataset"
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
@@ -206,8 +206,8 @@ Study {
 
 }
 
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"
@@ -224,22 +224,22 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 ```mermaid
 erDiagram
 Individual {
+    stringList phenotypic_features  
     IndividualSexEnum sex  
     KaryotypeEnum karyotype  
     string geographical_region  
     stringList ancestries  
-    stringList phenotypic_features  
     string alias  
 }
 Biospecimen {
     string name  
     string type  
     string description  
-    string isolation  
-    string storage  
     AgeRangeEnum age_at_sampling  
     VitalStatusEnum vital_status_at_sampling  
     string tissue  
+    string isolation  
+    StorageEnum storage  
     string alias  
 }
 Sample {
@@ -247,14 +247,14 @@ Sample {
     SampleTypeEnum type  
     string description  
     string isolation  
-    string storage  
+    StorageEnum storage  
     stringList xref  
     string alias  
 }
 
 Biospecimen ||--|| Individual : "individual"
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
 
 ```
@@ -268,14 +268,12 @@ Focusses on the relation between Experiment, Sample, and File.
 ```mermaid
 erDiagram
 SequencingProcess {
-    string title  
-    string description  
     string name  
+    string description  
     string sequencing_run_id  
     string sequencing_lane_id  
     string sequencing_machine_id  
     string index_sequence  
-    string lane_number  
     string alias  
 }
 File {
@@ -283,8 +281,8 @@ File {
     FileFormatEnum format  
     integer size  
     string checksum  
-    ForwardOrReverseEnum forward_or_reverse  
     string checksum_type  
+    ForwardOrReverseEnum forward_or_reverse  
     string alias  
 }
 Sample {
@@ -292,7 +290,7 @@ Sample {
     SampleTypeEnum type  
     string description  
     string isolation  
-    string storage  
+    StorageEnum storage  
     stringList xref  
     string alias  
 }
@@ -307,8 +305,8 @@ SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
 File ||--|| Dataset : "dataset"
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
@@ -329,14 +327,13 @@ Sample {
     SampleTypeEnum type  
     string description  
     string isolation  
-    string storage  
+    StorageEnum storage  
     stringList xref  
     string alias  
 }
 Condition {
-    string title  
-    string description  
     string name  
+    string description  
     DiseaseOrHealthyEnum disease_or_healthy  
     CaseControlStatusEnum case_control_status  
     MutantOrWildtypeEnum mutant_or_wildtype  
@@ -350,8 +347,8 @@ Study {
     string alias  
 }
 
-Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--|| Condition : "condition"
+Sample ||--|o Biospecimen : "biospecimen"
 Sample ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"

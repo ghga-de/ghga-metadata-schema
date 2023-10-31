@@ -106,7 +106,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [data_use_modifiers](data_use_modifiers.md) - Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
      * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - Modifier for Data use permission associated with a policy. Should be descendants of 'DUO:0000017 data use modifier'
  * [data_use_permission](data_use_permission.md) - Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.
-     * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'.
+     * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000026' if no other permission applies.
  * [dataset](dataset.md) - The Dataset associated with an entity.
      * [File➞dataset](File_dataset.md)
  * [datasets](datasets.md) - The Datasets associated with an entity.
@@ -164,8 +164,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Attribute➞key](Attribute_key.md) - The key for an attribute.
  * [key_type](key_type.md) - The semantic type for the key of an attribute.
      * [Attribute➞key_type](Attribute_key_type.md) - A semantic type that characterizes the attribute key. Usually this is a term from an ontology. For example, 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
- * [lane_number](lane_number.md) - The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-     * [SequencingProcess➞lane_number](SequencingProcess_lane_number.md)
  * [library_layout](library_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
      * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
  * [library_name](library_name.md) - A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
@@ -189,12 +187,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [mutant_or_wildtype](mutant_or_wildtype.md) - Whether a condition corresponds to a mutant or a wildtype.
      * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)
  * [name](name.md) - The name for an entity.
+     * [AnalysisProcess➞name](AnalysisProcess_name.md)
      * [Biospecimen➞name](Biospecimen_name.md)
      * [Condition➞name](Condition_name.md)
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for the Data Access Policy.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
      * [SequencingProcess➞name](SequencingProcess_name.md)
+     * [SequencingProtocol➞name](SequencingProtocol_name.md)
  * [phenotypic_features](phenotypic_features.md) - Phenotypic feature concepts that the entity is associated with.
      * [Individual➞phenotypic_features](Individual_phenotypic_features.md) - The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
@@ -272,6 +272,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [tissue](tissue.md)
      * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
+     * [Analysis➞title](Analysis_title.md)
      * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the experiment (eg: GHGAE_PBMC_RNAseq).
@@ -297,7 +298,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Attribute➞value](Attribute_value.md) - The value for an attribute. Usually this is a numerical value (without the units).
  * [value_type](value_type.md) - The semantic type for the value of an attribute.
      * [Attribute➞value_type](Attribute_value_type.md) - The value_type that characterizes the attribute value. Usually this is a term from an ontology that describes how to interpret the value. For example, 'SIO:001413' indicates that the value is to be interpreted as a percentage.
- * [vital_status](vital_status.md) - The state or condition of being living or deceased; also includes the case where the vital status is unknown.
  * [vital_status_at_sampling](vital_status_at_sampling.md) - Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
      * [Biospecimen➞vital_status_at_sampling](Biospecimen_vital_status_at_sampling.md)
  * [xref](xref.md) - Database cross references for an entity.
@@ -334,6 +334,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
+ * [StorageEnum](StorageEnum.md) - Enum to capture how a Sample or Biospecimen was stored.
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
  * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.

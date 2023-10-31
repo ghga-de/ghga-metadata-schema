@@ -143,6 +143,7 @@ classes:
       title:
         description: >-
           Name for the experiment (eg: GHGAE_PBMC_RNAseq).
+        required: true
       description:
         description: >-
           A detailed description of the Experiment.
@@ -165,9 +166,8 @@ classes:
     description: >-
       An condition that is linked to comparable samples.
     slots:
-      - title
-      - description
       - name
+      - description
       - disease_or_healthy
       - case_control_status
       - mutant_or_wildtype
@@ -249,6 +249,7 @@ classes:
     description: >-
       Information about the sequencing of a sample.
     slots:
+      - name
       - description
       - type
       - instrument_model
@@ -265,11 +266,14 @@ classes:
       - cell_barcode_size
       - sample_barcode_read
     slot_usage:
+      name:
+        required: true
       instrument_model:
         required: true
       type:
         description: >-
           Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+        required: false
       description:
         description: >-
           Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
@@ -319,15 +323,13 @@ classes:
     description: >-
       A sequencing process linking a sample to sequencing output.
     slots:
-      - title
-      - description
       - name
+      - description
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
       - sequencing_experiment
       - index_sequence
-      - lane_number
       - sample
     slot_usage:
       name:
@@ -349,13 +351,9 @@ classes:
       sequencing_experiment:
         required: true
         inlined: false
-      lane_number:
-        required: false
-        recommended: true
       index_sequence:
         required: false
         recommended: true
-
       sample:
         required: true
         inlined: false
@@ -373,12 +371,12 @@ classes:
       - name
       - type
       - description
-      - isolation
-      - storage
-      - individual
       - age_at_sampling
       - vital_status_at_sampling
       - tissue
+      - isolation
+      - storage
+      - individual
     slot_usage:
       name:
         required: false
@@ -426,9 +424,9 @@ classes:
       - description
       - isolation
       - storage
-      - biospecimen
-      - condition
       - xref
+      - condition
+      - biospecimen
     slot_usage:
       name:
         description: >-
@@ -462,6 +460,7 @@ classes:
         description: >-
           The Biospecimen from which this Sample was prepared from.
         required: false
+        recommended: true
         inlined: false
       condition:
         required: true
@@ -474,11 +473,11 @@ classes:
     description: >-
       An Individual is a Person who is participating in a Study.
     slots:
+      - phenotypic_features
       - sex
       - karyotype
       - geographical_region
       - ancestries
-      - phenotypic_features
     slot_usage:
       sex:
         required: true
@@ -495,6 +494,7 @@ classes:
           For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen
           was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
         required: false
+        recommended: true
 
   Trio:
     mixins:
@@ -527,8 +527,8 @@ classes:
       - format
       - size
       - checksum
-      - forward_or_reverse
       - checksum_type
+      - forward_or_reverse
       - dataset
     slot_usage:
       name:
@@ -608,6 +608,8 @@ classes:
       - reference_genome
       - reference_chromosome
     slot_usage:
+      title:
+        required: true
       type:
         description: >-
           The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
@@ -625,11 +627,14 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     slots:
+      - name
       - analysis
       - study_input_files
       - sample_input_files
       - sequencing_process_input_files
     slot_usage:
+      name:
+        required: true
       analysis:
         inlined: false
         description: >-
@@ -686,9 +691,9 @@ classes:
       - description
       - policy_text
       - policy_url
-      - data_access_committee
       - data_use_permission
       - data_use_modifiers
+      - data_access_committee
     slot_usage:
       name:
         description: >-
@@ -717,6 +722,7 @@ classes:
         description: >-
           Data use permission associated with a policy. Typically one or more terms from DUO
           and should be descendants of 'DUO:0000001 data use permission'.
+          Please use 'DUO:0000026' if no other permission applies.
         required: true
       data_use_modifiers:
         description: >-
@@ -755,8 +761,8 @@ classes:
       - year
       - journal
       - doi
-      - study
       - xref
+      - study
     slot_usage:
       title:
         description: >-
@@ -1302,10 +1308,6 @@ slots:
       The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: ForwardOrReverseEnum
 
-  lane_number:
-    description: >-
-      The numerical identifier for the lane or machine unit where a sample was located during nucleotide sequencing.
-
   target_coverage:
     description: >-
       Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
@@ -1366,6 +1368,7 @@ slots:
     description: >-
       Methods by which a biospecimen or a sample is stored
       (e.g. frozen in liquid nitrogen).
+    range: StorageEnum
 
   disease_or_healthy:
     description: >-
@@ -1394,13 +1397,6 @@ slots:
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
-
-  vital_status:
-    description: >-
-      The state or condition of being living or deceased;
-      also includes the case where the vital status is unknown.
-    range: VitalStatusEnum
-    deprecated: redundant, solved by use of vital_status_at_sampling at the Biospecimen level
 
   sex:
     description: >-
@@ -1609,6 +1605,23 @@ enums:
       source_nodes:
         - SNOMED:118292001
       include_self: false
+
+  StorageEnum:
+    description: >-
+      Enum to capture how a Sample or Biospecimen was stored.
+    permissible_values:
+      REFRIGERATOR:
+        description: >-
+          The sample / bioscpemien was stored in a refrigerator at 2°C to 5°C.
+      FREEZER:
+        description: >-
+          The sample / bioscpemien was stored in a freezer at -20°C.
+      ULTRA_LOW_FREEZER:
+        description: >-
+          The sample / bioscpemien was stored in a ultra-low freezer at -80°C.
+      CRYOGENIC_FREEZER:
+        description: >-
+          The sample / bioscpemien was stored in a cryogenic freezer at -150°C to -190°C.
 
   SampleTypeEnum:
     description: >-

@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [Analysis➞title](Analysis_title.md)
  *  [Dataset➞title](Dataset_title.md)
  *  [Publication➞title](Publication_title.md)
  *  [SequencingExperiment➞title](SequencingExperiment_title.md)
@@ -23,6 +24,3 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Used by
 
- * [Analysis](Analysis.md)
- * [Condition](Condition.md)
- * [SequencingProcess](SequencingProcess.md)
