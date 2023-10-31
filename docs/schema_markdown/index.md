@@ -193,6 +193,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [mutant_or_wildtype](mutant_or_wildtype.md) - Whether a condition corresponds to a mutant or a wildtype.
      * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)
  * [name](name.md) - The name for an entity.
+     * [AnalysisProcess➞name](AnalysisProcess_name.md)
      * [Biospecimen➞name](Biospecimen_name.md)
      * [Condition➞name](Condition_name.md) - The name of the Condition.
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for the Data Access Policy.
@@ -276,7 +277,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [tissue](tissue.md)
      * [Biospecimen➞tissue](Biospecimen_tissue.md)
  * [title](title.md) - The title that describes an entity.
-     * [Dataset➞title](Dataset_title.md) - A title for the Dataset.
+     * [Analysis➞title](Analysis_title.md)
+     * [Dataset➞title](Dataset_title.md) - A title for the submitted Dataset.
      * [Publication➞title](Publication_title.md) - The title for the Publication.
      * [SequencingExperiment➞title](SequencingExperiment_title.md) - Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
      * [Study➞title](Study_title.md) - A comprehensive title for the Study.

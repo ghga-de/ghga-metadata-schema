@@ -7,7 +7,7 @@ An analysis process captures the workflow steps that were performed to analyze d
 URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%200..*-%20[AnalysisProcess&#124;alias:string],[SampleFile]<sample_input_files%200..*-%20[AnalysisProcess],[StudyFile]<study_input_files%200..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]-%20analysis_processes(i)%200..*>[AnalysisProcess],[AnalysisProcess]uses%20-.->[IdentifiedByAliasMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%200..*-%20[AnalysisProcess&#124;alias:string],[SampleFile]<sample_input_files%200..*-%20[AnalysisProcess],[StudyFile]<study_input_files%200..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]-%20analysis_processes(i)%200..*>[AnalysisProcess],[AnalysisProcess]uses%20-.->[IdentifiedByAliasMixin],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%200..*-%20[AnalysisProcess&#124;name:string;alias:string],[SampleFile]<sample_input_files%200..*-%20[AnalysisProcess],[StudyFile]<study_input_files%200..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]-%20analysis_processes(i)%200..*>[AnalysisProcess],[AnalysisProcess]uses%20-.->[IdentifiedByAliasMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[AnalysisProcessOutputFile],[SequencingProcessFile]<sequencing_process_input_files%200..*-%20[AnalysisProcess&#124;name:string;alias:string],[SampleFile]<sample_input_files%200..*-%20[AnalysisProcess],[StudyFile]<study_input_files%200..*-%20[AnalysisProcess],[Analysis]<analysis%201..1-%20[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process%201..1>[AnalysisProcess],[Submission]++-%20analysis_processes%201..*>[AnalysisProcess],[AnalysisProcessOutputFile]-%20analysis_process(i)%200..1>[AnalysisProcess],[Submission]-%20analysis_processes(i)%200..*>[AnalysisProcess],[AnalysisProcess]uses%20-.->[IdentifiedByAliasMixin],[Analysis])
 
 ## Uses Mixin
 
@@ -25,6 +25,9 @@ URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
 
 ### Own
 
+ * [AnalysisProcess➞name](AnalysisProcess_name.md)  <sub>1..1</sub>
+     * Description: The name for an entity.
+     * Range: [String](types/String.md)
  * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md)  <sub>1..1</sub>
      * Description: The Analysis the Analysis Process is part of.
      * Range: [Analysis](Analysis.md)

@@ -7,7 +7,7 @@ An Analysis is a data transformation that transforms input data to output data.
 URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string%20%3F;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AnalysisProcess],[AnalysisProcess]-%20analysis%201..1>[Analysis&#124;title:string;description:string%20%3F;type:string%20%3F;reference_genome:string;reference_chromosome:string;alias:string],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[AnalysisProcess]-%20analysis(i)%200..1>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -25,7 +25,7 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 ### Own
 
- * [title](title.md)  <sub>0..1</sub>
+ * [Analysis➞title](Analysis_title.md)  <sub>1..1</sub>
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
  * [Analysis➞description](Analysis_description.md)  <sub>0..1</sub>

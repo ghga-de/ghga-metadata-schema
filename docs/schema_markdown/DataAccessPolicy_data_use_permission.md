@@ -2,7 +2,7 @@
 # Slot: data_use_permission
 
 
-Data use permission associated with an entity. Typically one or more terms from DUO. Should be descendants of 'DUO:0000001 data use permission'.  Please use 'DUO:0000026' if no other permission applies.
+Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000026' if no other permission applies.
 
 URI: [GHGA:DataAccessPolicy_data_use_permission](https://w3id.org/GHGA/DataAccessPolicy_data_use_permission)
 

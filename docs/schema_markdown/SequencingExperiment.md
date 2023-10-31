@@ -7,7 +7,7 @@ An sequencing experiment is an investigation that consists of a coordinated set 
 URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;title:string%20%3F;description:string;type:string%20%3F;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%201..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;title:string%20%3F;description:string;type:string%20%3F;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%201..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;title:string;description:string;type:string%20%3F;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%201..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProtocol],[SequencingProcess],[LibraryPreparationProtocol]<library_preparation_protocol%201..1-%20[SequencingExperiment&#124;title:string;description:string;type:string%20%3F;alias:string],[SequencingProtocol]<sequencing_protocol%201..1-%20[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment%201..1>[SequencingExperiment],[Submission]++-%20sequencing_experiments%201..*>[SequencingExperiment],[SequencingProcess]-%20sequencing_experiment(i)%200..1>[SequencingExperiment],[Submission]-%20sequencing_experiments(i)%200..*>[SequencingExperiment],[SequencingExperiment]uses%20-.->[IdentifiedByAliasMixin],[SequencingExperiment]uses%20-.->[AttributeMixin],[LibraryPreparationProtocol],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -26,7 +26,7 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 
 ### Own
 
- * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>0..1</sub>
+ * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>1..1</sub>
      * Description: Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
      * Range: [String](types/String.md)
  * [SequencingExperiment➞description](SequencingExperiment_description.md)  <sub>1..1</sub>
@@ -56,7 +56,7 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | SIO:000994 |
+|                     |     |            |
+| ------------------- | --- | ---------- |
+| **Exact Mappings:** |     | SIO:000994 |
 

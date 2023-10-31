@@ -68,8 +68,8 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | SIO:001050 |
-|  | | biolink:MaterialSample |
+|                     |     |                        |
+| ------------------- | --- | ---------------------- |
+| **Exact Mappings:** |     | SIO:001050             |
+|                     |     | biolink:MaterialSample |
 

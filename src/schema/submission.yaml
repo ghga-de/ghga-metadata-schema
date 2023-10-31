@@ -127,6 +127,7 @@ classes:
       title:
         description: >-
           Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
+        required: true
       description:
         description: >-
           A detailed description of the Sequencing Experiment.
@@ -236,6 +237,7 @@ classes:
     description: >-
       The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
     slots:
+      - name
       - description
       - type
       - instrument_model
@@ -250,11 +252,10 @@ classes:
       - cell_barcode_read
       - cell_barcode_offset
       - cell_barcode_size
-      - cdna_read
-      - cdna_read_offset
-      - cdna_read_size
       - sample_barcode_read
     slot_usage:
+      name:
+        required: true
       instrument_model:
         required: true
       type:
@@ -297,15 +298,6 @@ classes:
         required: false
         recommended: true
       cell_barcode_offset:
-        required: false
-        recommended: true
-      cdna_read:
-        required: false
-        recommended: true
-      cdna_read_size:
-        required: false
-        recommended: true
-      cdna_read_offset:
         required: false
         recommended: true
       sample_barcode_read:
@@ -352,7 +344,8 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
+      A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. 
+      The Biospecimen is linked to the Individual from which the Biospecimen is derived.
     exact_mappings:
       - OBI:0100051
     slots:
@@ -400,7 +393,8 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
+      A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. 
+      A sample is prepared from a Biospecimen (isolate or tissue).
     exact_mappings:
       - SIO:001050
       - biolink:MaterialSample
@@ -585,6 +579,8 @@ classes:
       - reference_genome
       - reference_chromosome
     slot_usage:
+      title:
+        required: true
       type:
         description: >-
           The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
@@ -604,11 +600,14 @@ classes:
     description: >-
       An analysis process captures the workflow steps that were performed to analyze data obtained from sequencing experiments.
     slots:
+      - name
       - analysis
       - study_input_files
       - sample_input_files
       - sequencing_process_input_files
     slot_usage:
+      name:
+        required: true
       analysis:
         inlined: false
         description: >-
@@ -686,6 +685,10 @@ classes:
         required: true
         inlined: false
       data_use_permission:
+        description: >-
+          Data use permission associated with a policy. Typically one or more terms from DUO
+          and should be descendants of 'DUO:0000001 data use permission'.
+          Please use 'DUO:0000026' if no other permission applies.
         required: true
       data_use_modifiers:
         required: false
@@ -695,7 +698,8 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
+      A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, 
+      and request for data use does not raise ethical and/or legal concerns.
     slots:
       - email
       - institute
@@ -1272,8 +1276,8 @@ slots:
 
   target_coverage:
     description: >-
-      Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing.
-      The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+      Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, i.e.
+      the number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
 
   flow_cell_id:
     description: >-
@@ -1313,19 +1317,6 @@ slots:
   cell_barcode_size:
     description: >-
       The size of the cell identifying barcode (e.g. '16').
-
-  cdna_read:
-    description: >-
-      The type of read that contains the cDNA barcode (e.g. index1/index2/read1/read2).
-    range: IndexReadEnum
-
-  cdna_read_offset:
-    description: >-
-      The offset in sequence of the cDNA read (e.g. '0').
-
-  cdna_read_size:
-    description: >-
-      The size of the cDNA read (e.g. '98').
 
   sample_barcode_read:
     description: >-
@@ -1651,7 +1642,7 @@ enums:
           The sample / bioscpemien was stored in a ultra-low freezer at -80°C.
       CRYOGENIC_FREEZER:
         description: >-
-          The sample / bioscpemien was stored in a cryogenic freezer at -150°C to -190°C.
+          The sample / biospecmien was stored in a cryogenic freezer at -150°C to -190°C.
 
   SampleTypeEnum:
     description: >-

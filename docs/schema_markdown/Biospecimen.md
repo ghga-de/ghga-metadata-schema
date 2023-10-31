@@ -62,7 +62,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
 ## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | OBI:0100051 |
+|                     |     |             |
+| ------------------- | --- | ----------- |
+| **Exact Mappings:** |     | OBI:0100051 |
 
