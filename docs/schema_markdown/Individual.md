@@ -58,8 +58,8 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 ## Other properties
 
-|              |     |         |
-| ------------ | --- | ------- |
-| **Aliases:** |     | subject |
-|              |     | patient |
+|  |  |  |
+| --- | --- | --- |
+| **Aliases:** | | subject |
+|  | | patient |
 

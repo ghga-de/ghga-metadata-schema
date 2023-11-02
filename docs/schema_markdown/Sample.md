@@ -2,12 +2,12 @@
 # Class: Sample
 
 
-A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
+A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  A sample is prepared from a Biospecimen (isolate or tissue).
 
 URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Biospecimen]<biospecimen%200..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:StorageEnum%20%3F;xref:string%20*;alias:string],[Condition]<condition%201..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Biospecimen]<biospecimen%200..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:StorageEnum%20%3F;xref:string%20*;alias:string],[Condition]<condition%201..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:StorageEnum%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SequencingProcess],[SampleFile],[Condition]<condition%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;description:string;isolation:string%20%3F;storage:StorageEnum%20%3F;xref:string%20*;alias:string],[Biospecimen]<biospecimen%200..1-%20[Sample],[SampleFile]-%20sample%201..1>[Sample],[SequencingProcess]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[SequencingProcess]-%20sample(i)%200..1>[Sample],[SampleFile]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[IdentifiedByAliasMixin],[Condition],[Biospecimen],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -28,7 +28,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 ### Own
 
  * [Sample➞name](Sample_name.md)  <sub>1..1</sub>
-     * Description: A descriptive name of the Sample (e.g. GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+     * Description: A descriptive name of the Sample (e.g. GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). Please do not enter any personally identifiable data!
      * Range: [String](types/String.md)
  * [Sample➞type](Sample_type.md)  <sub>0..1</sub>
      * Description: The type of the Sample.
@@ -38,21 +38,21 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * Description: A concise description about the Sample source, the collection method, and the protocol which was followed to process the Sample.
      * Range: [String](types/String.md)
  * [Sample➞isolation](Sample_isolation.md)  <sub>0..1</sub>
-     * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
+     * Description: Method or device employed for collecting/isolating the Sample.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Sample➞storage](Sample_storage.md)  <sub>0..1</sub>
-     * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
+     * Description: Methods by which the Sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [StorageEnum](StorageEnum.md)
  * [Sample➞xref](Sample_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Sample, e.g., this Sample may have an EBI BioSamples accession or an EGA Sample accession.
      * Range: [String](types/String.md)
- * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
-     * Description: The condition associated with an entity.
-     * Range: [Condition](Condition.md)
  * [Sample➞biospecimen](Sample_biospecimen.md)  <sub>0..1</sub>
      * Description: The Biospecimen which this Sample was prepared from.
      * Range: [Biospecimen](Biospecimen.md)
+ * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
+     * Description: The condition associated with an entity.
+     * Range: [Condition](Condition.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
@@ -68,8 +68,8 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
 ## Other properties
 
-|                     |     |                        |
-| ------------------- | --- | ---------------------- |
-| **Exact Mappings:** |     | SIO:001050             |
-|                     |     | biolink:MaterialSample |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | SIO:001050 |
+|  | | biolink:MaterialSample |
 

@@ -42,7 +42,7 @@ URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
      * Description: Whether a condition corresponds to a mutant or a wildtype.
      * Range: [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md)
  * [Condition➞study](Condition_study.md)  <sub>1..1</sub>
-     * Description: The study associated with an entity.
+     * Description: The Study associated with this Condition.
      * Range: [Study](Study.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

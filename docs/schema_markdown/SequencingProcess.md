@@ -27,10 +27,10 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
 ### Own
 
  * [SequencingProcess➞name](SequencingProcess_name.md)  <sub>1..1</sub>
-     * Description: The name for an entity.
+     * Description: A short name identifying the Sequencing Process to potential users.
      * Range: [String](types/String.md)
  * [SequencingProcess➞description](SequencingProcess_description.md)  <sub>1..1</sub>
-     * Description: Description of an entity.
+     * Description: A short description of the Sequencing Process.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)  <sub>0..1</sub>
      * Description: The identifier of a sequencing run.
@@ -41,14 +41,14 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
  * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md)  <sub>0..1</sub>
      * Description: The identifier of a sequencing machine.
      * Range: [String](types/String.md)
- * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)  <sub>1..1</sub>
-     * Description: The sequencing experiment associated with an entity.
-     * Range: [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess➞index_sequence](SequencingProcess_index_sequence.md)  <sub>0..1</sub>
      * Description: A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
      * Range: [String](types/String.md)
+ * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)  <sub>1..1</sub>
+     * Description: The Sequencing Experiment associated with this Sequencing Process.
+     * Range: [SequencingExperiment](SequencingExperiment.md)
  * [SequencingProcess➞sample](SequencingProcess_sample.md)  <sub>1..1</sub>
-     * Description: The sample associated with an entity.
+     * Description: The Sample associated with this Sequencing Process.
      * Range: [Sample](Sample.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

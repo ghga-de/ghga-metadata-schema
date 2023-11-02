@@ -2,7 +2,7 @@
 # Slot: email
 
 
-Email of a person.
+The email of the Data Access Committee. Please do not enter personal email addresses!
 
 URI: [GHGA:DataAccessCommittee_email](https://w3id.org/GHGA/DataAccessCommittee_email)
 

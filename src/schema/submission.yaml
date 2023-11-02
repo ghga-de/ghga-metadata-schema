@@ -104,6 +104,8 @@ classes:
         range: StudyTypeEnum
         required: true
       affiliations:
+        description: >-
+          The affiliations associated with this Study.
         required: true
       attributes:
         description: >-
@@ -126,7 +128,7 @@ classes:
     slot_usage:
       title:
         description: >-
-          Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
+          The title for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
         required: true
       description:
         description: >-
@@ -137,9 +139,13 @@ classes:
           The type of Sequencing Experiment.
         required: false
       sequencing_protocol:
+        description: >-
+          The Sequencing Protocol associated with the Sequencing Experiment.
         required: true
         inlined: false
       library_preparation_protocol:
+        description: >-
+          The Library Preparation Protocol associated with the Sequencing Experiment.
         required: true
         inlined: false
 
@@ -172,6 +178,8 @@ classes:
       mutant_or_wildtype:
         required: true
       study:
+        description: >-
+          The Study associated with this Condition.
         required: true
         inlined: false
 
@@ -221,14 +229,14 @@ classes:
       end_bias:
         required: false
         recommended: true
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Library Preparation Protocol.
       target_regions:
         required: false
       rnaseq_strandedness:
         required: false
         recommended: true
+      attributes:
+        description: >-
+          One or more attributes that further characterize this Library Preparation Protocol.
 
   SequencingProtocol:
     mixins:
@@ -255,20 +263,18 @@ classes:
       - sample_barcode_read
     slot_usage:
       name:
-        required: true
-      instrument_model:
-        required: true
-      type:
         description: >-
-          Type of the Sequencing Protocol (e.g.: mRNA-seq, Whole exome long-read sequencing).
-        required: false
+          A short name identifying the Sequencing Protocol to potential users.
+        required: true
       description:
         description: >-
           A description summarizing the Sequencing Protocol.
         required: true
-      attributes:
+      type:
         description: >-
-          One or more attributes that further characterize this Sequencing Protocol.
+          Type of the Sequencing Protocol (e.g.: mRNA-seq, Whole exome long-read sequencing).
+      instrument_model:
+        required: true
       sequencing_center:
         required: false
         recommended: true
@@ -303,6 +309,10 @@ classes:
       sample_barcode_read:
         required: false
         recommended: true
+      attributes:
+        description: >-
+          One or more attributes that further characterize this Sequencing Protocol.
+        required: false
 
   SequencingProcess:
     mixins:
@@ -316,13 +326,17 @@ classes:
       - sequencing_run_id
       - sequencing_lane_id
       - sequencing_machine_id
-      - sequencing_experiment
       - index_sequence
+      - sequencing_experiment
       - sample
     slot_usage:
       name:
+        description: >-
+          A short name identifying the Sequencing Process to potential users.
         required: true
       description:
+        description: >-
+          A short description of the Sequencing Process.
         required: true
       sequencing_run_id:
         required: false
@@ -330,13 +344,17 @@ classes:
         required: false
       sequencing_machine_id:
         required: false
-      sequencing_experiment:
-        required: true
-        inlined: false
       index_sequence:
         required: false
         recommended: true
+      sequencing_experiment:
+        description: >-
+          The Sequencing Experiment associated with this Sequencing Process.
+        required: true
+        inlined: false
       sample:
+        description: >-
+          The Sample associated with this Sequencing Process.
         required: true
         inlined: false
 
@@ -360,6 +378,9 @@ classes:
       - individual
     slot_usage:
       name:
+        description: >-
+          A descriptive name of the Biospecimen (e.g. GHGAB_caudate_nucleus_biospecimen).
+          Please do not enter any personally identifiable data!
         required: false
         recommended: true
       type:
@@ -368,24 +389,32 @@ classes:
         required: false
         recommended: true
       description:
-        required: false
-      isolation:
-        required: false
-        recommended: true
-      storage:
-        required: false
-        recommended: true
-      individual:
         description: >-
-          The Individual entity from which this Biospecimen was derived.
-        inlined: false
-        required: true
+          A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process the Biospecimen.
+        required: false
       age_at_sampling:
         required: true
       vital_status_at_sampling:
         required: false
         recommended: true
       tissue:
+        description: >-
+          The tissue this Biospecimen originated from.
+        required: true
+      isolation:
+        description: >-
+          Method or device employed for collecting/isolating the Sample.
+        required: false
+        recommended: true
+      storage:
+        description: >-
+          Methods by which the Sample is stored (e.g. frozen in liquid nitrogen).
+        required: false
+        recommended: true
+      individual:
+        description: >-
+          The Individual entity from which this Biospecimen was derived.
+        inlined: false
         required: true
 
   Sample:
@@ -405,12 +434,13 @@ classes:
       - isolation
       - storage
       - xref
-      - condition
       - biospecimen
+      - condition
     slot_usage:
       name:
         description: >-
           A descriptive name of the Sample (e.g. GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+          Please do not enter any personally identifiable data!
         required: true
       type:
         description: >-
@@ -423,10 +453,14 @@ classes:
         description: >-
           A concise description about the Sample source, the collection method, and the protocol which was followed to process the Sample.
         required: true
-      storage:
+      isolation:
+        description: >-
+          Method or device employed for collecting/isolating the Sample.
         required: false
         recommended: true
-      isolation:
+      storage:
+        description: >-
+          Methods by which the Sample is stored (e.g. frozen in liquid nitrogen).
         required: false
         recommended: true
       xref:
@@ -456,6 +490,9 @@ classes:
       - geographical_region
       - ancestries
     slot_usage:
+      phenotypic_features:
+        required: false
+        recommended: true
       sex:
         required: true
       karyotype:
@@ -464,9 +501,6 @@ classes:
         required: false
       ancestries:
         required: false
-      phenotypic_features:
-        required: false
-        recommended: true
 
   Trio:
     mixins:
@@ -516,6 +550,8 @@ classes:
       size:
         required: true
       dataset:
+        description: >-
+          The Dataset associated with this File.
         inlined: false
         required: true
       forward_or_reverse:
@@ -530,6 +566,8 @@ classes:
       - study
     slot_usage:
       study:
+        description: >-
+          The Study that is associated with this StudyFile.
         inlined: false
         required: true
 
@@ -541,6 +579,8 @@ classes:
       - sample
     slot_usage:
       sample:
+        description: >-
+          The Sample that is associated with this SampleFile.
         inlined: false
         required: true
 
@@ -552,6 +592,8 @@ classes:
       - sequencing_process
     slot_usage:
       sequencing_process:
+        description: >-
+          The Sequencing Process associated with this Sequencing Process File.
         inlined: false
         required: true
 
@@ -563,6 +605,8 @@ classes:
       - analysis_process
     slot_usage:
       analysis_process:
+        description: >-
+          The Analysis Process this Analysis Process Output File is associated with.
         inlined: false
         required: true
 
@@ -581,13 +625,13 @@ classes:
     slot_usage:
       title:
         required: true
-      type:
-        description: >-
-          The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
-        required: false
       description:
         description: >-
           A description summarizing how an Analysis was carried out, e.g.: computational tools, pipelines, workflows.
+        required: false
+      type:
+        description: >-
+          The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
         required: false
       reference_genome:
         required: true
@@ -614,12 +658,18 @@ classes:
           The Analysis the Analysis Process is part of.
         required: true
       study_input_files:
+        description: >-
+          The associated Study File used as an input for this Analysis Process.
         inlined: false
         required: false
       sample_input_files:
+        description: >-
+          The associated Sample File used as an input for this Analysis Process.
         inlined: false
         required: false
       sequencing_process_input_files:
+        description: >-
+          The associated Sequencing Process File used as an input for this Analysis Process.
         inlined: false
         required: false
 
@@ -641,6 +691,8 @@ classes:
           A title for the Dataset.
         required: true
       description:
+        description: >-
+          A description summarizing this Dataset.
         required: true
       types:
         description: >-
@@ -679,20 +731,24 @@ classes:
       policy_url:
         required: false
         recommended: true
+      data_use_permission:
+        description: >-
+          Data use permission associated with a Data Use Policy. Typically one or more terms from DUO
+          and should be descendants of 'DUO:0000001 data use permission'.
+          Please use 'DUO:0000006' if no other permission applies.
+        required: true
+      data_use_modifiers:
+        description: >-
+          Modifier for the Data Use Permission associated with a Data Use Policy.
+          Should be descendants of 'DUO:0000017 data use modifier'.
+          Please use 'DUO:0000026' if no other modifier applies.
+        required: false
+        recommended: true
       data_access_committee:
         description: >-
           The Data Access Committee linked to this policy.
         required: true
         inlined: false
-      data_use_permission:
-        description: >-
-          Data use permission associated with a policy. Typically one or more terms from DUO
-          and should be descendants of 'DUO:0000001 data use permission'.
-          Please use 'DUO:0000026' if no other permission applies.
-        required: true
-      data_use_modifiers:
-        required: false
-        recommended: true
 
   DataAccessCommittee:
     mixins:
@@ -705,6 +761,9 @@ classes:
       - institute
     slot_usage:
       email:
+        description: >-
+          The email of the Data Access Committee.
+          Please do not enter personal email addresses!
         required: true
       institute:
         required: true
@@ -733,17 +792,19 @@ classes:
           The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
         required: false
       author:
+        description: >-
+          Author(s) of the associated Publication.
         required: false
       year:
         required: false
       journal:
         required: false
+      doi:
+        required: true
       xref:
         description: >-
           One or more cross-references for this Publication.
         required: false
-      doi:
-        required: true
       study:
         description: >-
           The Study entity associated with this Publication.
@@ -1124,14 +1185,15 @@ slots:
   data_use_permission:
     description: >-
       Data use permission associated with an entity. Typically one or more terms from DUO.
-      Should be descendants of 'DUO:0000001 data use permission'. 
-      Please use 'DUO:0000026' if no other permission applies.
+      Should be descendants of 'DUO:0000001 data use permission'.
+      Please use 'DUO:0000006' if no other permission applies.
     range: DataUsePermissionEnum
 
   data_use_modifiers:
     description: >-
-      Modifier for Data use permission associated with an entity.
-      Should be descendants of 'DUO:0000017 data use modifier'
+      Modifier for the Data Use Permission associated with an entity.
+      Should be descendants of 'DUO:0000017 data use modifier'.
+      Please use 'DUO:0000026' if no other modifier applies.
     range: DataUseModifierEnum
     multivalued: true
 
@@ -1271,7 +1333,6 @@ slots:
   forward_or_reverse:
     description: >-
       Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
-      The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
     range: ForwardOrReverseEnum
 
   target_coverage:
@@ -1633,16 +1694,16 @@ enums:
     permissible_values:
       REFRIGERATOR:
         description: >-
-          The sample / bioscpemien was stored in a refrigerator at 2°C to 5°C.
+          The sample / biospecimen was stored in a refrigerator at 2°C to 5°C.
       FREEZER:
         description: >-
-          The sample / bioscpemien was stored in a freezer at -20°C.
+          The sample / biospecimen was stored in a freezer at -20°C.
       ULTRA_LOW_FREEZER:
         description: >-
-          The sample / bioscpemien was stored in a ultra-low freezer at -80°C.
+          The sample / biospecimen was stored in a ultra-low freezer at -80°C.
       CRYOGENIC_FREEZER:
         description: >-
-          The sample / biospecmien was stored in a cryogenic freezer at -150°C to -190°C.
+          The sample / biospecimen was stored in a cryogenic freezer at -150°C to -190°C.
 
   SampleTypeEnum:
     description: >-

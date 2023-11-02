@@ -38,7 +38,7 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
      * Description: The type of Study, e.g. 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
-     * Description: The Institution(s) associated with an entity.
+     * Description: The affiliations associated with this Study.
      * Range: [String](types/String.md)
  * [Study➞attributes](Study_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterize this Study.

@@ -30,7 +30,7 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
      * Description: The study abstract that describes the goals. Can also hold abstract from a publication related to this study.
      * Range: [String](types/String.md)
  * [Publication➞author](Publication_author.md)  <sub>0..1</sub>
-     * Description: The individual who is responsible for the content of a document version.
+     * Description: Author(s) of the associated Publication.
      * Range: [String](types/String.md)
  * [Publication➞year](Publication_year.md)  <sub>0..1</sub>
      * Description: Year in which the paper was published.
@@ -40,9 +40,6 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
      * Range: [String](types/String.md)
  * [Publication➞doi](Publication_doi.md)  <sub>1..1</sub>
      * Description: DOI identifier of a publication.
-     * Range: [String](types/String.md)
- * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
-     * Description: One or more cross-references for this Publication.
      * Range: [String](types/String.md)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Publication.

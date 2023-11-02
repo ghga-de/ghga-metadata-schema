@@ -2,7 +2,7 @@
 # Slot: sample
 
 
-The sample associated with an entity.
+The Sample associated with this Sequencing Process.
 
 URI: [GHGA:SequencingProcess_sample](https://w3id.org/GHGA/SequencingProcess_sample)
 

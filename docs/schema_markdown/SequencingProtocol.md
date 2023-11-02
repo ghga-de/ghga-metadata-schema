@@ -27,7 +27,7 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 ### Own
 
  * [SequencingProtocol➞name](SequencingProtocol_name.md)  <sub>1..1</sub>
-     * Description: The name for an entity.
+     * Description: A short name identifying the Sequencing Protocol to potential users.
      * Range: [String](types/String.md)
  * [SequencingProtocol➞description](SequencingProtocol_description.md)  <sub>1..1</sub>
      * Description: A description summarizing the Sequencing Protocol.
@@ -45,7 +45,7 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
      * Description: Length of sequencing reads, e.g. long or short or actual number of the read length. The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process.
      * Range: [String](types/String.md)
  * [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)  <sub>0..1</sub>
-     * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+     * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, i.e. the number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
      * Range: [String](types/String.md)
  * [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)  <sub>0..1</sub>
      * Description: Flow Cell ID (e.g. Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
@@ -70,15 +70,6 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
      * Range: [String](types/String.md)
  * [SequencingProtocol➞cell_barcode_size](SequencingProtocol_cell_barcode_size.md)  <sub>0..1</sub>
      * Description: The size of the cell identifying barcode (e.g. '16').
-     * Range: [String](types/String.md)
- * [SequencingProtocol➞cdna_read](SequencingProtocol_cdna_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the cDNA barcode (e.g. index1/index2/read1/read2).
-     * Range: [IndexReadEnum](IndexReadEnum.md)
- * [SequencingProtocol➞cdna_read_offset](SequencingProtocol_cdna_read_offset.md)  <sub>0..1</sub>
-     * Description: The offset in sequence of the cDNA read (e.g. '0').
-     * Range: [String](types/String.md)
- * [SequencingProtocol➞cdna_read_size](SequencingProtocol_cdna_read_size.md)  <sub>0..1</sub>
-     * Description: The size of the cDNA read (e.g. '98').
      * Range: [String](types/String.md)
  * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)  <sub>0..1</sub>
      * Description: The type of read that contains the sample barcode (e.g. index1/index2/read1/read2).

@@ -29,7 +29,7 @@ URI: [GHGA:Dataset](https://w3id.org/GHGA/Dataset)
      * Description: A title for the Dataset.
      * Range: [String](types/String.md)
  * [Dataset➞description](Dataset_description.md)  <sub>1..1</sub>
-     * Description: Description of an entity.
+     * Description: A description summarizing this Dataset.
      * Range: [String](types/String.md)
  * [Dataset➞types](Dataset_types.md)  <sub>1..\*</sub>
      * Description: The type of the Dataset.

@@ -2,7 +2,7 @@
 # Class: Biospecimen
 
 
-A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
+A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes.  The Biospecimen is linked to the Individual from which the Biospecimen is derived.
 
 URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
@@ -26,13 +26,13 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 ### Own
 
  * [Biospecimen➞name](Biospecimen_name.md)  <sub>0..1</sub>
-     * Description: The name for an entity.
+     * Description: A descriptive name of the Biospecimen (e.g. GHGAB_caudate_nucleus_biospecimen). Please do not enter any personally identifiable data!
      * Range: [String](types/String.md)
  * [Biospecimen➞type](Biospecimen_type.md)  <sub>0..1</sub>
      * Description: The type of Biospecimen.
      * Range: [String](types/String.md)
  * [Biospecimen➞description](Biospecimen_description.md)  <sub>0..1</sub>
-     * Description: Description of an entity.
+     * Description: A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process the Biospecimen.
      * Range: [String](types/String.md)
  * [Biospecimen➞age_at_sampling](Biospecimen_age_at_sampling.md)  <sub>1..1</sub>
      * Description: Age of an individual.
@@ -41,14 +41,15 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
      * Description: Vital Status of an Individual at the point of sampling, e.g. 'Alive' or 'Deceased'.
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
  * [Biospecimen➞tissue](Biospecimen_tissue.md)  <sub>1..1</sub>
+     * Description: The tissue this Biospecimen originated from.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Biospecimen➞isolation](Biospecimen_isolation.md)  <sub>0..1</sub>
-     * Description: Method or device employed for collecting/isolating a biospecimen or a sample.
+     * Description: Method or device employed for collecting/isolating the Sample.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Biospecimen➞storage](Biospecimen_storage.md)  <sub>0..1</sub>
-     * Description: Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
+     * Description: Methods by which the Sample is stored (e.g. frozen in liquid nitrogen).
      * Range: [StorageEnum](StorageEnum.md)
  * [Biospecimen➞individual](Biospecimen_individual.md)  <sub>1..1</sub>
      * Description: The Individual entity from which this Biospecimen was derived.
@@ -62,7 +63,7 @@ URI: [GHGA:Biospecimen](https://w3id.org/GHGA/Biospecimen)
 
 ## Other properties
 
-|                     |     |             |
-| ------------------- | --- | ----------- |
-| **Exact Mappings:** |     | OBI:0100051 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | OBI:0100051 |
 

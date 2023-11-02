@@ -27,7 +27,7 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 ### Own
 
  * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>1..1</sub>
-     * Description: Name for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
+     * Description: The title for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
      * Range: [String](types/String.md)
  * [SequencingExperiment➞description](SequencingExperiment_description.md)  <sub>1..1</sub>
      * Description: A detailed description of the Sequencing Experiment.
@@ -36,10 +36,10 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
      * Description: The type of Sequencing Experiment.
      * Range: [String](types/String.md)
  * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)  <sub>1..1</sub>
-     * Description: The sequencing protocol associated with an entity.
+     * Description: The Sequencing Protocol associated with the Sequencing Experiment.
      * Range: [SequencingProtocol](SequencingProtocol.md)
  * [SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md)  <sub>1..1</sub>
-     * Description: The library_preparation Protocol associated with an entity.
+     * Description: The Library Preparation Protocol associated with the Sequencing Experiment.
      * Range: [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
@@ -56,7 +56,7 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 
 ## Other properties
 
-|                     |     |            |
-| ------------------- | --- | ---------- |
-| **Exact Mappings:** |     | SIO:000994 |
+|  |  |  |
+| --- | --- | --- |
+| **Exact Mappings:** | | SIO:000994 |
 

@@ -2,7 +2,7 @@
 # Slot: study_input_files
 
 
-The StudyFile associated used as an input for an entity.
+The associated Study File used as an input for this Analysis Process.
 
 URI: [GHGA:AnalysisProcess_study_input_files](https://w3id.org/GHGA/AnalysisProcess_study_input_files)
 

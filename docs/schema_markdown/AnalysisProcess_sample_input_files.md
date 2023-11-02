@@ -2,7 +2,7 @@
 # Slot: sample_input_files
 
 
-The SampleFile associated used as an input for an entity.
+The associated Sample File used as an input for this Analysis Process.
 
 URI: [GHGA:AnalysisProcess_sample_input_files](https://w3id.org/GHGA/AnalysisProcess_sample_input_files)
 

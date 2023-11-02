@@ -38,10 +38,10 @@ URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
      * Description: An alternative to pasting the Data Access Policy text is to provide the URL for the policy, if available. This is useful if the terms of the policy is made available online at a resolvable URL.
      * Range: [String](types/String.md)
  * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md)  <sub>1..1</sub>
-     * Description: Data use permission associated with a policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000026' if no other permission applies.
+     * Description: Data use permission associated with a Data Use Policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000006' if no other permission applies.
      * Range: [DataUsePermissionEnum](DataUsePermissionEnum.md)
  * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md)  <sub>0..\*</sub>
-     * Description: Modifier for Data use permission associated with an entity. Should be descendants of 'DUO:0000017 data use modifier'
+     * Description: Modifier for the Data Use Permission associated with a Data Use Policy. Should be descendants of 'DUO:0000017 data use modifier'. Please use 'DUO:0000026' if no other modifier applies.
      * Range: [DataUseModifierEnum](DataUseModifierEnum.md)
  * [DataAccessPolicy➞data_access_committee](DataAccessPolicy_data_access_committee.md)  <sub>1..1</sub>
      * Description: The Data Access Committee linked to this policy.

@@ -2,7 +2,7 @@
 # Slot: tissue
 
 
-
+The tissue this Biospecimen originated from.
 
 URI: [GHGA:Biospecimen_tissue](https://w3id.org/GHGA/Biospecimen_tissue)
 

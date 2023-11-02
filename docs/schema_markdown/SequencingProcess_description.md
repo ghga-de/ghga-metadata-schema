@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Description of an entity.
+A short description of the Sequencing Process.
 
 URI: [GHGA:SequencingProcess_description](https://w3id.org/GHGA/SequencingProcess_description)
 

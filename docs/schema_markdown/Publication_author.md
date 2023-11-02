@@ -2,7 +2,7 @@
 # Slot: author
 
 
-The individual who is responsible for the content of a document version.
+Author(s) of the associated Publication.
 
 URI: [GHGA:Publication_author](https://w3id.org/GHGA/Publication_author)
 

@@ -2,7 +2,7 @@
 # Slot: name
 
 
-The name for an entity.
+A short name identifying the Sequencing Protocol to potential users.
 
 URI: [GHGA:SequencingProtocol_name](https://w3id.org/GHGA/SequencingProtocol_name)
 

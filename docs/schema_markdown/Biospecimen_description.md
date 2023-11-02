@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Description of an entity.
+A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process the Biospecimen.
 
 URI: [GHGA:Biospecimen_description](https://w3id.org/GHGA/Biospecimen_description)
 

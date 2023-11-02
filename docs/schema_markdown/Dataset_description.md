@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Description of an entity.
+A description summarizing this Dataset.
 
 URI: [GHGA:Dataset_description](https://w3id.org/GHGA/Dataset_description)
 

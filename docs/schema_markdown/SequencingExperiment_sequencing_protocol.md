@@ -2,7 +2,7 @@
 # Slot: sequencing_protocol
 
 
-The sequencing protocol associated with an entity.
+The Sequencing Protocol associated with the Sequencing Experiment.
 
 URI: [GHGA:SequencingExperiment_sequencing_protocol](https://w3id.org/GHGA/SequencingExperiment_sequencing_protocol)
 

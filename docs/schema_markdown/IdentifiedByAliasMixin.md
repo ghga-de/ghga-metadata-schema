@@ -17,16 +17,16 @@ URI: [GHGA:IdentifiedByAliasMixin](https://w3id.org/GHGA/IdentifiedByAliasMixin)
 
  * [Analysis](Analysis.md) (mixin)  - An Analysis is a data transformation that transforms input data to output data.
  * [AnalysisProcess](AnalysisProcess.md) (mixin)  - An analysis process captures the workflow steps that were performed to analyze data obtained from sequencing experiments.
- * [Biospecimen](Biospecimen.md) (mixin)  - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
+ * [Biospecimen](Biospecimen.md) (mixin)  - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes.  The Biospecimen is linked to the Individual from which the Biospecimen is derived.
  * [Condition](Condition.md) (mixin)  - The Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples.
- * [DataAccessCommittee](DataAccessCommittee.md) (mixin)  - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
+ * [DataAccessCommittee](DataAccessCommittee.md) (mixin)  - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met,  and request for data use does not raise ethical and/or legal concerns.
  * [DataAccessPolicy](DataAccessPolicy.md) (mixin)  - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
  * [Dataset](Dataset.md) (mixin)  - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
  * [File](File.md) (mixin)  - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
  * [Individual](Individual.md) (mixin)  - An Individual is a Person who is participating in a Study.
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) (mixin)  - The Library Preparation Protocol captures information about the Library Preparation of an Sequencing Experiment.
  * [Publication](Publication.md) (mixin)  - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
- * [Sample](Sample.md) (mixin)  - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
+ * [Sample](Sample.md) (mixin)  - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  A sample is prepared from a Biospecimen (isolate or tissue).
  * [SequencingExperiment](SequencingExperiment.md) (mixin)  - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
  * [SequencingProcess](SequencingProcess.md) (mixin)  - The Sequencing Process captures the technical parameters that were used to produce sequencing output from a Sample. It links a Sample to sequencing output.
  * [SequencingProtocol](SequencingProtocol.md) (mixin)  - The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.

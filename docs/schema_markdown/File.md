@@ -44,10 +44,10 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
      * Description: The type of algorithm used to generate the checksum of a file.
      * Range: [String](types/String.md)
  * [File➞forward_or_reverse](File_forward_or_reverse.md)  <sub>0..1</sub>
-     * Description: Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
+     * Description: Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
      * Range: [ForwardOrReverseEnum](ForwardOrReverseEnum.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
-     * Description: The Dataset associated with an entity.
+     * Description: The Dataset associated with this File.
      * Range: [Dataset](Dataset.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
