@@ -29,13 +29,13 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
  * [Analysis➞description](Analysis_description.md)  <sub>0..1</sub>
-     * Description: A description summarizing how an Analysis was carried out, e.g.: computational tools, pipelines, workflows.
+     * Description: A description summarizing how this Analysis was carried out (e.g., computational tools, pipelines, workflows).
      * Range: [String](types/String.md)
  * [Analysis➞type](Analysis_type.md)  <sub>0..1</sub>
-     * Description: The type of the Analysis. Can be either Reference Alignment (BAM) or Sequence Variation (VCF).
+     * Description: The type of this Analysis.
      * Range: [String](types/String.md)
  * [Analysis➞reference_genome](Analysis_reference_genome.md)  <sub>1..1</sub>
-     * Description: A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses, e.g. GRCh38.p13.
+     * Description: The reference genome or annotation used for prior analyses (e.g., GRCh38.p13).
      * Range: [String](types/String.md)
  * [Analysis➞reference_chromosome](Analysis_reference_chromosome.md)  <sub>1..1</sub>
      * Description: The reference chromosome used for this Analysis.

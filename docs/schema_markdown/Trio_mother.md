@@ -2,7 +2,7 @@
 # Slot: mother
 
 
-The mother of an individual.
+The Mother of an individual.
 
 URI: [GHGA:Trio_mother](https://w3id.org/GHGA/Trio_mother)
 

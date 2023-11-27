@@ -2,7 +2,7 @@
 # Class: SequencingProcess
 
 
-The Sequencing Process captures the technical parameters that were used to produce sequencing output from a Sample. It links a Sample to sequencing output.
+The Sequencing Process captures the technical parameters that were used to produce sequencing output from the Sample. It links the Sample to sequencing output.
 
 URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
 
@@ -27,10 +27,10 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
 ### Own
 
  * [SequencingProcess➞name](SequencingProcess_name.md)  <sub>1..1</sub>
-     * Description: A short name identifying the Sequencing Process to potential users.
+     * Description: A short name identifying this Sequencing Process.
      * Range: [String](types/String.md)
  * [SequencingProcess➞description](SequencingProcess_description.md)  <sub>1..1</sub>
-     * Description: A short description of the Sequencing Process.
+     * Description: A short description of this Sequencing Process.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_run_id](SequencingProcess_sequencing_run_id.md)  <sub>0..1</sub>
      * Description: The identifier of a sequencing run.
@@ -42,7 +42,7 @@ URI: [GHGA:SequencingProcess](https://w3id.org/GHGA/SequencingProcess)
      * Description: The identifier of a sequencing machine.
      * Range: [String](types/String.md)
  * [SequencingProcess➞index_sequence](SequencingProcess_index_sequence.md)  <sub>0..1</sub>
-     * Description: A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
+     * Description: A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
      * Range: [String](types/String.md)
  * [SequencingProcess➞sequencing_experiment](SequencingProcess_sequencing_experiment.md)  <sub>1..1</sub>
      * Description: The Sequencing Experiment associated with this Sequencing Process.

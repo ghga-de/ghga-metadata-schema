@@ -2,7 +2,7 @@
 # Slot: sequencing_protocols
 
 
-One or more sequencing protocol entities associated with this Submission.
+One or more Sequencing Protocol entities associated with this Submission.
 
 URI: [GHGA:Submission_sequencing_protocols](https://w3id.org/GHGA/Submission_sequencing_protocols)
 

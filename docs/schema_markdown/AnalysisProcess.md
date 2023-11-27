@@ -2,7 +2,7 @@
 # Class: AnalysisProcess
 
 
-An analysis process captures the workflow steps that were performed to analyze data obtained from sequencing experiments.
+An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.
 
 URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
 
@@ -29,7 +29,7 @@ URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
      * Description: The name for an entity.
      * Range: [String](types/String.md)
  * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md)  <sub>1..1</sub>
-     * Description: The Analysis the Analysis Process is part of.
+     * Description: The Analysis that this Analysis Process is part of.
      * Range: [Analysis](Analysis.md)
  * [AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)  <sub>0..\*</sub>
      * Description: The associated Study File used as an input for this Analysis Process.

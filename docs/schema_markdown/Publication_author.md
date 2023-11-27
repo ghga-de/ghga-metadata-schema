@@ -2,7 +2,7 @@
 # Slot: author
 
 
-Author(s) of the associated Publication.
+Author(s) of this Publication.
 
 URI: [GHGA:Publication_author](https://w3id.org/GHGA/Publication_author)
 

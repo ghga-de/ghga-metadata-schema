@@ -2,7 +2,7 @@
 # Slot: key_type
 
 
-A semantic type that characterizes the attribute key. Usually this is a term from an ontology, e.g. 'MAXO:0000616' indicates that the attribute is a measurement of oxygen saturation in the blood.
+A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).
 
 URI: [GHGA:key_type](https://w3id.org/GHGA/key_type)
 

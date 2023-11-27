@@ -2,7 +2,7 @@
 # Slot: data_use_permission
 
 
-Data use permission associated with a Data Use Policy. Typically one or more terms from DUO and should be descendants of 'DUO:0000001 data use permission'. Please use 'DUO:0000006' if no other permission applies.
+The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission'.
 
 URI: [GHGA:DataAccessPolicy_data_use_permission](https://w3id.org/GHGA/DataAccessPolicy_data_use_permission)
 

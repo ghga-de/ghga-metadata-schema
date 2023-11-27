@@ -2,7 +2,7 @@
 # Slot: type
 
 
-The type of Sequencing Experiment.
+The type of this Sequencing Experiment.
 
 URI: [GHGA:SequencingExperiment_type](https://w3id.org/GHGA/SequencingExperiment_type)
 

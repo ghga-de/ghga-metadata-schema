@@ -2,7 +2,7 @@
 # Slot: description
 
 
-A short description for the Data Access Policy.
+A short description for this Data Access Policy.
 
 URI: [GHGA:DataAccessPolicy_description](https://w3id.org/GHGA/DataAccessPolicy_description)
 

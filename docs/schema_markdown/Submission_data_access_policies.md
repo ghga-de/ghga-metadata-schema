@@ -2,7 +2,7 @@
 # Slot: data_access_policies
 
 
-The Data Access Policy that applies to Dataset in this submission.
+The Data Access Policies that apply to the Datasets in this Submission.
 
 URI: [GHGA:Submission_data_access_policies](https://w3id.org/GHGA/Submission_data_access_policies)
 

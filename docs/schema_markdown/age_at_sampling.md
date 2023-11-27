@@ -2,7 +2,7 @@
 # Slot: age_at_sampling
 
 
-Age of an individual.
+The age of the Individual.
 
 URI: [GHGA:age_at_sampling](https://w3id.org/GHGA/age_at_sampling)
 

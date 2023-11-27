@@ -2,7 +2,7 @@
 # Slot: title
 
 
-The title for the Publication.
+The title for this Publication.
 
 URI: [GHGA:Publication_title](https://w3id.org/GHGA/Publication_title)
 

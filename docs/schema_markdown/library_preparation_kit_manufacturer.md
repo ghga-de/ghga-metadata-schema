@@ -2,7 +2,7 @@
 # Slot: library_preparation_kit_manufacturer
 
 
-Manufacturer of library_preparation kit
+The manufacturer of the kit used for library preparation.
 
 URI: [GHGA:library_preparation_kit_manufacturer](https://w3id.org/GHGA/library_preparation_kit_manufacturer)
 

@@ -2,7 +2,7 @@
 # Slot: institute
 
 
-The institute a person is affiliated with.
+The Institute a person is affiliated with.
 
 URI: [GHGA:DataAccessCommittee_institute](https://w3id.org/GHGA/DataAccessCommittee_institute)
 

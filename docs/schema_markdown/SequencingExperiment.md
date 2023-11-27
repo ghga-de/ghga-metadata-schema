@@ -2,7 +2,7 @@
 # Class: SequencingExperiment
 
 
-An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+A Sequencing Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
 
 URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 
@@ -27,19 +27,19 @@ URI: [GHGA:SequencingExperiment](https://w3id.org/GHGA/SequencingExperiment)
 ### Own
 
  * [SequencingExperiment➞title](SequencingExperiment_title.md)  <sub>1..1</sub>
-     * Description: The title for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
+     * Description: The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
      * Range: [String](types/String.md)
  * [SequencingExperiment➞description](SequencingExperiment_description.md)  <sub>1..1</sub>
-     * Description: A detailed description of the Sequencing Experiment.
+     * Description: A detailed description of this Sequencing Experiment.
      * Range: [String](types/String.md)
  * [SequencingExperiment➞type](SequencingExperiment_type.md)  <sub>0..1</sub>
-     * Description: The type of Sequencing Experiment.
+     * Description: The type of this Sequencing Experiment.
      * Range: [String](types/String.md)
  * [SequencingExperiment➞sequencing_protocol](SequencingExperiment_sequencing_protocol.md)  <sub>1..1</sub>
-     * Description: The Sequencing Protocol associated with the Sequencing Experiment.
+     * Description: The Sequencing Protocol associated with this Sequencing Experiment.
      * Range: [SequencingProtocol](SequencingProtocol.md)
  * [SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md)  <sub>1..1</sub>
-     * Description: The Library Preparation Protocol associated with the Sequencing Experiment.
+     * Description: The Library Preparation Protocol associated with this Sequencing Experiment.
      * Range: [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

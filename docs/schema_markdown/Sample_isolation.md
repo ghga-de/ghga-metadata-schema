@@ -2,7 +2,7 @@
 # Slot: isolation
 
 
-Method or device employed for collecting/isolating the Sample.
+Method or device employed for collecting/isolating this Sample.
 
 URI: [GHGA:Sample_isolation](https://w3id.org/GHGA/Sample_isolation)
 

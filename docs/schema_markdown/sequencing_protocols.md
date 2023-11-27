@@ -2,7 +2,7 @@
 # Slot: sequencing_protocols
 
 
-The sequencing protocol associated with an entity.
+The Sequencing Protocol associated with an entity.
 
 URI: [GHGA:sequencing_protocols](https://w3id.org/GHGA/sequencing_protocols)
 

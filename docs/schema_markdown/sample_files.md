@@ -2,7 +2,7 @@
 # Slot: sample_files
 
 
-The SampleFiles associated with an entity.
+The Sample Files associated with an entity.
 
 URI: [GHGA:sample_files](https://w3id.org/GHGA/sample_files)
 

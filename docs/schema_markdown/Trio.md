@@ -2,7 +2,7 @@
 # Class: Trio
 
 
-A trio is a study design that involves the genetic analysis of three individuals within a family unit. It consists of a child and their biological parents.
+A Trio is a study design in which the genetic information of three individuals within a family unit is analyzed. It consists of a child and their biological parents.
 
 URI: [GHGA:Trio](https://w3id.org/GHGA/Trio)
 
@@ -24,13 +24,13 @@ URI: [GHGA:Trio](https://w3id.org/GHGA/Trio)
 ### Own
 
  * [Trio➞mother](Trio_mother.md)  <sub>1..1</sub>
-     * Description: The mother of an individual.
+     * Description: The Mother of an individual.
      * Range: [Individual](Individual.md)
  * [Trio➞father](Trio_father.md)  <sub>1..1</sub>
-     * Description: The father of an individual.
+     * Description: The Father of an individual.
      * Range: [Individual](Individual.md)
  * [Trio➞child](Trio_child.md)  <sub>1..1</sub>
-     * Description: The child of two individuals.
+     * Description: The Child of two individuals.
      * Range: [Individual](Individual.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

@@ -2,7 +2,7 @@
 # Slot: name
 
 
-A name for the Data Access Policy.
+A name for this Data Access Policy.
 
 URI: [GHGA:DataAccessPolicy_name](https://w3id.org/GHGA/DataAccessPolicy_name)
 

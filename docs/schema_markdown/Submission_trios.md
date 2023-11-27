@@ -2,7 +2,7 @@
 # Slot: trios
 
 
-The Trios associated with this Submission.
+One or more Trio entities associated with this Submission.
 
 URI: [GHGA:Submission_trios](https://w3id.org/GHGA/Submission_trios)
 

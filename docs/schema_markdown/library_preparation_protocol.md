@@ -2,7 +2,7 @@
 # Slot: library_preparation_protocol
 
 
-The library_preparation Protocol associated with an entity.
+The Library Preparation Protocol associated with an entity.
 
 URI: [GHGA:library_preparation_protocol](https://w3id.org/GHGA/library_preparation_protocol)
 

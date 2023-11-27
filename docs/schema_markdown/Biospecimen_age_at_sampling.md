@@ -2,7 +2,7 @@
 # Slot: age_at_sampling
 
 
-Age of an individual.
+The age of the Individual.
 
 URI: [GHGA:Biospecimen_age_at_sampling](https://w3id.org/GHGA/Biospecimen_age_at_sampling)
 

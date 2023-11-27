@@ -2,7 +2,7 @@
 # Slot: karyotype
 
 
-The karyotype of an individual if defined.
+The karyotype of the Individual.
 
 URI: [GHGA:karyotype](https://w3id.org/GHGA/karyotype)
 

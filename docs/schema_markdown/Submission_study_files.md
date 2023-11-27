@@ -2,7 +2,7 @@
 # Slot: study_files
 
 
-The StudyFiles that are part of this submission.
+The Study Files that are part of this Submission.
 
 URI: [GHGA:Submission_study_files](https://w3id.org/GHGA/Submission_study_files)
 

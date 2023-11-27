@@ -2,7 +2,7 @@
 # Slot: analysis_process_output_files
 
 
-The AnalysisProcessOutputFiles that are part of this submission.
+The Analysis Process Output Files that are part of this Submission.
 
 URI: [GHGA:Submission_analysis_process_output_files](https://w3id.org/GHGA/Submission_analysis_process_output_files)
 

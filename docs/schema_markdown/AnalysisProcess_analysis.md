@@ -2,7 +2,7 @@
 # Slot: analysis
 
 
-The Analysis the Analysis Process is part of.
+The Analysis that this Analysis Process is part of.
 
 URI: [GHGA:AnalysisProcess_analysis](https://w3id.org/GHGA/AnalysisProcess_analysis)
 

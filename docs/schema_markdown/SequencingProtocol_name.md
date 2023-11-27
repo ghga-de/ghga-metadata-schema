@@ -2,7 +2,7 @@
 # Slot: name
 
 
-A short name identifying the Sequencing Protocol to potential users.
+A short name identifying this Sequencing Protocol.
 
 URI: [GHGA:SequencingProtocol_name](https://w3id.org/GHGA/SequencingProtocol_name)
 

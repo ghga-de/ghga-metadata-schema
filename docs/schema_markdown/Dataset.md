@@ -26,13 +26,13 @@ URI: [GHGA:Dataset](https://w3id.org/GHGA/Dataset)
 ### Own
 
  * [Dataset➞title](Dataset_title.md)  <sub>1..1</sub>
-     * Description: A title for the Dataset.
+     * Description: A title for this Dataset.
      * Range: [String](types/String.md)
  * [Dataset➞description](Dataset_description.md)  <sub>1..1</sub>
      * Description: A description summarizing this Dataset.
      * Range: [String](types/String.md)
  * [Dataset➞types](Dataset_types.md)  <sub>1..\*</sub>
-     * Description: The type of the Dataset.
+     * Description: The type of this Dataset.
      * Range: [String](types/String.md)
  * [Dataset➞data_access_policy](Dataset_data_access_policy.md)  <sub>1..1</sub>
      * Description: The Data Access Policy that applies to this Dataset.

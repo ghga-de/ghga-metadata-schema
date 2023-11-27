@@ -2,7 +2,7 @@
 # Slot: sample_files
 
 
-The SampleFiles that are part of this submission.
+The Sample Files that are part of this submission.
 
 URI: [GHGA:Submission_sample_files](https://w3id.org/GHGA/Submission_sample_files)
 

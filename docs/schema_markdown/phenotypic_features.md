@@ -2,7 +2,7 @@
 # Slot: phenotypic_features
 
 
-The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. Typically, the phenotypic feature is captured using a concept from Human Phenotype Ontology. E.g., 'HP:0100244' indicates that the Individual the Biospecimen was extracted from exhibits 'Fibrosarcoma' as one of its phenotype.
+The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.
 
 URI: [GHGA:phenotypic_features](https://w3id.org/GHGA/phenotypic_features)
 

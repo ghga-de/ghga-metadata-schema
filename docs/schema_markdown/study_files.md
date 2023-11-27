@@ -2,7 +2,7 @@
 # Slot: study_files
 
 
-The StudyFiles associated with an entity.
+The Study Files associated with an entity.
 
 URI: [GHGA:study_files](https://w3id.org/GHGA/study_files)
 

@@ -2,7 +2,7 @@
 # Slot: format
 
 
-The format of the file, e.g. BAM, SAM, CRAM, BAI.
+The format of the File (e.g., BAM, SAM, CRAM, BAI).
 
 URI: [GHGA:File_format](https://w3id.org/GHGA/File_format)
 

@@ -2,7 +2,7 @@
 # Slot: name
 
 
-A short name identifying the Sequencing Process to potential users.
+A short name identifying this Sequencing Process.
 
 URI: [GHGA:SequencingProcess_name](https://w3id.org/GHGA/SequencingProcess_name)
 

@@ -2,7 +2,7 @@
 # Slot: index_sequence
 
 
-A unique nucleotide sequence that is added to a sample during library_preparation to serve as a unique identifier for the sample.
+A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
 
 URI: [GHGA:SequencingProcess_index_sequence](https://w3id.org/GHGA/SequencingProcess_index_sequence)
 

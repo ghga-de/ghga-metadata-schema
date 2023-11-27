@@ -2,7 +2,7 @@
 # Slot: umi_barcode_size
 
 
-The size of the UMI identifying barcode (e.g. '10').
+The size of the UMI identifying barcode (e.g., 10).
 
 URI: [GHGA:SequencingProtocol_umi_barcode_size](https://w3id.org/GHGA/SequencingProtocol_umi_barcode_size)
 

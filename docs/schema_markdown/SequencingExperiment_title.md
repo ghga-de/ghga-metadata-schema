@@ -2,7 +2,7 @@
 # Slot: title
 
 
-The title for the Sequencing Experiment (e.g.: GHGAE_PBMC_RNAseq).
+The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
 
 URI: [GHGA:SequencingExperiment_title](https://w3id.org/GHGA/SequencingExperiment_title)
 

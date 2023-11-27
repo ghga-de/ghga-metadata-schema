@@ -2,7 +2,7 @@
 # Slot: child
 
 
-The child of two individuals.
+The Child of two individuals.
 
 URI: [GHGA:child](https://w3id.org/GHGA/child)
 

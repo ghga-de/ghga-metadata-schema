@@ -2,7 +2,7 @@
 # Slot: umi_barcode_offset
 
 
-The offset in sequence of the UMI identifying barcode (e.g. '16').
+The offset in sequence of the UMI identifying barcode (e.g., 16).
 
 URI: [GHGA:SequencingProtocol_umi_barcode_offset](https://w3id.org/GHGA/SequencingProtocol_umi_barcode_offset)
 

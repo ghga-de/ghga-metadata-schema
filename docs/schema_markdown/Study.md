@@ -29,13 +29,13 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 ### Own
 
  * [Study➞title](Study_title.md)  <sub>1..1</sub>
-     * Description: A comprehensive title for the Study.
+     * Description: A comprehensive title for this Study.
      * Range: [String](types/String.md)
  * [Study➞description](Study_description.md)  <sub>1..1</sub>
      * Description: A detailed description (abstract) that describes the goals of this Study.
      * Range: [String](types/String.md)
  * [Study➞type](Study_type.md)  <sub>1..1</sub>
-     * Description: The type of Study, e.g. 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
+     * Description: The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
      * Description: The affiliations associated with this Study.

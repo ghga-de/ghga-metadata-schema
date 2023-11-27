@@ -2,7 +2,7 @@
 # Slot: samples
 
 
-The samples associated with an entity.
+The Samples associated with an entity.
 
 URI: [GHGA:samples](https://w3id.org/GHGA/samples)
 

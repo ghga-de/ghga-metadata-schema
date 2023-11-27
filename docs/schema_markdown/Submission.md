@@ -18,62 +18,62 @@ URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
 ### Own
 
  * [Submission➞analyses](Submission_analyses.md)  <sub>1..\*</sub>
-     * Description: Information about one or more Analysis entities associated with this submission.
+     * Description: One or more Analysis entities associated with this Submission.
      * Range: [Analysis](Analysis.md)
  * [Submission➞analysis_process_output_files](Submission_analysis_process_output_files.md)  <sub>1..\*</sub>
-     * Description: The AnalysisProcessOutputFiles that are part of this submission.
+     * Description: The Analysis Process Output Files that are part of this Submission.
      * Range: [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [Submission➞analysis_processes](Submission_analysis_processes.md)  <sub>1..\*</sub>
-     * Description: The AnalysisProcesses that are part of this submission.
+     * Description: The Analysis Processes that are part of this Submission.
      * Range: [AnalysisProcess](AnalysisProcess.md)
  * [Submission➞biospecimens](Submission_biospecimens.md)  <sub>1..\*</sub>
-     * Description: Information about one or more Biospecimen entities associated with this submission.
+     * Description: One or more Biospecimen entities associated with this Submission.
      * Range: [Biospecimen](Biospecimen.md)
  * [Submission➞conditions](Submission_conditions.md)  <sub>1..\*</sub>
-     * Description: The Conditions associated with this Submission.
+     * Description: One or more Condition entities associated with this Submission.
      * Range: [Condition](Condition.md)
  * [Submission➞data_access_committees](Submission_data_access_committees.md)  <sub>1..\*</sub>
-     * Description: The Data Access Committee that applies to Dataset in this submission.
+     * Description: The Data Access Committees that apply to the Data Access Policies in this Submission.
      * Range: [DataAccessCommittee](DataAccessCommittee.md)
  * [Submission➞data_access_policies](Submission_data_access_policies.md)  <sub>1..\*</sub>
-     * Description: The Data Access Policy that applies to Dataset in this submission.
+     * Description: The Data Access Policies that apply to the Datasets in this Submission.
      * Range: [DataAccessPolicy](DataAccessPolicy.md)
  * [Submission➞datasets](Submission_datasets.md)  <sub>1..\*</sub>
-     * Description: One or more Dataset that are part of this submission.
+     * Description: One or more Dataset entities that are part of this Submission.
      * Range: [Dataset](Dataset.md)
  * [Submission➞individuals](Submission_individuals.md)  <sub>1..\*</sub>
-     * Description: Information about one or more Individual entities associated with this submission.
+     * Description: One or more Individual entities associated with this Submission.
      * Range: [Individual](Individual.md)
  * [Submission➞library_preparation_protocols](Submission_library_preparation_protocols.md)  <sub>1..\*</sub>
-     * Description: One or more library preparation protocol entities associated with this Submission.
+     * Description: One or more Library Preparation Protocol entities associated with this Submission.
      * Range: [LibraryPreparationProtocol](LibraryPreparationProtocol.md)
  * [Submission➞publications](Submission_publications.md)  <sub>1..\*</sub>
      * Description: One or more Publication entities associated with this Submission.
      * Range: [Publication](Publication.md)
  * [Submission➞sample_files](Submission_sample_files.md)  <sub>1..\*</sub>
-     * Description: The SampleFiles that are part of this submission.
+     * Description: The Sample Files that are part of this submission.
      * Range: [SampleFile](SampleFile.md)
  * [Submission➞samples](Submission_samples.md)  <sub>1..\*</sub>
-     * Description: Information about one or more Sample entities associated with this submission.
+     * Description: One or more Sample entities associated with this Submission.
      * Range: [Sample](Sample.md)
  * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md)  <sub>1..\*</sub>
-     * Description: Information about one or more Experiment entities associated with this submission.
+     * Description: One or more Sequencing Experiment entities associated with this Submission.
      * Range: [SequencingExperiment](SequencingExperiment.md)
  * [Submission➞sequencing_process_files](Submission_sequencing_process_files.md)  <sub>1..\*</sub>
-     * Description: The SequencingProcessFiles that are part of this submission.
+     * Description: The Sequencing Process Files that are part of this Submission.
      * Range: [SequencingProcessFile](SequencingProcessFile.md)
  * [Submission➞sequencing_processes](Submission_sequencing_processes.md)  <sub>1..\*</sub>
-     * Description: The SequencingProcesses that are part of this submission.
+     * Description: The Sequencing Processes that are part of this Submission.
      * Range: [SequencingProcess](SequencingProcess.md)
  * [Submission➞sequencing_protocols](Submission_sequencing_protocols.md)  <sub>1..\*</sub>
-     * Description: One or more sequencing protocol entities associated with this Submission.
+     * Description: One or more Sequencing Protocol entities associated with this Submission.
      * Range: [SequencingProtocol](SequencingProtocol.md)
  * [Submission➞studies](Submission_studies.md)  <sub>1..\*</sub>
-     * Description: Information about a Study entities associated with this submission.
+     * Description: Study entities associated with this Submission.
      * Range: [Study](Study.md)
  * [Submission➞study_files](Submission_study_files.md)  <sub>1..\*</sub>
-     * Description: The StudyFiles that are part of this submission.
+     * Description: The Study Files that are part of this Submission.
      * Range: [StudyFile](StudyFile.md)
  * [Submission➞trios](Submission_trios.md)  <sub>1..\*</sub>
-     * Description: The Trios associated with this Submission.
+     * Description: One or more Trio entities associated with this Submission.
      * Range: [Trio](Trio.md)

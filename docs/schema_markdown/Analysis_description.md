@@ -2,7 +2,7 @@
 # Slot: description
 
 
-A description summarizing how an Analysis was carried out, e.g.: computational tools, pipelines, workflows.
+A description summarizing how this Analysis was carried out (e.g., computational tools, pipelines, workflows).
 
 URI: [GHGA:Analysis_description](https://w3id.org/GHGA/Analysis_description)
 

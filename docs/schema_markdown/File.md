@@ -15,10 +15,10 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 ## Children
 
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A AnalysisProcessOutputFile is a File that is associated as an output file with an AnalysisProcess.
- * [SampleFile](SampleFile.md) - A SampleFile is a File that is associated with a Sample.
- * [SequencingProcessFile](SequencingProcessFile.md) - A SequencingProcessFile is a File that is associated with a SequencingProcess.
- * [StudyFile](StudyFile.md) - A StudyFile is a File that is associated with a Study.
+ * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A Analysis Process OutputFile is a File that is associated as an output file with an Analysis Process.
+ * [SampleFile](SampleFile.md) - A Sample File is a File that is associated with a Sample.
+ * [SequencingProcessFile](SequencingProcessFile.md) - A Sequencing Process File is a File that is associated with a Sequencing Process.
+ * [StudyFile](StudyFile.md) - A Study File is a File that is associated with a Study.
 
 ## Referenced by Class
 
@@ -32,16 +32,16 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
      * Description: The given filename.
      * Range: [String](types/String.md)
  * [File➞format](File_format.md)  <sub>1..1</sub>
-     * Description: The format of the file, e.g. BAM, SAM, CRAM, BAI.
+     * Description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
      * Range: [FileFormatEnum](FileFormatEnum.md)
  * [File➞size](File_size.md)  <sub>1..1</sub>
-     * Description: The size of a file in bytes.
+     * Description: The size of the File in bytes.
      * Range: [Integer](types/Integer.md)
  * [File➞checksum](File_checksum.md)  <sub>1..1</sub>
-     * Description: A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.
+     * Description: The checksum of the File.
      * Range: [String](types/String.md)
  * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
-     * Description: The type of algorithm used to generate the checksum of a file.
+     * Description: The type of algorithm used to generate the checksum of the File.
      * Range: [String](types/String.md)
  * [File➞forward_or_reverse](File_forward_or_reverse.md)  <sub>0..1</sub>
      * Description: Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.

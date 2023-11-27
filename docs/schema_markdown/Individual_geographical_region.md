@@ -2,7 +2,7 @@
 # Slot: geographical_region
 
 
-The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
+The geographical region where the Individual is located.
 
 URI: [GHGA:Individual_geographical_region](https://w3id.org/GHGA/Individual_geographical_region)
 

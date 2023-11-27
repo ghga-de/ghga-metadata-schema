@@ -2,7 +2,7 @@
 # Slot: year
 
 
-Year in which the paper was published.
+The year in which the paper was published.
 
 URI: [GHGA:year](https://w3id.org/GHGA/year)
 

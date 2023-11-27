@@ -2,7 +2,7 @@
 # Slot: condition
 
 
-The condition associated with an entity.
+The Condition associated with an entity.
 
 URI: [GHGA:Sample_condition](https://w3id.org/GHGA/Sample_condition)
 

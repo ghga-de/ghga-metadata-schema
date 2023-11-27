@@ -2,7 +2,7 @@
 # Slot: individuals
 
 
-Information about one or more Individual entities associated with this submission.
+One or more Individual entities associated with this Submission.
 
 URI: [GHGA:Submission_individuals](https://w3id.org/GHGA/Submission_individuals)
 

@@ -2,7 +2,7 @@
 # Slot: library_layout
 
 
-Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode
+Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
 
 URI: [GHGA:LibraryPreparationProtocol_library_layout](https://w3id.org/GHGA/LibraryPreparationProtocol_library_layout)
 

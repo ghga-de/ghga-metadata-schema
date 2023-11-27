@@ -2,7 +2,7 @@
 # Slot: type
 
 
-Type of the Sequencing Protocol (e.g.: mRNA-seq, Whole exome long-read sequencing).
+Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).
 
 URI: [GHGA:SequencingProtocol_type](https://w3id.org/GHGA/SequencingProtocol_type)
 

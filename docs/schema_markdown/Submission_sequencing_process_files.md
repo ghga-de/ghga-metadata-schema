@@ -2,7 +2,7 @@
 # Slot: sequencing_process_files
 
 
-The SequencingProcessFiles that are part of this submission.
+The Sequencing Process Files that are part of this Submission.
 
 URI: [GHGA:Submission_sequencing_process_files](https://w3id.org/GHGA/Submission_sequencing_process_files)
 

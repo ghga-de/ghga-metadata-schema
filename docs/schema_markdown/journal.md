@@ -2,7 +2,7 @@
 # Slot: journal
 
 
-Name of the journal.
+The name of the journal.
 
 URI: [GHGA:journal](https://w3id.org/GHGA/journal)
 

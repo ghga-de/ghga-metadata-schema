@@ -2,7 +2,7 @@
 # Slot: samples
 
 
-Information about one or more Sample entities associated with this submission.
+One or more Sample entities associated with this Submission.
 
 URI: [GHGA:Submission_samples](https://w3id.org/GHGA/Submission_samples)
 

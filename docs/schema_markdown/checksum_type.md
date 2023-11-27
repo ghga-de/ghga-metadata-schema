@@ -2,7 +2,7 @@
 # Slot: checksum_type
 
 
-The type of algorithm used to generate the checksum of a file.
+The type of algorithm used to generate the checksum of the File.
 
 URI: [GHGA:checksum_type](https://w3id.org/GHGA/checksum_type)
 
