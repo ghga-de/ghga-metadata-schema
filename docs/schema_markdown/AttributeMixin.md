@@ -11,7 +11,7 @@ URI: [GHGA:AttributeMixin](https://w3id.org/GHGA/AttributeMixin)
 
 ## Mixin for
 
- * [Condition](Condition.md) (mixin)  - A Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
+ * [Condition](Condition.md) (mixin)  - A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
  * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) (mixin)  - The Library Preparation Protocol captures information about the library preparation of a Sequencing Experiment.
  * [Sample](Sample.md) (mixin)  - A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.
  * [SequencingExperiment](SequencingExperiment.md) (mixin)  - A Sequencing Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.

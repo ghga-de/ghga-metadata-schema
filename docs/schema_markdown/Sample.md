@@ -51,7 +51,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * Description: The Biospecimen which this Sample was prepared from.
      * Range: [Biospecimen](Biospecimen.md)
  * [Sample➞condition](Sample_condition.md)  <sub>1..1</sub>
-     * Description: The Condition associated with an entity.
+     * Description: The Condition that applies to this Sample. The Condition is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
      * Range: [Condition](Condition.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

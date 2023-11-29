@@ -2,7 +2,7 @@
 # Class: Condition
 
 
-A Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
+A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
 
 URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
 

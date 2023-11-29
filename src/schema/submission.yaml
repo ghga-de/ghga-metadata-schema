@@ -154,7 +154,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      A Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
+      A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
     slots:
       - name
       - description
@@ -474,6 +474,8 @@ classes:
         recommended: true
         inlined: false
       condition:
+        description: >-
+          The Condition that applies to this Sample. The Condition is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
         required: true
         inlined: false
 

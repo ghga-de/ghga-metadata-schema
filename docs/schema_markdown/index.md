@@ -16,7 +16,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [AnalysisProcess](AnalysisProcess.md) - An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.
  * [Attribute](Attribute.md) - A key/value pair that further characterizes an entity.
  * [Biospecimen](Biospecimen.md) - A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.
- * [Condition](Condition.md) - A Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
+ * [Condition](Condition.md) - A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
  * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met,  and request for data use does not raise ethical and/or legal concerns.
  * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
  * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
@@ -92,7 +92,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [child](child.md) - The Child of two individuals.
      * [Trio➞child](Trio_child.md)
  * [condition](condition.md) - The Condition associated with an entity.
-     * [Sample➞condition](Sample_condition.md)
+     * [Sample➞condition](Sample_condition.md) - The Condition that applies to this Sample. The Condition is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
  * [conditions](conditions.md) - The Conditions associated with an entity.
      * [Submission➞conditions](Submission_conditions.md) - One or more Condition entities associated with this Submission.
  * [data_access_committee](data_access_committee.md) - Data Access Committee associated with an entity.

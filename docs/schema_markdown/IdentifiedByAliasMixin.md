@@ -18,7 +18,7 @@ URI: [GHGA:IdentifiedByAliasMixin](https://w3id.org/GHGA/IdentifiedByAliasMixin)
  * [Analysis](Analysis.md) (mixin)  - An Analysis is a data transformation that transforms input data to output data.
  * [AnalysisProcess](AnalysisProcess.md) (mixin)  - An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.
  * [Biospecimen](Biospecimen.md) (mixin)  - A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.
- * [Condition](Condition.md) (mixin)  - A Condition specifies which special characteristics and treatments apply to a Sample. It is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
+ * [Condition](Condition.md) (mixin)  - A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
  * [DataAccessCommittee](DataAccessCommittee.md) (mixin)  - A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met,  and request for data use does not raise ethical and/or legal concerns.
  * [DataAccessPolicy](DataAccessPolicy.md) (mixin)  - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
  * [Dataset](Dataset.md) (mixin)  - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
