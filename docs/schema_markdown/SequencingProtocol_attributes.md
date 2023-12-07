@@ -2,7 +2,7 @@
 # Slot: attributes
 
 
-One or more attributes that further characterizes this Sequencing Protocol.
+One or more attributes that further characterize this Sequencing Protocol.
 
 URI: [GHGA:SequencingProtocol_attributes](https://w3id.org/GHGA/SequencingProtocol_attributes)
 

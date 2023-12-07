@@ -2,7 +2,7 @@
 # Slot: library_type
 
 
-Describe the level of omics analysis (eg: Metagenome, transcriptome, etc)
+Describe the level of omics analysis (e.g., metagenome, transcriptome)
 
 URI: [GHGA:LibraryPreparationProtocol_library_type](https://w3id.org/GHGA/LibraryPreparationProtocol_library_type)
 

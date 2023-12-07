@@ -2,7 +2,7 @@
 # Slot: policy_url
 
 
-Alternative to pasting the Data Access Policy text.
+An alternative to the Data Access Policy text is to provide the URL for the policy. This is useful if the terms of the policy are available online at a resolvable URL.
 
 URI: [GHGA:policy_url](https://w3id.org/GHGA/policy_url)
 

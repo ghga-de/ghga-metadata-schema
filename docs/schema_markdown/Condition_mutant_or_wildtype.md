@@ -2,7 +2,7 @@
 # Slot: mutant_or_wildtype
 
 
-Whether a condition corresponds to a mutant or a wildtype.
+Whether a Condition corresponds to a mutant or a wildtype.
 
 URI: [GHGA:Condition_mutant_or_wildtype](https://w3id.org/GHGA/Condition_mutant_or_wildtype)
 

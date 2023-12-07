@@ -2,7 +2,7 @@
 # Slot: case_control_status
 
 
-Whether a condition corresponds to a treatment or a control.
+Whether a Condition corresponds to a treatment or a control.
 
 URI: [GHGA:case_control_status](https://w3id.org/GHGA/case_control_status)
 

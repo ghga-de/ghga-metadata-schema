@@ -42,10 +42,10 @@ SequencingProcess {
 Sample {
 
 }
-Biospecimen {
+Condition {
 
 }
-Condition {
+Biospecimen {
 
 }
 SequencingExperiment {
@@ -105,12 +105,12 @@ SequencingProtocol ||--}o Attribute : "attributes"
 SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
-Biospecimen ||--|| Individual : "individual"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"
+Biospecimen ||--|| Individual : "individual"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
 SequencingExperiment ||--}o Attribute : "attributes"
@@ -148,8 +148,8 @@ Sample {
 }
 
 Biospecimen ||--|| Individual : "individual"
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 
 ```
@@ -179,8 +179,8 @@ SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
 File ||--|| Dataset : "dataset"
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
@@ -206,8 +206,8 @@ Study {
 
 }
 
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"
@@ -253,8 +253,8 @@ Sample {
 }
 
 Biospecimen ||--|| Individual : "individual"
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 
 ```
@@ -305,8 +305,8 @@ SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
 SequencingProcess ||--|| Sample : "sample"
 SequencingProcess ||--}o Attribute : "attributes"
 File ||--|| Dataset : "dataset"
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
 SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
@@ -347,8 +347,8 @@ Study {
     string alias  
 }
 
-Sample ||--|| Condition : "condition"
 Sample ||--|o Biospecimen : "biospecimen"
+Sample ||--|| Condition : "condition"
 Sample ||--}o Attribute : "attributes"
 Condition ||--|| Study : "study"
 Condition ||--}o Attribute : "attributes"

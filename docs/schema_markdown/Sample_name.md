@@ -2,7 +2,7 @@
 # Slot: name
 
 
-Name of the sample (eg:GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
 
 URI: [GHGA:Sample_name](https://w3id.org/GHGA/Sample_name)
 

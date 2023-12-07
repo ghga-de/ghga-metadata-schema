@@ -2,7 +2,7 @@
 # Slot: analysis_processes
 
 
-The AnalysisProcesses that are part of this submission.
+The Analysis Processes that are part of this Submission.
 
 URI: [GHGA:Submission_analysis_processes](https://w3id.org/GHGA/Submission_analysis_processes)
 

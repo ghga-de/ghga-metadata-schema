@@ -2,7 +2,7 @@
 # Slot: condition
 
 
-The condition associated with an entity.
+The Condition that applies to this Sample. The Condition is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
 
 URI: [GHGA:Sample_condition](https://w3id.org/GHGA/Sample_condition)
 

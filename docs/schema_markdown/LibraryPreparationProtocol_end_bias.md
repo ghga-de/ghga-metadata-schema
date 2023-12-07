@@ -2,7 +2,7 @@
 # Slot: end_bias
 
 
-The end of the cDNA molecule that is preferentially sequenced, e.g. 3/5 prime tag or end, or the full-length transcript.
+The end of the cDNA molecule that is preferentially sequenced (e.g., 3/5 prime end, full-length).
 
 URI: [GHGA:LibraryPreparationProtocol_end_bias](https://w3id.org/GHGA/LibraryPreparationProtocol_end_bias)
 

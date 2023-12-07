@@ -2,7 +2,7 @@
 # Class: SampleFile
 
 
-A SampleFile is a File that is associated with a Sample.
+A Sample File is a File that is associated with a Sample.
 
 URI: [GHGA:SampleFile](https://w3id.org/GHGA/SampleFile)
 
@@ -26,7 +26,7 @@ URI: [GHGA:SampleFile](https://w3id.org/GHGA/SampleFile)
 ### Own
 
  * [SampleFile➞sample](SampleFile_sample.md)  <sub>1..1</sub>
-     * Description: The sample associated with an entity.
+     * Description: The Sample that is associated with this Sample File.
      * Range: [Sample](Sample.md)
 
 ### Inherited from File:
@@ -35,20 +35,20 @@ URI: [GHGA:SampleFile](https://w3id.org/GHGA/SampleFile)
      * Description: The given filename.
      * Range: [String](types/String.md)
  * [File➞format](File_format.md)  <sub>1..1</sub>
-     * Description: The format of the file: BAM, SAM, CRAM, BAI, etc.
+     * Description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
      * Range: [FileFormatEnum](FileFormatEnum.md)
  * [File➞size](File_size.md)  <sub>1..1</sub>
-     * Description: The size of a file in bytes.
+     * Description: The size of the File in bytes.
      * Range: [Integer](types/Integer.md)
  * [File➞checksum](File_checksum.md)  <sub>1..1</sub>
-     * Description: A computed value which depends on the contents of a block of data and which is transmitted or stored along with the data in order to detect corruption of the data. The receiving system recomputes the checksum based upon the received data and compares this value with the one sent with the data. If the two values are the same, the receiver has some confidence that the data was received correctly.
+     * Description: The checksum of the File.
      * Range: [String](types/String.md)
  * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
-     * Description: The type of algorithm used to generate the checksum of a file.
+     * Description: The type of algorithm used to generate the checksum of the File.
      * Range: [String](types/String.md)
  * [File➞forward_or_reverse](File_forward_or_reverse.md)  <sub>0..1</sub>
-     * Description: Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing. The number that identifies each read direction in a paired-end nucleotide sequencing reaction.
+     * Description: Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
      * Range: [ForwardOrReverseEnum](ForwardOrReverseEnum.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
-     * Description: The Dataset associated with an entity.
+     * Description: The Dataset associated with this File.
      * Range: [Dataset](Dataset.md)

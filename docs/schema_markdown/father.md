@@ -2,7 +2,7 @@
 # Slot: father
 
 
-The father of an individual.
+The Father of an individual.
 
 URI: [GHGA:father](https://w3id.org/GHGA/father)
 

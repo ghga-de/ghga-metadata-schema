@@ -2,7 +2,7 @@
 # Slot: sequencing_experiments
 
 
-Information about one or more Experiment entities associated with this submission.
+One or more Sequencing Experiment entities associated with this Submission.
 
 URI: [GHGA:Submission_sequencing_experiments](https://w3id.org/GHGA/Submission_sequencing_experiments)
 

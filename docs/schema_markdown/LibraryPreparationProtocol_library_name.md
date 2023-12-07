@@ -2,7 +2,7 @@
 # Slot: library_name
 
 
-A short name identifying the library to potential users. The same name may refer to multiple versions of the same continually updated library.
+A short name identifying the library. The same name may refer to multiple versions of the same continually updated library.
 
 URI: [GHGA:LibraryPreparationProtocol_library_name](https://w3id.org/GHGA/LibraryPreparationProtocol_library_name)
 

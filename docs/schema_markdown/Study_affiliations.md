@@ -2,7 +2,7 @@
 # Slot: affiliations
 
 
-The Institution(s) associated with an entity.
+The affiliations associated with this Study.
 
 URI: [GHGA:Study_affiliations](https://w3id.org/GHGA/Study_affiliations)
 

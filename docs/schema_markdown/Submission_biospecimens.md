@@ -2,7 +2,7 @@
 # Slot: biospecimens
 
 
-Information about one or more Biospecimen entities associated with this submission.
+One or more Biospecimen entities associated with this Submission.
 
 URI: [GHGA:Submission_biospecimens](https://w3id.org/GHGA/Submission_biospecimens)
 

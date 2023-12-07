@@ -2,7 +2,7 @@
 # Slot: library_preparation
 
 
-The general method for sequencing library_preparation (e.g. KAPA PCR-free).
+The general method for preparation of the sequencing library (e.g., KAPA PCR-free).
 
 URI: [GHGA:library_preparation](https://w3id.org/GHGA/library_preparation)
 

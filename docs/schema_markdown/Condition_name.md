@@ -2,7 +2,7 @@
 # Slot: name
 
 
-The name for an entity.
+The name of this Condition.
 
 URI: [GHGA:Condition_name](https://w3id.org/GHGA/Condition_name)
 

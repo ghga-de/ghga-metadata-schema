@@ -2,7 +2,7 @@
 # Slot: storage
 
 
-Methods by which a biospecimen or a sample is stored (e.g. frozen in liquid nitrogen).
+Methods by which this Biospecimen is stored.
 
 URI: [GHGA:Biospecimen_storage](https://w3id.org/GHGA/Biospecimen_storage)
 

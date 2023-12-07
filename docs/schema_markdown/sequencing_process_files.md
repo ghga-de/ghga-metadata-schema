@@ -2,7 +2,7 @@
 # Slot: sequencing_process_files
 
 
-The SequencingProcessFiles associated with an entity.
+The Sequencing Process Files associated with an entity.
 
 URI: [GHGA:sequencing_process_files](https://w3id.org/GHGA/sequencing_process_files)
 

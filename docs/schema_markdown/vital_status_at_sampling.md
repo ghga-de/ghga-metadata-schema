@@ -2,7 +2,7 @@
 # Slot: vital_status_at_sampling
 
 
-Vital Status of an Individual at the point of sampling (eg:'Alive', 'Deceased').
+Vital Status of the Individual at the point of sampling (e.g., alive).
 
 URI: [GHGA:vital_status_at_sampling](https://w3id.org/GHGA/vital_status_at_sampling)
 

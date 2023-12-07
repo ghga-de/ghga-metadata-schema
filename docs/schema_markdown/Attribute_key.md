@@ -2,7 +2,7 @@
 # Slot: key
 
 
-The key for an attribute.
+The key of an attribute.
 
 URI: [GHGA:Attribute_key](https://w3id.org/GHGA/Attribute_key)
 

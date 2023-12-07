@@ -2,7 +2,7 @@
 # Class: Study
 
 
-Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
+A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
 
 URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 
@@ -29,19 +29,19 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 ### Own
 
  * [Study➞title](Study_title.md)  <sub>1..1</sub>
-     * Description: A comprehensive title for the study.
+     * Description: A comprehensive title for this Study.
      * Range: [String](types/String.md)
  * [Study➞description](Study_description.md)  <sub>1..1</sub>
      * Description: A detailed description (abstract) that describes the goals of this Study.
      * Range: [String](types/String.md)
  * [Study➞type](Study_type.md)  <sub>1..1</sub>
-     * Description: The type of Study. For example, 'Cancer Genomics', 'Epigenetics', 'Exome Sequencing'.
+     * Description: The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
-     * Description: The Institution(s) associated with an entity.
+     * Description: The affiliations associated with this Study.
      * Range: [String](types/String.md)
  * [Study➞attributes](Study_attributes.md)  <sub>0..\*</sub>
-     * Description: Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
+     * Description: One or more attributes that further characterize this Study.
      * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

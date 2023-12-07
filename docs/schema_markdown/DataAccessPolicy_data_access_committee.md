@@ -2,7 +2,7 @@
 # Slot: data_access_committee
 
 
-The Data Access Committee linked to this policy.
+The Data Access Committee linked to this Data Use Policy.
 
 URI: [GHGA:DataAccessPolicy_data_access_committee](https://w3id.org/GHGA/DataAccessPolicy_data_access_committee)
 

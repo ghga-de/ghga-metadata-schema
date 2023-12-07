@@ -2,7 +2,7 @@
 # Slot: sequencing_experiment
 
 
-The sequencing experiment associated with an entity.
+The Sequencing Experiment associated with an entity.
 
 URI: [GHGA:sequencing_experiment](https://w3id.org/GHGA/sequencing_experiment)
 

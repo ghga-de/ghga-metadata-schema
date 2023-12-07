@@ -2,7 +2,7 @@
 # Class: SequencingProtocol
 
 
-Information about the sequencing of a sample.
+The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
 
 URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 
@@ -27,13 +27,13 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 ### Own
 
  * [SequencingProtocol➞name](SequencingProtocol_name.md)  <sub>1..1</sub>
-     * Description: The name for an entity.
+     * Description: A short name identifying this Sequencing Protocol.
      * Range: [String](types/String.md)
  * [SequencingProtocol➞description](SequencingProtocol_description.md)  <sub>1..1</sub>
-     * Description: Description about the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+     * Description: A description summarizing the Sequencing Protocol.
      * Range: [String](types/String.md)
  * [SequencingProtocol➞type](SequencingProtocol_type.md)  <sub>0..1</sub>
-     * Description: Type of the sequencing Protocol (eg: mRNA-seq, Whole exome long-read sequencing etc).
+     * Description: Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)  <sub>1..1</sub>
      * Description: The name and model of the technology platform used to perform sequencing.
@@ -42,40 +42,40 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
      * Description: Center where sample was sequenced.
      * Range: [String](types/String.md)
  * [SequencingProtocol➞sequencing_read_length](SequencingProtocol_sequencing_read_length.md)  <sub>0..1</sub>
-     * Description: Length of sequencing reads (eg: Long or short or actual number of the read length etc). The number of nucleotides successfully ordered from each side of a nucleic acid fragment obtained after the completion of a sequencing process
+     * Description: Length of sequencing reads (e.g., long or short or actual number of the read length).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)  <sub>0..1</sub>
-     * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing. The number of times a particular locus (site, nucleotide, amplicon, region) was sequenced.
+     * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)  <sub>0..1</sub>
-     * Description: Flow Cell ID (eg: Experiment ID_Cell 1_Lane_1). The barcode assigned to a flow cell used in nucleotide sequencing.
+     * Description: Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞flow_cell_type](SequencingProtocol_flow_cell_type.md)  <sub>0..1</sub>
-     * Description: Type of flow cell used (e.g. S4, S2 for NovaSeq; PromethION, Flongle for Nanopore). Aparatus in the fluidic subsystem where the sheath and sample meet. Can be one of several types; jet-in-air, quartz cuvette, or a hybrid of the two. The sample flows through the center of a fluid column of sheath fluid in the flow cell.
+     * Description: Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
      * Range: [FlowCellTypeEnum](FlowCellTypeEnum.md)
  * [SequencingProtocol➞umi_barcode_read](SequencingProtocol_umi_barcode_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the UMI barcode (Eg: index1/index2/read1/read2).
+     * Description: The type of read that contains the UMI barcode (e.g., index1, index2, read1, read2).
      * Range: [IndexReadEnum](IndexReadEnum.md)
  * [SequencingProtocol➞umi_barcode_offset](SequencingProtocol_umi_barcode_offset.md)  <sub>0..1</sub>
-     * Description: The offset in sequence of the UMI identifying barcode. (E.g. '16').
+     * Description: The offset in sequence of the UMI identifying barcode (e.g., 16).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞umi_barcode_size](SequencingProtocol_umi_barcode_size.md)  <sub>0..1</sub>
-     * Description: The size of the UMI identifying barcode (Eg. '10').
+     * Description: The size of the UMI identifying barcode (e.g., 10).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞cell_barcode_read](SequencingProtocol_cell_barcode_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the cell barcode (eg: index1/index2/read1/read2).
+     * Description: The type of read that contains the cell barcode (e.g., index1, index2, read1, read2).
      * Range: [IndexReadEnum](IndexReadEnum.md)
  * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)  <sub>0..1</sub>
-     * Description: The offset in sequence of the cell identifying barcode. (Eg. '0').
+     * Description: The offset in sequence of the cell identifying barcode (e.g., 0).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞cell_barcode_size](SequencingProtocol_cell_barcode_size.md)  <sub>0..1</sub>
-     * Description: The size of the cell identifying barcode (E.g. '16').
+     * Description: The size of the cell identifying barcode (e.g., 16).
      * Range: [String](types/String.md)
  * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the sample barcode (eg: index1/index2/read1/read2).
+     * Description: The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
      * Range: [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md)
  * [SequencingProtocol➞attributes](SequencingProtocol_attributes.md)  <sub>0..\*</sub>
-     * Description: One or more attributes that further characterizes this Sequencing Protocol.
+     * Description: One or more attributes that further characterize this Sequencing Protocol.
      * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

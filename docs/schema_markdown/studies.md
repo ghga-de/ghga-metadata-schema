@@ -2,7 +2,7 @@
 # Slot: studies
 
 
-The study associated with an entity.
+The Study associated with an entity.
 
 URI: [GHGA:studies](https://w3id.org/GHGA/studies)
 

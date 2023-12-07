@@ -2,7 +2,7 @@
 # Slot: attributes
 
 
-Custom key/value pairs that further characterizes the Study. (e.g.: approaches - single-cell,_bulk_etc)
+One or more attributes that further characterize this Study.
 
 URI: [GHGA:Study_attributes](https://w3id.org/GHGA/Study_attributes)
 

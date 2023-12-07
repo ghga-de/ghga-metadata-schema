@@ -2,7 +2,7 @@
 # Slot: biospecimen
 
 
-The biospecimen associated with an entity.
+The Biospecimen associated with an entity.
 
 URI: [GHGA:biospecimen](https://w3id.org/GHGA/biospecimen)
 

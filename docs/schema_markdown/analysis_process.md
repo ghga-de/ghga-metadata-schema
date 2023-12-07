@@ -2,7 +2,7 @@
 # Slot: analysis_process
 
 
-The AnalysisProcess associated with an entity.
+The Analysis Process associated with an entity.
 
 URI: [GHGA:analysis_process](https://w3id.org/GHGA/analysis_process)
 

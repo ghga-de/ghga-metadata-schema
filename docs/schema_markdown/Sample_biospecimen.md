@@ -2,7 +2,7 @@
 # Slot: biospecimen
 
 
-The Biospecimen from which this Sample was prepared from.
+The Biospecimen which this Sample was prepared from.
 
 URI: [GHGA:Sample_biospecimen](https://w3id.org/GHGA/Sample_biospecimen)
 

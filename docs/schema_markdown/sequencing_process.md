@@ -2,7 +2,7 @@
 # Slot: sequencing_process
 
 
-The SequencingProcess associated with an entity.
+The Sequencing Process associated with an entity.
 
 URI: [GHGA:sequencing_process](https://w3id.org/GHGA/sequencing_process)
 

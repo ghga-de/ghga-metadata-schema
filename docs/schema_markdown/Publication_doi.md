@@ -2,7 +2,7 @@
 # Slot: doi
 
 
-DOI identifier of the Publication.
+DOI identifier of a publication.
 
 URI: [GHGA:Publication_doi](https://w3id.org/GHGA/Publication_doi)
 

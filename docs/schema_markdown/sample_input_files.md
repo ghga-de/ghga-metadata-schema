@@ -2,7 +2,7 @@
 # Slot: sample_input_files
 
 
-The SampleFile associated used as an input for an entity.
+The Sample File associated used as an input for an entity.
 
 URI: [GHGA:sample_input_files](https://w3id.org/GHGA/sample_input_files)
 

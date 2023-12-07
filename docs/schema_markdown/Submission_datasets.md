@@ -2,7 +2,7 @@
 # Slot: datasets
 
 
-One or more Dataset that are part of this submission.
+One or more Dataset entities that are part of this Submission.
 
 URI: [GHGA:Submission_datasets](https://w3id.org/GHGA/Submission_datasets)
 

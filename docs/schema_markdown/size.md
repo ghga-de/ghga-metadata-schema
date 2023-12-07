@@ -2,7 +2,7 @@
 # Slot: size
 
 
-The size of a file in bytes.
+The size of the File in bytes.
 
 URI: [GHGA:size](https://w3id.org/GHGA/size)
 

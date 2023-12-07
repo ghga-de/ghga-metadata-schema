@@ -2,7 +2,7 @@
 # Slot: sequencing_processes
 
 
-The SequencingProcesses that are part of this submission.
+The Sequencing Processes that are part of this Submission.
 
 URI: [GHGA:Submission_sequencing_processes](https://w3id.org/GHGA/Submission_sequencing_processes)
 

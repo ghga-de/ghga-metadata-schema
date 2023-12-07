@@ -2,7 +2,7 @@
 # Slot: library_preparation_protocol
 
 
-The library_preparation Protocol associated with an entity.
+The Library Preparation Protocol associated with this Sequencing Experiment.
 
 URI: [GHGA:SequencingExperiment_library_preparation_protocol](https://w3id.org/GHGA/SequencingExperiment_library_preparation_protocol)
 

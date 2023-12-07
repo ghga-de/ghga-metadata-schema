@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Description of an entity.
+A concise description of the applied Condition.
 
 URI: [GHGA:Condition_description](https://w3id.org/GHGA/Condition_description)
 

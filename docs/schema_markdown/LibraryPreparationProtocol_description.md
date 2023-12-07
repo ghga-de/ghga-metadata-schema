@@ -2,7 +2,7 @@
 # Slot: description
 
 
-Description about how a sequencing library was prepared (eg: Library construction method).
+Description summarizing how a sequencing library was prepared.
 
 URI: [GHGA:LibraryPreparationProtocol_description](https://w3id.org/GHGA/LibraryPreparationProtocol_description)
 

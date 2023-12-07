@@ -2,7 +2,7 @@
 # Slot: analyses
 
 
-Information about one or more Analysis entities associated with this submission.
+One or more Analysis entities associated with this Submission.
 
 URI: [GHGA:Submission_analyses](https://w3id.org/GHGA/Submission_analyses)
 

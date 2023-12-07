@@ -2,7 +2,7 @@
 # Slot: data_access_committees
 
 
-The Data Access Committee that applies to Dataset in this submission.
+The Data Access Committees that apply to the Data Access Policies in this Submission.
 
 URI: [GHGA:Submission_data_access_committees](https://w3id.org/GHGA/Submission_data_access_committees)
 

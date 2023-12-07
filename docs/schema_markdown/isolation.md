@@ -2,7 +2,7 @@
 # Slot: isolation
 
 
-Method or device employed for collecting/isolating a biospecimen or a sample.
+Method or device employed for collecting/isolating a Biospecimen or a Sample.
 
 URI: [GHGA:isolation](https://w3id.org/GHGA/isolation)
 

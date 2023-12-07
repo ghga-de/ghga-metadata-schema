@@ -2,7 +2,7 @@
 # Slot: name
 
 
-The name for an entity.
+A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.
 
 URI: [GHGA:Biospecimen_name](https://w3id.org/GHGA/Biospecimen_name)
 

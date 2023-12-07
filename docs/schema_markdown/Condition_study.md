@@ -2,7 +2,7 @@
 # Slot: study
 
 
-The study associated with an entity.
+The Study associated with this Condition.
 
 URI: [GHGA:Condition_study](https://w3id.org/GHGA/Condition_study)
 

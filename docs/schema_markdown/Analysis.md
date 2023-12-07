@@ -2,7 +2,7 @@
 # Class: Analysis
 
 
-An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
+An Analysis is a data transformation that transforms input data to output data.
 
 URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
@@ -29,13 +29,13 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
  * [Analysis➞description](Analysis_description.md)  <sub>0..1</sub>
-     * Description: Describing how an Analysis was carried out. (e.g.: computational tools, settings, etc.).
+     * Description: A description summarizing how this Analysis was carried out (e.g., computational tools, pipelines, workflows).
      * Range: [String](types/String.md)
  * [Analysis➞type](Analysis_type.md)  <sub>0..1</sub>
-     * Description: The type of the Analysis. Either Reference Alignment (BAM) or Sequence Variation (VCF)
+     * Description: The type of this Analysis.
      * Range: [String](types/String.md)
  * [Analysis➞reference_genome](Analysis_reference_genome.md)  <sub>1..1</sub>
-     * Description: A published genetic sequence that is used as a reference sequence against which other sequences are compared. Reference genome(s) or annotation(s) used for prior analyses (eg: GRCh38.p13).
+     * Description: The reference genome or annotation used for prior analyses (e.g., GRCh38.p13).
      * Range: [String](types/String.md)
  * [Analysis➞reference_chromosome](Analysis_reference_chromosome.md)  <sub>1..1</sub>
      * Description: The reference chromosome used for this Analysis.

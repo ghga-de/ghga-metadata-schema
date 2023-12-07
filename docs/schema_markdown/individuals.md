@@ -2,7 +2,7 @@
 # Slot: individuals
 
 
-The subjects/individuals associated with an entity.
+The Individuals associated with an entity.
 
 URI: [GHGA:individuals](https://w3id.org/GHGA/individuals)
 

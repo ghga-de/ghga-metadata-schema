@@ -2,7 +2,7 @@
 # Slot: sequencing_lane_id
 
 
-Identifier of the sequencing lane. Used for batch correction.
+The identifier of a sequencing lane.
 
 URI: [GHGA:SequencingProcess_sequencing_lane_id](https://w3id.org/GHGA/SequencingProcess_sequencing_lane_id)
 

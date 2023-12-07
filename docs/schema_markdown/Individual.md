@@ -32,21 +32,21 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 ### Own
 
  * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
-     * Description: The Phenotypic Feature entity that is associated with this Biospecimen at the time of retrieval from the organism. Typically, a concept from Human Phenotype Ontology. For example, 'HP:0100244' indicates that the Individual - from_which_the_Biospecimen was extracted from - exhibits_'Fibrosarcoma'_as_one_of_its_phenotype.
+     * Description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>
-     * Description: The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
+     * Description: The genotypic sex of the Individual (e.g., female).
      * Range: [IndividualSexEnum](IndividualSexEnum.md)
  * [Individual➞karyotype](Individual_karyotype.md)  <sub>0..1</sub>
-     * Description: The karyotype of an individual if defined.
+     * Description: The karyotype of the Individual.
      * Range: [KaryotypeEnum](KaryotypeEnum.md)
  * [Individual➞geographical_region](Individual_geographical_region.md)  <sub>0..1</sub>
-     * Description: The geographical region where the Individual is located. Any demarcated area of the Earth; may be determined by both natural and human boundaries.
+     * Description: The geographical region where the Individual is located.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestries](Individual_ancestries.md)  <sub>0..\*</sub>
-     * Description: A person's descent or lineage, from a person or from a population.
+     * Description: A person's descent or lineage from a population.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
 

@@ -15,23 +15,23 @@ URI: [GHGA:IdentifiedByAliasMixin](https://w3id.org/GHGA/IdentifiedByAliasMixin)
 
 ## Mixin for
 
- * [Analysis](Analysis.md) (mixin)  - An Analysis is a data transformation that transforms input data to output data. The workflow used to achieve this transformation and the individual steps are also captured.
- * [AnalysisProcess](AnalysisProcess.md) (mixin) 
- * [Biospecimen](Biospecimen.md) (mixin)  - A Biospecimen is any natural material taken from a biological entity (usually a human) for testing, diagnostics, treatment, or research purposes. The Biospecimen is linked to the Individual from which the Biospecimen is derived.
- * [Condition](Condition.md) (mixin)  - An condition that is linked to comparable samples.
- * [DataAccessCommittee](DataAccessCommittee.md) (mixin)  - A group of members that are delegated to grant access to one or more datasets after ensuring the minimum criteria for data sharing has been met, and request for data use does not raise ethical and/or legal concerns.
+ * [Analysis](Analysis.md) (mixin)  - An Analysis is a data transformation that transforms input data to output data.
+ * [AnalysisProcess](AnalysisProcess.md) (mixin)  - An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.
+ * [Biospecimen](Biospecimen.md) (mixin)  - A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.
+ * [Condition](Condition.md) (mixin)  - A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
+ * [DataAccessCommittee](DataAccessCommittee.md) (mixin)  - A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met,  and request for data use does not raise ethical and/or legal concerns.
  * [DataAccessPolicy](DataAccessPolicy.md) (mixin)  - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
  * [Dataset](Dataset.md) (mixin)  - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
  * [File](File.md) (mixin)  - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
  * [Individual](Individual.md) (mixin)  - An Individual is a Person who is participating in a Study.
- * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) (mixin)  - Information about the library_preparation of an sequencing experiment.
- * [Publication](Publication.md) (mixin)  - The Publication entity represents a publication. While a publication can be any article that is published, the minimum expectation is that the publication has a valid DOI.
- * [Sample](Sample.md) (mixin)  - A sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. A sample is prepared from a Biospecimen (isolate or tissue).
- * [SequencingExperiment](SequencingExperiment.md) (mixin)  - An sequencing experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
- * [SequencingProcess](SequencingProcess.md) (mixin)  - A sequencing process linking a sample to sequencing output.
- * [SequencingProtocol](SequencingProtocol.md) (mixin)  - Information about the sequencing of a sample.
- * [Study](Study.md) (mixin)  - Studies are experimental investigations of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
- * [Trio](Trio.md) (mixin)  - A trio is defined by three individuals representing an individual and their parents.
+ * [LibraryPreparationProtocol](LibraryPreparationProtocol.md) (mixin)  - The Library Preparation Protocol captures information about the library preparation of a Sequencing Experiment.
+ * [Publication](Publication.md) (mixin)  - A Publication represents an article that is published. The minimum expectation is that the publication has a valid DOI.
+ * [Sample](Sample.md) (mixin)  - A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.
+ * [SequencingExperiment](SequencingExperiment.md) (mixin)  - A Sequencing Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+ * [SequencingProcess](SequencingProcess.md) (mixin)  - The Sequencing Process captures the technical parameters that were used to produce sequencing output from the Sample. It links the Sample to sequencing output.
+ * [SequencingProtocol](SequencingProtocol.md) (mixin)  - The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
+ * [Study](Study.md) (mixin)  - A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
+ * [Trio](Trio.md) (mixin)  - A Trio is a study design in which the genetic information of three individuals within a family unit is analyzed. It consists of a child and their biological parents.
 
 ## Referenced by Class
 

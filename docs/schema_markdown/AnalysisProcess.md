@@ -2,7 +2,7 @@
 # Class: AnalysisProcess
 
 
-
+An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.
 
 URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
 
@@ -29,16 +29,16 @@ URI: [GHGA:AnalysisProcess](https://w3id.org/GHGA/AnalysisProcess)
      * Description: The name for an entity.
      * Range: [String](types/String.md)
  * [AnalysisProcess➞analysis](AnalysisProcess_analysis.md)  <sub>1..1</sub>
-     * Description: The Analysis the AnalysisProcess was part of
+     * Description: The Analysis that this Analysis Process is part of.
      * Range: [Analysis](Analysis.md)
  * [AnalysisProcess➞study_input_files](AnalysisProcess_study_input_files.md)  <sub>0..\*</sub>
-     * Description: The StudyFile associated used as an input for an entity.
+     * Description: The associated Study File used as an input for this Analysis Process.
      * Range: [StudyFile](StudyFile.md)
  * [AnalysisProcess➞sample_input_files](AnalysisProcess_sample_input_files.md)  <sub>0..\*</sub>
-     * Description: The SampleFile associated used as an input for an entity.
+     * Description: The associated Sample File used as an input for this Analysis Process.
      * Range: [SampleFile](SampleFile.md)
  * [AnalysisProcess➞sequencing_process_input_files](AnalysisProcess_sequencing_process_input_files.md)  <sub>0..\*</sub>
-     * Description: The SequencingProcessFile associated used as an input for an entity.
+     * Description: The associated Sequencing Process File used as an input for this Analysis Process.
      * Range: [SequencingProcessFile](SequencingProcessFile.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

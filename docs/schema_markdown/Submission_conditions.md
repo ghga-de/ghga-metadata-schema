@@ -2,7 +2,7 @@
 # Slot: conditions
 
 
-The Conditions associated with this Submission.
+One or more Condition entities associated with this Submission.
 
 URI: [GHGA:Submission_conditions](https://w3id.org/GHGA/Submission_conditions)
 

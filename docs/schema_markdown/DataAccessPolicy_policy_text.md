@@ -2,7 +2,7 @@
 # Slot: policy_text
 
 
-The terms of data use and policy verbiage should be captured here.
+The complete text for the Data Access Policy.
 
 URI: [GHGA:DataAccessPolicy_policy_text](https://w3id.org/GHGA/DataAccessPolicy_policy_text)
 

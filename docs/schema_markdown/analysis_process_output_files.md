@@ -2,7 +2,7 @@
 # Slot: analysis_process_output_files
 
 
-The AnalysisProcessOutputFiles associated with an entity.
+The Analysis Process Output Files associated with an entity.
 
 URI: [GHGA:analysis_process_output_files](https://w3id.org/GHGA/analysis_process_output_files)
 

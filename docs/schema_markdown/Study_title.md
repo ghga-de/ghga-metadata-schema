@@ -2,7 +2,7 @@
 # Slot: title
 
 
-A comprehensive title for the study.
+A comprehensive title for this Study.
 
 URI: [GHGA:Study_title](https://w3id.org/GHGA/Study_title)
 

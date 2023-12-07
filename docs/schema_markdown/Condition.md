@@ -2,7 +2,7 @@
 # Class: Condition
 
 
-An condition that is linked to comparable samples.
+A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
 
 URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
 
@@ -27,22 +27,22 @@ URI: [GHGA:Condition](https://w3id.org/GHGA/Condition)
 ### Own
 
  * [Condition➞name](Condition_name.md)  <sub>1..1</sub>
-     * Description: The name for an entity.
+     * Description: The name of this Condition.
      * Range: [String](types/String.md)
  * [Condition➞description](Condition_description.md)  <sub>1..1</sub>
-     * Description: Description of an entity.
+     * Description: A concise description of the applied Condition.
      * Range: [String](types/String.md)
  * [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)  <sub>1..1</sub>
-     * Description: Whether a condition corresponds to a disease or a healthy state.
+     * Description: Whether a Condition corresponds to a disease or a healthy state.
      * Range: [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)
  * [Condition➞case_control_status](Condition_case_control_status.md)  <sub>1..1</sub>
-     * Description: Whether a condition corresponds to a treatment or a control.
+     * Description: Whether a Condition corresponds to a treatment or a control.
      * Range: [CaseControlStatusEnum](CaseControlStatusEnum.md)
  * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)  <sub>1..1</sub>
-     * Description: Whether a condition corresponds to a mutant or a wildtype.
+     * Description: Whether a Condition corresponds to a mutant or a wildtype.
      * Range: [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md)
  * [Condition➞study](Condition_study.md)  <sub>1..1</sub>
-     * Description: The study associated with an entity.
+     * Description: The Study associated with this Condition.
      * Range: [Study](Study.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

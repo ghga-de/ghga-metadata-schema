@@ -2,7 +2,7 @@
 # Slot: sequencing_process_input_files
 
 
-The SequencingProcessFile associated used as an input for an entity.
+The associated Sequencing Process File used as an input for this Analysis Process.
 
 URI: [GHGA:AnalysisProcess_sequencing_process_input_files](https://w3id.org/GHGA/AnalysisProcess_sequencing_process_input_files)
 
