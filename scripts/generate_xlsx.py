@@ -1,28 +1,67 @@
-#!/usr/bin/env python
-"""Script to generate XLSX spreadsheets for metadata entry"""
-from contextlib import contextmanager
+# Copyright 2021 - 2023 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 import glob
 import os
-from pathlib import Path
-from sys import stderr
 import sys
+from contextlib import contextmanager
+from dataclasses import dataclass
+from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Generator, Optional
-from linkml_runtime.utils.schemaview import SchemaView
-from linkml_runtime.linkml_model.meta import SlotDefinition
+from typing import Final, Generator, Mapping, Optional
+
+import yaml
 from openpyxl import Workbook, load_workbook
 from openpyxl.cell import Cell
-from openpyxl.styles import Alignment, PatternFill, Font
-from openpyxl.styles.borders import Border, Side, BORDER_THIN
+from openpyxl.styles import Font, PatternFill
+from openpyxl.styles.alignment import Alignment
+from openpyxl.styles.borders import BORDER_THIN, Border, Side
 from openpyxl.utils import get_column_letter
-from pydantic import BaseModel, root_validator
-import yaml
+from pydantic import BaseModel
+from schemapack.load import load_schemapack
+from schemapack.spec.schemapack import Relation, SchemaPack
 from script_utils.cli import echo_failure, echo_success, run
+from typer import Option
 
-HERE = Path(__file__).parent.resolve()
-SCHEMA_PATH = HERE.parent / "src" / "schema" / "submission.yaml"
-CONF_PATH = HERE.parent / "spreadsheet_conf.yaml"
-XLSX_DIR = HERE.parent / "spreadsheets"
+################################################################################
+
+HERE: Final[Path] = Path(__file__).parent.resolve()
+SCHEMAPACK_PATH: Final[Path] = (
+    HERE.parent / "src" / "schema" / "submission.schemapack.yaml"
+)
+CONFIG_PATH: Final[Path] = HERE.parent / "spreadsheet_conf.yaml"
+XLSX_DIR: Final[Path] = HERE.parent / "spreadsheets"
+
+################################################################################
+
+THIN_BORDER: Final[Border] = Border(
+    left=Side(border_style=BORDER_THIN, color="00000000"),
+    right=Side(border_style=BORDER_THIN, color="00000000"),
+    top=Side(border_style=BORDER_THIN, color="00000000"),
+    bottom=Side(border_style=BORDER_THIN, color="00000000"),
+)
+THIN_BORDER_GRAY: Final[Border] = Border(
+    left=Side(border_style=BORDER_THIN, color="808080"),
+    right=Side(border_style=BORDER_THIN, color="808080"),
+    top=Side(border_style=BORDER_THIN, color="808080"),
+    bottom=Side(border_style=BORDER_THIN, color="808080"),
+)
+ALIGN_HEADER: Final[Alignment] = Alignment(
+    wrapText=True, horizontal="center", vertical="top"
+)
 
 
 class WorksheetStyle(BaseModel):
@@ -32,132 +71,105 @@ class WorksheetStyle(BaseModel):
     content_color: Optional[str] = None
 
 
-class WorkbookConfig(BaseModel):
-    """A workbook configuration"""
-
-    file_name: str
-    worksheets: list[str]
-
-
 class Config(BaseModel):
     """A XLSX generator config"""
 
-    slot_order: list[str]
-    workbooks: list[WorkbookConfig]
-    styles: dict[str, WorksheetStyle] = dict()
-
-    @root_validator
-    # pylint: disable=no-self-argument
-    def _default_styles(cls, values):
-        used_sheet_names = {
-            ws for wb_config in values["workbooks"] for ws in wb_config.worksheets
-        }
-        for sheet in used_sheet_names:
-            if sheet not in values["styles"]:
-                values["styles"]["sheet"] = WorksheetStyle()
-        return values
+    output_filename: str
+    styles: Optional[dict[str, WorksheetStyle]] = {}
 
 
-def _get_ghga_schema_version(schema: SchemaView) -> str:
-    schema_def = [
-        sdef
-        for sdef in schema.all_schema()
-        if sdef.name == "GHGA-Submission-Metadata-Schema"
-    ]
-    if len(schema_def) != 1 or schema_def[0].version is None:
-        raise RuntimeError("Unable to identify GHGA Model version.")
-    return schema_def[0].version
+class GHGASchemaError(RuntimeError):
+    """Raised when a schema violates GHGA schema rules."""
+
+    pass
 
 
-THIN_BORDER = Border(
-    left=Side(border_style=BORDER_THIN, color="00000000"),
-    right=Side(border_style=BORDER_THIN, color="00000000"),
-    top=Side(border_style=BORDER_THIN, color="00000000"),
-    bottom=Side(border_style=BORDER_THIN, color="00000000"),
-)
-THIN_BORDER_GRAY = Border(
-    left=Side(border_style=BORDER_THIN, color="808080"),
-    right=Side(border_style=BORDER_THIN, color="808080"),
-    top=Side(border_style=BORDER_THIN, color="808080"),
-    bottom=Side(border_style=BORDER_THIN, color="808080"),
-)
-ALIGN_HEADER = Alignment(wrapText=True, horizontal="center", vertical="top")
-
-
-class ColumnMeta:
-    @property
-    def type_help(self) -> str:
-        """The type help text"""
-        return "type: " + (self.type_name if self.type_name else "string")
-
-    @property
-    def mv_help(self) -> str:
-        """The multiple values help text"""
-        return "multiple values" if self.slot_def.multivalued else "single value"
-
-    def in_ontology_subset(self, slot_def: SlotDefinition) -> bool:
-        """Returns a bool indicating whether or not the given slot is marked as
-        non-implemented ontology slot."""
-        SUBSET_NAME="ontology"
-        in_subset_usage = slot_def.in_subset
-        in_subset_root = self.schema.get_slot(slot_def.name).in_subset
-        return (
-            isinstance(in_subset_usage, list) and SUBSET_NAME in in_subset_usage or 
-            isinstance(in_subset_root, list) and SUBSET_NAME in in_subset_root or 
-            in_subset_usage == SUBSET_NAME or
-            in_subset_root == SUBSET_NAME
+def _validate_relation(relation: Relation) -> None:
+    if relation.multiple.target:
+        raise GHGASchemaError(
+            "One-to-Many and Many-to-Many relations are not supported in GHGA schemas. One-to-Many relations must be inverted to Many-to-One relations."
         )
-        
 
-    @property
-    def restriction_help(self) -> str:
-        """The restriction help text"""
-        if self.enum_name or self.slot_def.pattern or self.in_ontology_subset(self.slot_def):
-            return "controlled vocabulary"
-        elif self.cls_name:
-            id_slot = self.schema.get_identifier_slot(self.cls_name)
-            if id_slot:
-                id_slot_name = id_slot.name
-                if self.cls_name not in self.wb_classes:
-                    raise RuntimeError(
-                        f"Class '{self.cls_name}' is referenced, but not included in the workbook!",
-                    )
-                return f"restriction: value from {self.cls_name}.{id_slot_name}"
-        return "unrestricted"
 
-    @property
-    def required_help(self) -> str:
-        """The required / recommended / optional help text"""
-        if self.slot_def.required:
-            return "required"
-        elif self.slot_def.recommended:
-            return "recommended"
-        return "optional"
+@dataclass
+class Column:
+    name: str
+    description: Optional[str]
+    type: str
+    multivalued: bool
+    restriction: str
+    required: bool
 
-    @property
-    def name(self) -> str:
-        """The name of the column"""
-        return self.slot_def.name
 
-    @property
-    def description(self) -> str:
-        """The description text"""
-        return self.slot_def.description if self.slot_def.description else ""
+@dataclass
+class Sheet:
+    columns: list[Column]
+    header_color: Optional[str] = None
+    content_color: Optional[str] = None
 
-    def __init__(
-        self,
-        schema: SchemaView,
-        slot_def: SlotDefinition,
-        wb_classes: set[str],
-    ):
-        """Creates a new ColumnMeta object"""
-        self.slot_def = slot_def
-        self.schema = schema
-        self.wb_classes = wb_classes
-        self.range = slot_def.range if slot_def.range else "string"
-        self.cls_name = str(self.range) if self.range in schema.all_classes() else None
-        self.enum_name = str(self.range) if self.range in schema.all_enums() else None
-        self.type_name = str(self.range) if self.range in schema.all_types() else None
+
+def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
+    """Parses a SchemaPack into a set of sheets for an XLSX workbook."""
+    sheets: dict[str, Sheet] = {}
+
+    # Iterate over each class in the SchemaPack
+    for class_name, class_ in schemapack.classes.items():
+        columns: list[Column] = []
+
+        # ID column
+        columns.append(
+            Column(
+                name=class_.id.propertyName,
+                description=class_.id.description,
+                type="string",
+                multivalued=False,
+                restriction="unrestricted",
+                required=True,
+            )
+        )
+
+        # Relations
+        for col_idx, (relation_name, relation) in enumerate(
+            class_.relations.items(), start=2
+        ):
+            columns.append(
+                Column(
+                    name=relation_name,
+                    description=relation.description,
+                    type="string",
+                    multivalued=False,
+                    restriction=f"restriction: value from {relation.targetClass}"
+                    + f".{schemapack.classes[relation.targetClass].id.propertyName}",
+                    required=relation.mandatory.origin,
+                )
+            )
+
+        # Content
+        content_schema = class_.content.json_schema_dict
+        for property_name in content_schema.get("properties", {}):
+            columns.append(
+                Column(
+                    name=property_name,
+                    description=content_schema["properties"][property_name].get(
+                        "description", ""
+                    ),
+                    type=content_schema["properties"][property_name]["type"],
+                    multivalued=content_schema["properties"][property_name]["type"]
+                    == "array",
+                    restriction="controlled vocabulary"
+                    if content_schema["properties"][property_name].get("enum")
+                    else "unrestricted",
+                    required=property_name in content_schema.get("required", []),
+                )
+            )
+
+        style = config.styles.get(class_name, WorksheetStyle())
+        sheets[class_name] = Sheet(
+            columns=columns,
+            header_color=style.header_color,
+            content_color=style.content_color,
+        )
+    return sheets
 
 
 def _make_value_cell(ws, fill_content):
@@ -169,150 +181,96 @@ def _make_value_cell(ws, fill_content):
     return value_cell
 
 
-def _get_ordered_slots(
-    schema: SchemaView,
-    slot_order: list[str],
-    cls_name: str,
-    wb_classes: set[str],
-) -> list[SlotDefinition]:
-    """Given a class, generates a list of slots that must be rendered. Slots
-    that are listed in the slot_order config parameter are at the top of the
-    list in their respective order. Slots that are referencing other classes
-    which are not part of this workbook are omitted."""
-    slots = schema.class_induced_slots(cls_name)
-    slot_names = {slot.name: idx for idx, slot in enumerate(slots)}
-    ordered = [
-        slots[slot_names[slot_name]]
-        for slot_name in slot_order
-        if slot_name in slot_names
-    ]
-    unordered = [slot for slot in slots if slot.name not in slot_order]
-    all_slots = ordered + unordered
-    # We ignore slots which have a class range when the target class is not included in this workbook.
-    ignored_slots = [
-        slot
-        for slot in all_slots
-        if slot.range in schema.all_classes()
-        and slot.range not in wb_classes
-        and schema.get_identifier_slot(slot.range)
-    ]
-    # If one of those is mandatory, we raise an error
-    for ignored_slot in ignored_slots:
-        if ignored_slot.required:
-            raise RuntimeError(
-                f"Slot '{cls_name}.{ignored_slot.name}' is mandatory, but target class is not included in the workbook!"
-            )
-    slots = [slot for slot in all_slots if slot not in ignored_slots]
-    return slots
+def generate_workbook(sheets: Mapping[str, Sheet]) -> Workbook:
+    """Generates a workbook from a dictionary of sheets."""
+    # Create a new workbook
+    workbook = Workbook()
+    # Remove the default sheet
+    workbook.remove(workbook.worksheets[0])
 
+    for sheet_name, sheet in sheets.items():
+        # Create a new sheet for the class
+        wb_sheet = workbook.create_sheet(title=sheet_name)
 
-def create_xlsx_files(config_path: Path, out_dir: Path):
-    """Creates the XLSX workbooks as configured in the provided configuration
-    and writes them to the specified output path"""
-    with open(config_path, "r", encoding="utf8") as config_file:
-        config = Config.parse_obj(yaml.safe_load(config_file))
-
-    # Read schema
-    schema = SchemaView(str(SCHEMA_PATH))
-
-    # Create the workbooks
-    for wb_config in config.workbooks:
-        print(wb_config.file_name, end="", flush=True)
-        # Create a new workbook
-        wb = Workbook()
-        # Remove the default worksheet
-        wb.remove(wb.worksheets[0])
-        # All classes configured in this workbook
-        wb_classes = set(wb_config.worksheets)
-        # Add worksheets as specified in config
-        for ws_name in wb_config.worksheets:
-            ws = wb.create_sheet(ws_name)
-            col_metas = [
-                ColumnMeta(schema, slot_def, wb_classes)
-                for slot_def in _get_ordered_slots(
-                    schema=schema,
-                    slot_order=config.slot_order,
-                    cls_name=ws_name,
-                    wb_classes=wb_classes,
+        cols = sheet.columns
+        rows = []
+        rows.append([Cell(wb_sheet, value=col.name) for col in cols])
+        rows.append([Cell(wb_sheet, value=col.description) for col in cols])
+        rows.append([Cell(wb_sheet, value=col.type) for col in cols])
+        rows.append(
+            [
+                Cell(
+                    wb_sheet,
+                    value="multiple values" if col.multivalued else "single value",
                 )
+                for col in cols
             ]
+        )
+        rows.append([Cell(wb_sheet, value=col.restriction) for col in cols])
+        rows.append(
+            [
+                Cell(wb_sheet, value="required" if col.required else "optional")
+                for col in cols
+            ]
+        )
 
-            # Generate the header rows
-            rows = []
-            rows.append([Cell(ws, value=col_meta.name) for col_meta in col_metas])
+        # FORMATTING
+
+        font_bold = Font(bold=True)
+
+        fill_header = (
+            PatternFill("solid", fgColor=sheet.header_color)
+            if sheet.header_color
+            else None
+        )
+        for cell in rows[0]:
+            cell.font = font_bold
+        for row in rows:
+            for cell in row:
+                cell.alignment = ALIGN_HEADER
+                if fill_header:
+                    cell.fill = fill_header
+                cell.border = THIN_BORDER
+
+        if sheet.header_color:
+            wb_sheet.sheet_properties.tabColor = sheet.header_color
+
+        fill_content = (
+            PatternFill("solid", fgColor=sheet.content_color)
+            if sheet.content_color
+            else None
+        )
+
+        for _ in range(1000):
             rows.append(
-                [Cell(ws, value=col_meta.description) for col_meta in col_metas]
-            )
-            rows.append([Cell(ws, value=col_meta.type_help) for col_meta in col_metas])
-            rows.append([Cell(ws, value=col_meta.mv_help) for col_meta in col_metas])
-            rows.append(
-                [Cell(ws, value=col_meta.restriction_help) for col_meta in col_metas]
-            )
-            rows.append(
-                [Cell(ws, value=col_meta.required_help) for col_meta in col_metas]
+                [
+                    _make_value_cell(wb_sheet, fill_content)
+                    for _ in range(len(sheet.columns))
+                ]
             )
 
-            # Format the header rows
-            font_bold = Font(bold=True)
+        for row in rows:
+            wb_sheet.append(row)
 
-            header_color = config.styles[ws_name].header_color
-            fill_header = (
-                PatternFill("solid", fgColor=header_color) if header_color else None
-            )
-            for cell in rows[0]:
-                cell.font = font_bold
-            for row in rows:
-                for cell in row:
-                    cell.alignment = ALIGN_HEADER
-                    if fill_header:
-                        cell.fill = fill_header
-                    cell.border = THIN_BORDER
+        for column in range(1, wb_sheet.max_column + 1):
+            wb_sheet.column_dimensions[get_column_letter(column)].width = 35
 
-            # Format the sheet tab color
-            if header_color:
-                ws.sheet_properties.tabColor = header_color
-
-            # Color the value fields
-            content_color = config.styles[ws_name].content_color
-            fill_content = (
-                PatternFill("solid", fgColor=content_color) if content_color else None
-            )
-
-            for _ in range(1000):
-                rows.append(
-                    [_make_value_cell(ws, fill_content) for _ in range(len(col_metas))]
-                )
-
-            for row in rows:
-                ws.append(row)
-
-            # Format column width
-            for column in range(1, ws.max_column + 1):
-                ws.column_dimensions[get_column_letter(column)].width = 35
-
-        # Encode metadata model version in the workbook
-        ws = wb.create_sheet("__properties")
-        ws.sheet_state = "hidden"
-        ws.cell(row=1, column=1, value=_get_ghga_schema_version(schema))
-
-        # Save to file name specified in config
-        wb.save(out_dir / wb_config.file_name)
-        print(" - done.", flush=True)
+    # Save the workbook to the specified output path
+    return workbook
 
 
-class ContentDifference(RuntimeError):
-    """Raised when a content difference was detected"""
+def load_config(config_path: Path) -> Config:
+    """Loads a config from a file."""
+    with config_path.open("r") as file:
+        return Config.model_validate(yaml.safe_load(file))
 
 
-@contextmanager
-def working_directory(working_dir: Path) -> Generator[None, None, None]:
-    """Temporarily changes the working directory to the specified directory"""
-    cwd = Path.cwd()
-    try:
-        os.chdir(working_dir)
-        yield
-    finally:
-        os.chdir(cwd)
+def add_version_information(workbook: Workbook, version: str) -> None:
+    """Adds version information to the workbook"""
+    # Encode metadata model version in the workbook
+    ws = workbook.create_sheet("__properties")
+    ws.sheet_state = "hidden"
+    ws.cell(row=1, column=1, value=version)
 
 
 def compare_xls(expected: Workbook, observed: Workbook):
@@ -339,8 +297,23 @@ def compare_xls(expected: Workbook, observed: Workbook):
                         )
 
 
+class ContentDifference(RuntimeError):
+    """Raised when a content difference was detected"""
+
+
+@contextmanager
+def working_directory(working_dir: Path) -> Generator[None, None, None]:
+    """Temporarily changes the working directory to the specified directory"""
+    cwd = Path.cwd()
+    try:
+        os.chdir(working_dir)
+        yield
+    finally:
+        os.chdir(cwd)
+
+
 def compare_folders(expected: Path, observed: Path):
-    """Function to check equality of contents of two folders"""
+    """Function to check equality of contents of two folders with xlsx files."""
 
     with working_directory(expected):
         expected_glob = glob.glob("*")
@@ -359,17 +332,30 @@ def compare_folders(expected: Path, observed: Path):
         try:
             compare_xls(expected=expected_wb, observed=observed_wb)
         except ContentDifference as err:
-            # pylint: disable=raise-missing-from
             raise ContentDifference(f"{fname}: {err}")
 
 
-def main(check: bool = False):
-    """The main routine."""
+def create_xlsx_files(xlsx_dir: Path = XLSX_DIR) -> None:
+    schema = load_schemapack(Path(SCHEMAPACK_PATH))
+    config = load_config(Path(CONFIG_PATH))
+    sheets = parse_schema(schema, config)
+    workbook = generate_workbook(sheets)
+    add_version_information(workbook, "0.0.0")
+    workbook.save(xlsx_dir / config.output_filename)
+
+
+def main(
+    check: bool = Option(
+        False,
+        help="Run read-only check that verifies that the documents are up-to-date.",
+    ),
+):
+    """Generate a submission XLSX file from the schema pack."""
     if check:
         with TemporaryDirectory() as tmpdirname:
             tmp_docs_dir = Path(tmpdirname)
 
-            create_xlsx_files(config_path=CONF_PATH, out_dir=tmp_docs_dir)
+            create_xlsx_files(xlsx_dir=tmp_docs_dir)
 
             try:
                 compare_folders(XLSX_DIR, tmp_docs_dir)
@@ -379,7 +365,7 @@ def main(check: bool = False):
                 echo_failure(str(err))
                 sys.exit(1)
     else:
-        create_xlsx_files(config_path=CONF_PATH, out_dir=XLSX_DIR)
+        create_xlsx_files()
 
 
 if __name__ == "__main__":
