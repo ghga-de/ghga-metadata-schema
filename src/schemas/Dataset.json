@@ -1,0 +1,34 @@
+{
+    "additionalProperties": false,
+    "description": "A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.",
+    "properties": {
+        "alias": {
+            "description": "The alias for an entity at the time of submission.",
+            "type": "string"
+        },
+        "description": {
+            "description": "A description summarizing this Dataset.",
+            "type": "string"
+        },
+        "title": {
+            "description": "A title for this Dataset.",
+            "type": "string"
+        },
+        "types": {
+            "description": "The type of this Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "title",
+        "description",
+        "types",
+        "alias"
+    ],
+    "title": "Dataset",
+    "type": "object",
+    "$id": "/workspace/src/schemas/Dataset"
+}

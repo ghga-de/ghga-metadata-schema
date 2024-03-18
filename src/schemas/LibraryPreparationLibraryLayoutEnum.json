@@ -1,0 +1,10 @@
+{
+    "description": "Single-end vs paired-end library",
+    "enum": [
+        "SE",
+        "PE"
+    ],
+    "title": "LibraryPreparationLibraryLayoutEnum",
+    "type": "string",
+    "$id": "/workspace/src/schemas/LibraryPreparationLibraryLayoutEnum"
+}

@@ -1,0 +1,7 @@
+{
+    "description": "Describes how biomaterial was isolated.",
+    "enum": [],
+    "title": "IsolationEnum",
+    "type": "string",
+    "$id": "/workspace/src/schemas/IsolationEnum"
+}
