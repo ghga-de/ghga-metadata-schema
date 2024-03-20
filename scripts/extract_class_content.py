@@ -110,6 +110,7 @@ def export_class_content(schema_defs: dict, excluded_list: list):
             filename = str(CLASS_CONTENT_DIR / class_name) + ".json"
             with open(filename, "w", encoding="utf-8") as file:
                 json.dump(class_info, file, indent=4)
+                file.write("\n")
 
 
 def main():
