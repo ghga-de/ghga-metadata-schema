@@ -10,7 +10,6 @@
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel
 from schemapack.spec.schemapack import (
     ClassDefinition,
     ContentSchema,
@@ -36,68 +35,72 @@ def load_yaml(path: Path):
         return yaml.safe_load(file)
 
 
-def construct_relation(class_name: str, class_relations: list) -> dict[str, Relation]:
+def construct_mandatory(relation_name: str, class_schema: dict):
+    """Returns the constraints in the relationship modality"""
+    if class_schema["slot_usage"][relation_name]["required"]:
+        return MandatoryRelationSpec(origin=True, target=True)
+    return MandatoryRelationSpec(origin=True, target=False)
+
+
+def construct_multiple():
+    """Returns the schemapack specification for 1 to n relationship"""
+    return MultipleRelationSpec(origin=True, target=False)
+
+
+def construct_relation(
+    class_relations: dict, class_schema: dict
+) -> dict[str, Relation]:
     """Creates objects of Relations from the relation list of a class"""
-    print(
-        {
-            class_name: Relation(
-                description=None,
-                targetClass=relation,
-                mandatory=MandatoryRelationSpec(origin=True, target=True),
-                multiple=MultipleRelationSpec(origin=True, target=True),
-            )
-            for relation in class_relations
-        }
-    )
+
     return {
-        class_name: Relation(
+        key: Relation(
             description=None,
-            targetClass=relation,
-            mandatory=MandatoryRelationSpec(origin=True, target=True),
-            multiple=MultipleRelationSpec(origin=True, target=True),
+            targetClass=value.get("targetClass"),
+            mandatory=construct_mandatory(key, class_schema),
+            multiple=construct_multiple(),
         )
-        for relation in class_relations
+        for key, value in class_relations.items()
     }
 
 
 def construct_content_schema(path: Path) -> str:
-    """function"""
+    """Reads the content schema"""
     with open(path, "r", encoding="utf-8") as file:
         content = file.read()
     return content
 
 
 def construct_schemapack_class(
-    class_name: str, class_desc: str, class_relations: list
+    class_name: str, class_relations: dict, class_schema: dict
 ) -> ClassDefinition:
     """Creates ClassDefinition object"""
     return ClassDefinition(
-        description=class_desc,
+        description=class_schema["description"],
         id=IDSpec(propertyName="alias", description=None),
         content=ContentSchema(
             json_schema=construct_content_schema(
                 Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json")
             )
         ),
-        relations=FrozenDict(construct_relation(class_name, class_relations)),
+        relations=FrozenDict(construct_relation(class_relations, class_schema)),
     )
 
 
-def get_class_relations(class_name: str, relations_config: dict) -> list:
+def get_class_relations(class_name: str, relations_config: dict) -> dict:
     """Extracts the relations of a given class from the relations config"""
     for info in relations_config["classes"]:
         if info["name"] == class_name:
             return info["relations"]
-    return []
+    return {}
 
 
 def _class_definitions(
     schema: dict, relations_config: dict, excluded_config: list
 ) -> dict:
-    """function"""
+    """Generates ClassDefinition and maps it to class name"""
     return {
         key: construct_schemapack_class(
-            key, value["description"], get_class_relations(key, relations_config)
+            key, get_class_relations(key, relations_config), value
         )
         for key, value in schema["classes"].items()
         if key not in excluded_config
@@ -105,7 +108,7 @@ def _class_definitions(
 
 
 def construct_schemapack(class_defs: dict):
-    """function"""
+    """Creates schemapack object"""
     return SchemaPack(
         schemapack="0.2.0",
         description="Schemapack definition",
@@ -120,7 +123,6 @@ def main():
     relations = load_yaml(RELATIONS_CONFIG)
     excluded = load_yaml(EXCLUDED_CLASSES)
     construct_schemapack(_class_definitions(schema, relations, excluded))
-    # print(construct_relation("Sample", get_class_relations("Sample", relations)))
 
 
 if __name__ == "__main__":
