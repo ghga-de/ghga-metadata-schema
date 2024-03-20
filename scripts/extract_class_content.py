@@ -122,7 +122,6 @@ def main():
     deleted_relations = clean_schema_relations(deleted_identifier, load_config())
     exclusions = load_yaml(EXCLUDE_CONFIG)
     export_class_content(deleted_relations, exclusions)
-    # print(json.dumps(modified_refs, indent=4))
 
 
 if __name__ == "__main__":
