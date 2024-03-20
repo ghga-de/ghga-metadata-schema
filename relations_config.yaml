@@ -1,0 +1,95 @@
+classes:
+- name: Attribute
+  relations: []
+- name: AliasMixin
+  relations: []
+- name: AttributeMixin
+  relations:
+  - attributes
+- name: Study
+  relations: []
+- name: SequencingExperiment
+  relations:
+  - sequencing_protocol
+  - library_preparation_protocol
+- name: Condition
+  relations:
+  - study
+- name: LibraryPreparationProtocol
+  relations: []
+- name: SequencingProtocol
+  relations: []
+- name: SequencingProcess
+  relations:
+  - sequencing_experiment
+  - sample
+- name: Biospecimen
+  relations:
+  - individual
+- name: Sample
+  relations:
+  - biospecimen
+  - condition
+- name: Individual
+  relations: []
+- name: Trio
+  relations:
+  - mother
+  - father
+  - child
+- name: File
+  relations:
+  - dataset
+- name: StudyFile
+  relations:
+  - study
+- name: SampleFile
+  relations:
+  - sample
+- name: SequencingProcessFile
+  relations:
+  - sequencing_process
+- name: AnalysisProcessOutputFile
+  relations:
+  - analysis_process
+- name: Analysis
+  relations: []
+- name: AnalysisProcess
+  relations:
+  - analysis
+  - study_input_files
+  - sample_input_files
+  - sequencing_process_input_files
+- name: Dataset
+  relations:
+  - data_access_policy
+- name: DataAccessPolicy
+  relations:
+  - data_access_committee
+- name: DataAccessCommittee
+  relations: []
+- name: Publication
+  relations:
+  - study
+- name: Submission
+  relations:
+  - analyses
+  - analysis_process_output_files
+  - analysis_processes
+  - biospecimens
+  - conditions
+  - data_access_committees
+  - data_access_policies
+  - datasets
+  - individuals
+  - library_preparation_protocols
+  - publications
+  - sample_files
+  - samples
+  - sequencing_experiments
+  - sequencing_process_files
+  - sequencing_processes
+  - sequencing_protocols
+  - studies
+  - study_files
+  - trios

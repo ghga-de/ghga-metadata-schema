@@ -1,0 +1,7 @@
+{
+    "description": "Permitted values for geographical region",
+    "enum": [],
+    "title": "GeographicalRegionEnum",
+    "type": "string",
+    "$id": "/workspace/src/content_schemas/GeographicalRegionEnum"
+}
