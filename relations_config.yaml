@@ -5,91 +5,67 @@ classes:
   relations: []
 - name: AttributeMixin
   relations:
-  - attributes
+  - Attributes
 - name: Study
   relations: []
 - name: SequencingExperiment
   relations:
-  - sequencing_protocol
-  - library_preparation_protocol
+  - SequencingProtocol
+  - LibraryPreparationProtocol
 - name: Condition
   relations:
-  - study
+  - Study
 - name: LibraryPreparationProtocol
   relations: []
 - name: SequencingProtocol
   relations: []
 - name: SequencingProcess
   relations:
-  - sequencing_experiment
-  - sample
+  - SequencingExperiment
+  - Sample
 - name: Biospecimen
   relations:
-  - individual
+  - Individual
 - name: Sample
   relations:
-  - biospecimen
-  - condition
+  - Biospecimen
+  - Condition
 - name: Individual
   relations: []
 - name: Trio
   relations:
-  - mother
-  - father
-  - child
+  - Individual
 - name: File
   relations:
-  - dataset
+  - Dataset
 - name: StudyFile
   relations:
-  - study
+  - Study
 - name: SampleFile
   relations:
-  - sample
+  - Sample
 - name: SequencingProcessFile
   relations:
-  - sequencing_process
+  - SequencingProcess
 - name: AnalysisProcessOutputFile
   relations:
-  - analysis_process
+  - AnalysisProcess
 - name: Analysis
   relations: []
 - name: AnalysisProcess
   relations:
-  - analysis
-  - study_input_files
-  - sample_input_files
-  - sequencing_process_input_files
+  - Analysis
+  - StudyFile
+  - SampleFile
+  - SequencingProcessFile
 - name: Dataset
   relations:
-  - data_access_policy
+  - DataAccessPolicy
 - name: DataAccessPolicy
   relations:
-  - data_access_committee
+  - DataAccessCommittee
 - name: DataAccessCommittee
   relations: []
 - name: Publication
   relations:
-  - study
-- name: Submission
-  relations:
-  - analyses
-  - analysis_process_output_files
-  - analysis_processes
-  - biospecimens
-  - conditions
-  - data_access_committees
-  - data_access_policies
-  - datasets
-  - individuals
-  - library_preparation_protocols
-  - publications
-  - sample_files
-  - samples
-  - sequencing_experiments
-  - sequencing_process_files
-  - sequencing_processes
-  - sequencing_protocols
-  - studies
-  - study_files
-  - trios
+  - Study

@@ -36,13 +36,23 @@ def load_yaml(path: Path):
         return yaml.safe_load(file)
 
 
-def construct_relation(class_relations: list) -> dict[str, Relation]:
+def construct_relation(class_name: str, class_relations: list) -> dict[str, Relation]:
     """Creates objects of Relations from the relation list of a class"""
-
+    print(
+        {
+            class_name: Relation(
+                description=None,
+                targetClass=relation,
+                mandatory=MandatoryRelationSpec(origin=True, target=True),
+                multiple=MultipleRelationSpec(origin=True, target=True),
+            )
+            for relation in class_relations
+        }
+    )
     return {
-        relation: Relation(
+        class_name: Relation(
             description=None,
-            targetClass=relation.upper(),
+            targetClass=relation,
             mandatory=MandatoryRelationSpec(origin=True, target=True),
             multiple=MultipleRelationSpec(origin=True, target=True),
         )
@@ -57,7 +67,9 @@ def construct_content_schema(path: Path) -> str:
     return content
 
 
-def construct_schemapack_class(class_name: str, class_desc: str, class_relations: list):
+def construct_schemapack_class(
+    class_name: str, class_desc: str, class_relations: list
+) -> ClassDefinition:
     """Creates ClassDefinition object"""
     return ClassDefinition(
         description=class_desc,
@@ -67,7 +79,7 @@ def construct_schemapack_class(class_name: str, class_desc: str, class_relations
                 Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json")
             )
         ),
-        relations=FrozenDict(construct_relation(class_relations)),
+        relations=FrozenDict(construct_relation(class_name, class_relations)),
     )
 
 
@@ -79,17 +91,27 @@ def get_class_relations(class_name: str, relations_config: dict) -> list:
     return []
 
 
-def construct_schemapack(
+def _class_definitions(
     schema: dict, relations_config: dict, excluded_config: list
-) -> list[ClassDefinition]:
+) -> dict:
     """function"""
-    return [
-        construct_schemapack_class(
+    return {
+        key: construct_schemapack_class(
             key, value["description"], get_class_relations(key, relations_config)
         )
         for key, value in schema["classes"].items()
         if key not in excluded_config
-    ]
+    }
+
+
+def construct_schemapack(class_defs: dict):
+    """function"""
+    return SchemaPack(
+        schemapack="0.2.0",
+        description="Schemapack definition",
+        classes=FrozenDict(class_defs),
+        root_class=None,
+    )
 
 
 def main():
@@ -97,7 +119,8 @@ def main():
     schema = load_yaml(LINKML_SCHEMA)
     relations = load_yaml(RELATIONS_CONFIG)
     excluded = load_yaml(EXCLUDED_CLASSES)
-    construct_schemapack(schema, relations, excluded)
+    construct_schemapack(_class_definitions(schema, relations, excluded))
+    # print(construct_relation("Sample", get_class_relations("Sample", relations)))
 
 
 if __name__ == "__main__":
