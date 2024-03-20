@@ -1,0 +1,45 @@
+{
+    "additionalProperties": false,
+    "description": "A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.",
+    "properties": {
+        "age_at_sampling": {
+            "$ref": "/workspace/src/content_schemas/AgeRangeEnum",
+            "description": "The age of the Individual."
+        },
+        "description": {
+            "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
+            "type": "string"
+        },
+        "isolation": {
+            "description": "Method or device employed for collecting/isolating this Biospecimen.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.",
+            "type": "string"
+        },
+        "storage": {
+            "$ref": "/workspace/src/content_schemas/StorageEnum",
+            "description": "Methods by which this Biospecimen is stored."
+        },
+        "tissue": {
+            "description": "The tissue this Biospecimen originated from.",
+            "type": "string"
+        },
+        "type": {
+            "description": "The type of Biospecimen.",
+            "type": "string"
+        },
+        "vital_status_at_sampling": {
+            "$ref": "/workspace/src/content_schemas/VitalStatusEnum",
+            "description": "Vital Status of the Individual at the point of sampling (e.g., alive)."
+        }
+    },
+    "required": [
+        "age_at_sampling",
+        "tissue"
+    ],
+    "title": "Biospecimen",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/Biospecimen"
+}

@@ -1,0 +1,9 @@
+{
+    "additionalProperties": false,
+    "description": "A Trio is a study design in which the genetic information of three individuals within a family unit is analyzed. It consists of a child and their biological parents.",
+    "properties": {},
+    "required": [],
+    "title": "Trio",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/Trio"
+}

@@ -1,0 +1,7 @@
+{
+    "description": "A tissue as described in the BRENDA ontology.",
+    "enum": [],
+    "title": "TissueEnum",
+    "type": "string",
+    "$id": "/workspace/src/content_schemas/TissueEnum"
+}

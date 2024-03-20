@@ -1,0 +1,7 @@
+{
+    "description": "An enum describing permissible phenotype descriptors",
+    "enum": [],
+    "title": "PhenotypicFeaturesEnum",
+    "type": "string",
+    "$id": "/workspace/src/content_schemas/PhenotypicFeaturesEnum"
+}
