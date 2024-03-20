@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
 """Script to convert linkML schema to schemapack definition"""
 
-# it needs to take the linkml schema as an input
-
-# it needs to extract the classes (what should I do with the mixins and the enums? they do not belong to the schemapack)
-
-# after the class, it will be id, content, relation
-
 from pathlib import Path
 
 import yaml
@@ -122,7 +116,11 @@ def main():
     schema = load_yaml(LINKML_SCHEMA)
     relations = load_yaml(RELATIONS_CONFIG)
     excluded = load_yaml(EXCLUDED_CLASSES)
-    construct_schemapack(_class_definitions(schema, relations, excluded))
+    print(
+        construct_schemapack(
+            _class_definitions(schema, relations, excluded)
+        ).model_dump()
+    )
 
 
 if __name__ == "__main__":
