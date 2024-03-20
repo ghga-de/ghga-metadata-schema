@@ -26,7 +26,7 @@ from script_utils.cli import run
 HERE = Path(__file__).parent.resolve()
 LINKML_SCHEMA = HERE.parent / "src" / "schema" / "submission.yaml"
 RELATIONS_CONFIG = HERE.parent / "relations_config.yaml"
-CLASS_CONTENT_FOLDER = HERE.parent / "src" / "schemas"
+CLASS_CONTENT_FOLDER = HERE.parent / "src" / "content_schemas"
 EXCLUDED_CLASSES = HERE.parent / "exclude_config.yaml"
 
 
@@ -97,7 +97,7 @@ def main():
     schema = load_yaml(LINKML_SCHEMA)
     relations = load_yaml(RELATIONS_CONFIG)
     excluded = load_yaml(EXCLUDED_CLASSES)
-    print(construct_schemapack(schema, relations, excluded))
+    construct_schemapack(schema, relations, excluded)
 
 
 if __name__ == "__main__":
