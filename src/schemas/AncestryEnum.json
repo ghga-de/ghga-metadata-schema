@@ -1,7 +1,0 @@
-{
-    "description": "Permitted values for ancestry",
-    "enum": [],
-    "title": "AncestryEnum",
-    "type": "string",
-    "$id": "/workspace/src/schemas/AncestryEnum"
-}
