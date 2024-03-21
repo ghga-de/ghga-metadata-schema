@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Script to convert linkML schema to schemapack definition"""
 
+import json
 from pathlib import Path
 
 import yaml
+from schemapack._internals.dump import dump_schemapack
 from schemapack.spec.schemapack import (
     ClassDefinition,
     ContentSchema,
-    FrozenDict,
     IDSpec,
     MandatoryRelationSpec,
     MultipleRelationSpec,
@@ -17,6 +18,7 @@ from schemapack.spec.schemapack import (
 from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
+SCHEMA_FOLDER = HERE.parent / "src" / "schema" / "schemapack.yaml"
 LINKML_SCHEMA = HERE.parent / "src" / "schema" / "submission.yaml"
 RELATIONS_CONFIG = HERE.parent / "relations_config.yaml"
 CLASS_CONTENT_FOLDER = HERE.parent / "src" / "content_schemas"
@@ -31,9 +33,12 @@ def load_yaml(path: Path):
 
 def construct_mandatory(relation_name: str, class_schema: dict):
     """Returns the constraints in the relationship modality"""
-    if class_schema["slot_usage"][relation_name]["required"]:
-        return MandatoryRelationSpec(origin=True, target=True)
-    return MandatoryRelationSpec(origin=True, target=False)
+    return MandatoryRelationSpec(
+        origin=True,
+        target=class_schema.get("slot_usage", {})
+        .get(relation_name, {})
+        .get("required", False),
+    )
 
 
 def construct_multiple():
@@ -59,7 +64,7 @@ def construct_relation(
 
 def construct_content_schema(path: Path) -> str:
     """Reads the content schema"""
-    with open(path, "r", encoding="utf-8") as file:
+    with path.open("r", encoding="utf-8") as file:
         content = file.read()
     return content
 
@@ -76,7 +81,7 @@ def construct_schemapack_class(
                 Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json")
             )
         ),
-        relations=FrozenDict(construct_relation(class_relations, class_schema)),
+        relations=construct_relation(class_relations, class_schema),
     )
 
 
@@ -104,10 +109,10 @@ def _class_definitions(
 def construct_schemapack(class_defs: dict):
     """Creates schemapack object"""
     return SchemaPack(
-        schemapack="0.2.0",
+        schemapack="0.3.0",
         description="Schemapack definition",
-        classes=FrozenDict(class_defs),
-        root_class=None,
+        classes=class_defs,
+        rootClass=None,
     )
 
 
@@ -116,10 +121,10 @@ def main():
     schema = load_yaml(LINKML_SCHEMA)
     relations = load_yaml(RELATIONS_CONFIG)
     excluded = load_yaml(EXCLUDED_CLASSES)
-    print(
-        construct_schemapack(
-            _class_definitions(schema, relations, excluded)
-        ).model_dump()
+    schemapack = construct_schemapack(_class_definitions(schema, relations, excluded))
+
+    dump_schemapack(
+        schemapack, path=SCHEMA_FOLDER, content_schema_dir=CLASS_CONTENT_FOLDER
     )
 
 

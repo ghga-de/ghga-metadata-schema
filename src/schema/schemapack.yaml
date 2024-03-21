@@ -1,0 +1,1083 @@
+classes:
+  Analysis:
+    content:
+      $id: /workspace/src/content_schemas/Analysis
+      additionalProperties: false
+      description: An Analysis is a data transformation that transforms input data
+        to output data.
+      properties:
+        description:
+          description: A description summarizing how this Analysis was carried out
+            (e.g., computational tools, pipelines, workflows).
+          type: string
+        reference_chromosome:
+          description: The reference chromosome used for this Analysis.
+          type: string
+        reference_genome:
+          description: The reference genome or annotation used for prior analyses
+            (e.g., GRCh38.p13).
+          type: string
+        title:
+          description: The title that describes an entity.
+          type: string
+        type:
+          description: The type of this Analysis.
+          type: string
+      required:
+      - title
+      - reference_genome
+      - reference_chromosome
+      title: Analysis
+      type: object
+    description: An Analysis is a data transformation that transforms input data to
+      output data.
+    id:
+      propertyName: alias
+  AnalysisProcess:
+    content:
+      $id: /workspace/src/content_schemas/AnalysisProcess
+      additionalProperties: false
+      description: An Analysis Process captures the workflow steps that were performed
+        to analyze data obtained from a Sequencing Experiment.
+      properties:
+        name:
+          description: The name for an entity.
+          type: string
+      required:
+      - name
+      title: AnalysisProcess
+      type: object
+    description: An Analysis Process captures the workflow steps that were performed
+      to analyze data obtained from a Sequencing Experiment.
+    id:
+      propertyName: alias
+    relations:
+      analysis:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Analysis
+      sample_input_files:
+        mandatory:
+          origin: true
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: SampleFile
+      sequencing_process_input_files:
+        mandatory:
+          origin: true
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: SequencingProcessFile
+      study_input_files:
+        mandatory:
+          origin: true
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: StudyFile
+  AnalysisProcessOutputFile:
+    content:
+      $id: /workspace/src/content_schemas/AnalysisProcessOutputFile
+      additionalProperties: false
+      description: A Analysis Process OutputFile is a File that is associated as an
+        output file with an Analysis Process.
+      properties:
+        checksum:
+          description: The checksum of the File.
+          type: string
+        checksum_type:
+          description: The type of algorithm used to generate the checksum of the
+            File.
+          type: string
+        dataset:
+          description: The Dataset associated with this File.
+          type: string
+        format:
+          $ref: /workspace/src/content_schemas/FileFormatEnum
+          description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+        forward_or_reverse:
+          $ref: /workspace/src/content_schemas/ForwardOrReverseEnum
+          description: Denotes whether a submitted FASTQ file contains forward (R1)
+            or reverse (R2) reads for paired-end sequencing.
+        name:
+          description: The given filename.
+          type: string
+        size:
+          description: The size of the File in bytes.
+          type: integer
+      required:
+      - name
+      - format
+      - size
+      - checksum
+      - checksum_type
+      - dataset
+      title: AnalysisProcessOutputFile
+      type: object
+    description: A Analysis Process OutputFile is a File that is associated as an
+      output file with an Analysis Process.
+    id:
+      propertyName: alias
+    relations:
+      analysis_process:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: AnalysisProcess
+  Attribute:
+    content:
+      $id: /workspace/src/content_schemas/Attribute
+      additionalProperties: false
+      description: A key/value pair that further characterizes an entity.
+      properties:
+        key:
+          description: The key of an attribute.
+          type: string
+        key_type:
+          description: A semantic type that characterizes the attribute key (e.g.,
+            oxygen saturation measurement (MAXO:0000616)).
+          type: string
+        value:
+          description: The value for an attribute (e.g., a numerical value without
+            the units).
+          type: string
+        value_type:
+          description: The value_type that characterizes the attribute value (e.g.,
+            percentage (SIO:001413)).
+          type: string
+      required:
+      - key
+      - value
+      title: Attribute
+      type: object
+    description: A key/value pair that further characterizes an entity.
+    id:
+      propertyName: alias
+  Biospecimen:
+    content:
+      $id: /workspace/src/content_schemas/Biospecimen
+      additionalProperties: false
+      description: A Biospecimen is any natural material taken from a biological entity
+        for testing, diagnostics, treatment, or research purposes.  It is linked to
+        the Individual from which the Biospecimen is derived.
+      properties:
+        age_at_sampling:
+          $ref: /workspace/src/content_schemas/AgeRangeEnum
+          description: The age of the Individual.
+        description:
+          description: A concise description about the Biospecimen source, the collection
+            method, and the protocol which was followed to process this Biospecimen.
+          type: string
+        isolation:
+          description: Method or device employed for collecting/isolating this Biospecimen.
+          type: string
+        name:
+          description: A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
+            This property must not include any personally identifiable data.
+          type: string
+        storage:
+          $ref: /workspace/src/content_schemas/StorageEnum
+          description: Methods by which this Biospecimen is stored.
+        tissue:
+          description: The tissue this Biospecimen originated from.
+          type: string
+        type:
+          description: The type of Biospecimen.
+          type: string
+        vital_status_at_sampling:
+          $ref: /workspace/src/content_schemas/VitalStatusEnum
+          description: Vital Status of the Individual at the point of sampling (e.g.,
+            alive).
+      required:
+      - age_at_sampling
+      - tissue
+      title: Biospecimen
+      type: object
+    description: A Biospecimen is any natural material taken from a biological entity
+      for testing, diagnostics, treatment, or research purposes.  It is linked to
+      the Individual from which the Biospecimen is derived.
+    id:
+      propertyName: alias
+    relations:
+      individual:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+  Condition:
+    content:
+      $id: /workspace/src/content_schemas/Condition
+      additionalProperties: false
+      description: A Condition specifies which special characteristics and treatments
+        apply to a Sample (e.g., whether the Sample comes from a disease or a healthy
+        tissue).
+      properties:
+        attributes:
+          description: Key/value pairs corresponding to an entity.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        case_control_status:
+          $ref: /workspace/src/content_schemas/CaseControlStatusEnum
+          description: Whether a Condition corresponds to a treatment or a control.
+        description:
+          description: A concise description of the applied Condition.
+          type: string
+        disease_or_healthy:
+          $ref: /workspace/src/content_schemas/DiseaseOrHealthyEnum
+          description: Whether a Condition corresponds to a disease or a healthy state.
+        mutant_or_wildtype:
+          $ref: /workspace/src/content_schemas/MutantOrWildtypeEnum
+          description: Whether a Condition corresponds to a mutant or a wildtype.
+        name:
+          description: The name of this Condition.
+          type: string
+      required:
+      - name
+      - description
+      - disease_or_healthy
+      - case_control_status
+      - mutant_or_wildtype
+      title: Condition
+      type: object
+    description: A Condition specifies which special characteristics and treatments
+      apply to a Sample (e.g., whether the Sample comes from a disease or a healthy
+      tissue).
+    id:
+      propertyName: alias
+    relations:
+      study:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  DataAccessCommittee:
+    content:
+      $id: /workspace/src/content_schemas/DataAccessCommittee
+      additionalProperties: false
+      description: A group of members that are delegated to grant access to one or
+        more datasets after ensuring the criteria for data sharing has been met,  and
+        request for data use does not raise ethical and/or legal concerns.
+      properties:
+        email:
+          description: The email of the Data Access Committee (e.g., DAC[at]email.com).
+            This property must not include any personally identifiable data.
+          type: string
+        institute:
+          description: The Institute a person is affiliated with.
+          type: string
+      required:
+      - email
+      - institute
+      title: DataAccessCommittee
+      type: object
+    description: A group of members that are delegated to grant access to one or more
+      datasets after ensuring the criteria for data sharing has been met,  and request
+      for data use does not raise ethical and/or legal concerns.
+    id:
+      propertyName: alias
+  DataAccessPolicy:
+    content:
+      $id: /workspace/src/content_schemas/DataAccessPolicy
+      additionalProperties: false
+      description: A Data Access Policy specifies under which circumstances, legal
+        or otherwise, a user can have access to one or more Datasets belonging to
+        one or more Studies.
+      properties:
+        data_use_modifiers:
+          description: 'One or more Data Use Modifiers for the Data Use Permission
+            associated with this Data Use Policy. The used terms should be descendants
+            of ''DUO:0000017: data use modifier''. Please use ''user specific restriction''
+            if no other modifier applies.'
+          items:
+            $ref: /workspace/src/content_schemas/DataUseModifierEnum
+          type: array
+        data_use_permission:
+          $ref: /workspace/src/content_schemas/DataUsePermissionEnum
+          description: 'The Data Use Permission associated with this Data Use Policy.
+            The used term should be a descendant of ''DUO:0000001: data use permission''.'
+        description:
+          description: A short description for this Data Access Policy.
+          type: string
+        name:
+          description: A name for this Data Access Policy.
+          type: string
+        policy_text:
+          description: The complete text for the Data Access Policy.
+          type: string
+        policy_url:
+          description: An alternative to the Data Access Policy text is to provide
+            the URL for the policy. This is useful if the terms of the policy are
+            available online at a resolvable URL.
+          type: string
+      required:
+      - name
+      - description
+      - policy_text
+      - data_use_permission
+      title: DataAccessPolicy
+      type: object
+    description: A Data Access Policy specifies under which circumstances, legal or
+      otherwise, a user can have access to one or more Datasets belonging to one or
+      more Studies.
+    id:
+      propertyName: alias
+    relations:
+      data_access_committee:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: DataAccessCommittee
+  Dataset:
+    content:
+      $id: /workspace/src/content_schemas/Dataset
+      additionalProperties: false
+      description: A Dataset is a collection of Files that is prepared for distribution
+        and is tied to a Data Access Policy.
+      properties:
+        description:
+          description: A description summarizing this Dataset.
+          type: string
+        title:
+          description: A title for this Dataset.
+          type: string
+        types:
+          description: The type of this Dataset.
+          items:
+            type: string
+          type: array
+      required:
+      - title
+      - description
+      - types
+      title: Dataset
+      type: object
+    description: A Dataset is a collection of Files that is prepared for distribution
+      and is tied to a Data Access Policy.
+    id:
+      propertyName: alias
+    relations:
+      data_access_policy:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: DataAccessPolicy
+  File:
+    content:
+      $id: /workspace/src/content_schemas/File
+      additionalProperties: false
+      description: A file is an object that contains information generated from a
+        process, either an Experiment or an Analysis.
+      properties:
+        checksum:
+          description: The checksum of the File.
+          type: string
+        checksum_type:
+          description: The type of algorithm used to generate the checksum of the
+            File.
+          type: string
+        format:
+          $ref: /workspace/src/content_schemas/FileFormatEnum
+          description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+        forward_or_reverse:
+          $ref: /workspace/src/content_schemas/ForwardOrReverseEnum
+          description: Denotes whether a submitted FASTQ file contains forward (R1)
+            or reverse (R2) reads for paired-end sequencing.
+        name:
+          description: The given filename.
+          type: string
+        size:
+          description: The size of the File in bytes.
+          type: integer
+      required:
+      - name
+      - format
+      - size
+      - checksum
+      - checksum_type
+      title: File
+      type: object
+    description: A file is an object that contains information generated from a process,
+      either an Experiment or an Analysis.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+  Individual:
+    content:
+      $id: /workspace/src/content_schemas/Individual
+      additionalProperties: false
+      description: An Individual is a Person who is participating in a Study.
+      properties:
+        ancestries:
+          description: A person's descent or lineage from a population.
+          items:
+            type: string
+          type: array
+        geographical_region:
+          description: The geographical region where the Individual is located.
+          type: string
+        karyotype:
+          $ref: /workspace/src/content_schemas/KaryotypeEnum
+          description: The karyotype of the Individual.
+        phenotypic_features:
+          description: The phenotypic feature concepts that the entity is associated
+            with at the time of retrieval from the organism. The Phenotypic Feature
+            is captured using a concept from the Human Phenotype Ontology.
+          items:
+            type: string
+          type: array
+        sex:
+          $ref: /workspace/src/content_schemas/IndividualSexEnum
+          description: The genotypic sex of the Individual (e.g., female).
+      required:
+      - sex
+      title: Individual
+      type: object
+    description: An Individual is a Person who is participating in a Study.
+    id:
+      propertyName: alias
+  LibraryPreparationProtocol:
+    content:
+      $id: /workspace/src/content_schemas/LibraryPreparationProtocol
+      additionalProperties: false
+      description: The Library Preparation Protocol captures information about the
+        library preparation of a Sequencing Experiment.
+      properties:
+        attributes:
+          description: One or more attributes that further characterize this Library
+            Preparation Protocol.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        description:
+          description: Description summarizing how a sequencing library was prepared.
+          type: string
+        end_bias:
+          $ref: /workspace/src/content_schemas/EndBiasEnum
+          description: The end of the cDNA molecule that is preferentially sequenced
+            (e.g., 3/5 prime end, full-length).
+        library_layout:
+          $ref: /workspace/src/content_schemas/LibraryPreparationLibraryLayoutEnum
+          description: Describe whether the library was sequenced in single-end (forward
+            or reverse) or paired-end mode.
+        library_name:
+          description: A short name identifying the library. The same name may refer
+            to multiple versions of the same continually updated library.
+          type: string
+        library_preparation:
+          description: The general method for preparation of the sequencing library
+            (e.g., KAPA PCR-free).
+          type: string
+        library_preparation_kit_manufacturer:
+          description: The manufacturer of the kit used for library preparation.
+          type: string
+        library_preparation_kit_retail_name:
+          $ref: /workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum
+          description: The retail name for the kit used to construct a genomic library.
+            This may include the vendor name, kit name and kit version (e.g., Agilent
+            sure select Human Exome V8, Twist RefSeq Exome).
+        library_selection:
+          $ref: /workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum
+          description: The method used to select for or against, enrich, or screen
+            the material being sequenced (e.g., random, PCA, cDNA).
+        library_type:
+          $ref: /workspace/src/content_schemas/LibraryPreparationLibraryTypeEnum
+          description: Describe the level of omics analysis (e.g., metagenome, transcriptome)
+        primer:
+          $ref: /workspace/src/content_schemas/PrimerEnum
+          description: The type of primer used for reverse transcription (e.g., oligo-dT
+            or random).
+        rnaseq_strandedness:
+          $ref: /workspace/src/content_schemas/LibraryPreparationRNASeqStrandednessEnum
+          description: The strandedness of the library, whether reads come from both
+            strands of the cDNA or only from the first (antisense) or the second (sense)
+            strand.
+        target_regions:
+          description: Subset of genes or specific regions of the genome, which are
+            most likely to be involved in the phenotype under study.
+          items:
+            type: string
+          type: array
+      required:
+      - description
+      - library_name
+      - library_layout
+      - library_type
+      - library_selection
+      - library_preparation
+      title: LibraryPreparationProtocol
+      type: object
+    description: The Library Preparation Protocol captures information about the library
+      preparation of a Sequencing Experiment.
+    id:
+      propertyName: alias
+  Publication:
+    content:
+      $id: /workspace/src/content_schemas/Publication
+      additionalProperties: false
+      description: A Publication represents an article that is published. The minimum
+        expectation is that the publication has a valid DOI.
+      properties:
+        abstract:
+          description: The study abstract that describes the goals. Can also hold
+            abstract from a Publication related to this Study.
+          type: string
+        author:
+          description: Author(s) of this Publication.
+          type: string
+        doi:
+          description: DOI identifier of a publication.
+          type: string
+        journal:
+          description: The name of the journal.
+          type: string
+        title:
+          description: The title for this Publication.
+          type: string
+        xref:
+          description: One or more cross-references for this Publication.
+          items:
+            type: string
+          type: array
+        year:
+          description: The year in which the paper was published.
+          type: integer
+      required:
+      - doi
+      title: Publication
+      type: object
+    description: A Publication represents an article that is published. The minimum
+      expectation is that the publication has a valid DOI.
+    id:
+      propertyName: alias
+    relations:
+      study:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  Sample:
+    content:
+      $id: /workspace/src/content_schemas/Sample
+      additionalProperties: false
+      description: A Sample is a limited quantity of something to be used for testing,
+        analysis, inspection, investigation, demonstration, or trial use.  It is prepared
+        from a Biospecimen.
+      properties:
+        attributes:
+          description: Key/value pairs corresponding to an entity.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        description:
+          description: A concise description about the Sample source, the collection
+            method, and the protocol which was followed to process this Sample.
+          type: string
+        isolation:
+          description: Method or device employed for collecting/isolating this Sample.
+          type: string
+        name:
+          description: A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1
+            or GHGAS_PBMC_RNAseq_S1). This property must not include any personally
+            identifiable data.
+          type: string
+        storage:
+          $ref: /workspace/src/content_schemas/StorageEnum
+          description: Methods by which this Sample is stored.
+        type:
+          $ref: /workspace/src/content_schemas/SampleTypeEnum
+          description: The type of the Sample.
+        xref:
+          description: One or more cross-references for this Sample (e.g., this Sample
+            may have an EBI BioSamples accession ID).
+          items:
+            type: string
+          type: array
+      required:
+      - name
+      - description
+      title: Sample
+      type: object
+    description: A Sample is a limited quantity of something to be used for testing,
+      analysis, inspection, investigation, demonstration, or trial use.  It is prepared
+      from a Biospecimen.
+    id:
+      propertyName: alias
+    relations:
+      biospecimen:
+        mandatory:
+          origin: true
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Biospecimen
+      condition:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Condition
+  SampleFile:
+    content:
+      $id: /workspace/src/content_schemas/SampleFile
+      additionalProperties: false
+      description: A Sample File is a File that is associated with a Sample.
+      properties:
+        checksum:
+          description: The checksum of the File.
+          type: string
+        checksum_type:
+          description: The type of algorithm used to generate the checksum of the
+            File.
+          type: string
+        dataset:
+          description: The Dataset associated with this File.
+          type: string
+        format:
+          $ref: /workspace/src/content_schemas/FileFormatEnum
+          description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+        forward_or_reverse:
+          $ref: /workspace/src/content_schemas/ForwardOrReverseEnum
+          description: Denotes whether a submitted FASTQ file contains forward (R1)
+            or reverse (R2) reads for paired-end sequencing.
+        name:
+          description: The given filename.
+          type: string
+        size:
+          description: The size of the File in bytes.
+          type: integer
+      required:
+      - name
+      - format
+      - size
+      - checksum
+      - checksum_type
+      - dataset
+      title: SampleFile
+      type: object
+    description: A Sample File is a File that is associated with a Sample.
+    id:
+      propertyName: alias
+    relations:
+      sample:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Sample
+  SequencingExperiment:
+    content:
+      $id: /workspace/src/content_schemas/SequencingExperiment
+      additionalProperties: false
+      description: A Sequencing Experiment is an investigation that consists of a
+        coordinated set of actions and observations designed to generate data with
+        the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+      properties:
+        attributes:
+          description: Key/value pairs corresponding to an entity.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        description:
+          description: A detailed description of this Sequencing Experiment.
+          type: string
+        title:
+          description: The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
+          type: string
+        type:
+          description: The type of this Sequencing Experiment.
+          type: string
+      required:
+      - title
+      - description
+      title: SequencingExperiment
+      type: object
+    description: A Sequencing Experiment is an investigation that consists of a coordinated
+      set of actions and observations designed to generate data with the goal of verifying,
+      falsifying, or establishing the validity of a hypothesis.
+    id:
+      propertyName: alias
+    relations:
+      library_preparation_protocol:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: LibraryPreparationProtocol
+      sequencing_protocol:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: SequencingProtocol
+  SequencingProcess:
+    content:
+      $id: /workspace/src/content_schemas/SequencingProcess
+      additionalProperties: false
+      description: The Sequencing Process captures the technical parameters that were
+        used to produce sequencing output from the Sample. It links the Sample to
+        sequencing output.
+      properties:
+        attributes:
+          description: Key/value pairs corresponding to an entity.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        description:
+          description: A short description of this Sequencing Process.
+          type: string
+        index_sequence:
+          description: A unique nucleotide sequence that is added to a sample during
+            library preparation to serve as a unique identifier for the Sample.
+          type: string
+        name:
+          description: A short name identifying this Sequencing Process.
+          type: string
+        sequencing_lane_id:
+          description: The identifier of a sequencing lane.
+          type: string
+        sequencing_machine_id:
+          description: The identifier of a sequencing machine.
+          type: string
+        sequencing_run_id:
+          description: The identifier of a sequencing run.
+          type: string
+      required:
+      - name
+      - description
+      title: SequencingProcess
+      type: object
+    description: The Sequencing Process captures the technical parameters that were
+      used to produce sequencing output from the Sample. It links the Sample to sequencing
+      output.
+    id:
+      propertyName: alias
+    relations:
+      sample:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Sample
+      sequencing_experiment:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: SequencingExperiment
+  SequencingProcessFile:
+    content:
+      $id: /workspace/src/content_schemas/SequencingProcessFile
+      additionalProperties: false
+      description: A Sequencing Process File is a File that is associated with a Sequencing
+        Process.
+      properties:
+        checksum:
+          description: The checksum of the File.
+          type: string
+        checksum_type:
+          description: The type of algorithm used to generate the checksum of the
+            File.
+          type: string
+        dataset:
+          description: The Dataset associated with this File.
+          type: string
+        format:
+          $ref: /workspace/src/content_schemas/FileFormatEnum
+          description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+        forward_or_reverse:
+          $ref: /workspace/src/content_schemas/ForwardOrReverseEnum
+          description: Denotes whether a submitted FASTQ file contains forward (R1)
+            or reverse (R2) reads for paired-end sequencing.
+        name:
+          description: The given filename.
+          type: string
+        size:
+          description: The size of the File in bytes.
+          type: integer
+      required:
+      - name
+      - format
+      - size
+      - checksum
+      - checksum_type
+      - dataset
+      title: SequencingProcessFile
+      type: object
+    description: A Sequencing Process File is a File that is associated with a Sequencing
+      Process.
+    id:
+      propertyName: alias
+    relations:
+      sequencing_process:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: SequencingProcess
+  SequencingProtocol:
+    content:
+      $id: /workspace/src/content_schemas/SequencingProtocol
+      additionalProperties: false
+      description: The Sequencing Protocol captures information about parameters and
+        metadata associated with a Sequencing Experiment.
+      properties:
+        attributes:
+          description: One or more attributes that further characterize this Sequencing
+            Protocol.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        cell_barcode_offset:
+          description: The offset in sequence of the cell identifying barcode (e.g.,
+            0).
+          type: string
+        cell_barcode_read:
+          $ref: /workspace/src/content_schemas/IndexReadEnum
+          description: The type of read that contains the cell barcode (e.g., index1,
+            index2, read1, read2).
+        cell_barcode_size:
+          description: The size of the cell identifying barcode (e.g., 16).
+          type: string
+        description:
+          description: A description summarizing the Sequencing Protocol.
+          type: string
+        flow_cell_id:
+          description: Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
+          type: string
+        flow_cell_type:
+          $ref: /workspace/src/content_schemas/FlowCellTypeEnum
+          description: Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION,
+            Flongle for Nanopore).
+        instrument_model:
+          $ref: /workspace/src/content_schemas/InstrumentModelEnum
+          description: The name and model of the technology platform used to perform
+            sequencing.
+        name:
+          description: A short name identifying this Sequencing Protocol.
+          type: string
+        sample_barcode_read:
+          $ref: /workspace/src/content_schemas/SampleBarcodeReadEnum
+          description: The type of read that contains the sample barcode (e.g., index1,
+            index2, read1, read2).
+        sequencing_center:
+          description: Center where sample was sequenced.
+          type: string
+        sequencing_read_length:
+          description: Length of sequencing reads (e.g., long or short or actual number
+            of the read length).
+          type: string
+        target_coverage:
+          description: Mean coverage for whole genome sequencing, or mean target coverage
+            for whole exome and targeted sequencing, (i.e. the number of times a particular
+            locus was sequenced).
+          type: string
+        type:
+          description: Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome
+            long-read sequencing).
+          type: string
+        umi_barcode_offset:
+          description: The offset in sequence of the UMI identifying barcode (e.g.,
+            16).
+          type: string
+        umi_barcode_read:
+          $ref: /workspace/src/content_schemas/IndexReadEnum
+          description: The type of read that contains the UMI barcode (e.g., index1,
+            index2, read1, read2).
+        umi_barcode_size:
+          description: The size of the UMI identifying barcode (e.g., 10).
+          type: string
+      required:
+      - name
+      - description
+      - instrument_model
+      title: SequencingProtocol
+      type: object
+    description: The Sequencing Protocol captures information about parameters and
+      metadata associated with a Sequencing Experiment.
+    id:
+      propertyName: alias
+  Study:
+    content:
+      $id: /workspace/src/content_schemas/Study
+      additionalProperties: false
+      description: A Study is an experimental investigation of a particular phenomenon.
+        It involves a detailed examination and analysis of a subject to learn more
+        about the phenomenon being studied.
+      properties:
+        affiliations:
+          description: The affiliations associated with this Study.
+          items:
+            type: string
+          type: array
+        attributes:
+          description: One or more attributes that further characterize this Study.
+          items:
+            $ref: /workspace/src/content_schemas/Attribute
+          type: array
+        description:
+          description: A detailed description (abstract) that describes the goals
+            of this Study.
+          type: string
+        title:
+          description: A comprehensive title for this Study.
+          type: string
+        type:
+          $ref: /workspace/src/content_schemas/StudyTypeEnum
+          description: The type of this Study (e.g., Cancer Genomics, Epigenetics,
+            Exome Sequencing).
+      required:
+      - title
+      - description
+      - type
+      - affiliations
+      title: Study
+      type: object
+    description: A Study is an experimental investigation of a particular phenomenon.
+      It involves a detailed examination and analysis of a subject to learn more about
+      the phenomenon being studied.
+    id:
+      propertyName: alias
+  StudyFile:
+    content:
+      $id: /workspace/src/content_schemas/StudyFile
+      additionalProperties: false
+      description: A Study File is a File that is associated with a Study.
+      properties:
+        checksum:
+          description: The checksum of the File.
+          type: string
+        checksum_type:
+          description: The type of algorithm used to generate the checksum of the
+            File.
+          type: string
+        dataset:
+          description: The Dataset associated with this File.
+          type: string
+        format:
+          $ref: /workspace/src/content_schemas/FileFormatEnum
+          description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+        forward_or_reverse:
+          $ref: /workspace/src/content_schemas/ForwardOrReverseEnum
+          description: Denotes whether a submitted FASTQ file contains forward (R1)
+            or reverse (R2) reads for paired-end sequencing.
+        name:
+          description: The given filename.
+          type: string
+        size:
+          description: The size of the File in bytes.
+          type: integer
+      required:
+      - name
+      - format
+      - size
+      - checksum
+      - checksum_type
+      - dataset
+      title: StudyFile
+      type: object
+    description: A Study File is a File that is associated with a Study.
+    id:
+      propertyName: alias
+    relations:
+      study:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  Trio:
+    content:
+      $id: /workspace/src/content_schemas/Trio
+      additionalProperties: false
+      description: A Trio is a study design in which the genetic information of three
+        individuals within a family unit is analyzed. It consists of a child and their
+        biological parents.
+      properties: {}
+      required: []
+      title: Trio
+      type: object
+    description: A Trio is a study design in which the genetic information of three
+      individuals within a family unit is analyzed. It consists of a child and their
+      biological parents.
+    id:
+      propertyName: alias
+    relations:
+      child:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+      father:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+      mother:
+        mandatory:
+          origin: true
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+description: Schemapack definition
+schemapack: 0.3.0
