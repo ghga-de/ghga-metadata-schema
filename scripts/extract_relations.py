@@ -3,6 +3,7 @@
 
 from pathlib import Path
 from typing import Any, Union
+
 import yaml
 from pydantic import BaseModel, Field
 from script_utils.cli import run
@@ -13,11 +14,11 @@ class SchemaClass(BaseModel):
 
     name: str
     slots: list
-    relations: list[Union[Any, str]] = Field(default_factory=list)
+    relations: dict[str, dict] = Field(default_factory=dict)
 
 
 class Schema(BaseModel):
-    """Model describing a basic linkML schema """
+    """Model describing a basic linkML schema"""
 
     json_schema: dict[str, Any]
     classes: list[SchemaClass]
@@ -62,13 +63,13 @@ def slots_with_class_range(schema: Schema) -> dict:
     }
 
 
-def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> list:
+def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> dict:
     """Extracts the classes that a given class is in relation with"""
-    return [
-        slot
+    return {
+        slot: {"targetClass": class_ranged_slots[slot]}
         for slot in schema_class.slots
         if slot in class_ranged_slots
-    ]
+    }
 
 
 def save_relations(schema: Schema, filename: str):

@@ -1,95 +1,139 @@
 classes:
 - name: Attribute
-  relations: []
+  relations: {}
 - name: AliasMixin
-  relations: []
+  relations: {}
 - name: AttributeMixin
   relations:
-  - attributes
+    attributes:
+      targetClass: Attribute
 - name: Study
-  relations: []
+  relations: {}
 - name: SequencingExperiment
   relations:
-  - sequencing_protocol
-  - library_preparation_protocol
+    library_preparation_protocol:
+      targetClass: LibraryPreparationProtocol
+    sequencing_protocol:
+      targetClass: SequencingProtocol
 - name: Condition
   relations:
-  - study
+    study:
+      targetClass: Study
 - name: LibraryPreparationProtocol
-  relations: []
+  relations: {}
 - name: SequencingProtocol
-  relations: []
+  relations: {}
 - name: SequencingProcess
   relations:
-  - sequencing_experiment
-  - sample
+    sample:
+      targetClass: Sample
+    sequencing_experiment:
+      targetClass: SequencingExperiment
 - name: Biospecimen
   relations:
-  - individual
+    individual:
+      targetClass: Individual
 - name: Sample
   relations:
-  - biospecimen
-  - condition
+    biospecimen:
+      targetClass: Biospecimen
+    condition:
+      targetClass: Condition
 - name: Individual
-  relations: []
+  relations: {}
 - name: Trio
   relations:
-  - mother
-  - father
-  - child
+    child:
+      targetClass: Individual
+    father:
+      targetClass: Individual
+    mother:
+      targetClass: Individual
 - name: File
   relations:
-  - dataset
+    dataset:
+      targetClass: Dataset
 - name: StudyFile
   relations:
-  - study
+    study:
+      targetClass: Study
 - name: SampleFile
   relations:
-  - sample
+    sample:
+      targetClass: Sample
 - name: SequencingProcessFile
   relations:
-  - sequencing_process
+    sequencing_process:
+      targetClass: SequencingProcess
 - name: AnalysisProcessOutputFile
   relations:
-  - analysis_process
+    analysis_process:
+      targetClass: AnalysisProcess
 - name: Analysis
-  relations: []
+  relations: {}
 - name: AnalysisProcess
   relations:
-  - analysis
-  - study_input_files
-  - sample_input_files
-  - sequencing_process_input_files
+    analysis:
+      targetClass: Analysis
+    sample_input_files:
+      targetClass: SampleFile
+    sequencing_process_input_files:
+      targetClass: SequencingProcessFile
+    study_input_files:
+      targetClass: StudyFile
 - name: Dataset
   relations:
-  - data_access_policy
+    data_access_policy:
+      targetClass: DataAccessPolicy
 - name: DataAccessPolicy
   relations:
-  - data_access_committee
+    data_access_committee:
+      targetClass: DataAccessCommittee
 - name: DataAccessCommittee
-  relations: []
+  relations: {}
 - name: Publication
   relations:
-  - study
+    study:
+      targetClass: Study
 - name: Submission
   relations:
-  - analyses
-  - analysis_process_output_files
-  - analysis_processes
-  - biospecimens
-  - conditions
-  - data_access_committees
-  - data_access_policies
-  - datasets
-  - individuals
-  - library_preparation_protocols
-  - publications
-  - sample_files
-  - samples
-  - sequencing_experiments
-  - sequencing_process_files
-  - sequencing_processes
-  - sequencing_protocols
-  - studies
-  - study_files
-  - trios
+    analyses:
+      targetClass: Analysis
+    analysis_process_output_files:
+      targetClass: AnalysisProcessOutputFile
+    analysis_processes:
+      targetClass: AnalysisProcess
+    biospecimens:
+      targetClass: Biospecimen
+    conditions:
+      targetClass: Condition
+    data_access_committees:
+      targetClass: DataAccessCommittee
+    data_access_policies:
+      targetClass: DataAccessPolicy
+    datasets:
+      targetClass: Dataset
+    individuals:
+      targetClass: Individual
+    library_preparation_protocols:
+      targetClass: LibraryPreparationProtocol
+    publications:
+      targetClass: Publication
+    sample_files:
+      targetClass: SampleFile
+    samples:
+      targetClass: Sample
+    sequencing_experiments:
+      targetClass: SequencingExperiment
+    sequencing_process_files:
+      targetClass: SequencingProcessFile
+    sequencing_processes:
+      targetClass: SequencingProcess
+    sequencing_protocols:
+      targetClass: SequencingProtocol
+    studies:
+      targetClass: Study
+    study_files:
+      targetClass: StudyFile
+    trios:
+      targetClass: Trio

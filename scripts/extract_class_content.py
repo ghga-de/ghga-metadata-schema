@@ -32,14 +32,24 @@ def load_yaml(path: Path):
     return data
 
 
+def _reshaped_relation(path: Path = RELATIONS_CONFIG):
+    """reshapes the relations, converts them from a nested structure to a simple
+    list with relation names"""
+    data = load_yaml(path)
+    return [
+        {"name": info["name"], "relations": info["relations"].keys()}
+        for info in data["classes"]
+    ]
+
+
 def load_config():
     """Loads the relations from relations_config.yaml"""
 
     def _construct_config(relations_config):
         return TypeAdapter(list[Relation]).validate_python(relations_config)
 
-    relations_config = load_yaml(RELATIONS_CONFIG)
-    return _construct_config(relations_config["classes"])
+    relations_config = _reshaped_relation()
+    return _construct_config(relations_config)
 
 
 def linkml_to_json(file: Path) -> dict:
