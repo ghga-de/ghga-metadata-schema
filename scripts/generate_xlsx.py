@@ -92,13 +92,31 @@ def _validate_relation(relation: Relation) -> None:
 
 
 @dataclass
+class ClassReference:
+    class_name: str
+    id_property_name: str
+
+
+@dataclass
 class Column:
     name: str
     description: Optional[str]
     type: str
     multivalued: bool
-    restriction: str
+    class_reference: Optional[ClassReference]
+    enum: bool
     required: bool
+
+    @property
+    def restriction(self) -> str:
+        if self.enum and self.class_reference:
+            raise ValueError("Column cannot be both an enum and a reference")
+        if self.enum:
+            return "controlled vocabulary"
+        if self.class_reference:
+            return f"restriction: value from {self.class_reference.class_name}.{self.class_reference.id_property_name}"
+        else:
+            return "unrestricted"
 
 
 @dataclass
@@ -106,6 +124,14 @@ class Sheet:
     columns: list[Column]
     header_color: Optional[str] = None
     content_color: Optional[str] = None
+
+
+def _get_element_type_from_schema(schema: dict) -> str:
+    """Get the type of the elements in an array from a JSON schema."""
+    element_type = schema.get("type", "object")
+    if element_type == "array":
+        element_type = schema.get("items", {}).get("type", "object")
+    return element_type
 
 
 def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
@@ -122,8 +148,9 @@ def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
                 name=class_.id.propertyName,
                 description=class_.id.description,
                 type="string",
+                enum=False,
                 multivalued=False,
-                restriction="unrestricted",
+                class_reference=None,
                 required=True,
             )
         )
@@ -137,9 +164,14 @@ def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
                     name=relation_name,
                     description=relation.description,
                     type="string",
+                    enum=False,
                     multivalued=False,
-                    restriction=f"restriction: value from {relation.targetClass}"
-                    + f".{schemapack.classes[relation.targetClass].id.propertyName}",
+                    class_reference=ClassReference(
+                        class_name=relation.targetClass,
+                        id_property_name=schemapack.classes[
+                            relation.targetClass
+                        ].id.propertyName,
+                    ),
                     required=relation.mandatory.origin,
                 )
             )
@@ -153,12 +185,13 @@ def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
                     description=content_schema["properties"][property_name].get(
                         "description", ""
                     ),
-                    type=content_schema["properties"][property_name]["type"],
+                    type=_get_element_type_from_schema(
+                        content_schema["properties"][property_name]
+                    ),
                     multivalued=content_schema["properties"][property_name]["type"]
                     == "array",
-                    restriction="controlled vocabulary"
-                    if content_schema["properties"][property_name].get("enum")
-                    else "unrestricted",
+                    class_reference=None,
+                    enum="enum" in content_schema["properties"][property_name],
                     required=property_name in content_schema.get("required", []),
                 )
             )
@@ -265,14 +298,6 @@ def load_config(config_path: Path) -> Config:
         return Config.model_validate(yaml.safe_load(file))
 
 
-def add_version_information(workbook: Workbook, version: str) -> None:
-    """Adds version information to the workbook"""
-    # Encode metadata model version in the workbook
-    ws = workbook.create_sheet("__properties")
-    ws.sheet_state = "hidden"
-    ws.cell(row=1, column=1, value=version)
-
-
 def compare_xls(expected: Workbook, observed: Workbook):
     """Compares two workbooks and raises a ContentDifference error if
     differences are detected."""
@@ -335,12 +360,80 @@ def compare_folders(expected: Path, observed: Path):
             raise ContentDifference(f"{fname}: {err}")
 
 
+def _add_transpiler_metadata(workbook: Workbook, sheets: Mapping[str, Sheet]) -> None:
+    """Adds metadata to the workbook"""
+    ws = workbook.create_sheet("__transpiler_protocol")
+    ws.sheet_state = "hidden"
+    ws.cell(row=1, column=1, value="1.0.0")
+
+    # Add metadata about the sheets
+    ws = workbook.create_sheet("__sheet_meta")
+    ws.sheet_state = "hidden"
+    ws.append(
+        [
+            Cell(ws, value="sheet"),
+            Cell(ws, value="n_cols"),
+            Cell(ws, value="header_row"),
+            Cell(ws, value="data_start"),
+        ]
+    )
+    for sheet_name, sheet in sheets.items():
+        ws.append(
+            [
+                Cell(ws, value=sheet_name),
+                Cell(ws, value=len(sheet.columns)),
+                Cell(ws, value=1),
+                Cell(ws, value=7),
+            ]
+        )
+
+    # Add metadata about the columns
+    ws = workbook.create_sheet("__column_meta")
+    ws.sheet_state = "hidden"
+    ws.append(
+        [
+            Cell(ws, value="sheet"),
+            Cell(ws, value="column"),
+            Cell(ws, value="multivalued"),
+            Cell(ws, value="type"),
+            Cell(ws, value="ref_class"),
+            Cell(ws, value="ref_class_id_property"),
+            Cell(ws, value="enum"),
+            Cell(ws, value="required"),
+        ]
+    )
+    for sheet_name, sheet in sheets.items():
+        for column in sheet.columns:
+            ws.append(
+                [
+                    Cell(ws, value=sheet_name),
+                    Cell(ws, value=column.name),
+                    Cell(ws, value=column.multivalued),
+                    Cell(ws, value=column.type),
+                    Cell(
+                        ws,
+                        value=column.class_reference.class_name
+                        if column.class_reference
+                        else None,
+                    ),
+                    Cell(
+                        ws,
+                        value=column.class_reference.id_property_name
+                        if column.class_reference
+                        else None,
+                    ),
+                    Cell(ws, value=column.enum),
+                    Cell(ws, value=column.required),
+                ]
+            )
+
+
 def create_xlsx_files(xlsx_dir: Path = XLSX_DIR) -> None:
     schema = load_schemapack(Path(SCHEMAPACK_PATH))
     config = load_config(Path(CONFIG_PATH))
     sheets = parse_schema(schema, config)
     workbook = generate_workbook(sheets)
-    add_version_information(workbook, "0.0.0")
+    _add_transpiler_metadata(workbook, sheets)
     workbook.save(xlsx_dir / config.output_filename)
 
 
