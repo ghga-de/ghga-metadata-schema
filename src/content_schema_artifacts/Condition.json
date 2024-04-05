@@ -1,0 +1,67 @@
+{
+    "additionalProperties": false,
+    "description": "A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).",
+    "properties": {
+        "attributes": {
+            "description": "Key/value pairs corresponding to an entity.",
+            "items": {
+                "$ref": "/workspace/src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "case_control_status": {
+            "description": "Enum to capture whether a condition corresponds to a case or a control condition.",
+            "enum": [
+                "NEITHER_CASE_OR_CONTROL_STATUS",
+                "PROBABLE_CASE_STATUS",
+                "PROBABLE_CONTROL_STATUS",
+                "TRUE_CASE_STATUS",
+                "TRUE_CONTROL_STATUS",
+                "UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS"
+            ],
+            "title": "CaseControlStatusEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/CaseControlStatusEnum"
+        },
+        "description": {
+            "description": "A concise description of the applied Condition.",
+            "type": "string"
+        },
+        "disease_or_healthy": {
+            "description": "Enum to capture whether a condition corresponds to a disease or a healthy state.",
+            "enum": [
+                "DISEASE",
+                "HEALTHY",
+                "NOT_APPLICABLE"
+            ],
+            "title": "DiseaseOrHealthyEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/DiseaseOrHealthyEnum"
+        },
+        "mutant_or_wildtype": {
+            "description": "Enum to capture whether a condition corresponds to a mutant or a wildtype.",
+            "enum": [
+                "MUTANT",
+                "WILDTYPE",
+                "NOT_APPLICABLE"
+            ],
+            "title": "MutantOrWildtypeEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/MutantOrWildtypeEnum"
+        },
+        "name": {
+            "description": "The name of this Condition.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "disease_or_healthy",
+        "case_control_status",
+        "mutant_or_wildtype"
+    ],
+    "title": "Condition",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/Condition"
+}
