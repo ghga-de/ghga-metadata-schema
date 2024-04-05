@@ -1,0 +1,54 @@
+{
+    "additionalProperties": false,
+    "description": "An Individual is a Person who is participating in a Study.",
+    "properties": {
+        "ancestries": {
+            "description": "A person's descent or lineage from a population.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "geographical_region": {
+            "description": "The geographical region where the Individual is located.",
+            "type": "string"
+        },
+        "karyotype": {
+            "description": "Permitted values for karyotype",
+            "enum": [
+                "46_XY",
+                "46_XX",
+                "OTHER"
+            ],
+            "title": "KaryotypeEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/KaryotypeEnum"
+        },
+        "phenotypic_features": {
+            "description": "The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "sex": {
+            "description": "The sex of an Individual as as defined in a specific medical and clinical context.",
+            "enum": [
+                "FEMALE_SEX_FOR_CLINICAL_USE",
+                "IMAGING_SEX",
+                "MALE_SEX_FOR_CLINICAL_USE",
+                "SPECIFIED_SEX_FOR_CLINICAL_USE",
+                "UNKNOWN_SEX_FOR_CLINICAL_USE"
+            ],
+            "title": "IndividualSexEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/IndividualSexEnum"
+        }
+    },
+    "required": [
+        "sex"
+    ],
+    "title": "Individual",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/Individual"
+}
