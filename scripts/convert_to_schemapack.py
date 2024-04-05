@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Script to convert linkML schema to schemapack definition"""
 
-import json
 from pathlib import Path
 
 import yaml
@@ -21,7 +20,7 @@ HERE = Path(__file__).parent.resolve()
 SCHEMA_FOLDER = HERE.parent / "src" / "schema" / "schemapack.yaml"
 LINKML_SCHEMA = HERE.parent / "src" / "schema" / "submission.yaml"
 RELATIONS_CONFIG = HERE.parent / "relations_config.yaml"
-CLASS_CONTENT_FOLDER = HERE.parent / "src" / "content_schemas"
+CLASS_CONTENT_FOLDER = HERE.parent / "src" / "content_schema_artifacts"
 EXCLUDED_CLASSES = HERE.parent / "exclude_config.yaml"
 
 
