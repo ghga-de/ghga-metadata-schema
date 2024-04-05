@@ -123,7 +123,9 @@ def main():
     schemapack = construct_schemapack(_class_definitions(schema, relations, excluded))
 
     dump_schemapack(
-        schemapack, path=SCHEMA_FOLDER, content_schema_dir=CLASS_CONTENT_FOLDER
+        schemapack,
+        path=SCHEMA_FOLDER,
+        content_schema_dir=CLASS_CONTENT_FOLDER,
     )
 
 
