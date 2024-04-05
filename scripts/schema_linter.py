@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 """Script to employ linkml-linter"""
+
 import subprocess
-import sys
 from pathlib import Path
+
 from script_utils.cli import echo_failure, echo_success
 
 HERE = Path(__file__).parent.resolve()
 LINTER_CONFIG = HERE.parent / ".linkml_linter.yaml"
-SCHEMA_DIR = HERE.parent / "src" / "schema"
+SCHEMA = HERE.parent / "src" / "schema" / "submission.yaml"
 
 
 class SchemaLinterError(Exception):
@@ -36,7 +37,7 @@ def run_linter(schema_yaml: Path):
 
 if __name__ == "__main__":
     try:
-        run_linter(SCHEMA_DIR)
+        run_linter(SCHEMA)
         echo_success("All checks passes on the linkml schema")
     except SchemaLinterError:
         echo_failure("Checks failed on the linkml schema")
