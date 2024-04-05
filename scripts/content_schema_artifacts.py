@@ -107,7 +107,7 @@ def export_registry(registry: Registry, export_dir: Path):
     export_dir.mkdir(parents=True, exist_ok=True)
     for uri, resource in registry.items():
         file_path = export_dir / f"{uri.split('/')[-1]}.json"
-        with open(file_path, "w", encoding="utf-8") as file:
+        with file_path.open("w", encoding="utf-8") as file:
             json.dump(resource.contents, file, indent=4)
 
 
