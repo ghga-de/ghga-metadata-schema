@@ -50,7 +50,7 @@ def create_registry_from_filesystem(schema_dir: Path) -> Registry:
     return my_registry
 
 
-def modify_content(resource_content: dict, resolver: Resolver) -> dict:
+def modify_content(resource_content: dict, resolver: Resolver) -> tuple[dict, list]:
     """
     Modify the resource content by replacing referenced paths with corresponding JSON schemas.
 
@@ -61,13 +61,15 @@ def modify_content(resource_content: dict, resolver: Resolver) -> dict:
     Returns:
         dict: The modified resource content.
     """
+    resolved_uris = []
     if resource_content.get("properties"):
         for key_, value_ in resource_content["properties"].items():
             if isinstance(value_, dict) and "$ref" in value_.keys():
                 resource_content["properties"][key_] = resolver.lookup(
                     value_["$ref"]
                 ).contents
-    return resource_content
+                resolved_uris.append(value_["$ref"])
+    return resource_content, resolved_uris
 
 
 def create_resource(
@@ -118,14 +120,22 @@ def main():
         base_uri=URI(SCHEMAS),
         registry=content_json_schemas_registry,
     )
+    resolved_registry_uris = set()
+    # incorporate referenced sub-resources in the resource content
     for schema_name in os.listdir(SCHEMAS):
         resource = content_json_schemas_registry.contents(
             os.path.join(SCHEMAS, schema_name.replace(".json", ""))
         )
-        modified_resource = create_resource(modify_content(resource, resolver))
+        modified_content, resolved_uris = modify_content(resource, resolver)
+        resolved_registry_uris.update(resolved_uris)
+        modified_resource = create_resource(modified_content)
         updated_registry = update_registry(
             content_json_schemas_registry, modified_resource
         )
+    # remove the content of the resolved resources from the registry
+    for uri in resolved_registry_uris:
+        updated_registry = updated_registry.remove(uri)
+    # export updated registry
     export_registry(updated_registry, SCHEMA_ARTIFACTS)
 
 
