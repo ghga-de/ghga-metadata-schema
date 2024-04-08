@@ -1,0 +1,16 @@
+name: Check if the content schema artifacts are up to date.
+
+on: push
+
+jobs:
+  static-code-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: common
+        uses: ghga-de/gh-action-common@v4
+
+      - name: Check artifacts
+        run: |
+          ./scripts/update_content_schemas.py --check

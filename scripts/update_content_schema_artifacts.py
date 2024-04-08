@@ -1,16 +1,45 @@
+#!/usr/bin/env python3
+
+# Copyright 2021 - 2023 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""Script to generate content schema artifacts"""
+
 import json
 import os
+from difflib import unified_diff
 from pathlib import Path
 
 from referencing import Registry, Resource, Specification
 from referencing._core import Resolver
 from referencing.jsonschema import DRAFT202012
 from referencing.typing import URI
-from script_utils.cli import run
+from script_utils.cli import echo_failure, echo_success, run
 
 HERE = Path(__file__).parent.resolve()
 SCHEMAS = HERE.parent / "src" / "content_schemas"
 SCHEMA_ARTIFACTS = HERE.parent / "src" / "content_schema_artifacts"
+
+
+class MissingResourceException(Exception):
+    """Raised when an expected resource is missing in the existing registry."""
+
+
+class DifferentArtifactContentException(Exception):
+    """Raised when the content of a resource differs between the existing and expected
+    registries."""
 
 
 def retrieve_from_filesystem(path: Path) -> Resource:
@@ -81,7 +110,7 @@ def create_resource(
     return Resource.from_contents(contents=content, default_specification=specification)
 
 
-def update_registry(my_registry: Registry, new_resource: Resource):
+def update_registry(my_registry: Registry, new_resource: Resource) -> Registry:
     """
     Update a resource in the registry.
 
@@ -113,30 +142,77 @@ def export_registry(registry: Registry, export_dir: Path):
             json.dump(resource.contents, file, indent=4)
 
 
-def main():
-    """The main routine."""
-    content_json_schemas_registry = create_registry_from_filesystem(SCHEMAS)
+def generate_artifacts(content_schemas_registry: Registry) -> Registry:
+    """The routine to create a registry of the artifacts generated from content schemas."""
+
     resolver = Resolver(
         base_uri=URI(SCHEMAS),
-        registry=content_json_schemas_registry,
+        registry=content_schemas_registry,
     )
     resolved_registry_uris = set()
     # incorporate referenced sub-resources in the resource content
     for schema_name in os.listdir(SCHEMAS):
-        resource = content_json_schemas_registry.contents(
+        resource = content_schemas_registry.contents(
             os.path.join(SCHEMAS, schema_name.replace(".json", ""))
         )
         modified_content, resolved_uris = modify_content(resource, resolver)
         resolved_registry_uris.update(resolved_uris)
         modified_resource = create_resource(modified_content)
-        updated_registry = update_registry(
-            content_json_schemas_registry, modified_resource
-        )
+        updated_registry = update_registry(content_schemas_registry, modified_resource)
     # remove the content of the resolved resources from the registry
     for uri in resolved_registry_uris:
         updated_registry = updated_registry.remove(uri)
-    # export updated registry
-    export_registry(updated_registry, SCHEMA_ARTIFACTS)
+    return updated_registry
+
+
+def is_equal(existing_resource: Resource, expected_resource: Resource) -> bool:
+    """Check if the contents of the two resources are equal."""
+    if (
+        existing_resource.id() == expected_resource.id()
+        and existing_resource.contents == expected_resource.contents
+    ):
+        return True
+    return False
+
+
+def print_diff(existing_resource: dict, expected_resource: str):
+    """Print differences between expected and observed files."""
+    echo_failure("Differences in content schema artifacts:")
+    existing_content = "\n".join(sorted(str(existing_resource).split(",")))
+    expected_content = "\n".join(sorted(str(expected_resource).split(",")))
+    for line in unified_diff(
+        expected_content.splitlines(keepends=True),
+        existing_content.splitlines(keepends=True),
+    ):
+        print("   ", line.rstrip())
+
+
+def compare_registries(
+    existing_registry: Registry, expected_registry: Registry
+) -> bool:
+    """Compare two registries to check if they contain the same resources."""
+    for uri, resource in expected_registry.items():
+        if not existing_registry.get(uri):
+            raise MissingResourceException(
+                f"{uri} does not exist in the registry. Update the artifacts"
+            )
+        if not is_equal(resource, existing_registry[uri]):
+            print_diff(existing_registry[uri].contents, expected_registry[uri].contents)
+            raise DifferentArtifactContentException(
+                f"Differences in {uri}: Update content schema artifacts"
+            )
+    return True
+
+
+def main(check: bool = False):
+    """The main routine."""
+    expected_registry = generate_artifacts(create_registry_from_filesystem(SCHEMAS))
+    if check:
+        existing_registry = create_registry_from_filesystem(SCHEMA_ARTIFACTS)
+        if compare_registries(existing_registry, expected_registry):
+            echo_success("Content schema artifacts are up-to-date")
+    else:
+        export_registry(expected_registry, SCHEMA_ARTIFACTS)
 
 
 if __name__ == "__main__":
