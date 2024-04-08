@@ -8,5 +8,5 @@
     ],
     "title": "StorageEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/StorageEnum"
+    "$id": "src/content_schemas/StorageEnum"
 }

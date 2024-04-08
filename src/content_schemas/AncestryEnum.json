@@ -3,5 +3,5 @@
     "enum": [],
     "title": "AncestryEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/AncestryEnum"
+    "$id": "src/content_schemas/AncestryEnum"
 }

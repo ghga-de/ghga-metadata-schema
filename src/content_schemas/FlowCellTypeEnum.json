@@ -11,5 +11,5 @@
     ],
     "title": "FlowCellTypeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/FlowCellTypeEnum"
+    "$id": "src/content_schemas/FlowCellTypeEnum"
 }

@@ -16,5 +16,5 @@
     ],
     "title": "SampleTypeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/SampleTypeEnum"
+    "$id": "src/content_schemas/SampleTypeEnum"
 }

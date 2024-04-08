@@ -5,7 +5,7 @@
         "attributes": {
             "description": "Key/value pairs corresponding to an entity.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -21,7 +21,7 @@
             ],
             "title": "CaseControlStatusEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/CaseControlStatusEnum"
+            "$id": "src/content_schemas/CaseControlStatusEnum"
         },
         "description": {
             "description": "A concise description of the applied Condition.",
@@ -36,7 +36,7 @@
             ],
             "title": "DiseaseOrHealthyEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/DiseaseOrHealthyEnum"
+            "$id": "src/content_schemas/DiseaseOrHealthyEnum"
         },
         "mutant_or_wildtype": {
             "description": "Enum to capture whether a condition corresponds to a mutant or a wildtype.",
@@ -47,7 +47,7 @@
             ],
             "title": "MutantOrWildtypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/MutantOrWildtypeEnum"
+            "$id": "src/content_schemas/MutantOrWildtypeEnum"
         },
         "name": {
             "description": "The name of this Condition.",
@@ -63,5 +63,5 @@
     ],
     "title": "Condition",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Condition"
+    "$id": "src/content_schemas/Condition"
 }

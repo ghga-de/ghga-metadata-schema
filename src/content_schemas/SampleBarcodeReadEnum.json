@@ -7,5 +7,5 @@
     ],
     "title": "SampleBarcodeReadEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/SampleBarcodeReadEnum"
+    "$id": "src/content_schemas/SampleBarcodeReadEnum"
 }

@@ -5,7 +5,7 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Sequencing Protocol.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -23,7 +23,7 @@
             ],
             "title": "IndexReadEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/IndexReadEnum"
+            "$id": "src/content_schemas/IndexReadEnum"
         },
         "cell_barcode_size": {
             "description": "The size of the cell identifying barcode (e.g., 16).",
@@ -50,7 +50,7 @@
             ],
             "title": "FlowCellTypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/FlowCellTypeEnum"
+            "$id": "src/content_schemas/FlowCellTypeEnum"
         },
         "instrument_model": {
             "description": "Permitted values for the instrument model",
@@ -124,7 +124,7 @@
             ],
             "title": "InstrumentModelEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/InstrumentModelEnum"
+            "$id": "src/content_schemas/InstrumentModelEnum"
         },
         "name": {
             "description": "A short name identifying this Sequencing Protocol.",
@@ -139,7 +139,7 @@
             ],
             "title": "SampleBarcodeReadEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/SampleBarcodeReadEnum"
+            "$id": "src/content_schemas/SampleBarcodeReadEnum"
         },
         "sequencing_center": {
             "description": "Center where sample was sequenced.",
@@ -171,7 +171,7 @@
             ],
             "title": "IndexReadEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/IndexReadEnum"
+            "$id": "src/content_schemas/IndexReadEnum"
         },
         "umi_barcode_size": {
             "description": "The size of the UMI identifying barcode (e.g., 10).",
@@ -185,5 +185,5 @@
     ],
     "title": "SequencingProtocol",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/SequencingProtocol"
+    "$id": "src/content_schemas/SequencingProtocol"
 }

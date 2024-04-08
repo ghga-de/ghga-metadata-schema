@@ -5,7 +5,7 @@
         "data_use_modifiers": {
             "description": "One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'user specific restriction' if no other modifier applies.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/DataUseModifierEnum"
+                "$ref": "src/content_schemas/DataUseModifierEnum"
             },
             "type": "array"
         },
@@ -20,7 +20,7 @@
             ],
             "title": "DataUsePermissionEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/DataUsePermissionEnum"
+            "$id": "src/content_schemas/DataUsePermissionEnum"
         },
         "description": {
             "description": "A short description for this Data Access Policy.",
@@ -47,5 +47,5 @@
     ],
     "title": "DataAccessPolicy",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/DataAccessPolicy"
+    "$id": "src/content_schemas/DataAccessPolicy"
 }

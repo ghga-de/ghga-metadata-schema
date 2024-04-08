@@ -22,7 +22,7 @@
             ],
             "title": "KaryotypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/KaryotypeEnum"
+            "$id": "src/content_schemas/KaryotypeEnum"
         },
         "phenotypic_features": {
             "description": "The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.",
@@ -42,7 +42,7 @@
             ],
             "title": "IndividualSexEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/IndividualSexEnum"
+            "$id": "src/content_schemas/IndividualSexEnum"
         }
     },
     "required": [
@@ -50,5 +50,5 @@
     ],
     "title": "Individual",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Individual"
+    "$id": "src/content_schemas/Individual"
 }

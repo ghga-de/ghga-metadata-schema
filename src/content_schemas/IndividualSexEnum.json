@@ -9,5 +9,5 @@
     ],
     "title": "IndividualSexEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/IndividualSexEnum"
+    "$id": "src/content_schemas/IndividualSexEnum"
 }

@@ -22,5 +22,5 @@
     ],
     "title": "AgeRangeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/AgeRangeEnum"
+    "$id": "src/content_schemas/AgeRangeEnum"
 }

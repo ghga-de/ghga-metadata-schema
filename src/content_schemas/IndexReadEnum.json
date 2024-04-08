@@ -8,5 +8,5 @@
     ],
     "title": "IndexReadEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/IndexReadEnum"
+    "$id": "src/content_schemas/IndexReadEnum"
 }

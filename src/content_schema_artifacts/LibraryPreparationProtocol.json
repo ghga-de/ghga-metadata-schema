@@ -5,7 +5,7 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Library Preparation Protocol.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -22,7 +22,7 @@
             ],
             "title": "EndBiasEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/EndBiasEnum"
+            "$id": "src/content_schemas/EndBiasEnum"
         },
         "library_layout": {
             "description": "Single-end vs paired-end library",
@@ -32,7 +32,7 @@
             ],
             "title": "LibraryPreparationLibraryLayoutEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/LibraryPreparationLibraryLayoutEnum"
+            "$id": "src/content_schemas/LibraryPreparationLibraryLayoutEnum"
         },
         "library_name": {
             "description": "A short name identifying the library. The same name may refer to multiple versions of the same continually updated library.",
@@ -213,7 +213,7 @@
             ],
             "title": "LibraryPreparationKitRetailNameEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum"
+            "$id": "src/content_schemas/LibraryPreparationKitRetailNameEnum"
         },
         "library_selection": {
             "description": "Permitted vocabulary for library selections",
@@ -246,7 +246,7 @@
             ],
             "title": "LibraryPreparationLibrarySelectionEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum"
+            "$id": "src/content_schemas/LibraryPreparationLibrarySelectionEnum"
         },
         "library_type": {
             "description": "The type of the library",
@@ -264,7 +264,7 @@
             ],
             "title": "LibraryPreparationLibraryTypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/LibraryPreparationLibraryTypeEnum"
+            "$id": "src/content_schemas/LibraryPreparationLibraryTypeEnum"
         },
         "primer": {
             "description": "Permitted values for primer",
@@ -276,7 +276,7 @@
             ],
             "title": "PrimerEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/PrimerEnum"
+            "$id": "src/content_schemas/PrimerEnum"
         },
         "rnaseq_strandedness": {
             "description": "Permitted values for library preparation RNASeq strandedness",
@@ -286,7 +286,7 @@
             ],
             "title": "LibraryPreparationRNASeqStrandednessEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/LibraryPreparationRNASeqStrandednessEnum"
+            "$id": "src/content_schemas/LibraryPreparationRNASeqStrandednessEnum"
         },
         "target_regions": {
             "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.",
@@ -306,5 +306,5 @@
     ],
     "title": "LibraryPreparationProtocol",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/LibraryPreparationProtocol"
+    "$id": "src/content_schemas/LibraryPreparationProtocol"
 }

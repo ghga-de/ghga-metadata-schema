@@ -26,7 +26,7 @@
             ],
             "title": "AgeRangeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/AgeRangeEnum"
+            "$id": "src/content_schemas/AgeRangeEnum"
         },
         "description": {
             "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
@@ -50,7 +50,7 @@
             ],
             "title": "StorageEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/StorageEnum"
+            "$id": "src/content_schemas/StorageEnum"
         },
         "tissue": {
             "description": "The tissue this Biospecimen originated from.",
@@ -69,7 +69,7 @@
             ],
             "title": "VitalStatusEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/VitalStatusEnum"
+            "$id": "src/content_schemas/VitalStatusEnum"
         }
     },
     "required": [
@@ -78,5 +78,5 @@
     ],
     "title": "Biospecimen",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Biospecimen"
+    "$id": "src/content_schemas/Biospecimen"
 }

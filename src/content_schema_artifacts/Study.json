@@ -12,7 +12,7 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Study.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -46,7 +46,7 @@
             ],
             "title": "StudyTypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/StudyTypeEnum"
+            "$id": "src/content_schemas/StudyTypeEnum"
         }
     },
     "required": [
@@ -57,5 +57,5 @@
     ],
     "title": "Study",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Study"
+    "$id": "src/content_schemas/Study"
 }

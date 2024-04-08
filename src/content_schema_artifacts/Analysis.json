@@ -30,5 +30,5 @@
     ],
     "title": "Analysis",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Analysis"
+    "$id": "src/content_schemas/Analysis"
 }

@@ -9,5 +9,5 @@
     ],
     "title": "DataUsePermissionEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/DataUsePermissionEnum"
+    "$id": "src/content_schemas/DataUsePermissionEnum"
 }

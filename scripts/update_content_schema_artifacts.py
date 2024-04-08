@@ -29,7 +29,8 @@ from referencing.typing import URI
 from script_utils.cli import echo_failure, echo_success, run
 
 HERE = Path(__file__).parent.resolve()
-SCHEMAS = HERE.parent / "src" / "content_schemas"
+ROOT = HERE.parent.resolve()
+CLASS_CONTENT_DIR = HERE.parent / "src" / "content_schemas"
 SCHEMA_ARTIFACTS = HERE.parent / "src" / "content_schema_artifacts"
 
 
@@ -40,6 +41,45 @@ class MissingResourceException(Exception):
 class DifferentArtifactContentException(Exception):
     """Raised when the content of a resource differs between the existing and expected
     registries."""
+
+
+def is_equal(existing_resource: Resource, expected_resource: Resource) -> bool:
+    """Check if the contents of the two resources are equal."""
+    if (
+        existing_resource.id() == expected_resource.id()
+        and existing_resource.contents == expected_resource.contents
+    ):
+        return True
+    return False
+
+
+def print_diff(existing_resource: dict, expected_resource: str):
+    """Print differences between expected and observed files."""
+    echo_failure("Differences in content schema artifacts:")
+    existing_content = "\n".join(sorted(str(existing_resource).split(",")))
+    expected_content = "\n".join(sorted(str(expected_resource).split(",")))
+    for line in unified_diff(
+        expected_content.splitlines(keepends=True),
+        existing_content.splitlines(keepends=True),
+    ):
+        print("   ", line.rstrip())
+
+
+def compare_registries(
+    existing_registry: Registry, expected_registry: Registry
+) -> bool:
+    """Compare two registries to check if they contain the same resources."""
+    for uri, resource in expected_registry.items():
+        if not existing_registry.get(uri):
+            raise MissingResourceException(
+                f"{uri} does not exist in the registry. Update the artifacts"
+            )
+        if not is_equal(resource, existing_registry[uri]):
+            print_diff(existing_registry[uri].contents, expected_registry[uri].contents)
+            raise DifferentArtifactContentException(
+                f"Differences in {uri}: Update content schema artifacts"
+            )
+    return True
 
 
 def retrieve_from_filesystem(path: Path) -> Resource:
@@ -142,20 +182,31 @@ def export_registry(registry: Registry, export_dir: Path):
             json.dump(resource.contents, file, indent=4)
 
 
-def generate_artifacts(content_schemas_registry: Registry) -> Registry:
+def get_content_uris(
+    class_content_dir: Path = CLASS_CONTENT_DIR, relative_to: Path = ROOT
+) -> list[URI]:
+    """Return the list of URIs of the class content schemas. The URIs are relative to root path"""
+    return [
+        os.path.join(
+            os.path.relpath(class_content_dir, relative_to),
+            file.replace(".json", ""),
+        )
+        for file in os.listdir(class_content_dir)
+    ]
+
+
+def generate_artifacts(
+    content_schemas_registry: Registry, schema_uris: list
+) -> Registry:
     """The routine to create a registry of the artifacts generated from content schemas."""
 
-    resolver = Resolver(
-        base_uri=URI(SCHEMAS),
-        registry=content_schemas_registry,
-    )
     resolved_registry_uris = set()
     # incorporate referenced sub-resources in the resource content
-    for schema_name in os.listdir(SCHEMAS):
-        resource = content_schemas_registry.contents(
-            os.path.join(SCHEMAS, schema_name.replace(".json", ""))
+    for schema_uri in schema_uris:
+        modified_content, resolved_uris = modify_content(
+            content_schemas_registry.contents(schema_uri),
+            content_schemas_registry.resolver(),
         )
-        modified_content, resolved_uris = modify_content(resource, resolver)
         resolved_registry_uris.update(resolved_uris)
         modified_resource = create_resource(modified_content)
         updated_registry = update_registry(content_schemas_registry, modified_resource)
@@ -165,54 +216,18 @@ def generate_artifacts(content_schemas_registry: Registry) -> Registry:
     return updated_registry
 
 
-def is_equal(existing_resource: Resource, expected_resource: Resource) -> bool:
-    """Check if the contents of the two resources are equal."""
-    if (
-        existing_resource.id() == expected_resource.id()
-        and existing_resource.contents == expected_resource.contents
-    ):
-        return True
-    return False
-
-
-def print_diff(existing_resource: dict, expected_resource: str):
-    """Print differences between expected and observed files."""
-    echo_failure("Differences in content schema artifacts:")
-    existing_content = "\n".join(sorted(str(existing_resource).split(",")))
-    expected_content = "\n".join(sorted(str(expected_resource).split(",")))
-    for line in unified_diff(
-        expected_content.splitlines(keepends=True),
-        existing_content.splitlines(keepends=True),
-    ):
-        print("   ", line.rstrip())
-
-
-def compare_registries(
-    existing_registry: Registry, expected_registry: Registry
-) -> bool:
-    """Compare two registries to check if they contain the same resources."""
-    for uri, resource in expected_registry.items():
-        if not existing_registry.get(uri):
-            raise MissingResourceException(
-                f"{uri} does not exist in the registry. Update the artifacts"
-            )
-        if not is_equal(resource, existing_registry[uri]):
-            print_diff(existing_registry[uri].contents, expected_registry[uri].contents)
-            raise DifferentArtifactContentException(
-                f"Differences in {uri}: Update content schema artifacts"
-            )
-    return True
-
-
 def main(check: bool = False):
     """The main routine."""
-    expected_registry = generate_artifacts(create_registry_from_filesystem(SCHEMAS))
+    expected_registry = generate_artifacts(
+        create_registry_from_filesystem(CLASS_CONTENT_DIR), get_content_uris()
+    )
     if check:
         existing_registry = create_registry_from_filesystem(SCHEMA_ARTIFACTS)
         if compare_registries(existing_registry, expected_registry):
             echo_success("Content schema artifacts are up-to-date")
     else:
         export_registry(expected_registry, SCHEMA_ARTIFACTS)
+        echo_success(f"Content schema artifacts are saved to {SCHEMA_ARTIFACTS}")
 
 
 if __name__ == "__main__":

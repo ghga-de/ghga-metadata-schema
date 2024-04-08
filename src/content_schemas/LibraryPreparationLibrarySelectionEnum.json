@@ -29,5 +29,5 @@
     ],
     "title": "LibraryPreparationLibrarySelectionEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum"
+    "$id": "src/content_schemas/LibraryPreparationLibrarySelectionEnum"
 }

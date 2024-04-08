@@ -20,5 +20,5 @@
     ],
     "title": "StudyTypeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/StudyTypeEnum"
+    "$id": "src/content_schemas/StudyTypeEnum"
 }

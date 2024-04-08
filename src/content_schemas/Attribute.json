@@ -25,5 +25,5 @@
     ],
     "title": "Attribute",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Attribute"
+    "$id": "src/content_schemas/Attribute"
 }

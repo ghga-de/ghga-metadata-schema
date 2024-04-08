@@ -5,5 +5,5 @@
     "required": [],
     "title": "Trio",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Trio"
+    "$id": "src/content_schemas/Trio"
 }

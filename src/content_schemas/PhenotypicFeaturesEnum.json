@@ -3,5 +3,5 @@
     "enum": [],
     "title": "PhenotypicFeaturesEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/PhenotypicFeaturesEnum"
+    "$id": "src/content_schemas/PhenotypicFeaturesEnum"
 }

@@ -70,5 +70,5 @@
     ],
     "title": "InstrumentModelEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/InstrumentModelEnum"
+    "$id": "src/content_schemas/InstrumentModelEnum"
 }

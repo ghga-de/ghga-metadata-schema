@@ -19,8 +19,8 @@
 individual files"""
 
 import json
+import os
 import subprocess
-from os import fspath
 from pathlib import Path
 from typing import Union
 
@@ -29,6 +29,7 @@ from pydantic import BaseModel, TypeAdapter
 from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
+ROOT = HERE.parent.resolve()
 CLASS_CONTENT_DIR = HERE.parent / "src" / "content_schemas"
 RELATIONS_CONFIG = HERE.parent / "relations_config.yaml"
 EXCLUDE_CONFIG = HERE.parent / "exclude_config.yaml"
@@ -80,7 +81,7 @@ def add_id_to_class_defs(json_schema: dict) -> dict:
     """The reusable sub-schemas will live under the local class-content-schema.
     Thus, it adds that path as id to class definitions"""
     for key, value in json_schema["$defs"].items():
-        value["$id"] = fspath(CLASS_CONTENT_DIR / key)
+        value["$id"] = os.path.relpath(CLASS_CONTENT_DIR / key, ROOT)
     return json_schema
 
 
@@ -98,7 +99,10 @@ def replace_schema_refs(schema_defs: dict) -> dict:
     """Recursively replaces '#/$defs/' references with the specified schemas path."""
     for key, value in schema_defs.items():
         if key == "$ref":
-            schema_defs[key] = value.replace("#/$defs", str(CLASS_CONTENT_DIR))
+            schema_defs[key] = value.replace(
+                "#/$defs",
+                str(os.path.relpath(CLASS_CONTENT_DIR, ROOT)),
+            )
         elif isinstance(value, dict):
             schema_defs[key] = replace_schema_refs(value)
     return schema_defs
@@ -142,7 +146,6 @@ def export_class_content(schema_defs: dict, excluded_list: list):
 def main():
     """The main routine."""
     schema_in_json = linkml_to_json(Path("src/schema/submission.yaml"))
-    print(json.dumps(schema_in_json, indent=4))
     schema_bundle = add_id_to_class_defs(schema_in_json)
     modified_refs = replace_schema_refs(schema_bundle["$defs"])
     deleted_identifier = clean_content_identifier(modified_refs)

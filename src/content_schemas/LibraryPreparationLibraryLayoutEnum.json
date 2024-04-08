@@ -6,5 +6,5 @@
     ],
     "title": "LibraryPreparationLibraryLayoutEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/LibraryPreparationLibraryLayoutEnum"
+    "$id": "src/content_schemas/LibraryPreparationLibraryLayoutEnum"
 }

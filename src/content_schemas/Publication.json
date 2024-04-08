@@ -39,5 +39,5 @@
     ],
     "title": "Publication",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Publication"
+    "$id": "src/content_schemas/Publication"
 }

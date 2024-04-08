@@ -7,5 +7,5 @@
     ],
     "title": "KaryotypeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/KaryotypeEnum"
+    "$id": "src/content_schemas/KaryotypeEnum"
 }

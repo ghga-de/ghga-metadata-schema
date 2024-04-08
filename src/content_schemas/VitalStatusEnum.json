@@ -7,5 +7,5 @@
     ],
     "title": "VitalStatusEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/VitalStatusEnum"
+    "$id": "src/content_schemas/VitalStatusEnum"
 }

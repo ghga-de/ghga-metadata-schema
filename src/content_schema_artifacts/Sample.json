@@ -5,7 +5,7 @@
         "attributes": {
             "description": "Key/value pairs corresponding to an entity.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -31,7 +31,7 @@
             ],
             "title": "StorageEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/StorageEnum"
+            "$id": "src/content_schemas/StorageEnum"
         },
         "type": {
             "description": "The type of a sample",
@@ -51,7 +51,7 @@
             ],
             "title": "SampleTypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/SampleTypeEnum"
+            "$id": "src/content_schemas/SampleTypeEnum"
         },
         "xref": {
             "description": "One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).",
@@ -67,5 +67,5 @@
     ],
     "title": "Sample",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Sample"
+    "$id": "src/content_schemas/Sample"
 }

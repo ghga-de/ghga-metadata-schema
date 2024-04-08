@@ -10,5 +10,5 @@
     ],
     "title": "CaseControlStatusEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/CaseControlStatusEnum"
+    "$id": "src/content_schemas/CaseControlStatusEnum"
 }

@@ -7,5 +7,5 @@
     ],
     "title": "MutantOrWildtypeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/MutantOrWildtypeEnum"
+    "$id": "src/content_schemas/MutantOrWildtypeEnum"
 }

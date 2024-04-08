@@ -26,5 +26,5 @@
     ],
     "title": "FileFormatEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/FileFormatEnum"
+    "$id": "src/content_schemas/FileFormatEnum"
 }

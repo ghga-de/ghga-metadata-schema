@@ -3,5 +3,5 @@
     "enum": [],
     "title": "GeographicalRegionEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/GeographicalRegionEnum"
+    "$id": "src/content_schemas/GeographicalRegionEnum"
 }
