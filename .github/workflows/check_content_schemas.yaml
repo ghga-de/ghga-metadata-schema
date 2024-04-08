@@ -13,7 +13,10 @@ jobs:
         with:
           python-version: 3.11
 
+      - name: Install dependencies
+        run: >-
+          pip install -r requirements.txt
+
       - name: Check artifacts
-        run: |
-          pip install -r requirements.py
+        run: >-
           ./scripts/update_content_schemas.py --check
