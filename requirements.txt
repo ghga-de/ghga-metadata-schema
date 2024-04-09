@@ -3,4 +3,4 @@ mkdocs-material>=7.1.9
 typer==0.7.0
 pyyaml~=6.0.0
 openpyxl==3.1.2
-schemapack==2.0.0a2
+schemapack==2.0.0a3

@@ -32,7 +32,7 @@ from openpyxl.styles.alignment import Alignment
 from openpyxl.styles.borders import BORDER_THIN, Border, Side
 from openpyxl.utils import get_column_letter
 from pydantic import BaseModel
-from schemapack.load import load_schemapack
+from schemapack import load_schemapack
 from schemapack.spec.schemapack import Relation, SchemaPack
 from script_utils.cli import echo_failure, echo_success, run
 from typer import Option
