@@ -1,0 +1,69 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "description": "",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "A name for this Data Access Policy."
+        },
+        "description": {
+            "type": "string",
+            "description": "A short description for this Data Access Policy."
+        },
+        "policy_text": {
+            "type": "string",
+            "description": "The complete text for the Data Access Policy."
+        },
+        "policy_url": {
+            "type": "string",
+            "description": "An alternative to the Data Access Policy text is to provide the URL for the policy. This is useful if the terms of the policy are available online at a resolvable URL."
+        },
+        "data_use_permission": {
+            "type": "string",
+            "description": "Data Use Permission associated with an entity. The used term should be a descendant of 'DUO:0000001: data use permission",
+            "enum": [
+                "GENERAL_RESEARCH_USE",
+                "HEALTH_OR_MEDICAL_OR_BIOMEDICAL_RESEARCH",
+                "DISEASE_SPECIFIC_RESEARCH",
+                "NO_RESTRICTION",
+                "POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_ONLY"
+            ]
+        },
+        "data_use_modifiers": {
+            "type": "array",
+            "description": "One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'user specific restriction' if no other modifier applies.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "CLINICAL_CARE_USE",
+                    "RETURN_TO_DATABASE_OR_RESOURCE",
+                    "INSTITUTION_SPECIFIC_RESTRICTION",
+                    "PROJECT_SPECIFIC_RESTRICTION",
+                    "USER_SPECIFIC_RESTRICTION",
+                    "TIME_LIMIT_ON_USE",
+                    "PUBLICATION_MORATORIUM",
+                    "GEOGRAPHICAL_RESTRICTION",
+                    "ETHICS_APPROVAL_REQUIRED",
+                    "COLLABORATION_REQUIRED",
+                    "PUBLICATION_REQUIRED",
+                    "NOT_FOR_PROFIT_NON_COMMERCIAL_USE_ONLY",
+                    "NON_COMMERCIAL_USE_ONLY",
+                    "NOT_FOR_PROFIT_ORGANISATION_USE_ONLY",
+                    "GENETIC_STUDIES_ONLY",
+                    "NO_GENERAL_METHODS_RESEARCH",
+                    "RESEARCH_SPECIFIC_RESTRICTIONS",
+                    "POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_PROHIBITED"
+                ]
+            }
+        },
+    },
+    "required": [
+        "name",
+        "description",
+        "policy_text",
+        "data_use_permission",
+        "data_use_modifier"
+    ],
+    "type": "object"
+}

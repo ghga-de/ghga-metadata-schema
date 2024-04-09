@@ -1,0 +1,71 @@
+schemapack: 0.2.0
+description: The GHGA Metadata Schema
+classes:
+  StudyFile:
+    id:
+      propertyName: alias
+      description: The alias for an entity at the time of submission.
+    content: ./content_schemas/StudyFile.schema.json
+    relations:
+      study:
+        targetClass: Study
+        description: The Study that is associated with this Study File.
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+      dataset:
+        targetClass: Dataset
+        description: The Dataset associated with this File.
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+
+  Study:
+    id:
+      propertyName: alias
+      description: The alias for an entity at the time of submission.
+    content: ./content_schemas/Study.schema.json
+
+  Dataset:
+    id:
+      propertyName: alias
+      description: The alias for an entity at the time of submission.
+    content: ./content_schemas/Dataset.schema.json
+    relations:
+      data_access_policy:
+        targetClass: DataAccessPolicy
+        description: The Data Access Policy that applies to this Dataset.
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+
+  DataAccessPolicy:
+    id:
+      propertyName: alias
+      description: The alias for an entity at the time of submission.
+    content: ./content_schemas/DataAccessPolicy.schema.json
+    relations:
+      data_access_committees:
+        targetClass: DataAccessCommittee
+        description: The Data Access Committee linked to this Data Use Policy.
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+
+  DataAccessCommittee:
+    id:
+      propertyName: alias
+      description: The alias for an entity at the time of submission.
+    content: ./content_schemas/DataAccessCommittee.schema.json
