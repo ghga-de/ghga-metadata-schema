@@ -1,0 +1,23 @@
+name: Check whether example datapack is valid against schemapack definition
+
+on: push
+
+jobs:
+  validate:
+    name: Check whether example datapack is valid
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: >-
+          pip install -r requirements.txt
+
+      - name: Validate datapack is valid
+        run: >-
+          ./scripts/validate_datapack.py

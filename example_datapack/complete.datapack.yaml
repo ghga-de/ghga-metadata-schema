@@ -8,7 +8,7 @@ resources:
         "description": "A study that is the A study",
         "type": "SYNTHETIC_GENOMICS",
         "affiliations": ["Some Institute", "Some other Institute"],
-        "attributes": [{budget":"3.5M", "funding": "EU"}]
+        "attributes": [{"budget":"3.5M", "funding": "EU"}]
       }
       relations: {}
     STUDY_B:
@@ -16,7 +16,7 @@ resources:
         "title": "The B Study",
         "description": "A study that is the B study",
         "type": "WHOLE_GENOME_SEQUENCING",
-        "affiliations": ["Some Institute"],
+        "affiliations": ["Some Institute"]
       }
       relations: {}
   StudyFile:
@@ -112,7 +112,6 @@ resources:
         "ancestries": "European",
         "phenotypic_features":" Leukemia"
       }
-      relations: {}
     MOTHER_1:
       content: {
         "sex": "FEMALE_SEX_FOR_CLINICAL_USE",
@@ -121,7 +120,6 @@ resources:
         "ancestries": "European",
         "phenotypic_features": "Leukemia"
       }
-      relations: {}
     FATHER_1:
       content: {
         "sex": "MALE_SEX_FOR_CLINICAL_USE",
@@ -130,14 +128,13 @@ resources:
         "ancestries": "European",
         "phenotypic_features": "Leukemia"
       }
-      relations: {}
   Trio:
     TRIO_1:
       content: {}
       relations:
-        mother: MOTHER_1,
-        father: FATHER_1,
-        child: INDV_1,
+        mother: MOTHER_1
+        father: FATHER_1
+        child: INDV_1
   LibraryPreparationProtocol:
     LIB_PREP_1:
       content: {
@@ -643,7 +640,7 @@ resources:
       relations:
         data_access_committee: DAC_1
   DataAccessCommittee:
-    DAC1:
+    DAC_1:
       content: {
         "email": "dac_institute_a@dac.dac",
         "institute": "institute_a"
@@ -673,5 +670,4 @@ resources:
       }
       relations:
         study: STUDY_B
-
-
+  SampleFile: {}
