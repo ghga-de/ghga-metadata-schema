@@ -9,7 +9,7 @@ from referencing.typing import URI
 from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
-SCHEMAS = HERE.parent / "src" / "content_schemas"
+CONTENT_SCHEMAS_DIR = HERE.parent / "src" / "content_schemas"
 SCHEMA_ARTIFACTS = HERE.parent / "src" / "content_schema_artifacts"
 
 
