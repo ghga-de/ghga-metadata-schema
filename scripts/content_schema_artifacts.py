@@ -46,7 +46,7 @@ def create_registry_from_filesystem(schema_dir: Path) -> Registry:
     my_registry = Registry()
     for schema_file in schema_dir.glob("*.json"):
         resource = retrieve_from_filesystem(schema_file)
-        my_registry = my_registry.__rmatmul__(resource)
+        my_registry = resource @ my_registry
     return my_registry
 
 
