@@ -50,7 +50,7 @@ def create_registry_from_filesystem(schema_dir: Path) -> Registry:
     return my_registry
 
 
-def modify_content(resource_content: dict, resolver: Resolver) -> tuple[dict, list]:
+def resolve_referenced_schemas(resource_content: dict, resolver: Resolver) -> tuple[dict, list]:
     """
     Modify the resource content by replacing referenced paths with corresponding JSON schemas.
 
