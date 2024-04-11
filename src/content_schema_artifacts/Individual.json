@@ -14,6 +14,7 @@
             "type": "string"
         },
         "karyotype": {
+            "$ref": "/workspace/src/content_schemas/KaryotypeEnum",
             "description": "Permitted values for karyotype",
             "enum": [
                 "46_XY",
@@ -32,6 +33,7 @@
             "type": "array"
         },
         "sex": {
+            "$ref": "/workspace/src/content_schemas/IndividualSexEnum",
             "description": "The sex of an Individual as as defined in a specific medical and clinical context.",
             "enum": [
                 "FEMALE_SEX_FOR_CLINICAL_USE",

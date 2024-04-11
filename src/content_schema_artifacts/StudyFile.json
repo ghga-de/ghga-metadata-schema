@@ -15,6 +15,7 @@
             "type": "string"
         },
         "format": {
+            "$ref": "/workspace/src/content_schemas/FileFormatEnum",
             "description": "Enum to capture file types.",
             "enum": [
                 "AGP",
@@ -45,6 +46,7 @@
             "$id": "/workspace/src/content_schemas/FileFormatEnum"
         },
         "forward_or_reverse": {
+            "$ref": "/workspace/src/content_schemas/ForwardOrReverseEnum",
             "description": "Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
             "enum": [
                 "FORWARD",

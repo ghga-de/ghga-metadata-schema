@@ -3,6 +3,7 @@
     "description": "A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.",
     "properties": {
         "age_at_sampling": {
+            "$ref": "/workspace/src/content_schemas/AgeRangeEnum",
             "description": "Enum to capture the age range that an Indiviudal belongs to.",
             "enum": [
                 "0_TO_5",
@@ -41,6 +42,7 @@
             "type": "string"
         },
         "storage": {
+            "$ref": "/workspace/src/content_schemas/StorageEnum",
             "description": "Enum to capture how a Sample or Biospecimen was stored.",
             "enum": [
                 "REFRIGERATOR",
@@ -61,6 +63,7 @@
             "type": "string"
         },
         "vital_status_at_sampling": {
+            "$ref": "/workspace/src/content_schemas/VitalStatusEnum",
             "description": "Enum to capture the vital status of an individual.",
             "enum": [
                 "ALIVE",

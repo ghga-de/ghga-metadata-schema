@@ -10,7 +10,7 @@ from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
 CONTENT_SCHEMAS_DIR = HERE.parent / "src" / "content_schemas"
-SCHEMA_ARTIFACTS = HERE.parent / "src" / "content_schema_artifacts"
+SCHEMA_ARTIFACTS_DIR = HERE.parent / "src" / "content_schema_artifacts"
 
 
 def retrieve_from_filesystem(path: Path) -> Resource:
@@ -50,7 +50,9 @@ def create_registry_from_filesystem(schema_dir: Path) -> Registry:
     return my_registry
 
 
-def resolve_referenced_schemas(resource_content: dict, resolver: Resolver) -> tuple[dict, list]:
+def resolve_referenced_schemas(
+    resource_content: dict, resolver: Resolver, resolved_uris: list = []
+) -> tuple[dict, list]:
     """
     Modify the resource content by replacing referenced paths with corresponding JSON schemas.
 
@@ -59,16 +61,15 @@ def resolve_referenced_schemas(resource_content: dict, resolver: Resolver) -> tu
         resolver (Resolver): Resolver object used to look up referenced paths.
 
     Returns:
-        dict: The modified resource content.
+        tuple: The modified resource content.
     """
-    resolved_uris = []
-    if resource_content.get("properties"):
-        for key_, value_ in resource_content["properties"].items():
-            if isinstance(value_, dict) and "$ref" in value_.keys():
-                resource_content["properties"][key_] = resolver.lookup(
-                    value_["$ref"]
-                ).contents
-                resolved_uris.append(value_["$ref"])
+
+    for _key, value in resource_content.items():
+        if isinstance(value, dict) and "$ref" in value.keys():
+            value.update(resolver.lookup(value["$ref"]).contents)
+            resolved_uris.append(value["$ref"])
+        elif isinstance(value, dict):
+            resolve_referenced_schemas(value, resolver, resolved_uris)
     return resource_content, resolved_uris
 
 
@@ -92,10 +93,7 @@ def update_registry(my_registry: Registry, new_resource: Resource):
     Returns:
         Registry: The updated registry with the new resource.
     """
-    modified_registry = my_registry.remove(URI(new_resource.id()))
-    return modified_registry.with_resource(
-        uri=URI(new_resource.id()), resource=new_resource
-    )
+    return my_registry.with_resource(uri=URI(new_resource.id()), resource=new_resource)
 
 
 def export_registry(registry: Registry, export_dir: Path):
@@ -115,18 +113,18 @@ def export_registry(registry: Registry, export_dir: Path):
 
 def main():
     """The main routine."""
-    content_json_schemas_registry = create_registry_from_filesystem(SCHEMAS)
+    content_json_schemas_registry = create_registry_from_filesystem(CONTENT_SCHEMAS_DIR)
     resolver = Resolver(
-        base_uri=URI(SCHEMAS),
+        base_uri=URI(CONTENT_SCHEMAS_DIR),
         registry=content_json_schemas_registry,
     )
     resolved_registry_uris = set()
     # incorporate referenced sub-resources in the resource content
-    for schema_name in os.listdir(SCHEMAS):
+    for schema_name in os.listdir(CONTENT_SCHEMAS_DIR):
         resource = content_json_schemas_registry.contents(
-            os.path.join(SCHEMAS, schema_name.replace(".json", ""))
+            os.path.join(CONTENT_SCHEMAS_DIR, schema_name.replace(".json", ""))
         )
-        modified_content, resolved_uris = modify_content(resource, resolver)
+        modified_content, resolved_uris = resolve_referenced_schemas(resource, resolver)
         resolved_registry_uris.update(resolved_uris)
         modified_resource = create_resource(modified_content)
         updated_registry = update_registry(
@@ -136,7 +134,7 @@ def main():
     for uri in resolved_registry_uris:
         updated_registry = updated_registry.remove(uri)
     # export updated registry
-    export_registry(updated_registry, SCHEMA_ARTIFACTS)
+    export_registry(updated_registry, SCHEMA_ARTIFACTS_DIR)
 
 
 if __name__ == "__main__":
