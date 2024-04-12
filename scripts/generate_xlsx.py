@@ -99,6 +99,7 @@ class ClassReference:
 
 @dataclass
 class Column:
+"""Model defining a column"""
     name: str
     description: Optional[str]
     type: str
