@@ -1,10 +1,11 @@
 import json
 import os
 from pathlib import Path
+from typing import Union
 
 from referencing import Registry, Resource, Specification
 from referencing._core import Resolver
-from referencing.jsonschema import DRAFT202012
+from referencing.jsonschema import DRAFT7
 from referencing.typing import URI
 from script_utils.cli import run
 
@@ -30,7 +31,7 @@ def retrieve_from_filesystem(path: Path) -> Resource:
         raise FileNotFoundError(f"Schema file '{path}' not found")
     with path.open("r", encoding="utf-8") as file:
         contents = json.load(file)
-    return Resource(contents=contents, specification=DRAFT202012)
+    return Resource(contents=contents, specification=DRAFT7)
 
 
 def create_registry_from_filesystem(schema_dir: Path) -> Registry:
@@ -51,7 +52,7 @@ def create_registry_from_filesystem(schema_dir: Path) -> Registry:
 
 
 def resolve_referenced_schemas(
-    resource_content: dict, resolver: Resolver, resolved_uris: list = []
+    resource_content: dict, resolver: Resolver, resolved_uris: Union[None, list] = None
 ) -> tuple[dict, list]:
     """
     Modify the resource content by replacing referenced paths with corresponding JSON schemas.
@@ -64,6 +65,9 @@ def resolve_referenced_schemas(
         tuple: The modified resource content.
     """
 
+    if resolved_uris is None:
+        resolved_uris = []
+
     for _key, value in resource_content.items():
         if isinstance(value, dict) and "$ref" in value.keys():
             value.update(resolver.lookup(value["$ref"]).contents)
@@ -73,27 +77,11 @@ def resolve_referenced_schemas(
     return resource_content, resolved_uris
 
 
-def create_resource(
-    content: dict, specification: Specification = DRAFT202012
-) -> Resource:
+def create_resource(content: dict, specification: Specification = DRAFT7) -> Resource:
     """
     Create a resource object from content and specification.
     """
     return Resource.from_contents(contents=content, default_specification=specification)
-
-
-def update_registry(my_registry: Registry, new_resource: Resource):
-    """
-    Update a resource in the registry.
-
-    Args:
-        my_registry (Registry): The registry to be updated.
-        new_resource (Resource): The new resource to be updated.
-
-    Returns:
-        Registry: The updated registry with the new resource.
-    """
-    return my_registry.with_resource(uri=URI(new_resource.id()), resource=new_resource)
 
 
 def export_registry(registry: Registry, export_dir: Path):
@@ -127,9 +115,8 @@ def main():
         modified_content, resolved_uris = resolve_referenced_schemas(resource, resolver)
         resolved_registry_uris.update(resolved_uris)
         modified_resource = create_resource(modified_content)
-        updated_registry = update_registry(
-            content_json_schemas_registry, modified_resource
-        )
+        updated_registry = modified_resource @ content_json_schemas_registry
+
     # remove the content of the resolved resources from the registry
     for uri in resolved_registry_uris:
         updated_registry = updated_registry.remove(uri)
