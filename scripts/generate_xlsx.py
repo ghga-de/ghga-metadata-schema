@@ -157,9 +157,7 @@ def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
         )
 
         # Relations
-        for col_idx, (relation_name, relation) in enumerate(
-            class_.relations.items(), start=2
-        ):
+        for relation_name, relation in class_.relations.items():
             columns.append(
                 Column(
                     name=relation_name,
