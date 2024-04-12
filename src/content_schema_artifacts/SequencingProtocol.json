@@ -1,0 +1,215 @@
+{
+    "additionalProperties": false,
+    "description": "The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.",
+    "properties": {
+        "attributes": {
+            "description": "One or more attributes that further characterize this Sequencing Protocol.",
+            "items": {
+                "additionalProperties": false,
+                "description": "A key/value pair that further characterizes an entity.",
+                "properties": {
+                    "key": {
+                        "description": "The key of an attribute.",
+                        "type": "string"
+                    },
+                    "key_type": {
+                        "description": "A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "The value for an attribute (e.g., a numerical value without the units).",
+                        "type": "string"
+                    },
+                    "value_type": {
+                        "description": "The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ],
+                "title": "Attribute",
+                "type": "object",
+                "$id": "/workspace/src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "cell_barcode_offset": {
+            "description": "The offset in sequence of the cell identifying barcode (e.g., 0).",
+            "type": "string"
+        },
+        "cell_barcode_read": {
+            "description": "Permitted Values to indicate the location of a sequence component in a read or index",
+            "enum": [
+                "INDEX1",
+                "INDEX2",
+                "READ1",
+                "READ2"
+            ],
+            "title": "IndexReadEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/IndexReadEnum"
+        },
+        "cell_barcode_size": {
+            "description": "The size of the cell identifying barcode (e.g., 16).",
+            "type": "string"
+        },
+        "description": {
+            "description": "A description summarizing the Sequencing Protocol.",
+            "type": "string"
+        },
+        "flow_cell_id": {
+            "description": "Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).",
+            "type": "string"
+        },
+        "flow_cell_type": {
+            "description": "Permitted values for flow cell type",
+            "enum": [
+                "ILLUMINA_NOVA_SEQ_S2",
+                "ILLUMINA_NOVA_SEQ_S4",
+                "PROMETHION",
+                "FLONGLE",
+                "MINION",
+                "GRIDION",
+                "OTHER"
+            ],
+            "title": "FlowCellTypeEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/FlowCellTypeEnum"
+        },
+        "instrument_model": {
+            "description": "Permitted values for the instrument model",
+            "enum": [
+                "454_GS",
+                "454_GS_20",
+                "454_GS_FLX",
+                "454_GS_FLX_TITANIUM",
+                "454_GS_FLX+",
+                "454_GS_JUNIOR",
+                "AB_310_GENETIC_ANALYZER",
+                "AB_3130_GENETIC_ANALYZER",
+                "AB_3130XL_GENETIC_ANALYZER",
+                "AB_3500_GENETIC_ANALYZER",
+                "AB_3500XL_GENETIC_ANALYZER",
+                "AB_3730_GENETIC_ANALYZER",
+                "AB_3730XL_GENETIC_ANALYZER",
+                "AB_5500_GENETIC_ANALYZER",
+                "AB_5500XL_GENETIC_ANALYZER",
+                "AB_5500XL-W_GENETIC_ANALYSIS_SYSTEM",
+                "BGISEQ-50",
+                "BGISEQ-500",
+                "DNBSEQ-G400",
+                "DNBSEQ-G400_FAST",
+                "DNBSEQ-G50",
+                "DNBSEQ-T7",
+                "ELEMENT_AVITI",
+                "GRIDION",
+                "HELICOS_HELISCOPE",
+                "HISEQ_X_FIVE",
+                "HISEQ_X_TEN",
+                "ILLUMINA_GENOME_ANALYZER",
+                "ILLUMINA_GENOME_ANALYZER_II",
+                "ILLUMINA_GENOME_ANALYZER_IIX",
+                "ILLUMINA_HISCANSQ",
+                "ILLUMINA_HISEQ_1000",
+                "ILLUMINA_HISEQ_1500",
+                "ILLUMINA_HISEQ_2000",
+                "ILLUMINA_HISEQ_2500",
+                "ILLUMINA_HISEQ_3000",
+                "ILLUMINA_HISEQ_4000",
+                "ILLUMINA_HISEQ_X",
+                "ILLUMINA_MISEQ",
+                "ILLUMINA_MINISEQ",
+                "ILLUMINA_NOVASEQ_6000",
+                "ILLUMINA_NOVASEQ_X",
+                "ILLUMINA_ISEQ_100",
+                "ION_GENESTUDIO_S5",
+                "ION_GENESTUDIO_S5_PLUS",
+                "ION_GENESTUDIO_S5_PRIME",
+                "ION_TORRENT_GENEXUS",
+                "ION_TORRENT_PGM",
+                "ION_TORRENT_PROTON",
+                "ION_TORRENT_S5",
+                "ION_TORRENT_S5_XL",
+                "MGISEQ-2000RS",
+                "MINION",
+                "NEXTSEQ_1000",
+                "NEXTSEQ_2000",
+                "NEXTSEQ_500",
+                "NEXTSEQ_550",
+                "PACBIO_RS",
+                "PACBIO_RS_II",
+                "PROMETHION",
+                "SEQUEL",
+                "SEQUEL_II",
+                "SEQUEL_IIE",
+                "UG_100",
+                "UNSPECIFIED",
+                "OTHER"
+            ],
+            "title": "InstrumentModelEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/InstrumentModelEnum"
+        },
+        "name": {
+            "description": "A short name identifying this Sequencing Protocol.",
+            "type": "string"
+        },
+        "sample_barcode_read": {
+            "description": "Permitted values for sample barcode read",
+            "enum": [
+                "INDEX1",
+                "INDEX1_AND_INDEX2",
+                "OTHER"
+            ],
+            "title": "SampleBarcodeReadEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/SampleBarcodeReadEnum"
+        },
+        "sequencing_center": {
+            "description": "Center where sample was sequenced.",
+            "type": "string"
+        },
+        "sequencing_read_length": {
+            "description": "Length of sequencing reads (e.g., long or short or actual number of the read length).",
+            "type": "string"
+        },
+        "target_coverage": {
+            "description": "Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).",
+            "type": "string"
+        },
+        "type": {
+            "description": "Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).",
+            "type": "string"
+        },
+        "umi_barcode_offset": {
+            "description": "The offset in sequence of the UMI identifying barcode (e.g., 16).",
+            "type": "string"
+        },
+        "umi_barcode_read": {
+            "description": "Permitted Values to indicate the location of a sequence component in a read or index",
+            "enum": [
+                "INDEX1",
+                "INDEX2",
+                "READ1",
+                "READ2"
+            ],
+            "title": "IndexReadEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/IndexReadEnum"
+        },
+        "umi_barcode_size": {
+            "description": "The size of the UMI identifying barcode (e.g., 10).",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "instrument_model"
+    ],
+    "title": "SequencingProtocol",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/SequencingProtocol"
+}

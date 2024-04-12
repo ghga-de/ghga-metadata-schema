@@ -1,0 +1,82 @@
+{
+    "additionalProperties": false,
+    "description": "A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.",
+    "properties": {
+        "age_at_sampling": {
+            "description": "Enum to capture the age range that an Indiviudal belongs to.",
+            "enum": [
+                "0_TO_5",
+                "6_TO_10",
+                "11_TO_15",
+                "16_TO_20",
+                "21_TO_25",
+                "26_TO_30",
+                "31_TO_35",
+                "36_TO_40",
+                "41_TO_45",
+                "46_TO_50",
+                "51_TO_55",
+                "56_TO_60",
+                "61_TO_65",
+                "66_TO_70",
+                "71_TO_75",
+                "76_TO_80",
+                "81_OR_OLDER",
+                "UNKNOWN"
+            ],
+            "title": "AgeRangeEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/AgeRangeEnum"
+        },
+        "description": {
+            "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
+            "type": "string"
+        },
+        "isolation": {
+            "description": "Method or device employed for collecting/isolating this Biospecimen.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.",
+            "type": "string"
+        },
+        "storage": {
+            "description": "Enum to capture how a Sample or Biospecimen was stored.",
+            "enum": [
+                "REFRIGERATOR",
+                "FREEZER",
+                "ULTRA_LOW_FREEZER",
+                "CRYOGENIC_FREEZER"
+            ],
+            "title": "StorageEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/StorageEnum"
+        },
+        "tissue": {
+            "description": "The tissue this Biospecimen originated from.",
+            "type": "string"
+        },
+        "type": {
+            "description": "The type of Biospecimen.",
+            "type": "string"
+        },
+        "vital_status_at_sampling": {
+            "description": "Enum to capture the vital status of an individual.",
+            "enum": [
+                "ALIVE",
+                "DECEASED",
+                "UNKNOWN"
+            ],
+            "title": "VitalStatusEnum",
+            "type": "string",
+            "$id": "/workspace/src/content_schemas/VitalStatusEnum"
+        }
+    },
+    "required": [
+        "age_at_sampling",
+        "tissue"
+    ],
+    "title": "Biospecimen",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/Biospecimen"
+}

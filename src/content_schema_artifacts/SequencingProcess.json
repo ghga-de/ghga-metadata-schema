@@ -1,0 +1,70 @@
+{
+    "additionalProperties": false,
+    "description": "The Sequencing Process captures the technical parameters that were used to produce sequencing output from the Sample. It links the Sample to sequencing output.",
+    "properties": {
+        "attributes": {
+            "description": "Key/value pairs corresponding to an entity.",
+            "items": {
+                "additionalProperties": false,
+                "description": "A key/value pair that further characterizes an entity.",
+                "properties": {
+                    "key": {
+                        "description": "The key of an attribute.",
+                        "type": "string"
+                    },
+                    "key_type": {
+                        "description": "A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "The value for an attribute (e.g., a numerical value without the units).",
+                        "type": "string"
+                    },
+                    "value_type": {
+                        "description": "The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ],
+                "title": "Attribute",
+                "type": "object",
+                "$id": "/workspace/src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "description": {
+            "description": "A short description of this Sequencing Process.",
+            "type": "string"
+        },
+        "index_sequence": {
+            "description": "A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A short name identifying this Sequencing Process.",
+            "type": "string"
+        },
+        "sequencing_lane_id": {
+            "description": "The identifier of a sequencing lane.",
+            "type": "string"
+        },
+        "sequencing_machine_id": {
+            "description": "The identifier of a sequencing machine.",
+            "type": "string"
+        },
+        "sequencing_run_id": {
+            "description": "The identifier of a sequencing run.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description"
+    ],
+    "title": "SequencingProcess",
+    "type": "object",
+    "$id": "/workspace/src/content_schemas/SequencingProcess"
+}
