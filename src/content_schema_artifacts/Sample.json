@@ -5,7 +5,6 @@
         "attributes": {
             "description": "Key/value pairs corresponding to an entity.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute",
                 "additionalProperties": false,
                 "description": "A key/value pair that further characterizes an entity.",
                 "properties": {
@@ -49,7 +48,6 @@
             "type": "string"
         },
         "storage": {
-            "$ref": "/workspace/src/content_schemas/StorageEnum",
             "description": "Enum to capture how a Sample or Biospecimen was stored.",
             "enum": [
                 "REFRIGERATOR",
@@ -62,7 +60,6 @@
             "$id": "/workspace/src/content_schemas/StorageEnum"
         },
         "type": {
-            "$ref": "/workspace/src/content_schemas/SampleTypeEnum",
             "description": "The type of a sample",
             "enum": [
                 "CF_DNA",

@@ -5,7 +5,6 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Library Preparation Protocol.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute",
                 "additionalProperties": false,
                 "description": "A key/value pair that further characterizes an entity.",
                 "properties": {
@@ -41,7 +40,6 @@
             "type": "string"
         },
         "end_bias": {
-            "$ref": "/workspace/src/content_schemas/EndBiasEnum",
             "description": "Permitted values for end bias",
             "enum": [
                 "3_PRIME_END",
@@ -53,7 +51,6 @@
             "$id": "/workspace/src/content_schemas/EndBiasEnum"
         },
         "library_layout": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationLibraryLayoutEnum",
             "description": "Single-end vs paired-end library",
             "enum": [
                 "SE",
@@ -76,7 +73,6 @@
             "type": "string"
         },
         "library_preparation_kit_retail_name": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum",
             "description": "Permitted values for library preparation kit retail name",
             "enum": [
                 "10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2",
@@ -246,7 +242,6 @@
             "$id": "/workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum"
         },
         "library_selection": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum",
             "description": "Permitted vocabulary for library selections",
             "enum": [
                 "5_METHYLCYTIDINE_ANTIBODY_METHOD",
@@ -280,7 +275,6 @@
             "$id": "/workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum"
         },
         "library_type": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationLibraryTypeEnum",
             "description": "The type of the library",
             "enum": [
                 "WGS",
@@ -299,7 +293,6 @@
             "$id": "/workspace/src/content_schemas/LibraryPreparationLibraryTypeEnum"
         },
         "primer": {
-            "$ref": "/workspace/src/content_schemas/PrimerEnum",
             "description": "Permitted values for primer",
             "enum": [
                 "OLIGO_D_T",
@@ -312,7 +305,6 @@
             "$id": "/workspace/src/content_schemas/PrimerEnum"
         },
         "rnaseq_strandedness": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationRNASeqStrandednessEnum",
             "description": "Permitted values for library preparation RNASeq strandedness",
             "enum": [
                 "SENSE",

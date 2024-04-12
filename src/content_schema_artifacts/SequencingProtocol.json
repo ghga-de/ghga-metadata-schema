@@ -5,7 +5,6 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Sequencing Protocol.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute",
                 "additionalProperties": false,
                 "description": "A key/value pair that further characterizes an entity.",
                 "properties": {
@@ -41,7 +40,6 @@
             "type": "string"
         },
         "cell_barcode_read": {
-            "$ref": "/workspace/src/content_schemas/IndexReadEnum",
             "description": "Permitted Values to indicate the location of a sequence component in a read or index",
             "enum": [
                 "INDEX1",
@@ -66,7 +64,6 @@
             "type": "string"
         },
         "flow_cell_type": {
-            "$ref": "/workspace/src/content_schemas/FlowCellTypeEnum",
             "description": "Permitted values for flow cell type",
             "enum": [
                 "ILLUMINA_NOVA_SEQ_S2",
@@ -82,7 +79,6 @@
             "$id": "/workspace/src/content_schemas/FlowCellTypeEnum"
         },
         "instrument_model": {
-            "$ref": "/workspace/src/content_schemas/InstrumentModelEnum",
             "description": "Permitted values for the instrument model",
             "enum": [
                 "454_GS",
@@ -161,7 +157,6 @@
             "type": "string"
         },
         "sample_barcode_read": {
-            "$ref": "/workspace/src/content_schemas/SampleBarcodeReadEnum",
             "description": "Permitted values for sample barcode read",
             "enum": [
                 "INDEX1",
@@ -193,7 +188,6 @@
             "type": "string"
         },
         "umi_barcode_read": {
-            "$ref": "/workspace/src/content_schemas/IndexReadEnum",
             "description": "Permitted Values to indicate the location of a sequence component in a read or index",
             "enum": [
                 "INDEX1",

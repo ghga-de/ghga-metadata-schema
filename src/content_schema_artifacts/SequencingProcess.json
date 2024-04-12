@@ -5,7 +5,6 @@
         "attributes": {
             "description": "Key/value pairs corresponding to an entity.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute",
                 "additionalProperties": false,
                 "description": "A key/value pair that further characterizes an entity.",
                 "properties": {

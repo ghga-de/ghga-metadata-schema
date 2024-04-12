@@ -12,7 +12,6 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Study.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute",
                 "additionalProperties": false,
                 "description": "A key/value pair that further characterizes an entity.",
                 "properties": {
@@ -52,7 +51,6 @@
             "type": "string"
         },
         "type": {
-            "$ref": "/workspace/src/content_schemas/StudyTypeEnum",
             "description": "Enum to capture the type of a study.",
             "enum": [
                 "CANCER_GENOMICS",

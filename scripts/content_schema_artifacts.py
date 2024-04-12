@@ -72,6 +72,7 @@ def resolve_referenced_schemas(
         if isinstance(value, dict) and "$ref" in value.keys():
             value.update(resolver.lookup(value["$ref"]).contents)
             resolved_uris.append(value["$ref"])
+            del value["$ref"]
         elif isinstance(value, dict):
             resolve_referenced_schemas(value, resolver, resolved_uris)
     return resource_content, resolved_uris

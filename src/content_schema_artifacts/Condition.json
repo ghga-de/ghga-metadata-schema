@@ -5,7 +5,6 @@
         "attributes": {
             "description": "Key/value pairs corresponding to an entity.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute",
                 "additionalProperties": false,
                 "description": "A key/value pair that further characterizes an entity.",
                 "properties": {
@@ -37,7 +36,6 @@
             "type": "array"
         },
         "case_control_status": {
-            "$ref": "/workspace/src/content_schemas/CaseControlStatusEnum",
             "description": "Enum to capture whether a condition corresponds to a case or a control condition.",
             "enum": [
                 "NEITHER_CASE_OR_CONTROL_STATUS",
@@ -56,7 +54,6 @@
             "type": "string"
         },
         "disease_or_healthy": {
-            "$ref": "/workspace/src/content_schemas/DiseaseOrHealthyEnum",
             "description": "Enum to capture whether a condition corresponds to a disease or a healthy state.",
             "enum": [
                 "DISEASE",
@@ -68,7 +65,6 @@
             "$id": "/workspace/src/content_schemas/DiseaseOrHealthyEnum"
         },
         "mutant_or_wildtype": {
-            "$ref": "/workspace/src/content_schemas/MutantOrWildtypeEnum",
             "description": "Enum to capture whether a condition corresponds to a mutant or a wildtype.",
             "enum": [
                 "MUTANT",
