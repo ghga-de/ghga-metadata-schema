@@ -82,7 +82,6 @@ class Config(BaseModel):
 class GHGASchemaError(RuntimeError):
     """Raised when a schema violates GHGA schema rules."""
 
-    pass
 
 
 def _validate_relation(relation: Relation) -> None:
