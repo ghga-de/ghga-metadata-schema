@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Script to convert linkML schema to schemapack definition"""
 
+import json
 from pathlib import Path
 
 import yaml
@@ -32,12 +33,11 @@ def load_yaml(path: Path):
 
 def construct_mandatory(relation_name: str, class_schema: dict):
     """Returns the constraints in the relationship modality"""
-    return MandatoryRelationSpec(
-        origin=True,
-        target=class_schema.get("slot_usage", {})
-        .get(relation_name, {})
-        .get("required", False),
+    # checks a slot is required or not
+    slot_state = (
+        class_schema.get("slot_usage", {}).get(relation_name, {}).get("required", False)
     )
+    return MandatoryRelationSpec(origin=slot_state, target=slot_state)
 
 
 def construct_multiple():

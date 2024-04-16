@@ -62,7 +62,7 @@ classes:
         targetClass: Analysis
       sample_input_files:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -70,7 +70,7 @@ classes:
         targetClass: SampleFile
       sequencing_process_input_files:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -78,7 +78,7 @@ classes:
         targetClass: SequencingProcessFile
       study_input_files:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -1022,7 +1022,7 @@ classes:
     relations:
       biospecimen:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
