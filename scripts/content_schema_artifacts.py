@@ -4,13 +4,13 @@ from pathlib import Path
 
 from referencing import Registry, Resource, Specification
 from referencing._core import Resolver
-from referencing.jsonschema import DRAFT202012
+from referencing.jsonschema import DRAFT7
 from referencing.typing import URI
 from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
-SCHEMAS = HERE.parent / "src" / "content_schemas"
-SCHEMA_ARTIFACTS = HERE.parent / "src" / "content_schema_artifacts"
+CONTENT_SCHEMAS_DIR = HERE.parent / "src" / "content_schemas"
+SCHEMA_ARTIFACTS_DIR = HERE.parent / "src" / "content_schema_artifacts"
 
 
 def retrieve_from_filesystem(path: Path) -> Resource:
@@ -30,7 +30,7 @@ def retrieve_from_filesystem(path: Path) -> Resource:
         raise FileNotFoundError(f"Schema file '{path}' not found")
     with path.open("r", encoding="utf-8") as file:
         contents = json.load(file)
-    return Resource(contents=contents, specification=DRAFT202012)
+    return Resource(contents=contents, specification=DRAFT7)
 
 
 def create_registry_from_filesystem(schema_dir: Path) -> Registry:
@@ -46,7 +46,7 @@ def create_registry_from_filesystem(schema_dir: Path) -> Registry:
     my_registry = Registry()
     for schema_file in schema_dir.glob("*.json"):
         resource = retrieve_from_filesystem(schema_file)
-        my_registry = my_registry.__rmatmul__(resource)
+        my_registry = resource @ my_registry
     return my_registry
 
 
@@ -113,20 +113,20 @@ def export_registry(registry: Registry, export_dir: Path):
 
 def main():
     """The main routine."""
-    content_json_schemas_registry = create_registry_from_filesystem(SCHEMAS)
+    content_json_schemas_registry = create_registry_from_filesystem(CONTENT_SCHEMAS_DIR)
     resolver = Resolver(
-        base_uri=URI(SCHEMAS),
+        base_uri=URI(CONTENT_SCHEMAS_DIR),
         registry=content_json_schemas_registry,
     )
-    for schema_name in os.listdir(SCHEMAS):
+    for schema_name in os.listdir(CONTENT_SCHEMAS_DIR):
         resource = content_json_schemas_registry.contents(
-            os.path.join(SCHEMAS, schema_name.replace(".json", ""))
+            os.path.join(CONTENT_SCHEMAS_DIR, schema_name.replace(".json", ""))
         )
         modified_resource = create_resource(modify_content(resource, resolver))
         updated_registry = update_registry(
             content_json_schemas_registry, modified_resource
         )
-    export_registry(updated_registry, SCHEMA_ARTIFACTS)
+    export_registry(updated_registry, SCHEMA_ARTIFACTS_DIR)
 
 
 if __name__ == "__main__":
