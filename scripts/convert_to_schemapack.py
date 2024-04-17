@@ -17,7 +17,7 @@ from schemapack.spec.schemapack import (
 from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
-SCHEMA_FOLDER = HERE.parent / "src" / "schema" / "schemapack.yaml"
+SCHEMA_FOLDER = HERE.parent / "src" / "schema" / "submission.schemapack.yaml"
 LINKML_SCHEMA = HERE.parent / "src" / "schema" / "submission.yaml"
 RELATIONS_CONFIG = HERE.parent / "relations_config.yaml"
 CLASS_CONTENT_FOLDER = HERE.parent / "src" / "content_schema_artifacts"
@@ -33,7 +33,7 @@ def load_yaml(path: Path):
 def construct_mandatory(relation_name: str, class_schema: dict):
     """Returns the constraints in the relationship modality"""
     return MandatoryRelationSpec(
-        origin=True,
+        origin=False,
         target=class_schema.get("slot_usage", {})
         .get(relation_name, {})
         .get("required", False),
@@ -86,9 +86,9 @@ def construct_schemapack_class(
 
 def get_class_relations(class_name: str, relations_config: dict) -> dict:
     """Extracts the relations of a given class from the relations config"""
-    for info in relations_config["classes"]:
-        if info["name"] == class_name:
-            return info["relations"]
+    for key, value in relations_config["classes"].items():
+        if key == class_name:
+            return value["relations"]
     return {}
 
 

@@ -54,8 +54,8 @@ def _reshaped_relation(path: Path = RELATIONS_CONFIG):
     list with relation names"""
     data = load_yaml(path)
     return [
-        {"name": info["name"], "relations": info["relations"].keys()}
-        for info in data["classes"]
+        {"name": key, "relations": value["relations"].keys()}
+        for key, value in data["classes"].items()
     ]
 
 

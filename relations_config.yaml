@@ -1,139 +1,147 @@
 classes:
-- name: Attribute
-  relations: {}
-- name: AliasMixin
-  relations: {}
-- name: AttributeMixin
-  relations:
-    attributes:
-      targetClass: Attribute
-- name: Study
-  relations: {}
-- name: SequencingExperiment
-  relations:
-    library_preparation_protocol:
-      targetClass: LibraryPreparationProtocol
-    sequencing_protocol:
-      targetClass: SequencingProtocol
-- name: Condition
-  relations:
-    study:
-      targetClass: Study
-- name: LibraryPreparationProtocol
-  relations: {}
-- name: SequencingProtocol
-  relations: {}
-- name: SequencingProcess
-  relations:
-    sample:
-      targetClass: Sample
-    sequencing_experiment:
-      targetClass: SequencingExperiment
-- name: Biospecimen
-  relations:
-    individual:
-      targetClass: Individual
-- name: Sample
-  relations:
-    biospecimen:
-      targetClass: Biospecimen
-    condition:
-      targetClass: Condition
-- name: Individual
-  relations: {}
-- name: Trio
-  relations:
-    child:
-      targetClass: Individual
-    father:
-      targetClass: Individual
-    mother:
-      targetClass: Individual
-- name: File
-  relations:
-    dataset:
-      targetClass: Dataset
-- name: StudyFile
-  relations:
-    study:
-      targetClass: Study
-- name: SampleFile
-  relations:
-    sample:
-      targetClass: Sample
-- name: SequencingProcessFile
-  relations:
-    sequencing_process:
-      targetClass: SequencingProcess
-- name: AnalysisProcessOutputFile
-  relations:
-    analysis_process:
-      targetClass: AnalysisProcess
-- name: Analysis
-  relations: {}
-- name: AnalysisProcess
-  relations:
-    analysis:
-      targetClass: Analysis
-    sample_input_files:
-      targetClass: SampleFile
-    sequencing_process_input_files:
-      targetClass: SequencingProcessFile
-    study_input_files:
-      targetClass: StudyFile
-- name: Dataset
-  relations:
-    data_access_policy:
-      targetClass: DataAccessPolicy
-- name: DataAccessPolicy
-  relations:
-    data_access_committee:
-      targetClass: DataAccessCommittee
-- name: DataAccessCommittee
-  relations: {}
-- name: Publication
-  relations:
-    study:
-      targetClass: Study
-- name: Submission
-  relations:
-    analyses:
-      targetClass: Analysis
-    analysis_process_output_files:
-      targetClass: AnalysisProcessOutputFile
-    analysis_processes:
-      targetClass: AnalysisProcess
-    biospecimens:
-      targetClass: Biospecimen
-    conditions:
-      targetClass: Condition
-    data_access_committees:
-      targetClass: DataAccessCommittee
-    data_access_policies:
-      targetClass: DataAccessPolicy
-    datasets:
-      targetClass: Dataset
-    individuals:
-      targetClass: Individual
-    library_preparation_protocols:
-      targetClass: LibraryPreparationProtocol
-    publications:
-      targetClass: Publication
-    sample_files:
-      targetClass: SampleFile
-    samples:
-      targetClass: Sample
-    sequencing_experiments:
-      targetClass: SequencingExperiment
-    sequencing_process_files:
-      targetClass: SequencingProcessFile
-    sequencing_processes:
-      targetClass: SequencingProcess
-    sequencing_protocols:
-      targetClass: SequencingProtocol
-    studies:
-      targetClass: Study
-    study_files:
-      targetClass: StudyFile
-    trios:
-      targetClass: Trio
+  AliasMixin:
+    relations: {}
+  Analysis:
+    relations: {}
+  AnalysisProcess:
+    relations:
+      analysis:
+        targetClass: Analysis
+      sample_input_files:
+        targetClass: SampleFile
+      sequencing_process_input_files:
+        targetClass: SequencingProcessFile
+      study_input_files:
+        targetClass: StudyFile
+  AnalysisProcessOutputFile:
+    relations:
+      analysis_process:
+        targetClass: AnalysisProcess
+      dataset:
+        targetClass: Dataset
+  Attribute:
+    relations: {}
+  AttributeMixin:
+    relations:
+      attributes:
+        targetClass: Attribute
+  Biospecimen:
+    relations:
+      individual:
+        targetClass: Individual
+  Condition:
+    relations:
+      study:
+        targetClass: Study
+  DataAccessCommittee:
+    relations: {}
+  DataAccessPolicy:
+    relations:
+      data_access_committee:
+        targetClass: DataAccessCommittee
+  Dataset:
+    relations:
+      data_access_policy:
+        targetClass: DataAccessPolicy
+  File:
+    relations:
+      dataset:
+        targetClass: Dataset
+  Individual:
+    relations: {}
+  LibraryPreparationProtocol:
+    relations: {}
+  Publication:
+    relations:
+      study:
+        targetClass: Study
+  Sample:
+    relations:
+      biospecimen:
+        targetClass: Biospecimen
+      condition:
+        targetClass: Condition
+  SampleFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      sample:
+        targetClass: Sample
+  SequencingExperiment:
+    relations:
+      library_preparation_protocol:
+        targetClass: LibraryPreparationProtocol
+      sequencing_protocol:
+        targetClass: SequencingProtocol
+  SequencingProcess:
+    relations:
+      sample:
+        targetClass: Sample
+      sequencing_experiment:
+        targetClass: SequencingExperiment
+  SequencingProcessFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      sequencing_process:
+        targetClass: SequencingProcess
+  SequencingProtocol:
+    relations: {}
+  Study:
+    relations: {}
+  StudyFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      study:
+        targetClass: Study
+  Submission:
+    relations:
+      analyses:
+        targetClass: Analysis
+      analysis_process_output_files:
+        targetClass: AnalysisProcessOutputFile
+      analysis_processes:
+        targetClass: AnalysisProcess
+      biospecimens:
+        targetClass: Biospecimen
+      conditions:
+        targetClass: Condition
+      data_access_committees:
+        targetClass: DataAccessCommittee
+      data_access_policies:
+        targetClass: DataAccessPolicy
+      datasets:
+        targetClass: Dataset
+      individuals:
+        targetClass: Individual
+      library_preparation_protocols:
+        targetClass: LibraryPreparationProtocol
+      publications:
+        targetClass: Publication
+      sample_files:
+        targetClass: SampleFile
+      samples:
+        targetClass: Sample
+      sequencing_experiments:
+        targetClass: SequencingExperiment
+      sequencing_process_files:
+        targetClass: SequencingProcessFile
+      sequencing_processes:
+        targetClass: SequencingProcess
+      sequencing_protocols:
+        targetClass: SequencingProtocol
+      studies:
+        targetClass: Study
+      study_files:
+        targetClass: StudyFile
+      trios:
+        targetClass: Trio
+  Trio:
+    relations:
+      child:
+        targetClass: Individual
+      father:
+        targetClass: Individual
+      mother:
+        targetClass: Individual

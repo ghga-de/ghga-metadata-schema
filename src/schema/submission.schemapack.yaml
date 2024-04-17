@@ -54,7 +54,7 @@ classes:
     relations:
       analysis:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -62,7 +62,7 @@ classes:
         targetClass: Analysis
       sample_input_files:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -70,7 +70,7 @@ classes:
         targetClass: SampleFile
       sequencing_process_input_files:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -78,7 +78,7 @@ classes:
         targetClass: SequencingProcessFile
       study_input_files:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -97,9 +97,6 @@ classes:
         checksum_type:
           description: The type of algorithm used to generate the checksum of the
             File.
-          type: string
-        dataset:
-          description: The Dataset associated with this File.
           type: string
         format:
           $id: /workspace/src/content_schemas/FileFormatEnum
@@ -150,7 +147,6 @@ classes:
       - size
       - checksum
       - checksum_type
-      - dataset
       title: AnalysisProcessOutputFile
       type: object
     description: A Analysis Process OutputFile is a File that is associated as an
@@ -160,41 +156,20 @@ classes:
     relations:
       analysis_process:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
           target: false
         targetClass: AnalysisProcess
-  Attribute:
-    content:
-      $id: /workspace/src/content_schemas/Attribute
-      additionalProperties: false
-      description: A key/value pair that further characterizes an entity.
-      properties:
-        key:
-          description: The key of an attribute.
-          type: string
-        key_type:
-          description: A semantic type that characterizes the attribute key (e.g.,
-            oxygen saturation measurement (MAXO:0000616)).
-          type: string
-        value:
-          description: The value for an attribute (e.g., a numerical value without
-            the units).
-          type: string
-        value_type:
-          description: The value_type that characterizes the attribute value (e.g.,
-            percentage (SIO:001413)).
-          type: string
-      required:
-      - key
-      - value
-      title: Attribute
-      type: object
-    description: A key/value pair that further characterizes an entity.
-    id:
-      propertyName: alias
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
   Biospecimen:
     content:
       $id: /workspace/src/content_schemas/Biospecimen
@@ -276,7 +251,7 @@ classes:
     relations:
       individual:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -293,7 +268,30 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         case_control_status:
           $id: /workspace/src/content_schemas/CaseControlStatusEnum
@@ -350,7 +348,7 @@ classes:
     relations:
       study:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -395,7 +393,29 @@ classes:
             of ''DUO:0000017: data use modifier''. Please use ''user specific restriction''
             if no other modifier applies.'
           items:
-            $ref: /workspace/src/content_schemas/DataUseModifierEnum
+            $id: /workspace/src/content_schemas/DataUseModifierEnum
+            description: Permitted values for data use modifier
+            enum:
+            - clinical care use
+            - return to database or resource
+            - institution specific restriction
+            - project specific restriction
+            - user specific restriction
+            - time limit on use
+            - publication moratorium
+            - geographical restriction
+            - ethics approval required
+            - collaboration required
+            - publication required
+            - not for profit, non commercial use only
+            - non-commercial use only
+            - not for profit organisation use only
+            - genetic studies only
+            - no general methods research
+            - research specific restrictions
+            - population origins or ancestry research prohibited
+            title: DataUseModifierEnum
+            type: string
           type: array
         data_use_permission:
           $id: /workspace/src/content_schemas/DataUsePermissionEnum
@@ -437,7 +457,7 @@ classes:
     relations:
       data_access_committee:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -474,90 +494,12 @@ classes:
     relations:
       data_access_policy:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
           target: false
         targetClass: DataAccessPolicy
-  File:
-    content:
-      $id: /workspace/src/content_schemas/File
-      additionalProperties: false
-      description: A file is an object that contains information generated from a
-        process, either an Experiment or an Analysis.
-      properties:
-        checksum:
-          description: The checksum of the File.
-          type: string
-        checksum_type:
-          description: The type of algorithm used to generate the checksum of the
-            File.
-          type: string
-        format:
-          $id: /workspace/src/content_schemas/FileFormatEnum
-          description: Enum to capture file types.
-          enum:
-          - AGP
-          - BAI
-          - BAM
-          - BCF
-          - BED
-          - CRAM
-          - CSV
-          - FASTA
-          - FASTQ
-          - GFF
-          - HDF5
-          - JSON
-          - PED
-          - SAM
-          - SFF
-          - SRF
-          - TABIX
-          - TSV
-          - TXT
-          - VCF
-          - WIG
-          - OTHER
-          title: FileFormatEnum
-          type: string
-        forward_or_reverse:
-          $id: /workspace/src/content_schemas/ForwardOrReverseEnum
-          description: Enum to capture whether the reads from paired-end sequencing
-            are forward (R1) or reverse (R2).
-          enum:
-          - FORWARD
-          - REVERSE
-          title: ForwardOrReverseEnum
-          type: string
-        name:
-          description: The given filename.
-          type: string
-        size:
-          description: The size of the File in bytes.
-          type: integer
-      required:
-      - name
-      - format
-      - size
-      - checksum
-      - checksum_type
-      title: File
-      type: object
-    description: A file is an object that contains information generated from a process,
-      either an Experiment or an Analysis.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: true
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
   Individual:
     content:
       $id: /workspace/src/content_schemas/Individual
@@ -618,7 +560,30 @@ classes:
           description: One or more attributes that further characterize this Library
             Preparation Protocol.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         description:
           description: Description summarizing how a sequencing library was prepared.
@@ -944,7 +909,7 @@ classes:
     relations:
       study:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -961,7 +926,30 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         description:
           description: A concise description about the Sample source, the collection
@@ -1022,7 +1010,7 @@ classes:
     relations:
       biospecimen:
         mandatory:
-          origin: true
+          origin: false
           target: false
         multiple:
           origin: true
@@ -1030,7 +1018,7 @@ classes:
         targetClass: Biospecimen
       condition:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1048,9 +1036,6 @@ classes:
         checksum_type:
           description: The type of algorithm used to generate the checksum of the
             File.
-          type: string
-        dataset:
-          description: The Dataset associated with this File.
           type: string
         format:
           $id: /workspace/src/content_schemas/FileFormatEnum
@@ -1101,16 +1086,23 @@ classes:
       - size
       - checksum
       - checksum_type
-      - dataset
       title: SampleFile
       type: object
     description: A Sample File is a File that is associated with a Sample.
     id:
       propertyName: alias
     relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
       sample:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1127,7 +1119,30 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         description:
           description: A detailed description of this Sequencing Experiment.
@@ -1151,7 +1166,7 @@ classes:
     relations:
       library_preparation_protocol:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1159,7 +1174,7 @@ classes:
         targetClass: LibraryPreparationProtocol
       sequencing_protocol:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1176,7 +1191,30 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         description:
           description: A short description of this Sequencing Process.
@@ -1210,7 +1248,7 @@ classes:
     relations:
       sample:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1218,7 +1256,7 @@ classes:
         targetClass: Sample
       sequencing_experiment:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1237,9 +1275,6 @@ classes:
         checksum_type:
           description: The type of algorithm used to generate the checksum of the
             File.
-          type: string
-        dataset:
-          description: The Dataset associated with this File.
           type: string
         format:
           $id: /workspace/src/content_schemas/FileFormatEnum
@@ -1290,7 +1325,6 @@ classes:
       - size
       - checksum
       - checksum_type
-      - dataset
       title: SequencingProcessFile
       type: object
     description: A Sequencing Process File is a File that is associated with a Sequencing
@@ -1298,9 +1332,17 @@ classes:
     id:
       propertyName: alias
     relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
       sequencing_process:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1317,7 +1359,30 @@ classes:
           description: One or more attributes that further characterize this Sequencing
             Protocol.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         cell_barcode_offset:
           description: The offset in sequence of the cell identifying barcode (e.g.,
@@ -1500,7 +1565,30 @@ classes:
         attributes:
           description: One or more attributes that further characterize this Study.
           items:
-            $ref: /workspace/src/content_schemas/Attribute
+            $id: /workspace/src/content_schemas/Attribute
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
           type: array
         description:
           description: A detailed description (abstract) that describes the goals
@@ -1556,9 +1644,6 @@ classes:
           description: The type of algorithm used to generate the checksum of the
             File.
           type: string
-        dataset:
-          description: The Dataset associated with this File.
-          type: string
         format:
           $id: /workspace/src/content_schemas/FileFormatEnum
           description: Enum to capture file types.
@@ -1608,16 +1693,23 @@ classes:
       - size
       - checksum
       - checksum_type
-      - dataset
       title: StudyFile
       type: object
     description: A Study File is a File that is associated with a Study.
     id:
       propertyName: alias
     relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
       study:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1642,7 +1734,7 @@ classes:
     relations:
       child:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1650,7 +1742,7 @@ classes:
         targetClass: Individual
       father:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true
@@ -1658,7 +1750,7 @@ classes:
         targetClass: Individual
       mother:
         mandatory:
-          origin: true
+          origin: false
           target: true
         multiple:
           origin: true

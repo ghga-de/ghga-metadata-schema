@@ -5,7 +5,30 @@
         "data_use_modifiers": {
             "description": "One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'user specific restriction' if no other modifier applies.",
             "items": {
-                "$ref": "src/content_schemas/DataUseModifierEnum"
+                "description": "Permitted values for data use modifier",
+                "enum": [
+                    "clinical care use",
+                    "return to database or resource",
+                    "institution specific restriction",
+                    "project specific restriction",
+                    "user specific restriction",
+                    "time limit on use",
+                    "publication moratorium",
+                    "geographical restriction",
+                    "ethics approval required",
+                    "collaboration required",
+                    "publication required",
+                    "not for profit, non commercial use only",
+                    "non-commercial use only",
+                    "not for profit organisation use only",
+                    "genetic studies only",
+                    "no general methods research",
+                    "research specific restrictions",
+                    "population origins or ancestry research prohibited"
+                ],
+                "title": "DataUseModifierEnum",
+                "type": "string",
+                "$id": "/workspace/src/content_schemas/DataUseModifierEnum"
             },
             "type": "array"
         },

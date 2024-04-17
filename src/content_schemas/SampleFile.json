@@ -10,10 +10,6 @@
             "description": "The type of algorithm used to generate the checksum of the File.",
             "type": "string"
         },
-        "dataset": {
-            "description": "The Dataset associated with this File.",
-            "type": "string"
-        },
         "format": {
             "$ref": "src/content_schemas/FileFormatEnum",
             "description": "The format of the File (e.g., BAM, SAM, CRAM, BAI)."
@@ -36,8 +32,7 @@
         "format",
         "size",
         "checksum",
-        "checksum_type",
-        "dataset"
+        "checksum_type"
     ],
     "title": "SampleFile",
     "type": "object",

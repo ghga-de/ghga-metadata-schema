@@ -28,8 +28,8 @@ from script_utils.cli import run
 class SchemaClass(BaseModel):
     """Model describing a basic schema class"""
 
-    name: str
     slots: list
+    inheritance: Union[None, str] = None
     relations: dict[str, dict] = Field(default_factory=dict)
 
 
@@ -37,7 +37,7 @@ class Schema(BaseModel):
     """Model describing a basic linkML schema"""
 
     json_schema: dict[str, Any]
-    classes: list[SchemaClass]
+    classes: dict[str, SchemaClass]
 
     @property
     def class_names(self) -> list[str]:
@@ -50,14 +50,14 @@ class Schema(BaseModel):
         return self.json_schema.get("slots", {})
 
 
-def construct_classes(schema: dict) -> list[SchemaClass]:
+def construct_classes(schema: dict) -> dict[str, SchemaClass]:
     "Converts the classes contained in the schema into a list of SchemaClass objects"
     class_dict = schema.get("classes", {})
-    return [
-        SchemaClass(name=key, slots=value["slots"])
+    return {
+        key: SchemaClass(slots=value["slots"], inheritance=value.get("is_a"))
         for key, value in class_dict.items()
         if value.get("slots")
-    ]
+    }
 
 
 def load_schema(path: Path) -> Schema:
@@ -88,6 +88,15 @@ def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> dict
     }
 
 
+def resolve_inherited_relations(schema: Schema) -> Schema:
+    """Resolves the relations from the class inheritances"""
+    for _key, value in schema.classes.items():
+        if value.inheritance and schema.classes.get(value.inheritance):
+            inherited_relations = schema.classes[value.inheritance].relations
+            value.relations.update(inherited_relations)
+    return schema
+
+
 def save_relations(schema: Schema, filename: str):
     "Creates a config file that involves the classes and their relations to other classes"
 
@@ -95,14 +104,14 @@ def save_relations(schema: Schema, filename: str):
         """function"""
         return schema.model_dump(
             exclude={
-                "classes": {"__all__": "slots"},
+                "classes": {"__all__": {"slots": True, "inheritance": True}},
                 "json_schema": True,
                 "class_names": True,
                 "slots": True,
             }
         )
 
-    with open(filename, "w") as outfile:
+    with open(filename, "w", encoding="utf-8") as outfile:
         yaml.dump(_relations(schema), outfile, default_flow_style=False)
 
 
@@ -110,9 +119,10 @@ def main():
     """The main routine."""
     schema = load_schema(Path("/workspace/src/schema/submission.yaml"))
     class_ranged_slots = slots_with_class_range(schema)
-    for schema_class in schema.classes:
+    for _, schema_class in schema.classes.items():
         schema_class.relations = class_relations(schema_class, class_ranged_slots)
-    save_relations(schema, "relations_config.yaml")
+    resolved_schema = resolve_inherited_relations(schema)
+    save_relations(resolved_schema, "relations_config.yaml")
 
 
 if __name__ == "__main__":
