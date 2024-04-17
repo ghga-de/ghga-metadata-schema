@@ -12,7 +12,6 @@ from script_utils.cli import run
 class SchemaClass(BaseModel):
     """Model describing a basic schema class"""
 
-    name: str
     slots: list
     inheritance: Union[None, str] = None
     relations: dict[str, dict] = Field(default_factory=dict)
@@ -39,7 +38,7 @@ def construct_classes(schema: dict) -> dict[str, SchemaClass]:
     "Converts the classes contained in the schema into a list of SchemaClass objects"
     class_dict = schema.get("classes", {})
     return {
-        key: SchemaClass(name=key, slots=value["slots"], inheritance=value.get("is_a"))
+        key: SchemaClass(slots=value["slots"], inheritance=value.get("is_a"))
         for key, value in class_dict.items()
         if value.get("slots")
     }

@@ -1,12 +1,9 @@
 classes:
   AliasMixin:
-    name: AliasMixin
     relations: {}
   Analysis:
-    name: Analysis
     relations: {}
   AnalysisProcess:
-    name: AnalysisProcess
     relations:
       analysis:
         targetClass: Analysis
@@ -17,109 +14,88 @@ classes:
       study_input_files:
         targetClass: StudyFile
   AnalysisProcessOutputFile:
-    name: AnalysisProcessOutputFile
     relations:
       analysis_process:
         targetClass: AnalysisProcess
       dataset:
         targetClass: Dataset
   Attribute:
-    name: Attribute
     relations: {}
   AttributeMixin:
-    name: AttributeMixin
     relations:
       attributes:
         targetClass: Attribute
   Biospecimen:
-    name: Biospecimen
     relations:
       individual:
         targetClass: Individual
   Condition:
-    name: Condition
     relations:
       study:
         targetClass: Study
   DataAccessCommittee:
-    name: DataAccessCommittee
     relations: {}
   DataAccessPolicy:
-    name: DataAccessPolicy
     relations:
       data_access_committee:
         targetClass: DataAccessCommittee
   Dataset:
-    name: Dataset
     relations:
       data_access_policy:
         targetClass: DataAccessPolicy
   File:
-    name: File
     relations:
       dataset:
         targetClass: Dataset
   Individual:
-    name: Individual
     relations: {}
   LibraryPreparationProtocol:
-    name: LibraryPreparationProtocol
     relations: {}
   Publication:
-    name: Publication
     relations:
       study:
         targetClass: Study
   Sample:
-    name: Sample
     relations:
       biospecimen:
         targetClass: Biospecimen
       condition:
         targetClass: Condition
   SampleFile:
-    name: SampleFile
     relations:
       dataset:
         targetClass: Dataset
       sample:
         targetClass: Sample
   SequencingExperiment:
-    name: SequencingExperiment
     relations:
       library_preparation_protocol:
         targetClass: LibraryPreparationProtocol
       sequencing_protocol:
         targetClass: SequencingProtocol
   SequencingProcess:
-    name: SequencingProcess
     relations:
       sample:
         targetClass: Sample
       sequencing_experiment:
         targetClass: SequencingExperiment
   SequencingProcessFile:
-    name: SequencingProcessFile
     relations:
       dataset:
         targetClass: Dataset
       sequencing_process:
         targetClass: SequencingProcess
   SequencingProtocol:
-    name: SequencingProtocol
     relations: {}
   Study:
-    name: Study
     relations: {}
   StudyFile:
-    name: StudyFile
     relations:
       dataset:
         targetClass: Dataset
       study:
         targetClass: Study
   Submission:
-    name: Submission
     relations:
       analyses:
         targetClass: Analysis
@@ -162,7 +138,6 @@ classes:
       trios:
         targetClass: Trio
   Trio:
-    name: Trio
     relations:
       child:
         targetClass: Individual
