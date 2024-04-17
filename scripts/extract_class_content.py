@@ -37,8 +37,8 @@ def _reshaped_relation(path: Path = RELATIONS_CONFIG):
     list with relation names"""
     data = load_yaml(path)
     return [
-        {"name": info["name"], "relations": info["relations"].keys()}
-        for info in data["classes"]
+        {"name": value["name"], "relations": value["relations"].keys()}
+        for _, value in data["classes"].items()
     ]
 
 
@@ -126,7 +126,6 @@ def export_class_content(schema_defs: dict, excluded_list: list):
 def main():
     """The main routine."""
     schema_in_json = linkml_to_json(Path("src/schema/submission.yaml"))
-    print(json.dumps(schema_in_json, indent=4))
     schema_bundle = add_id_to_class_defs(schema_in_json)
     modified_refs = replace_schema_refs(schema_bundle["$defs"])
     deleted_identifier = clean_content_identifier(modified_refs)
