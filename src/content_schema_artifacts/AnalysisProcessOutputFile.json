@@ -10,10 +10,6 @@
             "description": "The type of algorithm used to generate the checksum of the File.",
             "type": "string"
         },
-        "dataset": {
-            "description": "The Dataset associated with this File.",
-            "type": "string"
-        },
         "format": {
             "description": "Enum to capture file types.",
             "enum": [
@@ -68,8 +64,7 @@
         "format",
         "size",
         "checksum",
-        "checksum_type",
-        "dataset"
+        "checksum_type"
     ],
     "title": "AnalysisProcessOutputFile",
     "type": "object",
