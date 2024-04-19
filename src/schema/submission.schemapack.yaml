@@ -68,7 +68,7 @@ classes:
           target: false
         multiple:
           origin: true
-          target: false
+          target: true
         targetClass: SampleFile
       sequencing_process_input_files:
         mandatory:
@@ -76,7 +76,7 @@ classes:
           target: false
         multiple:
           origin: true
-          target: false
+          target: true
         targetClass: SequencingProcessFile
       study_input_files:
         mandatory:
@@ -84,7 +84,7 @@ classes:
           target: false
         multiple:
           origin: true
-          target: false
+          target: true
         targetClass: StudyFile
   AnalysisProcessOutputFile:
     content:
