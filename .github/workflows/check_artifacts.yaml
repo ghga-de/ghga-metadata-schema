@@ -20,4 +20,4 @@ jobs:
 
       - name: Check artifacts
         run: >-
-          ./scripts/update_content_schema_artifacts --check
+          ./scripts/update_content_schema_artifacts.py --check
