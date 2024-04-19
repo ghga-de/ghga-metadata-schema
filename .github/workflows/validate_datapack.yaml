@@ -1,0 +1,23 @@
+name: Check whether the example datapack is valid against the ghga-metadata-schemapack definition
+
+on: push
+
+jobs:
+  validate-datapack:
+    name: Validate example datapack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: >-
+          pip install -r requirements.txt
+
+      - name: Validate datapack
+        run: >-
+          ./scripts/validate_datapack.py --check
