@@ -40,13 +40,16 @@ def construct_mandatory(relation_name: str, class_schema: dict):
     )
 
 
-def construct_multiple():
+def construct_multiple(relation_name: str, schema: dict):
     """Returns the schemapack specification for 1 to n relationship"""
-    return MultipleRelationSpec(origin=True, target=False)
+    return MultipleRelationSpec(
+        origin=True,
+        target=schema.get("slots", {}).get(relation_name, {}).get("multivalued", False),
+    )
 
 
 def construct_relation(
-    class_relations: dict, class_schema: dict
+    class_relations: dict, class_schema: dict, schema: dict
 ) -> dict[str, Relation]:
     """Creates objects of Relations from the relation list of a class"""
 
@@ -55,7 +58,7 @@ def construct_relation(
             description=None,
             targetClass=value.get("targetClass"),
             mandatory=construct_mandatory(key, class_schema),
-            multiple=construct_multiple(),
+            multiple=construct_multiple(key, schema),
         )
         for key, value in class_relations.items()
     }
@@ -69,7 +72,7 @@ def construct_content_schema(path: Path) -> str:
 
 
 def construct_schemapack_class(
-    class_name: str, class_relations: dict, class_schema: dict
+    class_name: str, class_relations: dict, class_schema: dict, schema: dict
 ) -> ClassDefinition:
     """Creates ClassDefinition object"""
     return ClassDefinition(
@@ -80,7 +83,7 @@ def construct_schemapack_class(
                 Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json")
             )
         ),
-        relations=construct_relation(class_relations, class_schema),
+        relations=construct_relation(class_relations, class_schema, schema),
     )
 
 
@@ -93,12 +96,14 @@ def get_class_relations(class_name: str, relations_config: dict) -> dict:
 
 
 def _class_definitions(
-    schema: dict, relations_config: dict, excluded_config: list
+    schema: dict,
+    relations_config: dict,
+    excluded_config: list,
 ) -> dict:
     """Generates ClassDefinition and maps it to class name"""
     return {
         key: construct_schemapack_class(
-            key, get_class_relations(key, relations_config), value
+            key, get_class_relations(key, relations_config), value, schema
         )
         for key, value in schema["classes"].items()
         if key not in excluded_config
