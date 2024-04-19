@@ -1,0 +1,23 @@
+name: Check whether content schema artifacts are up to date
+
+on: push
+
+jobs:
+  check-artifacts:
+    name: Content schema artifact check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: >-
+          pip install -r requirements.txt
+
+      - name: Check artifacts
+        run: >-
+          ./scripts/update_content_schema_artifacts --check
