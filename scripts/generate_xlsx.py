@@ -87,7 +87,8 @@ class GHGASchemaError(RuntimeError):
 def _validate_relation(relation: Relation) -> None:
     if relation.multiple.target:
         raise GHGASchemaError(
-            "One-to-Many and Many-to-Many relations are not supported in GHGA schemas. One-to-Many relations must be inverted to Many-to-One relations."
+            "One-to-Many and Many-to-Many relations are not supported in GHGA schemas."
+            " One-to-Many relations must be inverted to Many-to-One relations."
         )
 
 
