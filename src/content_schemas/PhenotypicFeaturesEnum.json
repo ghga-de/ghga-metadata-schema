@@ -3,5 +3,6 @@
     "enum": [],
     "title": "PhenotypicFeaturesEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/PhenotypicFeaturesEnum"
+    "$id": "src/content_schemas/PhenotypicFeaturesEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

@@ -25,5 +25,6 @@
     ],
     "title": "Attribute",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Attribute"
+    "$id": "src/content_schemas/Attribute",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

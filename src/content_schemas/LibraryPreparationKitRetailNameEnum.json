@@ -165,5 +165,6 @@
     ],
     "title": "LibraryPreparationKitRetailNameEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum"
+    "$id": "src/content_schemas/LibraryPreparationKitRetailNameEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

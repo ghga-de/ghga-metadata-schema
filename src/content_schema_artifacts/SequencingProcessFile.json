@@ -38,7 +38,8 @@
             ],
             "title": "FileFormatEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/FileFormatEnum"
+            "$id": "src/content_schemas/FileFormatEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "forward_or_reverse": {
             "description": "Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
@@ -48,7 +49,8 @@
             ],
             "title": "ForwardOrReverseEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/ForwardOrReverseEnum"
+            "$id": "src/content_schemas/ForwardOrReverseEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "name": {
             "description": "The given filename.",
@@ -68,5 +70,6 @@
     ],
     "title": "SequencingProcessFile",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/SequencingProcessFile"
+    "$id": "src/content_schemas/SequencingProcessFile",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

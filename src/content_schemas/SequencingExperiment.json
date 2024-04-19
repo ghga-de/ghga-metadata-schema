@@ -5,7 +5,7 @@
         "attributes": {
             "description": "Key/value pairs corresponding to an entity.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -28,5 +28,6 @@
     ],
     "title": "SequencingExperiment",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/SequencingExperiment"
+    "$id": "src/content_schemas/SequencingExperiment",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

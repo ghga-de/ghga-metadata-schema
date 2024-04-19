@@ -11,11 +11,11 @@
             "type": "string"
         },
         "format": {
-            "$ref": "/workspace/src/content_schemas/FileFormatEnum",
+            "$ref": "src/content_schemas/FileFormatEnum",
             "description": "The format of the File (e.g., BAM, SAM, CRAM, BAI)."
         },
         "forward_or_reverse": {
-            "$ref": "/workspace/src/content_schemas/ForwardOrReverseEnum",
+            "$ref": "src/content_schemas/ForwardOrReverseEnum",
             "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing."
         },
         "name": {
@@ -36,5 +36,6 @@
     ],
     "title": "StudyFile",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/StudyFile"
+    "$id": "src/content_schemas/StudyFile",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

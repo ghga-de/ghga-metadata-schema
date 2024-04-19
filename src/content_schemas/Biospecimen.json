@@ -3,7 +3,7 @@
     "description": "A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.  It is linked to the Individual from which the Biospecimen is derived.",
     "properties": {
         "age_at_sampling": {
-            "$ref": "/workspace/src/content_schemas/AgeRangeEnum",
+            "$ref": "src/content_schemas/AgeRangeEnum",
             "description": "The age of the Individual."
         },
         "description": {
@@ -19,7 +19,7 @@
             "type": "string"
         },
         "storage": {
-            "$ref": "/workspace/src/content_schemas/StorageEnum",
+            "$ref": "src/content_schemas/StorageEnum",
             "description": "Methods by which this Biospecimen is stored."
         },
         "tissue": {
@@ -31,7 +31,7 @@
             "type": "string"
         },
         "vital_status_at_sampling": {
-            "$ref": "/workspace/src/content_schemas/VitalStatusEnum",
+            "$ref": "src/content_schemas/VitalStatusEnum",
             "description": "Vital Status of the Individual at the point of sampling (e.g., alive)."
         }
     },
@@ -41,5 +41,6 @@
     ],
     "title": "Biospecimen",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Biospecimen"
+    "$id": "src/content_schemas/Biospecimen",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

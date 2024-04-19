@@ -3,5 +3,6 @@
     "enum": [],
     "title": "IsolationEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/IsolationEnum"
+    "$id": "src/content_schemas/IsolationEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

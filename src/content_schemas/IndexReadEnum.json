@@ -8,5 +8,6 @@
     ],
     "title": "IndexReadEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/IndexReadEnum"
+    "$id": "src/content_schemas/IndexReadEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

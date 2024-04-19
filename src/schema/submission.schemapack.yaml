@@ -1,7 +1,8 @@
 classes:
   Analysis:
     content:
-      $id: /workspace/src/content_schemas/Analysis
+      $id: src/content_schemas/Analysis
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: An Analysis is a data transformation that transforms input data
         to output data.
@@ -35,7 +36,8 @@ classes:
       propertyName: alias
   AnalysisProcess:
     content:
-      $id: /workspace/src/content_schemas/AnalysisProcess
+      $id: src/content_schemas/AnalysisProcess
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: An Analysis Process captures the workflow steps that were performed
         to analyze data obtained from a Sequencing Experiment.
@@ -86,7 +88,8 @@ classes:
         targetClass: StudyFile
   AnalysisProcessOutputFile:
     content:
-      $id: /workspace/src/content_schemas/AnalysisProcessOutputFile
+      $id: src/content_schemas/AnalysisProcessOutputFile
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Analysis Process OutputFile is a File that is associated as an
         output file with an Analysis Process.
@@ -99,7 +102,8 @@ classes:
             File.
           type: string
         format:
-          $id: /workspace/src/content_schemas/FileFormatEnum
+          $id: src/content_schemas/FileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture file types.
           enum:
           - AGP
@@ -127,7 +131,8 @@ classes:
           title: FileFormatEnum
           type: string
         forward_or_reverse:
-          $id: /workspace/src/content_schemas/ForwardOrReverseEnum
+          $id: src/content_schemas/ForwardOrReverseEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether the reads from paired-end sequencing
             are forward (R1) or reverse (R2).
           enum:
@@ -172,14 +177,16 @@ classes:
         targetClass: Dataset
   Biospecimen:
     content:
-      $id: /workspace/src/content_schemas/Biospecimen
+      $id: src/content_schemas/Biospecimen
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Biospecimen is any natural material taken from a biological entity
         for testing, diagnostics, treatment, or research purposes.  It is linked to
         the Individual from which the Biospecimen is derived.
       properties:
         age_at_sampling:
-          $id: /workspace/src/content_schemas/AgeRangeEnum
+          $id: src/content_schemas/AgeRangeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture the age range that an Indiviudal belongs to.
           enum:
           - 0_TO_5
@@ -214,7 +221,8 @@ classes:
             This property must not include any personally identifiable data.
           type: string
         storage:
-          $id: /workspace/src/content_schemas/StorageEnum
+          $id: src/content_schemas/StorageEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture how a Sample or Biospecimen was stored.
           enum:
           - REFRIGERATOR
@@ -230,7 +238,8 @@ classes:
           description: The type of Biospecimen.
           type: string
         vital_status_at_sampling:
-          $id: /workspace/src/content_schemas/VitalStatusEnum
+          $id: src/content_schemas/VitalStatusEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture the vital status of an individual.
           enum:
           - ALIVE
@@ -259,7 +268,8 @@ classes:
         targetClass: Individual
   Condition:
     content:
-      $id: /workspace/src/content_schemas/Condition
+      $id: src/content_schemas/Condition
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Condition specifies which special characteristics and treatments
         apply to a Sample (e.g., whether the Sample comes from a disease or a healthy
@@ -268,7 +278,8 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -294,7 +305,8 @@ classes:
             type: object
           type: array
         case_control_status:
-          $id: /workspace/src/content_schemas/CaseControlStatusEnum
+          $id: src/content_schemas/CaseControlStatusEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether a condition corresponds to a case or
             a control condition.
           enum:
@@ -310,7 +322,8 @@ classes:
           description: A concise description of the applied Condition.
           type: string
         disease_or_healthy:
-          $id: /workspace/src/content_schemas/DiseaseOrHealthyEnum
+          $id: src/content_schemas/DiseaseOrHealthyEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether a condition corresponds to a disease
             or a healthy state.
           enum:
@@ -320,7 +333,8 @@ classes:
           title: DiseaseOrHealthyEnum
           type: string
         mutant_or_wildtype:
-          $id: /workspace/src/content_schemas/MutantOrWildtypeEnum
+          $id: src/content_schemas/MutantOrWildtypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether a condition corresponds to a mutant
             or a wildtype.
           enum:
@@ -356,7 +370,8 @@ classes:
         targetClass: Study
   DataAccessCommittee:
     content:
-      $id: /workspace/src/content_schemas/DataAccessCommittee
+      $id: src/content_schemas/DataAccessCommittee
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A group of members that are delegated to grant access to one or
         more datasets after ensuring the criteria for data sharing has been met,  and
@@ -381,7 +396,8 @@ classes:
       propertyName: alias
   DataAccessPolicy:
     content:
-      $id: /workspace/src/content_schemas/DataAccessPolicy
+      $id: src/content_schemas/DataAccessPolicy
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Data Access Policy specifies under which circumstances, legal
         or otherwise, a user can have access to one or more Datasets belonging to
@@ -393,7 +409,8 @@ classes:
             of ''DUO:0000017: data use modifier''. Please use ''user specific restriction''
             if no other modifier applies.'
           items:
-            $id: /workspace/src/content_schemas/DataUseModifierEnum
+            $id: src/content_schemas/DataUseModifierEnum
+            $schema: http://json-schema.org/draft-07/schema#
             description: Permitted values for data use modifier
             enum:
             - clinical care use
@@ -418,7 +435,8 @@ classes:
             type: string
           type: array
         data_use_permission:
-          $id: /workspace/src/content_schemas/DataUsePermissionEnum
+          $id: src/content_schemas/DataUsePermissionEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for data use permission
           enum:
           - general research use
@@ -465,7 +483,8 @@ classes:
         targetClass: DataAccessCommittee
   Dataset:
     content:
-      $id: /workspace/src/content_schemas/Dataset
+      $id: src/content_schemas/Dataset
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Dataset is a collection of Files that is prepared for distribution
         and is tied to a Data Access Policy.
@@ -502,7 +521,8 @@ classes:
         targetClass: DataAccessPolicy
   Individual:
     content:
-      $id: /workspace/src/content_schemas/Individual
+      $id: src/content_schemas/Individual
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: An Individual is a Person who is participating in a Study.
       properties:
@@ -515,7 +535,8 @@ classes:
           description: The geographical region where the Individual is located.
           type: string
         karyotype:
-          $id: /workspace/src/content_schemas/KaryotypeEnum
+          $id: src/content_schemas/KaryotypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for karyotype
           enum:
           - 46_XY
@@ -531,7 +552,8 @@ classes:
             type: string
           type: array
         sex:
-          $id: /workspace/src/content_schemas/IndividualSexEnum
+          $id: src/content_schemas/IndividualSexEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: The sex of an Individual as as defined in a specific medical
             and clinical context.
           enum:
@@ -551,7 +573,8 @@ classes:
       propertyName: alias
   LibraryPreparationProtocol:
     content:
-      $id: /workspace/src/content_schemas/LibraryPreparationProtocol
+      $id: src/content_schemas/LibraryPreparationProtocol
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: The Library Preparation Protocol captures information about the
         library preparation of a Sequencing Experiment.
@@ -560,7 +583,8 @@ classes:
           description: One or more attributes that further characterize this Library
             Preparation Protocol.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -589,7 +613,8 @@ classes:
           description: Description summarizing how a sequencing library was prepared.
           type: string
         end_bias:
-          $id: /workspace/src/content_schemas/EndBiasEnum
+          $id: src/content_schemas/EndBiasEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for end bias
           enum:
           - 3_PRIME_END
@@ -598,7 +623,8 @@ classes:
           title: EndBiasEnum
           type: string
         library_layout:
-          $id: /workspace/src/content_schemas/LibraryPreparationLibraryLayoutEnum
+          $id: src/content_schemas/LibraryPreparationLibraryLayoutEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Single-end vs paired-end library
           enum:
           - SE
@@ -617,7 +643,8 @@ classes:
           description: The manufacturer of the kit used for library preparation.
           type: string
         library_preparation_kit_retail_name:
-          $id: /workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum
+          $id: src/content_schemas/LibraryPreparationKitRetailNameEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for library preparation kit retail name
           enum:
           - 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2
@@ -784,7 +811,8 @@ classes:
           title: LibraryPreparationKitRetailNameEnum
           type: string
         library_selection:
-          $id: /workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum
+          $id: src/content_schemas/LibraryPreparationLibrarySelectionEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted vocabulary for library selections
           enum:
           - 5_METHYLCYTIDINE_ANTIBODY_METHOD
@@ -815,7 +843,8 @@ classes:
           title: LibraryPreparationLibrarySelectionEnum
           type: string
         library_type:
-          $id: /workspace/src/content_schemas/LibraryPreparationLibraryTypeEnum
+          $id: src/content_schemas/LibraryPreparationLibraryTypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: The type of the library
           enum:
           - WGS
@@ -831,7 +860,8 @@ classes:
           title: LibraryPreparationLibraryTypeEnum
           type: string
         primer:
-          $id: /workspace/src/content_schemas/PrimerEnum
+          $id: src/content_schemas/PrimerEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for primer
           enum:
           - OLIGO_D_T
@@ -841,7 +871,8 @@ classes:
           title: PrimerEnum
           type: string
         rnaseq_strandedness:
-          $id: /workspace/src/content_schemas/LibraryPreparationRNASeqStrandednessEnum
+          $id: src/content_schemas/LibraryPreparationRNASeqStrandednessEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for library preparation RNASeq strandedness
           enum:
           - SENSE
@@ -869,7 +900,8 @@ classes:
       propertyName: alias
   Publication:
     content:
-      $id: /workspace/src/content_schemas/Publication
+      $id: src/content_schemas/Publication
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Publication represents an article that is published. The minimum
         expectation is that the publication has a valid DOI.
@@ -917,7 +949,8 @@ classes:
         targetClass: Study
   Sample:
     content:
-      $id: /workspace/src/content_schemas/Sample
+      $id: src/content_schemas/Sample
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Sample is a limited quantity of something to be used for testing,
         analysis, inspection, investigation, demonstration, or trial use.  It is prepared
@@ -926,7 +959,8 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -964,7 +998,8 @@ classes:
             identifiable data.
           type: string
         storage:
-          $id: /workspace/src/content_schemas/StorageEnum
+          $id: src/content_schemas/StorageEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture how a Sample or Biospecimen was stored.
           enum:
           - REFRIGERATOR
@@ -974,7 +1009,8 @@ classes:
           title: StorageEnum
           type: string
         type:
-          $id: /workspace/src/content_schemas/SampleTypeEnum
+          $id: src/content_schemas/SampleTypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: The type of a sample
           enum:
           - CF_DNA
@@ -1026,7 +1062,8 @@ classes:
         targetClass: Condition
   SampleFile:
     content:
-      $id: /workspace/src/content_schemas/SampleFile
+      $id: src/content_schemas/SampleFile
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Sample File is a File that is associated with a Sample.
       properties:
@@ -1038,7 +1075,8 @@ classes:
             File.
           type: string
         format:
-          $id: /workspace/src/content_schemas/FileFormatEnum
+          $id: src/content_schemas/FileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture file types.
           enum:
           - AGP
@@ -1066,7 +1104,8 @@ classes:
           title: FileFormatEnum
           type: string
         forward_or_reverse:
-          $id: /workspace/src/content_schemas/ForwardOrReverseEnum
+          $id: src/content_schemas/ForwardOrReverseEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether the reads from paired-end sequencing
             are forward (R1) or reverse (R2).
           enum:
@@ -1110,7 +1149,8 @@ classes:
         targetClass: Sample
   SequencingExperiment:
     content:
-      $id: /workspace/src/content_schemas/SequencingExperiment
+      $id: src/content_schemas/SequencingExperiment
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Sequencing Experiment is an investigation that consists of a
         coordinated set of actions and observations designed to generate data with
@@ -1119,7 +1159,8 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -1182,7 +1223,8 @@ classes:
         targetClass: SequencingProtocol
   SequencingProcess:
     content:
-      $id: /workspace/src/content_schemas/SequencingProcess
+      $id: src/content_schemas/SequencingProcess
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: The Sequencing Process captures the technical parameters that were
         used to produce sequencing output from the Sample. It links the Sample to
@@ -1191,7 +1233,8 @@ classes:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -1264,7 +1307,8 @@ classes:
         targetClass: SequencingExperiment
   SequencingProcessFile:
     content:
-      $id: /workspace/src/content_schemas/SequencingProcessFile
+      $id: src/content_schemas/SequencingProcessFile
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Sequencing Process File is a File that is associated with a Sequencing
         Process.
@@ -1277,7 +1321,8 @@ classes:
             File.
           type: string
         format:
-          $id: /workspace/src/content_schemas/FileFormatEnum
+          $id: src/content_schemas/FileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture file types.
           enum:
           - AGP
@@ -1305,7 +1350,8 @@ classes:
           title: FileFormatEnum
           type: string
         forward_or_reverse:
-          $id: /workspace/src/content_schemas/ForwardOrReverseEnum
+          $id: src/content_schemas/ForwardOrReverseEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether the reads from paired-end sequencing
             are forward (R1) or reverse (R2).
           enum:
@@ -1350,7 +1396,8 @@ classes:
         targetClass: SequencingProcess
   SequencingProtocol:
     content:
-      $id: /workspace/src/content_schemas/SequencingProtocol
+      $id: src/content_schemas/SequencingProtocol
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: The Sequencing Protocol captures information about parameters and
         metadata associated with a Sequencing Experiment.
@@ -1359,7 +1406,8 @@ classes:
           description: One or more attributes that further characterize this Sequencing
             Protocol.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -1389,7 +1437,8 @@ classes:
             0).
           type: string
         cell_barcode_read:
-          $id: /workspace/src/content_schemas/IndexReadEnum
+          $id: src/content_schemas/IndexReadEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted Values to indicate the location of a sequence component
             in a read or index
           enum:
@@ -1409,7 +1458,8 @@ classes:
           description: Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
           type: string
         flow_cell_type:
-          $id: /workspace/src/content_schemas/FlowCellTypeEnum
+          $id: src/content_schemas/FlowCellTypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for flow cell type
           enum:
           - ILLUMINA_NOVA_SEQ_S2
@@ -1422,7 +1472,8 @@ classes:
           title: FlowCellTypeEnum
           type: string
         instrument_model:
-          $id: /workspace/src/content_schemas/InstrumentModelEnum
+          $id: src/content_schemas/InstrumentModelEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for the instrument model
           enum:
           - 454_GS
@@ -1497,7 +1548,8 @@ classes:
           description: A short name identifying this Sequencing Protocol.
           type: string
         sample_barcode_read:
-          $id: /workspace/src/content_schemas/SampleBarcodeReadEnum
+          $id: src/content_schemas/SampleBarcodeReadEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted values for sample barcode read
           enum:
           - INDEX1
@@ -1526,7 +1578,8 @@ classes:
             16).
           type: string
         umi_barcode_read:
-          $id: /workspace/src/content_schemas/IndexReadEnum
+          $id: src/content_schemas/IndexReadEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Permitted Values to indicate the location of a sequence component
             in a read or index
           enum:
@@ -1551,7 +1604,8 @@ classes:
       propertyName: alias
   Study:
     content:
-      $id: /workspace/src/content_schemas/Study
+      $id: src/content_schemas/Study
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Study is an experimental investigation of a particular phenomenon.
         It involves a detailed examination and analysis of a subject to learn more
@@ -1565,7 +1619,8 @@ classes:
         attributes:
           description: One or more attributes that further characterize this Study.
           items:
-            $id: /workspace/src/content_schemas/Attribute
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -1598,7 +1653,8 @@ classes:
           description: A comprehensive title for this Study.
           type: string
         type:
-          $id: /workspace/src/content_schemas/StudyTypeEnum
+          $id: src/content_schemas/StudyTypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture the type of a study.
           enum:
           - CANCER_GENOMICS
@@ -1633,7 +1689,8 @@ classes:
       propertyName: alias
   StudyFile:
     content:
-      $id: /workspace/src/content_schemas/StudyFile
+      $id: src/content_schemas/StudyFile
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Study File is a File that is associated with a Study.
       properties:
@@ -1645,7 +1702,8 @@ classes:
             File.
           type: string
         format:
-          $id: /workspace/src/content_schemas/FileFormatEnum
+          $id: src/content_schemas/FileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture file types.
           enum:
           - AGP
@@ -1673,7 +1731,8 @@ classes:
           title: FileFormatEnum
           type: string
         forward_or_reverse:
-          $id: /workspace/src/content_schemas/ForwardOrReverseEnum
+          $id: src/content_schemas/ForwardOrReverseEnum
+          $schema: http://json-schema.org/draft-07/schema#
           description: Enum to capture whether the reads from paired-end sequencing
             are forward (R1) or reverse (R2).
           enum:
@@ -1717,7 +1776,8 @@ classes:
         targetClass: Study
   Trio:
     content:
-      $id: /workspace/src/content_schemas/Trio
+      $id: src/content_schemas/Trio
+      $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
       description: A Trio is a study design in which the genetic information of three
         individuals within a family unit is analyzed. It consists of a child and their

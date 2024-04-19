@@ -8,5 +8,6 @@
     ],
     "title": "StorageEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/StorageEnum"
+    "$id": "src/content_schemas/StorageEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

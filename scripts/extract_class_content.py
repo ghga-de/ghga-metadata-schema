@@ -3,8 +3,8 @@
 individual files"""
 
 import json
+import os
 import subprocess
-from os import fspath
 from pathlib import Path
 from typing import Union
 
@@ -13,9 +13,10 @@ from pydantic import BaseModel, TypeAdapter
 from script_utils.cli import run
 
 HERE = Path(__file__).parent.resolve()
-CLASS_CONTENT_DIR = HERE.parent / "src" / "content_schemas"
-RELATIONS_CONFIG = HERE.parent / "relations_config.yaml"
-EXCLUDE_CONFIG = HERE.parent / "exclude_config.yaml"
+ROOT = HERE.parent.resolve()
+CLASS_CONTENT_DIR = ROOT / "src" / "content_schemas"
+RELATIONS_CONFIG = ROOT / "relations_config.yaml"
+EXCLUDE_CONFIG = ROOT / "exclude_config.yaml"
 
 
 class Relation(BaseModel):
@@ -60,11 +61,18 @@ def linkml_to_json(file: Path) -> dict:
     return json.loads(stdout.decode("utf-8"))
 
 
+def import_specification(json_schema: dict) -> dict:
+    """Adds the json schema specification to the class definitions"""
+    for _, value in json_schema["$defs"].items():
+        value["$schema"] = json_schema["$schema"]
+    return json_schema
+
+
 def add_id_to_class_defs(json_schema: dict) -> dict:
     """The reusable sub-schemas will live under the local class-content-schema.
     Thus, it adds that path as id to class definitions"""
     for key, value in json_schema["$defs"].items():
-        value["$id"] = fspath(CLASS_CONTENT_DIR / key)
+        value["$id"] = os.path.relpath(CLASS_CONTENT_DIR / key, ROOT)
     return json_schema
 
 
@@ -82,7 +90,10 @@ def replace_schema_refs(schema_defs: dict) -> dict:
     """Recursively replaces '#/$defs/' references with the specified schemas path."""
     for key, value in schema_defs.items():
         if key == "$ref":
-            schema_defs[key] = value.replace("#/$defs", str(CLASS_CONTENT_DIR))
+            schema_defs[key] = value.replace(
+                "#/$defs",
+                str(os.path.relpath(CLASS_CONTENT_DIR, ROOT)),
+            )
         elif isinstance(value, dict):
             schema_defs[key] = replace_schema_refs(value)
     return schema_defs
@@ -113,25 +124,23 @@ def clean_content_identifier(schema_defs: dict):
     return schema_defs
 
 
-def export_class_content(schema_defs: dict, excluded_list: list):
+def export_class_content(schema_defs: dict):
     """Writes class schemas to separate files"""
     for class_name, class_info in schema_defs.items():
-        if class_name not in excluded_list:
-            filename = str(CLASS_CONTENT_DIR / class_name) + ".json"
-            with open(filename, "w", encoding="utf-8") as file:
-                json.dump(class_info, file, indent=4)
-                file.write("\n")
+        filename = str(CLASS_CONTENT_DIR / class_name) + ".json"
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(class_info, file, indent=4)
+            file.write("\n")
 
 
 def main():
     """The main routine."""
     schema_in_json = linkml_to_json(Path("src/schema/submission.yaml"))
-    schema_bundle = add_id_to_class_defs(schema_in_json)
+    schema_bundle = import_specification(add_id_to_class_defs(schema_in_json))
     modified_refs = replace_schema_refs(schema_bundle["$defs"])
     deleted_identifier = clean_content_identifier(modified_refs)
     deleted_relations = clean_schema_relations(deleted_identifier, load_config())
-    exclusions = load_yaml(EXCLUDE_CONFIG)
-    export_class_content(deleted_relations, exclusions)
+    export_class_content(deleted_relations)
 
 
 if __name__ == "__main__":

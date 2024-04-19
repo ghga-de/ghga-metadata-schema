@@ -5,7 +5,7 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Sequencing Protocol.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -14,7 +14,7 @@
             "type": "string"
         },
         "cell_barcode_read": {
-            "$ref": "/workspace/src/content_schemas/IndexReadEnum",
+            "$ref": "src/content_schemas/IndexReadEnum",
             "description": "The type of read that contains the cell barcode (e.g., index1, index2, read1, read2)."
         },
         "cell_barcode_size": {
@@ -30,11 +30,11 @@
             "type": "string"
         },
         "flow_cell_type": {
-            "$ref": "/workspace/src/content_schemas/FlowCellTypeEnum",
+            "$ref": "src/content_schemas/FlowCellTypeEnum",
             "description": "Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore)."
         },
         "instrument_model": {
-            "$ref": "/workspace/src/content_schemas/InstrumentModelEnum",
+            "$ref": "src/content_schemas/InstrumentModelEnum",
             "description": "The name and model of the technology platform used to perform sequencing."
         },
         "name": {
@@ -42,7 +42,7 @@
             "type": "string"
         },
         "sample_barcode_read": {
-            "$ref": "/workspace/src/content_schemas/SampleBarcodeReadEnum",
+            "$ref": "src/content_schemas/SampleBarcodeReadEnum",
             "description": "The type of read that contains the sample barcode (e.g., index1, index2, read1, read2)."
         },
         "sequencing_center": {
@@ -66,7 +66,7 @@
             "type": "string"
         },
         "umi_barcode_read": {
-            "$ref": "/workspace/src/content_schemas/IndexReadEnum",
+            "$ref": "src/content_schemas/IndexReadEnum",
             "description": "The type of read that contains the UMI barcode (e.g., index1, index2, read1, read2)."
         },
         "umi_barcode_size": {
@@ -81,5 +81,6 @@
     ],
     "title": "SequencingProtocol",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/SequencingProtocol"
+    "$id": "src/content_schemas/SequencingProtocol",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

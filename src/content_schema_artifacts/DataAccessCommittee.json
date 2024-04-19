@@ -17,5 +17,6 @@
     ],
     "title": "DataAccessCommittee",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/DataAccessCommittee"
+    "$id": "src/content_schemas/DataAccessCommittee",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

@@ -14,7 +14,7 @@
             "type": "string"
         },
         "karyotype": {
-            "$ref": "/workspace/src/content_schemas/KaryotypeEnum",
+            "$ref": "src/content_schemas/KaryotypeEnum",
             "description": "The karyotype of the Individual."
         },
         "phenotypic_features": {
@@ -25,7 +25,7 @@
             "type": "array"
         },
         "sex": {
-            "$ref": "/workspace/src/content_schemas/IndividualSexEnum",
+            "$ref": "src/content_schemas/IndividualSexEnum",
             "description": "The genotypic sex of the Individual (e.g., female)."
         }
     },
@@ -34,5 +34,6 @@
     ],
     "title": "Individual",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Individual"
+    "$id": "src/content_schemas/Individual",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

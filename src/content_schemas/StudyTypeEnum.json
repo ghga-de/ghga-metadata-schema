@@ -20,5 +20,6 @@
     ],
     "title": "StudyTypeEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/StudyTypeEnum"
+    "$id": "src/content_schemas/StudyTypeEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

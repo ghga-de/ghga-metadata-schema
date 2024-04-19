@@ -25,5 +25,6 @@
     ],
     "title": "Dataset",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Dataset"
+    "$id": "src/content_schemas/Dataset",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

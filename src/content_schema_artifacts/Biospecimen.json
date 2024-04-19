@@ -26,7 +26,8 @@
             ],
             "title": "AgeRangeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/AgeRangeEnum"
+            "$id": "src/content_schemas/AgeRangeEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "description": {
             "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
@@ -50,7 +51,8 @@
             ],
             "title": "StorageEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/StorageEnum"
+            "$id": "src/content_schemas/StorageEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "tissue": {
             "description": "The tissue this Biospecimen originated from.",
@@ -69,7 +71,8 @@
             ],
             "title": "VitalStatusEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/VitalStatusEnum"
+            "$id": "src/content_schemas/VitalStatusEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         }
     },
     "required": [
@@ -78,5 +81,6 @@
     ],
     "title": "Biospecimen",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Biospecimen"
+    "$id": "src/content_schemas/Biospecimen",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

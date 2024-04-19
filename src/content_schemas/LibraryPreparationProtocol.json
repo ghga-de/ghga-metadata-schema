@@ -5,7 +5,7 @@
         "attributes": {
             "description": "One or more attributes that further characterize this Library Preparation Protocol.",
             "items": {
-                "$ref": "/workspace/src/content_schemas/Attribute"
+                "$ref": "src/content_schemas/Attribute"
             },
             "type": "array"
         },
@@ -14,11 +14,11 @@
             "type": "string"
         },
         "end_bias": {
-            "$ref": "/workspace/src/content_schemas/EndBiasEnum",
+            "$ref": "src/content_schemas/EndBiasEnum",
             "description": "The end of the cDNA molecule that is preferentially sequenced (e.g., 3/5 prime end, full-length)."
         },
         "library_layout": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationLibraryLayoutEnum",
+            "$ref": "src/content_schemas/LibraryPreparationLibraryLayoutEnum",
             "description": "Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode."
         },
         "library_name": {
@@ -34,23 +34,23 @@
             "type": "string"
         },
         "library_preparation_kit_retail_name": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationKitRetailNameEnum",
+            "$ref": "src/content_schemas/LibraryPreparationKitRetailNameEnum",
             "description": "The retail name for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g., Agilent sure select Human Exome V8, Twist RefSeq Exome)."
         },
         "library_selection": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationLibrarySelectionEnum",
+            "$ref": "src/content_schemas/LibraryPreparationLibrarySelectionEnum",
             "description": "The method used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA)."
         },
         "library_type": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationLibraryTypeEnum",
+            "$ref": "src/content_schemas/LibraryPreparationLibraryTypeEnum",
             "description": "Describe the level of omics analysis (e.g., metagenome, transcriptome)"
         },
         "primer": {
-            "$ref": "/workspace/src/content_schemas/PrimerEnum",
+            "$ref": "src/content_schemas/PrimerEnum",
             "description": "The type of primer used for reverse transcription (e.g., oligo-dT or random)."
         },
         "rnaseq_strandedness": {
-            "$ref": "/workspace/src/content_schemas/LibraryPreparationRNASeqStrandednessEnum",
+            "$ref": "src/content_schemas/LibraryPreparationRNASeqStrandednessEnum",
             "description": "The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand."
         },
         "target_regions": {
@@ -71,5 +71,6 @@
     ],
     "title": "LibraryPreparationProtocol",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/LibraryPreparationProtocol"
+    "$id": "src/content_schemas/LibraryPreparationProtocol",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

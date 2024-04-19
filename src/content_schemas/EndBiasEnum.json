@@ -7,5 +7,6 @@
     ],
     "title": "EndBiasEnum",
     "type": "string",
-    "$id": "/workspace/src/content_schemas/EndBiasEnum"
+    "$id": "src/content_schemas/EndBiasEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

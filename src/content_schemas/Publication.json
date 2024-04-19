@@ -39,5 +39,6 @@
     ],
     "title": "Publication",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Publication"
+    "$id": "src/content_schemas/Publication",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }

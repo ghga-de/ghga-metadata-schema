@@ -31,7 +31,8 @@
                 ],
                 "title": "Attribute",
                 "type": "object",
-                "$id": "/workspace/src/content_schemas/Attribute"
+                "$id": "src/content_schemas/Attribute",
+                "$schema": "http://json-schema.org/draft-07/schema#"
             },
             "type": "array"
         },
@@ -47,7 +48,8 @@
             ],
             "title": "CaseControlStatusEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/CaseControlStatusEnum"
+            "$id": "src/content_schemas/CaseControlStatusEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "description": {
             "description": "A concise description of the applied Condition.",
@@ -62,7 +64,8 @@
             ],
             "title": "DiseaseOrHealthyEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/DiseaseOrHealthyEnum"
+            "$id": "src/content_schemas/DiseaseOrHealthyEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "mutant_or_wildtype": {
             "description": "Enum to capture whether a condition corresponds to a mutant or a wildtype.",
@@ -73,7 +76,8 @@
             ],
             "title": "MutantOrWildtypeEnum",
             "type": "string",
-            "$id": "/workspace/src/content_schemas/MutantOrWildtypeEnum"
+            "$id": "src/content_schemas/MutantOrWildtypeEnum",
+            "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "name": {
             "description": "The name of this Condition.",
@@ -89,5 +93,6 @@
     ],
     "title": "Condition",
     "type": "object",
-    "$id": "/workspace/src/content_schemas/Condition"
+    "$id": "src/content_schemas/Condition",
+    "$schema": "http://json-schema.org/draft-07/schema#"
 }
