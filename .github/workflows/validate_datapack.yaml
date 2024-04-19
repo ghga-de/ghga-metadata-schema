@@ -20,4 +20,4 @@ jobs:
 
       - name: Validate datapack
         run: >-
-          ./scripts/validate_datapack.py --check
+          ./scripts/validate_datapack.py

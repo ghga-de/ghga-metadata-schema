@@ -13,14 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Script to validate example datapack against the ghga-metadata-schemapack definition"""
+
 from pathlib import Path
 
 from schemapack import load_datapack, load_schemapack
 from schemapack._internals.validation import SchemaPackValidator
 
-HERE = Path(__file__).parent.resolve()
-SCHEMAPACK_PATH = HERE / "submission.schemapack.yaml"
-DATAPACK_PATH = HERE / "complete.datapack.yaml"
+ROOT = Path(__file__).parent.parent.resolve()
+SCHEMAPACK_PATH = ROOT / "src" / "schema" / "submission.schemapack.yaml"
+DATAPACK_PATH = ROOT / "example_data" / "complete.datapack.yaml"
 
 
 my_datapack = load_datapack(DATAPACK_PATH)
