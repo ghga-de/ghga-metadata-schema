@@ -210,7 +210,7 @@ def _exclusion_uris(
 
 
 def exclude_uris(registry: Registry, exclusions: list) -> Registry:
-    """Removed uris fro the registry"""
+    """Removed uris from the registry"""
     for uri in exclusions:
         if uri in registry._resources:
             registry = registry.remove(uri)
