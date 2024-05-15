@@ -76,12 +76,11 @@ class Config(BaseModel):
     """A XLSX generator config"""
 
     output_filename: str
-    styles: Optional[dict[str, WorksheetStyle]] = {}
+    styles: dict[str, WorksheetStyle] = {}
 
 
 class GHGASchemaError(RuntimeError):
     """Raised when a schema violates GHGA schema rules."""
-
 
 
 def _validate_relation(relation: Relation) -> None:
@@ -93,19 +92,22 @@ def _validate_relation(relation: Relation) -> None:
 
 
 @dataclass
-class ClassReference:
+class IdAnnotatedClass:
+    """A schemapack class annotated with the ID property name."""
+
     class_name: str
     id_property_name: str
 
 
 @dataclass
 class Column:
-"""Model defining a column"""
+    """Model defining a column"""
+
     name: str
     description: Optional[str]
     type: str
     multivalued: bool
-    class_reference: Optional[ClassReference]
+    class_reference: Optional[IdAnnotatedClass]
     enum: bool
     required: bool
 
@@ -124,6 +126,7 @@ class Column:
 @dataclass
 class Sheet:
     columns: list[Column]
+    id_property_name: str
     header_color: Optional[str] = None
     content_color: Optional[str] = None
 
@@ -166,7 +169,7 @@ def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
                     type="string",
                     enum=False,
                     multivalued=False,
-                    class_reference=ClassReference(
+                    class_reference=IdAnnotatedClass(
                         class_name=relation.targetClass,
                         id_property_name=schemapack.classes[
                             relation.targetClass
@@ -199,6 +202,7 @@ def parse_schema(schemapack: SchemaPack, config: Config) -> Mapping[str, Sheet]:
         style = config.styles.get(class_name, WorksheetStyle())
         sheets[class_name] = Sheet(
             columns=columns,
+            id_property_name=class_.id.propertyName,
             header_color=style.header_color,
             content_color=style.content_color,
         )
@@ -375,6 +379,7 @@ def _add_transpiler_metadata(workbook: Workbook, sheets: Mapping[str, Sheet]) ->
             Cell(ws, value="n_cols"),
             Cell(ws, value="header_row"),
             Cell(ws, value="data_start"),
+            Cell(ws, value="id_property_name"),
         ]
     )
     for sheet_name, sheet in sheets.items():
@@ -384,6 +389,7 @@ def _add_transpiler_metadata(workbook: Workbook, sheets: Mapping[str, Sheet]) ->
                 Cell(ws, value=len(sheet.columns)),
                 Cell(ws, value=1),
                 Cell(ws, value=7),
+                sheet.id_property_name,
             ]
         )
 
