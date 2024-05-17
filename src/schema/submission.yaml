@@ -739,7 +739,7 @@ classes:
       data_use_modifiers:
         description: >-
           One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'.
-          Please use 'user specific restriction' if no other modifier applies.
+          Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
         required: false
         recommended: true
       data_access_committee:
@@ -1185,7 +1185,7 @@ slots:
   data_use_modifiers:
     description: >-
       Data Use Modifiers for the Data Use Permission associated with an entity. The used terms should be descendants of 'DUO:0000017: data use modifier'.
-      Please use 'user specific restriction' if no other modifier applies.
+      Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
     range: DataUseModifierEnum
     multivalued: true
 
@@ -1507,71 +1507,71 @@ enums:
         description: >-
           This data use modifier indicates that use is allowed for clinical use and care. 
           Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making.
-      return to database or resource:
+      RETURN_TO_DATABASE_OR_RESOURCE:
         meaning: DUO:0000029
         description: >-
           This data use modifier indicates that the requestor must return derived/enriched data to the database/resource.
-      institution specific restriction:
+      INSTITUTION_SPECIFIC_RESTRICTION:
         meaning: DUO:0000028
         description: >-
           This data use modifier indicates that use is limited to use within an approved institution.
-      project specific restriction:
+      PROJECT_SPECIFIC_RESTRICTION:
         meaning: DUO:0000027
         description: >-
           This data use modifier indicates that use is limited to use within an approved project.
-      user specific restriction:
+      USER_SPECIFIC_RESTRICTION:
         meaning: DUO:0000026
         description: >-
           This data use modifier indicates that use is limited to use by approved users.
-      time limit on use:
+      TIME_LIMIT_ON_USE:
         meaning: DUO:0000025
         description: >-
           This data use modifier indicates that use is approved for a specific number of months. This should be coupled with an integer value indicating the number of months.
-      publication moratorium:
+      PUBLICATION_MORATORIUM:
         meaning: DUO:0000024
         description: >-
           This data use modifier indicates that requestor agrees not to publish results of studies until a specific date. This should be coupled with a date specified as ISO8601.
-      geographical restriction:
+      GEOGRAPHICAL_RESTRICTION:
         meaning: DUO:0000022
         description: >-
           This data use modifier indicates that use is limited to within a specific geographic region. This should be coupled with an ontology term describing the geographical location the restriction applies to.
-      ethics approval required:
+      ETHICS_APPROVAL_REQUIRED:
         meaning: DUO:0000021
         description: >-
           This data use modifier indicates that the requestor must provide documentation of local IRB/ERB approval.
-      collaboration required:
+      COLLABORATION_REQUIRED:
         meaning: DUO:0000020
         description: >-
           This data use modifier indicates that the requestor must agree to collaboration with the primary study investigator(s). This could be coupled with a string describing the primary study investigator(s).
-      publication required:
+      PUBLICATION_REQUIRED:
         meaning: DUO:0000019
         description: >-
           This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.
-      not for profit, non commercial use only:
+      NOT_FOR_PROFIT_NON_COMMERCIAL_USE_ONLY:
         meaning: DUO:0000018
         description: >-
           This data use modifier indicates that use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use.
-      non-commercial use only:
+      NON_COMMERCIAL_USE_ONLY:
         meaning: DUO:0000046
         description: >-
           This data use modifier indicates that use of the data is limited to not-for-profit use. This indicates that data can be used by commercial organisations for research purposes, but not commercial purposes.
-      not for profit organisation use only:
+      NOT_FOR_PROFIT_ORGANISATION_USE_ONLY:
         meaning: DUO:0000045
         description: >-
           This data use modifier indicates that use of the data is limited to not-for-profit organizations.
-      genetic studies only:
+      GENETIC_STUDIES_ONLY:
         meaning: DUO:0000016
         description: >-
           This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively).
-      no general methods research:
+      NO_GENERAL_METHODS_RESEARCH:
         meaning: DUO:0000015
         description: >-
           This data use modifier indicates that use does not allow methods development research (e.g., development of software or algorithms).
-      research specific restrictions:
+      RESEARCH_SPECIFIC_RESTRICTIONS:
         meaning: DUO:0000012
         description: >-
           This data use modifier indicates that use is limited to studies of a certain research type.
-      population origins or ancestry research prohibited:
+      POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_PROHIBITED:
         meaning: DUO:00000044
         description: >-
           This data use modifier indicates use for purposes of population, origin, or ancestry research is prohibited.
@@ -1584,23 +1584,23 @@ enums:
         - DUO:0000001
       include_self: false
     permissible_values:
-      general research use:
+      GENERAL_RESEARCH_USE:
         meaning: DUO:0000042
         description: >-
           This data use permission indicates that use is allowed for general research use for any research purpose.
-      health or medical or biomedical research:
+      HEALTH_OR_MEDICAL_OR_BIOMEDICAL_RESEARCH:
         meaning: DUO:0000006
         description: >-
           This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry.
-      disease specific research:
+      DISEASE_SPECIFIC_RESEARCH:
         meaning: DUO:0000007
         description: >-
           This data use permission indicates that use is allowed provided it is related to the specified disease.
-      no restriction:
+      NO_RESTRICTION:
         meaning: DUO:0000004
         description: >-
           This data use permission indicates there is no restriction on use.
-      population origins or ancestry research only:
+      POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_ONLY:
         meaning: DUO:0000011
         description: >-
           This data use permission indicates that use of the data is limited to the study of population origins or ancestry.
