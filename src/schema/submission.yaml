@@ -2899,7 +2899,7 @@ enums:
           The participant is a true control for the phenotype under consideration.
       OTHER:
         description: >-
-          The participant's status does not fit neither case nor control.
+          The participant's status is neither case nor control.
       UNKNOWN:
         description: >-
           The participant's status is not known.
