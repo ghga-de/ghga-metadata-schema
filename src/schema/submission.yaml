@@ -1681,6 +1681,15 @@ enums:
       CRYOGENIC_FREEZER:
         description: >-
           The sample / biospecimen was stored in a cryogenic freezer at -150°C to -190°C.
+      NONE:
+        description: >-
+          The sample / biospecimen was not stored.
+      OTHER:
+        description: >-
+          The sample / biospecimen was stored with a method differing from the available options.
+      UNKNOWN:
+        description: >-
+          The storage method is unknown.
 
   SampleTypeEnum:
     description: >-
