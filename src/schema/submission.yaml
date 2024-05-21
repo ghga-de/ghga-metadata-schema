@@ -2890,36 +2890,19 @@ enums:
   CaseControlStatusEnum:
     description: >-
       Enum to capture whether a condition corresponds to a case or a control condition.
-    reachable_from:
-      source_ontology: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
-      source_nodes:
-        - NCIT:C99268
-      include_self: false
     permissible_values:
-      NEITHER_CASE_OR_CONTROL_STATUS:
-        meaning: NCIT:C99273
-        description: >-
-          The participant is neither a true case or true control for the phenotype under consideration.
-      PROBABLE_CASE_STATUS:
-        meaning: NCIT:C99271
-        description: >-
-          The participant is a probable case for the phenotype under consideration.
-      PROBABLE_CONTROL_STATUS:
-        meaning: NCIT:C99272
-        description: >-
-          The participant is a probable control for the phenotype under consideration.
-      TRUE_CASE_STATUS:
-        meaning: NCIT:C99269
+      CASE:
         description: >-
           The participant is a true case for the phenotype under consideration.
-      TRUE_CONTROL_STATUS:
-        meaning: NCIT:C99270
+      CONTROL:
         description: >-
           The participant is a true control for the phenotype under consideration.
-      UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS:
-        meaning: NCIT:C99274
+      OTHER:
         description: >-
-          The participant's case/control status could not be assessed.
+          The participant's status does not fit neither case nor control.
+      UNKNOWN:
+        description: >-
+          The participant's status is not known.
 
   MutantOrWildtypeEnum:
     description: >-
