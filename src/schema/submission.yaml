@@ -1851,16 +1851,13 @@ enums:
           Family study
       HEREDITARY_DISEASE:
         description: >-
-          Hereditary disease study  
+          Hereditary disease study
       GENOMICS:
         description: >-
           Genomics study
       EPIGENOMICS:
         description: >-
           Epigenomics study
-      EPIGENETICS:
-        description: >-
-          Epigenetics study
       TRANSCRIPTOMICS:
         description: >-
           Transcriptomics study

@@ -31,5 +31,22 @@ URI: [GHGA:StudyTypeEnum](https://w3id.org/GHGA/StudyTypeEnum)
 | TRANSCRIPTOME_ANALYSIS | Transcriptome analysis |  |  |
 | WHOLE_GENOME_SEQUENCING | Whole genome sequencing |  |  |
 | GWAS | Genome Wide Association Study |  |  |
+| RARE_DISEASE | Rare disease study |  |  |
+| CANCER | Cancer study |  |  |
+| COMMON_DISEASE | Common disease study |  |  |
+| NEURODEGENERATIVE_DISEASE | Neurodegenerative disease study |  |  |
+| CASE_CONTROL_STUDY | Case-control study |  |  |
+| FAMILY_STUDY | Family study |  |  |
+| HEREDITARY_DISEASE | Hereditary disease study |  |  |
+| GENOMICS | Genomics study |  |  |
+| EPIGENOMICS | Epigenomics study |  |  |
+| TRANSCRIPTOMICS | Transcriptomics study |  |  |
+| SINGLE_CELL_SEQUENCING | Single-cell sequencing study |  |  |
+| SINGLE_CENTER_STUDY | Single-center study |  |  |
+| MULTI_CENTER_STUDY | Multi-center study |  |  |
+| COHORT_STUDY | Cohort study |  |  |
+| LONGITUDINAL_STUDY | Longitudinal study |  |  |
+| TIME_SERIES_STUDY | Time series study |  |  |
+| INTERVENTIONAL_STUDY | Interventional study |  |  |
 | OTHER | A study type not captured by the above mentioned. |  |  |
 
