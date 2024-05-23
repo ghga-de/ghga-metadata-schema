@@ -1829,7 +1829,62 @@ enums:
         description: >-
           Whole genome sequencing
       GWAS:
-        description: Genome Wide Association Study
+        description: >-
+          Genome Wide Association Study
+      RARE_DISEASE:
+        description: >-
+          Rare disease study
+      CANCER:
+        description: >-
+          Cancer study
+      COMMON_DISEASE:
+        description: >-
+          Common disease study
+      NEURODEGENERATIVE_DISEASE:
+        description: >-
+          Neurodegenerative disease study
+      CASE_CONTROL_STUDY:
+        description: >-
+          Case-control study
+      FAMILY_STUDY:
+        description: >-
+          Family study
+      HEREDITARY_DISEASE:
+        description: >-
+          Hereditary disease study  
+      GENOMICS:
+        description: >-
+          Genomics study
+      EPIGENOMICS:
+        description: >-
+          Epigenomics study
+      EPIGENETICS:
+        description: >-
+          Epigenetics study
+      TRANSCRIPTOMICS:
+        description: >-
+          Transcriptomics study
+      SINGLE_CELL_SEQUENCING:
+        description: >-
+          Single-cell sequencing study
+      SINGLE_CENTER_STUDY:
+        description: >-
+          Single-center study
+      MULTI_CENTER_STUDY:
+        description: >-
+          Multi-center study
+      COHORT_STUDY:
+        description: >-
+          Cohort study
+      LONGITUDINAL_STUDY:
+        description: >-
+          Longitudinal study
+      TIME_SERIES_STUDY:
+        description: >-
+          Time series study
+      INTERVENTIONAL_STUDY:
+        description: >-
+          Interventional study
       OTHER:
         description: >-
           A study type not captured by the above mentioned.
