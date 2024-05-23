@@ -1843,10 +1843,10 @@ enums:
       NEURODEGENERATIVE_DISEASE:
         description: >-
           Neurodegenerative disease study
-      CASE_CONTROL_STUDY:
+      CASE_CONTROL:
         description: >-
           Case-control study
-      FAMILY_STUDY:
+      FAMILY:
         description: >-
           Family study
       HEREDITARY_DISEASE:
@@ -1864,24 +1864,30 @@ enums:
       SINGLE_CELL_SEQUENCING:
         description: >-
           Single-cell sequencing study
-      SINGLE_CENTER_STUDY:
+      SINGLE_CENTER:
         description: >-
           Single-center study
-      MULTI_CENTER_STUDY:
+      MULTI_CENTER:
         description: >-
           Multi-center study
-      COHORT_STUDY:
+      COHORT:
         description: >-
           Cohort study
-      LONGITUDINAL_STUDY:
+      LONGITUDINAL:
         description: >-
           Longitudinal study
-      TIME_SERIES_STUDY:
+      TIME_SERIES:
         description: >-
           Time series study
-      INTERVENTIONAL_STUDY:
+      INTERVENTIONAL:
         description: >-
           Interventional study
+      NON_INTERVENTIONAL:
+        description: >-
+          Non-interventional study
+      COMMUNITY_BASED:
+        description: >-
+          Community-based study
       OTHER:
         description: >-
           A study type not captured by the above mentioned.
