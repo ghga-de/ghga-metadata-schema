@@ -20,7 +20,6 @@ URI: [GHGA:ontology](https://w3id.org/GHGA/ontology)
  * [Individual➞ancestries](Individual_ancestries.md)
  * [Individual➞geographical_region](Individual_geographical_region.md)
  * [Individual➞phenotypic_features](Individual_phenotypic_features.md)
- * [Sample➞isolation](Sample_isolation.md) - Method or device employed for collecting/isolating this Sample.
  * [Sample➞type](Sample_type.md) - The type of the Sample.
  * [ancestries](ancestries.md) - A person's descent or lineage from a population.
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.

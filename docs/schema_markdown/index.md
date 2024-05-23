@@ -79,12 +79,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞biospecimens](Submission_biospecimens.md) - One or more Biospecimen entities associated with this Submission.
  * [case_control_status](case_control_status.md) - Whether a Condition corresponds to a treatment or a control.
      * [Condition➞case_control_status](Condition_case_control_status.md)
- * [cell_barcode_offset](cell_barcode_offset.md) - The offset in sequence of the cell identifying barcode (e.g., 0).
-     * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)
- * [cell_barcode_read](cell_barcode_read.md) - The type of read that contains the cell barcode (e.g., index1, index2, read1, read2).
-     * [SequencingProtocol➞cell_barcode_read](SequencingProtocol_cell_barcode_read.md)
- * [cell_barcode_size](cell_barcode_size.md) - The size of the cell identifying barcode (e.g., 16).
-     * [SequencingProtocol➞cell_barcode_size](SequencingProtocol_cell_barcode_size.md)
  * [checksum](checksum.md) - The checksum of the File.
      * [File➞checksum](File_checksum.md)
  * [checksum_type](checksum_type.md) - The type of algorithm used to generate the checksum of the File.
@@ -139,8 +133,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProtocol➞flow_cell_type](SequencingProtocol_flow_cell_type.md)
  * [format](format.md) - The format of the File (e.g., BAM, SAM, CRAM, BAI).
      * [File➞format](File_format.md)
- * [forward_or_reverse](forward_or_reverse.md) - Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
-     * [File➞forward_or_reverse](File_forward_or_reverse.md)
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
      * [Individual➞geographical_region](Individual_geographical_region.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
@@ -155,7 +147,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingProtocol➞instrument_model](SequencingProtocol_instrument_model.md)
  * [isolation](isolation.md) - Method or device employed for collecting/isolating a Biospecimen or a Sample.
      * [Biospecimen➞isolation](Biospecimen_isolation.md) - Method or device employed for collecting/isolating this Biospecimen.
-     * [Sample➞isolation](Sample_isolation.md) - Method or device employed for collecting/isolating this Sample.
  * [journal](journal.md) - The name of the journal.
      * [Publication➞journal](Publication_journal.md)
  * [karyotype](karyotype.md) - The karyotype of the Individual.
@@ -164,8 +155,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Attribute➞key](Attribute_key.md)
  * [key_type](key_type.md) - A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).
      * [Attribute➞key_type](Attribute_key_type.md)
- * [library_layout](library_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
-     * [LibraryPreparationProtocol➞library_layout](LibraryPreparationProtocol_library_layout.md)
  * [library_name](library_name.md) - A short name identifying the library. The same name may refer to multiple versions of the same continually updated library.
      * [LibraryPreparationProtocol➞library_name](LibraryPreparationProtocol_library_name.md)
  * [library_preparation](library_preparation.md) - The general method for preparation of the sequencing library (e.g., KAPA PCR-free).
@@ -184,8 +173,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)
  * [mother](mother.md) - The Mother of an individual.
      * [Trio➞mother](Trio_mother.md)
- * [mutant_or_wildtype](mutant_or_wildtype.md) - Whether a Condition corresponds to a mutant or a wildtype.
-     * [Condition➞mutant_or_wildtype](Condition_mutant_or_wildtype.md)
  * [name](name.md) - The name for an entity.
      * [AnalysisProcess➞name](AnalysisProcess_name.md)
      * [Biospecimen➞name](Biospecimen_name.md) - A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.
@@ -230,6 +217,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞sequencing_experiments](Submission_sequencing_experiments.md) - One or more Sequencing Experiment entities associated with this Submission.
  * [sequencing_lane_id](sequencing_lane_id.md) - The identifier of a sequencing lane.
      * [SequencingProcess➞sequencing_lane_id](SequencingProcess_sequencing_lane_id.md)
+ * [sequencing_layout](sequencing_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+     * [SequencingProtocol➞sequencing_layout](SequencingProtocol_sequencing_layout.md)
  * [sequencing_machine_id](sequencing_machine_id.md) - The identifier of a sequencing machine.
      * [SequencingProcess➞sequencing_machine_id](SequencingProcess_sequencing_machine_id.md)
  * [sequencing_process](sequencing_process.md) - The Sequencing Process associated with an entity.
@@ -288,12 +277,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Study➞type](Study_type.md) - The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type
      * [Dataset➞types](Dataset_types.md) - The type of this Dataset.
- * [umi_barcode_offset](umi_barcode_offset.md) - The offset in sequence of the UMI identifying barcode (e.g., 16).
-     * [SequencingProtocol➞umi_barcode_offset](SequencingProtocol_umi_barcode_offset.md)
- * [umi_barcode_read](umi_barcode_read.md) - The type of read that contains the UMI barcode (e.g., index1, index2, read1, read2).
-     * [SequencingProtocol➞umi_barcode_read](SequencingProtocol_umi_barcode_read.md)
- * [umi_barcode_size](umi_barcode_size.md) - The size of the UMI identifying barcode (e.g., 10).
-     * [SequencingProtocol➞umi_barcode_size](SequencingProtocol_umi_barcode_size.md)
  * [value](value.md) - The value for an attribute (e.g., a numerical value without the units).
      * [Attribute➞value](Attribute_value.md)
  * [value_type](value_type.md) - The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).
@@ -317,23 +300,20 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias
  * [FileFormatEnum](FileFormatEnum.md) - Enum to capture file types.
  * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type
- * [ForwardOrReverseEnum](ForwardOrReverseEnum.md) - Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
  * [GeographicalRegionEnum](GeographicalRegionEnum.md) - Permitted values for geographical region
- * [IndexReadEnum](IndexReadEnum.md) - Permitted Values to indicate the location of a sequence component in a read or index
  * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for the instrument model
  * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
  * [KaryotypeEnum](KaryotypeEnum.md) - Permitted values for karyotype
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name
- * [LibraryPreparationLibraryLayoutEnum](LibraryPreparationLibraryLayoutEnum.md) - Single-end vs paired-end library
  * [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md) - Permitted vocabulary for library selections
  * [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md) - The type of the library
  * [LibraryPreparationRNASeqStrandednessEnum](LibraryPreparationRNASeqStrandednessEnum.md) - Permitted values for library preparation RNASeq strandedness
- * [MutantOrWildtypeEnum](MutantOrWildtypeEnum.md) - Enum to capture whether a condition corresponds to a mutant or a wildtype.
  * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
+ * [SequencingProtocolSequencingLayoutEnum](SequencingProtocolSequencingLayoutEnum.md) - Single-end vs paired-end sequencing
  * [StorageEnum](StorageEnum.md) - Enum to capture how a Sample or Biospecimen was stored.
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
  * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.

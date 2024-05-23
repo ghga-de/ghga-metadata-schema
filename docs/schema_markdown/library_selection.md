@@ -9,7 +9,7 @@ URI: [GHGA:library_selection](https://w3id.org/GHGA/library_selection)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md)
+None &#8594;  <sub>0..\*</sub> [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md)
 
 ## Parents
 

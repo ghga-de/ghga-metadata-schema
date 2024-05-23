@@ -103,6 +103,7 @@ classes:
           The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
         range: StudyTypeEnum
         required: true
+        multivalued: true
       affiliations:
         description: >-
           The affiliations associated with this Study.
@@ -160,7 +161,6 @@ classes:
       - description
       - disease_or_healthy
       - case_control_status
-      - mutant_or_wildtype
       - study
     slot_usage:
       name:
@@ -174,8 +174,6 @@ classes:
       disease_or_healthy:
         required: true
       case_control_status:
-        required: true
-      mutant_or_wildtype:
         required: true
       study:
         description: >-
@@ -192,7 +190,6 @@ classes:
     slots:
       - description
       - library_name
-      - library_layout
       - library_type
       - library_selection
       - library_preparation
@@ -208,8 +205,6 @@ classes:
           Description summarizing how a sequencing library was prepared.
         required: true
       library_name:
-        required: true
-      library_layout:
         required: true
       library_type:
         required: true
@@ -251,15 +246,10 @@ classes:
       - instrument_model
       - sequencing_center
       - sequencing_read_length
+      - sequencing_layout
       - target_coverage
       - flow_cell_id
       - flow_cell_type
-      - umi_barcode_read
-      - umi_barcode_offset
-      - umi_barcode_size
-      - cell_barcode_read
-      - cell_barcode_offset
-      - cell_barcode_size
       - sample_barcode_read
     slot_usage:
       name:
@@ -280,30 +270,14 @@ classes:
         recommended: true
       sequencing_read_length:
         required: false
+      sequencing_layout:
+        required: true
       target_coverage:
         required: false
       flow_cell_id:
         required: false
         recommended: true
       flow_cell_type:
-        required: false
-        recommended: true
-      umi_barcode_read:
-        required: false
-        recommended: true
-      umi_barcode_size:
-        required: false
-        recommended: true
-      umi_barcode_offset:
-        required: false
-        recommended: true
-      cell_barcode_read:
-        required: false
-        recommended: true
-      cell_barcode_size:
-        required: false
-        recommended: true
-      cell_barcode_offset:
         required: false
         recommended: true
       sample_barcode_read:
@@ -431,7 +405,6 @@ classes:
       - name
       - type
       - description
-      - isolation
       - storage
       - xref
       - biospecimen
@@ -453,11 +426,6 @@ classes:
         description: >-
           A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
         required: true
-      isolation:
-        description: >-
-          Method or device employed for collecting/isolating this Sample.
-        required: false
-        recommended: true
       storage:
         description: >-
           Methods by which this Sample is stored.
@@ -535,7 +503,6 @@ classes:
       - size
       - checksum
       - checksum_type
-      - forward_or_reverse
       - dataset
     slot_usage:
       name:
@@ -555,9 +522,6 @@ classes:
           The Dataset associated with this File.
         inlined: false
         required: true
-      forward_or_reverse:
-        required: false
-        recommended: true
 
   StudyFile:
     is_a: File
@@ -1233,19 +1197,13 @@ slots:
       A short name identifying the library.
       The same name may refer to multiple versions of the same continually updated library.
 
-  library_layout:
-    description: >-
-      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
-    range: LibraryPreparationLibraryLayoutEnum
-    exact_mappings:
-      - NCIT:C175894
-
   library_type:
     description: >-
       Describe the level of omics analysis (e.g., metagenome, transcriptome)
     range: LibraryPreparationLibraryTypeEnum
 
   library_selection:
+    multivalued: True
     description: >-
       The method used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
     range: LibraryPreparationLibrarySelectionEnum
@@ -1319,10 +1277,12 @@ slots:
     description: >-
       The identifier of a sequencing machine.
 
-  forward_or_reverse:
+  sequencing_layout:
     description: >-
-      Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
-    range: ForwardOrReverseEnum
+      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+    range: SequencingProtocolSequencingLayoutEnum
+    exact_mappings:
+      - NCIT:C175894
 
   target_coverage:
     description: >-
@@ -1337,32 +1297,6 @@ slots:
     description: >-
       Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
     range: FlowCellTypeEnum
-
-  umi_barcode_read:
-    description: >-
-      The type of read that contains the UMI barcode (e.g., index1, index2, read1, read2).
-    range: IndexReadEnum
-
-  umi_barcode_offset:
-    description: >-
-      The offset in sequence of the UMI identifying barcode (e.g., 16).
-
-  umi_barcode_size:
-    description: >-
-      The size of the UMI identifying barcode (e.g., 10).
-
-  cell_barcode_read:
-    description: >-
-      The type of read that contains the cell barcode (e.g., index1, index2, read1, read2).
-    range: IndexReadEnum
-
-  cell_barcode_offset:
-    description: >-
-      The offset in sequence of the cell identifying barcode (e.g., 0).
-
-  cell_barcode_size:
-    description: >-
-      The size of the cell identifying barcode (e.g., 16).
 
   sample_barcode_read:
     description: >-
@@ -1390,11 +1324,6 @@ slots:
     description: >-
       Whether a Condition corresponds to a treatment or a control.
     range: CaseControlStatusEnum
-
-  mutant_or_wildtype:
-    description: >-
-      Whether a Condition corresponds to a mutant or a wildtype.
-    range: MutantOrWildtypeEnum
 
   vital_status_at_sampling:
     description: >-
@@ -1993,17 +1922,6 @@ enums:
       OTHER:
         description: >-
           A file format not captured by the controlled vocabulary.
-
-  LibraryPreparationLibraryLayoutEnum:
-    description: >-
-      Single-end vs paired-end library
-    permissible_values:
-      SE:
-        description: >-
-          Single end libary preparation.
-      PE:
-        description: >-
-          Paired end library preparation.
 
   LibraryPreparationLibraryTypeEnum:
     description: >-
@@ -2683,6 +2601,17 @@ enums:
         description: >-
           Captures the full length of the targeted molecule.
 
+  SequencingProtocolSequencingLayoutEnum:
+    description: >-
+      Single-end vs paired-end sequencing
+    permissible_values:
+      SE:
+        description: >-
+          Single end sequencing.
+      PE:
+        description: >-
+          Paired end sequencing.
+
   InstrumentModelEnum:
     description: >-
       Permitted values for the instrument model
@@ -2912,23 +2841,6 @@ enums:
         description: >-
           Usage of a flow cell not captured by the controlled vocabulary.
 
-  IndexReadEnum:
-    description: >-
-      Permitted Values to indicate the location of a sequence component in a read or index
-    permissible_values:
-      INDEX1:
-        description: >-
-          Location is in Index 1
-      INDEX2:
-        description: >-
-          Location is in Index 2
-      READ1:
-        description: >-
-          Location is in Read 1
-      READ2:
-        description: >-
-          Location is in Read 2
-
   SampleBarcodeReadEnum:
     description: >-
       Permitted values for sample barcode read
@@ -2970,26 +2882,6 @@ enums:
       UNKNOWN:
         description: >-
           The participant's status is not known.
-
-  MutantOrWildtypeEnum:
-    description: >-
-      Enum to capture whether a condition corresponds to a mutant or a wildtype.
-    permissible_values:
-      MUTANT:
-        description: Mutant state.
-      WILDTYPE:
-        description: Wildtype state.
-      NOT_APPLICABLE:
-        description: The distinction is not applicaple.
-
-  ForwardOrReverseEnum:
-    description: >-
-      Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).
-    permissible_values:
-      FORWARD:
-        description: The reads are forward (R1) reads
-      REVERSE:
-        description: The reads are reverse (R2) reads
 
   AgeRangeEnum:
     description: >-

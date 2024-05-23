@@ -7,7 +7,7 @@ The Sequencing Protocol captures information about parameters and metadata assoc
 URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;name:string;description:string;type:string%20%3F;instrument_model:InstrumentModelEnum;sequencing_center:string%20%3F;sequencing_read_length:string%20%3F;target_coverage:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:FlowCellTypeEnum%20%3F;umi_barcode_read:IndexReadEnum%20%3F;umi_barcode_offset:string%20%3F;umi_barcode_size:string%20%3F;cell_barcode_read:IndexReadEnum%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:SampleBarcodeReadEnum%20%3F;alias:string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%201..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[SequencingProtocol]uses%20-.->[AttributeMixin],[SequencingExperiment],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;name:string;description:string;type:string%20%3F;instrument_model:InstrumentModelEnum;sequencing_center:string%20%3F;sequencing_read_length:string%20%3F;target_coverage:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:FlowCellTypeEnum%20%3F;umi_barcode_read:IndexReadEnum%20%3F;umi_barcode_offset:string%20%3F;umi_barcode_size:string%20%3F;cell_barcode_read:IndexReadEnum%20%3F;cell_barcode_offset:string%20%3F;cell_barcode_size:string%20%3F;sample_barcode_read:SampleBarcodeReadEnum%20%3F;alias:string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%201..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[SequencingProtocol]uses%20-.->[AttributeMixin],[SequencingExperiment],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;name:string;description:string;type:string%20%3F;instrument_model:InstrumentModelEnum;sequencing_center:string%20%3F;sequencing_read_length:string%20%3F;sequencing_layout:SequencingProtocolSequencingLayoutEnum;target_coverage:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:FlowCellTypeEnum%20%3F;sample_barcode_read:SampleBarcodeReadEnum%20%3F;alias:string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%201..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[SequencingProtocol]uses%20-.->[AttributeMixin],[SequencingExperiment],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[SequencingProtocol&#124;name:string;description:string;type:string%20%3F;instrument_model:InstrumentModelEnum;sequencing_center:string%20%3F;sequencing_read_length:string%20%3F;sequencing_layout:SequencingProtocolSequencingLayoutEnum;target_coverage:string%20%3F;flow_cell_id:string%20%3F;flow_cell_type:FlowCellTypeEnum%20%3F;sample_barcode_read:SampleBarcodeReadEnum%20%3F;alias:string],[SequencingExperiment]-%20sequencing_protocol%201..1>[SequencingProtocol],[Submission]++-%20sequencing_protocols%201..*>[SequencingProtocol],[SequencingExperiment]-%20sequencing_protocol(i)%200..1>[SequencingProtocol],[Submission]-%20sequencing_protocols(i)%200..*>[SequencingProtocol],[SequencingProtocol]uses%20-.->[IdentifiedByAliasMixin],[SequencingProtocol]uses%20-.->[AttributeMixin],[SequencingExperiment],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -44,6 +44,9 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
  * [SequencingProtocol➞sequencing_read_length](SequencingProtocol_sequencing_read_length.md)  <sub>0..1</sub>
      * Description: Length of sequencing reads (e.g., long or short or actual number of the read length).
      * Range: [String](types/String.md)
+ * [SequencingProtocol➞sequencing_layout](SequencingProtocol_sequencing_layout.md)  <sub>1..1</sub>
+     * Description: Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+     * Range: [SequencingProtocolSequencingLayoutEnum](SequencingProtocolSequencingLayoutEnum.md)
  * [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)  <sub>0..1</sub>
      * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
      * Range: [String](types/String.md)
@@ -53,24 +56,6 @@ URI: [GHGA:SequencingProtocol](https://w3id.org/GHGA/SequencingProtocol)
  * [SequencingProtocol➞flow_cell_type](SequencingProtocol_flow_cell_type.md)  <sub>0..1</sub>
      * Description: Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
      * Range: [FlowCellTypeEnum](FlowCellTypeEnum.md)
- * [SequencingProtocol➞umi_barcode_read](SequencingProtocol_umi_barcode_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the UMI barcode (e.g., index1, index2, read1, read2).
-     * Range: [IndexReadEnum](IndexReadEnum.md)
- * [SequencingProtocol➞umi_barcode_offset](SequencingProtocol_umi_barcode_offset.md)  <sub>0..1</sub>
-     * Description: The offset in sequence of the UMI identifying barcode (e.g., 16).
-     * Range: [String](types/String.md)
- * [SequencingProtocol➞umi_barcode_size](SequencingProtocol_umi_barcode_size.md)  <sub>0..1</sub>
-     * Description: The size of the UMI identifying barcode (e.g., 10).
-     * Range: [String](types/String.md)
- * [SequencingProtocol➞cell_barcode_read](SequencingProtocol_cell_barcode_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the cell barcode (e.g., index1, index2, read1, read2).
-     * Range: [IndexReadEnum](IndexReadEnum.md)
- * [SequencingProtocol➞cell_barcode_offset](SequencingProtocol_cell_barcode_offset.md)  <sub>0..1</sub>
-     * Description: The offset in sequence of the cell identifying barcode (e.g., 0).
-     * Range: [String](types/String.md)
- * [SequencingProtocol➞cell_barcode_size](SequencingProtocol_cell_barcode_size.md)  <sub>0..1</sub>
-     * Description: The size of the cell identifying barcode (e.g., 16).
-     * Range: [String](types/String.md)
  * [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)  <sub>0..1</sub>
      * Description: The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
      * Range: [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md)

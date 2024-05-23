@@ -9,7 +9,7 @@ URI: [GHGA:LibraryPreparationProtocol_library_selection](https://w3id.org/GHGA/L
 
 ## Domain and Range
 
-[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>1..1</sub> [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md)
+[LibraryPreparationProtocol](LibraryPreparationProtocol.md) &#8594;  <sub>1..\*</sub> [LibraryPreparationLibrarySelectionEnum](LibraryPreparationLibrarySelectionEnum.md)
 
 ## Parents
 

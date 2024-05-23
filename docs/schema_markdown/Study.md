@@ -7,7 +7,7 @@ A Study is an experimental investigation of a particular phenomenon. It involves
 URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum%20%2B;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum%20%2B;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -34,7 +34,7 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
  * [Study➞description](Study_description.md)  <sub>1..1</sub>
      * Description: A detailed description (abstract) that describes the goals of this Study.
      * Range: [String](types/String.md)
- * [Study➞type](Study_type.md)  <sub>1..1</sub>
+ * [Study➞type](Study_type.md)  <sub>1..\*</sub>
      * Description: The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
