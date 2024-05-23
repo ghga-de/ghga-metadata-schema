@@ -103,8 +103,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞data_access_policies](Submission_data_access_policies.md) - The Data Access Policies that apply to the Datasets in this Submission.
  * [data_access_policy](data_access_policy.md) - Data Access Policy associated with an entity.
      * [Dataset➞data_access_policy](Dataset_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
- * [data_use_modifiers](data_use_modifiers.md) - Data Use Modifiers for the Data Use Permission associated with an entity. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'user specific restriction' if no other modifier applies.
-     * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'user specific restriction' if no other modifier applies.
+ * [data_use_modifiers](data_use_modifiers.md) - Data Use Modifiers for the Data Use Permission associated with an entity. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
+     * [DataAccessPolicy➞data_use_modifiers](DataAccessPolicy_data_use_modifiers.md) - One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
  * [data_use_permission](data_use_permission.md) - Data Use Permission associated with an entity. The used term should be a descendant of 'DUO:0000001: data use permission'.
      * [DataAccessPolicy➞data_use_permission](DataAccessPolicy_data_use_permission.md) - The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission'.
  * [dataset](dataset.md) - The Dataset associated with an entity.

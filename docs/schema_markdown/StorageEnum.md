@@ -20,4 +20,7 @@ URI: [GHGA:StorageEnum](https://w3id.org/GHGA/StorageEnum)
 | FREEZER | The sample / biospecimen was stored in a freezer at -20°C. |  |  |
 | ULTRA_LOW_FREEZER | The sample / biospecimen was stored in a ultra-low freezer at -80°C. |  |  |
 | CRYOGENIC_FREEZER | The sample / biospecimen was stored in a cryogenic freezer at -150°C to -190°C. |  |  |
+| NONE | The sample / biospecimen was not stored. |  |  |
+| OTHER | The sample / biospecimen was stored with a method differing from the available options. |  |  |
+| UNKNOWN | The storage method is unknown. |  |  |
 
