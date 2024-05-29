@@ -337,7 +337,7 @@ Condition {
 Study {
     string title  
     string description  
-    StudyTypeEnumList type  
+    StudyTypeEnumList types  
     stringList affiliations  
     string alias  
 }

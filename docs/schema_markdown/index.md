@@ -167,8 +167,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [SequencingExperiment➞library_preparation_protocol](SequencingExperiment_library_preparation_protocol.md) - The Library Preparation Protocol associated with this Sequencing Experiment.
  * [library_preparation_protocols](library_preparation_protocols.md) - The Library Preparation Protocol associated with an entity.
      * [Submission➞library_preparation_protocols](Submission_library_preparation_protocols.md) - One or more Library Preparation Protocol entities associated with this Submission.
- * [library_selection](library_selection.md) - The method used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
-     * [LibraryPreparationProtocol➞library_selection](LibraryPreparationProtocol_library_selection.md)
+ * [library_selection_methods](library_selection_methods.md) - One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
+     * [LibraryPreparationProtocol➞library_selection_methods](LibraryPreparationProtocol_library_selection_methods.md)
  * [library_type](library_type.md) - Describe the level of omics analysis (e.g., metagenome, transcriptome)
      * [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)
  * [mother](mother.md) - The Mother of an individual.
@@ -274,9 +274,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞type](Sample_type.md) - The type of the Sample.
      * [SequencingExperiment➞type](SequencingExperiment_type.md) - The type of this Sequencing Experiment.
      * [SequencingProtocol➞type](SequencingProtocol_type.md) - Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).
-     * [Study➞type](Study_type.md) - The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type
      * [Dataset➞types](Dataset_types.md) - The type of this Dataset.
+     * [Study➞types](Study_types.md) - One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
  * [value](value.md) - The value for an attribute (e.g., a numerical value without the units).
      * [Attribute➞value](Attribute_value.md)
  * [value_type](value_type.md) - The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).

@@ -21,7 +21,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
  *  [Sample➞type](Sample_type.md)
  *  [SequencingExperiment➞type](SequencingExperiment_type.md)
  *  [SequencingProtocol➞type](SequencingProtocol_type.md)
- *  [Study➞type](Study_type.md)
 
 ## Used by
 
