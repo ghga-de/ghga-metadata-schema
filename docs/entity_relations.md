@@ -246,7 +246,6 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    string isolation  
     StorageEnum storage  
     stringList xref  
     string alias  
@@ -282,14 +281,12 @@ File {
     integer size  
     string checksum  
     string checksum_type  
-    ForwardOrReverseEnum forward_or_reverse  
     string alias  
 }
 Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    string isolation  
     StorageEnum storage  
     stringList xref  
     string alias  
@@ -326,7 +323,6 @@ Sample {
     string name  
     SampleTypeEnum type  
     string description  
-    string isolation  
     StorageEnum storage  
     stringList xref  
     string alias  
@@ -336,13 +332,12 @@ Condition {
     string description  
     DiseaseOrHealthyEnum disease_or_healthy  
     CaseControlStatusEnum case_control_status  
-    MutantOrWildtypeEnum mutant_or_wildtype  
     string alias  
 }
 Study {
     string title  
     string description  
-    StudyTypeEnum type  
+    StudyTypeEnumList types  
     stringList affiliations  
     string alias  
 }

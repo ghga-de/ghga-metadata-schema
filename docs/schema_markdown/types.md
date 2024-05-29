@@ -17,6 +17,7 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 ## Children
 
  *  [Dataset➞types](Dataset_types.md)
+ *  [Study➞types](Study_types.md)
 
 ## Used by
 
