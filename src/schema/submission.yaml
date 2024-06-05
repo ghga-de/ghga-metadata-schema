@@ -1609,21 +1609,6 @@ enums:
         - HANCESTRO:0002
       include_self: false
 
-  KaryotypeEnum:
-    description: Permitted values for karyotype
-    permissible_values:
-      46_XY:
-        meaning: GSSO:009560
-        description: >-
-          A karyotype in which every cell has one X chromosome and one Y chromosome.
-      46_XX:
-        meaning: GSSO:009558
-        description: >-
-          A karyotype in which every cell has two X chromosomes.
-      OTHER:
-        description: >-
-          A karyotype that differs from 46XY or 46XX.
-
   PhenotypicFeaturesEnum:
     description: An enum describing permissible phenotype descriptors
     include:
