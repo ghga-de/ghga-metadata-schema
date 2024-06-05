@@ -499,18 +499,19 @@ classes:
       An Individual is a Person who is participating in a Study.
     slots:
       - phenotypic_features
+      - diagnosis
       - sex
-      - karyotype
       - geographical_region
       - ancestries
     slot_usage:
       phenotypic_features:
         required: false
         recommended: true
+      diagnosis:
+        required: false
+        recommended: true
       sex:
         required: true
-      karyotype:
-        required: false
       geographical_region:
         required: false
       ancestries:
@@ -1105,6 +1106,12 @@ slots:
     # range: PhenotypicFeaturesEnum
     multivalued: true
 
+  diagnosis:
+    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10.
+    in_subset:
+      - ontology
+    multivalued: true
+
   mother:
     description: The Mother of an individual.
     range: Individual
@@ -1166,6 +1173,12 @@ slots:
       The Analysis Process Output Files associated with an entity.
     range: AnalysisProcessOutputFile
     multivalued: True
+
+  #  supporting_files:
+  #    description: >-
+  #      The supporting file associated with an entity.
+  #    range: SupportingFile
+  #    multivalued: true
 
   data_access_policy:
     description: Data Access Policy associated with an entity.
@@ -1406,11 +1419,6 @@ slots:
     description: >-
       The genotypic sex of the Individual (e.g., female).
     range: IndividualSexEnum
-
-  karyotype:
-    description: >-
-      The karyotype of the Individual.
-    range: KaryotypeEnum
 
   biospecimen_age_at_sampling:
     description: The age of the Individual at the time of sampling.
