@@ -630,8 +630,6 @@ classes:
       - title
       - description
       - type
-      - reference_genome
-      - reference_chromosome
     slot_usage:
       title:
         required: true
@@ -643,10 +641,6 @@ classes:
         description: >-
           The type of this Analysis.
         required: false
-      reference_genome:
-        required: true
-      reference_chromosome:
-        required: true
 
   AnalysisProcess:
     mixins:
@@ -1442,14 +1436,6 @@ slots:
   checksum_type:
     description: >-
       The type of algorithm used to generate the checksum of the File.
-
-  reference_chromosome:
-    description: >-
-      The reference chromosome used for this Analysis.
-
-  reference_genome:
-    description: >-
-      The reference genome or annotation used for prior analyses (e.g., GRCh38.p13).
 
   policy_text:
     description: The complete text for the Data Access Policy.
