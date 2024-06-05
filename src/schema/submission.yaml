@@ -404,11 +404,21 @@ classes:
     slots:
       - name
       - type
+      - biological_replicate
       - description
       - storage
+      - disease_or_healthy
+      - case_control_status
       - xref
-      - biospecimen
-      - condition
+      - biospecimen_name
+      - biospecimen_type
+      - biospecimen_description
+      - biospecimen_age_at_sampling
+      - biospecimen_vital_status_at_sampling
+      - biospecimen_tissue
+      - biospecimen_isolation
+      - biospecimen_storage
+      - individual
     slot_usage:
       name:
         description: >-
@@ -422,6 +432,8 @@ classes:
         in_subset:
           - ontology
         required: false
+      biological_replicate:
+        recommended: true
       description:
         description: >-
           A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
@@ -435,17 +447,49 @@ classes:
         description: >-
           One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).
         required: false
-      biospecimen:
+      disease_or_healthy:
+        required: true
+      case_control_status:
+        required: true
+      biospecimen_name:
         description: >-
-          The Biospecimen which this Sample was prepared from.
+          A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
+          This property must not include any personally identifiable data.
         required: false
         recommended: true
-        inlined: false
-      condition:
+      biospecimen_type:
         description: >-
-          The Condition that applies to this Sample. The Condition is used to link comparable Samples (e.g., healthy Samples, wildtype Samples).
+          The type of Biospecimen.
+        required: false
+        recommended: true
+      biospecimen_description:
+        description: >-
+          A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
+        required: false
+      biospecimen_age_at_sampling:
         required: true
+      biospecimen_vital_status_at_sampling:
+        required: false
+        recommended: true
+      biospecimen_tissue:
+        description: >-
+          The tissue this Biospecimen originated from.
+        required: true
+      biospecimen_isolation:
+        description: >-
+          Method or device employed for collecting/isolating this Biospecimen.
+        required: false
+        recommended: true
+      biospecimen_storage:
+        description: >-
+          Methods by which this Biospecimen is stored.
+        required: false
+        recommended: true
+      biospecimen_individual:
+        description: >-
+          The Individual entity from which this Biospecimen was derived.
         inlined: false
+        required: true
 
   Individual:
     mixins:
@@ -1303,7 +1347,23 @@ slots:
       The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
     range: SampleBarcodeReadEnum
 
-  isolation:
+  biological_replicate:
+    description: >-
+      An integer to indicate the number of a biological replicate.
+
+  biospecimen_name:
+    description: The name for a biospecimen.
+
+  biospecimen_type:
+    description: >-
+      The type of a biospecimen.
+      Note: Not to be confused with rdf:type
+
+  biospecimen_description:
+    description: >-
+      The description of a biospecimen.
+
+  biospecimen_isolation:
     description: >-
       Method or device employed for collecting/isolating a Biospecimen or a Sample.
     in_subset:
@@ -1312,7 +1372,12 @@ slots:
 
   storage:
     description: >-
-      Methods by which a Biospecimen or a Sample is stored.
+      Methods by which a Sample is stored.
+    range: StorageEnum
+
+  biospecimen_storage:
+    description: >-
+      Methods by which a Biospecimen is stored.
     range: StorageEnum
 
   disease_or_healthy:
@@ -1325,7 +1390,7 @@ slots:
       Whether a Condition corresponds to a treatment or a control.
     range: CaseControlStatusEnum
 
-  vital_status_at_sampling:
+  biospecimen_vital_status_at_sampling:
     description: >-
       Vital Status of the Individual at the point of sampling (e.g., alive).
     range: VitalStatusEnum
@@ -1347,8 +1412,8 @@ slots:
       The karyotype of the Individual.
     range: KaryotypeEnum
 
-  age_at_sampling:
-    description: The age of the Individual.
+  biospecimen_age_at_sampling:
+    description: The age of the Individual at the time of sampling.
     range: AgeRangeEnum
 
   format:
@@ -1406,7 +1471,7 @@ slots:
     description: >-
       DOI identifier of a publication.
 
-  tissue:
+  biospecimen_tissue:
     in_subset:
       - ontology
     # range: TissueEnum
