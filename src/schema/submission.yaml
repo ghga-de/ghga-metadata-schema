@@ -143,20 +143,21 @@ classes:
         description: >-
           One or more attributes that further characterize this Study.
 
-  SequencingExperiment:
+  Experiment:
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      A Sequencing Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
+      An Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
     exact_mappings:
       - SIO:000994
     slots:
       - title
       - description
       - type
-      - sequencing_protocol
-      - library_preparation_protocol
+      - samples
+      - research_data_files
+      - experimental_methods
     slot_usage:
       title:
         description: >-
@@ -170,16 +171,17 @@ classes:
         description: >-
           The type of this Sequencing Experiment.
         required: false
-      sequencing_protocol:
-        description: >-
-          The Sequencing Protocol associated with this Sequencing Experiment.
+      samples:
+        description: One or more Samples that associated with this Experiment.
         required: true
-        inlined: false
-      library_preparation_protocol:
+      research_data_files:
         description: >-
-          The Library Preparation Protocol associated with this Sequencing Experiment.
+          One or more Research Data Files that are associated with this Experiment.
         required: true
-        inlined: false
+      experimental_methods:
+        description: >-
+          One or more Experimental Methods that are associated with this Experiment.
+        required: true
 
   # Condition:
   #   mixins:
@@ -212,16 +214,39 @@ classes:
   #       required: true
   #       inlined: false
 
-  LibraryPreparationProtocol:
+  ExperimentalMethod:
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      The Library Preparation Protocol captures information about the library preparation of a Sequencing Experiment.
+      The Experimental Method captures the technical parameters that were used to produce output from the Sample.
     slots:
+      - name
       - description
-      - library_name
-      - library_type
+      - type
+      - supporting_files
+    slot_usage:
+      name:
+        description: >-
+          A short name identifying this Experimental Method.
+        required: true
+      description:
+        description: >-
+          A short description of this Experimental Method.
+        required: true
+      type:
+        description: >-
+          The type associated with this Experimental Method.
+        required: true
+      supporting_files:
+        description: One or more Supporting Files associated with this Experimental Method.
+        required: false
+
+  ExperimentalMethodBulkTranscriptomics:
+    is_a: ExperimentalMethod
+    description: >-
+      Experimental Method used for Bulk Transcriptomics experiments.
+    slots:
       - library_selection_methods
       - library_preparation
       - library_preparation_kit_retail_name
@@ -230,6 +255,15 @@ classes:
       - end_bias
       - target_regions
       - rnaseq_strandedness
+      - instrument_model
+      - sequencing_center
+      - sequencing_read_length
+      - sequencing_layout
+      - target_coverage
+      - flow_cell_id
+      - flow_cell_type
+      - sample_barcode_read
+      - attributes
     slot_usage:
       description:
         description: >-
@@ -260,40 +294,6 @@ classes:
       rnaseq_strandedness:
         required: false
         recommended: true
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Library Preparation Protocol.
-
-  SequencingProtocol:
-    mixins:
-      - IdentifiedByAliasMixin
-      - AttributeMixin
-    description: >-
-      The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
-    slots:
-      - name
-      - description
-      - type
-      - instrument_model
-      - sequencing_center
-      - sequencing_read_length
-      - sequencing_layout
-      - target_coverage
-      - flow_cell_id
-      - flow_cell_type
-      - sample_barcode_read
-    slot_usage:
-      name:
-        description: >-
-          A short name identifying this Sequencing Protocol.
-        required: true
-      description:
-        description: >-
-          A description summarizing the Sequencing Protocol.
-        required: true
-      type:
-        description: >-
-          Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).
       instrument_model:
         required: true
       sequencing_center:
@@ -316,52 +316,188 @@ classes:
         recommended: true
       attributes:
         description: >-
-          One or more attributes that further characterize this Sequencing Protocol.
+          One or more attributes that further characterize this Experimental Method.
         required: false
 
-  SequencingProcess:
-    mixins:
-      - IdentifiedByAliasMixin
-      - AttributeMixin
+  ExperimentalMethodBulkGenomics:
+    is_a: ExperimentalMethod
     description: >-
-      The Sequencing Process captures the technical parameters that were used to produce sequencing output from the Sample. It links the Sample to sequencing output.
+      Experimental Method used for Bulk Genomics experiments.
     slots:
-      - name
-      - description
-      - sequencing_run_id
-      - sequencing_lane_id
-      - sequencing_machine_id
-      - index_sequence
-      - sequencing_experiment
-      - sample
+      - library_selection_methods
+      - library_preparation
+      - library_preparation_kit_retail_name
+      - library_preparation_kit_manufacturer
+      - primer
+      - end_bias
+      - target_regions
+      - instrument_model
+      - sequencing_center
+      - sequencing_read_length
+      - sequencing_layout
+      - target_coverage
+      - flow_cell_id
+      - flow_cell_type
+      - sample_barcode_read
+      - attributes
     slot_usage:
-      name:
-        description: >-
-          A short name identifying this Sequencing Process.
-        required: true
       description:
         description: >-
-          A short description of this Sequencing Process.
+          Description summarizing how a sequencing library was prepared.
         required: true
-      sequencing_run_id:
-        required: false
-      sequencing_lane_id:
-        required: false
-      sequencing_machine_id:
-        required: false
-      index_sequence:
+      library_name:
+        required: true
+      library_type:
+        required: true
+      library_selection_methods:
+        required: true
+      library_preparation:
+        required: true
+      library_preparation_kit_retail_name:
         required: false
         recommended: true
-      sequencing_experiment:
-        description: >-
-          The Sequencing Experiment associated with this Sequencing Process.
+      library_preparation_kit_manufacturer:
+        required: false
+        recommended: true
+      primer:
+        required: false
+        recommended: true
+      end_bias:
+        required: false
+        recommended: true
+      target_regions:
+        required: false
+      instrument_model:
         required: true
-        inlined: false
-      sample:
-        description: >-
-          The Sample associated with this Sequencing Process.
+      sequencing_center:
+        required: false
+        recommended: true
+      sequencing_read_length:
+        required: false
+      sequencing_layout:
         required: true
-        inlined: false
+      target_coverage:
+        required: false
+      flow_cell_id:
+        required: false
+        recommended: true
+      flow_cell_type:
+        required: false
+        recommended: true
+      sample_barcode_read:
+        required: false
+        recommended: true
+      attributes:
+        description: >-
+          One or more attributes that further characterize this Experimental Method.
+        required: false
+
+  # LibraryPreparationProtocol:
+  #   mixins:
+  #     - IdentifiedByAliasMixin
+  #     - AttributeMixin
+  #   description: >-
+  #     The Library Preparation Protocol captures information about the library preparation of a Sequencing Experiment.
+  #   slots:
+  #     - description
+  #     - library_name
+  #     - library_type
+  #     - library_selection_methods
+  #     - library_preparation
+  #     - library_preparation_kit_retail_name
+  #     - library_preparation_kit_manufacturer
+  #     - primer
+  #     - end_bias
+  #     - target_regions
+  #     - rnaseq_strandedness
+  #   slot_usage:
+  #     description:
+  #       description: >-
+  #         Description summarizing how a sequencing library was prepared.
+  #       required: true
+  #     library_name:
+  #       required: true
+  #     library_type:
+  #       required: true
+  #     library_selection_methods:
+  #       required: true
+  #     library_preparation:
+  #       required: true
+  #     library_preparation_kit_retail_name:
+  #       required: false
+  #       recommended: true
+  #     library_preparation_kit_manufacturer:
+  #       required: false
+  #       recommended: true
+  #     primer:
+  #       required: false
+  #       recommended: true
+  #     end_bias:
+  #       required: false
+  #       recommended: true
+  #     target_regions:
+  #       required: false
+  #     rnaseq_strandedness:
+  #       required: false
+  #       recommended: true
+  #     attributes:
+  #       description: >-
+  #         One or more attributes that further characterize this Library Preparation Protocol.
+
+  # SequencingProtocol:
+  #   mixins:
+  #     - IdentifiedByAliasMixin
+  #     - AttributeMixin
+  #   description: >-
+  #     The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
+  #   slots:
+  #     - name
+  #     - description
+  #     - type
+  #     - instrument_model
+  #     - sequencing_center
+  #     - sequencing_read_length
+  #     - sequencing_layout
+  #     - target_coverage
+  #     - flow_cell_id
+  #     - flow_cell_type
+  #     - sample_barcode_read
+  #   slot_usage:
+  #     name:
+  #       description: >-
+  #         A short name identifying this Sequencing Protocol.
+  #       required: true
+  #     description:
+  #       description: >-
+  #         A description summarizing the Sequencing Protocol.
+  #       required: true
+  #     type:
+  #       description: >-
+  #         Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).
+  #     instrument_model:
+  #       required: true
+  #     sequencing_center:
+  #       required: false
+  #       recommended: true
+  #     sequencing_read_length:
+  #       required: false
+  #     sequencing_layout:
+  #       required: true
+  #     target_coverage:
+  #       required: false
+  #     flow_cell_id:
+  #       required: false
+  #       recommended: true
+  #     flow_cell_type:
+  #       required: false
+  #       recommended: true
+  #     sample_barcode_read:
+  #       required: false
+  #       recommended: true
+  #     attributes:
+  #       description: >-
+  #         One or more attributes that further characterize this Sequencing Protocol.
+  #       required: false
 
   # Biospecimen:
   #   mixins:
@@ -860,19 +996,19 @@ classes:
       entities that represent a data submission to GHGA.
     slots:
       - analyses
-      - analysis_processes
+      - analysis_methods
       #- biospecimens
       #- conditions
       - data_access_committees
       - data_access_policies
       - datasets
       - individuals
-      - library_preparation_protocols
+      #- library_preparation_protocols
       - publications
       - samples
-      - sequencing_experiments
-      - sequencing_processes
-      - sequencing_protocols
+      - experiments
+      - experimental_methods
+      #- sequencing_protocols
       - studies
       - research_data_files
       - processed_data_files
@@ -908,37 +1044,37 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      sequencing_experiments:
+      experiments:
         description: >-
-          One or more Sequencing Experiment entities associated with this Submission.
+          One or more Experiment entities associated with this Submission.
         required: true
         inlined: true
         inlined_as_list: true
-      sequencing_protocols:
-        description: >-
-          One or more Sequencing Protocol entities associated with this Submission.
-        required: true
-        inlined: true
-        inlined_as_list: true
-      library_preparation_protocols:
-        description: >-
-          One or more Library Preparation Protocol entities associated with this Submission.
-        required: true
-        inlined: true
-        inlined_as_list: true
+      # sequencing_protocols:
+      #   description: >-
+      #     One or more Sequencing Protocol entities associated with this Submission.
+      #   required: true
+      #   inlined: true
+      #   inlined_as_list: true
+      # library_preparation_protocols:
+      #   description: >-
+      #     One or more Library Preparation Protocol entities associated with this Submission.
+      #   required: true
+      #   inlined: true
+      #   inlined_as_list: true
       analyses:
         description: >-
           One or more Analysis entities associated with this Submission.
         required: true
         inlined: true
         inlined_as_list: true
-      sequencing_processes:
+      experimental_methods:
         description: >-
-          The Sequencing Processes that are part of this Submission.
+          The Experimental Methods that are part of this Submission.
         required: true
         inlined: true
         inlined_as_list: true
-      analysis_methodss:
+      analysis_methods:
         description: >-
           The Analysis Methods that are part of this Submission.
         required: true
@@ -1074,22 +1210,22 @@ slots:
     range: Sample
     multivalued: true
 
-  sequencing_experiment:
-    description: The Sequencing Experiment associated with an entity.
-    range: SequencingExperiment
+  experiment:
+    description: The Experiment associated with an entity.
+    range: Experiment
 
-  sequencing_experiments:
-    description: The Sequencing Experiments associated with an entity.
-    range: SequencingExperiment
+  experiments:
+    description: The Experiments associated with an entity.
+    range: Experiment
     multivalued: true
 
-  sequencing_process:
-    description: The Sequencing Process associated with an entity.
-    range: SequencingProcess
+  experimental_method:
+    description: The Experimental Method associated with an entity.
+    range: ExperimentalMethod
 
-  sequencing_processes:
-    description: The Sequencing Processes associated with an entity.
-    range: SequencingProcess
+  experimental_methods:
+    description: The Experimental Methods associated with an entity.
+    range: ExperimentalMethod
     multivalued: true
 
   analyses:
@@ -1239,32 +1375,32 @@ slots:
     range: DataUseModifierEnum
     multivalued: true
 
-  sequencing_protocol:
-    range: SequencingProtocol
-    description: The Sequencing Protocol associated with an entity.
+  # sequencing_protocol:
+  #   range: SequencingProtocol
+  #   description: The Sequencing Protocol associated with an entity.
 
   # condition:
   #   range: Condition
   #   description: The Condition associated with an entity.
 
-  library_preparation_protocol:
-    range: LibraryPreparationProtocol
-    description: The Library Preparation Protocol associated with an entity.
+  # library_preparation_protocol:
+  #   range: LibraryPreparationProtocol
+  #   description: The Library Preparation Protocol associated with an entity.
 
-  sequencing_protocols:
-    range: SequencingProtocol
-    multivalued: True
-    description: The Sequencing Protocol associated with an entity.
+  # sequencing_protocols:
+  #   range: SequencingProtocol
+  #   multivalued: True
+  #   description: The Sequencing Protocol associated with an entity.
 
   # conditions:
   #   range: Condition
   #   multivalued: True
   #   description: The Conditions associated with an entity.
 
-  library_preparation_protocols:
-    range: LibraryPreparationProtocol
-    multivalued: True
-    description: The Library Preparation Protocol associated with an entity.
+  # library_preparation_protocols:
+  #   range: LibraryPreparationProtocol
+  #   multivalued: True
+  #   description: The Library Preparation Protocol associated with an entity.
 
   institute:
     description: The Institute a person is affiliated with.
@@ -1351,17 +1487,17 @@ slots:
     exact_mappings:
       - NCIT:C165443
 
-  sequencing_run_id:
-    description: >-
-      The identifier of a sequencing run.
+  # sequencing_run_id:
+  #   description: >-
+  #     The identifier of a sequencing run.
 
   sequencing_lane_id:
     description: >-
       The identifier of a sequencing lane.
 
-  sequencing_machine_id:
-    description: >-
-      The identifier of a sequencing machine.
+  # sequencing_machine_id:
+  #   description: >-
+  #     The identifier of a sequencing machine.
 
   sequencing_layout:
     description: >-
