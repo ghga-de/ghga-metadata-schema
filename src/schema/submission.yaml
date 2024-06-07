@@ -585,6 +585,9 @@ classes:
           An integer to indicate the technical replicate of this File.
         inlined: false
         required: true
+      sequencing_lane_id:
+        required: false
+        recommended: true
 
   ProcessDataFile:
     is_a: File
