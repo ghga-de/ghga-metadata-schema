@@ -183,37 +183,6 @@ classes:
           One or more Experimental Methods that are associated with this Experiment.
         required: true
 
-  # Condition:
-  #   mixins:
-  #     - IdentifiedByAliasMixin
-  #     - AttributeMixin
-  #   description: >-
-  #     A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).
-  #   slots:
-  #     - name
-  #     - description
-  #     - disease_or_healthy
-  #     - case_control_status
-  #     - study
-  #   slot_usage:
-  #     name:
-  #       description: >-
-  #         The name of this Condition.
-  #       required: true
-  #     description:
-  #       description: >-
-  #         A concise description of the applied Condition.
-  #       required: true
-  #     disease_or_healthy:
-  #       required: true
-  #     case_control_status:
-  #       required: true
-  #     study:
-  #       description: >-
-  #         The Study associated with this Condition.
-  #       required: true
-  #       inlined: false
-
   ExperimentalMethod:
     mixins:
       - IdentifiedByAliasMixin
@@ -392,172 +361,6 @@ classes:
           One or more attributes that further characterize this Experimental Method.
         required: false
 
-  # LibraryPreparationProtocol:
-  #   mixins:
-  #     - IdentifiedByAliasMixin
-  #     - AttributeMixin
-  #   description: >-
-  #     The Library Preparation Protocol captures information about the library preparation of a Sequencing Experiment.
-  #   slots:
-  #     - description
-  #     - library_name
-  #     - library_type
-  #     - library_selection_methods
-  #     - library_preparation
-  #     - library_preparation_kit_retail_name
-  #     - library_preparation_kit_manufacturer
-  #     - primer
-  #     - end_bias
-  #     - target_regions
-  #     - rnaseq_strandedness
-  #   slot_usage:
-  #     description:
-  #       description: >-
-  #         Description summarizing how a sequencing library was prepared.
-  #       required: true
-  #     library_name:
-  #       required: true
-  #     library_type:
-  #       required: true
-  #     library_selection_methods:
-  #       required: true
-  #     library_preparation:
-  #       required: true
-  #     library_preparation_kit_retail_name:
-  #       required: false
-  #       recommended: true
-  #     library_preparation_kit_manufacturer:
-  #       required: false
-  #       recommended: true
-  #     primer:
-  #       required: false
-  #       recommended: true
-  #     end_bias:
-  #       required: false
-  #       recommended: true
-  #     target_regions:
-  #       required: false
-  #     rnaseq_strandedness:
-  #       required: false
-  #       recommended: true
-  #     attributes:
-  #       description: >-
-  #         One or more attributes that further characterize this Library Preparation Protocol.
-
-  # SequencingProtocol:
-  #   mixins:
-  #     - IdentifiedByAliasMixin
-  #     - AttributeMixin
-  #   description: >-
-  #     The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.
-  #   slots:
-  #     - name
-  #     - description
-  #     - type
-  #     - instrument_model
-  #     - sequencing_center
-  #     - sequencing_read_length
-  #     - sequencing_layout
-  #     - target_coverage
-  #     - flow_cell_id
-  #     - flow_cell_type
-  #     - sample_barcode_read
-  #   slot_usage:
-  #     name:
-  #       description: >-
-  #         A short name identifying this Sequencing Protocol.
-  #       required: true
-  #     description:
-  #       description: >-
-  #         A description summarizing the Sequencing Protocol.
-  #       required: true
-  #     type:
-  #       description: >-
-  #         Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).
-  #     instrument_model:
-  #       required: true
-  #     sequencing_center:
-  #       required: false
-  #       recommended: true
-  #     sequencing_read_length:
-  #       required: false
-  #     sequencing_layout:
-  #       required: true
-  #     target_coverage:
-  #       required: false
-  #     flow_cell_id:
-  #       required: false
-  #       recommended: true
-  #     flow_cell_type:
-  #       required: false
-  #       recommended: true
-  #     sample_barcode_read:
-  #       required: false
-  #       recommended: true
-  #     attributes:
-  #       description: >-
-  #         One or more attributes that further characterize this Sequencing Protocol.
-  #       required: false
-
-  # Biospecimen:
-  #   mixins:
-  #     - IdentifiedByAliasMixin
-  #   description: >-
-  #     A Biospecimen is any natural material taken from a biological entity for testing, diagnostics, treatment, or research purposes.
-  #     It is linked to the Individual from which the Biospecimen is derived.
-  #   exact_mappings:
-  #     - OBI:0100051
-  #   slots:
-  #     - name
-  #     - type
-  #     - description
-  #     - age_at_sampling
-  #     - vital_status_at_sampling
-  #     - tissue
-  #     - isolation
-  #     - storage
-  #     - individual
-  #   slot_usage:
-  #     name:
-  #       description: >-
-  #         A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
-  #         This property must not include any personally identifiable data.
-  #       required: false
-  #       recommended: true
-  #     type:
-  #       description: >-
-  #         The type of Biospecimen.
-  #       required: false
-  #       recommended: true
-  #     description:
-  #       description: >-
-  #         A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
-  #       required: false
-  #     age_at_sampling:
-  #       required: true
-  #     vital_status_at_sampling:
-  #       required: false
-  #       recommended: true
-  #     tissue:
-  #       description: >-
-  #         The tissue this Biospecimen originated from.
-  #       required: true
-  #     isolation:
-  #       description: >-
-  #         Method or device employed for collecting/isolating this Biospecimen.
-  #       required: false
-  #       recommended: true
-  #     storage:
-  #       description: >-
-  #         Methods by which this Biospecimen is stored.
-  #       required: false
-  #       recommended: true
-  #     individual:
-  #       description: >-
-  #         The Individual entity from which this Biospecimen was derived.
-  #       inlined: false
-  #       required: true
-
   Sample:
     mixins:
       - IdentifiedByAliasMixin
@@ -687,26 +490,6 @@ classes:
       supporting_files:
         required: false
         recommended: true
-
-  # Trio:
-  #   mixins:
-  #     - IdentifiedByAliasMixin
-  #   description: >-
-  #     A Trio is a study design in which the genetic information of three individuals within a family unit is analyzed. It consists of a child and their biological parents.
-  #   slots:
-  #     - mother
-  #     - father
-  #     - child
-  #   slot_usage:
-  #     mother:
-  #       required: true
-  #       inlined: false
-  #     father:
-  #       required: true
-  #       inlined: false
-  #     child:
-  #       required: true
-  #       inlined: false
 
   File:
     mixins:
@@ -997,18 +780,16 @@ classes:
     slots:
       - analyses
       - analysis_methods
-      #- biospecimens
-      #- conditions
       - data_access_committees
       - data_access_policies
       - datasets
       - individuals
-      #- library_preparation_protocols
       - publications
       - samples
       - experiments
       - experimental_methods
-      #- sequencing_protocols
+      - experimental_methods_bulk_transcriptomics
+      - experimental_methods_bulk_genomics
       - studies
       - research_data_files
       - processed_data_files
@@ -1026,18 +807,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      # biospecimens:
-      #   description: >-
-      #     One or more Biospecimen entities associated with this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
-      # conditions:
-      #   description: >-
-      #     One or more Condition entities associated with this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
       individuals:
         description: >-
           One or more Individual entities associated with this Submission.
@@ -1050,18 +819,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      # sequencing_protocols:
-      #   description: >-
-      #     One or more Sequencing Protocol entities associated with this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
-      # library_preparation_protocols:
-      #   description: >-
-      #     One or more Library Preparation Protocol entities associated with this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
       analyses:
         description: >-
           One or more Analysis entities associated with this Submission.
@@ -1072,6 +829,18 @@ classes:
         description: >-
           The Experimental Methods that are part of this Submission.
         required: true
+        inlined: true
+        inlined_as_list: true
+      experimental_methods_bulk_transcriptomics:
+        description: >-
+          The Experimental Mehtods Bulk Transcriptomics that are part of this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      experimental_methods_bulk_genomics:
+        description: >-
+          The Experimental Mehtods Bulk Genomics that are part of this Submission.
+        required: false
         inlined: true
         inlined_as_list: true
       analysis_methods:
@@ -1122,12 +891,6 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
-      # trios:
-      #   description: >-
-      #     One or more Trio entities associated with this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
 
 slots:
   alias:
@@ -1228,6 +991,16 @@ slots:
     range: ExperimentalMethod
     multivalued: true
 
+  experimental_methods_bulk_transcriptomics:
+    description: The Experimental Method Bulk Transcriptomics associated with an entitiy.
+    range: ExperimentalMethodBulkTranscriptomics
+    multivalued: true
+
+  experimental_methods_bulk_genomics:
+    description: The Experimental Method Bulk Genomics associated with an entitiy.
+    range: ExperimentalMethodBulkGenomics
+    multivalued: true
+
   analyses:
     description: The Analyses associated with an entity.
     range: Analysis
@@ -1276,15 +1049,6 @@ slots:
     multivalued: true
     range: Dataset
 
-  # biospecimen:
-  #   description: The Biospecimen associated with an entity.
-  #   range: Biospecimen
-
-  # biospecimens:
-  #   description: The Biospecimens associated with an entity.
-  #   range: Biospecimen
-  #   multivalued: true
-
   individual:
     description: The Individual associated with an entity.
     range: Individual
@@ -1306,18 +1070,6 @@ slots:
     in_subset:
       - ontology
     multivalued: true
-
-  # mother:
-  #   description: The Mother of an individual.
-  #   range: Individual
-
-  # father:
-  #   description: The Father of an individual.
-  #   range: Individual
-
-  # child:
-  #   description: The Child of two individuals.
-  #   range: Individual
 
   ancestries:
     description: >-
@@ -1374,33 +1126,6 @@ slots:
       Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
     range: DataUseModifierEnum
     multivalued: true
-
-  # sequencing_protocol:
-  #   range: SequencingProtocol
-  #   description: The Sequencing Protocol associated with an entity.
-
-  # condition:
-  #   range: Condition
-  #   description: The Condition associated with an entity.
-
-  # library_preparation_protocol:
-  #   range: LibraryPreparationProtocol
-  #   description: The Library Preparation Protocol associated with an entity.
-
-  # sequencing_protocols:
-  #   range: SequencingProtocol
-  #   multivalued: True
-  #   description: The Sequencing Protocol associated with an entity.
-
-  # conditions:
-  #   range: Condition
-  #   multivalued: True
-  #   description: The Conditions associated with an entity.
-
-  # library_preparation_protocols:
-  #   range: LibraryPreparationProtocol
-  #   multivalued: True
-  #   description: The Library Preparation Protocol associated with an entity.
 
   institute:
     description: The Institute a person is affiliated with.
@@ -1487,17 +1212,9 @@ slots:
     exact_mappings:
       - NCIT:C165443
 
-  # sequencing_run_id:
-  #   description: >-
-  #     The identifier of a sequencing run.
-
   sequencing_lane_id:
     description: >-
       The identifier of a sequencing lane.
-
-  # sequencing_machine_id:
-  #   description: >-
-  #     The identifier of a sequencing machine.
 
   sequencing_layout:
     description: >-
@@ -1661,7 +1378,7 @@ enums:
         - DUO:0000017
       include_self: false
     permissible_values:
-      clinical care use:
+      CLINICAL_CARE_USE:
         meaning: DUO:0000043
         description: >-
           This data use modifier indicates that use is allowed for clinical use and care. 
@@ -1891,26 +1608,21 @@ enums:
         - GSSO:009428
       include_self: false
     permissible_values:
-      FEMALE_SEX_FOR_CLINICAL_USE:
+      FEMALE:
         meaning: GSSO:011317
         description: >-
           A sex for clinical use value in which stereotypically or statistically "female" values apply to an individual in a given medical context, such as for a procedure, process, algorithm, hormone level, genetic composition, organ inventory.
-      IMAGING_SEX:
-        meaning: GSSO:009318
-        description: >-
-          Sex as observed from any of various types of clinical imaging, such as x-rays or ultrasounds. Note that this can be unclear depending on the vagueness of the criteria outlined and/or the type of imaging utilized.
-      MALE_SEX_FOR_CLINICAL_USE:
+      MALE:
         meaning: GSSO:011318
         description: >-
           A sex for clinical use value in which stereotypically or statistically "male" values apply to an individual in a given medical context, such as for a procedure, process, algorithm, hormone level, genetic composition, organ inventory.
-      SPECIFIED_SEX_FOR_CLINICAL_USE:
-        meaning: GSSO:011319
-        description: >-
-          A sex for clinical use value which contains some specified value or values that apply to an individual in a given medical context, such as for a procedure, process, algorithm, hormone level, genetic composition, organ inventory.
-      UNKNOWN_SEX_FOR_CLINICAL_USE:
+      UNKNOWN:
         meaning: GSSO:011320
         description: >-
           A sex for clinical use value in which the stereotypical or statistical known values do not apply, cannot be determined, or are not sufficient for determination of a another value.
+      OTHER:
+        description: >-
+          A sex not captured by the controlled vocabulary.
 
   VitalStatusEnum:
     description: >-
