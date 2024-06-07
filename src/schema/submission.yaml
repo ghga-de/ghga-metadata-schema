@@ -78,6 +78,37 @@ classes:
         inlined: true
         inlined_as_list: true
 
+  # Parameter:
+  #   description: >-
+  #     A key/value pair to capture parameter specifications.
+  #   slots:
+  #     - parameter
+  #     - parameter_type
+  #     - value
+  #     - value_type
+  #   exact_mappings:
+  #     - SIO:000614
+  #   slot_usage:
+  #     parameter:
+  #       required: true
+  #     parameter_type:
+  #       required: false
+  #     value:
+  #       required: true
+  #     value_type:
+  #       required: false
+
+  # ParameterMixin:
+  #   mixin: true
+  #   description: Mixin for entities that can have one or more parameters.
+  #   slots:
+  #     - parameters
+  #   slot_usage:
+  #     parameters:
+  #       required: false
+  #       inlined: true
+  #       inlined_as_list: true
+
   Study:
     mixins:
       - IdentifiedByAliasMixin
@@ -611,32 +642,6 @@ classes:
         required: true
         range: SupportingFileFormatEnum
 
-  # SequencingProcessFile:
-  #   is_a: File
-  #   description: >-
-  #     A Sequencing Process File is a File that is associated with a Sequencing Process.
-  #   slots:
-  #     - sequencing_process
-  #   slot_usage:
-  #     sequencing_process:
-  #       description: >-
-  #         The Sequencing Process associated with this Sequencing Process File.
-  #       inlined: false
-  #       required: true
-
-  # AnalysisProcessOutputFile:
-  #   is_a: File
-  #   description: >-
-  #     A Analysis Process OutputFile is a File that is associated as an output file with an Analysis Process.
-  #   slots:
-  #     - analysis_process
-  #   slot_usage:
-  #     analysis_process:
-  #       description: >-
-  #         The Analysis Process this Analysis Process Output File is associated with.
-  #       inlined: false
-  #       required: true
-
   Analysis:
     mixins:
       - IdentifiedByAliasMixin
@@ -647,6 +652,9 @@ classes:
       - title
       - description
       - type
+      - research_data_files
+      - processed_data_files
+      - analysis_methods
     slot_usage:
       title:
         required: true
@@ -658,41 +666,56 @@ classes:
         description: >-
           The type of this Analysis.
         required: false
+      research_data_files:
+        required: true
+      processed_data_files:
+        required: true
+      analysis_methods:
+        required: true
 
-  AnalysisProcess:
+  AnalysisMethod:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.
+      An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
     slots:
       - name
-      - analysis
-      - study_input_files
-      - sample_input_files
-      #- sequencing_process_input_files
+      - description
+      - type
+      - workflow_name
+      - workflow_version
+      - workflow_repository
+      - workflow_doi
+      - workflow_tasks
+      - parameters
+      - software_versions
     slot_usage:
       name:
         required: true
-      analysis:
-        inlined: false
-        description: >-
-          The Analysis that this Analysis Process is part of.
+      description:
         required: true
-      study_input_files:
-        description: >-
-          The associated Study File used as an input for this Analysis Process.
-        inlined: false
+      type:
+        required: true
+      workflow_name:
+        required: true
+      workflow_version:
         required: false
-      sample_input_files:
-        description: >-
-          The associated Sample File used as an input for this Analysis Process.
-        inlined: false
+        recommended: true
+      workflow_repository:
+        required: true
+      workflow_doi:
+        required: true
+      workflow_tasks:
         required: false
-      # sequencing_process_input_files:
-      #   description: >-
-      #     The associated Sequencing Process File used as an input for this Analysis Process.
-      #   inlined: false
-      #   required: false
+        recommended: true
+      parameters:
+        required: false
+        recommended: true
+        is_a: Attribute
+      software_versions:
+        required: false
+        recommended: true
+        is_a: Attribute
 
   Dataset:
     mixins:
@@ -909,42 +932,18 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      study_files:
-        description: >-
-          The Study Files that are part of this Submission.
-        required: true
-        inlined: true
-        inlined_as_list: true
-      sample_files:
-        description: >-
-          The Sample Files that are part of this submission.
-        required: true
-        inlined: true
-        inlined_as_list: true
-      # sequencing_process_files:
-      #   description: >-
-      #     The Sequencing Process Files that are part of this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
       sequencing_processes:
         description: >-
           The Sequencing Processes that are part of this Submission.
         required: true
         inlined: true
         inlined_as_list: true
-      analysis_processes:
+      analysis_methodss:
         description: >-
-          The Analysis Processes that are part of this Submission.
+          The Analysis Methods that are part of this Submission.
         required: true
         inlined: true
         inlined_as_list: true
-      # analysis_process_output_files:
-      #   description: >-
-      #     The Analysis Process Output Files that are part of this Submission.
-      #   required: true
-      #   inlined: true
-      #   inlined_as_list: true
       datasets:
         description: >-
           One or more Dataset entities that are part of this Submission.
@@ -967,6 +966,24 @@ classes:
         description: >-
           One or more Publication entities associated with this Submission.
         required: true
+        inlined: true
+        inlined_as_list: true
+      research_data_files:
+        description: >-
+          One or more Research Data Files associated with this Submission.
+        required: true
+        inlined: true
+        inlined_as_list: true
+      processed_data_files:
+        description: >-
+          One or more Processed Data Files associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      supporting_files:
+        description: >-
+          One or more Supporting Files associated with this Submission.
+        required: false
         inlined: true
         inlined_as_list: true
       # trios:
@@ -996,10 +1013,22 @@ slots:
 
   value_type:
     description: The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).
+
   attributes:
     description: Key/value pairs corresponding to an entity.
     range: Attribute
     multivalued: true
+
+  # parameter:
+  #   description: The parameter name.
+
+  # parameter_type:
+  #   description: A semantic type that characterizes this parameter (e.g., gencode version)
+
+  # parameters:
+  #   description: Parameter/value pairs corresponding to an entity.
+  #   range: Parameter
+  #   multivalued: true
 
   type:
     description: >-
@@ -1072,14 +1101,35 @@ slots:
     description: The Analysis associated with an entity
     range: Analysis
 
-  analysis_process:
+  analysis_method:
     description: The Analysis Process associated with an entity.
     range: AnalysisProcess
 
-  analysis_processes:
+  analysis_methods:
     description: The Analysis Processes associated with an entity.
     range: AnalysisProcess
     multivalued: true
+
+  workflow_name:
+    description: The workflow name
+
+  workflow_version:
+    desription: The workflow version
+
+  workflow_repository:
+    description: The workflow repository (e.g., the URL)
+
+  workflow_doi:
+    description: A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
+
+  workflow_tasks:
+    description: Tasks performed by the workflow
+
+  parameters:
+    description: Non-default parameters and the corresponding value.
+
+  software_versions:
+    description: Software used during the Analysis and the corresponding software version.
 
   dataset:
     description: The Dataset associated with an entity.
