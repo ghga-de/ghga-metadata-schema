@@ -220,6 +220,7 @@ ExperimentalMethod {
 ResearchDataFile {
     ResearchDataFileFormatEnum format  
     string technical_replicate  
+    string sequencing_lane_id  
     string name  
     integer size  
     string checksum  

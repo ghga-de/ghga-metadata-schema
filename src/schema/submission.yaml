@@ -521,6 +521,7 @@ classes:
     slots:
       - format
       - technical_replicate
+      - sequencing_lane_id
     slot_usage:
       format:
         required: true
