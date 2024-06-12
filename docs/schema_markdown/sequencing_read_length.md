@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [SequencingProtocol➞sequencing_read_length](SequencingProtocol_sequencing_read_length.md)
+ *  [ExperimentalMethod➞sequencing_read_length](ExperimentalMethod_sequencing_read_length.md)
 
 ## Used by
 

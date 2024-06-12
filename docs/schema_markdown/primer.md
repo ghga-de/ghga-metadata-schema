@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [PrimerEnum](PrimerEnum.md)
 
 ## Children
 
- *  [LibraryPreparationProtocol➞primer](LibraryPreparationProtocol_primer.md)
+ *  [ExperimentalMethod➞primer](ExperimentalMethod_primer.md)
 
 ## Used by
 

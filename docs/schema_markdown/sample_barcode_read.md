@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md)
 
 ## Children
 
- *  [SequencingProtocol➞sample_barcode_read](SequencingProtocol_sample_barcode_read.md)
+ *  [ExperimentalMethod➞sample_barcode_read](ExperimentalMethod_sample_barcode_read.md)
 
 ## Used by
 

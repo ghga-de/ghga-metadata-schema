@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [SequencingProtocol➞flow_cell_id](SequencingProtocol_flow_cell_id.md)
+ *  [ExperimentalMethod➞flow_cell_id](ExperimentalMethod_flow_cell_id.md)
 
 ## Used by
 

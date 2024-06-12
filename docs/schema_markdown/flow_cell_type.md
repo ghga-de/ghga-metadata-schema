@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [FlowCellTypeEnum](FlowCellTypeEnum.md)
 
 ## Children
 
- *  [SequencingProtocol➞flow_cell_type](SequencingProtocol_flow_cell_type.md)
+ *  [ExperimentalMethod➞flow_cell_type](ExperimentalMethod_flow_cell_type.md)
 
 ## Used by
 

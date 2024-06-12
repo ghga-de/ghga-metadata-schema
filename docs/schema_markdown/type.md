@@ -16,11 +16,11 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [AnalysisMethod➞type](AnalysisMethod_type.md)
  *  [Analysis➞type](Analysis_type.md)
- *  [Biospecimen➞type](Biospecimen_type.md)
+ *  [Experiment➞type](Experiment_type.md)
+ *  [ExperimentalMethod➞type](ExperimentalMethod_type.md)
  *  [Sample➞type](Sample_type.md)
- *  [SequencingExperiment➞type](SequencingExperiment_type.md)
- *  [SequencingProtocol➞type](SequencingProtocol_type.md)
 
 ## Used by
 

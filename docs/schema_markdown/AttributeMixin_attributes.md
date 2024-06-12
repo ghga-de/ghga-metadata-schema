@@ -17,14 +17,11 @@ URI: [GHGA:AttributeMixin_attributes](https://w3id.org/GHGA/AttributeMixin_attri
 
 ## Children
 
- *  [LibraryPreparationProtocol➞attributes](LibraryPreparationProtocol_attributes.md)
- *  [SequencingProtocol➞attributes](SequencingProtocol_attributes.md)
+ *  [ExperimentalMethod➞attributes](ExperimentalMethod_attributes.md)
  *  [Study➞attributes](Study_attributes.md)
 
 ## Used by
 
  * [AttributeMixin](AttributeMixin.md)
- * [Condition](Condition.md)
+ * [Experiment](Experiment.md)
  * [Sample](Sample.md)
- * [SequencingExperiment](SequencingExperiment.md)
- * [SequencingProcess](SequencingProcess.md)

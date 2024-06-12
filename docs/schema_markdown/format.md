@@ -9,14 +9,16 @@ URI: [GHGA:format](https://w3id.org/GHGA/format)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [FileFormatEnum](FileFormatEnum.md)
+None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 
 
 ## Children
 
- *  [File➞format](File_format.md)
+ *  [ProcessDataFile➞format](ProcessDataFile_format.md)
+ *  [ResearchDataFile➞format](ResearchDataFile_format.md)
+ *  [SupportingFile➞format](SupportingFile_format.md)
 
 ## Used by
 

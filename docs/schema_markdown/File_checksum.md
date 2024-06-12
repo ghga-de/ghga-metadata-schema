@@ -20,11 +20,10 @@ URI: [GHGA:File_checksum](https://w3id.org/GHGA/File_checksum)
 
 ## Used by
 
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
  * [File](File.md)
- * [SampleFile](SampleFile.md)
- * [SequencingProcessFile](SequencingProcessFile.md)
- * [StudyFile](StudyFile.md)
+ * [ProcessDataFile](ProcessDataFile.md)
+ * [ResearchDataFile](ResearchDataFile.md)
+ * [SupportingFile](SupportingFile.md)
 
 ## Other properties
 

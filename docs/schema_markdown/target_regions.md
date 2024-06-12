@@ -16,7 +16,7 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Children
 
- *  [LibraryPreparationProtocol➞target_regions](LibraryPreparationProtocol_target_regions.md)
+ *  [ExperimentalMethod➞target_regions](ExperimentalMethod_target_regions.md)
 
 ## Used by
 

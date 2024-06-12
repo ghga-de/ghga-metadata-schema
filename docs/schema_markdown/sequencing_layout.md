@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [SequencingProtocolSequencingLayoutEnum](Sequencin
 
 ## Children
 
- *  [SequencingProtocol➞sequencing_layout](SequencingProtocol_sequencing_layout.md)
+ *  [ExperimentalMethod➞sequencing_layout](ExperimentalMethod_sequencing_layout.md)
 
 ## Used by
 

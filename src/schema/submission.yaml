@@ -193,29 +193,6 @@ classes:
       - name
       - description
       - type
-      - supporting_files
-    slot_usage:
-      name:
-        description: >-
-          A short name identifying this Experimental Method.
-        required: true
-      description:
-        description: >-
-          A short description of this Experimental Method.
-        required: true
-      type:
-        description: >-
-          The type associated with this Experimental Method.
-        required: true
-      supporting_files:
-        description: One or more Supporting Files associated with this Experimental Method.
-        required: false
-
-  ExperimentalMethodBulkTranscriptomics:
-    is_a: ExperimentalMethod
-    description: >-
-      Experimental Method used for Bulk Transcriptomics experiments.
-    slots:
       - library_selection_methods
       - library_preparation
       - library_preparation_kit_retail_name
@@ -233,14 +210,19 @@ classes:
       - flow_cell_type
       - sample_barcode_read
       - attributes
+      - supporting_files
     slot_usage:
+      name:
+        description: >-
+          A short name identifying this Experimental Method.
+        required: true
       description:
         description: >-
-          Description summarizing how a sequencing library was prepared.
+          A short description of this Experimental Method.
         required: true
-      library_name:
-        required: true
-      library_type:
+      type:
+        description: >-
+          The type associated with this Experimental Method.
         required: true
       library_selection_methods:
         required: true
@@ -283,83 +265,96 @@ classes:
       sample_barcode_read:
         required: false
         recommended: true
+      supporting_files:
+        description: One or more Supporting Files associated with this Experimental Method.
+        required: false
       attributes:
         description: >-
           One or more attributes that further characterize this Experimental Method.
         required: false
 
-  ExperimentalMethodBulkGenomics:
-    is_a: ExperimentalMethod
-    description: >-
-      Experimental Method used for Bulk Genomics experiments.
-    slots:
-      - library_selection_methods
-      - library_preparation
-      - library_preparation_kit_retail_name
-      - library_preparation_kit_manufacturer
-      - primer
-      - end_bias
-      - target_regions
-      - instrument_model
-      - sequencing_center
-      - sequencing_read_length
-      - sequencing_layout
-      - target_coverage
-      - flow_cell_id
-      - flow_cell_type
-      - sample_barcode_read
-      - attributes
-    slot_usage:
-      description:
-        description: >-
-          Description summarizing how a sequencing library was prepared.
-        required: true
-      library_name:
-        required: true
-      library_type:
-        required: true
-      library_selection_methods:
-        required: true
-      library_preparation:
-        required: true
-      library_preparation_kit_retail_name:
-        required: false
-        recommended: true
-      library_preparation_kit_manufacturer:
-        required: false
-        recommended: true
-      primer:
-        required: false
-        recommended: true
-      end_bias:
-        required: false
-        recommended: true
-      target_regions:
-        required: false
-      instrument_model:
-        required: true
-      sequencing_center:
-        required: false
-        recommended: true
-      sequencing_read_length:
-        required: false
-      sequencing_layout:
-        required: true
-      target_coverage:
-        required: false
-      flow_cell_id:
-        required: false
-        recommended: true
-      flow_cell_type:
-        required: false
-        recommended: true
-      sample_barcode_read:
-        required: false
-        recommended: true
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Experimental Method.
-        required: false
+  # ExperimentalMethodBulkTranscriptomics:
+  #   is_a: ExperimentalMethod
+  #   description: >-
+  #     Experimental Method used for Bulk Transcriptomics experiments.
+  #   slots:
+  # - library_selection_methods
+  # - library_preparation
+  # - library_preparation_kit_retail_name
+  # - library_preparation_kit_manufacturer
+  # - primer
+  # - end_bias
+  # - target_regions
+  # - rnaseq_strandedness
+  # - instrument_model
+  # - sequencing_center
+  # - sequencing_read_length
+  # - sequencing_layout
+  # - target_coverage
+  # - flow_cell_id
+  # - flow_cell_type
+  # - sample_barcode_read
+  # slot_usage:
+
+  # ExperimentalMethodBulkGenomics:
+  #   is_a: ExperimentalMethod
+  #   description: >-
+  #     Experimental Method used for Bulk Genomics experiments.
+  #   slots:
+  #     - library_selection_methods
+  #     - library_preparation
+  #     - library_preparation_kit_retail_name
+  #     - library_preparation_kit_manufacturer
+  #     - primer
+  #     - end_bias
+  #     - target_regions
+  #     - instrument_model
+  #     - sequencing_center
+  #     - sequencing_read_length
+  #     - sequencing_layout
+  #     - target_coverage
+  #     - flow_cell_id
+  #     - flow_cell_type
+  #     - sample_barcode_read
+  #   slot_usage:
+  #     library_selection_methods:
+  #       required: true
+  #     library_preparation:
+  #       required: true
+  #     library_preparation_kit_retail_name:
+  #       required: false
+  #       recommended: true
+  #     library_preparation_kit_manufacturer:
+  #       required: false
+  #       recommended: true
+  #     primer:
+  #       required: false
+  #       recommended: true
+  #     end_bias:
+  #       required: false
+  #       recommended: true
+  #     target_regions:
+  #       required: false
+  #     instrument_model:
+  #       required: true
+  #     sequencing_center:
+  #       required: false
+  #       recommended: true
+  #     sequencing_read_length:
+  #       required: false
+  #     sequencing_layout:
+  #       required: true
+  #     target_coverage:
+  #       required: false
+  #     flow_cell_id:
+  #       required: false
+  #       recommended: true
+  #     flow_cell_type:
+  #       required: false
+  #       recommended: true
+  #     sample_barcode_read:
+  #       required: false
+  #       recommended: true
 
   Sample:
     mixins:
@@ -413,14 +408,14 @@ classes:
           Methods by which this Sample is stored.
         required: false
         recommended: true
-      xref:
-        description: >-
-          One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).
-        required: false
       disease_or_healthy:
         required: true
       case_control_status:
         required: true
+      xref:
+        description: >-
+          One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).
+        required: false
       biospecimen_name:
         description: >-
           A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
@@ -572,7 +567,7 @@ classes:
       - description
       - type
       - research_data_files
-      - processed_data_files
+      - process_data_files
       - analysis_methods
     slot_usage:
       title:
@@ -587,7 +582,7 @@ classes:
         required: false
       research_data_files:
         required: true
-      processed_data_files:
+      process_data_files:
         required: true
       analysis_methods:
         required: true
@@ -788,11 +783,11 @@ classes:
       - samples
       - experiments
       - experimental_methods
-      - experimental_methods_bulk_transcriptomics
-      - experimental_methods_bulk_genomics
+      # - experimental_methods_bulk_transcriptomics
+      # - experimental_methods_bulk_genomics
       - studies
       - research_data_files
-      - processed_data_files
+      - process_data_files
       - supporting_files
     slot_usage:
       studies:
@@ -831,18 +826,18 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      experimental_methods_bulk_transcriptomics:
-        description: >-
-          The Experimental Mehtods Bulk Transcriptomics that are part of this Submission.
-        required: false
-        inlined: true
-        inlined_as_list: true
-      experimental_methods_bulk_genomics:
-        description: >-
-          The Experimental Mehtods Bulk Genomics that are part of this Submission.
-        required: false
-        inlined: true
-        inlined_as_list: true
+      # experimental_methods_bulk_transcriptomics:
+      #   description: >-
+      #     The Experimental Mehtods Bulk Transcriptomics that are part of this Submission.
+      #   required: false
+      #   inlined: true
+      #   inlined_as_list: true
+      # experimental_methods_bulk_genomics:
+      #   description: >-
+      #     The Experimental Mehtods Bulk Genomics that are part of this Submission.
+      #   required: false
+      #   inlined: true
+      #   inlined_as_list: true
       analysis_methods:
         description: >-
           The Analysis Methods that are part of this Submission.
@@ -879,9 +874,9 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      processed_data_files:
+      process_data_files:
         description: >-
-          One or more Processed Data Files associated with this Submission.
+          One or more Process Data Files associated with this Submission.
         required: false
         inlined: true
         inlined_as_list: true
@@ -991,15 +986,15 @@ slots:
     range: ExperimentalMethod
     multivalued: true
 
-  experimental_methods_bulk_transcriptomics:
-    description: The Experimental Method Bulk Transcriptomics associated with an entitiy.
-    range: ExperimentalMethodBulkTranscriptomics
-    multivalued: true
+  # experimental_methods_bulk_transcriptomics:
+  #   description: The Experimental Method Bulk Transcriptomics associated with an entitiy.
+  #   range: ExperimentalMethodBulkTranscriptomics
+  #   multivalued: true
 
-  experimental_methods_bulk_genomics:
-    description: The Experimental Method Bulk Genomics associated with an entitiy.
-    range: ExperimentalMethodBulkGenomics
-    multivalued: true
+  # experimental_methods_bulk_genomics:
+  #   description: The Experimental Method Bulk Genomics associated with an entitiy.
+  #   range: ExperimentalMethodBulkGenomics
+  #   multivalued: true
 
   analyses:
     description: The Analyses associated with an entity.
@@ -1012,18 +1007,18 @@ slots:
 
   analysis_method:
     description: The Analysis Process associated with an entity.
-    range: AnalysisProcess
+    range: AnalysisMethod
 
   analysis_methods:
     description: The Analysis Processes associated with an entity.
-    range: AnalysisProcess
+    range: AnalysisMethod
     multivalued: true
 
   workflow_name:
     description: The workflow name
 
   workflow_version:
-    desription: The workflow version
+    description: The workflow version
 
   workflow_repository:
     description: The workflow repository (e.g., the URL)
@@ -1085,9 +1080,9 @@ slots:
     range: ResearchDataFile
     multivalued: True
 
-  processed_data_files:
+  process_data_files:
     description: >-
-      The Processed Files associated with an entity.
+      The Process Files associated with an entity.
     range: ProcessDataFile
     multivalued: True
 
@@ -1246,6 +1241,10 @@ slots:
     description: >-
       An integer to indicate the number of a biological replicate.
 
+  technical_replicate:
+    description: >-
+      An integer to indicate the technical replicate of this File.
+
   biospecimen_name:
     description: The name for a biospecimen.
 
@@ -1309,8 +1308,7 @@ slots:
   format:
     description: >-
       The format of the File (e.g., BAM, SAM, CRAM, BAI).
-    range: FileFormatEnum
-
+  #   range: FileFormatEnum
   size:
     description: The size of the File in bytes.
     range: integer
@@ -1358,10 +1356,10 @@ slots:
       - ontology
     # range: TissueEnum
 
-  trios:
-    description: The Trios associated with an entity.
-    range: Trio
-    multivalued: true
+  # trios:
+  #   description: The Trios associated with an entity.
+  #   range: Trio
+  #   multivalued: true
 
 subsets:
   ontology:
@@ -1780,9 +1778,9 @@ enums:
         description: >-
           A file format not captured by the controlled vocabulary.
 
-  ProcessedFileFormatEnum:
+  ProcessDataFileFormatEnum:
     description: >-
-      Enum to capture Processed Data File formats.
+      Enum to capture Process Data File formats.
     permissible_values:
       BAI:
         description: >-

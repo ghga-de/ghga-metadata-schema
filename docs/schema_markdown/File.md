@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AnalysisProcessOutputFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AnalysisProcessOutputFile])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SupportingFile],[ResearchDataFile],[ProcessDataFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[SupportingFile],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[SupportingFile],[ResearchDataFile],[ProcessDataFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[SupportingFile],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[Dataset])
 
 ## Uses Mixin
 
@@ -15,10 +15,9 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 ## Children
 
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A Analysis Process OutputFile is a File that is associated as an output file with an Analysis Process.
- * [SampleFile](SampleFile.md) - A Sample File is a File that is associated with a Sample.
- * [SequencingProcessFile](SequencingProcessFile.md) - A Sequencing Process File is a File that is associated with a Sequencing Process.
- * [StudyFile](StudyFile.md) - A Study File is a File that is associated with a Study.
+ * [ProcessDataFile](ProcessDataFile.md) - A Process Data File is a File that contains data produced by an Analysis or workflow.
+ * [ResearchDataFile](ResearchDataFile.md) - A Research Data File is a File that contains raw data originating from an Experiment.
+ * [SupportingFile](SupportingFile.md) - A Supporting File is a File that contains additional information relevant for the entity, such as phenopackets, RO-Crates, imaging data or (unstructured) protocols.
 
 ## Referenced by Class
 
@@ -31,9 +30,6 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)
- * [File➞format](File_format.md)  <sub>1..1</sub>
-     * Description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
-     * Range: [FileFormatEnum](FileFormatEnum.md)
  * [File➞size](File_size.md)  <sub>1..1</sub>
      * Description: The size of the File in bytes.
      * Range: [Integer](types/Integer.md)

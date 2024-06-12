@@ -16,7 +16,7 @@ URI: [GHGA:DataUseModifierEnum](https://w3id.org/GHGA/DataUseModifierEnum)
 
 | Text | Description | Meaning | Other Information |
 | :--- | :---: | :---: | ---: |
-| clinical care use | This data use modifier indicates that use is allowed for clinical use and care.  Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making. | DUO:0000043 |  |
+| CLINICAL_CARE_USE | This data use modifier indicates that use is allowed for clinical use and care.  Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making. | DUO:0000043 |  |
 | RETURN_TO_DATABASE_OR_RESOURCE | This data use modifier indicates that the requestor must return derived/enriched data to the database/resource. | DUO:0000029 |  |
 | INSTITUTION_SPECIFIC_RESTRICTION | This data use modifier indicates that use is limited to use within an approved institution. | DUO:0000028 |  |
 | PROJECT_SPECIFIC_RESTRICTION | This data use modifier indicates that use is limited to use within an approved project. | DUO:0000027 |  |

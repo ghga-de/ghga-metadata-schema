@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [LibraryPreparationLibraryTypeEnum](LibraryPrepara
 
 ## Children
 
- *  [LibraryPreparationProtocol➞library_type](LibraryPreparationProtocol_library_type.md)
 
 ## Used by
 
