@@ -155,9 +155,9 @@ classes:
       - title
       - description
       - type
-      - samples
-      - research_data_files
-      - experimental_methods
+      - sample
+      - research_data_file
+      - experimental_method
     slot_usage:
       title:
         description: >-
@@ -171,14 +171,14 @@ classes:
         description: >-
           The type of this Sequencing Experiment.
         required: false
-      samples:
+      sample:
         description: One or more Samples that associated with this Experiment.
         required: true
-      research_data_files:
+      research_data_file:
         description: >-
           One or more Research Data Files that are associated with this Experiment.
         required: true
-      experimental_methods:
+      experimental_method:
         description: >-
           One or more Experimental Methods that are associated with this Experiment.
         required: true
@@ -273,89 +273,6 @@ classes:
           One or more attributes that further characterize this Experimental Method.
         required: false
 
-  # ExperimentalMethodBulkTranscriptomics:
-  #   is_a: ExperimentalMethod
-  #   description: >-
-  #     Experimental Method used for Bulk Transcriptomics experiments.
-  #   slots:
-  # - library_selection_methods
-  # - library_preparation
-  # - library_preparation_kit_retail_name
-  # - library_preparation_kit_manufacturer
-  # - primer
-  # - end_bias
-  # - target_regions
-  # - rnaseq_strandedness
-  # - instrument_model
-  # - sequencing_center
-  # - sequencing_read_length
-  # - sequencing_layout
-  # - target_coverage
-  # - flow_cell_id
-  # - flow_cell_type
-  # - sample_barcode_read
-  # slot_usage:
-
-  # ExperimentalMethodBulkGenomics:
-  #   is_a: ExperimentalMethod
-  #   description: >-
-  #     Experimental Method used for Bulk Genomics experiments.
-  #   slots:
-  #     - library_selection_methods
-  #     - library_preparation
-  #     - library_preparation_kit_retail_name
-  #     - library_preparation_kit_manufacturer
-  #     - primer
-  #     - end_bias
-  #     - target_regions
-  #     - instrument_model
-  #     - sequencing_center
-  #     - sequencing_read_length
-  #     - sequencing_layout
-  #     - target_coverage
-  #     - flow_cell_id
-  #     - flow_cell_type
-  #     - sample_barcode_read
-  #   slot_usage:
-  #     library_selection_methods:
-  #       required: true
-  #     library_preparation:
-  #       required: true
-  #     library_preparation_kit_retail_name:
-  #       required: false
-  #       recommended: true
-  #     library_preparation_kit_manufacturer:
-  #       required: false
-  #       recommended: true
-  #     primer:
-  #       required: false
-  #       recommended: true
-  #     end_bias:
-  #       required: false
-  #       recommended: true
-  #     target_regions:
-  #       required: false
-  #     instrument_model:
-  #       required: true
-  #     sequencing_center:
-  #       required: false
-  #       recommended: true
-  #     sequencing_read_length:
-  #       required: false
-  #     sequencing_layout:
-  #       required: true
-  #     target_coverage:
-  #       required: false
-  #     flow_cell_id:
-  #       required: false
-  #       recommended: true
-  #     flow_cell_type:
-  #       required: false
-  #       recommended: true
-  #     sample_barcode_read:
-  #       required: false
-  #       recommended: true
-
   Sample:
     mixins:
       - IdentifiedByAliasMixin
@@ -367,6 +284,7 @@ classes:
       - SIO:001050
       - biolink:MaterialSample
     slots:
+      - individual
       - name
       - type
       - biological_replicate
@@ -383,8 +301,12 @@ classes:
       - biospecimen_tissue
       - biospecimen_isolation
       - biospecimen_storage
-      - individual
     slot_usage:
+      individual:
+        description: >-
+          The Individual entity from which this Biospecimen or Sample was derived.
+        inlined: false
+        required: true
       name:
         description: >-
           A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
@@ -409,7 +331,8 @@ classes:
         required: false
         recommended: true
       disease_or_healthy:
-        required: true
+        required: false
+        recommended: true
       case_control_status:
         required: true
       xref:
@@ -450,11 +373,6 @@ classes:
           Methods by which this Biospecimen is stored.
         required: false
         recommended: true
-      individual:
-        description: >-
-          The Individual entity from which this Biospecimen or Sample was derived.
-        inlined: false
-        required: true
 
   Individual:
     mixins:
@@ -524,6 +442,7 @@ classes:
       - sequencing_lane_id
     slot_usage:
       format:
+        description: The file format of the Research Data File (e.g. FASTQ, uBAM, FASTA)
         required: true
         range: ResearchDataFileFormatEnum
       technical_replicate:
@@ -543,6 +462,7 @@ classes:
       - format
     slot_usage:
       format:
+        description: The file format of the Process Data File (e.g. CRAM, BAM)
         required: true
         range: ProcessDataFileFormatEnum
 
@@ -554,6 +474,7 @@ classes:
       - format
     slot_usage:
       format:
+        description: The file format of the Supporting File (e.g. txt, json)
         required: true
         range: SupportingFileFormatEnum
 
@@ -567,8 +488,8 @@ classes:
       - title
       - description
       - type
-      - research_data_files
-      - process_data_files
+      - research_data_file
+      - process_data_file
       - analysis_methods
     slot_usage:
       title:
@@ -581,9 +502,9 @@ classes:
         description: >-
           The type of this Analysis.
         required: false
-      research_data_files:
+      research_data_file:
         required: true
-      process_data_files:
+      process_data_file:
         required: true
       analysis_methods:
         required: true
@@ -784,8 +705,6 @@ classes:
       - samples
       - experiments
       - experimental_methods
-      # - experimental_methods_bulk_transcriptomics
-      # - experimental_methods_bulk_genomics
       - studies
       - research_data_files
       - process_data_files
@@ -827,18 +746,6 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      # experimental_methods_bulk_transcriptomics:
-      #   description: >-
-      #     The Experimental Mehtods Bulk Transcriptomics that are part of this Submission.
-      #   required: false
-      #   inlined: true
-      #   inlined_as_list: true
-      # experimental_methods_bulk_genomics:
-      #   description: >-
-      #     The Experimental Mehtods Bulk Genomics that are part of this Submission.
-      #   required: false
-      #   inlined: true
-      #   inlined_as_list: true
       analysis_methods:
         description: >-
           The Analysis Methods that are part of this Submission.
@@ -987,16 +894,6 @@ slots:
     range: ExperimentalMethod
     multivalued: true
 
-  # experimental_methods_bulk_transcriptomics:
-  #   description: The Experimental Method Bulk Transcriptomics associated with an entitiy.
-  #   range: ExperimentalMethodBulkTranscriptomics
-  #   multivalued: true
-
-  # experimental_methods_bulk_genomics:
-  #   description: The Experimental Method Bulk Genomics associated with an entitiy.
-  #   range: ExperimentalMethodBulkGenomics
-  #   multivalued: true
-
   analyses:
     description: The Analyses associated with an entity.
     range: Analysis
@@ -1062,7 +959,7 @@ slots:
     multivalued: true
 
   diagnosis:
-    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10.
+    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g. E10, C01)
     in_subset:
       - ontology
     multivalued: true
@@ -1075,21 +972,36 @@ slots:
     # range: AncestryEnum
     multivalued: true
 
+  research_data_file:
+    description: >-
+      The Research Data File associated with an entity.
+    range: ResearchDataFile
+
   research_data_files:
     description: >-
       The Research Data Files associated with an entity.
     range: ResearchDataFile
     multivalued: True
 
+  process_data_file:
+    description: >-
+      The Process Data File associated with an entity.
+    range: ProcessDataFile
+
   process_data_files:
     description: >-
-      The Process Files associated with an entity.
+      The Process Data Files associated with an entity.
     range: ProcessDataFile
     multivalued: True
 
+  supporting_file:
+    description: >-
+      The Supporting File associated with an entity.
+    range: SupportingFile
+
   supporting_files:
     description: >-
-      The supporting file associated with an entity.
+      The Supporting Files associated with an entity.
     range: SupportingFile
     multivalued: true
 
@@ -1287,7 +1199,7 @@ slots:
 
   biospecimen_vital_status_at_sampling:
     description: >-
-      Vital Status of the Individual at the point of sampling (e.g., alive).
+      Vital Status of the Individual  this biospecimen was retrieved from at the point of sampling (e.g., alive).
     range: VitalStatusEnum
 
   geographical_region:
@@ -1303,7 +1215,7 @@ slots:
     range: IndividualSexEnum
 
   biospecimen_age_at_sampling:
-    description: The age of the Individual at the time of sampling.
+    description: The age of the Individual this biospecimen was retrieved from at the time of sampling.
     range: AgeRangeEnum
 
   format:
