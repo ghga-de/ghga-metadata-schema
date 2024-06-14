@@ -3,117 +3,52 @@ slot_order:
 workbooks:
   - file_name: ghga_submission_full.xlsx
     worksheets:
-      - ResearchDataFile
-      - ProcessDataFile
-      - SupportingFile
       - Study
       - Sample
       - Individual
-      - Experiment
       - ExperimentalMethod
-      - Analysis
+      - Experiment
+      - ResearchDataFile
       - AnalysisMethod
+      - Analysis
+      - ProcessDataFile
+      - SupportingFile
       - Dataset
       - DataAccessPolicy
       - DataAccessCommittee
       - Publication
 
-  # - file_name: ghga_submission_sample.xlsx
-  #   worksheets:
-  #     - Study
-  #     - StudyFile
-  #     - Sample
-  #     - SampleFile
-  #     - Condition
-  #     - Dataset
-  #     - DataAccessPolicy
-  #     - DataAccessCommittee
-  #     - Publication
-
-  # - file_name: ghga_submission_individual.xlsx
-  #   worksheets:
-  #     - Study
-  #     - StudyFile
-  #     - Sample
-  #     - SampleFile
-  #     - Condition
-  #     - Biospecimen
-  #     - Individual
-  #     - Trio
-  #     - Dataset
-  #     - DataAccessPolicy
-  #     - DataAccessCommittee
-  #     - Publication
-
-  # - file_name: ghga_submission_seq.xlsx
-  #   worksheets:
-  #     - Study
-  #     - StudyFile
-  #     - Sample
-  #     - SampleFile
-  #     - Condition
-  #     - Biospecimen
-  #     - Individual
-  #     - Trio
-  #     - LibraryPreparationProtocol
-  #     - SequencingProtocol
-  #     - SequencingExperiment
-  #     - SequencingProcess
-  #     - SequencingProcessFile
-  #     - Dataset
-  #     - DataAccessPolicy
-  #     - DataAccessCommittee
-  #     - Publication
-
 styles:
   Study:
     header_color: C0504D
     content_color: F2DCDB
-  ResearchDataFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
   Sample:
     header_color: 4BACC6
     content_color: DAEEF3
-  ProcessDataFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
-  SupportingFile:
-    header_color: F79646
-    content_color: FDE9D9
-  # Biospecimen:
-  #   header_color: 8064A2
-  #   content_color: E4DFEC
   Individual:
     header_color: 4F81BD
     content_color: DCE6F1
-  # Trio:
-  #   header_color: C0504D
-  #   content_color: F2DCDB
   ExperimentalMethod:
-    header_color: 4BACC6
-    content_color: DAEEF3
-  # ExperimentalMethodBulkTranscriptomics:
-  #   header_color: F79646
-  #   content_color: FDE9D9
-  Experiment:
     header_color: 8064A2
     content_color: E4DFEC
-  # SequencingProcess:
-  #   header_color: 4F81BD
-  #   content_color: DCE6F1
-  # SequencingProcessFile:
-  #   header_color: 9BBB59
-  #   content_color: EBF1DE
-  Analysis:
+  Experiment:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  ResearchDataFile:
     header_color: C0504D
     content_color: F2DCDB
   AnalysisMethod:
+    header_color: C0504D
+    content_color: F2DCDB
+  Analysis:
     header_color: 4BACC6
     content_color: DAEEF3
-  # AnalysisProcessOutputFile:
-  #   header_color: 9BBB59
-  #   content_color: EBF1DE
+  ProcessDataFile:
+    header_color: 4F81BD
+    content_color: DCE6F1
+  SupportingFile:
+    header_color: 9BBB59
+    content_color: EBF1DE
   Dataset:
     header_color: F79646
     content_color: FDE9D9

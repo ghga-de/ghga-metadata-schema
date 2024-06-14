@@ -2,7 +2,7 @@
 # Slot: format
 
 
-The format of the File (e.g., BAM, SAM, CRAM, BAI).
+The file format of the Supporting File (e.g., txt, json)
 
 URI: [GHGA:SupportingFile_format](https://w3id.org/GHGA/SupportingFile_format)
 

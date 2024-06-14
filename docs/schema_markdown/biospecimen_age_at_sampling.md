@@ -2,7 +2,7 @@
 # Slot: biospecimen_age_at_sampling
 
 
-The age of the Individual at the time of sampling.
+The age of the Individual at the time of isolating this biospecimen.
 
 URI: [GHGA:biospecimen_age_at_sampling](https://w3id.org/GHGA/biospecimen_age_at_sampling)
 

@@ -9,7 +9,7 @@ URI: [GHGA:Sample_disease_or_healthy](https://w3id.org/GHGA/Sample_disease_or_he
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>1..1</sub> [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)
+[Sample](Sample.md) &#8594;  <sub>0..1</sub> [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)
 
 ## Parents
 

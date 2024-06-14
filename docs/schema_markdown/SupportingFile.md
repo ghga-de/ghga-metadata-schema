@@ -18,6 +18,7 @@ URI: [GHGA:SupportingFile](https://w3id.org/GHGA/SupportingFile)
  *  **[ExperimentalMethod](ExperimentalMethod.md)** *[ExperimentalMethod➞supporting_files](ExperimentalMethod_supporting_files.md)*  <sub>0..\*</sub>  **[SupportingFile](SupportingFile.md)**
  *  **[Individual](Individual.md)** *[Individual➞supporting_files](Individual_supporting_files.md)*  <sub>0..\*</sub>  **[SupportingFile](SupportingFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞supporting_files](Submission_supporting_files.md)*  <sub>0..\*</sub>  **[SupportingFile](SupportingFile.md)**
+ *  **None** *[supporting_file](supporting_file.md)*  <sub>0..1</sub>  **[SupportingFile](SupportingFile.md)**
  *  **None** *[supporting_files](supporting_files.md)*  <sub>0..\*</sub>  **[SupportingFile](SupportingFile.md)**
 
 ## Attributes
@@ -26,7 +27,7 @@ URI: [GHGA:SupportingFile](https://w3id.org/GHGA/SupportingFile)
 ### Own
 
  * [SupportingFile➞format](SupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+     * Description: The file format of the Supporting File (e.g., txt, json)
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
 
 ### Inherited from File:

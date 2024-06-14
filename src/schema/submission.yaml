@@ -442,7 +442,7 @@ classes:
       - sequencing_lane_id
     slot_usage:
       format:
-        description: The file format of the Research Data File (e.g. FASTQ, uBAM, FASTA)
+        description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
         required: true
         range: ResearchDataFileFormatEnum
       technical_replicate:
@@ -462,7 +462,7 @@ classes:
       - format
     slot_usage:
       format:
-        description: The file format of the Process Data File (e.g. CRAM, BAM)
+        description: The file format of the Process Data File (e.g., CRAM, BAM)
         required: true
         range: ProcessDataFileFormatEnum
 
@@ -474,7 +474,7 @@ classes:
       - format
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g. txt, json)
+        description: The file format of the Supporting File (e.g., txt, json)
         required: true
         range: SupportingFileFormatEnum
 
@@ -959,7 +959,7 @@ slots:
     multivalued: true
 
   diagnosis:
-    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g. E10, C01)
+    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01)
     in_subset:
       - ontology
     multivalued: true
@@ -1199,7 +1199,7 @@ slots:
 
   biospecimen_vital_status_at_sampling:
     description: >-
-      Vital Status of the Individual  this biospecimen was retrieved from at the point of sampling (e.g., alive).
+      Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
     range: VitalStatusEnum
 
   geographical_region:
@@ -1215,7 +1215,7 @@ slots:
     range: IndividualSexEnum
 
   biospecimen_age_at_sampling:
-    description: The age of the Individual this biospecimen was retrieved from at the time of sampling.
+    description: The age of the Individual at the time of isolating this biospecimen.
     range: AgeRangeEnum
 
   format:

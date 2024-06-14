@@ -16,8 +16,6 @@ None &#8594;  <sub>0..\*</sub> [ResearchDataFile](ResearchDataFile.md)
 
 ## Children
 
- *  [Analysis➞research_data_files](Analysis_research_data_files.md)
- *  [Experiment➞research_data_files](Experiment_research_data_files.md)
  *  [Submission➞research_data_files](Submission_research_data_files.md)
 
 ## Used by

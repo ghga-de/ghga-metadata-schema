@@ -25,7 +25,7 @@ URI: [GHGA:ontology](https://w3id.org/GHGA/ontology)
  * [ancestries](ancestries.md) - A person's descent or lineage from a population.
  * [biospecimen_isolation](biospecimen_isolation.md) - Method or device employed for collecting/isolating a Biospecimen or a Sample.
  * [biospecimen_tissue](biospecimen_tissue.md)
- * [diagnosis](diagnosis.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10.
+ * [diagnosis](diagnosis.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01)
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
  * [phenotypic_features](phenotypic_features.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.
 

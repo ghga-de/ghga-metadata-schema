@@ -30,7 +30,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞diagnosis](Individual_diagnosis.md)  <sub>0..\*</sub>
-     * Description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10.
+     * Description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>
@@ -45,7 +45,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞supporting_files](Individual_supporting_files.md)  <sub>0..\*</sub>
-     * Description: The supporting file associated with an entity.
+     * Description: The Supporting Files associated with an entity.
      * Range: [SupportingFile](SupportingFile.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

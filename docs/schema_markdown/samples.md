@@ -16,7 +16,6 @@ None &#8594;  <sub>0..\*</sub> [Sample](Sample.md)
 
 ## Children
 
- *  [Experiment➞samples](Experiment_samples.md)
  *  [Submission➞samples](Submission_samples.md)
 
 ## Used by

@@ -7,7 +7,7 @@ A Research Data File is a File that contains raw data originating from an Experi
 URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20research_data_files%201..*>[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]-%20research_data_files%201..*>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Experiment]-%20research_data_files(i)%200..*>[ResearchDataFile],[Analysis]-%20research_data_files(i)%200..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20research_data_files%201..*>[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]-%20research_data_files%201..*>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Experiment]-%20research_data_files(i)%200..*>[ResearchDataFile],[Analysis]-%20research_data_files(i)%200..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20research_data_file%201..1>[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]-%20research_data_file%201..1>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Experiment]-%20research_data_file(i)%200..1>[ResearchDataFile],[Analysis]-%20research_data_file(i)%200..1>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20research_data_file%201..1>[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]-%20research_data_file%201..1>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Experiment]-%20research_data_file(i)%200..1>[ResearchDataFile],[Analysis]-%20research_data_file(i)%200..1>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])
 
 ## Parents
 
@@ -15,9 +15,10 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
 ## Referenced by Class
 
- *  **[Analysis](Analysis.md)** *[Analysis➞research_data_files](Analysis_research_data_files.md)*  <sub>1..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
- *  **[Experiment](Experiment.md)** *[Experiment➞research_data_files](Experiment_research_data_files.md)*  <sub>1..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
+ *  **[Analysis](Analysis.md)** *[Analysis➞research_data_file](Analysis_research_data_file.md)*  <sub>1..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
+ *  **[Experiment](Experiment.md)** *[Experiment➞research_data_file](Experiment_research_data_file.md)*  <sub>1..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞research_data_files](Submission_research_data_files.md)*  <sub>1..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
+ *  **None** *[research_data_file](research_data_file.md)*  <sub>0..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **None** *[research_data_files](research_data_files.md)*  <sub>0..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
 
 ## Attributes
@@ -26,7 +27,7 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 ### Own
 
  * [ResearchDataFile➞format](ResearchDataFile_format.md)  <sub>1..1</sub>
-     * Description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
+     * Description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
      * Range: [ResearchDataFileFormatEnum](ResearchDataFileFormatEnum.md)
  * [ResearchDataFile➞technical_replicate](ResearchDataFile_technical_replicate.md)  <sub>1..1</sub>
      * Description: An integer to indicate the technical replicate of this File.

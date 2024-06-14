@@ -63,7 +63,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Publication➞author](Publication_author.md) - Author(s) of this Publication.
  * [biological_replicate](biological_replicate.md) - An integer to indicate the number of a biological replicate.
      * [Sample➞biological_replicate](Sample_biological_replicate.md)
- * [biospecimen_age_at_sampling](biospecimen_age_at_sampling.md) - The age of the Individual at the time of sampling.
+ * [biospecimen_age_at_sampling](biospecimen_age_at_sampling.md) - The age of the Individual at the time of isolating this biospecimen.
      * [Sample➞biospecimen_age_at_sampling](Sample_biospecimen_age_at_sampling.md)
  * [biospecimen_description](biospecimen_description.md) - The description of a biospecimen.
      * [Sample➞biospecimen_description](Sample_biospecimen_description.md) - A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
@@ -77,7 +77,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞biospecimen_tissue](Sample_biospecimen_tissue.md) - The tissue this Biospecimen originated from.
  * [biospecimen_type](biospecimen_type.md) - The type of a biospecimen. Note: Not to be confused with rdf:type
      * [Sample➞biospecimen_type](Sample_biospecimen_type.md) - The type of Biospecimen.
- * [biospecimen_vital_status_at_sampling](biospecimen_vital_status_at_sampling.md) - Vital Status of the Individual at the point of sampling (e.g., alive).
+ * [biospecimen_vital_status_at_sampling](biospecimen_vital_status_at_sampling.md) - Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
      * [Sample➞biospecimen_vital_status_at_sampling](Sample_biospecimen_vital_status_at_sampling.md)
  * [case_control_status](case_control_status.md) - Whether a Condition corresponds to a treatment or a control.
      * [Sample➞case_control_status](Sample_case_control_status.md)
@@ -110,7 +110,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentalMethod➞description](ExperimentalMethod_description.md) - A short description of this Experimental Method.
      * [Sample➞description](Sample_description.md) - A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
- * [diagnosis](diagnosis.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10.
+ * [diagnosis](diagnosis.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01)
      * [Individual➞diagnosis](Individual_diagnosis.md)
  * [disease_or_healthy](disease_or_healthy.md) - Whether a Condition corresponds to a disease or a healthy state.
      * [Sample➞disease_or_healthy](Sample_disease_or_healthy.md)
@@ -122,8 +122,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentalMethod➞end_bias](ExperimentalMethod_end_bias.md)
  * [experiment](experiment.md) - The Experiment associated with an entity.
  * [experimental_method](experimental_method.md) - The Experimental Method associated with an entity.
+     * [Experiment➞experimental_method](Experiment_experimental_method.md) - One or more Experimental Methods that are associated with this Experiment.
  * [experimental_methods](experimental_methods.md) - The Experimental Methods associated with an entity.
-     * [Experiment➞experimental_methods](Experiment_experimental_methods.md) - One or more Experimental Methods that are associated with this Experiment.
      * [Submission➞experimental_methods](Submission_experimental_methods.md) - The Experimental Methods that are part of this Submission.
  * [experiments](experiments.md) - The Experiments associated with an entity.
      * [Submission➞experiments](Submission_experiments.md) - One or more Experiment entities associated with this Submission.
@@ -132,9 +132,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
      * [ExperimentalMethod➞flow_cell_type](ExperimentalMethod_flow_cell_type.md)
  * [format](format.md) - The format of the File (e.g., BAM, SAM, CRAM, BAI).
-     * [ProcessDataFile➞format](ProcessDataFile_format.md)
-     * [ResearchDataFile➞format](ResearchDataFile_format.md)
-     * [SupportingFile➞format](SupportingFile_format.md)
+     * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., CRAM, BAM)
+     * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
+     * [SupportingFile➞format](SupportingFile_format.md) - The file format of the Supporting File (e.g., txt, json)
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
      * [Individual➞geographical_region](Individual_geographical_region.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
@@ -178,22 +178,24 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md)
  * [primer](primer.md) - The type of primer used for reverse transcription (e.g., oligo-dT or random).
      * [ExperimentalMethod➞primer](ExperimentalMethod_primer.md)
- * [process_data_files](process_data_files.md) - The Process Files associated with an entity.
-     * [Analysis➞process_data_files](Analysis_process_data_files.md)
+ * [process_data_file](process_data_file.md) - The Process Data File associated with an entity.
+     * [Analysis➞process_data_file](Analysis_process_data_file.md)
+ * [process_data_files](process_data_files.md) - The Process Data Files associated with an entity.
      * [Submission➞process_data_files](Submission_process_data_files.md) - One or more Process Data Files associated with this Submission.
  * [publications](publications.md) - The Publication associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
+ * [research_data_file](research_data_file.md) - The Research Data File associated with an entity.
+     * [Analysis➞research_data_file](Analysis_research_data_file.md)
+     * [Experiment➞research_data_file](Experiment_research_data_file.md) - One or more Research Data Files that are associated with this Experiment.
  * [research_data_files](research_data_files.md) - The Research Data Files associated with an entity.
-     * [Analysis➞research_data_files](Analysis_research_data_files.md)
-     * [Experiment➞research_data_files](Experiment_research_data_files.md) - One or more Research Data Files that are associated with this Experiment.
      * [Submission➞research_data_files](Submission_research_data_files.md) - One or more Research Data Files associated with this Submission.
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [ExperimentalMethod➞rnaseq_strandedness](ExperimentalMethod_rnaseq_strandedness.md)
  * [sample](sample.md) - The Sample associated with an entity.
+     * [Experiment➞sample](Experiment_sample.md) - One or more Samples that associated with this Experiment.
  * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
      * [ExperimentalMethod➞sample_barcode_read](ExperimentalMethod_sample_barcode_read.md)
  * [samples](samples.md) - The Samples associated with an entity.
-     * [Experiment➞samples](Experiment_samples.md) - One or more Samples that associated with this Experiment.
      * [Submission➞samples](Submission_samples.md) - One or more Sample entities associated with this Submission.
  * [sequencing_center](sequencing_center.md) - Center where sample was sequenced.
      * [ExperimentalMethod➞sequencing_center](ExperimentalMethod_sequencing_center.md)
@@ -215,7 +217,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞studies](Submission_studies.md) - Study entities associated with this Submission.
  * [study](study.md) - The Study associated with an entity.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
- * [supporting_files](supporting_files.md) - The supporting file associated with an entity.
+ * [supporting_file](supporting_file.md) - The Supporting File associated with an entity.
+ * [supporting_files](supporting_files.md) - The Supporting Files associated with an entity.
      * [ExperimentalMethod➞supporting_files](ExperimentalMethod_supporting_files.md) - One or more Supporting Files associated with this Experimental Method.
      * [Individual➞supporting_files](Individual_supporting_files.md)
      * [Submission➞supporting_files](Submission_supporting_files.md) - One or more Supporting Files associated with this Submission.

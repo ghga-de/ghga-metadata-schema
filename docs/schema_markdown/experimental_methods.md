@@ -16,7 +16,6 @@ None &#8594;  <sub>0..\*</sub> [ExperimentalMethod](ExperimentalMethod.md)
 
 ## Children
 
- *  [Experiment➞experimental_methods](Experiment_experimental_methods.md)
  *  [Submission➞experimental_methods](Submission_experimental_methods.md)
 
 ## Used by
