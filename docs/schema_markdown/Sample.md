@@ -27,7 +27,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 ### Own
 
  * [Sample➞individual](Sample_individual.md)  <sub>1..1</sub>
-     * Description: The Individual entity from which this Biospecimen or Sample was derived.
+     * Description: The alias of the Individual entity from which this Biospecimen or Sample was derived.
      * Range: [Individual](Individual.md)
  * [Sample➞name](Sample_name.md)  <sub>1..1</sub>
      * Description: A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.

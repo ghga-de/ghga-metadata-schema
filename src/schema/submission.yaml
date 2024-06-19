@@ -152,13 +152,17 @@ classes:
     exact_mappings:
       - SIO:000994
     slots:
+      - experimental_method
       - title
       - description
       - type
       - sample
       - research_data_file
-      - experimental_method
     slot_usage:
+      experimental_method:
+        description: >-
+          The alias of one or more Experimental Methods that are associated with this Experiment.
+        required: true
       title:
         description: >-
           The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
@@ -172,15 +176,11 @@ classes:
           The type of this Sequencing Experiment.
         required: false
       sample:
-        description: One or more Samples that associated with this Experiment.
+        description: The alias of one or more Samples that are associated with this Experiment.
         required: true
       research_data_file:
         description: >-
-          One or more Research Data Files that are associated with this Experiment.
-        required: true
-      experimental_method:
-        description: >-
-          One or more Experimental Methods that are associated with this Experiment.
+          The alias of one or more Research Data Files that are associated with this Experiment.
         required: true
 
   ExperimentalMethod:
@@ -266,7 +266,8 @@ classes:
         required: false
         recommended: true
       supporting_files:
-        description: One or more Supporting Files associated with this Experimental Method.
+        description: >-
+          The alias of one or more Supporting Files that are associated with this Experimental Method.
         required: false
       attributes:
         description: >-
@@ -304,7 +305,7 @@ classes:
     slot_usage:
       individual:
         description: >-
-          The Individual entity from which this Biospecimen or Sample was derived.
+          The alias of the Individual entity from which this Biospecimen or Sample was derived.
         inlined: false
         required: true
       name:
@@ -401,6 +402,8 @@ classes:
       ancestries:
         required: false
       supporting_files:
+        description: >-
+          The alias of one or more Supporting Files that are associated with this Individual.
         required: false
         recommended: true
 
@@ -428,7 +431,7 @@ classes:
         required: true
       dataset:
         description: >-
-          The Dataset associated with this File.
+          The Dataset alias associated with this File.
         inlined: false
         required: true
 
@@ -485,13 +488,17 @@ classes:
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
     slots:
+      - analysis_methods
       - title
       - description
       - type
       - research_data_file
       - process_data_file
-      - analysis_methods
     slot_usage:
+      analysis_methods:
+        description: >-
+          The alias of one or more Analysis Methods that are associated with this Analysis.
+        required: true
       title:
         required: true
       description:
@@ -503,10 +510,12 @@ classes:
           The type of this Analysis.
         required: false
       research_data_file:
+        description: >-
+          The alias of one or more Research Data Files that are associated with this Analysis.
         required: true
       process_data_file:
-        required: true
-      analysis_methods:
+        description: >-
+          The alias of one or more Process Data Files that are associated with this Analysis.
         required: true
 
   AnalysisMethod:
@@ -651,6 +660,7 @@ classes:
     description: >-
       A Publication represents an article that is published. The minimum expectation is that the publication has a valid DOI.
     slots:
+      - study
       - title
       - abstract
       - author
@@ -658,8 +668,12 @@ classes:
       - journal
       - doi
       - xref
-      - study
     slot_usage:
+      study:
+        description: >-
+          The Study entity associated with this Publication.
+        required: true
+        inlined: false
       title:
         description: >-
           The title for this Publication.
@@ -682,11 +696,6 @@ classes:
         description: >-
           One or more cross-references for this Publication.
         required: false
-      study:
-        description: >-
-          The Study entity associated with this Publication.
-        required: true
-        inlined: false
 
   Submission:
     tree_root: true

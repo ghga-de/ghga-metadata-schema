@@ -7,7 +7,7 @@ An Analysis is a data transformation that transforms input data to output data.
 URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[ResearchDataFile],[ProcessDataFile],[IdentifiedByAliasMixin],[AnalysisMethod],[AnalysisMethod]<analysis_methods%201..*-%20[Analysis&#124;title:string;description:string%20%3F;type:string%20%3F;alias:string],[ProcessDataFile]<process_data_file%201..1-%20[Analysis],[ResearchDataFile]<research_data_file%201..1-%20[Analysis],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[ResearchDataFile],[ProcessDataFile],[IdentifiedByAliasMixin],[AnalysisMethod],[AnalysisMethod]<analysis_methods%201..*-%20[Analysis&#124;title:string;description:string%20%3F;type:string%20%3F;alias:string],[ProcessDataFile]<process_data_file%201..1-%20[Analysis],[ResearchDataFile]<research_data_file%201..1-%20[Analysis],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[ResearchDataFile],[ProcessDataFile],[IdentifiedByAliasMixin],[AnalysisMethod],[ProcessDataFile]<process_data_file%201..1-%20[Analysis&#124;title:string;description:string%20%3F;type:string%20%3F;alias:string],[ResearchDataFile]<research_data_file%201..1-%20[Analysis],[AnalysisMethod]<analysis_methods%201..*-%20[Analysis],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[ResearchDataFile],[ProcessDataFile],[IdentifiedByAliasMixin],[AnalysisMethod],[ProcessDataFile]<process_data_file%201..1-%20[Analysis&#124;title:string;description:string%20%3F;type:string%20%3F;alias:string],[ResearchDataFile]<research_data_file%201..1-%20[Analysis],[AnalysisMethod]<analysis_methods%201..*-%20[Analysis],[Submission]++-%20analyses%201..*>[Analysis],[Submission]-%20analyses(i)%200..*>[Analysis],[Analysis]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -24,6 +24,9 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
 
 ### Own
 
+ * [Analysis➞analysis_methods](Analysis_analysis_methods.md)  <sub>1..\*</sub>
+     * Description: The alias of one or more Analysis Methods that are associated with this Analysis.
+     * Range: [AnalysisMethod](AnalysisMethod.md)
  * [Analysis➞title](Analysis_title.md)  <sub>1..1</sub>
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
@@ -34,14 +37,11 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
      * Description: The type of this Analysis.
      * Range: [String](types/String.md)
  * [Analysis➞research_data_file](Analysis_research_data_file.md)  <sub>1..1</sub>
-     * Description: The Research Data File associated with an entity.
+     * Description: The alias of one or more Research Data Files that are associated with this Analysis.
      * Range: [ResearchDataFile](ResearchDataFile.md)
  * [Analysis➞process_data_file](Analysis_process_data_file.md)  <sub>1..1</sub>
-     * Description: The Process Data File associated with an entity.
+     * Description: The alias of one or more Process Data Files that are associated with this Analysis.
      * Range: [ProcessDataFile](ProcessDataFile.md)
- * [Analysis➞analysis_methods](Analysis_analysis_methods.md)  <sub>1..\*</sub>
-     * Description: The Analysis Processes associated with an entity.
-     * Range: [AnalysisMethod](AnalysisMethod.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

@@ -51,5 +51,5 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
      * Description: The type of algorithm used to generate the checksum of the File.
      * Range: [String](types/String.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
-     * Description: The Dataset associated with this File.
+     * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)

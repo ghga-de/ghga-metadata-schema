@@ -45,7 +45,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞supporting_files](Individual_supporting_files.md)  <sub>0..\*</sub>
-     * Description: The Supporting Files associated with an entity.
+     * Description: The alias of one or more Supporting Files that are associated with this Individual.
      * Range: [SupportingFile](SupportingFile.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

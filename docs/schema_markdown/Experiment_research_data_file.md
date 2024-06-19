@@ -2,7 +2,7 @@
 # Slot: research_data_file
 
 
-One or more Research Data Files that are associated with this Experiment.
+The alias of one or more Research Data Files that are associated with this Experiment.
 
 URI: [GHGA:Experiment_research_data_file](https://w3id.org/GHGA/Experiment_research_data_file)
 

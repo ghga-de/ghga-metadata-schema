@@ -4,8 +4,8 @@ workbooks:
   - file_name: ghga_submission_full.xlsx
     worksheets:
       - Study
-      - Sample
       - Individual
+      - Sample
       - ExperimentalMethod
       - Experiment
       - ResearchDataFile
@@ -35,8 +35,8 @@ styles:
     header_color: 9BBB59
     content_color: EBF1DE
   ResearchDataFile:
-    header_color: C0504D
-    content_color: F2DCDB
+    header_color: F79646
+    content_color: FDE9D9
   AnalysisMethod:
     header_color: C0504D
     content_color: F2DCDB
@@ -47,17 +47,17 @@ styles:
     header_color: 4F81BD
     content_color: DCE6F1
   SupportingFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
-  Dataset:
-    header_color: F79646
-    content_color: FDE9D9
-  DataAccessPolicy:
     header_color: 8064A2
     content_color: E4DFEC
+  Dataset:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  DataAccessPolicy:
+    header_color: F79646
+    content_color: FDE9D9
   DataAccessCommittee:
-    header_color: 4F81BD
-    content_color: DCE6F1
-  Publication:
     header_color: C0504D
     content_color: F2DCDB
+  Publication:
+    header_color: 4BACC6
+    content_color: DAEEF3

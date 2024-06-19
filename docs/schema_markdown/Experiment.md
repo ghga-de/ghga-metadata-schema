@@ -7,7 +7,7 @@ An Experiment is an investigation that consists of a coordinated set of actions 
 URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentalMethod],[ExperimentalMethod]<experimental_method%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;alias:string],[ResearchDataFile]<research_data_file%201..1-%20[Experiment],[Sample]<sample%201..1-%20[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentalMethod],[ExperimentalMethod]<experimental_method%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;alias:string],[ResearchDataFile]<research_data_file%201..1-%20[Experiment],[Sample]<sample%201..1-%20[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentalMethod],[ResearchDataFile]<research_data_file%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;alias:string],[Sample]<sample%201..1-%20[Experiment],[ExperimentalMethod]<experimental_method%201..1-%20[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentalMethod],[ResearchDataFile]<research_data_file%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;alias:string],[Sample]<sample%201..1-%20[Experiment],[ExperimentalMethod]<experimental_method%201..1-%20[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -25,6 +25,9 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 
 ### Own
 
+ * [Experiment➞experimental_method](Experiment_experimental_method.md)  <sub>1..1</sub>
+     * Description: The alias of one or more Experimental Methods that are associated with this Experiment.
+     * Range: [ExperimentalMethod](ExperimentalMethod.md)
  * [Experiment➞title](Experiment_title.md)  <sub>1..1</sub>
      * Description: The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
      * Range: [String](types/String.md)
@@ -35,14 +38,11 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
      * Description: The type of this Sequencing Experiment.
      * Range: [String](types/String.md)
  * [Experiment➞sample](Experiment_sample.md)  <sub>1..1</sub>
-     * Description: One or more Samples that associated with this Experiment.
+     * Description: The alias of one or more Samples that are associated with this Experiment.
      * Range: [Sample](Sample.md)
  * [Experiment➞research_data_file](Experiment_research_data_file.md)  <sub>1..1</sub>
-     * Description: One or more Research Data Files that are associated with this Experiment.
+     * Description: The alias of one or more Research Data Files that are associated with this Experiment.
      * Range: [ResearchDataFile](ResearchDataFile.md)
- * [Experiment➞experimental_method](Experiment_experimental_method.md)  <sub>1..1</sub>
-     * Description: One or more Experimental Methods that are associated with this Experiment.
-     * Range: [ExperimentalMethod](ExperimentalMethod.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

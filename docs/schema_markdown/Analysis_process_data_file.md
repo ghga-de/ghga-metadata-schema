@@ -2,7 +2,7 @@
 # Slot: process_data_file
 
 
-The Process Data File associated with an entity.
+The alias of one or more Process Data Files that are associated with this Analysis.
 
 URI: [GHGA:Analysis_process_data_file](https://w3id.org/GHGA/Analysis_process_data_file)
 

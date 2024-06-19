@@ -87,7 +87,7 @@ URI: [GHGA:ExperimentalMethod](https://w3id.org/GHGA/ExperimentalMethod)
      * Description: Key/value pairs corresponding to an entity.
      * Range: [Attribute](Attribute.md)
  * [ExperimentalMethod➞supporting_files](ExperimentalMethod_supporting_files.md)  <sub>0..\*</sub>
-     * Description: One or more Supporting Files associated with this Experimental Method.
+     * Description: The alias of one or more Supporting Files that are associated with this Experimental Method.
      * Range: [SupportingFile](SupportingFile.md)
  * [ExperimentalMethod➞attributes](ExperimentalMethod_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterize this Experimental Method.

@@ -2,7 +2,7 @@
 # Slot: dataset
 
 
-The Dataset associated with this File.
+The Dataset alias associated with this File.
 
 URI: [GHGA:File_dataset](https://w3id.org/GHGA/File_dataset)
 

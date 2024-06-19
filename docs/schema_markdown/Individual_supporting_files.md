@@ -2,7 +2,7 @@
 # Slot: supporting_files
 
 
-The Supporting Files associated with an entity.
+The alias of one or more Supporting Files that are associated with this Individual.
 
 URI: [GHGA:Individual_supporting_files](https://w3id.org/GHGA/Individual_supporting_files)
 

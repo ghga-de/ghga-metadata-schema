@@ -2,7 +2,7 @@
 # Slot: supporting_files
 
 
-One or more Supporting Files associated with this Experimental Method.
+The alias of one or more Supporting Files that are associated with this Experimental Method.
 
 URI: [GHGA:ExperimentalMethod_supporting_files](https://w3id.org/GHGA/ExperimentalMethod_supporting_files)
 

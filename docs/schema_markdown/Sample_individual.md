@@ -2,7 +2,7 @@
 # Slot: individual
 
 
-The Individual entity from which this Biospecimen or Sample was derived.
+The alias of the Individual entity from which this Biospecimen or Sample was derived.
 
 URI: [GHGA:Sample_individual](https://w3id.org/GHGA/Sample_individual)
 

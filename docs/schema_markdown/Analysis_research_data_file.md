@@ -2,7 +2,7 @@
 # Slot: research_data_file
 
 
-The Research Data File associated with an entity.
+The alias of one or more Research Data Files that are associated with this Analysis.
 
 URI: [GHGA:Analysis_research_data_file](https://w3id.org/GHGA/Analysis_research_data_file)
 
