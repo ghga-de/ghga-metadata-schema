@@ -1,0 +1,45 @@
+{
+    "additionalProperties": false,
+    "description": "The Sequencing Process captures the technical parameters that were used to produce sequencing output from the Sample. It links the Sample to sequencing output.",
+    "properties": {
+        "attributes": {
+            "description": "Key/value pairs corresponding to an entity.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "description": {
+            "description": "A short description of this Sequencing Process.",
+            "type": "string"
+        },
+        "index_sequence": {
+            "description": "A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A short name identifying this Sequencing Process.",
+            "type": "string"
+        },
+        "sequencing_lane_id": {
+            "description": "The identifier of a sequencing lane.",
+            "type": "string"
+        },
+        "sequencing_machine_id": {
+            "description": "The identifier of a sequencing machine.",
+            "type": "string"
+        },
+        "sequencing_run_id": {
+            "description": "The identifier of a sequencing run.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description"
+    ],
+    "title": "SequencingProcess",
+    "type": "object",
+    "$id": "src/content_schemas/SequencingProcess",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

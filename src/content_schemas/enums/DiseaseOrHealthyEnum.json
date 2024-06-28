@@ -1,0 +1,12 @@
+{
+    "description": "Enum to capture whether a condition corresponds to a disease or a healthy state.",
+    "enum": [
+        "DISEASE",
+        "HEALTHY",
+        "NOT_APPLICABLE"
+    ],
+    "title": "DiseaseOrHealthyEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/DiseaseOrHealthyEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

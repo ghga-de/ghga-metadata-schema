@@ -1,0 +1,14 @@
+{
+    "description": "Permitted values for data use permission",
+    "enum": [
+        "general research use",
+        "health or medical or biomedical research",
+        "disease specific research",
+        "no restriction",
+        "population origins or ancestry research only"
+    ],
+    "title": "DataUsePermissionEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/DataUsePermissionEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

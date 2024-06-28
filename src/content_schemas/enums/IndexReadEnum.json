@@ -1,0 +1,13 @@
+{
+    "description": "Permitted Values to indicate the location of a sequence component in a read or index",
+    "enum": [
+        "INDEX1",
+        "INDEX2",
+        "READ1",
+        "READ2"
+    ],
+    "title": "IndexReadEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/IndexReadEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

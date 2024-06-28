@@ -1,0 +1,33 @@
+{
+    "additionalProperties": false,
+    "description": "A Sequencing Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
+    "properties": {
+        "attributes": {
+            "description": "Key/value pairs corresponding to an entity.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "description": {
+            "description": "A detailed description of this Sequencing Experiment.",
+            "type": "string"
+        },
+        "title": {
+            "description": "The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).",
+            "type": "string"
+        },
+        "type": {
+            "description": "The type of this Sequencing Experiment.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "title",
+        "description"
+    ],
+    "title": "SequencingExperiment",
+    "type": "object",
+    "$id": "src/content_schemas/SequencingExperiment",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

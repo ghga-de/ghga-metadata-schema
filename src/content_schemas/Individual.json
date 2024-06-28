@@ -1,0 +1,39 @@
+{
+    "additionalProperties": false,
+    "description": "An Individual is a Person who is participating in a Study.",
+    "properties": {
+        "ancestries": {
+            "description": "A person's descent or lineage from a population.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "geographical_region": {
+            "description": "The geographical region where the Individual is located.",
+            "type": "string"
+        },
+        "karyotype": {
+            "$ref": "src/content_schemas/enums/KaryotypeEnum",
+            "description": "The karyotype of the Individual."
+        },
+        "phenotypic_features": {
+            "description": "The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "sex": {
+            "$ref": "src/content_schemas/enums/IndividualSexEnum",
+            "description": "The genotypic sex of the Individual (e.g., female)."
+        }
+    },
+    "required": [
+        "sex"
+    ],
+    "title": "Individual",
+    "type": "object",
+    "$id": "src/content_schemas/Individual",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

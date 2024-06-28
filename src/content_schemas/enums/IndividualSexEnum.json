@@ -1,0 +1,14 @@
+{
+    "description": "The sex of an Individual as as defined in a specific medical and clinical context.",
+    "enum": [
+        "FEMALE_SEX_FOR_CLINICAL_USE",
+        "IMAGING_SEX",
+        "MALE_SEX_FOR_CLINICAL_USE",
+        "SPECIFIED_SEX_FOR_CLINICAL_USE",
+        "UNKNOWN_SEX_FOR_CLINICAL_USE"
+    ],
+    "title": "IndividualSexEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/IndividualSexEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

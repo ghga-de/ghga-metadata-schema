@@ -1,0 +1,13 @@
+{
+    "description": "Permitted values for primer",
+    "enum": [
+        "OLIGO_D_T",
+        "RANDOM",
+        "GENE_SPECIFIC",
+        "OTHER"
+    ],
+    "title": "PrimerEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/PrimerEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

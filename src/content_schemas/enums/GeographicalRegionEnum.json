@@ -1,0 +1,8 @@
+{
+    "description": "Permitted values for geographical region",
+    "enum": [],
+    "title": "GeographicalRegionEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/GeographicalRegionEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

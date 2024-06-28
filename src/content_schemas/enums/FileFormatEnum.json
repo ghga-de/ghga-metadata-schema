@@ -1,0 +1,31 @@
+{
+    "description": "Enum to capture file types.",
+    "enum": [
+        "AGP",
+        "BAI",
+        "BAM",
+        "BCF",
+        "BED",
+        "CRAM",
+        "CSV",
+        "FASTA",
+        "FASTQ",
+        "GFF",
+        "HDF5",
+        "JSON",
+        "PED",
+        "SAM",
+        "SFF",
+        "SRF",
+        "TABIX",
+        "TSV",
+        "TXT",
+        "VCF",
+        "WIG",
+        "OTHER"
+    ],
+    "title": "FileFormatEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/FileFormatEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

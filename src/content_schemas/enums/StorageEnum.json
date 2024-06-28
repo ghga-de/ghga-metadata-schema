@@ -1,0 +1,13 @@
+{
+    "description": "Enum to capture how a Sample or Biospecimen was stored.",
+    "enum": [
+        "REFRIGERATOR",
+        "FREEZER",
+        "ULTRA_LOW_FREEZER",
+        "CRYOGENIC_FREEZER"
+    ],
+    "title": "StorageEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/StorageEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

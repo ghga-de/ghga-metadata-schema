@@ -1,0 +1,27 @@
+{
+    "description": "Enum to capture the age range that an Indiviudal belongs to.",
+    "enum": [
+        "0_TO_5",
+        "6_TO_10",
+        "11_TO_15",
+        "16_TO_20",
+        "21_TO_25",
+        "26_TO_30",
+        "31_TO_35",
+        "36_TO_40",
+        "41_TO_45",
+        "46_TO_50",
+        "51_TO_55",
+        "56_TO_60",
+        "61_TO_65",
+        "66_TO_70",
+        "71_TO_75",
+        "76_TO_80",
+        "81_OR_OLDER",
+        "UNKNOWN"
+    ],
+    "title": "AgeRangeEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/AgeRangeEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

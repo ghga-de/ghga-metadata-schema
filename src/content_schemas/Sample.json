@@ -1,0 +1,48 @@
+{
+    "additionalProperties": false,
+    "description": "A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.",
+    "properties": {
+        "attributes": {
+            "description": "Key/value pairs corresponding to an entity.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "description": {
+            "description": "A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.",
+            "type": "string"
+        },
+        "isolation": {
+            "description": "Method or device employed for collecting/isolating this Sample.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.",
+            "type": "string"
+        },
+        "storage": {
+            "$ref": "src/content_schemas/enums/StorageEnum",
+            "description": "Methods by which this Sample is stored."
+        },
+        "type": {
+            "$ref": "src/content_schemas/enums/SampleTypeEnum",
+            "description": "The type of the Sample."
+        },
+        "xref": {
+            "description": "One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "name",
+        "description"
+    ],
+    "title": "Sample",
+    "type": "object",
+    "$id": "src/content_schemas/Sample",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

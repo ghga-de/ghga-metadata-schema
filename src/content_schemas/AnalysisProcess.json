@@ -1,0 +1,17 @@
+{
+    "additionalProperties": false,
+    "description": "An Analysis Process captures the workflow steps that were performed to analyze data obtained from a Sequencing Experiment.",
+    "properties": {
+        "name": {
+            "description": "The name for an entity.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name"
+    ],
+    "title": "AnalysisProcess",
+    "type": "object",
+    "$id": "src/content_schemas/AnalysisProcess",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,22 @@
+name: Check if the schemapack definition is up-to-date
+
+on: push
+
+jobs:
+  static-code-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: >-
+          pip install -r requirements.txt
+
+      - name: Check schemapack
+        run: >-
+          ./scripts/build_resolved_schemapack.py --check

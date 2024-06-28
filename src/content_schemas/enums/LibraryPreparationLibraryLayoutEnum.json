@@ -1,0 +1,11 @@
+{
+    "description": "Single-end vs paired-end library",
+    "enum": [
+        "SE",
+        "PE"
+    ],
+    "title": "LibraryPreparationLibraryLayoutEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/LibraryPreparationLibraryLayoutEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,30 @@
+{
+    "additionalProperties": false,
+    "description": "A key/value pair that further characterizes an entity.",
+    "properties": {
+        "key": {
+            "description": "The key of an attribute.",
+            "type": "string"
+        },
+        "key_type": {
+            "description": "A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).",
+            "type": "string"
+        },
+        "value": {
+            "description": "The value for an attribute (e.g., a numerical value without the units).",
+            "type": "string"
+        },
+        "value_type": {
+            "description": "The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).",
+            "type": "string"
+        }
+    },
+    "required": [
+        "key",
+        "value"
+    ],
+    "title": "Attribute",
+    "type": "object",
+    "$id": "src/content_schemas/Attribute",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

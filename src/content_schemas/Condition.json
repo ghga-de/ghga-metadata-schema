@@ -1,0 +1,44 @@
+{
+    "additionalProperties": false,
+    "description": "A Condition specifies which special characteristics and treatments apply to a Sample (e.g., whether the Sample comes from a disease or a healthy tissue).",
+    "properties": {
+        "attributes": {
+            "description": "Key/value pairs corresponding to an entity.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "case_control_status": {
+            "$ref": "src/content_schemas/enums/CaseControlStatusEnum",
+            "description": "Whether a Condition corresponds to a treatment or a control."
+        },
+        "description": {
+            "description": "A concise description of the applied Condition.",
+            "type": "string"
+        },
+        "disease_or_healthy": {
+            "$ref": "src/content_schemas/enums/DiseaseOrHealthyEnum",
+            "description": "Whether a Condition corresponds to a disease or a healthy state."
+        },
+        "mutant_or_wildtype": {
+            "$ref": "src/content_schemas/enums/MutantOrWildtypeEnum",
+            "description": "Whether a Condition corresponds to a mutant or a wildtype."
+        },
+        "name": {
+            "description": "The name of this Condition.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "disease_or_healthy",
+        "case_control_status",
+        "mutant_or_wildtype"
+    ],
+    "title": "Condition",
+    "type": "object",
+    "$id": "src/content_schemas/Condition",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

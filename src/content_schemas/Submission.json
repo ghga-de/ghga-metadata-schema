@@ -1,0 +1,10 @@
+{
+    "additionalProperties": false,
+    "description": "A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.",
+    "properties": {},
+    "required": [],
+    "title": "Submission",
+    "type": "object",
+    "$id": "src/content_schemas/Submission",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

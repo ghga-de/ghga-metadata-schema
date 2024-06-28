@@ -1,0 +1,12 @@
+{
+    "description": "Permitted values for sample barcode read",
+    "enum": [
+        "INDEX1",
+        "INDEX1_AND_INDEX2",
+        "OTHER"
+    ],
+    "title": "SampleBarcodeReadEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/SampleBarcodeReadEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,42 @@
+{
+    "additionalProperties": false,
+    "description": "A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
+    "properties": {
+        "affiliations": {
+            "description": "The affiliations associated with this Study.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "attributes": {
+            "description": "One or more attributes that further characterize this Study.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "description": {
+            "description": "A detailed description (abstract) that describes the goals of this Study.",
+            "type": "string"
+        },
+        "title": {
+            "description": "A comprehensive title for this Study.",
+            "type": "string"
+        },
+        "type": {
+            "$ref": "src/content_schemas/enums/StudyTypeEnum",
+            "description": "The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing)."
+        }
+    },
+    "required": [
+        "title",
+        "description",
+        "type",
+        "affiliations"
+    ],
+    "title": "Study",
+    "type": "object",
+    "$id": "src/content_schemas/Study",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,30 @@
+{
+    "additionalProperties": false,
+    "description": "A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.",
+    "properties": {
+        "description": {
+            "description": "A description summarizing this Dataset.",
+            "type": "string"
+        },
+        "title": {
+            "description": "A title for this Dataset.",
+            "type": "string"
+        },
+        "types": {
+            "description": "The type of this Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "title",
+        "description",
+        "types"
+    ],
+    "title": "Dataset",
+    "type": "object",
+    "$id": "src/content_schemas/Dataset",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,11 @@
+{
+    "description": "Enum to capture whether the reads from paired-end sequencing are forward (R1) or reverse (R2).",
+    "enum": [
+        "FORWARD",
+        "REVERSE"
+    ],
+    "title": "ForwardOrReverseEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/ForwardOrReverseEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

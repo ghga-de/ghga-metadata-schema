@@ -1,0 +1,41 @@
+{
+    "additionalProperties": false,
+    "description": "A Sample File is a File that is associated with a Sample.",
+    "properties": {
+        "checksum": {
+            "description": "The checksum of the File.",
+            "type": "string"
+        },
+        "checksum_type": {
+            "description": "The type of algorithm used to generate the checksum of the File.",
+            "type": "string"
+        },
+        "format": {
+            "$ref": "src/content_schemas/enums/FileFormatEnum",
+            "description": "The format of the File (e.g., BAM, SAM, CRAM, BAI)."
+        },
+        "forward_or_reverse": {
+            "$ref": "src/content_schemas/enums/ForwardOrReverseEnum",
+            "description": "Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing."
+        },
+        "name": {
+            "description": "The given filename.",
+            "type": "string"
+        },
+        "size": {
+            "description": "The size of the File in bytes.",
+            "type": "integer"
+        }
+    },
+    "required": [
+        "name",
+        "format",
+        "size",
+        "checksum",
+        "checksum_type"
+    ],
+    "title": "SampleFile",
+    "type": "object",
+    "$id": "src/content_schemas/SampleFile",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

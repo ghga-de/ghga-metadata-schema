@@ -1,0 +1,16 @@
+{
+    "description": "Permitted values for flow cell type",
+    "enum": [
+        "ILLUMINA_NOVA_SEQ_S2",
+        "ILLUMINA_NOVA_SEQ_S4",
+        "PROMETHION",
+        "FLONGLE",
+        "MINION",
+        "GRIDION",
+        "OTHER"
+    ],
+    "title": "FlowCellTypeEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/FlowCellTypeEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

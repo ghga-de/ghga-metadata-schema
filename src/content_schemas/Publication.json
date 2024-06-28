@@ -1,0 +1,44 @@
+{
+    "additionalProperties": false,
+    "description": "A Publication represents an article that is published. The minimum expectation is that the publication has a valid DOI.",
+    "properties": {
+        "abstract": {
+            "description": "The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.",
+            "type": "string"
+        },
+        "author": {
+            "description": "Author(s) of this Publication.",
+            "type": "string"
+        },
+        "doi": {
+            "description": "DOI identifier of a publication.",
+            "type": "string"
+        },
+        "journal": {
+            "description": "The name of the journal.",
+            "type": "string"
+        },
+        "title": {
+            "description": "The title for this Publication.",
+            "type": "string"
+        },
+        "xref": {
+            "description": "One or more cross-references for this Publication.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "year": {
+            "description": "The year in which the paper was published.",
+            "type": "integer"
+        }
+    },
+    "required": [
+        "doi"
+    ],
+    "title": "Publication",
+    "type": "object",
+    "$id": "src/content_schemas/Publication",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

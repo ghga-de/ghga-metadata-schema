@@ -1,0 +1,43 @@
+{
+    "additionalProperties": false,
+    "description": "A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.",
+    "properties": {
+        "data_use_modifiers": {
+            "description": "One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'user specific restriction' if no other modifier applies.",
+            "items": {
+                "$ref": "src/content_schemas/enums/DataUseModifierEnum"
+            },
+            "type": "array"
+        },
+        "data_use_permission": {
+            "$ref": "src/content_schemas/enums/DataUsePermissionEnum",
+            "description": "The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission'."
+        },
+        "description": {
+            "description": "A short description for this Data Access Policy.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A name for this Data Access Policy.",
+            "type": "string"
+        },
+        "policy_text": {
+            "description": "The complete text for the Data Access Policy.",
+            "type": "string"
+        },
+        "policy_url": {
+            "description": "An alternative to the Data Access Policy text is to provide the URL for the policy. This is useful if the terms of the policy are available online at a resolvable URL.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "policy_text",
+        "data_use_permission"
+    ],
+    "title": "DataAccessPolicy",
+    "type": "object",
+    "$id": "src/content_schemas/DataAccessPolicy",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

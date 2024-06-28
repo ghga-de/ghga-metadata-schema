@@ -1,0 +1,19 @@
+{
+    "description": "The type of the library",
+    "enum": [
+        "WGS",
+        "WXS",
+        "WCS",
+        "TOTAL_RNA",
+        "M_RNA",
+        "MI_RNA",
+        "NC_RNA",
+        "ATAC",
+        "METHYLATION",
+        "CHROMOSOME_CONFORMATION_CAPTURE"
+    ],
+    "title": "LibraryPreparationLibraryTypeEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/LibraryPreparationLibraryTypeEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

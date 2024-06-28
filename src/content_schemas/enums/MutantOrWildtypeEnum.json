@@ -1,0 +1,12 @@
+{
+    "description": "Enum to capture whether a condition corresponds to a mutant or a wildtype.",
+    "enum": [
+        "MUTANT",
+        "WILDTYPE",
+        "NOT_APPLICABLE"
+    ],
+    "title": "MutantOrWildtypeEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/MutantOrWildtypeEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

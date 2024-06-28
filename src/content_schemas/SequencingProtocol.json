@@ -1,0 +1,86 @@
+{
+    "additionalProperties": false,
+    "description": "The Sequencing Protocol captures information about parameters and metadata associated with a Sequencing Experiment.",
+    "properties": {
+        "attributes": {
+            "description": "One or more attributes that further characterize this Sequencing Protocol.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "cell_barcode_offset": {
+            "description": "The offset in sequence of the cell identifying barcode (e.g., 0).",
+            "type": "string"
+        },
+        "cell_barcode_read": {
+            "$ref": "src/content_schemas/enums/IndexReadEnum",
+            "description": "The type of read that contains the cell barcode (e.g., index1, index2, read1, read2)."
+        },
+        "cell_barcode_size": {
+            "description": "The size of the cell identifying barcode (e.g., 16).",
+            "type": "string"
+        },
+        "description": {
+            "description": "A description summarizing the Sequencing Protocol.",
+            "type": "string"
+        },
+        "flow_cell_id": {
+            "description": "Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).",
+            "type": "string"
+        },
+        "flow_cell_type": {
+            "$ref": "src/content_schemas/enums/FlowCellTypeEnum",
+            "description": "Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore)."
+        },
+        "instrument_model": {
+            "$ref": "src/content_schemas/enums/InstrumentModelEnum",
+            "description": "The name and model of the technology platform used to perform sequencing."
+        },
+        "name": {
+            "description": "A short name identifying this Sequencing Protocol.",
+            "type": "string"
+        },
+        "sample_barcode_read": {
+            "$ref": "src/content_schemas/enums/SampleBarcodeReadEnum",
+            "description": "The type of read that contains the sample barcode (e.g., index1, index2, read1, read2)."
+        },
+        "sequencing_center": {
+            "description": "Center where sample was sequenced.",
+            "type": "string"
+        },
+        "sequencing_read_length": {
+            "description": "Length of sequencing reads (e.g., long or short or actual number of the read length).",
+            "type": "string"
+        },
+        "target_coverage": {
+            "description": "Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).",
+            "type": "string"
+        },
+        "type": {
+            "description": "Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome long-read sequencing).",
+            "type": "string"
+        },
+        "umi_barcode_offset": {
+            "description": "The offset in sequence of the UMI identifying barcode (e.g., 16).",
+            "type": "string"
+        },
+        "umi_barcode_read": {
+            "$ref": "src/content_schemas/enums/IndexReadEnum",
+            "description": "The type of read that contains the UMI barcode (e.g., index1, index2, read1, read2)."
+        },
+        "umi_barcode_size": {
+            "description": "The size of the UMI identifying barcode (e.g., 10).",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "instrument_model"
+    ],
+    "title": "SequencingProtocol",
+    "type": "object",
+    "$id": "src/content_schemas/SequencingProtocol",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

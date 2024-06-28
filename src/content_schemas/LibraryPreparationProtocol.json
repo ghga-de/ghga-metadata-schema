@@ -1,0 +1,76 @@
+{
+    "additionalProperties": false,
+    "description": "The Library Preparation Protocol captures information about the library preparation of a Sequencing Experiment.",
+    "properties": {
+        "attributes": {
+            "description": "One or more attributes that further characterize this Library Preparation Protocol.",
+            "items": {
+                "$ref": "src/content_schemas/Attribute"
+            },
+            "type": "array"
+        },
+        "description": {
+            "description": "Description summarizing how a sequencing library was prepared.",
+            "type": "string"
+        },
+        "end_bias": {
+            "$ref": "src/content_schemas/enums/EndBiasEnum",
+            "description": "The end of the cDNA molecule that is preferentially sequenced (e.g., 3/5 prime end, full-length)."
+        },
+        "library_layout": {
+            "$ref": "src/content_schemas/enums/LibraryPreparationLibraryLayoutEnum",
+            "description": "Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode."
+        },
+        "library_name": {
+            "description": "A short name identifying the library. The same name may refer to multiple versions of the same continually updated library.",
+            "type": "string"
+        },
+        "library_preparation": {
+            "description": "The general method for preparation of the sequencing library (e.g., KAPA PCR-free).",
+            "type": "string"
+        },
+        "library_preparation_kit_manufacturer": {
+            "description": "The manufacturer of the kit used for library preparation.",
+            "type": "string"
+        },
+        "library_preparation_kit_retail_name": {
+            "$ref": "src/content_schemas/enums/LibraryPreparationKitRetailNameEnum",
+            "description": "The retail name for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g., Agilent sure select Human Exome V8, Twist RefSeq Exome)."
+        },
+        "library_selection": {
+            "$ref": "src/content_schemas/enums/LibraryPreparationLibrarySelectionEnum",
+            "description": "The method used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA)."
+        },
+        "library_type": {
+            "$ref": "src/content_schemas/enums/LibraryPreparationLibraryTypeEnum",
+            "description": "Describe the level of omics analysis (e.g., metagenome, transcriptome)"
+        },
+        "primer": {
+            "$ref": "src/content_schemas/enums/PrimerEnum",
+            "description": "The type of primer used for reverse transcription (e.g., oligo-dT or random)."
+        },
+        "rnaseq_strandedness": {
+            "$ref": "src/content_schemas/enums/LibraryPreparationRNASeqStrandednessEnum",
+            "description": "The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand."
+        },
+        "target_regions": {
+            "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "description",
+        "library_name",
+        "library_layout",
+        "library_type",
+        "library_selection",
+        "library_preparation"
+    ],
+    "title": "LibraryPreparationProtocol",
+    "type": "object",
+    "$id": "src/content_schemas/LibraryPreparationProtocol",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

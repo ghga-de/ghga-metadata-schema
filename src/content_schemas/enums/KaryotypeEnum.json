@@ -1,0 +1,12 @@
+{
+    "description": "Permitted values for karyotype",
+    "enum": [
+        "46_XY",
+        "46_XX",
+        "OTHER"
+    ],
+    "title": "KaryotypeEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/KaryotypeEnum",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}
