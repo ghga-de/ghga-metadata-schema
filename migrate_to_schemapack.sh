@@ -18,7 +18,7 @@ done
 
 # clean up repository
 
-to_delete=("rename_properties.py" "mkdocs.yml" "environemnet.sh" "changelog.md" \
+to_delete=("rename_properties.py" "mkdocs.yml" "environment.sh" "changelog.md" \
 ".linkml_linter.yaml" ".erdiagrams.yaml" "src/schema/submission.yaml" "spreadsheets" \
 "scripts/update_entity_relations.py" "scripts/schema_linter.py" "scripts/generate_xlsx.py" \
 "scripts/generate_linkml_docs.py" "docs" ".github/workflows/check_spreadsheets.yaml" \
