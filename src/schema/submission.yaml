@@ -184,6 +184,7 @@ classes:
           The alias of one or more Research Data Files that are associated with this Experiment.
         required: true
         inlined: false
+        multivalued: true
 
   ExperimentalMethod:
     mixins:
