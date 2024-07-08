@@ -446,6 +446,7 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
+      - is_pseudofile
     slot_usage:
       format:
         description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
@@ -458,6 +459,10 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
+      is_pseudofile:
+        description: >-
+          Whether the Research Data File is a pseudofile or not.
+        required: true
 
   ProcessDataFile:
     is_a: File
@@ -465,11 +470,16 @@ classes:
       A Process Data File is a File that contains data produced by an Analysis or workflow.
     slots:
       - format
+      - is_pseudofile
     slot_usage:
       format:
         description: The file format of the Process Data File (e.g., CRAM, BAM)
         required: true
         range: ProcessDataFileFormatEnum
+      is_pseudofile:
+        description: >-
+          Whether the Process Data File is a pseudofile or not.
+        required: true
 
   SupportingFile:
     is_a: File
@@ -1291,6 +1301,11 @@ slots:
     description: >-
       The entity this Supporting File is part of (either "Individual", "Experiment", or "Analysis").
     range: SupportingFileAnchorEntityEnum
+
+  is_pseudofile:
+    description: >-
+      Whether a File is a pseudofile or not.
+    range: PseudofileEnum
 
 subsets:
   ontology:
@@ -2786,3 +2801,12 @@ enums:
         description: Supporting File contains information about the Experiment entity.
       ANALYSIS:
         description: Supporting File contains information about the Analysis entity.
+
+  PseudofileEnum:
+    description: >-
+      Enum to capture whether a file is a pseudofile or not.
+    permissible_values:
+      TRUE:
+        description: File is a Pseudofile.
+      FALSE:
+        description: File is not a Pseudofile.
