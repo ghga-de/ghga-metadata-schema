@@ -477,11 +477,16 @@ classes:
       A Supporting File is a File that contains additional information relevant for the entity, such as phenopackets, RO-Crates, imaging data or (unstructured) protocols.
     slots:
       - format
+      - anchor_entity
     slot_usage:
       format:
         description: The file format of the Supporting File (e.g., txt, json)
         required: true
         range: SupportingFileFormatEnum
+      anchor_entity:
+        description: >-
+          The entity this Supporting File is part of (either "INDIVIDUAL", "EXPERIMENT", or "ANALYSIS").
+        required: true
 
   Analysis:
     mixins:
@@ -1281,6 +1286,11 @@ slots:
     in_subset:
       - ontology
     # range: TissueEnum
+
+  anchor_entity:
+    description: >-
+      The entity this Supporting File is part of (either "Individual", "Experiment", or "Analysis").
+    range: SupportingFileAnchorEntityEnum
 
 subsets:
   ontology:
@@ -2765,3 +2775,14 @@ enums:
         description: Age above 80.
       UNKNOWN:
         description: Age range unknown.
+
+  SupportingFileAnchorEntityEnum:
+    description: >-
+      Enum to capture the anchoring entity of the Supporting Files.
+    permissible_values:
+      INDIVIDUAL:
+        description: Supporting File contains information about the Individual entity.
+      EXPERIMENT:
+        description: Supporting File contains information about the Experiment entity.
+      ANALYSIS:
+        description: Supporting File contains information about the Analysis entity.
