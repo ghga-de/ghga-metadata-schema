@@ -24,13 +24,13 @@ DataAccessCommittee {
 ProcessDataFile {
 
 }
-ResearchDataFile {
-
-}
 Analysis {
 
 }
 AnalysisMethod {
+
+}
+ResearchDataFile {
 
 }
 Experiment {
@@ -72,11 +72,12 @@ Submission ||--}o SupportingFile : "supporting_files"
 SupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
+ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
+Analysis ||--}| AnalysisMethod : "analysis_methods"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
-Analysis ||--}| AnalysisMethod : "analysis_methods"
 Experiment ||--|| ExperimentalMethod : "experimental_method"
 Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"

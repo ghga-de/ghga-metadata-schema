@@ -509,6 +509,7 @@ classes:
     slots:
       - format
       - is_pseudofile
+      - analysis
     slot_usage:
       format:
         description: The file format of the Process Data File (e.g., CRAM, BAM)
