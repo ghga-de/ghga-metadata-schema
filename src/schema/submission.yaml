@@ -119,6 +119,7 @@ classes:
       - title
       - description
       - types
+      - ega_accession
       - affiliations
     slot_usage:
       title:
@@ -139,6 +140,8 @@ classes:
         description: >-
           The affiliations associated with this Study.
         required: true
+      ega_accession:
+        required: false
       attributes:
         description: >-
           One or more attributes that further characterize this Study.
@@ -156,6 +159,7 @@ classes:
       - title
       - description
       - type
+      - ega_accession
       - sample
     slot_usage:
       experimental_method:
@@ -173,6 +177,8 @@ classes:
       type:
         description: >-
           The type of this Sequencing Experiment.
+        required: false
+      ega_accession:
         required: false
       sample:
         description: The alias of one or more Samples that are associated with this Experiment.
@@ -205,6 +211,7 @@ classes:
       - flow_cell_id
       - flow_cell_type
       - sample_barcode_read
+      - ega_accession
       - attributes
       - supporting_files
     slot_usage:
@@ -261,15 +268,19 @@ classes:
       sample_barcode_read:
         required: false
         recommended: true
+      ega_accession:
+        description: >-
+          The EGA accession of the EGA 'Assay' entity.
+        required: false
+      attributes:
+        description: >-
+          One or more attributes that further characterize this Experimental Method.
+        required: false
       supporting_files:
         description: >-
           The alias of one or more Supporting Files that are associated with this Experimental Method.
         required: false
         inlined: false
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Experimental Method.
-        required: false
 
   Sample:
     mixins:
@@ -290,6 +301,7 @@ classes:
       - storage
       - disease_or_healthy
       - case_control_status
+      - ega_accession
       - xref
       - biospecimen_name
       - biospecimen_type
@@ -333,6 +345,8 @@ classes:
         recommended: true
       case_control_status:
         required: true
+      ega_accession:
+        required: false
       xref:
         description: >-
           One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).
@@ -390,6 +404,7 @@ classes:
       - sex
       - geographical_region
       - ancestries
+      - ega_accession
       - supporting_files
     slot_usage:
       phenotypic_features_terms:
@@ -409,6 +424,8 @@ classes:
       geographical_region:
         required: false
       ancestries:
+        required: false
+      ega_accession:
         required: false
       supporting_files:
         description: >-
@@ -534,6 +551,7 @@ classes:
       - title
       - description
       - type
+      - ega_accession
     slot_usage:
       analysis_methods:
         description: >-
@@ -548,6 +566,8 @@ classes:
       type:
         description: >-
           The type of this Analysis.
+        required: false
+      ega_accession:
         required: false
 
   AnalysisMethod:
@@ -566,6 +586,7 @@ classes:
       - workflow_tasks
       - parameters
       - software_versions
+      - ega_accession
     slot_usage:
       name:
         required: true
@@ -593,6 +614,10 @@ classes:
         required: false
         recommended: true
         is_a: Attribute
+      ega_accession:
+        description: >-
+          The EGA accession of the EGA 'Protocol' entity.
+        required: false
 
   Dataset:
     mixins:
@@ -605,6 +630,7 @@ classes:
       - title
       - description
       - types
+      - ega_accession
       - data_access_policy
     slot_usage:
       title:
@@ -619,6 +645,8 @@ classes:
         description: >-
           The type of this Dataset.
         required: true
+      ega_accession:
+        required: false
       data_access_policy:
         description: >-
           The Data Access Policy that applies to this Dataset.
@@ -639,6 +667,7 @@ classes:
       - data_use_permission_id
       - data_use_modifier_terms
       - data_use_modifier_ids
+      - ega_accession
       - data_access_committee
     slot_usage:
       name:
@@ -673,6 +702,8 @@ classes:
           The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:0000043).
         required: false
         recommended: true
+      ega_accession:
+        required: false
       data_access_committee:
         description: >-
           The Data Access Committee linked to this Data Use Policy.
@@ -688,6 +719,7 @@ classes:
     slots:
       - email
       - institute
+      - ega_accession
     slot_usage:
       email:
         description: >-
@@ -696,6 +728,8 @@ classes:
         required: true
       institute:
         required: true
+      ega_accession:
+        required: false
 
   Publication:
     mixins:
@@ -1360,6 +1394,10 @@ slots:
     description: >-
       Whether a File is a pseudofile or not.
     range: PseudofileEnum
+
+  ega_accession:
+    description: >-
+      The EGA accession ID of an entity.
 
 subsets:
   ontology:
