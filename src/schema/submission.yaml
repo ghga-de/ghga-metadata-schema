@@ -157,7 +157,6 @@ classes:
       - description
       - type
       - sample
-      - research_data_file
     slot_usage:
       experimental_method:
         description: >-
@@ -179,12 +178,6 @@ classes:
         description: The alias of one or more Samples that are associated with this Experiment.
         required: true
         inlined: false
-      research_data_file:
-        description: >-
-          The alias of one or more Research Data Files that are associated with this Experiment.
-        required: true
-        inlined: false
-        multivalued: true
 
   ExperimentalMethod:
     mixins:
@@ -364,9 +357,13 @@ classes:
       biospecimen_vital_status_at_sampling:
         required: false
         recommended: true
-      biospecimen_tissue:
+      biospecimen_tissue_term:
         description: >-
-          The tissue this Biospecimen originated from.
+          The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
+        required: true
+      biospecimen_tissue_id:
+        description: >-
+          The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
         required: true
       biospecimen_isolation:
         description: >-
@@ -386,17 +383,25 @@ classes:
     description: >-
       An Individual is a Person who is participating in a Study.
     slots:
-      - phenotypic_features
-      - diagnosis
+      - phenotypic_features_terms
+      - phenotypic_features_ids
+      - diagnosis_ids
+      - diagnosis_terms
       - sex
       - geographical_region
       - ancestries
       - supporting_files
     slot_usage:
-      phenotypic_features:
+      phenotypic_features_terms:
         required: false
         recommended: true
-      diagnosis:
+      phenotypic_features_ids:
+        required: false
+        recommended: true
+      diagnosis_ids:
+        required: false
+        recommended: true
+      diagnosis_terms:
         required: false
         recommended: true
       sex:
@@ -448,6 +453,8 @@ classes:
       - technical_replicate
       - sequencing_lane_id
       - is_pseudofile
+      - experiment
+      - analysis
     slot_usage:
       format:
         description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
@@ -464,6 +471,18 @@ classes:
         description: >-
           Whether the Research Data File is a pseudofile or not.
         required: true
+      experiment:
+        description: >-
+          The alias of the Experiment that produced this Research Data File.
+        required: true
+        inlined: false
+        multivalued: true
+      analysis:
+        description: >-
+          The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
+        required: false
+        inlined: false
+        multivalued: true
 
   ProcessDataFile:
     is_a: File
@@ -481,6 +500,11 @@ classes:
         description: >-
           Whether the Process Data File is a pseudofile or not.
         required: true
+      analysis:
+        description: >-
+          The alias of the Analysis that produced this Process Data File.
+        required: true
+        inlined: false
 
   SupportingFile:
     is_a: File
@@ -510,8 +534,6 @@ classes:
       - title
       - description
       - type
-      - research_data_file
-      - process_data_file
     slot_usage:
       analysis_methods:
         description: >-
@@ -527,16 +549,6 @@ classes:
         description: >-
           The type of this Analysis.
         required: false
-      research_data_file:
-        description: >-
-          The alias of one or more Research Data Files that are associated with this Analysis.
-        inlined: false
-        required: true
-      process_data_file:
-        description: >-
-          The alias of one or more Process Data Files that are associated with this Analysis.
-        inlined: false
-        required: true
 
   AnalysisMethod:
     mixins:
@@ -623,8 +635,10 @@ classes:
       - description
       - policy_text
       - policy_url
-      - data_use_permission
-      - data_use_modifiers
+      - data_use_permission_term
+      - data_use_permission_id
+      - data_use_modifier_terms
+      - data_use_modifier_ids
       - data_access_committee
     slot_usage:
       name:
@@ -640,14 +654,23 @@ classes:
       policy_url:
         required: false
         recommended: true
-      data_use_permission:
+      data_use_permission_term:
         description: >-
-          The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission'.
+          The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., no restriction).
         required: true
-      data_use_modifiers:
+      data_use_permission_id:
         description: >-
-          One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier'.
+          The DUO ID corresponding to the Data Use Permission term (e.g., DUO:0000004).
+        required: true
+      data_use_modifier_terms:
+        description: >-
+          One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., clinical care use).
           Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
+        required: false
+        recommended: true
+      data_use_modifier_ids:
+        description: >-
+          The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:0000043).
         required: false
         recommended: true
       data_access_committee:
@@ -980,15 +1003,28 @@ slots:
     range: Individual
     multivalued: true
 
-  phenotypic_features:
-    description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.
+  phenotypic_features_terms:
+    description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
     in_subset:
       - ontology
     # range: PhenotypicFeaturesEnum
     multivalued: true
 
-  diagnosis:
-    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01)
+  phenotypic_features_ids:
+    description: The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
+    in_subset:
+      - ontology
+    # range: PhenotypicFeaturesEnum
+    multivalued: true
+
+  diagnosis_ids:
+    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
+    in_subset:
+      - ontology
+    multivalued: true
+
+  diagnosis_terms:
+    description: The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).
     in_subset:
       - ontology
     multivalued: true
@@ -1052,16 +1088,27 @@ slots:
     range: DataAccessCommittee
     multivalued: True
 
-  data_use_permission:
+  data_use_permission_term:
     description: >-
       Data Use Permission associated with an entity. The used term should be a descendant of 'DUO:0000001: data use permission'.
     range: DataUsePermissionEnum
 
-  data_use_modifiers:
+  data_use_permission_id:
+    description: >-
+      The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:DUO:0000004).
+    # range: DataUsePermissionIDEnum
+
+  data_use_modifier_terms:
     description: >-
       Data Use Modifiers for the Data Use Permission associated with an entity. The used terms should be descendants of 'DUO:0000017: data use modifier'.
       Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
     range: DataUseModifierEnum
+    multivalued: true
+
+  data_use_modifier_ids:
+    description: >-
+      The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:0000043).
+    # range: DataUseModifierIDEnum
     multivalued: true
 
   institute:
@@ -1293,10 +1340,16 @@ slots:
     description: >-
       DOI identifier of a publication.
 
-  biospecimen_tissue:
+  biospecimen_tissue_term:
+    description: >-
+      The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
     in_subset:
       - ontology
     # range: TissueEnum
+
+  biospecimen_tissue_id:
+    description: >-
+      The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
 
   anchor_entity:
     description: >-
