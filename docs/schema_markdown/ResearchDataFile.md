@@ -7,7 +7,7 @@ A Research Data File is a File that contains raw data originating from an Experi
 URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20research_data_file%201..1>[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]-%20research_data_file%201..1>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Experiment]-%20research_data_file(i)%200..1>[ResearchDataFile],[Analysis]-%20research_data_file(i)%200..1>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20research_data_file%201..1>[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]-%20research_data_file%201..1>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Experiment]-%20research_data_file(i)%200..1>[ResearchDataFile],[Analysis]-%20research_data_file(i)%200..1>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%200..*-%20[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;is_pseudofile:PseudofileEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]<experiment%201..*-%20[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%200..*-%20[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:string;sequencing_lane_id:string%20%3F;is_pseudofile:PseudofileEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Experiment]<experiment%201..*-%20[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])
 
 ## Parents
 
@@ -15,8 +15,6 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
 ## Referenced by Class
 
- *  **[Analysis](Analysis.md)** *[Analysis➞research_data_file](Analysis_research_data_file.md)*  <sub>1..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
- *  **[Experiment](Experiment.md)** *[Experiment➞research_data_file](Experiment_research_data_file.md)*  <sub>1..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞research_data_files](Submission_research_data_files.md)*  <sub>1..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **None** *[research_data_file](research_data_file.md)*  <sub>0..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **None** *[research_data_files](research_data_files.md)*  <sub>0..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
@@ -35,6 +33,15 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
  * [ResearchDataFile➞sequencing_lane_id](ResearchDataFile_sequencing_lane_id.md)  <sub>0..1</sub>
      * Description: The identifier of a sequencing lane.
      * Range: [String](types/String.md)
+ * [ResearchDataFile➞is_pseudofile](ResearchDataFile_is_pseudofile.md)  <sub>1..1</sub>
+     * Description: Whether the Research Data File is a pseudofile or not.
+     * Range: [PseudofileEnum](PseudofileEnum.md)
+ * [ResearchDataFile➞experiment](ResearchDataFile_experiment.md)  <sub>1..\*</sub>
+     * Description: The alias of the Experiment that produced this Research Data File.
+     * Range: [Experiment](Experiment.md)
+ * [ResearchDataFile➞analysis](ResearchDataFile_analysis.md)  <sub>0..\*</sub>
+     * Description: The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
+     * Range: [Analysis](Analysis.md)
 
 ### Inherited from File:
 

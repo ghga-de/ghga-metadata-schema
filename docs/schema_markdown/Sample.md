@@ -7,7 +7,7 @@ A Sample is a limited quantity of something to be used for testing, analysis, in
 URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;biological_replicate:string%20%3F;description:string;storage:StorageEnum%20%3F;disease_or_healthy:DiseaseOrHealthyEnum%20%3F;case_control_status:CaseControlStatusEnum;xref:string%20*;biospecimen_name:string%20%3F;biospecimen_type:string%20%3F;biospecimen_description:string%20%3F;biospecimen_age_at_sampling:AgeRangeEnum;biospecimen_vital_status_at_sampling:VitalStatusEnum%20%3F;biospecimen_tissue:string;biospecimen_isolation:string%20%3F;biospecimen_storage:StorageEnum%20%3F;alias:string],[Experiment]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[Experiment]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[Individual],[IdentifiedByAliasMixin],[Experiment],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;biological_replicate:string%20%3F;description:string;storage:StorageEnum%20%3F;disease_or_healthy:DiseaseOrHealthyEnum%20%3F;case_control_status:CaseControlStatusEnum;xref:string%20*;biospecimen_name:string%20%3F;biospecimen_type:string%20%3F;biospecimen_description:string%20%3F;biospecimen_age_at_sampling:AgeRangeEnum;biospecimen_vital_status_at_sampling:VitalStatusEnum%20%3F;biospecimen_tissue:string;biospecimen_isolation:string%20%3F;biospecimen_storage:StorageEnum%20%3F;alias:string],[Experiment]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[Experiment]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[Individual],[IdentifiedByAliasMixin],[Experiment],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;biological_replicate:string%20%3F;description:string;storage:StorageEnum%20%3F;disease_or_healthy:DiseaseOrHealthyEnum%20%3F;case_control_status:CaseControlStatusEnum;ega_accession:string%20%3F;xref:string%20*;biospecimen_name:string%20%3F;biospecimen_type:string%20%3F;biospecimen_description:string%20%3F;biospecimen_age_at_sampling:AgeRangeEnum;biospecimen_vital_status_at_sampling:VitalStatusEnum%20%3F;biospecimen_tissue_term:string;biospecimen_tissue_id:string;biospecimen_isolation:string%20%3F;biospecimen_storage:StorageEnum%20%3F;alias:string],[Experiment]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[Experiment]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[Individual],[IdentifiedByAliasMixin],[Experiment],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[Sample&#124;name:string;type:SampleTypeEnum%20%3F;biological_replicate:string%20%3F;description:string;storage:StorageEnum%20%3F;disease_or_healthy:DiseaseOrHealthyEnum%20%3F;case_control_status:CaseControlStatusEnum;ega_accession:string%20%3F;xref:string%20*;biospecimen_name:string%20%3F;biospecimen_type:string%20%3F;biospecimen_description:string%20%3F;biospecimen_age_at_sampling:AgeRangeEnum;biospecimen_vital_status_at_sampling:VitalStatusEnum%20%3F;biospecimen_tissue_term:string;biospecimen_tissue_id:string;biospecimen_isolation:string%20%3F;biospecimen_storage:StorageEnum%20%3F;alias:string],[Experiment]-%20sample%201..1>[Sample],[Submission]++-%20samples%201..*>[Sample],[Experiment]-%20sample(i)%200..1>[Sample],[Submission]-%20samples(i)%200..*>[Sample],[Sample]uses%20-.->[IdentifiedByAliasMixin],[Sample]uses%20-.->[AttributeMixin],[Individual],[IdentifiedByAliasMixin],[Experiment],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -51,6 +51,9 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
  * [Sample➞case_control_status](Sample_case_control_status.md)  <sub>1..1</sub>
      * Description: Whether a Condition corresponds to a treatment or a control.
      * Range: [CaseControlStatusEnum](CaseControlStatusEnum.md)
+ * [Sample➞ega_accession](Sample_ega_accession.md)  <sub>0..1</sub>
+     * Description: The EGA accession ID of an entity.
+     * Range: [String](types/String.md)
  * [Sample➞xref](Sample_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).
      * Range: [String](types/String.md)
@@ -69,10 +72,13 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
  * [Sample➞biospecimen_vital_status_at_sampling](Sample_biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
      * Description: Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
- * [Sample➞biospecimen_tissue](Sample_biospecimen_tissue.md)  <sub>1..1</sub>
-     * Description: The tissue this Biospecimen originated from.
+ * [Sample➞biospecimen_tissue_term](Sample_biospecimen_tissue_term.md)  <sub>1..1</sub>
+     * Description: The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
+ * [Sample➞biospecimen_tissue_id](Sample_biospecimen_tissue_id.md)  <sub>1..1</sub>
+     * Description: The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+     * Range: [String](types/String.md)
  * [Sample➞biospecimen_isolation](Sample_biospecimen_isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating this Biospecimen.
      * Range: [String](types/String.md)

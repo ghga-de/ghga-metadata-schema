@@ -308,7 +308,8 @@ classes:
       - biospecimen_description
       - biospecimen_age_at_sampling
       - biospecimen_vital_status_at_sampling
-      - biospecimen_tissue
+      - biospecimen_tissue_term
+      - biospecimen_tissue_id
       - biospecimen_isolation
       - biospecimen_storage
     slot_usage:

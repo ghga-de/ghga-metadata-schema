@@ -27,16 +27,16 @@ ProcessDataFile {
 ResearchDataFile {
 
 }
-Study {
+Analysis {
 
 }
-Attribute {
-
-}
-ExperimentalMethod {
+AnalysisMethod {
 
 }
 Experiment {
+
+}
+Attribute {
 
 }
 Sample {
@@ -45,13 +45,13 @@ Sample {
 Individual {
 
 }
+ExperimentalMethod {
+
+}
+Study {
+
+}
 Publication {
-
-}
-AnalysisMethod {
-
-}
-Analysis {
 
 }
 
@@ -73,21 +73,20 @@ SupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
 ProcessDataFile ||--|| Dataset : "dataset"
+ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
-Study ||--}o Attribute : "attributes"
-ExperimentalMethod ||--}o Attribute : "attributes"
-ExperimentalMethod ||--}o SupportingFile : "supporting_files"
+Analysis ||--}| AnalysisMethod : "analysis_methods"
 Experiment ||--|| ExperimentalMethod : "experimental_method"
 Experiment ||--|| Sample : "sample"
-Experiment ||--|| ResearchDataFile : "research_data_file"
 Experiment ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 Individual ||--}o SupportingFile : "supporting_files"
+ExperimentalMethod ||--}o Attribute : "attributes"
+ExperimentalMethod ||--}o SupportingFile : "supporting_files"
+Study ||--}o Attribute : "attributes"
 Publication ||--|| Study : "study"
-Analysis ||--}| AnalysisMethod : "analysis_methods"
-Analysis ||--|| ResearchDataFile : "research_data_file"
-Analysis ||--|| ProcessDataFile : "process_data_file"
 
 ```
 
@@ -135,12 +134,13 @@ Experiment {
 
 ExperimentalMethod ||--}o Attribute : "attributes"
 ExperimentalMethod ||--}o SupportingFile : "supporting_files"
+ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 Experiment ||--|| ExperimentalMethod : "experimental_method"
 Experiment ||--|| Sample : "sample"
-Experiment ||--|| ResearchDataFile : "research_data_file"
 Experiment ||--}o Attribute : "attributes"
 
 ```
@@ -154,11 +154,14 @@ Focusses on the details of the relation between Sample, Biospecimen, and Individ
 ```mermaid
 erDiagram
 Individual {
-    stringList phenotypic_features  
-    stringList diagnosis  
+    stringList phenotypic_features_terms  
+    stringList phenotypic_features_ids  
+    stringList diagnosis_ids  
+    stringList diagnosis_terms  
     IndividualSexEnum sex  
     string geographical_region  
     stringList ancestries  
+    string ega_accession  
     string alias  
 }
 Sample {
@@ -169,13 +172,15 @@ Sample {
     StorageEnum storage  
     DiseaseOrHealthyEnum disease_or_healthy  
     CaseControlStatusEnum case_control_status  
+    string ega_accession  
     stringList xref  
     string biospecimen_name  
     string biospecimen_type  
     string biospecimen_description  
     AgeRangeEnum biospecimen_age_at_sampling  
     VitalStatusEnum biospecimen_vital_status_at_sampling  
-    string biospecimen_tissue  
+    string biospecimen_tissue_term  
+    string biospecimen_tissue_id  
     string biospecimen_isolation  
     StorageEnum biospecimen_storage  
     string alias  
@@ -215,12 +220,14 @@ ExperimentalMethod {
     string flow_cell_id  
     FlowCellTypeEnum flow_cell_type  
     SampleBarcodeReadEnum sample_barcode_read  
+    string ega_accession  
     string alias  
 }
 ResearchDataFile {
     ResearchDataFileFormatEnum format  
     string technical_replicate  
     string sequencing_lane_id  
+    PseudofileEnum is_pseudofile  
     string name  
     integer size  
     string checksum  
@@ -235,13 +242,15 @@ Sample {
     StorageEnum storage  
     DiseaseOrHealthyEnum disease_or_healthy  
     CaseControlStatusEnum case_control_status  
+    string ega_accession  
     stringList xref  
     string biospecimen_name  
     string biospecimen_type  
     string biospecimen_description  
     AgeRangeEnum biospecimen_age_at_sampling  
     VitalStatusEnum biospecimen_vital_status_at_sampling  
-    string biospecimen_tissue  
+    string biospecimen_tissue_term  
+    string biospecimen_tissue_id  
     string biospecimen_isolation  
     StorageEnum biospecimen_storage  
     string alias  
@@ -250,17 +259,19 @@ Experiment {
     string title  
     string description  
     string type  
+    string ega_accession  
     string alias  
 }
 
 ExperimentalMethod ||--}o Attribute : "attributes"
 ExperimentalMethod ||--}o SupportingFile : "supporting_files"
+ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 Experiment ||--|| ExperimentalMethod : "experimental_method"
 Experiment ||--|| Sample : "sample"
-Experiment ||--|| ResearchDataFile : "research_data_file"
 Experiment ||--}o Attribute : "attributes"
 
 ```

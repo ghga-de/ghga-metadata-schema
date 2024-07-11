@@ -7,7 +7,7 @@ An Individual is a Person who is participating in a Study.
 URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SupportingFile],[Submission],[Sample],[SupportingFile]<supporting_files%200..*-%20[Individual&#124;phenotypic_features:string%20*;diagnosis:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[SupportingFile],[Submission],[Sample],[SupportingFile]<supporting_files%200..*-%20[Individual&#124;phenotypic_features:string%20*;diagnosis:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SupportingFile],[Submission],[Sample],[SupportingFile]<supporting_files%200..*-%20[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;ega_accession:string%20%3F;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[SupportingFile],[Submission],[Sample],[SupportingFile]<supporting_files%200..*-%20[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;ega_accession:string%20%3F;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -25,12 +25,20 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 ### Own
 
- * [Individual➞phenotypic_features](Individual_phenotypic_features.md)  <sub>0..\*</sub>
-     * Description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.
+ * [Individual➞phenotypic_features_terms](Individual_phenotypic_features_terms.md)  <sub>0..\*</sub>
+     * Description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
- * [Individual➞diagnosis](Individual_diagnosis.md)  <sub>0..\*</sub>
-     * Description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01)
+ * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)  <sub>0..\*</sub>
+     * Description: The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
+     * Range: [String](types/String.md)
+     * in subsets: (ontology)
+ * [Individual➞diagnosis_ids](Individual_diagnosis_ids.md)  <sub>0..\*</sub>
+     * Description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
+     * Range: [String](types/String.md)
+     * in subsets: (ontology)
+ * [Individual➞diagnosis_terms](Individual_diagnosis_terms.md)  <sub>0..\*</sub>
+     * Description: The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>
@@ -44,6 +52,9 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Description: A person's descent or lineage from a population.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
+ * [Individual➞ega_accession](Individual_ega_accession.md)  <sub>0..1</sub>
+     * Description: The EGA accession ID of an entity.
+     * Range: [String](types/String.md)
  * [Individual➞supporting_files](Individual_supporting_files.md)  <sub>0..\*</sub>
      * Description: The alias of one or more Supporting Files that are associated with this Individual.
      * Range: [SupportingFile](SupportingFile.md)

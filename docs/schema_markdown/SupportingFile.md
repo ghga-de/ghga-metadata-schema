@@ -7,7 +7,7 @@ A Supporting File is a File that contains additional information relevant for th
 URI: [GHGA:SupportingFile](https://w3id.org/GHGA/SupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentalMethod]-%20supporting_files%200..*>[SupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Individual]-%20supporting_files%200..*>[SupportingFile],[Submission]++-%20supporting_files%200..*>[SupportingFile],[ExperimentalMethod]-%20supporting_files(i)%200..*>[SupportingFile],[Individual]-%20supporting_files(i)%200..*>[SupportingFile],[Submission]-%20supporting_files(i)%200..*>[SupportingFile],[File]^-[SupportingFile],[Submission],[Individual],[File],[ExperimentalMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentalMethod]-%20supporting_files%200..*>[SupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Individual]-%20supporting_files%200..*>[SupportingFile],[Submission]++-%20supporting_files%200..*>[SupportingFile],[ExperimentalMethod]-%20supporting_files(i)%200..*>[SupportingFile],[Individual]-%20supporting_files(i)%200..*>[SupportingFile],[Submission]-%20supporting_files(i)%200..*>[SupportingFile],[File]^-[SupportingFile],[Submission],[Individual],[File],[ExperimentalMethod],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentalMethod]-%20supporting_files%200..*>[SupportingFile&#124;format:SupportingFileFormatEnum;anchor_entity:SupportingFileAnchorEntityEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Individual]-%20supporting_files%200..*>[SupportingFile],[Submission]++-%20supporting_files%200..*>[SupportingFile],[ExperimentalMethod]-%20supporting_files(i)%200..*>[SupportingFile],[Individual]-%20supporting_files(i)%200..*>[SupportingFile],[Submission]-%20supporting_files(i)%200..*>[SupportingFile],[File]^-[SupportingFile],[Submission],[Individual],[File],[ExperimentalMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentalMethod]-%20supporting_files%200..*>[SupportingFile&#124;format:SupportingFileFormatEnum;anchor_entity:SupportingFileAnchorEntityEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Individual]-%20supporting_files%200..*>[SupportingFile],[Submission]++-%20supporting_files%200..*>[SupportingFile],[ExperimentalMethod]-%20supporting_files(i)%200..*>[SupportingFile],[Individual]-%20supporting_files(i)%200..*>[SupportingFile],[Submission]-%20supporting_files(i)%200..*>[SupportingFile],[File]^-[SupportingFile],[Submission],[Individual],[File],[ExperimentalMethod],[Dataset])
 
 ## Parents
 
@@ -29,6 +29,9 @@ URI: [GHGA:SupportingFile](https://w3id.org/GHGA/SupportingFile)
  * [SupportingFile➞format](SupportingFile_format.md)  <sub>1..1</sub>
      * Description: The file format of the Supporting File (e.g., txt, json)
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
+ * [SupportingFile➞anchor_entity](SupportingFile_anchor_entity.md)  <sub>1..1</sub>
+     * Description: The entity this Supporting File is part of (either "INDIVIDUAL", "EXPERIMENT", or "ANALYSIS").
+     * Range: [SupportingFileAnchorEntityEnum](SupportingFileAnchorEntityEnum.md)
 
 ### Inherited from File:
 

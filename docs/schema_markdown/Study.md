@@ -7,7 +7,7 @@ A Study is an experimental investigation of a particular phenomenon. It involves
 URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;types:StudyTypeEnum%20%2B;affiliations:string%20%2B;alias:string],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;types:StudyTypeEnum%20%2B;affiliations:string%20%2B;alias:string],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;types:StudyTypeEnum%20%2B;ega_accession:string%20%3F;affiliations:string%20%2B;alias:string],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;types:StudyTypeEnum%20%2B;ega_accession:string%20%3F;affiliations:string%20%2B;alias:string],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -35,6 +35,9 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
  * [Study➞types](Study_types.md)  <sub>1..\*</sub>
      * Description: One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
+ * [Study➞ega_accession](Study_ega_accession.md)  <sub>0..1</sub>
+     * Description: The EGA accession ID of an entity.
+     * Range: [String](types/String.md)
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
      * Description: The affiliations associated with this Study.
      * Range: [String](types/String.md)

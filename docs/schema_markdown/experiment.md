@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [Experiment](Experiment.md)
 
 ## Children
 
+ *  [ResearchDataFile➞experiment](ResearchDataFile_experiment.md)
 
 ## Used by
 

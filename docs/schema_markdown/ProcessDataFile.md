@@ -7,7 +7,7 @@ A Process Data File is a File that contains data produced by an Analysis or work
 URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20process_data_file%201..1>[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%200..*>[ProcessDataFile],[Analysis]-%20process_data_file(i)%200..1>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]-%20process_data_file%201..1>[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%200..*>[ProcessDataFile],[Analysis]-%20process_data_file(i)%200..1>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;is_pseudofile:PseudofileEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%200..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;is_pseudofile:PseudofileEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%200..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])
 
 ## Parents
 
@@ -15,7 +15,6 @@ URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 
 ## Referenced by Class
 
- *  **[Analysis](Analysis.md)** *[Analysis➞process_data_file](Analysis_process_data_file.md)*  <sub>1..1</sub>  **[ProcessDataFile](ProcessDataFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞process_data_files](Submission_process_data_files.md)*  <sub>0..\*</sub>  **[ProcessDataFile](ProcessDataFile.md)**
  *  **None** *[process_data_file](process_data_file.md)*  <sub>0..1</sub>  **[ProcessDataFile](ProcessDataFile.md)**
  *  **None** *[process_data_files](process_data_files.md)*  <sub>0..\*</sub>  **[ProcessDataFile](ProcessDataFile.md)**
@@ -28,6 +27,12 @@ URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
  * [ProcessDataFile➞format](ProcessDataFile_format.md)  <sub>1..1</sub>
      * Description: The file format of the Process Data File (e.g., CRAM, BAM)
      * Range: [ProcessDataFileFormatEnum](ProcessDataFileFormatEnum.md)
+ * [ProcessDataFile➞is_pseudofile](ProcessDataFile_is_pseudofile.md)  <sub>1..1</sub>
+     * Description: Whether the Process Data File is a pseudofile or not.
+     * Range: [PseudofileEnum](PseudofileEnum.md)
+ * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md)  <sub>1..1</sub>
+     * Description: The alias of the Analysis that produced this Process Data File.
+     * Range: [Analysis](Analysis.md)
 
 ### Inherited from File:
 

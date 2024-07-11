@@ -7,7 +7,7 @@ A group of members that are delegated to grant access to one or more datasets af
 URI: [GHGA:DataAccessCommittee](https://w3id.org/GHGA/DataAccessCommittee)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;email:string;institute:string;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;email:string;institute:string;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;email:string;institute:string;ega_accession:string%20%3F;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[DataAccessPolicy],[DataAccessPolicy]-%20data_access_committee%201..1>[DataAccessCommittee&#124;email:string;institute:string;ega_accession:string%20%3F;alias:string],[Submission]++-%20data_access_committees%201..*>[DataAccessCommittee],[DataAccessPolicy]-%20data_access_committee(i)%200..1>[DataAccessCommittee],[Submission]-%20data_access_committees(i)%200..*>[DataAccessCommittee],[DataAccessCommittee]uses%20-.->[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -30,6 +30,9 @@ URI: [GHGA:DataAccessCommittee](https://w3id.org/GHGA/DataAccessCommittee)
      * Range: [String](types/String.md)
  * [DataAccessCommittee➞institute](DataAccessCommittee_institute.md)  <sub>1..1</sub>
      * Description: The Institute a person is affiliated with.
+     * Range: [String](types/String.md)
+ * [DataAccessCommittee➞ega_accession](DataAccessCommittee_ega_accession.md)  <sub>0..1</sub>
+     * Description: The EGA accession ID of an entity.
      * Range: [String](types/String.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
