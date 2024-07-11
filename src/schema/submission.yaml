@@ -78,36 +78,55 @@ classes:
         inlined: true
         inlined_as_list: true
 
-  # Parameter:
-  #   description: >-
-  #     A key/value pair to capture parameter specifications.
-  #   slots:
-  #     - parameter
-  #     - parameter_type
-  #     - value
-  #     - value_type
-  #   exact_mappings:
-  #     - SIO:000614
-  #   slot_usage:
-  #     parameter:
-  #       required: true
-  #     parameter_type:
-  #       required: false
-  #     value:
-  #       required: true
-  #     value_type:
-  #       required: false
+  Parameter:
+    description: >-
+      A key/value pair to capture parameter specifications.
+    slots:
+      - parameter_name
+      - value
+    exact_mappings:
+      - SIO:000614
+    slot_usage:
+      parameter_name:
+        required: true
+      value:
+        required: true
 
-  # ParameterMixin:
-  #   mixin: true
-  #   description: Mixin for entities that can have one or more parameters.
-  #   slots:
-  #     - parameters
-  #   slot_usage:
-  #     parameters:
-  #       required: false
-  #       inlined: true
-  #       inlined_as_list: true
+  ParameterMixin:
+    mixin: true
+    description: Mixin for entities that can have one or more parameters.
+    slots:
+      - parameters
+    slot_usage:
+      parameters:
+        required: false
+        inlined: true
+        inlined_as_list: true
+
+  SoftwareVersion:
+    description: >-
+      A key/value pair to capture software version specifications.
+    slots:
+      - software
+      - version
+    exact_mappings:
+      - SIO:000614
+    slot_usage:
+      software:
+        required: true
+      version:
+        required: true
+
+  SoftwareVersionMixin:
+    mixin: true
+    description: Mixin for entities that can have one or more software versions.
+    slots:
+      - software_versions
+    slot_usage:
+      software_versions:
+        required: false
+        inlined: true
+        inlined_as_list: true
 
   Study:
     mixins:
@@ -227,6 +246,9 @@ classes:
         description: >-
           The type associated with this Experimental Method.
         required: true
+      library_type:
+        required: true
+        range: LibraryPreparationLibraryTypeEnum
       library_selection_methods:
         required: true
       library_preparation:
@@ -434,114 +456,6 @@ classes:
         required: false
         recommended: true
 
-  File:
-    mixins:
-      - IdentifiedByAliasMixin
-    description: >-
-      A file is an object that contains information generated from a process, either an Experiment or an Analysis.
-    slots:
-      - name
-      - size
-      - checksum
-      - checksum_type
-      - dataset
-    slot_usage:
-      name:
-        description: >-
-          The given filename.
-        required: true
-      checksum:
-        required: true
-      checksum_type:
-        required: true
-      size:
-        required: true
-      dataset:
-        description: >-
-          The Dataset alias associated with this File.
-        inlined: false
-        required: true
-
-  ResearchDataFile:
-    is_a: File
-    description: >-
-      A Research Data File is a File that contains raw data originating from an Experiment.
-    slots:
-      - format
-      - technical_replicate
-      - sequencing_lane_id
-      - is_pseudofile
-      - experiment
-      - analysis
-    slot_usage:
-      format:
-        description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
-        required: true
-        range: ResearchDataFileFormatEnum
-      technical_replicate:
-        description: >-
-          An integer to indicate the technical replicate of this File.
-        required: true
-      sequencing_lane_id:
-        required: false
-        recommended: true
-      is_pseudofile:
-        description: >-
-          Whether the Research Data File is a pseudofile or not.
-        required: true
-      experiment:
-        description: >-
-          The alias of the Experiment that produced this Research Data File.
-        required: true
-        inlined: false
-        multivalued: true
-      analysis:
-        description: >-
-          The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
-        required: false
-        inlined: false
-        multivalued: true
-
-  ProcessDataFile:
-    is_a: File
-    description: >-
-      A Process Data File is a File that contains data produced by an Analysis or workflow.
-    slots:
-      - format
-      - is_pseudofile
-      - analysis
-    slot_usage:
-      format:
-        description: The file format of the Process Data File (e.g., CRAM, BAM)
-        required: true
-        range: ProcessDataFileFormatEnum
-      is_pseudofile:
-        description: >-
-          Whether the Process Data File is a pseudofile or not.
-        required: true
-      analysis:
-        description: >-
-          The alias of the Analysis that produced this Process Data File.
-        required: true
-        inlined: false
-
-  SupportingFile:
-    is_a: File
-    description: >-
-      A Supporting File is a File that contains additional information relevant for the entity, such as phenopackets, RO-Crates, imaging data or (unstructured) protocols.
-    slots:
-      - format
-      - anchor_entity
-    slot_usage:
-      format:
-        description: The file format of the Supporting File (e.g., txt, json)
-        required: true
-        range: SupportingFileFormatEnum
-      anchor_entity:
-        description: >-
-          The entity this Supporting File is part of (either "INDIVIDUAL", "EXPERIMENT", or "ANALYSIS").
-        required: true
-
   Analysis:
     mixins:
       - IdentifiedByAliasMixin
@@ -575,6 +489,8 @@ classes:
   AnalysisMethod:
     mixins:
       - IdentifiedByAliasMixin
+      - ParameterMixin
+      - SoftwareVersionMixin
     description: >-
       An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
     slots:
@@ -611,11 +527,9 @@ classes:
       parameters:
         required: false
         recommended: true
-        is_a: Attribute
       software_versions:
         required: false
         recommended: true
-        is_a: Attribute
       ega_accession:
         description: >-
           The EGA accession of the EGA 'Protocol' entity.
@@ -776,6 +690,146 @@ classes:
           One or more cross-references for this Publication.
         required: false
 
+  File:
+    mixins:
+      - IdentifiedByAliasMixin
+    description: >-
+      A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+    slots:
+      - name
+      - size
+      - checksum
+      - checksum_type
+      - dataset
+    slot_usage:
+      name:
+        description: >-
+          The given filename.
+        required: true
+      checksum:
+        required: true
+      checksum_type:
+        required: true
+      size:
+        required: true
+      dataset:
+        description: >-
+          The Dataset alias associated with this File.
+        inlined: false
+        required: true
+
+  ResearchDataFile:
+    is_a: File
+    description: >-
+      A Research Data File is a File that contains raw data originating from an Experiment.
+    slots:
+      - format
+      - technical_replicate
+      - sequencing_lane_id
+      - is_pseudofile
+      - ega_accession
+      - experiment
+      - analysis
+    slot_usage:
+      format:
+        description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
+        required: true
+        range: ResearchDataFileFormatEnum
+      technical_replicate:
+        description: >-
+          An integer to indicate the technical replicate of this File.
+        required: true
+      sequencing_lane_id:
+        required: false
+        recommended: true
+      is_pseudofile:
+        description: >-
+          Whether the Research Data File is a pseudofile or not.
+        required: true
+      ega_accession:
+        required: false
+      experiment:
+        description: >-
+          The alias of the Experiment that produced this Research Data File.
+        required: true
+        inlined: false
+        multivalued: true
+      analysis:
+        description: >-
+          The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
+        required: false
+        inlined: false
+        multivalued: true
+
+  ProcessDataFile:
+    is_a: File
+    description: >-
+      A Process Data File is a File that contains data produced by an Analysis or workflow.
+    slots:
+      - format
+      - ega_accession
+      - analysis
+    slot_usage:
+      format:
+        description: The file format of the Process Data File (e.g., CRAM, BAM)
+        required: true
+        range: ProcessDataFileFormatEnum
+      ega_accession:
+        required: false
+      analysis:
+        description: >-
+          The alias of the Analysis that produced this Process Data File.
+        required: true
+        inlined: false
+
+  ExperimentSupportingFile:
+    is_a: File
+    description: >-
+      An Experiment Supporting File is a File that contains additional information relevant for the Experiment, such as (unstructured) protocols.
+    slots:
+      - format
+      - experiment
+    slot_usage:
+      format:
+        description: The file format of the Supporting File (e.g., txt, json)
+        required: true
+        range: SupportingFileFormatEnum
+      experiment:
+        required: true
+        inlined: false
+
+  AnalysisSupportingFile:
+    is_a: File
+    description: >-
+      An Analysis Supporting File is a File that contains additional information relevant for the Analysis, such as (unstructured) protocols or task descriptions.
+    slots:
+      - format
+      - analysis
+    slot_usage:
+      format:
+        description: The file format of the Supporting File (e.g., txt, json)
+        required: true
+        range: SupportingFileFormatEnum
+      analysis:
+        required: true
+        inlined: false
+
+  IndividualSupportingFile:
+    is_a: File
+    description: >-
+      An Individual Supporting File is a File that contains additional information relevant for the Individual, such as ped-files, phenopackets or imaging data.
+    slots:
+      - format
+      - individual
+    slot_usage:
+      format:
+        description: The file format of the Supporting File (e.g., txt, json)
+        required: true
+        range: SupportingFileFormatEnum
+      individual:
+        required: true
+        inlined: false
+
   Submission:
     tree_root: true
     description: >-
@@ -796,7 +850,9 @@ classes:
       - studies
       - research_data_files
       - process_data_files
-      - supporting_files
+      - experiment_supporting_files
+      - analysis_supporting_files
+      - individual_supporting_files
     slot_usage:
       studies:
         description: >-
@@ -876,9 +932,21 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
-      supporting_files:
+      experiment_supporting_files:
         description: >-
-          One or more Supporting Files associated with this Submission.
+          One or more Experiment Supporting Files associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      analysis_supporting_files:
+        description: >-
+          One or more Analysis Supporting Files associated with this Submission.
+        required: false
+        inlined: true
+        inlined_as_list: true
+      individual_supporting_files:
+        description: >-
+          One or more Individual Supporting Files associated with this Submission.
         required: false
         inlined: true
         inlined_as_list: true
@@ -909,16 +977,23 @@ slots:
     range: Attribute
     multivalued: true
 
-  # parameter:
-  #   description: The parameter name.
+  parameter_name:
+    description: The parameter name.
 
-  # parameter_type:
-  #   description: A semantic type that characterizes this parameter (e.g., gencode version)
+  parameters:
+    description: Parameter/value pairs corresponding to an entity.
+    range: Parameter
+    multivalued: true
 
-  # parameters:
-  #   description: Parameter/value pairs corresponding to an entity.
-  #   range: Parameter
-  #   multivalued: true
+  software:
+    description: The software name.
+
+  version:
+    description: The software version.
+
+  software_versions:
+    description: Software/version pairs corresponding to an entity.
+    range: SoftwareVersion
 
   type:
     description: >-
@@ -1015,12 +1090,6 @@ slots:
   workflow_tasks:
     description: Tasks performed by the workflow
 
-  parameters:
-    description: Non-default parameters and the corresponding value.
-
-  software_versions:
-    description: Software used during the Analysis and the corresponding software version.
-
   dataset:
     description: The Dataset associated with an entity.
     range: Dataset
@@ -1095,15 +1164,37 @@ slots:
     range: ProcessDataFile
     multivalued: True
 
-  supporting_file:
+  experiment_supporting_file:
     description: >-
-      The Supporting File associated with an entity.
-    range: SupportingFile
+      The Experiment Supporting File associated with an entity.
+    range: ExperimentSupportingFile
 
-  supporting_files:
+  experiment_supporting_files:
     description: >-
-      The Supporting Files associated with an entity.
-    range: SupportingFile
+      The Experiment Supporting Files associated with an entity.
+    range: ExperimentSupportingFile
+    multivalued: true
+
+  analysis_supporting_file:
+    description: >-
+      The Analysis Supporting File associated with an entity.
+    range: AnalysisSupportingFile
+
+  analysis_supporting_files:
+    description: >-
+      The Analysis Supporting Files associated with an entity.
+    range: AnalysisSupportingFile
+    multivalued: true
+
+  individual_supporting_file:
+    description: >-
+      The Individual Supporting File associated with an entity.
+    range: IndividualSupportingFile
+
+  individual_supporting_files:
+    description: >-
+      The Individual Supporting Files associated with an entity.
+    range: IndividualSupportingFile
     multivalued: true
 
   data_access_policy:
@@ -1287,7 +1378,7 @@ slots:
       Method or device employed for collecting/isolating a Biospecimen or a Sample.
     in_subset:
       - ontology
-    # range: IsolationEnum
+    range: IsolationEnum
 
   storage:
     description: >-
@@ -1386,11 +1477,6 @@ slots:
   biospecimen_tissue_id:
     description: >-
       The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
-
-  anchor_entity:
-    description: >-
-      The entity this Supporting File is part of (either "Individual", "Experiment", or "Analysis").
-    range: SupportingFileAnchorEntityEnum
 
   is_pseudofile:
     description: >-
@@ -1539,30 +1625,24 @@ enums:
     description: An enum describing permissible phenotype descriptors
     include:
       - reachable_from:
-          source_ontology: http://www.ebi.ac.uk/efo/releases/v3.54.0/efo.owl
-          include_self: false
-      - reachable_from:
-          source_ontology: https://www.orphadata.com/data/ontologies/ordo/last_version/ORDO_en_4.2.owl
-          include_self: false
-      - reachable_from:
-          source_ontology: http://snomed.info/sct/900000000000207008/version/20200131
-          source_nodes:
-            - SNOMED:404684003
-          include_self: false
-      - reachable_from:
-          source_ontology: http://purl.obolibrary.org/obo/mondo/releases/2022-12-01/mondo.owl
-          include_self: false
-      - reachable_from:
           source_ontology: http://purl.obolibrary.org/obo/hp/releases/2023-04-05/hp-international.owl
           include_self: false
 
   IsolationEnum:
     description: Describes how biomaterial was isolated.
-    reachable_from:
-      source_ontology: http://snomed.info/sct/900000000000207008/version/20200131
-      source_nodes:
-        - SNOMED:118292001
-      include_self: false
+    permissible_values:
+      BLOOD_DRAW:
+        description: >-
+          Extraction of a blood specimen.
+      SURGICAL_REMOVAL:
+        description: >-
+          Extraction of a sample or part of an organ in a surgical procedure.
+      SALIVA_COLLECTION:
+        description: >-
+          Collection of saliva.
+      BUCCAL_SWAB:
+        description: >-
+          Sample collection using a buccal swab.
 
   StorageEnum:
     description: >-
@@ -1624,6 +1704,9 @@ enums:
       SINGLE_CELL_RNA:
         description: >-
           RNA originating from single cells was used for sequencing.
+      SINGLE_CELL_NUCLEI:
+        description: >-
+          RNA originating from single cell nuclei was used for sequencing.
       SMALL_RNA:
         description: >-
           Small RNA was used for sequencing.
@@ -1883,6 +1966,8 @@ enums:
       YAML:
         description: >-
           YAML (YAML Ain't Markup Language) is a human-readable tree-structured data serialisation language.
+      OTHER:
+        description: A file format not captured by the controlled vocabulary.
 
   LibraryPreparationLibraryTypeEnum:
     description: >-
@@ -1918,6 +2003,12 @@ enums:
       CHROMOSOME_CONFORMATION_CAPTURE:
         description: >-
           Chromosome conformation capture library
+      CHIP_SEQ:
+        description: >-
+          A combination of chromatin immunoprecipitation with DNA sequencing.
+      OTHER:
+        description: >-
+          A library type not captured by the above vocabulary.
 
   LibraryPreparationLibrarySelectionEnum:
     description: >-
@@ -2528,6 +2619,10 @@ enums:
         meaning: NCIT:C63551
         description: >-
           Having a DNA sequence complementary to that of a messenger RNA molecule; the non-coding strand in double-stranded DNA.
+      UNSTRANDED:
+        meaning: NCIT:C150427
+        description: >-
+          Non-directional sequencing, where the reads can map from either the transcript strand or its complement.
 
   PrimerEnum:
     description: >-
@@ -2884,17 +2979,6 @@ enums:
         description: Age above 80.
       UNKNOWN:
         description: Age range unknown.
-
-  SupportingFileAnchorEntityEnum:
-    description: >-
-      Enum to capture the anchoring entity of the Supporting Files.
-    permissible_values:
-      INDIVIDUAL:
-        description: Supporting File contains information about the Individual entity.
-      EXPERIMENT:
-        description: Supporting File contains information about the Experiment entity.
-      ANALYSIS:
-        description: Supporting File contains information about the Analysis entity.
 
   PseudofileEnum:
     description: >-
