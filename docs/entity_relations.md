@@ -36,6 +36,15 @@ SoftwareVersion {
 Parameter {
 
 }
+ExperimentalMethodSupportingFile {
+
+}
+ExperimentalMethod {
+
+}
+Attribute {
+
+}
 ProcessDataFile {
 
 }
@@ -48,13 +57,7 @@ ResearchDataFile {
 Experiment {
 
 }
-Attribute {
-
-}
 Sample {
-
-}
-ExperimentalMethod {
 
 }
 Study {
@@ -77,6 +80,7 @@ Submission ||--}| ExperimentalMethod : "experimental_methods"
 Submission ||--}| Study : "studies"
 Submission ||--}| ResearchDataFile : "research_data_files"
 Submission ||--}o ProcessDataFile : "process_data_files"
+Submission ||--}o ExperimentalMethodSupportingFile : "experimental_method_supporting_files"
 Submission ||--}o AnalysisMethodSupportingFile : "analysis_method_supporting_files"
 Submission ||--}o IndividualSupportingFile : "individual_supporting_files"
 IndividualSupportingFile ||--|| Individual : "individual"
@@ -87,6 +91,9 @@ AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
 AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
 AnalysisMethod ||--}o Parameter : "parameters"
 AnalysisMethod ||--|o SoftwareVersion : "software_versions"
+ExperimentalMethodSupportingFile ||--|| ExperimentalMethod : "experimental_method"
+ExperimentalMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentalMethod ||--}o Attribute : "attributes"
 ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
 Analysis ||--}| AnalysisMethod : "analysis_methods"
@@ -98,7 +105,6 @@ Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-ExperimentalMethod ||--}o Attribute : "attributes"
 Study ||--}o Attribute : "attributes"
 Publication ||--|| Study : "study"
 
@@ -132,6 +138,9 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
+ExperimentalMethodSupportingFile {
+
+}
 ExperimentalMethod {
 
 }
@@ -145,6 +154,8 @@ Experiment {
 
 }
 
+ExperimentalMethodSupportingFile ||--|| ExperimentalMethod : "experimental_method"
+ExperimentalMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentalMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
@@ -211,10 +222,19 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
+ExperimentalMethodSupportingFile {
+    SupportingFileFormatEnum format  
+    string name  
+    integer size  
+    string checksum  
+    string checksum_type  
+    string alias  
+}
 ExperimentalMethod {
     string name  
     string description  
     string type  
+    LibraryPreparationLibraryTypeEnum library_type  
     LibraryPreparationLibrarySelectionEnumList library_selection_methods  
     string library_preparation  
     LibraryPreparationKitRetailNameEnum library_preparation_kit_retail_name  
@@ -275,6 +295,8 @@ Experiment {
     string alias  
 }
 
+ExperimentalMethodSupportingFile ||--|| ExperimentalMethod : "experimental_method"
+ExperimentalMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentalMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"

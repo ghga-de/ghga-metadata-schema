@@ -213,6 +213,7 @@ classes:
       - name
       - description
       - type
+      - library_type
       - library_selection_methods
       - library_preparation
       - library_preparation_kit_retail_name

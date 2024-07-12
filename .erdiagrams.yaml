@@ -13,7 +13,14 @@
 - title: Experiment, Sample, & File
   description: Focusses on the relation between Experiment, Sample, and File.
   model: submission.yaml
-  classes: ["Experiment", "Sample", "ResearchDataFile", "ExperimentalMethod"]
+  classes:
+    [
+      "Experiment",
+      "Sample",
+      "ResearchDataFile",
+      "ExperimentalMethod",
+      "ExperimentalMethodSupportingFile",
+    ]
   tree_root: false
   include_attributes: false
 # - title: Study & Sample
@@ -31,7 +38,14 @@
 - title: Experiment, Sample, & File (with attributes)
   description: Focusses on the relation between Experiment, Sample, and File.
   model: submission.yaml
-  classes: ["Experiment", "Sample", "ResearchDataFile", "ExperimentalMethod"]
+  classes:
+    [
+      "Experiment",
+      "Sample",
+      "ResearchDataFile",
+      "ExperimentalMethod",
+      "ExperimentalMethodSupportingFile",
+    ]
   tree_root: false
   include_attributes: true
 # - title: Study & Sample (with attributes)
