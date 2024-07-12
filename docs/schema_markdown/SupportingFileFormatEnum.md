@@ -22,4 +22,5 @@ URI: [GHGA:SupportingFileFormatEnum](https://w3id.org/GHGA/SupportingFileFormatE
 | TSV | Tabular data represented as tab-separated values in a text file. |  |  |
 | TXT | Textual format. Data in text format can be compressed into binary format, or can be a value of an XML element or attribute. Markup formats are not considered textual (or more precisely, not plain-textual). |  |  |
 | YAML | YAML (YAML Ain't Markup Language) is a human-readable tree-structured data serialisation language. |  |  |
+| OTHER | A file format not captured by the controlled vocabulary. |  |  |
 

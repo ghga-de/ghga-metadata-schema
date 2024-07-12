@@ -5,14 +5,16 @@ workbooks:
     worksheets:
       - Study
       - Individual
+      - IndividualSupportingFile
       - Sample
       - ExperimentalMethod
+      - ExperimentalMethodSupportingFile
       - Experiment
       - ResearchDataFile
       - AnalysisMethod
+      - AnalysisMethodSupportingFile
       - Analysis
       - ProcessDataFile
-      - SupportingFile
       - Dataset
       - DataAccessPolicy
       - DataAccessCommittee
@@ -28,36 +30,42 @@ styles:
   Individual:
     header_color: 4F81BD
     content_color: DCE6F1
-  ExperimentalMethod:
+  IndividualSupportingFile:
     header_color: 8064A2
     content_color: E4DFEC
-  Experiment:
+  ExperimentalMethod:
     header_color: 9BBB59
     content_color: EBF1DE
-  ResearchDataFile:
+  ExperimentalMethodSupportingFile:
     header_color: F79646
     content_color: FDE9D9
-  AnalysisMethod:
+  Experiment:
     header_color: C0504D
     content_color: F2DCDB
-  Analysis:
+  ResearchDataFile:
     header_color: 4BACC6
     content_color: DAEEF3
-  ProcessDataFile:
+  AnalysisMethod:
     header_color: 4F81BD
     content_color: DCE6F1
-  SupportingFile:
+  AnalysisMethodSupportingFile:
     header_color: 8064A2
     content_color: E4DFEC
-  Dataset:
+  Analysis:
     header_color: 9BBB59
     content_color: EBF1DE
-  DataAccessPolicy:
+  ProcessDataFile:
     header_color: F79646
     content_color: FDE9D9
-  DataAccessCommittee:
+  Dataset:
     header_color: C0504D
     content_color: F2DCDB
-  Publication:
+  DataAccessPolicy:
     header_color: 4BACC6
     content_color: DAEEF3
+  DataAccessCommittee:
+    header_color: 4F81BD
+    content_color: DCE6F1
+  Publication:
+    header_color: 8064A2
+    content_color: E4DFEC

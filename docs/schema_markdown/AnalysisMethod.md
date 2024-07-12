@@ -7,14 +7,17 @@ An Analysis Method captures the workflow steps that were performed to analyze da
 URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Analysis]-%20analysis_methods%201..*>[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;parameters:string%20%3F;software_versions:string%20%3F;ega_accession:string%20%3F;alias:string],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_methods(i)%200..*>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Analysis]-%20analysis_methods%201..*>[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;parameters:string%20%3F;software_versions:string%20%3F;ega_accession:string%20%3F;alias:string],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_methods(i)%200..*>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SoftwareVersionMixin],[SoftwareVersion],[ParameterMixin],[Parameter],[IdentifiedByAliasMixin],[AnalysisMethodSupportingFile],[SoftwareVersion]<software_versions%200..1-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;ega_accession:string%20%3F;alias:string],[Parameter]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_methods%201..*>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Analysis]-%20analysis_methods(i)%200..*>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[ParameterMixin],[AnalysisMethod]uses%20-.->[SoftwareVersionMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SoftwareVersionMixin],[SoftwareVersion],[ParameterMixin],[Parameter],[IdentifiedByAliasMixin],[AnalysisMethodSupportingFile],[SoftwareVersion]<software_versions%200..1-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;ega_accession:string%20%3F;alias:string],[Parameter]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_methods%201..*>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Analysis]-%20analysis_methods(i)%200..*>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[ParameterMixin],[AnalysisMethod]uses%20-.->[SoftwareVersionMixin],[Analysis])
 
 ## Uses Mixin
 
  *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
+ *  mixin: [ParameterMixin](ParameterMixin.md) - Mixin for entities that can have one or more parameters.
+ *  mixin: [SoftwareVersionMixin](SoftwareVersionMixin.md) - Mixin for entities that can have one or more software versions.
 
 ## Referenced by Class
 
+ *  **[AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)** *[AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)*  <sub>1..1</sub>  **[AnalysisMethod](AnalysisMethod.md)**
  *  **[Analysis](Analysis.md)** *[Analysis➞analysis_methods](Analysis_analysis_methods.md)*  <sub>1..\*</sub>  **[AnalysisMethod](AnalysisMethod.md)**
  *  **[Submission](Submission.md)** *[Submission➞analysis_methods](Submission_analysis_methods.md)*  <sub>1..\*</sub>  **[AnalysisMethod](AnalysisMethod.md)**
  *  **None** *[analysis_method](analysis_method.md)*  <sub>0..1</sub>  **[AnalysisMethod](AnalysisMethod.md)**
@@ -49,15 +52,21 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
  * [AnalysisMethod➞workflow_tasks](AnalysisMethod_workflow_tasks.md)  <sub>0..1</sub>
      * Description: Tasks performed by the workflow
      * Range: [String](types/String.md)
- * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..1</sub>
-     * Description: Non-default parameters and the corresponding value.
-     * Range: [String](types/String.md)
- * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..1</sub>
-     * Description: Software used during the Analysis and the corresponding software version.
-     * Range: [String](types/String.md)
+ * [parameters](parameters.md)  <sub>0..\*</sub>
+     * Description: Parameter/value pairs corresponding to an entity.
+     * Range: [Parameter](Parameter.md)
+ * [software_versions](software_versions.md)  <sub>0..1</sub>
+     * Description: Software/version pairs corresponding to an entity.
+     * Range: [SoftwareVersion](SoftwareVersion.md)
  * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md)  <sub>0..1</sub>
      * Description: The EGA accession of the EGA 'Protocol' entity.
      * Range: [String](types/String.md)
+ * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..\*</sub>
+     * Description: Parameter/value pairs corresponding to an entity.
+     * Range: [Parameter](Parameter.md)
+ * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..1</sub>
+     * Description: Software/version pairs corresponding to an entity.
+     * Range: [SoftwareVersion](SoftwareVersion.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

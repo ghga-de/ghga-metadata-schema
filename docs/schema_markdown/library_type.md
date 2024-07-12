@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [LibraryPreparationLibraryTypeEnum](LibraryPrepara
 
 ## Children
 
+ *  [ExperimentalMethod➞library_type](ExperimentalMethod_library_type.md)
 
 ## Used by
 

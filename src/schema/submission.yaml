@@ -50,6 +50,17 @@ classes:
       value_type:
         required: false
 
+  AttributeMixin:
+    mixin: true
+    description: Mixin for entities that can have one or more attributes.
+    slots:
+      - attributes
+    slot_usage:
+      attributes:
+        required: false
+        inlined: true
+        inlined_as_list: true
+
   AliasMixin:
     mixin: true
     description: Mixin for entities that can be assigned an alias at the time of metadata submission.
@@ -66,17 +77,6 @@ classes:
     slot_usage:
       alias:
         identifier: true
-
-  AttributeMixin:
-    mixin: true
-    description: Mixin for entities that can have one or more attributes.
-    slots:
-      - attributes
-    slot_usage:
-      attributes:
-        required: false
-        inlined: true
-        inlined_as_list: true
 
   Parameter:
     description: >-
@@ -154,7 +154,6 @@ classes:
           One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
         range: StudyTypeEnum
         required: true
-        multivalued: true
       affiliations:
         description: >-
           The affiliations associated with this Study.
@@ -232,7 +231,6 @@ classes:
       - sample_barcode_read
       - ega_accession
       - attributes
-      - supporting_files
     slot_usage:
       name:
         description: >-
@@ -248,7 +246,6 @@ classes:
         required: true
       library_type:
         required: true
-        range: LibraryPreparationLibraryTypeEnum
       library_selection_methods:
         required: true
       library_preparation:
@@ -298,11 +295,6 @@ classes:
         description: >-
           One or more attributes that further characterize this Experimental Method.
         required: false
-      supporting_files:
-        description: >-
-          The alias of one or more Supporting Files that are associated with this Experimental Method.
-        required: false
-        inlined: false
 
   Sample:
     mixins:
@@ -349,8 +341,6 @@ classes:
         description: >-
           The type of the Sample.
         range: SampleTypeEnum
-        in_subset:
-          - ontology
         required: false
       biological_replicate:
         recommended: true
@@ -359,8 +349,6 @@ classes:
           A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
         required: true
       storage:
-        description: >-
-          Methods by which this Sample is stored.
         required: false
         recommended: true
       disease_or_healthy:
@@ -395,12 +383,8 @@ classes:
         required: false
         recommended: true
       biospecimen_tissue_term:
-        description: >-
-          The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
         required: true
       biospecimen_tissue_id:
-        description: >-
-          The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
         required: true
       biospecimen_isolation:
         description: >-
@@ -428,7 +412,6 @@ classes:
       - geographical_region
       - ancestries
       - ega_accession
-      - supporting_files
     slot_usage:
       phenotypic_features_terms:
         required: false
@@ -450,11 +433,6 @@ classes:
         required: false
       ega_accession:
         required: false
-      supporting_files:
-        description: >-
-          The alias of one or more Supporting Files that are associated with this Individual.
-        required: false
-        recommended: true
 
   Analysis:
     mixins:
@@ -672,8 +650,6 @@ classes:
           The title for this Publication.
         required: false
       abstract:
-        description: >-
-          The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.
         required: false
       author:
         description: >-
@@ -736,15 +712,11 @@ classes:
         required: true
         range: ResearchDataFileFormatEnum
       technical_replicate:
-        description: >-
-          An integer to indicate the technical replicate of this File.
         required: true
       sequencing_lane_id:
         required: false
         recommended: true
       is_pseudofile:
-        description: >-
-          Whether the Research Data File is a pseudofile or not.
         required: true
       ega_accession:
         required: false
@@ -782,35 +754,35 @@ classes:
         required: true
         inlined: false
 
-  ExperimentSupportingFile:
+  ExperimentalMethodSupportingFile:
     is_a: File
     description: >-
-      An Experiment Supporting File is a File that contains additional information relevant for the Experiment, such as (unstructured) protocols.
+      An Experimental Method Supporting File is a File that contains additional information relevant for the Experimental Method, such as (unstructured) protocols.
     slots:
       - format
-      - experiment
+      - experimental_method
     slot_usage:
       format:
         description: The file format of the Supporting File (e.g., txt, json)
         required: true
         range: SupportingFileFormatEnum
-      experiment:
+      experimental_method:
         required: true
         inlined: false
 
-  AnalysisSupportingFile:
+  AnalysisMethodSupportingFile:
     is_a: File
     description: >-
-      An Analysis Supporting File is a File that contains additional information relevant for the Analysis, such as (unstructured) protocols or task descriptions.
+      An Analysis Method Supporting File is a File that contains additional information relevant for the Analysis Method, such as (unstructured) protocols or task descriptions.
     slots:
       - format
-      - analysis
+      - analysis_method
     slot_usage:
       format:
         description: The file format of the Supporting File (e.g., txt, json)
         required: true
         range: SupportingFileFormatEnum
-      analysis:
+      analysis_method:
         required: true
         inlined: false
 
@@ -850,8 +822,8 @@ classes:
       - studies
       - research_data_files
       - process_data_files
-      - experiment_supporting_files
-      - analysis_supporting_files
+      - experimental_method_supporting_files
+      - analysis_method_supporting_files
       - individual_supporting_files
     slot_usage:
       studies:
@@ -932,15 +904,15 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
-      experiment_supporting_files:
+      experimental_method_supporting_files:
         description: >-
-          One or more Experiment Supporting Files associated with this Submission.
+          One or more Experimental Method Supporting Files associated with this Submission.
         required: false
         inlined: true
         inlined_as_list: true
-      analysis_supporting_files:
+      analysis_method_supporting_files:
         description: >-
-          One or more Analysis Supporting Files associated with this Submission.
+          One or more Analysis Method Supporting Files associated with this Submission.
         required: false
         inlined: true
         inlined_as_list: true
@@ -1096,8 +1068,8 @@ slots:
 
   datasets:
     description: The Datasets associated with an entity.
-    multivalued: true
     range: Dataset
+    multivalued: true
 
   individual:
     description: The Individual associated with an entity.
@@ -1164,26 +1136,26 @@ slots:
     range: ProcessDataFile
     multivalued: True
 
-  experiment_supporting_file:
+  experimental_method_supporting_file:
     description: >-
-      The Experiment Supporting File associated with an entity.
-    range: ExperimentSupportingFile
+      The Experimental Method Supporting File associated with an entity.
+    range: ExperimentalMethodSupportingFile
 
-  experiment_supporting_files:
+  experimental_method_supporting_files:
     description: >-
-      The Experiment Supporting Files associated with an entity.
-    range: ExperimentSupportingFile
+      The Experimental Method Supporting Files associated with an entity.
+    range: ExperimentalMethodSupportingFile
     multivalued: true
 
-  analysis_supporting_file:
+  analysis_method_supporting_file:
     description: >-
-      The Analysis Supporting File associated with an entity.
-    range: AnalysisSupportingFile
+      The Analysis Method Supporting File associated with an entity.
+    range: AnalysisMethodSupportingFile
 
-  analysis_supporting_files:
+  analysis_method_supporting_files:
     description: >-
-      The Analysis Supporting Files associated with an entity.
-    range: AnalysisSupportingFile
+      The Analysis Method Supporting Files associated with an entity.
+    range: AnalysisMethodSupportingFile
     multivalued: true
 
   individual_supporting_file:

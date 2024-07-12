@@ -9,7 +9,7 @@ erDiagram
 Submission {
 
 }
-SupportingFile {
+IndividualSupportingFile {
 
 }
 Dataset {
@@ -21,13 +21,25 @@ DataAccessPolicy {
 DataAccessCommittee {
 
 }
+Individual {
+
+}
+AnalysisMethodSupportingFile {
+
+}
+AnalysisMethod {
+
+}
+SoftwareVersion {
+
+}
+Parameter {
+
+}
 ProcessDataFile {
 
 }
 Analysis {
-
-}
-AnalysisMethod {
 
 }
 ResearchDataFile {
@@ -40,9 +52,6 @@ Attribute {
 
 }
 Sample {
-
-}
-Individual {
 
 }
 ExperimentalMethod {
@@ -68,10 +77,16 @@ Submission ||--}| ExperimentalMethod : "experimental_methods"
 Submission ||--}| Study : "studies"
 Submission ||--}| ResearchDataFile : "research_data_files"
 Submission ||--}o ProcessDataFile : "process_data_files"
-Submission ||--}o SupportingFile : "supporting_files"
-SupportingFile ||--|| Dataset : "dataset"
+Submission ||--}o AnalysisMethodSupportingFile : "analysis_method_supporting_files"
+Submission ||--}o IndividualSupportingFile : "individual_supporting_files"
+IndividualSupportingFile ||--|| Individual : "individual"
+IndividualSupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
+AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
+AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
+AnalysisMethod ||--}o Parameter : "parameters"
+AnalysisMethod ||--|o SoftwareVersion : "software_versions"
 ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
 Analysis ||--}| AnalysisMethod : "analysis_methods"
@@ -83,9 +98,7 @@ Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-Individual ||--}o SupportingFile : "supporting_files"
 ExperimentalMethod ||--}o Attribute : "attributes"
-ExperimentalMethod ||--}o SupportingFile : "supporting_files"
 Study ||--}o Attribute : "attributes"
 Publication ||--|| Study : "study"
 
@@ -106,7 +119,6 @@ Sample {
 
 }
 
-Individual ||--}o SupportingFile : "supporting_files"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 
@@ -134,7 +146,6 @@ Experiment {
 }
 
 ExperimentalMethod ||--}o Attribute : "attributes"
-ExperimentalMethod ||--}o SupportingFile : "supporting_files"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
@@ -182,12 +193,11 @@ Sample {
     VitalStatusEnum biospecimen_vital_status_at_sampling  
     string biospecimen_tissue_term  
     string biospecimen_tissue_id  
-    string biospecimen_isolation  
+    IsolationEnum biospecimen_isolation  
     StorageEnum biospecimen_storage  
     string alias  
 }
 
-Individual ||--}o SupportingFile : "supporting_files"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 
@@ -229,6 +239,7 @@ ResearchDataFile {
     string technical_replicate  
     string sequencing_lane_id  
     PseudofileEnum is_pseudofile  
+    string ega_accession  
     string name  
     integer size  
     string checksum  
@@ -252,7 +263,7 @@ Sample {
     VitalStatusEnum biospecimen_vital_status_at_sampling  
     string biospecimen_tissue_term  
     string biospecimen_tissue_id  
-    string biospecimen_isolation  
+    IsolationEnum biospecimen_isolation  
     StorageEnum biospecimen_storage  
     string alias  
 }
@@ -265,7 +276,6 @@ Experiment {
 }
 
 ExperimentalMethod ||--}o Attribute : "attributes"
-ExperimentalMethod ||--}o SupportingFile : "supporting_files"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"

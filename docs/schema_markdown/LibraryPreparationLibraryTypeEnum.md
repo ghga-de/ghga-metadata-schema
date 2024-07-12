@@ -26,4 +26,6 @@ URI: [GHGA:LibraryPreparationLibraryTypeEnum](https://w3id.org/GHGA/LibraryPrepa
 | ATAC | ATAC sequencing library |  |  |
 | METHYLATION | Methylation library |  |  |
 | CHROMOSOME_CONFORMATION_CAPTURE | Chromosome conformation capture library |  |  |
+| CHIP_SEQ | A combination of chromatin immunoprecipitation with DNA sequencing. |  |  |
+| OTHER | A library type not captured by the above vocabulary. |  |  |
 

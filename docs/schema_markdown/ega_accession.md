@@ -24,6 +24,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
  *  [Experiment➞ega_accession](Experiment_ega_accession.md)
  *  [ExperimentalMethod➞ega_accession](ExperimentalMethod_ega_accession.md)
  *  [Individual➞ega_accession](Individual_ega_accession.md)
+ *  [ProcessDataFile➞ega_accession](ProcessDataFile_ega_accession.md)
+ *  [ResearchDataFile➞ega_accession](ResearchDataFile_ega_accession.md)
  *  [Sample➞ega_accession](Sample_ega_accession.md)
  *  [Study➞ega_accession](Study_ega_accession.md)
 

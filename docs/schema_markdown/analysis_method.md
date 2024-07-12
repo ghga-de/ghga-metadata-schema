@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [AnalysisMethod](AnalysisMethod.md)
 
 ## Children
 
+ *  [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
 
 ## Used by
 

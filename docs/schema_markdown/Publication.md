@@ -30,7 +30,7 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
      * Description: The title for this Publication.
      * Range: [String](types/String.md)
  * [Publication➞abstract](Publication_abstract.md)  <sub>0..1</sub>
-     * Description: The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.
+     * Description: The study abstract that describes the goals. Can also hold abstract from a publication related to this Study
      * Range: [String](types/String.md)
  * [Publication➞author](Publication_author.md)  <sub>0..1</sub>
      * Description: Author(s) of this Publication.

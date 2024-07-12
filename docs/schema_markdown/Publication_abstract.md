@@ -2,7 +2,7 @@
 # Slot: abstract
 
 
-The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.
+The study abstract that describes the goals. Can also hold abstract from a publication related to this Study
 
 URI: [GHGA:Publication_abstract](https://w3id.org/GHGA/Publication_abstract)
 

@@ -21,12 +21,16 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [Experiment](Experiment.md) - An Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
  * [ExperimentalMethod](ExperimentalMethod.md) - The Experimental Method captures the technical parameters that were used to produce output from the Sample.
  * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+     * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md) - An Analysis Method Supporting File is a File that contains additional information relevant for the Analysis Method, such as (unstructured) protocols or task descriptions.
+     * [ExperimentalMethodSupportingFile](ExperimentalMethodSupportingFile.md) - An Experimental Method Supporting File is a File that contains additional information relevant for the Experimental Method, such as (unstructured) protocols.
+     * [IndividualSupportingFile](IndividualSupportingFile.md) - An Individual Supporting File is a File that contains additional information relevant for the Individual, such as ped-files, phenopackets or imaging data.
      * [ProcessDataFile](ProcessDataFile.md) - A Process Data File is a File that contains data produced by an Analysis or workflow.
      * [ResearchDataFile](ResearchDataFile.md) - A Research Data File is a File that contains raw data originating from an Experiment.
-     * [SupportingFile](SupportingFile.md) - A Supporting File is a File that contains additional information relevant for the entity, such as phenopackets, RO-Crates, imaging data or (unstructured) protocols.
  * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
+ * [Parameter](Parameter.md) - A key/value pair to capture parameter specifications.
  * [Publication](Publication.md) - A Publication represents an article that is published. The minimum expectation is that the publication has a valid DOI.
  * [Sample](Sample.md) - A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.
+ * [SoftwareVersion](SoftwareVersion.md) - A key/value pair to capture software version specifications.
  * [Study](Study.md) - A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
 
@@ -36,11 +40,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
  * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
+ * [ParameterMixin](ParameterMixin.md) - Mixin for entities that can have one or more parameters.
+ * [SoftwareVersionMixin](SoftwareVersionMixin.md) - Mixin for entities that can have one or more software versions.
 
 ### Slots
 
  * [abstract](abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this Study
-     * [Publication➞abstract](Publication_abstract.md) - The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.
+     * [Publication➞abstract](Publication_abstract.md)
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md) - The affiliations associated with this Study.
  * [alias](alias.md) - The alias for an entity at the time of submission.
@@ -52,13 +58,15 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md) - The alias of the Analysis that produced this Process Data File.
      * [ResearchDataFile➞analysis](ResearchDataFile_analysis.md) - The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
  * [analysis_method](analysis_method.md) - The Analysis Process associated with an entity.
+     * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
+ * [analysis_method_supporting_file](analysis_method_supporting_file.md) - The Analysis Method Supporting File associated with an entity.
+ * [analysis_method_supporting_files](analysis_method_supporting_files.md) - The Analysis Method Supporting Files associated with an entity.
+     * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
  * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
      * [Analysis➞analysis_methods](Analysis_analysis_methods.md) - The alias of one or more Analysis Methods that are associated with this Analysis.
      * [Submission➞analysis_methods](Submission_analysis_methods.md) - The Analysis Methods that are part of this Submission.
  * [ancestries](ancestries.md) - A person's descent or lineage from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
- * [anchor_entity](anchor_entity.md) - The entity this Supporting File is part of (either "Individual", "Experiment", or "Analysis").
-     * [SupportingFile➞anchor_entity](SupportingFile_anchor_entity.md) - The entity this Supporting File is part of (either "INDIVIDUAL", "EXPERIMENT", or "ANALYSIS").
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
          * [ExperimentalMethod➞attributes](ExperimentalMethod_attributes.md) - One or more attributes that further characterize this Experimental Method.
@@ -137,6 +145,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Experiment➞ega_accession](Experiment_ega_accession.md)
      * [ExperimentalMethod➞ega_accession](ExperimentalMethod_ega_accession.md) - The EGA accession of the EGA 'Assay' entity.
      * [Individual➞ega_accession](Individual_ega_accession.md)
+     * [ProcessDataFile➞ega_accession](ProcessDataFile_ega_accession.md)
+     * [ResearchDataFile➞ega_accession](ResearchDataFile_ega_accession.md)
      * [Sample➞ega_accession](Sample_ega_accession.md)
      * [Study➞ega_accession](Study_ega_accession.md)
  * [email](email.md) - Email of a Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable information.
@@ -147,6 +157,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ResearchDataFile➞experiment](ResearchDataFile_experiment.md) - The alias of the Experiment that produced this Research Data File.
  * [experimental_method](experimental_method.md) - The Experimental Method associated with an entity.
      * [Experiment➞experimental_method](Experiment_experimental_method.md) - The alias of one or more Experimental Methods that are associated with this Experiment.
+     * [ExperimentalMethodSupportingFile➞experimental_method](ExperimentalMethodSupportingFile_experimental_method.md)
+ * [experimental_method_supporting_file](experimental_method_supporting_file.md) - The Experimental Method Supporting File associated with an entity.
+ * [experimental_method_supporting_files](experimental_method_supporting_files.md) - The Experimental Method Supporting Files associated with an entity.
+     * [Submission➞experimental_method_supporting_files](Submission_experimental_method_supporting_files.md) - One or more Experimental Method Supporting Files associated with this Submission.
  * [experimental_methods](experimental_methods.md) - The Experimental Methods associated with an entity.
      * [Submission➞experimental_methods](Submission_experimental_methods.md) - The Experimental Methods that are part of this Submission.
  * [experiments](experiments.md) - The Experiments associated with an entity.
@@ -156,14 +170,20 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
      * [ExperimentalMethod➞flow_cell_type](ExperimentalMethod_flow_cell_type.md)
  * [format](format.md) - The format of the File (e.g., BAM, SAM, CRAM, BAI).
+     * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., txt, json)
+     * [ExperimentalMethodSupportingFile➞format](ExperimentalMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., txt, json)
+     * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md) - The file format of the Supporting File (e.g., txt, json)
      * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., CRAM, BAM)
      * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
-     * [SupportingFile➞format](SupportingFile_format.md) - The file format of the Supporting File (e.g., txt, json)
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
      * [Individual➞geographical_region](Individual_geographical_region.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
  * [individual](individual.md) - The Individual associated with an entity.
+     * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)
      * [Sample➞individual](Sample_individual.md) - The alias of the Individual entity from which this Biospecimen or Sample was derived.
+ * [individual_supporting_file](individual_supporting_file.md) - The Individual Supporting File associated with an entity.
+ * [individual_supporting_files](individual_supporting_files.md) - The Individual Supporting Files associated with an entity.
+     * [Submission➞individual_supporting_files](Submission_individual_supporting_files.md) - One or more Individual Supporting Files associated with this Submission.
  * [individuals](individuals.md) - The Individuals associated with an entity.
      * [Submission➞individuals](Submission_individuals.md) - One or more Individual entities associated with this Submission.
  * [institute](institute.md) - The Institute a person is affiliated with.
@@ -171,8 +191,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [instrument_model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [ExperimentalMethod➞instrument_model](ExperimentalMethod_instrument_model.md)
  * [is_pseudofile](is_pseudofile.md) - Whether a File is a pseudofile or not.
-     * [ProcessDataFile➞is_pseudofile](ProcessDataFile_is_pseudofile.md) - Whether the Process Data File is a pseudofile or not.
-     * [ResearchDataFile➞is_pseudofile](ResearchDataFile_is_pseudofile.md) - Whether the Research Data File is a pseudofile or not.
+     * [ResearchDataFile➞is_pseudofile](ResearchDataFile_is_pseudofile.md)
  * [journal](journal.md) - The name of the journal.
      * [Publication➞journal](Publication_journal.md)
  * [key](key.md) - The key of an attribute.
@@ -189,14 +208,18 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [library_selection_methods](library_selection_methods.md) - One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
      * [ExperimentalMethod➞library_selection_methods](ExperimentalMethod_library_selection_methods.md)
  * [library_type](library_type.md) - Describe the level of omics analysis (e.g., metagenome, transcriptome)
+     * [ExperimentalMethod➞library_type](ExperimentalMethod_library_type.md)
  * [name](name.md) - The name for an entity.
      * [AnalysisMethod➞name](AnalysisMethod_name.md)
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for this Data Access Policy.
      * [ExperimentalMethod➞name](ExperimentalMethod_name.md) - A short name identifying this Experimental Method.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
- * [parameters](parameters.md) - Non-default parameters and the corresponding value.
-     * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
+ * [parameter_name](parameter_name.md) - The parameter name.
+     * [Parameter➞parameter_name](Parameter_parameter_name.md)
+ * [parameters](parameters.md) - Parameter/value pairs corresponding to an entity.
+     * [ParameterMixin➞parameters](ParameterMixin_parameters.md)
+         * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
  * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
      * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
  * [phenotypic_features_terms](phenotypic_features_terms.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
@@ -235,19 +258,17 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞sex](Individual_sex.md)
  * [size](size.md) - The size of the File in bytes.
      * [File➞size](File_size.md)
- * [software_versions](software_versions.md) - Software used during the Analysis and the corresponding software version.
-     * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
+ * [software](software.md) - The software name.
+     * [SoftwareVersion➞software](SoftwareVersion_software.md)
+ * [software_versions](software_versions.md) - Software/version pairs corresponding to an entity.
+     * [SoftwareVersionMixin➞software_versions](SoftwareVersionMixin_software_versions.md)
+         * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
-     * [Sample➞storage](Sample_storage.md) - Methods by which this Sample is stored.
+     * [Sample➞storage](Sample_storage.md)
  * [studies](studies.md) - The Study associated with an entity.
      * [Submission➞studies](Submission_studies.md) - Study entities associated with this Submission.
  * [study](study.md) - The Study associated with an entity.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
- * [supporting_file](supporting_file.md) - The Supporting File associated with an entity.
- * [supporting_files](supporting_files.md) - The Supporting Files associated with an entity.
-     * [ExperimentalMethod➞supporting_files](ExperimentalMethod_supporting_files.md) - The alias of one or more Supporting Files that are associated with this Experimental Method.
-     * [Individual➞supporting_files](Individual_supporting_files.md) - The alias of one or more Supporting Files that are associated with this Individual.
-     * [Submission➞supporting_files](Submission_supporting_files.md) - One or more Supporting Files associated with this Submission.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
      * [ExperimentalMethod➞target_coverage](ExperimentalMethod_target_coverage.md)
  * [target_regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
@@ -271,8 +292,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Study➞types](Study_types.md) - One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
  * [value](value.md) - The value for an attribute (e.g., a numerical value without the units).
      * [Attribute➞value](Attribute_value.md)
+     * [Parameter➞value](Parameter_value.md)
  * [value_type](value_type.md) - The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).
      * [Attribute➞value_type](Attribute_value_type.md)
+ * [version](version.md) - The software version.
+     * [SoftwareVersion➞version](SoftwareVersion_version.md)
  * [workflow_doi](workflow_doi.md) - A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
      * [AnalysisMethod➞workflow_doi](AnalysisMethod_workflow_doi.md)
  * [workflow_name](workflow_name.md) - The workflow name
@@ -317,7 +341,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [SequencingProtocolSequencingLayoutEnum](SequencingProtocolSequencingLayoutEnum.md) - Single-end vs paired-end sequencing
  * [StorageEnum](StorageEnum.md) - Enum to capture how a Sample or Biospecimen was stored.
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.
- * [SupportingFileAnchorEntityEnum](SupportingFileAnchorEntityEnum.md) - Enum to capture the anchoring entity of the Supporting Files.
  * [SupportingFileFormatEnum](SupportingFileFormatEnum.md) - Enum to capture Supporting File types.
  * [TissueEnum](TissueEnum.md) - A tissue as described in the BRENDA ontology.
  * [VitalStatusEnum](VitalStatusEnum.md) - Enum to capture the vital status of an individual.

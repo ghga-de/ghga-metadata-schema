@@ -2,7 +2,7 @@
 # Slot: storage
 
 
-Methods by which this Sample is stored.
+Methods by which a Sample is stored.
 
 URI: [GHGA:Sample_storage](https://w3id.org/GHGA/Sample_storage)
 

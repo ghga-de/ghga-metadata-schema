@@ -23,7 +23,6 @@ URI: [GHGA:ontology](https://w3id.org/GHGA/ontology)
  * [Individual➞phenotypic_features_terms](Individual_phenotypic_features_terms.md)
  * [Sample➞biospecimen_isolation](Sample_biospecimen_isolation.md) - Method or device employed for collecting/isolating this Biospecimen.
  * [Sample➞biospecimen_tissue_term](Sample_biospecimen_tissue_term.md)
- * [Sample➞type](Sample_type.md) - The type of the Sample.
  * [ancestries](ancestries.md) - A person's descent or lineage from a population.
  * [biospecimen_isolation](biospecimen_isolation.md) - Method or device employed for collecting/isolating a Biospecimen or a Sample.
  * [biospecimen_tissue_term](biospecimen_tissue_term.md) - The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).

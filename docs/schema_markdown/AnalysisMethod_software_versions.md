@@ -2,18 +2,18 @@
 # Slot: software_versions
 
 
-Software used during the Analysis and the corresponding software version.
+Software/version pairs corresponding to an entity.
 
 URI: [GHGA:AnalysisMethod_software_versions](https://w3id.org/GHGA/AnalysisMethod_software_versions)
 
 
 ## Domain and Range
 
-[AnalysisMethod](AnalysisMethod.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[AnalysisMethod](AnalysisMethod.md) &#8594;  <sub>0..1</sub> [SoftwareVersion](SoftwareVersion.md)
 
 ## Parents
 
- *  is_a: [software_versions](software_versions.md)
+ *  is_a: [SoftwareVersionMixin➞software_versions](SoftwareVersionMixin_software_versions.md)
 
 ## Children
 

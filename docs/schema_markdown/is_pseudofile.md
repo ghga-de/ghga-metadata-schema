@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [PseudofileEnum](PseudofileEnum.md)
 
 ## Children
 
- *  [ProcessDataFile➞is_pseudofile](ProcessDataFile_is_pseudofile.md)
  *  [ResearchDataFile➞is_pseudofile](ResearchDataFile_is_pseudofile.md)
 
 ## Used by

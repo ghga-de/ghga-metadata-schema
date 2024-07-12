@@ -2,7 +2,7 @@
 # Slot: is_pseudofile
 
 
-Whether the Research Data File is a pseudofile or not.
+Whether a File is a pseudofile or not.
 
 URI: [GHGA:ResearchDataFile_is_pseudofile](https://w3id.org/GHGA/ResearchDataFile_is_pseudofile)
 

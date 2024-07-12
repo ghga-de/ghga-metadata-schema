@@ -20,7 +20,9 @@ URI: [GHGA:File_size](https://w3id.org/GHGA/File_size)
 
 ## Used by
 
+ * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)
+ * [ExperimentalMethodSupportingFile](ExperimentalMethodSupportingFile.md)
  * [File](File.md)
+ * [IndividualSupportingFile](IndividualSupportingFile.md)
  * [ProcessDataFile](ProcessDataFile.md)
  * [ResearchDataFile](ResearchDataFile.md)
- * [SupportingFile](SupportingFile.md)
