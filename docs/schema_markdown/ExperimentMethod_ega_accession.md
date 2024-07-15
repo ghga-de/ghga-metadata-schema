@@ -2,7 +2,7 @@
 # Slot: ega_accession
 
 
-The EGA accession of the EGA 'Experiment' entity.
+The EGA accession of the 'Experiment' entity (EGAX).
 
 URI: [GHGA:ExperimentMethod_ega_accession](https://w3id.org/GHGA/ExperimentMethod_ega_accession)
 

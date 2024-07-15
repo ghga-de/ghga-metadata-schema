@@ -2,7 +2,7 @@
 # Slot: ega_accession
 
 
-The EGA accession of the EGA 'Analysis' entity.
+The EGA accession of the 'Analysis' entity (EGAZ).
 
 URI: [GHGA:AnalysisMethod_ega_accession](https://w3id.org/GHGA/AnalysisMethod_ega_accession)
 

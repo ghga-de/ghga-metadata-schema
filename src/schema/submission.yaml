@@ -290,7 +290,7 @@ classes:
         recommended: true
       ega_accession:
         description: >-
-          The EGA accession of the EGA 'Experiment' entity.
+          The EGA accession of the 'Experiment' entity (EGAX).
         required: false
       attributes:
         description: >-
@@ -513,7 +513,7 @@ classes:
         recommended: true
       ega_accession:
         description: >-
-          The EGA accession of the EGA 'Analysis' entity.
+          The EGA accession of the 'Analysis' entity (EGAZ).
         required: false
 
   Dataset:
@@ -766,7 +766,7 @@ classes:
       - experiment_method
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., TXT, JSON)
+        description: The file format of the Supporting File (e.g., TXT, JSON).
         required: true
         range: SupportingFileFormatEnum
       experiment_method:
@@ -782,7 +782,7 @@ classes:
       - analysis_method
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., TXT, JSON)
+        description: The file format of the Supporting File (e.g., TXT, JSON).
         required: true
         range: SupportingFileFormatEnum
       analysis_method:

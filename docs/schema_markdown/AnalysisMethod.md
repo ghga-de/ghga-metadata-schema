@@ -59,7 +59,7 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
      * Description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * Range: [SoftwareVersion](SoftwareVersion.md)
  * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md)  <sub>0..1</sub>
-     * Description: The EGA accession of the EGA 'Analysis' entity.
+     * Description: The EGA accession of the 'Analysis' entity (EGAZ).
      * Range: [String](types/String.md)
  * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..\*</sub>
      * Description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).

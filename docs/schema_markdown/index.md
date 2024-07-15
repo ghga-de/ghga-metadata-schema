@@ -137,12 +137,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [doi](doi.md) - DOI identifier of a publication.
      * [Publication➞doi](Publication_doi.md)
  * [ega_accession](ega_accession.md) - The EGA accession ID of an entity.
-     * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md) - The EGA accession of the EGA 'Analysis' entity.
+     * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md) - The EGA accession of the 'Analysis' entity (EGAZ).
      * [Analysis➞ega_accession](Analysis_ega_accession.md)
      * [DataAccessCommittee➞ega_accession](DataAccessCommittee_ega_accession.md)
      * [DataAccessPolicy➞ega_accession](DataAccessPolicy_ega_accession.md)
      * [Dataset➞ega_accession](Dataset_ega_accession.md)
-     * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md) - The EGA accession of the EGA 'Experiment' entity.
+     * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md) - The EGA accession of the 'Experiment' entity (EGAX).
      * [Experiment➞ega_accession](Experiment_ega_accession.md)
      * [Individual➞ega_accession](Individual_ega_accession.md)
      * [ProcessDataFile➞ega_accession](ProcessDataFile_ega_accession.md)
@@ -170,8 +170,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
      * [ExperimentMethod➞flow_cell_type](ExperimentMethod_flow_cell_type.md)
  * [format](format.md) - The format of the File (e.g., BAM, SAM, CRAM, BAI).
-     * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON)
-     * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON)
+     * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
+     * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
      * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
      * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., CRAM, BAM).
      * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).

@@ -2,7 +2,7 @@
 # Slot: format
 
 
-The file format of the Supporting File (e.g., TXT, JSON)
+The file format of the Supporting File (e.g., TXT, JSON).
 
 URI: [GHGA:ExperimentMethodSupportingFile_format](https://w3id.org/GHGA/ExperimentMethodSupportingFile_format)
 

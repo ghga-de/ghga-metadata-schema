@@ -25,7 +25,7 @@ URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMetho
 ### Own
 
  * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., TXT, JSON)
+     * Description: The file format of the Supporting File (e.g., TXT, JSON).
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)  <sub>1..1</sub>
      * Description: The Experiment Method associated with an entity.

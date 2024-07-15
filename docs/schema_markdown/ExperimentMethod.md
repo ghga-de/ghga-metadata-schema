@@ -88,7 +88,7 @@ URI: [GHGA:ExperimentMethod](https://w3id.org/GHGA/ExperimentMethod)
      * Description: The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
      * Range: [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md)
  * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md)  <sub>0..1</sub>
-     * Description: The EGA accession of the EGA 'Experiment' entity.
+     * Description: The EGA accession of the 'Experiment' entity (EGAX).
      * Range: [String](types/String.md)
  * [attributes](attributes.md)  <sub>0..\*</sub>
      * Description: Key/value pairs corresponding to an entity.
