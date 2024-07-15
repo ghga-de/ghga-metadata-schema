@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentalMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentalMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentalMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentalMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])
 
 ## Uses Mixin
 
@@ -16,7 +16,7 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
 ## Children
 
  * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md) - An Analysis Method Supporting File is a File that contains additional information relevant for the Analysis Method, such as (unstructured) protocols or task descriptions.
- * [ExperimentalMethodSupportingFile](ExperimentalMethodSupportingFile.md) - An Experimental Method Supporting File is a File that contains additional information relevant for the Experimental Method, such as (unstructured) protocols.
+ * [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md) - An Experiment Method Supporting File is a File that contains additional information relevant for the Experiment Method, such as (unstructured) protocols.
  * [IndividualSupportingFile](IndividualSupportingFile.md) - An Individual Supporting File is a File that contains additional information relevant for the Individual, such as ped-files, phenopackets or imaging data.
  * [ProcessDataFile](ProcessDataFile.md) - A Process Data File is a File that contains data produced by an Analysis or workflow.
  * [ResearchDataFile](ResearchDataFile.md) - A Research Data File is a File that contains raw data originating from an Experiment.

@@ -2,7 +2,7 @@
 # Enum: EndBiasEnum
 
 
-Permitted values for end bias
+Permitted values for end bias.
 
 URI: [GHGA:EndBiasEnum](https://w3id.org/GHGA/EndBiasEnum)
 

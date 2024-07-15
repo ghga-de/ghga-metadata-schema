@@ -2,7 +2,7 @@
 # Slot: parameters
 
 
-Parameter/value pairs corresponding to an entity.
+Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
 
 URI: [GHGA:parameters](https://w3id.org/GHGA/parameters)
 

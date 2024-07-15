@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [ExperimentalMethod➞target_coverage](ExperimentalMethod_target_coverage.md)
+ *  [ExperimentMethod➞target_coverage](ExperimentMethod_target_coverage.md)
 
 ## Used by
 

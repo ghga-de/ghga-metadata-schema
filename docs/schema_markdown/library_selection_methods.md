@@ -16,7 +16,7 @@ None &#8594;  <sub>0..\*</sub> [LibraryPreparationLibrarySelectionEnum](LibraryP
 
 ## Children
 
- *  [ExperimentalMethod➞library_selection_methods](ExperimentalMethod_library_selection_methods.md)
+ *  [ExperimentMethod➞library_selection_methods](ExperimentMethod_library_selection_methods.md)
 
 ## Used by
 

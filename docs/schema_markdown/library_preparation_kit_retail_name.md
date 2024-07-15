@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [LibraryPreparationKitRetailNameEnum](LibraryPrepa
 
 ## Children
 
- *  [ExperimentalMethod➞library_preparation_kit_retail_name](ExperimentalMethod_library_preparation_kit_retail_name.md)
+ *  [ExperimentMethod➞library_preparation_kit_retail_name](ExperimentMethod_library_preparation_kit_retail_name.md)
 
 ## Used by
 

@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [ExperimentalMethod➞library_preparation_kit_manufacturer](ExperimentalMethod_library_preparation_kit_manufacturer.md)
+ *  [ExperimentMethod➞library_preparation_kit_manufacturer](ExperimentMethod_library_preparation_kit_manufacturer.md)
 
 ## Used by
 

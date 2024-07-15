@@ -2,7 +2,7 @@
 # Slot: format
 
 
-The file format of the Process Data File (e.g., CRAM, BAM)
+The file format of the Process Data File (e.g., CRAM, BAM).
 
 URI: [GHGA:ProcessDataFile_format](https://w3id.org/GHGA/ProcessDataFile_format)
 

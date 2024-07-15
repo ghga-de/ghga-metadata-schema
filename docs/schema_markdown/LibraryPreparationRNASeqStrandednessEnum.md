@@ -2,7 +2,7 @@
 # Enum: LibraryPreparationRNASeqStrandednessEnum
 
 
-Permitted values for library preparation RNASeq strandedness
+Permitted values for library preparation RNASeq strandedness.
 
 URI: [GHGA:LibraryPreparationRNASeqStrandednessEnum](https://w3id.org/GHGA/LibraryPreparationRNASeqStrandednessEnum)
 

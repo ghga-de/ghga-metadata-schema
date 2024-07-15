@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [ExperimentalMethod➞flow_cell_id](ExperimentalMethod_flow_cell_id.md)
+ *  [ExperimentMethod➞flow_cell_id](ExperimentMethod_flow_cell_id.md)
 
 ## Used by
 

@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [InstrumentModelEnum](InstrumentModelEnum.md)
 
 ## Children
 
- *  [ExperimentalMethod➞instrument_model](ExperimentalMethod_instrument_model.md)
+ *  [ExperimentMethod➞instrument_model](ExperimentMethod_instrument_model.md)
 
 ## Used by
 

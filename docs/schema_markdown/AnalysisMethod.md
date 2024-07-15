@@ -29,22 +29,22 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
 ### Own
 
  * [AnalysisMethod➞name](AnalysisMethod_name.md)  <sub>1..1</sub>
-     * Description: The name for an entity.
+     * Description: A name identifying this Analysis Method.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞description](AnalysisMethod_description.md)  <sub>1..1</sub>
      * Description: Description of an entity.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞type](AnalysisMethod_type.md)  <sub>1..1</sub>
-     * Description: The type of an entity. Note: Not to be confused with rdf:type
+     * Description: The type of an entity. Note: Not to be confused with rdf:type.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞workflow_name](AnalysisMethod_workflow_name.md)  <sub>1..1</sub>
-     * Description: The workflow name
+     * Description: The workflow name.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞workflow_version](AnalysisMethod_workflow_version.md)  <sub>0..1</sub>
-     * Description: The workflow version
+     * Description: The workflow version.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞workflow_repository](AnalysisMethod_workflow_repository.md)  <sub>1..1</sub>
-     * Description: The workflow repository (e.g., the URL)
+     * Description: The workflow repository (e.g., the URL).
      * Range: [String](types/String.md)
  * [AnalysisMethod➞workflow_doi](AnalysisMethod_workflow_doi.md)  <sub>1..1</sub>
      * Description: A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
@@ -53,19 +53,19 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
      * Description: Tasks performed by the workflow
      * Range: [String](types/String.md)
  * [parameters](parameters.md)  <sub>0..\*</sub>
-     * Description: Parameter/value pairs corresponding to an entity.
+     * Description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
      * Range: [Parameter](Parameter.md)
  * [software_versions](software_versions.md)  <sub>0..1</sub>
-     * Description: Software/version pairs corresponding to an entity.
+     * Description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * Range: [SoftwareVersion](SoftwareVersion.md)
  * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md)  <sub>0..1</sub>
-     * Description: The EGA accession of the EGA 'Protocol' entity.
+     * Description: The EGA accession of the EGA 'Analysis' entity.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..\*</sub>
-     * Description: Parameter/value pairs corresponding to an entity.
+     * Description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
      * Range: [Parameter](Parameter.md)
  * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..1</sub>
-     * Description: Software/version pairs corresponding to an entity.
+     * Description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * Range: [SoftwareVersion](SoftwareVersion.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

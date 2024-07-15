@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [FlowCellTypeEnum](FlowCellTypeEnum.md)
 
 ## Children
 
- *  [ExperimentalMethod➞flow_cell_type](ExperimentalMethod_flow_cell_type.md)
+ *  [ExperimentMethod➞flow_cell_type](ExperimentMethod_flow_cell_type.md)
 
 ## Used by
 

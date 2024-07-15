@@ -18,7 +18,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  *  [AnalysisMethod➞name](AnalysisMethod_name.md)
  *  [DataAccessPolicy➞name](DataAccessPolicy_name.md)
- *  [ExperimentalMethod➞name](ExperimentalMethod_name.md)
+ *  [ExperimentMethod➞name](ExperimentMethod_name.md)
  *  [File➞name](File_name.md)
  *  [Sample➞name](Sample_name.md)
 

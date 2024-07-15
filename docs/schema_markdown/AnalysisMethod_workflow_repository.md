@@ -2,7 +2,7 @@
 # Slot: workflow_repository
 
 
-The workflow repository (e.g., the URL)
+The workflow repository (e.g., the URL).
 
 URI: [GHGA:AnalysisMethod_workflow_repository](https://w3id.org/GHGA/AnalysisMethod_workflow_repository)
 

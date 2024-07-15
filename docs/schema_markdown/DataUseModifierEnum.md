@@ -2,7 +2,7 @@
 # Enum: DataUseModifierEnum
 
 
-Permitted values for data use modifier
+Permitted values for data use modifier.
 
 URI: [GHGA:DataUseModifierEnum](https://w3id.org/GHGA/DataUseModifierEnum)
 

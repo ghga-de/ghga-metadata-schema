@@ -25,7 +25,7 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 ### Own
 
  * [ResearchDataFile➞format](ResearchDataFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
+     * Description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
      * Range: [ResearchDataFileFormatEnum](ResearchDataFileFormatEnum.md)
  * [ResearchDataFile➞technical_replicate](ResearchDataFile_technical_replicate.md)  <sub>1..1</sub>
      * Description: An integer to indicate the technical replicate of this File.

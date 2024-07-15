@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [PrimerEnum](PrimerEnum.md)
 
 ## Children
 
- *  [ExperimentalMethod➞primer](ExperimentalMethod_primer.md)
+ *  [ExperimentMethod➞primer](ExperimentMethod_primer.md)
 
 ## Used by
 

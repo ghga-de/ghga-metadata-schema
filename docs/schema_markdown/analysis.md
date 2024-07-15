@@ -2,7 +2,7 @@
 # Slot: analysis
 
 
-The Analysis associated with an entity
+The Analysis associated with an entity.
 
 URI: [GHGA:analysis](https://w3id.org/GHGA/analysis)
 

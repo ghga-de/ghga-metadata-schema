@@ -2,7 +2,7 @@
 # Slot: biospecimen_type
 
 
-The type of a biospecimen. Note: Not to be confused with rdf:type
+The type of a biospecimen. Note: Not to be confused with rdf:type.
 
 URI: [GHGA:biospecimen_type](https://w3id.org/GHGA/biospecimen_type)
 

@@ -33,7 +33,7 @@ URI: [GHGA:Analysis](https://w3id.org/GHGA/Analysis)
      * Description: The title that describes an entity.
      * Range: [String](types/String.md)
  * [Analysis➞description](Analysis_description.md)  <sub>0..1</sub>
-     * Description: A description summarizing how this Analysis was carried out (e.g., computational tools, pipelines, workflows).
+     * Description: A description summarizing how this Analysis was carried out (e.g., description of computational tools, pipelines, workflows).
      * Range: [String](types/String.md)
  * [Analysis➞type](Analysis_type.md)  <sub>0..1</sub>
      * Description: The type of this Analysis.

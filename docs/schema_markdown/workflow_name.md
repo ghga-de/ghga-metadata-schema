@@ -2,7 +2,7 @@
 # Slot: workflow_name
 
 
-The workflow name
+The workflow name.
 
 URI: [GHGA:workflow_name](https://w3id.org/GHGA/workflow_name)
 

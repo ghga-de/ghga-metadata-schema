@@ -25,7 +25,7 @@ URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSup
 ### Own
 
  * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., txt, json)
+     * Description: The file format of the Supporting File (e.g., TXT, JSON)
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)  <sub>1..1</sub>
      * Description: The Analysis Process associated with an entity.

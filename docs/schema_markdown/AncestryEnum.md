@@ -2,7 +2,7 @@
 # Enum: AncestryEnum
 
 
-Permitted values for ancestry
+Permitted values for ancestry.
 
 URI: [GHGA:AncestryEnum](https://w3id.org/GHGA/AncestryEnum)
 

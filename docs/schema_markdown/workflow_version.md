@@ -2,7 +2,7 @@
 # Slot: workflow_version
 
 
-The workflow version
+The workflow version.
 
 URI: [GHGA:workflow_version](https://w3id.org/GHGA/workflow_version)
 

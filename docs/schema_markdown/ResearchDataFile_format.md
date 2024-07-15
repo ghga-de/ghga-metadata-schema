@@ -2,7 +2,7 @@
 # Slot: format
 
 
-The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
+The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
 
 URI: [GHGA:ResearchDataFile_format](https://w3id.org/GHGA/ResearchDataFile_format)
 

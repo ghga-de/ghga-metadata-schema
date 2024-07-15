@@ -17,7 +17,7 @@ URI: [GHGA:AttributeMixin_attributes](https://w3id.org/GHGA/AttributeMixin_attri
 
 ## Children
 
- *  [ExperimentalMethod➞attributes](ExperimentalMethod_attributes.md)
+ *  [ExperimentMethod➞attributes](ExperimentMethod_attributes.md)
  *  [Study➞attributes](Study_attributes.md)
 
 ## Used by

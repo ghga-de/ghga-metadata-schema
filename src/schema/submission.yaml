@@ -173,16 +173,16 @@ classes:
     exact_mappings:
       - SIO:000994
     slots:
-      - experimental_method
+      - experiment_method
       - title
       - description
       - type
       - ega_accession
       - sample
     slot_usage:
-      experimental_method:
+      experiment_method:
         description: >-
-          The alias of one or more Experimental Methods that are associated with this Experiment.
+          The alias of one or more Experiment Methods that are associated with this Experiment.
         required: true
       title:
         description: >-
@@ -203,12 +203,12 @@ classes:
         required: true
         inlined: false
 
-  ExperimentalMethod:
+  ExperimentMethod:
     mixins:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      The Experimental Method captures the technical parameters that were used to produce output from the Sample.
+      The Experiment Method captures technical metadata describing the parameters used to generate output from the Sample.
     slots:
       - name
       - description
@@ -235,15 +235,15 @@ classes:
     slot_usage:
       name:
         description: >-
-          A short name identifying this Experimental Method.
+          A short name identifying this Experiment Method.
         required: true
       description:
         description: >-
-          A short description of this Experimental Method.
+          A short description of this Experiment Method.
         required: true
       type:
         description: >-
-          The type associated with this Experimental Method.
+          The type associated with this Experiment Method.
         required: true
       library_type:
         required: true
@@ -290,11 +290,11 @@ classes:
         recommended: true
       ega_accession:
         description: >-
-          The EGA accession of the EGA 'Assay' entity.
+          The EGA accession of the EGA 'Experiment' entity.
         required: false
       attributes:
         description: >-
-          One or more attributes that further characterize this Experimental Method.
+          One or more attributes that further characterize this Experiment Method.
         required: false
 
   Sample:
@@ -456,7 +456,7 @@ classes:
         required: true
       description:
         description: >-
-          A description summarizing how this Analysis was carried out (e.g., computational tools, pipelines, workflows).
+          A description summarizing how this Analysis was carried out (e.g., description of computational tools, pipelines, workflows).
         required: false
       type:
         description: >-
@@ -486,6 +486,8 @@ classes:
       - ega_accession
     slot_usage:
       name:
+        description: >-
+          A name identifying this Analysis Method.
         required: true
       description:
         required: true
@@ -511,7 +513,7 @@ classes:
         recommended: true
       ega_accession:
         description: >-
-          The EGA accession of the EGA 'Protocol' entity.
+          The EGA accession of the EGA 'Analysis' entity.
         required: false
 
   Dataset:
@@ -709,7 +711,7 @@ classes:
       - analysis
     slot_usage:
       format:
-        description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)
+        description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
         required: true
         range: ResearchDataFileFormatEnum
       technical_replicate:
@@ -744,7 +746,7 @@ classes:
       - analysis
     slot_usage:
       format:
-        description: The file format of the Process Data File (e.g., CRAM, BAM)
+        description: The file format of the Process Data File (e.g., CRAM, BAM).
         required: true
         range: ProcessDataFileFormatEnum
       ega_accession:
@@ -755,19 +757,19 @@ classes:
         required: true
         inlined: false
 
-  ExperimentalMethodSupportingFile:
+  ExperimentMethodSupportingFile:
     is_a: File
     description: >-
-      An Experimental Method Supporting File is a File that contains additional information relevant for the Experimental Method, such as (unstructured) protocols.
+      An Experiment Method Supporting File is a File that contains additional information relevant for the Experiment Method, such as (unstructured) protocols.
     slots:
       - format
-      - experimental_method
+      - experiment_method
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., txt, json)
+        description: The file format of the Supporting File (e.g., TXT, JSON)
         required: true
         range: SupportingFileFormatEnum
-      experimental_method:
+      experiment_method:
         required: true
         inlined: false
 
@@ -780,7 +782,7 @@ classes:
       - analysis_method
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., txt, json)
+        description: The file format of the Supporting File (e.g., TXT, JSON)
         required: true
         range: SupportingFileFormatEnum
       analysis_method:
@@ -796,7 +798,7 @@ classes:
       - individual
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., txt, json)
+        description: The file format of the Supporting File (e.g., TXT, JSON).
         required: true
         range: SupportingFileFormatEnum
       individual:
@@ -819,11 +821,11 @@ classes:
       - publications
       - samples
       - experiments
-      - experimental_methods
+      - experiment_methods
       - studies
       - research_data_files
       - process_data_files
-      - experimental_method_supporting_files
+      - experiment_method_supporting_files
       - analysis_method_supporting_files
       - individual_supporting_files
     slot_usage:
@@ -857,9 +859,9 @@ classes:
         required: true
         inlined: true
         inlined_as_list: true
-      experimental_methods:
+      experiment_methods:
         description: >-
-          The Experimental Methods that are part of this Submission.
+          The Experiment Methods that are part of this Submission.
         required: true
         inlined: true
         inlined_as_list: true
@@ -905,9 +907,9 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
-      experimental_method_supporting_files:
+      experiment_method_supporting_files:
         description: >-
-          One or more Experimental Method Supporting Files associated with this Submission.
+          One or more Experiment Method Supporting Files associated with this Submission.
         required: false
         inlined: true
         inlined_as_list: true
@@ -954,7 +956,7 @@ slots:
     description: The parameter name.
 
   parameters:
-    description: Parameter/value pairs corresponding to an entity.
+    description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
     range: Parameter
     multivalued: true
 
@@ -965,18 +967,18 @@ slots:
     description: The software version.
 
   software_versions:
-    description: Software/version pairs corresponding to an entity.
+    description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
     range: SoftwareVersion
 
   type:
     description: >-
       The type of an entity.
-      Note: Not to be confused with rdf:type
+      Note: Not to be confused with rdf:type.
 
   types:
     description: >-
       The types of an entity.
-      Note: Not to be confused with rdf:type
+      Note: Not to be confused with rdf:type.
     multivalued: True
 
   name:
@@ -1021,13 +1023,13 @@ slots:
     range: Experiment
     multivalued: true
 
-  experimental_method:
-    description: The Experimental Method associated with an entity.
-    range: ExperimentalMethod
+  experiment_method:
+    description: The Experiment Method associated with an entity.
+    range: ExperimentMethod
 
-  experimental_methods:
-    description: The Experimental Methods associated with an entity.
-    range: ExperimentalMethod
+  experiment_methods:
+    description: The Experiment Methods associated with an entity.
+    range: ExperimentMethod
     multivalued: true
 
   analyses:
@@ -1036,7 +1038,7 @@ slots:
     multivalued: true
 
   analysis:
-    description: The Analysis associated with an entity
+    description: The Analysis associated with an entity.
     range: Analysis
 
   analysis_method:
@@ -1049,13 +1051,13 @@ slots:
     multivalued: true
 
   workflow_name:
-    description: The workflow name
+    description: The workflow name.
 
   workflow_version:
-    description: The workflow version
+    description: The workflow version.
 
   workflow_repository:
-    description: The workflow repository (e.g., the URL)
+    description: The workflow repository (e.g., the URL).
 
   workflow_doi:
     description: A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
@@ -1137,15 +1139,15 @@ slots:
     range: ProcessDataFile
     multivalued: True
 
-  experimental_method_supporting_file:
+  experiment_method_supporting_file:
     description: >-
-      The Experimental Method Supporting File associated with an entity.
-    range: ExperimentalMethodSupportingFile
+      The Experiment Method Supporting File associated with an entity.
+    range: ExperimentMethodSupportingFile
 
-  experimental_method_supporting_files:
+  experiment_method_supporting_files:
     description: >-
-      The Experimental Method Supporting Files associated with an entity.
-    range: ExperimentalMethodSupportingFile
+      The Experiment Method Supporting Files associated with an entity.
+    range: ExperimentMethodSupportingFile
     multivalued: true
 
   analysis_method_supporting_file:
@@ -1230,7 +1232,7 @@ slots:
 
   library_type:
     description: >-
-      Describe the level of omics analysis (e.g., metagenome, transcriptome)
+      Describe the level of omics analysis (e.g., WGS, ATAC).
     range: LibraryPreparationLibraryTypeEnum
 
   library_selection_methods:
@@ -1340,7 +1342,7 @@ slots:
   biospecimen_type:
     description: >-
       The type of a biospecimen.
-      Note: Not to be confused with rdf:type
+      Note: Not to be confused with rdf:type.
 
   biospecimen_description:
     description: >-
@@ -1421,7 +1423,7 @@ slots:
   abstract:
     description: >-
       The study abstract that describes the goals.
-      Can also hold abstract from a publication related to this Study
+      Can also hold abstract from a publication related to this Study.
 
   author:
     description: >-
@@ -1463,12 +1465,11 @@ slots:
 subsets:
   ontology:
     description: >-
-      This slot is part of an ontology which is currently not otherwise encoded
-      in the schema.
+      This slot is part of an ontology which is currently not otherwise encoded in the schema.
 
 enums:
   DataUseModifierEnum:
-    description: Permitted values for data use modifier
+    description: Permitted values for data use modifier.
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
       source_nodes:
@@ -1550,7 +1551,7 @@ enums:
           This data use modifier indicates use for purposes of population, origin, or ancestry research is prohibited.
 
   DataUsePermissionEnum:
-    description: Permitted values for data use permission
+    description: Permitted values for data use permission.
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
       source_nodes:
@@ -1579,7 +1580,7 @@ enums:
           This data use permission indicates that use of the data is limited to the study of population origins or ancestry.
 
   AncestryEnum:
-    description: Permitted values for ancestry
+    description: Permitted values for ancestry.
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/hancestro/releases/2022-05-12/hancestro.owl
       source_nodes:
@@ -1587,7 +1588,7 @@ enums:
       include_self: false
 
   GeographicalRegionEnum:
-    description: Permitted values for geographical region
+    description: Permitted values for geographical region.
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/hancestro/releases/2022-05-12/hancestro.owl
       source_nodes:
@@ -1595,7 +1596,7 @@ enums:
       include_self: false
 
   PhenotypicFeaturesEnum:
-    description: An enum describing permissible phenotype descriptors
+    description: An enum describing permissible phenotype descriptors.
     include:
       - reachable_from:
           source_ontology: http://purl.obolibrary.org/obo/hp/releases/2023-04-05/hp-international.owl
@@ -1944,7 +1945,7 @@ enums:
 
   LibraryPreparationLibraryTypeEnum:
     description: >-
-      The type of the library
+      The type of the library.
     permissible_values:
       WGS:
         description: >-
@@ -1985,7 +1986,7 @@ enums:
 
   LibraryPreparationLibrarySelectionEnum:
     description: >-
-      Permitted vocabulary for library selections
+      Permitted vocabulary for library selections.
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/genepio/releases/2023-08-19/genepio.owl
       source_nodes:
@@ -2094,7 +2095,7 @@ enums:
 
   LibraryPreparationKitRetailNameEnum:
     description: >-
-      Permitted values for library preparation kit retail name
+      Permitted values for library preparation kit retail name.
     permissible_values:
       10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2:
         description: >-
@@ -2579,10 +2580,13 @@ enums:
       ULTRALOW_METHYL_SEQ_WITH_TRUE_METHYL_OX_BS:
         description: >-
           TECAN Ultralow Methyl-Seq with TrueMethyl oxBS
+      OTHER:
+        description: >-
+          A Library Preparation Kit not captured by the controlled vocabulary.
 
   LibraryPreparationRNASeqStrandednessEnum:
     description: >-
-      Permitted values for library preparation RNASeq strandedness
+      Permitted values for library preparation RNASeq strandedness.
     permissible_values:
       SENSE:
         meaning: NCIT:C63550
@@ -2599,7 +2603,7 @@ enums:
 
   PrimerEnum:
     description: >-
-      Permitted values for primer
+      Permitted values for primer.
     permissible_values:
       OLIGO_D_T:
         meaning: EFO:0010215
@@ -2618,7 +2622,7 @@ enums:
 
   EndBiasEnum:
     description: >-
-      Permitted values for end bias
+      Permitted values for end bias.
     permissible_values:
       3_PRIME_END:
         description: >-
@@ -2632,7 +2636,7 @@ enums:
 
   SequencingProtocolSequencingLayoutEnum:
     description: >-
-      Single-end vs paired-end sequencing
+      Single-end vs paired-end sequencing.
     permissible_values:
       SE:
         description: >-
@@ -2643,7 +2647,7 @@ enums:
 
   InstrumentModelEnum:
     description: >-
-      Permitted values for the instrument model
+      Permitted values for the instrument model.
     permissible_values:
       454_GS:
         description: >-
@@ -2839,50 +2843,50 @@ enums:
           UG 100
       UNSPECIFIED:
         description: >-
-          Instrument model is unspecified
+          Instrument model is unspecified.
       OTHER:
         description: >-
-          Other instrument model than mentioned above
+          Other instrument model than mentioned above.
 
   FlowCellTypeEnum:
     description: >-
-      Permitted values for flow cell type
+      Permitted values for flow cell type.
     permissible_values:
       ILLUMINA_NOVA_SEQ_S2:
         description: >-
-          Usage of Illumina NovaSeq S2 flow cell
+          Usage of Illumina NovaSeq S2 flow cell.
       ILLUMINA_NOVA_SEQ_S4:
         description: >-
-          Usage of Illumina NovaSeq S4 flow cell
+          Usage of Illumina NovaSeq S4 flow cell.
       PROMETHION:
         description: >-
-          Usage of PromethION flow cell
+          Usage of PromethION flow cell.
       FLONGLE:
         description: >-
-          Usage of Flongle flow cell
+          Usage of Flongle flow cell.
       MINION:
         description: >-
-          Usage of MinION flow cell
+          Usage of MinION flow cell.
       GRIDION:
         description: >-
-          Usage of GridION flow cell
+          Usage of GridION flow cell.
       OTHER:
         description: >-
           Usage of a flow cell not captured by the controlled vocabulary.
 
   SampleBarcodeReadEnum:
     description: >-
-      Permitted values for sample barcode read
+      Permitted values for sample barcode read.
     permissible_values:
       INDEX1:
         description: >-
-          Sample barcode read location is in Index 1
+          Sample barcode read location is in Index 1.
       INDEX1_AND_INDEX2:
         description: >-
-          Sample barcode read location is in Index 1 and Index 2
+          Sample barcode read location is in Index 1 and Index 2.
       OTHER:
         description: >-
-          Sample barcode read is neither in Index 1 or Index 1 and Index 2
+          Sample barcode read is neither in Index 1 or Index 1 and Index 2.
 
   DiseaseOrHealthyEnum:
     description: >-

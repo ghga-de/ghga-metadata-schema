@@ -22,5 +22,5 @@ URI: [GHGA:ParameterMixin](https://w3id.org/GHGA/ParameterMixin)
 ### Own
 
  * [ParameterMixin➞parameters](ParameterMixin_parameters.md)  <sub>0..\*</sub>
-     * Description: Parameter/value pairs corresponding to an entity.
+     * Description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
      * Range: [Parameter](Parameter.md)

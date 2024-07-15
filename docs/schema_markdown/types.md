@@ -2,7 +2,7 @@
 # Slot: types
 
 
-The types of an entity. Note: Not to be confused with rdf:type
+The types of an entity. Note: Not to be confused with rdf:type.
 
 URI: [GHGA:types](https://w3id.org/GHGA/types)
 

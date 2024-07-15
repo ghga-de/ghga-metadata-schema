@@ -2,7 +2,7 @@
 # Slot: format
 
 
-The file format of the Supporting File (e.g., txt, json)
+The file format of the Supporting File (e.g., TXT, JSON).
 
 URI: [GHGA:IndividualSupportingFile_format](https://w3id.org/GHGA/IndividualSupportingFile_format)
 

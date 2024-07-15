@@ -2,7 +2,7 @@
 # Slot: name
 
 
-The name for an entity.
+A name identifying this Analysis Method.
 
 URI: [GHGA:AnalysisMethod_name](https://w3id.org/GHGA/AnalysisMethod_name)
 

@@ -2,7 +2,7 @@
 # Enum: LibraryPreparationLibraryTypeEnum
 
 
-The type of the library
+The type of the library.
 
 URI: [GHGA:LibraryPreparationLibraryTypeEnum](https://w3id.org/GHGA/LibraryPreparationLibraryTypeEnum)
 

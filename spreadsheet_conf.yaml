@@ -7,8 +7,8 @@ workbooks:
       - Individual
       - IndividualSupportingFile
       - Sample
-      - ExperimentalMethod
-      - ExperimentalMethodSupportingFile
+      - ExperimentMethod
+      - ExperimentMethodSupportingFile
       - Experiment
       - ResearchDataFile
       - AnalysisMethod
@@ -33,10 +33,10 @@ styles:
   IndividualSupportingFile:
     header_color: 8064A2
     content_color: E4DFEC
-  ExperimentalMethod:
+  ExperimentMethod:
     header_color: 9BBB59
     content_color: EBF1DE
-  ExperimentalMethodSupportingFile:
+  ExperimentMethodSupportingFile:
     header_color: F79646
     content_color: FDE9D9
   Experiment:

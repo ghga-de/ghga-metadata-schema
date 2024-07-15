@@ -2,7 +2,7 @@
 # Enum: DataUsePermissionEnum
 
 
-Permitted values for data use permission
+Permitted values for data use permission.
 
 URI: [GHGA:DataUsePermissionEnum](https://w3id.org/GHGA/DataUsePermissionEnum)
 

@@ -2,7 +2,7 @@
 # Slot: type
 
 
-The type of an entity. Note: Not to be confused with rdf:type
+The type of an entity. Note: Not to be confused with rdf:type.
 
 URI: [GHGA:AnalysisMethod_type](https://w3id.org/GHGA/AnalysisMethod_type)
 

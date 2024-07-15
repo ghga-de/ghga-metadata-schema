@@ -21,7 +21,7 @@ URI: [GHGA:File_name](https://w3id.org/GHGA/File_name)
 ## Used by
 
  * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)
- * [ExperimentalMethodSupportingFile](ExperimentalMethodSupportingFile.md)
+ * [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)
  * [File](File.md)
  * [IndividualSupportingFile](IndividualSupportingFile.md)
  * [ProcessDataFile](ProcessDataFile.md)

@@ -7,7 +7,7 @@ An Experiment is an investigation that consists of a coordinated set of actions 
 URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentalMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentalMethod]<experimental_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiment%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiment(i)%200..1>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentalMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentalMethod]<experimental_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiment%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiment(i)%200..1>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentMethod]<experiment_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiment%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiment(i)%200..1>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentMethod]<experiment_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiment%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiment(i)%200..1>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -26,9 +26,9 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 
 ### Own
 
- * [Experiment➞experimental_method](Experiment_experimental_method.md)  <sub>1..1</sub>
-     * Description: The alias of one or more Experimental Methods that are associated with this Experiment.
-     * Range: [ExperimentalMethod](ExperimentalMethod.md)
+ * [Experiment➞experiment_method](Experiment_experiment_method.md)  <sub>1..1</sub>
+     * Description: The alias of one or more Experiment Methods that are associated with this Experiment.
+     * Range: [ExperimentMethod](ExperimentMethod.md)
  * [Experiment➞title](Experiment_title.md)  <sub>1..1</sub>
      * Description: The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
      * Range: [String](types/String.md)

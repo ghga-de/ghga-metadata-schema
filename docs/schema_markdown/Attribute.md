@@ -7,12 +7,12 @@ A key/value pair that further characterizes an entity.
 URI: [GHGA:Attribute](https://w3id.org/GHGA/Attribute)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[ExperimentalMethod],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[ExperimentalMethod]++-%20attributes(i)%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute],[ExperimentalMethod]++-%20attributes%200..*>[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[ExperimentalMethod],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[ExperimentalMethod]++-%20attributes(i)%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute],[ExperimentalMethod]++-%20attributes%200..*>[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[ExperimentMethod],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[ExperimentMethod]++-%20attributes(i)%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute],[ExperimentMethod]++-%20attributes%200..*>[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study],[ExperimentMethod],[AttributeMixin],[AttributeMixin]++-%20attributes%200..*>[Attribute&#124;key:string;key_type:string%20%3F;value:string;value_type:string%20%3F],[ExperimentMethod]++-%20attributes(i)%200..*>[Attribute],[Study]++-%20attributes%200..*>[Attribute],[AttributeMixin]++-%20attributes(i)%200..*>[Attribute],[ExperimentMethod]++-%20attributes%200..*>[Attribute])
 
 ## Referenced by Class
 
  *  **[AttributeMixin](AttributeMixin.md)** *[AttributeMixin➞attributes](AttributeMixin_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
- *  **[ExperimentalMethod](ExperimentalMethod.md)** *[ExperimentalMethod➞attributes](ExperimentalMethod_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
+ *  **[ExperimentMethod](ExperimentMethod.md)** *[ExperimentMethod➞attributes](ExperimentMethod_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
  *  **[Study](Study.md)** *[Study➞attributes](Study_attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
  *  **None** *[attributes](attributes.md)*  <sub>0..\*</sub>  **[Attribute](Attribute.md)**
 

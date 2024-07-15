@@ -18,8 +18,8 @@
       "Experiment",
       "Sample",
       "ResearchDataFile",
-      "ExperimentalMethod",
-      "ExperimentalMethodSupportingFile",
+      "ExperimentMethod",
+      "ExperimentMethodSupportingFile",
     ]
   tree_root: false
   include_attributes: false
@@ -43,8 +43,8 @@
       "Experiment",
       "Sample",
       "ResearchDataFile",
-      "ExperimentalMethod",
-      "ExperimentalMethodSupportingFile",
+      "ExperimentMethod",
+      "ExperimentMethodSupportingFile",
     ]
   tree_root: false
   include_attributes: true

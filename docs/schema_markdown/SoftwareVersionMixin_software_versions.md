@@ -2,7 +2,7 @@
 # Slot: software_versions
 
 
-Software/version pairs corresponding to an entity.
+Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
 
 URI: [GHGA:SoftwareVersionMixin_software_versions](https://w3id.org/GHGA/SoftwareVersionMixin_software_versions)
 

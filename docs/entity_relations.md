@@ -36,10 +36,10 @@ SoftwareVersion {
 Parameter {
 
 }
-ExperimentalMethodSupportingFile {
+ExperimentMethodSupportingFile {
 
 }
-ExperimentalMethod {
+ExperimentMethod {
 
 }
 Attribute {
@@ -76,11 +76,11 @@ Submission ||--}| Individual : "individuals"
 Submission ||--}| Publication : "publications"
 Submission ||--}| Sample : "samples"
 Submission ||--}| Experiment : "experiments"
-Submission ||--}| ExperimentalMethod : "experimental_methods"
+Submission ||--}| ExperimentMethod : "experiment_methods"
 Submission ||--}| Study : "studies"
 Submission ||--}| ResearchDataFile : "research_data_files"
 Submission ||--}o ProcessDataFile : "process_data_files"
-Submission ||--}o ExperimentalMethodSupportingFile : "experimental_method_supporting_files"
+Submission ||--}o ExperimentMethodSupportingFile : "experiment_method_supporting_files"
 Submission ||--}o AnalysisMethodSupportingFile : "analysis_method_supporting_files"
 Submission ||--}o IndividualSupportingFile : "individual_supporting_files"
 IndividualSupportingFile ||--|| Individual : "individual"
@@ -91,16 +91,16 @@ AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
 AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
 AnalysisMethod ||--}o Parameter : "parameters"
 AnalysisMethod ||--|o SoftwareVersion : "software_versions"
-ExperimentalMethodSupportingFile ||--|| ExperimentalMethod : "experimental_method"
-ExperimentalMethodSupportingFile ||--|| Dataset : "dataset"
-ExperimentalMethod ||--}o Attribute : "attributes"
+ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
+ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethod ||--}o Attribute : "attributes"
 ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
 Analysis ||--}| AnalysisMethod : "analysis_methods"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
-Experiment ||--|| ExperimentalMethod : "experimental_method"
+Experiment ||--|| ExperimentMethod : "experiment_method"
 Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
@@ -138,10 +138,10 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
-ExperimentalMethodSupportingFile {
+ExperimentMethodSupportingFile {
 
 }
-ExperimentalMethod {
+ExperimentMethod {
 
 }
 ResearchDataFile {
@@ -154,15 +154,15 @@ Experiment {
 
 }
 
-ExperimentalMethodSupportingFile ||--|| ExperimentalMethod : "experimental_method"
-ExperimentalMethodSupportingFile ||--|| Dataset : "dataset"
-ExperimentalMethod ||--}o Attribute : "attributes"
+ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
+ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-Experiment ||--|| ExperimentalMethod : "experimental_method"
+Experiment ||--|| ExperimentMethod : "experiment_method"
 Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
 
@@ -222,7 +222,7 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
-ExperimentalMethodSupportingFile {
+ExperimentMethodSupportingFile {
     SupportingFileFormatEnum format  
     string name  
     integer size  
@@ -230,7 +230,7 @@ ExperimentalMethodSupportingFile {
     string checksum_type  
     string alias  
 }
-ExperimentalMethod {
+ExperimentMethod {
     string name  
     string description  
     string type  
@@ -295,15 +295,15 @@ Experiment {
     string alias  
 }
 
-ExperimentalMethodSupportingFile ||--|| ExperimentalMethod : "experimental_method"
-ExperimentalMethodSupportingFile ||--|| Dataset : "dataset"
-ExperimentalMethod ||--}o Attribute : "attributes"
+ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
+ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiment"
 ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-Experiment ||--|| ExperimentalMethod : "experimental_method"
+Experiment ||--|| ExperimentMethod : "experiment_method"
 Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
 

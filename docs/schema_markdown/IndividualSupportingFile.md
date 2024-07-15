@@ -25,7 +25,7 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
 ### Own
 
  * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., txt, json)
+     * Description: The file format of the Supporting File (e.g., TXT, JSON).
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)  <sub>1..1</sub>
      * Description: The Individual associated with an entity.

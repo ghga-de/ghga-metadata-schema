@@ -16,7 +16,7 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Children
 
- *  [ExperimentalMethod➞target_regions](ExperimentalMethod_target_regions.md)
+ *  [ExperimentMethod➞target_regions](ExperimentMethod_target_regions.md)
 
 ## Used by
 
