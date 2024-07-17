@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [LibraryPreparationRNASeqStrandednessEnum](Library
 
 ## Children
 
- *  [LibraryPreparationProtocol➞rnaseq_strandedness](LibraryPreparationProtocol_rnaseq_strandedness.md)
+ *  [ExperimentMethod➞rnaseq_strandedness](ExperimentMethod_rnaseq_strandedness.md)
 
 ## Used by
 

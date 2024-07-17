@@ -16,7 +16,8 @@ None &#8594;  <sub>0..1</sub> [Individual](Individual.md)
 
 ## Children
 
- *  [Biospecimen➞individual](Biospecimen_individual.md)
+ *  [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)
+ *  [Sample➞individual](Sample_individual.md)
 
 ## Used by
 

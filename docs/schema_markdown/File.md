@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AnalysisProcessOutputFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[StudyFile],[SequencingProcessFile],[SampleFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;format:FileFormatEnum;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[StudyFile],[File]^-[SequencingProcessFile],[File]^-[SampleFile],[File]^-[AnalysisProcessOutputFile],[Dataset],[AnalysisProcessOutputFile])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])
 
 ## Uses Mixin
 
@@ -15,10 +15,11 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 ## Children
 
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md) - A Analysis Process OutputFile is a File that is associated as an output file with an Analysis Process.
- * [SampleFile](SampleFile.md) - A Sample File is a File that is associated with a Sample.
- * [SequencingProcessFile](SequencingProcessFile.md) - A Sequencing Process File is a File that is associated with a Sequencing Process.
- * [StudyFile](StudyFile.md) - A Study File is a File that is associated with a Study.
+ * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md) - An Analysis Method Supporting File is a File that contains additional information relevant for the Analysis Method, such as (unstructured) protocols or task descriptions.
+ * [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md) - An Experiment Method Supporting File is a File that contains additional information relevant for the Experiment Method, such as (unstructured) protocols.
+ * [IndividualSupportingFile](IndividualSupportingFile.md) - An Individual Supporting File is a File that contains additional information relevant for the Individual, such as ped-files, phenopackets or imaging data.
+ * [ProcessDataFile](ProcessDataFile.md) - A Process Data File is a File that contains data produced by an Analysis or workflow.
+ * [ResearchDataFile](ResearchDataFile.md) - A Research Data File is a File that contains raw data originating from an Experiment.
 
 ## Referenced by Class
 
@@ -31,9 +32,6 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)
- * [File➞format](File_format.md)  <sub>1..1</sub>
-     * Description: The format of the File (e.g., BAM, SAM, CRAM, BAI).
-     * Range: [FileFormatEnum](FileFormatEnum.md)
  * [File➞size](File_size.md)  <sub>1..1</sub>
      * Description: The size of the File in bytes.
      * Range: [Integer](types/Integer.md)
@@ -44,7 +42,7 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
      * Description: The type of algorithm used to generate the checksum of the File.
      * Range: [String](types/String.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
-     * Description: The Dataset associated with this File.
+     * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

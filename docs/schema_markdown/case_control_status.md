@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [CaseControlStatusEnum](CaseControlStatusEnum.md)
 
 ## Children
 
- *  [Condition➞case_control_status](Condition_case_control_status.md)
+ *  [Sample➞case_control_status](Sample_case_control_status.md)
 
 ## Used by
 

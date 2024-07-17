@@ -16,7 +16,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [LibraryPreparationProtocol➞library_name](LibraryPreparationProtocol_library_name.md)
 
 ## Used by
 

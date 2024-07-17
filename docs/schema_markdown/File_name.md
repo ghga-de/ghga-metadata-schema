@@ -20,8 +20,9 @@ URI: [GHGA:File_name](https://w3id.org/GHGA/File_name)
 
 ## Used by
 
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
+ * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)
+ * [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)
  * [File](File.md)
- * [SampleFile](SampleFile.md)
- * [SequencingProcessFile](SequencingProcessFile.md)
- * [StudyFile](StudyFile.md)
+ * [IndividualSupportingFile](IndividualSupportingFile.md)
+ * [ProcessDataFile](ProcessDataFile.md)
+ * [ResearchDataFile](ResearchDataFile.md)

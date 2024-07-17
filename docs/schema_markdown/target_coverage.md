@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [SequencingProtocol➞target_coverage](SequencingProtocol_target_coverage.md)
+ *  [ExperimentMethod➞target_coverage](ExperimentMethod_target_coverage.md)
 
 ## Used by
 

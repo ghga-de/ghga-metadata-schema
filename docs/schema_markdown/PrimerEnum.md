@@ -2,7 +2,7 @@
 # Enum: PrimerEnum
 
 
-Permitted values for primer
+Permitted values for primer.
 
 URI: [GHGA:PrimerEnum](https://w3id.org/GHGA/PrimerEnum)
 

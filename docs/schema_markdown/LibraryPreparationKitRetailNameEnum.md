@@ -2,7 +2,7 @@
 # Enum: LibraryPreparationKitRetailNameEnum
 
 
-Permitted values for library preparation kit retail name
+Permitted values for library preparation kit retail name.
 
 URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPreparationKitRetailNameEnum)
 
@@ -177,4 +177,5 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | TWIST_HUMAN_CORE_EXOME_KIT | Twist Human Core Exome Kit |  |  |
 | TWIST_HUMAN_CORE_EXOME_PLUS_KIT | Twist Human Core Exome Plus Kit |  |  |
 | ULTRALOW_METHYL_SEQ_WITH_TRUE_METHYL_OX_BS | TECAN Ultralow Methyl-Seq with TrueMethyl oxBS |  |  |
+| OTHER | A Library Preparation Kit not captured by the controlled vocabulary. |  |  |
 

@@ -16,8 +16,7 @@ None &#8594;  <sub>0..1</sub> [Sample](Sample.md)
 
 ## Children
 
- *  [SampleFile➞sample](SampleFile_sample.md)
- *  [SequencingProcess➞sample](SequencingProcess_sample.md)
+ *  [Experiment➞sample](Experiment_sample.md)
 
 ## Used by
 

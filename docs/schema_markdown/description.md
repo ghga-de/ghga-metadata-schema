@@ -16,16 +16,13 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
+ *  [AnalysisMethod➞description](AnalysisMethod_description.md)
  *  [Analysis➞description](Analysis_description.md)
- *  [Biospecimen➞description](Biospecimen_description.md)
- *  [Condition➞description](Condition_description.md)
  *  [DataAccessPolicy➞description](DataAccessPolicy_description.md)
  *  [Dataset➞description](Dataset_description.md)
- *  [LibraryPreparationProtocol➞description](LibraryPreparationProtocol_description.md)
+ *  [ExperimentMethod➞description](ExperimentMethod_description.md)
+ *  [Experiment➞description](Experiment_description.md)
  *  [Sample➞description](Sample_description.md)
- *  [SequencingExperiment➞description](SequencingExperiment_description.md)
- *  [SequencingProcess➞description](SequencingProcess_description.md)
- *  [SequencingProtocol➞description](SequencingProtocol_description.md)
  *  [Study➞description](Study_description.md)
 
 ## Used by

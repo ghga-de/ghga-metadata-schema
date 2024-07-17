@@ -2,7 +2,7 @@
 # Enum: GeographicalRegionEnum
 
 
-Permitted values for geographical region
+Permitted values for geographical region.
 
 URI: [GHGA:GeographicalRegionEnum](https://w3id.org/GHGA/GeographicalRegionEnum)
 

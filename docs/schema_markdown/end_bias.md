@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [EndBiasEnum](EndBiasEnum.md)
 
 ## Children
 
- *  [LibraryPreparationProtocol➞end_bias](LibraryPreparationProtocol_end_bias.md)
+ *  [ExperimentMethod➞end_bias](ExperimentMethod_end_bias.md)
 
 ## Used by
 

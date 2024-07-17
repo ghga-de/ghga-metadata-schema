@@ -2,7 +2,7 @@
 # Enum: SequencingProtocolSequencingLayoutEnum
 
 
-Single-end vs paired-end sequencing
+Single-end vs paired-end sequencing.
 
 URI: [GHGA:SequencingProtocolSequencingLayoutEnum](https://w3id.org/GHGA/SequencingProtocolSequencingLayoutEnum)
 

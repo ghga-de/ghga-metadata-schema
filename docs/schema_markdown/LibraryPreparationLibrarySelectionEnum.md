@@ -2,7 +2,7 @@
 # Enum: LibraryPreparationLibrarySelectionEnum
 
 
-Permitted vocabulary for library selections
+Permitted vocabulary for library selections.
 
 URI: [GHGA:LibraryPreparationLibrarySelectionEnum](https://w3id.org/GHGA/LibraryPreparationLibrarySelectionEnum)
 
