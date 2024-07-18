@@ -197,6 +197,8 @@ classes:
           The type of this Experiment.
         required: false
       ega_accession:
+        description: >-
+          The EGA accession of the 'Run' entity (EGAR).
         required: false
       sample:
         description: The alias of one or more Samples that are associated with this Experiment.
@@ -412,7 +414,6 @@ classes:
       - sex
       - geographical_region
       - ancestries
-      - ega_accession
     slot_usage:
       phenotypic_features_terms:
         required: false
@@ -431,8 +432,6 @@ classes:
       geographical_region:
         required: false
       ancestries:
-        required: false
-      ega_accession:
         required: false
 
   Analysis:
@@ -463,6 +462,8 @@ classes:
           The type of this Analysis.
         required: false
       ega_accession:
+        description: >-
+          The EGA accession of the 'Analysis' entity (EGAZ).
         required: false
 
   AnalysisMethod:
@@ -483,7 +484,6 @@ classes:
       - workflow_tasks
       - parameters
       - software_versions
-      - ega_accession
     slot_usage:
       name:
         description: >-
@@ -511,10 +511,6 @@ classes:
       software_versions:
         required: false
         recommended: true
-      ega_accession:
-        description: >-
-          The EGA accession of the 'Analysis' entity (EGAZ).
-        required: false
 
   Dataset:
     mixins:
