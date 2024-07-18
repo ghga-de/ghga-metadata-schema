@@ -16,7 +16,6 @@ None &#8594;  <sub>0..\*</sub> [AnalysisMethod](AnalysisMethod.md)
 
 ## Children
 
- *  [Analysis➞analysis_methods](Analysis_analysis_methods.md)
  *  [Submission➞analysis_methods](Submission_analysis_methods.md)
 
 ## Used by

@@ -184,6 +184,7 @@ classes:
         description: >-
           The alias of one or more Experiment Methods that are associated with this Experiment.
         required: true
+        inlined: false
       title:
         description: >-
           The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
@@ -441,16 +442,17 @@ classes:
     description: >-
       An Analysis is a data transformation that transforms input data to output data.
     slots:
-      - analysis_methods
+      - analysis_method
       - title
       - description
       - type
       - ega_accession
     slot_usage:
-      analysis_methods:
+      analysis_method:
         description: >-
-          The alias of one or more Analysis Methods that are associated with this Analysis.
+          The alias of the Analysis Method that is associated with this Analysis.
         required: true
+        inlined: false
       title:
         required: true
       description:
@@ -733,10 +735,9 @@ classes:
         multivalued: true
       analysis:
         description: >-
-          The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
+          The alias the Analysis that used this Research Data File to generate Process Data Files.
         required: false
         inlined: false
-        multivalued: true
 
   ProcessDataFile:
     is_a: File

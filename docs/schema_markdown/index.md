@@ -56,14 +56,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞analyses](Submission_analyses.md) - One or more Analysis entities associated with this Submission.
  * [analysis](analysis.md) - The Analysis associated with an entity.
      * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md) - The alias of the Analysis that produced this Process Data File.
-     * [ResearchDataFile➞analysis](ResearchDataFile_analysis.md) - The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
+     * [ResearchDataFile➞analysis](ResearchDataFile_analysis.md) - The alias the Analysis that used this Research Data File to generate Process Data Files.
  * [analysis_method](analysis_method.md) - The Analysis Process associated with an entity.
      * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
+     * [Analysis➞analysis_method](Analysis_analysis_method.md) - The alias of the Analysis Method that is associated with this Analysis.
  * [analysis_method_supporting_file](analysis_method_supporting_file.md) - The Analysis Method Supporting File associated with an entity.
  * [analysis_method_supporting_files](analysis_method_supporting_files.md) - The Analysis Method Supporting Files associated with an entity.
      * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
  * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
-     * [Analysis➞analysis_methods](Analysis_analysis_methods.md) - The alias of one or more Analysis Methods that are associated with this Analysis.
      * [Submission➞analysis_methods](Submission_analysis_methods.md) - The Analysis Methods that are part of this Submission.
  * [ancestries](ancestries.md) - A person's descent or lineage from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
@@ -125,7 +125,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞description](DataAccessPolicy_description.md) - A short description for this Data Access Policy.
      * [Dataset➞description](Dataset_description.md) - A description summarizing this Dataset.
      * [ExperimentMethod➞description](ExperimentMethod_description.md) - A short description of this Experiment Method.
-     * [Experiment➞description](Experiment_description.md) - A detailed description of this Sequencing Experiment.
+     * [Experiment➞description](Experiment_description.md) - A detailed description of this Experiment.
      * [Sample➞description](Sample_description.md) - A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
  * [diagnosis_ids](diagnosis_ids.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
@@ -137,14 +137,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [doi](doi.md) - DOI identifier of a publication.
      * [Publication➞doi](Publication_doi.md)
  * [ega_accession](ega_accession.md) - The EGA accession ID of an entity.
-     * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md) - The EGA accession of the 'Analysis' entity (EGAZ).
-     * [Analysis➞ega_accession](Analysis_ega_accession.md)
+     * [Analysis➞ega_accession](Analysis_ega_accession.md) - The EGA accession of the 'Analysis' entity (EGAZ).
      * [DataAccessCommittee➞ega_accession](DataAccessCommittee_ega_accession.md)
      * [DataAccessPolicy➞ega_accession](DataAccessPolicy_ega_accession.md)
      * [Dataset➞ega_accession](Dataset_ega_accession.md)
      * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md) - The EGA accession of the 'Experiment' entity (EGAX).
-     * [Experiment➞ega_accession](Experiment_ega_accession.md)
-     * [Individual➞ega_accession](Individual_ega_accession.md)
+     * [Experiment➞ega_accession](Experiment_ega_accession.md) - The EGA accession of the 'Run' entity (EGAR).
      * [ProcessDataFile➞ega_accession](ProcessDataFile_ega_accession.md)
      * [ResearchDataFile➞ega_accession](ResearchDataFile_ega_accession.md)
      * [Sample➞ega_accession](Sample_ega_accession.md)
@@ -268,6 +266,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [studies](studies.md) - The Study associated with an entity.
      * [Submission➞studies](Submission_studies.md) - Study entities associated with this Submission.
  * [study](study.md) - The Study associated with an entity.
+     * [Dataset➞study](Dataset_study.md) - The Study associated with this Dataset.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
      * [ExperimentMethod➞target_coverage](ExperimentMethod_target_coverage.md)
@@ -278,14 +277,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [title](title.md) - The title that describes an entity.
      * [Analysis➞title](Analysis_title.md)
      * [Dataset➞title](Dataset_title.md) - A title for this Dataset.
-     * [Experiment➞title](Experiment_title.md) - The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
+     * [Experiment➞title](Experiment_title.md) - The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
      * [Publication➞title](Publication_title.md) - The title for this Publication.
      * [Study➞title](Study_title.md) - A comprehensive title for this Study.
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type.
      * [AnalysisMethod➞type](AnalysisMethod_type.md)
      * [Analysis➞type](Analysis_type.md) - The type of this Analysis.
      * [ExperimentMethod➞type](ExperimentMethod_type.md) - The type associated with this Experiment Method.
-     * [Experiment➞type](Experiment_type.md) - The type of this Sequencing Experiment.
+     * [Experiment➞type](Experiment_type.md) - The type of this Experiment.
      * [Sample➞type](Sample_type.md) - The type of the Sample.
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type.
      * [Dataset➞types](Dataset_types.md) - The type of this Dataset.

@@ -7,7 +7,7 @@ An Individual is a Person who is participating in a Study.
 URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;ega_accession:string%20%3F;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;ega_accession:string%20%3F;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -53,9 +53,6 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Description: A person's descent or lineage from a population.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
- * [Individual➞ega_accession](Individual_ega_accession.md)  <sub>0..1</sub>
-     * Description: The EGA accession ID of an entity.
-     * Range: [String](types/String.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 
