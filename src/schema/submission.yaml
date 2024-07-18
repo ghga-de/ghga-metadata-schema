@@ -186,15 +186,15 @@ classes:
         required: true
       title:
         description: >-
-          The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
+          The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
         required: true
       description:
         description: >-
-          A detailed description of this Sequencing Experiment.
+          A detailed description of this Experiment.
         required: true
       type:
         description: >-
-          The type of this Sequencing Experiment.
+          The type of this Experiment.
         required: false
       ega_accession:
         required: false
@@ -529,6 +529,7 @@ classes:
       - types
       - ega_accession
       - data_access_policy
+      - study
     slot_usage:
       title:
         description: >-
@@ -547,6 +548,11 @@ classes:
       data_access_policy:
         description: >-
           The Data Access Policy that applies to this Dataset.
+        required: true
+        inlined: false
+      study:
+        description: >-
+          The Study associated with this Dataset.
         required: true
         inlined: false
 
