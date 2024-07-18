@@ -56,7 +56,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞analyses](Submission_analyses.md) - One or more Analysis entities associated with this Submission.
  * [analysis](analysis.md) - The Analysis associated with an entity.
      * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md) - The alias of the Analysis that produced this Process Data File.
-     * [ResearchDataFile➞analysis](ResearchDataFile_analysis.md) - The alias the Analysis that used this Research Data File to generate Process Data Files.
  * [analysis_method](analysis_method.md) - The Analysis Process associated with an entity.
      * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
      * [Analysis➞analysis_method](Analysis_analysis_method.md) - The alias of the Analysis Method that is associated with this Analysis.
@@ -235,6 +234,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
  * [research_data_file](research_data_file.md) - The Research Data File associated with an entity.
  * [research_data_files](research_data_files.md) - The Research Data Files associated with an entity.
+     * [Analysis➞research_data_files](Analysis_research_data_files.md) - One or more aliases of the Research Data Files that this Analysis used as input to create Process Data Files.
      * [Submission➞research_data_files](Submission_research_data_files.md) - One or more Research Data Files associated with this Submission.
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [ExperimentMethod➞rnaseq_strandedness](ExperimentMethod_rnaseq_strandedness.md)

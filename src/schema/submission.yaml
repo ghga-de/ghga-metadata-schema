@@ -447,6 +447,7 @@ classes:
       - description
       - type
       - ega_accession
+      - research_data_files
     slot_usage:
       analysis_method:
         description: >-
@@ -467,6 +468,11 @@ classes:
         description: >-
           The EGA accession of the 'Analysis' entity (EGAZ).
         required: false
+      research_data_files:
+        description: >-
+          One or more aliases of the Research Data Files that this Analysis used as input to create Process Data Files.
+        required: true
+        inlined: false
 
   AnalysisMethod:
     mixins:
@@ -712,7 +718,6 @@ classes:
       - is_pseudofile
       - ega_accession
       - experiment
-      - analysis
     slot_usage:
       format:
         description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
@@ -733,11 +738,6 @@ classes:
         required: true
         inlined: false
         multivalued: true
-      analysis:
-        description: >-
-          The alias the Analysis that used this Research Data File to generate Process Data Files.
-        required: false
-        inlined: false
 
   ProcessDataFile:
     is_a: File
