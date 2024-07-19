@@ -16,6 +16,7 @@ None &#8594;  <sub>0..1</sub> [Study](Study.md)
 
 ## Children
 
+ *  [Dataset➞study](Dataset_study.md)
  *  [Publication➞study](Publication_study.md)
 
 ## Used by

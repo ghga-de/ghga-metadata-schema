@@ -7,7 +7,7 @@ A Dataset is a collection of Files that is prepared for distribution and is tied
 URI: [GHGA:Dataset](https://w3id.org/GHGA/Dataset)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;ega_accession:string%20%3F;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[File],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;ega_accession:string%20%3F;alias:string],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[DataAccessPolicy])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[Study]<study%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;ega_accession:string%20%3F;alias:string],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[DataAccessPolicy])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[IdentifiedByAliasMixin],[File],[Study]<study%201..1-%20[Dataset&#124;title:string;description:string;types:string%20%2B;ega_accession:string%20%3F;alias:string],[DataAccessPolicy]<data_access_policy%201..1-%20[Dataset],[File]-%20dataset%201..1>[Dataset],[Submission]++-%20datasets%201..*>[Dataset],[File]-%20dataset(i)%200..1>[Dataset],[Submission]-%20datasets(i)%200..*>[Dataset],[Dataset]uses%20-.->[IdentifiedByAliasMixin],[DataAccessPolicy])
 
 ## Uses Mixin
 
@@ -40,6 +40,9 @@ URI: [GHGA:Dataset](https://w3id.org/GHGA/Dataset)
  * [Dataset➞data_access_policy](Dataset_data_access_policy.md)  <sub>1..1</sub>
      * Description: The Data Access Policy that applies to this Dataset.
      * Range: [DataAccessPolicy](DataAccessPolicy.md)
+ * [Dataset➞study](Dataset_study.md)  <sub>1..1</sub>
+     * Description: The Study associated with this Dataset.
+     * Range: [Study](Study.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

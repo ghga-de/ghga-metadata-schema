@@ -2,7 +2,7 @@
 # Slot: description
 
 
-A detailed description of this Sequencing Experiment.
+A detailed description of this Experiment.
 
 URI: [GHGA:Experiment_description](https://w3id.org/GHGA/Experiment_description)
 
