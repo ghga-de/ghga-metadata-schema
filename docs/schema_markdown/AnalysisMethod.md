@@ -7,13 +7,11 @@ An Analysis Method captures the workflow steps that were performed to analyze da
 URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SoftwareVersionMixin],[SoftwareVersion],[ParameterMixin],[Parameter],[IdentifiedByAliasMixin],[AnalysisMethodSupportingFile],[SoftwareVersion]<software_versions%200..1-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;alias:string],[Parameter]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[ParameterMixin],[AnalysisMethod]uses%20-.->[SoftwareVersionMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[SoftwareVersionMixin],[SoftwareVersion],[ParameterMixin],[Parameter],[IdentifiedByAliasMixin],[AnalysisMethodSupportingFile],[SoftwareVersion]<software_versions%200..1-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;alias:string],[Parameter]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[ParameterMixin],[AnalysisMethod]uses%20-.->[SoftwareVersionMixin],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Attribute],[AnalysisMethodSupportingFile],[Attribute]<software_versions%200..*-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;alias:string],[Attribute]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[Attribute],[AnalysisMethodSupportingFile],[Attribute]<software_versions%200..*-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;alias:string],[Attribute]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[Analysis])
 
 ## Uses Mixin
 
  *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
- *  mixin: [ParameterMixin](ParameterMixin.md) - Mixin for entities that can have one or more parameters.
- *  mixin: [SoftwareVersionMixin](SoftwareVersionMixin.md) - Mixin for entities that can have one or more software versions.
 
 ## Referenced by Class
 
@@ -52,18 +50,12 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
  * [AnalysisMethod➞workflow_tasks](AnalysisMethod_workflow_tasks.md)  <sub>0..1</sub>
      * Description: Tasks performed by the workflow
      * Range: [String](types/String.md)
- * [parameters](parameters.md)  <sub>0..\*</sub>
-     * Description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
-     * Range: [Parameter](Parameter.md)
- * [software_versions](software_versions.md)  <sub>0..1</sub>
-     * Description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
-     * Range: [SoftwareVersion](SoftwareVersion.md)
  * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..\*</sub>
-     * Description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
-     * Range: [Parameter](Parameter.md)
- * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..1</sub>
-     * Description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
-     * Range: [SoftwareVersion](SoftwareVersion.md)
+     * Description: Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+     * Range: [Attribute](Attribute.md)
+ * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..\*</sub>
+     * Description: key/value pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+     * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

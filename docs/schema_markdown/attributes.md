@@ -17,6 +17,8 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 ## Children
 
  *  [AttributeMixin➞attributes](AttributeMixin_attributes.md)
+ *  [parameters](parameters.md)
+ *  [software_versions](software_versions.md)
 
 ## Used by
 

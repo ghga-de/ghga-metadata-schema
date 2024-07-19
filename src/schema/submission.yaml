@@ -78,56 +78,6 @@ classes:
       alias:
         identifier: true
 
-  Parameter:
-    description: >-
-      A key/value pair to capture parameter specifications.
-    slots:
-      - parameter_name
-      - value
-    exact_mappings:
-      - SIO:000614
-    slot_usage:
-      parameter_name:
-        required: true
-      value:
-        required: true
-
-  ParameterMixin:
-    mixin: true
-    description: Mixin for entities that can have one or more parameters.
-    slots:
-      - parameters
-    slot_usage:
-      parameters:
-        required: false
-        inlined: true
-        inlined_as_list: true
-
-  SoftwareVersion:
-    description: >-
-      A key/value pair to capture software version specifications.
-    slots:
-      - software
-      - version
-    exact_mappings:
-      - SIO:000614
-    slot_usage:
-      software:
-        required: true
-      version:
-        required: true
-
-  SoftwareVersionMixin:
-    mixin: true
-    description: Mixin for entities that can have one or more software versions.
-    slots:
-      - software_versions
-    slot_usage:
-      software_versions:
-        required: false
-        inlined: true
-        inlined_as_list: true
-
   Study:
     mixins:
       - IdentifiedByAliasMixin
@@ -477,8 +427,6 @@ classes:
   AnalysisMethod:
     mixins:
       - IdentifiedByAliasMixin
-      - ParameterMixin
-      - SoftwareVersionMixin
     description: >-
       An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
     slots:
@@ -514,10 +462,8 @@ classes:
         required: false
         recommended: true
       parameters:
-        required: false
         recommended: true
       software_versions:
-        required: false
         recommended: true
 
   Dataset:
@@ -955,23 +901,13 @@ slots:
     range: Attribute
     multivalued: true
 
-  parameter_name:
-    description: The parameter name.
-
   parameters:
-    description: Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
-    range: Parameter
-    multivalued: true
-
-  software:
-    description: The software name.
-
-  version:
-    description: The software version.
+    description: Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+    is_a: attributes
 
   software_versions:
-    description: Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
-    range: SoftwareVersion
+    description: key/value pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+    is_a: attributes
 
   type:
     description: >-
