@@ -36,12 +36,6 @@ AnalysisMethodSupportingFile {
 AnalysisMethod {
 
 }
-SoftwareVersion {
-
-}
-Parameter {
-
-}
 ExperimentMethodSupportingFile {
 
 }
@@ -91,8 +85,8 @@ Study ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
 AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
 AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
-AnalysisMethod ||--}o Parameter : "parameters"
-AnalysisMethod ||--|o SoftwareVersion : "software_versions"
+AnalysisMethod ||--}o Attribute : "parameters"
+AnalysisMethod ||--}o Attribute : "software_versions"
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentMethod ||--}o Attribute : "attributes"
