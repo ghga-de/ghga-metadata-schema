@@ -2,7 +2,7 @@
 # Slot: parameters
 
 
-Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
 
 URI: [GHGA:AnalysisMethod_parameters](https://w3id.org/GHGA/AnalysisMethod_parameters)
 

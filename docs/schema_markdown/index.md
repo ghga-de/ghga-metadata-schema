@@ -208,7 +208,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞name](ExperimentMethod_name.md) - A short name identifying this Experiment Method.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
- * [parameters](parameters.md) - Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+ * [parameters](parameters.md) - Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
      * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
  * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
      * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
@@ -249,7 +249,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞sex](Individual_sex.md)
  * [size](size.md) - The size of the File in bytes.
      * [File➞size](File_size.md)
- * [software_versions](software_versions.md) - key/value pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+ * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
      * [Sample➞storage](Sample_storage.md)

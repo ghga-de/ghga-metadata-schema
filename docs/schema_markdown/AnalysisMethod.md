@@ -51,10 +51,10 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
      * Description: Tasks performed by the workflow
      * Range: [String](types/String.md)
  * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+     * Description: Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
      * Range: [Attribute](Attribute.md)
  * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..\*</sub>
-     * Description: key/value pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+     * Description: key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * Range: [Attribute](Attribute.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
