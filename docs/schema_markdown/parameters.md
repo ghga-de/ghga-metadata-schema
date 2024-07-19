@@ -13,7 +13,6 @@ None &#8594;  <sub>0..\*</sub> [Attribute](Attribute.md)
 
 ## Parents
 
- *  is_a: [attributes](attributes.md)
 
 ## Children
 

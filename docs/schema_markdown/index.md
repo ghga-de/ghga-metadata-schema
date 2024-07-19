@@ -66,10 +66,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
          * [ExperimentMethod➞attributes](ExperimentMethod_attributes.md) - One or more attributes that further characterize this Experiment Method.
          * [Study➞attributes](Study_attributes.md) - One or more attributes that further characterize this Study.
-     * [parameters](parameters.md) - Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
-         * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
-     * [software_versions](software_versions.md) - key/value pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
-         * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [author](author.md) - The individual who is responsible for the content of the Publication.
      * [Publication➞author](Publication_author.md) - Author(s) of this Publication.
  * [biological_replicate](biological_replicate.md) - An integer to indicate the number of a biological replicate.
@@ -212,6 +208,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞name](ExperimentMethod_name.md) - A short name identifying this Experiment Method.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
+ * [parameters](parameters.md) - Key/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+     * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
  * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
      * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
  * [phenotypic_features_terms](phenotypic_features_terms.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
@@ -251,6 +249,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞sex](Individual_sex.md)
  * [size](size.md) - The size of the File in bytes.
      * [File➞size](File_size.md)
+ * [software_versions](software_versions.md) - key/value pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+     * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
      * [Sample➞storage](Sample_storage.md)
  * [studies](studies.md) - The Study associated with an entity.
