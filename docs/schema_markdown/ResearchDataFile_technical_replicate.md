@@ -9,7 +9,7 @@ URI: [GHGA:ResearchDataFile_technical_replicate](https://w3id.org/GHGA/ResearchD
 
 ## Domain and Range
 
-[ResearchDataFile](ResearchDataFile.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[ResearchDataFile](ResearchDataFile.md) &#8594;  <sub>1..1</sub> [Integer](types/Integer.md)
 
 ## Parents
 
