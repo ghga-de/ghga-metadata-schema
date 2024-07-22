@@ -17,7 +17,6 @@ None &#8594;  <sub>0..1</sub> [Analysis](Analysis.md)
 ## Children
 
  *  [ProcessDataFile➞analysis](ProcessDataFile_analysis.md)
- *  [ResearchDataFile➞analysis](ResearchDataFile_analysis.md)
 
 ## Used by
 

@@ -27,10 +27,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ProcessDataFile](ProcessDataFile.md) - A Process Data File is a File that contains data produced by an Analysis or workflow.
      * [ResearchDataFile](ResearchDataFile.md) - A Research Data File is a File that contains raw data originating from an Experiment.
  * [Individual](Individual.md) - An Individual is a Person who is participating in a Study.
- * [Parameter](Parameter.md) - A key/value pair to capture parameter specifications.
  * [Publication](Publication.md) - A Publication represents an article that is published. The minimum expectation is that the publication has a valid DOI.
  * [Sample](Sample.md) - A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.
- * [SoftwareVersion](SoftwareVersion.md) - A key/value pair to capture software version specifications.
  * [Study](Study.md) - A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.
  * [Submission](Submission.md) - A grouping entity that represents information about one or more entities. A submission can be considered as a set of inter-related (and inter-connected) entities that represent a data submission to GHGA.
 
@@ -40,8 +38,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
  * [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
  * [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
- * [ParameterMixin](ParameterMixin.md) - Mixin for entities that can have one or more parameters.
- * [SoftwareVersionMixin](SoftwareVersionMixin.md) - Mixin for entities that can have one or more software versions.
 
 ### Slots
 
@@ -56,14 +52,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞analyses](Submission_analyses.md) - One or more Analysis entities associated with this Submission.
  * [analysis](analysis.md) - The Analysis associated with an entity.
      * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md) - The alias of the Analysis that produced this Process Data File.
-     * [ResearchDataFile➞analysis](ResearchDataFile_analysis.md) - The alias of one or more Analyses that used this Research Data File to generate Process Data Files.
  * [analysis_method](analysis_method.md) - The Analysis Process associated with an entity.
      * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
+     * [Analysis➞analysis_method](Analysis_analysis_method.md) - The alias of the Analysis Method that is associated with this Analysis.
  * [analysis_method_supporting_file](analysis_method_supporting_file.md) - The Analysis Method Supporting File associated with an entity.
  * [analysis_method_supporting_files](analysis_method_supporting_files.md) - The Analysis Method Supporting Files associated with an entity.
      * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
  * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
-     * [Analysis➞analysis_methods](Analysis_analysis_methods.md) - The alias of one or more Analysis Methods that are associated with this Analysis.
      * [Submission➞analysis_methods](Submission_analysis_methods.md) - The Analysis Methods that are part of this Submission.
  * [ancestries](ancestries.md) - A person's descent or lineage from a population.
      * [Individual➞ancestries](Individual_ancestries.md)
@@ -125,7 +120,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞description](DataAccessPolicy_description.md) - A short description for this Data Access Policy.
      * [Dataset➞description](Dataset_description.md) - A description summarizing this Dataset.
      * [ExperimentMethod➞description](ExperimentMethod_description.md) - A short description of this Experiment Method.
-     * [Experiment➞description](Experiment_description.md) - A detailed description of this Sequencing Experiment.
+     * [Experiment➞description](Experiment_description.md) - A detailed description of this Experiment.
      * [Sample➞description](Sample_description.md) - A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
  * [diagnosis_ids](diagnosis_ids.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
@@ -137,14 +132,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [doi](doi.md) - DOI identifier of a publication.
      * [Publication➞doi](Publication_doi.md)
  * [ega_accession](ega_accession.md) - The EGA accession ID of an entity.
-     * [AnalysisMethod➞ega_accession](AnalysisMethod_ega_accession.md) - The EGA accession of the 'Analysis' entity (EGAZ).
-     * [Analysis➞ega_accession](Analysis_ega_accession.md)
+     * [Analysis➞ega_accession](Analysis_ega_accession.md) - The EGA accession of the 'Analysis' entity (EGAZ).
      * [DataAccessCommittee➞ega_accession](DataAccessCommittee_ega_accession.md)
      * [DataAccessPolicy➞ega_accession](DataAccessPolicy_ega_accession.md)
      * [Dataset➞ega_accession](Dataset_ega_accession.md)
      * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md) - The EGA accession of the 'Experiment' entity (EGAX).
-     * [Experiment➞ega_accession](Experiment_ega_accession.md)
-     * [Individual➞ega_accession](Individual_ega_accession.md)
+     * [Experiment➞ega_accession](Experiment_ega_accession.md) - The EGA accession of the 'Run' entity (EGAR).
      * [ProcessDataFile➞ega_accession](ProcessDataFile_ega_accession.md)
      * [ResearchDataFile➞ega_accession](ResearchDataFile_ega_accession.md)
      * [Sample➞ega_accession](Sample_ega_accession.md)
@@ -215,11 +208,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞name](ExperimentMethod_name.md) - A short name identifying this Experiment Method.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
- * [parameter_name](parameter_name.md) - The parameter name.
-     * [Parameter➞parameter_name](Parameter_parameter_name.md)
- * [parameters](parameters.md) - Parameter/value pairs corresponding to an entity (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
-     * [ParameterMixin➞parameters](ParameterMixin_parameters.md)
-         * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
+ * [parameters](parameters.md) - Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+     * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
  * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
      * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
  * [phenotypic_features_terms](phenotypic_features_terms.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
@@ -237,6 +227,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
  * [research_data_file](research_data_file.md) - The Research Data File associated with an entity.
  * [research_data_files](research_data_files.md) - The Research Data Files associated with an entity.
+     * [Analysis➞research_data_files](Analysis_research_data_files.md) - One or more aliases of the Research Data Files that this Analysis used as input to create Process Data Files.
      * [Submission➞research_data_files](Submission_research_data_files.md) - One or more Research Data Files associated with this Submission.
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [ExperimentMethod➞rnaseq_strandedness](ExperimentMethod_rnaseq_strandedness.md)
@@ -258,16 +249,14 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞sex](Individual_sex.md)
  * [size](size.md) - The size of the File in bytes.
      * [File➞size](File_size.md)
- * [software](software.md) - The software name.
-     * [SoftwareVersion➞software](SoftwareVersion_software.md)
- * [software_versions](software_versions.md) - Software/version pairs corresponding to an entity (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
-     * [SoftwareVersionMixin➞software_versions](SoftwareVersionMixin_software_versions.md)
-         * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
+ * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+     * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
      * [Sample➞storage](Sample_storage.md)
  * [studies](studies.md) - The Study associated with an entity.
      * [Submission➞studies](Submission_studies.md) - Study entities associated with this Submission.
  * [study](study.md) - The Study associated with an entity.
+     * [Dataset➞study](Dataset_study.md) - The Study associated with this Dataset.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
  * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
      * [ExperimentMethod➞target_coverage](ExperimentMethod_target_coverage.md)
@@ -278,25 +267,22 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [title](title.md) - The title that describes an entity.
      * [Analysis➞title](Analysis_title.md)
      * [Dataset➞title](Dataset_title.md) - A title for this Dataset.
-     * [Experiment➞title](Experiment_title.md) - The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
+     * [Experiment➞title](Experiment_title.md) - The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
      * [Publication➞title](Publication_title.md) - The title for this Publication.
      * [Study➞title](Study_title.md) - A comprehensive title for this Study.
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type.
      * [AnalysisMethod➞type](AnalysisMethod_type.md)
      * [Analysis➞type](Analysis_type.md) - The type of this Analysis.
      * [ExperimentMethod➞type](ExperimentMethod_type.md) - The type associated with this Experiment Method.
-     * [Experiment➞type](Experiment_type.md) - The type of this Sequencing Experiment.
+     * [Experiment➞type](Experiment_type.md) - The type of this Experiment.
      * [Sample➞type](Sample_type.md) - The type of the Sample.
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type.
      * [Dataset➞types](Dataset_types.md) - The type of this Dataset.
      * [Study➞types](Study_types.md) - One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
  * [value](value.md) - The value for an attribute (e.g., a numerical value without the units).
      * [Attribute➞value](Attribute_value.md)
-     * [Parameter➞value](Parameter_value.md)
  * [value_type](value_type.md) - The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).
      * [Attribute➞value_type](Attribute_value_type.md)
- * [version](version.md) - The software version.
-     * [SoftwareVersion➞version](SoftwareVersion_version.md)
  * [workflow_doi](workflow_doi.md) - A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
      * [AnalysisMethod➞workflow_doi](AnalysisMethod_workflow_doi.md)
  * [workflow_name](workflow_name.md) - The workflow name.

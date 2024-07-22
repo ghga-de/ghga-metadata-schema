@@ -15,6 +15,12 @@ IndividualSupportingFile {
 Dataset {
 
 }
+Study {
+
+}
+Attribute {
+
+}
 DataAccessPolicy {
 
 }
@@ -30,19 +36,10 @@ AnalysisMethodSupportingFile {
 AnalysisMethod {
 
 }
-SoftwareVersion {
-
-}
-Parameter {
-
-}
 ExperimentMethodSupportingFile {
 
 }
 ExperimentMethod {
-
-}
-Attribute {
 
 }
 ProcessDataFile {
@@ -58,9 +55,6 @@ Experiment {
 
 }
 Sample {
-
-}
-Study {
 
 }
 Publication {
@@ -86,26 +80,27 @@ Submission ||--}o IndividualSupportingFile : "individual_supporting_files"
 IndividualSupportingFile ||--|| Individual : "individual"
 IndividualSupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
+Dataset ||--|| Study : "study"
+Study ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
 AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
 AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
-AnalysisMethod ||--}o Parameter : "parameters"
-AnalysisMethod ||--|o SoftwareVersion : "software_versions"
+AnalysisMethod ||--}o Attribute : "parameters"
+AnalysisMethod ||--}o Attribute : "software_versions"
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentMethod ||--}o Attribute : "attributes"
 ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
-Analysis ||--}| AnalysisMethod : "analysis_methods"
+Analysis ||--|| AnalysisMethod : "analysis_method"
+Analysis ||--}| ResearchDataFile : "research_data_files"
 ResearchDataFile ||--}| Experiment : "experiment"
-ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Experiment ||--|| ExperimentMethod : "experiment_method"
 Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-Study ||--}o Attribute : "attributes"
 Publication ||--|| Study : "study"
 
 ```
@@ -158,7 +153,6 @@ ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiment"
-ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
@@ -184,7 +178,6 @@ Individual {
     IndividualSexEnum sex  
     string geographical_region  
     stringList ancestries  
-    string ega_accession  
     string alias  
 }
 Sample {
@@ -299,7 +292,6 @@ ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiment"
-ResearchDataFile ||--}o Analysis : "analysis"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"

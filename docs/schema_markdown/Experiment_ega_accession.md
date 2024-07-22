@@ -2,7 +2,7 @@
 # Slot: ega_accession
 
 
-The EGA accession ID of an entity.
+The EGA accession of the 'Run' entity (EGAR).
 
 URI: [GHGA:Experiment_ega_accession](https://w3id.org/GHGA/Experiment_ega_accession)
 
