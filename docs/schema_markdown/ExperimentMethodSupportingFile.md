@@ -7,7 +7,7 @@ An Experiment Method Supporting File is a File that contains additional informat
 URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMethodSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])
 
 ## Parents
 
@@ -47,3 +47,6 @@ URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMetho
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
      * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)
+ * [File➞included_in_submission](File_included_in_submission.md)  <sub>1..1</sub>
+     * Description: Whether a File is included in the Submission or not.
+     * Range: [Boolean](types/Boolean.md)

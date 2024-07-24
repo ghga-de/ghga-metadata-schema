@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [Boolean](types/Boolean.md)
 
 ## Children
 
- *  [ResearchDataFile➞included_in_submission](ResearchDataFile_included_in_submission.md)
+ *  [File➞included_in_submission](File_included_in_submission.md)
 
 ## Used by
 

@@ -21,3 +21,10 @@ URI: [GHGA:Sample_biospecimen_tissue_id](https://w3id.org/GHGA/Sample_biospecime
 ## Used by
 
  * [Sample](Sample.md)
+
+## Other properties
+
+|  |  |  |
+| --- | --- | --- |
+| **In Subsets:** | | ontology |
+

@@ -90,9 +90,6 @@ URI: [GHGA:ExperimentMethod](https://w3id.org/GHGA/ExperimentMethod)
  * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md)  <sub>0..1</sub>
      * Description: The EGA accession of the 'Experiment' entity (EGAX).
      * Range: [String](types/String.md)
- * [attributes](attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
-     * Range: [Attribute](Attribute.md)
  * [ExperimentMethod➞attributes](ExperimentMethod_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterize this Experiment Method.
      * Range: [Attribute](Attribute.md)

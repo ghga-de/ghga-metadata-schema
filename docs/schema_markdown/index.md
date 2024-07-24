@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 1.2.0
+**version:** 2.0.0
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -59,8 +59,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
  * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
      * [Submission➞analysis_methods](Submission_analysis_methods.md) - The Analysis Methods that are part of this Submission.
- * [ancestries](ancestries.md) - A person's descent or lineage from a population.
-     * [Individual➞ancestries](Individual_ancestries.md)
+ * [ancestry_ids](ancestry_ids.md) - A person's descent or lineage from a population.
+     * [Individual➞ancestry_ids](Individual_ancestry_ids.md)
+ * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population.
+     * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
          * [ExperimentMethod➞attributes](ExperimentMethod_attributes.md) - One or more attributes that further characterize this Experiment Method.
@@ -166,10 +168,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
      * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., CRAM, BAM).
      * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
- * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
-     * [Individual➞geographical_region](Individual_geographical_region.md)
+ * [geographical_region_id](geographical_region_id.md) - The geographical region where the Individual is located.
+     * [Individual➞geographical_region_id](Individual_geographical_region_id.md)
+ * [geographical_region_term](geographical_region_term.md) - The geographical region where the Individual is located.
+     * [Individual➞geographical_region_term](Individual_geographical_region_term.md)
  * [included_in_submission](included_in_submission.md) - Whether a File is included in the Submission or not.
-     * [ResearchDataFile➞included_in_submission](ResearchDataFile_included_in_submission.md)
+     * [File➞included_in_submission](File_included_in_submission.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
  * [individual](individual.md) - The Individual associated with an entity.
      * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)

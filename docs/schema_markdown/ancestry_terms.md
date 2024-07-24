@@ -1,10 +1,10 @@
 
-# Slot: ancestries
+# Slot: ancestry_terms
 
 
 A person's descent or lineage from a population.
 
-URI: [GHGA:ancestries](https://w3id.org/GHGA/ancestries)
+URI: [GHGA:ancestry_terms](https://w3id.org/GHGA/ancestry_terms)
 
 
 ## Domain and Range
@@ -16,7 +16,7 @@ None &#8594;  <sub>0..\*</sub> [String](types/String.md)
 
 ## Children
 
- *  [Individual➞ancestries](Individual_ancestries.md)
+ *  [Individual➞ancestry_terms](Individual_ancestry_terms.md)
 
 ## Used by
 

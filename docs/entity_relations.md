@@ -176,8 +176,10 @@ Individual {
     stringList diagnosis_ids  
     stringList diagnosis_terms  
     IndividualSexEnum sex  
-    string geographical_region  
-    stringList ancestries  
+    string geographical_region_term  
+    string geographical_region_id  
+    stringList ancestry_terms  
+    stringList ancestry_ids  
     string alias  
 }
 Sample {
@@ -221,6 +223,7 @@ ExperimentMethodSupportingFile {
     integer size  
     string checksum  
     string checksum_type  
+    boolean included_in_submission  
     string alias  
 }
 ExperimentMethod {
@@ -251,12 +254,12 @@ ResearchDataFile {
     ResearchDataFileFormatEnum format  
     integer technical_replicate  
     string sequencing_lane_id  
-    boolean included_in_submission  
     string ega_accession  
     string name  
     integer size  
     string checksum  
     string checksum_type  
+    boolean included_in_submission  
     string alias  
 }
 Sample {

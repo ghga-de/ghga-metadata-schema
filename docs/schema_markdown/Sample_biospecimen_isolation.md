@@ -21,10 +21,3 @@ URI: [GHGA:Sample_biospecimen_isolation](https://w3id.org/GHGA/Sample_biospecime
 ## Used by
 
  * [Sample](Sample.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **In Subsets:** | | ontology |
-

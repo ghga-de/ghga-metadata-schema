@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 1.2.0
+version: 2.0.0
 imports:
   - linkml:types
 
@@ -104,12 +104,12 @@ classes:
           One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
         range: StudyTypeEnum
         required: true
+      ega_accession:
+        required: false
       affiliations:
         description: >-
           The affiliations associated with this Study.
         required: true
-      ega_accession:
-        required: false
       attributes:
         description: >-
           One or more attributes that further characterize this Study.
@@ -184,7 +184,6 @@ classes:
       - flow_cell_type
       - sample_barcode_read
       - ega_accession
-      - attributes
     slot_usage:
       name:
         description: >-
@@ -248,7 +247,6 @@ classes:
       attributes:
         description: >-
           One or more attributes that further characterize this Experiment Method.
-        required: false
 
   Sample:
     mixins:
@@ -363,8 +361,10 @@ classes:
       - diagnosis_ids
       - diagnosis_terms
       - sex
-      - geographical_region
-      - ancestries
+      - geographical_region_term
+      - geographical_region_id
+      - ancestry_terms
+      - ancestry_ids
     slot_usage:
       phenotypic_features_terms:
         required: false
@@ -380,9 +380,13 @@ classes:
         recommended: true
       sex:
         required: true
-      geographical_region:
+      geographical_region_term:
         required: false
-      ancestries:
+      geographical_region_id:
+        required: false
+      ancestry_terms:
+        required: false
+      ancestry_ids:
         required: false
 
   Analysis:
@@ -642,21 +646,24 @@ classes:
       - checksum
       - checksum_type
       - dataset
+      - included_in_submission
     slot_usage:
       name:
         description: >-
           The given filename.
         required: true
+      size:
+        required: true
       checksum:
         required: true
       checksum_type:
-        required: true
-      size:
         required: true
       dataset:
         description: >-
           The Dataset alias associated with this File.
         inlined: false
+        required: true
+      included_in_submission:
         required: true
 
   ResearchDataFile:
@@ -667,7 +674,6 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
-      - included_in_submission
       - ega_accession
       - experiment
     slot_usage:
@@ -680,8 +686,6 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
-      included_in_submission:
-        required: true
       ega_accession:
         required: false
       experiment:
@@ -1056,7 +1060,15 @@ slots:
       - ontology
     multivalued: true
 
-  ancestries:
+  ancestry_terms:
+    description: >-
+      A person's descent or lineage from a population.
+    in_subset:
+      - ontology
+    # range: AncestryEnum
+    multivalued: true
+
+  ancestry_ids:
     description: >-
       A person's descent or lineage from a population.
     in_subset:
@@ -1275,8 +1287,6 @@ slots:
   biospecimen_isolation:
     description: >-
       Method or device employed for collecting/isolating a Biospecimen or a Sample.
-    in_subset:
-      - ontology
     range: IsolationEnum
 
   storage:
@@ -1304,7 +1314,14 @@ slots:
       Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
     range: VitalStatusEnum
 
-  geographical_region:
+  geographical_region_term:
+    description: >-
+      The geographical region where the Individual is located.
+    in_subset:
+      - ontology
+    # range: GeographicalRegionEnum
+
+  geographical_region_id:
     description: >-
       The geographical region where the Individual is located.
     in_subset:
@@ -1376,6 +1393,9 @@ slots:
   biospecimen_tissue_id:
     description: >-
       The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+    in_subset:
+      - ontology
+    # range: TissueEnum
 
   included_in_submission:
     description: >-
