@@ -9,22 +9,10 @@ erDiagram
 Submission {
 
 }
-Trio {
-
-}
-Individual {
-
-}
-StudyFile {
+IndividualSupportingFile {
 
 }
 Dataset {
-
-}
-DataAccessPolicy {
-
-}
-DataAccessCommittee {
 
 }
 Study {
@@ -33,123 +21,106 @@ Study {
 Attribute {
 
 }
-SequencingProtocol {
+DataAccessPolicy {
 
 }
-SequencingProcess {
+DataAccessCommittee {
 
 }
-Sample {
+Individual {
 
 }
-Condition {
+AnalysisMethodSupportingFile {
 
 }
-Biospecimen {
+AnalysisMethod {
 
 }
-SequencingExperiment {
+ExperimentMethodSupportingFile {
 
 }
-LibraryPreparationProtocol {
+ExperimentMethod {
 
 }
-SequencingProcessFile {
-
-}
-SampleFile {
-
-}
-Publication {
-
-}
-AnalysisProcess {
+ProcessDataFile {
 
 }
 Analysis {
 
 }
-AnalysisProcessOutputFile {
+ResearchDataFile {
+
+}
+Experiment {
+
+}
+Sample {
+
+}
+Publication {
 
 }
 
 Submission ||--}| Analysis : "analyses"
-Submission ||--}| AnalysisProcessOutputFile : "analysis_process_output_files"
-Submission ||--}| AnalysisProcess : "analysis_processes"
-Submission ||--}| Biospecimen : "biospecimens"
-Submission ||--}| Condition : "conditions"
+Submission ||--}| AnalysisMethod : "analysis_methods"
 Submission ||--}| DataAccessCommittee : "data_access_committees"
 Submission ||--}| DataAccessPolicy : "data_access_policies"
 Submission ||--}| Dataset : "datasets"
 Submission ||--}| Individual : "individuals"
-Submission ||--}| LibraryPreparationProtocol : "library_preparation_protocols"
 Submission ||--}| Publication : "publications"
-Submission ||--}| SampleFile : "sample_files"
 Submission ||--}| Sample : "samples"
-Submission ||--}| SequencingExperiment : "sequencing_experiments"
-Submission ||--}| SequencingProcessFile : "sequencing_process_files"
-Submission ||--}| SequencingProcess : "sequencing_processes"
-Submission ||--}| SequencingProtocol : "sequencing_protocols"
+Submission ||--}| Experiment : "experiments"
+Submission ||--}| ExperimentMethod : "experiment_methods"
 Submission ||--}| Study : "studies"
-Submission ||--}| StudyFile : "study_files"
-Submission ||--}| Trio : "trios"
-Trio ||--|| Individual : "mother"
-Trio ||--|| Individual : "father"
-Trio ||--|| Individual : "child"
-StudyFile ||--|| Study : "study"
-StudyFile ||--|| Dataset : "dataset"
+Submission ||--}| ResearchDataFile : "research_data_files"
+Submission ||--}| ProcessDataFile : "process_data_files"
+Submission ||--}| ExperimentMethodSupportingFile : "experiment_method_supporting_files"
+Submission ||--}| AnalysisMethodSupportingFile : "analysis_method_supporting_files"
+Submission ||--}| IndividualSupportingFile : "individual_supporting_files"
+IndividualSupportingFile ||--|| Individual : "individual"
+IndividualSupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
-DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
+Dataset ||--|| Study : "study"
 Study ||--}o Attribute : "attributes"
-SequencingProtocol ||--}o Attribute : "attributes"
-SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
-SequencingProcess ||--|| Sample : "sample"
-SequencingProcess ||--}o Attribute : "attributes"
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
+DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
+AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
+AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
+AnalysisMethod ||--}o Attribute : "parameters"
+AnalysisMethod ||--}o Attribute : "software_versions"
+ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
+ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethod ||--}o Attribute : "attributes"
+ProcessDataFile ||--|| Analysis : "analysis"
+ProcessDataFile ||--|| Dataset : "dataset"
+Analysis ||--|| AnalysisMethod : "analysis_method"
+Analysis ||--}| ResearchDataFile : "research_data_files"
+ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--|| Dataset : "dataset"
+Experiment ||--|| ExperimentMethod : "experiment_method"
+Experiment ||--|| Sample : "sample"
+Experiment ||--}o Attribute : "attributes"
+Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-Condition ||--|| Study : "study"
-Condition ||--}o Attribute : "attributes"
-Biospecimen ||--|| Individual : "individual"
-SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "attributes"
-LibraryPreparationProtocol ||--}o Attribute : "attributes"
-SequencingProcessFile ||--|| SequencingProcess : "sequencing_process"
-SequencingProcessFile ||--|| Dataset : "dataset"
-SampleFile ||--|| Sample : "sample"
-SampleFile ||--|| Dataset : "dataset"
 Publication ||--|| Study : "study"
-AnalysisProcess ||--|| Analysis : "analysis"
-AnalysisProcess ||--}o StudyFile : "study_input_files"
-AnalysisProcess ||--}o SampleFile : "sample_input_files"
-AnalysisProcess ||--}o SequencingProcessFile : "sequencing_process_input_files"
-AnalysisProcessOutputFile ||--|| AnalysisProcess : "analysis_process"
-AnalysisProcessOutputFile ||--|| Dataset : "dataset"
 
 ```
 
 
 
-## Sample, Biospecimen, & Individual
+## Sample & Individual
 
-Focusses on the relation between Sample, Biospecimen, and Individual.  
+Focusses on the relation between Sample and Individual.  
 
 ```mermaid
 erDiagram
 Individual {
 
 }
-Biospecimen {
-
-}
 Sample {
 
 }
 
-Biospecimen ||--|| Individual : "individual"
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
+Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 
 ```
@@ -162,99 +133,78 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
-SequencingProcess {
+ExperimentMethodSupportingFile {
 
 }
-File {
+ExperimentMethod {
+
+}
+ResearchDataFile {
 
 }
 Sample {
 
 }
-SequencingExperiment {
+Experiment {
 
 }
 
-SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
-SequencingProcess ||--|| Sample : "sample"
-SequencingProcess ||--}o Attribute : "attributes"
-File ||--|| Dataset : "dataset"
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
+ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
+ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethod ||--}o Attribute : "attributes"
+ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--|| Dataset : "dataset"
+Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "attributes"
+Experiment ||--|| ExperimentMethod : "experiment_method"
+Experiment ||--|| Sample : "sample"
+Experiment ||--}o Attribute : "attributes"
 
 ```
 
 
 
-## Study, Condition, & Sample
-
-Focusses on the relation between Study, Condition, and Sample.  
-
-```mermaid
-erDiagram
-Sample {
-
-}
-Condition {
-
-}
-Study {
-
-}
-
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
-Sample ||--}o Attribute : "attributes"
-Condition ||--|| Study : "study"
-Condition ||--}o Attribute : "attributes"
-Study ||--}o Attribute : "attributes"
-
-```
-
-
-
-## Sample, Biospecimen, & Individual (with attributes)
+## Sample & Individual (with attributes)
 
 Focusses on the details of the relation between Sample, Biospecimen, and Individual.  
 
 ```mermaid
 erDiagram
 Individual {
-    stringList phenotypic_features  
+    stringList phenotypic_features_terms  
+    stringList phenotypic_features_ids  
+    stringList diagnosis_ids  
+    stringList diagnosis_terms  
     IndividualSexEnum sex  
-    KaryotypeEnum karyotype  
-    string geographical_region  
-    stringList ancestries  
-    string alias  
-}
-Biospecimen {
-    string name  
-    string type  
-    string description  
-    AgeRangeEnum age_at_sampling  
-    VitalStatusEnum vital_status_at_sampling  
-    string tissue  
-    string isolation  
-    StorageEnum storage  
+    string geographical_region_term  
+    string geographical_region_id  
+    stringList ancestry_terms  
+    stringList ancestry_ids  
     string alias  
 }
 Sample {
     string name  
     SampleTypeEnum type  
+    integer biological_replicate  
     string description  
-    string isolation  
     StorageEnum storage  
+    DiseaseOrHealthyEnum disease_or_healthy  
+    CaseControlStatusEnum case_control_status  
+    string ega_accession  
     stringList xref  
+    string biospecimen_name  
+    string biospecimen_type  
+    string biospecimen_description  
+    AgeRangeEnum biospecimen_age_at_sampling  
+    VitalStatusEnum biospecimen_vital_status_at_sampling  
+    string biospecimen_tissue_term  
+    string biospecimen_tissue_id  
+    IsolationEnum biospecimen_isolation  
+    StorageEnum biospecimen_storage  
     string alias  
 }
 
-Biospecimen ||--|| Individual : "individual"
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
+Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 
 ```
@@ -267,92 +217,84 @@ Focusses on the relation between Experiment, Sample, and File.
 
 ```mermaid
 erDiagram
-SequencingProcess {
+ExperimentMethodSupportingFile {
+    SupportingFileFormatEnum format  
     string name  
-    string description  
-    string sequencing_run_id  
-    string sequencing_lane_id  
-    string sequencing_machine_id  
-    string index_sequence  
+    boolean included_in_submission  
     string alias  
 }
-File {
+ExperimentMethod {
     string name  
-    FileFormatEnum format  
-    integer size  
-    string checksum  
-    string checksum_type  
-    ForwardOrReverseEnum forward_or_reverse  
+    string description  
+    string type  
+    LibraryPreparationLibraryTypeEnum library_type  
+    LibraryPreparationLibrarySelectionEnumList library_selection_methods  
+    string library_preparation  
+    LibraryPreparationKitRetailNameEnum library_preparation_kit_retail_name  
+    string library_preparation_kit_manufacturer  
+    PrimerEnum primer  
+    EndBiasEnum end_bias  
+    stringList target_regions  
+    LibraryPreparationRNASeqStrandednessEnum rnaseq_strandedness  
+    InstrumentModelEnum instrument_model  
+    string sequencing_center  
+    string sequencing_read_length  
+    SequencingProtocolSequencingLayoutEnum sequencing_layout  
+    string target_coverage  
+    string flow_cell_id  
+    FlowCellTypeEnum flow_cell_type  
+    SampleBarcodeReadEnum sample_barcode_read  
+    string ega_accession  
+    string alias  
+}
+ResearchDataFile {
+    ResearchDataFileFormatEnum format  
+    integer technical_replicate  
+    string sequencing_lane_id  
+    string ega_accession  
+    string name  
+    boolean included_in_submission  
     string alias  
 }
 Sample {
     string name  
     SampleTypeEnum type  
+    integer biological_replicate  
     string description  
-    string isolation  
     StorageEnum storage  
+    DiseaseOrHealthyEnum disease_or_healthy  
+    CaseControlStatusEnum case_control_status  
+    string ega_accession  
     stringList xref  
+    string biospecimen_name  
+    string biospecimen_type  
+    string biospecimen_description  
+    AgeRangeEnum biospecimen_age_at_sampling  
+    VitalStatusEnum biospecimen_vital_status_at_sampling  
+    string biospecimen_tissue_term  
+    string biospecimen_tissue_id  
+    IsolationEnum biospecimen_isolation  
+    StorageEnum biospecimen_storage  
     string alias  
 }
-SequencingExperiment {
+Experiment {
     string title  
     string description  
     string type  
+    string ega_accession  
     string alias  
 }
 
-SequencingProcess ||--|| SequencingExperiment : "sequencing_experiment"
-SequencingProcess ||--|| Sample : "sample"
-SequencingProcess ||--}o Attribute : "attributes"
-File ||--|| Dataset : "dataset"
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
+ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
+ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethod ||--}o Attribute : "attributes"
+ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--|| Dataset : "dataset"
+Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
-SequencingExperiment ||--|| SequencingProtocol : "sequencing_protocol"
-SequencingExperiment ||--|| LibraryPreparationProtocol : "library_preparation_protocol"
-SequencingExperiment ||--}o Attribute : "attributes"
-
-```
-
-
-
-## Study, Condition, & Sample (with attributes)
-
-Focusses on the relation between Study, Condition, and Sample.  
-
-```mermaid
-erDiagram
-Sample {
-    string name  
-    SampleTypeEnum type  
-    string description  
-    string isolation  
-    StorageEnum storage  
-    stringList xref  
-    string alias  
-}
-Condition {
-    string name  
-    string description  
-    DiseaseOrHealthyEnum disease_or_healthy  
-    CaseControlStatusEnum case_control_status  
-    MutantOrWildtypeEnum mutant_or_wildtype  
-    string alias  
-}
-Study {
-    string title  
-    string description  
-    StudyTypeEnum type  
-    stringList affiliations  
-    string alias  
-}
-
-Sample ||--|o Biospecimen : "biospecimen"
-Sample ||--|| Condition : "condition"
-Sample ||--}o Attribute : "attributes"
-Condition ||--|| Study : "study"
-Condition ||--}o Attribute : "attributes"
-Study ||--}o Attribute : "attributes"
+Experiment ||--|| ExperimentMethod : "experiment_method"
+Experiment ||--|| Sample : "sample"
+Experiment ||--}o Attribute : "attributes"
 
 ```
 

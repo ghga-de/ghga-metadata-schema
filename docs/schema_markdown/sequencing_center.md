@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Children
 
- *  [SequencingProtocol➞sequencing_center](SequencingProtocol_sequencing_center.md)
+ *  [ExperimentMethod➞sequencing_center](ExperimentMethod_sequencing_center.md)
 
 ## Used by
 

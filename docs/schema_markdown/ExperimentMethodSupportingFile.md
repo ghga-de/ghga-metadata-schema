@@ -1,0 +1,43 @@
+
+# Class: ExperimentMethodSupportingFile
+
+
+An Experiment Method Supporting File is a File that contains additional information relevant for the Experiment Method, such as (unstructured) protocols.
+
+URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMethodSupportingFile)
+
+
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])
+
+## Parents
+
+ *  is_a: [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+
+## Referenced by Class
+
+ *  **[Submission](Submission.md)** *[Submission➞experiment_method_supporting_files](Submission_experiment_method_supporting_files.md)*  <sub>1..\*</sub>  **[ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)**
+ *  **None** *[experiment_method_supporting_files](experiment_method_supporting_files.md)*  <sub>0..\*</sub>  **[ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)**
+
+## Attributes
+
+
+### Own
+
+ * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md)  <sub>1..1</sub>
+     * Description: The file format of the Supporting File (e.g., TXT, JSON).
+     * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
+ * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)  <sub>1..1</sub>
+     * Description: The Experiment Method associated with an entity.
+     * Range: [ExperimentMethod](ExperimentMethod.md)
+
+### Inherited from File:
+
+ * [File➞name](File_name.md)  <sub>1..1</sub>
+     * Description: The given filename.
+     * Range: [String](types/String.md)
+ * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
+     * Description: The Dataset alias associated with this File.
+     * Range: [Dataset](Dataset.md)
+ * [File➞included_in_submission](File_included_in_submission.md)  <sub>1..1</sub>
+     * Description: Whether a File is included in the Submission or not.
+     * Range: [Boolean](types/Boolean.md)

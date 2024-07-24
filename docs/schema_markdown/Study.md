@@ -7,7 +7,7 @@ A Study is an experimental investigation of a particular phenomenon. It involves
 URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[StudyFile],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;type:StudyTypeEnum;affiliations:string%20%2B;alias:string],[Condition]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[StudyFile]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Condition]-%20study(i)%200..1>[Study],[StudyFile]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Condition],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;types:StudyTypeEnum%20%2B;ega_accession:string%20%3F;affiliations:string%20%2B;alias:string],[Dataset]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Dataset]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Dataset],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Attribute]<attributes%200..*-++[Study&#124;title:string;description:string;types:StudyTypeEnum%20%2B;ega_accession:string%20%3F;affiliations:string%20%2B;alias:string],[Dataset]-%20study%201..1>[Study],[Publication]-%20study%201..1>[Study],[Submission]++-%20studies%201..*>[Study],[Submission]-%20studies(i)%200..*>[Study],[Dataset]-%20study(i)%200..1>[Study],[Publication]-%20study(i)%200..1>[Study],[Study]uses%20-.->[IdentifiedByAliasMixin],[Study]uses%20-.->[AttributeMixin],[Publication],[IdentifiedByAliasMixin],[Dataset],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -16,9 +16,8 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
 
 ## Referenced by Class
 
- *  **[Condition](Condition.md)** *[Condition➞study](Condition_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
+ *  **[Dataset](Dataset.md)** *[Dataset➞study](Dataset_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
  *  **[Publication](Publication.md)** *[Publication➞study](Publication_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
- *  **[StudyFile](StudyFile.md)** *[StudyFile➞study](StudyFile_study.md)*  <sub>1..1</sub>  **[Study](Study.md)**
  *  **[Submission](Submission.md)** *[Submission➞studies](Submission_studies.md)*  <sub>1..\*</sub>  **[Study](Study.md)**
  *  **None** *[studies](studies.md)*  <sub>0..\*</sub>  **[Study](Study.md)**
  *  **None** *[study](study.md)*  <sub>0..1</sub>  **[Study](Study.md)**
@@ -34,9 +33,12 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
  * [Study➞description](Study_description.md)  <sub>1..1</sub>
      * Description: A detailed description (abstract) that describes the goals of this Study.
      * Range: [String](types/String.md)
- * [Study➞type](Study_type.md)  <sub>1..1</sub>
-     * Description: The type of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
+ * [Study➞types](Study_types.md)  <sub>1..\*</sub>
+     * Description: One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
+ * [Study➞ega_accession](Study_ega_accession.md)  <sub>0..1</sub>
+     * Description: The EGA accession ID of an entity.
+     * Range: [String](types/String.md)
  * [Study➞affiliations](Study_affiliations.md)  <sub>1..\*</sub>
      * Description: The affiliations associated with this Study.
      * Range: [String](types/String.md)

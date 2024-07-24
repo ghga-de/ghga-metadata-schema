@@ -18,8 +18,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
  *  [Analysis➞title](Analysis_title.md)
  *  [Dataset➞title](Dataset_title.md)
+ *  [Experiment➞title](Experiment_title.md)
  *  [Publication➞title](Publication_title.md)
- *  [SequencingExperiment➞title](SequencingExperiment_title.md)
  *  [Study➞title](Study_title.md)
 
 ## Used by

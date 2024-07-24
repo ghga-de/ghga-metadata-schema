@@ -16,7 +16,7 @@ None &#8594;  <sub>0..1</sub> [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md)
 
 ## Children
 
- *  [Condition➞disease_or_healthy](Condition_disease_or_healthy.md)
+ *  [Sample➞disease_or_healthy](Sample_disease_or_healthy.md)
 
 ## Used by
 

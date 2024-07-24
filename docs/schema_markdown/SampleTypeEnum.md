@@ -26,6 +26,7 @@ URI: [GHGA:SampleTypeEnum](https://w3id.org/GHGA/SampleTypeEnum)
 | POLY_A_RNA | Polyadenylated (polyA) RNA was used for sequencing. |  |  |
 | SINGLE_CELL_DNA | DNA originating from single cells was used for sequencing. |  |  |
 | SINGLE_CELL_RNA | RNA originating from single cells was used for sequencing. |  |  |
+| SINGLE_CELL_NUCLEI | RNA originating from single cell nuclei was used for sequencing. |  |  |
 | SMALL_RNA | Small RNA was used for sequencing. |  |  |
 | TOTAL_RNA | Total RNA was used for sequencing. |  |  |
 

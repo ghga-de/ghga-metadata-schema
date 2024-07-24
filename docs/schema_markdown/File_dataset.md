@@ -2,7 +2,7 @@
 # Slot: dataset
 
 
-The Dataset associated with this File.
+The Dataset alias associated with this File.
 
 URI: [GHGA:File_dataset](https://w3id.org/GHGA/File_dataset)
 
@@ -20,8 +20,9 @@ URI: [GHGA:File_dataset](https://w3id.org/GHGA/File_dataset)
 
 ## Used by
 
- * [AnalysisProcessOutputFile](AnalysisProcessOutputFile.md)
+ * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)
+ * [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)
  * [File](File.md)
- * [SampleFile](SampleFile.md)
- * [SequencingProcessFile](SequencingProcessFile.md)
- * [StudyFile](StudyFile.md)
+ * [IndividualSupportingFile](IndividualSupportingFile.md)
+ * [ProcessDataFile](ProcessDataFile.md)
+ * [ResearchDataFile](ResearchDataFile.md)

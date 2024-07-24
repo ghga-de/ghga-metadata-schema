@@ -2,7 +2,7 @@
 # Enum: InstrumentModelEnum
 
 
-Permitted values for the instrument model
+Permitted values for the instrument model.
 
 URI: [GHGA:InstrumentModelEnum](https://w3id.org/GHGA/InstrumentModelEnum)
 
@@ -80,6 +80,6 @@ URI: [GHGA:InstrumentModelEnum](https://w3id.org/GHGA/InstrumentModelEnum)
 | SEQUEL_II | Sequel II |  |  |
 | SEQUEL_IIE | Sequel IIe |  |  |
 | UG_100 | UG 100 |  |  |
-| UNSPECIFIED | Instrument model is unspecified |  |  |
-| OTHER | Other instrument model than mentioned above |  |  |
+| UNSPECIFIED | Instrument model is unspecified. |  |  |
+| OTHER | Other instrument model than mentioned above. |  |  |
 

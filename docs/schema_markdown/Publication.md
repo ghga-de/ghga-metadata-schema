@@ -23,11 +23,14 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
 
 ### Own
 
+ * [Publication➞study](Publication_study.md)  <sub>1..1</sub>
+     * Description: The Study entity associated with this Publication.
+     * Range: [Study](Study.md)
  * [Publication➞title](Publication_title.md)  <sub>0..1</sub>
      * Description: The title for this Publication.
      * Range: [String](types/String.md)
  * [Publication➞abstract](Publication_abstract.md)  <sub>0..1</sub>
-     * Description: The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.
+     * Description: The study abstract that describes the goals. Can also hold abstract from a publication related to this Study.
      * Range: [String](types/String.md)
  * [Publication➞author](Publication_author.md)  <sub>0..1</sub>
      * Description: Author(s) of this Publication.
@@ -44,9 +47,6 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
      * Description: One or more cross-references for this Publication.
      * Range: [String](types/String.md)
- * [Publication➞study](Publication_study.md)  <sub>1..1</sub>
-     * Description: The Study entity associated with this Publication.
-     * Range: [Study](Study.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

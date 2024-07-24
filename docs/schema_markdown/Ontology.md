@@ -15,18 +15,26 @@ URI: [GHGA:ontology](https://w3id.org/GHGA/ontology)
 
 ### Slots
 
- * [Biospecimen➞isolation](Biospecimen_isolation.md) - Method or device employed for collecting/isolating this Biospecimen.
- * [Biospecimen➞tissue](Biospecimen_tissue.md) - The tissue this Biospecimen originated from.
- * [Individual➞ancestries](Individual_ancestries.md)
- * [Individual➞geographical_region](Individual_geographical_region.md)
- * [Individual➞phenotypic_features](Individual_phenotypic_features.md)
- * [Sample➞isolation](Sample_isolation.md) - Method or device employed for collecting/isolating this Sample.
- * [Sample➞type](Sample_type.md) - The type of the Sample.
- * [ancestries](ancestries.md) - A person's descent or lineage from a population.
- * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
- * [isolation](isolation.md) - Method or device employed for collecting/isolating a Biospecimen or a Sample.
- * [phenotypic_features](phenotypic_features.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.
- * [tissue](tissue.md)
+ * [Individual➞ancestry_ids](Individual_ancestry_ids.md)
+ * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
+ * [Individual➞diagnosis_ids](Individual_diagnosis_ids.md)
+ * [Individual➞diagnosis_terms](Individual_diagnosis_terms.md)
+ * [Individual➞geographical_region_id](Individual_geographical_region_id.md)
+ * [Individual➞geographical_region_term](Individual_geographical_region_term.md)
+ * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
+ * [Individual➞phenotypic_features_terms](Individual_phenotypic_features_terms.md)
+ * [Sample➞biospecimen_tissue_id](Sample_biospecimen_tissue_id.md)
+ * [Sample➞biospecimen_tissue_term](Sample_biospecimen_tissue_term.md)
+ * [ancestry_ids](ancestry_ids.md) - A person's descent or lineage from a population.
+ * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population.
+ * [biospecimen_tissue_id](biospecimen_tissue_id.md) - The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+ * [biospecimen_tissue_term](biospecimen_tissue_term.md) - The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
+ * [diagnosis_ids](diagnosis_ids.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
+ * [diagnosis_terms](diagnosis_terms.md) - The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).
+ * [geographical_region_id](geographical_region_id.md) - The geographical region where the Individual is located.
+ * [geographical_region_term](geographical_region_term.md) - The geographical region where the Individual is located.
+ * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
+ * [phenotypic_features_terms](phenotypic_features_terms.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
 
 ### Types
 
