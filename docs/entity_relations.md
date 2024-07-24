@@ -220,9 +220,6 @@ erDiagram
 ExperimentMethodSupportingFile {
     SupportingFileFormatEnum format  
     string name  
-    integer size  
-    string checksum  
-    string checksum_type  
     boolean included_in_submission  
     string alias  
 }
@@ -256,9 +253,6 @@ ResearchDataFile {
     string sequencing_lane_id  
     string ega_accession  
     string name  
-    integer size  
-    string checksum  
-    string checksum_type  
     boolean included_in_submission  
     string alias  
 }

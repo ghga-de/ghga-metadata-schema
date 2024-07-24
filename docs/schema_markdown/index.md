@@ -91,10 +91,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞biospecimen_vital_status_at_sampling](Sample_biospecimen_vital_status_at_sampling.md)
  * [case_control_status](case_control_status.md) - Whether a Condition corresponds to a treatment or a control.
      * [Sample➞case_control_status](Sample_case_control_status.md)
- * [checksum](checksum.md) - The checksum of the File.
-     * [File➞checksum](File_checksum.md)
- * [checksum_type](checksum_type.md) - The type of algorithm used to generate the checksum of the File.
-     * [File➞checksum_type](File_checksum_type.md)
  * [data_access_committee](data_access_committee.md) - Data Access Committee associated with an entity.
      * [DataAccessPolicy➞data_access_committee](DataAccessPolicy_data_access_committee.md) - The Data Access Committee linked to this Data Use Policy.
  * [data_access_committees](data_access_committees.md) - Data Access Committees associated with an entity.
@@ -246,8 +242,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)
  * [sex](sex.md) - The genotypic sex of the Individual (e.g., female).
      * [Individual➞sex](Individual_sex.md)
- * [size](size.md) - The size of the File in bytes.
-     * [File➞size](File_size.md)
  * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
