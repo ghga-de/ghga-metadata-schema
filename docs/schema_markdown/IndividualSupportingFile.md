@@ -7,7 +7,7 @@ An Individual Supporting File is a File that contains additional information rel
 URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20individual_supporting_files%200..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20individual_supporting_files%200..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞individual_supporting_files](Submission_individual_supporting_files.md)*  <sub>0..\*</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
- *  **None** *[individual_supporting_file](individual_supporting_file.md)*  <sub>0..1</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
+ *  **[Submission](Submission.md)** *[Submission➞individual_supporting_files](Submission_individual_supporting_files.md)*  <sub>1..\*</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
  *  **None** *[individual_supporting_files](individual_supporting_files.md)*  <sub>0..\*</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
 
 ## Attributes

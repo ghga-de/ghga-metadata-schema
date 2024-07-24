@@ -9,7 +9,7 @@ URI: [GHGA:Submission_analysis_method_supporting_files](https://w3id.org/GHGA/Su
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)
 
 ## Parents
 

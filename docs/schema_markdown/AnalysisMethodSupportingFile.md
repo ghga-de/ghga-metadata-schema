@@ -7,7 +7,7 @@ An Analysis Method Supporting File is a File that contains additional informatio
 URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20analysis_method_supporting_files%200..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20analysis_method_supporting_files%200..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20analysis_method_supporting_files%201..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20analysis_method_supporting_files%201..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSup
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md)*  <sub>0..\*</sub>  **[AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)**
- *  **None** *[analysis_method_supporting_file](analysis_method_supporting_file.md)*  <sub>0..1</sub>  **[AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)**
+ *  **[Submission](Submission.md)** *[Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md)*  <sub>1..\*</sub>  **[AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)**
  *  **None** *[analysis_method_supporting_files](analysis_method_supporting_files.md)*  <sub>0..\*</sub>  **[AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md)**
 
 ## Attributes

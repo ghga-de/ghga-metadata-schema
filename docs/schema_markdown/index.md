@@ -55,7 +55,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [analysis_method](analysis_method.md) - The Analysis Process associated with an entity.
      * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
      * [Analysis➞analysis_method](Analysis_analysis_method.md) - The alias of the Analysis Method that is associated with this Analysis.
- * [analysis_method_supporting_file](analysis_method_supporting_file.md) - The Analysis Method Supporting File associated with an entity.
  * [analysis_method_supporting_files](analysis_method_supporting_files.md) - The Analysis Method Supporting Files associated with an entity.
      * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
  * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
@@ -151,7 +150,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [experiment_method](experiment_method.md) - The Experiment Method associated with an entity.
      * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)
      * [Experiment➞experiment_method](Experiment_experiment_method.md) - The alias of one or more Experiment Methods that are associated with this Experiment.
- * [experiment_method_supporting_file](experiment_method_supporting_file.md) - The Experiment Method Supporting File associated with an entity.
  * [experiment_method_supporting_files](experiment_method_supporting_files.md) - The Experiment Method Supporting Files associated with an entity.
      * [Submission➞experiment_method_supporting_files](Submission_experiment_method_supporting_files.md) - One or more Experiment Method Supporting Files associated with this Submission.
  * [experiment_methods](experiment_methods.md) - The Experiment Methods associated with an entity.
@@ -170,11 +168,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
  * [geographical_region](geographical_region.md) - The geographical region where the Individual is located.
      * [Individual➞geographical_region](Individual_geographical_region.md)
+ * [included_in_submission](included_in_submission.md) - Whether a File is included in the Submission or not.
+     * [ResearchDataFile➞included_in_submission](ResearchDataFile_included_in_submission.md)
  * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
  * [individual](individual.md) - The Individual associated with an entity.
      * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)
      * [Sample➞individual](Sample_individual.md) - The alias of the Individual entity from which this Biospecimen or Sample was derived.
- * [individual_supporting_file](individual_supporting_file.md) - The Individual Supporting File associated with an entity.
  * [individual_supporting_files](individual_supporting_files.md) - The Individual Supporting Files associated with an entity.
      * [Submission➞individual_supporting_files](Submission_individual_supporting_files.md) - One or more Individual Supporting Files associated with this Submission.
  * [individuals](individuals.md) - The Individuals associated with an entity.
@@ -183,8 +182,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessCommittee➞institute](DataAccessCommittee_institute.md)
  * [instrument_model](instrument_model.md) - The name and model of the technology platform used to perform sequencing.
      * [ExperimentMethod➞instrument_model](ExperimentMethod_instrument_model.md)
- * [is_pseudofile](is_pseudofile.md) - Whether a File is a pseudofile or not.
-     * [ResearchDataFile➞is_pseudofile](ResearchDataFile_is_pseudofile.md)
  * [journal](journal.md) - The name of the journal.
      * [Publication➞journal](Publication_journal.md)
  * [key](key.md) - The key of an attribute.
@@ -220,12 +217,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md)
  * [primer](primer.md) - The type of primer used for reverse transcription (e.g., oligo-dT or random).
      * [ExperimentMethod➞primer](ExperimentMethod_primer.md)
- * [process_data_file](process_data_file.md) - The Process Data File associated with an entity.
  * [process_data_files](process_data_files.md) - The Process Data Files associated with an entity.
      * [Submission➞process_data_files](Submission_process_data_files.md) - One or more Process Data Files associated with this Submission.
  * [publications](publications.md) - The Publication associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
- * [research_data_file](research_data_file.md) - The Research Data File associated with an entity.
  * [research_data_files](research_data_files.md) - The Research Data Files associated with an entity.
      * [Analysis➞research_data_files](Analysis_research_data_files.md) - One or more aliases of the Research Data Files that this Analysis used as input to create Process Data Files.
      * [Submission➞research_data_files](Submission_research_data_files.md) - One or more Research Data Files associated with this Submission.

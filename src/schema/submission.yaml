@@ -667,7 +667,7 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
-      - is_pseudofile
+      - included_in_submission
       - ega_accession
       - experiment
     slot_usage:
@@ -680,7 +680,7 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
-      is_pseudofile:
+      included_in_submission:
         required: true
       ega_accession:
         required: false
@@ -1064,21 +1064,11 @@ slots:
     # range: AncestryEnum
     multivalued: true
 
-  research_data_file:
-    description: >-
-      The Research Data File associated with an entity.
-    range: ResearchDataFile
-
   research_data_files:
     description: >-
       The Research Data Files associated with an entity.
     range: ResearchDataFile
     multivalued: True
-
-  process_data_file:
-    description: >-
-      The Process Data File associated with an entity.
-    range: ProcessDataFile
 
   process_data_files:
     description: >-
@@ -1086,32 +1076,17 @@ slots:
     range: ProcessDataFile
     multivalued: True
 
-  experiment_method_supporting_file:
-    description: >-
-      The Experiment Method Supporting File associated with an entity.
-    range: ExperimentMethodSupportingFile
-
   experiment_method_supporting_files:
     description: >-
       The Experiment Method Supporting Files associated with an entity.
     range: ExperimentMethodSupportingFile
     multivalued: true
 
-  analysis_method_supporting_file:
-    description: >-
-      The Analysis Method Supporting File associated with an entity.
-    range: AnalysisMethodSupportingFile
-
   analysis_method_supporting_files:
     description: >-
       The Analysis Method Supporting Files associated with an entity.
     range: AnalysisMethodSupportingFile
     multivalued: true
-
-  individual_supporting_file:
-    description: >-
-      The Individual Supporting File associated with an entity.
-    range: IndividualSupportingFile
 
   individual_supporting_files:
     description: >-
@@ -1402,9 +1377,9 @@ slots:
     description: >-
       The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
 
-  is_pseudofile:
+  included_in_submission:
     description: >-
-      Whether a File is a pseudofile or not.
+      Whether a File is included in the Submission or not.
     range: boolean
 
   ega_accession:

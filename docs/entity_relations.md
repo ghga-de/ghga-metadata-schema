@@ -73,10 +73,10 @@ Submission ||--}| Experiment : "experiments"
 Submission ||--}| ExperimentMethod : "experiment_methods"
 Submission ||--}| Study : "studies"
 Submission ||--}| ResearchDataFile : "research_data_files"
-Submission ||--}o ProcessDataFile : "process_data_files"
-Submission ||--}o ExperimentMethodSupportingFile : "experiment_method_supporting_files"
-Submission ||--}o AnalysisMethodSupportingFile : "analysis_method_supporting_files"
-Submission ||--}o IndividualSupportingFile : "individual_supporting_files"
+Submission ||--}| ProcessDataFile : "process_data_files"
+Submission ||--}| ExperimentMethodSupportingFile : "experiment_method_supporting_files"
+Submission ||--}| AnalysisMethodSupportingFile : "analysis_method_supporting_files"
+Submission ||--}| IndividualSupportingFile : "individual_supporting_files"
 IndividualSupportingFile ||--|| Individual : "individual"
 IndividualSupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
@@ -251,7 +251,7 @@ ResearchDataFile {
     ResearchDataFileFormatEnum format  
     integer technical_replicate  
     string sequencing_lane_id  
-    boolean is_pseudofile  
+    boolean included_in_submission  
     string ega_accession  
     string name  
     integer size  

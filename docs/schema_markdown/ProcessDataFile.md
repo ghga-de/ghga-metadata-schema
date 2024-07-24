@@ -7,7 +7,7 @@ A Process Data File is a File that contains data produced by an Analysis or work
 URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;ega_accession:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%200..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;ega_accession:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%200..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;ega_accession:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%201..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;ega_accession:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20process_data_files%201..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞process_data_files](Submission_process_data_files.md)*  <sub>0..\*</sub>  **[ProcessDataFile](ProcessDataFile.md)**
- *  **None** *[process_data_file](process_data_file.md)*  <sub>0..1</sub>  **[ProcessDataFile](ProcessDataFile.md)**
+ *  **[Submission](Submission.md)** *[Submission➞process_data_files](Submission_process_data_files.md)*  <sub>1..\*</sub>  **[ProcessDataFile](ProcessDataFile.md)**
  *  **None** *[process_data_files](process_data_files.md)*  <sub>0..\*</sub>  **[ProcessDataFile](ProcessDataFile.md)**
 
 ## Attributes
