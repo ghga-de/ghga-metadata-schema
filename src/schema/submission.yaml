@@ -668,7 +668,7 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
-      - experiment
+      - experiments
     slot_usage:
       format:
         description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
@@ -679,12 +679,11 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
-      experiment:
+      experiments:
         description: >-
-          The alias of the Experiment that produced this Research Data File.
+          The aliases of the Experiments that produced this Research Data File.
         required: true
         inlined: false
-        multivalued: true
 
   ProcessDataFile:
     is_a: File
@@ -952,10 +951,6 @@ slots:
     description: The Samples associated with an entity.
     range: Sample
     multivalued: true
-
-  experiment:
-    description: The Experiment associated with an entity.
-    range: Experiment
 
   experiments:
     description: The Experiments associated with an entity.
