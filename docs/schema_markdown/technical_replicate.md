@@ -9,7 +9,7 @@ URI: [GHGA:technical_replicate](https://w3id.org/GHGA/technical_replicate)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 
 ## Parents
 

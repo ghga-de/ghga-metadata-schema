@@ -320,7 +320,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors.
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer.
  * [ProcessDataFileFormatEnum](ProcessDataFileFormatEnum.md) - Enum to capture Process Data File formats.
- * [PseudofileEnum](PseudofileEnum.md) - Enum to capture whether a file is a pseudofile or not.
  * [ResearchDataFileFormatEnum](ResearchDataFileFormatEnum.md) - Enum to capture Research Data File formats.
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read.
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample

@@ -9,7 +9,7 @@ URI: [GHGA:ResearchDataFile_is_pseudofile](https://w3id.org/GHGA/ResearchDataFil
 
 ## Domain and Range
 
-[ResearchDataFile](ResearchDataFile.md) &#8594;  <sub>1..1</sub> [PseudofileEnum](PseudofileEnum.md)
+[ResearchDataFile](ResearchDataFile.md) &#8594;  <sub>1..1</sub> [Boolean](types/Boolean.md)
 
 ## Parents
 

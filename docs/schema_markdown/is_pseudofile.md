@@ -9,7 +9,7 @@ URI: [GHGA:is_pseudofile](https://w3id.org/GHGA/is_pseudofile)
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [PseudofileEnum](PseudofileEnum.md)
+None &#8594;  <sub>0..1</sub> [Boolean](types/Boolean.md)
 
 ## Parents
 

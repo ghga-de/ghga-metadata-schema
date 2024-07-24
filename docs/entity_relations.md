@@ -183,7 +183,7 @@ Individual {
 Sample {
     string name  
     SampleTypeEnum type  
-    string biological_replicate  
+    integer biological_replicate  
     string description  
     StorageEnum storage  
     DiseaseOrHealthyEnum disease_or_healthy  
@@ -249,9 +249,9 @@ ExperimentMethod {
 }
 ResearchDataFile {
     ResearchDataFileFormatEnum format  
-    string technical_replicate  
+    integer technical_replicate  
     string sequencing_lane_id  
-    PseudofileEnum is_pseudofile  
+    boolean is_pseudofile  
     string ega_accession  
     string name  
     integer size  
@@ -262,7 +262,7 @@ ResearchDataFile {
 Sample {
     string name  
     SampleTypeEnum type  
-    string biological_replicate  
+    integer biological_replicate  
     string description  
     StorageEnum storage  
     DiseaseOrHealthyEnum disease_or_healthy  

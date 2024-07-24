@@ -1278,10 +1278,12 @@ slots:
   biological_replicate:
     description: >-
       An integer to indicate the number of a biological replicate.
+    range: integer
 
   technical_replicate:
     description: >-
       An integer to indicate the technical replicate of this File.
+    range: integer
 
   biospecimen_name:
     description: The name for a biospecimen.
@@ -1403,7 +1405,7 @@ slots:
   is_pseudofile:
     description: >-
       Whether a File is a pseudofile or not.
-    range: PseudofileEnum
+    range: boolean
 
   ega_accession:
     description: >-
@@ -2903,12 +2905,3 @@ enums:
         description: Age above 80.
       UNKNOWN:
         description: Age range unknown.
-
-  PseudofileEnum:
-    description: >-
-      Enum to capture whether a file is a pseudofile or not.
-    permissible_values:
-      TRUE:
-        description: File is a Pseudofile.
-      FALSE:
-        description: File is not a Pseudofile.

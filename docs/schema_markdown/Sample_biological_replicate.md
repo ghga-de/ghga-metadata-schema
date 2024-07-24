@@ -9,7 +9,7 @@ URI: [GHGA:Sample_biological_replicate](https://w3id.org/GHGA/Sample_biological_
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
+[Sample](Sample.md) &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 
 ## Parents
 
