@@ -7,7 +7,7 @@ An Individual Supporting File is a File that contains additional information rel
 URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20individual_supporting_files%200..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20individual_supporting_files%200..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞individual_supporting_files](Submission_individual_supporting_files.md)*  <sub>0..\*</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
- *  **None** *[individual_supporting_file](individual_supporting_file.md)*  <sub>0..1</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
+ *  **[Submission](Submission.md)** *[Submission➞individual_supporting_files](Submission_individual_supporting_files.md)*  <sub>1..\*</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
  *  **None** *[individual_supporting_files](individual_supporting_files.md)*  <sub>0..\*</sub>  **[IndividualSupportingFile](IndividualSupportingFile.md)**
 
 ## Attributes
@@ -36,15 +35,9 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)
- * [File➞size](File_size.md)  <sub>1..1</sub>
-     * Description: The size of the File in bytes.
-     * Range: [Integer](types/Integer.md)
- * [File➞checksum](File_checksum.md)  <sub>1..1</sub>
-     * Description: The checksum of the File.
-     * Range: [String](types/String.md)
- * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
-     * Description: The type of algorithm used to generate the checksum of the File.
-     * Range: [String](types/String.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
      * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)
+ * [File➞included_in_submission](File_included_in_submission.md)  <sub>1..1</sub>
+     * Description: Whether a File is included in the Submission or not.
+     * Range: [Boolean](types/Boolean.md)

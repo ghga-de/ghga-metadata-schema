@@ -9,7 +9,7 @@ URI: [GHGA:Submission_process_data_files](https://w3id.org/GHGA/Submission_proce
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [ProcessDataFile](ProcessDataFile.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [ProcessDataFile](ProcessDataFile.md)
 
 ## Parents
 

@@ -7,7 +7,7 @@ A file is an object that contains information generated from a process, either a
 URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;size:integer;checksum:string;checksum_type:string;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;included_in_submission:boolean;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;included_in_submission:boolean;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])
 
 ## Uses Mixin
 
@@ -32,18 +32,12 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)
- * [File➞size](File_size.md)  <sub>1..1</sub>
-     * Description: The size of the File in bytes.
-     * Range: [Integer](types/Integer.md)
- * [File➞checksum](File_checksum.md)  <sub>1..1</sub>
-     * Description: The checksum of the File.
-     * Range: [String](types/String.md)
- * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
-     * Description: The type of algorithm used to generate the checksum of the File.
-     * Range: [String](types/String.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
      * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)
+ * [File➞included_in_submission](File_included_in_submission.md)  <sub>1..1</sub>
+     * Description: Whether a File is included in the Submission or not.
+     * Range: [Boolean](types/Boolean.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
 

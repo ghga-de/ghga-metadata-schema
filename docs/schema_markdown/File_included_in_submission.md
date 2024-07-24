@@ -1,19 +1,19 @@
 
-# Slot: checksum_type
+# Slot: included_in_submission
 
 
-The type of algorithm used to generate the checksum of the File.
+Whether a File is included in the Submission or not.
 
-URI: [GHGA:File_checksum_type](https://w3id.org/GHGA/File_checksum_type)
+URI: [GHGA:File_included_in_submission](https://w3id.org/GHGA/File_included_in_submission)
 
 
 ## Domain and Range
 
-[File](File.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[File](File.md) &#8594;  <sub>1..1</sub> [Boolean](types/Boolean.md)
 
 ## Parents
 
- *  is_a: [checksum_type](checksum_type.md)
+ *  is_a: [included_in_submission](included_in_submission.md)
 
 ## Children
 

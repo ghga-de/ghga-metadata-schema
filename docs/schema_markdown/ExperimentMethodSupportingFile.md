@@ -7,7 +7,7 @@ An Experiment Method Supporting File is a File that contains additional informat
 URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMethodSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20experiment_method_supporting_files%200..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Submission]++-%20experiment_method_supporting_files%200..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])
 
 ## Parents
 
@@ -15,8 +15,7 @@ URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMetho
 
 ## Referenced by Class
 
- *  **[Submission](Submission.md)** *[Submission➞experiment_method_supporting_files](Submission_experiment_method_supporting_files.md)*  <sub>0..\*</sub>  **[ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)**
- *  **None** *[experiment_method_supporting_file](experiment_method_supporting_file.md)*  <sub>0..1</sub>  **[ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)**
+ *  **[Submission](Submission.md)** *[Submission➞experiment_method_supporting_files](Submission_experiment_method_supporting_files.md)*  <sub>1..\*</sub>  **[ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)**
  *  **None** *[experiment_method_supporting_files](experiment_method_supporting_files.md)*  <sub>0..\*</sub>  **[ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)**
 
 ## Attributes
@@ -36,15 +35,9 @@ URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMetho
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)
- * [File➞size](File_size.md)  <sub>1..1</sub>
-     * Description: The size of the File in bytes.
-     * Range: [Integer](types/Integer.md)
- * [File➞checksum](File_checksum.md)  <sub>1..1</sub>
-     * Description: The checksum of the File.
-     * Range: [String](types/String.md)
- * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
-     * Description: The type of algorithm used to generate the checksum of the File.
-     * Range: [String](types/String.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
      * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)
+ * [File➞included_in_submission](File_included_in_submission.md)  <sub>1..1</sub>
+     * Description: Whether a File is included in the Submission or not.
+     * Range: [Boolean](types/Boolean.md)

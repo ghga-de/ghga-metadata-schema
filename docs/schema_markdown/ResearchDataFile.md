@@ -7,7 +7,7 @@ A Research Data File is a File that contains raw data originating from an Experi
 URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Experiment]<experiment%201..*-%20[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:integer;sequencing_lane_id:string%20%3F;is_pseudofile:boolean;ega_accession:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Analysis]-%20research_data_files%201..*>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Analysis]-%20research_data_files(i)%200..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Experiment]<experiment%201..*-%20[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:integer;sequencing_lane_id:string%20%3F;is_pseudofile:boolean;ega_accession:string%20%3F;name(i):string;size(i):integer;checksum(i):string;checksum_type(i):string;alias(i):string],[Analysis]-%20research_data_files%201..*>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Analysis]-%20research_data_files(i)%200..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Experiment]<experiment%201..*-%20[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:integer;sequencing_lane_id:string%20%3F;ega_accession:string%20%3F;name(i):string;included_in_submission(i):boolean;alias(i):string],[Analysis]-%20research_data_files%201..*>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Analysis]-%20research_data_files(i)%200..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Experiment]<experiment%201..*-%20[ResearchDataFile&#124;format:ResearchDataFileFormatEnum;technical_replicate:integer;sequencing_lane_id:string%20%3F;ega_accession:string%20%3F;name(i):string;included_in_submission(i):boolean;alias(i):string],[Analysis]-%20research_data_files%201..*>[ResearchDataFile],[Submission]++-%20research_data_files%201..*>[ResearchDataFile],[Analysis]-%20research_data_files(i)%200..*>[ResearchDataFile],[Submission]-%20research_data_files(i)%200..*>[ResearchDataFile],[File]^-[ResearchDataFile],[File],[Experiment],[Dataset],[Analysis])
 
 ## Parents
 
@@ -17,7 +17,6 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
  *  **[Analysis](Analysis.md)** *[Analysis➞research_data_files](Analysis_research_data_files.md)*  <sub>1..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **[Submission](Submission.md)** *[Submission➞research_data_files](Submission_research_data_files.md)*  <sub>1..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
- *  **None** *[research_data_file](research_data_file.md)*  <sub>0..1</sub>  **[ResearchDataFile](ResearchDataFile.md)**
  *  **None** *[research_data_files](research_data_files.md)*  <sub>0..\*</sub>  **[ResearchDataFile](ResearchDataFile.md)**
 
 ## Attributes
@@ -34,9 +33,6 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
  * [ResearchDataFile➞sequencing_lane_id](ResearchDataFile_sequencing_lane_id.md)  <sub>0..1</sub>
      * Description: The identifier of a sequencing lane.
      * Range: [String](types/String.md)
- * [ResearchDataFile➞is_pseudofile](ResearchDataFile_is_pseudofile.md)  <sub>1..1</sub>
-     * Description: Whether a File is a pseudofile or not.
-     * Range: [Boolean](types/Boolean.md)
  * [ResearchDataFile➞ega_accession](ResearchDataFile_ega_accession.md)  <sub>0..1</sub>
      * Description: The EGA accession ID of an entity.
      * Range: [String](types/String.md)
@@ -49,15 +45,9 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
  * [File➞name](File_name.md)  <sub>1..1</sub>
      * Description: The given filename.
      * Range: [String](types/String.md)
- * [File➞size](File_size.md)  <sub>1..1</sub>
-     * Description: The size of the File in bytes.
-     * Range: [Integer](types/Integer.md)
- * [File➞checksum](File_checksum.md)  <sub>1..1</sub>
-     * Description: The checksum of the File.
-     * Range: [String](types/String.md)
- * [File➞checksum_type](File_checksum_type.md)  <sub>1..1</sub>
-     * Description: The type of algorithm used to generate the checksum of the File.
-     * Range: [String](types/String.md)
  * [File➞dataset](File_dataset.md)  <sub>1..1</sub>
      * Description: The Dataset alias associated with this File.
      * Range: [Dataset](Dataset.md)
+ * [File➞included_in_submission](File_included_in_submission.md)  <sub>1..1</sub>
+     * Description: Whether a File is included in the Submission or not.
+     * Range: [Boolean](types/Boolean.md)

@@ -9,7 +9,7 @@ URI: [GHGA:Submission_individual_supporting_files](https://w3id.org/GHGA/Submiss
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [IndividualSupportingFile](IndividualSupportingFile.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [IndividualSupportingFile](IndividualSupportingFile.md)
 
 ## Parents
 

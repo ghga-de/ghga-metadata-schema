@@ -73,10 +73,10 @@ Submission ||--}| Experiment : "experiments"
 Submission ||--}| ExperimentMethod : "experiment_methods"
 Submission ||--}| Study : "studies"
 Submission ||--}| ResearchDataFile : "research_data_files"
-Submission ||--}o ProcessDataFile : "process_data_files"
-Submission ||--}o ExperimentMethodSupportingFile : "experiment_method_supporting_files"
-Submission ||--}o AnalysisMethodSupportingFile : "analysis_method_supporting_files"
-Submission ||--}o IndividualSupportingFile : "individual_supporting_files"
+Submission ||--}| ProcessDataFile : "process_data_files"
+Submission ||--}| ExperimentMethodSupportingFile : "experiment_method_supporting_files"
+Submission ||--}| AnalysisMethodSupportingFile : "analysis_method_supporting_files"
+Submission ||--}| IndividualSupportingFile : "individual_supporting_files"
 IndividualSupportingFile ||--|| Individual : "individual"
 IndividualSupportingFile ||--|| Dataset : "dataset"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
@@ -176,8 +176,10 @@ Individual {
     stringList diagnosis_ids  
     stringList diagnosis_terms  
     IndividualSexEnum sex  
-    string geographical_region  
-    stringList ancestries  
+    string geographical_region_term  
+    string geographical_region_id  
+    stringList ancestry_terms  
+    stringList ancestry_ids  
     string alias  
 }
 Sample {
@@ -218,9 +220,7 @@ erDiagram
 ExperimentMethodSupportingFile {
     SupportingFileFormatEnum format  
     string name  
-    integer size  
-    string checksum  
-    string checksum_type  
+    boolean included_in_submission  
     string alias  
 }
 ExperimentMethod {
@@ -251,12 +251,9 @@ ResearchDataFile {
     ResearchDataFileFormatEnum format  
     integer technical_replicate  
     string sequencing_lane_id  
-    boolean is_pseudofile  
     string ega_accession  
     string name  
-    integer size  
-    string checksum  
-    string checksum_type  
+    boolean included_in_submission  
     string alias  
 }
 Sample {

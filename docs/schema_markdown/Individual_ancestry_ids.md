@@ -1,10 +1,10 @@
 
-# Slot: ancestries
+# Slot: ancestry_ids
 
 
 A person's descent or lineage from a population.
 
-URI: [GHGA:Individual_ancestries](https://w3id.org/GHGA/Individual_ancestries)
+URI: [GHGA:Individual_ancestry_ids](https://w3id.org/GHGA/Individual_ancestry_ids)
 
 
 ## Domain and Range
@@ -13,7 +13,7 @@ URI: [GHGA:Individual_ancestries](https://w3id.org/GHGA/Individual_ancestries)
 
 ## Parents
 
- *  is_a: [ancestries](ancestries.md)
+ *  is_a: [ancestry_ids](ancestry_ids.md)
 
 ## Children
 

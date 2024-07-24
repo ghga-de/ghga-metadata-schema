@@ -78,10 +78,10 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
  * [Sample➞biospecimen_tissue_id](Sample_biospecimen_tissue_id.md)  <sub>1..1</sub>
      * Description: The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
      * Range: [String](types/String.md)
+     * in subsets: (ontology)
  * [Sample➞biospecimen_isolation](Sample_biospecimen_isolation.md)  <sub>0..1</sub>
      * Description: Method or device employed for collecting/isolating this Biospecimen.
      * Range: [IsolationEnum](IsolationEnum.md)
-     * in subsets: (ontology)
  * [Sample➞biospecimen_storage](Sample_biospecimen_storage.md)  <sub>0..1</sub>
      * Description: Methods by which this Biospecimen is stored.
      * Range: [StorageEnum](StorageEnum.md)

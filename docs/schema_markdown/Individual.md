@@ -7,7 +7,7 @@ An Individual is a Person who is participating in a Study.
 URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region:string%20%3F;ancestries:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region_term:string%20%3F;geographical_region_id:string%20%3F;ancestry_terms:string%20*;ancestry_ids:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[IndividualSupportingFile],[IndividualSupportingFile]-%20individual%201..1>[Individual&#124;phenotypic_features_terms:string%20*;phenotypic_features_ids:string%20*;diagnosis_ids:string%20*;diagnosis_terms:string%20*;sex:IndividualSexEnum;geographical_region_term:string%20%3F;geographical_region_id:string%20%3F;ancestry_terms:string%20*;ancestry_ids:string%20*;alias:string],[Sample]-%20individual%201..1>[Individual],[Submission]++-%20individuals%201..*>[Individual],[Sample]-%20individual(i)%200..1>[Individual],[IndividualSupportingFile]-%20individual(i)%200..1>[Individual],[Submission]-%20individuals(i)%200..*>[Individual],[Individual]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -45,11 +45,19 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>
      * Description: The genotypic sex of the Individual (e.g., female).
      * Range: [IndividualSexEnum](IndividualSexEnum.md)
- * [Individual➞geographical_region](Individual_geographical_region.md)  <sub>0..1</sub>
+ * [Individual➞geographical_region_term](Individual_geographical_region_term.md)  <sub>0..1</sub>
      * Description: The geographical region where the Individual is located.
      * Range: [String](types/String.md)
      * in subsets: (ontology)
- * [Individual➞ancestries](Individual_ancestries.md)  <sub>0..\*</sub>
+ * [Individual➞geographical_region_id](Individual_geographical_region_id.md)  <sub>0..1</sub>
+     * Description: The geographical region where the Individual is located.
+     * Range: [String](types/String.md)
+     * in subsets: (ontology)
+ * [Individual➞ancestry_terms](Individual_ancestry_terms.md)  <sub>0..\*</sub>
+     * Description: A person's descent or lineage from a population.
+     * Range: [String](types/String.md)
+     * in subsets: (ontology)
+ * [Individual➞ancestry_ids](Individual_ancestry_ids.md)  <sub>0..\*</sub>
      * Description: A person's descent or lineage from a population.
      * Range: [String](types/String.md)
      * in subsets: (ontology)

@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 1.2.0
+version: 2.0.0
 imports:
   - linkml:types
 
@@ -104,12 +104,12 @@ classes:
           One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
         range: StudyTypeEnum
         required: true
+      ega_accession:
+        required: false
       affiliations:
         description: >-
           The affiliations associated with this Study.
         required: true
-      ega_accession:
-        required: false
       attributes:
         description: >-
           One or more attributes that further characterize this Study.
@@ -184,7 +184,6 @@ classes:
       - flow_cell_type
       - sample_barcode_read
       - ega_accession
-      - attributes
     slot_usage:
       name:
         description: >-
@@ -248,7 +247,6 @@ classes:
       attributes:
         description: >-
           One or more attributes that further characterize this Experiment Method.
-        required: false
 
   Sample:
     mixins:
@@ -363,8 +361,10 @@ classes:
       - diagnosis_ids
       - diagnosis_terms
       - sex
-      - geographical_region
-      - ancestries
+      - geographical_region_term
+      - geographical_region_id
+      - ancestry_terms
+      - ancestry_ids
     slot_usage:
       phenotypic_features_terms:
         required: false
@@ -380,9 +380,13 @@ classes:
         recommended: true
       sex:
         required: true
-      geographical_region:
+      geographical_region_term:
         required: false
-      ancestries:
+      geographical_region_id:
+        required: false
+      ancestry_terms:
+        required: false
+      ancestry_ids:
         required: false
 
   Analysis:
@@ -638,25 +642,19 @@ classes:
       A file is an object that contains information generated from a process, either an Experiment or an Analysis.
     slots:
       - name
-      - size
-      - checksum
-      - checksum_type
       - dataset
+      - included_in_submission
     slot_usage:
       name:
         description: >-
           The given filename.
         required: true
-      checksum:
-        required: true
-      checksum_type:
-        required: true
-      size:
-        required: true
       dataset:
         description: >-
           The Dataset alias associated with this File.
         inlined: false
+        required: true
+      included_in_submission:
         required: true
 
   ResearchDataFile:
@@ -667,7 +665,6 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
-      - is_pseudofile
       - ega_accession
       - experiment
     slot_usage:
@@ -680,8 +677,6 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
-      is_pseudofile:
-        required: true
       ega_accession:
         required: false
       experiment:
@@ -859,25 +854,25 @@ classes:
       process_data_files:
         description: >-
           One or more Process Data Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       experiment_method_supporting_files:
         description: >-
           One or more Experiment Method Supporting Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       analysis_method_supporting_files:
         description: >-
           One or more Analysis Method Supporting Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       individual_supporting_files:
         description: >-
           One or more Individual Supporting Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
 
@@ -1056,7 +1051,7 @@ slots:
       - ontology
     multivalued: true
 
-  ancestries:
+  ancestry_terms:
     description: >-
       A person's descent or lineage from a population.
     in_subset:
@@ -1064,10 +1059,13 @@ slots:
     # range: AncestryEnum
     multivalued: true
 
-  research_data_file:
+  ancestry_ids:
     description: >-
-      The Research Data File associated with an entity.
-    range: ResearchDataFile
+      A person's descent or lineage from a population.
+    in_subset:
+      - ontology
+    # range: AncestryEnum
+    multivalued: true
 
   research_data_files:
     description: >-
@@ -1075,21 +1073,11 @@ slots:
     range: ResearchDataFile
     multivalued: True
 
-  process_data_file:
-    description: >-
-      The Process Data File associated with an entity.
-    range: ProcessDataFile
-
   process_data_files:
     description: >-
       The Process Data Files associated with an entity.
     range: ProcessDataFile
     multivalued: True
-
-  experiment_method_supporting_file:
-    description: >-
-      The Experiment Method Supporting File associated with an entity.
-    range: ExperimentMethodSupportingFile
 
   experiment_method_supporting_files:
     description: >-
@@ -1097,21 +1085,11 @@ slots:
     range: ExperimentMethodSupportingFile
     multivalued: true
 
-  analysis_method_supporting_file:
-    description: >-
-      The Analysis Method Supporting File associated with an entity.
-    range: AnalysisMethodSupportingFile
-
   analysis_method_supporting_files:
     description: >-
       The Analysis Method Supporting Files associated with an entity.
     range: AnalysisMethodSupportingFile
     multivalued: true
-
-  individual_supporting_file:
-    description: >-
-      The Individual Supporting File associated with an entity.
-    range: IndividualSupportingFile
 
   individual_supporting_files:
     description: >-
@@ -1300,8 +1278,6 @@ slots:
   biospecimen_isolation:
     description: >-
       Method or device employed for collecting/isolating a Biospecimen or a Sample.
-    in_subset:
-      - ontology
     range: IsolationEnum
 
   storage:
@@ -1329,7 +1305,14 @@ slots:
       Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
     range: VitalStatusEnum
 
-  geographical_region:
+  geographical_region_term:
+    description: >-
+      The geographical region where the Individual is located.
+    in_subset:
+      - ontology
+    # range: GeographicalRegionEnum
+
+  geographical_region_id:
     description: >-
       The geographical region where the Individual is located.
     in_subset:
@@ -1348,20 +1331,6 @@ slots:
   format:
     description: >-
       The format of the File (e.g., BAM, SAM, CRAM, BAI).
-  #   range: FileFormatEnum
-  size:
-    description: The size of the File in bytes.
-    range: integer
-
-  checksum:
-    description: >-
-      The checksum of the File.
-    exact_mappings:
-      - NCIT:C43522
-
-  checksum_type:
-    description: >-
-      The type of algorithm used to generate the checksum of the File.
 
   policy_text:
     description: The complete text for the Data Access Policy.
@@ -1401,10 +1370,13 @@ slots:
   biospecimen_tissue_id:
     description: >-
       The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+    in_subset:
+      - ontology
+    # range: TissueEnum
 
-  is_pseudofile:
+  included_in_submission:
     description: >-
-      Whether a File is a pseudofile or not.
+      Whether a File is included in the Submission or not.
     range: boolean
 
   ega_accession:

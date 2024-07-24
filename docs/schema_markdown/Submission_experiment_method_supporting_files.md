@@ -9,7 +9,7 @@ URI: [GHGA:Submission_experiment_method_supporting_files](https://w3id.org/GHGA/
 
 ## Domain and Range
 
-[Submission](Submission.md) &#8594;  <sub>0..\*</sub> [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)
+[Submission](Submission.md) &#8594;  <sub>1..\*</sub> [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md)
 
 ## Parents
 
