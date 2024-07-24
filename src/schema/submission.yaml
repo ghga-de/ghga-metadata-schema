@@ -859,25 +859,25 @@ classes:
       process_data_files:
         description: >-
           One or more Process Data Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       experiment_method_supporting_files:
         description: >-
           One or more Experiment Method Supporting Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       analysis_method_supporting_files:
         description: >-
           One or more Analysis Method Supporting Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
       individual_supporting_files:
         description: >-
           One or more Individual Supporting Files associated with this Submission.
-        required: false
+        required: true
         inlined: true
         inlined_as_list: true
 
