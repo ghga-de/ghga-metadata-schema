@@ -643,6 +643,7 @@ classes:
     slots:
       - name
       - dataset
+      - ega_accession
       - included_in_submission
     slot_usage:
       name:
@@ -654,6 +655,8 @@ classes:
           The Dataset alias associated with this File.
         inlined: false
         required: true
+      ega_accession:
+        required: false
       included_in_submission:
         required: true
 
@@ -665,7 +668,6 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
-      - ega_accession
       - experiment
     slot_usage:
       format:
@@ -677,8 +679,6 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
-      ega_accession:
-        required: false
       experiment:
         description: >-
           The alias of the Experiment that produced this Research Data File.
@@ -692,15 +692,12 @@ classes:
       A Process Data File is a File that contains data produced by an Analysis or workflow.
     slots:
       - format
-      - ega_accession
       - analysis
     slot_usage:
       format:
         description: The file format of the Process Data File (e.g., CRAM, BAM).
         required: true
         range: ProcessDataFileFormatEnum
-      ega_accession:
-        required: false
       analysis:
         description: >-
           The alias of the Analysis that produced this Process Data File.
