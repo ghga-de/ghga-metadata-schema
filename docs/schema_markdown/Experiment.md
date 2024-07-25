@@ -7,7 +7,7 @@ An Experiment is an investigation that consists of a coordinated set of actions 
 URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentMethod]<experiment_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiment%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiment(i)%200..1>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentMethod]<experiment_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiment%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiment(i)%200..1>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentMethod]<experiment_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiments%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiments(i)%200..*>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Sample],[ResearchDataFile],[IdentifiedByAliasMixin],[ExperimentMethod],[Sample]<sample%201..1-%20[Experiment&#124;title:string;description:string;type:string%20%3F;ega_accession:string%20%3F;alias:string],[ExperimentMethod]<experiment_method%201..1-%20[Experiment],[ResearchDataFile]-%20experiments%201..*>[Experiment],[Submission]++-%20experiments%201..*>[Experiment],[ResearchDataFile]-%20experiments(i)%200..*>[Experiment],[Submission]-%20experiments(i)%200..*>[Experiment],[Experiment]uses%20-.->[IdentifiedByAliasMixin],[Experiment]uses%20-.->[AttributeMixin],[AttributeMixin],[Attribute])
 
 ## Uses Mixin
 
@@ -16,9 +16,8 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 
 ## Referenced by Class
 
- *  **[ResearchDataFile](ResearchDataFile.md)** *[ResearchDataFile➞experiment](ResearchDataFile_experiment.md)*  <sub>1..\*</sub>  **[Experiment](Experiment.md)**
+ *  **[ResearchDataFile](ResearchDataFile.md)** *[ResearchDataFile➞experiments](ResearchDataFile_experiments.md)*  <sub>1..\*</sub>  **[Experiment](Experiment.md)**
  *  **[Submission](Submission.md)** *[Submission➞experiments](Submission_experiments.md)*  <sub>1..\*</sub>  **[Experiment](Experiment.md)**
- *  **None** *[experiment](experiment.md)*  <sub>0..1</sub>  **[Experiment](Experiment.md)**
  *  **None** *[experiments](experiments.md)*  <sub>0..\*</sub>  **[Experiment](Experiment.md)**
 
 ## Attributes

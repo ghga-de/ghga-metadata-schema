@@ -135,16 +135,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Dataset➞ega_accession](Dataset_ega_accession.md)
      * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md) - The EGA accession of the 'Experiment' entity (EGAX).
      * [Experiment➞ega_accession](Experiment_ega_accession.md) - The EGA accession of the 'Run' entity (EGAR).
-     * [ProcessDataFile➞ega_accession](ProcessDataFile_ega_accession.md)
-     * [ResearchDataFile➞ega_accession](ResearchDataFile_ega_accession.md)
+     * [File➞ega_accession](File_ega_accession.md)
      * [Sample➞ega_accession](Sample_ega_accession.md)
      * [Study➞ega_accession](Study_ega_accession.md)
  * [email](email.md) - Email of a Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable information.
      * [DataAccessCommittee➞email](DataAccessCommittee_email.md) - The email of the Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable data.
  * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced (e.g., 3/5 prime end, full-length).
      * [ExperimentMethod➞end_bias](ExperimentMethod_end_bias.md)
- * [experiment](experiment.md) - The Experiment associated with an entity.
-     * [ResearchDataFile➞experiment](ResearchDataFile_experiment.md) - The alias of the Experiment that produced this Research Data File.
  * [experiment_method](experiment_method.md) - The Experiment Method associated with an entity.
      * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)
      * [Experiment➞experiment_method](Experiment_experiment_method.md) - The alias of one or more Experiment Methods that are associated with this Experiment.
@@ -153,6 +150,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [experiment_methods](experiment_methods.md) - The Experiment Methods associated with an entity.
      * [Submission➞experiment_methods](Submission_experiment_methods.md) - The Experiment Methods that are part of this Submission.
  * [experiments](experiments.md) - The Experiments associated with an entity.
+     * [ResearchDataFile➞experiments](ResearchDataFile_experiments.md) - The aliases of the Experiments that produced this Research Data File.
      * [Submission➞experiments](Submission_experiments.md) - One or more Experiment entities associated with this Submission.
  * [flow_cell_id](flow_cell_id.md) - Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
      * [ExperimentMethod➞flow_cell_id](ExperimentMethod_flow_cell_id.md)

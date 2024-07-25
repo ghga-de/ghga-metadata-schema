@@ -643,6 +643,7 @@ classes:
     slots:
       - name
       - dataset
+      - ega_accession
       - included_in_submission
     slot_usage:
       name:
@@ -654,6 +655,8 @@ classes:
           The Dataset alias associated with this File.
         inlined: false
         required: true
+      ega_accession:
+        required: false
       included_in_submission:
         required: true
 
@@ -665,8 +668,7 @@ classes:
       - format
       - technical_replicate
       - sequencing_lane_id
-      - ega_accession
-      - experiment
+      - experiments
     slot_usage:
       format:
         description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
@@ -677,14 +679,11 @@ classes:
       sequencing_lane_id:
         required: false
         recommended: true
-      ega_accession:
-        required: false
-      experiment:
+      experiments:
         description: >-
-          The alias of the Experiment that produced this Research Data File.
+          The aliases of the Experiments that produced this Research Data File.
         required: true
         inlined: false
-        multivalued: true
 
   ProcessDataFile:
     is_a: File
@@ -692,15 +691,12 @@ classes:
       A Process Data File is a File that contains data produced by an Analysis or workflow.
     slots:
       - format
-      - ega_accession
       - analysis
     slot_usage:
       format:
         description: The file format of the Process Data File (e.g., CRAM, BAM).
         required: true
         range: ProcessDataFileFormatEnum
-      ega_accession:
-        required: false
       analysis:
         description: >-
           The alias of the Analysis that produced this Process Data File.
@@ -955,10 +951,6 @@ slots:
     description: The Samples associated with an entity.
     range: Sample
     multivalued: true
-
-  experiment:
-    description: The Experiment associated with an entity.
-    range: Experiment
 
   experiments:
     description: The Experiments associated with an entity.
