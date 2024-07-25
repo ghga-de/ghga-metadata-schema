@@ -94,7 +94,7 @@ ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
 Analysis ||--|| AnalysisMethod : "analysis_method"
 Analysis ||--}| ResearchDataFile : "research_data_files"
-ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--}| Experiment : "experiments"
 ResearchDataFile ||--|| Dataset : "dataset"
 Experiment ||--|| ExperimentMethod : "experiment_method"
 Experiment ||--|| Sample : "sample"
@@ -152,7 +152,7 @@ Experiment {
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentMethod ||--}o Attribute : "attributes"
-ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--}| Experiment : "experiments"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
@@ -220,6 +220,7 @@ erDiagram
 ExperimentMethodSupportingFile {
     SupportingFileFormatEnum format  
     string name  
+    string ega_accession  
     boolean included_in_submission  
     string alias  
 }
@@ -251,8 +252,8 @@ ResearchDataFile {
     ResearchDataFileFormatEnum format  
     integer technical_replicate  
     string sequencing_lane_id  
-    string ega_accession  
     string name  
+    string ega_accession  
     boolean included_in_submission  
     string alias  
 }
@@ -288,7 +289,7 @@ Experiment {
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
 ExperimentMethod ||--}o Attribute : "attributes"
-ResearchDataFile ||--}| Experiment : "experiment"
+ResearchDataFile ||--}| Experiment : "experiments"
 ResearchDataFile ||--|| Dataset : "dataset"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
