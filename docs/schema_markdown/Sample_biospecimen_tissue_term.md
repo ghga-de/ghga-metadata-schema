@@ -9,7 +9,7 @@ URI: [GHGA:Sample_biospecimen_tissue_term](https://w3id.org/GHGA/Sample_biospeci
 
 ## Domain and Range
 
-[Sample](Sample.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[Sample](Sample.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 
