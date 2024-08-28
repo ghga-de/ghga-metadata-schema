@@ -335,9 +335,11 @@ classes:
         required: false
         recommended: true
       biospecimen_tissue_term:
-        required: true
+        required: false
+        recommended: true
       biospecimen_tissue_id:
-        required: true
+        required: false
+        recommended: true
       biospecimen_isolation:
         description: >-
           Method or device employed for collecting/isolating this Biospecimen.
