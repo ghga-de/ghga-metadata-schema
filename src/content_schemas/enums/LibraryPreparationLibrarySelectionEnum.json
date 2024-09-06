@@ -1,5 +1,5 @@
 {
-    "description": "Permitted vocabulary for library selections",
+    "description": "Permitted vocabulary for library selections.",
     "enum": [
         "5_METHYLCYTIDINE_ANTIBODY_METHOD",
         "CAGE_METHOD",

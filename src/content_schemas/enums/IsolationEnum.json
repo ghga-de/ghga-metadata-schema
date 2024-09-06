@@ -1,6 +1,11 @@
 {
     "description": "Describes how biomaterial was isolated.",
-    "enum": [],
+    "enum": [
+        "BLOOD_DRAW",
+        "SURGICAL_REMOVAL",
+        "SALIVA_COLLECTION",
+        "BUCCAL_SWAB"
+    ],
     "title": "IsolationEnum",
     "type": "string",
     "$id": "src/content_schemas/enums/IsolationEnum",

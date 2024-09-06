@@ -1,8 +1,9 @@
 {
-    "description": "Permitted values for library preparation RNASeq strandedness",
+    "description": "Permitted values for library preparation RNASeq strandedness.",
     "enum": [
         "SENSE",
-        "ANTISENSE"
+        "ANTISENSE",
+        "UNSTRANDED"
     ],
     "title": "LibraryPreparationRNASeqStrandednessEnum",
     "type": "string",

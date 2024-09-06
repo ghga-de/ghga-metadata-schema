@@ -2,21 +2,17 @@ classes:
   AliasMixin:
     relations: {}
   Analysis:
+    relations:
+      analysis_method:
+        targetClass: AnalysisMethod
+      research_data_files:
+        targetClass: ResearchDataFile
+  AnalysisMethod:
     relations: {}
-  AnalysisProcess:
+  AnalysisMethodSupportingFile:
     relations:
-      analysis:
-        targetClass: Analysis
-      sample_input_files:
-        targetClass: SampleFile
-      sequencing_process_input_files:
-        targetClass: SequencingProcessFile
-      study_input_files:
-        targetClass: StudyFile
-  AnalysisProcessOutputFile:
-    relations:
-      analysis_process:
-        targetClass: AnalysisProcess
+      analysis_method:
+        targetClass: AnalysisMethod
       dataset:
         targetClass: Dataset
   Attribute:
@@ -25,14 +21,6 @@ classes:
     relations:
       attributes:
         targetClass: Attribute
-  Biospecimen:
-    relations:
-      individual:
-        targetClass: Individual
-  Condition:
-    relations:
-      study:
-        targetClass: Study
   DataAccessCommittee:
     relations: {}
   DataAccessPolicy:
@@ -43,105 +31,87 @@ classes:
     relations:
       data_access_policy:
         targetClass: DataAccessPolicy
+      study:
+        targetClass: Study
+  Experiment:
+    relations:
+      experiment_method:
+        targetClass: ExperimentMethod
+      sample:
+        targetClass: Sample
+  ExperimentMethod:
+    relations: {}
+  ExperimentMethodSupportingFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      experiment_method:
+        targetClass: ExperimentMethod
   File:
     relations:
       dataset:
         targetClass: Dataset
   Individual:
     relations: {}
-  LibraryPreparationProtocol:
-    relations: {}
+  IndividualSupportingFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      individual:
+        targetClass: Individual
+  ProcessDataFile:
+    relations:
+      analysis:
+        targetClass: Analysis
+      dataset:
+        targetClass: Dataset
   Publication:
     relations:
       study:
         targetClass: Study
+  ResearchDataFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      experiments:
+        targetClass: Experiment
   Sample:
     relations:
-      biospecimen:
-        targetClass: Biospecimen
-      condition:
-        targetClass: Condition
-  SampleFile:
-    relations:
-      dataset:
-        targetClass: Dataset
-      sample:
-        targetClass: Sample
-  SequencingExperiment:
-    relations:
-      library_preparation_protocol:
-        targetClass: LibraryPreparationProtocol
-      sequencing_protocol:
-        targetClass: SequencingProtocol
-  SequencingProcess:
-    relations:
-      sample:
-        targetClass: Sample
-      sequencing_experiment:
-        targetClass: SequencingExperiment
-  SequencingProcessFile:
-    relations:
-      dataset:
-        targetClass: Dataset
-      sequencing_process:
-        targetClass: SequencingProcess
-  SequencingProtocol:
-    relations: {}
+      individual:
+        targetClass: Individual
   Study:
     relations: {}
-  StudyFile:
-    relations:
-      dataset:
-        targetClass: Dataset
-      study:
-        targetClass: Study
   Submission:
     relations:
       analyses:
         targetClass: Analysis
-      analysis_process_output_files:
-        targetClass: AnalysisProcessOutputFile
-      analysis_processes:
-        targetClass: AnalysisProcess
-      biospecimens:
-        targetClass: Biospecimen
-      conditions:
-        targetClass: Condition
+      analysis_method_supporting_files:
+        targetClass: AnalysisMethodSupportingFile
+      analysis_methods:
+        targetClass: AnalysisMethod
       data_access_committees:
         targetClass: DataAccessCommittee
       data_access_policies:
         targetClass: DataAccessPolicy
       datasets:
         targetClass: Dataset
+      experiment_method_supporting_files:
+        targetClass: ExperimentMethodSupportingFile
+      experiment_methods:
+        targetClass: ExperimentMethod
+      experiments:
+        targetClass: Experiment
+      individual_supporting_files:
+        targetClass: IndividualSupportingFile
       individuals:
         targetClass: Individual
-      library_preparation_protocols:
-        targetClass: LibraryPreparationProtocol
+      process_data_files:
+        targetClass: ProcessDataFile
       publications:
         targetClass: Publication
-      sample_files:
-        targetClass: SampleFile
+      research_data_files:
+        targetClass: ResearchDataFile
       samples:
         targetClass: Sample
-      sequencing_experiments:
-        targetClass: SequencingExperiment
-      sequencing_process_files:
-        targetClass: SequencingProcessFile
-      sequencing_processes:
-        targetClass: SequencingProcess
-      sequencing_protocols:
-        targetClass: SequencingProtocol
       studies:
         targetClass: Study
-      study_files:
-        targetClass: StudyFile
-      trios:
-        targetClass: Trio
-  Trio:
-    relations:
-      child:
-        targetClass: Individual
-      father:
-        targetClass: Individual
-      mother:
-        targetClass: Individual

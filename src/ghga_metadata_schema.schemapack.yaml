@@ -5,60 +5,45 @@ classes:
       output data.
     id:
       propertyName: alias
-  AnalysisProcess:
-    content: src/content_schemas/AnalysisProcess.json
-    description: An Analysis Process captures the workflow steps that were performed
-      to analyze data obtained from a Sequencing Experiment.
+    relations:
+      analysis_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: AnalysisMethod
+      research_data_files:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: true
+        targetClass: ResearchDataFile
+  AnalysisMethod:
+    content: src/content_schemas/AnalysisMethod.json
+    description: An Analysis Method captures the workflow steps that were performed
+      to analyze data obtained from an Experiment.
+    id:
+      propertyName: alias
+  AnalysisMethodSupportingFile:
+    content: src/content_schemas/AnalysisMethodSupportingFile.json
+    description: An Analysis Method Supporting File is a File that contains additional
+      information relevant for the Analysis Method, such as (unstructured) protocols
+      or task descriptions.
     id:
       propertyName: alias
     relations:
-      analysis:
+      analysis_method:
         mandatory:
           origin: false
           target: true
         multiple:
           origin: true
           target: false
-        targetClass: Analysis
-      sample_input_files:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: true
-        targetClass: SampleFile
-      sequencing_process_input_files:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: true
-        targetClass: SequencingProcessFile
-      study_input_files:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: true
-        targetClass: StudyFile
-  AnalysisProcessOutputFile:
-    content: src/content_schemas/AnalysisProcessOutputFile.json
-    description: A Analysis Process OutputFile is a File that is associated as an
-      output file with an Analysis Process.
-    id:
-      propertyName: alias
-    relations:
-      analysis_process:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: AnalysisProcess
+        targetClass: AnalysisMethod
       dataset:
         mandatory:
           origin: false
@@ -67,38 +52,6 @@ classes:
           origin: true
           target: false
         targetClass: Dataset
-  Biospecimen:
-    content: src/content_schemas/Biospecimen.json
-    description: A Biospecimen is any natural material taken from a biological entity
-      for testing, diagnostics, treatment, or research purposes.  It is linked to
-      the Individual from which the Biospecimen is derived.
-    id:
-      propertyName: alias
-    relations:
-      individual:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
-  Condition:
-    content: src/content_schemas/Condition.json
-    description: A Condition specifies which special characteristics and treatments
-      apply to a Sample (e.g., whether the Sample comes from a disease or a healthy
-      tissue).
-    id:
-      propertyName: alias
-    relations:
-      study:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Study
   DataAccessCommittee:
     content: src/content_schemas/DataAccessCommittee.json
     description: A group of members that are delegated to grant access to one or more
@@ -137,17 +90,119 @@ classes:
           origin: true
           target: false
         targetClass: DataAccessPolicy
+      study:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  Experiment:
+    content: src/content_schemas/Experiment.json
+    description: An Experiment is an investigation that consists of a coordinated
+      set of actions and observations designed to generate data with the goal of verifying,
+      falsifying, or establishing the validity of a hypothesis.
+    id:
+      propertyName: alias
+    relations:
+      experiment_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: ExperimentMethod
+      sample:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Sample
+  ExperimentMethod:
+    content: src/content_schemas/ExperimentMethod.json
+    description: The Experiment Method captures technical metadata describing the
+      parameters used to generate output from the Sample.
+    id:
+      propertyName: alias
+  ExperimentMethodSupportingFile:
+    content: src/content_schemas/ExperimentMethodSupportingFile.json
+    description: An Experiment Method Supporting File is a File that contains additional
+      information relevant for the Experiment Method, such as (unstructured) protocols.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      experiment_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: ExperimentMethod
   Individual:
     content: src/content_schemas/Individual.json
     description: An Individual is a Person who is participating in a Study.
     id:
       propertyName: alias
-  LibraryPreparationProtocol:
-    content: src/content_schemas/LibraryPreparationProtocol.json
-    description: The Library Preparation Protocol captures information about the library
-      preparation of a Sequencing Experiment.
+  IndividualSupportingFile:
+    content: src/content_schemas/IndividualSupportingFile.json
+    description: An Individual Supporting File is a File that contains additional
+      information relevant for the Individual, such as ped-files, phenopackets or
+      imaging data.
     id:
       propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      individual:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+  ProcessDataFile:
+    content: src/content_schemas/ProcessDataFile.json
+    description: A Process Data File is a File that contains data produced by an Analysis
+      or workflow.
+    id:
+      propertyName: alias
+    relations:
+      analysis:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Analysis
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
   Publication:
     content: src/content_schemas/Publication.json
     description: A Publication represents an article that is published. The minimum
@@ -163,6 +218,29 @@ classes:
           origin: true
           target: false
         targetClass: Study
+  ResearchDataFile:
+    content: src/content_schemas/ResearchDataFile.json
+    description: A Research Data File is a File that contains raw data originating
+      from an Experiment.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      experiments:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: true
+        targetClass: Experiment
   Sample:
     content: src/content_schemas/Sample.json
     description: A Sample is a limited quantity of something to be used for testing,
@@ -171,121 +249,14 @@ classes:
     id:
       propertyName: alias
     relations:
-      biospecimen:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Biospecimen
-      condition:
+      individual:
         mandatory:
           origin: false
           target: true
         multiple:
           origin: true
           target: false
-        targetClass: Condition
-  SampleFile:
-    content: src/content_schemas/SampleFile.json
-    description: A Sample File is a File that is associated with a Sample.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
-      sample:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Sample
-  SequencingExperiment:
-    content: src/content_schemas/SequencingExperiment.json
-    description: A Sequencing Experiment is an investigation that consists of a coordinated
-      set of actions and observations designed to generate data with the goal of verifying,
-      falsifying, or establishing the validity of a hypothesis.
-    id:
-      propertyName: alias
-    relations:
-      library_preparation_protocol:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: LibraryPreparationProtocol
-      sequencing_protocol:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: SequencingProtocol
-  SequencingProcess:
-    content: src/content_schemas/SequencingProcess.json
-    description: The Sequencing Process captures the technical parameters that were
-      used to produce sequencing output from the Sample. It links the Sample to sequencing
-      output.
-    id:
-      propertyName: alias
-    relations:
-      sample:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Sample
-      sequencing_experiment:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: SequencingExperiment
-  SequencingProcessFile:
-    content: src/content_schemas/SequencingProcessFile.json
-    description: A Sequencing Process File is a File that is associated with a Sequencing
-      Process.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
-      sequencing_process:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: SequencingProcess
-  SequencingProtocol:
-    content: src/content_schemas/SequencingProtocol.json
-    description: The Sequencing Protocol captures information about parameters and
-      metadata associated with a Sequencing Experiment.
-    id:
-      propertyName: alias
+        targetClass: Individual
   Study:
     content: src/content_schemas/Study.json
     description: A Study is an experimental investigation of a particular phenomenon.
@@ -293,59 +264,5 @@ classes:
       the phenomenon being studied.
     id:
       propertyName: alias
-  StudyFile:
-    content: src/content_schemas/StudyFile.json
-    description: A Study File is a File that is associated with a Study.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
-      study:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Study
-  Trio:
-    content: src/content_schemas/Trio.json
-    description: A Trio is a study design in which the genetic information of three
-      individuals within a family unit is analyzed. It consists of a child and their
-      biological parents.
-    id:
-      propertyName: alias
-    relations:
-      child:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
-      father:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
-      mother:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
 description: Metadata schema for the German Human Genome-Phenome Archive (GHGA)
 schemapack: 0.3.0

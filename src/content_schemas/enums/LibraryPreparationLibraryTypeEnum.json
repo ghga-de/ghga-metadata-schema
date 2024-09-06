@@ -1,5 +1,5 @@
 {
-    "description": "The type of the library",
+    "description": "The type of the library.",
     "enum": [
         "WGS",
         "WXS",
@@ -10,7 +10,9 @@
         "NC_RNA",
         "ATAC",
         "METHYLATION",
-        "CHROMOSOME_CONFORMATION_CAPTURE"
+        "CHROMOSOME_CONFORMATION_CAPTURE",
+        "CHIP_SEQ",
+        "OTHER"
     ],
     "title": "LibraryPreparationLibraryTypeEnum",
     "type": "string",

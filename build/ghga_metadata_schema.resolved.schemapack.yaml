@@ -9,14 +9,10 @@ classes:
       properties:
         description:
           description: A description summarizing how this Analysis was carried out
-            (e.g., computational tools, pipelines, workflows).
+            (e.g., description of computational tools, pipelines, workflows).
           type: string
-        reference_chromosome:
-          description: The reference chromosome used for this Analysis.
-          type: string
-        reference_genome:
-          description: The reference genome or annotation used for prior analyses
-            (e.g., GRCh38.p13).
+        ega_accession:
+          description: The EGA accession of the 'Analysis' entity (EGAZ).
           type: string
         title:
           description: The title that describes an entity.
@@ -26,147 +22,189 @@ classes:
           type: string
       required:
       - title
-      - reference_genome
-      - reference_chromosome
       title: Analysis
       type: object
     description: An Analysis is a data transformation that transforms input data to
       output data.
     id:
       propertyName: alias
-  AnalysisProcess:
+    relations:
+      analysis_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: AnalysisMethod
+      research_data_files:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: true
+        targetClass: ResearchDataFile
+  AnalysisMethod:
     content:
-      $id: src/content_schemas/AnalysisProcess
+      $id: src/content_schemas/AnalysisMethod
       $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
-      description: An Analysis Process captures the workflow steps that were performed
-        to analyze data obtained from a Sequencing Experiment.
+      description: An Analysis Method captures the workflow steps that were performed
+        to analyze data obtained from an Experiment.
       properties:
+        description:
+          description: Description of an entity.
+          type: string
         name:
-          description: The name for an entity.
+          description: A name identifying this Analysis Method.
+          type: string
+        parameters:
+          description: Key/value pairs where key corresponds to a parameter name and
+            value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory'
+            = '200.GB', 'split_fastq' = 50000000).
+          items:
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
+          type: array
+        software_versions:
+          description: key/value pairs where key corresponds to a software name and
+            value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore`
+            = '0.6.6', `bedtools` = '2.29.2').
+          items:
+            $id: src/content_schemas/Attribute
+            $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: false
+            description: A key/value pair that further characterizes an entity.
+            properties:
+              key:
+                description: The key of an attribute.
+                type: string
+              key_type:
+                description: A semantic type that characterizes the attribute key
+                  (e.g., oxygen saturation measurement (MAXO:0000616)).
+                type: string
+              value:
+                description: The value for an attribute (e.g., a numerical value without
+                  the units).
+                type: string
+              value_type:
+                description: The value_type that characterizes the attribute value
+                  (e.g., percentage (SIO:001413)).
+                type: string
+            required:
+            - key
+            - value
+            title: Attribute
+            type: object
+          type: array
+        type:
+          description: 'The type of an entity. Note: Not to be confused with rdf:type.'
+          type: string
+        workflow_doi:
+          description: A digital object identifier for the workflow. Can be a publication
+            or the workflow commit that was used for the Analysis.
+          type: string
+        workflow_name:
+          description: The workflow name.
+          type: string
+        workflow_repository:
+          description: The workflow repository (e.g., the URL).
+          type: string
+        workflow_tasks:
+          description: Tasks performed by the workflow
+          type: string
+        workflow_version:
+          description: The workflow version.
           type: string
       required:
       - name
-      title: AnalysisProcess
+      - description
+      - type
+      - workflow_name
+      - workflow_repository
+      - workflow_doi
+      title: AnalysisMethod
       type: object
-    description: An Analysis Process captures the workflow steps that were performed
-      to analyze data obtained from a Sequencing Experiment.
+    description: An Analysis Method captures the workflow steps that were performed
+      to analyze data obtained from an Experiment.
     id:
       propertyName: alias
-    relations:
-      analysis:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Analysis
-      sample_input_files:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: true
-        targetClass: SampleFile
-      sequencing_process_input_files:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: true
-        targetClass: SequencingProcessFile
-      study_input_files:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: true
-        targetClass: StudyFile
-  AnalysisProcessOutputFile:
+  AnalysisMethodSupportingFile:
     content:
-      $id: src/content_schemas/AnalysisProcessOutputFile
+      $id: src/content_schemas/AnalysisMethodSupportingFile
       $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
-      description: A Analysis Process OutputFile is a File that is associated as an
-        output file with an Analysis Process.
+      description: An Analysis Method Supporting File is a File that contains additional
+        information relevant for the Analysis Method, such as (unstructured) protocols
+        or task descriptions.
       properties:
-        checksum:
-          description: The checksum of the File.
-          type: string
-        checksum_type:
-          description: The type of algorithm used to generate the checksum of the
-            File.
+        ega_accession:
+          description: The EGA accession ID of an entity.
           type: string
         format:
-          $id: src/content_schemas/enums/FileFormatEnum
+          $id: src/content_schemas/enums/SupportingFileFormatEnum
           $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture file types.
+          description: Enum to capture Supporting File types.
           enum:
-          - AGP
-          - BAI
-          - BAM
-          - BCF
-          - BED
-          - CRAM
           - CSV
-          - FASTA
-          - FASTQ
-          - GFF
-          - HDF5
           - JSON
           - PED
-          - SAM
-          - SFF
-          - SRF
-          - TABIX
           - TSV
           - TXT
-          - VCF
-          - WIG
+          - YAML
           - OTHER
-          title: FileFormatEnum
+          title: SupportingFileFormatEnum
           type: string
-        forward_or_reverse:
-          $id: src/content_schemas/enums/ForwardOrReverseEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether the reads from paired-end sequencing
-            are forward (R1) or reverse (R2).
-          enum:
-          - FORWARD
-          - REVERSE
-          title: ForwardOrReverseEnum
-          type: string
+        included_in_submission:
+          description: Whether a File is included in the Submission or not.
+          type: boolean
         name:
           description: The given filename.
           type: string
-        size:
-          description: The size of the File in bytes.
-          type: integer
       required:
-      - name
       - format
-      - size
-      - checksum
-      - checksum_type
-      title: AnalysisProcessOutputFile
+      - name
+      - included_in_submission
+      title: AnalysisMethodSupportingFile
       type: object
-    description: A Analysis Process OutputFile is a File that is associated as an
-      output file with an Analysis Process.
+    description: An Analysis Method Supporting File is a File that contains additional
+      information relevant for the Analysis Method, such as (unstructured) protocols
+      or task descriptions.
     id:
       propertyName: alias
     relations:
-      analysis_process:
+      analysis_method:
         mandatory:
           origin: false
           target: true
         multiple:
           origin: true
           target: false
-        targetClass: AnalysisProcess
+        targetClass: AnalysisMethod
       dataset:
         mandatory:
           origin: false
@@ -175,105 +213,193 @@ classes:
           origin: true
           target: false
         targetClass: Dataset
-  Biospecimen:
+  DataAccessCommittee:
     content:
-      $id: src/content_schemas/Biospecimen
+      $id: src/content_schemas/DataAccessCommittee
       $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
-      description: A Biospecimen is any natural material taken from a biological entity
-        for testing, diagnostics, treatment, or research purposes.  It is linked to
-        the Individual from which the Biospecimen is derived.
+      description: A group of members that are delegated to grant access to one or
+        more datasets after ensuring the criteria for data sharing has been met,  and
+        request for data use does not raise ethical and/or legal concerns.
       properties:
-        age_at_sampling:
-          $id: src/content_schemas/enums/AgeRangeEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture the age range that an Indiviudal belongs to.
-          enum:
-          - 0_TO_5
-          - 6_TO_10
-          - 11_TO_15
-          - 16_TO_20
-          - 21_TO_25
-          - 26_TO_30
-          - 31_TO_35
-          - 36_TO_40
-          - 41_TO_45
-          - 46_TO_50
-          - 51_TO_55
-          - 56_TO_60
-          - 61_TO_65
-          - 66_TO_70
-          - 71_TO_75
-          - 76_TO_80
-          - 81_OR_OLDER
-          - UNKNOWN
-          title: AgeRangeEnum
+        ega_accession:
+          description: The EGA accession ID of an entity.
           type: string
-        description:
-          description: A concise description about the Biospecimen source, the collection
-            method, and the protocol which was followed to process this Biospecimen.
-          type: string
-        isolation:
-          description: Method or device employed for collecting/isolating this Biospecimen.
-          type: string
-        name:
-          description: A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
+        email:
+          description: The email of the Data Access Committee (e.g., DAC[at]email.com).
             This property must not include any personally identifiable data.
           type: string
-        storage:
-          $id: src/content_schemas/enums/StorageEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture how a Sample or Biospecimen was stored.
-          enum:
-          - REFRIGERATOR
-          - FREEZER
-          - ULTRA_LOW_FREEZER
-          - CRYOGENIC_FREEZER
-          title: StorageEnum
-          type: string
-        tissue:
-          description: The tissue this Biospecimen originated from.
-          type: string
-        type:
-          description: The type of Biospecimen.
-          type: string
-        vital_status_at_sampling:
-          $id: src/content_schemas/enums/VitalStatusEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture the vital status of an individual.
-          enum:
-          - ALIVE
-          - DECEASED
-          - UNKNOWN
-          title: VitalStatusEnum
+        institute:
+          description: The Institute a person is affiliated with.
           type: string
       required:
-      - age_at_sampling
-      - tissue
-      title: Biospecimen
+      - email
+      - institute
+      title: DataAccessCommittee
       type: object
-    description: A Biospecimen is any natural material taken from a biological entity
-      for testing, diagnostics, treatment, or research purposes.  It is linked to
-      the Individual from which the Biospecimen is derived.
+    description: A group of members that are delegated to grant access to one or more
+      datasets after ensuring the criteria for data sharing has been met,  and request
+      for data use does not raise ethical and/or legal concerns.
+    id:
+      propertyName: alias
+  DataAccessPolicy:
+    content:
+      $id: src/content_schemas/DataAccessPolicy
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: A Data Access Policy specifies under which circumstances, legal
+        or otherwise, a user can have access to one or more Datasets belonging to
+        one or more Studies.
+      properties:
+        data_use_modifier_ids:
+          description: The DUO IDs corresponding to the Data Use Modifier terms (e.g.,
+            DUO:0000043).
+          items:
+            type: string
+          type: array
+        data_use_modifier_terms:
+          description: 'One or more Data Use Modifiers for the Data Use Permission
+            associated with this Data Use Policy. The used terms should be descendants
+            of ''DUO:0000017: data use modifier'' (e.g., clinical care use). Please
+            use ''USER_SPECIFIC_RESTRICTION'' if no other modifier applies.'
+          items:
+            $id: src/content_schemas/enums/DataUseModifierEnum
+            $schema: http://json-schema.org/draft-07/schema#
+            description: Permitted values for data use modifier.
+            enum:
+            - CLINICAL_CARE_USE
+            - RETURN_TO_DATABASE_OR_RESOURCE
+            - INSTITUTION_SPECIFIC_RESTRICTION
+            - PROJECT_SPECIFIC_RESTRICTION
+            - USER_SPECIFIC_RESTRICTION
+            - TIME_LIMIT_ON_USE
+            - PUBLICATION_MORATORIUM
+            - GEOGRAPHICAL_RESTRICTION
+            - ETHICS_APPROVAL_REQUIRED
+            - COLLABORATION_REQUIRED
+            - PUBLICATION_REQUIRED
+            - NOT_FOR_PROFIT_NON_COMMERCIAL_USE_ONLY
+            - NON_COMMERCIAL_USE_ONLY
+            - NOT_FOR_PROFIT_ORGANISATION_USE_ONLY
+            - GENETIC_STUDIES_ONLY
+            - NO_GENERAL_METHODS_RESEARCH
+            - RESEARCH_SPECIFIC_RESTRICTIONS
+            - POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_PROHIBITED
+            title: DataUseModifierEnum
+            type: string
+          type: array
+        data_use_permission_id:
+          description: The DUO ID corresponding to the Data Use Permission term (e.g.,
+            DUO:0000004).
+          type: string
+        data_use_permission_term:
+          $id: src/content_schemas/enums/DataUsePermissionEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Permitted values for data use permission.
+          enum:
+          - GENERAL_RESEARCH_USE
+          - HEALTH_OR_MEDICAL_OR_BIOMEDICAL_RESEARCH
+          - DISEASE_SPECIFIC_RESEARCH
+          - NO_RESTRICTION
+          - POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_ONLY
+          title: DataUsePermissionEnum
+          type: string
+        description:
+          description: A short description for this Data Access Policy.
+          type: string
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
+        name:
+          description: A name for this Data Access Policy.
+          type: string
+        policy_text:
+          description: The complete text for the Data Access Policy.
+          type: string
+        policy_url:
+          description: An alternative to the Data Access Policy text is to provide
+            the URL for the policy. This is useful if the terms of the policy are
+            available online at a resolvable URL.
+          type: string
+      required:
+      - name
+      - description
+      - policy_text
+      - data_use_permission_term
+      - data_use_permission_id
+      title: DataAccessPolicy
+      type: object
+    description: A Data Access Policy specifies under which circumstances, legal or
+      otherwise, a user can have access to one or more Datasets belonging to one or
+      more Studies.
     id:
       propertyName: alias
     relations:
-      individual:
+      data_access_committee:
         mandatory:
           origin: false
           target: true
         multiple:
           origin: true
           target: false
-        targetClass: Individual
-  Condition:
+        targetClass: DataAccessCommittee
+  Dataset:
     content:
-      $id: src/content_schemas/Condition
+      $id: src/content_schemas/Dataset
       $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
-      description: A Condition specifies which special characteristics and treatments
-        apply to a Sample (e.g., whether the Sample comes from a disease or a healthy
-        tissue).
+      description: A Dataset is a collection of Files that is prepared for distribution
+        and is tied to a Data Access Policy.
+      properties:
+        description:
+          description: A description summarizing this Dataset.
+          type: string
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
+        title:
+          description: A title for this Dataset.
+          type: string
+        types:
+          description: The type of this Dataset.
+          items:
+            type: string
+          type: array
+      required:
+      - title
+      - description
+      - types
+      title: Dataset
+      type: object
+    description: A Dataset is a collection of Files that is prepared for distribution
+      and is tied to a Data Access Policy.
+    id:
+      propertyName: alias
+    relations:
+      data_access_policy:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: DataAccessPolicy
+      study:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  Experiment:
+    content:
+      $id: src/content_schemas/Experiment
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: An Experiment is an investigation that consists of a coordinated
+        set of actions and observations designed to generate data with the goal of
+        verifying, falsifying, or establishing the validity of a hypothesis.
       properties:
         attributes:
           description: Key/value pairs corresponding to an entity.
@@ -304,284 +430,56 @@ classes:
             title: Attribute
             type: object
           type: array
-        case_control_status:
-          $id: src/content_schemas/enums/CaseControlStatusEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether a condition corresponds to a case or
-            a control condition.
-          enum:
-          - NEITHER_CASE_OR_CONTROL_STATUS
-          - PROBABLE_CASE_STATUS
-          - PROBABLE_CONTROL_STATUS
-          - TRUE_CASE_STATUS
-          - TRUE_CONTROL_STATUS
-          - UNABLE_TO_ASSESS_CASE_OR_CONTROL_STATUS
-          title: CaseControlStatusEnum
-          type: string
         description:
-          description: A concise description of the applied Condition.
+          description: A detailed description of this Experiment.
           type: string
-        disease_or_healthy:
-          $id: src/content_schemas/enums/DiseaseOrHealthyEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether a condition corresponds to a disease
-            or a healthy state.
-          enum:
-          - DISEASE
-          - HEALTHY
-          - NOT_APPLICABLE
-          title: DiseaseOrHealthyEnum
-          type: string
-        mutant_or_wildtype:
-          $id: src/content_schemas/enums/MutantOrWildtypeEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether a condition corresponds to a mutant
-            or a wildtype.
-          enum:
-          - MUTANT
-          - WILDTYPE
-          - NOT_APPLICABLE
-          title: MutantOrWildtypeEnum
-          type: string
-        name:
-          description: The name of this Condition.
-          type: string
-      required:
-      - name
-      - description
-      - disease_or_healthy
-      - case_control_status
-      - mutant_or_wildtype
-      title: Condition
-      type: object
-    description: A Condition specifies which special characteristics and treatments
-      apply to a Sample (e.g., whether the Sample comes from a disease or a healthy
-      tissue).
-    id:
-      propertyName: alias
-    relations:
-      study:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Study
-  DataAccessCommittee:
-    content:
-      $id: src/content_schemas/DataAccessCommittee
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A group of members that are delegated to grant access to one or
-        more datasets after ensuring the criteria for data sharing has been met,  and
-        request for data use does not raise ethical and/or legal concerns.
-      properties:
-        email:
-          description: The email of the Data Access Committee (e.g., DAC[at]email.com).
-            This property must not include any personally identifiable data.
-          type: string
-        institute:
-          description: The Institute a person is affiliated with.
-          type: string
-      required:
-      - email
-      - institute
-      title: DataAccessCommittee
-      type: object
-    description: A group of members that are delegated to grant access to one or more
-      datasets after ensuring the criteria for data sharing has been met,  and request
-      for data use does not raise ethical and/or legal concerns.
-    id:
-      propertyName: alias
-  DataAccessPolicy:
-    content:
-      $id: src/content_schemas/DataAccessPolicy
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Data Access Policy specifies under which circumstances, legal
-        or otherwise, a user can have access to one or more Datasets belonging to
-        one or more Studies.
-      properties:
-        data_use_modifiers:
-          description: 'One or more Data Use Modifiers for the Data Use Permission
-            associated with this Data Use Policy. The used terms should be descendants
-            of ''DUO:0000017: data use modifier''. Please use ''user specific restriction''
-            if no other modifier applies.'
-          items:
-            $id: src/content_schemas/enums/DataUseModifierEnum
-            $schema: http://json-schema.org/draft-07/schema#
-            description: Permitted values for data use modifier
-            enum:
-            - clinical care use
-            - return to database or resource
-            - institution specific restriction
-            - project specific restriction
-            - user specific restriction
-            - time limit on use
-            - publication moratorium
-            - geographical restriction
-            - ethics approval required
-            - collaboration required
-            - publication required
-            - not for profit, non commercial use only
-            - non-commercial use only
-            - not for profit organisation use only
-            - genetic studies only
-            - no general methods research
-            - research specific restrictions
-            - population origins or ancestry research prohibited
-            title: DataUseModifierEnum
-            type: string
-          type: array
-        data_use_permission:
-          $id: src/content_schemas/enums/DataUsePermissionEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for data use permission
-          enum:
-          - general research use
-          - health or medical or biomedical research
-          - disease specific research
-          - no restriction
-          - population origins or ancestry research only
-          title: DataUsePermissionEnum
-          type: string
-        description:
-          description: A short description for this Data Access Policy.
-          type: string
-        name:
-          description: A name for this Data Access Policy.
-          type: string
-        policy_text:
-          description: The complete text for the Data Access Policy.
-          type: string
-        policy_url:
-          description: An alternative to the Data Access Policy text is to provide
-            the URL for the policy. This is useful if the terms of the policy are
-            available online at a resolvable URL.
-          type: string
-      required:
-      - name
-      - description
-      - policy_text
-      - data_use_permission
-      title: DataAccessPolicy
-      type: object
-    description: A Data Access Policy specifies under which circumstances, legal or
-      otherwise, a user can have access to one or more Datasets belonging to one or
-      more Studies.
-    id:
-      propertyName: alias
-    relations:
-      data_access_committee:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: DataAccessCommittee
-  Dataset:
-    content:
-      $id: src/content_schemas/Dataset
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Dataset is a collection of Files that is prepared for distribution
-        and is tied to a Data Access Policy.
-      properties:
-        description:
-          description: A description summarizing this Dataset.
+        ega_accession:
+          description: The EGA accession of the 'Run' entity (EGAR).
           type: string
         title:
-          description: A title for this Dataset.
+          description: The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
           type: string
-        types:
-          description: The type of this Dataset.
-          items:
-            type: string
-          type: array
+        type:
+          description: The type of this Experiment.
+          type: string
       required:
       - title
       - description
-      - types
-      title: Dataset
+      title: Experiment
       type: object
-    description: A Dataset is a collection of Files that is prepared for distribution
-      and is tied to a Data Access Policy.
+    description: An Experiment is an investigation that consists of a coordinated
+      set of actions and observations designed to generate data with the goal of verifying,
+      falsifying, or establishing the validity of a hypothesis.
     id:
       propertyName: alias
     relations:
-      data_access_policy:
+      experiment_method:
         mandatory:
           origin: false
           target: true
         multiple:
           origin: true
           target: false
-        targetClass: DataAccessPolicy
-  Individual:
+        targetClass: ExperimentMethod
+      sample:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Sample
+  ExperimentMethod:
     content:
-      $id: src/content_schemas/Individual
+      $id: src/content_schemas/ExperimentMethod
       $schema: http://json-schema.org/draft-07/schema#
       additionalProperties: false
-      description: An Individual is a Person who is participating in a Study.
-      properties:
-        ancestries:
-          description: A person's descent or lineage from a population.
-          items:
-            type: string
-          type: array
-        geographical_region:
-          description: The geographical region where the Individual is located.
-          type: string
-        karyotype:
-          $id: src/content_schemas/enums/KaryotypeEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for karyotype
-          enum:
-          - 46_XY
-          - 46_XX
-          - OTHER
-          title: KaryotypeEnum
-          type: string
-        phenotypic_features:
-          description: The phenotypic feature concepts that the entity is associated
-            with at the time of retrieval from the organism. The Phenotypic Feature
-            is captured using a concept from the Human Phenotype Ontology.
-          items:
-            type: string
-          type: array
-        sex:
-          $id: src/content_schemas/enums/IndividualSexEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: The sex of an Individual as as defined in a specific medical
-            and clinical context.
-          enum:
-          - FEMALE_SEX_FOR_CLINICAL_USE
-          - IMAGING_SEX
-          - MALE_SEX_FOR_CLINICAL_USE
-          - SPECIFIED_SEX_FOR_CLINICAL_USE
-          - UNKNOWN_SEX_FOR_CLINICAL_USE
-          title: IndividualSexEnum
-          type: string
-      required:
-      - sex
-      title: Individual
-      type: object
-    description: An Individual is a Person who is participating in a Study.
-    id:
-      propertyName: alias
-  LibraryPreparationProtocol:
-    content:
-      $id: src/content_schemas/LibraryPreparationProtocol
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: The Library Preparation Protocol captures information about the
-        library preparation of a Sequencing Experiment.
+      description: The Experiment Method captures technical metadata describing the
+        parameters used to generate output from the Sample.
       properties:
         attributes:
-          description: One or more attributes that further characterize this Library
-            Preparation Protocol.
+          description: One or more attributes that further characterize this Experiment
+            Method.
           items:
             $id: src/content_schemas/Attribute
             $schema: http://json-schema.org/draft-07/schema#
@@ -610,30 +508,110 @@ classes:
             type: object
           type: array
         description:
-          description: Description summarizing how a sequencing library was prepared.
+          description: A short description of this Experiment Method.
+          type: string
+        ega_accession:
+          description: The EGA accession of the 'Experiment' entity (EGAX).
           type: string
         end_bias:
           $id: src/content_schemas/enums/EndBiasEnum
           $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for end bias
+          description: Permitted values for end bias.
           enum:
           - 3_PRIME_END
           - 5_PRIME_END
           - FULL_LENGTH
           title: EndBiasEnum
           type: string
-        library_layout:
-          $id: src/content_schemas/enums/LibraryPreparationLibraryLayoutEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Single-end vs paired-end library
-          enum:
-          - SE
-          - PE
-          title: LibraryPreparationLibraryLayoutEnum
+        flow_cell_id:
+          description: Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
           type: string
-        library_name:
-          description: A short name identifying the library. The same name may refer
-            to multiple versions of the same continually updated library.
+        flow_cell_type:
+          $id: src/content_schemas/enums/FlowCellTypeEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Permitted values for flow cell type.
+          enum:
+          - ILLUMINA_NOVA_SEQ_S2
+          - ILLUMINA_NOVA_SEQ_S4
+          - PROMETHION
+          - FLONGLE
+          - MINION
+          - GRIDION
+          - OTHER
+          title: FlowCellTypeEnum
+          type: string
+        instrument_model:
+          $id: src/content_schemas/enums/InstrumentModelEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Permitted values for the instrument model.
+          enum:
+          - 454_GS
+          - 454_GS_20
+          - 454_GS_FLX
+          - 454_GS_FLX_TITANIUM
+          - 454_GS_FLX+
+          - 454_GS_JUNIOR
+          - AB_310_GENETIC_ANALYZER
+          - AB_3130_GENETIC_ANALYZER
+          - AB_3130XL_GENETIC_ANALYZER
+          - AB_3500_GENETIC_ANALYZER
+          - AB_3500XL_GENETIC_ANALYZER
+          - AB_3730_GENETIC_ANALYZER
+          - AB_3730XL_GENETIC_ANALYZER
+          - AB_5500_GENETIC_ANALYZER
+          - AB_5500XL_GENETIC_ANALYZER
+          - AB_5500XL-W_GENETIC_ANALYSIS_SYSTEM
+          - BGISEQ-50
+          - BGISEQ-500
+          - DNBSEQ-G400
+          - DNBSEQ-G400_FAST
+          - DNBSEQ-G50
+          - DNBSEQ-T7
+          - ELEMENT_AVITI
+          - GRIDION
+          - HELICOS_HELISCOPE
+          - HISEQ_X_FIVE
+          - HISEQ_X_TEN
+          - ILLUMINA_GENOME_ANALYZER
+          - ILLUMINA_GENOME_ANALYZER_II
+          - ILLUMINA_GENOME_ANALYZER_IIX
+          - ILLUMINA_HISCANSQ
+          - ILLUMINA_HISEQ_1000
+          - ILLUMINA_HISEQ_1500
+          - ILLUMINA_HISEQ_2000
+          - ILLUMINA_HISEQ_2500
+          - ILLUMINA_HISEQ_3000
+          - ILLUMINA_HISEQ_4000
+          - ILLUMINA_HISEQ_X
+          - ILLUMINA_MISEQ
+          - ILLUMINA_MINISEQ
+          - ILLUMINA_NOVASEQ_6000
+          - ILLUMINA_NOVASEQ_X
+          - ILLUMINA_ISEQ_100
+          - ION_GENESTUDIO_S5
+          - ION_GENESTUDIO_S5_PLUS
+          - ION_GENESTUDIO_S5_PRIME
+          - ION_TORRENT_GENEXUS
+          - ION_TORRENT_PGM
+          - ION_TORRENT_PROTON
+          - ION_TORRENT_S5
+          - ION_TORRENT_S5_XL
+          - MGISEQ-2000RS
+          - MINION
+          - NEXTSEQ_1000
+          - NEXTSEQ_2000
+          - NEXTSEQ_500
+          - NEXTSEQ_550
+          - PACBIO_RS
+          - PACBIO_RS_II
+          - PROMETHION
+          - SEQUEL
+          - SEQUEL_II
+          - SEQUEL_IIE
+          - UG_100
+          - UNSPECIFIED
+          - OTHER
+          title: InstrumentModelEnum
           type: string
         library_preparation:
           description: The general method for preparation of the sequencing library
@@ -645,7 +623,7 @@ classes:
         library_preparation_kit_retail_name:
           $id: src/content_schemas/enums/LibraryPreparationKitRetailNameEnum
           $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for library preparation kit retail name
+          description: Permitted values for library preparation kit retail name.
           enum:
           - 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2
           - 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V3
@@ -808,44 +786,49 @@ classes:
           - TWIST_HUMAN_CORE_EXOME_KIT
           - TWIST_HUMAN_CORE_EXOME_PLUS_KIT
           - ULTRALOW_METHYL_SEQ_WITH_TRUE_METHYL_OX_BS
+          - OTHER
           title: LibraryPreparationKitRetailNameEnum
           type: string
-        library_selection:
-          $id: src/content_schemas/enums/LibraryPreparationLibrarySelectionEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted vocabulary for library selections
-          enum:
-          - 5_METHYLCYTIDINE_ANTIBODY_METHOD
-          - CAGE_METHOD
-          - C_DNA_METHOD
-          - CF_H_METHOD
-          - CF_M_METHOD
-          - CF_S_METHOD
-          - CF_T_METHOD
-          - CHIP_SEQ_METHOD
-          - D_NASE_METHOD
-          - HMPR_METHOD
-          - HYBRID_SELECTION_METHOD
-          - MBD2_PROTEIN_METHYL_CP_G_BINDING_DOMAIN_METHOD
-          - MF_METHOD
-          - M_NASE_METHOD
-          - MSLL_METHOD
-          - PCR_METHOD
-          - RACE_METHOD
-          - RANDOM_PCR_METHOD
-          - RANDOM_METHOD
-          - RT_PCR_METHOD
-          - REDUCED_REPRESENTATION_METHOD
-          - RESTRICTION_DIGEST_METHOD
-          - SIZE_FRACTIONATION_METHOD
-          - UNSPECIFIED
-          - OTHER
-          title: LibraryPreparationLibrarySelectionEnum
-          type: string
+        library_selection_methods:
+          description: One or more methods used to select for or against, enrich,
+            or screen the material being sequenced (e.g., random, PCA, cDNA).
+          items:
+            $id: src/content_schemas/enums/LibraryPreparationLibrarySelectionEnum
+            $schema: http://json-schema.org/draft-07/schema#
+            description: Permitted vocabulary for library selections.
+            enum:
+            - 5_METHYLCYTIDINE_ANTIBODY_METHOD
+            - CAGE_METHOD
+            - C_DNA_METHOD
+            - CF_H_METHOD
+            - CF_M_METHOD
+            - CF_S_METHOD
+            - CF_T_METHOD
+            - CHIP_SEQ_METHOD
+            - D_NASE_METHOD
+            - HMPR_METHOD
+            - HYBRID_SELECTION_METHOD
+            - MBD2_PROTEIN_METHYL_CP_G_BINDING_DOMAIN_METHOD
+            - MF_METHOD
+            - M_NASE_METHOD
+            - MSLL_METHOD
+            - PCR_METHOD
+            - RACE_METHOD
+            - RANDOM_PCR_METHOD
+            - RANDOM_METHOD
+            - RT_PCR_METHOD
+            - REDUCED_REPRESENTATION_METHOD
+            - RESTRICTION_DIGEST_METHOD
+            - SIZE_FRACTIONATION_METHOD
+            - UNSPECIFIED
+            - OTHER
+            title: LibraryPreparationLibrarySelectionEnum
+            type: string
+          type: array
         library_type:
           $id: src/content_schemas/enums/LibraryPreparationLibraryTypeEnum
           $schema: http://json-schema.org/draft-07/schema#
-          description: The type of the library
+          description: The type of the library.
           enum:
           - WGS
           - WXS
@@ -857,12 +840,17 @@ classes:
           - ATAC
           - METHYLATION
           - CHROMOSOME_CONFORMATION_CAPTURE
+          - CHIP_SEQ
+          - OTHER
           title: LibraryPreparationLibraryTypeEnum
+          type: string
+        name:
+          description: A short name identifying this Experiment Method.
           type: string
         primer:
           $id: src/content_schemas/enums/PrimerEnum
           $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for primer
+          description: Permitted values for primer.
           enum:
           - OLIGO_D_T
           - RANDOM
@@ -873,11 +861,43 @@ classes:
         rnaseq_strandedness:
           $id: src/content_schemas/enums/LibraryPreparationRNASeqStrandednessEnum
           $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for library preparation RNASeq strandedness
+          description: Permitted values for library preparation RNASeq strandedness.
           enum:
           - SENSE
           - ANTISENSE
+          - UNSTRANDED
           title: LibraryPreparationRNASeqStrandednessEnum
+          type: string
+        sample_barcode_read:
+          $id: src/content_schemas/enums/SampleBarcodeReadEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Permitted values for sample barcode read.
+          enum:
+          - INDEX1
+          - INDEX1_AND_INDEX2
+          - OTHER
+          title: SampleBarcodeReadEnum
+          type: string
+        sequencing_center:
+          description: Center where sample was sequenced.
+          type: string
+        sequencing_layout:
+          $id: src/content_schemas/enums/SequencingProtocolSequencingLayoutEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Single-end vs paired-end sequencing.
+          enum:
+          - SE
+          - PE
+          title: SequencingProtocolSequencingLayoutEnum
+          type: string
+        sequencing_read_length:
+          description: Length of sequencing reads (e.g., long or short or actual number
+            of the read length).
+          type: string
+        target_coverage:
+          description: Mean coverage for whole genome sequencing, or mean target coverage
+            for whole exome and targeted sequencing, (i.e. the number of times a particular
+            locus was sequenced).
           type: string
         target_regions:
           description: Subset of genes or specific regions of the genome, which are
@@ -885,19 +905,274 @@ classes:
           items:
             type: string
           type: array
+        type:
+          description: The type associated with this Experiment Method.
+          type: string
       required:
+      - name
       - description
-      - library_name
-      - library_layout
+      - type
       - library_type
-      - library_selection
+      - library_selection_methods
       - library_preparation
-      title: LibraryPreparationProtocol
+      - instrument_model
+      - sequencing_layout
+      title: ExperimentMethod
       type: object
-    description: The Library Preparation Protocol captures information about the library
-      preparation of a Sequencing Experiment.
+    description: The Experiment Method captures technical metadata describing the
+      parameters used to generate output from the Sample.
     id:
       propertyName: alias
+  ExperimentMethodSupportingFile:
+    content:
+      $id: src/content_schemas/ExperimentMethodSupportingFile
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: An Experiment Method Supporting File is a File that contains additional
+        information relevant for the Experiment Method, such as (unstructured) protocols.
+      properties:
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
+        format:
+          $id: src/content_schemas/enums/SupportingFileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture Supporting File types.
+          enum:
+          - CSV
+          - JSON
+          - PED
+          - TSV
+          - TXT
+          - YAML
+          - OTHER
+          title: SupportingFileFormatEnum
+          type: string
+        included_in_submission:
+          description: Whether a File is included in the Submission or not.
+          type: boolean
+        name:
+          description: The given filename.
+          type: string
+      required:
+      - format
+      - name
+      - included_in_submission
+      title: ExperimentMethodSupportingFile
+      type: object
+    description: An Experiment Method Supporting File is a File that contains additional
+      information relevant for the Experiment Method, such as (unstructured) protocols.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      experiment_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: ExperimentMethod
+  Individual:
+    content:
+      $id: src/content_schemas/Individual
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: An Individual is a Person who is participating in a Study.
+      properties:
+        ancestry_ids:
+          description: A person's descent or lineage from a population.
+          items:
+            type: string
+          type: array
+        ancestry_terms:
+          description: A person's descent or lineage from a population.
+          items:
+            type: string
+          type: array
+        diagnosis_ids:
+          description: One or more diagnoses that the entity is associated with at
+            the time of retrieval from the organism. The diagnosis is captured using
+            a code from ICD-10 (WHO version). Please restrict the ICD code to the
+            chapter letter and two digits for the main diagnosis (e.g., E10, C01).
+          items:
+            type: string
+          type: array
+        diagnosis_terms:
+          description: The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type
+            1 diabetes mellitus, Malignant neoplasm of base of tongue).
+          items:
+            type: string
+          type: array
+        geographical_region_id:
+          description: The geographical region where the Individual is located.
+          type: string
+        geographical_region_term:
+          description: The geographical region where the Individual is located.
+          type: string
+        phenotypic_features_ids:
+          description: The corresponding ID to the HPO vocabulary (e.g., HP:0002732,
+            HP:0012735, HP:0002615).
+          items:
+            type: string
+          type: array
+        phenotypic_features_terms:
+          description: The phenotypic feature concepts that the entity is associated
+            with at the time of retrieval from the organism. The Phenotypic Feature
+            is captured using a concept from the Human Phenotype Ontology (e.g., Lymph
+            node hypoplasia, Cough, Hypotension).
+          items:
+            type: string
+          type: array
+        sex:
+          $id: src/content_schemas/enums/IndividualSexEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: The sex of an Individual as as defined in a specific medical
+            and clinical context.
+          enum:
+          - FEMALE
+          - MALE
+          - UNKNOWN
+          - OTHER
+          title: IndividualSexEnum
+          type: string
+      required:
+      - sex
+      title: Individual
+      type: object
+    description: An Individual is a Person who is participating in a Study.
+    id:
+      propertyName: alias
+  IndividualSupportingFile:
+    content:
+      $id: src/content_schemas/IndividualSupportingFile
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: An Individual Supporting File is a File that contains additional
+        information relevant for the Individual, such as ped-files, phenopackets or
+        imaging data.
+      properties:
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
+        format:
+          $id: src/content_schemas/enums/SupportingFileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture Supporting File types.
+          enum:
+          - CSV
+          - JSON
+          - PED
+          - TSV
+          - TXT
+          - YAML
+          - OTHER
+          title: SupportingFileFormatEnum
+          type: string
+        included_in_submission:
+          description: Whether a File is included in the Submission or not.
+          type: boolean
+        name:
+          description: The given filename.
+          type: string
+      required:
+      - format
+      - name
+      - included_in_submission
+      title: IndividualSupportingFile
+      type: object
+    description: An Individual Supporting File is a File that contains additional
+      information relevant for the Individual, such as ped-files, phenopackets or
+      imaging data.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      individual:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+  ProcessDataFile:
+    content:
+      $id: src/content_schemas/ProcessDataFile
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: A Process Data File is a File that contains data produced by an
+        Analysis or workflow.
+      properties:
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
+        format:
+          $id: src/content_schemas/enums/ProcessDataFileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture Process Data File formats.
+          enum:
+          - BAI
+          - BAM
+          - BCF
+          - BED
+          - CRAM
+          - GFF
+          - HDF5
+          - SAM
+          - VCF
+          - WIG
+          - OTHER
+          title: ProcessDataFileFormatEnum
+          type: string
+        included_in_submission:
+          description: Whether a File is included in the Submission or not.
+          type: boolean
+        name:
+          description: The given filename.
+          type: string
+      required:
+      - format
+      - name
+      - included_in_submission
+      title: ProcessDataFile
+      type: object
+    description: A Process Data File is a File that contains data produced by an Analysis
+      or workflow.
+    id:
+      propertyName: alias
+    relations:
+      analysis:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Analysis
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
   Publication:
     content:
       $id: src/content_schemas/Publication
@@ -908,7 +1183,7 @@ classes:
       properties:
         abstract:
           description: The study abstract that describes the goals. Can also hold
-            abstract from a Publication related to this Study.
+            abstract from a publication related to this Study.
           type: string
         author:
           description: Author(s) of this Publication.
@@ -947,6 +1222,73 @@ classes:
           origin: true
           target: false
         targetClass: Study
+  ResearchDataFile:
+    content:
+      $id: src/content_schemas/ResearchDataFile
+      $schema: http://json-schema.org/draft-07/schema#
+      additionalProperties: false
+      description: A Research Data File is a File that contains raw data originating
+        from an Experiment.
+      properties:
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
+        format:
+          $id: src/content_schemas/enums/ResearchDataFileFormatEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture Research Data File formats.
+          enum:
+          - FASTA
+          - FASTQ
+          - UBAM
+          - FAST5
+          - RAW
+          - D
+          - MZML
+          - MZDATA
+          - OTHER
+          title: ResearchDataFileFormatEnum
+          type: string
+        included_in_submission:
+          description: Whether a File is included in the Submission or not.
+          type: boolean
+        name:
+          description: The given filename.
+          type: string
+        sequencing_lane_id:
+          description: The identifier of a sequencing lane.
+          type: string
+        technical_replicate:
+          description: An integer to indicate the technical replicate of this File.
+          type: integer
+      required:
+      - format
+      - technical_replicate
+      - name
+      - included_in_submission
+      title: ResearchDataFile
+      type: object
+    description: A Research Data File is a File that contains raw data originating
+      from an Experiment.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      experiments:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: true
+        targetClass: Experiment
   Sample:
     content:
       $id: src/content_schemas/Sample
@@ -985,12 +1327,118 @@ classes:
             title: Attribute
             type: object
           type: array
+        biological_replicate:
+          description: An integer to indicate the number of a biological replicate.
+          type: integer
+        biospecimen_age_at_sampling:
+          $id: src/content_schemas/enums/AgeRangeEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture the age range that an Indiviudal belongs to.
+          enum:
+          - 0_TO_5
+          - 6_TO_10
+          - 11_TO_15
+          - 16_TO_20
+          - 21_TO_25
+          - 26_TO_30
+          - 31_TO_35
+          - 36_TO_40
+          - 41_TO_45
+          - 46_TO_50
+          - 51_TO_55
+          - 56_TO_60
+          - 61_TO_65
+          - 66_TO_70
+          - 71_TO_75
+          - 76_TO_80
+          - 81_OR_OLDER
+          - UNKNOWN
+          title: AgeRangeEnum
+          type: string
+        biospecimen_description:
+          description: A concise description about the Biospecimen source, the collection
+            method, and the protocol which was followed to process this Biospecimen.
+          type: string
+        biospecimen_isolation:
+          $id: src/content_schemas/enums/IsolationEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Describes how biomaterial was isolated.
+          enum:
+          - BLOOD_DRAW
+          - SURGICAL_REMOVAL
+          - SALIVA_COLLECTION
+          - BUCCAL_SWAB
+          title: IsolationEnum
+          type: string
+        biospecimen_name:
+          description: A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
+            This property must not include any personally identifiable data.
+          type: string
+        biospecimen_storage:
+          $id: src/content_schemas/enums/StorageEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture how a Sample or Biospecimen was stored.
+          enum:
+          - REFRIGERATOR
+          - FREEZER
+          - ULTRA_LOW_FREEZER
+          - CRYOGENIC_FREEZER
+          - NONE
+          - OTHER
+          - UNKNOWN
+          title: StorageEnum
+          type: string
+        biospecimen_tissue_id:
+          description: The corresponding ontology ID for the biospecimen_tissue_term
+            (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+          type: string
+        biospecimen_tissue_term:
+          description: The tissue this Biospecimen originated from. Should be a term
+            from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma
+            cell).
+          type: string
+        biospecimen_type:
+          description: The type of Biospecimen.
+          type: string
+        biospecimen_vital_status_at_sampling:
+          $id: src/content_schemas/enums/VitalStatusEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture the vital status of an individual.
+          enum:
+          - ALIVE
+          - DECEASED
+          - UNKNOWN
+          title: VitalStatusEnum
+          type: string
+        case_control_status:
+          $id: src/content_schemas/enums/CaseControlStatusEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture whether a condition corresponds to a case or
+            a control condition.
+          enum:
+          - CASE
+          - CONTROL
+          - OTHER
+          - UNKNOWN
+          title: CaseControlStatusEnum
+          type: string
         description:
           description: A concise description about the Sample source, the collection
             method, and the protocol which was followed to process this Sample.
           type: string
-        isolation:
-          description: Method or device employed for collecting/isolating this Sample.
+        disease_or_healthy:
+          $id: src/content_schemas/enums/DiseaseOrHealthyEnum
+          $schema: http://json-schema.org/draft-07/schema#
+          description: Enum to capture whether a condition corresponds to a disease
+            or a healthy state.
+          enum:
+          - DISEASE
+          - HEALTHY
+          - NOT_APPLICABLE
+          title: DiseaseOrHealthyEnum
+          type: string
+        ega_accession:
+          description: The EGA accession ID of an entity.
           type: string
         name:
           description: A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1
@@ -1006,6 +1454,9 @@ classes:
           - FREEZER
           - ULTRA_LOW_FREEZER
           - CRYOGENIC_FREEZER
+          - NONE
+          - OTHER
+          - UNKNOWN
           title: StorageEnum
           type: string
         type:
@@ -1023,6 +1474,7 @@ classes:
           - POLY_A_RNA
           - SINGLE_CELL_DNA
           - SINGLE_CELL_RNA
+          - SINGLE_CELL_NUCLEI
           - SMALL_RNA
           - TOTAL_RNA
           title: SampleTypeEnum
@@ -1036,6 +1488,8 @@ classes:
       required:
       - name
       - description
+      - case_control_status
+      - biospecimen_age_at_sampling
       title: Sample
       type: object
     description: A Sample is a limited quantity of something to be used for testing,
@@ -1044,564 +1498,14 @@ classes:
     id:
       propertyName: alias
     relations:
-      biospecimen:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Biospecimen
-      condition:
+      individual:
         mandatory:
           origin: false
           target: true
         multiple:
           origin: true
           target: false
-        targetClass: Condition
-  SampleFile:
-    content:
-      $id: src/content_schemas/SampleFile
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Sample File is a File that is associated with a Sample.
-      properties:
-        checksum:
-          description: The checksum of the File.
-          type: string
-        checksum_type:
-          description: The type of algorithm used to generate the checksum of the
-            File.
-          type: string
-        format:
-          $id: src/content_schemas/enums/FileFormatEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture file types.
-          enum:
-          - AGP
-          - BAI
-          - BAM
-          - BCF
-          - BED
-          - CRAM
-          - CSV
-          - FASTA
-          - FASTQ
-          - GFF
-          - HDF5
-          - JSON
-          - PED
-          - SAM
-          - SFF
-          - SRF
-          - TABIX
-          - TSV
-          - TXT
-          - VCF
-          - WIG
-          - OTHER
-          title: FileFormatEnum
-          type: string
-        forward_or_reverse:
-          $id: src/content_schemas/enums/ForwardOrReverseEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether the reads from paired-end sequencing
-            are forward (R1) or reverse (R2).
-          enum:
-          - FORWARD
-          - REVERSE
-          title: ForwardOrReverseEnum
-          type: string
-        name:
-          description: The given filename.
-          type: string
-        size:
-          description: The size of the File in bytes.
-          type: integer
-      required:
-      - name
-      - format
-      - size
-      - checksum
-      - checksum_type
-      title: SampleFile
-      type: object
-    description: A Sample File is a File that is associated with a Sample.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
-      sample:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Sample
-  SequencingExperiment:
-    content:
-      $id: src/content_schemas/SequencingExperiment
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Sequencing Experiment is an investigation that consists of a
-        coordinated set of actions and observations designed to generate data with
-        the goal of verifying, falsifying, or establishing the validity of a hypothesis.
-      properties:
-        attributes:
-          description: Key/value pairs corresponding to an entity.
-          items:
-            $id: src/content_schemas/Attribute
-            $schema: http://json-schema.org/draft-07/schema#
-            additionalProperties: false
-            description: A key/value pair that further characterizes an entity.
-            properties:
-              key:
-                description: The key of an attribute.
-                type: string
-              key_type:
-                description: A semantic type that characterizes the attribute key
-                  (e.g., oxygen saturation measurement (MAXO:0000616)).
-                type: string
-              value:
-                description: The value for an attribute (e.g., a numerical value without
-                  the units).
-                type: string
-              value_type:
-                description: The value_type that characterizes the attribute value
-                  (e.g., percentage (SIO:001413)).
-                type: string
-            required:
-            - key
-            - value
-            title: Attribute
-            type: object
-          type: array
-        description:
-          description: A detailed description of this Sequencing Experiment.
-          type: string
-        title:
-          description: The title for this Sequencing Experiment (e.g., GHGAE_PBMC_RNAseq).
-          type: string
-        type:
-          description: The type of this Sequencing Experiment.
-          type: string
-      required:
-      - title
-      - description
-      title: SequencingExperiment
-      type: object
-    description: A Sequencing Experiment is an investigation that consists of a coordinated
-      set of actions and observations designed to generate data with the goal of verifying,
-      falsifying, or establishing the validity of a hypothesis.
-    id:
-      propertyName: alias
-    relations:
-      library_preparation_protocol:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: LibraryPreparationProtocol
-      sequencing_protocol:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: SequencingProtocol
-  SequencingProcess:
-    content:
-      $id: src/content_schemas/SequencingProcess
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: The Sequencing Process captures the technical parameters that were
-        used to produce sequencing output from the Sample. It links the Sample to
-        sequencing output.
-      properties:
-        attributes:
-          description: Key/value pairs corresponding to an entity.
-          items:
-            $id: src/content_schemas/Attribute
-            $schema: http://json-schema.org/draft-07/schema#
-            additionalProperties: false
-            description: A key/value pair that further characterizes an entity.
-            properties:
-              key:
-                description: The key of an attribute.
-                type: string
-              key_type:
-                description: A semantic type that characterizes the attribute key
-                  (e.g., oxygen saturation measurement (MAXO:0000616)).
-                type: string
-              value:
-                description: The value for an attribute (e.g., a numerical value without
-                  the units).
-                type: string
-              value_type:
-                description: The value_type that characterizes the attribute value
-                  (e.g., percentage (SIO:001413)).
-                type: string
-            required:
-            - key
-            - value
-            title: Attribute
-            type: object
-          type: array
-        description:
-          description: A short description of this Sequencing Process.
-          type: string
-        index_sequence:
-          description: A unique nucleotide sequence that is added to a sample during
-            library preparation to serve as a unique identifier for the Sample.
-          type: string
-        name:
-          description: A short name identifying this Sequencing Process.
-          type: string
-        sequencing_lane_id:
-          description: The identifier of a sequencing lane.
-          type: string
-        sequencing_machine_id:
-          description: The identifier of a sequencing machine.
-          type: string
-        sequencing_run_id:
-          description: The identifier of a sequencing run.
-          type: string
-      required:
-      - name
-      - description
-      title: SequencingProcess
-      type: object
-    description: The Sequencing Process captures the technical parameters that were
-      used to produce sequencing output from the Sample. It links the Sample to sequencing
-      output.
-    id:
-      propertyName: alias
-    relations:
-      sample:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Sample
-      sequencing_experiment:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: SequencingExperiment
-  SequencingProcessFile:
-    content:
-      $id: src/content_schemas/SequencingProcessFile
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Sequencing Process File is a File that is associated with a Sequencing
-        Process.
-      properties:
-        checksum:
-          description: The checksum of the File.
-          type: string
-        checksum_type:
-          description: The type of algorithm used to generate the checksum of the
-            File.
-          type: string
-        format:
-          $id: src/content_schemas/enums/FileFormatEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture file types.
-          enum:
-          - AGP
-          - BAI
-          - BAM
-          - BCF
-          - BED
-          - CRAM
-          - CSV
-          - FASTA
-          - FASTQ
-          - GFF
-          - HDF5
-          - JSON
-          - PED
-          - SAM
-          - SFF
-          - SRF
-          - TABIX
-          - TSV
-          - TXT
-          - VCF
-          - WIG
-          - OTHER
-          title: FileFormatEnum
-          type: string
-        forward_or_reverse:
-          $id: src/content_schemas/enums/ForwardOrReverseEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether the reads from paired-end sequencing
-            are forward (R1) or reverse (R2).
-          enum:
-          - FORWARD
-          - REVERSE
-          title: ForwardOrReverseEnum
-          type: string
-        name:
-          description: The given filename.
-          type: string
-        size:
-          description: The size of the File in bytes.
-          type: integer
-      required:
-      - name
-      - format
-      - size
-      - checksum
-      - checksum_type
-      title: SequencingProcessFile
-      type: object
-    description: A Sequencing Process File is a File that is associated with a Sequencing
-      Process.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
-      sequencing_process:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: SequencingProcess
-  SequencingProtocol:
-    content:
-      $id: src/content_schemas/SequencingProtocol
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: The Sequencing Protocol captures information about parameters and
-        metadata associated with a Sequencing Experiment.
-      properties:
-        attributes:
-          description: One or more attributes that further characterize this Sequencing
-            Protocol.
-          items:
-            $id: src/content_schemas/Attribute
-            $schema: http://json-schema.org/draft-07/schema#
-            additionalProperties: false
-            description: A key/value pair that further characterizes an entity.
-            properties:
-              key:
-                description: The key of an attribute.
-                type: string
-              key_type:
-                description: A semantic type that characterizes the attribute key
-                  (e.g., oxygen saturation measurement (MAXO:0000616)).
-                type: string
-              value:
-                description: The value for an attribute (e.g., a numerical value without
-                  the units).
-                type: string
-              value_type:
-                description: The value_type that characterizes the attribute value
-                  (e.g., percentage (SIO:001413)).
-                type: string
-            required:
-            - key
-            - value
-            title: Attribute
-            type: object
-          type: array
-        cell_barcode_offset:
-          description: The offset in sequence of the cell identifying barcode (e.g.,
-            0).
-          type: string
-        cell_barcode_read:
-          $id: src/content_schemas/enums/IndexReadEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted Values to indicate the location of a sequence component
-            in a read or index
-          enum:
-          - INDEX1
-          - INDEX2
-          - READ1
-          - READ2
-          title: IndexReadEnum
-          type: string
-        cell_barcode_size:
-          description: The size of the cell identifying barcode (e.g., 16).
-          type: string
-        description:
-          description: A description summarizing the Sequencing Protocol.
-          type: string
-        flow_cell_id:
-          description: Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
-          type: string
-        flow_cell_type:
-          $id: src/content_schemas/enums/FlowCellTypeEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for flow cell type
-          enum:
-          - ILLUMINA_NOVA_SEQ_S2
-          - ILLUMINA_NOVA_SEQ_S4
-          - PROMETHION
-          - FLONGLE
-          - MINION
-          - GRIDION
-          - OTHER
-          title: FlowCellTypeEnum
-          type: string
-        instrument_model:
-          $id: src/content_schemas/enums/InstrumentModelEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for the instrument model
-          enum:
-          - 454_GS
-          - 454_GS_20
-          - 454_GS_FLX
-          - 454_GS_FLX_TITANIUM
-          - 454_GS_FLX+
-          - 454_GS_JUNIOR
-          - AB_310_GENETIC_ANALYZER
-          - AB_3130_GENETIC_ANALYZER
-          - AB_3130XL_GENETIC_ANALYZER
-          - AB_3500_GENETIC_ANALYZER
-          - AB_3500XL_GENETIC_ANALYZER
-          - AB_3730_GENETIC_ANALYZER
-          - AB_3730XL_GENETIC_ANALYZER
-          - AB_5500_GENETIC_ANALYZER
-          - AB_5500XL_GENETIC_ANALYZER
-          - AB_5500XL-W_GENETIC_ANALYSIS_SYSTEM
-          - BGISEQ-50
-          - BGISEQ-500
-          - DNBSEQ-G400
-          - DNBSEQ-G400_FAST
-          - DNBSEQ-G50
-          - DNBSEQ-T7
-          - ELEMENT_AVITI
-          - GRIDION
-          - HELICOS_HELISCOPE
-          - HISEQ_X_FIVE
-          - HISEQ_X_TEN
-          - ILLUMINA_GENOME_ANALYZER
-          - ILLUMINA_GENOME_ANALYZER_II
-          - ILLUMINA_GENOME_ANALYZER_IIX
-          - ILLUMINA_HISCANSQ
-          - ILLUMINA_HISEQ_1000
-          - ILLUMINA_HISEQ_1500
-          - ILLUMINA_HISEQ_2000
-          - ILLUMINA_HISEQ_2500
-          - ILLUMINA_HISEQ_3000
-          - ILLUMINA_HISEQ_4000
-          - ILLUMINA_HISEQ_X
-          - ILLUMINA_MISEQ
-          - ILLUMINA_MINISEQ
-          - ILLUMINA_NOVASEQ_6000
-          - ILLUMINA_NOVASEQ_X
-          - ILLUMINA_ISEQ_100
-          - ION_GENESTUDIO_S5
-          - ION_GENESTUDIO_S5_PLUS
-          - ION_GENESTUDIO_S5_PRIME
-          - ION_TORRENT_GENEXUS
-          - ION_TORRENT_PGM
-          - ION_TORRENT_PROTON
-          - ION_TORRENT_S5
-          - ION_TORRENT_S5_XL
-          - MGISEQ-2000RS
-          - MINION
-          - NEXTSEQ_1000
-          - NEXTSEQ_2000
-          - NEXTSEQ_500
-          - NEXTSEQ_550
-          - PACBIO_RS
-          - PACBIO_RS_II
-          - PROMETHION
-          - SEQUEL
-          - SEQUEL_II
-          - SEQUEL_IIE
-          - UG_100
-          - UNSPECIFIED
-          - OTHER
-          title: InstrumentModelEnum
-          type: string
-        name:
-          description: A short name identifying this Sequencing Protocol.
-          type: string
-        sample_barcode_read:
-          $id: src/content_schemas/enums/SampleBarcodeReadEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted values for sample barcode read
-          enum:
-          - INDEX1
-          - INDEX1_AND_INDEX2
-          - OTHER
-          title: SampleBarcodeReadEnum
-          type: string
-        sequencing_center:
-          description: Center where sample was sequenced.
-          type: string
-        sequencing_read_length:
-          description: Length of sequencing reads (e.g., long or short or actual number
-            of the read length).
-          type: string
-        target_coverage:
-          description: Mean coverage for whole genome sequencing, or mean target coverage
-            for whole exome and targeted sequencing, (i.e. the number of times a particular
-            locus was sequenced).
-          type: string
-        type:
-          description: Type of the Sequencing Protocol (e.g., mRNA-seq, Whole exome
-            long-read sequencing).
-          type: string
-        umi_barcode_offset:
-          description: The offset in sequence of the UMI identifying barcode (e.g.,
-            16).
-          type: string
-        umi_barcode_read:
-          $id: src/content_schemas/enums/IndexReadEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Permitted Values to indicate the location of a sequence component
-            in a read or index
-          enum:
-          - INDEX1
-          - INDEX2
-          - READ1
-          - READ2
-          title: IndexReadEnum
-          type: string
-        umi_barcode_size:
-          description: The size of the UMI identifying barcode (e.g., 10).
-          type: string
-      required:
-      - name
-      - description
-      - instrument_model
-      title: SequencingProtocol
-      type: object
-    description: The Sequencing Protocol captures information about parameters and
-      metadata associated with a Sequencing Experiment.
-    id:
-      propertyName: alias
+        targetClass: Individual
   Study:
     content:
       $id: src/content_schemas/Study
@@ -1649,36 +1553,62 @@ classes:
           description: A detailed description (abstract) that describes the goals
             of this Study.
           type: string
+        ega_accession:
+          description: The EGA accession ID of an entity.
+          type: string
         title:
           description: A comprehensive title for this Study.
           type: string
-        type:
-          $id: src/content_schemas/enums/StudyTypeEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture the type of a study.
-          enum:
-          - CANCER_GENOMICS
-          - EPIGENETICS
-          - EXOME_SEQUENCING
-          - FORENSIC_GENETICS
-          - PALEO_GENOMICS
-          - GENE_REGULATION_STUDY
-          - METAGENOMICS
-          - POOLED_CLONE_SEQUENCING
-          - POPULATION_GENOMICS
-          - RNASEQ
-          - RESEQUENCING
-          - SYNTHETIC_GENOMICS
-          - TRANSCRIPTOME_ANALYSIS
-          - WHOLE_GENOME_SEQUENCING
-          - GWAS
-          - OTHER
-          title: StudyTypeEnum
-          type: string
+        types:
+          description: One or more types of this Study (e.g., Cancer Genomics, Epigenetics,
+            Exome Sequencing).
+          items:
+            $id: src/content_schemas/enums/StudyTypeEnum
+            $schema: http://json-schema.org/draft-07/schema#
+            description: Enum to capture the type of a study.
+            enum:
+            - CANCER_GENOMICS
+            - EPIGENETICS
+            - EXOME_SEQUENCING
+            - FORENSIC_GENETICS
+            - PALEO_GENOMICS
+            - GENE_REGULATION_STUDY
+            - METAGENOMICS
+            - POOLED_CLONE_SEQUENCING
+            - POPULATION_GENOMICS
+            - RNASEQ
+            - RESEQUENCING
+            - SYNTHETIC_GENOMICS
+            - TRANSCRIPTOME_ANALYSIS
+            - WHOLE_GENOME_SEQUENCING
+            - GWAS
+            - RARE_DISEASE
+            - CANCER
+            - COMMON_DISEASE
+            - NEURODEGENERATIVE_DISEASE
+            - CASE_CONTROL
+            - FAMILY
+            - HEREDITARY_DISEASE
+            - GENOMICS
+            - EPIGENOMICS
+            - TRANSCRIPTOMICS
+            - SINGLE_CELL_SEQUENCING
+            - SINGLE_CENTER
+            - MULTI_CENTER
+            - COHORT
+            - LONGITUDINAL
+            - TIME_SERIES
+            - INTERVENTIONAL
+            - NON_INTERVENTIONAL
+            - COMMUNITY_BASED
+            - OTHER
+            title: StudyTypeEnum
+            type: string
+          type: array
       required:
       - title
       - description
-      - type
+      - types
       - affiliations
       title: Study
       type: object
@@ -1687,134 +1617,5 @@ classes:
       the phenomenon being studied.
     id:
       propertyName: alias
-  StudyFile:
-    content:
-      $id: src/content_schemas/StudyFile
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Study File is a File that is associated with a Study.
-      properties:
-        checksum:
-          description: The checksum of the File.
-          type: string
-        checksum_type:
-          description: The type of algorithm used to generate the checksum of the
-            File.
-          type: string
-        format:
-          $id: src/content_schemas/enums/FileFormatEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture file types.
-          enum:
-          - AGP
-          - BAI
-          - BAM
-          - BCF
-          - BED
-          - CRAM
-          - CSV
-          - FASTA
-          - FASTQ
-          - GFF
-          - HDF5
-          - JSON
-          - PED
-          - SAM
-          - SFF
-          - SRF
-          - TABIX
-          - TSV
-          - TXT
-          - VCF
-          - WIG
-          - OTHER
-          title: FileFormatEnum
-          type: string
-        forward_or_reverse:
-          $id: src/content_schemas/enums/ForwardOrReverseEnum
-          $schema: http://json-schema.org/draft-07/schema#
-          description: Enum to capture whether the reads from paired-end sequencing
-            are forward (R1) or reverse (R2).
-          enum:
-          - FORWARD
-          - REVERSE
-          title: ForwardOrReverseEnum
-          type: string
-        name:
-          description: The given filename.
-          type: string
-        size:
-          description: The size of the File in bytes.
-          type: integer
-      required:
-      - name
-      - format
-      - size
-      - checksum
-      - checksum_type
-      title: StudyFile
-      type: object
-    description: A Study File is a File that is associated with a Study.
-    id:
-      propertyName: alias
-    relations:
-      dataset:
-        mandatory:
-          origin: false
-          target: false
-        multiple:
-          origin: true
-          target: false
-        targetClass: Dataset
-      study:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Study
-  Trio:
-    content:
-      $id: src/content_schemas/Trio
-      $schema: http://json-schema.org/draft-07/schema#
-      additionalProperties: false
-      description: A Trio is a study design in which the genetic information of three
-        individuals within a family unit is analyzed. It consists of a child and their
-        biological parents.
-      properties: {}
-      required: []
-      title: Trio
-      type: object
-    description: A Trio is a study design in which the genetic information of three
-      individuals within a family unit is analyzed. It consists of a child and their
-      biological parents.
-    id:
-      propertyName: alias
-    relations:
-      child:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
-      father:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
-      mother:
-        mandatory:
-          origin: false
-          target: true
-        multiple:
-          origin: true
-          target: false
-        targetClass: Individual
 description: Metadata schema for the German Human Genome-Phenome Archive (GHGA)
 schemapack: 0.3.0

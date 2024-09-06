@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for end bias",
+    "description": "Permitted values for end bias.",
     "enum": [
         "3_PRIME_END",
         "5_PRIME_END",

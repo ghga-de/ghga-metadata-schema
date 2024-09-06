@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for sample barcode read",
+    "description": "Permitted values for sample barcode read.",
     "enum": [
         "INDEX1",
         "INDEX1_AND_INDEX2",

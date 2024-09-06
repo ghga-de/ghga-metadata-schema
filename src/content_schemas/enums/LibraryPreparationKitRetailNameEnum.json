@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for library preparation kit retail name",
+    "description": "Permitted values for library preparation kit retail name.",
     "enum": [
         "10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2",
         "10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V3",
@@ -161,7 +161,8 @@
         "EUROFINS_ENRICHMENT_CUSTOM",
         "TWIST_HUMAN_CORE_EXOME_KIT",
         "TWIST_HUMAN_CORE_EXOME_PLUS_KIT",
-        "ULTRALOW_METHYL_SEQ_WITH_TRUE_METHYL_OX_BS"
+        "ULTRALOW_METHYL_SEQ_WITH_TRUE_METHYL_OX_BS",
+        "OTHER"
     ],
     "title": "LibraryPreparationKitRetailNameEnum",
     "type": "string",

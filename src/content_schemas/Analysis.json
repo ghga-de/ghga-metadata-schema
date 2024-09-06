@@ -3,15 +3,11 @@
     "description": "An Analysis is a data transformation that transforms input data to output data.",
     "properties": {
         "description": {
-            "description": "A description summarizing how this Analysis was carried out (e.g., computational tools, pipelines, workflows).",
+            "description": "A description summarizing how this Analysis was carried out (e.g., description of computational tools, pipelines, workflows).",
             "type": "string"
         },
-        "reference_chromosome": {
-            "description": "The reference chromosome used for this Analysis.",
-            "type": "string"
-        },
-        "reference_genome": {
-            "description": "The reference genome or annotation used for prior analyses (e.g., GRCh38.p13).",
+        "ega_accession": {
+            "description": "The EGA accession of the 'Analysis' entity (EGAZ).",
             "type": "string"
         },
         "title": {
@@ -24,9 +20,7 @@
         }
     },
     "required": [
-        "title",
-        "reference_genome",
-        "reference_chromosome"
+        "title"
     ],
     "title": "Analysis",
     "type": "object",

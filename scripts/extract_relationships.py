@@ -11,6 +11,7 @@ from script_utils.cli import run
 HERE = Path(__file__).parent.resolve()
 LINKML_SCHEMA_PATH = HERE.parent / "src" / "schema" / "submission.yaml"
 
+
 class SchemaClass(BaseModel):
     """Model describing a basic schema class"""
 
@@ -57,11 +58,15 @@ def load_schema(path: Path) -> Schema:
 
 def slots_with_class_range(schema: Schema) -> dict:
     """Extracts the slot names that have a 'class' range and outputs a dictionary with
-    slot name, range key-value pairs."""
+    slot name, range key-value pairs. It excludes Attribute as a slot range.
+    In AnalysisMethod class, there is software_versions and parameters slot with
+    Attribute range. However, these do not denote a relation from AnalysisMethod class
+    to Attribute class. These are content value properties who follows the
+    AttributeMixin structure. """
     return {
         slot: value["range"]
         for slot, value in schema.slots.items()
-        if value.get("range") and value.get("range") in schema.class_names
+        if value.get("range") and value.get("range") in schema.class_names and slot not in ["software_versions", "parameters"]
     }
 
 
@@ -106,7 +111,8 @@ def main():
     schema = load_schema(Path(LINKML_SCHEMA_PATH))
     class_ranged_slots = slots_with_class_range(schema)
     for _, schema_class in schema.classes.items():
-        schema_class.relations = class_relations(schema_class, class_ranged_slots)
+        schema_class.relations = class_relations(
+            schema_class, class_ranged_slots)
     resolved_schema = resolve_inherited_relations(schema)
     save_relations(resolved_schema, "relations_config.yaml")
 

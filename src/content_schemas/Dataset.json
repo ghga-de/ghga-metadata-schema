@@ -6,6 +6,10 @@
             "description": "A description summarizing this Dataset.",
             "type": "string"
         },
+        "ega_accession": {
+            "description": "The EGA accession ID of an entity.",
+            "type": "string"
+        },
         "title": {
             "description": "A title for this Dataset.",
             "type": "string"

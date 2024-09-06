@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for primer",
+    "description": "Permitted values for primer.",
     "enum": [
         "OLIGO_D_T",
         "RANDOM",

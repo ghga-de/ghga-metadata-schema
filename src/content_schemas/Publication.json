@@ -3,7 +3,7 @@
     "description": "A Publication represents an article that is published. The minimum expectation is that the publication has a valid DOI.",
     "properties": {
         "abstract": {
-            "description": "The study abstract that describes the goals. Can also hold abstract from a Publication related to this Study.",
+            "description": "The study abstract that describes the goals. Can also hold abstract from a publication related to this Study.",
             "type": "string"
         },
         "author": {

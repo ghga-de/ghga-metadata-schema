@@ -1,5 +1,5 @@
 {
-    "description": "An enum describing permissible phenotype descriptors",
+    "description": "An enum describing permissible phenotype descriptors.",
     "enum": [],
     "title": "PhenotypicFeaturesEnum",
     "type": "string",

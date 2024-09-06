@@ -11,6 +11,7 @@
         "POLY_A_RNA",
         "SINGLE_CELL_DNA",
         "SINGLE_CELL_RNA",
+        "SINGLE_CELL_NUCLEI",
         "SMALL_RNA",
         "TOTAL_RNA"
     ],

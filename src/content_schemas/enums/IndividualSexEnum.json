@@ -1,11 +1,10 @@
 {
     "description": "The sex of an Individual as as defined in a specific medical and clinical context.",
     "enum": [
-        "FEMALE_SEX_FOR_CLINICAL_USE",
-        "IMAGING_SEX",
-        "MALE_SEX_FOR_CLINICAL_USE",
-        "SPECIFIED_SEX_FOR_CLINICAL_USE",
-        "UNKNOWN_SEX_FOR_CLINICAL_USE"
+        "FEMALE",
+        "MALE",
+        "UNKNOWN",
+        "OTHER"
     ],
     "title": "IndividualSexEnum",
     "type": "string",

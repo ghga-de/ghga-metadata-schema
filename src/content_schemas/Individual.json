@@ -2,23 +2,51 @@
     "additionalProperties": false,
     "description": "An Individual is a Person who is participating in a Study.",
     "properties": {
-        "ancestries": {
+        "ancestry_ids": {
             "description": "A person's descent or lineage from a population.",
             "items": {
                 "type": "string"
             },
             "type": "array"
         },
-        "geographical_region": {
+        "ancestry_terms": {
+            "description": "A person's descent or lineage from a population.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "diagnosis_ids": {
+            "description": "One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "diagnosis_terms": {
+            "description": "The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "geographical_region_id": {
             "description": "The geographical region where the Individual is located.",
             "type": "string"
         },
-        "karyotype": {
-            "$ref": "src/content_schemas/enums/KaryotypeEnum",
-            "description": "The karyotype of the Individual."
+        "geographical_region_term": {
+            "description": "The geographical region where the Individual is located.",
+            "type": "string"
         },
-        "phenotypic_features": {
-            "description": "The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology.",
+        "phenotypic_features_ids": {
+            "description": "The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "phenotypic_features_terms": {
+            "description": "The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).",
             "items": {
                 "type": "string"
             },

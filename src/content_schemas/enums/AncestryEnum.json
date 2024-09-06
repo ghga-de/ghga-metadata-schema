@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for ancestry",
+    "description": "Permitted values for ancestry.",
     "enum": [],
     "title": "AncestryEnum",
     "type": "string",

@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for the instrument model",
+    "description": "Permitted values for the instrument model.",
     "enum": [
         "454_GS",
         "454_GS_20",

@@ -1,5 +1,5 @@
 {
-    "description": "Permitted values for geographical region",
+    "description": "Permitted values for geographical region.",
     "enum": [],
     "title": "GeographicalRegionEnum",
     "type": "string",
