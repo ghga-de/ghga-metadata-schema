@@ -76,10 +76,10 @@ def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> dict
 
 def resolve_inherited_relations(schema: Schema) -> Schema:
     """Resolves the relations from the class inheritances"""
-    for _key, value in schema.classes.items():
-        if value.inheritance and schema.classes.get(value.inheritance):
-            inherited_relations = schema.classes[value.inheritance].relations
-            value.relations.update(inherited_relations)
+    for schema_class in schema.classes.values():
+        if schema_class.inheritance and schema_class.inheritance in schema.classes:
+            inherited_relations = schema.classes[schema_class.inheritance].relations
+            schema_class.relations.update(inherited_relations)
     return schema
 
 
