@@ -67,13 +67,13 @@ def compare_schemapack_builds(
 
 def read_yaml(path: Path):
     """Read data from a YAML file into a dictionary"""
+    if not path.exists():
+        raise SchemapackDefinitionNotFound(
+            f"Schemapack definition file could not be found at {path}"
+        )
     with path.open("r", encoding="utf-8") as file:
         try:
             data = yaml.safe_load(file)
-        except FileNotFoundError:
-            raise SchemapackDefinitionNotFound(
-                f"Schemapack definition file could not be found at {path}"
-            )
         except yaml.YAMLError as error:
             raise ParsingError(
                 f"The file at '{path}' could not be parsed.") from error
