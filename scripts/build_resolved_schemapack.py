@@ -151,10 +151,10 @@ def main(check: bool = False):
     )
     if check:
         existing_schemapack_dict = read_yaml(RESOLVED_SCHEMA_PATH)
-        if compare_schemapack_builds(
+        compare_schemapack_builds(
             existing_schemapack_dict, expected_schemapack_dict
-        ):
-            echo_success("Schemapack definition is up-to-date")
+        )
+        echo_success("Schemapack definition is up-to-date")
     else:
         schemapack_def = SchemaPack.model_validate(expected_schemapack_dict)
         dump_schemapack(schemapack_def, path=RESOLVED_SCHEMA_PATH)
