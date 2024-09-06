@@ -63,7 +63,6 @@ def compare_schemapack_builds(
         raise OutdatedSchemapackBuild(
             "Schemapack definition is outdated. Run 'build_resolved_schema.py' to update."
         )
-    return True
 
 
 def read_yaml(path: Path):
