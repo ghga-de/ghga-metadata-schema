@@ -17,5 +17,5 @@ This repository aims to serve as the source of truth for the metadata schema
 used by the German Human Genome-Phenome Archive.
 
 The schema is modeled using LinkML and exists as a YAML, which can be
-found in `src/schema/`. Detailed information about ghga-metadata-schema is available on our [user documentation](https://docs.ghga.de/metadata/overview/)
+found in `src/schema/`. Detailed information about ghga-metadata-schema is available on our [user documentation](https://docs.ghga.de/metadata/overview/).
 
