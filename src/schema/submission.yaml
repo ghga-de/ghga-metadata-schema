@@ -433,6 +433,7 @@ classes:
   AnalysisMethod:
     mixins:
       - IdentifiedByAliasMixin
+      - AttributeMixin
     description: >-
       An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
     slots:
@@ -477,6 +478,9 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
+      attributes:
+        description: >-
+          One or more attributes that further characterize this Analysis Method.
 
   Dataset:
     mixins:
@@ -1047,7 +1051,7 @@ slots:
 
   ancestry_terms:
     description: >-
-      A person's descent or lineage from a population.
+      A person's descent or lineage from a population. A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1055,7 +1059,7 @@ slots:
 
   ancestry_ids:
     description: >-
-      A person's descent or lineage from a population.
+      The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1301,21 +1305,21 @@ slots:
 
   geographical_region_term:
     description: >-
-      The geographical region where the Individual is located.
+      The geographical region where the Individual is located. The geographical region where the Individual is located. The Geographical Region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
 
   geographical_region_id:
     description: >-
-      The geographical region where the Individual is located.
+      The corresponding ID to the NCIT vocabulary (e.g., NCIT:C16312, NCIT:C16636, NCIT:C16761).
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
 
   sex:
     description: >-
-      The genotypic sex of the Individual (e.g., female).
+      The biological sex of the Individual (e.g., female).
     range: IndividualSexEnum
 
   biospecimen_age_at_sampling:
