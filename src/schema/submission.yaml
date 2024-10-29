@@ -1051,7 +1051,7 @@ slots:
 
   ancestry_terms:
     description: >-
-      A person's descent or lineage from a population. A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
+      The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1305,7 +1305,7 @@ slots:
 
   geographical_region_term:
     description: >-
-      The geographical region where the Individual is located. The geographical region where the Individual is located. The Geographical Region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
+      The geographical region where the Individual is located. The Geographical Region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
     in_subset:
       - ontology
     # range: GeographicalRegionEnum

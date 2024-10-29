@@ -59,12 +59,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
  * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
      * [Submission➞analysis_methods](Submission_analysis_methods.md) - The Analysis Methods that are part of this Submission.
- * [ancestry_ids](ancestry_ids.md) - A person's descent or lineage from a population.
+ * [ancestry_ids](ancestry_ids.md) - The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
      * [Individual➞ancestry_ids](Individual_ancestry_ids.md)
- * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population.
+ * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population. A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
      * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
+         * [AnalysisMethod➞attributes](AnalysisMethod_attributes.md) - One or more attributes that further characterize this Analysis Method.
          * [ExperimentMethod➞attributes](ExperimentMethod_attributes.md) - One or more attributes that further characterize this Experiment Method.
          * [Study➞attributes](Study_attributes.md) - One or more attributes that further characterize this Study.
  * [author](author.md) - The individual who is responsible for the content of the Publication.
@@ -162,9 +163,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
      * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., CRAM, BAM).
      * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
- * [geographical_region_id](geographical_region_id.md) - The geographical region where the Individual is located.
+ * [geographical_region_id](geographical_region_id.md) - The corresponding ID to the NCIT vocabulary (e.g., NCIT:C16312, NCIT:C16636, NCIT:C16761).
      * [Individual➞geographical_region_id](Individual_geographical_region_id.md)
- * [geographical_region_term](geographical_region_term.md) - The geographical region where the Individual is located.
+ * [geographical_region_term](geographical_region_term.md) - The geographical region where the Individual is located. The geographical region where the Individual is located. The Geographical Region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
      * [Individual➞geographical_region_term](Individual_geographical_region_term.md)
  * [included_in_submission](included_in_submission.md) - Whether a File is included in the Submission or not.
      * [File➞included_in_submission](File_included_in_submission.md)
@@ -238,7 +239,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞sequencing_layout](ExperimentMethod_sequencing_layout.md)
  * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads (e.g., long or short or actual number of the read length).
      * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)
- * [sex](sex.md) - The genotypic sex of the Individual (e.g., female).
+ * [sex](sex.md) - The biological sex of the Individual (e.g., female).
      * [Individual➞sex](Individual_sex.md)
  * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
