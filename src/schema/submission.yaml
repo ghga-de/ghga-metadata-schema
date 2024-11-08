@@ -1301,7 +1301,7 @@ slots:
 
   geographical_region_term:
     description: >-
-      The geographical region where the Individual is located.
+      The geographical region where the Individual is located. The geographical region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
@@ -1315,7 +1315,7 @@ slots:
 
   sex:
     description: >-
-      The genotypic sex of the Individual (e.g., female).
+      The biological sex of the Individual (e.g., female).
     range: IndividualSexEnum
 
   biospecimen_age_at_sampling:
