@@ -433,6 +433,7 @@ classes:
   AnalysisMethod:
     mixins:
       - IdentifiedByAliasMixin
+      - AttributeMixin
     description: >-
       An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
     slots:
@@ -477,6 +478,9 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
+      attributes:
+        description: >-
+          One or more attributes that further characterize this AnalysisMethod.
 
   Dataset:
     mixins:
