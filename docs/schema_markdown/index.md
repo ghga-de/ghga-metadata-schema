@@ -65,6 +65,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
+         * [AnalysisMethod➞attributes](AnalysisMethod_attributes.md) - One or more attributes that further characterize this AnalysisMethod.
          * [ExperimentMethod➞attributes](ExperimentMethod_attributes.md) - One or more attributes that further characterize this Experiment Method.
          * [Study➞attributes](Study_attributes.md) - One or more attributes that further characterize this Study.
  * [author](author.md) - The individual who is responsible for the content of the Publication.
