@@ -1051,6 +1051,7 @@ slots:
 
   ancestry_terms:
     description: >-
+      A person's descent or lineage from a population.
       The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
     in_subset:
       - ontology

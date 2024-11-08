@@ -54,7 +54,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_terms](Individual_ancestry_terms.md)  <sub>0..\*</sub>
-     * Description: The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
+     * Description: A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_ids](Individual_ancestry_ids.md)  <sub>0..\*</sub>

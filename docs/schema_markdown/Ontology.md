@@ -26,7 +26,7 @@ URI: [GHGA:ontology](https://w3id.org/GHGA/ontology)
  * [Sample➞biospecimen_tissue_id](Sample_biospecimen_tissue_id.md)
  * [Sample➞biospecimen_tissue_term](Sample_biospecimen_tissue_term.md)
  * [ancestry_ids](ancestry_ids.md) - The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
- * [ancestry_terms](ancestry_terms.md) - The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
+ * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
  * [biospecimen_tissue_id](biospecimen_tissue_id.md) - The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
  * [biospecimen_tissue_term](biospecimen_tissue_term.md) - The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
  * [diagnosis_ids](diagnosis_ids.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
