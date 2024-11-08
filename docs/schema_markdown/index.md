@@ -164,7 +164,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
  * [geographical_region_id](geographical_region_id.md) - The geographical region where the Individual is located.
      * [Individual➞geographical_region_id](Individual_geographical_region_id.md)
- * [geographical_region_term](geographical_region_term.md) - The geographical region where the Individual is located.
+ * [geographical_region_term](geographical_region_term.md) - The geographical region where the Individual is located. The geographical region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
      * [Individual➞geographical_region_term](Individual_geographical_region_term.md)
  * [included_in_submission](included_in_submission.md) - Whether a File is included in the Submission or not.
      * [File➞included_in_submission](File_included_in_submission.md)
@@ -238,7 +238,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞sequencing_layout](ExperimentMethod_sequencing_layout.md)
  * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads (e.g., long or short or actual number of the read length).
      * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)
- * [sex](sex.md) - The genotypic sex of the Individual (e.g., female).
+ * [sex](sex.md) - The biological sex of the Individual (e.g., female).
      * [Individual➞sex](Individual_sex.md)
  * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)

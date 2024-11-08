@@ -2,7 +2,7 @@
 # Slot: sex
 
 
-The genotypic sex of the Individual (e.g., female).
+The biological sex of the Individual (e.g., female).
 
 URI: [GHGA:Individual_sex](https://w3id.org/GHGA/Individual_sex)
 
