@@ -46,7 +46,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Description: The biological sex of the Individual (e.g., female).
      * Range: [IndividualSexEnum](IndividualSexEnum.md)
  * [Individual➞geographical_region_term](Individual_geographical_region_term.md)  <sub>0..1</sub>
-     * Description: The geographical region where the Individual is located. The Geographical Region is captured using a concept from the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
+     * Description: The Individual's geographical region, captured using the NCIT "country" class (NCIT:C25464) (e.g., Austria, Germany, Italy).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞geographical_region_id](Individual_geographical_region_id.md)  <sub>0..1</sub>
@@ -54,7 +54,7 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_terms](Individual_ancestry_terms.md)  <sub>0..\*</sub>
-     * Description: A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
+     * Description: A person's descent or lineage from a population, classified using the HANCESTRO "ancestry category" branch (HANCESTRO:0004) (e.g., African, European, Oceanian).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_ids](Individual_ancestry_ids.md)  <sub>0..\*</sub>
