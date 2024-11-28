@@ -2,7 +2,7 @@
 # Slot: ancestry_terms
 
 
-A person's descent or lineage from a population. The Ancestry is captured using a concept from the Human Ancestry Ontology "ancestry category" (HANCESTRO:0004) branch (e.g., African, European, Oceanian).
+A person's descent or lineage from a population, classified using the HANCESTRO "ancestry category" branch (HANCESTRO:0004) (e.g., African, European, Oceanian).
 
 URI: [GHGA:Individual_ancestry_terms](https://w3id.org/GHGA/Individual_ancestry_terms)
 
