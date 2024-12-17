@@ -1790,6 +1790,9 @@ enums:
       MZDATA:
         description: >-
           mzData for mass spectrometry proteomics data.
+      IDAT:
+        description: >-
+          IDAT file format for BeadArray data.
       OTHER:
         description: >-
           A file format not captured by the controlled vocabulary.
