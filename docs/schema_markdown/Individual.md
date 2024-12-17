@@ -43,22 +43,22 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞sex](Individual_sex.md)  <sub>1..1</sub>
-     * Description: The genotypic sex of the Individual (e.g., female).
+     * Description: The biological sex of the Individual (e.g., female).
      * Range: [IndividualSexEnum](IndividualSexEnum.md)
  * [Individual➞geographical_region_term](Individual_geographical_region_term.md)  <sub>0..1</sub>
-     * Description: The geographical region where the Individual is located.
+     * Description: The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., Austria, Germany, Italy).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞geographical_region_id](Individual_geographical_region_id.md)  <sub>0..1</sub>
-     * Description: The geographical region where the Individual is located.
+     * Description: The corresponding ID to the NCIT vocabulary (e.g., NCIT:C16312, NCIT:C16636, NCIT:C16761).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_terms](Individual_ancestry_terms.md)  <sub>0..\*</sub>
-     * Description: A person's descent or lineage from a population.
+     * Description: A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., African, European, Oceanian).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_ids](Individual_ancestry_ids.md)  <sub>0..\*</sub>
-     * Description: A person's descent or lineage from a population.
+     * Description: The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
      * Range: [String](types/String.md)
      * in subsets: (ontology)
 

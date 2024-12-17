@@ -2,7 +2,7 @@
 # Slot: ancestry_ids
 
 
-A person's descent or lineage from a population.
+The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
 
 URI: [GHGA:ancestry_ids](https://w3id.org/GHGA/ancestry_ids)
 

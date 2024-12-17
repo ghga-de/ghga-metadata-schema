@@ -2,7 +2,7 @@
 # Slot: geographical_region_term
 
 
-The geographical region where the Individual is located.
+The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., Austria, Germany, Italy).
 
 URI: [GHGA:Individual_geographical_region_term](https://w3id.org/GHGA/Individual_geographical_region_term)
 

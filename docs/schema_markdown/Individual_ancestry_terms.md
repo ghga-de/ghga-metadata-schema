@@ -2,7 +2,7 @@
 # Slot: ancestry_terms
 
 
-A person's descent or lineage from a population.
+A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., African, European, Oceanian).
 
 URI: [GHGA:Individual_ancestry_terms](https://w3id.org/GHGA/Individual_ancestry_terms)
 

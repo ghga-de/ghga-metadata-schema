@@ -433,6 +433,7 @@ classes:
   AnalysisMethod:
     mixins:
       - IdentifiedByAliasMixin
+      - AttributeMixin
     description: >-
       An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
     slots:
@@ -477,6 +478,9 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
+      attributes:
+        description: >-
+          One or more attributes that further characterize this Analysis Method.
 
   Dataset:
     mixins:
@@ -1047,7 +1051,7 @@ slots:
 
   ancestry_terms:
     description: >-
-      A person's descent or lineage from a population.
+      A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., African, European, Oceanian).
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1055,7 +1059,7 @@ slots:
 
   ancestry_ids:
     description: >-
-      A person's descent or lineage from a population.
+      The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1301,21 +1305,21 @@ slots:
 
   geographical_region_term:
     description: >-
-      The geographical region where the Individual is located.
+      The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., Austria, Germany, Italy).
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
 
   geographical_region_id:
     description: >-
-      The geographical region where the Individual is located.
+      The corresponding ID to the NCIT vocabulary (e.g., NCIT:C16312, NCIT:C16636, NCIT:C16761).
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
 
   sex:
     description: >-
-      The genotypic sex of the Individual (e.g., female).
+      The biological sex of the Individual (e.g., female).
     range: IndividualSexEnum
 
   biospecimen_age_at_sampling:
@@ -1505,9 +1509,9 @@ enums:
   GeographicalRegionEnum:
     description: Permitted values for geographical region.
     reachable_from:
-      source_ontology: http://purl.obolibrary.org/obo/hancestro/releases/2022-05-12/hancestro.owl
+      source_ontology: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
       source_nodes:
-        - HANCESTRO:0002
+        - NCIT:C25464
       include_self: false
 
   PhenotypicFeaturesEnum:
