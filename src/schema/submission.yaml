@@ -1603,9 +1603,6 @@ enums:
       SMALL_RNA:
         description: >-
           Small RNA was used for sequencing.
-      TISSUE_SECTIONS:
-        description: >-
-          Tissue sections were used for sequencing.
       TOTAL_RNA:
         description: >-
           Total RNA was used for sequencing.
