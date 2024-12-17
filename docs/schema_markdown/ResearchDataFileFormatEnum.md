@@ -24,5 +24,6 @@ URI: [GHGA:ResearchDataFileFormatEnum](https://w3id.org/GHGA/ResearchDataFileFor
 | D | Raw .d files for mass spectrometry proteomics data. |  |  |
 | MZML | mzML format for mass spectrometry proteomics data. |  |  |
 | MZDATA | mzData for mass spectrometry proteomics data. |  |  |
+| IDAT | IDAT file format for BeadArray data. |  |  |
 | OTHER | A file format not captured by the controlled vocabulary. |  |  |
 
