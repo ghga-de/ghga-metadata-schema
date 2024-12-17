@@ -1790,6 +1790,9 @@ enums:
       MZDATA:
         description: >-
           mzData for mass spectrometry proteomics data.
+      IDAT:
+        description: >-
+          IDAT file format for BeadArray data.
       OTHER:
         description: >-
           A file format not captured by the controlled vocabulary.
@@ -2022,6 +2025,27 @@ enums:
       10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V3:
         description: >-
           10X Genomics Chromium Single Cell 3' v3 Reagent Kit
+      10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V4:
+        description: >-
+          10X Genomics Chromium Single Cell 3' v4 Reagent Kit
+      10X_GENOMICS_CHROMIUM_SINGLE_CELL_5_V3:
+        description: >-
+          10X Genomics Chromium Single Cell 5' v3 Reagent Kit
+      10X_GENOMICS_CHROMIUM_ATAC_V2:
+        description: >-
+          10X Genomics Chromium ATAC v2 Reagent Kit
+      10X_GENOMICS_CHROMIUM_MULTIOME_ATAC_RNA:
+        description: >-
+          10X Genomics Chromium Multiome ATAC + RNA Reagent Kit
+      10X_GENOMICS_CHROMIUM_VISIUM_FF:
+        description: >-
+          10X Genomics Chromium Visium FF Reagent Kit
+      10X_GENOMICS_CHROMIUM_VISIUM_FFPE:
+        description: >-
+          10X Genomics Chromium Visium FFPE Reagent Kit
+      10X_GENOMICS_CHROMIUM_VISIUM_CYTASSIST:
+        description: >-
+          10X Genomics Chromium Visium Cytassist Reagent Kit
       ACCEL_NGS_2_S_PLUS_DNA_LIBRARY_KIT:
         description: >-
           Accel-NGS 2S Plus DNA Library Kit
@@ -2771,12 +2795,51 @@ enums:
     description: >-
       Permitted values for flow cell type.
     permissible_values:
+      ELEMENT_BIOSCIENCES_AVITI_LOW_OUTPUT:
+        description: >-
+          Usage of Element Biosciences Aviti Low Output flow cell.
+      ELEMENT_BIOSCIENCES_AVITI_MID_OUTPUT:
+        description: >-
+          Usage of Element Biosciences Aviti Mid Output flow cell.
+      ELEMENT_BIOSCIENCES_AVITI_HIGH_OUTPUT:
+        description: >-
+          Usage of Element Biosciences Aviti High Output flow cell.
+      ILLUMINA_NOVA_SEQ_SP:
+        description: >-
+          Usage of Illumina NovaSeq SP flow cell.
+      ILLUMINA_NOVA_SEQ_S1:
+        description: >-
+          Usage of Illumina NovaSeq S1 flow cell.
       ILLUMINA_NOVA_SEQ_S2:
         description: >-
           Usage of Illumina NovaSeq S2 flow cell.
       ILLUMINA_NOVA_SEQ_S4:
         description: >-
           Usage of Illumina NovaSeq S4 flow cell.
+      ILLUMINA_NOVA_SEQ_XPLUS_1_5B:
+        description: >-
+          Usage of Illumina NovaSeq X Plus 1.5B flow cell.
+      ILLUMINA_NOVA_SEQ_XPLUS_10B:
+        description: >-
+          Usage of Illumina NovaSeq X Plus 10B flow cell.
+      ILLUMINA_NOVA_SEQ_XPLUS_25B:
+        description: >-
+          Usage of Illumina NovaSeq X Plus 25B flow cell.
+      ILLUMINA_MISEQ_MICRO:
+        description: >-
+          Usage of Illumina MiSeq Micro flow cell.
+      ILLUMINA_MISEQ_NANO:
+        description: >-
+          Usage of Illumina MiSeq Nano flow cell.
+      ILLUMINA_NEXTSEQ_HIGH_OUTPUT:
+        description: >-
+          Usage of Illumina NextSeq High Output flow cell.
+      ILLUMINA_NEXTSEQ_MID_OUTPUT:
+        description: >-
+          Usage of Illumina NextSeq Mid Output flow cell.
+      PACBIO_SEQUELL_II:
+        description: >-
+          Usage of PacBio Sequell II flow cell.
       PROMETHION:
         description: >-
           Usage of PromethION flow cell.

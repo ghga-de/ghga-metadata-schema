@@ -18,6 +18,13 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | :--- | :---: | :---: | ---: |
 | 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2 | 10X Genomics Chromium Single Cell 3' v2 Reagent Kit |  |  |
 | 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V3 | 10X Genomics Chromium Single Cell 3' v3 Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V4 | 10X Genomics Chromium Single Cell 3' v4 Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_SINGLE_CELL_5_V3 | 10X Genomics Chromium Single Cell 5' v3 Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_ATAC_V2 | 10X Genomics Chromium ATAC v2 Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_MULTIOME_ATAC_RNA | 10X Genomics Chromium Multiome ATAC + RNA Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_VISIUM_FF | 10X Genomics Chromium Visium FF Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_VISIUM_FFPE | 10X Genomics Chromium Visium FFPE Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_VISIUM_CYTASSIST | 10X Genomics Chromium Visium Cytassist Reagent Kit |  |  |
 | ACCEL_NGS_2_S_PLUS_DNA_LIBRARY_KIT | Accel-NGS 2S Plus DNA Library Kit |  |  |
 | ACCEL_NGS_METHYL_SEQ_DNA | Accel-NGS Methyl-Seq DNA Library Kit |  |  |
 | AGILENT_STRAND_SPECIFIC_RNA | Agilent SureSelect Strand Specific RNA Library Preparation Kit |  |  |
