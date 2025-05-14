@@ -29,4 +29,5 @@ URI: [GHGA:SampleTypeEnum](https://w3id.org/GHGA/SampleTypeEnum)
 | SINGLE_CELL_NUCLEI | RNA originating from single cell nuclei was used for sequencing. |  |  |
 | SMALL_RNA | Small RNA was used for sequencing. |  |  |
 | TOTAL_RNA | Total RNA was used for sequencing. |  |  |
+| OTHER | A sample type differing from the available options was used for sequencing. |  |  |
 

@@ -59,6 +59,7 @@ URI: [GHGA:InstrumentModelEnum](https://w3id.org/GHGA/InstrumentModelEnum)
 | ILLUMINA_NOVASEQ_6000 | Illumina NovaSeq 6000 |  |  |
 | ILLUMINA_NOVASEQ_X | Illumina NovaSeq X |  |  |
 | ILLUMINA_ISEQ_100 | Illumina iSeq 100 |  |  |
+| ILLUMINA_ISCAN | Illumina iScan |  |  |
 | ION_GENESTUDIO_S5 | Ion Genestudio S5 |  |  |
 | ION_GENESTUDIO_S5_PLUS | Ion Genestudio S5 Plus |  |  |
 | ION_GENESTUDIO_S5_PRIME | Ion Genestudio S5 Prime |  |  |
