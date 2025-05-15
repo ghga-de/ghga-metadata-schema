@@ -1536,6 +1536,12 @@ enums:
       BUCCAL_SWAB:
         description: >-
           Sample collection using a buccal swab.
+      OTHER:
+        description: >-
+          The sample was collected using a method differing from the available options.
+      UNKNOWN:
+        description: >-
+          The method of sample collection is not known.
 
   StorageEnum:
     description: >-
@@ -1606,6 +1612,9 @@ enums:
       TOTAL_RNA:
         description: >-
           Total RNA was used for sequencing.
+      OTHER:
+        description: >-
+          A sample type differing from the available options was used for sequencing.
 
   TissueEnum:
     description: >-
@@ -1905,6 +1914,9 @@ enums:
       OTHER:
         description: >-
           A library type not captured by the above vocabulary.
+      UNSPECIFIED:
+        description: >-
+          The library type is not specified.
 
   LibraryPreparationLibrarySelectionEnum:
     description: >-
@@ -2587,6 +2599,9 @@ enums:
       PE:
         description: >-
           Paired end sequencing.
+      UNSPECIFIED:
+        description: >-
+          The sequencing layout is unspecified.
 
   InstrumentModelEnum:
     description: >-
@@ -2721,6 +2736,9 @@ enums:
       ILLUMINA_ISEQ_100:
         description: >-
           Illumina iSeq 100
+      ILLUMINA_ISCAN:
+        description: >-
+          Illumina iScan
       ION_GENESTUDIO_S5:
         description: >-
           Ion Genestudio S5

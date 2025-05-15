@@ -18,4 +18,5 @@ URI: [GHGA:SequencingProtocolSequencingLayoutEnum](https://w3id.org/GHGA/Sequenc
 | :--- | :---: | :---: | ---: |
 | SE | Single end sequencing. |  |  |
 | PE | Paired end sequencing. |  |  |
+| UNSPECIFIED | The sequencing layout is unspecified. |  |  |
 

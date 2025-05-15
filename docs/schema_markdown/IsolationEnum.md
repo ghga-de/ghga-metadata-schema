@@ -20,4 +20,6 @@ URI: [GHGA:IsolationEnum](https://w3id.org/GHGA/IsolationEnum)
 | SURGICAL_REMOVAL | Extraction of a sample or part of an organ in a surgical procedure. |  |  |
 | SALIVA_COLLECTION | Collection of saliva. |  |  |
 | BUCCAL_SWAB | Sample collection using a buccal swab. |  |  |
+| OTHER | The sample was collected using a method differing from the available options. |  |  |
+| UNKNOWN | The method of sample collection is not known. |  |  |
 

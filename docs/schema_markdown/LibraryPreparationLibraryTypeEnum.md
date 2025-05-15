@@ -28,4 +28,5 @@ URI: [GHGA:LibraryPreparationLibraryTypeEnum](https://w3id.org/GHGA/LibraryPrepa
 | CHROMOSOME_CONFORMATION_CAPTURE | Chromosome conformation capture library |  |  |
 | CHIP_SEQ | A combination of chromatin immunoprecipitation with DNA sequencing. |  |  |
 | OTHER | A library type not captured by the above vocabulary. |  |  |
+| UNSPECIFIED | The library type is not specified. |  |  |
 
