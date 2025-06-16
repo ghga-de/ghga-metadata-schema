@@ -142,7 +142,7 @@ classes:
       description:
         description: >-
           A detailed description of this Experiment.
-        required: true
+        required: false
       type:
         description: >-
           The type of this Experiment.
@@ -635,7 +635,7 @@ classes:
       journal:
         required: false
       doi:
-        required: true
+        required: false
       xref:
         description: >-
           One or more cross-references for this Publication.

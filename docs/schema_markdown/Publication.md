@@ -7,7 +7,7 @@ A Publication represents an article that is published. The minimum expectation i
 URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;alias:string],[Submission]++-%20publications%201..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[Publication]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string;xref:string%20*;alias:string],[Submission]++-%20publications%201..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[Publication]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string%20%3F;xref:string%20*;alias:string],[Submission]++-%20publications%201..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[Publication]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Study],[Study]<study%201..1-%20[Publication&#124;title:string%20%3F;abstract:string%20%3F;author:string%20%3F;year:integer%20%3F;journal:string%20%3F;doi:string%20%3F;xref:string%20*;alias:string],[Submission]++-%20publications%201..*>[Publication],[Submission]-%20publications(i)%200..*>[Publication],[Publication]uses%20-.->[IdentifiedByAliasMixin],[IdentifiedByAliasMixin])
 
 ## Uses Mixin
 
@@ -41,7 +41,7 @@ URI: [GHGA:Publication](https://w3id.org/GHGA/Publication)
  * [Publication➞journal](Publication_journal.md)  <sub>0..1</sub>
      * Description: The name of the journal.
      * Range: [String](types/String.md)
- * [Publication➞doi](Publication_doi.md)  <sub>1..1</sub>
+ * [Publication➞doi](Publication_doi.md)  <sub>0..1</sub>
      * Description: DOI identifier of a publication.
      * Range: [String](types/String.md)
  * [Publication➞xref](Publication_xref.md)  <sub>0..\*</sub>
