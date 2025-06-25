@@ -9,7 +9,7 @@ URI: [GHGA:Experiment_description](https://w3id.org/GHGA/Experiment_description)
 
 ## Domain and Range
 
-[Experiment](Experiment.md) &#8594;  <sub>1..1</sub> [String](types/String.md)
+[Experiment](Experiment.md) &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Parents
 
