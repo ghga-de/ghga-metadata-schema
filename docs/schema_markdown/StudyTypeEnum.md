@@ -50,5 +50,6 @@ URI: [GHGA:StudyTypeEnum](https://w3id.org/GHGA/StudyTypeEnum)
 | INTERVENTIONAL | Interventional study |  |  |
 | NON_INTERVENTIONAL | Non-interventional study |  |  |
 | COMMUNITY_BASED | Community-based study |  |  |
+| TARGETED_SEQUENCING | Targeted sequencing using gene panels. |  |  |
 | OTHER | A study type not captured by the above mentioned. |  |  |
 
