@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
 """Script to convert linkML schema to schemapack definition"""
 
+import json
 from pathlib import Path
 from typing import Any
-import json
+
 import yaml
+from arcticfreeze import FrozenDict
 from schemapack.spec.schemapack import (
     ClassDefinition,
-    ContentSchema,
+    ClassRelation,
     IDSpec,
     MandatoryRelationSpec,
     MultipleRelationSpec,
-    Relation,
     SchemaPack,
 )
 from script_utils.cli import run
 
 ROOT = Path(__file__).parent.parent.resolve()
-SCHEMA_FOLDER = ROOT / "src"/ "ghga_metadata_schema.schemapack.yaml"
+SCHEMA_FOLDER = ROOT / "src" / "ghga_metadata_schema.schemapack.yaml"
 LINKML_SCHEMA = ROOT / "src" / "schema" / "submission.yaml"
 RELATIONS_CONFIG = ROOT / "relations_config.yaml"
 CLASS_CONTENT_FOLDER = ROOT / "src" / "content_schemas"
@@ -56,18 +57,18 @@ def construct_multiple(relation_name: str, linkml_overall_schema: dict):
 
 def construct_relation(
     class_relations: dict, linkml_class_schema: dict, linkml_overall_schema: dict
-) -> dict[str, Relation]:
+) -> FrozenDict[str, ClassRelation]:
     """Creates objects of Relations from the relation list of a class"""
 
-    return {
-        key: Relation(
+    return FrozenDict({
+        key: ClassRelation(
             description=None,
             targetClass=value.get("targetClass"),
             mandatory=construct_mandatory(key, linkml_class_schema),
             multiple=construct_multiple(key, linkml_overall_schema),
         )
         for key, value in class_relations.items()
-    }
+    })
 
 
 def construct_schemapack_class(
@@ -80,11 +81,7 @@ def construct_schemapack_class(
     return ClassDefinition(
         description=linkml_class_schema["description"],
         id=IDSpec(propertyName="alias", description=None),
-        content=ContentSchema(
-            json_schema=Path.read_text(
-                Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json")
-            )
-        ),
+        content=Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json"),  # type: ignore
         relations=construct_relation(
             class_relations, linkml_class_schema, linkml_overall_schema
         ),
@@ -100,9 +97,9 @@ def _class_definitions(
     linkml_overall_schema: dict,
     relations_config: dict,
     excluded_config: list,
-) -> dict:
+) -> FrozenDict:
     """Maps a ClassDefinition to its class name from linkml schema"""
-    return {
+    return FrozenDict({
         key: construct_schemapack_class(
             key,
             get_class_relations(key, relations_config),
@@ -111,27 +108,27 @@ def _class_definitions(
         )
         for key, value in linkml_overall_schema["classes"].items()
         if key not in excluded_config
-    }
+    })
 
 
 def construct_schemapack(
-    schemapack_class_definitions: dict,
+    schemapack_class_definitions: FrozenDict[str, ClassDefinition],
     schemapack_schema_description: str = SCHEMAPACK_SCHEMA_DESCRIPTION,
 ):
     """Creates schemapack object"""
     return SchemaPack(
-        schemapack="0.3.0",
+        schemapack="3.0.0",
         description=schemapack_schema_description,
         classes=schemapack_class_definitions,
         rootClass=None,
     )
 
 
-def get_content_schema_path(class_name: str, content_schema_dir: Path, root_dir: Path = ROOT 
+def get_content_schema_path(
+    class_name: str, content_schema_dir: Path, root_dir: Path = ROOT
 ) -> Path:
-    """Create a path to a content-schema file of a class, relative to the root directory.
-    """
-    return  content_schema_dir.relative_to(root_dir) / f"{class_name}.json"
+    """Create a path to a content-schema file of a class, relative to the root directory."""
+    return content_schema_dir.relative_to(root_dir) / f"{class_name}.json"
 
 
 def set_content_schema_paths(
@@ -141,11 +138,7 @@ def set_content_schema_paths(
     modified_classes = {
         class_name: {
             **class_,
-            "content": str(
-                get_content_schema_path(
-                    class_name, content_schema_dir
-                )
-            ),
+            "content": str(get_content_schema_path(class_name, content_schema_dir)),
         }
         for class_name, class_ in schemapack_dict["classes"].items()
     }

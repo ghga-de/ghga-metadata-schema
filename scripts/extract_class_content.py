@@ -122,7 +122,8 @@ def clean_schema_relations(schema_defs: dict, config: list[Relation]):
     """Delete class relations from the classes of schema definition."""
     for element in config:
         if schema_defs.get(element.name):
-            delete_class_relations(schema_defs[element.name], element.relations)
+            delete_class_relations(
+                schema_defs[element.name], element.relations)
     return schema_defs
 
 
@@ -155,7 +156,8 @@ def main():
     schema_bundle = import_specification(add_id_to_class_defs(schema_in_json))
     modified_refs = replace_schema_refs(schema_bundle["$defs"])
     deleted_identifier = clean_content_identifier(modified_refs)
-    deleted_relations = clean_schema_relations(deleted_identifier, load_config())
+    deleted_relations = clean_schema_relations(
+        deleted_identifier, load_config())
     export_class_content(deleted_relations)
 
 

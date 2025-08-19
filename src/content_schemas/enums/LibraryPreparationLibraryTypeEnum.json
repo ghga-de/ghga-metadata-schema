@@ -12,10 +12,11 @@
         "METHYLATION",
         "CHROMOSOME_CONFORMATION_CAPTURE",
         "CHIP_SEQ",
-        "OTHER"
+        "OTHER",
+        "UNSPECIFIED"
     ],
     "title": "LibraryPreparationLibraryTypeEnum",
     "type": "string",
     "$id": "src/content_schemas/enums/LibraryPreparationLibraryTypeEnum",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

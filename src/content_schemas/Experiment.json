@@ -7,15 +7,24 @@
             "items": {
                 "$ref": "src/content_schemas/Attribute"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
         "description": {
             "description": "A detailed description of this Experiment.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "ega_accession": {
             "description": "The EGA accession of the 'Run' entity (EGAR).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "title": {
             "description": "The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).",
@@ -23,15 +32,17 @@
         },
         "type": {
             "description": "The type of this Experiment.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "required": [
-        "title",
-        "description"
+        "title"
     ],
     "title": "Experiment",
     "type": "object",
     "$id": "src/content_schemas/Experiment",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

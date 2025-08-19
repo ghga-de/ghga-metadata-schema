@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """Script to build resolved resolved ghga-metadata-schema  schemapack definition"""
 
+import json
+from difflib import unified_diff
+from pathlib import Path
+
+import yaml
 from referencing import Registry, Resource
 from referencing._core import Resolver
-import yaml
-from difflib import unified_diff
-
-from pathlib import Path
-import json
 from schemapack import dump_schemapack
 from schemapack.spec.schemapack import SchemaPack
 from script_utils.cli import echo_failure, echo_success
-
 
 ROOT = Path(__file__).parent.parent.resolve()
 UNRESOLVED_SCHEMAPACK_PATH = ROOT / "src" / \
@@ -63,6 +62,7 @@ def compare_schemapack_builds(
         raise OutdatedSchemapackBuild(
             "Schemapack definition is outdated. Run 'build_resolved_schema.py' to update."
         )
+    return True
 
 
 def read_yaml(path: Path):

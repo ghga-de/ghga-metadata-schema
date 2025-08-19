@@ -9,5 +9,5 @@
     "title": "IndividualSexEnum",
     "type": "string",
     "$id": "src/content_schemas/enums/IndividualSexEnum",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

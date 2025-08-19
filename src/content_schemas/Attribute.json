@@ -8,7 +8,10 @@
         },
         "key_type": {
             "description": "A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "value": {
             "description": "The value for an attribute (e.g., a numerical value without the units).",
@@ -16,7 +19,10 @@
         },
         "value_type": {
             "description": "The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "required": [
@@ -26,5 +32,5 @@
     "title": "Attribute",
     "type": "object",
     "$id": "src/content_schemas/Attribute",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

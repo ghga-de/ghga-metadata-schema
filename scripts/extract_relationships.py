@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Script to extract the relations between classes from the metadata model described in LinkML"""
+"""Script to extract the relations between classes from the metadata model described in LinkML.
+The output is the 'relations_config.yaml' file, which contains the classes and their relations to other classes.
+"""
 
 from pathlib import Path
 from typing import Any, Union
@@ -80,7 +82,11 @@ def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> dict
 
 
 def resolve_inherited_relations(schema: Schema) -> Schema:
-    """Resolves the relations from the class inheritances"""
+    """Resolves the relations from the class inheritances. If classA is_a classB,
+    classA inherits the relations of classB, e.g. ResearchDataFile is_a File, File has
+    relation to Dataset. Thus, ResearchDataFile has a relation to Dataset. 
+    This function is required because inherited relations are not explicitly stated
+    under the class that inherits them."""
     for schema_class in schema.classes.values():
         if schema_class.inheritance and schema_class.inheritance in schema.classes:
             inherited_relations = schema.classes[schema_class.inheritance].relations

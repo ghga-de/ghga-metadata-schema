@@ -4,11 +4,17 @@
     "properties": {
         "description": {
             "description": "A description summarizing how this Analysis was carried out (e.g., description of computational tools, pipelines, workflows).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "ega_accession": {
             "description": "The EGA accession of the 'Analysis' entity (EGAZ).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "title": {
             "description": "The title that describes an entity.",
@@ -16,7 +22,10 @@
         },
         "type": {
             "description": "The type of this Analysis.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "required": [
@@ -25,5 +34,5 @@
     "title": "Analysis",
     "type": "object",
     "$id": "src/content_schemas/Analysis",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

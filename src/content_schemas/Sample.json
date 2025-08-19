@@ -7,11 +7,17 @@
             "items": {
                 "$ref": "src/content_schemas/Attribute"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
         "biological_replicate": {
             "description": "An integer to indicate the number of a biological replicate.",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "biospecimen_age_at_sampling": {
             "$ref": "src/content_schemas/enums/AgeRangeEnum",
@@ -19,7 +25,10 @@
         },
         "biospecimen_description": {
             "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "biospecimen_isolation": {
             "$ref": "src/content_schemas/enums/IsolationEnum",
@@ -27,7 +36,10 @@
         },
         "biospecimen_name": {
             "description": "A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "biospecimen_storage": {
             "$ref": "src/content_schemas/enums/StorageEnum",
@@ -35,15 +47,24 @@
         },
         "biospecimen_tissue_id": {
             "description": "The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "biospecimen_tissue_term": {
             "description": "The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "biospecimen_type": {
             "description": "The type of Biospecimen.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "biospecimen_vital_status_at_sampling": {
             "$ref": "src/content_schemas/enums/VitalStatusEnum",
@@ -63,7 +84,10 @@
         },
         "ega_accession": {
             "description": "The EGA accession ID of an entity.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "name": {
             "description": "A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.",
@@ -82,7 +106,10 @@
             "items": {
                 "type": "string"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         }
     },
     "required": [
@@ -94,5 +121,5 @@
     "title": "Sample",
     "type": "object",
     "$id": "src/content_schemas/Sample",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

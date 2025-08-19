@@ -4,7 +4,10 @@
     "properties": {
         "ega_accession": {
             "description": "The EGA accession ID of an entity.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "format": {
             "$ref": "src/content_schemas/enums/ResearchDataFileFormatEnum",
@@ -20,7 +23,10 @@
         },
         "sequencing_lane_id": {
             "description": "The identifier of a sequencing lane.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "technical_replicate": {
             "description": "An integer to indicate the technical replicate of this File.",
@@ -36,5 +42,5 @@
     "title": "ResearchDataFile",
     "type": "object",
     "$id": "src/content_schemas/ResearchDataFile",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

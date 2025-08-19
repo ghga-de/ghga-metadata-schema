@@ -265,4 +265,4 @@ classes:
     id:
       propertyName: alias
 description: Metadata schema for the German Human Genome-Phenome Archive (GHGA)
-schemapack: 0.3.0
+schemapack: 3.0.0

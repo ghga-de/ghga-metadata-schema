@@ -7,7 +7,10 @@
             "items": {
                 "$ref": "src/content_schemas/Attribute"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
         "description": {
             "description": "A short description of this Experiment Method.",
@@ -15,7 +18,10 @@
         },
         "ega_accession": {
             "description": "The EGA accession of the 'Experiment' entity (EGAX).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "end_bias": {
             "$ref": "src/content_schemas/enums/EndBiasEnum",
@@ -23,7 +29,10 @@
         },
         "flow_cell_id": {
             "description": "Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "flow_cell_type": {
             "$ref": "src/content_schemas/enums/FlowCellTypeEnum",
@@ -39,7 +48,10 @@
         },
         "library_preparation_kit_manufacturer": {
             "description": "The manufacturer of the kit used for library preparation.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "library_preparation_kit_retail_name": {
             "$ref": "src/content_schemas/enums/LibraryPreparationKitRetailNameEnum",
@@ -74,7 +86,10 @@
         },
         "sequencing_center": {
             "description": "Center where sample was sequenced.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "sequencing_layout": {
             "$ref": "src/content_schemas/enums/SequencingProtocolSequencingLayoutEnum",
@@ -82,18 +97,27 @@
         },
         "sequencing_read_length": {
             "description": "Length of sequencing reads (e.g., long or short or actual number of the read length).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "target_coverage": {
             "description": "Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "target_regions": {
             "description": "Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.",
             "items": {
                 "type": "string"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
         "type": {
             "description": "The type associated with this Experiment Method.",
@@ -113,5 +137,5 @@
     "title": "ExperimentMethod",
     "type": "object",
     "$id": "src/content_schemas/ExperimentMethod",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

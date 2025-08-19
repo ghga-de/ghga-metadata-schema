@@ -1,8 +1,21 @@
 {
     "description": "Permitted values for flow cell type.",
     "enum": [
+        "ELEMENT_BIOSCIENCES_AVITI_LOW_OUTPUT",
+        "ELEMENT_BIOSCIENCES_AVITI_MID_OUTPUT",
+        "ELEMENT_BIOSCIENCES_AVITI_HIGH_OUTPUT",
+        "ILLUMINA_NOVA_SEQ_SP",
+        "ILLUMINA_NOVA_SEQ_S1",
         "ILLUMINA_NOVA_SEQ_S2",
         "ILLUMINA_NOVA_SEQ_S4",
+        "ILLUMINA_NOVA_SEQ_XPLUS_1_5B",
+        "ILLUMINA_NOVA_SEQ_XPLUS_10B",
+        "ILLUMINA_NOVA_SEQ_XPLUS_25B",
+        "ILLUMINA_MISEQ_MICRO",
+        "ILLUMINA_MISEQ_NANO",
+        "ILLUMINA_NEXTSEQ_HIGH_OUTPUT",
+        "ILLUMINA_NEXTSEQ_MID_OUTPUT",
+        "PACBIO_SEQUELL_II",
         "PROMETHION",
         "FLONGLE",
         "MINION",
@@ -12,5 +25,5 @@
     "title": "FlowCellTypeEnum",
     "type": "string",
     "$id": "src/content_schemas/enums/FlowCellTypeEnum",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }

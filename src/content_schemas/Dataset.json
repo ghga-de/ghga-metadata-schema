@@ -8,7 +8,10 @@
         },
         "ega_accession": {
             "description": "The EGA accession ID of an entity.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "title": {
             "description": "A title for this Dataset.",
@@ -30,5 +33,5 @@
     "title": "Dataset",
     "type": "object",
     "$id": "src/content_schemas/Dataset",
-    "$schema": "http://json-schema.org/draft-07/schema#"
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
 }
