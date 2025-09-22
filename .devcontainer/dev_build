@@ -1,7 +1,0 @@
-#!/bin/bash
-# build artifacts from the linkml schema
-
-cd /workspace
-
-make all
-make gen-creation-schema-artifacts stage-derived-schemas

@@ -1,0 +1,13 @@
+{
+    "description": "Enum to capture whether a condition corresponds to a case or a control condition.",
+    "enum": [
+        "CASE",
+        "CONTROL",
+        "OTHER",
+        "UNKNOWN"
+    ],
+    "title": "CaseControlStatusEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/CaseControlStatusEnum",
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

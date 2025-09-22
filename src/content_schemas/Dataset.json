@@ -1,0 +1,37 @@
+{
+    "additionalProperties": false,
+    "description": "A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.",
+    "properties": {
+        "description": {
+            "description": "A description summarizing this Dataset.",
+            "type": "string"
+        },
+        "ega_accession": {
+            "description": "The EGA accession ID of an entity.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "title": {
+            "description": "A title for this Dataset.",
+            "type": "string"
+        },
+        "types": {
+            "description": "The type of this Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "title",
+        "description",
+        "types"
+    ],
+    "title": "Dataset",
+    "type": "object",
+    "$id": "src/content_schemas/Dataset",
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

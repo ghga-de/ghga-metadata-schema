@@ -1,16 +1,15 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/python-3-postgres
-// Update the VARIANT arg in docker-compose.yml to pick a Python version: 3, 3.8, 3.7, 3.6
 {
-	"name": "ghga-metadata-schema",
+	"name": "${localWorkspaceFolderBasename}",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
-	// Set *default* container specific settings.json values on container create.
 	"customizations": {
 		"vscode": {
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
+				"files.eol": "\n",
 				"terminal.integrated.profiles.linux": {
 					"bash": {
 						"path": "/bin/bash"
@@ -18,26 +17,20 @@
 				},
 				"python.pythonPath": "/usr/local/bin/python",
 				"python.languageServer": "Pylance",
-				"python.linting.enabled": true,
-				"python.linting.pylintEnabled": true,
-				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-				"python.formatting.provider": "black",
 				"python.analysis.typeCheckingMode": "basic",
-				"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
 				"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest",
 				"python.testing.unittestEnabled": false,
 				"python.testing.pytestEnabled": true,
+				"editor.codeActionsOnSave": {
+					"source.organizeImports": "explicit"
+				},
 				"editor.formatOnSave": true,
 				"editor.renderWhitespace": "all",
 				"editor.rulers": [
 					88
 				],
+				"ruff.organizeImports": true,
+				"editor.defaultFormatter": "charliermarsh.ruff",
 				"licenser.license": "Custom",
 				"licenser.customHeaderFile": "/workspace/.devcontainer/license_header.txt"
 			},
@@ -46,7 +39,6 @@
 				"mikestead.dotenv",
 				"ms-azuretools.vscode-docker",
 				"ms-python.python",
-				"ms-python.isort",
 				"ms-python.vscode-pylance",
 				"ms-toolsai.jupyter",
 				"njpwerner.autodocstring",
@@ -59,8 +51,9 @@
 				"yzhang.markdown-all-in-one",
 				"visualstudioexptteam.vscodeintellicode",
 				"ymotongpoo.licenser",
-				"editorconfig.editorconfig",
-				"bierner.markdown-mermaid"
+				"charliermarsh.ruff",
+				"ms-python.mypy-type-checker",
+				"-ms-python.autopep8"
 			]
 		}
 	},
@@ -70,12 +63,13 @@
 	"postCreateCommand": "dev_install",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
+	"containerEnv": {
+		// for testcontainers to connect to the docker host:
+		"TC_HOST": "host.docker.internal",
+		"DOCKER_HOST": "unix:///var/run/docker.sock"
+	},
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"version": "latest",
-			"enableNonRootDocker": "true",
-			"moby": true,
-			"azureDnsAutoDetection": false
-		}
+		// details can be found here: https://github.com/devcontainers/features/tree/main/src/docker-outside-of-docker
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
 	}
 }

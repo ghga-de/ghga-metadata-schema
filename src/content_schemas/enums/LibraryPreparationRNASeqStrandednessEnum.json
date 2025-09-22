@@ -1,0 +1,12 @@
+{
+    "description": "Permitted values for library preparation RNASeq strandedness.",
+    "enum": [
+        "SENSE",
+        "ANTISENSE",
+        "UNSTRANDED"
+    ],
+    "title": "LibraryPreparationRNASeqStrandednessEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/LibraryPreparationRNASeqStrandednessEnum",
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

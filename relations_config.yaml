@@ -1,0 +1,117 @@
+classes:
+  AliasMixin:
+    relations: {}
+  Analysis:
+    relations:
+      analysis_method:
+        targetClass: AnalysisMethod
+      research_data_files:
+        targetClass: ResearchDataFile
+  AnalysisMethod:
+    relations: {}
+  AnalysisMethodSupportingFile:
+    relations:
+      analysis_method:
+        targetClass: AnalysisMethod
+      dataset:
+        targetClass: Dataset
+  Attribute:
+    relations: {}
+  AttributeMixin:
+    relations:
+      attributes:
+        targetClass: Attribute
+  DataAccessCommittee:
+    relations: {}
+  DataAccessPolicy:
+    relations:
+      data_access_committee:
+        targetClass: DataAccessCommittee
+  Dataset:
+    relations:
+      data_access_policy:
+        targetClass: DataAccessPolicy
+      study:
+        targetClass: Study
+  Experiment:
+    relations:
+      experiment_method:
+        targetClass: ExperimentMethod
+      sample:
+        targetClass: Sample
+  ExperimentMethod:
+    relations: {}
+  ExperimentMethodSupportingFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      experiment_method:
+        targetClass: ExperimentMethod
+  File:
+    relations:
+      dataset:
+        targetClass: Dataset
+  Individual:
+    relations: {}
+  IndividualSupportingFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      individual:
+        targetClass: Individual
+  ProcessDataFile:
+    relations:
+      analysis:
+        targetClass: Analysis
+      dataset:
+        targetClass: Dataset
+  Publication:
+    relations:
+      study:
+        targetClass: Study
+  ResearchDataFile:
+    relations:
+      dataset:
+        targetClass: Dataset
+      experiments:
+        targetClass: Experiment
+  Sample:
+    relations:
+      individual:
+        targetClass: Individual
+  Study:
+    relations: {}
+  Submission:
+    relations:
+      analyses:
+        targetClass: Analysis
+      analysis_method_supporting_files:
+        targetClass: AnalysisMethodSupportingFile
+      analysis_methods:
+        targetClass: AnalysisMethod
+      data_access_committees:
+        targetClass: DataAccessCommittee
+      data_access_policies:
+        targetClass: DataAccessPolicy
+      datasets:
+        targetClass: Dataset
+      experiment_method_supporting_files:
+        targetClass: ExperimentMethodSupportingFile
+      experiment_methods:
+        targetClass: ExperimentMethod
+      experiments:
+        targetClass: Experiment
+      individual_supporting_files:
+        targetClass: IndividualSupportingFile
+      individuals:
+        targetClass: Individual
+      process_data_files:
+        targetClass: ProcessDataFile
+      publications:
+        targetClass: Publication
+      research_data_files:
+        targetClass: ResearchDataFile
+      samples:
+        targetClass: Sample
+      studies:
+        targetClass: Study

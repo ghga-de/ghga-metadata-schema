@@ -1,0 +1,12 @@
+{
+    "description": "Single-end vs paired-end sequencing.",
+    "enum": [
+        "SE",
+        "PE",
+        "UNSPECIFIED"
+    ],
+    "title": "SequencingProtocolSequencingLayoutEnum",
+    "type": "string",
+    "$id": "src/content_schemas/enums/SequencingProtocolSequencingLayoutEnum",
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

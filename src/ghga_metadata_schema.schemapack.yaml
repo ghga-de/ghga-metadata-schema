@@ -1,0 +1,268 @@
+classes:
+  Analysis:
+    content: src/content_schemas/Analysis.json
+    description: An Analysis is a data transformation that transforms input data to
+      output data.
+    id:
+      propertyName: alias
+    relations:
+      analysis_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: AnalysisMethod
+      research_data_files:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: true
+        targetClass: ResearchDataFile
+  AnalysisMethod:
+    content: src/content_schemas/AnalysisMethod.json
+    description: An Analysis Method captures the workflow steps that were performed
+      to analyze data obtained from an Experiment.
+    id:
+      propertyName: alias
+  AnalysisMethodSupportingFile:
+    content: src/content_schemas/AnalysisMethodSupportingFile.json
+    description: An Analysis Method Supporting File is a File that contains additional
+      information relevant for the Analysis Method, such as (unstructured) protocols
+      or task descriptions.
+    id:
+      propertyName: alias
+    relations:
+      analysis_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: AnalysisMethod
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+  DataAccessCommittee:
+    content: src/content_schemas/DataAccessCommittee.json
+    description: A group of members that are delegated to grant access to one or more
+      datasets after ensuring the criteria for data sharing has been met,  and request
+      for data use does not raise ethical and/or legal concerns.
+    id:
+      propertyName: alias
+  DataAccessPolicy:
+    content: src/content_schemas/DataAccessPolicy.json
+    description: A Data Access Policy specifies under which circumstances, legal or
+      otherwise, a user can have access to one or more Datasets belonging to one or
+      more Studies.
+    id:
+      propertyName: alias
+    relations:
+      data_access_committee:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: DataAccessCommittee
+  Dataset:
+    content: src/content_schemas/Dataset.json
+    description: A Dataset is a collection of Files that is prepared for distribution
+      and is tied to a Data Access Policy.
+    id:
+      propertyName: alias
+    relations:
+      data_access_policy:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: DataAccessPolicy
+      study:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  Experiment:
+    content: src/content_schemas/Experiment.json
+    description: An Experiment is an investigation that consists of a coordinated
+      set of actions and observations designed to generate data with the goal of verifying,
+      falsifying, or establishing the validity of a hypothesis.
+    id:
+      propertyName: alias
+    relations:
+      experiment_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: ExperimentMethod
+      sample:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Sample
+  ExperimentMethod:
+    content: src/content_schemas/ExperimentMethod.json
+    description: The Experiment Method captures technical metadata describing the
+      parameters used to generate output from the Sample.
+    id:
+      propertyName: alias
+  ExperimentMethodSupportingFile:
+    content: src/content_schemas/ExperimentMethodSupportingFile.json
+    description: An Experiment Method Supporting File is a File that contains additional
+      information relevant for the Experiment Method, such as (unstructured) protocols.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      experiment_method:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: ExperimentMethod
+  Individual:
+    content: src/content_schemas/Individual.json
+    description: An Individual is a Person who is participating in a Study.
+    id:
+      propertyName: alias
+  IndividualSupportingFile:
+    content: src/content_schemas/IndividualSupportingFile.json
+    description: An Individual Supporting File is a File that contains additional
+      information relevant for the Individual, such as ped-files, phenopackets or
+      imaging data.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      individual:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+  ProcessDataFile:
+    content: src/content_schemas/ProcessDataFile.json
+    description: A Process Data File is a File that contains data produced by an Analysis
+      or workflow.
+    id:
+      propertyName: alias
+    relations:
+      analysis:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Analysis
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+  Publication:
+    content: src/content_schemas/Publication.json
+    description: A Publication represents an article that is published. The minimum
+      expectation is that the publication has a valid DOI.
+    id:
+      propertyName: alias
+    relations:
+      study:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Study
+  ResearchDataFile:
+    content: src/content_schemas/ResearchDataFile.json
+    description: A Research Data File is a File that contains raw data originating
+      from an Experiment.
+    id:
+      propertyName: alias
+    relations:
+      dataset:
+        mandatory:
+          origin: false
+          target: false
+        multiple:
+          origin: true
+          target: false
+        targetClass: Dataset
+      experiments:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: true
+        targetClass: Experiment
+  Sample:
+    content: src/content_schemas/Sample.json
+    description: A Sample is a limited quantity of something to be used for testing,
+      analysis, inspection, investigation, demonstration, or trial use.  It is prepared
+      from a Biospecimen.
+    id:
+      propertyName: alias
+    relations:
+      individual:
+        mandatory:
+          origin: false
+          target: true
+        multiple:
+          origin: true
+          target: false
+        targetClass: Individual
+  Study:
+    content: src/content_schemas/Study.json
+    description: A Study is an experimental investigation of a particular phenomenon.
+      It involves a detailed examination and analysis of a subject to learn more about
+      the phenomenon being studied.
+    id:
+      propertyName: alias
+description: Metadata schema for the German Human Genome-Phenome Archive (GHGA)
+schemapack: 3.0.0

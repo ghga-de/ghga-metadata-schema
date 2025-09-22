@@ -1,0 +1,34 @@
+{
+    "additionalProperties": false,
+    "description": "An Experiment Method Supporting File is a File that contains additional information relevant for the Experiment Method, such as (unstructured) protocols.",
+    "properties": {
+        "ega_accession": {
+            "description": "The EGA accession ID of an entity.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "format": {
+            "$ref": "src/content_schemas/enums/SupportingFileFormatEnum",
+            "description": "The file format of the Supporting File (e.g., TXT, JSON)."
+        },
+        "included_in_submission": {
+            "description": "Whether a File is included in the Submission or not.",
+            "type": "boolean"
+        },
+        "name": {
+            "description": "The given filename.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "format",
+        "name",
+        "included_in_submission"
+    ],
+    "title": "ExperimentMethodSupportingFile",
+    "type": "object",
+    "$id": "src/content_schemas/ExperimentMethodSupportingFile",
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

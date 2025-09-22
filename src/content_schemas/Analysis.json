@@ -1,0 +1,38 @@
+{
+    "additionalProperties": false,
+    "description": "An Analysis is a data transformation that transforms input data to output data.",
+    "properties": {
+        "description": {
+            "description": "A description summarizing how this Analysis was carried out (e.g., description of computational tools, pipelines, workflows).",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ega_accession": {
+            "description": "The EGA accession of the 'Analysis' entity (EGAZ).",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "title": {
+            "description": "The title that describes an entity.",
+            "type": "string"
+        },
+        "type": {
+            "description": "The type of this Analysis.",
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "title"
+    ],
+    "title": "Analysis",
+    "type": "object",
+    "$id": "src/content_schemas/Analysis",
+    "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

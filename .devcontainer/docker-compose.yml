@@ -7,12 +7,11 @@ services:
       dockerfile: ./Dockerfile
       args:
         # [Choice] Python version: 3, 3.8, 3.7, 3.6
-        VARIANT: 3.9
+        VARIANT: 3.12
         # [Choice] Install Node.js
         INSTALL_NODE: "true"
         NODE_VERSION: "lts/*"
-        # Please adapt to package name:
-        PACKAGE_NAME: "my_microservice"
+        PACKAGE_NAME: "ghga-metadata-schema"
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
         USER_GID: 1000
