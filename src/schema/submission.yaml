@@ -1559,6 +1559,9 @@ enums:
       CRYOGENIC_FREEZER:
         description: >-
           The sample / biospecimen was stored in a cryogenic freezer at -150°C to -190°C.
+      FFPE:
+        description: >-
+          The sample / biospecimen was stored using formalin-fixed paraffin-embedding (FFPE).
       NONE:
         description: >-
           The sample / biospecimen was not stored.
@@ -1767,6 +1770,9 @@ enums:
       COMMUNITY_BASED:
         description: >-
           Community-based study
+      TARGETED_SEQUENCING:
+        description: >-
+          Targeted sequencing using gene panels.
       OTHER:
         description: >-
           A study type not captured by the above mentioned.
@@ -1812,7 +1818,7 @@ enums:
     permissible_values:
       BAI:
         description: >-
-          BAM indexing format
+          BAM indexing format.
       BAM:
         description: >-
           BAM format, the binary, BGZF-formatted compressed version of SAM format for alignment of nucleotide sequences (e.g., sequencing reads) to (a) reference sequence(s). 
@@ -1839,6 +1845,10 @@ enums:
         description: >-
           Sequence Alignment/Map (SAM) format for alignment of nucleotide sequences (e.g., sequencing reads) to (a) reference sequence(s). May contain base-call and alignment qualities and other data.
           The format supports short and long reads (up to 128Mbp) produced by different sequencing platforms and is used to hold mapped data within the GATK and across the Broad Institute, the Sanger Centre, and throughout the 1000 Genomes project.
+      SF:
+        description: >-
+          Salmon quantification file.
+
       VCF:
         description: >-
           Variant Call Format (VCF) for sequence variation (indels, polymorphisms, structural variation).

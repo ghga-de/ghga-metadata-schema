@@ -9,6 +9,7 @@
         "GFF",
         "HDF5",
         "SAM",
+        "SF",
         "VCF",
         "WIG",
         "OTHER"

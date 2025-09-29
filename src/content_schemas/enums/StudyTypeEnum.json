@@ -35,6 +35,7 @@
         "INTERVENTIONAL",
         "NON_INTERVENTIONAL",
         "COMMUNITY_BASED",
+        "TARGETED_SEQUENCING",
         "OTHER"
     ],
     "title": "StudyTypeEnum",

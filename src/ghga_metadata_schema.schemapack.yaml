@@ -4,9 +4,11 @@ classes:
     description: An Analysis is a data transformation that transforms input data to
       output data.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       analysis_method:
+        description: The Analysis Process associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -15,6 +17,7 @@ classes:
           target: false
         targetClass: AnalysisMethod
       research_data_files:
+        description: The Research Data Files associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -27,6 +30,7 @@ classes:
     description: An Analysis Method captures the workflow steps that were performed
       to analyze data obtained from an Experiment.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
   AnalysisMethodSupportingFile:
     content: src/content_schemas/AnalysisMethodSupportingFile.json
@@ -34,9 +38,11 @@ classes:
       information relevant for the Analysis Method, such as (unstructured) protocols
       or task descriptions.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       analysis_method:
+        description: The Analysis Process associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -45,6 +51,7 @@ classes:
           target: false
         targetClass: AnalysisMethod
       dataset:
+        description: The Dataset associated with an entity.
         mandatory:
           origin: false
           target: false
@@ -58,6 +65,7 @@ classes:
       datasets after ensuring the criteria for data sharing has been met,  and request
       for data use does not raise ethical and/or legal concerns.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
   DataAccessPolicy:
     content: src/content_schemas/DataAccessPolicy.json
@@ -65,9 +73,11 @@ classes:
       otherwise, a user can have access to one or more Datasets belonging to one or
       more Studies.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       data_access_committee:
+        description: Data Access Committee associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -80,9 +90,11 @@ classes:
     description: A Dataset is a collection of Files that is prepared for distribution
       and is tied to a Data Access Policy.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       data_access_policy:
+        description: Data Access Policy associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -91,6 +103,7 @@ classes:
           target: false
         targetClass: DataAccessPolicy
       study:
+        description: The Study associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -104,9 +117,11 @@ classes:
       set of actions and observations designed to generate data with the goal of verifying,
       falsifying, or establishing the validity of a hypothesis.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       experiment_method:
+        description: The Experiment Method associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -115,6 +130,7 @@ classes:
           target: false
         targetClass: ExperimentMethod
       sample:
+        description: The Sample associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -127,15 +143,18 @@ classes:
     description: The Experiment Method captures technical metadata describing the
       parameters used to generate output from the Sample.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
   ExperimentMethodSupportingFile:
     content: src/content_schemas/ExperimentMethodSupportingFile.json
     description: An Experiment Method Supporting File is a File that contains additional
       information relevant for the Experiment Method, such as (unstructured) protocols.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       dataset:
+        description: The Dataset associated with an entity.
         mandatory:
           origin: false
           target: false
@@ -144,6 +163,7 @@ classes:
           target: false
         targetClass: Dataset
       experiment_method:
+        description: The Experiment Method associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -155,6 +175,7 @@ classes:
     content: src/content_schemas/Individual.json
     description: An Individual is a Person who is participating in a Study.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
   IndividualSupportingFile:
     content: src/content_schemas/IndividualSupportingFile.json
@@ -162,9 +183,11 @@ classes:
       information relevant for the Individual, such as ped-files, phenopackets or
       imaging data.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       dataset:
+        description: The Dataset associated with an entity.
         mandatory:
           origin: false
           target: false
@@ -173,6 +196,7 @@ classes:
           target: false
         targetClass: Dataset
       individual:
+        description: The Individual associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -185,9 +209,11 @@ classes:
     description: A Process Data File is a File that contains data produced by an Analysis
       or workflow.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       analysis:
+        description: The Analysis associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -196,6 +222,7 @@ classes:
           target: false
         targetClass: Analysis
       dataset:
+        description: The Dataset associated with an entity.
         mandatory:
           origin: false
           target: false
@@ -208,9 +235,11 @@ classes:
     description: A Publication represents an article that is published. The minimum
       expectation is that the publication has a valid DOI.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       study:
+        description: The Study associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -223,9 +252,11 @@ classes:
     description: A Research Data File is a File that contains raw data originating
       from an Experiment.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       dataset:
+        description: The Dataset associated with an entity.
         mandatory:
           origin: false
           target: false
@@ -234,6 +265,7 @@ classes:
           target: false
         targetClass: Dataset
       experiments:
+        description: The Experiments associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -247,9 +279,11 @@ classes:
       analysis, inspection, investigation, demonstration, or trial use.  It is prepared
       from a Biospecimen.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
     relations:
       individual:
+        description: The Individual associated with an entity.
         mandatory:
           origin: false
           target: true
@@ -263,6 +297,7 @@ classes:
       It involves a detailed examination and analysis of a subject to learn more about
       the phenomenon being studied.
     id:
+      description: The alias for an entity at the time of submission.
       propertyName: alias
 description: Metadata schema for the German Human Genome-Phenome Archive (GHGA)
 schemapack: 3.0.0

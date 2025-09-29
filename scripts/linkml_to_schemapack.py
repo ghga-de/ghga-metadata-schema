@@ -54,21 +54,29 @@ def construct_multiple(relation_name: str, linkml_overall_schema: dict):
         .get("multivalued", False),
     )
 
+def _get_relation_description(slot_name: str, linkml_class_schema:dict, linkml_overall_schema: dict) -> str:
+    """Extracts the description of a relation slot."""
+    try:
+        return linkml_overall_schema["slots"][slot_name].get("description", "")
+    except KeyError:
+        original_target = linkml_class_schema["is_a"]
+        return linkml_overall_schema["classes"][original_target]["slot_usage"][slot_name].get("description", "")
+
 
 def construct_relation(
     class_relations: dict, linkml_class_schema: dict, linkml_overall_schema: dict
 ) -> FrozenDict[str, ClassRelation]:
     """Creates objects of Relations from the relation list of a class"""
-
     return FrozenDict({
         key: ClassRelation(
-            description=None,
+            description=_get_relation_description(key, linkml_class_schema, linkml_overall_schema),
             targetClass=value.get("targetClass"),
             mandatory=construct_mandatory(key, linkml_class_schema),
             multiple=construct_multiple(key, linkml_overall_schema),
         )
         for key, value in class_relations.items()
     })
+
 
 
 def construct_schemapack_class(
@@ -80,7 +88,7 @@ def construct_schemapack_class(
     """Creates a ClassDefinition object that describes a schemapack class definition"""
     return ClassDefinition(
         description=linkml_class_schema["description"],
-        id=IDSpec(propertyName="alias", description=None),
+        id=IDSpec(propertyName="alias", description=linkml_overall_schema["slots"]["alias"].get("description", "")),
         content=Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json"),  # type: ignore
         relations=construct_relation(
             class_relations, linkml_class_schema, linkml_overall_schema
