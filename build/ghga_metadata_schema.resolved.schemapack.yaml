@@ -6,6 +6,7 @@ classes:
       to output data.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Analysis is a data transformation that transforms input 
@@ -39,6 +40,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       analysis_method:
+        description: The Analysis Process associated with an entity.
         targetClass: AnalysisMethod
         mandatory:
           origin: false
@@ -47,6 +49,7 @@ classes:
           origin: true
           target: false
       research_data_files:
+        description: The Research Data Files associated with an entity.
         targetClass: ResearchDataFile
         mandatory:
           origin: false
@@ -59,6 +62,7 @@ classes:
       performed to analyze data obtained from an Experiment.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Analysis Method captures the workflow steps that were 
@@ -221,6 +225,7 @@ classes:
       (unstructured) protocols or task descriptions.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Analysis Method Supporting File is a File that contains 
@@ -262,6 +267,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       analysis_method:
+        description: The Analysis Process associated with an entity.
         targetClass: AnalysisMethod
         mandatory:
           origin: false
@@ -270,6 +276,7 @@ classes:
           origin: true
           target: false
       dataset:
+        description: The Dataset associated with an entity.
         targetClass: Dataset
         mandatory:
           origin: false
@@ -283,6 +290,7 @@ classes:
       and request for data use does not raise ethical and/or legal concerns.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A group of members that are delegated to grant access to one 
@@ -316,6 +324,7 @@ classes:
       one or more Studies.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Data Access Policy specifies under which circumstances, 
@@ -412,6 +421,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       data_access_committee:
+        description: Data Access Committee associated with an entity.
         targetClass: DataAccessCommittee
         mandatory:
           origin: false
@@ -424,6 +434,7 @@ classes:
       distribution and is tied to a Data Access Policy.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Dataset is a collection of Files that is prepared for 
@@ -455,6 +466,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       data_access_policy:
+        description: Data Access Policy associated with an entity.
         targetClass: DataAccessPolicy
         mandatory:
           origin: false
@@ -463,6 +475,7 @@ classes:
           origin: true
           target: false
       study:
+        description: The Study associated with an entity.
         targetClass: Study
         mandatory:
           origin: false
@@ -477,6 +490,7 @@ classes:
       hypothesis.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Experiment is an investigation that consists of a 
@@ -545,6 +559,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       experiment_method:
+        description: The Experiment Method associated with an entity.
         targetClass: ExperimentMethod
         mandatory:
           origin: false
@@ -553,6 +568,7 @@ classes:
           origin: true
           target: false
       sample:
+        description: The Sample associated with an entity.
         targetClass: Sample
         mandatory:
           origin: false
@@ -565,6 +581,7 @@ classes:
       the parameters used to generate output from the Sample.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: The Experiment Method captures technical metadata describing 
@@ -1067,6 +1084,7 @@ classes:
       (unstructured) protocols.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Experiment Method Supporting File is a File that contains 
@@ -1108,6 +1126,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       dataset:
+        description: The Dataset associated with an entity.
         targetClass: Dataset
         mandatory:
           origin: false
@@ -1116,6 +1135,7 @@ classes:
           origin: true
           target: false
       experiment_method:
+        description: The Experiment Method associated with an entity.
         targetClass: ExperimentMethod
         mandatory:
           origin: false
@@ -1127,6 +1147,7 @@ classes:
     description: An Individual is a Person who is participating in a Study.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Individual is a Person who is participating in a Study.
@@ -1222,6 +1243,7 @@ classes:
       phenopackets or imaging data.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: An Individual Supporting File is a File that contains 
@@ -1263,6 +1285,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       dataset:
+        description: The Dataset associated with an entity.
         targetClass: Dataset
         mandatory:
           origin: false
@@ -1271,6 +1294,7 @@ classes:
           origin: true
           target: false
       individual:
+        description: The Individual associated with an entity.
         targetClass: Individual
         mandatory:
           origin: false
@@ -1283,6 +1307,7 @@ classes:
       Analysis or workflow.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Process Data File is a File that contains data produced by 
@@ -1304,6 +1329,7 @@ classes:
             - GFF
             - HDF5
             - SAM
+            - SF
             - VCF
             - WIG
             - OTHER
@@ -1327,6 +1353,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       analysis:
+        description: The Analysis associated with an entity.
         targetClass: Analysis
         mandatory:
           origin: false
@@ -1335,6 +1362,7 @@ classes:
           origin: true
           target: false
       dataset:
+        description: The Dataset associated with an entity.
         targetClass: Dataset
         mandatory:
           origin: false
@@ -1347,6 +1375,7 @@ classes:
       minimum expectation is that the publication has a valid DOI.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Publication represents an article that is published. The 
@@ -1397,6 +1426,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       study:
+        description: The Study associated with an entity.
         targetClass: Study
         mandatory:
           origin: false
@@ -1409,6 +1439,7 @@ classes:
       originating from an Experiment.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Research Data File is a File that contains raw data 
@@ -1462,6 +1493,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       dataset:
+        description: The Dataset associated with an entity.
         targetClass: Dataset
         mandatory:
           origin: false
@@ -1470,6 +1502,7 @@ classes:
           origin: true
           target: false
       experiments:
+        description: The Experiments associated with an entity.
         targetClass: Experiment
         mandatory:
           origin: false
@@ -1483,6 +1516,7 @@ classes:
       It is prepared from a Biospecimen.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Sample is a limited quantity of something to be used for 
@@ -1590,6 +1624,7 @@ classes:
             - FREEZER
             - ULTRA_LOW_FREEZER
             - CRYOGENIC_FREEZER
+            - FFPE
             - NONE
             - OTHER
             - UNKNOWN
@@ -1671,6 +1706,7 @@ classes:
             - FREEZER
             - ULTRA_LOW_FREEZER
             - CRYOGENIC_FREEZER
+            - FFPE
             - NONE
             - OTHER
             - UNKNOWN
@@ -1718,6 +1754,7 @@ classes:
       $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       individual:
+        description: The Individual associated with an entity.
         targetClass: Individual
         mandatory:
           origin: false
@@ -1731,6 +1768,7 @@ classes:
       to learn more about the phenomenon being studied.
     id:
       propertyName: alias
+      description: The alias for an entity at the time of submission.
     content:
       additionalProperties: false
       description: A Study is an experimental investigation of a particular 
@@ -1830,6 +1868,7 @@ classes:
               - INTERVENTIONAL
               - NON_INTERVENTIONAL
               - COMMUNITY_BASED
+              - TARGETED_SEQUENCING
               - OTHER
             title: StudyTypeEnum
             type: string

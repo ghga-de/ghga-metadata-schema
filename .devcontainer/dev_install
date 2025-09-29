@@ -3,6 +3,8 @@
 
 cd /workspace
 
+pip install --upgrade pip
+
 # install in edit mode with testing dependencies
 pip install \
     -r \
