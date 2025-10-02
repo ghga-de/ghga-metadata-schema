@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2021 - 2023 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# Copyright 2021 - 2025 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
 # for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+"""Script to generate submission Excel sheet"""
 
 import glob
 import os
@@ -32,9 +33,9 @@ from openpyxl.styles.alignment import Alignment
 from openpyxl.styles.borders import BORDER_THIN, Border, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.worksheet import Worksheet
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from schemapack import load_schemapack
-from schemapack.spec.schemapack import ClassDefinition, MultipleRelationSpec, SchemaPack
+from schemapack.spec.schemapack import ClassDefinition, SchemaPack
 from script_utils.cli import echo_failure, echo_success, run
 from typer import Option
 
@@ -63,6 +64,14 @@ ALIGN_HEADER: Final[Alignment] = Alignment(
 )
 
 
+class GHGASchemaError(RuntimeError):
+    """Raised when a schema violates GHGA schema rules."""
+
+
+class ContentDifference(RuntimeError):
+    """Raised when a content difference was detected"""
+
+
 class WorksheetStyle(BaseModel):
     """Style configuration for a worksheet"""
 
@@ -74,20 +83,13 @@ class Config(BaseModel):
     """A XLSX generator config"""
 
     output_filename: str
-    styles: dict[str, WorksheetStyle] = {}
+    styles: dict[str, WorksheetStyle] = Field(default_factory=dict)
 
 
-class GHGASchemaError(RuntimeError):
-    """Raised when a schema violates GHGA schema rules."""
-
-
-def _validate_relation(multiplicity: MultipleRelationSpec) -> None:
-    """Raises a schema error if the relation violates GHGA schema rules."""
-    if multiplicity.target:
-        raise GHGASchemaError(
-            "One-to-Many and Many-to-Many relations are not supported in GHGA schemas."
-            " One-to-Many relations must be inverted to Many-to-One relations."
-        )
+def load_config(config_path: Path) -> Config:
+    """Loads a config from a file."""
+    with config_path.open("r") as file:
+        return Config.model_validate(yaml.safe_load(file))
 
 
 @dataclass
@@ -150,6 +152,7 @@ class WorksheetMetadata:
         header_color (None | str): The color used for the header row, if any.
         content_color (None | str): The color used for the content rows, if any.
     """
+
     class_name: str
     columns: list[Column]
     id_property_name: str
@@ -160,9 +163,12 @@ class WorksheetMetadata:
 def _get_element_type_from_schema(schema: dict) -> str:
     """Get the type of the elements in an array from a JSON schema."""
     element_type = schema.get("type", "object")
-    if element_type == "array":
-        element_type = schema.get("items", {}).get("type", "object")
+    if isinstance(element_type, tuple):
+        element_type = ", ".join(str(t) for t in element_type)
+    if "array" in element_type:
+        return schema.get("items", {}).get("type", "object")
     return element_type
+
 
 class ClassColumnFactory:
     """Factory for creating columns from class definitions"""
@@ -227,8 +233,62 @@ class ClassColumnFactory:
             for relation_property_name, class_relation in class_relations.items()
         ]
 
+
+class FormatUtils:
+    """Utility class for formatting worksheets. It bundles the formatting methods."""
+
+    def __init__(self, worksheet: Worksheet) -> None:
+        self.worksheet = worksheet
+
+    def _make_value_cell(self, fill_content: PatternFill | None) -> Cell:
+        """Creates a new cell for the value area of the worksheet"""
+        value_cell = Cell(self.worksheet)  # type: ignore
+        if fill_content:
+            value_cell.fill = fill_content
+        value_cell.border = THIN_BORDER_GRAY
+        return value_cell
+
+    def _make_header_bold(self) -> None:
+        """Makes the first row bold."""
+        # Access the first row using iter_rows and next()
+        first_row = next(self.worksheet.iter_rows(min_row=1, max_row=1))
+        for cell in first_row:
+            cell.font = Font(bold=True)
+
+    def _align_and_border_cells(self, fill_header: PatternFill | None) -> None:
+        """Aligns and borders all cells in the worksheet."""
+        for row in self.worksheet.iter_rows():
+            for cell in row:
+                cell.alignment = ALIGN_HEADER
+                if fill_header:
+                    cell.fill = fill_header
+                cell.border = THIN_BORDER
+
+    def _color_header(self, header_color: str | None) -> None:
+        """Colors the header row of the worksheet."""
+        if header_color:
+            self.worksheet.sheet_properties.tabColor = header_color
+
+    def _append_with_value_cells(
+        self, fill_content: PatternFill | None, column_number: int
+    ) -> None:
+        """Appends 1000 rows of value cells to the worksheet."""
+        for _ in range(1000):
+            self.worksheet.append(
+                [self._make_value_cell(fill_content) for _ in range(column_number)]
+            )
+
+    def _set_column_widths(self) -> None:
+        """Sets the width of all columns to 35."""
+        for column in range(1, self.worksheet.max_column + 1):
+            self.worksheet.column_dimensions[get_column_letter(column)].width = 35
+
+
 def generate_worksheet_metadata(
-    class_name: str, class_definition: ClassDefinition, model: SchemaPack, config: Config
+    class_name: str,
+    class_definition: ClassDefinition,
+    model: SchemaPack,
+    config: Config,
 ) -> WorksheetMetadata:
     """Builds a worksheet from a class definition. Combined the column specs with
     the worksheet style parameters.
@@ -254,7 +314,9 @@ def generate_worksheet_metadata(
     )
 
 
-def annotate_worksheet(worksheet_metadata: WorksheetMetadata, worksheet: Worksheet) -> Worksheet:
+def annotate_worksheet(
+    worksheet_metadata: WorksheetMetadata, worksheet: Worksheet
+) -> Worksheet:
     """
     Annotates a worksheet object from openpyxl with metadata from WorksheetMetadata.
     """
@@ -271,271 +333,245 @@ def annotate_worksheet(worksheet_metadata: WorksheetMetadata, worksheet: Workshe
 
     return worksheet
 
-# def _make_value_cell(ws, fill_content):
-#     """Creates a new cell for the value area of the worksheet"""
-#     value_cell = Cell(ws)
-#     if fill_content:
-#         value_cell.fill = fill_content
-#     value_cell.border = THIN_BORDER_GRAY
-#     return value_cell
+
+def format_worksheet(worksheet_metadata: WorksheetMetadata, worksheet: Worksheet):
+    """Formats a worksheet by defining the styles of the cells."""
+
+    header_color = worksheet_metadata.header_color
+    content_color = worksheet_metadata.content_color
+    fill_header = PatternFill("solid", fgColor=header_color) if header_color else None
+    fill_content = (
+        PatternFill("solid", fgColor=content_color) if content_color else None
+    )
+    format_worksheet = FormatUtils(worksheet)
+
+    format_worksheet._make_header_bold()
+    format_worksheet._align_and_border_cells(fill_header)
+    format_worksheet._color_header(header_color)
+    format_worksheet._append_with_value_cells(
+        fill_content, len(worksheet_metadata.columns)
+    )
+    format_worksheet._set_column_widths()
+
+    return worksheet
 
 
-# def generate_workbook(sheets: Mapping[str, WorksheetMetadata]) -> Workbook:
-#     """Generates a workbook from a dictionary of sheets."""
-#     # Create a new workbook
-#     workbook = Workbook()
-#     # Remove the default sheet
-#     workbook.remove(workbook.worksheets[0])
-
-#     for sheet_name, sheet in sheets.items():
-#         # Create a new sheet for the class
-#         wb_sheet = workbook.create_sheet(title=sheet_name)
-
-#         cols = sheet.columns
-#         rows = []
-#         rows.append([Cell(wb_sheet, value=col.name) for col in cols])
-#         rows.append([Cell(wb_sheet, value=col.description) for col in cols])
-#         rows.append([Cell(wb_sheet, value=col.type) for col in cols])
-#         rows.append(
-#             [
-#                 Cell(
-#                     wb_sheet,
-#                     value="multiple values" if col.multivalued else "single value",
-#                 )
-#                 for col in cols
-#             ]
-#         )
-#         rows.append([Cell(wb_sheet, value=col.restriction) for col in cols])
-#         rows.append(
-#             [
-#                 Cell(wb_sheet, value="required" if col.required else "optional")
-#                 for col in cols
-#             ]
-#         )
-
-#         # FORMATTING
-
-#         font_bold = Font(bold=True)
-
-#         fill_header = (
-#             PatternFill("solid", fgColor=sheet.header_color)
-#             if sheet.header_color
-#             else None
-#         )
-#         for cell in rows[0]:
-#             cell.font = font_bold
-#         for row in rows:
-#             for cell in row:
-#                 cell.alignment = ALIGN_HEADER
-#                 if fill_header:
-#                     cell.fill = fill_header
-#                 cell.border = THIN_BORDER
-
-#         if sheet.header_color:
-#             wb_sheet.sheet_properties.tabColor = sheet.header_color
-
-#         fill_content = (
-#             PatternFill("solid", fgColor=sheet.content_color)
-#             if sheet.content_color
-#             else None
-#         )
-
-#         for _ in range(1000):
-#             rows.append(
-#                 [
-#                     _make_value_cell(wb_sheet, fill_content)
-#                     for _ in range(len(sheet.columns))
-#                 ]
-#             )
-
-#         for row in rows:
-#             wb_sheet.append(row)
-
-#         for column in range(1, wb_sheet.max_column + 1):
-#             wb_sheet.column_dimensions[get_column_letter(column)].width = 35
-
-#     # Save the workbook to the specified output path
-#     return workbook
+def generate_worksheet_metadata_for_all_classes(
+    model: SchemaPack, config: Config
+) -> Mapping[str, WorksheetMetadata]:
+    """Generates worksheet metadata for all classes in the schema pack."""
+    return {
+        class_name: generate_worksheet_metadata(
+            class_name, class_definition, model, config
+        )
+        for class_name, class_definition in model.classes.items()
+    }
 
 
-def load_config(config_path: Path) -> Config:
-    """Loads a config from a file."""
-    with config_path.open("r") as file:
-        return Config.model_validate(yaml.safe_load(file))
+def generate_workbook(sheets: Mapping[str, WorksheetMetadata]) -> Workbook:
+    """Generates a workbook from a dictionary of sheets."""
+    # Create a new workbook
+    workbook = Workbook()
+    # Remove the default sheet
+    workbook.remove(workbook.worksheets[0])
+
+    for sheet_name, sheet_metadata in sheets.items():
+        # Create a new sheet for the class
+        workbook_sheet = workbook.create_sheet(title=sheet_name)
+
+        workbook_sheet = annotate_worksheet(sheet_metadata, workbook_sheet)
+        workbook_sheet = format_worksheet(sheet_metadata, workbook_sheet)
+
+    return workbook
 
 
-# def compare_xls(expected: Workbook, observed: Workbook):
-#     """Compares two workbooks and raises a ContentDifference error if
-#     differences are detected."""
-#     if expected.sheetnames != observed.sheetnames:
-#         raise ContentDifference(
-#             f"Sheets differ. expected={expected.sheetnames}. observed={observed.sheetnames}"
-#         )
-
-#     for sheet in expected.sheetnames:
-#         for row_idx, (row_a, row_b) in enumerate(
-#             zip(expected[sheet].iter_rows(), observed[sheet].iter_rows()), 1
-#         ):
-#             for col_idx, (cell_a, cell_b) in enumerate(zip(row_a, row_b), 1):
-#                 if cell_a.value != cell_b.value:
-#                     raise ContentDifference(
-#                         f"Cell values differ in sheet {sheet}, row {row_idx}, col {col_idx}: expected={cell_a.value}, observed={cell_b.value}"
-#                     )
-#                 for attr in ["alignment", "font", "border", "fill"]:
-#                     if getattr(cell_a, attr).__dict__ != getattr(cell_b, attr).__dict__:
-#                         raise ContentDifference(
-#                             f"Cell {attr} differs in sheet {sheet}, row {row_idx}, col {col_idx}: expected={getattr(cell_a, attr).__dict__}, observed={getattr(cell_b, attr).__dict__}"
-#                         )
+@contextmanager
+def working_directory(working_dir: Path) -> Generator[None, None, None]:
+    """Temporarily changes the working directory to the specified directory"""
+    cwd = Path.cwd()
+    try:
+        os.chdir(working_dir)
+        yield
+    finally:
+        os.chdir(cwd)
 
 
-# class ContentDifference(RuntimeError):
-#     """Raised when a content difference was detected"""
+def compare_xls(expected: Workbook, observed: Workbook) -> None:
+    """
+    Compares two openpyxl Workbook objects for differences.
+
+    Parameters:
+        expected (Workbook): The expected workbook to compare against.
+        observed (Workbook): The observed workbook to check for differences.
+
+    Raises:
+        ContentDifference: If any differences are detected between the workbooks.
+
+    """
+    if expected.sheetnames != observed.sheetnames:
+        raise ContentDifference(
+            f"Sheets differ. expected={expected.sheetnames}. observed={observed.sheetnames}"
+        )
+    cell_style_attributes = ["alignment", "font", "border", "fill"]
+
+    for sheet in expected.sheetnames:
+        for row_idx, (row_a, row_b) in enumerate(
+            zip(expected[sheet].iter_rows(), observed[sheet].iter_rows()), 1
+        ):
+            for col_idx, (cell_a, cell_b) in enumerate(zip(row_a, row_b), 1):
+                if cell_a.value != cell_b.value:
+                    raise ContentDifference(
+                        f"Cell values differ in sheet {sheet}, row {row_idx}, col {col_idx}: "
+                        + f"expected={cell_a.value}, observed={cell_b.value}"
+                    )
+                for attr in cell_style_attributes:
+                    style_a = getattr(cell_a, attr)
+                    style_b = getattr(cell_b, attr)
+                    # Compare style objects using their equality operator
+                    if style_a != style_b:
+                        raise ContentDifference(
+                            f"Cell {attr} differs in sheet {sheet}, row {row_idx}, col {col_idx}: "
+                            + f"expected={style_a}, "
+                            + f"observed={style_b}"
+                        )
 
 
-# @contextmanager
-# def working_directory(working_dir: Path) -> Generator[None, None, None]:
-#     """Temporarily changes the working directory to the specified directory"""
-#     cwd = Path.cwd()
-#     try:
-#         os.chdir(working_dir)
-#         yield
-#     finally:
-#         os.chdir(cwd)
+def compare_folders(expected: Path, observed: Path):
+    """Function to check equality of contents of two folders with xlsx files."""
+
+    with working_directory(expected):
+        expected_glob = glob.glob("*")
+
+    with working_directory(observed):
+        observed_glob = glob.glob("*")
+
+    if sorted(expected_glob) != sorted(observed_glob):
+        raise ContentDifference(
+            f"Different directory contents. expected={expected_glob}. observed={observed_glob}"
+        )
+
+    for fname in expected_glob:
+        expected_wb = load_workbook(expected.joinpath(fname))
+        observed_wb = load_workbook(observed.joinpath(fname))
+        try:
+            compare_xls(expected=expected_wb, observed=observed_wb)
+        except ContentDifference as err:
+            raise ContentDifference(f"{fname}: {err}")
 
 
-# def compare_folders(expected: Path, observed: Path):
-#     """Function to check equality of contents of two folders with xlsx files."""
+HEADER_ROW_INDEX = 1
+DATA_START_ROW_INDEX = 7
+META_SHEET_HEADER = ["sheet", "n_cols", "header_row", "data_start", "id_property_name"]
+COLUMN_META_SHEET_HEADER = ["sheet", "column", "multivalued", "type", "ref_class","ref_class_id_property","enum","required"]
 
-#     with working_directory(expected):
-#         expected_glob = glob.glob("*")
-
-#     with working_directory(observed):
-#         observed_glob = glob.glob("*")
-
-#     if sorted(expected_glob) != sorted(observed_glob):
-#         raise ContentDifference(
-#             f"Different directory contents. expected={expected_glob}. observed={observed_glob}"
-#         )
-
-#     for fname in expected_glob:
-#         expected_wb = load_workbook(expected.joinpath(fname))
-#         observed_wb = load_workbook(observed.joinpath(fname))
-#         try:
-#             compare_xls(expected=expected_wb, observed=observed_wb)
-#         except ContentDifference as err:
-#             raise ContentDifference(f"{fname}: {err}")
+def _add_version_sheet(model: SchemaPack, workbook: Workbook) -> None:
+    """Adds a model version sheet to the workbook"""
+    version_sheet = workbook.create_sheet("__version")
+    version_sheet.sheet_state = "hidden"
+    version_sheet.append([model.schemapack])
 
 
-# def _add_transpiler_metadata(
-#     workbook: Workbook, sheets: Mapping[str, WorksheetContent]
-# ) -> None:
-#     """Adds metadata to the workbook"""
-#     ws = workbook.create_sheet("__transpiler_protocol")
-#     ws.sheet_state = "hidden"
-#     ws.cell(row=1, column=1, value="1.0.0")
-
-#     # Add metadata about the sheets
-#     ws = workbook.create_sheet("__sheet_meta")
-#     ws.sheet_state = "hidden"
-#     ws.append(
-#         [
-#             Cell(ws, value="sheet"),
-#             Cell(ws, value="n_cols"),
-#             Cell(ws, value="header_row"),
-#             Cell(ws, value="data_start"),
-#             Cell(ws, value="id_property_name"),
-#         ]
-#     )
-#     for sheet_name, sheet in sheets.items():
-#         ws.append(
-#             [
-#                 Cell(ws, value=sheet_name),
-#                 Cell(ws, value=len(sheet.columns)),
-#                 Cell(ws, value=1),
-#                 Cell(ws, value=7),
-#                 sheet.id_property_name,
-#             ]
-#         )
-
-#     # Add metadata about the columns
-#     ws = workbook.create_sheet("__column_meta")
-#     ws.sheet_state = "hidden"
-#     ws.append(
-#         [
-#             Cell(ws, value="sheet"),
-#             Cell(ws, value="column"),
-#             Cell(ws, value="multivalued"),
-#             Cell(ws, value="type"),
-#             Cell(ws, value="ref_class"),
-#             Cell(ws, value="ref_class_id_property"),
-#             Cell(ws, value="enum"),
-#             Cell(ws, value="required"),
-#         ]
-#     )
-#     for sheet_name, sheet in sheets.items():
-#         for column in sheet.columns:
-#             ws.append(
-#                 [
-#                     Cell(ws, value=sheet_name),
-#                     Cell(ws, value=column.name),
-#                     Cell(ws, value=column.multivalued),
-#                     Cell(ws, value=column.type),
-#                     Cell(
-#                         ws,
-#                         value=column.class_reference.class_name
-#                         if column.class_reference
-#                         else None,
-#                     ),
-#                     Cell(
-#                         ws,
-#                         value=column.class_reference.id_property_name
-#                         if column.class_reference
-#                         else None,
-#                     ),
-#                     Cell(ws, value=column.enum),
-#                     Cell(ws, value=column.required),
-#                 ]
-#             )
+def _add_meta_sheet(workbook: Workbook) -> None:
+    """Adds a meta sheet to the workbook and adds a header that corresponds to the
+    worksheet's name, number of columns, header row number, and data row start number.
+    """
+    meta_sheet = workbook.create_sheet("__sheet_meta")
+    meta_sheet.sheet_state = "hidden"
+    meta_sheet.append(META_SHEET_HEADER)
 
 
-# def create_xlsx_files(xlsx_dir: Path = XLSX_DIR) -> None:
-#     schema = load_schemapack(Path(SCHEMAPACK_PATH))
-#     config = load_config(Path(CONFIG_PATH))
-#     sheets = parse_schema(schema, config)
-#     workbook = generate_workbook(sheets)
-#     _add_transpiler_metadata(workbook, sheets)
-#     workbook.save(xlsx_dir / config.output_filename)
+def _populate_meta_sheet(
+    meta_sheet: Worksheet, meta_sheet_content: WorksheetMetadata
+) -> None:
+    """Populates the meta sheet with the information of a given worksheet metadata."""
+
+    meta_sheet.append(
+        [
+            meta_sheet_content.class_name,
+            len(meta_sheet_content.columns),
+            HEADER_ROW_INDEX,
+            DATA_START_ROW_INDEX,
+            meta_sheet_content.id_property_name,
+        ]
+    )
+
+def _add_column_meta_sheet(workbook: Workbook) -> None:
+    """Adds a column meta sheet to the workbook and adds a header that corresponds to the
+
+    """
+    column_meta_sheet = workbook.create_sheet("__column_meta")
+    column_meta_sheet.sheet_state = "hidden"
+    column_meta_sheet.append(COLUMN_META_SHEET_HEADER)
+
+def _populate_column_meta_sheet(column_meta_sheet: Worksheet, meta_sheet_content: WorksheetMetadata) -> None:
+    """Populates the column meta sheet with the information of a given worksheet metadata."""
+
+    for column in meta_sheet_content.columns:
+        column_meta_sheet.append(
+            [ 
+                meta_sheet_content.class_name,
+                column.name,
+                column.multivalued,
+                column.type,
+                column.class_reference.class_name
+                    if column.class_reference
+                    else None,
+                column.class_reference.id_property_name
+                    if column.class_reference
+                    else None,
+                column.enum,
+                column.required,
+            ]
+        )
+
+def add_transpiler_metadata(
+    model: SchemaPack, workbook: Workbook, sheets_metadata: Mapping[str, WorksheetMetadata]
+) -> None:
+    """Adds metadata required for parsing it with ghga-transpiler to the workbook"""
+
+    _add_version_sheet(model, workbook)
+    _add_meta_sheet(workbook)
+    _add_column_meta_sheet(workbook)
+    for _, worksheet_metadata in sheets_metadata.items():
+        _populate_meta_sheet(workbook["__sheet_meta"], worksheet_metadata)
+        _populate_column_meta_sheet(workbook["__column_meta"], worksheet_metadata)
 
 
-# def main(
-#     check: bool = Option(
-#         False,
-#         help="Run read-only check that verifies that the documents are up-to-date.",
-#     ),
-# ):
-#     """Generate a submission XLSX file from the schema pack."""
-#     if check:
-#         with TemporaryDirectory() as tmpdirname:
-#             tmp_docs_dir = Path(tmpdirname)
-
-#             create_xlsx_files(xlsx_dir=tmp_docs_dir)
-
-#             try:
-#                 compare_folders(XLSX_DIR, tmp_docs_dir)
-#                 echo_success("Documents are up-to-date")
-#             except ContentDifference as err:
-#                 echo_failure("Documents are not up-to-date")
-#                 echo_failure(str(err))
-#                 sys.exit(1)
-#     else:
-#         create_xlsx_files()
-
-def main():
+def create_xlsx_files(xlsx_dir: Path = XLSX_DIR) -> None:
+    """The logic for generating a workbook. Loads the schemapack and config,
+    generates the workbook, and saves it to a file.
+    """
     schema = load_schemapack(Path(SCHEMAPACK_PATH))
     config = load_config(Path(CONFIG_PATH))
-    sheetmetadata = generate_worksheet_metadata("Analysis", schema.classes["Analysis"], schema, config)
-    # annotated_ws = annotate_worksheet(sheetmetadata, Workbook().create_sheet(title="Analysis"))
-    print(sheetmetadata)
+    sheets_metadata = generate_worksheet_metadata_for_all_classes(schema, config)
+    workbook = generate_workbook(sheets_metadata)
+    add_transpiler_metadata(schema,workbook, sheets_metadata)
+    workbook.save(xlsx_dir / config.output_filename)
+
+
+def main(
+    check: bool = Option(
+        False,
+        help="Run read-only check that verifies that the documents are up-to-date.",
+    ),
+):
+    """Generate a submission XLSX file from the schema pack."""
+    if check:
+        with TemporaryDirectory() as tmpdirname:
+            tmp_docs_dir = Path(tmpdirname)
+
+            create_xlsx_files(xlsx_dir=tmp_docs_dir)
+
+            try:
+                compare_folders(XLSX_DIR, tmp_docs_dir)
+                echo_success("Documents are up-to-date")
+            except ContentDifference as err:
+                echo_failure("Documents are not up-to-date")
+                echo_failure(str(err))
+                sys.exit(1)
+    else:
+        create_xlsx_files()
+
 
 if __name__ == "__main__":
     run(main)

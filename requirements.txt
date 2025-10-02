@@ -6,3 +6,4 @@ openpyxl >= 3.1.2, == 3.*
 schemapack==4.0.0
 linkml==1.9.4
 pre-commit>=4.2
+types-openpyxl>=3.0

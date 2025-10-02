@@ -1,62 +1,50 @@
-output_filename: 'ghga_submission.xlsx'
+output_filename: "ghga_submission.xlsx"
 styles:
   Study:
     header_color: C0504D
     content_color: F2DCDB
-  StudyFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
   Sample:
     header_color: 4BACC6
     content_color: DAEEF3
-  SampleFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
-  Condition:
-    header_color: F79646
-    content_color: FDE9D9
-  Biospecimen:
-    header_color: 8064A2
-    content_color: E4DFEC
   Individual:
     header_color: 4F81BD
     content_color: DCE6F1
-  Trio:
-    header_color: C0504D
-    content_color: F2DCDB
-  LibraryPreparationProtocol:
-    header_color: 4BACC6
-    content_color: DAEEF3
-  SequencingProtocol:
-    header_color: F79646
-    content_color: FDE9D9
-  SequencingExperiment:
+  IndividualSupportingFile:
     header_color: 8064A2
     content_color: E4DFEC
-  SequencingProcess:
+  ExperimentMethod:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  ExperimentMethodSupportingFile:
+    header_color: F79646
+    content_color: FDE9D9
+  Experiment:
+    header_color: C0504D
+    content_color: F2DCDB
+  ResearchDataFile:
+    header_color: 4BACC6
+    content_color: DAEEF3
+  AnalysisMethod:
     header_color: 4F81BD
     content_color: DCE6F1
-  SequencingProcessFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
-  Analysis:
-    header_color: C0504D
-    content_color: F2DCDB
-  AnalysisProcess:
-    header_color: 4BACC6
-    content_color: DAEEF3
-  AnalysisProcessOutputFile:
-    header_color: 9BBB59
-    content_color: EBF1DE
-  Dataset:
-    header_color: F79646
-    content_color: FDE9D9
-  DataAccessPolicy:
+  AnalysisMethodSupportingFile:
     header_color: 8064A2
     content_color: E4DFEC
+  Analysis:
+    header_color: 9BBB59
+    content_color: EBF1DE
+  ProcessDataFile:
+    header_color: F79646
+    content_color: FDE9D9
+  Dataset:
+    header_color: C0504D
+    content_color: F2DCDB
+  DataAccessPolicy:
+    header_color: 4BACC6
+    content_color: DAEEF3
   DataAccessCommittee:
     header_color: 4F81BD
     content_color: DCE6F1
   Publication:
-    header_color: C0504D
-    content_color: F2DCDB
+    header_color: 8064A2
+    content_color: E4DFEC
