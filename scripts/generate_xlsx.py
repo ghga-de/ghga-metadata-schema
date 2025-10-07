@@ -232,7 +232,7 @@ class ClassColumnFactory:
 
 
 class FormatUtils:
-    """Utility class for formatting worksheets. It bundles the formatting methods."""
+    """Utility class for formatting worksheets."""
 
     def __init__(self, worksheet: Worksheet) -> None:
         self.worksheet = worksheet
