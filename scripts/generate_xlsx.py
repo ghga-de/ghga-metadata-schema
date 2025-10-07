@@ -247,7 +247,6 @@ class FormatUtils:
 
     def _make_header_bold(self) -> None:
         """Makes the first row bold."""
-        # Access the first row using iter_rows and next()
         first_row = next(self.worksheet.iter_rows(min_row=1, max_row=1))
         for cell in first_row:
             cell.font = Font(bold=True)
