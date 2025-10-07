@@ -46,18 +46,20 @@ SCHEMAPACK_PATH: Final[Path] = (
 CONFIG_PATH: Final[Path] = HERE.parent / "spreadsheet_conf.yaml"
 XLSX_DIR: Final[Path] = HERE.parent / "spreadsheets"
 
+THIN_SIDE = Side(border_style=BORDER_THIN, color="00000000")
+THIN_GRAY_SIDE = Side(border_style=BORDER_THIN, color="808080")
 
 THIN_BORDER: Final[Border] = Border(
-    left=Side(border_style=BORDER_THIN, color="00000000"),
-    right=Side(border_style=BORDER_THIN, color="00000000"),
-    top=Side(border_style=BORDER_THIN, color="00000000"),
-    bottom=Side(border_style=BORDER_THIN, color="00000000"),
+    left=THIN_SIDE,
+    right=THIN_SIDE,
+    top=THIN_SIDE,
+    bottom=THIN_SIDE,
 )
 THIN_BORDER_GRAY: Final[Border] = Border(
-    left=Side(border_style=BORDER_THIN, color="808080"),
-    right=Side(border_style=BORDER_THIN, color="808080"),
-    top=Side(border_style=BORDER_THIN, color="808080"),
-    bottom=Side(border_style=BORDER_THIN, color="808080"),
+    left=THIN_GRAY_SIDE,
+    right=THIN_GRAY_SIDE,
+    top=THIN_GRAY_SIDE,
+    bottom=THIN_GRAY_SIDE,
 )
 ALIGN_HEADER: Final[Alignment] = Alignment(
     wrapText=True, horizontal="center", vertical="top"
@@ -68,8 +70,10 @@ class GHGASchemaError(RuntimeError):
     """Raised when a schema violates GHGA schema rules."""
 
 
-class ContentDifference(RuntimeError):
-    """Raised when a content difference was detected"""
+class XLSXContentDifference(RuntimeError):
+    """Raised when a content difference was detected between the expected and
+    observed XLSX files.
+    """
 
 
 class WorksheetStyle(BaseModel):
@@ -84,12 +88,6 @@ class Config(BaseModel):
 
     output_filename: str
     styles: dict[str, WorksheetStyle] = Field(default_factory=dict)
-
-
-def load_config(config_path: Path) -> Config:
-    """Loads a config from a file."""
-    with config_path.open("r") as file:
-        return Config.model_validate(yaml.safe_load(file))
 
 
 @dataclass
@@ -126,15 +124,15 @@ class Column:
     type: str
     multivalued: bool
     class_reference: IdAnnotatedClass | None
-    enum: bool
+    is_enum: bool
     required: bool
 
     @property
     def restriction(self) -> str:
-        if self.enum and self.class_reference:
+        if self.is_enum and self.class_reference:
             raise GHGASchemaError("Column cannot be both an enum and a reference")
         # If the column is an enum, its values are restricted to a predefined set (controlled vocabulary).
-        if self.enum:
+        if self.is_enum:
             return "restriction: value from controlled vocabulary (see schema for allowed values)"
         if self.class_reference:
             return f"restriction: value from {self.class_reference.class_name}.{self.class_reference.id_property_name}"
@@ -180,7 +178,7 @@ class ClassColumnFactory:
             name=class_definition.id.propertyName,
             description=class_definition.id.description,
             type="string",
-            enum=False,
+            is_enum=False,
             multivalued=False,
             class_reference=None,
             required=True,
@@ -199,9 +197,9 @@ class ClassColumnFactory:
                 name=property_name,
                 description=properties[property_name].get("description", ""),
                 type=_get_element_type_from_schema(properties[property_name]),
-                multivalued=properties[property_name]["type"] == "array",
+                multivalued="array" in properties[property_name]["type"],
                 class_reference=None,
-                enum="enum" in properties[property_name],
+                is_enum="enum" in properties[property_name],
                 required=property_name in required_fields,
             )
             for property_name in properties
@@ -214,14 +212,13 @@ class ClassColumnFactory:
         """Extracts columns from the relations of a class definition."""
 
         class_relations = class_definition.relations
-
         return [
             Column(
                 name=relation_property_name,
                 description=class_relation.description,
                 type="string",
-                enum=False,
-                multivalued=False,
+                is_enum=False,
+                multivalued=class_relation.multiple.target,
                 class_reference=IdAnnotatedClass(
                     class_name=class_relation.targetClass,
                     id_property_name=model.classes[
@@ -405,11 +402,11 @@ def compare_xls(expected: Workbook, observed: Workbook) -> None:
         observed (Workbook): The observed workbook to check for differences.
 
     Raises:
-        ContentDifference: If any differences are detected between the workbooks.
+        XLSXContentDifference: If any differences are detected between the workbooks.
 
     """
     if expected.sheetnames != observed.sheetnames:
-        raise ContentDifference(
+        raise XLSXContentDifference(
             f"Sheets differ. expected={expected.sheetnames}. observed={observed.sheetnames}"
         )
     cell_style_attributes = ["alignment", "font", "border", "fill"]
@@ -420,7 +417,7 @@ def compare_xls(expected: Workbook, observed: Workbook) -> None:
         ):
             for col_idx, (cell_a, cell_b) in enumerate(zip(row_a, row_b), 1):
                 if cell_a.value != cell_b.value:
-                    raise ContentDifference(
+                    raise XLSXContentDifference(
                         f"Cell values differ in sheet {sheet}, row {row_idx}, col {col_idx}: "
                         + f"expected={cell_a.value}, observed={cell_b.value}"
                     )
@@ -429,7 +426,7 @@ def compare_xls(expected: Workbook, observed: Workbook) -> None:
                     style_b = getattr(cell_b, attr)
                     # Compare style objects using their equality operator
                     if style_a != style_b:
-                        raise ContentDifference(
+                        raise XLSXContentDifference(
                             f"Cell {attr} differs in sheet {sheet}, row {row_idx}, col {col_idx}: "
                             + f"expected={style_a}, "
                             + f"observed={style_b}"
@@ -446,7 +443,7 @@ def compare_folders(expected: Path, observed: Path):
         observed_glob = glob.glob("*")
 
     if sorted(expected_glob) != sorted(observed_glob):
-        raise ContentDifference(
+        raise XLSXContentDifference(
             f"Different directory contents. expected={expected_glob}. observed={observed_glob}"
         )
 
@@ -455,14 +452,24 @@ def compare_folders(expected: Path, observed: Path):
         observed_wb = load_workbook(observed.joinpath(fname))
         try:
             compare_xls(expected=expected_wb, observed=observed_wb)
-        except ContentDifference as err:
-            raise ContentDifference(f"{fname}: {err}")
+        except XLSXContentDifference as err:
+            raise XLSXContentDifference(f"{fname}: {err}")
 
 
 HEADER_ROW_INDEX = 1
 DATA_START_ROW_INDEX = 7
 META_SHEET_HEADER = ["sheet", "n_cols", "header_row", "data_start", "id_property_name"]
-COLUMN_META_SHEET_HEADER = ["sheet", "column", "multivalued", "type", "ref_class","ref_class_id_property","enum","required"]
+COLUMN_META_SHEET_HEADER = [
+    "sheet",
+    "column",
+    "multivalued",
+    "type",
+    "ref_class",
+    "ref_class_id_property",
+    "enum",
+    "required",
+]
+
 
 def _add_version_sheet(model: SchemaPack, workbook: Workbook) -> None:
     """Adds a model version sheet to the workbook"""
@@ -495,37 +502,40 @@ def _populate_meta_sheet(
         ]
     )
 
-def _add_column_meta_sheet(workbook: Workbook) -> None:
-    """Adds a column meta sheet to the workbook and adds a header that corresponds to the
 
-    """
+def _add_column_meta_sheet(workbook: Workbook) -> None:
+    """Adds a column meta sheet to the workbook and adds a header that corresponds to the"""
     column_meta_sheet = workbook.create_sheet("__column_meta")
     column_meta_sheet.sheet_state = "hidden"
     column_meta_sheet.append(COLUMN_META_SHEET_HEADER)
 
-def _populate_column_meta_sheet(column_meta_sheet: Worksheet, meta_sheet_content: WorksheetMetadata) -> None:
+
+def _populate_column_meta_sheet(
+    column_meta_sheet: Worksheet, meta_sheet_content: WorksheetMetadata
+) -> None:
     """Populates the column meta sheet with the information of a given worksheet metadata."""
 
     for column in meta_sheet_content.columns:
         column_meta_sheet.append(
-            [ 
+            [
                 meta_sheet_content.class_name,
                 column.name,
                 column.multivalued,
                 column.type,
-                column.class_reference.class_name
-                    if column.class_reference
-                    else None,
+                column.class_reference.class_name if column.class_reference else None,
                 column.class_reference.id_property_name
-                    if column.class_reference
-                    else None,
-                column.enum,
+                if column.class_reference
+                else None,
+                column.is_enum,
                 column.required,
             ]
         )
 
+
 def add_transpiler_metadata(
-    model: SchemaPack, workbook: Workbook, sheets_metadata: Mapping[str, WorksheetMetadata]
+    model: SchemaPack,
+    workbook: Workbook,
+    sheets_metadata: Mapping[str, WorksheetMetadata],
 ) -> None:
     """Adds metadata required for parsing it with ghga-transpiler to the workbook"""
 
@@ -537,6 +547,12 @@ def add_transpiler_metadata(
         _populate_column_meta_sheet(workbook["__column_meta"], worksheet_metadata)
 
 
+def load_config(config_path: Path) -> Config:
+    """Loads a config from a file."""
+    with config_path.open("r") as file:
+        return Config.model_validate(yaml.safe_load(file))
+
+
 def create_xlsx_files(xlsx_dir: Path = XLSX_DIR) -> None:
     """The logic for generating a workbook. Loads the schemapack and config,
     generates the workbook, and saves it to a file.
@@ -545,7 +561,7 @@ def create_xlsx_files(xlsx_dir: Path = XLSX_DIR) -> None:
     config = load_config(Path(CONFIG_PATH))
     sheets_metadata = generate_worksheet_metadata_for_all_classes(schema, config)
     workbook = generate_workbook(sheets_metadata)
-    add_transpiler_metadata(schema,workbook, sheets_metadata)
+    add_transpiler_metadata(schema, workbook, sheets_metadata)
     workbook.save(xlsx_dir / config.output_filename)
 
 
@@ -565,7 +581,7 @@ def main(
             try:
                 compare_folders(XLSX_DIR, tmp_docs_dir)
                 echo_success("Documents are up-to-date")
-            except ContentDifference as err:
+            except XLSXContentDifference as err:
                 echo_failure("Documents are not up-to-date")
                 echo_failure(str(err))
                 sys.exit(1)
