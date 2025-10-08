@@ -323,17 +323,20 @@ def annotate_worksheet(
     Annotates a worksheet object from openpyxl with metadata from WorksheetMetadata.
     """
 
-    row_specs = [
-        lambda col: col.name,
-        lambda col: col.description,
-        lambda col: col.type,
-        lambda col: "multiple values" if col.multivalued else "single value",
-        lambda col: col.restriction,
-        lambda col: "required" if col.required else "optional",
-    ]
-    for spec in row_specs:
-        worksheet.append([spec(col) for col in worksheet_metadata.columns])
+    def get_column_metadata(column: Column):
+        return [
+            column.name,
+            column.description,
+            column.type,
+            "multiple values" if column.multivalued else "single value",
+            column.restriction,
+            "required" if column.required else "optional",
+        ]
 
+    for metadata_row in zip(
+        *[get_column_metadata(col) for col in worksheet_metadata.columns]
+    ):
+        worksheet.append(list(metadata_row))
 
     return worksheet
 
