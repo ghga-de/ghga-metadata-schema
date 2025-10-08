@@ -11,12 +11,12 @@ classes:
       $id: src/content_schemas/Analysis
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Analysis is a data transformation that transforms input 
+      description: An Analysis is a data transformation that transforms input
         data to output data.
       properties:
         description:
-          description: A description summarizing how this Analysis was carried 
-            out (e.g., description of computational tools, pipelines, 
+          description: A description summarizing how this Analysis was carried
+            out (e.g., description of computational tools, pipelines,
             workflows).
           type:
             - string
@@ -58,7 +58,7 @@ classes:
           origin: true
           target: true
   AnalysisMethod:
-    description: An Analysis Method captures the workflow steps that were 
+    description: An Analysis Method captures the workflow steps that were
       performed to analyze data obtained from an Experiment.
     id:
       propertyName: alias
@@ -67,11 +67,11 @@ classes:
       $id: src/content_schemas/AnalysisMethod
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Analysis Method captures the workflow steps that were 
+      description: An Analysis Method captures the workflow steps that were
         performed to analyze data obtained from an Experiment.
       properties:
         attributes:
-          description: One or more attributes that further characterize this 
+          description: One or more attributes that further characterize this
             Analysis Method.
           items:
             $id: src/content_schemas/Attribute
@@ -83,7 +83,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -93,7 +93,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -114,8 +114,8 @@ classes:
           type: string
         parameters:
           description: Key/value pairs where key corresponds to a parameter name
-            and value corresponds to a parameter value (e.g., 'aligner' = 
-            'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 
+            and value corresponds to a parameter value (e.g., 'aligner' =
+            'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' =
             50000000).
           items:
             $id: src/content_schemas/Attribute
@@ -127,7 +127,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -137,7 +137,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -151,8 +151,8 @@ classes:
             - array
             - 'null'
         software_versions:
-          description: key/value pairs where key corresponds to a software name 
-            and value corresponds to a version descriptor (e.g., `salmon` = 
+          description: key/value pairs where key corresponds to a software name
+            and value corresponds to a version descriptor (e.g., `salmon` =
             '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
           items:
             $id: src/content_schemas/Attribute
@@ -164,7 +164,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -174,7 +174,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -191,7 +191,7 @@ classes:
           description: 'The type of an entity. Note: Not to be confused with rdf:type.'
           type: string
         workflow_doi:
-          description: A digital object identifier for the workflow. Can be a 
+          description: A digital object identifier for the workflow. Can be a
             publication or the workflow commit that was used for the Analysis.
           type: string
         workflow_name:
@@ -220,8 +220,8 @@ classes:
       title: AnalysisMethod
       type: object
   AnalysisMethodSupportingFile:
-    description: An Analysis Method Supporting File is a File that contains 
-      additional information relevant for the Analysis Method, such as 
+    description: An Analysis Method Supporting File is a File that contains
+      additional information relevant for the Analysis Method, such as
       (unstructured) protocols or task descriptions.
     id:
       propertyName: alias
@@ -230,8 +230,8 @@ classes:
       $id: src/content_schemas/AnalysisMethodSupportingFile
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Analysis Method Supporting File is a File that contains 
-        additional information relevant for the Analysis Method, such as 
+      description: An Analysis Method Supporting File is a File that contains
+        additional information relevant for the Analysis Method, such as
         (unstructured) protocols or task descriptions.
       properties:
         ega_accession:
@@ -286,7 +286,7 @@ classes:
           target: false
   DataAccessCommittee:
     description: A group of members that are delegated to grant access to one or
-      more datasets after ensuring the criteria for data sharing has been met,  
+      more datasets after ensuring the criteria for data sharing has been met,
       and request for data use does not raise ethical and/or legal concerns.
     id:
       propertyName: alias
@@ -295,9 +295,9 @@ classes:
       $id: src/content_schemas/DataAccessCommittee
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A group of members that are delegated to grant access to one 
-        or more datasets after ensuring the criteria for data sharing has been 
-        met,  and request for data use does not raise ethical and/or legal 
+      description: A group of members that are delegated to grant access to one
+        or more datasets after ensuring the criteria for data sharing has been
+        met,  and request for data use does not raise ethical and/or legal
         concerns.
       properties:
         ega_accession:
@@ -306,8 +306,8 @@ classes:
             - string
             - 'null'
         email:
-          description: The email of the Data Access Committee (e.g., 
-            DAC[at]email.com). This property must not include any personally 
+          description: The email of the Data Access Committee (e.g.,
+            DAC[at]email.com). This property must not include any personally
             identifiable data.
           type: string
         institute:
@@ -320,7 +320,7 @@ classes:
       type: object
   DataAccessPolicy:
     description: A Data Access Policy specifies under which circumstances, legal
-      or otherwise, a user can have access to one or more Datasets belonging to 
+      or otherwise, a user can have access to one or more Datasets belonging to
       one or more Studies.
     id:
       propertyName: alias
@@ -329,12 +329,12 @@ classes:
       $id: src/content_schemas/DataAccessPolicy
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Data Access Policy specifies under which circumstances, 
-        legal or otherwise, a user can have access to one or more Datasets 
+      description: A Data Access Policy specifies under which circumstances,
+        legal or otherwise, a user can have access to one or more Datasets
         belonging to one or more Studies.
       properties:
         data_use_modifier_ids:
-          description: The DUO IDs corresponding to the Data Use Modifier terms 
+          description: The DUO IDs corresponding to the Data Use Modifier terms
             (e.g., DUO:0000043).
           items:
             type: string
@@ -375,7 +375,7 @@ classes:
             - array
             - 'null'
         data_use_permission_id:
-          description: The DUO ID corresponding to the Data Use Permission term 
+          description: The DUO ID corresponding to the Data Use Permission term
             (e.g., DUO:0000004).
           type: string
         data_use_permission_term:
@@ -405,8 +405,8 @@ classes:
           description: The complete text for the Data Access Policy.
           type: string
         policy_url:
-          description: An alternative to the Data Access Policy text is to 
-            provide the URL for the policy. This is useful if the terms of the 
+          description: An alternative to the Data Access Policy text is to
+            provide the URL for the policy. This is useful if the terms of the
             policy are available online at a resolvable URL.
           type:
             - string
@@ -430,7 +430,7 @@ classes:
           origin: true
           target: false
   Dataset:
-    description: A Dataset is a collection of Files that is prepared for 
+    description: A Dataset is a collection of Files that is prepared for
       distribution and is tied to a Data Access Policy.
     id:
       propertyName: alias
@@ -439,7 +439,7 @@ classes:
       $id: src/content_schemas/Dataset
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Dataset is a collection of Files that is prepared for 
+      description: A Dataset is a collection of Files that is prepared for
         distribution and is tied to a Data Access Policy.
       properties:
         description:
@@ -484,9 +484,9 @@ classes:
           origin: true
           target: false
   Experiment:
-    description: An Experiment is an investigation that consists of a 
+    description: An Experiment is an investigation that consists of a
       coordinated set of actions and observations designed to generate data with
-      the goal of verifying, falsifying, or establishing the validity of a 
+      the goal of verifying, falsifying, or establishing the validity of a
       hypothesis.
     id:
       propertyName: alias
@@ -495,9 +495,9 @@ classes:
       $id: src/content_schemas/Experiment
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Experiment is an investigation that consists of a 
-        coordinated set of actions and observations designed to generate data 
-        with the goal of verifying, falsifying, or establishing the validity of 
+      description: An Experiment is an investigation that consists of a
+        coordinated set of actions and observations designed to generate data
+        with the goal of verifying, falsifying, or establishing the validity of
         a hypothesis.
       properties:
         attributes:
@@ -512,7 +512,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -522,7 +522,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -577,7 +577,7 @@ classes:
           origin: true
           target: false
   ExperimentMethod:
-    description: The Experiment Method captures technical metadata describing 
+    description: The Experiment Method captures technical metadata describing
       the parameters used to generate output from the Sample.
     id:
       propertyName: alias
@@ -586,11 +586,11 @@ classes:
       $id: src/content_schemas/ExperimentMethod
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: The Experiment Method captures technical metadata describing 
+      description: The Experiment Method captures technical metadata describing
         the parameters used to generate output from the Sample.
       properties:
         attributes:
-          description: One or more attributes that further characterize this 
+          description: One or more attributes that further characterize this
             Experiment Method.
           items:
             $id: src/content_schemas/Attribute
@@ -602,7 +602,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -612,7 +612,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -750,7 +750,7 @@ classes:
           title: InstrumentModelEnum
           type: string
         library_preparation:
-          description: The general method for preparation of the sequencing 
+          description: The general method for preparation of the sequencing
             library (e.g., KAPA PCR-free).
           type: string
         library_preparation_kit_manufacturer:
@@ -935,11 +935,11 @@ classes:
           title: LibraryPreparationKitRetailNameEnum
           type: string
         library_selection_methods:
-          description: One or more methods used to select for or against, 
-            enrich, or screen the material being sequenced (e.g., random, PCA, 
+          description: One or more methods used to select for or against,
+            enrich, or screen the material being sequenced (e.g., random, PCA,
             cDNA).
           items:
-            $id: 
+            $id:
               src/content_schemas/enums/LibraryPreparationLibrarySelectionEnum
             $schema: https://json-schema.org/draft/2019-09/schema
             description: Permitted vocabulary for library selections.
@@ -1007,9 +1007,9 @@ classes:
           title: PrimerEnum
           type: string
         rnaseq_strandedness:
-          description: Permitted values for library preparation RNASeq 
+          description: Permitted values for library preparation RNASeq
             strandedness.
-          $id: 
+          $id:
             src/content_schemas/enums/LibraryPreparationRNASeqStrandednessEnum
           $schema: https://json-schema.org/draft/2019-09/schema
           enum:
@@ -1051,13 +1051,13 @@ classes:
             - 'null'
         target_coverage:
           description: Mean coverage for whole genome sequencing, or mean target
-            coverage for whole exome and targeted sequencing, (i.e. the number 
+            coverage for whole exome and targeted sequencing, (i.e. the number
             of times a particular locus was sequenced).
           type:
             - string
             - 'null'
         target_regions:
-          description: Subset of genes or specific regions of the genome, which 
+          description: Subset of genes or specific regions of the genome, which
             are most likely to be involved in the phenotype under study.
           items:
             type: string
@@ -1079,8 +1079,8 @@ classes:
       title: ExperimentMethod
       type: object
   ExperimentMethodSupportingFile:
-    description: An Experiment Method Supporting File is a File that contains 
-      additional information relevant for the Experiment Method, such as 
+    description: An Experiment Method Supporting File is a File that contains
+      additional information relevant for the Experiment Method, such as
       (unstructured) protocols.
     id:
       propertyName: alias
@@ -1089,8 +1089,8 @@ classes:
       $id: src/content_schemas/ExperimentMethodSupportingFile
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Experiment Method Supporting File is a File that contains 
-        additional information relevant for the Experiment Method, such as 
+      description: An Experiment Method Supporting File is a File that contains
+        additional information relevant for the Experiment Method, such as
         (unstructured) protocols.
       properties:
         ega_accession:
@@ -1155,7 +1155,7 @@ classes:
       description: An Individual is a Person who is participating in a Study.
       properties:
         ancestry_ids:
-          description: The corresponding ID to the HANCESTRO vocabulary (e.g., 
+          description: The corresponding ID to the HANCESTRO vocabulary (e.g.,
             HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
           items:
             type: string
@@ -1172,8 +1172,8 @@ classes:
             - array
             - 'null'
         diagnosis_ids:
-          description: One or more diagnoses that the entity is associated with 
-            at the time of retrieval from the organism. The diagnosis is 
+          description: One or more diagnoses that the entity is associated with
+            at the time of retrieval from the organism. The diagnosis is
             captured using a code from ICD-10 (WHO version). Please restrict the
             ICD code to the chapter letter and two digits for the main diagnosis
             (e.g., E10, C01).
@@ -1191,7 +1191,7 @@ classes:
             - array
             - 'null'
         geographical_region_id:
-          description: The corresponding ID to the NCIT vocabulary (e.g., 
+          description: The corresponding ID to the NCIT vocabulary (e.g.,
             NCIT:C16312, NCIT:C16636, NCIT:C16761).
           type:
             - string
@@ -1203,7 +1203,7 @@ classes:
             - string
             - 'null'
         phenotypic_features_ids:
-          description: The corresponding ID to the HPO vocabulary (e.g., 
+          description: The corresponding ID to the HPO vocabulary (e.g.,
             HP:0002732, HP:0012735, HP:0002615).
           items:
             type: string
@@ -1211,10 +1211,10 @@ classes:
             - array
             - 'null'
         phenotypic_features_terms:
-          description: The phenotypic feature concepts that the entity is 
-            associated with at the time of retrieval from the organism. The 
-            Phenotypic Feature is captured using a concept from the Human 
-            Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, 
+          description: The phenotypic feature concepts that the entity is
+            associated with at the time of retrieval from the organism. The
+            Phenotypic Feature is captured using a concept from the Human
+            Phenotype Ontology (e.g., Lymph node hypoplasia, Cough,
             Hypotension).
           items:
             type: string
@@ -1222,7 +1222,7 @@ classes:
             - array
             - 'null'
         sex:
-          description: The sex of an Individual as as defined in a specific 
+          description: The sex of an Individual as as defined in a specific
             medical and clinical context.
           $id: src/content_schemas/enums/IndividualSexEnum
           $schema: https://json-schema.org/draft/2019-09/schema
@@ -1238,8 +1238,8 @@ classes:
       title: Individual
       type: object
   IndividualSupportingFile:
-    description: An Individual Supporting File is a File that contains 
-      additional information relevant for the Individual, such as ped-files, 
+    description: An Individual Supporting File is a File that contains
+      additional information relevant for the Individual, such as ped-files,
       phenopackets or imaging data.
     id:
       propertyName: alias
@@ -1248,8 +1248,8 @@ classes:
       $id: src/content_schemas/IndividualSupportingFile
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Individual Supporting File is a File that contains 
-        additional information relevant for the Individual, such as ped-files, 
+      description: An Individual Supporting File is a File that contains
+        additional information relevant for the Individual, such as ped-files,
         phenopackets or imaging data.
       properties:
         ega_accession:
@@ -1312,7 +1312,7 @@ classes:
       $id: src/content_schemas/ProcessDataFile
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Process Data File is a File that contains data produced by 
+      description: A Process Data File is a File that contains data produced by
         an Analysis or workflow.
       properties:
         ega_accession:
@@ -1371,7 +1371,7 @@ classes:
           origin: true
           target: false
   Publication:
-    description: A Publication represents an article that is published. The 
+    description: A Publication represents an article that is published. The
       minimum expectation is that the publication has a valid DOI.
     id:
       propertyName: alias
@@ -1380,11 +1380,11 @@ classes:
       $id: src/content_schemas/Publication
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Publication represents an article that is published. The 
+      description: A Publication represents an article that is published. The
         minimum expectation is that the publication has a valid DOI.
       properties:
         abstract:
-          description: The study abstract that describes the goals. Can also 
+          description: The study abstract that describes the goals. Can also
             hold abstract from a publication related to this Study.
           type:
             - string
@@ -1435,7 +1435,7 @@ classes:
           origin: true
           target: false
   ResearchDataFile:
-    description: A Research Data File is a File that contains raw data 
+    description: A Research Data File is a File that contains raw data
       originating from an Experiment.
     id:
       propertyName: alias
@@ -1444,7 +1444,7 @@ classes:
       $id: src/content_schemas/ResearchDataFile
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Research Data File is a File that contains raw data 
+      description: A Research Data File is a File that contains raw data
         originating from an Experiment.
       properties:
         ega_accession:
@@ -1481,7 +1481,7 @@ classes:
             - string
             - 'null'
         technical_replicate:
-          description: An integer to indicate the technical replicate of this 
+          description: An integer to indicate the technical replicate of this
             File.
           type: integer
       required:
@@ -1511,8 +1511,8 @@ classes:
           origin: true
           target: true
   Sample:
-    description: A Sample is a limited quantity of something to be used for 
-      testing, analysis, inspection, investigation, demonstration, or trial use.  
+    description: A Sample is a limited quantity of something to be used for
+      testing, analysis, inspection, investigation, demonstration, or trial use.
       It is prepared from a Biospecimen.
     id:
       propertyName: alias
@@ -1521,8 +1521,8 @@ classes:
       $id: src/content_schemas/Sample
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Sample is a limited quantity of something to be used for 
-        testing, analysis, inspection, investigation, demonstration, or trial 
+      description: A Sample is a limited quantity of something to be used for
+        testing, analysis, inspection, investigation, demonstration, or trial
         use.  It is prepared from a Biospecimen.
       properties:
         attributes:
@@ -1537,7 +1537,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -1547,7 +1547,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -1561,13 +1561,13 @@ classes:
             - array
             - 'null'
         biological_replicate:
-          description: An integer to indicate the number of a biological 
+          description: An integer to indicate the number of a biological
             replicate.
           type:
             - integer
             - 'null'
         biospecimen_age_at_sampling:
-          description: Enum to capture the age range that an Indiviudal belongs 
+          description: Enum to capture the age range that an Indiviudal belongs
             to.
           $id: src/content_schemas/enums/AgeRangeEnum
           $schema: https://json-schema.org/draft/2019-09/schema
@@ -1593,8 +1593,8 @@ classes:
           title: AgeRangeEnum
           type: string
         biospecimen_description:
-          description: A concise description about the Biospecimen source, the 
-            collection method, and the protocol which was followed to process 
+          description: A concise description about the Biospecimen source, the
+            collection method, and the protocol which was followed to process
             this Biospecimen.
           type:
             - string
@@ -1613,8 +1613,8 @@ classes:
           title: IsolationEnum
           type: string
         biospecimen_name:
-          description: A descriptive name of this Biospecimen (e.g., 
-            GHGAB_caudate_nucleus_biospecimen). This property must not include 
+          description: A descriptive name of this Biospecimen (e.g.,
+            GHGAB_caudate_nucleus_biospecimen). This property must not include
             any personally identifiable data.
           type:
             - string
@@ -1635,15 +1635,15 @@ classes:
           title: StorageEnum
           type: string
         biospecimen_tissue_id:
-          description: The corresponding ontology ID for the 
-            biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, 
+          description: The corresponding ontology ID for the
+            biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089,
             BTO:0000848).
           type:
             - string
             - 'null'
         biospecimen_tissue_term:
-          description: The tissue this Biospecimen originated from. Should be a 
-            term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, 
+          description: The tissue this Biospecimen originated from. Should be a
+            term from the BRENDA Tissue Ontology vocabulary (e.g., kidney,
             blood, melanoma cell).
           type:
             - string
@@ -1676,12 +1676,12 @@ classes:
           title: CaseControlStatusEnum
           type: string
         description:
-          description: A concise description about the Sample source, the 
-            collection method, and the protocol which was followed to process 
+          description: A concise description about the Sample source, the
+            collection method, and the protocol which was followed to process
             this Sample.
           type: string
         disease_or_healthy:
-          description: Enum to capture whether a condition corresponds to a 
+          description: Enum to capture whether a condition corresponds to a
             disease or a healthy state.
           $id: src/content_schemas/enums/DiseaseOrHealthyEnum
           $schema: https://json-schema.org/draft/2019-09/schema
@@ -1697,7 +1697,7 @@ classes:
             - string
             - 'null'
         name:
-          description: A descriptive name of this Sample (e.g., 
+          description: A descriptive name of this Sample (e.g.,
             GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not
             include any personally identifiable data.
           type: string
@@ -1738,7 +1738,7 @@ classes:
           title: SampleTypeEnum
           type: string
         xref:
-          description: One or more cross-references for this Sample (e.g., this 
+          description: One or more cross-references for this Sample (e.g., this
             Sample may have an EBI BioSamples accession ID).
           items:
             type: string
@@ -1763,8 +1763,8 @@ classes:
           origin: true
           target: false
   Study:
-    description: A Study is an experimental investigation of a particular 
-      phenomenon. It involves a detailed examination and analysis of a subject 
+    description: A Study is an experimental investigation of a particular
+      phenomenon. It involves a detailed examination and analysis of a subject
       to learn more about the phenomenon being studied.
     id:
       propertyName: alias
@@ -1773,7 +1773,7 @@ classes:
       $id: src/content_schemas/Study
       $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Study is an experimental investigation of a particular 
+      description: A Study is an experimental investigation of a particular
         phenomenon. It involves a detailed examination and analysis of a subject
         to learn more about the phenomenon being studied.
       properties:
@@ -1783,7 +1783,7 @@ classes:
             type: string
           type: array
         attributes:
-          description: One or more attributes that further characterize this 
+          description: One or more attributes that further characterize this
             Study.
           items:
             $id: src/content_schemas/Attribute
@@ -1795,7 +1795,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -1805,7 +1805,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -1819,7 +1819,7 @@ classes:
             - array
             - 'null'
         description:
-          description: A detailed description (abstract) that describes the 
+          description: A detailed description (abstract) that describes the
             goals of this Study.
           type: string
         ega_accession:
@@ -1831,7 +1831,7 @@ classes:
           description: A comprehensive title for this Study.
           type: string
         types:
-          description: One or more types of this Study (e.g., Cancer Genomics, 
+          description: One or more types of this Study (e.g., Cancer Genomics,
             Epigenetics, Exome Sequencing).
           items:
             $id: src/content_schemas/enums/StudyTypeEnum
