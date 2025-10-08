@@ -159,7 +159,11 @@ class WorksheetMetadata:
 
 
 def _get_element_type_from_schema(schema: dict) -> str:
-    """Get the type of the elements in an array from a JSON schema."""
+    """Returns the data type defined in a JSON schema.
+    If the type is "array", returns the type of its items.
+    If the type is a tuple (multiple types), returns a comma-separated string.
+    Otherwise, returns the type as a string.
+    """
     element_type = schema.get("type", "object")
     if isinstance(element_type, tuple):
         element_type = ", ".join(str(t) for t in element_type)
@@ -286,7 +290,7 @@ def generate_worksheet_metadata(
     model: SchemaPack,
     config: Config,
 ) -> WorksheetMetadata:
-    """Builds a worksheet from a class definition. Combined the column specs with
+    """Builds a worksheet from a class definition. Combines the column specs with
     the worksheet style parameters.
     """
     columns: list[Column] = []
@@ -437,10 +441,10 @@ def compare_folders(expected: Path, observed: Path):
     """Function to check equality of contents of two folders with xlsx files."""
 
     with working_directory(expected):
-        expected_glob = glob.glob("*")
+        expected_glob = glob.glob("*.xlsx")
 
     with working_directory(observed):
-        observed_glob = glob.glob("*")
+        observed_glob = glob.glob("*.xlsx")
 
     if sorted(expected_glob) != sorted(observed_glob):
         raise XLSXContentDifference(
