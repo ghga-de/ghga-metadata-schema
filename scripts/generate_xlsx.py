@@ -255,7 +255,9 @@ class FormatUtils:
         for cell in first_row:
             cell.font = Font(bold=True)
 
-    def _apply_cell_alignment_and_borders(self, fill_header: PatternFill | None) -> None:
+    def _apply_cell_alignment_and_borders(
+        self, fill_header: PatternFill | None
+    ) -> None:
         """Aligns and borders all cells in the worksheet."""
         for row in self.worksheet.iter_rows():
             for cell in row:
@@ -320,6 +322,7 @@ def annotate_worksheet(
     """
     Annotates a worksheet object from openpyxl with metadata from WorksheetMetadata.
     """
+
     def get_column_spec(col):
         return [
             col.name,

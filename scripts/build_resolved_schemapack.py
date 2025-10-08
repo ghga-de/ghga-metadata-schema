@@ -28,10 +28,8 @@ from schemapack.spec.schemapack import SchemaPack
 from script_utils.cli import echo_failure, echo_success
 
 ROOT = Path(__file__).parent.parent.resolve()
-UNRESOLVED_SCHEMAPACK_PATH = ROOT / "src" / \
-    "ghga_metadata_schema.schemapack.yaml"
-RESOLVED_SCHEMA_PATH = ROOT / "build" / \
-    "ghga_metadata_schema.resolved.schemapack.yaml"
+UNRESOLVED_SCHEMAPACK_PATH = ROOT / "src" / "ghga_metadata_schema.schemapack.yaml"
+RESOLVED_SCHEMA_PATH = ROOT / "build" / "ghga_metadata_schema.resolved.schemapack.yaml"
 CONTENT_SCHEMA_DIR = ROOT / "src" / "content_schemas"
 
 
@@ -56,8 +54,7 @@ def is_equal(existing_schemapack: dict, expected_schemapack: dict) -> bool:
 
 def print_diff(existing_schemapack: dict, expected_schemapack: dict):
     """Print differences between expected and observed files."""
-    echo_failure(
-        "Expected schemapack build is different than the one in repository:")
+    echo_failure("Expected schemapack build is different than the one in repository:")
     existing_content = "\n".join(sorted(str(existing_schemapack).split(",")))
     expected_content = "\n".join(sorted(str(expected_schemapack).split(",")))
     for line in unified_diff(
@@ -90,8 +87,7 @@ def read_yaml(path: Path):
         try:
             data = yaml.safe_load(file)
         except yaml.YAMLError as error:
-            raise ParsingError(
-                f"The file at '{path}' could not be parsed.") from error
+            raise ParsingError(f"The file at '{path}' could not be parsed.") from error
     return data
 
 
@@ -150,8 +146,7 @@ def create_resolved_registry(content_json_schemas_registry: Registry) -> Registr
 def embed_content_schemas(schemapack_dict: dict, registry: Registry):
     """Embed resolved content-schemas into the schemapack dictionary."""
     for _, value in schemapack_dict["classes"].items():
-        value["content"] = registry[value["content"].removesuffix(
-            ".json")].contents
+        value["content"] = registry[value["content"].removesuffix(".json")].contents
     return schemapack_dict
 
 
@@ -165,15 +160,12 @@ def main(check: bool = False):
     )
     if check:
         existing_schemapack_dict = read_yaml(RESOLVED_SCHEMA_PATH)
-        compare_schemapack_builds(
-            existing_schemapack_dict, expected_schemapack_dict
-        )
+        compare_schemapack_builds(existing_schemapack_dict, expected_schemapack_dict)
         echo_success("Schemapack definition is up-to-date")
     else:
         schemapack_def = SchemaPack.model_validate(expected_schemapack_dict)
         dump_schemapack(schemapack_def, path=RESOLVED_SCHEMA_PATH)
-        echo_success(
-            f"The schemapack definition is saved to {RESOLVED_SCHEMA_PATH}")
+        echo_success(f"The schemapack definition is saved to {RESOLVED_SCHEMA_PATH}")
 
 
 if __name__ == "__main__":

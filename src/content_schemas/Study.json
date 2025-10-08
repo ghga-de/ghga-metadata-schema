@@ -1,55 +1,55 @@
 {
-    "additionalProperties": false,
-    "description": "A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
-    "properties": {
-        "affiliations": {
-            "description": "The affiliations associated with this Study.",
-            "items": {
-                "type": "string"
-            },
-            "type": "array"
-        },
-        "attributes": {
-            "description": "One or more attributes that further characterize this Study.",
-            "items": {
-                "$ref": "src/content_schemas/Attribute"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "description": {
-            "description": "A detailed description (abstract) that describes the goals of this Study.",
-            "type": "string"
-        },
-        "ega_accession": {
-            "description": "The EGA accession ID of an entity.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "title": {
-            "description": "A comprehensive title for this Study.",
-            "type": "string"
-        },
-        "types": {
-            "description": "One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).",
-            "items": {
-                "$ref": "src/content_schemas/enums/StudyTypeEnum"
-            },
-            "type": "array"
-        }
+  "$id": "src/content_schemas/Study",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": false,
+  "description": "A Study is an experimental investigation of a particular phenomenon. It involves a detailed examination and analysis of a subject to learn more about the phenomenon being studied.",
+  "properties": {
+    "affiliations": {
+      "description": "The affiliations associated with this Study.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     },
-    "required": [
-        "title",
-        "description",
-        "types",
-        "affiliations"
-    ],
-    "title": "Study",
-    "type": "object",
-    "$id": "src/content_schemas/Study",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+    "attributes": {
+      "description": "One or more attributes that further characterize this Study.",
+      "items": {
+        "$ref": "src/content_schemas/Attribute"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "A detailed description (abstract) that describes the goals of this Study.",
+      "type": "string"
+    },
+    "ega_accession": {
+      "description": "The EGA accession ID of an entity.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "A comprehensive title for this Study.",
+      "type": "string"
+    },
+    "types": {
+      "description": "One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).",
+      "items": {
+        "$ref": "src/content_schemas/enums/StudyTypeEnum"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "types",
+    "affiliations"
+  ],
+  "title": "Study",
+  "type": "object"
 }

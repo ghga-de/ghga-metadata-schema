@@ -79,11 +79,13 @@ def slots_with_class_range(schema: Schema) -> dict:
     In AnalysisMethod class, there is software_versions and parameters slot with
     Attribute range. However, these do not denote a relation from AnalysisMethod class
     to Attribute class. These are content value properties who follows the
-    AttributeMixin structure. """
+    AttributeMixin structure."""
     return {
         slot: value["range"]
         for slot, value in schema.slots.items()
-        if value.get("range") and value.get("range") in schema.class_names and slot not in ["software_versions", "parameters"]
+        if value.get("range")
+        and value.get("range") in schema.class_names
+        and slot not in ["software_versions", "parameters"]
     }
 
 
@@ -99,7 +101,7 @@ def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> dict
 def resolve_inherited_relations(schema: Schema) -> Schema:
     """Resolves the relations from the class inheritances. If classA is_a classB,
     classA inherits the relations of classB, e.g. ResearchDataFile is_a File, File has
-    relation to Dataset. Thus, ResearchDataFile has a relation to Dataset. 
+    relation to Dataset. Thus, ResearchDataFile has a relation to Dataset.
     This function is required because inherited relations are not explicitly stated
     under the class that inherits them."""
     for schema_class in schema.classes.values():
@@ -132,8 +134,7 @@ def main():
     schema = load_schema(Path(LINKML_SCHEMA_PATH))
     class_ranged_slots = slots_with_class_range(schema)
     for _, schema_class in schema.classes.items():
-        schema_class.relations = class_relations(
-            schema_class, class_ranged_slots)
+        schema_class.relations = class_relations(schema_class, class_ranged_slots)
     resolved_schema = resolve_inherited_relations(schema)
     save_relations(resolved_schema, "relations_config.yaml")
 

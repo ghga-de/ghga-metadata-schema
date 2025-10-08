@@ -1,19 +1,19 @@
 {
-    "description": "Enum to capture Research Data File formats.",
-    "enum": [
-        "FASTA",
-        "FASTQ",
-        "UBAM",
-        "FAST5",
-        "RAW",
-        "D",
-        "MZML",
-        "MZDATA",
-        "IDAT",
-        "OTHER"
-    ],
-    "title": "ResearchDataFileFormatEnum",
-    "type": "string",
-    "$id": "src/content_schemas/enums/ResearchDataFileFormatEnum",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+  "$id": "src/content_schemas/enums/ResearchDataFileFormatEnum",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "Enum to capture Research Data File formats.",
+  "enum": [
+    "FASTA",
+    "FASTQ",
+    "UBAM",
+    "FAST5",
+    "RAW",
+    "D",
+    "MZML",
+    "MZDATA",
+    "IDAT",
+    "OTHER"
+  ],
+  "title": "ResearchDataFileFormatEnum",
+  "type": "string"
 }

@@ -1,48 +1,48 @@
 {
-    "additionalProperties": false,
-    "description": "An Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
-    "properties": {
-        "attributes": {
-            "description": "Key/value pairs corresponding to an entity.",
-            "items": {
-                "$ref": "src/content_schemas/Attribute"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "description": {
-            "description": "A detailed description of this Experiment.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "ega_accession": {
-            "description": "The EGA accession of the 'Run' entity (EGAR).",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "title": {
-            "description": "The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).",
-            "type": "string"
-        },
-        "type": {
-            "description": "The type of this Experiment.",
-            "type": [
-                "string",
-                "null"
-            ]
-        }
+  "$id": "src/content_schemas/Experiment",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": false,
+  "description": "An Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.",
+  "properties": {
+    "attributes": {
+      "description": "Key/value pairs corresponding to an entity.",
+      "items": {
+        "$ref": "src/content_schemas/Attribute"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
     },
-    "required": [
-        "title"
-    ],
-    "title": "Experiment",
-    "type": "object",
-    "$id": "src/content_schemas/Experiment",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+    "description": {
+      "description": "A detailed description of this Experiment.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ega_accession": {
+      "description": "The EGA accession of the 'Run' entity (EGAR).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).",
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of this Experiment.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "title": "Experiment",
+  "type": "object"
 }

@@ -1,21 +1,21 @@
 {
-    "description": "Enum to capture Process Data File formats.",
-    "enum": [
-        "BAI",
-        "BAM",
-        "BCF",
-        "BED",
-        "CRAM",
-        "GFF",
-        "HDF5",
-        "SAM",
-        "SF",
-        "VCF",
-        "WIG",
-        "OTHER"
-    ],
-    "title": "ProcessDataFileFormatEnum",
-    "type": "string",
-    "$id": "src/content_schemas/enums/ProcessDataFileFormatEnum",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+  "$id": "src/content_schemas/enums/ProcessDataFileFormatEnum",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "Enum to capture Process Data File formats.",
+  "enum": [
+    "BAI",
+    "BAM",
+    "BCF",
+    "BED",
+    "CRAM",
+    "GFF",
+    "HDF5",
+    "SAM",
+    "SF",
+    "VCF",
+    "WIG",
+    "OTHER"
+  ],
+  "title": "ProcessDataFileFormatEnum",
+  "type": "string"
 }
