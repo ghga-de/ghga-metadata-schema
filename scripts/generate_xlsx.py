@@ -425,7 +425,6 @@ def compare_xls(expected: Workbook, observed: Workbook) -> None:
                 for attr in cell_style_attributes:
                     style_a = getattr(cell_a, attr)
                     style_b = getattr(cell_b, attr)
-                    # Compare style objects using their equality operator
                     if style_a != style_b:
                         raise XLSXContentDifference(
                             f"Cell {attr} differs in sheet {sheet}, row {row_idx}, col {col_idx}: "
