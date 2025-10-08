@@ -172,7 +172,7 @@ class ClassColumnFactory:
     """Factory for creating columns from class definitions"""
 
     @staticmethod
-    def set_id_column(class_definition: ClassDefinition) -> Column:
+    def create_id_column(class_definition: ClassDefinition) -> Column:
         """Creates a column representing the ID property of a class definition."""
         return Column(
             name=class_definition.id.propertyName,
@@ -185,7 +185,7 @@ class ClassColumnFactory:
         )
 
     @staticmethod
-    def set_content_columns(class_definition: ClassDefinition) -> list[Column]:
+    def create_content_columns(class_definition: ClassDefinition) -> list[Column]:
         """Extracts columns from the content schema of a class definition. Returns a list of
         columns representing the properties defined in the class's content schema."""
 
@@ -206,7 +206,7 @@ class ClassColumnFactory:
         ]
 
     @staticmethod
-    def set_relations_columns(
+    def create_relations_columns(
         class_definition: ClassDefinition, model: SchemaPack
     ) -> list[Column]:
         """Extracts columns from the relations of a class definition."""
@@ -251,7 +251,7 @@ class FormatUtils:
         for cell in first_row:
             cell.font = Font(bold=True)
 
-    def _align_and_border_cells(self, fill_header: PatternFill | None) -> None:
+    def _apply_cell_alignment_and_borders(self, fill_header: PatternFill | None) -> None:
         """Aligns and borders all cells in the worksheet."""
         for row in self.worksheet.iter_rows():
             for cell in row:
@@ -265,7 +265,7 @@ class FormatUtils:
         if header_color:
             self.worksheet.sheet_properties.tabColor = header_color
 
-    def _append_with_value_cells(
+    def _fill_with_value_cells(
         self, fill_content: PatternFill | None, column_number: int
     ) -> None:
         """Appends 1000 rows of value cells to the worksheet."""
@@ -292,13 +292,13 @@ def generate_worksheet_metadata(
     columns: list[Column] = []
 
     # ID column
-    columns.append(ClassColumnFactory.set_id_column(class_definition))
+    columns.append(ClassColumnFactory.create_id_column(class_definition))
 
     # Relations
-    columns.extend(ClassColumnFactory.set_relations_columns(class_definition, model))
+    columns.extend(ClassColumnFactory.create_relations_columns(class_definition, model))
 
     # Content
-    columns.extend(ClassColumnFactory.set_content_columns(class_definition))
+    columns.extend(ClassColumnFactory.create_content_columns(class_definition))
 
     style = config.styles.get(class_name, WorksheetStyle())
     return WorksheetMetadata(
@@ -316,16 +316,18 @@ def annotate_worksheet(
     """
     Annotates a worksheet object from openpyxl with metadata from WorksheetMetadata.
     """
-    row_specs = [
-        lambda col: col.name,
-        lambda col: col.description,
-        lambda col: col.type,
-        lambda col: "multiple values" if col.multivalued else "single value",
-        lambda col: col.restriction,
-        lambda col: "required" if col.required else "optional",
-    ]
-    for spec in row_specs:
-        worksheet.append([spec(col) for col in worksheet_metadata.columns])
+    def get_column_spec(col):
+        return [
+            col.name,
+            col.description,
+            col.type,
+            "multiple values" if col.multivalued else "single value",
+            col.restriction,
+            "required" if col.required else "optional",
+        ]
+
+    for col in worksheet_metadata.columns:
+        worksheet.append(get_column_spec(col))
 
     return worksheet
 
@@ -342,9 +344,9 @@ def format_worksheet(worksheet_metadata: WorksheetMetadata, worksheet: Worksheet
     format_worksheet = FormatUtils(worksheet)
 
     format_worksheet._make_header_bold()
-    format_worksheet._align_and_border_cells(fill_header)
+    format_worksheet._apply_cell_alignment_and_borders(fill_header)
     format_worksheet._color_header(header_color)
-    format_worksheet._append_with_value_cells(
+    format_worksheet._fill_with_value_cells(
         fill_content, len(worksheet_metadata.columns)
     )
     format_worksheet._set_column_widths()
