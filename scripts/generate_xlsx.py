@@ -160,13 +160,24 @@ class WorksheetMetadata:
 
 def _get_element_type_from_schema(schema: dict) -> str:
     """Returns the data type defined in a JSON schema.
+
     If the type is "array", returns the type of its items.
-    If the type is a tuple (multiple types), returns a comma-separated string.
+
+    As ghga-metadata-schema does not allow mixed types in a single property,
+    the tuples only indicate that a property can be null (e.g. ("string", "null")).
+    If the type is a tuple, removes "null" and returns the remaining type.
+
     Otherwise, returns the type as a string.
     """
     element_type = schema.get("type", "object")
     if isinstance(element_type, tuple):
-        element_type = ", ".join(str(t) for t in element_type)
+        element_type = tuple(t for t in element_type if t != "null")
+        if len(element_type) == 1:
+            element_type = element_type[0]
+        else:
+            raise GHGASchemaError(
+                f"Mixed types are not allowed in ghga-metadata-schema. Found: {element_type}"
+            )
     if "array" in element_type:
         return schema.get("items", {}).get("type", "object")
     return element_type
