@@ -1,14 +1,14 @@
 {
-    "description": "Permitted values for data use permission.",
-    "enum": [
-        "GENERAL_RESEARCH_USE",
-        "HEALTH_OR_MEDICAL_OR_BIOMEDICAL_RESEARCH",
-        "DISEASE_SPECIFIC_RESEARCH",
-        "NO_RESTRICTION",
-        "POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_ONLY"
-    ],
-    "title": "DataUsePermissionEnum",
-    "type": "string",
-    "$id": "src/content_schemas/enums/DataUsePermissionEnum",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+  "$id": "src/content_schemas/enums/DataUsePermissionEnum",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "Permitted values for data use permission.",
+  "enum": [
+    "GENERAL_RESEARCH_USE",
+    "HEALTH_OR_MEDICAL_OR_BIOMEDICAL_RESEARCH",
+    "DISEASE_SPECIFIC_RESEARCH",
+    "NO_RESTRICTION",
+    "POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_ONLY"
+  ],
+  "title": "DataUsePermissionEnum",
+  "type": "string"
 }

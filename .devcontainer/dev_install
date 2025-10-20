@@ -3,7 +3,11 @@
 
 cd /workspace
 
-pip install --upgrade pip
+# upgrade pip
+python -m pip install --upgrade pip
+
+# install pre-commit hooks to git
+pre-commit install
 
 # install in edit mode with testing dependencies
 pip install \

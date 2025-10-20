@@ -1,22 +1,22 @@
 {
-    "description": "The type of the library.",
-    "enum": [
-        "WGS",
-        "WXS",
-        "WCS",
-        "TOTAL_RNA",
-        "M_RNA",
-        "MI_RNA",
-        "NC_RNA",
-        "ATAC",
-        "METHYLATION",
-        "CHROMOSOME_CONFORMATION_CAPTURE",
-        "CHIP_SEQ",
-        "OTHER",
-        "UNSPECIFIED"
-    ],
-    "title": "LibraryPreparationLibraryTypeEnum",
-    "type": "string",
-    "$id": "src/content_schemas/enums/LibraryPreparationLibraryTypeEnum",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+  "$id": "src/content_schemas/enums/LibraryPreparationLibraryTypeEnum",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "The type of the library.",
+  "enum": [
+    "WGS",
+    "WXS",
+    "WCS",
+    "TOTAL_RNA",
+    "M_RNA",
+    "MI_RNA",
+    "NC_RNA",
+    "ATAC",
+    "METHYLATION",
+    "CHROMOSOME_CONFORMATION_CAPTURE",
+    "CHIP_SEQ",
+    "OTHER",
+    "UNSPECIFIED"
+  ],
+  "title": "LibraryPreparationLibraryTypeEnum",
+  "type": "string"
 }

@@ -1,125 +1,125 @@
 {
-    "additionalProperties": false,
-    "description": "A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.",
-    "properties": {
-        "attributes": {
-            "description": "Key/value pairs corresponding to an entity.",
-            "items": {
-                "$ref": "src/content_schemas/Attribute"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "biological_replicate": {
-            "description": "An integer to indicate the number of a biological replicate.",
-            "type": [
-                "integer",
-                "null"
-            ]
-        },
-        "biospecimen_age_at_sampling": {
-            "$ref": "src/content_schemas/enums/AgeRangeEnum",
-            "description": "The age of the Individual at the time of isolating this biospecimen."
-        },
-        "biospecimen_description": {
-            "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "biospecimen_isolation": {
-            "$ref": "src/content_schemas/enums/IsolationEnum",
-            "description": "Method or device employed for collecting/isolating this Biospecimen."
-        },
-        "biospecimen_name": {
-            "description": "A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "biospecimen_storage": {
-            "$ref": "src/content_schemas/enums/StorageEnum",
-            "description": "Methods by which this Biospecimen is stored."
-        },
-        "biospecimen_tissue_id": {
-            "description": "The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "biospecimen_tissue_term": {
-            "description": "The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "biospecimen_type": {
-            "description": "The type of Biospecimen.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "biospecimen_vital_status_at_sampling": {
-            "$ref": "src/content_schemas/enums/VitalStatusEnum",
-            "description": "Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive)."
-        },
-        "case_control_status": {
-            "$ref": "src/content_schemas/enums/CaseControlStatusEnum",
-            "description": "Whether a Condition corresponds to a treatment or a control."
-        },
-        "description": {
-            "description": "A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.",
-            "type": "string"
-        },
-        "disease_or_healthy": {
-            "$ref": "src/content_schemas/enums/DiseaseOrHealthyEnum",
-            "description": "Whether a Condition corresponds to a disease or a healthy state."
-        },
-        "ega_accession": {
-            "description": "The EGA accession ID of an entity.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "name": {
-            "description": "A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.",
-            "type": "string"
-        },
-        "storage": {
-            "$ref": "src/content_schemas/enums/StorageEnum",
-            "description": "Methods by which a Sample is stored."
-        },
-        "type": {
-            "$ref": "src/content_schemas/enums/SampleTypeEnum",
-            "description": "The type of the Sample."
-        },
-        "xref": {
-            "description": "One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).",
-            "items": {
-                "type": "string"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        }
+  "$id": "src/content_schemas/Sample",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": false,
+  "description": "A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.  It is prepared from a Biospecimen.",
+  "properties": {
+    "attributes": {
+      "description": "Key/value pairs corresponding to an entity.",
+      "items": {
+        "$ref": "src/content_schemas/Attribute"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
     },
-    "required": [
-        "name",
-        "description",
-        "case_control_status",
-        "biospecimen_age_at_sampling"
-    ],
-    "title": "Sample",
-    "type": "object",
-    "$id": "src/content_schemas/Sample",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+    "biological_replicate": {
+      "description": "An integer to indicate the number of a biological replicate.",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "biospecimen_age_at_sampling": {
+      "$ref": "src/content_schemas/enums/AgeRangeEnum",
+      "description": "The age of the Individual at the time of isolating this biospecimen."
+    },
+    "biospecimen_description": {
+      "description": "A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "biospecimen_isolation": {
+      "$ref": "src/content_schemas/enums/IsolationEnum",
+      "description": "Method or device employed for collecting/isolating this Biospecimen."
+    },
+    "biospecimen_name": {
+      "description": "A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "biospecimen_storage": {
+      "$ref": "src/content_schemas/enums/StorageEnum",
+      "description": "Methods by which this Biospecimen is stored."
+    },
+    "biospecimen_tissue_id": {
+      "description": "The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "biospecimen_tissue_term": {
+      "description": "The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "biospecimen_type": {
+      "description": "The type of Biospecimen.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "biospecimen_vital_status_at_sampling": {
+      "$ref": "src/content_schemas/enums/VitalStatusEnum",
+      "description": "Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive)."
+    },
+    "case_control_status": {
+      "$ref": "src/content_schemas/enums/CaseControlStatusEnum",
+      "description": "Whether a Condition corresponds to a treatment or a control."
+    },
+    "description": {
+      "description": "A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.",
+      "type": "string"
+    },
+    "disease_or_healthy": {
+      "$ref": "src/content_schemas/enums/DiseaseOrHealthyEnum",
+      "description": "Whether a Condition corresponds to a disease or a healthy state."
+    },
+    "ega_accession": {
+      "description": "The EGA accession ID of an entity.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.",
+      "type": "string"
+    },
+    "storage": {
+      "$ref": "src/content_schemas/enums/StorageEnum",
+      "description": "Methods by which a Sample is stored."
+    },
+    "type": {
+      "$ref": "src/content_schemas/enums/SampleTypeEnum",
+      "description": "The type of the Sample."
+    },
+    "xref": {
+      "description": "One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "case_control_status",
+    "biospecimen_age_at_sampling"
+  ],
+  "title": "Sample",
+  "type": "object"
 }

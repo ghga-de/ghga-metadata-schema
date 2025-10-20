@@ -1,46 +1,46 @@
 {
-    "additionalProperties": false,
-    "description": "A Research Data File is a File that contains raw data originating from an Experiment.",
-    "properties": {
-        "ega_accession": {
-            "description": "The EGA accession ID of an entity.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "format": {
-            "$ref": "src/content_schemas/enums/ResearchDataFileFormatEnum",
-            "description": "The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)."
-        },
-        "included_in_submission": {
-            "description": "Whether a File is included in the Submission or not.",
-            "type": "boolean"
-        },
-        "name": {
-            "description": "The given filename.",
-            "type": "string"
-        },
-        "sequencing_lane_id": {
-            "description": "The identifier of a sequencing lane.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "technical_replicate": {
-            "description": "An integer to indicate the technical replicate of this File.",
-            "type": "integer"
-        }
+  "$id": "src/content_schemas/ResearchDataFile",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": false,
+  "description": "A Research Data File is a File that contains raw data originating from an Experiment.",
+  "properties": {
+    "ega_accession": {
+      "description": "The EGA accession ID of an entity.",
+      "type": [
+        "string",
+        "null"
+      ]
     },
-    "required": [
-        "format",
-        "technical_replicate",
-        "name",
-        "included_in_submission"
-    ],
-    "title": "ResearchDataFile",
-    "type": "object",
-    "$id": "src/content_schemas/ResearchDataFile",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+    "format": {
+      "$ref": "src/content_schemas/enums/ResearchDataFileFormatEnum",
+      "description": "The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA)."
+    },
+    "included_in_submission": {
+      "description": "Whether a File is included in the Submission or not.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "The given filename.",
+      "type": "string"
+    },
+    "sequencing_lane_id": {
+      "description": "The identifier of a sequencing lane.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "technical_replicate": {
+      "description": "An integer to indicate the technical replicate of this File.",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "format",
+    "technical_replicate",
+    "name",
+    "included_in_submission"
+  ],
+  "title": "ResearchDataFile",
+  "type": "object"
 }

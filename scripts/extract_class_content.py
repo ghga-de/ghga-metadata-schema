@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+# Copyright 2021 - 2025 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """Script to convert linkML schema to JSON schema and extract the class contents into
 individual files"""
 
@@ -122,8 +137,7 @@ def clean_schema_relations(schema_defs: dict, config: list[Relation]):
     """Delete class relations from the classes of schema definition."""
     for element in config:
         if schema_defs.get(element.name):
-            delete_class_relations(
-                schema_defs[element.name], element.relations)
+            delete_class_relations(schema_defs[element.name], element.relations)
     return schema_defs
 
 
@@ -156,8 +170,7 @@ def main():
     schema_bundle = import_specification(add_id_to_class_defs(schema_in_json))
     modified_refs = replace_schema_refs(schema_bundle["$defs"])
     deleted_identifier = clean_content_identifier(modified_refs)
-    deleted_relations = clean_schema_relations(
-        deleted_identifier, load_config())
+    deleted_relations = clean_schema_relations(deleted_identifier, load_config())
     export_class_content(deleted_relations)
 
 

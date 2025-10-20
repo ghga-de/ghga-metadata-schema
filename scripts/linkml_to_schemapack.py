@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+# Copyright 2021 - 2025 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """Script to convert linkML schema to schemapack definition"""
 
 import json
@@ -54,29 +69,37 @@ def construct_multiple(relation_name: str, linkml_overall_schema: dict):
         .get("multivalued", False),
     )
 
-def _get_relation_description(slot_name: str, linkml_class_schema:dict, linkml_overall_schema: dict) -> str:
+
+def _get_relation_description(
+    slot_name: str, linkml_class_schema: dict, linkml_overall_schema: dict
+) -> str:
     """Extracts the description of a relation slot."""
     try:
         return linkml_overall_schema["slots"][slot_name].get("description", "")
     except KeyError:
         original_target = linkml_class_schema["is_a"]
-        return linkml_overall_schema["classes"][original_target]["slot_usage"][slot_name].get("description", "")
+        return linkml_overall_schema["classes"][original_target]["slot_usage"][
+            slot_name
+        ].get("description", "")
 
 
 def construct_relation(
     class_relations: dict, linkml_class_schema: dict, linkml_overall_schema: dict
 ) -> FrozenDict[str, ClassRelation]:
     """Creates objects of Relations from the relation list of a class"""
-    return FrozenDict({
-        key: ClassRelation(
-            description=_get_relation_description(key, linkml_class_schema, linkml_overall_schema),
-            targetClass=value.get("targetClass"),
-            mandatory=construct_mandatory(key, linkml_class_schema),
-            multiple=construct_multiple(key, linkml_overall_schema),
-        )
-        for key, value in class_relations.items()
-    })
-
+    return FrozenDict(
+        {
+            key: ClassRelation(
+                description=_get_relation_description(
+                    key, linkml_class_schema, linkml_overall_schema
+                ),
+                targetClass=value.get("targetClass"),
+                mandatory=construct_mandatory(key, linkml_class_schema),
+                multiple=construct_multiple(key, linkml_overall_schema),
+            )
+            for key, value in class_relations.items()
+        }
+    )
 
 
 def construct_schemapack_class(
@@ -88,7 +111,10 @@ def construct_schemapack_class(
     """Creates a ClassDefinition object that describes a schemapack class definition"""
     return ClassDefinition(
         description=linkml_class_schema["description"],
-        id=IDSpec(propertyName="alias", description=linkml_overall_schema["slots"]["alias"].get("description", "")),
+        id=IDSpec(
+            propertyName="alias",
+            description=linkml_overall_schema["slots"]["alias"].get("description", ""),
+        ),
         content=Path(f"{CLASS_CONTENT_FOLDER}/{class_name}.json"),  # type: ignore
         relations=construct_relation(
             class_relations, linkml_class_schema, linkml_overall_schema
@@ -107,16 +133,18 @@ def _class_definitions(
     excluded_config: list,
 ) -> FrozenDict:
     """Maps a ClassDefinition to its class name from linkml schema"""
-    return FrozenDict({
-        key: construct_schemapack_class(
-            key,
-            get_class_relations(key, relations_config),
-            value,
-            linkml_overall_schema,
-        )
-        for key, value in linkml_overall_schema["classes"].items()
-        if key not in excluded_config
-    })
+    return FrozenDict(
+        {
+            key: construct_schemapack_class(
+                key,
+                get_class_relations(key, relations_config),
+                value,
+                linkml_overall_schema,
+            )
+            for key, value in linkml_overall_schema["classes"].items()
+            if key not in excluded_config
+        }
+    )
 
 
 def construct_schemapack(

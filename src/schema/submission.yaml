@@ -253,7 +253,7 @@ classes:
       - IdentifiedByAliasMixin
       - AttributeMixin
     description: >-
-      A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use. 
+      A Sample is a limited quantity of something to be used for testing, analysis, inspection, investigation, demonstration, or trial use.
       It is prepared from a Biospecimen.
     exact_mappings:
       - SIO:001050
@@ -583,7 +583,7 @@ classes:
     mixins:
       - IdentifiedByAliasMixin
     description: >-
-      A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met, 
+      A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met,
       and request for data use does not raise ethical and/or legal concerns.
     slots:
       - email
@@ -1398,7 +1398,7 @@ enums:
       CLINICAL_CARE_USE:
         meaning: DUO:0000043
         description: >-
-          This data use modifier indicates that use is allowed for clinical use and care. 
+          This data use modifier indicates that use is allowed for clinical use and care.
           Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making.
       RETURN_TO_DATABASE_OR_RESOURCE:
         meaning: DUO:0000029
@@ -1821,7 +1821,7 @@ enums:
           BAM indexing format.
       BAM:
         description: >-
-          BAM format, the binary, BGZF-formatted compressed version of SAM format for alignment of nucleotide sequences (e.g., sequencing reads) to (a) reference sequence(s). 
+          BAM format, the binary, BGZF-formatted compressed version of SAM format for alignment of nucleotide sequences (e.g., sequencing reads) to (a) reference sequence(s).
           May contain base-call and alignment qualities and other data.
       BCF:
         description: >-
@@ -1838,7 +1838,7 @@ enums:
           GFF feature format (of indeterminate version).
       HDF5:
         description: >-
-          HDF5 is a data model, library, and file format for storing and managing data, based on Hierarchical Data Format (HDF). 
+          HDF5 is a data model, library, and file format for storing and managing data, based on Hierarchical Data Format (HDF).
           An HDF5 file appears to the user as a directed graph. The nodes of this graph are the higher-level HDF5 objects that are exposed by the HDF5 APIs: Groups, Datasets, Named datatypes. Currently supported by the Python MDTraj package.
           HDF5 is the new version, according to the HDF group, a completely different technology (https://support.hdfgroup.org/products/hdf4/ compared to HDF.
       SAM:

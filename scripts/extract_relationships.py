@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+# Copyright 2021 - 2025 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """Script to extract the relations between classes from the metadata model described in LinkML.
 The output is the 'relations_config.yaml' file, which contains the classes and their relations to other classes.
 """
@@ -64,11 +79,13 @@ def slots_with_class_range(schema: Schema) -> dict:
     In AnalysisMethod class, there is software_versions and parameters slot with
     Attribute range. However, these do not denote a relation from AnalysisMethod class
     to Attribute class. These are content value properties who follows the
-    AttributeMixin structure. """
+    AttributeMixin structure."""
     return {
         slot: value["range"]
         for slot, value in schema.slots.items()
-        if value.get("range") and value.get("range") in schema.class_names and slot not in ["software_versions", "parameters"]
+        if value.get("range")
+        and value.get("range") in schema.class_names
+        and slot not in ["software_versions", "parameters"]
     }
 
 
@@ -84,7 +101,7 @@ def class_relations(schema_class: SchemaClass, class_ranged_slots: dict) -> dict
 def resolve_inherited_relations(schema: Schema) -> Schema:
     """Resolves the relations from the class inheritances. If classA is_a classB,
     classA inherits the relations of classB, e.g. ResearchDataFile is_a File, File has
-    relation to Dataset. Thus, ResearchDataFile has a relation to Dataset. 
+    relation to Dataset. Thus, ResearchDataFile has a relation to Dataset.
     This function is required because inherited relations are not explicitly stated
     under the class that inherits them."""
     for schema_class in schema.classes.values():
@@ -117,8 +134,7 @@ def main():
     schema = load_schema(Path(LINKML_SCHEMA_PATH))
     class_ranged_slots = slots_with_class_range(schema)
     for _, schema_class in schema.classes.items():
-        schema_class.relations = class_relations(
-            schema_class, class_ranged_slots)
+        schema_class.relations = class_relations(schema_class, class_ranged_slots)
     resolved_schema = resolve_inherited_relations(schema)
     save_relations(resolved_schema, "relations_config.yaml")
 

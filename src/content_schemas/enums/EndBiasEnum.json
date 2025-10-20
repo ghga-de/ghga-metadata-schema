@@ -1,12 +1,12 @@
 {
-    "description": "Permitted values for end bias.",
-    "enum": [
-        "3_PRIME_END",
-        "5_PRIME_END",
-        "FULL_LENGTH"
-    ],
-    "title": "EndBiasEnum",
-    "type": "string",
-    "$id": "src/content_schemas/enums/EndBiasEnum",
-    "$schema": "https://json-schema.org/draft/2019-09/schema"
+  "$id": "src/content_schemas/enums/EndBiasEnum",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "Permitted values for end bias.",
+  "enum": [
+    "3_PRIME_END",
+    "5_PRIME_END",
+    "FULL_LENGTH"
+  ],
+  "title": "EndBiasEnum",
+  "type": "string"
 }

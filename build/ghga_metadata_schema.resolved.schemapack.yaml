@@ -8,13 +8,15 @@ classes:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Analysis
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Analysis is a data transformation that transforms input 
+      description: An Analysis is a data transformation that transforms input
         data to output data.
       properties:
         description:
-          description: A description summarizing how this Analysis was carried 
-            out (e.g., description of computational tools, pipelines, 
+          description: A description summarizing how this Analysis was carried
+            out (e.g., description of computational tools, pipelines,
             workflows).
           type:
             - string
@@ -36,8 +38,6 @@ classes:
         - title
       title: Analysis
       type: object
-      $id: src/content_schemas/Analysis
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       analysis_method:
         description: The Analysis Process associated with an entity.
@@ -58,20 +58,24 @@ classes:
           origin: true
           target: true
   AnalysisMethod:
-    description: An Analysis Method captures the workflow steps that were 
+    description: An Analysis Method captures the workflow steps that were
       performed to analyze data obtained from an Experiment.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/AnalysisMethod
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Analysis Method captures the workflow steps that were 
+      description: An Analysis Method captures the workflow steps that were
         performed to analyze data obtained from an Experiment.
       properties:
         attributes:
-          description: One or more attributes that further characterize this 
+          description: One or more attributes that further characterize this
             Analysis Method.
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -79,7 +83,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -89,7 +93,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -99,8 +103,6 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
@@ -112,10 +114,12 @@ classes:
           type: string
         parameters:
           description: Key/value pairs where key corresponds to a parameter name
-            and value corresponds to a parameter value (e.g., 'aligner' = 
-            'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 
+            and value corresponds to a parameter value (e.g., 'aligner' =
+            'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' =
             50000000).
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -123,7 +127,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -133,7 +137,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -143,16 +147,16 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
         software_versions:
-          description: key/value pairs where key corresponds to a software name 
-            and value corresponds to a version descriptor (e.g., `salmon` = 
+          description: key/value pairs where key corresponds to a software name
+            and value corresponds to a version descriptor (e.g., `salmon` =
             '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -160,7 +164,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -170,7 +174,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -180,8 +184,6 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
@@ -189,7 +191,7 @@ classes:
           description: 'The type of an entity. Note: Not to be confused with rdf:type.'
           type: string
         workflow_doi:
-          description: A digital object identifier for the workflow. Can be a 
+          description: A digital object identifier for the workflow. Can be a
             publication or the workflow commit that was used for the Analysis.
           type: string
         workflow_name:
@@ -217,19 +219,19 @@ classes:
         - workflow_doi
       title: AnalysisMethod
       type: object
-      $id: src/content_schemas/AnalysisMethod
-      $schema: https://json-schema.org/draft/2019-09/schema
   AnalysisMethodSupportingFile:
-    description: An Analysis Method Supporting File is a File that contains 
-      additional information relevant for the Analysis Method, such as 
+    description: An Analysis Method Supporting File is a File that contains
+      additional information relevant for the Analysis Method, such as
       (unstructured) protocols or task descriptions.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/AnalysisMethodSupportingFile
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Analysis Method Supporting File is a File that contains 
-        additional information relevant for the Analysis Method, such as 
+      description: An Analysis Method Supporting File is a File that contains
+        additional information relevant for the Analysis Method, such as
         (unstructured) protocols or task descriptions.
       properties:
         ega_accession:
@@ -239,6 +241,8 @@ classes:
             - 'null'
         format:
           description: Enum to capture Supporting File types.
+          $id: src/content_schemas/enums/SupportingFileFormatEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - CSV
             - JSON
@@ -249,8 +253,6 @@ classes:
             - OTHER
           title: SupportingFileFormatEnum
           type: string
-          $id: src/content_schemas/enums/SupportingFileFormatEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         included_in_submission:
           description: Whether a File is included in the Submission or not.
           type: boolean
@@ -263,8 +265,6 @@ classes:
         - included_in_submission
       title: AnalysisMethodSupportingFile
       type: object
-      $id: src/content_schemas/AnalysisMethodSupportingFile
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       analysis_method:
         description: The Analysis Process associated with an entity.
@@ -286,16 +286,18 @@ classes:
           target: false
   DataAccessCommittee:
     description: A group of members that are delegated to grant access to one or
-      more datasets after ensuring the criteria for data sharing has been met,  
+      more datasets after ensuring the criteria for data sharing has been met,
       and request for data use does not raise ethical and/or legal concerns.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/DataAccessCommittee
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A group of members that are delegated to grant access to one 
-        or more datasets after ensuring the criteria for data sharing has been 
-        met,  and request for data use does not raise ethical and/or legal 
+      description: A group of members that are delegated to grant access to one
+        or more datasets after ensuring the criteria for data sharing has been
+        met,  and request for data use does not raise ethical and/or legal
         concerns.
       properties:
         ega_accession:
@@ -304,8 +306,8 @@ classes:
             - string
             - 'null'
         email:
-          description: The email of the Data Access Committee (e.g., 
-            DAC[at]email.com). This property must not include any personally 
+          description: The email of the Data Access Committee (e.g.,
+            DAC[at]email.com). This property must not include any personally
             identifiable data.
           type: string
         institute:
@@ -316,23 +318,23 @@ classes:
         - institute
       title: DataAccessCommittee
       type: object
-      $id: src/content_schemas/DataAccessCommittee
-      $schema: https://json-schema.org/draft/2019-09/schema
   DataAccessPolicy:
     description: A Data Access Policy specifies under which circumstances, legal
-      or otherwise, a user can have access to one or more Datasets belonging to 
+      or otherwise, a user can have access to one or more Datasets belonging to
       one or more Studies.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/DataAccessPolicy
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Data Access Policy specifies under which circumstances, 
-        legal or otherwise, a user can have access to one or more Datasets 
+      description: A Data Access Policy specifies under which circumstances,
+        legal or otherwise, a user can have access to one or more Datasets
         belonging to one or more Studies.
       properties:
         data_use_modifier_ids:
-          description: The DUO IDs corresponding to the Data Use Modifier terms 
+          description: The DUO IDs corresponding to the Data Use Modifier terms
             (e.g., DUO:0000043).
           items:
             type: string
@@ -345,6 +347,8 @@ classes:
             of 'DUO:0000017: data use modifier' (e.g., clinical care use). Please
             use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies."
           items:
+            $id: src/content_schemas/enums/DataUseModifierEnum
+            $schema: https://json-schema.org/draft/2019-09/schema
             description: Permitted values for data use modifier.
             enum:
               - CLINICAL_CARE_USE
@@ -367,17 +371,17 @@ classes:
               - POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_PROHIBITED
             title: DataUseModifierEnum
             type: string
-            $id: src/content_schemas/enums/DataUseModifierEnum
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
         data_use_permission_id:
-          description: The DUO ID corresponding to the Data Use Permission term 
+          description: The DUO ID corresponding to the Data Use Permission term
             (e.g., DUO:0000004).
           type: string
         data_use_permission_term:
           description: Permitted values for data use permission.
+          $id: src/content_schemas/enums/DataUsePermissionEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - GENERAL_RESEARCH_USE
             - HEALTH_OR_MEDICAL_OR_BIOMEDICAL_RESEARCH
@@ -386,8 +390,6 @@ classes:
             - POPULATION_ORIGINS_OR_ANCESTRY_RESEARCH_ONLY
           title: DataUsePermissionEnum
           type: string
-          $id: src/content_schemas/enums/DataUsePermissionEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         description:
           description: A short description for this Data Access Policy.
           type: string
@@ -403,8 +405,8 @@ classes:
           description: The complete text for the Data Access Policy.
           type: string
         policy_url:
-          description: An alternative to the Data Access Policy text is to 
-            provide the URL for the policy. This is useful if the terms of the 
+          description: An alternative to the Data Access Policy text is to
+            provide the URL for the policy. This is useful if the terms of the
             policy are available online at a resolvable URL.
           type:
             - string
@@ -417,8 +419,6 @@ classes:
         - data_use_permission_id
       title: DataAccessPolicy
       type: object
-      $id: src/content_schemas/DataAccessPolicy
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       data_access_committee:
         description: Data Access Committee associated with an entity.
@@ -430,14 +430,16 @@ classes:
           origin: true
           target: false
   Dataset:
-    description: A Dataset is a collection of Files that is prepared for 
+    description: A Dataset is a collection of Files that is prepared for
       distribution and is tied to a Data Access Policy.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Dataset
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Dataset is a collection of Files that is prepared for 
+      description: A Dataset is a collection of Files that is prepared for
         distribution and is tied to a Data Access Policy.
       properties:
         description:
@@ -462,8 +464,6 @@ classes:
         - types
       title: Dataset
       type: object
-      $id: src/content_schemas/Dataset
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       data_access_policy:
         description: Data Access Policy associated with an entity.
@@ -484,23 +484,27 @@ classes:
           origin: true
           target: false
   Experiment:
-    description: An Experiment is an investigation that consists of a 
+    description: An Experiment is an investigation that consists of a
       coordinated set of actions and observations designed to generate data with
-      the goal of verifying, falsifying, or establishing the validity of a 
+      the goal of verifying, falsifying, or establishing the validity of a
       hypothesis.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Experiment
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Experiment is an investigation that consists of a 
-        coordinated set of actions and observations designed to generate data 
-        with the goal of verifying, falsifying, or establishing the validity of 
+      description: An Experiment is an investigation that consists of a
+        coordinated set of actions and observations designed to generate data
+        with the goal of verifying, falsifying, or establishing the validity of
         a hypothesis.
       properties:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -508,7 +512,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -518,7 +522,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -528,8 +532,6 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
@@ -555,8 +557,6 @@ classes:
         - title
       title: Experiment
       type: object
-      $id: src/content_schemas/Experiment
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       experiment_method:
         description: The Experiment Method associated with an entity.
@@ -577,20 +577,24 @@ classes:
           origin: true
           target: false
   ExperimentMethod:
-    description: The Experiment Method captures technical metadata describing 
+    description: The Experiment Method captures technical metadata describing
       the parameters used to generate output from the Sample.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/ExperimentMethod
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: The Experiment Method captures technical metadata describing 
+      description: The Experiment Method captures technical metadata describing
         the parameters used to generate output from the Sample.
       properties:
         attributes:
-          description: One or more attributes that further characterize this 
+          description: One or more attributes that further characterize this
             Experiment Method.
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -598,7 +602,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -608,7 +612,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -618,8 +622,6 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
@@ -633,14 +635,14 @@ classes:
             - 'null'
         end_bias:
           description: Permitted values for end bias.
+          $id: src/content_schemas/enums/EndBiasEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - 3_PRIME_END
             - 5_PRIME_END
             - FULL_LENGTH
           title: EndBiasEnum
           type: string
-          $id: src/content_schemas/enums/EndBiasEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         flow_cell_id:
           description: Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
           type:
@@ -648,6 +650,8 @@ classes:
             - 'null'
         flow_cell_type:
           description: Permitted values for flow cell type.
+          $id: src/content_schemas/enums/FlowCellTypeEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - ELEMENT_BIOSCIENCES_AVITI_LOW_OUTPUT
             - ELEMENT_BIOSCIENCES_AVITI_MID_OUTPUT
@@ -671,10 +675,10 @@ classes:
             - OTHER
           title: FlowCellTypeEnum
           type: string
-          $id: src/content_schemas/enums/FlowCellTypeEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         instrument_model:
           description: Permitted values for the instrument model.
+          $id: src/content_schemas/enums/InstrumentModelEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - 454_GS
             - 454_GS_20
@@ -745,10 +749,8 @@ classes:
             - OTHER
           title: InstrumentModelEnum
           type: string
-          $id: src/content_schemas/enums/InstrumentModelEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         library_preparation:
-          description: The general method for preparation of the sequencing 
+          description: The general method for preparation of the sequencing
             library (e.g., KAPA PCR-free).
           type: string
         library_preparation_kit_manufacturer:
@@ -758,6 +760,8 @@ classes:
             - 'null'
         library_preparation_kit_retail_name:
           description: Permitted values for library preparation kit retail name.
+          $id: src/content_schemas/enums/LibraryPreparationKitRetailNameEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V2
             - 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V3
@@ -930,13 +934,14 @@ classes:
             - OTHER
           title: LibraryPreparationKitRetailNameEnum
           type: string
-          $id: src/content_schemas/enums/LibraryPreparationKitRetailNameEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         library_selection_methods:
-          description: One or more methods used to select for or against, 
-            enrich, or screen the material being sequenced (e.g., random, PCA, 
+          description: One or more methods used to select for or against,
+            enrich, or screen the material being sequenced (e.g., random, PCA,
             cDNA).
           items:
+            $id:
+              src/content_schemas/enums/LibraryPreparationLibrarySelectionEnum
+            $schema: https://json-schema.org/draft/2019-09/schema
             description: Permitted vocabulary for library selections.
             enum:
               - 5_METHYLCYTIDINE_ANTIBODY_METHOD
@@ -966,12 +971,11 @@ classes:
               - OTHER
             title: LibraryPreparationLibrarySelectionEnum
             type: string
-            $id: 
-              src/content_schemas/enums/LibraryPreparationLibrarySelectionEnum
-            $schema: https://json-schema.org/draft/2019-09/schema
           type: array
         library_type:
           description: The type of the library.
+          $id: src/content_schemas/enums/LibraryPreparationLibraryTypeEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - WGS
             - WXS
@@ -988,13 +992,13 @@ classes:
             - UNSPECIFIED
           title: LibraryPreparationLibraryTypeEnum
           type: string
-          $id: src/content_schemas/enums/LibraryPreparationLibraryTypeEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         name:
           description: A short name identifying this Experiment Method.
           type: string
         primer:
           description: Permitted values for primer.
+          $id: src/content_schemas/enums/PrimerEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - OLIGO_D_T
             - RANDOM
@@ -1002,30 +1006,28 @@ classes:
             - OTHER
           title: PrimerEnum
           type: string
-          $id: src/content_schemas/enums/PrimerEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         rnaseq_strandedness:
-          description: Permitted values for library preparation RNASeq 
+          description: Permitted values for library preparation RNASeq
             strandedness.
+          $id:
+            src/content_schemas/enums/LibraryPreparationRNASeqStrandednessEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - SENSE
             - ANTISENSE
             - UNSTRANDED
           title: LibraryPreparationRNASeqStrandednessEnum
           type: string
-          $id: 
-            src/content_schemas/enums/LibraryPreparationRNASeqStrandednessEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         sample_barcode_read:
           description: Permitted values for sample barcode read.
+          $id: src/content_schemas/enums/SampleBarcodeReadEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - INDEX1
             - INDEX1_AND_INDEX2
             - OTHER
           title: SampleBarcodeReadEnum
           type: string
-          $id: src/content_schemas/enums/SampleBarcodeReadEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         sequencing_center:
           description: Center where sample was sequenced.
           type:
@@ -1033,14 +1035,14 @@ classes:
             - 'null'
         sequencing_layout:
           description: Single-end vs paired-end sequencing.
+          $id: src/content_schemas/enums/SequencingProtocolSequencingLayoutEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - SE
             - PE
             - UNSPECIFIED
           title: SequencingProtocolSequencingLayoutEnum
           type: string
-          $id: src/content_schemas/enums/SequencingProtocolSequencingLayoutEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         sequencing_read_length:
           description: Length of sequencing reads (e.g., long or short or actual
             number of the read length).
@@ -1049,13 +1051,13 @@ classes:
             - 'null'
         target_coverage:
           description: Mean coverage for whole genome sequencing, or mean target
-            coverage for whole exome and targeted sequencing, (i.e. the number 
+            coverage for whole exome and targeted sequencing, (i.e. the number
             of times a particular locus was sequenced).
           type:
             - string
             - 'null'
         target_regions:
-          description: Subset of genes or specific regions of the genome, which 
+          description: Subset of genes or specific regions of the genome, which
             are most likely to be involved in the phenotype under study.
           items:
             type: string
@@ -1076,19 +1078,19 @@ classes:
         - sequencing_layout
       title: ExperimentMethod
       type: object
-      $id: src/content_schemas/ExperimentMethod
-      $schema: https://json-schema.org/draft/2019-09/schema
   ExperimentMethodSupportingFile:
-    description: An Experiment Method Supporting File is a File that contains 
-      additional information relevant for the Experiment Method, such as 
+    description: An Experiment Method Supporting File is a File that contains
+      additional information relevant for the Experiment Method, such as
       (unstructured) protocols.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/ExperimentMethodSupportingFile
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Experiment Method Supporting File is a File that contains 
-        additional information relevant for the Experiment Method, such as 
+      description: An Experiment Method Supporting File is a File that contains
+        additional information relevant for the Experiment Method, such as
         (unstructured) protocols.
       properties:
         ega_accession:
@@ -1098,6 +1100,8 @@ classes:
             - 'null'
         format:
           description: Enum to capture Supporting File types.
+          $id: src/content_schemas/enums/SupportingFileFormatEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - CSV
             - JSON
@@ -1108,8 +1112,6 @@ classes:
             - OTHER
           title: SupportingFileFormatEnum
           type: string
-          $id: src/content_schemas/enums/SupportingFileFormatEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         included_in_submission:
           description: Whether a File is included in the Submission or not.
           type: boolean
@@ -1122,8 +1124,6 @@ classes:
         - included_in_submission
       title: ExperimentMethodSupportingFile
       type: object
-      $id: src/content_schemas/ExperimentMethodSupportingFile
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       dataset:
         description: The Dataset associated with an entity.
@@ -1149,11 +1149,13 @@ classes:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Individual
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
       description: An Individual is a Person who is participating in a Study.
       properties:
         ancestry_ids:
-          description: The corresponding ID to the HANCESTRO vocabulary (e.g., 
+          description: The corresponding ID to the HANCESTRO vocabulary (e.g.,
             HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
           items:
             type: string
@@ -1170,8 +1172,8 @@ classes:
             - array
             - 'null'
         diagnosis_ids:
-          description: One or more diagnoses that the entity is associated with 
-            at the time of retrieval from the organism. The diagnosis is 
+          description: One or more diagnoses that the entity is associated with
+            at the time of retrieval from the organism. The diagnosis is
             captured using a code from ICD-10 (WHO version). Please restrict the
             ICD code to the chapter letter and two digits for the main diagnosis
             (e.g., E10, C01).
@@ -1189,7 +1191,7 @@ classes:
             - array
             - 'null'
         geographical_region_id:
-          description: The corresponding ID to the NCIT vocabulary (e.g., 
+          description: The corresponding ID to the NCIT vocabulary (e.g.,
             NCIT:C16312, NCIT:C16636, NCIT:C16761).
           type:
             - string
@@ -1201,7 +1203,7 @@ classes:
             - string
             - 'null'
         phenotypic_features_ids:
-          description: The corresponding ID to the HPO vocabulary (e.g., 
+          description: The corresponding ID to the HPO vocabulary (e.g.,
             HP:0002732, HP:0012735, HP:0002615).
           items:
             type: string
@@ -1209,10 +1211,10 @@ classes:
             - array
             - 'null'
         phenotypic_features_terms:
-          description: The phenotypic feature concepts that the entity is 
-            associated with at the time of retrieval from the organism. The 
-            Phenotypic Feature is captured using a concept from the Human 
-            Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, 
+          description: The phenotypic feature concepts that the entity is
+            associated with at the time of retrieval from the organism. The
+            Phenotypic Feature is captured using a concept from the Human
+            Phenotype Ontology (e.g., Lymph node hypoplasia, Cough,
             Hypotension).
           items:
             type: string
@@ -1220,8 +1222,10 @@ classes:
             - array
             - 'null'
         sex:
-          description: The sex of an Individual as as defined in a specific 
+          description: The sex of an Individual as as defined in a specific
             medical and clinical context.
+          $id: src/content_schemas/enums/IndividualSexEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - FEMALE
             - MALE
@@ -1229,25 +1233,23 @@ classes:
             - OTHER
           title: IndividualSexEnum
           type: string
-          $id: src/content_schemas/enums/IndividualSexEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
       required:
         - sex
       title: Individual
       type: object
-      $id: src/content_schemas/Individual
-      $schema: https://json-schema.org/draft/2019-09/schema
   IndividualSupportingFile:
-    description: An Individual Supporting File is a File that contains 
-      additional information relevant for the Individual, such as ped-files, 
+    description: An Individual Supporting File is a File that contains
+      additional information relevant for the Individual, such as ped-files,
       phenopackets or imaging data.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/IndividualSupportingFile
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: An Individual Supporting File is a File that contains 
-        additional information relevant for the Individual, such as ped-files, 
+      description: An Individual Supporting File is a File that contains
+        additional information relevant for the Individual, such as ped-files,
         phenopackets or imaging data.
       properties:
         ega_accession:
@@ -1257,6 +1259,8 @@ classes:
             - 'null'
         format:
           description: Enum to capture Supporting File types.
+          $id: src/content_schemas/enums/SupportingFileFormatEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - CSV
             - JSON
@@ -1267,8 +1271,6 @@ classes:
             - OTHER
           title: SupportingFileFormatEnum
           type: string
-          $id: src/content_schemas/enums/SupportingFileFormatEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         included_in_submission:
           description: Whether a File is included in the Submission or not.
           type: boolean
@@ -1281,8 +1283,6 @@ classes:
         - included_in_submission
       title: IndividualSupportingFile
       type: object
-      $id: src/content_schemas/IndividualSupportingFile
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       dataset:
         description: The Dataset associated with an entity.
@@ -1309,8 +1309,10 @@ classes:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/ProcessDataFile
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Process Data File is a File that contains data produced by 
+      description: A Process Data File is a File that contains data produced by
         an Analysis or workflow.
       properties:
         ega_accession:
@@ -1320,6 +1322,8 @@ classes:
             - 'null'
         format:
           description: Enum to capture Process Data File formats.
+          $id: src/content_schemas/enums/ProcessDataFileFormatEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - BAI
             - BAM
@@ -1335,8 +1339,6 @@ classes:
             - OTHER
           title: ProcessDataFileFormatEnum
           type: string
-          $id: src/content_schemas/enums/ProcessDataFileFormatEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         included_in_submission:
           description: Whether a File is included in the Submission or not.
           type: boolean
@@ -1349,8 +1351,6 @@ classes:
         - included_in_submission
       title: ProcessDataFile
       type: object
-      $id: src/content_schemas/ProcessDataFile
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       analysis:
         description: The Analysis associated with an entity.
@@ -1371,18 +1371,20 @@ classes:
           origin: true
           target: false
   Publication:
-    description: A Publication represents an article that is published. The 
+    description: A Publication represents an article that is published. The
       minimum expectation is that the publication has a valid DOI.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Publication
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Publication represents an article that is published. The 
+      description: A Publication represents an article that is published. The
         minimum expectation is that the publication has a valid DOI.
       properties:
         abstract:
-          description: The study abstract that describes the goals. Can also 
+          description: The study abstract that describes the goals. Can also
             hold abstract from a publication related to this Study.
           type:
             - string
@@ -1422,8 +1424,6 @@ classes:
       required: []
       title: Publication
       type: object
-      $id: src/content_schemas/Publication
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       study:
         description: The Study associated with an entity.
@@ -1435,14 +1435,16 @@ classes:
           origin: true
           target: false
   ResearchDataFile:
-    description: A Research Data File is a File that contains raw data 
+    description: A Research Data File is a File that contains raw data
       originating from an Experiment.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/ResearchDataFile
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Research Data File is a File that contains raw data 
+      description: A Research Data File is a File that contains raw data
         originating from an Experiment.
       properties:
         ega_accession:
@@ -1452,6 +1454,8 @@ classes:
             - 'null'
         format:
           description: Enum to capture Research Data File formats.
+          $id: src/content_schemas/enums/ResearchDataFileFormatEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - FASTA
             - FASTQ
@@ -1465,8 +1469,6 @@ classes:
             - OTHER
           title: ResearchDataFileFormatEnum
           type: string
-          $id: src/content_schemas/enums/ResearchDataFileFormatEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         included_in_submission:
           description: Whether a File is included in the Submission or not.
           type: boolean
@@ -1479,7 +1481,7 @@ classes:
             - string
             - 'null'
         technical_replicate:
-          description: An integer to indicate the technical replicate of this 
+          description: An integer to indicate the technical replicate of this
             File.
           type: integer
       required:
@@ -1489,8 +1491,6 @@ classes:
         - included_in_submission
       title: ResearchDataFile
       type: object
-      $id: src/content_schemas/ResearchDataFile
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       dataset:
         description: The Dataset associated with an entity.
@@ -1511,21 +1511,25 @@ classes:
           origin: true
           target: true
   Sample:
-    description: A Sample is a limited quantity of something to be used for 
-      testing, analysis, inspection, investigation, demonstration, or trial use.  
+    description: A Sample is a limited quantity of something to be used for
+      testing, analysis, inspection, investigation, demonstration, or trial use.
       It is prepared from a Biospecimen.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Sample
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Sample is a limited quantity of something to be used for 
-        testing, analysis, inspection, investigation, demonstration, or trial 
+      description: A Sample is a limited quantity of something to be used for
+        testing, analysis, inspection, investigation, demonstration, or trial
         use.  It is prepared from a Biospecimen.
       properties:
         attributes:
           description: Key/value pairs corresponding to an entity.
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -1533,7 +1537,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -1543,7 +1547,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -1553,20 +1557,20 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
         biological_replicate:
-          description: An integer to indicate the number of a biological 
+          description: An integer to indicate the number of a biological
             replicate.
           type:
             - integer
             - 'null'
         biospecimen_age_at_sampling:
-          description: Enum to capture the age range that an Indiviudal belongs 
+          description: Enum to capture the age range that an Indiviudal belongs
             to.
+          $id: src/content_schemas/enums/AgeRangeEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - 0_TO_5
             - 6_TO_10
@@ -1588,17 +1592,17 @@ classes:
             - UNKNOWN
           title: AgeRangeEnum
           type: string
-          $id: src/content_schemas/enums/AgeRangeEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         biospecimen_description:
-          description: A concise description about the Biospecimen source, the 
-            collection method, and the protocol which was followed to process 
+          description: A concise description about the Biospecimen source, the
+            collection method, and the protocol which was followed to process
             this Biospecimen.
           type:
             - string
             - 'null'
         biospecimen_isolation:
           description: Describes how biomaterial was isolated.
+          $id: src/content_schemas/enums/IsolationEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - BLOOD_DRAW
             - SURGICAL_REMOVAL
@@ -1608,17 +1612,17 @@ classes:
             - UNKNOWN
           title: IsolationEnum
           type: string
-          $id: src/content_schemas/enums/IsolationEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         biospecimen_name:
-          description: A descriptive name of this Biospecimen (e.g., 
-            GHGAB_caudate_nucleus_biospecimen). This property must not include 
+          description: A descriptive name of this Biospecimen (e.g.,
+            GHGAB_caudate_nucleus_biospecimen). This property must not include
             any personally identifiable data.
           type:
             - string
             - 'null'
         biospecimen_storage:
           description: Enum to capture how a Sample or Biospecimen was stored.
+          $id: src/content_schemas/enums/StorageEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - REFRIGERATOR
             - FREEZER
@@ -1630,18 +1634,16 @@ classes:
             - UNKNOWN
           title: StorageEnum
           type: string
-          $id: src/content_schemas/enums/StorageEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         biospecimen_tissue_id:
-          description: The corresponding ontology ID for the 
-            biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, 
+          description: The corresponding ontology ID for the
+            biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089,
             BTO:0000848).
           type:
             - string
             - 'null'
         biospecimen_tissue_term:
-          description: The tissue this Biospecimen originated from. Should be a 
-            term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, 
+          description: The tissue this Biospecimen originated from. Should be a
+            term from the BRENDA Tissue Ontology vocabulary (e.g., kidney,
             blood, melanoma cell).
           type:
             - string
@@ -1653,17 +1655,19 @@ classes:
             - 'null'
         biospecimen_vital_status_at_sampling:
           description: Enum to capture the vital status of an individual.
+          $id: src/content_schemas/enums/VitalStatusEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - ALIVE
             - DECEASED
             - UNKNOWN
           title: VitalStatusEnum
           type: string
-          $id: src/content_schemas/enums/VitalStatusEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         case_control_status:
           description: Enum to capture whether a condition corresponds to a case
             or a control condition.
+          $id: src/content_schemas/enums/CaseControlStatusEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - CASE
             - CONTROL
@@ -1671,36 +1675,36 @@ classes:
             - UNKNOWN
           title: CaseControlStatusEnum
           type: string
-          $id: src/content_schemas/enums/CaseControlStatusEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         description:
-          description: A concise description about the Sample source, the 
-            collection method, and the protocol which was followed to process 
+          description: A concise description about the Sample source, the
+            collection method, and the protocol which was followed to process
             this Sample.
           type: string
         disease_or_healthy:
-          description: Enum to capture whether a condition corresponds to a 
+          description: Enum to capture whether a condition corresponds to a
             disease or a healthy state.
+          $id: src/content_schemas/enums/DiseaseOrHealthyEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - DISEASE
             - HEALTHY
             - NOT_APPLICABLE
           title: DiseaseOrHealthyEnum
           type: string
-          $id: src/content_schemas/enums/DiseaseOrHealthyEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         ega_accession:
           description: The EGA accession ID of an entity.
           type:
             - string
             - 'null'
         name:
-          description: A descriptive name of this Sample (e.g., 
+          description: A descriptive name of this Sample (e.g.,
             GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not
             include any personally identifiable data.
           type: string
         storage:
           description: Enum to capture how a Sample or Biospecimen was stored.
+          $id: src/content_schemas/enums/StorageEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - REFRIGERATOR
             - FREEZER
@@ -1712,10 +1716,10 @@ classes:
             - UNKNOWN
           title: StorageEnum
           type: string
-          $id: src/content_schemas/enums/StorageEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         type:
           description: The type of a sample
+          $id: src/content_schemas/enums/SampleTypeEnum
+          $schema: https://json-schema.org/draft/2019-09/schema
           enum:
             - CF_DNA
             - DEPLETED_RNA
@@ -1733,10 +1737,8 @@ classes:
             - OTHER
           title: SampleTypeEnum
           type: string
-          $id: src/content_schemas/enums/SampleTypeEnum
-          $schema: https://json-schema.org/draft/2019-09/schema
         xref:
-          description: One or more cross-references for this Sample (e.g., this 
+          description: One or more cross-references for this Sample (e.g., this
             Sample may have an EBI BioSamples accession ID).
           items:
             type: string
@@ -1750,8 +1752,6 @@ classes:
         - biospecimen_age_at_sampling
       title: Sample
       type: object
-      $id: src/content_schemas/Sample
-      $schema: https://json-schema.org/draft/2019-09/schema
     relations:
       individual:
         description: The Individual associated with an entity.
@@ -1763,15 +1763,17 @@ classes:
           origin: true
           target: false
   Study:
-    description: A Study is an experimental investigation of a particular 
-      phenomenon. It involves a detailed examination and analysis of a subject 
+    description: A Study is an experimental investigation of a particular
+      phenomenon. It involves a detailed examination and analysis of a subject
       to learn more about the phenomenon being studied.
     id:
       propertyName: alias
       description: The alias for an entity at the time of submission.
     content:
+      $id: src/content_schemas/Study
+      $schema: https://json-schema.org/draft/2019-09/schema
       additionalProperties: false
-      description: A Study is an experimental investigation of a particular 
+      description: A Study is an experimental investigation of a particular
         phenomenon. It involves a detailed examination and analysis of a subject
         to learn more about the phenomenon being studied.
       properties:
@@ -1781,9 +1783,11 @@ classes:
             type: string
           type: array
         attributes:
-          description: One or more attributes that further characterize this 
+          description: One or more attributes that further characterize this
             Study.
           items:
+            $id: src/content_schemas/Attribute
+            $schema: https://json-schema.org/draft/2019-09/schema
             additionalProperties: false
             description: A key/value pair that further characterizes an entity.
             properties:
@@ -1791,7 +1795,7 @@ classes:
                 description: The key of an attribute.
                 type: string
               key_type:
-                description: A semantic type that characterizes the attribute 
+                description: A semantic type that characterizes the attribute
                   key (e.g., oxygen saturation measurement (MAXO:0000616)).
                 type:
                   - string
@@ -1801,7 +1805,7 @@ classes:
                   without the units).
                 type: string
               value_type:
-                description: The value_type that characterizes the attribute 
+                description: The value_type that characterizes the attribute
                   value (e.g., percentage (SIO:001413)).
                 type:
                   - string
@@ -1811,13 +1815,11 @@ classes:
               - value
             title: Attribute
             type: object
-            $id: src/content_schemas/Attribute
-            $schema: https://json-schema.org/draft/2019-09/schema
           type:
             - array
             - 'null'
         description:
-          description: A detailed description (abstract) that describes the 
+          description: A detailed description (abstract) that describes the
             goals of this Study.
           type: string
         ega_accession:
@@ -1829,9 +1831,11 @@ classes:
           description: A comprehensive title for this Study.
           type: string
         types:
-          description: One or more types of this Study (e.g., Cancer Genomics, 
+          description: One or more types of this Study (e.g., Cancer Genomics,
             Epigenetics, Exome Sequencing).
           items:
+            $id: src/content_schemas/enums/StudyTypeEnum
+            $schema: https://json-schema.org/draft/2019-09/schema
             description: Enum to capture the type of a study.
             enum:
               - CANCER_GENOMICS
@@ -1872,8 +1876,6 @@ classes:
               - OTHER
             title: StudyTypeEnum
             type: string
-            $id: src/content_schemas/enums/StudyTypeEnum
-            $schema: https://json-schema.org/draft/2019-09/schema
           type: array
       required:
         - title
@@ -1882,5 +1884,3 @@ classes:
         - affiliations
       title: Study
       type: object
-      $id: src/content_schemas/Study
-      $schema: https://json-schema.org/draft/2019-09/schema
