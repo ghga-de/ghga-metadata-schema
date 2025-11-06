@@ -447,6 +447,11 @@ classes:
       - workflow_tasks
       - parameters
       - software_versions
+      - reference_name
+      - reference_type
+      - reference_source
+      - reference_link
+      - reference_version
     slot_usage:
       name:
         description: >-
@@ -478,6 +483,21 @@ classes:
         required: false
         inlined: true
         inlined_as_list: true
+      reference_name:
+        recommended: true
+        required: false
+      reference_type:
+        recommended: true
+        required: false
+      reference_source:
+        recommended: true
+        required: false
+      reference_link:
+        recommended: true
+        required: false
+      reference_version:
+        recommended: true
+        required: false
       attributes:
         description: >-
           One or more attributes that further characterize this Analysis Method.
@@ -1380,6 +1400,22 @@ slots:
   ega_accession:
     description: >-
       The EGA accession ID of an entity.
+
+  reference_name:
+    description: Name or identifier of the reference, e.g., "hg38", "dbSNP"
+
+  reference_type:
+    description: Type of reference data used
+    range: ReferenceTypeEnum
+
+  reference_source:
+    description: Source or provider of the reference, e.g., "UCSC", "Ensembl"
+
+  reference_link:
+    description: URL to the reference
+
+  reference_version:
+    description: Version or release identifier of the reference data
 
 subsets:
   ontology:
@@ -2966,3 +3002,25 @@ enums:
         description: Age above 80.
       UNKNOWN:
         description: Age range unknown.
+
+  ReferenceTypeEnum:
+    description: Enum to capture reference data types
+    permissible_values:
+      GENOME:
+        description: Reference genome sequence
+      SNP:
+        description: SNP reference database
+      INDEL:
+        description: Indel reference set
+      TRANSCRIPTOME:
+        description: Transcript sequences
+      HAPLOTYPE:
+        description: Haplotype panels
+      VCF:
+        description: Variant call format reference
+      BED:
+        description: BED-formatted genomic regions
+      REPEATMASKER:
+        description: RepeatMasker annotations
+      OTHER:
+        description: Other types of references

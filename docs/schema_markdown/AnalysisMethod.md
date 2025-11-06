@@ -7,7 +7,7 @@ An Analysis Method captures the workflow steps that were performed to analyze da
 URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute],[AnalysisMethodSupportingFile],[Attribute]<attributes%200..*-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;alias:string],[Attribute]<software_versions%200..*-++[AnalysisMethod],[Attribute]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[AttributeMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute],[AnalysisMethodSupportingFile],[Attribute]<attributes%200..*-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;alias:string],[Attribute]<software_versions%200..*-++[AnalysisMethod],[Attribute]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[AttributeMixin],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute],[AnalysisMethodSupportingFile],[Attribute]<attributes%200..*-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;reference_name:string%20%3F;reference_type:ReferenceTypeEnum%20%3F;reference_source:string%20%3F;reference_link:string%20%3F;reference_version:string%20%3F;alias:string],[Attribute]<software_versions%200..*-++[AnalysisMethod],[Attribute]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[AttributeMixin],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[IdentifiedByAliasMixin],[AttributeMixin],[Attribute],[AnalysisMethodSupportingFile],[Attribute]<attributes%200..*-++[AnalysisMethod&#124;name:string;description:string;type:string;workflow_name:string;workflow_version:string%20%3F;workflow_repository:string;workflow_doi:string;workflow_tasks:string%20%3F;reference_name:string%20%3F;reference_type:ReferenceTypeEnum%20%3F;reference_source:string%20%3F;reference_link:string%20%3F;reference_version:string%20%3F;alias:string],[Attribute]<software_versions%200..*-++[AnalysisMethod],[Attribute]<parameters%200..*-++[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method%201..1>[AnalysisMethod],[Analysis]-%20analysis_method%201..1>[AnalysisMethod],[Submission]++-%20analysis_methods%201..*>[AnalysisMethod],[Analysis]-%20analysis_method(i)%200..1>[AnalysisMethod],[AnalysisMethodSupportingFile]-%20analysis_method(i)%200..1>[AnalysisMethod],[Submission]-%20analysis_methods(i)%200..*>[AnalysisMethod],[AnalysisMethod]uses%20-.->[IdentifiedByAliasMixin],[AnalysisMethod]uses%20-.->[AttributeMixin],[Analysis])
 
 ## Uses Mixin
 
@@ -57,6 +57,21 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
  * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..\*</sub>
      * Description: key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
      * Range: [Attribute](Attribute.md)
+ * [AnalysisMethod➞reference_name](AnalysisMethod_reference_name.md)  <sub>0..1</sub>
+     * Description: Name or identifier of the reference, e.g., "hg38", "dbSNP"
+     * Range: [String](types/String.md)
+ * [AnalysisMethod➞reference_type](AnalysisMethod_reference_type.md)  <sub>0..1</sub>
+     * Description: Type of reference data used
+     * Range: [ReferenceTypeEnum](ReferenceTypeEnum.md)
+ * [AnalysisMethod➞reference_source](AnalysisMethod_reference_source.md)  <sub>0..1</sub>
+     * Description: Source or provider of the reference, e.g., "UCSC", "Ensembl"
+     * Range: [String](types/String.md)
+ * [AnalysisMethod➞reference_link](AnalysisMethod_reference_link.md)  <sub>0..1</sub>
+     * Description: URL to the reference
+     * Range: [String](types/String.md)
+ * [AnalysisMethod➞reference_version](AnalysisMethod_reference_version.md)  <sub>0..1</sub>
+     * Description: Version or release identifier of the reference data
+     * Range: [String](types/String.md)
  * [AnalysisMethod➞attributes](AnalysisMethod_attributes.md)  <sub>0..\*</sub>
      * Description: One or more attributes that further characterize this Analysis Method.
      * Range: [Attribute](Attribute.md)

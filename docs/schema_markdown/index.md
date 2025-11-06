@@ -220,6 +220,16 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞process_data_files](Submission_process_data_files.md) - One or more Process Data Files associated with this Submission.
  * [publications](publications.md) - The Publication associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
+ * [reference_link](reference_link.md) - URL to the reference
+     * [AnalysisMethod➞reference_link](AnalysisMethod_reference_link.md)
+ * [reference_name](reference_name.md) - Name or identifier of the reference, e.g., "hg38", "dbSNP"
+     * [AnalysisMethod➞reference_name](AnalysisMethod_reference_name.md)
+ * [reference_source](reference_source.md) - Source or provider of the reference, e.g., "UCSC", "Ensembl"
+     * [AnalysisMethod➞reference_source](AnalysisMethod_reference_source.md)
+ * [reference_type](reference_type.md) - Type of reference data used
+     * [AnalysisMethod➞reference_type](AnalysisMethod_reference_type.md)
+ * [reference_version](reference_version.md) - Version or release identifier of the reference data
+     * [AnalysisMethod➞reference_version](AnalysisMethod_reference_version.md)
  * [research_data_files](research_data_files.md) - The Research Data Files associated with an entity.
      * [Analysis➞research_data_files](Analysis_research_data_files.md) - One or more aliases of the Research Data Files that this Analysis used as input to create Process Data Files.
      * [Submission➞research_data_files](Submission_research_data_files.md) - One or more Research Data Files associated with this Submission.
@@ -312,6 +322,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors.
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer.
  * [ProcessDataFileFormatEnum](ProcessDataFileFormatEnum.md) - Enum to capture Process Data File formats.
+ * [ReferenceTypeEnum](ReferenceTypeEnum.md) - Enum to capture reference data types
  * [ResearchDataFileFormatEnum](ResearchDataFileFormatEnum.md) - Enum to capture Research Data File formats.
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read.
  * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
