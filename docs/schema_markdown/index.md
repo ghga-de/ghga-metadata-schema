@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 2.1.0
+**version:** 2.2.0
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -65,9 +65,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
  * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
-         * [AnalysisMethod➞attributes](AnalysisMethod_attributes.md) - One or more attributes that further characterize this Analysis Method.
-         * [ExperimentMethod➞attributes](ExperimentMethod_attributes.md) - One or more attributes that further characterize this Experiment Method.
-         * [Study➞attributes](Study_attributes.md) - One or more attributes that further characterize this Study.
  * [author](author.md) - The individual who is responsible for the content of the Publication.
      * [Publication➞author](Publication_author.md) - Author(s) of this Publication.
  * [biological_replicate](biological_replicate.md) - An integer to indicate the number of a biological replicate.
@@ -169,7 +166,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞geographical_region_term](Individual_geographical_region_term.md)
  * [included_in_submission](included_in_submission.md) - Whether a File is included in the Submission or not.
      * [File➞included_in_submission](File_included_in_submission.md)
- * [index_sequence](index_sequence.md) - A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
  * [individual](individual.md) - The Individual associated with an entity.
      * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)
      * [Sample➞individual](Sample_individual.md) - The alias of the Individual entity from which this Biospecimen or Sample was derived.
