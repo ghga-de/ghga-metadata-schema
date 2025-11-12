@@ -17,12 +17,12 @@ URI: [GHGA:AttributeMixin_attributes](https://w3id.org/GHGA/AttributeMixin_attri
 
 ## Children
 
- *  [AnalysisMethod➞attributes](AnalysisMethod_attributes.md)
- *  [ExperimentMethod➞attributes](ExperimentMethod_attributes.md)
- *  [Study➞attributes](Study_attributes.md)
 
 ## Used by
 
+ * [AnalysisMethod](AnalysisMethod.md)
  * [AttributeMixin](AttributeMixin.md)
  * [Experiment](Experiment.md)
+ * [ExperimentMethod](ExperimentMethod.md)
  * [Sample](Sample.md)
+ * [Study](Study.md)

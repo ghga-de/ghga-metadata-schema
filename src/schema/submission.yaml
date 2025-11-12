@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 2.1.0
+version: 2.2.0
 imports:
   - linkml:types
 
@@ -110,9 +110,6 @@ classes:
         description: >-
           The affiliations associated with this Study.
         required: true
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Study.
 
   Experiment:
     mixins:
@@ -244,9 +241,6 @@ classes:
         description: >-
           The EGA accession of the 'Experiment' entity (EGAX).
         required: false
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Experiment Method.
 
   Sample:
     mixins:
@@ -498,9 +492,6 @@ classes:
       reference_version:
         recommended: true
         required: false
-      attributes:
-        description: >-
-          One or more attributes that further characterize this Analysis Method.
 
   Dataset:
     mixins:
@@ -1234,12 +1225,6 @@ slots:
   sequencing_read_length:
     description: >-
       Length of sequencing reads (e.g., long or short or actual number of the read length).
-
-  index_sequence:
-    description: >-
-      A unique nucleotide sequence that is added to a sample during library preparation to serve as a unique identifier for the Sample.
-    exact_mappings:
-      - NCIT:C165443
 
   sequencing_lane_id:
     description: >-
