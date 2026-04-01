@@ -129,7 +129,7 @@ classes:
     slot_usage:
       experiment_method:
         description: >-
-          The alias of one or more Experiment Methods that are associated with this Experiment.
+          The alias of the Experiment Methods that is associated with this Experiment.
         required: true
         inlined: false
       title:
