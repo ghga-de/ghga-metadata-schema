@@ -1811,9 +1811,15 @@ enums:
       UBAM:
         description: >-
           Unaligned BAM file.
+      UCRAM:
+        description: >-
+          Unaligned CRAM file.
       FAST5:
         description: >-
-          FAST5 data format for Nanopore.
+          FAST5 data format for Nanopore data.
+      POD5:
+        description: >-
+          POD5 file format for Nanopore data.
       RAW:
         description: >-
           Raw file format for mass spectrometry proteomics data.
@@ -1829,6 +1835,9 @@ enums:
       IDAT:
         description: >-
           IDAT file format for BeadArray data.
+      CEL:
+        description: >-
+          CEL file format for Affymetrix data.
       OTHER:
         description: >-
           A file format not captured by the controlled vocabulary.
