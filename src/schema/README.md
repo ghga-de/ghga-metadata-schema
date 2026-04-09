@@ -1,29 +1,22 @@
-## For contributors: Checking if YAML syntax is correct.
+## For contributors: Checking if YAML syntax is correct
 
-The following section describes how to check if your YAML schema for LinkML is correct.
-This can be done by generating all artifacts that are required by the __GHGA metadata environment__
-
-Everything is orchestrated by a generic single [Makefile](Makefile). For this to work you should follow certain conventions:
-
- * Keep your schema in src/schema
- * Use the `.yaml` suffix for all schema files
- * Use the suggested directory layout here.
-
-To run the Makefile you will need Python (>=3.7), and linkml. You can type:
+Use the repository dev container for contributor setup. Once the dev container is running, install the required dependencies with:
 
 ```bash
-make install
+dev_install
 ```
 
-or equivalently
+After that, the repository is ready to work on. To generate and validate the schema artifacts, run:
 
 ```bash
-. environment.sh
-pip install -r requirements.txt
+./scripts/schema_linter.py
+./scripts/generate_linkml_docs.py --check
+./scripts/generate_xlsx.py --check
+./scripts/update_entity_relations.py --check
 ```
 
-You can make all targets with
+Conventions:
 
-```bash
-make all
-```
+- Keep your schema in `src/schema`
+- Use the `.yaml` suffix for all schema files
+- Use the suggested directory layout here

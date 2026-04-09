@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 """Script to employ linkml-linter"""
+
 import subprocess
-import sys
 from pathlib import Path
+
 from script_utils.cli import echo_failure, echo_success
 
 HERE = Path(__file__).parent.resolve()

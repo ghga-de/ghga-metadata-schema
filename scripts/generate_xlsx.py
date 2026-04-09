@@ -1,22 +1,23 @@
 #!/usr/bin/env python
 """Script to generate XLSX spreadsheets for metadata entry"""
-from contextlib import contextmanager
+
 import glob
 import os
-from pathlib import Path
-from sys import stderr
 import sys
+from contextlib import contextmanager
+from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Generator, Optional
-from linkml_runtime.utils.schemaview import SchemaView
+
+import yaml
 from linkml_runtime.linkml_model.meta import SlotDefinition
+from linkml_runtime.utils.schemaview import SchemaView
 from openpyxl import Workbook, load_workbook
 from openpyxl.cell import Cell
-from openpyxl.styles import Alignment, PatternFill, Font
-from openpyxl.styles.borders import Border, Side, BORDER_THIN
+from openpyxl.styles import Alignment, Font, PatternFill
+from openpyxl.styles.borders import BORDER_THIN, Border, Side
 from openpyxl.utils import get_column_letter
 from pydantic import BaseModel, root_validator
-import yaml
 from script_utils.cli import echo_failure, echo_success, run
 
 HERE = Path(__file__).parent.resolve()
@@ -98,21 +99,26 @@ class ColumnMeta:
     def in_ontology_subset(self, slot_def: SlotDefinition) -> bool:
         """Returns a bool indicating whether or not the given slot is marked as
         non-implemented ontology slot."""
-        SUBSET_NAME="ontology"
+        SUBSET_NAME = "ontology"
         in_subset_usage = slot_def.in_subset
         in_subset_root = self.schema.get_slot(slot_def.name).in_subset
         return (
-            isinstance(in_subset_usage, list) and SUBSET_NAME in in_subset_usage or 
-            isinstance(in_subset_root, list) and SUBSET_NAME in in_subset_root or 
-            in_subset_usage == SUBSET_NAME or
-            in_subset_root == SUBSET_NAME
+            isinstance(in_subset_usage, list)
+            and SUBSET_NAME in in_subset_usage
+            or isinstance(in_subset_root, list)
+            and SUBSET_NAME in in_subset_root
+            or in_subset_usage == SUBSET_NAME
+            or in_subset_root == SUBSET_NAME
         )
-        
 
     @property
     def restriction_help(self) -> str:
         """The restriction help text"""
-        if self.enum_name or self.slot_def.pattern or self.in_ontology_subset(self.slot_def):
+        if (
+            self.enum_name
+            or self.slot_def.pattern
+            or self.in_ontology_subset(self.slot_def)
+        ):
             return "controlled vocabulary"
         elif self.cls_name:
             id_slot = self.schema.get_identifier_slot(self.cls_name)
@@ -335,7 +341,7 @@ def compare_xls(expected: Workbook, observed: Workbook):
                 for attr in ["alignment", "font", "border", "fill"]:
                     if getattr(cell_a, attr).__dict__ != getattr(cell_b, attr).__dict__:
                         raise ContentDifference(
-                            f"Cell {attr} differs in sheet {sheet}, row {row_idx}, col {col_idx}: expected={getattr(cell_a,attr).__dict__}, observed={getattr(cell_b, attr).__dict__}"
+                            f"Cell {attr} differs in sheet {sheet}, row {row_idx}, col {col_idx}: expected={getattr(cell_a, attr).__dict__}, observed={getattr(cell_b, attr).__dict__}"
                         )
 
 

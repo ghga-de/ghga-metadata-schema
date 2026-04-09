@@ -3,12 +3,15 @@
 When you make changes to the GHGA Metadata Schema, be sure to try and build
 the schema using LinkML. This will surface any syntax or structural errors.
 
-To build the schema, run the following:
+To build and validate schema-related artifacts, run the following:
 
 ```sh
-# Set up a virtual environment and install dependencies
-make install
+# Install dependencies in the dev container
+dev_install
 
-# Build all the artifacts from the YAML
-make all
+# Validate schema linting and generated artifacts
+./scripts/schema_linter.py
+./scripts/generate_linkml_docs.py --check
+./scripts/generate_xlsx.py --check
+./scripts/update_entity_relations.py --check
 ```

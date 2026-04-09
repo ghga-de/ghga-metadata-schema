@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Script to generate linkml markdown documents"""
-from pathlib import Path
-from filecmp import dircmp
+
 import shutil
+from filecmp import dircmp
+from pathlib import Path
 from tempfile import TemporaryDirectory
-from typer import run
+
 from linkml.generators.markdowngen import MarkdownGenerator
 from script_utils.cli import echo_failure, echo_success
+from typer import run
 
 HERE = Path(__file__).parent.resolve()
 LINKML_YAML = HERE.parent / "src" / "schema" / "submission.yaml"
