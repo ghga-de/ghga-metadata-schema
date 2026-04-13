@@ -1,15 +1,11 @@
-version: '3'
-
 services:
   app:
     build:
       context: .
       dockerfile: ./Dockerfile
       args:
-        # [Choice] Python version: 3, 3.8, 3.7, 3.6
-        VARIANT: 3.9
         # [Choice] Install Node.js
-        INSTALL_NODE: "true"
+        INSTALL_NODE: "false"
         NODE_VERSION: "lts/*"
         # Please adapt to package name:
         PACKAGE_NAME: "my_microservice"
@@ -18,7 +14,10 @@ services:
         USER_GID: 1000
 
     init: true
-    privileged: true
+
+    # Makes testcontainers work on linux based hosts
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
     volumes:
       - ..:/workspace:cached
