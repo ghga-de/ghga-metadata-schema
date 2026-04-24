@@ -17,6 +17,7 @@ from openpyxl.cell import Cell
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.styles.borders import BORDER_THIN, Border, Side
 from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.datavalidation import DataValidation
 from pydantic import BaseModel, root_validator
 from script_utils.cli import echo_failure, echo_success, run
 
@@ -24,6 +25,12 @@ HERE = Path(__file__).parent.resolve()
 SCHEMA_PATH = HERE.parent / "src" / "schema" / "submission.yaml"
 CONF_PATH = HERE.parent / "spreadsheet_conf.yaml"
 XLSX_DIR = HERE.parent / "spreadsheets"
+
+# The header rows occupy rows 1-6; data starts at row 7
+HEADER_ROW_COUNT = 6
+DATA_ROW_COUNT = 1000
+# Name of the hidden sheet storing enum value lists for dropdown validation
+ENUM_SHEET_NAME = "__enums"
 
 
 class WorksheetStyle(BaseModel):
@@ -150,6 +157,22 @@ class ColumnMeta:
         """The description text"""
         return self.slot_def.description if self.slot_def.description else ""
 
+    @property
+    def needs_dropdown(self) -> bool:
+        """True if this column should get a dropdown: single-value + ontology/enum controlled vocabulary."""
+        if self.slot_def.multivalued:
+            return False
+        return bool(self.enum_name) or self.in_ontology_subset(self.slot_def)
+
+    def get_enum_values(self) -> list[str]:
+        """Returns the list of allowed enum values for this column, or [] if not applicable."""
+        if not self.enum_name:
+            return []
+        enum_def = self.schema.get_enum(self.enum_name)
+        if enum_def is None:
+            return []
+        return [str(pv) for pv in enum_def.permissible_values.keys()]
+
     def __init__(
         self,
         schema: SchemaView,
@@ -212,27 +235,98 @@ def _get_ordered_slots(
     return slots
 
 
+def _populate_enum_sheet(wb: Workbook, enum_registry: dict[str, list[str]]) -> dict[str, str]:
+    """Creates (or reuses) the hidden __enums sheet and writes one column per enum.
+
+    Returns a mapping of enum_name -> absolute Excel range string, e.g.
+    "__enums!$A$1:$A$42", which can be used directly in DataValidation formulas.
+    """
+    if ENUM_SHEET_NAME in wb.sheetnames:
+        ws_enum = wb[ENUM_SHEET_NAME]
+    else:
+        ws_enum = wb.create_sheet(ENUM_SHEET_NAME)
+        ws_enum.sheet_state = "hidden"
+
+    enum_ranges: dict[str, str] = {}
+    for col_idx, (enum_name, values) in enumerate(enum_registry.items(), start=1):
+        col_letter = get_column_letter(col_idx)
+        for row_idx, value in enumerate(values, start=1):
+            ws_enum.cell(row=row_idx, column=col_idx, value=value)
+        # Build the absolute range reference for DataValidation
+        enum_ranges[enum_name] = (
+            f"'{ENUM_SHEET_NAME}'!${col_letter}$1:${col_letter}${len(values)}"
+        )
+
+    return enum_ranges
+
+
+def _apply_dropdown_validations(
+    ws,
+    col_metas: list[ColumnMeta],
+    enum_ranges: dict[str, str],
+):
+    """Adds DataValidation (list dropdown) to every data cell in columns that
+    qualify for a dropdown (single-value + ontology/enum controlled vocabulary).
+
+    Uses a hidden-sheet range reference so there is no 255-character limit on
+    the number of allowed values.
+    """
+    data_first_row = HEADER_ROW_COUNT + 1
+    data_last_row = HEADER_ROW_COUNT + DATA_ROW_COUNT
+
+    for col_idx, col_meta in enumerate(col_metas, start=1):
+        if not col_meta.needs_dropdown:
+            continue
+
+        enum_name = col_meta.enum_name
+        if not enum_name or enum_name not in enum_ranges:
+            # Ontology-subset slots without a concrete enum in the schema
+            # cannot be validated via a static list – skip silently.
+            continue
+
+        col_letter = get_column_letter(col_idx)
+        cell_range = f"{col_letter}{data_first_row}:{col_letter}{data_last_row}"
+
+        dv = DataValidation(
+            type="list",
+            formula1=enum_ranges[enum_name],
+            allow_blank=True,
+            showDropDown=False,   # False = dropdown arrow IS shown in Excel
+            showErrorMessage=True,
+            errorTitle="Invalid value",
+            error=(
+                f'Please select a value from the controlled vocabulary '
+                f'for "{col_meta.name}".'
+            ),
+            errorStyle="stop",    # Prevents saving gibberish
+        )
+        ws.add_data_validation(dv)
+        dv.sqref = cell_range
+
+
 def create_xlsx_files(config_path: Path, out_dir: Path):
     """Creates the XLSX workbooks as configured in the provided configuration
     and writes them to the specified output path"""
     with open(config_path, "r", encoding="utf8") as config_file:
         config = Config.parse_obj(yaml.safe_load(config_file))
-
-    # Read schema
+    # Read schema 
     schema = SchemaView(str(SCHEMA_PATH))
 
     # Create the workbooks
     for wb_config in config.workbooks:
         print(wb_config.file_name, end="", flush=True)
-        # Create a new workbook
+        # Create a new workbook and remove the default sheet
         wb = Workbook()
-        # Remove the default worksheet
         wb.remove(wb.worksheets[0])
-        # All classes configured in this workbook
         wb_classes = set(wb_config.worksheets)
+
+        # Step 1: collect all enum values needed across all worksheets ---
+        # We gather them first so we can build the __enums sheet once per workbook.
+        enum_registry: dict[str, list[str]] = {}
+        ws_col_metas: dict[str, list[ColumnMeta]] = {}
+
         # Add worksheets as specified in config
         for ws_name in wb_config.worksheets:
-            ws = wb.create_sheet(ws_name)
             col_metas = [
                 ColumnMeta(schema, slot_def, wb_classes)
                 for slot_def in _get_ordered_slots(
@@ -242,8 +336,20 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
                     wb_classes=wb_classes,
                 )
             ]
+            ws_col_metas[ws_name] = col_metas
+            for col_meta in col_metas:
+                if col_meta.needs_dropdown and col_meta.enum_name:
+                    if col_meta.enum_name not in enum_registry:
+                        values = col_meta.get_enum_values()
+                        if values:
+                            enum_registry[col_meta.enum_name] = values
 
-            # Generate the header rows
+        # Step 2: build the worksheets
+        for ws_name in wb_config.worksheets:
+            ws = wb.create_sheet(ws_name)
+            col_metas = ws_col_metas[ws_name]
+
+            # Generate the header rows 
             rows = []
             rows.append([Cell(ws, value=col_meta.name) for col_meta in col_metas])
             rows.append(
@@ -260,7 +366,6 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
 
             # Format the header rows
             font_bold = Font(bold=True)
-
             header_color = config.styles[ws_name].header_color
             fill_header = (
                 PatternFill("solid", fgColor=header_color) if header_color else None
@@ -284,7 +389,7 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
                 PatternFill("solid", fgColor=content_color) if content_color else None
             )
 
-            for _ in range(1000):
+            for _ in range(DATA_ROW_COUNT):
                 rows.append(
                     [_make_value_cell(ws, fill_content) for _ in range(len(col_metas))]
                 )
@@ -292,16 +397,23 @@ def create_xlsx_files(config_path: Path, out_dir: Path):
             for row in rows:
                 ws.append(row)
 
-            # Format column width
+            # Format column width 
             for column in range(1, ws.max_column + 1):
                 ws.column_dimensions[get_column_letter(column)].width = 35
 
-        # Encode metadata model version in the workbook
-        ws = wb.create_sheet("__properties")
-        ws.sheet_state = "hidden"
-        ws.cell(row=1, column=1, value=_get_ghga_schema_version(schema))
+        # Step 3: write the __enums sheet and collect range references
+        enum_ranges = _populate_enum_sheet(wb, enum_registry)
 
-        # Save to file name specified in config
+        # Step 4: apply dropdown validations now that __enums sheet exists 
+        for ws_name in wb_config.worksheets:
+            ws = wb[ws_name]
+            _apply_dropdown_validations(ws, ws_col_metas[ws_name], enum_ranges)
+
+        # --- Encode schema version ---
+        ws_props = wb.create_sheet("__properties")
+        ws_props.sheet_state = "hidden"
+        ws_props.cell(row=1, column=1, value=_get_ghga_schema_version(schema))
+
         wb.save(out_dir / wb_config.file_name)
         print(" - done.", flush=True)
 
