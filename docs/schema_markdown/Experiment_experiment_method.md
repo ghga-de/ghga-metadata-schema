@@ -2,7 +2,7 @@
 # Slot: experiment_method
 
 
-The alias of one or more Experiment Methods that are associated with this Experiment.
+The alias of the Experiment Method that is associated with this Experiment.
 
 URI: [GHGA:Experiment_experiment_method](https://w3id.org/GHGA/Experiment_experiment_method)
 
