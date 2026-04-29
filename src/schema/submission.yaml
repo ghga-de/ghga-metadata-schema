@@ -2083,6 +2083,9 @@ enums:
       10X_GENOMICS_CHROMIUM_SINGLE_CELL_5_V3:
         description: >-
           10X Genomics Chromium Single Cell 5' v3 Reagent Kit
+      10X_GENOMICS_CHROMIUM_ATAC_V1:
+        description: >-
+          10X Genomics Chromium ATAC v1 Reagent Kit
       10X_GENOMICS_CHROMIUM_ATAC_V2:
         description: >-
           10X Genomics Chromium ATAC v2 Reagent Kit
@@ -2194,6 +2197,9 @@ enums:
       AVENIO_CT_DNA_EXPANDED_KIT:
         description: >-
           AVENIO ctDNA Expanded Kit V2
+      BD_RHAPSODY_WTA_AMPLIFICATION:
+        description: >-
+          BD Rhapsody WTA Amplification Kit
       IDT_X_GEN_EXOME_RESEARCH_PANEL:
         description: >-
           IDT xGen Exome Research Panel V2
