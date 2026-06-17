@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 2.2.0
+**version:** 2.2.1
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -142,7 +142,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞end_bias](ExperimentMethod_end_bias.md)
  * [experiment_method](experiment_method.md) - The Experiment Method associated with an entity.
      * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)
-     * [Experiment➞experiment_method](Experiment_experiment_method.md) - The alias of one or more Experiment Methods that are associated with this Experiment.
+     * [Experiment➞experiment_method](Experiment_experiment_method.md) - The alias of the Experiment Method that is associated with this Experiment.
  * [experiment_method_supporting_files](experiment_method_supporting_files.md) - The Experiment Method Supporting Files associated with an entity.
      * [Submission➞experiment_method_supporting_files](Submission_experiment_method_supporting_files.md) - One or more Experiment Method Supporting Files associated with this Submission.
  * [experiment_methods](experiment_methods.md) - The Experiment Methods associated with an entity.

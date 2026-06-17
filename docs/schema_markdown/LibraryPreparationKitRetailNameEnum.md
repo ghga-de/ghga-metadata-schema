@@ -20,6 +20,7 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V3 | 10X Genomics Chromium Single Cell 3' v3 Reagent Kit |  |  |
 | 10X_GENOMICS_CHROMIUM_SINGLE_CELL_3_V4 | 10X Genomics Chromium Single Cell 3' v4 Reagent Kit |  |  |
 | 10X_GENOMICS_CHROMIUM_SINGLE_CELL_5_V3 | 10X Genomics Chromium Single Cell 5' v3 Reagent Kit |  |  |
+| 10X_GENOMICS_CHROMIUM_ATAC_V1 | 10X Genomics Chromium ATAC v1 Reagent Kit |  |  |
 | 10X_GENOMICS_CHROMIUM_ATAC_V2 | 10X Genomics Chromium ATAC v2 Reagent Kit |  |  |
 | 10X_GENOMICS_CHROMIUM_MULTIOME_ATAC_RNA | 10X Genomics Chromium Multiome ATAC + RNA Reagent Kit |  |  |
 | 10X_GENOMICS_CHROMIUM_VISIUM_FF | 10X Genomics Chromium Visium FF Reagent Kit |  |  |
@@ -57,6 +58,7 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | AVENIO_CT_DNA_TARGETED_KIT | AVENIO ctDNA Targeted Kit V2 |  |  |
 | AVENIO_CT_DNA_SURVEILLANCE_KIT | AVENIO ctDNA Surveillance Kit V2 |  |  |
 | AVENIO_CT_DNA_EXPANDED_KIT | AVENIO ctDNA Expanded Kit V2 |  |  |
+| BD_RHAPSODY_WTA_AMPLIFICATION | BD Rhapsody WTA Amplification Kit |  |  |
 | IDT_X_GEN_EXOME_RESEARCH_PANEL | IDT xGen Exome Research Panel V2 |  |  |
 | ILLUMINA_DNA_PCR_FREE_PREP | Illumina DNA PCR-Free Prep |  |  |
 | ILLUMINA_NEXTERA_DNA_FLEX | Illumina Nextera DNA Flex |  |  |
