@@ -685,6 +685,7 @@ classes:
     slots:
       - format
       - technical_replicate
+      - read_type
       - sequencing_lane_id
       - experiments
     slot_usage:
@@ -694,6 +695,9 @@ classes:
         range: ResearchDataFileFormatEnum
       technical_replicate:
         required: true
+      read_type:
+        required: false
+        recommended: true
       sequencing_lane_id:
         required: false
         recommended: true
@@ -1402,6 +1406,9 @@ slots:
 
   reference_version:
     description: Version or release identifier of the reference data
+
+  read_type:
+    description: Designates the functional role or sequence orientation of a FASTQ file within a sequencing run (e.g., R1, R2, R3, I1, I2).
 
 subsets:
   ontology:
