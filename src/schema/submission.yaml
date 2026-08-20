@@ -149,7 +149,7 @@ classes:
           The EGA accession of the 'Run' entity (EGAR).
         required: false
       sample:
-        description: The alias of one or more Samples that are associated with this Experiment.
+        description: The alias of the Sample that is associated with this Experiment.
         required: true
         inlined: false
 
