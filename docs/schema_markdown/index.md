@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 2.2.1
+**version:** 2.3.0
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -63,7 +63,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Individual➞ancestry_ids](Individual_ancestry_ids.md)
  * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., African, European, Oceanian).
      * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
- * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
+ * [attributes](attributes.md) - Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
  * [author](author.md) - The individual who is responsible for the content of the Publication.
      * [Publication➞author](Publication_author.md) - Author(s) of this Publication.
@@ -200,7 +200,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞name](ExperimentMethod_name.md) - A short name identifying this Experiment Method.
      * [File➞name](File_name.md) - The given filename.
      * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
- * [parameters](parameters.md) - Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+ * [parameters](parameters.md) - Semicolon-separated key=value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner = star_salmon;  hisat2_build_memory = 200.GB; split_fastq = 50000000').
      * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
  * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
      * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
@@ -216,6 +216,8 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞process_data_files](Submission_process_data_files.md) - One or more Process Data Files associated with this Submission.
  * [publications](publications.md) - The Publication associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
+ * [read_type](read_type.md) - Designates the functional role or sequence orientation of a FASTQ file within a sequencing run (e.g., R1, R2, R3, I1, I2).
+     * [ResearchDataFile➞read_type](ResearchDataFile_read_type.md)
  * [reference_link](reference_link.md) - URL to the reference
      * [AnalysisMethod➞reference_link](AnalysisMethod_reference_link.md)
  * [reference_name](reference_name.md) - Name or identifier of the reference, e.g., "hg38", "dbSNP"
@@ -232,7 +234,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [ExperimentMethod➞rnaseq_strandedness](ExperimentMethod_rnaseq_strandedness.md)
  * [sample](sample.md) - The Sample associated with an entity.
-     * [Experiment➞sample](Experiment_sample.md) - The alias of one or more Samples that are associated with this Experiment.
+     * [Experiment➞sample](Experiment_sample.md) - The alias of the Sample that is associated with this Experiment.
  * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
      * [ExperimentMethod➞sample_barcode_read](ExperimentMethod_sample_barcode_read.md)
  * [samples](samples.md) - The Samples associated with an entity.
@@ -247,7 +249,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)
  * [sex](sex.md) - The biological sex of the Individual (e.g., female).
      * [Individual➞sex](Individual_sex.md)
- * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+ * [software_versions](software_versions.md) - Semicolon-separated key=value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., 'salmon = 1.3.0; trim-galore = 0.6.6; bedtools = 2.29.2').
      * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
      * [Sample➞storage](Sample_storage.md)

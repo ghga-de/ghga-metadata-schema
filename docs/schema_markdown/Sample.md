@@ -95,7 +95,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 ### Mixed in from AttributeMixin:
 
  * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
+     * Description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
      * Range: [Attribute](Attribute.md)
 
 ## Other properties

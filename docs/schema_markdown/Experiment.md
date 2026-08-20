@@ -41,7 +41,7 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
      * Description: The EGA accession of the 'Run' entity (EGAR).
      * Range: [String](types/String.md)
  * [Experiment➞sample](Experiment_sample.md)  <sub>1..1</sub>
-     * Description: The alias of one or more Samples that are associated with this Experiment.
+     * Description: The alias of the Sample that is associated with this Experiment.
      * Range: [Sample](Sample.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
@@ -53,7 +53,7 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
 ### Mixed in from AttributeMixin:
 
  * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
+     * Description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
      * Range: [Attribute](Attribute.md)
 
 ## Other properties
