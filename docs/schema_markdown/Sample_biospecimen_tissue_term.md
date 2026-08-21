@@ -2,7 +2,7 @@
 # Slot: biospecimen_tissue_term
 
 
-The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
+The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., 'kidney', 'blood', 'melanoma cell').
 
 URI: [GHGA:Sample_biospecimen_tissue_term](https://w3id.org/GHGA/Sample_biospecimen_tissue_term)
 

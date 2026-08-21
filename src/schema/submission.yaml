@@ -2,7 +2,7 @@ id: https://w3id.org/GHGA-Submission-Metadata-Schema
 name: GHGA-Submission-Metadata-Schema
 description: >-
   The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
-version: 2.2.1
+version: 2.3.0
 imports:
   - linkml:types
 
@@ -101,7 +101,7 @@ classes:
         required: true
       types:
         description: >-
-          One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
+          One or more types of this Study (e.g., 'CANCER_GENOMICS; EPIGENETICS; EXOME_SEQUENCING').
         range: StudyTypeEnum
         required: true
       ega_accession:
@@ -134,7 +134,7 @@ classes:
         inlined: false
       title:
         description: >-
-          The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
+          The title for this Experiment (e.g., 'GHGAE_PBMC_RNAseq').
         required: true
       description:
         description: >-
@@ -149,7 +149,7 @@ classes:
           The EGA accession of the 'Run' entity (EGAR).
         required: false
       sample:
-        description: The alias of one or more Samples that are associated with this Experiment.
+        description: The alias of the Sample that is associated with this Experiment.
         required: true
         inlined: false
 
@@ -280,7 +280,7 @@ classes:
         required: true
       name:
         description: >-
-          A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1).
+          A descriptive name of this Sample (e.g., 'GHGAS_Blood_Sample1' or 'GHGAS_PBMC_RNAseq_S1').
           This property must not include any personally identifiable data.
         required: true
       type:
@@ -310,7 +310,7 @@ classes:
         required: false
       biospecimen_name:
         description: >-
-          A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen).
+          A descriptive name of this Biospecimen (e.g., 'GHGAB_caudate_nucleus_biospecimen').
           This property must not include any personally identifiable data.
         required: false
         recommended: true
@@ -569,7 +569,7 @@ classes:
         required: true
       data_use_permission_id:
         description: >-
-          The DUO ID corresponding to the Data Use Permission term (e.g., DUO:0000004).
+          The DUO ID corresponding to the Data Use Permission term (e.g., 'DUO:0000004').
         required: true
       data_use_modifier_terms:
         description: >-
@@ -579,7 +579,7 @@ classes:
         recommended: true
       data_use_modifier_ids:
         description: >-
-          The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:0000043).
+          The DUO IDs corresponding to the Data Use Modifier terms (e.g., 'DUO:0000043').
         required: false
         recommended: true
       ega_accession:
@@ -603,7 +603,7 @@ classes:
     slot_usage:
       email:
         description: >-
-          The email of the Data Access Committee (e.g., DAC[at]email.com).
+          The email of the Data Access Committee (e.g., 'DAC[at]email.com').
           This property must not include any personally identifiable data.
         required: true
       institute:
@@ -655,6 +655,7 @@ classes:
   File:
     mixins:
       - IdentifiedByAliasMixin
+      - AttributeMixin
     description: >-
       A file is an object that contains information generated from a process, either an Experiment or an Analysis.
     slots:
@@ -684,15 +685,19 @@ classes:
     slots:
       - format
       - technical_replicate
+      - read_type
       - sequencing_lane_id
       - experiments
     slot_usage:
       format:
-        description: The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
+        description: The file format of the Research Data File (e.g., 'FASTQ', 'uBAM', 'FASTA').
         required: true
         range: ResearchDataFileFormatEnum
       technical_replicate:
         required: true
+      read_type:
+        required: false
+        recommended: true
       sequencing_lane_id:
         required: false
         recommended: true
@@ -711,7 +716,7 @@ classes:
       - analysis
     slot_usage:
       format:
-        description: The file format of the Process Data File (e.g., CRAM, BAM).
+        description: The file format of the Process Data File (e.g., 'CRAM', 'BAM').
         required: true
         range: ProcessDataFileFormatEnum
       analysis:
@@ -729,7 +734,7 @@ classes:
       - experiment_method
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., TXT, JSON).
+        description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
         required: true
         range: SupportingFileFormatEnum
       experiment_method:
@@ -745,7 +750,7 @@ classes:
       - analysis_method
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., TXT, JSON).
+        description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
         required: true
         range: SupportingFileFormatEnum
       analysis_method:
@@ -761,7 +766,7 @@ classes:
       - individual
     slot_usage:
       format:
-        description: The file format of the Supporting File (e.g., TXT, JSON).
+        description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
         required: true
         range: SupportingFileFormatEnum
       individual:
@@ -902,26 +907,26 @@ slots:
     description: The key of an attribute.
 
   key_type:
-    description: A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).
+    description: A semantic type that characterizes the attribute key (e.g., 'oxygen saturation measurement (MAXO:0000616)').
 
   value:
     description: The value for an attribute (e.g., a numerical value without the units).
 
   value_type:
-    description: The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).
+    description: The value_type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
 
   attributes:
-    description: Key/value pairs corresponding to an entity.
+    description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
     range: Attribute
     multivalued: true
 
   parameters:
-    description: Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+    description: Semicolon-separated key=value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner = star_salmon;  hisat2_build_memory = 200.GB; split_fastq = 50000000').
     range: Attribute
     multivalued: true
 
   software_versions:
-    description: key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+    description: Semicolon-separated key=value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., 'salmon = 1.3.0; trim-galore = 0.6.6; bedtools = 2.29.2').
     range: Attribute
     multivalued: true
 
@@ -1035,34 +1040,34 @@ slots:
     multivalued: true
 
   phenotypic_features_terms:
-    description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
+    description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., 'Lymph node hypoplasia; Cough; Hypotension').
     in_subset:
       - ontology
     # range: PhenotypicFeaturesEnum
     multivalued: true
 
   phenotypic_features_ids:
-    description: The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
+    description: The corresponding ID to the HPO vocabulary (e.g., 'HP:0002732; HP:0012735; HP:0002615').
     in_subset:
       - ontology
     # range: PhenotypicFeaturesEnum
     multivalued: true
 
   diagnosis_ids:
-    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
+    description: One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., 'E10; C01').
     in_subset:
       - ontology
     multivalued: true
 
   diagnosis_terms:
-    description: The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).
+    description: The ICD-10 terms corresponding to the ICD-10 codes (e.g., 'Type 1 diabetes mellitus; Malignant neoplasm of base of tongue').
     in_subset:
       - ontology
     multivalued: true
 
   ancestry_terms:
     description: >-
-      A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., African, European, Oceanian).
+      A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., 'African; European; Oceanian').
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1070,7 +1075,7 @@ slots:
 
   ancestry_ids:
     description: >-
-      The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
+      The corresponding ID to the HANCESTRO vocabulary (e.g., 'HANCESTRO:0010; HANCESTRO:0005; HANCESTRO:0017').
     in_subset:
       - ontology
     # range: AncestryEnum
@@ -1131,7 +1136,7 @@ slots:
 
   data_use_permission_id:
     description: >-
-      The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:DUO:0000004).
+      The DUO IDs corresponding to the Data Use Modifier terms (e.g., 'DUO:0000004').
     # range: DataUsePermissionIDEnum
 
   data_use_modifier_terms:
@@ -1143,7 +1148,7 @@ slots:
 
   data_use_modifier_ids:
     description: >-
-      The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:0000043).
+      The DUO IDs corresponding to the Data Use Modifier terms (e.g., 'DUO:0000043').
     # range: DataUseModifierIDEnum
     multivalued: true
 
@@ -1152,7 +1157,7 @@ slots:
 
   email:
     description: >-
-      Email of a Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable information.
+      Email of a Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable information.
 
   affiliations:
     description: >-
@@ -1166,22 +1171,22 @@ slots:
 
   library_type:
     description: >-
-      Describe the level of omics analysis (e.g., WGS, ATAC).
+      Describe the level of omics analysis (e.g., 'WGS', 'ATAC').
     range: LibraryPreparationLibraryTypeEnum
 
   library_selection_methods:
     multivalued: True
     description: >-
-      One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
+      One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., 'random; PCA; cDNA').
     range: LibraryPreparationLibrarySelectionEnum
 
   library_preparation:
     description: >-
-      The general method for preparation of the sequencing library (e.g., KAPA PCR-free).
+      The general method for preparation of the sequencing library (e.g., 'KAPA PCR-free').
 
   library_preparation_kit_retail_name:
     description: >-
-      The retail name for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g., Agilent sure select Human Exome V8, Twist RefSeq Exome).
+      The retail name for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g., 'Agilent sure select Human Exome V8', 'Twist RefSeq Exome').
     range: LibraryPreparationKitRetailNameEnum
 
   library_preparation_kit_manufacturer:
@@ -1190,14 +1195,14 @@ slots:
 
   primer:
     description: >-
-      The type of primer used for reverse transcription (e.g., oligo-dT or random).
+      The type of primer used for reverse transcription (e.g., 'oligo-dT' or 'random').
     exact_mappings:
       - EFO:0010192
     range: PrimerEnum
 
   end_bias:
     description: >-
-      The end of the cDNA molecule that is preferentially sequenced (e.g., 3/5 prime end, full-length).
+      The end of the cDNA molecule that is preferentially sequenced (e.g., '3 prime end', 'full-length').
     exact_mappings:
       - EFO:0010187
     range: EndBiasEnum
@@ -1224,7 +1229,7 @@ slots:
 
   sequencing_read_length:
     description: >-
-      Length of sequencing reads (e.g., long or short or actual number of the read length).
+      Length of sequencing reads (e.g., 'long' or 'short' or actual number of the read length).
 
   sequencing_lane_id:
     description: >-
@@ -1244,16 +1249,16 @@ slots:
 
   flow_cell_id:
     description: >-
-      Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
+      Flow cell ID (e.g., 'ABC 123', 'H23YTDMXX').
 
   flow_cell_type:
     description: >-
-      Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
+      Type of flow cell used (e.g., 'S4', 'S2' for NovaSeq; 'PromethION', 'Flongle' for Nanopore).
     range: FlowCellTypeEnum
 
   sample_barcode_read:
     description: >-
-      The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
+      The type of read that contains the sample barcode (e.g., 'index1', 'index2', 'read1', 'read2').
     range: SampleBarcodeReadEnum
 
   biological_replicate:
@@ -1305,26 +1310,26 @@ slots:
 
   biospecimen_vital_status_at_sampling:
     description: >-
-      Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
+      Vital Status of the Individual at the time of isolating this biospecimen (e.g., 'ALIVE').
     range: VitalStatusEnum
 
   geographical_region_term:
     description: >-
-      The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., Austria, Germany, Italy).
+      The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., 'Austria', 'Germany', 'Italy').
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
 
   geographical_region_id:
     description: >-
-      The corresponding ID to the NCIT vocabulary (e.g., NCIT:C16312, NCIT:C16636, NCIT:C16761).
+      The corresponding ID to the NCIT vocabulary (e.g., 'NCIT:C16312', 'NCIT:C16636', 'NCIT:C16761').
     in_subset:
       - ontology
     # range: GeographicalRegionEnum
 
   sex:
     description: >-
-      The biological sex of the Individual (e.g., female).
+      The biological sex of the Individual (e.g., 'FEMALE').
     range: IndividualSexEnum
 
   biospecimen_age_at_sampling:
@@ -1333,7 +1338,7 @@ slots:
 
   format:
     description: >-
-      The format of the File (e.g., BAM, SAM, CRAM, BAI).
+      The format of the File (e.g., 'BAM', 'SAM', 'CRAM', 'BAI').
 
   policy_text:
     description: The complete text for the Data Access Policy.
@@ -1365,14 +1370,14 @@ slots:
 
   biospecimen_tissue_term:
     description: >-
-      The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
+      The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., 'kidney', 'blood', 'melanoma cell').
     in_subset:
       - ontology
     # range: TissueEnum
 
   biospecimen_tissue_id:
     description: >-
-      The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+      The corresponding ontology ID for the biospecimen_tissue_term (e.g., 'BTO:0000671', 'BTO:0000089', 'BTO:0000848').
     in_subset:
       - ontology
     # range: TissueEnum
@@ -1387,20 +1392,23 @@ slots:
       The EGA accession ID of an entity.
 
   reference_name:
-    description: Name or identifier of the reference, e.g., "hg38", "dbSNP"
+    description: Name or identifier of the reference, e.g., 'hg38', 'dbSNP'
 
   reference_type:
     description: Type of reference data used
     range: ReferenceTypeEnum
 
   reference_source:
-    description: Source or provider of the reference, e.g., "UCSC", "Ensembl"
+    description: Source or provider of the reference, e.g., 'UCSC', 'Ensembl'
 
   reference_link:
     description: URL to the reference
 
   reference_version:
     description: Version or release identifier of the reference data
+
+  read_type:
+    description: Designates the functional role or sequence orientation of a FASTQ file within a sequencing run (e.g., R1, R2, R3, I1, I2).
 
 subsets:
   ontology:

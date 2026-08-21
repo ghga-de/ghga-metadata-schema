@@ -7,7 +7,7 @@ A Process Data File is a File that contains data produced by an Analysis or work
 URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20process_data_files%201..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20process_data_files%201..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20process_data_files%201..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Attribute],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Analysis]<analysis%201..1-%20[ProcessDataFile&#124;format:ProcessDataFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20process_data_files%201..*>[ProcessDataFile],[Submission]-%20process_data_files(i)%200..*>[ProcessDataFile],[File]^-[ProcessDataFile],[File],[Dataset],[Attribute],[Analysis])
 
 ## Parents
 
@@ -24,7 +24,7 @@ URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 ### Own
 
  * [ProcessDataFile➞format](ProcessDataFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Process Data File (e.g., CRAM, BAM).
+     * Description: The file format of the Process Data File (e.g., 'CRAM', 'BAM').
      * Range: [ProcessDataFileFormatEnum](ProcessDataFileFormatEnum.md)
  * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md)  <sub>1..1</sub>
      * Description: The alias of the Analysis that produced this Process Data File.

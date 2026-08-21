@@ -2,7 +2,7 @@
 # Slot: diagnosis_terms
 
 
-The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).
+The ICD-10 terms corresponding to the ICD-10 codes (e.g., 'Type 1 diabetes mellitus; Malignant neoplasm of base of tongue').
 
 URI: [GHGA:diagnosis_terms](https://w3id.org/GHGA/diagnosis_terms)
 

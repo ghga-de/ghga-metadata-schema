@@ -12,13 +12,13 @@ Submission {
 IndividualSupportingFile {
 
 }
+Attribute {
+
+}
 Dataset {
 
 }
 Study {
-
-}
-Attribute {
 
 }
 DataAccessPolicy {
@@ -79,24 +79,29 @@ Submission ||--}| AnalysisMethodSupportingFile : "analysis_method_supporting_fil
 Submission ||--}| IndividualSupportingFile : "individual_supporting_files"
 IndividualSupportingFile ||--|| Individual : "individual"
 IndividualSupportingFile ||--|| Dataset : "dataset"
+IndividualSupportingFile ||--}o Attribute : "attributes"
 Dataset ||--|| DataAccessPolicy : "data_access_policy"
 Dataset ||--|| Study : "study"
 Study ||--}o Attribute : "attributes"
 DataAccessPolicy ||--|| DataAccessCommittee : "data_access_committee"
 AnalysisMethodSupportingFile ||--|| AnalysisMethod : "analysis_method"
 AnalysisMethodSupportingFile ||--|| Dataset : "dataset"
+AnalysisMethodSupportingFile ||--}o Attribute : "attributes"
 AnalysisMethod ||--}o Attribute : "parameters"
 AnalysisMethod ||--}o Attribute : "software_versions"
 AnalysisMethod ||--}o Attribute : "attributes"
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethodSupportingFile ||--}o Attribute : "attributes"
 ExperimentMethod ||--}o Attribute : "attributes"
 ProcessDataFile ||--|| Analysis : "analysis"
 ProcessDataFile ||--|| Dataset : "dataset"
+ProcessDataFile ||--}o Attribute : "attributes"
 Analysis ||--|| AnalysisMethod : "analysis_method"
 Analysis ||--}| ResearchDataFile : "research_data_files"
 ResearchDataFile ||--}| Experiment : "experiments"
 ResearchDataFile ||--|| Dataset : "dataset"
+ResearchDataFile ||--}o Attribute : "attributes"
 Experiment ||--|| ExperimentMethod : "experiment_method"
 Experiment ||--|| Sample : "sample"
 Experiment ||--}o Attribute : "attributes"
@@ -152,9 +157,11 @@ Experiment {
 
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethodSupportingFile ||--}o Attribute : "attributes"
 ExperimentMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiments"
 ResearchDataFile ||--|| Dataset : "dataset"
+ResearchDataFile ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 Experiment ||--|| ExperimentMethod : "experiment_method"
@@ -252,6 +259,7 @@ ExperimentMethod {
 ResearchDataFile {
     ResearchDataFileFormatEnum format  
     integer technical_replicate  
+    string read_type  
     string sequencing_lane_id  
     string name  
     string ega_accession  
@@ -289,9 +297,11 @@ Experiment {
 
 ExperimentMethodSupportingFile ||--|| ExperimentMethod : "experiment_method"
 ExperimentMethodSupportingFile ||--|| Dataset : "dataset"
+ExperimentMethodSupportingFile ||--}o Attribute : "attributes"
 ExperimentMethod ||--}o Attribute : "attributes"
 ResearchDataFile ||--}| Experiment : "experiments"
 ResearchDataFile ||--|| Dataset : "dataset"
+ResearchDataFile ||--}o Attribute : "attributes"
 Sample ||--|| Individual : "individual"
 Sample ||--}o Attribute : "attributes"
 Experiment ||--|| ExperimentMethod : "experiment_method"

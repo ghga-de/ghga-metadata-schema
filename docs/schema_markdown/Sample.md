@@ -30,7 +30,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * Description: The alias of the Individual entity from which this Biospecimen or Sample was derived.
      * Range: [Individual](Individual.md)
  * [Sample➞name](Sample_name.md)  <sub>1..1</sub>
-     * Description: A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
+     * Description: A descriptive name of this Sample (e.g., 'GHGAS_Blood_Sample1' or 'GHGAS_PBMC_RNAseq_S1'). This property must not include any personally identifiable data.
      * Range: [String](types/String.md)
  * [Sample➞type](Sample_type.md)  <sub>0..1</sub>
      * Description: The type of the Sample.
@@ -57,7 +57,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * Description: One or more cross-references for this Sample (e.g., this Sample may have an EBI BioSamples accession ID).
      * Range: [String](types/String.md)
  * [Sample➞biospecimen_name](Sample_biospecimen_name.md)  <sub>0..1</sub>
-     * Description: A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.
+     * Description: A descriptive name of this Biospecimen (e.g., 'GHGAB_caudate_nucleus_biospecimen'). This property must not include any personally identifiable data.
      * Range: [String](types/String.md)
  * [Sample➞biospecimen_type](Sample_biospecimen_type.md)  <sub>0..1</sub>
      * Description: The type of Biospecimen.
@@ -69,14 +69,14 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
      * Description: The age of the Individual at the time of isolating this biospecimen.
      * Range: [AgeRangeEnum](AgeRangeEnum.md)
  * [Sample➞biospecimen_vital_status_at_sampling](Sample_biospecimen_vital_status_at_sampling.md)  <sub>0..1</sub>
-     * Description: Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
+     * Description: Vital Status of the Individual at the time of isolating this biospecimen (e.g., 'ALIVE').
      * Range: [VitalStatusEnum](VitalStatusEnum.md)
  * [Sample➞biospecimen_tissue_term](Sample_biospecimen_tissue_term.md)  <sub>0..1</sub>
-     * Description: The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
+     * Description: The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., 'kidney', 'blood', 'melanoma cell').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Sample➞biospecimen_tissue_id](Sample_biospecimen_tissue_id.md)  <sub>0..1</sub>
-     * Description: The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+     * Description: The corresponding ontology ID for the biospecimen_tissue_term (e.g., 'BTO:0000671', 'BTO:0000089', 'BTO:0000848').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Sample➞biospecimen_isolation](Sample_biospecimen_isolation.md)  <sub>0..1</sub>
@@ -95,7 +95,7 @@ URI: [GHGA:Sample](https://w3id.org/GHGA/Sample)
 ### Mixed in from AttributeMixin:
 
  * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
+     * Description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
      * Range: [Attribute](Attribute.md)
 
 ## Other properties

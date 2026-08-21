@@ -7,11 +7,12 @@ A file is an object that contains information generated from a process, either a
 URI: [GHGA:File](https://w3id.org/GHGA/File)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;ega_accession:string%20%3F;included_in_submission:boolean;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;ega_accession:string%20%3F;included_in_submission:boolean;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AnalysisMethodSupportingFile])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;ega_accession:string%20%3F;included_in_submission:boolean;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisMethodSupportingFile])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResearchDataFile],[ProcessDataFile],[IndividualSupportingFile],[IdentifiedByAliasMixin],[Dataset]<dataset%201..1-%20[File&#124;name:string;ega_accession:string%20%3F;included_in_submission:boolean;alias:string],[File]uses%20-.->[IdentifiedByAliasMixin],[File]uses%20-.->[AttributeMixin],[File]^-[ResearchDataFile],[File]^-[ProcessDataFile],[File]^-[IndividualSupportingFile],[File]^-[ExperimentMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[ExperimentMethodSupportingFile],[Dataset],[AttributeMixin],[Attribute],[AnalysisMethodSupportingFile])
 
 ## Uses Mixin
 
  *  mixin: [IdentifiedByAliasMixin](IdentifiedByAliasMixin.md)
+ *  mixin: [AttributeMixin](AttributeMixin.md) - Mixin for entities that can have one or more attributes.
 
 ## Children
 
@@ -47,3 +48,9 @@ URI: [GHGA:File](https://w3id.org/GHGA/File)
  * [IdentifiedByAliasMixin➞alias](IdentifiedByAliasMixin_alias.md)  <sub>1..1</sub>
      * Description: The alias for an entity at the time of submission.
      * Range: [String](types/String.md)
+
+### Mixed in from AttributeMixin:
+
+ * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
+     * Description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
+     * Range: [Attribute](Attribute.md)

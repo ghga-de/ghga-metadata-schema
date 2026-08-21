@@ -7,7 +7,7 @@ An Experiment Method Supporting File is a File that contains additional informat
 URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMethodSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[ExperimentMethod]<experiment_method%201..1-%20[ExperimentMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20experiment_method_supporting_files%201..*>[ExperimentMethodSupportingFile],[Submission]-%20experiment_method_supporting_files(i)%200..*>[ExperimentMethodSupportingFile],[File]^-[ExperimentMethodSupportingFile],[ExperimentMethod],[Dataset],[Attribute])
 
 ## Parents
 
@@ -24,7 +24,7 @@ URI: [GHGA:ExperimentMethodSupportingFile](https://w3id.org/GHGA/ExperimentMetho
 ### Own
 
  * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., TXT, JSON).
+     * Description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)  <sub>1..1</sub>
      * Description: The Experiment Method associated with an entity.

@@ -2,7 +2,7 @@
 # Slot: sex
 
 
-The biological sex of the Individual (e.g., female).
+The biological sex of the Individual (e.g., 'FEMALE').
 
 URI: [GHGA:sex](https://w3id.org/GHGA/sex)
 

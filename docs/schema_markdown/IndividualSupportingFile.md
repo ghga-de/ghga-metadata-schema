@@ -7,7 +7,7 @@ An Individual Supporting File is a File that contains additional information rel
 URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[Individual]<individual%201..1-%20[IndividualSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20individual_supporting_files%201..*>[IndividualSupportingFile],[Submission]-%20individual_supporting_files(i)%200..*>[IndividualSupportingFile],[File]^-[IndividualSupportingFile],[Individual],[File],[Dataset],[Attribute])
 
 ## Parents
 
@@ -24,7 +24,7 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
 ### Own
 
  * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., TXT, JSON).
+     * Description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)  <sub>1..1</sub>
      * Description: The Individual associated with an entity.
