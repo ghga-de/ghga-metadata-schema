@@ -2,7 +2,7 @@
 # Slot: reference_name
 
 
-Name or identifier of the reference, e.g., "hg38", "dbSNP"
+Name or identifier of the reference, e.g., 'hg38', 'dbSNP'
 
 URI: [GHGA:AnalysisMethod_reference_name](https://w3id.org/GHGA/AnalysisMethod_reference_name)
 

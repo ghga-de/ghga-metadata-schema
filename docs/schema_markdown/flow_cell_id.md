@@ -2,7 +2,7 @@
 # Slot: flow_cell_id
 
 
-Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
+Flow cell ID (e.g., 'ABC 123', 'H23YTDMXX').
 
 URI: [GHGA:flow_cell_id](https://w3id.org/GHGA/flow_cell_id)
 

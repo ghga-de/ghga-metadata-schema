@@ -2,7 +2,7 @@
 # Slot: sequencing_read_length
 
 
-Length of sequencing reads (e.g., long or short or actual number of the read length).
+Length of sequencing reads (e.g., 'long' or 'short' or actual number of the read length).
 
 URI: [GHGA:ExperimentMethod_sequencing_read_length](https://w3id.org/GHGA/ExperimentMethod_sequencing_read_length)
 

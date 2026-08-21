@@ -2,7 +2,7 @@
 # Slot: email
 
 
-Email of a Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable information.
+Email of a Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable information.
 
 URI: [GHGA:email](https://w3id.org/GHGA/email)
 

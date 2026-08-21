@@ -58,13 +58,13 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
      * Description: Semicolon-separated key=value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., 'salmon = 1.3.0; trim-galore = 0.6.6; bedtools = 2.29.2').
      * Range: [Attribute](Attribute.md)
  * [AnalysisMethod➞reference_name](AnalysisMethod_reference_name.md)  <sub>0..1</sub>
-     * Description: Name or identifier of the reference, e.g., "hg38", "dbSNP"
+     * Description: Name or identifier of the reference, e.g., 'hg38', 'dbSNP'
      * Range: [String](types/String.md)
  * [AnalysisMethod➞reference_type](AnalysisMethod_reference_type.md)  <sub>0..1</sub>
      * Description: Type of reference data used
      * Range: [ReferenceTypeEnum](ReferenceTypeEnum.md)
  * [AnalysisMethod➞reference_source](AnalysisMethod_reference_source.md)  <sub>0..1</sub>
-     * Description: Source or provider of the reference, e.g., "UCSC", "Ensembl"
+     * Description: Source or provider of the reference, e.g., 'UCSC', 'Ensembl'
      * Range: [String](types/String.md)
  * [AnalysisMethod➞reference_link](AnalysisMethod_reference_link.md)  <sub>0..1</sub>
      * Description: URL to the reference

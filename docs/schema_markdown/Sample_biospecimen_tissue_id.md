@@ -2,7 +2,7 @@
 # Slot: biospecimen_tissue_id
 
 
-The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+The corresponding ontology ID for the biospecimen_tissue_term (e.g., 'BTO:0000671', 'BTO:0000089', 'BTO:0000848').
 
 URI: [GHGA:Sample_biospecimen_tissue_id](https://w3id.org/GHGA/Sample_biospecimen_tissue_id)
 

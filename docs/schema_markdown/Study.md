@@ -34,7 +34,7 @@ URI: [GHGA:Study](https://w3id.org/GHGA/Study)
      * Description: A detailed description (abstract) that describes the goals of this Study.
      * Range: [String](types/String.md)
  * [Study➞types](Study_types.md)  <sub>1..\*</sub>
-     * Description: One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
+     * Description: One or more types of this Study (e.g., 'CANCER_GENOMICS; EPIGENETICS; EXOME_SEQUENCING').
      * Range: [StudyTypeEnum](StudyTypeEnum.md)
  * [Study➞ega_accession](Study_ega_accession.md)  <sub>0..1</sub>
      * Description: The EGA accession ID of an entity.

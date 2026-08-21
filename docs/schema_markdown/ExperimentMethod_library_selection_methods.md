@@ -2,7 +2,7 @@
 # Slot: library_selection_methods
 
 
-One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
+One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., 'random; PCA; cDNA').
 
 URI: [GHGA:ExperimentMethod_library_selection_methods](https://w3id.org/GHGA/ExperimentMethod_library_selection_methods)
 

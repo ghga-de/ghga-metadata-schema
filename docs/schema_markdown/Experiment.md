@@ -29,7 +29,7 @@ URI: [GHGA:Experiment](https://w3id.org/GHGA/Experiment)
      * Description: The alias of the Experiment Method that is associated with this Experiment.
      * Range: [ExperimentMethod](ExperimentMethod.md)
  * [Experiment➞title](Experiment_title.md)  <sub>1..1</sub>
-     * Description: The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
+     * Description: The title for this Experiment (e.g., 'GHGAE_PBMC_RNAseq').
      * Range: [String](types/String.md)
  * [Experiment➞description](Experiment_description.md)  <sub>0..1</sub>
      * Description: A detailed description of this Experiment.

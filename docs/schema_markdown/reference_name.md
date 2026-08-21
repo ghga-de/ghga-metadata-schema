@@ -2,7 +2,7 @@
 # Slot: reference_name
 
 
-Name or identifier of the reference, e.g., "hg38", "dbSNP"
+Name or identifier of the reference, e.g., 'hg38', 'dbSNP'
 
 URI: [GHGA:reference_name](https://w3id.org/GHGA/reference_name)
 

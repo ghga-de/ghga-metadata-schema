@@ -2,7 +2,7 @@
 # Slot: reference_source
 
 
-Source or provider of the reference, e.g., "UCSC", "Ensembl"
+Source or provider of the reference, e.g., 'UCSC', 'Ensembl'
 
 URI: [GHGA:reference_source](https://w3id.org/GHGA/reference_source)
 

@@ -26,7 +26,7 @@ URI: [GHGA:DataAccessCommittee](https://w3id.org/GHGA/DataAccessCommittee)
 ### Own
 
  * [DataAccessCommittee➞email](DataAccessCommittee_email.md)  <sub>1..1</sub>
-     * Description: The email of the Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable data.
+     * Description: The email of the Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable data.
      * Range: [String](types/String.md)
  * [DataAccessCommittee➞institute](DataAccessCommittee_institute.md)  <sub>1..1</sub>
      * Description: The Institute a person is affiliated with.

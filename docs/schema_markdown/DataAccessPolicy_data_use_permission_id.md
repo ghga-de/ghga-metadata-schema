@@ -2,7 +2,7 @@
 # Slot: data_use_permission_id
 
 
-The DUO ID corresponding to the Data Use Permission term (e.g., DUO:0000004).
+The DUO ID corresponding to the Data Use Permission term (e.g., 'DUO:0000004').
 
 URI: [GHGA:DataAccessPolicy_data_use_permission_id](https://w3id.org/GHGA/DataAccessPolicy_data_use_permission_id)
 

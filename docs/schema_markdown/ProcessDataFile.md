@@ -24,7 +24,7 @@ URI: [GHGA:ProcessDataFile](https://w3id.org/GHGA/ProcessDataFile)
 ### Own
 
  * [ProcessDataFile➞format](ProcessDataFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Process Data File (e.g., CRAM, BAM).
+     * Description: The file format of the Process Data File (e.g., 'CRAM', 'BAM').
      * Range: [ProcessDataFileFormatEnum](ProcessDataFileFormatEnum.md)
  * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md)  <sub>1..1</sub>
      * Description: The alias of the Analysis that produced this Process Data File.

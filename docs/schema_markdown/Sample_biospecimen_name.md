@@ -2,7 +2,7 @@
 # Slot: biospecimen_name
 
 
-A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.
+A descriptive name of this Biospecimen (e.g., 'GHGAB_caudate_nucleus_biospecimen'). This property must not include any personally identifiable data.
 
 URI: [GHGA:Sample_biospecimen_name](https://w3id.org/GHGA/Sample_biospecimen_name)
 

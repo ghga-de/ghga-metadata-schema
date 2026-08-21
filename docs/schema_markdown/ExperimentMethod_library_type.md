@@ -2,7 +2,7 @@
 # Slot: library_type
 
 
-Describe the level of omics analysis (e.g., WGS, ATAC).
+Describe the level of omics analysis (e.g., 'WGS', 'ATAC').
 
 URI: [GHGA:ExperimentMethod_library_type](https://w3id.org/GHGA/ExperimentMethod_library_type)
 
