@@ -253,7 +253,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [storage](storage.md) - Methods by which a Sample is stored.
      * [Sample➞storage](Sample_storage.md)
  * [studies](studies.md) - The Study associated with an entity.
-     * [Submission➞studies](Submission_studies.md) - Study entities associated with this Submission.
+     * [Submission➞studies](Submission_studies.md) - The Study associated with this Submission. A Submission contains exactly one Study.
  * [study](study.md) - The Study associated with an entity.
      * [Dataset➞study](Dataset_study.md) - The Study associated with this Dataset.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
