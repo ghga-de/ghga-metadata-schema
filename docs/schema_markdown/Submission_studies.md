@@ -2,7 +2,7 @@
 # Slot: studies
 
 
-Study entities associated with this Submission.
+The Study associated with this Submission. A Submission contains exactly one Study.
 
 URI: [GHGA:Submission_studies](https://w3id.org/GHGA/Submission_studies)
 

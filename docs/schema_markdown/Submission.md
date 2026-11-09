@@ -48,7 +48,7 @@ URI: [GHGA:Submission](https://w3id.org/GHGA/Submission)
      * Description: The Experiment Methods that are part of this Submission.
      * Range: [ExperimentMethod](ExperimentMethod.md)
  * [Submission➞studies](Submission_studies.md)  <sub>1..\*</sub>
-     * Description: Study entities associated with this Submission.
+     * Description: The Study associated with this Submission. A Submission contains exactly one Study.
      * Range: [Study](Study.md)
  * [Submission➞research_data_files](Submission_research_data_files.md)  <sub>1..\*</sub>
      * Description: One or more Research Data Files associated with this Submission.

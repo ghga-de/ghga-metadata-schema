@@ -796,8 +796,10 @@ classes:
     slot_usage:
       studies:
         description: >-
-          Study entities associated with this Submission.
+          The Study associated with this Submission. A Submission contains exactly one Study.
         required: true
+        minimum_cardinality: 1
+        maximum_cardinality: 1
         inlined: true
         inlined_as_list: true
       samples:
