@@ -18,7 +18,7 @@ URI: [GHGA:StorageEnum](https://w3id.org/GHGA/StorageEnum)
 | :--- | :---: | :---: | ---: |
 | REFRIGERATOR | The sample / biospecimen was stored in a refrigerator at 2°C to 5°C. |  |  |
 | FREEZER | The sample / biospecimen was stored in a freezer at -20°C. |  |  |
-| ULTRA_LOW_FREEZER | The sample / biospecimen was stored in a ultra-low freezer at -80°C. |  |  |
+| ULTRA_LOW_FREEZER | The sample / biospecimen was stored in an ultra-low freezer at -80°C. |  |  |
 | CRYOGENIC_FREEZER | The sample / biospecimen was stored in a cryogenic freezer at -150°C to -190°C. |  |  |
 | FFPE | The sample / biospecimen was stored using formalin-fixed paraffin-embedding (FFPE). |  |  |
 | NONE | The sample / biospecimen was not stored. |  |  |

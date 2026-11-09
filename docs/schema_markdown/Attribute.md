@@ -33,7 +33,7 @@ URI: [GHGA:Attribute](https://w3id.org/GHGA/Attribute)
      * Description: The value for an attribute (e.g., a numerical value without the units).
      * Range: [String](types/String.md)
  * [Attribute➞value_type](Attribute_value_type.md)  <sub>0..1</sub>
-     * Description: The value_type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
+     * Description: A semantic type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
      * Range: [String](types/String.md)
 
 ## Other properties

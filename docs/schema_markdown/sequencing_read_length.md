@@ -2,7 +2,7 @@
 # Slot: sequencing_read_length
 
 
-Length of sequencing reads (e.g., 'long' or 'short' or actual number of the read length).
+Length of sequencing reads, either as a number of bases or as 'short' or 'long' (e.g., '150').
 
 URI: [GHGA:sequencing_read_length](https://w3id.org/GHGA/sequencing_read_length)
 

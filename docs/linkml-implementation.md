@@ -17,9 +17,11 @@ If you are adding a field/property as an attribute of a real world entity then t
 as a slot.
 
 If a field/property is a reference to one or more entities of another class then the
-field should follow the following format: `has_<REFEREE_CLASS>`.
+field is named after the referenced class in snake case: singular for a single
+reference (e.g., `sample`, `analysis_method`) and plural for multiple references
+(e.g., `experiments`, `research_data_files`).
 
-Whether or not this field is multivalued should be managed via `slot_usage`.
+Whether or not this field is multivalued is set on the slot definition (`multivalued: true`).
 
 
 ## Structure

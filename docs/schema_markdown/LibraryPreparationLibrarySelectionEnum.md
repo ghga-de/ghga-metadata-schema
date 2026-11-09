@@ -20,9 +20,9 @@ URI: [GHGA:LibraryPreparationLibrarySelectionEnum](https://w3id.org/GHGA/Library
 | CAGE_METHOD | Cap-analysis gene expression. | GENEPIO:0001942 |  |
 | C_DNA_METHOD | PolyA selection or enrichment for messenger RNA (mRNA). complementary DNA. | GENEPIO:0001962 |  |
 | CF_H_METHOD | Cot-filtered highly repetitive genomic DNA. | GENEPIO:0001943 |  |
-| CF_M_METHOD | Cot-filtered moderately repetitive genomic DNA. | GENEPIO:1944 |  |
+| CF_M_METHOD | Cot-filtered moderately repetitive genomic DNA. | GENEPIO:0001944 |  |
 | CF_S_METHOD | Cot-filtered single/low-copy genomic DNA. | GENEPIO:0001945 |  |
-| CF_T_METHOD | Cot-filtered theoretical single-copy genomic DNA. | GENEPIO:1946 |  |
+| CF_T_METHOD | Cot-filtered theoretical single-copy genomic DNA. | GENEPIO:0001946 |  |
 | CHIP_SEQ_METHOD | Chromatin immunoprecipitation. | GENEPIO:0001947 |  |
 | D_NASE_METHOD | Deoxyribonuclease (MNase) digestion. | GENEPIO:0001948 |  |
 | HMPR_METHOD | Hypo-methylated partial restriction digest. | GENEPIO:0001949 |  |

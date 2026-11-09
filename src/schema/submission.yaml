@@ -7,19 +7,16 @@ imports:
   - linkml:types
 
 prefixes:
-  COB: http://purl.obolibrary.org/obo/COB_
   EFO: http://www.ebi.ac.uk/efo/EFO_
   GHGA: https://w3id.org/GHGA/
   HANCESTRO: http://purl.obolibrary.org/obo/HANCESTRO_
   SIO: http://semanticscience.org/resource/SIO_
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
-  GSSO: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
-  DUO: http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl
-  NCIT: http://purl.obolibrary.org/obo/ncit/releases/2022-08-19/ncit.owl
-  topic: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
-  format: https://raw.githubusercontent.com/edamontology/edamontology/main/EDAM_dev.owl
-  GENEPIO: http://purl.obolibrary.org/obo/genepio/releases/2023-08-19/genepio.owl
+  GSSO: http://purl.obolibrary.org/obo/GSSO_
+  DUO: http://purl.obolibrary.org/obo/DUO_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
 
 default_prefix: GHGA
 default_range: string
@@ -565,7 +562,7 @@ classes:
         recommended: true
       data_use_permission_term:
         description: >-
-          The Data Use Permission associated with this Data Access Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., 'no restriction').
+          The Data Use Permission associated with this Data Access Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., 'NO_RESTRICTION').
         required: true
       data_use_permission_id:
         description: >-
@@ -573,7 +570,7 @@ classes:
         required: true
       data_use_modifier_terms:
         description: >-
-          One or more Data Use Modifiers for the Data Use Permission associated with this Data Access Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., 'clinical care use').
+          One or more Data Use Modifiers for the Data Use Permission associated with this Data Access Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., 'CLINICAL_CARE_USE').
           Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
         required: false
         recommended: true
@@ -913,7 +910,7 @@ slots:
     description: The value for an attribute (e.g., a numerical value without the units).
 
   value_type:
-    description: The value_type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
+    description: A semantic type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
 
   attributes:
     description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
@@ -1164,14 +1161,9 @@ slots:
       The Institution(s) associated with an entity.
     multivalued: True
 
-  library_name:
-    description: >-
-      A short name identifying the library.
-      The same name may refer to multiple versions of the same continually updated library.
-
   library_type:
     description: >-
-      Describe the level of omics analysis (e.g., 'WGS').
+      The type of library that was sequenced (e.g., 'WGS').
     range: LibraryPreparationLibraryTypeEnum
 
   library_selection_methods:
@@ -1195,14 +1187,14 @@ slots:
 
   primer:
     description: >-
-      The type of primer used for reverse transcription (e.g., 'random').
+      The type of primer used for reverse transcription (e.g., 'RANDOM').
     exact_mappings:
       - EFO:0010192
     range: PrimerEnum
 
   end_bias:
     description: >-
-      The end of the cDNA molecule that is preferentially sequenced (e.g., '3 prime end').
+      The end of the cDNA molecule that is preferentially sequenced (e.g., '3_PRIME_END').
     exact_mappings:
       - EFO:0010187
     range: EndBiasEnum
@@ -1229,7 +1221,7 @@ slots:
 
   sequencing_read_length:
     description: >-
-      Length of sequencing reads (e.g., 'long' or 'short' or actual number of the read length).
+      Length of sequencing reads, either as a number of bases or as 'short' or 'long' (e.g., '150').
 
   sequencing_lane_id:
     description: >-
@@ -1237,7 +1229,7 @@ slots:
 
   sequencing_layout:
     description: >-
-      Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+      Whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
     range: SequencingProtocolSequencingLayoutEnum
     exact_mappings:
       - NCIT:C175894
@@ -1258,7 +1250,7 @@ slots:
 
   sample_barcode_read:
     description: >-
-      The type of read that contains the sample barcode (e.g., 'index1').
+      The type of read that contains the sample barcode (e.g., 'INDEX1').
     range: SampleBarcodeReadEnum
 
   biological_replicate:
@@ -1583,7 +1575,7 @@ enums:
           The sample / biospecimen was stored in a freezer at -20°C.
       ULTRA_LOW_FREEZER:
         description: >-
-          The sample / biospecimen was stored in a ultra-low freezer at -80°C.
+          The sample / biospecimen was stored in an ultra-low freezer at -80°C.
       CRYOGENIC_FREEZER:
         description: >-
           The sample / biospecimen was stored in a cryogenic freezer at -150°C to -190°C.
@@ -1655,7 +1647,7 @@ enums:
 
   IndividualSexEnum:
     description: >-
-      The sex of an Individual as as defined in a specific medical and clinical context.
+      The sex of an Individual as defined in a specific medical and clinical context.
     reachable_from:
       source_ontology: http://purl.obolibrary.org/obo/gsso/releases/2.0.5/gsso.owl
       source_nodes:
@@ -1877,7 +1869,7 @@ enums:
         description: >-
           HDF5 is a data model, library, and file format for storing and managing data, based on Hierarchical Data Format (HDF). 
           An HDF5 file appears to the user as a directed graph. The nodes of this graph are the higher-level HDF5 objects that are exposed by the HDF5 APIs: Groups, Datasets, Named datatypes. Currently supported by the Python MDTraj package.
-          HDF5 is the new version, according to the HDF group, a completely different technology (https://support.hdfgroup.org/products/hdf4/ compared to HDF.
+          HDF5 is the new version, according to the HDF group, a completely different technology (https://support.hdfgroup.org/products/hdf4/) compared to HDF.
       SAM:
         description: >-
           Sequence Alignment/Map (SAM) format for alignment of nucleotide sequences (e.g., sequencing reads) to (a) reference sequence(s). May contain base-call and alignment qualities and other data.
@@ -1991,7 +1983,7 @@ enums:
         description: >-
           Cot-filtered highly repetitive genomic DNA.
       CF_M_METHOD:
-        meaning: GENEPIO:1944
+        meaning: GENEPIO:0001944
         description: >-
           Cot-filtered moderately repetitive genomic DNA.
       CF_S_METHOD:
@@ -1999,7 +1991,7 @@ enums:
         description: >-
           Cot-filtered single/low-copy genomic DNA.
       CF_T_METHOD:
-        meaning: GENEPIO:1946
+        meaning: GENEPIO:0001946
         description: >-
           Cot-filtered theoretical single-copy genomic DNA.
       CHIP_SEQ_METHOD:
@@ -2353,7 +2345,7 @@ enums:
           Illumina AmpliSeq for Illumina Immune Response Panel.
       ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_LIBRARY_PREP_INDEXES_AND_ACCESSOIRES:
         description: >-
-          Illumina AmpliSeq for Illumina Library Prep, Indexes, and Accessoires.
+          Illumina AmpliSeq for Illumina Library Prep, Indexes, and Accessories.
       ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_MYELOID_PANEL:
         description: >-
           Illumina AmpliSeq for Illumina Myeloid Panel.
@@ -2950,7 +2942,7 @@ enums:
       HEALTHY:
         description: Healthy state.
       NOT_APPLICABLE:
-        description: The distinction is not applicaple.
+        description: The distinction is not applicable.
 
   CaseControlStatusEnum:
     description: >-
@@ -2971,7 +2963,7 @@ enums:
 
   AgeRangeEnum:
     description: >-
-      Enum to capture the age range that an Indiviudal belongs to.
+      Enum to capture the age range that an Individual belongs to.
     permissible_values:
       0_TO_5:
         description: Age between 0 to 5.

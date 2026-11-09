@@ -100,11 +100,11 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [data_use_modifier_ids](data_use_modifier_ids.md) - The DUO IDs corresponding to the Data Use Modifier terms (e.g., 'DUO:0000043').
      * [DataAccessPolicy➞data_use_modifier_ids](DataAccessPolicy_data_use_modifier_ids.md)
  * [data_use_modifier_terms](data_use_modifier_terms.md) - Data Use Modifiers for the Data Use Permission associated with an entity. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
-     * [DataAccessPolicy➞data_use_modifier_terms](DataAccessPolicy_data_use_modifier_terms.md) - One or more Data Use Modifiers for the Data Use Permission associated with this Data Access Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., 'clinical care use'). Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
+     * [DataAccessPolicy➞data_use_modifier_terms](DataAccessPolicy_data_use_modifier_terms.md) - One or more Data Use Modifiers for the Data Use Permission associated with this Data Access Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., 'CLINICAL_CARE_USE'). Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
  * [data_use_permission_id](data_use_permission_id.md) - The DUO ID corresponding to the Data Use Permission term (e.g., 'DUO:0000004').
      * [DataAccessPolicy➞data_use_permission_id](DataAccessPolicy_data_use_permission_id.md)
  * [data_use_permission_term](data_use_permission_term.md) - Data Use Permission associated with an entity. The used term should be a descendant of 'DUO:0000001: data use permission'.
-     * [DataAccessPolicy➞data_use_permission_term](DataAccessPolicy_data_use_permission_term.md) - The Data Use Permission associated with this Data Access Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., 'no restriction').
+     * [DataAccessPolicy➞data_use_permission_term](DataAccessPolicy_data_use_permission_term.md) - The Data Use Permission associated with this Data Access Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., 'NO_RESTRICTION').
  * [dataset](dataset.md) - The Dataset associated with an entity.
      * [File➞dataset](File_dataset.md) - The Dataset alias associated with this File.
  * [datasets](datasets.md) - The Datasets associated with an entity.
@@ -138,7 +138,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Study➞ega_accession](Study_ega_accession.md)
  * [email](email.md) - Email of a Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable information.
      * [DataAccessCommittee➞email](DataAccessCommittee_email.md) - The email of the Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable data.
- * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced (e.g., '3 prime end').
+ * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced (e.g., '3_PRIME_END').
      * [ExperimentMethod➞end_bias](ExperimentMethod_end_bias.md)
  * [experiment_method](experiment_method.md) - The Experiment Method associated with an entity.
      * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)
@@ -183,7 +183,6 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Attribute➞key](Attribute_key.md)
  * [key_type](key_type.md) - A semantic type that characterizes the attribute key (e.g., 'oxygen saturation measurement (MAXO:0000616)').
      * [Attribute➞key_type](Attribute_key_type.md)
- * [library_name](library_name.md) - A short name identifying the library. The same name may refer to multiple versions of the same continually updated library.
  * [library_preparation](library_preparation.md) - The general method for preparation of the sequencing library (e.g., 'KAPA PCR-free').
      * [ExperimentMethod➞library_preparation](ExperimentMethod_library_preparation.md)
  * [library_preparation_kit_manufacturer](library_preparation_kit_manufacturer.md) - The manufacturer of the kit used for library preparation.
@@ -192,7 +191,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞library_preparation_kit_retail_name](ExperimentMethod_library_preparation_kit_retail_name.md)
  * [library_selection_methods](library_selection_methods.md) - One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., 'RANDOM_METHOD; C_DNA_METHOD').
      * [ExperimentMethod➞library_selection_methods](ExperimentMethod_library_selection_methods.md)
- * [library_type](library_type.md) - Describe the level of omics analysis (e.g., 'WGS').
+ * [library_type](library_type.md) - The type of library that was sequenced (e.g., 'WGS').
      * [ExperimentMethod➞library_type](ExperimentMethod_library_type.md)
  * [name](name.md) - The name for an entity.
      * [AnalysisMethod➞name](AnalysisMethod_name.md) - A name identifying this Analysis Method.
@@ -210,7 +209,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [DataAccessPolicy➞policy_text](DataAccessPolicy_policy_text.md)
  * [policy_url](policy_url.md) - An alternative to the Data Access Policy text is to provide the URL for the policy. This is useful if the terms of the policy are available online at a resolvable URL.
      * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md)
- * [primer](primer.md) - The type of primer used for reverse transcription (e.g., 'random').
+ * [primer](primer.md) - The type of primer used for reverse transcription (e.g., 'RANDOM').
      * [ExperimentMethod➞primer](ExperimentMethod_primer.md)
  * [process_data_files](process_data_files.md) - The Process Data Files associated with an entity.
      * [Submission➞process_data_files](Submission_process_data_files.md) - One or more Process Data Files associated with this Submission.
@@ -235,7 +234,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞rnaseq_strandedness](ExperimentMethod_rnaseq_strandedness.md)
  * [sample](sample.md) - The Sample associated with an entity.
      * [Experiment➞sample](Experiment_sample.md) - The alias of the Sample that is associated with this Experiment.
- * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g., 'index1').
+ * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g., 'INDEX1').
      * [ExperimentMethod➞sample_barcode_read](ExperimentMethod_sample_barcode_read.md)
  * [samples](samples.md) - The Samples associated with an entity.
      * [Submission➞samples](Submission_samples.md) - One or more Sample entities associated with this Submission.
@@ -243,9 +242,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [ExperimentMethod➞sequencing_center](ExperimentMethod_sequencing_center.md)
  * [sequencing_lane_id](sequencing_lane_id.md) - The identifier of a sequencing lane.
      * [ResearchDataFile➞sequencing_lane_id](ResearchDataFile_sequencing_lane_id.md)
- * [sequencing_layout](sequencing_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+ * [sequencing_layout](sequencing_layout.md) - Whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
      * [ExperimentMethod➞sequencing_layout](ExperimentMethod_sequencing_layout.md)
- * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads (e.g., 'long' or 'short' or actual number of the read length).
+ * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads, either as a number of bases or as 'short' or 'long' (e.g., '150').
      * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)
  * [sex](sex.md) - The biological sex of the Individual (e.g., 'FEMALE').
      * [Individual➞sex](Individual_sex.md)
@@ -281,7 +280,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Study➞types](Study_types.md) - One or more types of this Study (e.g., 'CANCER_GENOMICS; EPIGENETICS').
  * [value](value.md) - The value for an attribute (e.g., a numerical value without the units).
      * [Attribute➞value](Attribute_value.md)
- * [value_type](value_type.md) - The value_type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
+ * [value_type](value_type.md) - A semantic type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
      * [Attribute➞value_type](Attribute_value_type.md)
  * [workflow_doi](workflow_doi.md) - A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
      * [AnalysisMethod➞workflow_doi](AnalysisMethod_workflow_doi.md)
@@ -301,7 +300,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Enums
 
- * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
+ * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Individual belongs to.
  * [AncestryEnum](AncestryEnum.md) - Permitted values for ancestry.
  * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a Sample comes from a case or a control.
  * [DataUseModifierEnum](DataUseModifierEnum.md) - Permitted values for data use modifier.
@@ -310,7 +309,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias.
  * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type.
  * [GeographicalRegionEnum](GeographicalRegionEnum.md) - Permitted values for geographical region.
- * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
+ * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as defined in a specific medical and clinical context.
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for the instrument model.
  * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name.

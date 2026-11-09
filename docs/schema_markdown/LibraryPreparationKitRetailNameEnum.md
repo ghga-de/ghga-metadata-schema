@@ -107,7 +107,7 @@ URI: [GHGA:LibraryPreparationKitRetailNameEnum](https://w3id.org/GHGA/LibraryPre
 | ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_FOCUS_PANEL | Illumina AmpliSeq for Illumina Focus Panel. |  |  |
 | ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_IMMUNE_REPERTOIRE_PLUS_TCR_BETA_PANEL | Illumina AmpliSeq for Illumina Immune Repertoire Plus, TCR beta Panel. |  |  |
 | ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_IMMUNE_RESPONSE_PANEL | Illumina AmpliSeq for Illumina Immune Response Panel. |  |  |
-| ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_LIBRARY_PREP_INDEXES_AND_ACCESSOIRES | Illumina AmpliSeq for Illumina Library Prep, Indexes, and Accessoires. |  |  |
+| ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_LIBRARY_PREP_INDEXES_AND_ACCESSOIRES | Illumina AmpliSeq for Illumina Library Prep, Indexes, and Accessories. |  |  |
 | ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_MYELOID_PANEL | Illumina AmpliSeq for Illumina Myeloid Panel. |  |  |
 | ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_ON_DEMAND | Illumina AmpliSeq for Illumina On-Demand. |  |  |
 | ILLUMINA_AMPLI_SEQ_FOR_ILLUMINA_TCR_BETA_SR_PANEL | Illumina AmpliSeq for Illumina TCR beta-SR Panel. |  |  |

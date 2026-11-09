@@ -2,7 +2,7 @@
 # Slot: sequencing_layout
 
 
-Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+Whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
 
 URI: [GHGA:sequencing_layout](https://w3id.org/GHGA/sequencing_layout)
 

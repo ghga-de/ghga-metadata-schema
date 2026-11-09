@@ -37,7 +37,7 @@ URI: [GHGA:ExperimentMethod](https://w3id.org/GHGA/ExperimentMethod)
      * Description: The type associated with this Experiment Method.
      * Range: [String](types/String.md)
  * [ExperimentMethod➞library_type](ExperimentMethod_library_type.md)  <sub>1..1</sub>
-     * Description: Describe the level of omics analysis (e.g., 'WGS').
+     * Description: The type of library that was sequenced (e.g., 'WGS').
      * Range: [LibraryPreparationLibraryTypeEnum](LibraryPreparationLibraryTypeEnum.md)
  * [ExperimentMethod➞library_selection_methods](ExperimentMethod_library_selection_methods.md)  <sub>1..\*</sub>
      * Description: One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., 'RANDOM_METHOD; C_DNA_METHOD').
@@ -52,10 +52,10 @@ URI: [GHGA:ExperimentMethod](https://w3id.org/GHGA/ExperimentMethod)
      * Description: The manufacturer of the kit used for library preparation.
      * Range: [String](types/String.md)
  * [ExperimentMethod➞primer](ExperimentMethod_primer.md)  <sub>0..1</sub>
-     * Description: The type of primer used for reverse transcription (e.g., 'random').
+     * Description: The type of primer used for reverse transcription (e.g., 'RANDOM').
      * Range: [PrimerEnum](PrimerEnum.md)
  * [ExperimentMethod➞end_bias](ExperimentMethod_end_bias.md)  <sub>0..1</sub>
-     * Description: The end of the cDNA molecule that is preferentially sequenced (e.g., '3 prime end').
+     * Description: The end of the cDNA molecule that is preferentially sequenced (e.g., '3_PRIME_END').
      * Range: [EndBiasEnum](EndBiasEnum.md)
  * [ExperimentMethod➞target_regions](ExperimentMethod_target_regions.md)  <sub>0..\*</sub>
      * Description: Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
@@ -70,10 +70,10 @@ URI: [GHGA:ExperimentMethod](https://w3id.org/GHGA/ExperimentMethod)
      * Description: The center where the Sample was sequenced.
      * Range: [String](types/String.md)
  * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)  <sub>0..1</sub>
-     * Description: Length of sequencing reads (e.g., 'long' or 'short' or actual number of the read length).
+     * Description: Length of sequencing reads, either as a number of bases or as 'short' or 'long' (e.g., '150').
      * Range: [String](types/String.md)
  * [ExperimentMethod➞sequencing_layout](ExperimentMethod_sequencing_layout.md)  <sub>1..1</sub>
-     * Description: Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+     * Description: Whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
      * Range: [SequencingProtocolSequencingLayoutEnum](SequencingProtocolSequencingLayoutEnum.md)
  * [ExperimentMethod➞target_coverage](ExperimentMethod_target_coverage.md)  <sub>0..1</sub>
      * Description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing (i.e., the number of times a particular locus was sequenced).
@@ -85,7 +85,7 @@ URI: [GHGA:ExperimentMethod](https://w3id.org/GHGA/ExperimentMethod)
      * Description: Type of flow cell used (e.g., 'ILLUMINA_NOVA_SEQ_S4').
      * Range: [FlowCellTypeEnum](FlowCellTypeEnum.md)
  * [ExperimentMethod➞sample_barcode_read](ExperimentMethod_sample_barcode_read.md)  <sub>0..1</sub>
-     * Description: The type of read that contains the sample barcode (e.g., 'index1').
+     * Description: The type of read that contains the sample barcode (e.g., 'INDEX1').
      * Range: [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md)
  * [ExperimentMethod➞ega_accession](ExperimentMethod_ega_accession.md)  <sub>0..1</sub>
      * Description: The EGA accession of the 'Experiment' entity (EGAX).

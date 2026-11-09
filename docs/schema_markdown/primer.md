@@ -2,7 +2,7 @@
 # Slot: primer
 
 
-The type of primer used for reverse transcription (e.g., 'random').
+The type of primer used for reverse transcription (e.g., 'RANDOM').
 
 URI: [GHGA:primer](https://w3id.org/GHGA/primer)
 

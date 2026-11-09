@@ -2,7 +2,7 @@
 # Enum: IndividualSexEnum
 
 
-The sex of an Individual as as defined in a specific medical and clinical context.
+The sex of an Individual as defined in a specific medical and clinical context.
 
 URI: [GHGA:IndividualSexEnum](https://w3id.org/GHGA/IndividualSexEnum)
 

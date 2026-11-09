@@ -1,3 +1,6 @@
+> **Note:** This changelog covers releases up to 0.9.0. For later releases, see the
+> [GitHub release notes](https://github.com/ghga-de/ghga-metadata-schema/releases).
+
 ## 0.9.0 release
 
 - Changed `has data access policy`, `has data access committee`, `has study` to multivalued for submission class

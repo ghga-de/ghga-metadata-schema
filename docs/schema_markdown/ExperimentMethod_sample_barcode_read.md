@@ -2,7 +2,7 @@
 # Slot: sample_barcode_read
 
 
-The type of read that contains the sample barcode (e.g., 'index1').
+The type of read that contains the sample barcode (e.g., 'INDEX1').
 
 URI: [GHGA:ExperimentMethod_sample_barcode_read](https://w3id.org/GHGA/ExperimentMethod_sample_barcode_read)
 
