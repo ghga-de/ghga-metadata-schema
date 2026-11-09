@@ -28,7 +28,7 @@ URI: [GHGA:LibraryPreparationLibrarySelectionEnum](https://w3id.org/GHGA/Library
 | HMPR_METHOD | Hypo-methylated partial restriction digest. | GENEPIO:0001949 |  |
 | HYBRID_SELECTION_METHOD | Selection by hybridization in array or solution. | GENEPIO:0001950 |  |
 | MBD2_PROTEIN_METHYL_CP_G_BINDING_DOMAIN_METHOD | Enrichment by methyl-CpG binding domain. | GENEPIO:0001951 |  |
-| MF_METHOD | Methyl Filtrated | GENEPIO:0001952 |  |
+| MF_METHOD | Methyl Filtrated. | GENEPIO:0001952 |  |
 | M_NASE_METHOD | Micrococcal Nuclease (MNase) digestion. | GENEPIO:0001953 |  |
 | MSLL_METHOD | Methylation Spanning Linking Library. | GENEPIO:0001954 |  |
 | PCR_METHOD | Source material was selected by designed primers. | GENEPIO:0001955 |  |

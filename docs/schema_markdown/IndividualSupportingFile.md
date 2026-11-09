@@ -11,7 +11,7 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
 
 ## Parents
 
- *  is_a: [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+ *  is_a: [File](File.md) - A File is an object that contains information generated from a process, either an Experiment or an Analysis.
 
 ## Referenced by Class
 
@@ -24,7 +24,7 @@ URI: [GHGA:IndividualSupportingFile](https://w3id.org/GHGA/IndividualSupportingF
 ### Own
 
  * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
+     * Description: The file format of the Supporting File (e.g., 'TXT').
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [IndividualSupportingFile➞individual](IndividualSupportingFile_individual.md)  <sub>1..1</sub>
      * Description: The Individual associated with an entity.

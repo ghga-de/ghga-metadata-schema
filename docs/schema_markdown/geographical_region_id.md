@@ -2,7 +2,7 @@
 # Slot: geographical_region_id
 
 
-The corresponding ID to the NCIT vocabulary (e.g., 'NCIT:C16312', 'NCIT:C16636', 'NCIT:C16761').
+The NCIT ID corresponding to the geographical region term (e.g., 'NCIT:C16636').
 
 URI: [GHGA:geographical_region_id](https://w3id.org/GHGA/geographical_region_id)
 

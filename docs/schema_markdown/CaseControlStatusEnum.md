@@ -2,7 +2,7 @@
 # Enum: CaseControlStatusEnum
 
 
-Enum to capture whether a condition corresponds to a case or a control condition.
+Enum to capture whether a Sample comes from a case or a control.
 
 URI: [GHGA:CaseControlStatusEnum](https://w3id.org/GHGA/CaseControlStatusEnum)
 

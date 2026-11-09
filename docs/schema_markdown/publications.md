@@ -2,7 +2,7 @@
 # Slot: publications
 
 
-The Publication associated with an entity.
+The Publications associated with an entity.
 
 URI: [GHGA:publications](https://w3id.org/GHGA/publications)
 

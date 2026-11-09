@@ -27,11 +27,11 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
 ### Own
 
  * [Individual➞phenotypic_features_terms](Individual_phenotypic_features_terms.md)  <sub>0..\*</sub>
-     * Description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., 'Lymph node hypoplasia; Cough; Hypotension').
+     * Description: The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., 'Lymph node hypoplasia; Cough').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)  <sub>0..\*</sub>
-     * Description: The corresponding ID to the HPO vocabulary (e.g., 'HP:0002732; HP:0012735; HP:0002615').
+     * Description: The HPO IDs corresponding to the phenotypic feature terms (e.g., 'HP:0002732; HP:0012735').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞diagnosis_ids](Individual_diagnosis_ids.md)  <sub>0..\*</sub>
@@ -46,19 +46,19 @@ URI: [GHGA:Individual](https://w3id.org/GHGA/Individual)
      * Description: The biological sex of the Individual (e.g., 'FEMALE').
      * Range: [IndividualSexEnum](IndividualSexEnum.md)
  * [Individual➞geographical_region_term](Individual_geographical_region_term.md)  <sub>0..1</sub>
-     * Description: The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., 'Austria', 'Germany', 'Italy').
+     * Description: The Individual's geographical region. The used term should be a descendant of 'NCIT:C25464: country' (e.g., 'Germany').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞geographical_region_id](Individual_geographical_region_id.md)  <sub>0..1</sub>
-     * Description: The corresponding ID to the NCIT vocabulary (e.g., 'NCIT:C16312', 'NCIT:C16636', 'NCIT:C16761').
+     * Description: The NCIT ID corresponding to the geographical region term (e.g., 'NCIT:C16636').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_terms](Individual_ancestry_terms.md)  <sub>0..\*</sub>
-     * Description: A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., 'African; European; Oceanian').
+     * Description: A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., 'African; European').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
  * [Individual➞ancestry_ids](Individual_ancestry_ids.md)  <sub>0..\*</sub>
-     * Description: The corresponding ID to the HANCESTRO vocabulary (e.g., 'HANCESTRO:0010; HANCESTRO:0005; HANCESTRO:0017').
+     * Description: The HANCESTRO IDs corresponding to the ancestry terms (e.g., 'HANCESTRO:0010; HANCESTRO:0005').
      * Range: [String](types/String.md)
      * in subsets: (ontology)
 

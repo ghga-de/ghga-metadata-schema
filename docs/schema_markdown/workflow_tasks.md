@@ -2,7 +2,7 @@
 # Slot: workflow_tasks
 
 
-Tasks performed by the workflow
+Tasks performed by the workflow.
 
 URI: [GHGA:workflow_tasks](https://w3id.org/GHGA/workflow_tasks)
 

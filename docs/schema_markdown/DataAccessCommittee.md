@@ -2,7 +2,7 @@
 # Class: DataAccessCommittee
 
 
-A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met,  and request for data use does not raise ethical and/or legal concerns.
+A group of members that are delegated to grant access to one or more Datasets after ensuring that the criteria for data sharing have been met and that the request for data use does not raise ethical and/or legal concerns.
 
 URI: [GHGA:DataAccessCommittee](https://w3id.org/GHGA/DataAccessCommittee)
 

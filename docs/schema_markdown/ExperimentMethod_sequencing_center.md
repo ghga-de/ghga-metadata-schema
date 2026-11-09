@@ -2,7 +2,7 @@
 # Slot: sequencing_center
 
 
-Center where sample was sequenced.
+The center where the Sample was sequenced.
 
 URI: [GHGA:ExperimentMethod_sequencing_center](https://w3id.org/GHGA/ExperimentMethod_sequencing_center)
 

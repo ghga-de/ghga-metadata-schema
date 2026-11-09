@@ -2,7 +2,7 @@
 # Class: File
 
 
-A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+A File is an object that contains information generated from a process, either an Experiment or an Analysis.
 
 URI: [GHGA:File](https://w3id.org/GHGA/File)
 

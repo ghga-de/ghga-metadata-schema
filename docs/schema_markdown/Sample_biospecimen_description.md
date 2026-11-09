@@ -2,7 +2,7 @@
 # Slot: biospecimen_description
 
 
-A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
+A concise description of the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
 
 URI: [GHGA:Sample_biospecimen_description](https://w3id.org/GHGA/Sample_biospecimen_description)
 

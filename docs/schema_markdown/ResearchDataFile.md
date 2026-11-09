@@ -11,7 +11,7 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 
 ## Parents
 
- *  is_a: [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+ *  is_a: [File](File.md) - A File is an object that contains information generated from a process, either an Experiment or an Analysis.
 
 ## Referenced by Class
 
@@ -25,13 +25,13 @@ URI: [GHGA:ResearchDataFile](https://w3id.org/GHGA/ResearchDataFile)
 ### Own
 
  * [ResearchDataFile➞format](ResearchDataFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Research Data File (e.g., 'FASTQ', 'uBAM', 'FASTA').
+     * Description: The file format of the Research Data File (e.g., 'FASTQ').
      * Range: [ResearchDataFileFormatEnum](ResearchDataFileFormatEnum.md)
  * [ResearchDataFile➞technical_replicate](ResearchDataFile_technical_replicate.md)  <sub>1..1</sub>
      * Description: An integer to indicate the technical replicate of this File.
      * Range: [Integer](types/Integer.md)
  * [ResearchDataFile➞read_type](ResearchDataFile_read_type.md)  <sub>0..1</sub>
-     * Description: Designates the functional role or sequence orientation of a FASTQ file within a sequencing run (e.g., R1, R2, R3, I1, I2).
+     * Description: Designates the functional role or sequence orientation of a FASTQ file within a sequencing run (e.g., R1).
      * Range: [String](types/String.md)
  * [ResearchDataFile➞sequencing_lane_id](ResearchDataFile_sequencing_lane_id.md)  <sub>0..1</sub>
      * Description: The identifier of a sequencing lane.

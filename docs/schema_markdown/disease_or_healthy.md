@@ -2,7 +2,7 @@
 # Slot: disease_or_healthy
 
 
-Whether a Condition corresponds to a disease or a healthy state.
+Whether the Sample reflects a disease or a healthy state.
 
 URI: [GHGA:disease_or_healthy](https://w3id.org/GHGA/disease_or_healthy)
 

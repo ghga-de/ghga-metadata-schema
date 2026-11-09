@@ -2,7 +2,7 @@
 # Slot: types
 
 
-One or more types of this Study (e.g., 'CANCER_GENOMICS; EPIGENETICS; EXOME_SEQUENCING').
+One or more types of this Study (e.g., 'CANCER_GENOMICS; EPIGENETICS').
 
 URI: [GHGA:Study_types](https://w3id.org/GHGA/Study_types)
 

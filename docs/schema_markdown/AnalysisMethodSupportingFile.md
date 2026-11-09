@@ -11,7 +11,7 @@ URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSup
 
 ## Parents
 
- *  is_a: [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+ *  is_a: [File](File.md) - A File is an object that contains information generated from a process, either an Experiment or an Analysis.
 
 ## Referenced by Class
 
@@ -24,10 +24,10 @@ URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSup
 ### Own
 
  * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., 'TXT', 'JSON').
+     * Description: The file format of the Supporting File (e.g., 'TXT').
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)  <sub>1..1</sub>
-     * Description: The Analysis Process associated with an entity.
+     * Description: The Analysis Method associated with an entity.
      * Range: [AnalysisMethod](AnalysisMethod.md)
 
 ### Inherited from File:

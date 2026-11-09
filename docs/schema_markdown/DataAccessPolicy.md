@@ -38,13 +38,13 @@ URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
      * Description: An alternative to the Data Access Policy text is to provide the URL for the policy. This is useful if the terms of the policy are available online at a resolvable URL.
      * Range: [String](types/String.md)
  * [DataAccessPolicy➞data_use_permission_term](DataAccessPolicy_data_use_permission_term.md)  <sub>1..1</sub>
-     * Description: The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., no restriction).
+     * Description: The Data Use Permission associated with this Data Access Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., 'no restriction').
      * Range: [DataUsePermissionEnum](DataUsePermissionEnum.md)
  * [DataAccessPolicy➞data_use_permission_id](DataAccessPolicy_data_use_permission_id.md)  <sub>1..1</sub>
      * Description: The DUO ID corresponding to the Data Use Permission term (e.g., 'DUO:0000004').
      * Range: [String](types/String.md)
  * [DataAccessPolicy➞data_use_modifier_terms](DataAccessPolicy_data_use_modifier_terms.md)  <sub>0..\*</sub>
-     * Description: One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., clinical care use). Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
+     * Description: One or more Data Use Modifiers for the Data Use Permission associated with this Data Access Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., 'clinical care use'). Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
      * Range: [DataUseModifierEnum](DataUseModifierEnum.md)
  * [DataAccessPolicy➞data_use_modifier_ids](DataAccessPolicy_data_use_modifier_ids.md)  <sub>0..\*</sub>
      * Description: The DUO IDs corresponding to the Data Use Modifier terms (e.g., 'DUO:0000043').
@@ -53,7 +53,7 @@ URI: [GHGA:DataAccessPolicy](https://w3id.org/GHGA/DataAccessPolicy)
      * Description: The EGA accession ID of an entity.
      * Range: [String](types/String.md)
  * [DataAccessPolicy➞data_access_committee](DataAccessPolicy_data_access_committee.md)  <sub>1..1</sub>
-     * Description: The Data Access Committee linked to this Data Use Policy.
+     * Description: The Data Access Committee linked to this Data Access Policy.
      * Range: [DataAccessCommittee](DataAccessCommittee.md)
 
 ### Mixed in from IdentifiedByAliasMixin:

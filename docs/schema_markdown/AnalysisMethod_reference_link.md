@@ -2,7 +2,7 @@
 # Slot: reference_link
 
 
-URL to the reference
+URL to the reference.
 
 URI: [GHGA:AnalysisMethod_reference_link](https://w3id.org/GHGA/AnalysisMethod_reference_link)
 
