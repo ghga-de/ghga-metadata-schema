@@ -2,7 +2,7 @@
 # Slot: target_coverage
 
 
-Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
+Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing (i.e., the number of times a particular locus was sequenced).
 
 URI: [GHGA:ExperimentMethod_target_coverage](https://w3id.org/GHGA/ExperimentMethod_target_coverage)
 

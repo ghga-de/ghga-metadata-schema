@@ -2,7 +2,7 @@
 # Slot: phenotypic_features_ids
 
 
-The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
+The HPO IDs corresponding to the phenotypic feature terms (e.g., 'HP:0002732; HP:0012735').
 
 URI: [GHGA:Individual_phenotypic_features_ids](https://w3id.org/GHGA/Individual_phenotypic_features_ids)
 

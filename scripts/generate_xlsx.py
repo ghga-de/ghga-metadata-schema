@@ -94,7 +94,7 @@ class ColumnMeta:
     @property
     def mv_help(self) -> str:
         """The multiple values help text"""
-        return "multiple values" if self.slot_def.multivalued else "single value"
+        return "multiple values (semicolon-separated)" if self.slot_def.multivalued else "single value"
 
     def in_ontology_subset(self, slot_def: SlotDefinition) -> bool:
         """Returns a bool indicating whether or not the given slot is marked as

@@ -2,7 +2,7 @@
 # Slot: attributes
 
 
-Key/value pairs corresponding to an entity.
+Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
 
 URI: [GHGA:attributes](https://w3id.org/GHGA/attributes)
 

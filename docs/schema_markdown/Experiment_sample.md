@@ -2,7 +2,7 @@
 # Slot: sample
 
 
-The alias of one or more Samples that are associated with this Experiment.
+The alias of the Sample that is associated with this Experiment.
 
 URI: [GHGA:Experiment_sample](https://w3id.org/GHGA/Experiment_sample)
 

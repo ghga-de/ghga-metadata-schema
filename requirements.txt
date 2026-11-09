@@ -1,8 +1,6 @@
 linkml == 1.6.1
 linkml-runtime == 1.6.0
 linkml-validator==0.4.5
-mkdocs>=1.2.1
-mkdocs-material>=7.1.9
 ruamel.yaml>=0.17.21
 typer >= 0.21
 pydantic==1.10.9

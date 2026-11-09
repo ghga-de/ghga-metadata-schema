@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** 2.2.1
+**version:** 2.3.0
 
 
 The submission centric metadata schema for the German Human Genome-Phenome Archive (GHGA).
@@ -15,12 +15,12 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [Analysis](Analysis.md) - An Analysis is a data transformation that transforms input data to output data.
  * [AnalysisMethod](AnalysisMethod.md) - An Analysis Method captures the workflow steps that were performed to analyze data obtained from an Experiment.
  * [Attribute](Attribute.md) - A key/value pair that further characterizes an entity.
- * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more datasets after ensuring the criteria for data sharing has been met,  and request for data use does not raise ethical and/or legal concerns.
+ * [DataAccessCommittee](DataAccessCommittee.md) - A group of members that are delegated to grant access to one or more Datasets after ensuring that the criteria for data sharing have been met and that the request for data use does not raise ethical and/or legal concerns.
  * [DataAccessPolicy](DataAccessPolicy.md) - A Data Access Policy specifies under which circumstances, legal or otherwise, a user can have access to one or more Datasets belonging to one or more Studies.
  * [Dataset](Dataset.md) - A Dataset is a collection of Files that is prepared for distribution and is tied to a Data Access Policy.
  * [Experiment](Experiment.md) - An Experiment is an investigation that consists of a coordinated set of actions and observations designed to generate data with the goal of verifying, falsifying, or establishing the validity of a hypothesis.
  * [ExperimentMethod](ExperimentMethod.md) - The Experiment Method captures technical metadata describing the parameters used to generate output from the Sample.
- * [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+ * [File](File.md) - A File is an object that contains information generated from a process, either an Experiment or an Analysis.
      * [AnalysisMethodSupportingFile](AnalysisMethodSupportingFile.md) - An Analysis Method Supporting File is a File that contains additional information relevant for the Analysis Method, such as (unstructured) protocols or task descriptions.
      * [ExperimentMethodSupportingFile](ExperimentMethodSupportingFile.md) - An Experiment Method Supporting File is a File that contains additional information relevant for the Experiment Method, such as (unstructured) protocols.
      * [IndividualSupportingFile](IndividualSupportingFile.md) - An Individual Supporting File is a File that contains additional information relevant for the Individual, such as ped-files, phenopackets or imaging data.
@@ -41,7 +41,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Slots
 
- * [abstract](abstract.md) - The study abstract that describes the goals. Can also hold abstract from a publication related to this Study.
+ * [abstract](abstract.md) - The abstract of the Publication.
      * [Publication➞abstract](Publication_abstract.md)
  * [affiliations](affiliations.md) - The Institution(s) associated with an entity.
      * [Study➞affiliations](Study_affiliations.md) - The affiliations associated with this Study.
@@ -52,59 +52,59 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Submission➞analyses](Submission_analyses.md) - One or more Analysis entities associated with this Submission.
  * [analysis](analysis.md) - The Analysis associated with an entity.
      * [ProcessDataFile➞analysis](ProcessDataFile_analysis.md) - The alias of the Analysis that produced this Process Data File.
- * [analysis_method](analysis_method.md) - The Analysis Process associated with an entity.
+ * [analysis_method](analysis_method.md) - The Analysis Method associated with an entity.
      * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)
      * [Analysis➞analysis_method](Analysis_analysis_method.md) - The alias of the Analysis Method that is associated with this Analysis.
  * [analysis_method_supporting_files](analysis_method_supporting_files.md) - The Analysis Method Supporting Files associated with an entity.
      * [Submission➞analysis_method_supporting_files](Submission_analysis_method_supporting_files.md) - One or more Analysis Method Supporting Files associated with this Submission.
- * [analysis_methods](analysis_methods.md) - The Analysis Processes associated with an entity.
+ * [analysis_methods](analysis_methods.md) - The Analysis Methods associated with an entity.
      * [Submission➞analysis_methods](Submission_analysis_methods.md) - The Analysis Methods that are part of this Submission.
- * [ancestry_ids](ancestry_ids.md) - The corresponding ID to the HANCESTRO vocabulary (e.g., HANCESTRO:0010, HANCESTRO:0005, HANCESTRO:0017).
+ * [ancestry_ids](ancestry_ids.md) - The HANCESTRO IDs corresponding to the ancestry terms (e.g., 'HANCESTRO:0010; HANCESTRO:0005').
      * [Individual➞ancestry_ids](Individual_ancestry_ids.md)
- * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., African, European, Oceanian).
+ * [ancestry_terms](ancestry_terms.md) - A person's descent or lineage from a population. The used terms should be descendants of 'HANCESTRO:0004: ancestry category' (e.g., 'African; European').
      * [Individual➞ancestry_terms](Individual_ancestry_terms.md)
- * [attributes](attributes.md) - Key/value pairs corresponding to an entity.
+ * [attributes](attributes.md) - Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
      * [AttributeMixin➞attributes](AttributeMixin_attributes.md)
- * [author](author.md) - The individual who is responsible for the content of the Publication.
+ * [author](author.md) - The author(s) of the Publication.
      * [Publication➞author](Publication_author.md) - Author(s) of this Publication.
  * [biological_replicate](biological_replicate.md) - An integer to indicate the number of a biological replicate.
      * [Sample➞biological_replicate](Sample_biological_replicate.md)
- * [biospecimen_age_at_sampling](biospecimen_age_at_sampling.md) - The age of the Individual at the time of isolating this biospecimen.
+ * [biospecimen_age_at_sampling](biospecimen_age_at_sampling.md) - The age of the Individual at the time of isolating this Biospecimen.
      * [Sample➞biospecimen_age_at_sampling](Sample_biospecimen_age_at_sampling.md)
  * [biospecimen_description](biospecimen_description.md) - The description of a biospecimen.
-     * [Sample➞biospecimen_description](Sample_biospecimen_description.md) - A concise description about the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
+     * [Sample➞biospecimen_description](Sample_biospecimen_description.md) - A concise description of the Biospecimen source, the collection method, and the protocol which was followed to process this Biospecimen.
  * [biospecimen_isolation](biospecimen_isolation.md) - Method or device employed for collecting/isolating a Biospecimen or a Sample.
      * [Sample➞biospecimen_isolation](Sample_biospecimen_isolation.md) - Method or device employed for collecting/isolating this Biospecimen.
  * [biospecimen_name](biospecimen_name.md) - The name for a biospecimen.
-     * [Sample➞biospecimen_name](Sample_biospecimen_name.md) - A descriptive name of this Biospecimen (e.g., GHGAB_caudate_nucleus_biospecimen). This property must not include any personally identifiable data.
+     * [Sample➞biospecimen_name](Sample_biospecimen_name.md) - A descriptive name of this Biospecimen (e.g., 'GHGAB_caudate_nucleus_biospecimen'). This property must not include any personally identifiable data.
  * [biospecimen_storage](biospecimen_storage.md) - Methods by which a Biospecimen is stored.
      * [Sample➞biospecimen_storage](Sample_biospecimen_storage.md) - Methods by which this Biospecimen is stored.
- * [biospecimen_tissue_id](biospecimen_tissue_id.md) - The corresponding ontology ID for the biospecimen_tissue_term (e.g., BTO:0000671, BTO:0000089, BTO:0000848).
+ * [biospecimen_tissue_id](biospecimen_tissue_id.md) - The BTO ID corresponding to the biospecimen tissue term (e.g., 'BTO:0000671').
      * [Sample➞biospecimen_tissue_id](Sample_biospecimen_tissue_id.md)
- * [biospecimen_tissue_term](biospecimen_tissue_term.md) - The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., kidney, blood, melanoma cell).
+ * [biospecimen_tissue_term](biospecimen_tissue_term.md) - The tissue this Biospecimen originated from. Should be a term from the BRENDA Tissue Ontology vocabulary (e.g., 'kidney').
      * [Sample➞biospecimen_tissue_term](Sample_biospecimen_tissue_term.md)
  * [biospecimen_type](biospecimen_type.md) - The type of a biospecimen. Note: Not to be confused with rdf:type.
      * [Sample➞biospecimen_type](Sample_biospecimen_type.md) - The type of Biospecimen.
- * [biospecimen_vital_status_at_sampling](biospecimen_vital_status_at_sampling.md) - Vital Status of the Individual at the time of isolating this biospecimen (e.g., alive).
+ * [biospecimen_vital_status_at_sampling](biospecimen_vital_status_at_sampling.md) - Vital status of the Individual at the time of isolating this Biospecimen (e.g., 'ALIVE').
      * [Sample➞biospecimen_vital_status_at_sampling](Sample_biospecimen_vital_status_at_sampling.md)
- * [case_control_status](case_control_status.md) - Whether a Condition corresponds to a treatment or a control.
+ * [case_control_status](case_control_status.md) - Whether the Sample comes from a case or a control in the Study.
      * [Sample➞case_control_status](Sample_case_control_status.md)
  * [data_access_committee](data_access_committee.md) - Data Access Committee associated with an entity.
-     * [DataAccessPolicy➞data_access_committee](DataAccessPolicy_data_access_committee.md) - The Data Access Committee linked to this Data Use Policy.
+     * [DataAccessPolicy➞data_access_committee](DataAccessPolicy_data_access_committee.md) - The Data Access Committee linked to this Data Access Policy.
  * [data_access_committees](data_access_committees.md) - Data Access Committees associated with an entity.
      * [Submission➞data_access_committees](Submission_data_access_committees.md) - The Data Access Committees that apply to the Data Access Policies in this Submission.
  * [data_access_policies](data_access_policies.md) - Data Access Policies associated with an entity.
      * [Submission➞data_access_policies](Submission_data_access_policies.md) - The Data Access Policies that apply to the Datasets in this Submission.
  * [data_access_policy](data_access_policy.md) - Data Access Policy associated with an entity.
      * [Dataset➞data_access_policy](Dataset_data_access_policy.md) - The Data Access Policy that applies to this Dataset.
- * [data_use_modifier_ids](data_use_modifier_ids.md) - The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:0000043).
+ * [data_use_modifier_ids](data_use_modifier_ids.md) - The DUO IDs corresponding to the Data Use Modifier terms (e.g., 'DUO:0000043').
      * [DataAccessPolicy➞data_use_modifier_ids](DataAccessPolicy_data_use_modifier_ids.md)
  * [data_use_modifier_terms](data_use_modifier_terms.md) - Data Use Modifiers for the Data Use Permission associated with an entity. The used terms should be descendants of 'DUO:0000017: data use modifier'. Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
-     * [DataAccessPolicy➞data_use_modifier_terms](DataAccessPolicy_data_use_modifier_terms.md) - One or more Data Use Modifiers for the Data Use Permission associated with this Data Use Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., clinical care use). Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
- * [data_use_permission_id](data_use_permission_id.md) - The DUO IDs corresponding to the Data Use Modifier terms (e.g., DUO:DUO:0000004).
-     * [DataAccessPolicy➞data_use_permission_id](DataAccessPolicy_data_use_permission_id.md) - The DUO ID corresponding to the Data Use Permission term (e.g., DUO:0000004).
+     * [DataAccessPolicy➞data_use_modifier_terms](DataAccessPolicy_data_use_modifier_terms.md) - One or more Data Use Modifiers for the Data Use Permission associated with this Data Access Policy. The used terms should be descendants of 'DUO:0000017: data use modifier' (e.g., 'CLINICAL_CARE_USE'). Please use 'USER_SPECIFIC_RESTRICTION' if no other modifier applies.
+ * [data_use_permission_id](data_use_permission_id.md) - The DUO ID corresponding to the Data Use Permission term (e.g., 'DUO:0000004').
+     * [DataAccessPolicy➞data_use_permission_id](DataAccessPolicy_data_use_permission_id.md)
  * [data_use_permission_term](data_use_permission_term.md) - Data Use Permission associated with an entity. The used term should be a descendant of 'DUO:0000001: data use permission'.
-     * [DataAccessPolicy➞data_use_permission_term](DataAccessPolicy_data_use_permission_term.md) - The Data Use Permission associated with this Data Use Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., no restriction).
+     * [DataAccessPolicy➞data_use_permission_term](DataAccessPolicy_data_use_permission_term.md) - The Data Use Permission associated with this Data Access Policy. The used term should be a descendant of 'DUO:0000001: data use permission' (e.g., 'NO_RESTRICTION').
  * [dataset](dataset.md) - The Dataset associated with an entity.
      * [File➞dataset](File_dataset.md) - The Dataset alias associated with this File.
  * [datasets](datasets.md) - The Datasets associated with an entity.
@@ -116,13 +116,13 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Dataset➞description](Dataset_description.md) - A description summarizing this Dataset.
      * [ExperimentMethod➞description](ExperimentMethod_description.md) - A short description of this Experiment Method.
      * [Experiment➞description](Experiment_description.md) - A detailed description of this Experiment.
-     * [Sample➞description](Sample_description.md) - A concise description about the Sample source, the collection method, and the protocol which was followed to process this Sample.
+     * [Sample➞description](Sample_description.md) - A concise description of the Sample source, the collection method, and the protocol which was followed to process this Sample.
      * [Study➞description](Study_description.md) - A detailed description (abstract) that describes the goals of this Study.
- * [diagnosis_ids](diagnosis_ids.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., E10, C01).
+ * [diagnosis_ids](diagnosis_ids.md) - One or more diagnoses that the entity is associated with at the time of retrieval from the organism. The diagnosis is captured using a code from ICD-10 (WHO version). Please restrict the ICD code to the chapter letter and two digits for the main diagnosis (e.g., 'E10; C01').
      * [Individual➞diagnosis_ids](Individual_diagnosis_ids.md)
- * [diagnosis_terms](diagnosis_terms.md) - The ICD-10 terms corresponding to the ICD-10 codes (e.g., Type 1 diabetes mellitus, Malignant neoplasm of base of tongue).
+ * [diagnosis_terms](diagnosis_terms.md) - The ICD-10 terms corresponding to the ICD-10 codes (e.g., 'Type 1 diabetes mellitus; Malignant neoplasm of base of tongue').
      * [Individual➞diagnosis_terms](Individual_diagnosis_terms.md)
- * [disease_or_healthy](disease_or_healthy.md) - Whether a Condition corresponds to a disease or a healthy state.
+ * [disease_or_healthy](disease_or_healthy.md) - Whether the Sample reflects a disease or a healthy state.
      * [Sample➞disease_or_healthy](Sample_disease_or_healthy.md)
  * [doi](doi.md) - DOI identifier of a publication.
      * [Publication➞doi](Publication_doi.md)
@@ -136,9 +136,9 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [File➞ega_accession](File_ega_accession.md)
      * [Sample➞ega_accession](Sample_ega_accession.md)
      * [Study➞ega_accession](Study_ega_accession.md)
- * [email](email.md) - Email of a Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable information.
-     * [DataAccessCommittee➞email](DataAccessCommittee_email.md) - The email of the Data Access Committee (e.g., DAC[at]email.com). This property must not include any personally identifiable data.
- * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced (e.g., 3/5 prime end, full-length).
+ * [email](email.md) - Email of a Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable information.
+     * [DataAccessCommittee➞email](DataAccessCommittee_email.md) - The email of the Data Access Committee (e.g., 'DAC[at]email.com'). This property must not include any personally identifiable data.
+ * [end_bias](end_bias.md) - The end of the cDNA molecule that is preferentially sequenced (e.g., '3_PRIME_END').
      * [ExperimentMethod➞end_bias](ExperimentMethod_end_bias.md)
  * [experiment_method](experiment_method.md) - The Experiment Method associated with an entity.
      * [ExperimentMethodSupportingFile➞experiment_method](ExperimentMethodSupportingFile_experiment_method.md)
@@ -150,19 +150,19 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [experiments](experiments.md) - The Experiments associated with an entity.
      * [ResearchDataFile➞experiments](ResearchDataFile_experiments.md) - The aliases of the Experiments that produced this Research Data File.
      * [Submission➞experiments](Submission_experiments.md) - One or more Experiment entities associated with this Submission.
- * [flow_cell_id](flow_cell_id.md) - Flow cell ID (e.g., Experiment ID_Cell 1_Lane_1).
+ * [flow_cell_id](flow_cell_id.md) - Flow cell ID (e.g., 'H23YTDMXX').
      * [ExperimentMethod➞flow_cell_id](ExperimentMethod_flow_cell_id.md)
- * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g., S4, S2 for NovaSeq; PromethION, Flongle for Nanopore).
+ * [flow_cell_type](flow_cell_type.md) - Type of flow cell used (e.g., 'ILLUMINA_NOVA_SEQ_S4').
      * [ExperimentMethod➞flow_cell_type](ExperimentMethod_flow_cell_type.md)
- * [format](format.md) - The format of the File (e.g., BAM, SAM, CRAM, BAI).
-     * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
-     * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
-     * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md) - The file format of the Supporting File (e.g., TXT, JSON).
-     * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., CRAM, BAM).
-     * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., FASTQ, uBAM, FASTA).
- * [geographical_region_id](geographical_region_id.md) - The corresponding ID to the NCIT vocabulary (e.g., NCIT:C16312, NCIT:C16636, NCIT:C16761).
+ * [format](format.md) - The format of the File (e.g., 'BAM').
+     * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., 'TXT').
+     * [ExperimentMethodSupportingFile➞format](ExperimentMethodSupportingFile_format.md) - The file format of the Supporting File (e.g., 'TXT').
+     * [IndividualSupportingFile➞format](IndividualSupportingFile_format.md) - The file format of the Supporting File (e.g., 'TXT').
+     * [ProcessDataFile➞format](ProcessDataFile_format.md) - The file format of the Process Data File (e.g., 'CRAM').
+     * [ResearchDataFile➞format](ResearchDataFile_format.md) - The file format of the Research Data File (e.g., 'FASTQ').
+ * [geographical_region_id](geographical_region_id.md) - The NCIT ID corresponding to the geographical region term (e.g., 'NCIT:C16636').
      * [Individual➞geographical_region_id](Individual_geographical_region_id.md)
- * [geographical_region_term](geographical_region_term.md) - The Individual's geographical region. The used terms should be descendants of 'NCIT:C25464: country' (e.g., Austria, Germany, Italy).
+ * [geographical_region_term](geographical_region_term.md) - The Individual's geographical region. The used term should be a descendant of 'NCIT:C25464: country' (e.g., 'Germany').
      * [Individual➞geographical_region_term](Individual_geographical_region_term.md)
  * [included_in_submission](included_in_submission.md) - Whether a File is included in the Submission or not.
      * [File➞included_in_submission](File_included_in_submission.md)
@@ -181,50 +181,51 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Publication➞journal](Publication_journal.md)
  * [key](key.md) - The key of an attribute.
      * [Attribute➞key](Attribute_key.md)
- * [key_type](key_type.md) - A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).
+ * [key_type](key_type.md) - A semantic type that characterizes the attribute key (e.g., 'oxygen saturation measurement (MAXO:0000616)').
      * [Attribute➞key_type](Attribute_key_type.md)
- * [library_name](library_name.md) - A short name identifying the library. The same name may refer to multiple versions of the same continually updated library.
- * [library_preparation](library_preparation.md) - The general method for preparation of the sequencing library (e.g., KAPA PCR-free).
+ * [library_preparation](library_preparation.md) - The general method for preparation of the sequencing library (e.g., 'KAPA PCR-free').
      * [ExperimentMethod➞library_preparation](ExperimentMethod_library_preparation.md)
  * [library_preparation_kit_manufacturer](library_preparation_kit_manufacturer.md) - The manufacturer of the kit used for library preparation.
      * [ExperimentMethod➞library_preparation_kit_manufacturer](ExperimentMethod_library_preparation_kit_manufacturer.md)
- * [library_preparation_kit_retail_name](library_preparation_kit_retail_name.md) - The retail name for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g., Agilent sure select Human Exome V8, Twist RefSeq Exome).
+ * [library_preparation_kit_retail_name](library_preparation_kit_retail_name.md) - The retail name for the kit used to construct a genomic library. This may include the vendor name, kit name and kit version (e.g., 'AGILENT_SURE_SELECT_V8').
      * [ExperimentMethod➞library_preparation_kit_retail_name](ExperimentMethod_library_preparation_kit_retail_name.md)
- * [library_selection_methods](library_selection_methods.md) - One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., random, PCA, cDNA).
+ * [library_selection_methods](library_selection_methods.md) - One or more methods used to select for or against, enrich, or screen the material being sequenced (e.g., 'RANDOM_METHOD; C_DNA_METHOD').
      * [ExperimentMethod➞library_selection_methods](ExperimentMethod_library_selection_methods.md)
- * [library_type](library_type.md) - Describe the level of omics analysis (e.g., WGS, ATAC).
+ * [library_type](library_type.md) - The type of library that was sequenced (e.g., 'WGS').
      * [ExperimentMethod➞library_type](ExperimentMethod_library_type.md)
  * [name](name.md) - The name for an entity.
      * [AnalysisMethod➞name](AnalysisMethod_name.md) - A name identifying this Analysis Method.
      * [DataAccessPolicy➞name](DataAccessPolicy_name.md) - A name for this Data Access Policy.
      * [ExperimentMethod➞name](ExperimentMethod_name.md) - A short name identifying this Experiment Method.
      * [File➞name](File_name.md) - The given filename.
-     * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., GHGAS_Blood_Sample1 or GHGAS_PBMC_RNAseq_S1). This property must not include any personally identifiable data.
- * [parameters](parameters.md) - Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+     * [Sample➞name](Sample_name.md) - A descriptive name of this Sample (e.g., 'GHGAS_Blood_Sample1'). This property must not include any personally identifiable data.
+ * [parameters](parameters.md) - Semicolon-separated key=value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner = star_salmon; hisat2_build_memory = 200.GB').
      * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)
- * [phenotypic_features_ids](phenotypic_features_ids.md) - The corresponding ID to the HPO vocabulary (e.g., HP:0002732, HP:0012735, HP:0002615).
+ * [phenotypic_features_ids](phenotypic_features_ids.md) - The HPO IDs corresponding to the phenotypic feature terms (e.g., 'HP:0002732; HP:0012735').
      * [Individual➞phenotypic_features_ids](Individual_phenotypic_features_ids.md)
- * [phenotypic_features_terms](phenotypic_features_terms.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., Lymph node hypoplasia, Cough, Hypotension).
+ * [phenotypic_features_terms](phenotypic_features_terms.md) - The phenotypic feature concepts that the entity is associated with at the time of retrieval from the organism. The Phenotypic Feature is captured using a concept from the Human Phenotype Ontology (e.g., 'Lymph node hypoplasia; Cough').
      * [Individual➞phenotypic_features_terms](Individual_phenotypic_features_terms.md)
  * [policy_text](policy_text.md) - The complete text for the Data Access Policy.
      * [DataAccessPolicy➞policy_text](DataAccessPolicy_policy_text.md)
  * [policy_url](policy_url.md) - An alternative to the Data Access Policy text is to provide the URL for the policy. This is useful if the terms of the policy are available online at a resolvable URL.
      * [DataAccessPolicy➞policy_url](DataAccessPolicy_policy_url.md)
- * [primer](primer.md) - The type of primer used for reverse transcription (e.g., oligo-dT or random).
+ * [primer](primer.md) - The type of primer used for reverse transcription (e.g., 'RANDOM').
      * [ExperimentMethod➞primer](ExperimentMethod_primer.md)
  * [process_data_files](process_data_files.md) - The Process Data Files associated with an entity.
      * [Submission➞process_data_files](Submission_process_data_files.md) - One or more Process Data Files associated with this Submission.
- * [publications](publications.md) - The Publication associated with an entity.
+ * [publications](publications.md) - The Publications associated with an entity.
      * [Submission➞publications](Submission_publications.md) - One or more Publication entities associated with this Submission.
- * [reference_link](reference_link.md) - URL to the reference
+ * [read_type](read_type.md) - Designates the functional role or sequence orientation of a FASTQ file within a sequencing run (e.g., R1).
+     * [ResearchDataFile➞read_type](ResearchDataFile_read_type.md)
+ * [reference_link](reference_link.md) - URL to the reference.
      * [AnalysisMethod➞reference_link](AnalysisMethod_reference_link.md)
- * [reference_name](reference_name.md) - Name or identifier of the reference, e.g., "hg38", "dbSNP"
+ * [reference_name](reference_name.md) - Name or identifier of the reference (e.g., 'hg38').
      * [AnalysisMethod➞reference_name](AnalysisMethod_reference_name.md)
- * [reference_source](reference_source.md) - Source or provider of the reference, e.g., "UCSC", "Ensembl"
+ * [reference_source](reference_source.md) - Source or provider of the reference (e.g., 'UCSC').
      * [AnalysisMethod➞reference_source](AnalysisMethod_reference_source.md)
- * [reference_type](reference_type.md) - Type of reference data used
+ * [reference_type](reference_type.md) - Type of reference data used.
      * [AnalysisMethod➞reference_type](AnalysisMethod_reference_type.md)
- * [reference_version](reference_version.md) - Version or release identifier of the reference data
+ * [reference_version](reference_version.md) - Version or release identifier of the reference data.
      * [AnalysisMethod➞reference_version](AnalysisMethod_reference_version.md)
  * [research_data_files](research_data_files.md) - The Research Data Files associated with an entity.
      * [Analysis➞research_data_files](Analysis_research_data_files.md) - One or more aliases of the Research Data Files that this Analysis used as input to create Process Data Files.
@@ -232,22 +233,22 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [rnaseq_strandedness](rnaseq_strandedness.md) - The strandedness of the library, whether reads come from both strands of the cDNA or only from the first (antisense) or the second (sense) strand.
      * [ExperimentMethod➞rnaseq_strandedness](ExperimentMethod_rnaseq_strandedness.md)
  * [sample](sample.md) - The Sample associated with an entity.
-     * [Experiment➞sample](Experiment_sample.md) - The alias of one or more Samples that are associated with this Experiment.
- * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g., index1, index2, read1, read2).
+     * [Experiment➞sample](Experiment_sample.md) - The alias of the Sample that is associated with this Experiment.
+ * [sample_barcode_read](sample_barcode_read.md) - The type of read that contains the sample barcode (e.g., 'INDEX1').
      * [ExperimentMethod➞sample_barcode_read](ExperimentMethod_sample_barcode_read.md)
  * [samples](samples.md) - The Samples associated with an entity.
      * [Submission➞samples](Submission_samples.md) - One or more Sample entities associated with this Submission.
- * [sequencing_center](sequencing_center.md) - Center where sample was sequenced.
+ * [sequencing_center](sequencing_center.md) - The center where the Sample was sequenced.
      * [ExperimentMethod➞sequencing_center](ExperimentMethod_sequencing_center.md)
  * [sequencing_lane_id](sequencing_lane_id.md) - The identifier of a sequencing lane.
      * [ResearchDataFile➞sequencing_lane_id](ResearchDataFile_sequencing_lane_id.md)
- * [sequencing_layout](sequencing_layout.md) - Describe whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
+ * [sequencing_layout](sequencing_layout.md) - Whether the library was sequenced in single-end (forward or reverse) or paired-end mode.
      * [ExperimentMethod➞sequencing_layout](ExperimentMethod_sequencing_layout.md)
- * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads (e.g., long or short or actual number of the read length).
+ * [sequencing_read_length](sequencing_read_length.md) - Length of sequencing reads, either as a number of bases or as 'short' or 'long' (e.g., '150').
      * [ExperimentMethod➞sequencing_read_length](ExperimentMethod_sequencing_read_length.md)
- * [sex](sex.md) - The biological sex of the Individual (e.g., female).
+ * [sex](sex.md) - The biological sex of the Individual (e.g., 'FEMALE').
      * [Individual➞sex](Individual_sex.md)
- * [software_versions](software_versions.md) - key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+ * [software_versions](software_versions.md) - Semicolon-separated key=value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., 'salmon = 1.3.0; trim-galore = 0.6.6').
      * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)
  * [storage](storage.md) - Methods by which a Sample is stored.
      * [Sample➞storage](Sample_storage.md)
@@ -256,7 +257,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [study](study.md) - The Study associated with an entity.
      * [Dataset➞study](Dataset_study.md) - The Study associated with this Dataset.
      * [Publication➞study](Publication_study.md) - The Study entity associated with this Publication.
- * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing, (i.e. the number of times a particular locus was sequenced).
+ * [target_coverage](target_coverage.md) - Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing (i.e., the number of times a particular locus was sequenced).
      * [ExperimentMethod➞target_coverage](ExperimentMethod_target_coverage.md)
  * [target_regions](target_regions.md) - Subset of genes or specific regions of the genome, which are most likely to be involved in the phenotype under study.
      * [ExperimentMethod➞target_regions](ExperimentMethod_target_regions.md)
@@ -265,7 +266,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [title](title.md) - The title that describes an entity.
      * [Analysis➞title](Analysis_title.md)
      * [Dataset➞title](Dataset_title.md) - A title for this Dataset.
-     * [Experiment➞title](Experiment_title.md) - The title for this Experiment (e.g., GHGAE_PBMC_RNAseq).
+     * [Experiment➞title](Experiment_title.md) - The title for this Experiment (e.g., 'GHGAE_PBMC_RNAseq').
      * [Publication➞title](Publication_title.md) - The title for this Publication.
      * [Study➞title](Study_title.md) - A comprehensive title for this Study.
  * [type](type.md) - The type of an entity. Note: Not to be confused with rdf:type.
@@ -276,10 +277,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [Sample➞type](Sample_type.md) - The type of the Sample.
  * [types](types.md) - The types of an entity. Note: Not to be confused with rdf:type.
      * [Dataset➞types](Dataset_types.md) - The type of this Dataset.
-     * [Study➞types](Study_types.md) - One or more types of this Study (e.g., Cancer Genomics, Epigenetics, Exome Sequencing).
+     * [Study➞types](Study_types.md) - One or more types of this Study (e.g., 'CANCER_GENOMICS; EPIGENETICS').
  * [value](value.md) - The value for an attribute (e.g., a numerical value without the units).
      * [Attribute➞value](Attribute_value.md)
- * [value_type](value_type.md) - The value_type that characterizes the attribute value (e.g., percentage (SIO:001413)).
+ * [value_type](value_type.md) - A semantic type that characterizes the attribute value (e.g., 'percentage (SIO:001413)').
      * [Attribute➞value_type](Attribute_value_type.md)
  * [workflow_doi](workflow_doi.md) - A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
      * [AnalysisMethod➞workflow_doi](AnalysisMethod_workflow_doi.md)
@@ -287,7 +288,7 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
      * [AnalysisMethod➞workflow_name](AnalysisMethod_workflow_name.md)
  * [workflow_repository](workflow_repository.md) - The workflow repository (e.g., the URL).
      * [AnalysisMethod➞workflow_repository](AnalysisMethod_workflow_repository.md)
- * [workflow_tasks](workflow_tasks.md) - Tasks performed by the workflow
+ * [workflow_tasks](workflow_tasks.md) - Tasks performed by the workflow.
      * [AnalysisMethod➞workflow_tasks](AnalysisMethod_workflow_tasks.md)
  * [workflow_version](workflow_version.md) - The workflow version.
      * [AnalysisMethod➞workflow_version](AnalysisMethod_workflow_version.md)
@@ -299,16 +300,16 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
 
 ### Enums
 
- * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Indiviudal belongs to.
+ * [AgeRangeEnum](AgeRangeEnum.md) - Enum to capture the age range that an Individual belongs to.
  * [AncestryEnum](AncestryEnum.md) - Permitted values for ancestry.
- * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a condition corresponds to a case or a control condition.
+ * [CaseControlStatusEnum](CaseControlStatusEnum.md) - Enum to capture whether a Sample comes from a case or a control.
  * [DataUseModifierEnum](DataUseModifierEnum.md) - Permitted values for data use modifier.
  * [DataUsePermissionEnum](DataUsePermissionEnum.md) - Permitted values for data use permission.
- * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a condition corresponds to a disease or a healthy state.
+ * [DiseaseOrHealthyEnum](DiseaseOrHealthyEnum.md) - Enum to capture whether a Sample reflects a disease or a healthy state.
  * [EndBiasEnum](EndBiasEnum.md) - Permitted values for end bias.
  * [FlowCellTypeEnum](FlowCellTypeEnum.md) - Permitted values for flow cell type.
  * [GeographicalRegionEnum](GeographicalRegionEnum.md) - Permitted values for geographical region.
- * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as as defined in a specific medical and clinical context.
+ * [IndividualSexEnum](IndividualSexEnum.md) - The sex of an Individual as defined in a specific medical and clinical context.
  * [InstrumentModelEnum](InstrumentModelEnum.md) - Permitted values for the instrument model.
  * [IsolationEnum](IsolationEnum.md) - Describes how biomaterial was isolated.
  * [LibraryPreparationKitRetailNameEnum](LibraryPreparationKitRetailNameEnum.md) - Permitted values for library preparation kit retail name.
@@ -318,10 +319,10 @@ The submission centric metadata schema for the German Human Genome-Phenome Archi
  * [PhenotypicFeaturesEnum](PhenotypicFeaturesEnum.md) - An enum describing permissible phenotype descriptors.
  * [PrimerEnum](PrimerEnum.md) - Permitted values for primer.
  * [ProcessDataFileFormatEnum](ProcessDataFileFormatEnum.md) - Enum to capture Process Data File formats.
- * [ReferenceTypeEnum](ReferenceTypeEnum.md) - Enum to capture reference data types
+ * [ReferenceTypeEnum](ReferenceTypeEnum.md) - Enum to capture reference data types.
  * [ResearchDataFileFormatEnum](ResearchDataFileFormatEnum.md) - Enum to capture Research Data File formats.
  * [SampleBarcodeReadEnum](SampleBarcodeReadEnum.md) - Permitted values for sample barcode read.
- * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample
+ * [SampleTypeEnum](SampleTypeEnum.md) - The type of a sample.
  * [SequencingProtocolSequencingLayoutEnum](SequencingProtocolSequencingLayoutEnum.md) - Single-end vs paired-end sequencing.
  * [StorageEnum](StorageEnum.md) - Enum to capture how a Sample or Biospecimen was stored.
  * [StudyTypeEnum](StudyTypeEnum.md) - Enum to capture the type of a study.

@@ -2,7 +2,7 @@
 # Slot: key_type
 
 
-A semantic type that characterizes the attribute key (e.g., oxygen saturation measurement (MAXO:0000616)).
+A semantic type that characterizes the attribute key (e.g., 'oxygen saturation measurement (MAXO:0000616)').
 
 URI: [GHGA:Attribute_key_type](https://w3id.org/GHGA/Attribute_key_type)
 

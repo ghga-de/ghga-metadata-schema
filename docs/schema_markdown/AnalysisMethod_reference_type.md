@@ -2,7 +2,7 @@
 # Slot: reference_type
 
 
-Type of reference data used
+Type of reference data used.
 
 URI: [GHGA:AnalysisMethod_reference_type](https://w3id.org/GHGA/AnalysisMethod_reference_type)
 

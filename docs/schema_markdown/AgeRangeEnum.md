@@ -2,7 +2,7 @@
 # Enum: AgeRangeEnum
 
 
-Enum to capture the age range that an Indiviudal belongs to.
+Enum to capture the age range that an Individual belongs to.
 
 URI: [GHGA:AgeRangeEnum](https://w3id.org/GHGA/AgeRangeEnum)
 

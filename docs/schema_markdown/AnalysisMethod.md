@@ -49,28 +49,28 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
      * Description: A digital object identifier for the workflow. Can be a publication or the workflow commit that was used for the Analysis.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞workflow_tasks](AnalysisMethod_workflow_tasks.md)  <sub>0..1</sub>
-     * Description: Tasks performed by the workflow
+     * Description: Tasks performed by the workflow.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞parameters](AnalysisMethod_parameters.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner' = 'star_salmon',  'hisat2_build_memory' = '200.GB', 'split_fastq' = 50000000).
+     * Description: Semicolon-separated key=value pairs where key corresponds to a parameter name and value corresponds to a parameter value (e.g., 'aligner = star_salmon; hisat2_build_memory = 200.GB').
      * Range: [Attribute](Attribute.md)
  * [AnalysisMethod➞software_versions](AnalysisMethod_software_versions.md)  <sub>0..\*</sub>
-     * Description: key/value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., `salmon` = '1.3.0', `trim-galore` = '0.6.6', `bedtools` = '2.29.2').
+     * Description: Semicolon-separated key=value pairs where key corresponds to a software name and value corresponds to a version descriptor (e.g., 'salmon = 1.3.0; trim-galore = 0.6.6').
      * Range: [Attribute](Attribute.md)
  * [AnalysisMethod➞reference_name](AnalysisMethod_reference_name.md)  <sub>0..1</sub>
-     * Description: Name or identifier of the reference, e.g., "hg38", "dbSNP"
+     * Description: Name or identifier of the reference (e.g., 'hg38').
      * Range: [String](types/String.md)
  * [AnalysisMethod➞reference_type](AnalysisMethod_reference_type.md)  <sub>0..1</sub>
-     * Description: Type of reference data used
+     * Description: Type of reference data used.
      * Range: [ReferenceTypeEnum](ReferenceTypeEnum.md)
  * [AnalysisMethod➞reference_source](AnalysisMethod_reference_source.md)  <sub>0..1</sub>
-     * Description: Source or provider of the reference, e.g., "UCSC", "Ensembl"
+     * Description: Source or provider of the reference (e.g., 'UCSC').
      * Range: [String](types/String.md)
  * [AnalysisMethod➞reference_link](AnalysisMethod_reference_link.md)  <sub>0..1</sub>
-     * Description: URL to the reference
+     * Description: URL to the reference.
      * Range: [String](types/String.md)
  * [AnalysisMethod➞reference_version](AnalysisMethod_reference_version.md)  <sub>0..1</sub>
-     * Description: Version or release identifier of the reference data
+     * Description: Version or release identifier of the reference data.
      * Range: [String](types/String.md)
 
 ### Mixed in from IdentifiedByAliasMixin:
@@ -82,5 +82,5 @@ URI: [GHGA:AnalysisMethod](https://w3id.org/GHGA/AnalysisMethod)
 ### Mixed in from AttributeMixin:
 
  * [AttributeMixin➞attributes](AttributeMixin_attributes.md)  <sub>0..\*</sub>
-     * Description: Key/value pairs corresponding to an entity.
+     * Description: Semicolon-separated key=value pairs associated with the entity (e.g., key=value; key2=value2).
      * Range: [Attribute](Attribute.md)

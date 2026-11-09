@@ -2,7 +2,7 @@
 # Slot: library_type
 
 
-Describe the level of omics analysis (e.g., WGS, ATAC).
+The type of library that was sequenced (e.g., 'WGS').
 
 URI: [GHGA:library_type](https://w3id.org/GHGA/library_type)
 

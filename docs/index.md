@@ -17,26 +17,13 @@ used by the German Human Genome-Phenome Archive.
 The schema is modeled using LinkML and exists as a YAML, which can be
 found in `src/schema/`.
 
-Using the YAML, and the [LinkML framework](https://github.com/linkml/linkml),
-we autogenerate vendor/technology specific artifacts like:
+Using the YAML, the [LinkML framework](https://github.com/linkml/linkml) and the
+scripts in `scripts/`, we generate the following artifacts:
 
-- JSON Schema
-    - JSON Schema definitions of all classes and properties
-- Python Dataclasses
-    - Python Dataclasses for each defined class
-- SQL DDL
-    - SQL Data Definition Language to create SQL tables for all classes
-- SQLAlchemy classes
-    - SQLAlchemy classes to map SQL tables and columns to each defined class
-and slot, respectively
-- GraphQL
-    - GraphQL types for each defined class
-- ShEx
-    - Shape Expressions for each defined class
-- RDF
-    - The model represented as RDF Turtle (TTL)
-- OWL
-    - The model in Web Ontology Language (OWL), serialized as RDF Turtle (TTL)
-- CSV
-    - A CSV summary of the model and its classes
+- Schema documentation
+    - Markdown pages for every class, slot and enum in `docs/schema_markdown/`
+- Entity relationship diagrams
+    - Mermaid diagrams of the classes and their relations in `docs/entity_relations.md`
+- Submission spreadsheet
+    - The XLSX workbook used for metadata submission in `spreadsheets/`
 

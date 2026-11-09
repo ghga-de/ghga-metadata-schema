@@ -2,7 +2,7 @@
 # Enum: SampleTypeEnum
 
 
-The type of a sample
+The type of a sample.
 
 URI: [GHGA:SampleTypeEnum](https://w3id.org/GHGA/SampleTypeEnum)
 

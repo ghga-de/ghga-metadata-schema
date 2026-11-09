@@ -20,15 +20,15 @@ URI: [GHGA:LibraryPreparationLibrarySelectionEnum](https://w3id.org/GHGA/Library
 | CAGE_METHOD | Cap-analysis gene expression. | GENEPIO:0001942 |  |
 | C_DNA_METHOD | PolyA selection or enrichment for messenger RNA (mRNA). complementary DNA. | GENEPIO:0001962 |  |
 | CF_H_METHOD | Cot-filtered highly repetitive genomic DNA. | GENEPIO:0001943 |  |
-| CF_M_METHOD | Cot-filtered moderately repetitive genomic DNA. | GENEPIO:1944 |  |
+| CF_M_METHOD | Cot-filtered moderately repetitive genomic DNA. | GENEPIO:0001944 |  |
 | CF_S_METHOD | Cot-filtered single/low-copy genomic DNA. | GENEPIO:0001945 |  |
-| CF_T_METHOD | Cot-filtered theoretical single-copy genomic DNA. | GENEPIO:1946 |  |
+| CF_T_METHOD | Cot-filtered theoretical single-copy genomic DNA. | GENEPIO:0001946 |  |
 | CHIP_SEQ_METHOD | Chromatin immunoprecipitation. | GENEPIO:0001947 |  |
 | D_NASE_METHOD | Deoxyribonuclease (MNase) digestion. | GENEPIO:0001948 |  |
 | HMPR_METHOD | Hypo-methylated partial restriction digest. | GENEPIO:0001949 |  |
 | HYBRID_SELECTION_METHOD | Selection by hybridization in array or solution. | GENEPIO:0001950 |  |
 | MBD2_PROTEIN_METHYL_CP_G_BINDING_DOMAIN_METHOD | Enrichment by methyl-CpG binding domain. | GENEPIO:0001951 |  |
-| MF_METHOD | Methyl Filtrated | GENEPIO:0001952 |  |
+| MF_METHOD | Methyl Filtrated. | GENEPIO:0001952 |  |
 | M_NASE_METHOD | Micrococcal Nuclease (MNase) digestion. | GENEPIO:0001953 |  |
 | MSLL_METHOD | Methylation Spanning Linking Library. | GENEPIO:0001954 |  |
 | PCR_METHOD | Source material was selected by designed primers. | GENEPIO:0001955 |  |

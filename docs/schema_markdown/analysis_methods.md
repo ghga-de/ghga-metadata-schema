@@ -2,7 +2,7 @@
 # Slot: analysis_methods
 
 
-The Analysis Processes associated with an entity.
+The Analysis Methods associated with an entity.
 
 URI: [GHGA:analysis_methods](https://w3id.org/GHGA/analysis_methods)
 

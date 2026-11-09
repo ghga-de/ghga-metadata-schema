@@ -2,7 +2,7 @@
 # Enum: DiseaseOrHealthyEnum
 
 
-Enum to capture whether a condition corresponds to a disease or a healthy state.
+Enum to capture whether a Sample reflects a disease or a healthy state.
 
 URI: [GHGA:DiseaseOrHealthyEnum](https://w3id.org/GHGA/DiseaseOrHealthyEnum)
 
@@ -18,5 +18,5 @@ URI: [GHGA:DiseaseOrHealthyEnum](https://w3id.org/GHGA/DiseaseOrHealthyEnum)
 | :--- | :---: | :---: | ---: |
 | DISEASE | Disease state. |  |  |
 | HEALTHY | Healthy state. |  |  |
-| NOT_APPLICABLE | The distinction is not applicaple. |  |  |
+| NOT_APPLICABLE | The distinction is not applicable. |  |  |
 

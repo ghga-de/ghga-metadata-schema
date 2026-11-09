@@ -2,7 +2,7 @@
 # Slot: reference_version
 
 
-Version or release identifier of the reference data
+Version or release identifier of the reference data.
 
 URI: [GHGA:reference_version](https://w3id.org/GHGA/reference_version)
 

@@ -7,11 +7,11 @@ An Analysis Method Supporting File is a File that contains additional informatio
 URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSupportingFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20analysis_method_supporting_files%201..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20analysis_method_supporting_files%201..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[Attribute],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20analysis_method_supporting_files%201..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[Submission],[File],[Dataset],[Attribute],[AnalysisMethod]<analysis_method%201..1-%20[AnalysisMethodSupportingFile&#124;format:SupportingFileFormatEnum;name(i):string;ega_accession(i):string%20%3F;included_in_submission(i):boolean;alias(i):string],[Submission]++-%20analysis_method_supporting_files%201..*>[AnalysisMethodSupportingFile],[Submission]-%20analysis_method_supporting_files(i)%200..*>[AnalysisMethodSupportingFile],[File]^-[AnalysisMethodSupportingFile],[AnalysisMethod])
 
 ## Parents
 
- *  is_a: [File](File.md) - A file is an object that contains information generated from a process, either an Experiment or an Analysis.
+ *  is_a: [File](File.md) - A File is an object that contains information generated from a process, either an Experiment or an Analysis.
 
 ## Referenced by Class
 
@@ -24,10 +24,10 @@ URI: [GHGA:AnalysisMethodSupportingFile](https://w3id.org/GHGA/AnalysisMethodSup
 ### Own
 
  * [AnalysisMethodSupportingFile➞format](AnalysisMethodSupportingFile_format.md)  <sub>1..1</sub>
-     * Description: The file format of the Supporting File (e.g., TXT, JSON).
+     * Description: The file format of the Supporting File (e.g., 'TXT').
      * Range: [SupportingFileFormatEnum](SupportingFileFormatEnum.md)
  * [AnalysisMethodSupportingFile➞analysis_method](AnalysisMethodSupportingFile_analysis_method.md)  <sub>1..1</sub>
-     * Description: The Analysis Process associated with an entity.
+     * Description: The Analysis Method associated with an entity.
      * Range: [AnalysisMethod](AnalysisMethod.md)
 
 ### Inherited from File:
